@@ -19,6 +19,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getFileObjects();
 
     /**
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getTimezone();
+
+    /**
      * @deprecated
      * Set sentTo
      *
@@ -101,6 +106,22 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand();
 
     /**
      * Set callCsvScheduler

@@ -5,7 +5,7 @@ Feature: Update friends patterns
 
   @createSchema
   Scenario: Update a friend pattern
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/friends_patterns/1" with body:
@@ -42,6 +42,7 @@ Feature: Update friends patterns
               "updateCallerid": "yes",
               "fromDomain": "",
               "directConnectivity": "yes",
+              "ddiIn": "yes",
               "id": 1,
               "company": 1,
               "callAcl": null,

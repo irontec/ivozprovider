@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 
@@ -129,5 +130,18 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
             "b%d",
             $this->getId()
         );
+    }
+
+    public function getServiceByIden(string $iden)
+    {
+        $service = $this->serviceRepsitory->getByIden($iden);
+
+        $services = $this->getServices(
+            CriteriaHelper::fromArray([
+                'service' => $service
+            ])
+        );
+
+        return array_shift($services);
     }
 }

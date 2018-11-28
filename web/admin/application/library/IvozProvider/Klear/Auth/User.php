@@ -43,6 +43,7 @@ class User extends \Klear_Model_UserAdvanced
     public $companyNotWholesale = true;
     public $companyRetail = false;
     public $companyNotRetail = true;
+    public $companyInvoices = false;
 
     public function setToken(string $token, string $refreshToken)
     {
@@ -100,6 +101,7 @@ class User extends \Klear_Model_UserAdvanced
         $this->companyNotWholesale = $company->getType() != Company::WHOLESALE;
         $this->companyRetail = $company->getType() === Company::RETAIL;
         $this->companyNotRetail = $company->getType() != Company::RETAIL;
+        $this->companyInvoices = $company->getShowInvoices() == 1;
     }
 
     public function getCompany()

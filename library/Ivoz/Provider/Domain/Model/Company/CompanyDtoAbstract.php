@@ -108,6 +108,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $balance = 0;
 
     /**
+     * @var boolean
+     */
+    private $showInvoices = '0';
+
+    /**
      * @var integer
      */
     private $id;
@@ -176,6 +181,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     private $invoiceNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $callCsvNotificationTemplate;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto[] | null
@@ -269,6 +279,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordingsLimitEmail' => 'recordingsLimitEmail',
             'billingMethod' => 'billingMethod',
             'balance' => 'balance',
+            'showInvoices' => 'showInvoices',
             'id' => 'id',
             'languageId' => 'language',
             'mediaRelaySetsId' => 'mediaRelaySets',
@@ -282,7 +293,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiRuleId' => 'outgoingDdiRule',
             'voicemailNotificationTemplateId' => 'voicemailNotificationTemplate',
             'faxNotificationTemplateId' => 'faxNotificationTemplate',
-            'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate'
+            'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
+            'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate'
         ];
     }
 
@@ -311,6 +323,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
             'billingMethod' => $this->getBillingMethod(),
             'balance' => $this->getBalance(),
+            'showInvoices' => $this->getShowInvoices(),
             'id' => $this->getId(),
             'language' => $this->getLanguage(),
             'mediaRelaySets' => $this->getMediaRelaySets(),
@@ -325,6 +338,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'voicemailNotificationTemplate' => $this->getVoicemailNotificationTemplate(),
             'faxNotificationTemplate' => $this->getFaxNotificationTemplate(),
             'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
+            'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
@@ -357,6 +371,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->voicemailNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getVoicemailNotificationTemplateId());
         $this->faxNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getFaxNotificationTemplateId());
         $this->invoiceNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getInvoiceNotificationTemplateId());
+        $this->callCsvNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getCallCsvNotificationTemplateId());
         if (!is_null($this->extensions)) {
             $items = $this->getExtensions();
             $this->extensions = [];
@@ -898,6 +913,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getBalance()
     {
         return $this->balance;
+    }
+
+    /**
+     * @param boolean $showInvoices
+     *
+     * @return static
+     */
+    public function setShowInvoices($showInvoices = null)
+    {
+        $this->showInvoices = $showInvoices;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowInvoices()
+    {
+        return $this->showInvoices;
     }
 
     /**
@@ -1512,6 +1547,52 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getInvoiceNotificationTemplateId()
     {
         if ($dto = $this->getInvoiceNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setCallCsvNotificationTemplate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCallCsvNotificationTemplateId()
+    {
+        if ($dto = $this->getCallCsvNotificationTemplate()) {
             return $dto->getId();
         }
 

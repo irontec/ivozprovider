@@ -103,6 +103,7 @@ Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract:
       length: null
       options:
         fixed: false
+        default: 'yes'
     sendVoicemail:
       type: string
       nullable: true

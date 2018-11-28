@@ -95,6 +95,7 @@ trait CompanyTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -156,6 +157,7 @@ trait CompanyTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -202,6 +204,7 @@ trait CompanyTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CompanyDto
      */

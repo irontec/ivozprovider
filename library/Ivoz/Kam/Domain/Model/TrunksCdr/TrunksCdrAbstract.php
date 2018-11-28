@@ -95,6 +95,11 @@ abstract class TrunksCdrAbstract
      */
     protected $carrier;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    protected $retailAccount;
+
 
     use ChangelogTrait;
 
@@ -137,6 +142,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrunksCdrDto|null
@@ -162,6 +168,7 @@ abstract class TrunksCdrAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -192,6 +199,7 @@ abstract class TrunksCdrAbstract
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
+            ->setRetailAccount($dto->getRetailAccount())
         ;
 
         $self->sanitizeValues();
@@ -201,6 +209,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -227,7 +236,8 @@ abstract class TrunksCdrAbstract
             ->setCgrid($dto->getCgrid())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier());
+            ->setCarrier($dto->getCarrier())
+            ->setRetailAccount($dto->getRetailAccount());
 
 
 
@@ -236,6 +246,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksCdrDto
      */
@@ -257,7 +268,8 @@ abstract class TrunksCdrAbstract
             ->setCgrid(self::getCgrid())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
     /**
@@ -281,7 +293,8 @@ abstract class TrunksCdrAbstract
             'cgrid' => self::getCgrid(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -736,6 +749,30 @@ abstract class TrunksCdrAbstract
     public function getCarrier()
     {
         return $this->carrier;
+    }
+
+    /**
+     * Set retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return self
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
     }
 
     // @codeCoverageIgnoreEnd

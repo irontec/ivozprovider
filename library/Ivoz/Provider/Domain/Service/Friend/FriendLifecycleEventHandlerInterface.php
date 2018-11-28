@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 
 interface FriendLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(FriendInterface $entity, $isNew);
+    public function execute(FriendInterface $entity);
 }

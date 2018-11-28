@@ -8,4 +8,5 @@ Symfony\Component\Debug\Debug::enable();
 $kernel = new AppKernel('dev', true);
 $kernel->boot();
 
+putenv("APPLICATION_ENV=development");
 require 'zf.php';

@@ -60,8 +60,7 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->shouldNotBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 
@@ -76,8 +75,7 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 
@@ -118,8 +116,7 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 
@@ -158,8 +155,7 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 

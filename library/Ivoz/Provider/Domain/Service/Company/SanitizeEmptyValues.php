@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Company;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -19,9 +20,9 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
     protected $entityUpdater;
 
     public function __construct(
-        UpdateEntityFromDTO $entityUpdater
+        EntityTools $entityTools
     ) {
-        $this->entityUpdater = $entityUpdater;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -31,8 +32,9 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CompanyInterface $company, $isNew)
+    public function execute(CompanyInterface $company)
     {
+        $isNew = $company->isNew();
         if (!$isNew) {
             return;
         }
@@ -40,11 +42,12 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         /**
          * @var $dto CompanyDTO
          */
-        $dto = $company->toDto();
+        $dto = $this->entityTools->entityToDto($company);
         if (!$dto->getMediaRelaySetsId()) {
             $dto->setMediaRelaySetsId(0);
+            $this
+                ->entityTools
+                ->updateEntityByDto($company, $dto);
         }
-
-        $this->entityUpdater->execute($company, $dto);
     }
 }

@@ -103,7 +103,7 @@ production:
       <<: *ddiProviderAddressesEdit_screenLink
       filterField: ddiProvider
 
-    # DDI Provider Registry screens
+    # DDI Provider Registration screens
     ddiProviderRegistrationsList_screen:
       <<: *ddiProviderRegistrationsList_screenLink
       filterField: ddiProvider
@@ -139,7 +139,6 @@ production:
           brand: true
           recordCalls: true
           displayName: true
-          billInboundCalls: true
           externalCallFilter: true
           language: true
           queue: true
@@ -155,7 +154,7 @@ production:
         screens:
         dialogs:
 
-  dialogs: &ddiProviders_dialosgLink
+  dialogs: &ddiProviders_dialogsLink
     ddiProvidersDel_dialog: &ddiProvidersDel_dialogLink
       <<: *DdiProviders
       controller: delete
@@ -168,7 +167,7 @@ production:
       labelOnList: 1
 
     # DDI Provider Addresses dialogs
-    <<: *ddiProviderAddresses_dialosgLink
+    <<: *ddiProviderAddresses_dialogsLink
     # DDI Provider Registry dialogs
     <<: *ddiProviderRegistrations_dialogsLink
 

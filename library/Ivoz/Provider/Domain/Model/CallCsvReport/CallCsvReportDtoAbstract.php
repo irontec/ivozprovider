@@ -58,6 +58,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     private $company;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     */
+    private $brand;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto | null
      */
     private $callCsvScheduler;
@@ -87,6 +92,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'csv' => ['fileSize','mimeType','baseName'],
             'companyId' => 'company',
+            'brandId' => 'brand',
             'callCsvSchedulerId' => 'callCsvScheduler'
         ];
     }
@@ -108,6 +114,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
                 'baseName' => $this->getCsvBaseName()
             ],
             'company' => $this->getCompany(),
+            'brand' => $this->getBrand(),
             'callCsvScheduler' => $this->getCallCsvScheduler()
         ];
     }
@@ -118,6 +125,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->callCsvScheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallCsvScheduler\\CallCsvScheduler', $this->getCallCsvSchedulerId());
     }
 
@@ -328,6 +336,52 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     *
+     * @return static
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
+
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
             return $dto->getId();
         }
 

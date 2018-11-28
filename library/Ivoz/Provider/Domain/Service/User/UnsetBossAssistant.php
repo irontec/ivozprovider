@@ -40,8 +40,9 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(UserInterface $user, $isNew)
+    public function execute(UserInterface $user)
     {
+        $isNew = $user->isNew();
         $isBoss = $user->getIsBoss() == 1;
         $hasChangedIsBoss = $user->hasChanged('isBoss');
 
@@ -50,7 +51,7 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
             /** @var UserInterface[] $bosses */
             $bosses = $this
                 ->userRepository
-                ->findBy(['bossAssistant' => $user->getId()]);
+                ->findByBossAssistantId($user->getId());
 
             foreach ($bosses as $boss) {
                 /**

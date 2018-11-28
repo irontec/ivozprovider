@@ -86,6 +86,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrunksAddressDto|null
@@ -111,6 +112,7 @@ abstract class TrunksAddressAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -140,6 +142,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -165,6 +168,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksAddressDto
      */

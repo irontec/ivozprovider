@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
 interface ResidentialDeviceLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ResidentialDeviceInterface $entity, $isNew);
+    public function execute(ResidentialDeviceInterface $entity);
 }

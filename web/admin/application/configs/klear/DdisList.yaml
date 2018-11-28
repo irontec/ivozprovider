@@ -48,7 +48,6 @@ production:
           brand: true
           recordCalls: true
           displayName: true
-          billInboundCalls: true
           ddiProvider: ${auth.isCompanyOperator}
           language: true
           queue: true
@@ -90,11 +89,6 @@ production:
             residentialDevice: 1
             conditionalRoute: 1
             retailAccount: 1
-        group4:
-          label: _("Additional configuration")
-          colsPerRow: 12
-          fields:
-            billInboundCalls: 8
       options:
         title: _("Options")
         screens:
@@ -139,7 +133,6 @@ production:
           target: true
           brand: true
           recordCalls: ${auth.companyFeatures.recordings.disabled}
-          billInboundCalls: ${auth.brandFeatures.billing.disabled}
       fixedPositions:
         <<: *ddisFixedPositions_Link
     ddisEditLimited_screen: &ddisEdit_screenLink
@@ -157,7 +150,6 @@ production:
           target: true
           ddiProvider: true
           brand: true
-          billInboundCalls: true
           recordCalls: ${auth.companyFeatures.recordings.disabled}
         readOnly:
           ddi: true

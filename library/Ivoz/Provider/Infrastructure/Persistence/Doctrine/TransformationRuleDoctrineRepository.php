@@ -20,6 +20,14 @@ class TransformationRuleDoctrineRepository extends ServiceEntityRepository imple
         parent::__construct($registry, TransformationRule::class);
     }
 
+    /**
+     * @param array $criteria
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     *
+     * @deprecated dead code
+     */
     public function countByCriteria(array $criteria)
     {
         $alias = 'TransformationRules';

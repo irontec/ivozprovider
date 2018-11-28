@@ -5,7 +5,7 @@ Feature: Retrieve friends patterns
 
   @createSchema
   Scenario: Retrieve the friends patterns json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "friends_patterns"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve friends patterns
     """
 
   Scenario: Retrieve certain friends patterns json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "friends_patterns/1"
     Then the response status code should be 200
@@ -51,6 +51,7 @@ Feature: Retrieve friends patterns
               "updateCallerid": "yes",
               "fromDomain": "",
               "directConnectivity": "yes",
+              "ddiIn": "yes",
               "id": 1,
               "company": 1,
               "callAcl": null,

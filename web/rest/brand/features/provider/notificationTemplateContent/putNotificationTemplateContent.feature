@@ -5,7 +5,7 @@ Feature: Update notification template contents
 
   @createSchema
   Scenario: Update an notification template content
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/notification_template_contents/1" with body:
@@ -27,6 +27,7 @@ Feature: Update notification template contents
           "fromAddress": "no-reply@ivozprovider.com",
           "subject": "New Test subject",
           "body": "New Test body",
+          "bodyType": "text\/plain",
           "id": 1,
           "notificationTemplate": {
               "name": "Voicemail notification",

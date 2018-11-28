@@ -57,11 +57,13 @@ production:
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           language: true
           nif: true
           country: true
           domainUsers: true
           relFeatures: true
+          showInvoices: true
         order:
           typeIcon: true
           name: true

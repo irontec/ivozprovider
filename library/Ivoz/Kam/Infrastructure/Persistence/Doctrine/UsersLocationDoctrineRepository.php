@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,5 +19,21 @@ class UsersLocationDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, UsersLocation::class);
+    }
+
+    /**
+     * @param string $domain
+     * @param string $username
+     * @return UsersLocationInterface | null
+     */
+    public function findOneByDomainUser(string $domain, string $username)
+    {
+        /** @var UsersLocationInterface $response */
+        $response = $this->findOneBy([
+            'username' => $username,
+            'domain' => $domain
+        ]);
+
+        return $response;
     }
 }

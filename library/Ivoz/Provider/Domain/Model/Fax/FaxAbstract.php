@@ -79,6 +79,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return FaxDto|null
@@ -104,6 +105,7 @@ abstract class FaxAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -132,6 +134,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -156,6 +159,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FaxDto
      */

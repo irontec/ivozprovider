@@ -162,7 +162,8 @@ class DoctrineEventSubscriber implements EventSubscriber
         foreach ($this->flushedEntities as $entity) {
             $this->run(
                 'on_commit',
-                new LifecycleEventArgs($entity, $args->getEntityManager())
+                new LifecycleEventArgs($entity, $args->getEntityManager()),
+                $entity->isNew()
             );
         }
 
@@ -269,6 +270,10 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
+        if ($isNew === false && $entity instanceof EntityInterface) {
+            $entity->markAsPersisted();
+        }
+
         $serviceName = LifecycleServiceHelper::getServiceNameByEntity($entity, $eventName);
 
         if (!$this->serviceContainer->has($serviceName)) {
@@ -281,7 +286,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         $service = $this->serviceContainer->get($serviceName);
 
         try {
-            $service->execute($entity, $isNew);
+            $service->execute($entity);
         } catch (\Exception $exception) {
             $this->handleError($entity, $exception);
         }

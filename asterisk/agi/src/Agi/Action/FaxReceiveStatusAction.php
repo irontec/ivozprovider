@@ -3,10 +3,11 @@ namespace Agi\Action;
 
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 
 
 class FaxReceiveStatusAction
@@ -22,9 +23,9 @@ class FaxReceiveStatusAction
     protected $em;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var \Swift_Mailer
@@ -40,13 +41,13 @@ class FaxReceiveStatusAction
     public function __construct(
         Wrapper $agi,
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         \Swift_Mailer $mailer
     )
     {
         $this->agi = $agi;
         $this->em = $em;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->mailer = $mailer;
     }
 
@@ -88,7 +89,7 @@ class FaxReceiveStatusAction
             $this->agi->error("Error receiving fax: $statusstr ($error)");
             // Mark this fax as error and save
             $faxInDto->setStatus('error');
-            $this->entityPersister->persistDto($faxInDto, $faxIn);
+            $this->entityTools->persistDto($faxInDto, $faxIn);
             return;
         }
 
@@ -100,7 +101,7 @@ class FaxReceiveStatusAction
             $this->agi->error("File $faxTIF does not exists.");
             // Mark this fax as error and save
             $faxInDto->setStatus('error');
-            $this->entityPersister->persistDto($faxInDto, $faxIn);
+            $this->entityTools->persistDto($faxInDto, $faxIn, true);
             return;
         }
 
@@ -114,7 +115,12 @@ class FaxReceiveStatusAction
         // Remove received tif file after conversion
         unlink($faxTIF);
 
-        $faxPdfName = sprintf("fax-%s-%s.pdf", $faxInDto->getSrc(), $faxInDto->getDst());
+        $faxPdfName = sprintf(
+            "fax-%s-%s-%s.pdf",
+            $faxIn->getCalldate()->format('Ymd'),
+            $fax->getName(),
+            ltrim($faxIn->getSrc(), '+')
+        );
         $faxPdfPages = $this->agi->getVariable("FAXOPT(pages)");
 
         // Success!!
@@ -124,7 +130,8 @@ class FaxReceiveStatusAction
             ->setFilePath($faxPdfPath)
             ->setFileBaseName($faxPdfName);
 
-        $this->entityPersister->persistDto($faxInDto, $faxIn);
+        $this->entityTools->persistDto($faxInDto, $faxIn, true);
+        $faxInDto = $this->entityTools->entityToDto($faxIn);
 
         $this->agi->verbose("Fax %s completed (%d pages)", $faxIn, $faxIn->getPages());
 
@@ -136,7 +143,8 @@ class FaxReceiveStatusAction
             $company = $fax->getCompany();
 
             // Create attachment for PDF file
-            $attach = \Swift_Attachment::fromPath($faxPdfPath, 'application/pdf');
+            $attach = \Swift_Attachment::fromPath($faxInDto->getFilePath(), 'application/pdf');
+            $attach->setFilename($faxPdfName);
 
             // Get faxdata values for mail message body and subject
             $substitution = array(
@@ -144,21 +152,17 @@ class FaxReceiveStatusAction
                     '${FAX_PDFNAME}'    => $faxIn->getPages(),
                     '${FAX_SRC}'        => $faxIn->getSrc(),
                     '${FAX_DST}'        => $faxIn->getDst(),
-                    '${FAX_DATE}'       => $faxIn->getCalldate(),
+                    '${FAX_DATE}'       => $faxIn->getCalldate()->format('Y-m-d H:i:s'),
                     '${FAX_PAGES}'      => $faxIn->getPages(),
             );
-
 
             // Get Company Notification Template for faxes
             $faxNotificationTemplate = $company->getFaxNotificationTemplate();
 
             // Get Generic Notification Template for faxes
+            /** @var NotificationTemplateRepository $notificationTemplateRepository */
             $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
-            $genericFaxlNotificationTemplate = $notificationTemplateRepository->findOneBy([
-                "brand" => null,
-                "type" => "fax"
-            ]);
-
+            $genericFaxlNotificationTemplate = $notificationTemplateRepository->findGenericFaxTemplate();
 
             // If no template is associated, fallback to generic notification template for voicemails
             if (!$faxNotificationTemplate) {
@@ -175,6 +179,7 @@ class FaxReceiveStatusAction
             // Get data from template
             $fromName = $notificationTemplateContent->getFromName();
             $fromAddress = $notificationTemplateContent->getFromAddress();
+            $bodyType = $notificationTemplateContent->getBodyType();
             $body = $notificationTemplateContent->getBody();
             $subject = $notificationTemplateContent->getSubject();
 
@@ -186,7 +191,7 @@ class FaxReceiveStatusAction
 
             // Create a new mail and attach the PDF file
             $mail = new \Swift_Message();
-            $mail->setBody($body, 'text/html')
+            $mail->setBody($body, $bodyType)
                 ->setSubject($subject)
                 ->setFrom($fromAddress, $fromName)
                 ->setTo($fax->getEmail())

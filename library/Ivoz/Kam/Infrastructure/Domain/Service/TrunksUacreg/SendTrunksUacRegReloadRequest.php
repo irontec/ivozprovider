@@ -23,7 +23,7 @@ class SendTrunksUacRegReloadRequest implements TrunksUacregLifecycleEventHandler
         ];
     }
 
-    public function execute(TrunksUacregInterface $entity, $isNew)
+    public function execute(TrunksUacregInterface $entity)
     {
         $this->trunksUacRegReload->send();
     }

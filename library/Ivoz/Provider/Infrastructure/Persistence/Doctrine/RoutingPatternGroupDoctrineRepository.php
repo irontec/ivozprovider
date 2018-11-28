@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +19,21 @@ class RoutingPatternGroupDoctrineRepository extends ServiceEntityRepository impl
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, RoutingPatternGroup::class);
+    }
+
+    /**
+     * @param $brandId
+     * @param string $name
+     * @return RoutingPatternGroupInterface
+     */
+    public function findByBrandIdAndName($brandId, string $name)
+    {
+        /** @var RoutingPatternGroupInterface $response */
+        $response = $this->findOneBy([
+            'brand' => $brandId,
+            'name' => $name
+        ]);
+
+        return $response;
     }
 }

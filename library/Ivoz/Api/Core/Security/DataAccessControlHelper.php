@@ -5,9 +5,15 @@ namespace Ivoz\Api\Core\Security;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Doctrine\Common\Collections\Expr\Comparison;
+use Doctrine\Common\Collections\Expr\CompositeExpression;
 
 class DataAccessControlHelper
 {
+    const COMPOSITORS = [
+        'and' => CompositeExpression::TYPE_AND,
+        'or' => CompositeExpression::TYPE_OR
+    ];
+
     /**
      * @param array $dataAccessControl
      * @return Criteria
@@ -23,12 +29,33 @@ class DataAccessControlHelper
 
     /**
      * @param array $dataAccessControl
+     * @param string $compositionExpression
      * @return string | void
      */
-    public static function toString(array $dataAccessControl, $glue = 'and')
+    public static function toString(array $dataAccessControl, string $compositionExpression = 'and')
     {
+        $validExpression = in_array(
+            strtoupper($compositionExpression),
+            self::COMPOSITORS,
+            true
+        );
+
+        if (!$validExpression) {
+            throw new \DomainException("Unexpected composition expression");
+        }
+
         $expressions = [];
-        foreach ($dataAccessControl as $comparison) {
+        foreach ($dataAccessControl as $index => $comparison) {
+            if (is_string($comparison)) {
+                $expressions[] = $comparison;
+                continue;
+            }
+
+            if (!is_numeric($index)) {
+                $expressions[] = self::toString($comparison, $index);
+                continue;
+            }
+
             list($field, $operator) = $comparison;
             $value = $comparison[2] ?? null;
 
@@ -45,11 +72,21 @@ class DataAccessControlHelper
             }
         }
 
+        $expressions = array_filter($expressions, function ($item) {
+            $notEmpty = !empty($item);
+            return $notEmpty;
+        });
+
         if (empty($expressions)) {
             return;
         }
 
-        return '(' . implode(") $glue (", $expressions) . ')';
+        $accessControlString =
+            '('
+            . implode(") $compositionExpression (", $expressions)
+            . ')';
+
+        return $accessControlString;
     }
 
     private static function createExpression(string $field, string $operator, $value = null)
@@ -70,6 +107,10 @@ class DataAccessControlHelper
 
     private static function transformValue($value)
     {
+        if (is_null($value)) {
+            return 'null';
+        }
+
         if (is_numeric($value)) {
             return $value;
         }
@@ -92,6 +133,8 @@ class DataAccessControlHelper
         switch ($operator) {
             case 'EQ':
                 return '==';
+            case 'NEQ':
+                return '!=';
             case Comparison::IN:
                 return 'in';
             case Comparison::NIN:

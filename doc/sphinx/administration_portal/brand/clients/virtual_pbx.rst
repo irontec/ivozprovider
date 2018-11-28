@@ -30,7 +30,8 @@ that require feature-full call flows.
         Limits the external concurrent calls and source of calls for this client.
 
     Invoice data
-        Data included in invoices created by this brand.
+        Data included in invoices created by this brand. This section also allows displaying invoices list in
+        client's portal menu so they can download them.
 
     Externally rated options
         For :ref:`Carriers` with externally rated enabled, this field can be used to store specific

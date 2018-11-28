@@ -88,8 +88,8 @@ function setup_proxies()
     /usr/bin/mysql --user=root ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
 
     # Update DemoCompany domain to USERS_ADDRESS
-    /usr/bin/mysql --user=root ivozprovider -e "UPDATE Companies SET domain_users = '$USERS_ADDRESS' WHERE domain_users LIKE '%.%.%.%'";
-    /usr/bin/mysql --user=root ivozprovider -e "UPDATE Domains SET domain = '$USERS_ADDRESS' WHERE domain REGEXP '[0-9]\.[0-9]\.[0-9]\.[0-9]'";
+    /usr/bin/mysql --user=root ivozprovider -e "UPDATE Companies SET domain_users = '$USERS_ADDRESS' WHERE domain_users REGEXP '^([0-9]{1,3}\.){3}[0-9]{1,3}$'";
+    /usr/bin/mysql --user=root ivozprovider -e "UPDATE Domains SET domain = '$USERS_ADDRESS' WHERE domain REGEXP '^([0-9]{1,3}\.){3}[0-9]{1,3}$'";
 
     # Change ProxyTrunks ports if USERS_ADDRESS == TRUNKS_ADDRESS
     if [ -n "$USERS_ADDRESS" ] && [ "$USERS_ADDRESS" == "$TRUNKS_ADDRESS" ]; then
@@ -156,9 +156,11 @@ function enable_services()
     /bin/systemctl enable kamailio@users
     /bin/systemctl enable kamailio@trunks
     /bin/systemctl enable asterisk
+    /bin/systemctl enable ivozprovider-jwt.timer
     /bin/systemctl enable ivozprovider-recordings.timer
     /bin/systemctl enable ivozprovider-balances.timer
     /bin/systemctl enable ivozprovider-scheduler.timer
+    /bin/systemctl enable ivozprovider-cdrs.timer
     /bin/systemctl enable cgrates
 }
 

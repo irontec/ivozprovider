@@ -5,7 +5,7 @@ Feature: Create fixed costs
 
   @createSchema
   Scenario: Create a fixed cost
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/fixed_costs" with body:
@@ -30,7 +30,7 @@ Feature: Create fixed costs
     """
 
   Scenario: Retrieve created fixed cost
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "fixed_costs/2"
      Then the response status code should be 200

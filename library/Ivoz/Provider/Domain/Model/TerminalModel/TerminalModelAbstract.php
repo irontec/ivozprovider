@@ -95,6 +95,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TerminalModelDto|null
@@ -120,6 +121,7 @@ abstract class TerminalModelAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -151,6 +153,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -178,6 +181,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TerminalModelDto
      */

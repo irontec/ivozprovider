@@ -23,7 +23,7 @@ class SendTrunksLcrReloadRequest implements RoutingPatternGroupLifecycleEventHan
         ];
     }
 
-    public function execute(RoutingPatternGroupInterface $entity, $isNew)
+    public function execute(RoutingPatternGroupInterface $entity)
     {
         $this->trunksLcrReload->send();
     }

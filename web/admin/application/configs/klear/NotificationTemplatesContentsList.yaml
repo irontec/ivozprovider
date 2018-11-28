@@ -18,10 +18,12 @@ production:
         blacklist:
           subject: true
           body: true
+          bodyType: true
           voicemailVariables: true
           faxVariables: true
           invoiceVariables: true
           lowBalanceVariables: true
+          callCsvVariables: true
         options:
           title: _("Options")
           screens:
@@ -52,7 +54,9 @@ production:
           faxVariables: true
           invoiceVariables: true
           lowBalanceVariables: true
+          callCsvVariables: true
           subject: true
+          bodyType: true
           body: true
       fixedPositions: &notificationTemplatesContentsFixedPositions_Link
         group0:
@@ -68,14 +72,15 @@ production:
             fromAddress: 1
         group2:
           label: _("Contents configuration")
-          colsPerRow: 1
+          colsPerRow: 12
           fields:
-            voicemailVariables: 1
-            faxVariables: 1
-            invoiceVariables: 1
-            lowBalanceVariables: 1
-            subject: 1
-            body: 1
+            voicemailVariables: 12
+            faxVariables: 12
+            invoiceVariables: 12
+            lowBalanceVariables: 12
+            bodyType: 3
+            subject: 9
+            body: 12
     notificationTemplatesContentsEdit_screen: &notificationTemplatesContentsEdit_screenLink
       <<: *NotificationTemplatesContents
       controller: edit
@@ -88,7 +93,7 @@ production:
 
     ###################################################################################################################
     # Screens for Voicemail Notification templates
-    # This screens is like the generic one but hidding the other substitution variables helpers
+    # This screens is like the generic one but hiding the other substitution variables helpers
     ###################################################################################################################
     notificationTemplatesContentsVoicemailList_screen: &notificationTemplatesContentsVoicemailList_screenLink
       <<: *notificationTemplatesContentsList_screenLink
@@ -116,6 +121,7 @@ production:
           faxVariables: true
           invoiceVariables: true
           lowBalanceVariables: true
+          callCsvVariables: true
     notificationTemplatesContentsVoicemailEdit_screen: &notificationTemplatesContentsVoicemailEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -125,10 +131,11 @@ production:
           faxVariables: true
           invoiceVariables: true
           lowBalanceVariables: true
+          callCsvVariables: true
 
     ###################################################################################################################
     # Screens for Fax Notification templates
-    # This screens is like the generic one but hidding the other substitution variables helpers
+    # This screens is like the generic one but hiding the other substitution variables helpers
     ###################################################################################################################
     notificationTemplatesContentsFaxList_screen: &notificationTemplatesContentsFaxList_screenLink
       <<: *notificationTemplatesContentsList_screenLink
@@ -156,6 +163,7 @@ production:
           voicemailVariables: true
           invoiceVariables: true
           lowBalanceVariables: true
+          callCsvVariables: true
     notificationTemplatesContentsFaxEdit_screen: &notificationTemplatesContentsFaxEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -165,10 +173,11 @@ production:
           voicemailVariables: true
           lowBalanceVariables: true
           invoiceVariables: true
+          callCsvVariables: true
 
     ###################################################################################################################
     # Screens for Invoice Notification templates
-    # This screens is like the generic one but hidding the other substitution variables helpers
+    # This screens is like the generic one but hiding the other substitution variables helpers
     ###################################################################################################################
     notificationTemplatesContentsInvoiceList_screen: &notificationTemplatesContentsInvoiceList_screenLink
       <<: *notificationTemplatesContentsList_screenLink
@@ -196,6 +205,7 @@ production:
           voicemailVariables: true
           lowBalanceVariables: true
           faxVariables: true
+          callCsvVariables: true
     notificationTemplatesContentsInvoiceEdit_screen: &notificationTemplatesContentsInvoiceEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -205,10 +215,11 @@ production:
           voicemailVariables: true
           lowBalanceVariables: true
           faxVariables: true
+          callCsvVariables: true
 
     ###################################################################################################################
     # Screens for LowBalance Notification templates
-    # This screens is like the generic one but hidding the other substitution variables helpers
+    # This screens is like the generic one but hiding the other substitution variables helpers
     ###################################################################################################################
     notificationTemplatesContentsLowBalanceList_screen: &notificationTemplatesContentsLowBalanceList_screenLink
       <<: *notificationTemplatesContentsList_screenLink
@@ -236,6 +247,7 @@ production:
           voicemailVariables: true
           faxVariables: true
           invoiceVariables: true
+          callCsvVariables: true
     notificationTemplatesContentsLowBalanceEdit_screen: &notificationTemplatesContentsLowBalanceEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -243,6 +255,49 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           voicemailVariables: true
+          faxVariables: true
+          invoiceVariables: true
+          callCsvVariables: true
+
+    ###################################################################################################################
+    # Screens for CallCsv Notification templates
+    # This screens is like the generic one but hiding the other substitution variables helpers
+    ###################################################################################################################
+    notificationTemplatesContentsCallCsvList_screen: &notificationTemplatesContentsCallCsvList_screenLink
+      <<: *notificationTemplatesContentsList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsCallCsvEdit_screen: true
+          dialogs:
+            notificationTemplatesContentsDel_dialog: true
+          default: notificationTemplatesContentsCallCsvEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          notificationTemplatesContentsCallCsvNew_screen: true
+        dialogs:
+          notificationTemplatesContentsDel_dialog: true
+    notificationTemplatesContentsCallCsvNew_screen: &notificationTemplatesContentsCallCsvNew_screenLink
+      <<: *notificationTemplatesContentsNew_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          lowBalanceVariables: true
+          faxVariables: true
+          invoiceVariables: true
+    notificationTemplatesContentsCallCsvEdit_screen: &notificationTemplatesContentsCallCsvEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          lowBalanceVariables: true
           faxVariables: true
           invoiceVariables: true
 
@@ -257,7 +312,6 @@ production:
       message: _("%s successfully deleted.", ngettext('Notification content', 'Notification contents', 1))
       multiItem: 1
       labelOnList: 1
-
 
 staging:
   _extends: production

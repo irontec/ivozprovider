@@ -24,6 +24,16 @@ interface EntityInterface
     /**
      * @return bool
      */
+    public function isPersisted();
+
+    /**
+     * @return void
+     */
+    public function markAsPersisted();
+
+    /**
+     * @return bool
+     */
     public function hasBeenDeleted();
 
     /**

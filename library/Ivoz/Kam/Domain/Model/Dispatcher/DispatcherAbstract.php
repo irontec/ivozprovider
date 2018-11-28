@@ -99,6 +99,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return DispatcherDto|null
@@ -124,6 +125,7 @@ abstract class DispatcherAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -154,6 +156,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -180,6 +183,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return DispatcherDto
      */

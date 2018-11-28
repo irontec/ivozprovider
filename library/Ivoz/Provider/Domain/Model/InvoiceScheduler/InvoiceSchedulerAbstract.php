@@ -40,6 +40,11 @@ abstract class InvoiceSchedulerAbstract
     protected $lastExecution;
 
     /**
+     * @var string
+     */
+    protected $lastExecutionError;
+
+    /**
      * @var \DateTime
      */
     protected $nextExecution;
@@ -112,6 +117,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return InvoiceSchedulerDto|null
@@ -137,6 +143,7 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -156,6 +163,7 @@ abstract class InvoiceSchedulerAbstract
 
         $self
             ->setLastExecution($dto->getLastExecution())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
             ->setInvoiceTemplate($dto->getInvoiceTemplate())
@@ -171,6 +179,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -187,6 +196,7 @@ abstract class InvoiceSchedulerAbstract
             ->setFrequency($dto->getFrequency())
             ->setEmail($dto->getEmail())
             ->setLastExecution($dto->getLastExecution())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
             ->setInvoiceTemplate($dto->getInvoiceTemplate())
@@ -201,6 +211,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return InvoiceSchedulerDto
      */
@@ -212,6 +223,7 @@ abstract class InvoiceSchedulerAbstract
             ->setFrequency(self::getFrequency())
             ->setEmail(self::getEmail())
             ->setLastExecution(self::getLastExecution())
+            ->setLastExecutionError(self::getLastExecutionError())
             ->setNextExecution(self::getNextExecution())
             ->setTaxRate(self::getTaxRate())
             ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
@@ -231,6 +243,7 @@ abstract class InvoiceSchedulerAbstract
             'frequency' => self::getFrequency(),
             'email' => self::getEmail(),
             'lastExecution' => self::getLastExecution(),
+            'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'taxRate' => self::getTaxRate(),
             'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
@@ -389,6 +402,35 @@ abstract class InvoiceSchedulerAbstract
     public function getLastExecution()
     {
         return $this->lastExecution;
+    }
+
+    /**
+     * @deprecated
+     * Set lastExecutionError
+     *
+     * @param string $lastExecutionError
+     *
+     * @return self
+     */
+    public function setLastExecutionError($lastExecutionError = null)
+    {
+        if (!is_null($lastExecutionError)) {
+            Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->lastExecutionError = $lastExecutionError;
+
+        return $this;
+    }
+
+    /**
+     * Get lastExecutionError
+     *
+     * @return string
+     */
+    public function getLastExecutionError()
+    {
+        return $this->lastExecutionError;
     }
 
     /**

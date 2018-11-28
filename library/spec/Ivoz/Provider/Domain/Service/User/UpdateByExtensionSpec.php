@@ -48,7 +48,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->getUser()
             ->shouldNotBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_resets_previous_user_extension(
@@ -74,9 +74,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $this
             ->userRepository
-            ->findOneBy([
-                'id' => 2
-            ])
+            ->find(2)
             ->willReturn($oldUser)
             ->shouldBeCalled();
 
@@ -88,7 +86,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->getRouteType()
             ->willReturn(null);
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_sets_user_extension_if_empty(
@@ -128,6 +126,6 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->persist($user, false)
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 }

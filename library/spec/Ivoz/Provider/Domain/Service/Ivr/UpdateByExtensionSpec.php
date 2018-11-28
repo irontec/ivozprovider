@@ -83,7 +83,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->persistDto($ivrDto, $ivr)
             ->shouldBeCalled();
 
-        $this->execute($extension, false);
+        $this->execute($extension);
     }
 
 
@@ -133,6 +133,6 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->persistDto($ivrDto, $ivr)
             ->shouldBeCalled();
 
-        $this->execute($extension, false);
+        $this->execute($extension);
     }
 }

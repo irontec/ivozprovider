@@ -35,6 +35,10 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
     public function getCostDetailsFirstTimespan()
     {
         $costDetails = $this->getCostDetails();
+        if (empty($costDetails)) {
+            return null;
+        }
+
         $timespans = $costDetails['Timespans'];
 
         return current($timespans);

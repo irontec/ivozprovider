@@ -1,0 +1,9 @@
+[Unit]
+Description=Ivozprovider JWT tasks runner
+
+[Timer]
+OnBootSec=1h
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target

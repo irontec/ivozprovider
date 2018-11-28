@@ -52,6 +52,9 @@ production:
           recordingsDiskUsage: true
           country: true
           externallyExtraOpts: true
+          showInvoices: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
         order:
           name: true
           nif: true
@@ -94,16 +97,21 @@ production:
           mediaRelaySets: true
           outgoingDDI: true
           maxCalls: false
-          relCodecs: true
-          relRoutingTags: true
           externallyExtraOpts: true
+          showInvoices: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
         order: &retailClientsOrder_Link
           id: true
           name: true
-          language: true
           maxCalls: true
-          defaultTimezone: true
+          language: true
           relRoutingTags: true
+          showInvoices: true
+          onDemandRecord: true
+          invoiceNotificationTemplate: true
+          mediaRelaySets: true
+          externallyExtraOpts: true
       fixedPositions: &retailClientsFixedPositions_Link
         group0:
           colsPerRow: 6
@@ -112,6 +120,12 @@ production:
             name: 3
             billingMethod: 3
         group1:
+          colsPerRow: 2
+          label: _("Security")
+          fields:
+            maxCalls: 1
+            ipFilter: 1
+        group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
           fields:
@@ -119,12 +133,12 @@ production:
             country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
-        group2:
-          colsPerRow: 2
-          label: _("Security")
+        group3:
+          colsPerRow: 12
+          label: _("Retail specific")
           fields:
-            maxCalls: 1
-            ipFilter: 1
+            relRoutingTags: 6
+            relCodecs: 6
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -174,12 +188,6 @@ production:
             country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
-        group9:
-          colsPerRow: 12
-          label: _("Retail specific")
-          fields:
-            relRoutingTags: 6
-            relCodecs: 6
         group2:
           colsPerRow: 2
           label: _("Security")
@@ -188,24 +196,39 @@ production:
             ipFilter: 1
         group3:
           colsPerRow: 12
-          label: _("Platform data")
+          label: _("Retail specific")
           fields:
-            mediaRelaySets: 4
+            relRoutingTags: 6
+            relCodecs: 6
         group4:
           colsPerRow: 12
+          collapsed: true
           label: _("Invoice data")
           fields:
-            nif: 4
-            __empty: 8
+            showInvoices: 6
+            nif: 6
             postalAddress: 8
             postalCode: 4
             town: 4
             province: 4
             countryName: 4
+        group7:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
+        group5:
+          colsPerRow: 12
+          collapsed: true
+          label: _("Platform data")
+          fields:
+            mediaRelaySets: 4
         group6:
           colsPerRow: 1
           collapsed: true
-          label: _("Externally rated options")
+          label: _("Externally rater options")
           fields:
             externallyExtraOpts: 1
       class: ui-silk-pencil

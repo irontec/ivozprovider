@@ -28,10 +28,10 @@ trait LifecycleServiceCollectionTrait
     /**
      * @param EntityInterface $entity
      */
-    public function execute(EntityInterface $entity, $isNew)
+    public function execute(EntityInterface $entity)
     {
         foreach ($this->services as $service) {
-            $service->execute($entity, $isNew);
+            $service->execute($entity);
         }
     }
 }

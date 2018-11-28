@@ -98,9 +98,6 @@ msgstr "Añadir %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Añadir patrón a %2s"
 
-msgid "Additional configuration"
-msgstr "Configuración Adicional"
-
 msgid "Admin"
 msgstr "Administrador"
 
@@ -112,6 +109,9 @@ msgstr "Opciones avanzadas, leer cuidadosamente"
 
 msgid "All"
 msgstr "Todos"
+
+msgid "All clients"
+msgstr "Todos los clientes"
 
 msgid "Allow all outgoing calls"
 msgstr "Permitir todas las llamadas salientes"
@@ -236,9 +236,6 @@ msgstr "Configuración Básica"
 msgid "Basic Information"
 msgstr "Información Básica"
 
-msgid "Bill inbound call"
-msgstr "Tarificación llamadas entrantes"
-
 msgid "Billable call"
 msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
@@ -258,6 +255,11 @@ msgstr "Listas negras"
 
 msgid "Body"
 msgstr "Cuerpo"
+
+msgid "Body type"
+msgid_plural "Body types"
+msgstr[0] "Tipo de cuerpo"
+msgstr[1] "Tipos de cuerpo"
 
 msgid "Boss Whitelist"
 msgstr "Listas blanca jefe"
@@ -329,6 +331,16 @@ msgid "Call ACL Pattern"
 msgid_plural "Call ACL Patterns"
 msgstr[0] "Patrón permisos llamada"
 msgstr[1] "Patrón permisos llamada"
+
+msgid "Call CSV"
+msgid_plural "Call CSVs"
+msgstr[0] "CSV de llamadas"
+msgstr[1] "CSVs de llamadas"
+
+msgid "Call CSV Notification"
+msgid_plural "Call CSV Notifications"
+msgstr[0] "Notificación CSV de llamadas"
+msgstr[1] "Notificaciones CSVs de llamadas"
 
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
@@ -545,6 +557,9 @@ msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
 
+msgid "DDI In"
+msgstr "DDI In"
+
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
 msgstr[0] "Proveedor DDIs"
@@ -560,8 +575,16 @@ msgid_plural "DDI Provider Registrations"
 msgstr[0] "Registro Proveedor"
 msgstr[1] "Registros Proveedor"
 
+msgid "Day"
+msgstr "Día"
+
 msgid "Default Action"
 msgstr "Acción por defecto"
+
+msgid "Default notification template"
+msgid_plural "Default notification templates"
+msgstr[0] "Plantilla de notificación por defecto"
+msgstr[1] "Plantillas de notificación por defecto"
 
 msgid "Default outgoing DDI. This can be overriden in accounts's edit screen."
 msgstr ""
@@ -636,6 +659,9 @@ msgstr "Uso de disco"
 
 msgid "Disk usage notification email"
 msgstr "Notificaciones de uso de disco"
+
+msgid "Display Client Invoices section"
+msgstr "Mostrar sección Facturas a cliente"
 
 msgid "Display name"
 msgstr "Texto en pantalla"
@@ -736,11 +762,24 @@ msgstr ""
 "número ilimitado de llamadas siempre y cuando se cumpla la política de "
 "restricción de IPs de la empresa."
 
+msgid ""
+"Enable this option to display a section in Client's portal to download "
+"generated invoices."
+msgstr ""
+"Habilite esta opción para mostrar una sección el portal de cliente que "
+"permita descargar las facturas generadas"
+
 msgid "Enabled"
 msgstr "Activado"
 
 msgid "End time"
 msgstr "Fecha fin"
+
+msgid "Endpoint id"
+msgstr "Endpoint id"
+
+msgid "Endpoint type"
+msgstr "Endpoint type"
 
 msgid "Ensure the preview below is right before you proceed"
 msgstr "Compruebe que la previsualización es correcta antes de continuar."
@@ -816,9 +855,6 @@ msgid ""
 msgstr ""
 "La tarificación externa no puede ser deshabilitada ya que hay DDIs con "
 "tarificacion entrante."
-
-msgid "Externally rated options"
-msgstr "Tarificación externa"
 
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
@@ -1070,6 +1106,13 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
+
+msgid ""
+"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
+"will be used instead."
+msgstr ""
+"Utilizar nombre de la entidad en el campo username de la R-URI (No) o "
+"utilizar el número llamado (Sí)."
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
@@ -2222,9 +2265,6 @@ msgstr "Dirección de envío"
 msgid "Sequence length"
 msgstr "Longitud de secuencia"
 
-msgid "Server data"
-msgstr "Configuración Servidor"
-
 msgid "Service"
 msgid_plural "Services"
 msgstr[0] "Servicio"
@@ -2385,8 +2425,20 @@ msgstr ""
 msgid "There is already a busy call forward with that call type."
 msgstr "Ya existe un desvío si ocupado con ese tipo de llamada."
 
+msgid "There is already a friend with that name."
+msgstr "Ya existe un friend con ese nombre."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "Ya existe un desvío si no contesta con ese tipo de llamada."
+
+msgid "There is already a residential device with that name."
+msgstr "Ya existe un dispositivo residencial con ese nombre."
+
+msgid "There is already a retail account with that name."
+msgstr "Ya existe una cuenta retail con ese nombre."
+
+msgid "There is already a terminal with that name."
+msgstr "Ya existe un terminal con ese nombre."
 
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr "Ya existe un desvío si usuario no registrado con ese tipo de llamada."
@@ -2425,9 +2477,6 @@ msgid ""
 msgstr ""
 "Este prefijo se añadirá al destino de la llamada después de aplicar las "
 "transformaciones numéricas del operador."
-
-msgid "This setting needs external tarification module"
-msgstr "Esta opción requiere un módulo de tarificación externa"
 
 msgid "This template is going to be tested"
 msgstr "La siguiente plantilla será probada"

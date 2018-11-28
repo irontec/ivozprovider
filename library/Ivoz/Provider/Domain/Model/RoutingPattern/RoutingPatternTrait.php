@@ -47,6 +47,7 @@ trait RoutingPatternTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -76,6 +77,7 @@ trait RoutingPatternTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -98,6 +100,7 @@ trait RoutingPatternTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return RoutingPatternDto
      */

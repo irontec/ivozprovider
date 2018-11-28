@@ -48,6 +48,7 @@ production:
           timezone: true
           extension: true
           terminal: true
+          statusIcon: true
           outgoingDDI: true
           callACL: true
           voicemailEnabled: true
@@ -122,6 +123,7 @@ production:
           language: true
           transformationRuleSet: true
           externalIpCalls: true
+          statusIcon: true
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -149,6 +151,7 @@ production:
       fields:
         blacklist:
           tokenKey: true
+          statusIcon: true
         order:
           <<: *Users_orderLink
       fixedPositions: &UsersFixedPositions_link

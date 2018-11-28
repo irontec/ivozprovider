@@ -7,5 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 
 interface RoutingPatternGroupRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param $brandId
+     * @param string $name
+     * @return RoutingPatternGroupInterface
+     */
+    public function findByBrandIdAndName($brandId, string $name);
 }

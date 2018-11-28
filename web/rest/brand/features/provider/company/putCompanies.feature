@@ -5,7 +5,7 @@ Feature: Update company
 
   @createSchema
   Scenario: Update a company
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/companies/1" with body:
@@ -30,6 +30,7 @@ Feature: Update company
           "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
+          "showInvoices": false,
           "id": 1,
           "language": 1,
           "mediaRelaySets": 1,
@@ -70,6 +71,7 @@ Feature: Update company
           "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
+          "showInvoices": false,
           "id": 1,
           "language": {
               "iden": "es",
@@ -155,6 +157,7 @@ Feature: Update company
               "brand": 1
           },
           "faxNotificationTemplate": null,
-          "invoiceNotificationTemplate": null
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null
       }
     """

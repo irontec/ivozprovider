@@ -45,6 +45,11 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getLanguageCode();
 
     /**
+     * @return string
+     */
+    public function getOutgoingDdiNumber();
+
+    /**
      * Get Residential Device outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface or NULL
@@ -57,6 +62,21 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return DdiInterface
      */
     public function getDdi($ddieE164);
+
+    /**
+     * @return string with the voicemail
+     */
+    public function getVoiceMail();
+
+    /**
+     * @return string with the voicemail user
+     */
+    public function getVoiceMailUser();
+
+    /**
+     * @return string with the voicemail context
+     */
+    public function getVoiceMailContext();
 
     /**
      * Get name
@@ -257,6 +277,23 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getDirectConnectivity();
 
     /**
+     * @deprecated
+     * Set ddiIn
+     *
+     * @param string $ddiIn
+     *
+     * @return self
+     */
+    public function setDdiIn($ddiIn);
+
+    /**
+     * Get ddiIn
+     *
+     * @return string
+     */
+    public function getDdiIn();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -406,4 +443,35 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     *
+     * @return ResidentialDeviceTrait
+     */
+    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+
+    /**
+     * Remove callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     */
+    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+
+    /**
+     * Replace callForwardSettings
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
+     * @return self
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings);
+
+    /**
+     * Get callForwardSettings
+     *
+     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     */
+    public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);
 }

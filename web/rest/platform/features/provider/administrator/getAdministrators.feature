@@ -76,3 +76,9 @@ Feature: Retrieve administrators
           }
       }
     """
+
+  Scenario: Administrator with id zero is filtered
+    Given I add Authorization header
+    When I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "administrators/0"
+    Then the response status code should be 404

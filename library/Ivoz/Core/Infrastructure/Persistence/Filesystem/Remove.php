@@ -8,7 +8,7 @@ use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 
 class Remove implements CommonLifecycleEventHandlerInterface
 {
-    public function handle(EntityInterface $entity, $isNew)
+    public function handle(EntityInterface $entity)
     {
         if (!$entity instanceof FileContainerInterface) {
             return;

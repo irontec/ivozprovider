@@ -111,6 +111,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return BrandDto|null
@@ -136,6 +137,7 @@ abstract class BrandAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -185,6 +187,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -230,6 +233,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return BrandDto
      */

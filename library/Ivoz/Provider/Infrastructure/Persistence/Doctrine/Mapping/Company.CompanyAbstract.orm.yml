@@ -140,6 +140,12 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       scale: 4
       options:
         default: 0
+    showInvoices:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
+      column: showInvoices
   manyToOne:
     language:
       targetEntity: \Ivoz\Provider\Domain\Model\Language\LanguageInterface
@@ -287,6 +293,18 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       inversedBy: null
       joinColumns:
         invoiceNotificationTemplateId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    callCsvNotificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        callCsvNotificationTemplateId:
           referencedColumnName: id
           nullable: true
           onDelete: set null

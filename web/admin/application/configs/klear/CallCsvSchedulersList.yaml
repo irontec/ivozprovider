@@ -25,6 +25,14 @@ production:
       fields: &callCsvSchedulers_fieldsLink
         blacklist:
           brand: true
+        order: &callCsvSchedulers_orderLink
+          id: true
+          name: true
+          frequency: true
+          unit: true
+          email: true
+          lastExecution: true
+          nextExecution: true
         options:
           title: _("Options")
           screens:
@@ -68,8 +76,8 @@ production:
           colsPerRow: 2
           fields:
             name: 1
-            email: 1
             company: 1
+            email: 1
         group1:
           label: _("Time Information")
           colsPerRow: 2
@@ -88,9 +96,6 @@ production:
       forcedValues:
         self::brand: null
         <<: *forcedCompany
-      fields:
-        readOnly:
-          nextExecutin: true
       fixedPositions:
         <<: *callCsvSchedulersFixedPositions_Link
 

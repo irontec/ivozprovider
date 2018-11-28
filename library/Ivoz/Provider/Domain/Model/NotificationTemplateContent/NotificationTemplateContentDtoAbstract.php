@@ -33,6 +33,11 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     private $body;
 
     /**
+     * @var string
+     */
+    private $bodyType = 'text/plain';
+
+    /**
      * @var integer
      */
     private $id;
@@ -69,6 +74,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
             'fromAddress' => 'fromAddress',
             'subject' => 'subject',
             'body' => 'body',
+            'bodyType' => 'bodyType',
             'id' => 'id',
             'notificationTemplateId' => 'notificationTemplate',
             'languageId' => 'language'
@@ -85,6 +91,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
             'fromAddress' => $this->getFromAddress(),
             'subject' => $this->getSubject(),
             'body' => $this->getBody(),
+            'bodyType' => $this->getBodyType(),
             'id' => $this->getId(),
             'notificationTemplate' => $this->getNotificationTemplate(),
             'language' => $this->getLanguage()
@@ -185,6 +192,26 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * @param string $bodyType
+     *
+     * @return static
+     */
+    public function setBodyType($bodyType = null)
+    {
+        $this->bodyType = $bodyType;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBodyType()
+    {
+        return $this->bodyType;
     }
 
     /**

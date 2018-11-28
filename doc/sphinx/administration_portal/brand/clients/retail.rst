@@ -90,7 +90,8 @@ When **editing** a client, these additional fields can be configured:
     :sorted:
 
     Invoice data
-        All the fields in this group will be included in invoices generated for this client.
+        All the fields in this group will be included in invoices generated for this client. This section also allows
+        displaying invoices list in client's portal menu so they can download them.
 
     Externally rater custom options
         This field is for setting options for an optional external rating module.

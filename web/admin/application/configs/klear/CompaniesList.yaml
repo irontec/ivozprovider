@@ -64,8 +64,10 @@ production:
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           balance: true
           country: true
+          showInvoices: true
         order:
           name: true
           nif: true
@@ -119,18 +121,20 @@ production:
           recordingsDiskUsage: true
           voicemailNotificationTemplate: true
           invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           faxNotificationTemplate: true
           balance: true
+          showInvoices: true
         order: &companiesOrder_Link
           id: true
           name: true
-          language: true
           maxCalls: true
-          contry: true
-          postalAddress: true
-          recordingsLimitMB: true
-          externallyExtraOpts: true
+          language: true
+          outgoingDDI: true
+          showInvoices: true
+          onDemandRecord: true
           voicemailNotificationTemplate: true
+          externallyExtraOpts: true
       fixedPositions:
         group0:
           colsPerRow: 6
@@ -228,7 +232,8 @@ production:
             transformationRuleSet: 3
         group3:
           colsPerRow: 12
-          label: _("Server data")
+          collapsed: true
+          label: _("Platform data")
           fields:
             outgoingDDI: 6
             outgoingDDIRule: 6
@@ -237,16 +242,17 @@ production:
             distributeMethod: 4
             applicationServer: 4
         group4:
-          colsPerRow: 2
+          colsPerRow: 12
+          collapsed: true
           label: _("Invoice data")
           fields:
-            postalAddress: 2
-            postalCode: 1
-            town: 1
-            province: 1
-            countryName: 1
-            registryData: 2
-            nif: 1
+            showInvoices: 6
+            nif: 6
+            postalAddress: 8
+            postalCode: 4
+            town: 4
+            province: 4
+            countryName: 4
         group5:
           colsPerRow: 12
           label: ngettext('Recording', 'Recordings', 0)
@@ -257,7 +263,7 @@ production:
         group6:
           colsPerRow: 1
           collapsed: true
-          label: _("Externally rated options")
+          label: _("Externally rater options")
           fields:
             externallyExtraOpts: 1
         group7:
@@ -268,6 +274,7 @@ production:
             voicemailNotificationTemplate: 1
             faxNotificationTemplate: 1
             invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
 
     # Administrators
     <<: *administrators_screensLink

@@ -19,7 +19,7 @@ abstract class CallCsvSchedulerAbstract
     protected $name;
 
     /**
-     * comment: enum:week|month|year
+     * comment: enum:day|week|month
      * @var string
      */
     protected $unit = 'month';
@@ -38,6 +38,11 @@ abstract class CallCsvSchedulerAbstract
      * @var \DateTime
      */
     protected $lastExecution;
+
+    /**
+     * @var string
+     */
+    protected $lastExecutionError;
 
     /**
      * @var \DateTime
@@ -97,6 +102,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CallCsvSchedulerDto|null
@@ -122,6 +128,7 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -141,6 +148,7 @@ abstract class CallCsvSchedulerAbstract
 
         $self
             ->setLastExecution($dto->getLastExecution())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
@@ -153,6 +161,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -169,6 +178,7 @@ abstract class CallCsvSchedulerAbstract
             ->setFrequency($dto->getFrequency())
             ->setEmail($dto->getEmail())
             ->setLastExecution($dto->getLastExecution())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany());
@@ -180,6 +190,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CallCsvSchedulerDto
      */
@@ -191,6 +202,7 @@ abstract class CallCsvSchedulerAbstract
             ->setFrequency(self::getFrequency())
             ->setEmail(self::getEmail())
             ->setLastExecution(self::getLastExecution())
+            ->setLastExecutionError(self::getLastExecutionError())
             ->setNextExecution(self::getNextExecution())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
@@ -207,6 +219,7 @@ abstract class CallCsvSchedulerAbstract
             'frequency' => self::getFrequency(),
             'email' => self::getEmail(),
             'lastExecution' => self::getLastExecution(),
+            'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
@@ -255,9 +268,9 @@ abstract class CallCsvSchedulerAbstract
         Assertion::notNull($unit, 'unit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($unit, array (
-          0 => 'week',
-          1 => 'month',
-          2 => 'year',
+          0 => 'day',
+          1 => 'week',
+          2 => 'month',
         ), 'unitvalue "%s" is not an element of the valid values: %s');
 
         $this->unit = $unit;
@@ -366,6 +379,35 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * @deprecated
+     * Set lastExecutionError
+     *
+     * @param string $lastExecutionError
+     *
+     * @return self
+     */
+    public function setLastExecutionError($lastExecutionError = null)
+    {
+        if (!is_null($lastExecutionError)) {
+            Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->lastExecutionError = $lastExecutionError;
+
+        return $this;
+    }
+
+    /**
+     * Get lastExecutionError
+     *
+     * @return string
+     */
+    public function getLastExecutionError()
+    {
+        return $this->lastExecutionError;
+    }
+
+    /**
+     * @deprecated
      * Set nextExecution
      *
      * @param \DateTime $nextExecution
@@ -427,7 +469,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 

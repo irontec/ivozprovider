@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
+#include CallForwardSettingsList.yaml
 
 production:
   main:
@@ -39,6 +40,7 @@ production:
           port: true
           language: true
           status: true
+          ddiIn: true
         order:
           name: true
           domain: true
@@ -49,6 +51,7 @@ production:
           title: _("Options")
           screens:
             residentialDevicesEdit_screen: ${auth.canSeeBrand}
+            callForwardSettingsList_screen: true
           dialogs:
             residentialDevicesDel_dialog: ${auth.canSeeBrand}
           default: residentialDevicesEdit_screen
@@ -95,7 +98,9 @@ production:
           language: true
           outgoingDdi: true
           allow: true
+          transformationRuleSet: true
           fromDomain: true
+          ddiIn: true
           status: true
       fixedPositions: &residentialDevices_FixedPositionsLink
         group0:
@@ -128,6 +133,7 @@ production:
           fields:
             allow: 2
             fromDomain: 2
+            ddiIn: 2
 
     residentialDevicesEdit_screen: &residentialDevicesEdit_screenLink
       <<: *ResidentialDevices
@@ -157,6 +163,26 @@ production:
         <<: *forcedCompany
         <<: *forcedBrand
 
+    # CallForwardSettings:
+    <<: *callForwardSettings_screensLink
+    callForwardSettingsList_screen:
+      <<: *callForwardSettingsList_screenLink
+      filterField: residentialDevice
+      parentOptionCustomizer:
+        - recordCount
+      forcedValues:
+        callTypeFilter: both
+    callForwardSettingsNew_screen:
+      <<: *callForwardSettingsNew_screenLink
+      filterField: residentialDevice
+      forcedValues:
+        callTypeFilter: both
+    callForwardSettingsEdit_screen:
+      <<: *callForwardSettingsEdit_screenLink
+      filterField: residentialDevice
+      forcedValues:
+        callTypeFilter: both
+
   dialogs: &residentialDevices_dialogsLink
     residentialDevicesDel_dialog: &residentialDevicesDel_dialogLink
       <<: *ResidentialDevices
@@ -168,6 +194,10 @@ production:
       message: _("%s successfully deleted.", ngettext('Residential Device', 'Residential Devices', 1))
       multiItem: 1
       labelOnList: 1
+
+    # CallForwardSettings dialogs:
+    <<: *callForwardSettings_dialogsLink
+
 
   commands:
     generatePassword_command:

@@ -44,8 +44,9 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CallCsvReportInterface $callCsvReport, $isNew)
+    public function execute(CallCsvReportInterface $callCsvReport)
     {
+        $isNew = $callCsvReport->isNew();
         if (!$isNew) {
             return;
         }
@@ -54,10 +55,13 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         $outDate = $callCsvReport->getOutDate();
 
         $company = $callCsvReport->getCompany();
+        $brand = $callCsvReport->getBrand();
+
         $csvContent = $this->csvExporter->execute(
-            $company,
             $inDate,
-            $outDate
+            $outDate,
+            $company,
+            $brand
         );
 
         $tmpFilePath = tempnam(
@@ -74,21 +78,22 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             $callCsvReport
         );
 
-        $scheduler = $callCsvReport->getCallCsvScheduler();
-        if ($scheduler) {
-            $timezone = new \DateTimeZone(
-                $scheduler->getTimezone()->getTz()
-            );
-            $inDate->setTimezone($timezone);
-            $outDate->setTimezone($timezone);
-        }
+        $timezone = new \DateTimeZone(
+            $callCsvReport->getTimezone()->getTz()
+        );
+        $inDate->setTimezone($timezone);
+        $outDate->setTimezone($timezone);
+
+        $name = $company
+            ? $company->getName()
+            : $brand->getName();
 
         $fileName =
-            $company->getName()
+            $name
             . '-'
-            . $callCsvReport->getInDate()->format('Ymd')
+            . $inDate->format('Ymd')
             . '-'
-            . $callCsvReport->getOutDate()->format('Ymd')
+            . $outDate->format('Ymd')
             . '.csv';
 
         $callCsvReportDto

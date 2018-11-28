@@ -26,6 +26,7 @@ trait LanguageTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -45,6 +46,7 @@ trait LanguageTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -59,6 +61,7 @@ trait LanguageTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return LanguageDto
      */

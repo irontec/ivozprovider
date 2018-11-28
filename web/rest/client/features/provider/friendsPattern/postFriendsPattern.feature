@@ -5,7 +5,7 @@ Feature: Create friends patterns
 
   @createSchema
   Scenario: Create a friend pattern
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/friends_patterns" with body:
@@ -29,7 +29,7 @@ Feature: Create friends patterns
     """
 
   Scenario: Retrieve created friend pattern
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "friends_patterns/2"
      Then the response status code should be 200
@@ -57,6 +57,7 @@ Feature: Create friends patterns
               "updateCallerid": "yes",
               "fromDomain": "",
               "directConnectivity": "yes",
+              "ddiIn": "yes",
               "id": 1,
               "company": 1,
               "callAcl": null,

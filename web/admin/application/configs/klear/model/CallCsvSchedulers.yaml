@@ -24,9 +24,9 @@ production:
       source:
         data: inline
         values:
+          'day': _('Day')
           'week': _('Week')
           'month': _('Month')
-          'year': _('Year')
     email:
       title: ngettext('Email', 'Emails', 1)
       type: text
@@ -42,13 +42,11 @@ production:
       default: true
     lastExecution:
       title: _('Last execution')
-      type: picker
-      required: true
+      type: ghost
+      dirty: true
       source:
-        control: datetime
-        settings:
-          disabled: 'false'
-      readonly: true
+        class: IvozProvider_Klear_Ghost_SchedulerSuccess
+        method: getCallCsvSchedulerLastExecutionReport
     nextExecution:
       title: _('Next execution')
       type: picker
@@ -74,9 +72,9 @@ production:
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select
-      required: true
       source:
         data: mapper
+        'null': _("All clients")
         config:
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           filterClass: IvozProvider_Klear_Filter_Brand
@@ -86,6 +84,14 @@ production:
             template: '%name%'
           order:
             Company.name: asc
+          visualFilter:
+            name:
+              __default__:
+                show: ["email"]
+                hide: []
+              'null':
+                show: []
+                hide: ["email"]
 staging:
   _extends: production
 testing:

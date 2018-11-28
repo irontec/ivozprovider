@@ -23,7 +23,7 @@ class SendTrunksDialplanReloadRequest implements TransformationRuleSetLifecycleE
         ];
     }
 
-    public function execute(TransformationRuleSetInterface $transformationRuleSet, $isNew)
+    public function execute(TransformationRuleSetInterface $transformationRuleSet)
     {
         $this->trunksDialplanReload->send();
     }

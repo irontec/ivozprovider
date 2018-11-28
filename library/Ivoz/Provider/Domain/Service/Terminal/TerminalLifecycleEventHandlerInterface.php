@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 
 interface TerminalLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TerminalInterface $terminal, $isNew);
+    public function execute(TerminalInterface $terminal);
 }

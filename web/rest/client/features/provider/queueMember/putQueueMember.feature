@@ -5,7 +5,7 @@ Feature: Update queue members
 
   @createSchema
   Scenario: Update a queue member
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/queue_members/1" with body:
@@ -55,7 +55,7 @@ Feature: Update queue members
               "email": "bob@democompany.com",
               "pass": "*****",
               "doNotDisturb": false,
-              "isBoss": false,
+              "isBoss": true,
               "active": true,
               "maxCalls": 1,
               "externalIpCalls": "0",
@@ -67,7 +67,7 @@ Feature: Update queue members
               "id": 2,
               "company": 1,
               "callAcl": null,
-              "bossAssistant": null,
+              "bossAssistant": 1,
               "bossAssistantWhiteList": null,
               "language": null,
               "terminal": 2,

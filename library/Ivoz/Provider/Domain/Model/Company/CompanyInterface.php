@@ -397,6 +397,23 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBalance();
 
     /**
+     * @deprecated
+     * Set showInvoices
+     *
+     * @param boolean $showInvoices
+     *
+     * @return self
+     */
+    public function setShowInvoices($showInvoices = null);
+
+    /**
+     * Get showInvoices
+     *
+     * @return boolean
+     */
+    public function getShowInvoices();
+
+    /**
      * Set language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
@@ -596,6 +613,22 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
      */
     public function getInvoiceNotificationTemplate();
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return self
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getCallCsvNotificationTemplate();
 
     /**
      * Add extension

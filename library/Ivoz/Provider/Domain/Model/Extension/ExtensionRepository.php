@@ -8,4 +8,9 @@ use Doctrine\Common\Collections\Selectable;
 interface ExtensionRepository extends ObjectRepository, Selectable
 {
 
+    /**
+     * @param $id
+     * @return ExtensionInterface | null
+     */
+    public function findByCompanyId($id);
 }

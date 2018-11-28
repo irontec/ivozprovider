@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 
 interface TransformationRuleLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TransformationRuleInterface $entity, $isNew);
+    public function execute(TransformationRuleInterface $entity);
 }

@@ -23,7 +23,7 @@ class SendTrunksLcrReloadRequest implements RoutingPatternLifecycleEventHandlerI
         ];
     }
 
-    public function execute(RoutingPatternInterface $entity, $isNew)
+    public function execute(RoutingPatternInterface $entity)
     {
         $this->trunksLcrReload->send();
     }

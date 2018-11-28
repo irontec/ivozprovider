@@ -37,7 +37,7 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(IvozQueueInterface $entity, $isNew)
+    public function execute(IvozQueueInterface $entity)
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();
         if (!is_null($periodicAnnounceLocution)) {
@@ -59,9 +59,9 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         /**
          * @var Queue $astQueue
          */
-        $astQueue = $this->astQueueRepository->findOneBy([
-            'queue' => $entity->getId()
-        ]);
+        $astQueue = $this->astQueueRepository->findOneByProviderQueueId(
+            $entity->getId()
+        );
 
         $astQueueDto = is_null($astQueue)
             ? Queue::createDto()

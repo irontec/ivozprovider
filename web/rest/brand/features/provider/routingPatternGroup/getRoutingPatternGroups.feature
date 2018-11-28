@@ -5,7 +5,7 @@ Feature: Retrieve routing pattern groups
 
   @createSchema
   Scenario: Retrieve the routing pattern groups json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "routing_pattern_groups"
     Then the response status code should be 200
@@ -28,7 +28,7 @@ Feature: Retrieve routing pattern groups
     """
 
   Scenario: Retrieve certain routing pattern group json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "routing_pattern_groups/1"
     Then the response status code should be 200

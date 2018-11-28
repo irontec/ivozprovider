@@ -5,7 +5,7 @@ Feature: Retrieve balance notifications
 
   @createSchema
   Scenario: Retrieve the balance notifications json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "balance_notifications"
     Then the response status code should be 200
@@ -28,7 +28,7 @@ Feature: Retrieve balance notifications
     """
 
   Scenario: Retrieve certain balance notifications json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "balance_notifications/1"
     Then the response status code should be 200
@@ -42,6 +42,11 @@ Feature: Retrieve balance notifications
           "lastSent": null,
           "id": 1,
           "company": "~",
-          "notificationTemplate": null
+          "notificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          }
       }
     """

@@ -63,6 +63,7 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return MediaRelaySetDto|null
@@ -88,6 +89,7 @@ abstract class MediaRelaySetAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -113,6 +115,7 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -134,6 +137,7 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return MediaRelaySetDto
      */

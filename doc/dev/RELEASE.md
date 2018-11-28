@@ -16,7 +16,8 @@ _This is only required for minor releases upgrades (ignore for patch versioning)
 
 Sphinx shows documentation version above the left menu:
 
-    # sed -i 's/\(version =\) .*/\1 2.2/' doc/sphinx/conf.py
+    # sed -i 's/\(version =\) .*/\1 "2.8"/' doc/sphinx/conf.py
+    # sed -i 's/IvozProvider [0-9\.]\+ Documentation/IvozProvider 2.8 Documentation/' doc/sphinx/conf.py
 
 ## Update Application User Agent
 
@@ -34,7 +35,7 @@ Update the strings presented by both kamailios:
 
     # sed -i 's/\(server_header="Server: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/trunks/config/kamailio.cfg
     # sed -i 's/\(server_header="Server: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/users/config/kamailio.cfg
-    # sed -i 's/\(user_agent_header="User-Agent: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/users/config/kamailio.cfg
+    # sed -i 's/\(user_agent_header="User-Agent: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/trunks/config/kamailio.cfg
     # sed -i 's/\(user_agent_header="User-Agent: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/users/config/kamailio.cfg
 
 

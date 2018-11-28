@@ -45,7 +45,7 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
     /**
      * @throws \Exception
      */
-    public function execute(ExtensionInterface $extension, $isNew)
+    public function execute(ExtensionInterface $extension)
     {
         $changedUserId = $extension->hasChanged('userId');
 
@@ -64,9 +64,7 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
             /**
              * @var UserInterface $prevUser
              */
-            $prevUser = $this->userRepository->findOneBy([
-                'id' => $originalValue
-            ]);
+            $prevUser = $this->userRepository->find($originalValue);
 
             if (!$prevUser) {
                 // User has been removed

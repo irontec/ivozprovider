@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 
 interface InvoiceSchedulerLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(InvoiceSchedulerInterface $entity, bool $isNew);
+    public function execute(InvoiceSchedulerInterface $entity);
 }

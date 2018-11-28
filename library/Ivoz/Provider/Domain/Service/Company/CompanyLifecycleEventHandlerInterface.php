@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface CompanyLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CompanyInterface $company, $isNew);
+    public function execute(CompanyInterface $company);
 }

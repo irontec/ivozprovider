@@ -5,7 +5,7 @@ Feature: Manage external call filters
 
   @createSchema
   Scenario: Remove a external call filter
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/external_call_filters/1"

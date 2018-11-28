@@ -287,6 +287,23 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDirectConnectivity();
 
     /**
+     * @deprecated
+     * Set ddiIn
+     *
+     * @param string $ddiIn
+     *
+     * @return self
+     */
+    public function setDdiIn($ddiIn);
+
+    /**
+     * Get ddiIn
+     *
+     * @return string
+     */
+    public function getDdiIn();
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company

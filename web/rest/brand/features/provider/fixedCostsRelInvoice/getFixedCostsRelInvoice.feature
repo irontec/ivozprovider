@@ -5,7 +5,7 @@ Feature: Retrieve fixed costs rel invoices
 
   @createSchema
   Scenario: Retrieve the fixed costs rel invoices json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "fixed_costs_rel_invoices"
     Then the response status code should be 200
@@ -49,7 +49,7 @@ Feature: Retrieve fixed costs rel invoices
     """
 
   Scenario: Retrieve certain fixed costs rel invoice json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "fixed_costs_rel_invoices/1"
     Then the response status code should be 200

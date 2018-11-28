@@ -5,7 +5,7 @@ Feature: Retrieve extensions
 
   @createSchema
   Scenario: Retrieve the extensions json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "extensions"
      Then the response status code should be 200
@@ -31,7 +31,7 @@ Feature: Retrieve extensions
     """
 
   Scenario: Retrieve certain extension json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "extensions/1"
      Then the response status code should be 200

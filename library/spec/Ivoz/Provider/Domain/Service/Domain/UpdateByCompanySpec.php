@@ -60,8 +60,7 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->shouldNotBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 
@@ -90,8 +89,7 @@ class UpdateByCompanySpec extends ObjectBehavior
              ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 
@@ -127,8 +125,7 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            true
+            $this->entity
         );
     }
 

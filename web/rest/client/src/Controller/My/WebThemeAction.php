@@ -40,12 +40,11 @@ class WebThemeAction
     public function __invoke()
     {
         $request = $this->requestStack->getCurrentRequest();
-        $where = [
-            'url' => 'https://' . $request->server->get('SERVER_NAME'),
-            'urlType' => 'user'
-        ];
+
         /** @var BrandUrl $brandUrl */
-        $brandUrl = $this->brandUrlRepository->findOneBy($where);
+        $brandUrl = $this->brandUrlRepository->findUserUrlByServerName(
+            $request->server->get('SERVER_NAME')
+        );
 
         if (!$brandUrl) {
             throw new ResourceClassNotFoundException('BrandUrl not found');
@@ -60,7 +59,7 @@ class WebThemeAction
             . '/fso/brandUrl/'
             . $brandUrlDto->getId()
             . '-'
-            . $brandUrlDto->getLogoBaseName();
+            . urlencode($brandUrlDto->getLogoBaseName());
 
         return new WebTheme(
             $brandUrlDto->getName(),

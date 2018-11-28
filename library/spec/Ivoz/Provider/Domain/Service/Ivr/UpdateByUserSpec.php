@@ -83,7 +83,7 @@ class UpdateByUserSpec extends ObjectBehavior
             ->persistDto($ivrDto, $ivr)
             ->shouldBeCalled();
 
-        $this->execute($user, false);
+        $this->execute($user);
     }
 
     function it_cleans_up_no_error_voicemail_user(
@@ -131,6 +131,6 @@ class UpdateByUserSpec extends ObjectBehavior
             ->persistDto($ivrDto, $ivr)
             ->shouldBeCalled();
 
-        $this->execute($user, false);
+        $this->execute($user);
     }
 }

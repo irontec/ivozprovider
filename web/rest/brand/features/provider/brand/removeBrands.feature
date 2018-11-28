@@ -5,8 +5,16 @@ Feature: Manage brands
 
   @createSchema
   Scenario: Remove a brand
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/brands/2"
+      And I send a "DELETE" request to "/brands/1"
      Then the response status code should be 204
+
+  @createSchema
+  Scenario: Cannot remove unmanaged brands
+    Given I add Brand Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "DELETE" request to "/brands/2"
+    Then the response status code should be 404

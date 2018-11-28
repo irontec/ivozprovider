@@ -127,6 +127,23 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getDirectConnectivity();
 
     /**
+     * @deprecated
+     * Set ddiIn
+     *
+     * @param string $ddiIn
+     *
+     * @return self
+     */
+    public function setDdiIn($ddiIn);
+
+    /**
+     * Get ddiIn
+     *
+     * @return string
+     */
+    public function getDdiIn();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

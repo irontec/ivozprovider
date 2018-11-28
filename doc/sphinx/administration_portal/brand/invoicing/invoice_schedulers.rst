@@ -68,5 +68,6 @@ Next execution will be set to next 1st of month at 08:00 but we mangle it to 3rd
 
 Invoice will include calls from 3nd of previous month at 00:00:00 to 2nd to current month at 23:59:59.
 
+.. tip:: *Last execution* shows the date of last execution and its result (success/error).
 
-.. note:: Next execution is shown using brand timezone.
+.. note:: Both *next execution* and *last execution* are shown using brand timezone.

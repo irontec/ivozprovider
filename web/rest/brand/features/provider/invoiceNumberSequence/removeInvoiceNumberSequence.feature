@@ -5,7 +5,7 @@ Feature: Manage invoice number sequences
 
   @createSchema
   Scenario: Remove a invoice number sequences
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/invoice_number_sequences/1"

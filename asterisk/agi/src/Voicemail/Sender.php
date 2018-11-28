@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use PhpMimeMailParser\Parser;
 use RouteHandlerAbstract;
 
@@ -61,7 +62,6 @@ class Sender extends RouteHandlerAbstract
      */
     public function process ()
     {
-
         // Load Email data
         $this->parser->setStream(fopen("php://stdin", "r"));
 
@@ -72,10 +72,10 @@ class Sender extends RouteHandlerAbstract
         $vmRepository = $this->em->getRepository(Voicemail::class);
 
         /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $vm */
-        $vm = $vmRepository->findOneBy([
-            "mailbox" => $vmdata[self::VM_MAILBOX],
-            "context" => $vmdata[self::VM_CONTEXT]
-        ]);
+        $vm = $vmRepository->findByMailboxAndContext(
+            $vmdata[self::VM_MAILBOX],
+            $vmdata[self::VM_CONTEXT]
+        );
 
         // No voicemail, this should not happen
         Assertion::notNull(
@@ -115,11 +115,9 @@ class Sender extends RouteHandlerAbstract
         $vmNotificationTemplate = $company->getVoicemailNotificationTemplate();
 
         // Get Generic Notification Template for voicemails
+        /** @var NotificationTemplateRepository $notificationTemplateRepository */
         $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
-        $genericVoicemailNotificationTemplate = $notificationTemplateRepository->findOneBy([
-            "brand" => null,
-            "type" => "voicemail"
-        ]);
+        $genericVoicemailNotificationTemplate = $notificationTemplateRepository->findGenericVoicemailTemplate();
 
         // If no template is associated, fallback to generic notification template for voicemails
         if (!$vmNotificationTemplate) {
@@ -136,6 +134,7 @@ class Sender extends RouteHandlerAbstract
         // Get data from template
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
+        $bodyType = $notificationTemplateContent->getBodyType();
         $body = $notificationTemplateContent->getBody();
         $subject = $notificationTemplateContent->getSubject();
 
@@ -146,7 +145,7 @@ class Sender extends RouteHandlerAbstract
 
         // Create a new mail and attach the PDF file
         $mail = new \Swift_Message();
-        $mail->setBody($body, 'text/html')
+        $mail->setBody($body, $bodyType)
             ->setSubject($subject)
             ->setFrom($fromAddress, $fromName)
             ->setTo($vm->getEmail());

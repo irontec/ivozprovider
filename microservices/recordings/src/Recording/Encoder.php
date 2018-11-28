@@ -5,13 +5,12 @@ namespace Recording;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
-use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
-use Zend_Media_Mpeg_Abs;
-
 
 class Encoder
 {
@@ -24,6 +23,11 @@ class Encoder
      * @var UsersCdrRepository
      */
     protected $usersCdrRepository;
+
+    /**
+     * @var DdiRepository
+     */
+    protected $ddiRepository;
 
     /**
      * @var EntityPersisterInterface
@@ -43,6 +47,7 @@ class Encoder
     public function __construct(
         TrunksCdrRepository $trunksCdrRepository,
         UsersCdrRepository $usersCdrRepository,
+        DdiRepository $ddiRepository,
         EntityPersisterInterface $entityPersister,
         string $rawRecordingsDir,
         Logger $logger
@@ -51,6 +56,7 @@ class Encoder
         $this->usersCdrRepository = $usersCdrRepository;
         $this->entityPersister = $entityPersister;
         $this->rawRecordingsDir = $rawRecordingsDir;
+        $this->ddiRepository = $ddiRepository;
         $this->logger = $logger;
     }
 
@@ -61,7 +67,7 @@ class Encoder
             'deleted' => 0,
             'skipped' => 0,
             'encoded' => 0,
-            'error'   => 0
+            'error' => 0
         );
 
         // Ignore process when recordings folder does not exist
@@ -77,8 +83,9 @@ class Encoder
                 $filenameabs = $this->rawRecordingsDir . $filename;
 
                 // Only handle files
-                if (!is_file($filenameabs))
+                if (!is_file($filenameabs)) {
                     continue;
+                }
 
                 // Delete empty files
                 if (filesize($filenameabs) === 0) {
@@ -92,7 +99,7 @@ class Encoder
                 if (substr($filename, -8) == "-mix.wav") {
                     array_push($files, $filename);
                 }
-           }
+            }
         }
 
         $this->logger->info(
@@ -112,26 +119,70 @@ class Encoder
             }
 
             // Get Call-Id hash id
-            $hashid = substr(md5($callid),0,8);
+            $hashid = substr(md5($callid), 0, 8);
 
             // Get callid from file
             $this->logger->info(sprintf("[Recordings][%s] Checking file %s\n", $hashid, $file));
 
-            // Look if the converstation with that id has ended
-            /** @var TrunksCdrInterface $kamAccCdr */
-            $kamAccCdr = $this->trunksCdrRepository->findOneBy(['callid' => $callid]);
-            if ($kamAccCdr) {
-                $type = 'ddi';
-                if ($kamAccCdr->getXcallid()) {
-                    // If call first leg, caller is who activated the recording
-                    $recorder = $kamAccCdr->getCaller();
-                } else {
-                    // If call second leg, callee is who activated the recording
-                    $recorder = $kamAccCdr->getCallee();
-                }
-            } else {
-                $kamAccCdr = $this->usersCdrRepository->findOneBy(['callid' => $callid]);
-                if ($kamAccCdr) {
+            // Look if the conversation with that id has ended
+            $kamAccCdrs = [];
+            $kamAccCdrs = array_merge(
+                $kamAccCdrs,
+                $this->trunksCdrRepository->findByCallid($callid)
+            );
+            if (empty($kamAccCdrs)) {
+                $kamAccCdrs = array_merge(
+                    $kamAccCdrs,
+                    $this->usersCdrRepository->findByCallid($callid)
+                );
+            }
+
+            if (empty($kamAccCdrs)) {
+                $stats['skipped']++;
+                $this->logger->info(sprintf(
+                    "[Recordings][%s] Call with id = %s has not yet finished!\n",
+                    $hashid,
+                    $callid
+                ));
+                continue;
+            }
+
+            // Set recording filenames
+            $convertWav = $this->rawRecordingsDir . $filename;
+            $convertMp3 = $this->rawRecordingsDir . $callid . ".mp3";
+            $metadata = 'artist="' . $callid . '"';
+
+            foreach ($kamAccCdrs as $kamAccCdr) {
+
+                if ($kamAccCdr instanceof TrunksCdrInterface) {
+                    $type = 'ddi';
+                    $direction = $kamAccCdr->getDirection();
+
+                    if ($direction == 'outbound') {
+                        // If call first leg, caller is who activated the recording
+                        $recorder = $kamAccCdr->getCaller();
+                    } else {
+                        // If call second leg, callee is who activated the recording
+                        $recorder = $kamAccCdr->getCallee();
+                    }
+
+                    // Check this ddi has recording enabled
+                    $ddi = $this->ddiRepository->findOneByDdiE164($recorder);
+                    if (!$ddi) {
+                        $this->logger->error(
+                            sprintf("[Recordings][%s] Unable to find DDI for %s\n", $hashid, $recorder)
+                        );
+                        continue;
+                    }
+
+                    if (!in_array($ddi->getRecordCalls(), array('all', $direction), true)) {
+                        $this->logger->info(
+                            sprintf("[Recordings][%s] %s has no %s recording enabled. Skipping.\n",
+                                $hashid, $ddi, $recorder)
+                        );
+                        continue;
+                    }
+                } elseif ($kamAccCdr instanceof UsersCdrInterface) {
                     $type = 'ondemand';
                     if ($kamAccCdr->getXcallid()) {
                         // If call second leg, callee is who activated the recording
@@ -141,88 +192,85 @@ class Encoder
                         $recorder = $kamAccCdr->getCaller();
                     }
                 } else {
-                    $stats['skipped']++;
-                    $this->logger->info(sprintf("[Recordings][%s] Call with id = %s has not yet finished!\n", $hashid, $callid));
+                    // This should not even be possible
+                    $this->logger->error(sprintf("[Recordings][ERROR] Invalid CDR entries for %s\n", $callid));
                     continue;
                 }
-            }
 
-            // Convert .wav to .mp3
-            $convertWav = $this->rawRecordingsDir . $filename;
-            $convertMp3 = $this->rawRecordingsDir . $callid . ".mp3";
-            $metadata = 'artist="'. $callid .'"';
-            $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
+                // Convert .wav to .mp3
+                $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
 
-            $convertProcess = new Process([
-                "/usr/bin/avconv",
-                "-y",
-                "-i",
-                $convertWav,
-                "-metadata",
-                $metadata,
-                $convertMp3
-            ]);
-            $convertProcess->mustRun();
+                $convertProcess = new Process([
+                    "/usr/bin/avconv",
+                    "-y",
+                    "-i",
+                    $convertWav,
+                    "-metadata",
+                    $metadata,
+                    $convertMp3
+                ]);
+                $convertProcess->mustRun();
 
-            if ($convertProcess->getExitCode() != 0) {
-                $stats['error']++;
-                $this->logger->error(
-                    sprintf(
-                        "[Recordings][%s] Failed to convert audio: Command was %s\n",
-                        $hashid,
-                        $convertProcess->getCommandLine()
-                    )
+                if ($convertProcess->getExitCode() != 0) {
+                    $stats['error']++;
+                    $this->logger->error(
+                        sprintf(
+                            "[Recordings][%s] Failed to convert audio: Command was %s\n",
+                            $hashid,
+                            $convertProcess->getCommandLine()
+                        )
+                    );
+                    continue;
+                }
+
+                // Get created mp3 information
+                $mp3info = new \Zend_Media_Mpeg_Abs($convertMp3);
+                $duration = $mp3info->getLengthEstimate();
+
+                // Create an entry in Recordings table with the file
+                $recordingDto = new RecordingDto();
+
+                // Get company and brand for this recording
+                $company = $kamAccCdr->getCompany();
+
+                $callDate = $kamAccCdr->getStartTime();
+                $caller = $kamAccCdr->getCaller();
+                $callee = $kamAccCdr->getCallee();
+
+                $baseName =
+                    $callDate->format('YmdHis')
+                    . '_'
+                    . $type
+                    . '-'
+                    . str_replace('+', '', $recorder)
+                    . '_'
+                    . str_replace('+', '', $caller)
+                    . '_'
+                    . str_replace('+', '', $callee)
+                    . '.mp3';
+
+                $recordingDto->setCompanyId($company->getId())
+                    ->setCalldate($callDate)
+                    ->setType($type)
+                    ->setRecorder($recorder)
+                    ->setCallid($kamAccCdr->getCallid())
+                    ->setDuration($duration)
+                    ->setCaller($kamAccCdr->getCaller())
+                    ->setCallee($kamAccCdr->getCallee())
+                    ->setRecordedFileBaseName($baseName)
+                    ->setRecordedFilePath($convertMp3);
+
+                // Store this Recording
+                $recording = $this->entityPersister->persistDto($recordingDto, null, true);
+                $this->logger->info(
+                    sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recording->getId())
                 );
-                continue;
+                $stats['encoded']++;
             }
-
-            // Get created mp3 information
-            $mp3info = new \Zend_Media_Mpeg_Abs($convertMp3);
-            $duration = $mp3info->getLengthEstimate();
-
-            // Create an entry in Recordings table with the file
-            $recordingDto = new RecordingDto();
-
-            // Get company and brand for this recording
-            $company = $kamAccCdr->getCompany();
-
-            $callDate = $kamAccCdr->getStartTime();
-            $caller = $kamAccCdr->getCaller();
-            $callee = $kamAccCdr->getCallee();
-
-            $baseName =
-                $callDate->format('YmdHis')
-                . '_'
-                . $type
-                . '-'
-                . $recorder
-                . '_'
-                . str_replace('+', '', $caller)
-                . '_'
-                . str_replace('+', '', $callee)
-                . '.mp3';
-
-            $recordingDto->setCompanyId($company->getId())
-                ->setCalldate($callDate)
-                ->setType($type)
-                ->setRecorder($recorder)
-                ->setCallid($kamAccCdr->getCallid())
-                ->setDuration($duration)
-                ->setCaller($kamAccCdr->getCaller())
-                ->setCallee($kamAccCdr->getCallee())
-                ->setRecordedFileBaseName($baseName)
-                ->setRecordedFilePath($convertMp3);
-
-            // Store this Recording
-            $recording = $this->entityPersister->persistDto($recordingDto, null, true);
-            $this->logger->info(
-                sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recording->getId())
-            );
 
             // Remove encoded files
             unlink($convertWav);
-            $stats['encoded']++;
-       }
+        }
 
         // Total processed calls
         $total = $stats['encoded'] + $stats['error'] + $stats['deleted'] + $stats['skipped'];

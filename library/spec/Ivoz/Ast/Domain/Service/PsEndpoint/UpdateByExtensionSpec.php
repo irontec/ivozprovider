@@ -39,7 +39,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->willReturn(null)
             ->shouldBecalled();
 
-        $this->execute($extension, false);
+        $this->execute($extension);
     }
 
     function it_checks_that_its_main_user_extension(
@@ -63,7 +63,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->getTerminal()
             ->shouldBeCalled();
 
-        $this->execute($extension, false);
+        $this->execute($extension);
     }
 
     function it_updates_psEndpoint(
@@ -133,6 +133,6 @@ class UpdateByExtensionSpec extends ObjectBehavior
                 $psEndpoint
             )->shouldBeCalled();
 
-        $this->execute($extension, false);
+        $this->execute($extension);
     }
 }

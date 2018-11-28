@@ -7,10 +7,11 @@ use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberTrait;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
+use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationDto;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 
@@ -65,17 +66,31 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         $this->sendNotification($domainEvent);
     }
 
+    /**
+     * @param DomainEventInterface $domainEvent
+     * @return boolean
+     */
+    public function isSubscribedTo(DomainEventInterface $domainEvent)
+    {
+        if ($domainEvent instanceof AbstractBalanceThresholdWasBroken) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function sendNotification(AbstractBalanceThresholdWasBroken $event)
     {
         /** @var BalanceNotificationInterface $balanceNotification */
         $balanceNotification = $this->balanceNotificationRepository
             ->find($event->getBalanceNotificationId());
 
+        /** @var NotificationTemplateInterface $notificationTemplate */
         $notificationTemplate = $this->notificationTemplateRepository
             ->findTemplateByBalanceNotification($balanceNotification);
 
-        $name = $this->getEntityName($balanceNotification);
-        $language = $this->getLanguage($balanceNotification);
+        $name = $balanceNotification->getEntityName();
+        $language = $balanceNotification->getLanguage();
 
         $notificationContent = $notificationTemplate->getContentsByLanguage($language);
         $subject = $this->parseNotificationContent(
@@ -83,6 +98,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
             $name,
             $event->getCurrentBalance()
         );
+        $bodyType = $notificationContent->getBodyType();
 
         $body = $this->parseNotificationContent(
             $notificationContent->getBody(),
@@ -93,7 +109,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         $email = new Message();
         $email
             ->setSubject($subject)
-            ->setBody($body)
+            ->setBody($body, $bodyType)
             ->setFromAddress(
                 $notificationContent->getFromAddress()
             )
@@ -106,6 +122,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 
         $this->mailer->send($email);
 
+        /** @var BalanceNotificationDto $balanceNotificationDto */
         $balanceNotificationDto = $this->entityTools->entityToDto($balanceNotification);
         $balanceNotificationDto->setLastSent(new \DateTime());
         $this->entityTools->persistDto(
@@ -123,58 +140,5 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         );
 
         return str_replace(array_keys($substitution), array_values($substitution), $content);
-    }
-
-    /**
-     * @param DomainEventInterface $domainEvent
-     * @return boolean
-     */
-    public function isSubscribedTo(DomainEventInterface $domainEvent)
-    {
-        if ($domainEvent instanceof AbstractBalanceThresholdWasBroken) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param BalanceNotificationInterface $balanceNotification
-     * @return LanguageInterface
-     */
-    private function getLanguage(BalanceNotificationInterface $balanceNotification)
-    {
-        $carrier = $balanceNotification->getCarrier();
-        if ($carrier) {
-            return $carrier
-                ->getBrand()
-                ->getLanguage();
-        }
-
-        $company = $balanceNotification->getCompany();
-        $language = $company->getLanguage();
-        if (!$language) {
-            $language = $company
-                ->getBrand()
-                ->getLanguage();
-        }
-
-        return $language;
-    }
-
-    /**
-     * @param BalanceNotificationInterface $balanceNotification
-     * @return mixed
-     */
-    private function getEntityName(BalanceNotificationInterface $balanceNotification)
-    {
-        $carrier = $balanceNotification->getCarrier();
-        if ($carrier) {
-            return $carrier->getName();
-        }
-
-        return $balanceNotification
-            ->getCompany()
-            ->getName();
     }
 }

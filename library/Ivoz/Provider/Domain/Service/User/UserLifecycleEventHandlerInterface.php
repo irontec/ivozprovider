@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 interface UserLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(UserInterface $user, $isNew);
+    public function execute(UserInterface $user);
 }

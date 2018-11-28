@@ -5,7 +5,7 @@ Feature: Retrieve countries
 
   @createSchema
   Scenario: Retrieve the countries json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "countries"
      Then the response status code should be 200
@@ -42,7 +42,7 @@ Feature: Retrieve countries
     """
 
   Scenario: Retrieve certain country json
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "countries/1"
      Then the response status code should be 200

@@ -77,14 +77,15 @@ abstract class AbstractBalanceOperation
      */
     protected function handleResponse($amount, array $response, CompanyInterface $company)
     {
-        if ($response['error']) {
+        $success = false;
+        if (isset($response['error']) && $response['error']) {
             $this->lastError = $response['error'];
             $this->logger->error('Could not modify balance: ' . $response['error']);
         }
 
-        $success = $response['success'];
+        if (isset($response['success']) && $response['success']) {
+            $success = $response['success'];
 
-        if ($success) {
             $brandId = $company->getBrand()->getId();
             $companyIds = [$company->getId()];
 

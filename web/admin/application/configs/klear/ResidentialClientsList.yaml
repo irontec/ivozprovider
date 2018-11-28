@@ -62,7 +62,10 @@ production:
           type: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           balance: true
+          showInvoices: true
         order:
           name: true
           nif: true
@@ -110,24 +113,23 @@ production:
           distributeMethod: true
           applicationServer: true
           maxCalls: false
-          outgoingDDI: true
           outgoingDdiRule: true
           externallyExtraOpts: true
           balance: true
           voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
+          showInvoices: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
-          language: true
           maxCalls: true
-          nif: true
-          postalAddress: true
-          postalCode: true
-          town: true
-          province: true
-          countryName: true
-          registryData: true
-          defaultTimezone: true
+          language: true
+          showInvoices: true
+          onDemandRecord: true
+          voicemailNotificationTemplate: true
+          mediaRelaySets: true
           externallyExtraOpts: true
       fixedPositions: &residentialClientsFixedPositions_Link
         group0:
@@ -137,6 +139,7 @@ production:
             name: 3
             relFeatures: 3
             billingMethod: 3
+            outgoingDDI: 3
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -216,6 +219,7 @@ production:
             ipFilter: 1
         group3:
           colsPerRow: 12
+          collapsed: true
           label: _("Platform data")
           fields:
             mediaRelaySets: 4
@@ -223,10 +227,11 @@ production:
             applicationServer: 4
         group4:
           colsPerRow: 12
+          collapsed: true
           label: _("Invoice data")
           fields:
-            nif: 4
-            __empty: 8
+            showInvoices: 6
+            nif: 6
             postalAddress: 8
             postalCode: 4
             town: 4
@@ -252,6 +257,8 @@ production:
           fields:
             voicemailNotificationTemplate: 1
             faxNotificationTemplate: 1
+            invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Residential Client', 'Residential Clients', 1), "[format| (%item%)]")

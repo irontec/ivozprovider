@@ -5,7 +5,7 @@ Feature: Retrieve brand urls
 
   @createSchema
   Scenario: Retrieve the brand url json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "brand_urls"
      Then the response status code should be 200
@@ -33,7 +33,7 @@ Feature: Retrieve brand urls
     """
 
   Scenario: Retrieve certain brand url json
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "brand_urls/1"
      Then the response status code should be 200

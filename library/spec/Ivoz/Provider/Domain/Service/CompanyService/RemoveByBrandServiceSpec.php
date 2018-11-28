@@ -72,7 +72,7 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
     {
         $this
             ->companyRepository
-            ->findBy(['brand' => 1])
+            ->findByBrandId(1)
             ->willReturn([])
             ->shouldBeCalled();
 
@@ -102,16 +102,16 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
 
         $this
             ->companyRepository
-            ->findBy(['brand' => 1])
+            ->findByBrandId(1)
             ->willReturn([$company])
             ->shouldBeCalled();
 
         $this
             ->companyServiceRepository
-            ->findOneBy([
-                'company' => 1,
-                'service' => 1
-            ])
+            ->findCompanyService(
+                1,
+                1
+            )
             ->willReturn($companyService);
 
         $this
@@ -120,8 +120,7 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            false
+            $this->entity
         );
     }
 }

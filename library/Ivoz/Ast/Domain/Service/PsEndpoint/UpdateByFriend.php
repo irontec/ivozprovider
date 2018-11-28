@@ -40,15 +40,15 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
     /**
      * @param Friend $entity
      */
-    public function execute(FriendInterface $entity, $isNew)
+    public function execute(FriendInterface $entity)
     {
         // Replicate Terminal into ast_ps_endpoint
         /**
          * @var PsEndpoint $endpoint
          */
-        $endpoint = $this->psEndpointRepository->findOneBy([
-            "friend" => $entity->getId()
-        ]);
+        $endpoint = $this->psEndpointRepository->findOneByFriendId(
+            $entity->getId()
+        );
 
         if (is_null($endpoint)) {
             $endPointDto = new PsEndpointDto();

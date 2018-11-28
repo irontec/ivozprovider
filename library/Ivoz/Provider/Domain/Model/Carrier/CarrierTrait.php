@@ -59,6 +59,7 @@ trait CarrierTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -96,6 +97,7 @@ trait CarrierTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -124,6 +126,7 @@ trait CarrierTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CarrierDto
      */

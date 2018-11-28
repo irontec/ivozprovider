@@ -64,6 +64,9 @@ services:
   Dialplan\UserStatus:
     arguments: ~
 
+  Dialplan\ResidentialStatus:
+    arguments: ~
+
   Dialplan\HuntGroups:
     arguments: ~
 
@@ -129,7 +132,6 @@ services:
   Agi\Action\FaxReceiveStatusAction:
     lazy: true
     arguments:
-      $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $mailer: '@mailer'
 
   Agi\Action\FriendCallAction:
@@ -169,6 +171,10 @@ services:
     arguments: ~
 
   Agi\Action\ResidentialCallAction:
+    lazy: true
+    arguments: ~
+
+  Agi\Action\ResidentialStatusAction:
     lazy: true
     arguments: ~
 

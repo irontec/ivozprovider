@@ -5,7 +5,7 @@ Feature: Retrieve music on holds
 
   @createSchema
   Scenario: Retrieve the music on holds json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "music_on_holds"
     Then the response status code should be 200
@@ -28,7 +28,7 @@ Feature: Retrieve music on holds
     """
 
   Scenario: Retrieve certain music on hold json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "music_on_holds/1"
     Then the response status code should be 200

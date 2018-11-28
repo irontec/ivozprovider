@@ -81,6 +81,23 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     public function getBody();
 
     /**
+     * @deprecated
+     * Set bodyType
+     *
+     * @param string $bodyType
+     *
+     * @return self
+     */
+    public function setBodyType($bodyType);
+
+    /**
+     * Get bodyType
+     *
+     * @return string
+     */
+    public function getBodyType();
+
+    /**
      * Set notificationTemplate
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate

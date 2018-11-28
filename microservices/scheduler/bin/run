@@ -1,5 +1,9 @@
 #!/bin/bash
 
-./run-billable-calls
+pushd /opt/irontec/ivozprovider/microservices/scheduler/bin
+
 ./run-call-csv-to-email
 ./run-invoice-scheduler
+
+popd
+

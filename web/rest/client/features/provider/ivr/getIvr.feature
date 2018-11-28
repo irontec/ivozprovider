@@ -5,7 +5,7 @@ Feature: Retrieve IVRs
 
   @createSchema
   Scenario: Retrieve the IVRs json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "ivrs"
     Then the response status code should be 200
@@ -26,7 +26,7 @@ Feature: Retrieve IVRs
     """
 
   Scenario: Retrieve certain IVR json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "ivrs/1"
     Then the response status code should be 200

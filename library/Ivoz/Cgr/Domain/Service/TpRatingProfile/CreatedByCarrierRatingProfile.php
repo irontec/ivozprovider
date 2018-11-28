@@ -47,7 +47,7 @@ class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandle
      * @param RatingProfileInterface $ratingProfile
      * @param $isNew
      */
-    public function execute(RatingProfileInterface $ratingProfile, $isNew)
+    public function execute(RatingProfileInterface $ratingProfile)
     {
         $carrier = $ratingProfile->getCarrier();
 

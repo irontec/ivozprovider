@@ -68,8 +68,14 @@ These are the configurable settings of *Retail accounts*:
         Request from IvozProvider to this account will include this domain in
         the From header.
 
+    DDI In
+        If set to 'Yes', use endpoint username in R-URI when calling this retail account. If set to 'No', use called
+        number instead.
 
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
+
+.. tip:: On retail account edit screen **id** field shows internal identification number assigned to the retail account.
+         This id is transported to *Endpoint Id* field in *Billable Calls* section for CSV export.
 
 
 Voicemail settings

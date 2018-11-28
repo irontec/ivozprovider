@@ -48,9 +48,13 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
      */
     public function getBalance(CompanyDto $companyDto)
     {
-        return $this->fetchCompanyBalance->getBalance(
-            $companyDto->getBrandId(),
-            $companyDto->getId()
-        );
+        try {
+            return $this->fetchCompanyBalance->getBalance(
+                $companyDto->getBrandId(),
+                $companyDto->getId()
+            );
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
     }
 }

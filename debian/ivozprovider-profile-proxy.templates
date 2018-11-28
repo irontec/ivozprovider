@@ -2,7 +2,7 @@ Template: ivozprovider/menu_proxy
 Type: select
 Choices: configure_dns_address, configure_mysql_password, configure_media_relay_address, configure_media_relay_control, configure_finish
 Choices-es.UTF-8: Configurar dirección DNS local, Configurar password de MySQL, Configurar IP pública Servidor de Media, Configurar IP privada Servidor de Media, >> Finalizar configuración
-Choices-en.UTF-8: Configure local DNS address, Configure MySQL root password, Configure Media Relay public address, Configure Media Relay private address >> Finish configurating
+Choices-en.UTF-8: Configure local DNS address, Configure MySQL root password, Configure Media Relay public address, Configure Media Relay private address, >> Finish configurating
 Default: configure_dns_address
 Description:
  Welcome to IVOZ Provider Proxy Node setup.

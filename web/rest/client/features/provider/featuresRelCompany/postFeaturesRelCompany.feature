@@ -5,7 +5,7 @@ Feature: Create features rel companies
 
   @createSchema
   Scenario: Create a feature rel company
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/features_rel_companies" with body:
@@ -35,7 +35,7 @@ Feature: Create features rel companies
     """
 
   Scenario: Retrieve created features rel company
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "features_rel_companies/6"
      Then the response status code should be 200

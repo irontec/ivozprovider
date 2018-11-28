@@ -6,5 +6,5 @@ pushd /opt/irontec/ivozprovider/scheme
     ./bin/create-test-db
 
     # Run tests
-    vendor/bin/simple-phpunit # --coverage-html tests/coverage --coverage-php tests/coverage/coverage.php
+    SYMFONY_PHPUNIT_VERSION=6.5 vendor/bin/simple-phpunit $*
 popd

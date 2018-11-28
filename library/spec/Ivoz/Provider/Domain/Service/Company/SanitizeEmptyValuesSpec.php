@@ -2,38 +2,54 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Company;
 
-use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class SanitizeEmptyValuesSpec extends ObjectBehavior
 {
     /**
-     * @var UpdateEntityFromDTO
+     * @var EntityTools
      */
-    protected $entityUpdater;
+    protected $entityTools;
+
     /**
      * @var CompanyDto
      */
     protected $dto;
-    protected $entity;
+
+    /** @var Company */
+    protected $company;
 
     function let(
-        UpdateEntityFromDTO $entityUpdater,
+        EntityTools $entityTools,
         Company $entity
     ) {
-        $this->entityUpdater = $entityUpdater;
-        $this->beConstructedWith($entityUpdater);
+        $this->company = $entity;
+        $this->entityTools = $entityTools;
+        $this->beConstructedWith($entityTools);
 
         $this->dto = new CompanyDto();
-        $this->entity = $entity;
     }
 
     protected function prepareDto()
     {
+        $this
+            ->company
+            ->isNew()
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->entityToDto($this->company)
+            ->willReturn($this->dto)
+            ->shouldBeCalled();
+
         $this
             ->dto
             ->setNif('12345678-Z')
@@ -49,12 +65,6 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
             ->setIpFilter(0)
             ->setOnDemandRecord(0)
             ->setOnDemandRecordCode(1);
-
-        $this
-            ->entity
-            ->toDto()
-            ->shouldBeCalled()
-            ->willReturn($this->dto);
     }
 
     function it_is_initializable()
@@ -65,25 +75,17 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
     function it_checks_whether_the_entity_is_new()
     {
         $this
-            ->entity
-            ->toDto()
-            ->shouldNotBeCalled();
-
-        $this->execute($this->entity, false);
-    }
-
-    function it_persist_new_entities()
-    {
-        $this->prepareDto();
+            ->company
+            ->isNew()
+            ->willReturn(false);
 
         $this
-            ->entityUpdater
-            ->execute($this->entity, $this->dto)
-            ->shouldBeCalled();
+            ->entityTools
+            ->entityToDto(Argument::any())
+            ->shouldNotBeCalled();
 
-        $this->execute($this->entity, true);
+        $this->execute($this->company, false);
     }
-
 
     function it_sets_media_relay_sets_when_empty()
     {
@@ -92,7 +94,12 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
             ->dto
             ->setMediaRelaySetsId(null);
 
-        $this->execute($this->entity, true);
+        $this
+            ->entityTools
+            ->updateEntityByDto($this->company, $this->dto)
+            ->shouldBeCalled();
+
+        $this->execute($this->company, true);
 
         if ($this->dto->getMediaRelaySetsId() !== 0) {
             throw new FailureException(

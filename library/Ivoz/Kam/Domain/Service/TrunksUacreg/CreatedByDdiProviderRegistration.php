@@ -44,7 +44,7 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
      * @param $isNew
      * @throws \Exception
      */
-    public function execute(DdiProviderRegistrationInterface $ddiProviderRegistration, $isNew)
+    public function execute(DdiProviderRegistrationInterface $ddiProviderRegistration)
     {
         $trunksUacreg = $ddiProviderRegistration->getTrunksUacreg();
 

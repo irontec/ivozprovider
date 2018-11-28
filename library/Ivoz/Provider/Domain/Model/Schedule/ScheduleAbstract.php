@@ -110,6 +110,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return ScheduleDto|null
@@ -135,6 +136,7 @@ abstract class ScheduleAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -169,6 +171,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -199,6 +202,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return ScheduleDto
      */

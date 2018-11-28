@@ -5,7 +5,7 @@ Feature: Update ddi providers
 
   @createSchema
   Scenario: Update a ddi provider
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/ddi_providers/1" with body:
@@ -13,7 +13,7 @@ Feature: Update ddi providers
       {
           "description": "UpdateDDIProviderDescription",
           "name": "UpdateDDIProviderName",
-          "brand": 2,
+          "brand": 1,
           "transformationRuleSet": 2
       }
     """

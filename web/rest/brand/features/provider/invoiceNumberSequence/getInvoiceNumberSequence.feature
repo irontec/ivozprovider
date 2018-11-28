@@ -5,7 +5,7 @@ Feature: Retrieve invoice number sequences
 
   @createSchema
   Scenario: Retrieve the invoice number sequences json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoice_number_sequences"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve invoice number sequences
     """
 
   Scenario: Retrieve certain invoice number sequences json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoice_number_sequences/1"
     Then the response status code should be 200

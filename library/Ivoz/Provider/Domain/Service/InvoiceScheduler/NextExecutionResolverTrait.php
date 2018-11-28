@@ -42,6 +42,9 @@ trait NextExecutionResolverTrait
             case 'month':
                 $nextExecution->modify('first day of next month');
                 break;
+            case 'day':
+                $nextExecution->modify('next day');
+                break;
             default:
                 throw new \DomainException('Unknown unit ' . $unit);
         }

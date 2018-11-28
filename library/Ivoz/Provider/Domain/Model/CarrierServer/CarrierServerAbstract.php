@@ -138,6 +138,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CarrierServerDto|null
@@ -163,6 +164,7 @@ abstract class CarrierServerAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -202,6 +204,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -237,6 +240,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CarrierServerDto
      */

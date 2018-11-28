@@ -5,7 +5,7 @@ Feature: Manage routing pattern groups rel patterns
 
   @createSchema
   Scenario: Remove a routing pattern groups rel pattern
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/routing_pattern_groups_rel_patterns/1"

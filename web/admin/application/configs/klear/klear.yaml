@@ -69,6 +69,10 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
+        DefaultNotificationTemplatesList:
+          title: ngettext('Default notification template', 'Default notification templates', 0)
+          class: ui-silk-email
+          description: _("List of %s", ngettext('Notification template', 'Notification templates', 0))
         DomainsList:
           title: ngettext('SIP Domain', 'SIP Domains', 0)
           class: ui-silk-link
@@ -416,6 +420,11 @@ production:
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating Profile', 'Rating Profiles', 0))
           showOnlyIf: ${auth.brandFeatures.billing.enabled}
+        CompanyInvoicesList:
+          title: ngettext('Invoice', 'Invoices', 0)
+          class: ui-silk-report
+          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
+          showOnlyIf: ${auth.companyInvoices}
         CallListsClient:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone

@@ -46,7 +46,7 @@ class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterfa
         ];
     }
 
-    public function execute(TransformationRuleSetInterface $transformationRuleSet, $isNew)
+    public function execute(TransformationRuleSetInterface $transformationRuleSet)
     {
         // Only if requested to autogenerate rules
         if (!$transformationRuleSet->getGenerateRules()) {

@@ -5,7 +5,7 @@ Feature: Retrieve invoice templates
 
   @createSchema
   Scenario: Retrieve the invoice templates json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoice_templates"
     Then the response status code should be 200
@@ -22,7 +22,7 @@ Feature: Retrieve invoice templates
     """
 
   Scenario: Retrieve certain invoice templates json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoice_templates/1"
     Then the response status code should be 200

@@ -2,7 +2,11 @@
 Call CSV schedulers
 *******************
 
-This section allows programming the automatic periodical creation of CSV reports.
+This section allows programming the automatic periodical creation of CSV reports to:
+
+- Clients (no matter type).
+
+- Brand operators.
 
 .. note:: This section is identical to :ref:`Invoice schedulers` except to the fields that do not apply to CSVs (Invoice
           number sequence, Template, Call discount, Tax rate).
@@ -12,3 +16,48 @@ Apart from the fields above, everything described in :ref:`Invoice schedulers` a
 - Frequency/Unit configuration.
 - Email send.
 - View generated CSVs in **List of Call CSV reports**.
+- Next execution date.
+- Last execution date and result (success/error).
+
+.. tip:: Brand operator can generate CSV containing calls of all clients.
+
+CSV fields
+==========
+
+These are the fields of the generated CSV files:
+
+.. glossary::
+
+    callid
+        Call-ID of the SIP dialog
+
+    startTime
+        Time and date of the call establishment
+
+    duration
+        Call duration in seconds
+
+    caller
+        Caller number in E.164 format (with '+')
+
+    callee
+        Callee number in E.164 format (with '+')
+
+    price
+        Calculated price for the given call
+
+In Brand CSVs, these additional fields will be included too:
+
+.. glossary::
+
+    endpointType
+        'RetailAccount' for retail clients, empty for remaining types.
+
+    endpointId
+        Retail Account ID for retail clients, empty for remaining types.
+
+    cost
+        Calculated cost for the given call
+
+    companyId
+        Client ID

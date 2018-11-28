@@ -5,7 +5,7 @@ Feature: Retrieve conference rooms
 
   @createSchema
   Scenario: Retrieve the conference rooms json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conference_rooms"
      Then the response status code should be 200
@@ -24,7 +24,7 @@ Feature: Retrieve conference rooms
     """
 
   Scenario: Retrieve certain conference room json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conference_rooms/1"
      Then the response status code should be 200

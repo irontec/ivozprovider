@@ -5,7 +5,7 @@ Feature: Update balance notifications
 
   @createSchema
   Scenario: Update an balance notification
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/balance_notifications/1" with body:
@@ -28,6 +28,11 @@ Feature: Update balance notifications
           "lastSent": null,
           "id": 1,
           "company": "~",
-          "notificationTemplate": null
+          "notificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          }
       }
     """

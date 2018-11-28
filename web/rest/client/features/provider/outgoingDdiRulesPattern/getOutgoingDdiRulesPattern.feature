@@ -5,7 +5,7 @@ Feature: Retrieve outgoing ddi rules patterns
 
   @createSchema
   Scenario: Retrieve the outgoing ddi rules patterns json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "outgoing_ddi_rules_patterns"
     Then the response status code should be 200
@@ -36,7 +36,7 @@ Feature: Retrieve outgoing ddi rules patterns
     """
 
   Scenario: Retrieve certain outgoing ddi rules pattern json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "outgoing_ddi_rules_patterns/1"
     Then the response status code should be 200

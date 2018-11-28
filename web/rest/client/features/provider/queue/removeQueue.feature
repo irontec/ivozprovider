@@ -5,7 +5,7 @@ Feature: Manage queues
 
   @createSchema
   Scenario: Remove a queue
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/queues/1"

@@ -86,6 +86,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrunksLcrRuleTargetDto|null
@@ -111,6 +112,7 @@ abstract class TrunksLcrRuleTargetAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -140,6 +142,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -165,6 +168,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksLcrRuleTargetDto
      */

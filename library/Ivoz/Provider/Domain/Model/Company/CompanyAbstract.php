@@ -114,6 +114,11 @@ abstract class CompanyAbstract
     protected $balance = 0;
 
     /**
+     * @var boolean
+     */
+    protected $showInvoices = '0';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     protected $language;
@@ -178,6 +183,11 @@ abstract class CompanyAbstract
      */
     protected $invoiceNotificationTemplate;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $callCsvNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -239,6 +249,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CompanyDto|null
@@ -264,6 +275,7 @@ abstract class CompanyAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -297,6 +309,7 @@ abstract class CompanyAbstract
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setBalance($dto->getBalance())
+            ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -310,6 +323,7 @@ abstract class CompanyAbstract
             ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
             ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
             ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
+            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate())
         ;
 
         $self->sanitizeValues();
@@ -319,6 +333,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -349,6 +364,7 @@ abstract class CompanyAbstract
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setBillingMethod($dto->getBillingMethod())
             ->setBalance($dto->getBalance())
+            ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -361,7 +377,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
             ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
             ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
-            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate());
+            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
+            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate());
 
 
 
@@ -370,6 +387,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CompanyDto
      */
@@ -395,6 +413,7 @@ abstract class CompanyAbstract
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
             ->setBillingMethod(self::getBillingMethod())
             ->setBalance(self::getBalance())
+            ->setShowInvoices(self::getShowInvoices())
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
             ->setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
@@ -407,7 +426,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
             ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
             ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
-            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth));
+            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
+            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth));
     }
 
     /**
@@ -435,6 +455,7 @@ abstract class CompanyAbstract
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
             'billingMethod' => self::getBillingMethod(),
             'balance' => self::getBalance(),
+            'showInvoices' => self::getShowInvoices(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
@@ -447,7 +468,8 @@ abstract class CompanyAbstract
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
-            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -1017,6 +1039,35 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
+     * Set showInvoices
+     *
+     * @param boolean $showInvoices
+     *
+     * @return self
+     */
+    public function setShowInvoices($showInvoices = null)
+    {
+        if (!is_null($showInvoices)) {
+            Assertion::between(intval($showInvoices), 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
+        }
+
+        $this->showInvoices = $showInvoices;
+
+        return $this;
+    }
+
+    /**
+     * Get showInvoices
+     *
+     * @return boolean
+     */
+    public function getShowInvoices()
+    {
+        return $this->showInvoices;
+    }
+
+    /**
      * Set language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
@@ -1326,6 +1377,30 @@ abstract class CompanyAbstract
     public function getInvoiceNotificationTemplate()
     {
         return $this->invoiceNotificationTemplate;
+    }
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return self
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
     }
 
     // @codeCoverageIgnoreEnd

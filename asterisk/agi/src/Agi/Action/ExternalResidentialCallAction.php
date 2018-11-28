@@ -94,6 +94,6 @@ class ExternalResidentialCallAction extends ExternalCallAction
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");
         $this->agi->setVariable("DIAL_TIMEOUT", "");
-        $this->agi->redirect('call-residential', $number);
+        $this->agi->redirect('call-world', $number);
     }
 }

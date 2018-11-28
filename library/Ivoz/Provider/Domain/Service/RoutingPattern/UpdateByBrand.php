@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RoutingPattern;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPattern;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
@@ -12,16 +12,12 @@ use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry;
 
-/**
- * Class UpdateByBrand
- * @package Ivoz\Provider\Domain\Service\RoutingPattern
- */
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CountryRepository
@@ -34,11 +30,11 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
     protected $routingPatternGroupByRoutingPatternAndCountry;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         CountryRepository $countryRepository,
         UpdateByRoutingPatternAndCountry $routingPatternGroupByRoutingPatternAndCountry
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->countryRepository = $countryRepository;
         $this->routingPatternGroupByRoutingPatternAndCountry = $routingPatternGroupByRoutingPatternAndCountry;
     }
@@ -50,12 +46,12 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(BrandInterface $entity, $isNew)
+    public function execute(BrandInterface $entity)
     {
+        $isNew = $entity->isNew();
         if (!$isNew) {
             return;
         }
-
         $countries = $this->countryRepository->findAll();
 
         /**
@@ -75,7 +71,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setPrefix((string) $country->getCountryCode())
                 ->setBrandId($entity->getId());
 
-            $routingPattern = $this->entityPersister->persistDto(
+            $routingPattern = $this->entityTools->persistDto(
                 $routingPatternDto,
                 null,
                 true

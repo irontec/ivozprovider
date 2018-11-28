@@ -26,6 +26,7 @@ trait FixedCostsRelInvoiceTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -45,6 +46,7 @@ trait FixedCostsRelInvoiceTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -59,6 +61,7 @@ trait FixedCostsRelInvoiceTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FixedCostsRelInvoiceDto
      */

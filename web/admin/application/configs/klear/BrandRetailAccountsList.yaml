@@ -30,6 +30,7 @@ production:
           ip: true
           port: true
           status: true
+          ddiIn: true
         order:
           company: true
           name: true

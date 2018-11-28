@@ -26,6 +26,7 @@ trait ProxyUserTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -45,6 +46,7 @@ trait ProxyUserTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -59,6 +61,7 @@ trait ProxyUserTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return ProxyUserDto
      */

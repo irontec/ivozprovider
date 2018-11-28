@@ -124,6 +124,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return InvoiceDto|null
@@ -149,6 +150,7 @@ abstract class InvoiceAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -192,6 +194,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -231,6 +234,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return InvoiceDto
      */

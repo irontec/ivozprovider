@@ -5,7 +5,7 @@ Feature: Manage external call filter rel schedules
 
   @createSchema
   Scenario: Remove a external call filter rel schedule
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/external_call_filter_rel_schedules/1"

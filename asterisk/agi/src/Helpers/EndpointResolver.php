@@ -71,9 +71,7 @@ class EndpointResolver
         $endpointRepository = $this->em->getRepository('Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint');
 
         /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
-        $endpoint = $endpointRepository->findOneBy([
-            "sorceryId" => $endpointName
-        ]);
+        $endpoint = $endpointRepository->findOneBySorceryId($endpointName);
 
         return $endpoint;
     }
@@ -88,10 +86,7 @@ class EndpointResolver
     {
         /** @var \Ivoz\Provider\Domain\Model\Domain\DomainRepository $domainRepository */
         $domainRepository = $this->em->getRepository(Domain::class);
-        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain */
-        $domain = $domainRepository->findOneBy([
-            'domain' => $endpointDomain
-        ]);
+        $domain = $domainRepository->findOneByDomain($endpointDomain);
 
         Assertion::notNull(
             $domain,
@@ -101,10 +96,10 @@ class EndpointResolver
         /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalRepository $terminalRepository */
         $terminalRepository = $this->em->getRepository(Terminal::class);
         /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal */
-        $terminal = $terminalRepository->findOneBy([
-            'name' => $endpointNum,
-            'domain' => $domain->getId()
-        ]);
+        $terminal = $terminalRepository->findOneByNameAndDomain(
+            $endpointNum,
+            $domain
+        );
 
         Assertion::notNull(
             $terminal,

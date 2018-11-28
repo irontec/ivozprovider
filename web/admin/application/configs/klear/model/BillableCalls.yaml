@@ -82,6 +82,12 @@ production:
     ratingPlanName:
       title: _('Rating plan')
       type: text
+    endpointType:
+      title: _('Endpoint type')
+      type: text
+    endpointId:
+      title: _('Endpoint id')
+      type: text
 staging:
   _extends: production
 testing:

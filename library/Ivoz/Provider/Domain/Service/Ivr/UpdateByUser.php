@@ -11,7 +11,6 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
 /**
  * Class UpdateByUser
- * @package Ivoz\Provider\Domain\Service\Ivr
  */
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
@@ -44,9 +43,8 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
 
     /**
      * @param UserInterface $user
-     * @param $isNew
      */
-    public function execute(UserInterface $user, $isNew)
+    public function execute(UserInterface $user)
     {
         /** @var Ivr[] $ivrs */
         $ivrs = $this->ivrRepository->findByUser($user);

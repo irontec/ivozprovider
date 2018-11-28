@@ -338,7 +338,7 @@ class DataGateway
     {
         foreach ($arguments as $key => $value) {
             if ($value instanceof DataTransferObjectInterface) {
-                $arguments[$key] = $value->toArray(true);
+                $arguments[$key] = $this->dtoToArray($value);
             } elseif (is_object($value)) {
                 $arguments[$key] = 'object(' . get_class($value) . ')';
             }
@@ -352,5 +352,26 @@ class DataGateway
         );
 
         $this->eventPublisher->publish($event);
+    }
+
+    private function dtoToArray(DataTransferObjectInterface $dto)
+    {
+        $result = $dto->toArray(true);
+
+        return $this
+            ->walkArray($result);
+    }
+
+    private function walkArray(array $data)
+    {
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = $this->walkArray($value);
+            } elseif ($value instanceof DataTransferObjectInterface) {
+                $data[$key] = '#' .$value->getId();
+            }
+        }
+
+        return $data;
     }
 }

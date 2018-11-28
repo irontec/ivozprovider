@@ -77,6 +77,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return BalanceMovementDto|null
@@ -102,6 +103,7 @@ abstract class BalanceMovementAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -129,6 +131,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -153,6 +156,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return BalanceMovementDto
      */

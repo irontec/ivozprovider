@@ -4,6 +4,10 @@
 production:
   entity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
   fields:
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false
+      readonly: true
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select
@@ -133,6 +137,23 @@ production:
             visualFilter:
               hide: ["ip", "port", "transport", "auth_needed"]
               show: []
+    ddiIn:
+      title: _('DDI In')
+      type: select
+      defaultValue: yes
+      source:
+        data: inline
+        values:
+          'yes':
+            title: _('Yes')
+          'no':
+            title: _('No')
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("If 'no', R-URI username will match endpoint's name. If 'yes', called number will be used instead.")
+        label: _("Need help?")
     statusIcon:
       title: _('Status')
       type: ghost

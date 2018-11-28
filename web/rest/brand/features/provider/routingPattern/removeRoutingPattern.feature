@@ -5,7 +5,7 @@ Feature: Manage routing patterns
 
   @createSchema
   Scenario: Remove a routing pattern
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/routing_patterns/1"

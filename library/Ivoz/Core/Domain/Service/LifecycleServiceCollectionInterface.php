@@ -12,5 +12,5 @@ interface LifecycleServiceCollectionInterface
      * @param EntityInterface $entity
      * @return mixed
      */
-    public function execute(EntityInterface $entity, $isNew);
+    public function execute(EntityInterface $entity);
 }

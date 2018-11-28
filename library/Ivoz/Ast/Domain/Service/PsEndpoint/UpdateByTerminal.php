@@ -41,15 +41,15 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     /**
      * @param Friend $terminal
      */
-    public function execute(TerminalInterface $terminal, $isNew)
+    public function execute(TerminalInterface $terminal)
     {
         // Replicate Terminal into ast_ps_endpoint
         /**
          * @var PsEndpointInterface $endpoint
          */
-        $endpoint = $this->psEndpointRepository->findOneBy([
-            'terminal' => $terminal->getId()
-        ]);
+        $endpoint = $this->psEndpointRepository->findOneByTerminalId(
+            $terminal->getId()
+        );
 
         if (is_null($endpoint)) {
             $endpointDto = new PsEndpointDto();

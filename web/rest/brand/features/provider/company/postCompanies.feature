@@ -5,7 +5,7 @@ Feature: Create companies
 
   @createSchema
   Scenario: Create a company
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/companies" with body:
@@ -55,7 +55,7 @@ Feature: Create companies
     """
 
   Scenario: Retrieve created company
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "companies/4"
      Then the response status code should be 200
@@ -168,6 +168,7 @@ Feature: Create companies
               "brand": 1
           },
           "faxNotificationTemplate": null,
-          "invoiceNotificationTemplate": null
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null
       }
     """

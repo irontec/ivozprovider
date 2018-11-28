@@ -19,3 +19,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
     ddis:
       targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
       mappedBy: residentialDevice
+    callForwardSettings:
+      targetEntity: Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+      mappedBy: residentialDevice

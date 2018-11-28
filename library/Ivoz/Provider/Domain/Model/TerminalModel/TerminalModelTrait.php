@@ -26,6 +26,7 @@ trait TerminalModelTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -45,6 +46,7 @@ trait TerminalModelTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -59,6 +61,7 @@ trait TerminalModelTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TerminalModelDto
      */

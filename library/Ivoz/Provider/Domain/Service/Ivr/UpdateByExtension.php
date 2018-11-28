@@ -44,9 +44,8 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 
     /**
      * @param ExtensionInterface $extension
-     * @param $isNew
      */
-    public function execute(ExtensionInterface $extension, $isNew)
+    public function execute(ExtensionInterface $extension)
     {
         /** @var Ivr[] $ivrs */
         $ivrs = $this->ivrRepository->findByExtension($extension);

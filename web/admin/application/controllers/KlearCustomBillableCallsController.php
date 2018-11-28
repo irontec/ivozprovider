@@ -1,6 +1,7 @@
 <?php
 
 use IvozProvider\Service\RestClient;
+use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 
 class KlearCustomBillableCallsController extends Zend_Controller_Action
 {
@@ -30,24 +31,30 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
         );
 
         $config = $this->_mainRouter->getCurrentItem()->getConfig();
-
         $criteria = $config->getProperty("forcedValues");
         $criteria = $criteria
             ? $criteria->toArray()
             : [];
 
-        $criteria['_properties'] = [
-            'startTime',
-            'caller',
-            'callee',
-            'duration',
-            'price'
-        ];
+        $criteria['_properties'] = CsvExporter::BRAND_PROPERTIES;
+
+        $requestFile = $this->_request->getParam('file');
+        switch($requestFile) {
+            case 'BillableCallsList':
+                $criteria['_properties'][] = 'brand';
+                $criteria['_properties'][] = 'company';
+                break;
+            case 'BillableCallsBrandList':
+                $criteria['_properties'][] = 'company';
+                break;
+            default:
+                $criteria['_properties'] = CsvExporter::CLIENT_PROPERTIES;
+        }
 
         $requestParams = $this->_request->getParam('post', null);
-        if (isset($requestParams) && array_key_exists('searchFields', $requestParams)) {
-            $where = [];
+        $where = [];
 
+        if (isset($requestParams) && array_key_exists('searchFields', $requestParams)) {
             foreach($requestParams['searchFields'] as $field => $values) {
                 foreach ($values as $key => $value) {
                     $value = urldecode($value);

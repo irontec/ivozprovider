@@ -43,10 +43,9 @@ class UpdateByRoutingTag implements RoutingTagLifecycleEventHandlerInterface
 
     /**
      * @param RoutingTagInterface $routingTag
-     * @param $isNew
      * @throws \Exception
      */
-    public function execute(RoutingTagInterface $routingTag, $isNew)
+    public function execute(RoutingTagInterface $routingTag)
     {
         if (!$routingTag->hasChanged('tag')) {
             return;

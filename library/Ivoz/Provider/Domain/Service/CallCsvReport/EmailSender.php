@@ -6,7 +6,6 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
@@ -55,9 +54,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CallCsvReportInterface $callCsvReport, $isNew)
+    public function execute(CallCsvReportInterface $callCsvReport)
     {
-        if (!$callCsvReport->hasChanged('id')) {
+        $isNew = $callCsvReport->isNew();
+        if (!$isNew) {
             return;
         }
 
@@ -69,6 +69,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         $targetEmail = $callCsvReport->getSentTo();
         if (!$targetEmail) {
             return false;
+        }
+
+        if (!$callCsvReport->getCompany()) {
+            throw new \DomainException('Brand email notification not implemented yet');
         }
 
         $notificationTemplateContent = $this->getNotificationTemplateContent($callCsvReport);
@@ -122,15 +126,16 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
     {
         $company = $callCsvReport->getCompany();
 
-        // Get Company Notification Template for faxes
-        /** @var NotificationTemplateInterface $genericInvoiceNotificationTemplate */
-        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository->findOneBy([
-            'brand' => null,
-            'type' => 'callCsv'
-        ]);
+        /** @var NotificationTemplateInterface $genericCallCsvNotificationTemplate */
+        $callCsvNotificationTemplate = $company->getCallCsvNotificationTemplate();
+        if (!$callCsvNotificationTemplate) {
+            $callCsvNotificationTemplate = $this
+                ->notificationTemplateRepository
+                ->findGenericCallCsvTemplate();
+        }
 
         // Get Notification contents for required language
-        $notificationTemplateContent = $genericInvoiceNotificationTemplate->getContentsByLanguage(
+        $notificationTemplateContent = $callCsvNotificationTemplate->getContentsByLanguage(
             $company->getLanguage()
         );
 

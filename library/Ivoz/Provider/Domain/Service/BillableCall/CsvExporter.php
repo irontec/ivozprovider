@@ -3,11 +3,37 @@
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Domain\Service\ApiClientInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CsvExporter
 {
     const API_ENDPOINT = 'billable_calls';
+
+    const CLIENT_PROPERTIES = [
+        'callid',
+        'startTime',
+        'caller',
+        'callee',
+        'duration',
+        'price'
+    ];
+
+    const BRAND_PROPERTIES = [
+        'callid',
+        'startTime',
+        'caller',
+        'callee',
+        'duration',
+        'price',
+        'endpointType',
+        'endpointId',
+        'company',
+        'cost',
+        'carrierName',
+        'ratingPlanName',
+        'destinationName'
+    ];
 
     protected $apiClient;
 
@@ -18,29 +44,33 @@ class CsvExporter
     }
 
     /**
-     * @param CompanyInterface $company
      * @param \DateTime $inDate
      * @param \DateTime $outDate
+     * @param CompanyInterface|null $company
+     * @param BrandInterface|null $brand
      * @return string
      */
     public function execute(
-        CompanyInterface $company,
         \DateTime $inDate,
-        \DateTime $outDate
+        \DateTime $outDate,
+        CompanyInterface $company = null,
+        BrandInterface $brand = null
     ) {
         $criteria = [
-            'company' => $company->getId(),
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
-            '_properties' => [
-                'startTime',
-                'caller',
-                'callee',
-                'duration' => 'duration',
-                'price' => 'price'
-            ],
             "_pagination" => 'false'
         ];
+
+        if ($company) {
+            $criteria['company'] = $company->getId();
+            $criteria['_properties'] = self::CLIENT_PROPERTIES;
+        }
+
+        if ($brand) {
+            $criteria['brand'] = $brand->getId();
+            $criteria['_properties'] = self::BRAND_PROPERTIES;
+        }
 
         $endpoint =
             self::API_ENDPOINT

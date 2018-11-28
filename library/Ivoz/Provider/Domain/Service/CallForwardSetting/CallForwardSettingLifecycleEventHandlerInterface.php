@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 interface CallForwardSettingLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CallForwardSettingInterface $entity, $isNew);
+    public function execute(CallForwardSettingInterface $entity);
 }

@@ -32,6 +32,7 @@ production:
           port: true
           language: true
           status: true
+          ddiIn: true
         order:
           name: true
           domain: true
@@ -73,6 +74,7 @@ production:
           status: true
           statusIcon: true
         order: &retailAccounts_orderLink
+          id: true
           name: true
           description: true
           password: true
@@ -81,7 +83,9 @@ production:
           ip: true
           port: true
           outgoingDdi: true
+          transformationRuleSet: true
           fromDomain: true
+          ddiIn: true
           status: true
       fixedPositions: &retailAccounts_FixedPositionsLink
         group0:
@@ -112,8 +116,8 @@ production:
           label: _("Advanced Configuration")
           colsPerRow: 6
           fields:
-            allow: 2
-            fromDomain: 2
+            fromDomain: 3
+            ddiIn: 3
 
     retailAccountsEdit_screen: &retailAccountsEdit_screenLink
       <<: *RetailAccounts
@@ -132,6 +136,8 @@ production:
         blacklist:
           domain: true
           statusIcon: true
+        whitelist:
+          id: true
       fixedPositions:
           <<: *retailAccounts_FixedPositionsLink
       forcedValues:

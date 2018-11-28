@@ -5,7 +5,7 @@ Feature: Retrieve brandService
 
   @createSchema
   Scenario: Retrieve the brand json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "brand_services"
      Then the response status code should be 200
@@ -30,7 +30,7 @@ Feature: Retrieve brandService
     """
 
   Scenario: Retrieve certain brand service json
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "brand_services/1"
      Then the response status code should be 200
@@ -38,10 +38,34 @@ Feature: Retrieve brandService
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
     """
-      {
+       {
           "code": "94",
           "id": 1,
-          "brand": "~",
+          "brand": {
+              "name": "DemoBrand",
+              "domainUsers": "",
+              "recordingsLimitMB": null,
+              "recordingsLimitEmail": "",
+              "maxCalls": 0,
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalAddress": "",
+                  "postalCode": "",
+                  "town": "",
+                  "province": "",
+                  "country": "",
+                  "registryData": ""
+              },
+              "domain": 6,
+              "language": 1,
+              "defaultTimezone": 1
+          },
           "service": {
               "iden": "DirectPickUp",
               "defaultCode": "94",

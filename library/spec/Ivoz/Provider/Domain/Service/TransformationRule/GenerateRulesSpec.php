@@ -55,7 +55,7 @@ class GenerateRulesSpec extends ObjectBehavior
             ->willReturn(false)
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     private function prepareExample(
@@ -129,7 +129,7 @@ class GenerateRulesSpec extends ObjectBehavior
             ->remove($transformationRule)
             ->shouldBeCalled();
 
-        $this->execute($transformationRuleSet, true);
+        $this->execute($transformationRuleSet);
     }
 
     function it_calls_generate_callerin_rules(
@@ -143,7 +143,7 @@ class GenerateRulesSpec extends ObjectBehavior
             ->execute($transformationRuleSet, 'callerin')
             ->shouldBeCalled();
 
-        $this->execute($transformationRuleSet, true);
+        $this->execute($transformationRuleSet);
     }
 
     function it_calls_generate_calleein_rules(
@@ -157,7 +157,7 @@ class GenerateRulesSpec extends ObjectBehavior
             ->execute($transformationRuleSet, 'calleein')
             ->shouldBeCalled();
 
-        $this->execute($transformationRuleSet, true);
+        $this->execute($transformationRuleSet);
     }
 
     function it_calls_generate_callerout_rules(
@@ -171,7 +171,7 @@ class GenerateRulesSpec extends ObjectBehavior
             ->execute($transformationRuleSet, 'callerout')
             ->shouldBeCalled();
 
-        $this->execute($transformationRuleSet, true);
+        $this->execute($transformationRuleSet);
     }
 
     function it_calls_generate_calleeout_rules(
@@ -185,6 +185,6 @@ class GenerateRulesSpec extends ObjectBehavior
             ->execute($transformationRuleSet, 'calleeout')
             ->shouldBeCalled();
 
-        $this->execute($transformationRuleSet, true);
+        $this->execute($transformationRuleSet);
     }
 }

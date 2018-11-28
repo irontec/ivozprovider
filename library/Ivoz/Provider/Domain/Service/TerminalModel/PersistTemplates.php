@@ -32,7 +32,7 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(TerminalModelInterface $entity, $isNew)
+    public function execute(TerminalModelInterface $entity)
     {
         $genericMustChange = $entity->hasChanged('genericTemplate');
         $specificMustChange = $entity->hasChanged('specificTemplate');

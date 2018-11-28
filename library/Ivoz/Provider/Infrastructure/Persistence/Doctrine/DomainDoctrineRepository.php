@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,5 +19,19 @@ class DomainDoctrineRepository extends ServiceEntityRepository implements Domain
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Domain::class);
+    }
+
+    /**
+     * @param $domain
+     * @return DomainInterface | null
+     */
+    public function findOneByDomain($domain)
+    {
+        /** @var DomainInterface $response */
+        $response = $this->findOneBy([
+            'domain' => $domain
+        ]);
+
+        return $response;
     }
 }

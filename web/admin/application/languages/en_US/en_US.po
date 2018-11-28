@@ -94,9 +94,6 @@ msgstr "Add of %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Add pattern to %2s"
 
-msgid "Additional configuration"
-msgstr "Additional configuration"
-
 msgid "Admin"
 msgstr "Admin"
 
@@ -108,6 +105,9 @@ msgstr "Advanced Setting, read carefully"
 
 msgid "All"
 msgstr "All"
+
+msgid "All clients"
+msgstr "All clients"
 
 msgid "Allow all outgoing calls"
 msgstr "Allow all outgoing calls"
@@ -231,9 +231,6 @@ msgstr "Basic Info"
 msgid "Basic Information"
 msgstr "Basic Information"
 
-msgid "Bill inbound call"
-msgstr "Bill inbound call"
-
 msgid "Billable call"
 msgid_plural "Billable calls"
 msgstr[0] "Billable call"
@@ -253,6 +250,11 @@ msgstr "Black Lists"
 
 msgid "Body"
 msgstr "Body"
+
+msgid "Body type"
+msgid_plural "Body types"
+msgstr[0] "Body type"
+msgstr[1] "Body types"
 
 msgid "Boss Whitelist"
 msgstr "Boss Whitelist"
@@ -322,6 +324,16 @@ msgid "Call ACL Pattern"
 msgid_plural "Call ACL Patterns"
 msgstr[0] "Call ACL Pattern"
 msgstr[1] "Call ACL Patterns"
+
+msgid "Call CSV"
+msgid_plural "Call CSVs"
+msgstr[0] "Call CSV"
+msgstr[1] "Call CSVs"
+
+msgid "Call CSV Notification"
+msgid_plural "Call CSV Notifications"
+msgstr[0] "Call CSV Notification"
+msgstr[1] "Call CSV Notifications"
 
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
@@ -538,6 +550,9 @@ msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
 
+msgid "DDI In"
+msgstr "DDI In"
+
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
 msgstr[0] "DDI Provider"
@@ -553,8 +568,16 @@ msgid_plural "DDI Provider Registrations"
 msgstr[0] "DDI Provider Registration"
 msgstr[1] "DDI Provider Registrations"
 
+msgid "Day"
+msgstr "Day"
+
 msgid "Default Action"
 msgstr "Default Action"
+
+msgid "Default notification template"
+msgid_plural "Default notification templates"
+msgstr[0] "Default Notification template"
+msgstr[1] "Default Notification templates"
 
 msgid "Default outgoing DDI. This can be overriden in accounts's edit screen."
 msgstr "Default outgoing DDI. This can be overriden in accounts's edit screen."
@@ -625,6 +648,9 @@ msgstr "Disk usage"
 
 msgid "Disk usage notification email"
 msgstr "Disk usage notification email"
+
+msgid "Display Client Invoices section"
+msgstr "Display Client Invoices section"
 
 msgid "Display name"
 msgstr "Display name"
@@ -724,11 +750,24 @@ msgstr ""
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "
 "calls unlimited as long as company IP policy is fulfilled."
 
+msgid ""
+"Enable this option to display a section in Client's portal to download "
+"generated invoices."
+msgstr ""
+"Enable this option to display a section in Client's portal to download "
+"generated invoices."
+
 msgid "Enabled"
 msgstr "Enabled"
 
 msgid "End time"
 msgstr "End time"
+
+msgid "Endpoint id"
+msgstr "Endpoint id"
+
+msgid "Endpoint type"
+msgstr "Endpoint type"
 
 msgid "Ensure the preview below is right before you proceed"
 msgstr "Ensure the preview below is right before you proceed"
@@ -803,9 +842,6 @@ msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 msgstr ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
-
-msgid "Externally rated options"
-msgstr "Externally rated options"
 
 msgid "Externally rater custom options"
 msgstr "Externally rater custom options"
@@ -1055,6 +1091,13 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
+
+msgid ""
+"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
+"will be used instead."
+msgstr ""
+"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
+"will be used instead."
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
@@ -2195,9 +2238,6 @@ msgstr "Sent to"
 msgid "Sequence length"
 msgstr "Sequence length"
 
-msgid "Server data"
-msgstr "Server data"
-
 msgid "Service"
 msgid_plural "Services"
 msgstr[0] "Service"
@@ -2357,8 +2397,20 @@ msgstr ""
 msgid "There is already a busy call forward with that call type."
 msgstr "There is already a busy call forward with that call type."
 
+msgid "There is already a friend with that name."
+msgstr "There is already a friend with that name."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "There is already a no answer call forward with that call type."
+
+msgid "There is already a residential device with that name."
+msgstr "There is already a residential device with that name."
+
+msgid "There is already a retail account with that name."
+msgstr "There is already a retail account with that name."
+
+msgid "There is already a terminal with that name."
+msgstr "There is already a terminal with that name."
 
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
@@ -2398,9 +2450,6 @@ msgid ""
 msgstr ""
 "This prefix will be added to the callee after carrier's numeric "
 "transformations."
-
-msgid "This setting needs external tarification module"
-msgstr "This setting needs external tarification module"
 
 msgid "This template is going to be tested"
 msgstr "This template is going to be tested"

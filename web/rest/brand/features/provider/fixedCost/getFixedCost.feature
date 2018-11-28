@@ -5,7 +5,7 @@ Feature: Retrieve fixed costs
 
   @createSchema
   Scenario: Retrieve the fixed costs json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "fixed_costs"
     Then the response status code should be 200
@@ -22,7 +22,7 @@ Feature: Retrieve fixed costs
     """
 
   Scenario: Retrieve certain fixed cost json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "fixed_costs/1"
     Then the response status code should be 200

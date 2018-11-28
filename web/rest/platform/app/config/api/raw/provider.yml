@@ -19,6 +19,13 @@ Ivoz\Provider\Domain\Model\Brand\Logo:
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+    read_access_control:
+      ROLE_SUPER_ADMIN:
+        id:
+          neq: "0"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: "id > 0 or id === null"
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -66,6 +73,9 @@ Ivoz\Provider\Domain\Model\Language\Name:
 Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+    write_access_control:
+      ROLE_SUPER_ADMIN:
+        raw: "id !== 0"
 Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'

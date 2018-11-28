@@ -110,6 +110,23 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     /**
      * @deprecated
+     * Set lastExecutionError
+     *
+     * @param string $lastExecutionError
+     *
+     * @return self
+     */
+    public function setLastExecutionError($lastExecutionError = null);
+
+    /**
+     * Get lastExecutionError
+     *
+     * @return string
+     */
+    public function getLastExecutionError();
+
+    /**
+     * @deprecated
      * Set nextExecution
      *
      * @param \DateTime $nextExecution
@@ -148,7 +165,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company

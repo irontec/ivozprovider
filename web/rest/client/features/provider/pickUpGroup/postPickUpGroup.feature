@@ -5,7 +5,7 @@ Feature: Create pick up groups
 
   @createSchema
   Scenario: Create a pick up group
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/pick_up_groups" with body:
@@ -27,7 +27,7 @@ Feature: Create pick up groups
     """
 
   Scenario: Retrieve created pick up group
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/pick_up_groups/2"
      Then the response status code should be 200

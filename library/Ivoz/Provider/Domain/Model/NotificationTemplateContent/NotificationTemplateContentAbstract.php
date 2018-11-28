@@ -34,6 +34,12 @@ abstract class NotificationTemplateContentAbstract
     protected $body;
 
     /**
+     * comment: enum:text/plain|text/html
+     * @var string
+     */
+    protected $bodyType = 'text/plain';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
      */
     protected $notificationTemplate;
@@ -49,10 +55,11 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Constructor
      */
-    protected function __construct($subject, $body)
+    protected function __construct($subject, $body, $bodyType)
     {
         $this->setSubject($subject);
         $this->setBody($body);
+        $this->setBodyType($bodyType);
     }
 
     abstract public function getId();
@@ -84,6 +91,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return NotificationTemplateContentDto|null
@@ -109,6 +117,7 @@ abstract class NotificationTemplateContentAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -121,7 +130,8 @@ abstract class NotificationTemplateContentAbstract
 
         $self = new static(
             $dto->getSubject(),
-            $dto->getBody()
+            $dto->getBody(),
+            $dto->getBodyType()
         );
 
         $self
@@ -138,6 +148,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -153,6 +164,7 @@ abstract class NotificationTemplateContentAbstract
             ->setFromAddress($dto->getFromAddress())
             ->setSubject($dto->getSubject())
             ->setBody($dto->getBody())
+            ->setBodyType($dto->getBodyType())
             ->setNotificationTemplate($dto->getNotificationTemplate())
             ->setLanguage($dto->getLanguage());
 
@@ -163,6 +175,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return NotificationTemplateContentDto
      */
@@ -173,6 +186,7 @@ abstract class NotificationTemplateContentAbstract
             ->setFromAddress(self::getFromAddress())
             ->setSubject(self::getSubject())
             ->setBody(self::getBody())
+            ->setBodyType(self::getBodyType())
             ->setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getNotificationTemplate(), $depth))
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth));
     }
@@ -187,6 +201,7 @@ abstract class NotificationTemplateContentAbstract
             'fromAddress' => self::getFromAddress(),
             'subject' => self::getSubject(),
             'body' => self::getBody(),
+            'bodyType' => self::getBodyType(),
             'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
@@ -305,6 +320,38 @@ abstract class NotificationTemplateContentAbstract
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * @deprecated
+     * Set bodyType
+     *
+     * @param string $bodyType
+     *
+     * @return self
+     */
+    public function setBodyType($bodyType)
+    {
+        Assertion::notNull($bodyType, 'bodyType value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($bodyType, 25, 'bodyType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($bodyType, array (
+          0 => 'text/plain',
+          1 => 'text/html',
+        ), 'bodyTypevalue "%s" is not an element of the valid values: %s');
+
+        $this->bodyType = $bodyType;
+
+        return $this;
+    }
+
+    /**
+     * Get bodyType
+     *
+     * @return string
+     */
+    public function getBodyType()
+    {
+        return $this->bodyType;
     }
 
     /**

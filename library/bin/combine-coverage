@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+use SebastianBergmann\CodeCoverage\Report\Html\Facade;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$fileList = [
+    '/opt/irontec/ivozprovider/library/spec/coverage/coverage.php',
+    '/opt/irontec/ivozprovider/scheme/tests/coverage/coverage.php',
+    '/opt/irontec/ivozprovider/web/rest/platform/features/coverage/coverage.php',
+    '/opt/irontec/ivozprovider/web/rest/brand/features/coverage/coverage.php',
+    '/opt/irontec/ivozprovider/web/rest/client/features/coverage/coverage.php',
+];
+
+$coverageReports = [];
+foreach($fileList as $file) {
+    if (!file_exists($file)) {
+        echo "$file was not found\n";
+    }
+
+    $coverageReports[] = require_once($file);
+}
+
+$mainReport = new CodeCoverage(); //Could also use one of the other ones that were generated.
+
+foreach($coverageReports as $coverageReport) {
+    $mainReport->merge($coverageReport);
+}
+
+$htmlReport = new Facade();
+$htmlReport
+    ->process(
+        $mainReport,
+        __DIR__."/../combined-coverage/"
+    );

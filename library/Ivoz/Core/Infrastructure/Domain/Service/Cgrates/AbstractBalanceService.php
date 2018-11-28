@@ -3,6 +3,7 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\Client;
+use GuzzleHttp\Exception\RequestException;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 abstract class AbstractBalanceService
@@ -83,7 +84,17 @@ abstract class AbstractBalanceService
                 [$payload]
             );
 
-        $response = $this->client->send($request);
+        try {
+            $response = $this->client->send($request);
+        } catch (RequestException $e) {
+            throw new \DomainException(
+                "Unable to get information from Billing engine",
+                40003,
+                $e
+            );
+        }
+
+
         $payload = json_decode($response->getBody()->__toString());
 
         $balanceSum = [];

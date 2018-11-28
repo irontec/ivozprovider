@@ -16,6 +16,21 @@ production:
           order:
             User.name: asc
       default: true
+    residentialDevice:
+      title: ngettext('Residential Device', 'Residential Devices', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            ResidentialDevice.name: asc
+      default: true
     callTypeFilter:
       title: _('Call type')
       type: select
@@ -55,6 +70,7 @@ production:
       required: true
       source:
         data: inline
+        filterClass: IvozProvider_Klear_Filter_TargetTypes
         values:
           'number':
             title: _('Number')

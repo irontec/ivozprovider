@@ -2,6 +2,7 @@
 
 namespace Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates;
 
+use GuzzleHttp\Exception\RequestException;
 use Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface;
 use Graze\GuzzleHttp\JsonRpc\Client;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -70,13 +71,22 @@ class FetchCallStatsService implements FetchCallStatsServiceInterface
 
     private function sendRequest($method, $payload)
     {
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
-        $request = $this->client
-            ->request(
-                1,
-                $method,
-                [$payload]
+        try {
+            /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
+            $request = $this->client
+                ->request(
+                    1,
+                    $method,
+                    [$payload]
+                );
+        } catch (RequestException $e) {
+            throw new \DomainException(
+                "Unable to get information from Billing engine",
+                40003,
+                $e
             );
+        }
+
 
         $response = $this->client->send($request);
         $responseObject = json_decode(

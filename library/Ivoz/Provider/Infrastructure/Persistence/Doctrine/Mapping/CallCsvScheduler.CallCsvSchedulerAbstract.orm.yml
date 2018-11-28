@@ -18,7 +18,7 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
       length: 30
       options:
         fixed: false
-        comment: '[enum:week|month|year]'
+        comment: '[enum:day|week|month]'
         default: 'month'
     frequency:
       type: smallint
@@ -35,6 +35,13 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
       type: datetime
       nullable: true
       column: lastExecution
+    lastExecutionError:
+      type: string
+      nullable: true
+      length: 300
+      options:
+        fixed: false
+      column: lastExecutionError
     nextExecution:
       type: datetime
       nullable: true
@@ -61,6 +68,6 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
       joinColumns:
         companyId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false

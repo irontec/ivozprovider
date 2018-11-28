@@ -4,24 +4,69 @@ namespace spec;
 
 trait HelperTrait
 {
-    protected function getterProphecy($double, array $values)
+    protected function getterProphecy($double, array $values, $shouldBeCalled = true)
     {
         foreach ($values as $method => $value) {
-            $double
+            if (is_callable($value)) {
+                list($arguments, $returnValue) = $value();
+                $prophecy = $double
+                    ->{$method}(...$arguments)
+                    ->willReturn($returnValue);
+
+                if ($shouldBeCalled) {
+                    $prophecy->shouldBeCalled();
+                }
+
+                continue;
+            }
+
+            $prophecy = $double
                 ->{$method}()
-                ->willReturn($value)
-                ->shouldBeCalled();
+                ->willReturn($value);
+
+            if ($shouldBeCalled) {
+                $prophecy->shouldBeCalled();
+            }
         }
     }
 
-    protected function fluentSetterProphecy($double, array $values)
+    protected function setterProphecy($double, array $values, $shouldBeCalled = true)
     {
         foreach ($values as $method => $value) {
-            $double
+            if (is_callable($value)) {
+                list($arguments, $returnValue) = $value();
+                $prophecy = $double
+                    ->{$method}(...$arguments)
+                    ->willReturn($returnValue);
+
+                if ($shouldBeCalled) {
+                    $prophecy->shouldBeCalled();
+                }
+
+                continue;
+            }
+
+            $prophecy = $double
                 ->{$method}($value)
-                ->willReturn($double)
-                ->shouldBeCalled();
+                ->willReturn(null);
+
+            if ($shouldBeCalled) {
+                $prophecy->shouldBeCalled();
+            }
         }
+    }
+
+    protected function fluentSetterProphecy($double, array $values, $shouldBeCalled = true)
+    {
+        foreach ($values as $method => $value) {
+            if (!is_callable($value)) {
+                $values[$method] = function () use ($double, $value) {
+                    return [[$value], $double];
+                };
+            }
+        }
+
+        $this->setterProphecy($double, $values, $shouldBeCalled);
     }
 
     protected function hydrate($object, $values)
