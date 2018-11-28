@@ -1,3 +1,40 @@
+Wed, 28 Nov 2018 15:22:53 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.8.0 released
+
+    * Portals
+        - Fixed a crash while displaying CGRateS realtime fields
+        - Removed billing inbound calls related fields (not yet implemented)
+        - Changed Zend framework env to production by default (will be managed by synfony envs from now on)
+        - Default notification templates will now be displayed in main administration portal
+        - Notification body can now be sent as HTML or plain text
+        - Added Billable calls CSV exporters
+        - Added day and removed year from CSV schedulers period options
+        - CSV schedulers will now diplay last execution status
+        - CSV schedulers can now export all brand's clients calls
+
+    * Proxies
+        - Improved bounced calls detection (when called destination belongs to current platform)
+        - Bounced calls are now properly recorded for both call endpoints
+        - Removed obsolete configuration files
+        - Added a DDI-in toggle in friends, residential and retail to change R-URI behaviour
+
+    * Residential
+        - Added support to voicemail (ported from oasis release)
+        - Added support to basic call forwarding (ported from oasis release)
+
+    * vPBX
+        - Fixed virtual fax reception AGI process
+        - Voicemails will now say the origin caller number
+
+    * Core
+        - Fixed Music on hold encoding being requested before data was stored in database
+        - Added checks to avoid retail and residentials with the same name
+        - Added checks to aviod friends and terminals with the same name
+
+    * Standalone
+        - Enable ivozprovider-cdr timer to merge cdr tables into BillableCalls
+
 Thu, 11 Oct 2018 16:58:23 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.7.1 released
