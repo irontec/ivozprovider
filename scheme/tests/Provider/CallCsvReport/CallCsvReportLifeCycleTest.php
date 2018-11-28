@@ -20,9 +20,9 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
         $callCsvReportDto
             ->setSentTo('mikel+test-orm@irontec.com')
             ->setInDate(
-                new \DateTime('2018-01-01 00:00:00')
+                new \DateTime('2017-12-31 23:00:00')
             )->setOutDate(
-                new \DateTime('2018-12-31 23:59:59')
+                new \DateTime('2018-12-31 22:59:59')
             )->setCompanyId(
                 1
             )->setCreatedOn(
@@ -82,8 +82,8 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
             $changelog->getData(),
             [
                 'sentTo' => 'mikel+test-orm@irontec.com',
-                'inDate' => '2018-01-01 00:00:00',
-                'outDate' => '2018-12-31 23:59:59',
+                'inDate' => '2017-12-31 23:00:00',
+                'outDate' => '2018-12-31 22:59:59',
                 'createdOn' => '2018-12-31 23:59:59',
                 'csvMimeType' => 'inode/x-empty; charset=binary',
                 'csvBaseName' => 'DemoCompany-20180101-20181231.csv',
