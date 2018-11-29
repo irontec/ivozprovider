@@ -38,31 +38,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set transport
-     *
-     * @param string $transport
-     *
-     * @return self
-     */
-    public function setTransport($transport);
 
     /**
      * Get transport
@@ -93,16 +73,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
-     * @deprecated
-     * Set fromDomain
-     *
-     * @param string $fromDomain
-     *
-     * @return self
-     */
-    public function setFromDomain($fromDomain = null);
-
-    /**
      * Get fromDomain
      *
      * @return string
@@ -110,31 +80,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
-     * @deprecated
-     * Set directConnectivity
-     *
-     * @param string $directConnectivity
-     *
-     * @return self
-     */
-    public function setDirectConnectivity($directConnectivity);
-
-    /**
      * Get directConnectivity
      *
      * @return string
      */
     public function getDirectConnectivity();
-
-    /**
-     * @deprecated
-     * Set ddiIn
-     *
-     * @param string $ddiIn
-     *
-     * @return self
-     */
-    public function setDdiIn($ddiIn);
 
     /**
      * Get ddiIn

@@ -26,31 +26,11 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getIp();
 
     /**
-     * @deprecated
-     * Set hostname
-     *
-     * @param string $hostname
-     *
-     * @return self
-     */
-    public function setHostname($hostname = null);
-
-    /**
      * Get hostname
      *
      * @return string
      */
     public function getHostname();
-
-    /**
-     * @deprecated
-     * Set port
-     *
-     * @param integer $port
-     *
-     * @return self
-     */
-    public function setPort($port = null);
 
     /**
      * Get port
@@ -60,31 +40,11 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
-     * @deprecated
-     * Set uriScheme
-     *
-     * @param integer $uriScheme
-     *
-     * @return self
-     */
-    public function setUriScheme($uriScheme = null);
-
-    /**
      * Get uriScheme
      *
      * @return integer
      */
     public function getUriScheme();
-
-    /**
-     * @deprecated
-     * Set transport
-     *
-     * @param integer $transport
-     *
-     * @return self
-     */
-    public function setTransport($transport = null);
 
     /**
      * Get transport
@@ -94,31 +54,11 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getTransport();
 
     /**
-     * @deprecated
-     * Set sendPAI
-     *
-     * @param boolean $sendPAI
-     *
-     * @return self
-     */
-    public function setSendPAI($sendPAI = null);
-
-    /**
      * Get sendPAI
      *
      * @return boolean
      */
     public function getSendPAI();
-
-    /**
-     * @deprecated
-     * Set sendRPID
-     *
-     * @param boolean $sendRPID
-     *
-     * @return self
-     */
-    public function setSendRPID($sendRPID = null);
 
     /**
      * Get sendRPID
@@ -128,31 +68,11 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getSendRPID();
 
     /**
-     * @deprecated
-     * Set authNeeded
-     *
-     * @param string $authNeeded
-     *
-     * @return self
-     */
-    public function setAuthNeeded($authNeeded);
-
-    /**
      * Get authNeeded
      *
      * @return string
      */
     public function getAuthNeeded();
-
-    /**
-     * @deprecated
-     * Set authUser
-     *
-     * @param string $authUser
-     *
-     * @return self
-     */
-    public function setAuthUser($authUser = null);
 
     /**
      * Get authUser
@@ -162,31 +82,11 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getAuthUser();
 
     /**
-     * @deprecated
-     * Set authPassword
-     *
-     * @param string $authPassword
-     *
-     * @return self
-     */
-    public function setAuthPassword($authPassword = null);
-
-    /**
      * Get authPassword
      *
      * @return string
      */
     public function getAuthPassword();
-
-    /**
-     * @deprecated
-     * Set sipProxy
-     *
-     * @param string $sipProxy
-     *
-     * @return self
-     */
-    public function setSipProxy($sipProxy = null);
 
     /**
      * Get sipProxy
@@ -196,16 +96,6 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getSipProxy();
 
     /**
-     * @deprecated
-     * Set outboundProxy
-     *
-     * @param string $outboundProxy
-     *
-     * @return self
-     */
-    public function setOutboundProxy($outboundProxy = null);
-
-    /**
      * Get outboundProxy
      *
      * @return string
@@ -213,31 +103,11 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getOutboundProxy();
 
     /**
-     * @deprecated
-     * Set fromUser
-     *
-     * @param string $fromUser
-     *
-     * @return self
-     */
-    public function setFromUser($fromUser = null);
-
-    /**
      * Get fromUser
      *
      * @return string
      */
     public function getFromUser();
-
-    /**
-     * @deprecated
-     * Set fromDomain
-     *
-     * @param string $fromDomain
-     *
-     * @return self
-     */
-    public function setFromDomain($fromDomain = null);
 
     /**
      * Get fromDomain

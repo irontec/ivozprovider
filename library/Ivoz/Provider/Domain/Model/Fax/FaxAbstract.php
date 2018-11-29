@@ -189,14 +189,13 @@ abstract class FaxAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -217,14 +216,13 @@ abstract class FaxAbstract
     }
 
     /**
-     * @deprecated
      * Set email
      *
      * @param string $email
      *
      * @return self
      */
-    public function setEmail($email = null)
+    protected function setEmail($email = null)
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 255, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -246,14 +244,13 @@ abstract class FaxAbstract
     }
 
     /**
-     * @deprecated
      * Set sendByEmail
      *
      * @param boolean $sendByEmail
      *
      * @return self
      */
-    public function setSendByEmail($sendByEmail)
+    protected function setSendByEmail($sendByEmail)
     {
         Assertion::notNull($sendByEmail, 'sendByEmail value "%s" is null, but non null value was expected.');
         Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');

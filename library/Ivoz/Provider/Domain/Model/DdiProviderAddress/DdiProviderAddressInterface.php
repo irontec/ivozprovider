@@ -25,16 +25,6 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     public function getIp();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
      * @return string

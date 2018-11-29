@@ -292,14 +292,13 @@ abstract class CarrierServerAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set ip
      *
      * @param string $ip
      *
      * @return self
      */
-    public function setIp($ip = null)
+    protected function setIp($ip = null)
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -321,14 +320,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set hostname
      *
      * @param string $hostname
      *
      * @return self
      */
-    public function setHostname($hostname = null)
+    protected function setHostname($hostname = null)
     {
         if (!is_null($hostname)) {
             Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -350,14 +348,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set port
      *
      * @param integer $port
      *
      * @return self
      */
-    public function setPort($port = null)
+    protected function setPort($port = null)
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
@@ -382,14 +379,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set uriScheme
      *
      * @param integer $uriScheme
      *
      * @return self
      */
-    public function setUriScheme($uriScheme = null)
+    protected function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
             if (!is_null($uriScheme)) {
@@ -414,14 +410,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set transport
      *
      * @param integer $transport
      *
      * @return self
      */
-    public function setTransport($transport = null)
+    protected function setTransport($transport = null)
     {
         if (!is_null($transport)) {
             if (!is_null($transport)) {
@@ -446,14 +441,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set sendPAI
      *
      * @param boolean $sendPAI
      *
      * @return self
      */
-    public function setSendPAI($sendPAI = null)
+    protected function setSendPAI($sendPAI = null)
     {
         if (!is_null($sendPAI)) {
             Assertion::between(intval($sendPAI), 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
@@ -475,14 +469,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set sendRPID
      *
      * @param boolean $sendRPID
      *
      * @return self
      */
-    public function setSendRPID($sendRPID = null)
+    protected function setSendRPID($sendRPID = null)
     {
         if (!is_null($sendRPID)) {
             Assertion::between(intval($sendRPID), 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
@@ -504,14 +497,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
      *
      * @return self
      */
-    public function setAuthNeeded($authNeeded)
+    protected function setAuthNeeded($authNeeded)
     {
         Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
 
@@ -531,14 +523,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set authUser
      *
      * @param string $authUser
      *
      * @return self
      */
-    public function setAuthUser($authUser = null)
+    protected function setAuthUser($authUser = null)
     {
         if (!is_null($authUser)) {
             Assertion::maxLength($authUser, 64, 'authUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -560,14 +551,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
      *
      * @return self
      */
-    public function setAuthPassword($authPassword = null)
+    protected function setAuthPassword($authPassword = null)
     {
         if (!is_null($authPassword)) {
             Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -589,14 +579,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set sipProxy
      *
      * @param string $sipProxy
      *
      * @return self
      */
-    public function setSipProxy($sipProxy = null)
+    protected function setSipProxy($sipProxy = null)
     {
         if (!is_null($sipProxy)) {
             Assertion::maxLength($sipProxy, 128, 'sipProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -618,14 +607,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set outboundProxy
      *
      * @param string $outboundProxy
      *
      * @return self
      */
-    public function setOutboundProxy($outboundProxy = null)
+    protected function setOutboundProxy($outboundProxy = null)
     {
         if (!is_null($outboundProxy)) {
             Assertion::maxLength($outboundProxy, 128, 'outboundProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -647,14 +635,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set fromUser
      *
      * @param string $fromUser
      *
      * @return self
      */
-    public function setFromUser($fromUser = null)
+    protected function setFromUser($fromUser = null)
     {
         if (!is_null($fromUser)) {
             Assertion::maxLength($fromUser, 64, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -676,14 +663,13 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
      *
      * @return self
      */
-    public function setFromDomain($fromDomain = null)
+    protected function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');

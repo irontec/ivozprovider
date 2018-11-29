@@ -24,31 +24,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getTimezone();
 
     /**
-     * @deprecated
-     * Set sentTo
-     *
-     * @param string $sentTo
-     *
-     * @return self
-     */
-    public function setSentTo($sentTo);
-
-    /**
      * Get sentTo
      *
      * @return string
      */
     public function getSentTo();
-
-    /**
-     * @deprecated
-     * Set inDate
-     *
-     * @param \DateTime $inDate
-     *
-     * @return self
-     */
-    public function setInDate($inDate);
 
     /**
      * Get inDate
@@ -58,31 +38,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getInDate();
 
     /**
-     * @deprecated
-     * Set outDate
-     *
-     * @param \DateTime $outDate
-     *
-     * @return self
-     */
-    public function setOutDate($outDate);
-
-    /**
      * Get outDate
      *
      * @return \DateTime
      */
     public function getOutDate();
-
-    /**
-     * @deprecated
-     * Set createdOn
-     *
-     * @param \DateTime $createdOn
-     *
-     * @return self
-     */
-    public function setCreatedOn($createdOn);
 
     /**
      * Get createdOn

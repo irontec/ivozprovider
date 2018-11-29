@@ -168,14 +168,13 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set quantity
      *
      * @param integer $quantity
      *
      * @return self
      */
-    public function setQuantity($quantity = null)
+    protected function setQuantity($quantity = null)
     {
         if (!is_null($quantity)) {
             if (!is_null($quantity)) {

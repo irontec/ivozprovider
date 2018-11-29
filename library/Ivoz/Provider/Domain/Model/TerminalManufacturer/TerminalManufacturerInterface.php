@@ -13,16 +13,6 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return self
-     */
-    public function setIden($iden);
-
-    /**
      * Get iden
      *
      * @return string
@@ -30,31 +20,11 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
     public function getIden();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
 
     /**
      * Get description

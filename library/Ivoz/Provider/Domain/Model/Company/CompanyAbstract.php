@@ -475,14 +475,13 @@ abstract class CompanyAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set type
      *
      * @param string $type
      *
      * @return self
      */
-    public function setType($type)
+    protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -509,14 +508,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 80, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -537,14 +535,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set domainUsers
      *
      * @param string $domainUsers
      *
      * @return self
      */
-    public function setDomainUsers($domainUsers = null)
+    protected function setDomainUsers($domainUsers = null)
     {
         if (!is_null($domainUsers)) {
             Assertion::maxLength($domainUsers, 190, 'domainUsers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -566,14 +563,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set nif
      *
      * @param string $nif
      *
      * @return self
      */
-    public function setNif($nif)
+    protected function setNif($nif)
     {
         Assertion::notNull($nif, 'nif value "%s" is null, but non null value was expected.');
         Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -594,14 +590,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set distributeMethod
      *
      * @param string $distributeMethod
      *
      * @return self
      */
-    public function setDistributeMethod($distributeMethod)
+    protected function setDistributeMethod($distributeMethod)
     {
         Assertion::notNull($distributeMethod, 'distributeMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($distributeMethod, 25, 'distributeMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -627,14 +622,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
      *
      * @return self
      */
-    public function setMaxCalls($maxCalls)
+    protected function setMaxCalls($maxCalls)
     {
         Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
@@ -656,14 +650,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set postalAddress
      *
      * @param string $postalAddress
      *
      * @return self
      */
-    public function setPostalAddress($postalAddress)
+    protected function setPostalAddress($postalAddress)
     {
         Assertion::notNull($postalAddress, 'postalAddress value "%s" is null, but non null value was expected.');
         Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -684,14 +677,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set postalCode
      *
      * @param string $postalCode
      *
      * @return self
      */
-    public function setPostalCode($postalCode)
+    protected function setPostalCode($postalCode)
     {
         Assertion::notNull($postalCode, 'postalCode value "%s" is null, but non null value was expected.');
         Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -712,14 +704,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set town
      *
      * @param string $town
      *
      * @return self
      */
-    public function setTown($town)
+    protected function setTown($town)
     {
         Assertion::notNull($town, 'town value "%s" is null, but non null value was expected.');
         Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -740,14 +731,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set province
      *
      * @param string $province
      *
      * @return self
      */
-    public function setProvince($province)
+    protected function setProvince($province)
     {
         Assertion::notNull($province, 'province value "%s" is null, but non null value was expected.');
         Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -768,14 +758,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set countryName
      *
      * @param string $countryName
      *
      * @return self
      */
-    public function setCountryName($countryName)
+    protected function setCountryName($countryName)
     {
         Assertion::notNull($countryName, 'countryName value "%s" is null, but non null value was expected.');
         Assertion::maxLength($countryName, 255, 'countryName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -796,14 +785,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set ipfilter
      *
      * @param boolean $ipfilter
      *
      * @return self
      */
-    public function setIpfilter($ipfilter = null)
+    protected function setIpfilter($ipfilter = null)
     {
         if (!is_null($ipfilter)) {
             Assertion::between(intval($ipfilter), 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
@@ -825,14 +813,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set onDemandRecord
      *
      * @param integer $onDemandRecord
      *
      * @return self
      */
-    public function setOnDemandRecord($onDemandRecord = null)
+    protected function setOnDemandRecord($onDemandRecord = null)
     {
         if (!is_null($onDemandRecord)) {
             if (!is_null($onDemandRecord)) {
@@ -856,14 +843,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set onDemandRecordCode
      *
      * @param string $onDemandRecordCode
      *
      * @return self
      */
-    public function setOnDemandRecordCode($onDemandRecordCode = null)
+    protected function setOnDemandRecordCode($onDemandRecordCode = null)
     {
         if (!is_null($onDemandRecordCode)) {
             Assertion::maxLength($onDemandRecordCode, 3, 'onDemandRecordCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -885,14 +871,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set externallyextraopts
      *
      * @param string $externallyextraopts
      *
      * @return self
      */
-    public function setExternallyextraopts($externallyextraopts = null)
+    protected function setExternallyextraopts($externallyextraopts = null)
     {
         if (!is_null($externallyextraopts)) {
             Assertion::maxLength($externallyextraopts, 65535, 'externallyextraopts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -914,14 +899,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
      *
      * @return self
      */
-    public function setRecordingsLimitMB($recordingsLimitMB = null)
+    protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
         if (!is_null($recordingsLimitMB)) {
             if (!is_null($recordingsLimitMB)) {
@@ -945,14 +929,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
      *
      * @return self
      */
-    public function setRecordingsLimitEmail($recordingsLimitEmail = null)
+    protected function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
         if (!is_null($recordingsLimitEmail)) {
             Assertion::maxLength($recordingsLimitEmail, 250, 'recordingsLimitEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -974,14 +957,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set billingMethod
      *
      * @param string $billingMethod
      *
      * @return self
      */
-    public function setBillingMethod($billingMethod)
+    protected function setBillingMethod($billingMethod)
     {
         Assertion::notNull($billingMethod, 'billingMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($billingMethod, 25, 'billingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1007,14 +989,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set balance
      *
      * @param string $balance
      *
      * @return self
      */
-    public function setBalance($balance = null)
+    protected function setBalance($balance = null)
     {
         if (!is_null($balance)) {
             if (!is_null($balance)) {
@@ -1039,14 +1020,13 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @deprecated
      * Set showInvoices
      *
      * @param boolean $showInvoices
      *
      * @return self
      */
-    public function setShowInvoices($showInvoices = null)
+    protected function setShowInvoices($showInvoices = null)
     {
         if (!is_null($showInvoices)) {
             Assertion::between(intval($showInvoices), 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');

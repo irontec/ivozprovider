@@ -186,14 +186,13 @@ abstract class BalanceMovementAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set amount
      *
      * @param string $amount
      *
      * @return self
      */
-    public function setAmount($amount = null)
+    protected function setAmount($amount = null)
     {
         if (!is_null($amount)) {
             if (!is_null($amount)) {
@@ -218,14 +217,13 @@ abstract class BalanceMovementAbstract
     }
 
     /**
-     * @deprecated
      * Set balance
      *
      * @param string $balance
      *
      * @return self
      */
-    public function setBalance($balance = null)
+    protected function setBalance($balance = null)
     {
         if (!is_null($balance)) {
             if (!is_null($balance)) {
@@ -250,14 +248,13 @@ abstract class BalanceMovementAbstract
     }
 
     /**
-     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
      *
      * @return self
      */
-    public function setCreatedOn($createdOn = null)
+    protected function setCreatedOn($createdOn = null)
     {
         if (!is_null($createdOn)) {
             $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

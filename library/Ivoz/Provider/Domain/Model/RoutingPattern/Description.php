@@ -36,7 +36,6 @@ class Description
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set en
      *
      * @param string $en
@@ -65,7 +64,6 @@ class Description
     }
 
     /**
-     * @deprecated
      * Set es
      *
      * @param string $es

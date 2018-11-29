@@ -181,14 +181,13 @@ abstract class OutgoingDdiRuleAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -209,14 +208,13 @@ abstract class OutgoingDdiRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set defaultAction
      *
      * @param string $defaultAction
      *
      * @return self
      */
-    public function setDefaultAction($defaultAction)
+    protected function setDefaultAction($defaultAction)
     {
         Assertion::notNull($defaultAction, 'defaultAction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($defaultAction, 10, 'defaultAction value "%s" is too long, it should have no more than %d characters, but has %d characters.');

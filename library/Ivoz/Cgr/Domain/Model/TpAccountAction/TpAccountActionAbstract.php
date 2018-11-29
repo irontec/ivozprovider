@@ -259,14 +259,13 @@ abstract class TpAccountActionAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tpid
      *
      * @param string $tpid
      *
      * @return self
      */
-    public function setTpid($tpid)
+    protected function setTpid($tpid)
     {
         Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -287,14 +286,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set loadid
      *
      * @param string $loadid
      *
      * @return self
      */
-    public function setLoadid($loadid)
+    protected function setLoadid($loadid)
     {
         Assertion::notNull($loadid, 'loadid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($loadid, 64, 'loadid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -315,14 +313,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set tenant
      *
      * @param string $tenant
      *
      * @return self
      */
-    public function setTenant($tenant)
+    protected function setTenant($tenant)
     {
         Assertion::notNull($tenant, 'tenant value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -343,14 +340,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set account
      *
      * @param string $account
      *
      * @return self
      */
-    public function setAccount($account)
+    protected function setAccount($account)
     {
         Assertion::notNull($account, 'account value "%s" is null, but non null value was expected.');
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -371,14 +367,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set actionPlanTag
      *
      * @param string $actionPlanTag
      *
      * @return self
      */
-    public function setActionPlanTag($actionPlanTag = null)
+    protected function setActionPlanTag($actionPlanTag = null)
     {
         if (!is_null($actionPlanTag)) {
             Assertion::maxLength($actionPlanTag, 64, 'actionPlanTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -400,14 +395,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set actionTriggersTag
      *
      * @param string $actionTriggersTag
      *
      * @return self
      */
-    public function setActionTriggersTag($actionTriggersTag = null)
+    protected function setActionTriggersTag($actionTriggersTag = null)
     {
         if (!is_null($actionTriggersTag)) {
             Assertion::maxLength($actionTriggersTag, 64, 'actionTriggersTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -429,14 +423,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set allowNegative
      *
      * @param boolean $allowNegative
      *
      * @return self
      */
-    public function setAllowNegative($allowNegative)
+    protected function setAllowNegative($allowNegative)
     {
         Assertion::notNull($allowNegative, 'allowNegative value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowNegative), 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
@@ -457,14 +450,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
      *
      * @return self
      */
-    public function setDisabled($disabled)
+    protected function setDisabled($disabled)
     {
         Assertion::notNull($disabled, 'disabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
@@ -485,14 +477,13 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt)
     {
         Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
         $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

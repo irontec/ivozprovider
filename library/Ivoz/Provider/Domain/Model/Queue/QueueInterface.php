@@ -62,31 +62,11 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMaxWaitTime();
 
     /**
-     * @deprecated
-     * Set timeoutTargetType
-     *
-     * @param string $timeoutTargetType
-     *
-     * @return self
-     */
-    public function setTimeoutTargetType($timeoutTargetType = null);
-
-    /**
      * Get timeoutTargetType
      *
      * @return string
      */
     public function getTimeoutTargetType();
-
-    /**
-     * @deprecated
-     * Set timeoutNumberValue
-     *
-     * @param string $timeoutNumberValue
-     *
-     * @return self
-     */
-    public function setTimeoutNumberValue($timeoutNumberValue = null);
 
     /**
      * Get timeoutNumberValue
@@ -103,31 +83,11 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMaxlen();
 
     /**
-     * @deprecated
-     * Set fullTargetType
-     *
-     * @param string $fullTargetType
-     *
-     * @return self
-     */
-    public function setFullTargetType($fullTargetType = null);
-
-    /**
      * Get fullTargetType
      *
      * @return string
      */
     public function getFullTargetType();
-
-    /**
-     * @deprecated
-     * Set fullNumberValue
-     *
-     * @param string $fullNumberValue
-     *
-     * @return self
-     */
-    public function setFullNumberValue($fullNumberValue = null);
 
     /**
      * Get fullNumberValue
@@ -137,31 +97,11 @@ interface QueueInterface extends LoggableEntityInterface
     public function getFullNumberValue();
 
     /**
-     * @deprecated
-     * Set periodicAnnounceFrequency
-     *
-     * @param integer $periodicAnnounceFrequency
-     *
-     * @return self
-     */
-    public function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null);
-
-    /**
      * Get periodicAnnounceFrequency
      *
      * @return integer
      */
     public function getPeriodicAnnounceFrequency();
-
-    /**
-     * @deprecated
-     * Set memberCallRest
-     *
-     * @param integer $memberCallRest
-     *
-     * @return self
-     */
-    public function setMemberCallRest($memberCallRest = null);
 
     /**
      * Get memberCallRest
@@ -171,16 +111,6 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMemberCallRest();
 
     /**
-     * @deprecated
-     * Set memberCallTimeout
-     *
-     * @param integer $memberCallTimeout
-     *
-     * @return self
-     */
-    public function setMemberCallTimeout($memberCallTimeout = null);
-
-    /**
      * Get memberCallTimeout
      *
      * @return integer
@@ -188,31 +118,11 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMemberCallTimeout();
 
     /**
-     * @deprecated
-     * Set strategy
-     *
-     * @param string $strategy
-     *
-     * @return self
-     */
-    public function setStrategy($strategy = null);
-
-    /**
      * Get strategy
      *
      * @return string
      */
     public function getStrategy();
-
-    /**
-     * @deprecated
-     * Set weight
-     *
-     * @param integer $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight = null);
 
     /**
      * Get weight

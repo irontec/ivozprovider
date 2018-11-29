@@ -27,31 +27,11 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
      */
     public function getTpid();
-
-    /**
-     * @deprecated
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return self
-     */
-    public function setLoadid($loadid);
 
     /**
      * Get loadid
@@ -61,31 +41,11 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
-     * @deprecated
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return self
-     */
-    public function setTenant($tenant);
-
-    /**
      * Get tenant
      *
      * @return string
      */
     public function getTenant();
-
-    /**
-     * @deprecated
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return self
-     */
-    public function setAccount($account);
 
     /**
      * Get account
@@ -95,31 +55,11 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getAccount();
 
     /**
-     * @deprecated
-     * Set actionPlanTag
-     *
-     * @param string $actionPlanTag
-     *
-     * @return self
-     */
-    public function setActionPlanTag($actionPlanTag = null);
-
-    /**
      * Get actionPlanTag
      *
      * @return string
      */
     public function getActionPlanTag();
-
-    /**
-     * @deprecated
-     * Set actionTriggersTag
-     *
-     * @param string $actionTriggersTag
-     *
-     * @return self
-     */
-    public function setActionTriggersTag($actionTriggersTag = null);
 
     /**
      * Get actionTriggersTag
@@ -129,16 +69,6 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getActionTriggersTag();
 
     /**
-     * @deprecated
-     * Set allowNegative
-     *
-     * @param boolean $allowNegative
-     *
-     * @return self
-     */
-    public function setAllowNegative($allowNegative);
-
-    /**
      * Get allowNegative
      *
      * @return boolean
@@ -146,31 +76,11 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getAllowNegative();
 
     /**
-     * @deprecated
-     * Set disabled
-     *
-     * @param boolean $disabled
-     *
-     * @return self
-     */
-    public function setDisabled($disabled);
-
-    /**
      * Get disabled
      *
      * @return boolean
      */
     public function getDisabled();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

@@ -239,14 +239,13 @@ abstract class TrunksLcrRuleAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
      *
      * @return self
      */
-    public function setLcrId($lcrId)
+    protected function setLcrId($lcrId)
     {
         Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
         Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
@@ -268,14 +267,13 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set prefix
      *
      * @param string $prefix
      *
      * @return self
      */
-    public function setPrefix($prefix = null)
+    protected function setPrefix($prefix = null)
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 100, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -297,14 +295,13 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set fromUri
      *
      * @param string $fromUri
      *
      * @return self
      */
-    public function setFromUri($fromUri = null)
+    protected function setFromUri($fromUri = null)
     {
         if (!is_null($fromUri)) {
             Assertion::maxLength($fromUri, 255, 'fromUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -326,14 +323,13 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set requestUri
      *
      * @param string $requestUri
      *
      * @return self
      */
-    public function setRequestUri($requestUri = null)
+    protected function setRequestUri($requestUri = null)
     {
         if (!is_null($requestUri)) {
             Assertion::maxLength($requestUri, 100, 'requestUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -355,14 +351,13 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set mtTvalue
      *
      * @param string $mtTvalue
      *
      * @return self
      */
-    public function setMtTvalue($mtTvalue = null)
+    protected function setMtTvalue($mtTvalue = null)
     {
         if (!is_null($mtTvalue)) {
             Assertion::maxLength($mtTvalue, 128, 'mtTvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -384,14 +379,13 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set stopper
      *
      * @param integer $stopper
      *
      * @return self
      */
-    public function setStopper($stopper)
+    protected function setStopper($stopper)
     {
         Assertion::notNull($stopper, 'stopper value "%s" is null, but non null value was expected.');
         Assertion::integerish($stopper, 'stopper value "%s" is not an integer or a number castable to integer.');
@@ -413,14 +407,13 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set enabled
      *
      * @param integer $enabled
      *
      * @return self
      */
-    public function setEnabled($enabled)
+    protected function setEnabled($enabled)
     {
         Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
         Assertion::integerish($enabled, 'enabled value "%s" is not an integer or a number castable to integer.');

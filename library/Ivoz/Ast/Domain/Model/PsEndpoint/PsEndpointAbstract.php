@@ -334,14 +334,13 @@ abstract class PsEndpointAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set sorceryId
      *
      * @param string $sorceryId
      *
      * @return self
      */
-    public function setSorceryId($sorceryId)
+    protected function setSorceryId($sorceryId)
     {
         Assertion::notNull($sorceryId, 'sorceryId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($sorceryId, 40, 'sorceryId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -362,14 +361,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
      *
      * @return self
      */
-    public function setFromDomain($fromDomain = null)
+    protected function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -391,14 +389,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set aors
      *
      * @param string $aors
      *
      * @return self
      */
-    public function setAors($aors = null)
+    protected function setAors($aors = null)
     {
         if (!is_null($aors)) {
             Assertion::maxLength($aors, 200, 'aors value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -420,14 +417,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set callerid
      *
      * @param string $callerid
      *
      * @return self
      */
-    public function setCallerid($callerid = null)
+    protected function setCallerid($callerid = null)
     {
         if (!is_null($callerid)) {
             Assertion::maxLength($callerid, 100, 'callerid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -449,14 +445,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set context
      *
      * @param string $context
      *
      * @return self
      */
-    public function setContext($context)
+    protected function setContext($context)
     {
         Assertion::notNull($context, 'context value "%s" is null, but non null value was expected.');
         Assertion::maxLength($context, 40, 'context value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -477,14 +472,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set disallow
      *
      * @param string $disallow
      *
      * @return self
      */
-    public function setDisallow($disallow)
+    protected function setDisallow($disallow)
     {
         Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -505,14 +499,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set allow
      *
      * @param string $allow
      *
      * @return self
      */
-    public function setAllow($allow)
+    protected function setAllow($allow)
     {
         Assertion::notNull($allow, 'allow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($allow, 200, 'allow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -533,14 +526,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set directMedia
      *
      * @param string $directMedia
      *
      * @return self
      */
-    public function setDirectMedia($directMedia = null)
+    protected function setDirectMedia($directMedia = null)
     {
         if (!is_null($directMedia)) {
         }
@@ -561,14 +553,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
      *
      * @return self
      */
-    public function setDirectMediaMethod($directMediaMethod = null)
+    protected function setDirectMediaMethod($directMediaMethod = null)
     {
         if (!is_null($directMediaMethod)) {
             Assertion::choice($directMediaMethod, array (
@@ -594,14 +585,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set mailboxes
      *
      * @param string $mailboxes
      *
      * @return self
      */
-    public function setMailboxes($mailboxes = null)
+    protected function setMailboxes($mailboxes = null)
     {
         if (!is_null($mailboxes)) {
             Assertion::maxLength($mailboxes, 100, 'mailboxes value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -623,14 +613,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set namedPickupGroup
      *
      * @param string $namedPickupGroup
      *
      * @return self
      */
-    public function setNamedPickupGroup($namedPickupGroup = null)
+    protected function setNamedPickupGroup($namedPickupGroup = null)
     {
         if (!is_null($namedPickupGroup)) {
             Assertion::maxLength($namedPickupGroup, 40, 'namedPickupGroup value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -652,14 +641,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set sendDiversion
      *
      * @param string $sendDiversion
      *
      * @return self
      */
-    public function setSendDiversion($sendDiversion = null)
+    protected function setSendDiversion($sendDiversion = null)
     {
         if (!is_null($sendDiversion)) {
         }
@@ -680,14 +668,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set sendPai
      *
      * @param string $sendPai
      *
      * @return self
      */
-    public function setSendPai($sendPai = null)
+    protected function setSendPai($sendPai = null)
     {
         if (!is_null($sendPai)) {
         }
@@ -708,14 +695,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set oneHundredRel
      *
      * @param string $oneHundredRel
      *
      * @return self
      */
-    public function setOneHundredRel($oneHundredRel)
+    protected function setOneHundredRel($oneHundredRel)
     {
         Assertion::notNull($oneHundredRel, 'oneHundredRel value "%s" is null, but non null value was expected.');
 
@@ -735,14 +721,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set outboundProxy
      *
      * @param string $outboundProxy
      *
      * @return self
      */
-    public function setOutboundProxy($outboundProxy = null)
+    protected function setOutboundProxy($outboundProxy = null)
     {
         if (!is_null($outboundProxy)) {
             Assertion::maxLength($outboundProxy, 256, 'outboundProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -764,14 +749,13 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @deprecated
      * Set trustIdInbound
      *
      * @param string $trustIdInbound
      *
      * @return self
      */
-    public function setTrustIdInbound($trustIdInbound = null)
+    protected function setTrustIdInbound($trustIdInbound = null)
     {
         if (!is_null($trustIdInbound)) {
         }

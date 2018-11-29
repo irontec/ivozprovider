@@ -22,16 +22,6 @@ interface CalendarInterface extends LoggableEntityInterface
     public function isHolidayDate($date);
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string

@@ -240,14 +240,13 @@ abstract class CallCsvReportAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set sentTo
      *
      * @param string $sentTo
      *
      * @return self
      */
-    public function setSentTo($sentTo)
+    protected function setSentTo($sentTo)
     {
         Assertion::notNull($sentTo, 'sentTo value "%s" is null, but non null value was expected.');
         Assertion::maxLength($sentTo, 250, 'sentTo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -268,14 +267,13 @@ abstract class CallCsvReportAbstract
     }
 
     /**
-     * @deprecated
      * Set inDate
      *
      * @param \DateTime $inDate
      *
      * @return self
      */
-    public function setInDate($inDate)
+    protected function setInDate($inDate)
     {
         Assertion::notNull($inDate, 'inDate value "%s" is null, but non null value was expected.');
         $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -299,14 +297,13 @@ abstract class CallCsvReportAbstract
     }
 
     /**
-     * @deprecated
      * Set outDate
      *
      * @param \DateTime $outDate
      *
      * @return self
      */
-    public function setOutDate($outDate)
+    protected function setOutDate($outDate)
     {
         Assertion::notNull($outDate, 'outDate value "%s" is null, but non null value was expected.');
         $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -330,14 +327,13 @@ abstract class CallCsvReportAbstract
     }
 
     /**
-     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
      *
      * @return self
      */
-    public function setCreatedOn($createdOn)
+    protected function setCreatedOn($createdOn)
     {
         Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
         $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

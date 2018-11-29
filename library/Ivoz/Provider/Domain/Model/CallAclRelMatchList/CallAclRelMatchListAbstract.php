@@ -181,14 +181,13 @@ abstract class CallAclRelMatchListAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority)
+    protected function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
@@ -209,14 +208,13 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
-     * @deprecated
      * Set policy
      *
      * @param string $policy
      *
      * @return self
      */
-    public function setPolicy($policy)
+    protected function setPolicy($policy)
     {
         Assertion::notNull($policy, 'policy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($policy, 25, 'policy value "%s" is too long, it should have no more than %d characters, but has %d characters.');

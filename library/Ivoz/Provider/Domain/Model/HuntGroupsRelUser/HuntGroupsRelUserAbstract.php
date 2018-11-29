@@ -177,14 +177,13 @@ abstract class HuntGroupsRelUserAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set timeoutTime
      *
      * @param integer $timeoutTime
      *
      * @return self
      */
-    public function setTimeoutTime($timeoutTime = null)
+    protected function setTimeoutTime($timeoutTime = null)
     {
         if (!is_null($timeoutTime)) {
             if (!is_null($timeoutTime)) {
@@ -208,14 +207,13 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority = null)
+    protected function setPriority($priority = null)
     {
         if (!is_null($priority)) {
             if (!is_null($priority)) {

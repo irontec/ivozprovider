@@ -198,14 +198,13 @@ abstract class UsersHtableAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set keyName
      *
      * @param string $keyName
      *
      * @return self
      */
-    public function setKeyName($keyName)
+    protected function setKeyName($keyName)
     {
         Assertion::notNull($keyName, 'keyName value "%s" is null, but non null value was expected.');
         Assertion::maxLength($keyName, 64, 'keyName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -226,14 +225,13 @@ abstract class UsersHtableAbstract
     }
 
     /**
-     * @deprecated
      * Set keyType
      *
      * @param integer $keyType
      *
      * @return self
      */
-    public function setKeyType($keyType)
+    protected function setKeyType($keyType)
     {
         Assertion::notNull($keyType, 'keyType value "%s" is null, but non null value was expected.');
         Assertion::integerish($keyType, 'keyType value "%s" is not an integer or a number castable to integer.');
@@ -254,14 +252,13 @@ abstract class UsersHtableAbstract
     }
 
     /**
-     * @deprecated
      * Set valueType
      *
      * @param integer $valueType
      *
      * @return self
      */
-    public function setValueType($valueType)
+    protected function setValueType($valueType)
     {
         Assertion::notNull($valueType, 'valueType value "%s" is null, but non null value was expected.');
         Assertion::integerish($valueType, 'valueType value "%s" is not an integer or a number castable to integer.');
@@ -282,14 +279,13 @@ abstract class UsersHtableAbstract
     }
 
     /**
-     * @deprecated
      * Set keyValue
      *
      * @param string $keyValue
      *
      * @return self
      */
-    public function setKeyValue($keyValue)
+    protected function setKeyValue($keyValue)
     {
         Assertion::notNull($keyValue, 'keyValue value "%s" is null, but non null value was expected.');
         Assertion::maxLength($keyValue, 128, 'keyValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -310,14 +306,13 @@ abstract class UsersHtableAbstract
     }
 
     /**
-     * @deprecated
      * Set expires
      *
      * @param integer $expires
      *
      * @return self
      */
-    public function setExpires($expires)
+    protected function setExpires($expires)
     {
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');

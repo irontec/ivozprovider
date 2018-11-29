@@ -24,16 +24,6 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function setTrunkPrefix($trunkPrefix = null);
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
      * @return string
@@ -55,16 +45,6 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getTrunkPrefix();
 
     /**
-     * @deprecated
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null);
-
-    /**
      * Get areaCode
      *
      * @return string
@@ -72,31 +52,11 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getAreaCode();
 
     /**
-     * @deprecated
-     * Set nationalLen
-     *
-     * @param integer $nationalLen
-     *
-     * @return self
-     */
-    public function setNationalLen($nationalLen = null);
-
-    /**
      * Get nationalLen
      *
      * @return integer
      */
     public function getNationalLen();
-
-    /**
-     * @deprecated
-     * Set generateRules
-     *
-     * @param boolean $generateRules
-     *
-     * @return self
-     */
-    public function setGenerateRules($generateRules = null);
 
     /**
      * Get generateRules

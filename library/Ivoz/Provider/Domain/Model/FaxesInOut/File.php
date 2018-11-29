@@ -44,7 +44,6 @@ class File
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set fileSize
      *
      * @param integer $fileSize
@@ -76,7 +75,6 @@ class File
     }
 
     /**
-     * @deprecated
      * Set mimeType
      *
      * @param string $mimeType
@@ -105,7 +103,6 @@ class File
     }
 
     /**
-     * @deprecated
      * Set baseName
      *
      * @param string $baseName

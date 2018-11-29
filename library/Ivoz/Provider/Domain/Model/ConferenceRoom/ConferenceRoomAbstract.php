@@ -190,14 +190,13 @@ abstract class ConferenceRoomAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -218,14 +217,13 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @deprecated
      * Set pinProtected
      *
      * @param boolean $pinProtected
      *
      * @return self
      */
-    public function setPinProtected($pinProtected)
+    protected function setPinProtected($pinProtected)
     {
         Assertion::notNull($pinProtected, 'pinProtected value "%s" is null, but non null value was expected.');
         Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
@@ -246,14 +244,13 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @deprecated
      * Set pinCode
      *
      * @param string $pinCode
      *
      * @return self
      */
-    public function setPinCode($pinCode = null)
+    protected function setPinCode($pinCode = null)
     {
         if (!is_null($pinCode)) {
             Assertion::maxLength($pinCode, 6, 'pinCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -275,14 +272,13 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @deprecated
      * Set maxMembers
      *
      * @param integer $maxMembers
      *
      * @return self
      */
-    public function setMaxMembers($maxMembers)
+    protected function setMaxMembers($maxMembers)
     {
         Assertion::notNull($maxMembers, 'maxMembers value "%s" is null, but non null value was expected.');
         Assertion::integerish($maxMembers, 'maxMembers value "%s" is not an integer or a number castable to integer.');

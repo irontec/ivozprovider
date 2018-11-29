@@ -239,14 +239,13 @@ abstract class UsersPresentityAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set username
      *
      * @param string $username
      *
      * @return self
      */
-    public function setUsername($username)
+    protected function setUsername($username)
     {
         Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -267,14 +266,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set domain
      *
      * @param string $domain
      *
      * @return self
      */
-    public function setDomain($domain)
+    protected function setDomain($domain)
     {
         Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -295,14 +293,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set event
      *
      * @param string $event
      *
      * @return self
      */
-    public function setEvent($event)
+    protected function setEvent($event)
     {
         Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
         Assertion::maxLength($event, 64, 'event value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,14 +320,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set etag
      *
      * @param string $etag
      *
      * @return self
      */
-    public function setEtag($etag)
+    protected function setEtag($etag)
     {
         Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -351,14 +347,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set expires
      *
      * @param integer $expires
      *
      * @return self
      */
-    public function setExpires($expires)
+    protected function setExpires($expires)
     {
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
@@ -379,14 +374,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set receivedTime
      *
      * @param integer $receivedTime
      *
      * @return self
      */
-    public function setReceivedTime($receivedTime)
+    protected function setReceivedTime($receivedTime)
     {
         Assertion::notNull($receivedTime, 'receivedTime value "%s" is null, but non null value was expected.');
         Assertion::integerish($receivedTime, 'receivedTime value "%s" is not an integer or a number castable to integer.');
@@ -407,14 +401,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set body
      *
      * @param string $body
      *
      * @return self
      */
-    public function setBody($body)
+    protected function setBody($body)
     {
         Assertion::notNull($body, 'body value "%s" is null, but non null value was expected.');
 
@@ -434,14 +427,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set sender
      *
      * @param string $sender
      *
      * @return self
      */
-    public function setSender($sender)
+    protected function setSender($sender)
     {
         Assertion::notNull($sender, 'sender value "%s" is null, but non null value was expected.');
         Assertion::maxLength($sender, 128, 'sender value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -462,14 +454,13 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority)
+    protected function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');

@@ -22,16 +22,6 @@ interface MatchListInterface extends LoggableEntityInterface
     public function numberMatches($number);
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string

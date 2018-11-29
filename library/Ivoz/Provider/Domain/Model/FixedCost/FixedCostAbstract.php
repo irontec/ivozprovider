@@ -179,14 +179,13 @@ abstract class FixedCostAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 255, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -207,14 +206,13 @@ abstract class FixedCostAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description = null)
+    protected function setDescription($description = null)
     {
         if (!is_null($description)) {
         }
@@ -235,14 +233,13 @@ abstract class FixedCostAbstract
     }
 
     /**
-     * @deprecated
      * Set cost
      *
      * @param string $cost
      *
      * @return self
      */
-    public function setCost($cost = null)
+    protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
             if (!is_null($cost)) {

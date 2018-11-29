@@ -171,14 +171,13 @@ abstract class LanguageAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set iden
      *
      * @param string $iden
      *
      * @return self
      */
-    public function setIden($iden)
+    protected function setIden($iden)
     {
         Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');

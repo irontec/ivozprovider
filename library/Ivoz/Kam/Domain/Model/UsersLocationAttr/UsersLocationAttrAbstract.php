@@ -218,14 +218,13 @@ abstract class UsersLocationAttrAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set ruid
      *
      * @param string $ruid
      *
      * @return self
      */
-    public function setRuid($ruid)
+    protected function setRuid($ruid)
     {
         Assertion::notNull($ruid, 'ruid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -246,14 +245,13 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set username
      *
      * @param string $username
      *
      * @return self
      */
-    public function setUsername($username)
+    protected function setUsername($username)
     {
         Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -274,14 +272,13 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set domain
      *
      * @param string $domain
      *
      * @return self
      */
-    public function setDomain($domain = null)
+    protected function setDomain($domain = null)
     {
         if (!is_null($domain)) {
             Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -303,14 +300,13 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set aname
      *
      * @param string $aname
      *
      * @return self
      */
-    public function setAname($aname)
+    protected function setAname($aname)
     {
         Assertion::notNull($aname, 'aname value "%s" is null, but non null value was expected.');
         Assertion::maxLength($aname, 64, 'aname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -331,14 +327,13 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set atype
      *
      * @param integer $atype
      *
      * @return self
      */
-    public function setAtype($atype)
+    protected function setAtype($atype)
     {
         Assertion::notNull($atype, 'atype value "%s" is null, but non null value was expected.');
         Assertion::integerish($atype, 'atype value "%s" is not an integer or a number castable to integer.');
@@ -359,14 +354,13 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set avalue
      *
      * @param string $avalue
      *
      * @return self
      */
-    public function setAvalue($avalue)
+    protected function setAvalue($avalue)
     {
         Assertion::notNull($avalue, 'avalue value "%s" is null, but non null value was expected.');
         Assertion::maxLength($avalue, 255, 'avalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -387,14 +381,13 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
      *
      * @return self
      */
-    public function setLastModified($lastModified)
+    protected function setLastModified($lastModified)
     {
         Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
         $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

@@ -195,14 +195,13 @@ abstract class BalanceNotificationAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set toAddress
      *
      * @param string $toAddress
      *
      * @return self
      */
-    public function setToAddress($toAddress = null)
+    protected function setToAddress($toAddress = null)
     {
         if (!is_null($toAddress)) {
             Assertion::maxLength($toAddress, 255, 'toAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -224,14 +223,13 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
-     * @deprecated
      * Set threshold
      *
      * @param string $threshold
      *
      * @return self
      */
-    public function setThreshold($threshold = null)
+    protected function setThreshold($threshold = null)
     {
         if (!is_null($threshold)) {
             if (!is_null($threshold)) {
@@ -256,14 +254,13 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
-     * @deprecated
      * Set lastSent
      *
      * @param \DateTime $lastSent
      *
      * @return self
      */
-    public function setLastSent($lastSent = null)
+    protected function setLastSent($lastSent = null)
     {
         if (!is_null($lastSent)) {
             $lastSent = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

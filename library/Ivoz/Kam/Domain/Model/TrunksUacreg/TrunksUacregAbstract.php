@@ -313,14 +313,13 @@ abstract class TrunksUacregAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set lUuid
      *
      * @param string $lUuid
      *
      * @return self
      */
-    public function setLUuid($lUuid)
+    protected function setLUuid($lUuid)
     {
         Assertion::notNull($lUuid, 'lUuid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($lUuid, 64, 'lUuid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -341,14 +340,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set lUsername
      *
      * @param string $lUsername
      *
      * @return self
      */
-    public function setLUsername($lUsername)
+    protected function setLUsername($lUsername)
     {
         Assertion::notNull($lUsername, 'lUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($lUsername, 64, 'lUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -369,14 +367,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set lDomain
      *
      * @param string $lDomain
      *
      * @return self
      */
-    public function setLDomain($lDomain)
+    protected function setLDomain($lDomain)
     {
         Assertion::notNull($lDomain, 'lDomain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($lDomain, 190, 'lDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -397,14 +394,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set rUsername
      *
      * @param string $rUsername
      *
      * @return self
      */
-    public function setRUsername($rUsername)
+    protected function setRUsername($rUsername)
     {
         Assertion::notNull($rUsername, 'rUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rUsername, 64, 'rUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -425,14 +421,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set rDomain
      *
      * @param string $rDomain
      *
      * @return self
      */
-    public function setRDomain($rDomain)
+    protected function setRDomain($rDomain)
     {
         Assertion::notNull($rDomain, 'rDomain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rDomain, 190, 'rDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -453,14 +448,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set realm
      *
      * @param string $realm
      *
      * @return self
      */
-    public function setRealm($realm)
+    protected function setRealm($realm)
     {
         Assertion::notNull($realm, 'realm value "%s" is null, but non null value was expected.');
         Assertion::maxLength($realm, 64, 'realm value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -481,14 +475,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set authUsername
      *
      * @param string $authUsername
      *
      * @return self
      */
-    public function setAuthUsername($authUsername)
+    protected function setAuthUsername($authUsername)
     {
         Assertion::notNull($authUsername, 'authUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authUsername, 64, 'authUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -509,14 +502,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
      *
      * @return self
      */
-    public function setAuthPassword($authPassword)
+    protected function setAuthPassword($authPassword)
     {
         Assertion::notNull($authPassword, 'authPassword value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -537,14 +529,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set authProxy
      *
      * @param string $authProxy
      *
      * @return self
      */
-    public function setAuthProxy($authProxy)
+    protected function setAuthProxy($authProxy)
     {
         Assertion::notNull($authProxy, 'authProxy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -565,14 +556,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set expires
      *
      * @param integer $expires
      *
      * @return self
      */
-    public function setExpires($expires)
+    protected function setExpires($expires)
     {
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
@@ -593,14 +583,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set flags
      *
      * @param integer $flags
      *
      * @return self
      */
-    public function setFlags($flags)
+    protected function setFlags($flags)
     {
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
@@ -621,14 +610,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set regDelay
      *
      * @param integer $regDelay
      *
      * @return self
      */
-    public function setRegDelay($regDelay)
+    protected function setRegDelay($regDelay)
     {
         Assertion::notNull($regDelay, 'regDelay value "%s" is null, but non null value was expected.');
         Assertion::integerish($regDelay, 'regDelay value "%s" is not an integer or a number castable to integer.');
@@ -649,14 +637,13 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @deprecated
      * Set authHa1
      *
      * @param string $authHa1
      *
      * @return self
      */
-    public function setAuthHa1($authHa1)
+    protected function setAuthHa1($authHa1)
     {
         Assertion::notNull($authHa1, 'authHa1 value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authHa1, 128, 'authHa1 value "%s" is too long, it should have no more than %d characters, but has %d characters.');

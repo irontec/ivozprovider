@@ -104,16 +104,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCgrSubject();
 
     /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type);
-
-    /**
      * Get type
      *
      * @return string
@@ -135,31 +125,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
-     * @deprecated
-     * Set nif
-     *
-     * @param string $nif
-     *
-     * @return self
-     */
-    public function setNif($nif);
-
-    /**
      * Get nif
      *
      * @return string
      */
     public function getNif();
-
-    /**
-     * @deprecated
-     * Set distributeMethod
-     *
-     * @param string $distributeMethod
-     *
-     * @return self
-     */
-    public function setDistributeMethod($distributeMethod);
 
     /**
      * Get distributeMethod
@@ -169,31 +139,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDistributeMethod();
 
     /**
-     * @deprecated
-     * Set maxCalls
-     *
-     * @param integer $maxCalls
-     *
-     * @return self
-     */
-    public function setMaxCalls($maxCalls);
-
-    /**
      * Get maxCalls
      *
      * @return integer
      */
     public function getMaxCalls();
-
-    /**
-     * @deprecated
-     * Set postalAddress
-     *
-     * @param string $postalAddress
-     *
-     * @return self
-     */
-    public function setPostalAddress($postalAddress);
 
     /**
      * Get postalAddress
@@ -203,31 +153,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getPostalAddress();
 
     /**
-     * @deprecated
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return self
-     */
-    public function setPostalCode($postalCode);
-
-    /**
      * Get postalCode
      *
      * @return string
      */
     public function getPostalCode();
-
-    /**
-     * @deprecated
-     * Set town
-     *
-     * @param string $town
-     *
-     * @return self
-     */
-    public function setTown($town);
 
     /**
      * Get town
@@ -237,31 +167,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getTown();
 
     /**
-     * @deprecated
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return self
-     */
-    public function setProvince($province);
-
-    /**
      * Get province
      *
      * @return string
      */
     public function getProvince();
-
-    /**
-     * @deprecated
-     * Set countryName
-     *
-     * @param string $countryName
-     *
-     * @return self
-     */
-    public function setCountryName($countryName);
 
     /**
      * Get countryName
@@ -271,31 +181,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCountryName();
 
     /**
-     * @deprecated
-     * Set ipfilter
-     *
-     * @param boolean $ipfilter
-     *
-     * @return self
-     */
-    public function setIpfilter($ipfilter = null);
-
-    /**
      * Get ipfilter
      *
      * @return boolean
      */
     public function getIpfilter();
-
-    /**
-     * @deprecated
-     * Set onDemandRecord
-     *
-     * @param integer $onDemandRecord
-     *
-     * @return self
-     */
-    public function setOnDemandRecord($onDemandRecord = null);
 
     /**
      * Get onDemandRecord
@@ -312,31 +202,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOnDemandRecordCode();
 
     /**
-     * @deprecated
-     * Set externallyextraopts
-     *
-     * @param string $externallyextraopts
-     *
-     * @return self
-     */
-    public function setExternallyextraopts($externallyextraopts = null);
-
-    /**
      * Get externallyextraopts
      *
      * @return string
      */
     public function getExternallyextraopts();
-
-    /**
-     * @deprecated
-     * Set recordingsLimitMB
-     *
-     * @param integer $recordingsLimitMB
-     *
-     * @return self
-     */
-    public function setRecordingsLimitMB($recordingsLimitMB = null);
 
     /**
      * Get recordingsLimitMB
@@ -346,31 +216,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getRecordingsLimitMB();
 
     /**
-     * @deprecated
-     * Set recordingsLimitEmail
-     *
-     * @param string $recordingsLimitEmail
-     *
-     * @return self
-     */
-    public function setRecordingsLimitEmail($recordingsLimitEmail = null);
-
-    /**
      * Get recordingsLimitEmail
      *
      * @return string
      */
     public function getRecordingsLimitEmail();
-
-    /**
-     * @deprecated
-     * Set billingMethod
-     *
-     * @param string $billingMethod
-     *
-     * @return self
-     */
-    public function setBillingMethod($billingMethod);
 
     /**
      * Get billingMethod
@@ -380,31 +230,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBillingMethod();
 
     /**
-     * @deprecated
-     * Set balance
-     *
-     * @param string $balance
-     *
-     * @return self
-     */
-    public function setBalance($balance = null);
-
-    /**
      * Get balance
      *
      * @return string
      */
     public function getBalance();
-
-    /**
-     * @deprecated
-     * Set showInvoices
-     *
-     * @param boolean $showInvoices
-     *
-     * @return self
-     */
-    public function setShowInvoices($showInvoices = null);
 
     /**
      * Get showInvoices

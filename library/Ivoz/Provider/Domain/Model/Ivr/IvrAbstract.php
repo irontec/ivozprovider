@@ -323,14 +323,13 @@ abstract class IvrAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -351,14 +350,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set timeout
      *
      * @param integer $timeout
      *
      * @return self
      */
-    public function setTimeout($timeout)
+    protected function setTimeout($timeout)
     {
         Assertion::notNull($timeout, 'timeout value "%s" is null, but non null value was expected.');
         Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
@@ -380,14 +378,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set maxDigits
      *
      * @param integer $maxDigits
      *
      * @return self
      */
-    public function setMaxDigits($maxDigits)
+    protected function setMaxDigits($maxDigits)
     {
         Assertion::notNull($maxDigits, 'maxDigits value "%s" is null, but non null value was expected.');
         Assertion::integerish($maxDigits, 'maxDigits value "%s" is not an integer or a number castable to integer.');
@@ -409,14 +406,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set allowExtensions
      *
      * @param boolean $allowExtensions
      *
      * @return self
      */
-    public function setAllowExtensions($allowExtensions)
+    protected function setAllowExtensions($allowExtensions)
     {
         Assertion::notNull($allowExtensions, 'allowExtensions value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowExtensions), 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
@@ -437,14 +433,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set noInputRouteType
      *
      * @param string $noInputRouteType
      *
      * @return self
      */
-    public function setNoInputRouteType($noInputRouteType = null)
+    protected function setNoInputRouteType($noInputRouteType = null)
     {
         if (!is_null($noInputRouteType)) {
             Assertion::maxLength($noInputRouteType, 25, 'noInputRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -471,14 +466,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set noInputNumberValue
      *
      * @param string $noInputNumberValue
      *
      * @return self
      */
-    public function setNoInputNumberValue($noInputNumberValue = null)
+    protected function setNoInputNumberValue($noInputNumberValue = null)
     {
         if (!is_null($noInputNumberValue)) {
             Assertion::maxLength($noInputNumberValue, 25, 'noInputNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -500,14 +494,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set errorRouteType
      *
      * @param string $errorRouteType
      *
      * @return self
      */
-    public function setErrorRouteType($errorRouteType = null)
+    protected function setErrorRouteType($errorRouteType = null)
     {
         if (!is_null($errorRouteType)) {
             Assertion::maxLength($errorRouteType, 25, 'errorRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -534,14 +527,13 @@ abstract class IvrAbstract
     }
 
     /**
-     * @deprecated
      * Set errorNumberValue
      *
      * @param string $errorNumberValue
      *
      * @return self
      */
-    public function setErrorNumberValue($errorNumberValue = null)
+    protected function setErrorNumberValue($errorNumberValue = null)
     {
         if (!is_null($errorNumberValue)) {
             Assertion::maxLength($errorNumberValue, 25, 'errorNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');

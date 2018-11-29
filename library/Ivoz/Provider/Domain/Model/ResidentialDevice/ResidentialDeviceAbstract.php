@@ -364,14 +364,13 @@ abstract class ResidentialDeviceAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -392,14 +391,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -420,14 +418,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set transport
      *
      * @param string $transport
      *
      * @return self
      */
-    public function setTransport($transport)
+    protected function setTransport($transport)
     {
         Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
         Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -453,14 +450,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set ip
      *
      * @param string $ip
      *
      * @return self
      */
-    public function setIp($ip = null)
+    protected function setIp($ip = null)
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -482,14 +478,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set port
      *
      * @param integer $port
      *
      * @return self
      */
-    public function setPort($port = null)
+    protected function setPort($port = null)
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
@@ -514,14 +509,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
      *
      * @return self
      */
-    public function setAuthNeeded($authNeeded)
+    protected function setAuthNeeded($authNeeded)
     {
         Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
 
@@ -541,14 +535,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set password
      *
      * @param string $password
      *
      * @return self
      */
-    public function setPassword($password = null)
+    protected function setPassword($password = null)
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -570,14 +563,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set disallow
      *
      * @param string $disallow
      *
      * @return self
      */
-    public function setDisallow($disallow)
+    protected function setDisallow($disallow)
     {
         Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -598,14 +590,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set allow
      *
      * @param string $allow
      *
      * @return self
      */
-    public function setAllow($allow)
+    protected function setAllow($allow)
     {
         Assertion::notNull($allow, 'allow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($allow, 200, 'allow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -626,14 +617,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
      *
      * @return self
      */
-    public function setDirectMediaMethod($directMediaMethod)
+    protected function setDirectMediaMethod($directMediaMethod)
     {
         Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, array (
@@ -657,14 +647,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set calleridUpdateHeader
      *
      * @param string $calleridUpdateHeader
      *
      * @return self
      */
-    public function setCalleridUpdateHeader($calleridUpdateHeader)
+    protected function setCalleridUpdateHeader($calleridUpdateHeader)
     {
         Assertion::notNull($calleridUpdateHeader, 'calleridUpdateHeader value "%s" is null, but non null value was expected.');
         Assertion::choice($calleridUpdateHeader, array (
@@ -688,14 +677,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set updateCallerid
      *
      * @param string $updateCallerid
      *
      * @return self
      */
-    public function setUpdateCallerid($updateCallerid)
+    protected function setUpdateCallerid($updateCallerid)
     {
         Assertion::notNull($updateCallerid, 'updateCallerid value "%s" is null, but non null value was expected.');
         Assertion::choice($updateCallerid, array (
@@ -719,14 +707,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
      *
      * @return self
      */
-    public function setFromDomain($fromDomain = null)
+    protected function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -748,14 +735,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity
      *
      * @return self
      */
-    public function setDirectConnectivity($directConnectivity)
+    protected function setDirectConnectivity($directConnectivity)
     {
         Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
         Assertion::choice($directConnectivity, array (
@@ -779,14 +765,13 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
-     * @deprecated
      * Set ddiIn
      *
      * @param string $ddiIn
      *
      * @return self
      */
-    public function setDdiIn($ddiIn)
+    protected function setDdiIn($ddiIn)
     {
         Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
         Assertion::choice($ddiIn, array (

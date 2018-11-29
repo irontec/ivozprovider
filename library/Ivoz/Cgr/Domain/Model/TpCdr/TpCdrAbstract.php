@@ -402,14 +402,13 @@ abstract class TpCdrAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid
      *
      * @return self
      */
-    public function setCgrid($cgrid)
+    protected function setCgrid($cgrid)
     {
         Assertion::notNull($cgrid, 'cgrid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($cgrid, 40, 'cgrid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -430,14 +429,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set runId
      *
      * @param string $runId
      *
      * @return self
      */
-    public function setRunId($runId)
+    protected function setRunId($runId)
     {
         Assertion::notNull($runId, 'runId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($runId, 64, 'runId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -458,14 +456,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set originHost
      *
      * @param string $originHost
      *
      * @return self
      */
-    public function setOriginHost($originHost)
+    protected function setOriginHost($originHost)
     {
         Assertion::notNull($originHost, 'originHost value "%s" is null, but non null value was expected.');
         Assertion::maxLength($originHost, 64, 'originHost value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -486,14 +483,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set source
      *
      * @param string $source
      *
      * @return self
      */
-    public function setSource($source)
+    protected function setSource($source)
     {
         Assertion::notNull($source, 'source value "%s" is null, but non null value was expected.');
         Assertion::maxLength($source, 64, 'source value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -514,14 +510,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set originId
      *
      * @param string $originId
      *
      * @return self
      */
-    public function setOriginId($originId)
+    protected function setOriginId($originId)
     {
         Assertion::notNull($originId, 'originId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($originId, 128, 'originId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -542,14 +537,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set tor
      *
      * @param string $tor
      *
      * @return self
      */
-    public function setTor($tor)
+    protected function setTor($tor)
     {
         Assertion::notNull($tor, 'tor value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tor, 16, 'tor value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -570,14 +564,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set requestType
      *
      * @param string $requestType
      *
      * @return self
      */
-    public function setRequestType($requestType)
+    protected function setRequestType($requestType)
     {
         Assertion::notNull($requestType, 'requestType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($requestType, 24, 'requestType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -598,14 +591,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set tenant
      *
      * @param string $tenant
      *
      * @return self
      */
-    public function setTenant($tenant)
+    protected function setTenant($tenant)
     {
         Assertion::notNull($tenant, 'tenant value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -626,14 +618,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set category
      *
      * @param string $category
      *
      * @return self
      */
-    public function setCategory($category)
+    protected function setCategory($category)
     {
         Assertion::notNull($category, 'category value "%s" is null, but non null value was expected.');
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -654,14 +645,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set account
      *
      * @param string $account
      *
      * @return self
      */
-    public function setAccount($account)
+    protected function setAccount($account)
     {
         Assertion::notNull($account, 'account value "%s" is null, but non null value was expected.');
         Assertion::maxLength($account, 128, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -682,14 +672,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set subject
      *
      * @param string $subject
      *
      * @return self
      */
-    public function setSubject($subject)
+    protected function setSubject($subject)
     {
         Assertion::notNull($subject, 'subject value "%s" is null, but non null value was expected.');
         Assertion::maxLength($subject, 128, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -710,14 +699,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set destination
      *
      * @param string $destination
      *
      * @return self
      */
-    public function setDestination($destination)
+    protected function setDestination($destination)
     {
         Assertion::notNull($destination, 'destination value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destination, 128, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -738,14 +726,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set setupTime
      *
      * @param \DateTime $setupTime
      *
      * @return self
      */
-    public function setSetupTime($setupTime)
+    protected function setSetupTime($setupTime)
     {
         Assertion::notNull($setupTime, 'setupTime value "%s" is null, but non null value was expected.');
         $setupTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -769,14 +756,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set answerTime
      *
      * @param \DateTime $answerTime
      *
      * @return self
      */
-    public function setAnswerTime($answerTime)
+    protected function setAnswerTime($answerTime)
     {
         Assertion::notNull($answerTime, 'answerTime value "%s" is null, but non null value was expected.');
         $answerTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -800,14 +786,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set usage
      *
      * @param integer $usage
      *
      * @return self
      */
-    public function setUsage($usage)
+    protected function setUsage($usage)
     {
         Assertion::notNull($usage, 'usage value "%s" is null, but non null value was expected.');
         Assertion::integerish($usage, 'usage value "%s" is not an integer or a number castable to integer.');
@@ -828,14 +813,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set extraFields
      *
      * @param string $extraFields
      *
      * @return self
      */
-    public function setExtraFields($extraFields)
+    protected function setExtraFields($extraFields)
     {
         Assertion::notNull($extraFields, 'extraFields value "%s" is null, but non null value was expected.');
 
@@ -855,14 +839,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set costSource
      *
      * @param string $costSource
      *
      * @return self
      */
-    public function setCostSource($costSource)
+    protected function setCostSource($costSource)
     {
         Assertion::notNull($costSource, 'costSource value "%s" is null, but non null value was expected.');
         Assertion::maxLength($costSource, 64, 'costSource value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -883,14 +866,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set cost
      *
      * @param string $cost
      *
      * @return self
      */
-    public function setCost($cost)
+    protected function setCost($cost)
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
@@ -912,14 +894,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set costDetails
      *
      * @param array $costDetails
      *
      * @return self
      */
-    public function setCostDetails($costDetails)
+    protected function setCostDetails($costDetails)
     {
         Assertion::notNull($costDetails, 'costDetails value "%s" is null, but non null value was expected.');
 
@@ -939,14 +920,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set extraInfo
      *
      * @param string $extraInfo
      *
      * @return self
      */
-    public function setExtraInfo($extraInfo)
+    protected function setExtraInfo($extraInfo)
     {
         Assertion::notNull($extraInfo, 'extraInfo value "%s" is null, but non null value was expected.');
 
@@ -966,14 +946,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt = null)
+    protected function setCreatedAt($createdAt = null)
     {
         if (!is_null($createdAt)) {
             $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -998,14 +977,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updatedAt = null)
+    protected function setUpdatedAt($updatedAt = null)
     {
         if (!is_null($updatedAt)) {
             $updatedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -1030,14 +1008,13 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set deletedAt
      *
      * @param \DateTime $deletedAt
      *
      * @return self
      */
-    public function setDeletedAt($deletedAt = null)
+    protected function setDeletedAt($deletedAt = null)
     {
         if (!is_null($deletedAt)) {
             $deletedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

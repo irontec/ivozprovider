@@ -21,16 +21,6 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function getCgrRatingProfile();
 
     /**
-     * @deprecated
-     * Set activationTime
-     *
-     * @param \DateTime $activationTime
-     *
-     * @return self
-     */
-    public function setActivationTime($activationTime);
-
-    /**
      * Get activationTime
      *
      * @return \DateTime

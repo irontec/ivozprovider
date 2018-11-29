@@ -345,14 +345,13 @@ abstract class DdiAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set ddi
      *
      * @param string $ddi
      *
      * @return self
      */
-    public function setDdi($ddi)
+    protected function setDdi($ddi)
     {
         Assertion::notNull($ddi, 'ddi value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ddi, 25, 'ddi value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -373,14 +372,13 @@ abstract class DdiAbstract
     }
 
     /**
-     * @deprecated
      * Set ddie164
      *
      * @param string $ddie164
      *
      * @return self
      */
-    public function setDdie164($ddie164 = null)
+    protected function setDdie164($ddie164 = null)
     {
         if (!is_null($ddie164)) {
             Assertion::maxLength($ddie164, 25, 'ddie164 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -402,14 +400,13 @@ abstract class DdiAbstract
     }
 
     /**
-     * @deprecated
      * Set recordCalls
      *
      * @param string $recordCalls
      *
      * @return self
      */
-    public function setRecordCalls($recordCalls)
+    protected function setRecordCalls($recordCalls)
     {
         Assertion::notNull($recordCalls, 'recordCalls value "%s" is null, but non null value was expected.');
         Assertion::maxLength($recordCalls, 25, 'recordCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -436,14 +433,13 @@ abstract class DdiAbstract
     }
 
     /**
-     * @deprecated
      * Set displayName
      *
      * @param string $displayName
      *
      * @return self
      */
-    public function setDisplayName($displayName = null)
+    protected function setDisplayName($displayName = null)
     {
         if (!is_null($displayName)) {
             Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -465,14 +461,13 @@ abstract class DdiAbstract
     }
 
     /**
-     * @deprecated
      * Set routeType
      *
      * @param string $routeType
      *
      * @return self
      */
-    public function setRouteType($routeType = null)
+    protected function setRouteType($routeType = null)
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -506,14 +501,13 @@ abstract class DdiAbstract
     }
 
     /**
-     * @deprecated
      * Set billInboundCalls
      *
      * @param boolean $billInboundCalls
      *
      * @return self
      */
-    public function setBillInboundCalls($billInboundCalls)
+    protected function setBillInboundCalls($billInboundCalls)
     {
         Assertion::notNull($billInboundCalls, 'billInboundCalls value "%s" is null, but non null value was expected.');
         Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
@@ -534,14 +528,13 @@ abstract class DdiAbstract
     }
 
     /**
-     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue
      *
      * @return self
      */
-    public function setFriendValue($friendValue = null)
+    protected function setFriendValue($friendValue = null)
     {
         if (!is_null($friendValue)) {
             Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');

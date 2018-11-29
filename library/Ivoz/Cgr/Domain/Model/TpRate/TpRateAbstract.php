@@ -243,14 +243,13 @@ abstract class TpRateAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tpid
      *
      * @param string $tpid
      *
      * @return self
      */
-    public function setTpid($tpid)
+    protected function setTpid($tpid)
     {
         Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -271,14 +270,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set tag
      *
      * @param string $tag
      *
      * @return self
      */
-    public function setTag($tag = null)
+    protected function setTag($tag = null)
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -300,14 +298,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
      *
      * @return self
      */
-    public function setConnectFee($connectFee)
+    protected function setConnectFee($connectFee)
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
@@ -329,14 +326,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set rateCost
      *
      * @param string $rateCost
      *
      * @return self
      */
-    public function setRateCost($rateCost)
+    protected function setRateCost($rateCost)
     {
         Assertion::notNull($rateCost, 'rateCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($rateCost);
@@ -358,14 +354,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set rateUnit
      *
      * @param string $rateUnit
      *
      * @return self
      */
-    public function setRateUnit($rateUnit)
+    protected function setRateUnit($rateUnit)
     {
         Assertion::notNull($rateUnit, 'rateUnit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rateUnit, 16, 'rateUnit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -386,14 +381,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set rateIncrement
      *
      * @param string $rateIncrement
      *
      * @return self
      */
-    public function setRateIncrement($rateIncrement)
+    protected function setRateIncrement($rateIncrement)
     {
         Assertion::notNull($rateIncrement, 'rateIncrement value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rateIncrement, 16, 'rateIncrement value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -414,14 +408,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set groupIntervalStart
      *
      * @param string $groupIntervalStart
      *
      * @return self
      */
-    public function setGroupIntervalStart($groupIntervalStart)
+    protected function setGroupIntervalStart($groupIntervalStart)
     {
         Assertion::notNull($groupIntervalStart, 'groupIntervalStart value "%s" is null, but non null value was expected.');
         Assertion::maxLength($groupIntervalStart, 16, 'groupIntervalStart value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -442,14 +435,13 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt)
     {
         Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
         $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

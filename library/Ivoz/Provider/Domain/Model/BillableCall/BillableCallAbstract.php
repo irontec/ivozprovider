@@ -323,14 +323,13 @@ abstract class BillableCallAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set callid
      *
      * @param string $callid
      *
      * @return self
      */
-    public function setCallid($callid = null)
+    protected function setCallid($callid = null)
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -352,14 +351,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
      *
      * @return self
      */
-    public function setStartTime($startTime = null)
+    protected function setStartTime($startTime = null)
     {
         if (!is_null($startTime)) {
             $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -384,14 +382,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set duration
      *
      * @param float $duration
      *
      * @return self
      */
-    public function setDuration($duration)
+    protected function setDuration($duration)
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
@@ -413,14 +410,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set caller
      *
      * @param string $caller
      *
      * @return self
      */
-    public function setCaller($caller = null)
+    protected function setCaller($caller = null)
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -442,14 +438,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set callee
      *
      * @param string $callee
      *
      * @return self
      */
-    public function setCallee($callee = null)
+    protected function setCallee($callee = null)
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -471,14 +466,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set cost
      *
      * @param string $cost
      *
      * @return self
      */
-    public function setCost($cost = null)
+    protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
             if (!is_null($cost)) {
@@ -503,14 +497,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set price
      *
      * @param string $price
      *
      * @return self
      */
-    public function setPrice($price = null)
+    protected function setPrice($price = null)
     {
         if (!is_null($price)) {
             if (!is_null($price)) {
@@ -535,14 +528,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set priceDetails
      *
      * @param array $priceDetails
      *
      * @return self
      */
-    public function setPriceDetails($priceDetails = null)
+    protected function setPriceDetails($priceDetails = null)
     {
         if (!is_null($priceDetails)) {
         }
@@ -563,14 +555,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set carrierName
      *
      * @param string $carrierName
      *
      * @return self
      */
-    public function setCarrierName($carrierName = null)
+    protected function setCarrierName($carrierName = null)
     {
         if (!is_null($carrierName)) {
             Assertion::maxLength($carrierName, 200, 'carrierName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -592,14 +583,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set destinationName
      *
      * @param string $destinationName
      *
      * @return self
      */
-    public function setDestinationName($destinationName = null)
+    protected function setDestinationName($destinationName = null)
     {
         if (!is_null($destinationName)) {
             Assertion::maxLength($destinationName, 100, 'destinationName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -621,14 +611,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set ratingPlanName
      *
      * @param string $ratingPlanName
      *
      * @return self
      */
-    public function setRatingPlanName($ratingPlanName = null)
+    protected function setRatingPlanName($ratingPlanName = null)
     {
         if (!is_null($ratingPlanName)) {
             Assertion::maxLength($ratingPlanName, 55, 'ratingPlanName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -650,14 +639,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set endpointType
      *
      * @param string $endpointType
      *
      * @return self
      */
-    public function setEndpointType($endpointType = null)
+    protected function setEndpointType($endpointType = null)
     {
         if (!is_null($endpointType)) {
             Assertion::maxLength($endpointType, 55, 'endpointType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -679,14 +667,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set endpointId
      *
      * @param integer $endpointId
      *
      * @return self
      */
-    public function setEndpointId($endpointId = null)
+    protected function setEndpointId($endpointId = null)
     {
         if (!is_null($endpointId)) {
             if (!is_null($endpointId)) {

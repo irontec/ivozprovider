@@ -13,31 +13,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
      */
     public function getTpid();
-
-    /**
-     * @deprecated
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return self
-     */
-    public function setLoadid($loadid);
 
     /**
      * Get loadid
@@ -47,31 +27,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
-     * @deprecated
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection($direction);
-
-    /**
      * Get direction
      *
      * @return string
      */
     public function getDirection();
-
-    /**
-     * @deprecated
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return self
-     */
-    public function setTenant($tenant = null);
 
     /**
      * Get tenant
@@ -81,31 +41,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getTenant();
 
     /**
-     * @deprecated
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return self
-     */
-    public function setCategory($category);
-
-    /**
      * Get category
      *
      * @return string
      */
     public function getCategory();
-
-    /**
-     * @deprecated
-     * Set subject
-     *
-     * @param string $subject
-     *
-     * @return self
-     */
-    public function setSubject($subject = null);
 
     /**
      * Get subject
@@ -115,31 +55,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getSubject();
 
     /**
-     * @deprecated
-     * Set activationTime
-     *
-     * @param \DateTime $activationTime
-     *
-     * @return self
-     */
-    public function setActivationTime($activationTime);
-
-    /**
      * Get activationTime
      *
      * @return \DateTime
      */
     public function getActivationTime();
-
-    /**
-     * @deprecated
-     * Set ratingPlanTag
-     *
-     * @param string $ratingPlanTag
-     *
-     * @return self
-     */
-    public function setRatingPlanTag($ratingPlanTag = null);
 
     /**
      * Get ratingPlanTag
@@ -149,16 +69,6 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getRatingPlanTag();
 
     /**
-     * @deprecated
-     * Set fallbackSubjects
-     *
-     * @param string $fallbackSubjects
-     *
-     * @return self
-     */
-    public function setFallbackSubjects($fallbackSubjects = null);
-
-    /**
      * Get fallbackSubjects
      *
      * @return string
@@ -166,31 +76,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getFallbackSubjects();
 
     /**
-     * @deprecated
-     * Set cdrStatQueueIds
-     *
-     * @param string $cdrStatQueueIds
-     *
-     * @return self
-     */
-    public function setCdrStatQueueIds($cdrStatQueueIds = null);
-
-    /**
      * Get cdrStatQueueIds
      *
      * @return string
      */
     public function getCdrStatQueueIds();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

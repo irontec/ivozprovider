@@ -210,14 +210,13 @@ abstract class RtpengineAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set setid
      *
      * @param integer $setid
      *
      * @return self
      */
-    public function setSetid($setid)
+    protected function setSetid($setid)
     {
         Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
         Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
@@ -238,14 +237,13 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @deprecated
      * Set url
      *
      * @param string $url
      *
      * @return self
      */
-    public function setUrl($url)
+    protected function setUrl($url)
     {
         Assertion::notNull($url, 'url value "%s" is null, but non null value was expected.');
         Assertion::maxLength($url, 64, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -266,14 +264,13 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @deprecated
      * Set weight
      *
      * @param integer $weight
      *
      * @return self
      */
-    public function setWeight($weight)
+    protected function setWeight($weight)
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
@@ -295,14 +292,13 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
      *
      * @return self
      */
-    public function setDisabled($disabled)
+    protected function setDisabled($disabled)
     {
         Assertion::notNull($disabled, 'disabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
@@ -323,14 +319,13 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp
      *
      * @return self
      */
-    public function setStamp($stamp)
+    protected function setStamp($stamp)
     {
         Assertion::notNull($stamp, 'stamp value "%s" is null, but non null value was expected.');
         $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -354,14 +349,13 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description = null)
+    protected function setDescription($description = null)
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
