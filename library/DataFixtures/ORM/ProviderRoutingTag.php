@@ -22,9 +22,12 @@ class ProviderRoutingTag extends Fixture implements DependentFixtureInterface
             ->getClassMetadata(RoutingTag::class)
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstanceWithPublicMethods(RoutingTag::class);
-        $item1->setName("TagName");
-        $item1->setTag('aTag');
+        $item1 = $this->createEntityInstance(RoutingTag::class);
+        (function () {
+            $this->setName("TagName");
+            $this->setTag('aTag');
+        })->call($item1);
+
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );

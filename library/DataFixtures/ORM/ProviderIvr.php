@@ -20,14 +20,17 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Ivr::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(Ivr::class);
-        $item1->setName("testIvrCustom");
-        $item1->setTimeout(6);
-        $item1->setMaxDigits(0);
-        $item1->setAllowExtensions(false);
-        $item1->setNoInputRouteType("number");
-        $item1->setNoInputNumberValue("946002020");
-        $item1->setErrorRouteType("voicemail");
+        $item1 = $this->createEntityInstance(Ivr::class);
+        (function () {
+            $this->setName("testIvrCustom");
+            $this->setTimeout(6);
+            $this->setMaxDigits(0);
+            $this->setAllowExtensions(false);
+            $this->setNoInputRouteType("number");
+            $this->setNoInputNumberValue("946002020");
+            $this->setErrorRouteType("voicemail");
+        })->call($item1);
+
         $item1->setErrorVoiceMailUser($this->getReference('_reference_ProviderUser1'));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item1->setWelcomeLocution($this->getReference('_reference_ProviderLocution1'));
@@ -38,16 +41,20 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(Ivr::class);
-        $item2->setName("testIvrCustom2");
-        $item2->setTimeout(6);
-        $item2->setMaxDigits(0);
-        $item2->setAllowExtensions(false);
-        $item2->setNoInputRouteType("extension");
+        $item2 = $this->createEntityInstance(Ivr::class);
+        (function () {
+            $this->setName("testIvrCustom2");
+            $this->setTimeout(6);
+            $this->setMaxDigits(0);
+            $this->setAllowExtensions(false);
+            $this->setNoInputRouteType("extension");
+            $this->setErrorRouteType("voicemail");
+        })->call($item2);
+
         $item2->setNoInputExtension(
             $this->getReference('_reference_ProviderExtension1')
         );
-        $item2->setErrorRouteType("voicemail");
+
         $item2->setErrorVoiceMailUser($this->getReference('_reference_ProviderUser1'));
         $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item2->setWelcomeLocution($this->getReference('_reference_ProviderLocution1'));

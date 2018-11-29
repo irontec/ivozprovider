@@ -20,8 +20,11 @@ class ProviderQueueMember extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(QueueMember::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(QueueMember::class);
-        $item1->setPenalty(1);
+        $item1 = $this->createEntityInstance(QueueMember::class);
+        (function () {
+            $this->setPenalty(1);
+        })->call($item1);
+
         $item1->setQueue($this->getReference('_reference_ProviderQueue1'));
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $this->addReference('_reference_ProviderQueueMemberQueueMember1', $item1);

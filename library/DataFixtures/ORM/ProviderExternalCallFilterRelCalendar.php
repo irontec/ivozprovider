@@ -21,7 +21,7 @@ class ProviderExternalCallFilterRelCalendar extends Fixture implements Dependent
         $manager->getClassMetadata(ExternalCallFilterRelCalendar::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ExternalCallFilterRelCalendar $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(ExternalCallFilterRelCalendar::class);
+        $item1 = $this->createEntityInstance(ExternalCallFilterRelCalendar::class);
         $item1->setFilter(
             $this->getReference('_reference_ProviderExternalCallFilter1')
         );

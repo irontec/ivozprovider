@@ -19,9 +19,12 @@ class ProviderProxyUser extends Fixture
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ProxyUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(ProxyUser::class);
-        $item1->setName("proxyusers");
-        $item1->setIp("127.0.0.1");
+        $item1 = $this->createEntityInstance(ProxyUser::class);
+        (function () {
+            $this->setName("proxyusers");
+            $this->setIp("127.0.0.1");
+        })->call($item1);
+
         $this->addReference('_reference_ProviderProxyUserProxyUser1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

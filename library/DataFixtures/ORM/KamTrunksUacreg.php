@@ -22,16 +22,19 @@ class KamTrunksUacreg extends Fixture implements DependentFixtureInterface
         $manager->getClassMetadata(TrunksUacreg::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var TrunksUacregInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(TrunksUacreg::class);
-        $item1->setLUuid("DDIRegistrationContactUsername");
-        $item1->setRUsername("DDIRegistrationUsername");
-        $item1->setRDomain("DDIRegistrationDomain");
-        $item1->setAuthUsername("DDIRegistrationAuthUsername");
-        $item1->setAuthPassword("DDIRegistrationAuthPassword");
-        $item1->setAuthProxy("sip:DDIRegistrationAuthProxy");
-        $item1->setExpires(2000);
-        $item1->setFlags(0);
-        $item1->setRegDelay(0);
+        $item1 = $this->createEntityInstance(TrunksUacreg::class);
+        (function () {
+            $this->setLUuid("DDIRegistrationContactUsername");
+            $this->setRUsername("DDIRegistrationUsername");
+            $this->setRDomain("DDIRegistrationDomain");
+            $this->setAuthUsername("DDIRegistrationAuthUsername");
+            $this->setAuthPassword("DDIRegistrationAuthPassword");
+            $this->setAuthProxy("sip:DDIRegistrationAuthProxy");
+            $this->setExpires(2000);
+            $this->setFlags(0);
+            $this->setRegDelay(0);
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setDdiProviderRegistration($this->getReference('_reference_ProviderDdiProviderRegistration1'));
         $this->addReference('_reference_KamTrunksUacreg1', $item1);

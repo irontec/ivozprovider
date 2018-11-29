@@ -20,16 +20,22 @@ class ProviderLanguage extends Fixture
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Language::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(Language::class);
-        $item1->setIden("es");
-        $item1->setName(new Name('es', 'es'));
+        $item1 = $this->createEntityInstance(Language::class);
+        (function () {
+            $this->setIden("es");
+            $this->setName(new Name('es', 'es'));
+        })->call($item1);
+
         $this->addReference('_reference_ProviderLanguage1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(Language::class);
-        $item2->setIden("en");
-        $item2->setName(new Name('en', 'en'));
+        $item2 = $this->createEntityInstance(Language::class);
+        (function () {
+            $this->setIden("en");
+            $this->setName(new Name('en', 'en'));
+        })->call($item2);
+
         $this->addReference('_reference_ProviderLanguage2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);

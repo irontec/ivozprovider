@@ -20,10 +20,13 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Carrier::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(Carrier::class);
-        $item1->setDescription("CarrierDescription");
-        $item1->setName("CarrierName");
-        $item1->setExternallyRated(false);
+        $item1 = $this->createEntityInstance(Carrier::class);
+        (function () {
+            $this->setDescription("CarrierDescription");
+            $this->setName("CarrierName");
+            $this->setExternallyRated(false);
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderCarrier1', $item1);

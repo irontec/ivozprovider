@@ -26,16 +26,19 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
         );
 
         /** @var TrunksLcrGatewayInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(TrunksLcrGateway::class);
-        $item1->setLcrId(1);
-        $item1->setGwName("b1p1s1");
-        $item1->setIp("127.0.0.1");
-        $item1->setHostname("hostname.net");
-        $item1->setPort(5060);
-        $item1->setParams("");
-        $item1->setUriScheme(2);
-        $item1->setTransport(1);
+        $item1 = $this->createEntityInstance(TrunksLcrGateway::class);
+        (function () {
+            $this->setLcrId(1);
+            $this->setGwName("b1p1s1");
+            $this->setIp("127.0.0.1");
+            $this->setHostname("hostname.net");
+            $this->setPort(5060);
+            $this->setParams("");
+            $this->setUriScheme(2);
+            $this->setTransport(1);
+        })->call($item1);
         $item1->setCarrierServer($this->getReference('_reference_ProviderCarrierServer1'));
+
         $this->addReference('_reference_KamTrunksLcrGateway1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

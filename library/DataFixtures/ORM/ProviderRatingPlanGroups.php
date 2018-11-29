@@ -25,10 +25,12 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var RatingPlanGroup $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(RatingPlanGroup::class);
+        $item1 = $this->createEntityInstance(RatingPlanGroup::class);
+        (function () {
+            $this->setName(new Name('Something', 'Algo'));
+            $this->setDescription(new Description('', ''));
+        })->call($item1);
 
-        $item1->setName(new Name('Something', 'Algo'));
-        $item1->setDescription(new Description('', ''));
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
@@ -37,10 +39,12 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         $manager->persist($item1);
 
         /** @var RatingPlanGroup $item2 */
-        $item2 = $this->createEntityInstanceWithPublicMethods(RatingPlanGroup::class);
+        $item2 = $this->createEntityInstance(RatingPlanGroup::class);
+        (function () {
+            $this->setName(new Name('Something more', 'Algo más'));
+            $this->setDescription(new Description('', ''));
+        })->call($item2);
 
-        $item2->setName(new Name('Something more', 'Algo más'));
-        $item2->setDescription(new Description('', ''));
         $item2->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );

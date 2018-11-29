@@ -20,10 +20,13 @@ class ProviderConditionalRoutesCondition extends Fixture implements DependentFix
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConditionalRoutesCondition::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(ConditionalRoutesCondition::class);
-        $item1->setPriority(1);
-        $item1->setNumberValue("");
-        $item1->setFriendValue("");
+        $item1 = $this->createEntityInstance(ConditionalRoutesCondition::class);
+        (function () {
+            $this->setPriority(1);
+            $this->setNumberValue("");
+            $this->setFriendValue("");
+        })->call($item1);
+
         $item1->setConditionalRoute($this->getReference('_reference_ProviderConditionalRouteConditionalRoute1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderConditionalRoutesCondition1', $item1);

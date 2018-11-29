@@ -22,16 +22,18 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
         $manager->getClassMetadata(ResidentialDevice::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ResidentialDevice $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(ResidentialDevice::class);
-        $item1->setName('retail');
-        $item1->setTransport('udp');
-        $item1->setAuthNeeded('yes');
-        $item1->setDisallow('all');
-        $item1->setAllow('alaw');
-        $item1->setDirectMediaMethod('invite');
-        $item1->setCalleridUpdateHeader('pai');
-        $item1->setUpdateCallerid('yes');
-        $item1->setDirectConnectivity('yes');
+        $item1 = $this->createEntityInstance(ResidentialDevice::class);
+        (function () {
+            $this->setName('retail');
+            $this->setTransport('udp');
+            $this->setAuthNeeded('yes');
+            $this->setDisallow('all');
+            $this->setAllow('alaw');
+            $this->setDirectMediaMethod('invite');
+            $this->setCalleridUpdateHeader('pai');
+            $this->setUpdateCallerid('yes');
+            $this->setDirectConnectivity('yes');
+        })->call($item1);
 
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')

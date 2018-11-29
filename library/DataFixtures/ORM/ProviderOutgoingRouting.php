@@ -21,11 +21,14 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $manager->getClassMetadata(OutgoingRouting::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var OutgoingRouting $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
-        $item1->setRoutingMode(OutgoingRouting::MODE_STATIC);
-        $item1->setType("pattern");
-        $item1->setPriority(1);
-        $item1->setWeight(1);
+        $item1 = $this->createEntityInstance(OutgoingRouting::class);
+        (function () {
+            $this->setRoutingMode(OutgoingRouting::MODE_STATIC);
+            $this->setType("pattern");
+            $this->setPriority(1);
+            $this->setWeight(1);
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item1->setCarrier($this->getReference('_reference_ProviderCarrier1'));
@@ -40,11 +43,14 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         //$this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
-        $item2->setRoutingMode(OutgoingRouting::MODE_STATIC);
-        $item2->setType("pattern");
-        $item2->setPriority(11);
-        $item2->setWeight(6);
+        $item2 = $this->createEntityInstance(OutgoingRouting::class);
+        (function () {
+            $this->setRoutingMode(OutgoingRouting::MODE_STATIC);
+            $this->setType("pattern");
+            $this->setPriority(11);
+            $this->setWeight(6);
+        })->call($item2);
+
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item2->setCarrier($this->getReference('_reference_ProviderCarrier1'));
         $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));

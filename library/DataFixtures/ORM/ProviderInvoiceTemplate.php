@@ -20,12 +20,15 @@ class ProviderInvoiceTemplate extends Fixture implements DependentFixtureInterfa
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(InvoiceTemplate::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(InvoiceTemplate::class);
-        $item1->setName("Default");
-        $item1->setDescription("Something");
-        $item1->setTemplate("Template");
-        $item1->setTemplateHeader("Template header");
-        $item1->setTemplateFooter("Template footer");
+        $item1 = $this->createEntityInstance(InvoiceTemplate::class);
+        (function () {
+            $this->setName("Default");
+            $this->setDescription("Something");
+            $this->setTemplate("Template");
+            $this->setTemplateHeader("Template header");
+            $this->setTemplateFooter("Template footer");
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderInvoiceTemplate1', $item1);
         $this->sanitizeEntityValues($item1);

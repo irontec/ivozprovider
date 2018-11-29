@@ -21,9 +21,12 @@ class ProviderCallAclRelMatchList extends Fixture implements DependentFixtureInt
         $manager->getClassMetadata(CallAclRelMatchList::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var CallAclRelMatchList $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(CallAclRelMatchList::class);
-        $item1->setPriority(1);
-        $item1->setPolicy("allow");
+        $item1 = $this->createEntityInstance(CallAclRelMatchList::class);
+        (function () {
+            $this->setPriority(1);
+            $this->setPolicy("allow");
+        })->call($item1);
+
         $item1->setCallAcl(
             $this->getReference('_reference_ProviderCallAcl1')
         );

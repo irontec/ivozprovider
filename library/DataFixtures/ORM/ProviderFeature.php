@@ -20,65 +20,92 @@ class ProviderFeature extends Fixture
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Feature::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item1->setIden("queues");
-        $item1->setName(new Name('en', 'es'));
+        $item1 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("queues");
+            $this->setName(new Name('en', 'es'));
+        })->call($item1);
+
         $this->addReference('_reference_ProviderFeature1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item2->setIden("recordings");
-        $item2->setName(new Name('en', 'es'));
+        $item2 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("recordings");
+            $this->setName(new Name('en', 'es'));
+        })->call($item2);
+
         $this->addReference('_reference_ProviderFeature2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
-        $item3 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item3->setIden("faxes");
-        $item3->setName(new Name('en', 'es'));
+        $item3 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("faxes");
+            $this->setName(new Name('en', 'es'));
+        })->call($item3);
+
         $this->addReference('_reference_ProviderFeature3', $item3);
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
-        $item4 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item4->setIden("friends");
-        $item4->setName(new Name('en', 'es'));
+        $item4 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("friends");
+            $this->setName(new Name('en', 'es'));
+        })->call($item4);
+
         $this->addReference('_reference_ProviderFeature4', $item4);
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
-        $item5 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item5->setIden("conferences");
-        $item5->setName(new Name('en', 'es'));
+        $item5 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("conferences");
+            $this->setName(new Name('en', 'es'));
+        })->call($item5);
+
         $this->addReference('_reference_ProviderFeature5', $item5);
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
-        $item6 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item6->setIden("billing");
-        $item6->setName(new Name('en', 'es'));
+        $item6 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("billing");
+            $this->setName(new Name('en', 'es'));
+        })->call($item6);
+
         $this->addReference('_reference_ProviderFeature6', $item6);
         $this->sanitizeEntityValues($item6);
         $manager->persist($item6);
 
-        $item7 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item7->setIden("invoices");
-        $item7->setName(new Name('en', 'es'));
+        $item7 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("invoices");
+            $this->setName(new Name('en', 'es'));
+        })->call($item7);
+
         $this->addReference('_reference_ProviderFeature7', $item7);
         $this->sanitizeEntityValues($item7);
         $manager->persist($item7);
 
-        $item8 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item8->setIden("progress");
-        $item8->setName(new Name('en', 'es'));
+        $item8 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("progress");
+            $this->setName(new Name('en', 'es'));
+        })->call($item8);
+
         $this->addReference('_reference_ProviderFeature8', $item8);
         $this->sanitizeEntityValues($item8);
         $manager->persist($item8);
 
-        $item9 = $this->createEntityInstanceWithPublicMethods(Feature::class);
-        $item9->setIden("retail");
-        $item9->setName(new Name('en', 'es'));
+        $item9 = $this->createEntityInstance(Feature::class);
+        (function () {
+            $this->setIden("retail");
+            $this->setName(new Name('en', 'es'));
+        })->call($item9);
+
         $this->addReference('_reference_ProviderFeature9', $item9);
         $this->sanitizeEntityValues($item9);
         $manager->persist($item9);

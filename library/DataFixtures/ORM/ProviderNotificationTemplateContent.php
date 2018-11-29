@@ -22,11 +22,14 @@ class ProviderNotificationTemplateContent extends Fixture implements DependentFi
         $manager->getClassMetadata(NotificationTemplateContent::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var NotificationTemplateContentInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(NotificationTemplateContent::class);
-        $item1->setFromName("IvozProvider Notification");
-        $item1->setFromAddress("no-reply@ivozprovider.com");
-        $item1->setSubject("test subject");
-        $item1->setBody("test body");
+        $item1 = $this->createEntityInstance(NotificationTemplateContent::class);
+        (function () {
+            $this->setFromName("IvozProvider Notification");
+            $this->setFromAddress("no-reply@ivozprovider.com");
+            $this->setSubject("test subject");
+            $this->setBody("test body");
+        })->call($item1);
+
         $item1->setNotificationTemplate($this->getReference('_reference_ProviderNotificationTemplate1'));
         $item1->setLanguage($this->getReference('_reference_ProviderLanguage1'));
         $this->addReference('_reference_ProviderNotificationTemplateContent1', $item1);
