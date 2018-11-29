@@ -60,8 +60,9 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
       options:
         fixed: false
     activationTime:
-      type: datetime
+      type: string
       nullable: false
+      length: 24
       options:
         default: CURRENT_TIMESTAMP
       column: activation_time
