@@ -122,7 +122,10 @@ class DomainLifeCycleTest extends KernelTestCase
             ->getRepository(Domain::class);
         /** @var Domain $domain */
         $domain = $domainRepository->find(6);
-        $domain->setDomain('api-test.ivozprovider.local');
+        (function () {
+            $this->setDomain('api-test.ivozprovider.local');
+        })->call($domain);
+
         $domain->replaceFriends(
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
@@ -167,7 +170,11 @@ class DomainLifeCycleTest extends KernelTestCase
             ->getRepository(Domain::class);
         /** @var Domain $domain */
         $domain = $domainRepository->find(3);
-        $domain->setDomain('api-test.ivozprovider.local');
+
+        (function () {
+            $this->setDomain('api-test.ivozprovider.local');
+        })->call($domain);
+
         $domain->replaceFriends(
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
