@@ -245,6 +245,10 @@ production:
     # balanceNotification dialogs:
     <<: *balanceNotification_dialogsLink
 
+  commands:
+    exportBillableCallsToCsv_command:
+      <<: *exportBillableCallsToCsv_commandLink
+
 staging:
   _extends: production
 testing:
