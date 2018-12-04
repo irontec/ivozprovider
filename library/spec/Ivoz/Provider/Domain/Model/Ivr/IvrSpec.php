@@ -39,7 +39,7 @@ class IvrSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 

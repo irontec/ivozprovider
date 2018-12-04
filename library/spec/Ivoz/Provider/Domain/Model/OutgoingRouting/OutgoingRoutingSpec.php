@@ -28,7 +28,7 @@ class OutgoingRoutingSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -105,6 +105,6 @@ class OutgoingRoutingSpec extends ObjectBehavior
         $exception = new \Exception('Incorrect Outgoing Routing Type');
         $this
             ->shouldThrow($exception)
-            ->during('updateFromDto', [$dto]);
+            ->during('updateFromDto', [$dto, new \spec\DtoToEntityFakeTransformer()]);
     }
 }
