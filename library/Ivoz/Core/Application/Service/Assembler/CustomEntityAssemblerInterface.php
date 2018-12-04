@@ -7,5 +7,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface CustomEntityAssemblerInterface
 {
-    public function fromDto(DataTransferObjectInterface $dto, EntityInterface $entity);
+    public function fromDto(
+        DataTransferObjectInterface $dto,
+        EntityInterface $entity,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    );
 }

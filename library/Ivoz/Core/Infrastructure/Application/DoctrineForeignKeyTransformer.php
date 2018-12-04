@@ -2,10 +2,12 @@
 
 namespace Ivoz\Core\Infrastructure\Application;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Doctrine\ORM\EntityManager;
+use Ivoz\Core\Application\Helper\EntityClassHelper;
 
 class DoctrineForeignKeyTransformer implements ForeignKeyTransformerInterface
 {
@@ -20,26 +22,65 @@ class DoctrineForeignKeyTransformer implements ForeignKeyTransformerInterface
     }
 
     /**
-     * @param string $entityName
      * @param mixed $element
-     * @return EntityInterface
+     * @param bool $persist
      */
-    public function transform(string $entityName, $element)
+    public function transform($element, $persist = true)
     {
         if (is_null($element)) {
             return null;
         }
 
         if ($element instanceof EntityInterface) {
-            $this->em->persist($element);
+            if ($persist) {
+                $this->em->persist($element);
+            }
+
             return $element;
         }
 
-        if ($element instanceof DataTransferObjectInterface) {
-            $element->transformForeignKeys($this);
-            return $element;
+        $isDto = $element instanceof DataTransferObjectInterface;
+        if (!$isDto) {
+            throw new \RuntimeException("Error: DataTransferObject was expected");
         }
 
-        return $this->em->getReference($entityName, $element);
+        $entityClass = EntityClassHelper::getEntityClassByDto($element);
+        if (!is_null($element->getId())) {
+            return $this->em->getReference(
+                $entityClass,
+                $element->getId()
+            );
+        }
+
+        $entity = $entityClass::fromDto($element, $this);
+        if ($persist) {
+            $this->em->persist($entity);
+        }
+
+        return $entity;
+    }
+
+    /**
+     * @param array | null $elements
+     * @return ArrayCollection | null
+     */
+    public function transformCollection(array $elements = null)
+    {
+        if (is_null($elements)) {
+            return null;
+        }
+
+        if (empty($elements)) {
+            return new ArrayCollection();
+        }
+
+        $collection = new ArrayCollection();
+        foreach ($elements as $element) {
+            $collection->add(
+                $this->transform($element, false)
+            );
+        }
+
+        return $collection;
     }
 }

@@ -3,6 +3,7 @@
 namespace Ivoz\Core\Domain\Model;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
  * Entity interface
@@ -83,13 +84,23 @@ interface EntityInterface
     /**
      * Factory method
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
      */
-    public static function fromDto(DataTransferObjectInterface $dto);
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    );
 
     /**
+     * @internal use EntityTools instead
+     * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto);
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    );
 
     /**
      * DTO casting
