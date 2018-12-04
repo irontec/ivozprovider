@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -136,51 +134,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'astPsEndpoints' => $this->getAstPsEndpoints(),
             'users' => $this->getUsers()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
-        $this->terminalModel = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TerminalModel\\TerminalModel', $this->getTerminalModelId());
-        if (!is_null($this->astPsEndpoints)) {
-            $items = $this->getAstPsEndpoints();
-            $this->astPsEndpoints = [];
-            foreach ($items as $item) {
-                $this->astPsEndpoints[] = $transformer->transform(
-                    'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->users)) {
-            $items = $this->getUsers();
-            $this->users = [];
-            foreach ($items as $item) {
-                $this->users[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\User\\User',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->astPsEndpoints = $transformer->transform(
-            'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-            $this->astPsEndpoints
-        );
-        $this->users = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\User\\User',
-            $this->users
-        );
     }
 
     /**

@@ -54,24 +54,39 @@ trait OutgoingRoutingTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingRoutingDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getLcrRules()) {
-            $self->replaceLcrRules($dto->getLcrRules());
+            $self->replaceLcrRules(
+                $fkTransformer->transformCollection(
+                    $dto->getLcrRules()
+                )
+            );
         }
 
         if ($dto->getLcrRuleTargets()) {
-            $self->replaceLcrRuleTargets($dto->getLcrRuleTargets());
+            $self->replaceLcrRuleTargets(
+                $fkTransformer->transformCollection(
+                    $dto->getLcrRuleTargets()
+                )
+            );
         }
 
         if ($dto->getRelCarriers()) {
-            $self->replaceRelCarriers($dto->getRelCarriers());
+            $self->replaceRelCarriers(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCarriers()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -84,22 +99,37 @@ trait OutgoingRoutingTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingRoutingDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getLcrRules()) {
-            $this->replaceLcrRules($dto->getLcrRules());
+            $this->replaceLcrRules(
+                $fkTransformer->transformCollection(
+                    $dto->getLcrRules()
+                )
+            );
         }
         if ($dto->getLcrRuleTargets()) {
-            $this->replaceLcrRuleTargets($dto->getLcrRuleTargets());
+            $this->replaceLcrRuleTargets(
+                $fkTransformer->transformCollection(
+                    $dto->getLcrRuleTargets()
+                )
+            );
         }
         if ($dto->getRelCarriers()) {
-            $this->replaceRelCarriers($dto->getRelCarriers());
+            $this->replaceRelCarriers(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCarriers()
+                )
+            );
         }
         return $this;
     }

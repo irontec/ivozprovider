@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -61,22 +59,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
             'condition' => $this->getCondition(),
             'routeLock' => $this->getRouteLock()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->condition = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition', $this->getConditionId());
-        $this->routeLock = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RouteLock\\RouteLock', $this->getRouteLockId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

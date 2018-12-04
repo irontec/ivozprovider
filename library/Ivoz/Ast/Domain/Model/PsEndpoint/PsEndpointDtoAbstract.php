@@ -3,8 +3,6 @@
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -180,23 +178,6 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'friend' => $this->getFriend(),
             'residentialDevice' => $this->getResidentialDevice()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->terminal = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal', $this->getTerminalId());
-        $this->friend = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Friend\\Friend', $this->getFriendId());
-        $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

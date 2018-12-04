@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -97,36 +95,6 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
             'currency' => $this->getCurrency(),
             'ratingPlan' => $this->getRatingPlan()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->currency = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Currency\\Currency', $this->getCurrencyId());
-        if (!is_null($this->ratingPlan)) {
-            $items = $this->getRatingPlan();
-            $this->ratingPlan = [];
-            foreach ($items as $item) {
-                $this->ratingPlan[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->ratingPlan = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan',
-            $this->ratingPlan
-        );
     }
 
     /**

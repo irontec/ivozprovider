@@ -139,8 +139,10 @@ abstract class TrunksLcrRuleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksLcrRuleDto
          */
@@ -157,9 +159,9 @@ abstract class TrunksLcrRuleAbstract
             ->setFromUri($dto->getFromUri())
             ->setRequestUri($dto->getRequestUri())
             ->setMtTvalue($dto->getMtTvalue())
-            ->setRoutingPattern($dto->getRoutingPattern())
-            ->setRoutingPatternGroupsRelPattern($dto->getRoutingPatternGroupsRelPattern())
-            ->setOutgoingRouting($dto->getOutgoingRouting())
+            ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
+            ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
         $self->sanitizeValues();
@@ -173,8 +175,10 @@ abstract class TrunksLcrRuleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksLcrRuleDto
          */
@@ -188,9 +192,9 @@ abstract class TrunksLcrRuleAbstract
             ->setMtTvalue($dto->getMtTvalue())
             ->setStopper($dto->getStopper())
             ->setEnabled($dto->getEnabled())
-            ->setRoutingPattern($dto->getRoutingPattern())
-            ->setRoutingPatternGroupsRelPattern($dto->getRoutingPatternGroupsRelPattern())
-            ->setOutgoingRouting($dto->getOutgoingRouting());
+            ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
+            ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
 
 
 

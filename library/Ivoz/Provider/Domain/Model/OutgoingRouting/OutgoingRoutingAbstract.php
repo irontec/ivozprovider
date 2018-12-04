@@ -155,8 +155,10 @@ abstract class OutgoingRoutingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingRoutingDto
          */
@@ -173,13 +175,13 @@ abstract class OutgoingRoutingAbstract
             ->setPrefix($dto->getPrefix())
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRoutingPattern($dto->getRoutingPattern())
-            ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
-            ->setRoutingTag($dto->getRoutingTag())
-            ->setClidCountry($dto->getClidCountry())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
+            ->setRoutingPatternGroup($fkTransformer->transform($dto->getRoutingPatternGroup()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
+            ->setClidCountry($fkTransformer->transform($dto->getClidCountry()))
         ;
 
         $self->sanitizeValues();
@@ -193,8 +195,10 @@ abstract class OutgoingRoutingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingRoutingDto
          */
@@ -208,13 +212,13 @@ abstract class OutgoingRoutingAbstract
             ->setPrefix($dto->getPrefix())
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRoutingPattern($dto->getRoutingPattern())
-            ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
-            ->setRoutingTag($dto->getRoutingTag())
-            ->setClidCountry($dto->getClidCountry());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
+            ->setRoutingPatternGroup($fkTransformer->transform($dto->getRoutingPatternGroup()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
+            ->setClidCountry($fkTransformer->transform($dto->getClidCountry()));
 
 
 

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -187,27 +185,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'invoice' => $this->getInvoice(),
             'trunksCdr' => $this->getTrunksCdr()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
-        $this->destination = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
-        $this->ratingPlanGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup', $this->getRatingPlanGroupId());
-        $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
-        $this->trunksCdr = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr', $this->getTrunksCdrId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

@@ -105,8 +105,10 @@ abstract class CallAclRelMatchListAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallAclRelMatchListDto
          */
@@ -118,8 +120,8 @@ abstract class CallAclRelMatchListAbstract
         );
 
         $self
-            ->setCallAcl($dto->getCallAcl())
-            ->setMatchList($dto->getMatchList())
+            ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
+            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
         ;
 
         $self->sanitizeValues();
@@ -133,8 +135,10 @@ abstract class CallAclRelMatchListAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallAclRelMatchListDto
          */
@@ -143,8 +147,8 @@ abstract class CallAclRelMatchListAbstract
         $this
             ->setPriority($dto->getPriority())
             ->setPolicy($dto->getPolicy())
-            ->setCallAcl($dto->getCallAcl())
-            ->setMatchList($dto->getMatchList());
+            ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
+            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
 
 
 

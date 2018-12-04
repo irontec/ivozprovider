@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -68,22 +66,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
             'fixedCost' => $this->getFixedCost(),
             'invoiceScheduler' => $this->getInvoiceScheduler()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->fixedCost = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\FixedCost\\FixedCost', $this->getFixedCostId());
-        $this->invoiceScheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler', $this->getInvoiceSchedulerId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

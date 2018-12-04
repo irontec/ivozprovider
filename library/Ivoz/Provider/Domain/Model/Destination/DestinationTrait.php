@@ -37,16 +37,23 @@ trait DestinationTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getDestinationRates()) {
-            $self->replaceDestinationRates($dto->getDestinationRates());
+            $self->replaceDestinationRates(
+                $fkTransformer->transformCollection(
+                    $dto->getDestinationRates()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait DestinationTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getDestinationRates()) {
-            $this->replaceDestinationRates($dto->getDestinationRates());
+            $this->replaceDestinationRates(
+                $fkTransformer->transformCollection(
+                    $dto->getDestinationRates()
+                )
+            );
         }
         return $this;
     }

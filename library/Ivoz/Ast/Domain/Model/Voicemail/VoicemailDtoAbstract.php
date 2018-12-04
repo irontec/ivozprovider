@@ -3,8 +3,6 @@
 namespace Ivoz\Ast\Domain\Model\Voicemail;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -292,22 +290,6 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'user' => $this->getUser(),
             'residentialDevice' => $this->getResidentialDevice()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
-        $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

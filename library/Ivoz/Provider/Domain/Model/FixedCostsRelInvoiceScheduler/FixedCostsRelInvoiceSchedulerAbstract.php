@@ -97,8 +97,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FixedCostsRelInvoiceSchedulerDto
          */
@@ -108,8 +110,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $self
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($dto->getFixedCost())
-            ->setInvoiceScheduler($dto->getInvoiceScheduler())
+            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
         ;
 
         $self->sanitizeValues();
@@ -123,8 +125,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FixedCostsRelInvoiceSchedulerDto
          */
@@ -132,8 +136,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $this
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($dto->getFixedCost())
-            ->setInvoiceScheduler($dto->getInvoiceScheduler());
+            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
 
 
 

@@ -160,8 +160,10 @@ abstract class ExternalCallFilterAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterDto
          */
@@ -176,16 +178,16 @@ abstract class ExternalCallFilterAbstract
             ->setHolidayNumberValue($dto->getHolidayNumberValue())
             ->setOutOfScheduleTargetType($dto->getOutOfScheduleTargetType())
             ->setOutOfScheduleNumberValue($dto->getOutOfScheduleNumberValue())
-            ->setCompany($dto->getCompany())
-            ->setWelcomeLocution($dto->getWelcomeLocution())
-            ->setHolidayLocution($dto->getHolidayLocution())
-            ->setOutOfScheduleLocution($dto->getOutOfScheduleLocution())
-            ->setHolidayExtension($dto->getHolidayExtension())
-            ->setOutOfScheduleExtension($dto->getOutOfScheduleExtension())
-            ->setHolidayVoiceMailUser($dto->getHolidayVoiceMailUser())
-            ->setOutOfScheduleVoiceMailUser($dto->getOutOfScheduleVoiceMailUser())
-            ->setHolidayNumberCountry($dto->getHolidayNumberCountry())
-            ->setOutOfScheduleNumberCountry($dto->getOutOfScheduleNumberCountry())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
+            ->setHolidayLocution($fkTransformer->transform($dto->getHolidayLocution()))
+            ->setOutOfScheduleLocution($fkTransformer->transform($dto->getOutOfScheduleLocution()))
+            ->setHolidayExtension($fkTransformer->transform($dto->getHolidayExtension()))
+            ->setOutOfScheduleExtension($fkTransformer->transform($dto->getOutOfScheduleExtension()))
+            ->setHolidayVoiceMailUser($fkTransformer->transform($dto->getHolidayVoiceMailUser()))
+            ->setOutOfScheduleVoiceMailUser($fkTransformer->transform($dto->getOutOfScheduleVoiceMailUser()))
+            ->setHolidayNumberCountry($fkTransformer->transform($dto->getHolidayNumberCountry()))
+            ->setOutOfScheduleNumberCountry($fkTransformer->transform($dto->getOutOfScheduleNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -199,8 +201,10 @@ abstract class ExternalCallFilterAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterDto
          */
@@ -212,16 +216,16 @@ abstract class ExternalCallFilterAbstract
             ->setHolidayNumberValue($dto->getHolidayNumberValue())
             ->setOutOfScheduleTargetType($dto->getOutOfScheduleTargetType())
             ->setOutOfScheduleNumberValue($dto->getOutOfScheduleNumberValue())
-            ->setCompany($dto->getCompany())
-            ->setWelcomeLocution($dto->getWelcomeLocution())
-            ->setHolidayLocution($dto->getHolidayLocution())
-            ->setOutOfScheduleLocution($dto->getOutOfScheduleLocution())
-            ->setHolidayExtension($dto->getHolidayExtension())
-            ->setOutOfScheduleExtension($dto->getOutOfScheduleExtension())
-            ->setHolidayVoiceMailUser($dto->getHolidayVoiceMailUser())
-            ->setOutOfScheduleVoiceMailUser($dto->getOutOfScheduleVoiceMailUser())
-            ->setHolidayNumberCountry($dto->getHolidayNumberCountry())
-            ->setOutOfScheduleNumberCountry($dto->getOutOfScheduleNumberCountry());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
+            ->setHolidayLocution($fkTransformer->transform($dto->getHolidayLocution()))
+            ->setOutOfScheduleLocution($fkTransformer->transform($dto->getOutOfScheduleLocution()))
+            ->setHolidayExtension($fkTransformer->transform($dto->getHolidayExtension()))
+            ->setOutOfScheduleExtension($fkTransformer->transform($dto->getOutOfScheduleExtension()))
+            ->setHolidayVoiceMailUser($fkTransformer->transform($dto->getHolidayVoiceMailUser()))
+            ->setOutOfScheduleVoiceMailUser($fkTransformer->transform($dto->getOutOfScheduleVoiceMailUser()))
+            ->setHolidayNumberCountry($fkTransformer->transform($dto->getHolidayNumberCountry()))
+            ->setOutOfScheduleNumberCountry($fkTransformer->transform($dto->getOutOfScheduleNumberCountry()));
 
 
 

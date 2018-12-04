@@ -116,8 +116,10 @@ abstract class TrunksAddressAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksAddressDto
          */
@@ -132,7 +134,7 @@ abstract class TrunksAddressAbstract
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($dto->getDdiProviderAddress())
+            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()))
         ;
 
         $self->sanitizeValues();
@@ -146,8 +148,10 @@ abstract class TrunksAddressAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksAddressDto
          */
@@ -159,7 +163,7 @@ abstract class TrunksAddressAbstract
             ->setMask($dto->getMask())
             ->setPort($dto->getPort())
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($dto->getDdiProviderAddress());
+            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
 
 
 

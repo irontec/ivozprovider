@@ -92,8 +92,10 @@ abstract class ExternalCallFilterRelCalendarAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterRelCalendarDto
          */
@@ -102,8 +104,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
         $self = new static();
 
         $self
-            ->setFilter($dto->getFilter())
-            ->setCalendar($dto->getCalendar())
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class ExternalCallFilterRelCalendarAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterRelCalendarDto
          */
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
         $this
-            ->setFilter($dto->getFilter())
-            ->setCalendar($dto->getCalendar());
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
 
 
 

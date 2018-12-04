@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -96,22 +94,6 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
             'notificationTemplate' => $this->getNotificationTemplate(),
             'language' => $this->getLanguage()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->notificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getNotificationTemplateId());
-        $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

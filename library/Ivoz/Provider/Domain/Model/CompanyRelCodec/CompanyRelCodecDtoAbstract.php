@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\CompanyRelCodec;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -61,22 +59,6 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'codec' => $this->getCodec()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->codec = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Codec\\Codec', $this->getCodecId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

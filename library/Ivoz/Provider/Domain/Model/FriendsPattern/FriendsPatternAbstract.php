@@ -99,8 +99,10 @@ abstract class FriendsPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FriendsPatternDto
          */
@@ -112,7 +114,7 @@ abstract class FriendsPatternAbstract
         );
 
         $self
-            ->setFriend($dto->getFriend())
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
         ;
 
         $self->sanitizeValues();
@@ -126,8 +128,10 @@ abstract class FriendsPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FriendsPatternDto
          */
@@ -136,7 +140,7 @@ abstract class FriendsPatternAbstract
         $this
             ->setName($dto->getName())
             ->setRegExp($dto->getRegExp())
-            ->setFriend($dto->getFriend());
+            ->setFriend($fkTransformer->transform($dto->getFriend()));
 
 
 

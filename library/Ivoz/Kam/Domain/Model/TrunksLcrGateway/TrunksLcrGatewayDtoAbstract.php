@@ -3,8 +3,6 @@
 namespace Ivoz\Kam\Domain\Model\TrunksLcrGateway;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -138,21 +136,6 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
             'id' => $this->getId(),
             'carrierServer' => $this->getCarrierServer()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->carrierServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer', $this->getCarrierServerId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

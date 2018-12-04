@@ -109,8 +109,10 @@ abstract class FaxAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FaxDto
          */
@@ -123,8 +125,8 @@ abstract class FaxAbstract
 
         $self
             ->setEmail($dto->getEmail())
-            ->setCompany($dto->getCompany())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
         ;
 
         $self->sanitizeValues();
@@ -138,8 +140,10 @@ abstract class FaxAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FaxDto
          */
@@ -149,8 +153,8 @@ abstract class FaxAbstract
             ->setName($dto->getName())
             ->setEmail($dto->getEmail())
             ->setSendByEmail($dto->getSendByEmail())
-            ->setCompany($dto->getCompany())
-            ->setOutgoingDdi($dto->getOutgoingDdi());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
 
 

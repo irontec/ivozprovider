@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\TerminalManufacturer;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -68,20 +66,6 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
             'description' => $this->getDescription(),
             'id' => $this->getId()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

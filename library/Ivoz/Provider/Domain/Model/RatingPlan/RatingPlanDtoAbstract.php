@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -145,24 +143,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
             'tpTiming' => $this->getTpTiming(),
             'tpRatingPlan' => $this->getTpRatingPlan()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->ratingPlanGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup', $this->getRatingPlanGroupId());
-        $this->destinationRateGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup', $this->getDestinationRateGroupId());
-        $this->tpTiming = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpTiming\\TpTiming', $this->getTpTimingId());
-        $this->tpRatingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpRatingPlan\\TpRatingPlan', $this->getTpRatingPlanId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

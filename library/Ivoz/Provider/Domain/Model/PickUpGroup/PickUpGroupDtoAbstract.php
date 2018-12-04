@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -67,35 +65,6 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'relUsers' => $this->getRelUsers()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        if (!is_null($this->relUsers)) {
-            $items = $this->getRelUsers();
-            $this->relUsers = [];
-            foreach ($items as $item) {
-                $this->relUsers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->relUsers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser',
-            $this->relUsers
-        );
     }
 
     /**

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Commandlog;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -89,20 +87,6 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
             'microtime' => $this->getMicrotime(),
             'id' => $this->getId()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

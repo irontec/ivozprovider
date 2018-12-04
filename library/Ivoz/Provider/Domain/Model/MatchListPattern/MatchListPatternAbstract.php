@@ -114,8 +114,10 @@ abstract class MatchListPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto MatchListPatternDto
          */
@@ -129,8 +131,8 @@ abstract class MatchListPatternAbstract
             ->setDescription($dto->getDescription())
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
-            ->setMatchList($dto->getMatchList())
-            ->setNumberCountry($dto->getNumberCountry())
+            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -144,8 +146,10 @@ abstract class MatchListPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto MatchListPatternDto
          */
@@ -156,8 +160,8 @@ abstract class MatchListPatternAbstract
             ->setType($dto->getType())
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
-            ->setMatchList($dto->getMatchList())
-            ->setNumberCountry($dto->getNumberCountry());
+            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
 
 

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -94,50 +92,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'ddiProviderRegistrations' => $this->getDdiProviderRegistrations(),
             'ddiProviderAddresses' => $this->getDdiProviderAddresses()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        if (!is_null($this->ddiProviderRegistrations)) {
-            $items = $this->getDdiProviderRegistrations();
-            $this->ddiProviderRegistrations = [];
-            foreach ($items as $item) {
-                $this->ddiProviderRegistrations[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->ddiProviderAddresses)) {
-            $items = $this->getDdiProviderAddresses();
-            $this->ddiProviderAddresses = [];
-            foreach ($items as $item) {
-                $this->ddiProviderAddresses[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\DdiProviderAddress\\DdiProviderAddress',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->ddiProviderRegistrations = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration',
-            $this->ddiProviderRegistrations
-        );
-        $this->ddiProviderAddresses = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\DdiProviderAddress\\DdiProviderAddress',
-            $this->ddiProviderAddresses
-        );
     }
 
     /**

@@ -146,8 +146,10 @@ abstract class BrandAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandDto
          */
@@ -180,10 +182,10 @@ abstract class BrandAbstract
             ->setDomainUsers($dto->getDomainUsers())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setDomain($dto->getDomain())
-            ->setLanguage($dto->getLanguage())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
-            ->setCurrency($dto->getCurrency())
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
         $self->sanitizeValues();
@@ -197,8 +199,10 @@ abstract class BrandAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandDto
          */
@@ -228,10 +232,10 @@ abstract class BrandAbstract
             ->setMaxCalls($dto->getMaxCalls())
             ->setLogo($logo)
             ->setInvoice($invoice)
-            ->setDomain($dto->getDomain())
-            ->setLanguage($dto->getLanguage())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
-            ->setCurrency($dto->getCurrency());
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
 
 

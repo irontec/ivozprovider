@@ -220,8 +220,10 @@ abstract class ResidentialDeviceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ResidentialDeviceDto
          */
@@ -246,12 +248,12 @@ abstract class ResidentialDeviceAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setCompany($dto->getCompany())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setLanguage($dto->getLanguage())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
         ;
 
         $self->sanitizeValues();
@@ -265,8 +267,10 @@ abstract class ResidentialDeviceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ResidentialDeviceDto
          */
@@ -288,12 +292,12 @@ abstract class ResidentialDeviceAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setCompany($dto->getCompany())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setLanguage($dto->getLanguage());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
 
 

@@ -147,8 +147,10 @@ abstract class RatingPlanAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingPlanDto
          */
@@ -168,8 +170,8 @@ abstract class RatingPlanAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setDestinationRateGroup($dto->getDestinationRateGroup())
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
         ;
 
         $self->sanitizeValues();
@@ -183,8 +185,10 @@ abstract class RatingPlanAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingPlanDto
          */
@@ -201,8 +205,8 @@ abstract class RatingPlanAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setDestinationRateGroup($dto->getDestinationRateGroup());
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
 
 
 

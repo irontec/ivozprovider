@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -212,68 +210,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'ddis' => $this->getDdis(),
             'callForwardSettings' => $this->getCallForwardSettings()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
-        $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
-        if (!is_null($this->psEndpoints)) {
-            $items = $this->getPsEndpoints();
-            $this->psEndpoints = [];
-            foreach ($items as $item) {
-                $this->psEndpoints[] = $transformer->transform(
-                    'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->ddis)) {
-            $items = $this->getDdis();
-            $this->ddis = [];
-            foreach ($items as $item) {
-                $this->ddis[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->callForwardSettings)) {
-            $items = $this->getCallForwardSettings();
-            $this->callForwardSettings = [];
-            foreach ($items as $item) {
-                $this->callForwardSettings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->psEndpoints = $transformer->transform(
-            'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-            $this->psEndpoints
-        );
-        $this->ddis = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-            $this->ddis
-        );
-        $this->callForwardSettings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
-            $this->callForwardSettings
-        );
     }
 
     /**

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Domain;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -86,62 +84,6 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
             'residentialDevices' => $this->getResidentialDevices(),
             'terminals' => $this->getTerminals()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        if (!is_null($this->friends)) {
-            $items = $this->getFriends();
-            $this->friends = [];
-            foreach ($items as $item) {
-                $this->friends[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->residentialDevices)) {
-            $items = $this->getResidentialDevices();
-            $this->residentialDevices = [];
-            foreach ($items as $item) {
-                $this->residentialDevices[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->terminals)) {
-            $items = $this->getTerminals();
-            $this->terminals = [];
-            foreach ($items as $item) {
-                $this->terminals[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->friends = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
-            $this->friends
-        );
-        $this->residentialDevices = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',
-            $this->residentialDevices
-        );
-        $this->terminals = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
-            $this->terminals
-        );
     }
 
     /**

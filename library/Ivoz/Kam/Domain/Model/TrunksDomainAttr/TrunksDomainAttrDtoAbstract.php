@@ -3,8 +3,6 @@
 namespace Ivoz\Kam\Domain\Model\TrunksDomainAttr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -82,20 +80,6 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
             'lastModified' => $this->getLastModified(),
             'id' => $this->getId()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

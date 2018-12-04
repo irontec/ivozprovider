@@ -37,16 +37,23 @@ trait OutgoingDdiRuleTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingDdiRuleDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getPatterns()) {
-            $self->replacePatterns($dto->getPatterns());
+            $self->replacePatterns(
+                $fkTransformer->transformCollection(
+                    $dto->getPatterns()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait OutgoingDdiRuleTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingDdiRuleDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getPatterns()) {
-            $this->replacePatterns($dto->getPatterns());
+            $this->replacePatterns(
+                $fkTransformer->transformCollection(
+                    $dto->getPatterns()
+                )
+            );
         }
         return $this;
     }

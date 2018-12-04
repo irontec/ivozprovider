@@ -98,8 +98,10 @@ abstract class CompanyServiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyServiceDto
          */
@@ -110,8 +112,8 @@ abstract class CompanyServiceAbstract
         );
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setService($dto->getService())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setService($fkTransformer->transform($dto->getService()))
         ;
 
         $self->sanitizeValues();
@@ -125,8 +127,10 @@ abstract class CompanyServiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyServiceDto
          */
@@ -134,8 +138,8 @@ abstract class CompanyServiceAbstract
 
         $this
             ->setCode($dto->getCode())
-            ->setCompany($dto->getCompany())
-            ->setService($dto->getService());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setService($fkTransformer->transform($dto->getService()));
 
 
 

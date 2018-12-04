@@ -104,8 +104,10 @@ abstract class DestinationAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationDto
          */
@@ -122,7 +124,7 @@ abstract class DestinationAbstract
         );
 
         $self
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -136,8 +138,10 @@ abstract class DestinationAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationDto
          */
@@ -151,7 +155,7 @@ abstract class DestinationAbstract
         $this
             ->setPrefix($dto->getPrefix())
             ->setName($name)
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

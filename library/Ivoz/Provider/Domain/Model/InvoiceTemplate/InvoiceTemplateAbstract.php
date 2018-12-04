@@ -114,8 +114,10 @@ abstract class InvoiceTemplateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceTemplateDto
          */
@@ -130,7 +132,7 @@ abstract class InvoiceTemplateAbstract
             ->setDescription($dto->getDescription())
             ->setTemplateHeader($dto->getTemplateHeader())
             ->setTemplateFooter($dto->getTemplateFooter())
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -144,8 +146,10 @@ abstract class InvoiceTemplateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceTemplateDto
          */
@@ -157,7 +161,7 @@ abstract class InvoiceTemplateAbstract
             ->setTemplate($dto->getTemplate())
             ->setTemplateHeader($dto->getTemplateHeader())
             ->setTemplateFooter($dto->getTemplateFooter())
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

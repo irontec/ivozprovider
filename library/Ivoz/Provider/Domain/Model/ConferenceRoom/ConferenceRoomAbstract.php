@@ -110,8 +110,10 @@ abstract class ConferenceRoomAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConferenceRoomDto
          */
@@ -125,7 +127,7 @@ abstract class ConferenceRoomAbstract
 
         $self
             ->setPinCode($dto->getPinCode())
-            ->setCompany($dto->getCompany())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
         $self->sanitizeValues();
@@ -139,8 +141,10 @@ abstract class ConferenceRoomAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConferenceRoomDto
          */
@@ -151,7 +155,7 @@ abstract class ConferenceRoomAbstract
             ->setPinProtected($dto->getPinProtected())
             ->setPinCode($dto->getPinCode())
             ->setMaxMembers($dto->getMaxMembers())
-            ->setCompany($dto->getCompany());
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
 
 

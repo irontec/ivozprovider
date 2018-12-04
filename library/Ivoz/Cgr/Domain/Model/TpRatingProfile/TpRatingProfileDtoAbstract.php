@@ -3,8 +3,6 @@
 namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -138,22 +136,6 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
             'ratingProfile' => $this->getRatingProfile(),
             'outgoingRoutingRelCarrier' => $this->getOutgoingRoutingRelCarrier()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->ratingProfile = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile', $this->getRatingProfileId());
-        $this->outgoingRoutingRelCarrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier', $this->getOutgoingRoutingRelCarrierId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

@@ -3,8 +3,6 @@
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -96,20 +94,6 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
             'lastModified' => $this->getLastModified(),
             'id' => $this->getId()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

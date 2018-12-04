@@ -92,8 +92,10 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRoutesConditionsRelRouteLockDto
          */
@@ -102,8 +104,8 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
         $self = new static();
 
         $self
-            ->setCondition($dto->getCondition())
-            ->setRouteLock($dto->getRouteLock())
+            ->setCondition($fkTransformer->transform($dto->getCondition()))
+            ->setRouteLock($fkTransformer->transform($dto->getRouteLock()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRoutesConditionsRelRouteLockDto
          */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $this
-            ->setCondition($dto->getCondition())
-            ->setRouteLock($dto->getRouteLock());
+            ->setCondition($fkTransformer->transform($dto->getCondition()))
+            ->setRouteLock($fkTransformer->transform($dto->getRouteLock()));
 
 
 

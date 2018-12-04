@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -75,22 +73,6 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
             'trunksAddress' => $this->getTrunksAddress(),
             'ddiProvider' => $this->getDdiProvider()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->trunksAddress = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksAddress\\TrunksAddress', $this->getTrunksAddressId());
-        $this->ddiProvider = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DdiProvider\\DdiProvider', $this->getDdiProviderId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**
