@@ -13,7 +13,8 @@ production:
             fields:
               - name
             template: '%name%'
-          order: name
+          order:
+            Company.name: asc
     name:
       title: _('Name')
       type: text
