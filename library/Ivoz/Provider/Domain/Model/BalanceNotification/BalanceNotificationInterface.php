@@ -13,7 +13,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @return LanguageInterface
+     * @return LanguageInterface | null
      */
     public function getLanguage();
 
