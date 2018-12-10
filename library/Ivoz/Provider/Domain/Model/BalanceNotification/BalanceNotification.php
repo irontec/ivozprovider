@@ -32,17 +32,16 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
 
     protected function sanitizeValues()
     {
+        /**
+         * @todo ensure carrier or company to have value
+         */
         if ($this->getCarrier()) {
             $this->setCompany(null);
-        }
-
-        if ($this->getCompany()) {
-            $this->setCarrier(null);
         }
     }
 
     /**
-     * @return LanguageInterface
+     * @return LanguageInterface | null
      */
     public function getLanguage()
     {
@@ -54,8 +53,16 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
         }
 
         $company = $this->getCompany();
-        $language = $company->getLanguage();
-        if (!$language) {
+        $language = $company
+            ? $company->getLanguage()
+            : null;
+
+        if (!$language && $company) {
+
+            /**
+             * @todo remove this. Company will already have brand language
+             * @see Company::sanitizeValues()
+             */
             $language = $company
                 ->getBrand()
                 ->getLanguage();

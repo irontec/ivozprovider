@@ -28,6 +28,7 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     /**
      * @return bool
+     * @deprecated dead code (apparently)
      */
     public function isCompanyAdmin();
 
