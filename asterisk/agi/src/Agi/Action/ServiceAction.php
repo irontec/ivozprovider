@@ -271,7 +271,7 @@ class ServiceAction
 
         // Set upload the original file of the locution
         /** @var LocutionDTO $locutionDto */
-        $locutionDto = $locution->toDTO();
+        $locutionDto = $this->entityTools->entityToDto($locution);
         $locutionDto->setOriginalFilePath($originalFile);
         $locutionDto->setOriginalFileBaseName($originalFilename);
 

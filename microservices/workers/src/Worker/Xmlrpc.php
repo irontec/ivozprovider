@@ -4,7 +4,7 @@ namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
 use GearmanJob;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 use Mmoreram\GearmanBundle\Driver\Gearman;
@@ -43,12 +43,10 @@ class Xmlrpc
      * Xmlrpc constructor.
      *
      * @param EntityManagerInterface $em
-     * @param EntityPersisterInterface $entityPersister
      * @param Logger $logger
      */
     public function __construct(
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
         Logger $logger
     ) {
         $this->em = $em;

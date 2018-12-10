@@ -7,7 +7,7 @@ use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
@@ -35,7 +35,7 @@ class FaxDial extends RouteHandlerAbstract
     /**
      * @var EntityPersisterInterface
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CommonStoragePathResolver
@@ -52,7 +52,7 @@ class FaxDial extends RouteHandlerAbstract
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
-     * @param EntityPersisterInterface $entityPersister
+     * @param EntityTools $entityTools
      * @param CommonStoragePathResolver $faxStoragePathResolver
      * @param ExternalFaxCallAction $externalFaxCallAction
      */
@@ -60,7 +60,7 @@ class FaxDial extends RouteHandlerAbstract
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         CommonStoragePathResolver $faxStoragePathResolver,
         ExternalFaxCallAction $externalFaxCallAction
     )
@@ -68,7 +68,7 @@ class FaxDial extends RouteHandlerAbstract
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->faxStoragePathResolver = $faxStoragePathResolver;
         $this->externalFaxCallAction = $externalFaxCallAction;
     }
@@ -111,17 +111,17 @@ class FaxDial extends RouteHandlerAbstract
         $process->mustRun();
 
         /** @var FaxesInOutDTO $faxOutDto */
-        $faxOutDto = $faxOut->toDTO();
+        $faxOutDto = $this->entityTools->entityToDto($faxOut);
 
         // Execute conversion command
         if ($process->getExitCode() != 0) {
             $this->agi->error("Unable to convert fax file %s to TIFF.", $faxOut);
             $faxOutDto->setStatus('error');
-            $this->entityPersister->persistDto($faxOutDto, $faxOut);
+            $this->entityTools->persistDto($faxOutDto, $faxOut);
             return;
         } else {
             $faxOutDto->setStatus('inprogress');
-            $this->entityPersister->persistDto($faxOutDto, $faxOut);
+            $this->entityTools->persistDto($faxOutDto, $faxOut);
         }
 
         // Set the virtual fax as caller
