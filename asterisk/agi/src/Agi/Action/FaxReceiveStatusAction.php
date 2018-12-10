@@ -78,7 +78,7 @@ class FaxReceiveStatusAction
 
         // Get DTO for status updates
         /** @var FaxesInOutDTO $faxInDto */
-        $faxInDto = $faxIn->toDTO();
+        $faxInDto = $this->entityTools->entityToDto($faxIn);
 
         // Check no errors happened during ReceiveFax
         $error = $this->agi->getVariable("FAXOPT(error)");
