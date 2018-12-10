@@ -39,31 +39,11 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
 
     /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type = null);
-
-    /**
      * Get type
      *
      * @return string
      */
     public function getType();
-
-    /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
 
     /**
      * Get priority
@@ -73,31 +53,11 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
-     * @deprecated
-     * Set weight
-     *
-     * @param integer $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight);
-
-    /**
      * Get weight
      *
      * @return integer
      */
     public function getWeight();
-
-    /**
-     * @deprecated
-     * Set routingMode
-     *
-     * @param string $routingMode
-     *
-     * @return self
-     */
-    public function setRoutingMode($routingMode = null);
 
     /**
      * Get routingMode
@@ -107,16 +67,6 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingMode();
 
     /**
-     * @deprecated
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return self
-     */
-    public function setPrefix($prefix = null);
-
-    /**
      * Get prefix
      *
      * @return string
@@ -124,31 +74,11 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
-     * @deprecated
-     * Set forceClid
-     *
-     * @param boolean $forceClid
-     *
-     * @return self
-     */
-    public function setForceClid($forceClid = null);
-
-    /**
      * Get forceClid
      *
      * @return boolean
      */
     public function getForceClid();
-
-    /**
-     * @deprecated
-     * Set clid
-     *
-     * @param string $clid
-     *
-     * @return self
-     */
-    public function setClid($clid = null);
 
     /**
      * Get clid

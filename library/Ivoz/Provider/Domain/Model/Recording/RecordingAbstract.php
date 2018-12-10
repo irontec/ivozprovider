@@ -248,14 +248,13 @@ abstract class RecordingAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set callid
      *
      * @param string $callid
      *
      * @return self
      */
-    public function setCallid($callid = null)
+    protected function setCallid($callid = null)
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -277,14 +276,13 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
      *
      * @return self
      */
-    public function setCalldate($calldate)
+    protected function setCalldate($calldate)
     {
         Assertion::notNull($calldate, 'calldate value "%s" is null, but non null value was expected.');
         $calldate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -308,14 +306,13 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @deprecated
      * Set type
      *
      * @param string $type
      *
      * @return self
      */
-    public function setType($type)
+    protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::choice($type, array (
@@ -339,14 +336,13 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @deprecated
      * Set duration
      *
      * @param float $duration
      *
      * @return self
      */
-    public function setDuration($duration)
+    protected function setDuration($duration)
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
@@ -368,14 +364,13 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @deprecated
      * Set caller
      *
      * @param string $caller
      *
      * @return self
      */
-    public function setCaller($caller = null)
+    protected function setCaller($caller = null)
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -397,14 +392,13 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @deprecated
      * Set callee
      *
      * @param string $callee
      *
      * @return self
      */
-    public function setCallee($callee = null)
+    protected function setCallee($callee = null)
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -426,14 +420,13 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @deprecated
      * Set recorder
      *
      * @param string $recorder
      *
      * @return self
      */
-    public function setRecorder($recorder = null)
+    protected function setRecorder($recorder = null)
     {
         if (!is_null($recorder)) {
             Assertion::maxLength($recorder, 128, 'recorder value "%s" is too long, it should have no more than %d characters, but has %d characters.');

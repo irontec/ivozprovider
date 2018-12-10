@@ -276,14 +276,13 @@ abstract class TpRatingProfileAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tpid
      *
      * @param string $tpid
      *
      * @return self
      */
-    public function setTpid($tpid)
+    protected function setTpid($tpid)
     {
         Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -304,14 +303,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set loadid
      *
      * @param string $loadid
      *
      * @return self
      */
-    public function setLoadid($loadid)
+    protected function setLoadid($loadid)
     {
         Assertion::notNull($loadid, 'loadid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($loadid, 64, 'loadid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -332,14 +330,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set direction
      *
      * @param string $direction
      *
      * @return self
      */
-    public function setDirection($direction)
+    protected function setDirection($direction)
     {
         Assertion::notNull($direction, 'direction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -360,14 +357,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set tenant
      *
      * @param string $tenant
      *
      * @return self
      */
-    public function setTenant($tenant = null)
+    protected function setTenant($tenant = null)
     {
         if (!is_null($tenant)) {
             Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -389,14 +385,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set category
      *
      * @param string $category
      *
      * @return self
      */
-    public function setCategory($category)
+    protected function setCategory($category)
     {
         Assertion::notNull($category, 'category value "%s" is null, but non null value was expected.');
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -417,14 +412,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set subject
      *
      * @param string $subject
      *
      * @return self
      */
-    public function setSubject($subject = null)
+    protected function setSubject($subject = null)
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -446,14 +440,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime
      *
      * @return self
      */
-    public function setActivationTime($activationTime)
+    protected function setActivationTime($activationTime)
     {
         Assertion::notNull($activationTime, 'activationTime value "%s" is null, but non null value was expected.');
         $activationTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -477,14 +470,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set ratingPlanTag
      *
      * @param string $ratingPlanTag
      *
      * @return self
      */
-    public function setRatingPlanTag($ratingPlanTag = null)
+    protected function setRatingPlanTag($ratingPlanTag = null)
     {
         if (!is_null($ratingPlanTag)) {
             Assertion::maxLength($ratingPlanTag, 64, 'ratingPlanTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -506,14 +498,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set fallbackSubjects
      *
      * @param string $fallbackSubjects
      *
      * @return self
      */
-    public function setFallbackSubjects($fallbackSubjects = null)
+    protected function setFallbackSubjects($fallbackSubjects = null)
     {
         if (!is_null($fallbackSubjects)) {
             Assertion::maxLength($fallbackSubjects, 64, 'fallbackSubjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -535,14 +526,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set cdrStatQueueIds
      *
      * @param string $cdrStatQueueIds
      *
      * @return self
      */
-    public function setCdrStatQueueIds($cdrStatQueueIds = null)
+    protected function setCdrStatQueueIds($cdrStatQueueIds = null)
     {
         if (!is_null($cdrStatQueueIds)) {
             Assertion::maxLength($cdrStatQueueIds, 64, 'cdrStatQueueIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -564,14 +554,13 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt)
     {
         Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
         $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

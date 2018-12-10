@@ -254,14 +254,13 @@ abstract class CallForwardSettingAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set callTypeFilter
      *
      * @param string $callTypeFilter
      *
      * @return self
      */
-    public function setCallTypeFilter($callTypeFilter)
+    protected function setCallTypeFilter($callTypeFilter)
     {
         Assertion::notNull($callTypeFilter, 'callTypeFilter value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callTypeFilter, 25, 'callTypeFilter value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -287,14 +286,13 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @deprecated
      * Set callForwardType
      *
      * @param string $callForwardType
      *
      * @return self
      */
-    public function setCallForwardType($callForwardType)
+    protected function setCallForwardType($callForwardType)
     {
         Assertion::notNull($callForwardType, 'callForwardType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callForwardType, 25, 'callForwardType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -321,14 +319,13 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @deprecated
      * Set targetType
      *
      * @param string $targetType
      *
      * @return self
      */
-    public function setTargetType($targetType)
+    protected function setTargetType($targetType)
     {
         Assertion::notNull($targetType, 'targetType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -354,14 +351,13 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
      *
      * @return self
      */
-    public function setNumberValue($numberValue = null)
+    protected function setNumberValue($numberValue = null)
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -383,14 +379,13 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @deprecated
      * Set noAnswerTimeout
      *
      * @param integer $noAnswerTimeout
      *
      * @return self
      */
-    public function setNoAnswerTimeout($noAnswerTimeout)
+    protected function setNoAnswerTimeout($noAnswerTimeout)
     {
         Assertion::notNull($noAnswerTimeout, 'noAnswerTimeout value "%s" is null, but non null value was expected.');
         Assertion::integerish($noAnswerTimeout, 'noAnswerTimeout value "%s" is not an integer or a number castable to integer.');
@@ -411,14 +406,13 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @deprecated
      * Set enabled
      *
      * @param boolean $enabled
      *
      * @return self
      */
-    public function setEnabled($enabled)
+    protected function setEnabled($enabled)
     {
         Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');

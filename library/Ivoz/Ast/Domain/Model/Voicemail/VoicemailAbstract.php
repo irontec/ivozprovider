@@ -461,14 +461,13 @@ abstract class VoicemailAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set context
      *
      * @param string $context
      *
      * @return self
      */
-    public function setContext($context)
+    protected function setContext($context)
     {
         Assertion::notNull($context, 'context value "%s" is null, but non null value was expected.');
         Assertion::maxLength($context, 80, 'context value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -489,14 +488,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set mailbox
      *
      * @param string $mailbox
      *
      * @return self
      */
-    public function setMailbox($mailbox)
+    protected function setMailbox($mailbox)
     {
         Assertion::notNull($mailbox, 'mailbox value "%s" is null, but non null value was expected.');
         Assertion::maxLength($mailbox, 80, 'mailbox value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -517,14 +515,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set password
      *
      * @param string $password
      *
      * @return self
      */
-    public function setPassword($password = null)
+    protected function setPassword($password = null)
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 80, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -546,14 +543,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set fullname
      *
      * @param string $fullname
      *
      * @return self
      */
-    public function setFullname($fullname = null)
+    protected function setFullname($fullname = null)
     {
         if (!is_null($fullname)) {
             Assertion::maxLength($fullname, 80, 'fullname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -575,14 +571,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set alias
      *
      * @param string $alias
      *
      * @return self
      */
-    public function setAlias($alias = null)
+    protected function setAlias($alias = null)
     {
         if (!is_null($alias)) {
             Assertion::maxLength($alias, 80, 'alias value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -604,14 +599,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set email
      *
      * @param string $email
      *
      * @return self
      */
-    public function setEmail($email = null)
+    protected function setEmail($email = null)
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 80, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -633,14 +627,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set pager
      *
      * @param string $pager
      *
      * @return self
      */
-    public function setPager($pager = null)
+    protected function setPager($pager = null)
     {
         if (!is_null($pager)) {
             Assertion::maxLength($pager, 80, 'pager value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -662,14 +655,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set attach
      *
      * @param string $attach
      *
      * @return self
      */
-    public function setAttach($attach = null)
+    protected function setAttach($attach = null)
     {
         if (!is_null($attach)) {
         }
@@ -690,14 +682,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set attachfmt
      *
      * @param string $attachfmt
      *
      * @return self
      */
-    public function setAttachfmt($attachfmt = null)
+    protected function setAttachfmt($attachfmt = null)
     {
         if (!is_null($attachfmt)) {
             Assertion::maxLength($attachfmt, 10, 'attachfmt value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -719,14 +710,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set serveremail
      *
      * @param string $serveremail
      *
      * @return self
      */
-    public function setServeremail($serveremail = null)
+    protected function setServeremail($serveremail = null)
     {
         if (!is_null($serveremail)) {
             Assertion::maxLength($serveremail, 80, 'serveremail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -748,14 +738,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set language
      *
      * @param string $language
      *
      * @return self
      */
-    public function setLanguage($language = null)
+    protected function setLanguage($language = null)
     {
         if (!is_null($language)) {
             Assertion::maxLength($language, 20, 'language value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -777,14 +766,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set tz
      *
      * @param string $tz
      *
      * @return self
      */
-    public function setTz($tz = null)
+    protected function setTz($tz = null)
     {
         if (!is_null($tz)) {
             Assertion::maxLength($tz, 30, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -806,14 +794,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set deleteVoicemail
      *
      * @param string $deleteVoicemail
      *
      * @return self
      */
-    public function setDeleteVoicemail($deleteVoicemail = null)
+    protected function setDeleteVoicemail($deleteVoicemail = null)
     {
         if (!is_null($deleteVoicemail)) {
         }
@@ -834,14 +821,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set saycid
      *
      * @param string $saycid
      *
      * @return self
      */
-    public function setSaycid($saycid = null)
+    protected function setSaycid($saycid = null)
     {
         if (!is_null($saycid)) {
         }
@@ -862,14 +848,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set sendVoicemail
      *
      * @param string $sendVoicemail
      *
      * @return self
      */
-    public function setSendVoicemail($sendVoicemail = null)
+    protected function setSendVoicemail($sendVoicemail = null)
     {
         if (!is_null($sendVoicemail)) {
         }
@@ -890,14 +875,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set review
      *
      * @param string $review
      *
      * @return self
      */
-    public function setReview($review = null)
+    protected function setReview($review = null)
     {
         if (!is_null($review)) {
         }
@@ -918,14 +902,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set tempgreetwarn
      *
      * @param string $tempgreetwarn
      *
      * @return self
      */
-    public function setTempgreetwarn($tempgreetwarn = null)
+    protected function setTempgreetwarn($tempgreetwarn = null)
     {
         if (!is_null($tempgreetwarn)) {
         }
@@ -946,14 +929,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set operator
      *
      * @param string $operator
      *
      * @return self
      */
-    public function setOperator($operator = null)
+    protected function setOperator($operator = null)
     {
         if (!is_null($operator)) {
         }
@@ -974,14 +956,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set envelope
      *
      * @param string $envelope
      *
      * @return self
      */
-    public function setEnvelope($envelope = null)
+    protected function setEnvelope($envelope = null)
     {
         if (!is_null($envelope)) {
         }
@@ -1002,14 +983,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set sayduration
      *
      * @param integer $sayduration
      *
      * @return self
      */
-    public function setSayduration($sayduration = null)
+    protected function setSayduration($sayduration = null)
     {
         if (!is_null($sayduration)) {
             if (!is_null($sayduration)) {
@@ -1033,14 +1013,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set forcename
      *
      * @param string $forcename
      *
      * @return self
      */
-    public function setForcename($forcename = null)
+    protected function setForcename($forcename = null)
     {
         if (!is_null($forcename)) {
         }
@@ -1061,14 +1040,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set forcegreetings
      *
      * @param string $forcegreetings
      *
      * @return self
      */
-    public function setForcegreetings($forcegreetings = null)
+    protected function setForcegreetings($forcegreetings = null)
     {
         if (!is_null($forcegreetings)) {
         }
@@ -1089,14 +1067,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set callback
      *
      * @param string $callback
      *
      * @return self
      */
-    public function setCallback($callback = null)
+    protected function setCallback($callback = null)
     {
         if (!is_null($callback)) {
             Assertion::maxLength($callback, 80, 'callback value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1118,14 +1095,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set dialout
      *
      * @param string $dialout
      *
      * @return self
      */
-    public function setDialout($dialout = null)
+    protected function setDialout($dialout = null)
     {
         if (!is_null($dialout)) {
             Assertion::maxLength($dialout, 80, 'dialout value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1147,14 +1123,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set exitcontext
      *
      * @param string $exitcontext
      *
      * @return self
      */
-    public function setExitcontext($exitcontext = null)
+    protected function setExitcontext($exitcontext = null)
     {
         if (!is_null($exitcontext)) {
             Assertion::maxLength($exitcontext, 80, 'exitcontext value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1176,14 +1151,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set maxmsg
      *
      * @param integer $maxmsg
      *
      * @return self
      */
-    public function setMaxmsg($maxmsg = null)
+    protected function setMaxmsg($maxmsg = null)
     {
         if (!is_null($maxmsg)) {
             if (!is_null($maxmsg)) {
@@ -1207,14 +1181,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set volgain
      *
      * @param string $volgain
      *
      * @return self
      */
-    public function setVolgain($volgain = null)
+    protected function setVolgain($volgain = null)
     {
         if (!is_null($volgain)) {
             if (!is_null($volgain)) {
@@ -1239,14 +1212,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set imapuser
      *
      * @param string $imapuser
      *
      * @return self
      */
-    public function setImapuser($imapuser = null)
+    protected function setImapuser($imapuser = null)
     {
         if (!is_null($imapuser)) {
             Assertion::maxLength($imapuser, 80, 'imapuser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1268,14 +1240,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set imappassword
      *
      * @param string $imappassword
      *
      * @return self
      */
-    public function setImappassword($imappassword = null)
+    protected function setImappassword($imappassword = null)
     {
         if (!is_null($imappassword)) {
             Assertion::maxLength($imappassword, 80, 'imappassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1297,14 +1268,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set imapserver
      *
      * @param string $imapserver
      *
      * @return self
      */
-    public function setImapserver($imapserver = null)
+    protected function setImapserver($imapserver = null)
     {
         if (!is_null($imapserver)) {
             Assertion::maxLength($imapserver, 80, 'imapserver value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1326,14 +1296,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set imapport
      *
      * @param string $imapport
      *
      * @return self
      */
-    public function setImapport($imapport = null)
+    protected function setImapport($imapport = null)
     {
         if (!is_null($imapport)) {
             Assertion::maxLength($imapport, 8, 'imapport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1355,14 +1324,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set imapflags
      *
      * @param string $imapflags
      *
      * @return self
      */
-    public function setImapflags($imapflags = null)
+    protected function setImapflags($imapflags = null)
     {
         if (!is_null($imapflags)) {
             Assertion::maxLength($imapflags, 80, 'imapflags value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1384,14 +1352,13 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp
      *
      * @return self
      */
-    public function setStamp($stamp = null)
+    protected function setStamp($stamp = null)
     {
         if (!is_null($stamp)) {
             $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

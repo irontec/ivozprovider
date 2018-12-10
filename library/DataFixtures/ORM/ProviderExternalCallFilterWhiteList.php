@@ -21,7 +21,7 @@ class ProviderExternalCallFilterWhiteList extends Fixture implements DependentFi
         $manager->getClassMetadata(ExternalCallFilterWhiteList::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ExternalCallFilterWhiteList $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(ExternalCallFilterWhiteList::class);
+        $item1 = $this->createEntityInstance(ExternalCallFilterWhiteList::class);
         $item1->setFilter(
             $this->getReference('_reference_ProviderExternalCallFilter1')
         );

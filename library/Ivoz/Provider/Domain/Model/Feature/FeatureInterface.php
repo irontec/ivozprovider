@@ -13,16 +13,6 @@ interface FeatureInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return self
-     */
-    public function setIden($iden);
-
-    /**
      * Get iden
      *
      * @return string

@@ -18,16 +18,6 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     public function setMatchExpr($matchExpr = null);
 
     /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type);
-
-    /**
      * Get type
      *
      * @return string
@@ -35,31 +25,11 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     public function getType();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority = null);
 
     /**
      * Get priority
@@ -74,16 +44,6 @@ interface TransformationRuleInterface extends LoggableEntityInterface
      * @return string
      */
     public function getMatchExpr();
-
-    /**
-     * @deprecated
-     * Set replaceExpr
-     *
-     * @param string $replaceExpr
-     *
-     * @return self
-     */
-    public function setReplaceExpr($replaceExpr = null);
 
     /**
      * Get replaceExpr

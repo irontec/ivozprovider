@@ -22,7 +22,18 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
         $manager->getClassMetadata(Invoice::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var Invoice $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(Invoice::class);
+        $item1 = $this->createEntityInstance(Invoice::class);
+        (function () {
+            $this->setNumber('1');
+            $this->setInDate(new \DateTime('2018-01-01', new \DateTimeZone('UTC')));
+            $this->setOutDate(new \DateTime('2018-01-31', new \DateTimeZone('UTC')));
+            $this->setTotal(0.272);
+            $this->setTaxRate(21.0);
+            $this->setTotalWithTax(0.330);
+            $this->setStatus('processing');
+            $this->setPdf(new Pdf(null, null, null));
+        })->call($item1);
+
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
@@ -32,14 +43,6 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
         $item1->setInvoiceTemplate(
             $this->getReference('_reference_ProviderInvoiceTemplate1')
         );
-        $item1->setNumber('1');
-        $item1->setInDate(new \DateTime('2018-01-01', new \DateTimeZone('UTC')));
-        $item1->setOutDate(new \DateTime('2018-01-31', new \DateTimeZone('UTC')));
-        $item1->setTotal(0.272);
-        $item1->setTaxRate(21.0);
-        $item1->setTotalWithTax(0.330);
-        $item1->setStatus('processing');
-        $item1->setPdf(new Pdf(null, null, null));
 
         $this->addReference('_reference_ProviderInvoice1', $item1);
         $this->sanitizeEntityValues($item1);

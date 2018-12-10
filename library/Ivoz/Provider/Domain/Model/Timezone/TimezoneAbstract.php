@@ -192,14 +192,13 @@ abstract class TimezoneAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tz
      *
      * @param string $tz
      *
      * @return self
      */
-    public function setTz($tz)
+    protected function setTz($tz)
     {
         Assertion::notNull($tz, 'tz value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tz, 255, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -220,14 +219,13 @@ abstract class TimezoneAbstract
     }
 
     /**
-     * @deprecated
      * Set comment
      *
      * @param string $comment
      *
      * @return self
      */
-    public function setComment($comment = null)
+    protected function setComment($comment = null)
     {
         if (!is_null($comment)) {
             Assertion::maxLength($comment, 150, 'comment value "%s" is too long, it should have no more than %d characters, but has %d characters.');

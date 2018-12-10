@@ -21,31 +21,11 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getNumberValueE164();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set routetype
-     *
-     * @param string $routetype
-     *
-     * @return self
-     */
-    public function setRoutetype($routetype = null);
 
     /**
      * Get routetype
@@ -55,31 +35,11 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getRoutetype();
 
     /**
-     * @deprecated
-     * Set numbervalue
-     *
-     * @param string $numbervalue
-     *
-     * @return self
-     */
-    public function setNumbervalue($numbervalue = null);
-
-    /**
      * Get numbervalue
      *
      * @return string
      */
     public function getNumbervalue();
-
-    /**
-     * @deprecated
-     * Set friendvalue
-     *
-     * @param string $friendvalue
-     *
-     * @return self
-     */
-    public function setFriendvalue($friendvalue = null);
 
     /**
      * Get friendvalue

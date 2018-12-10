@@ -377,14 +377,13 @@ abstract class UsersLocationAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set ruid
      *
      * @param string $ruid
      *
      * @return self
      */
-    public function setRuid($ruid)
+    protected function setRuid($ruid)
     {
         Assertion::notNull($ruid, 'ruid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -405,14 +404,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set username
      *
      * @param string $username
      *
      * @return self
      */
-    public function setUsername($username)
+    protected function setUsername($username)
     {
         Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -433,14 +431,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set domain
      *
      * @param string $domain
      *
      * @return self
      */
-    public function setDomain($domain = null)
+    protected function setDomain($domain = null)
     {
         if (!is_null($domain)) {
             Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -462,14 +459,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set contact
      *
      * @param string $contact
      *
      * @return self
      */
-    public function setContact($contact)
+    protected function setContact($contact)
     {
         Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
         Assertion::maxLength($contact, 512, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -490,14 +486,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set received
      *
      * @param string $received
      *
      * @return self
      */
-    public function setReceived($received = null)
+    protected function setReceived($received = null)
     {
         if (!is_null($received)) {
             Assertion::maxLength($received, 128, 'received value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -519,14 +514,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set path
      *
      * @param string $path
      *
      * @return self
      */
-    public function setPath($path = null)
+    protected function setPath($path = null)
     {
         if (!is_null($path)) {
             Assertion::maxLength($path, 512, 'path value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -548,14 +542,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set expires
      *
      * @param \DateTime $expires
      *
      * @return self
      */
-    public function setExpires($expires)
+    protected function setExpires($expires)
     {
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         $expires = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -579,14 +572,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set q
      *
      * @param float $q
      *
      * @return self
      */
-    public function setQ($q)
+    protected function setQ($q)
     {
         Assertion::notNull($q, 'q value "%s" is null, but non null value was expected.');
         Assertion::numeric($q);
@@ -608,14 +600,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set callid
      *
      * @param string $callid
      *
      * @return self
      */
-    public function setCallid($callid)
+    protected function setCallid($callid)
     {
         Assertion::notNull($callid, 'callid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -636,14 +627,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set cseq
      *
      * @param integer $cseq
      *
      * @return self
      */
-    public function setCseq($cseq)
+    protected function setCseq($cseq)
     {
         Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
         Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
@@ -664,14 +654,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
      *
      * @return self
      */
-    public function setLastModified($lastModified)
+    protected function setLastModified($lastModified)
     {
         Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
         $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -695,14 +684,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set flags
      *
      * @param integer $flags
      *
      * @return self
      */
-    public function setFlags($flags)
+    protected function setFlags($flags)
     {
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
@@ -723,14 +711,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set cflags
      *
      * @param integer $cflags
      *
      * @return self
      */
-    public function setCflags($cflags)
+    protected function setCflags($cflags)
     {
         Assertion::notNull($cflags, 'cflags value "%s" is null, but non null value was expected.');
         Assertion::integerish($cflags, 'cflags value "%s" is not an integer or a number castable to integer.');
@@ -751,14 +738,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set userAgent
      *
      * @param string $userAgent
      *
      * @return self
      */
-    public function setUserAgent($userAgent)
+    protected function setUserAgent($userAgent)
     {
         Assertion::notNull($userAgent, 'userAgent value "%s" is null, but non null value was expected.');
         Assertion::maxLength($userAgent, 255, 'userAgent value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -779,14 +765,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set socket
      *
      * @param string $socket
      *
      * @return self
      */
-    public function setSocket($socket = null)
+    protected function setSocket($socket = null)
     {
         if (!is_null($socket)) {
             Assertion::maxLength($socket, 64, 'socket value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -808,14 +793,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set methods
      *
      * @param integer $methods
      *
      * @return self
      */
-    public function setMethods($methods = null)
+    protected function setMethods($methods = null)
     {
         if (!is_null($methods)) {
             if (!is_null($methods)) {
@@ -839,14 +823,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set instance
      *
      * @param string $instance
      *
      * @return self
      */
-    public function setInstance($instance = null)
+    protected function setInstance($instance = null)
     {
         if (!is_null($instance)) {
             Assertion::maxLength($instance, 255, 'instance value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -868,14 +851,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set regId
      *
      * @param integer $regId
      *
      * @return self
      */
-    public function setRegId($regId)
+    protected function setRegId($regId)
     {
         Assertion::notNull($regId, 'regId value "%s" is null, but non null value was expected.');
         Assertion::integerish($regId, 'regId value "%s" is not an integer or a number castable to integer.');
@@ -896,14 +878,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set serverId
      *
      * @param integer $serverId
      *
      * @return self
      */
-    public function setServerId($serverId)
+    protected function setServerId($serverId)
     {
         Assertion::notNull($serverId, 'serverId value "%s" is null, but non null value was expected.');
         Assertion::integerish($serverId, 'serverId value "%s" is not an integer or a number castable to integer.');
@@ -924,14 +905,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set connectionId
      *
      * @param integer $connectionId
      *
      * @return self
      */
-    public function setConnectionId($connectionId)
+    protected function setConnectionId($connectionId)
     {
         Assertion::notNull($connectionId, 'connectionId value "%s" is null, but non null value was expected.');
         Assertion::integerish($connectionId, 'connectionId value "%s" is not an integer or a number castable to integer.');
@@ -952,14 +932,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set keepalive
      *
      * @param integer $keepalive
      *
      * @return self
      */
-    public function setKeepalive($keepalive)
+    protected function setKeepalive($keepalive)
     {
         Assertion::notNull($keepalive, 'keepalive value "%s" is null, but non null value was expected.');
         Assertion::integerish($keepalive, 'keepalive value "%s" is not an integer or a number castable to integer.');
@@ -980,14 +959,13 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @deprecated
      * Set partition
      *
      * @param integer $partition
      *
      * @return self
      */
-    public function setPartition($partition)
+    protected function setPartition($partition)
     {
         Assertion::notNull($partition, 'partition value "%s" is null, but non null value was expected.');
         Assertion::integerish($partition, 'partition value "%s" is not an integer or a number castable to integer.');

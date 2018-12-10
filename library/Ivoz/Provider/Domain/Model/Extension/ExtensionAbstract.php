@@ -252,14 +252,13 @@ abstract class ExtensionAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set number
      *
      * @param string $number
      *
      * @return self
      */
-    public function setNumber($number)
+    protected function setNumber($number)
     {
         Assertion::notNull($number, 'number value "%s" is null, but non null value was expected.');
         Assertion::maxLength($number, 10, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -280,14 +279,13 @@ abstract class ExtensionAbstract
     }
 
     /**
-     * @deprecated
      * Set routeType
      *
      * @param string $routeType
      *
      * @return self
      */
-    public function setRouteType($routeType = null)
+    protected function setRouteType($routeType = null)
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -319,14 +317,13 @@ abstract class ExtensionAbstract
     }
 
     /**
-     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
      *
      * @return self
      */
-    public function setNumberValue($numberValue = null)
+    protected function setNumberValue($numberValue = null)
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -348,14 +345,13 @@ abstract class ExtensionAbstract
     }
 
     /**
-     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue
      *
      * @return self
      */
-    public function setFriendValue($friendValue = null)
+    protected function setFriendValue($friendValue = null)
     {
         if (!is_null($friendValue)) {
             Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');

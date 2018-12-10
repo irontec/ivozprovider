@@ -22,15 +22,17 @@ class KamUsersCdr extends Fixture implements DependentFixtureInterface
         $manager->getClassMetadata(UsersCdr::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var UsersCdrInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(UsersCdr::class);
-        $item1->setStartTime(new \DateTime('2018-11-22 16:54:49'));
-        $item1->setEndTime(new \DateTime('2018-11-22 16:54:54'));
-        $item1->setDuration(4.539);
-        $item1->setDirection('outbound');
-        $item1->setCaller('102');
-        $item1->setCallee('+34676896561');
-        $item1->setCallid('9297bdde-309cd48f@10.10.1.123');
-        $item1->setCallidHash('517fa1eb');
+        $item1 = $this->createEntityInstance(UsersCdr::class);
+        (function () {
+            $this->setStartTime(new \DateTime('2018-11-22 16:54:49'));
+            $this->setEndTime(new \DateTime('2018-11-22 16:54:54'));
+            $this->setDuration(4.539);
+            $this->setDirection('outbound');
+            $this->setCaller('102');
+            $this->setCallee('+34676896561');
+            $this->setCallid('9297bdde-309cd48f@10.10.1.123');
+            $this->setCallidHash('517fa1eb');
+        })->call($item1);
 
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));

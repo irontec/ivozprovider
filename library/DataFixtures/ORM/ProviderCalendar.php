@@ -20,15 +20,20 @@ class ProviderCalendar extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Calendar::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(Calendar::class);
-        $item1->setName("testCalendar");
+        $item1 = $this->createEntityInstance(Calendar::class);
+        (function () {
+            $this->setName("testCalendar");
+        })->call($item1);
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderCalendar1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(Calendar::class);
-        $item2->setName("testCalendar2");
+        $item2 = $this->createEntityInstance(Calendar::class);
+        (function () {
+            $this->setName("testCalendar2");
+        })->call($item2);
+
         $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderCalendar2', $item2);
         $this->sanitizeEntityValues($item2);

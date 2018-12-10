@@ -47,16 +47,6 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getNumber();
 
     /**
-     * @deprecated
-     * Set routeType
-     *
-     * @param string $routeType
-     *
-     * @return self
-     */
-    public function setRouteType($routeType = null);
-
-    /**
      * Get routeType
      *
      * @return string
@@ -69,16 +59,6 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNumberValue();
-
-    /**
-     * @deprecated
-     * Set friendValue
-     *
-     * @param string $friendValue
-     *
-     * @return self
-     */
-    public function setFriendValue($friendValue = null);
 
     /**
      * Get friendValue

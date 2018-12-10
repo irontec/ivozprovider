@@ -22,9 +22,12 @@ class ProviderBalanceNotification extends Fixture implements DependentFixtureInt
         $manager->getClassMetadata(BalanceNotification::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var BalanceNotificationInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(BalanceNotification::class);
-        $item1->setToAddress("balance@ivozprovider.com");
-        $item1->setThreshold(4.5000);
+        $item1 = $this->createEntityInstance(BalanceNotification::class);
+        (function () {
+            $this->setToAddress("balance@ivozprovider.com");
+            $this->setThreshold(4.5000);
+        })->call($item1);
+
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item1->setNotificationTemplate(
             $this->getReference('_reference_ProviderNotificationTemplate1')
@@ -34,9 +37,12 @@ class ProviderBalanceNotification extends Fixture implements DependentFixtureInt
         $manager->persist($item1);
 
         /** @var BalanceNotificationInterface $item2 */
-        $item2 = $this->createEntityInstanceWithPublicMethods(BalanceNotification::class);
-        $item2->setToAddress("balance2@ivozprovider.com");
-        $item2->setThreshold(0);
+        $item2 = $this->createEntityInstance(BalanceNotification::class);
+        (function () {
+            $this->setToAddress("balance2@ivozprovider.com");
+            $this->setThreshold(0);
+        })->call($item2);
+
         $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderBalanceNotification2', $item2);
         $this->sanitizeEntityValues($item2);

@@ -18,16 +18,6 @@ interface ServiceInterface extends LoggableEntityInterface
     public function setDefaultCode($defaultCode);
 
     /**
-     * @deprecated
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return self
-     */
-    public function setIden($iden);
-
-    /**
      * Get iden
      *
      * @return string
@@ -40,16 +30,6 @@ interface ServiceInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDefaultCode();
-
-    /**
-     * @deprecated
-     * Set extraArgs
-     *
-     * @param boolean $extraArgs
-     *
-     * @return self
-     */
-    public function setExtraArgs($extraArgs);
 
     /**
      * Get extraArgs

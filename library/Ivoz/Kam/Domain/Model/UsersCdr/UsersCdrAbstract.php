@@ -309,14 +309,13 @@ abstract class UsersCdrAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
      *
      * @return self
      */
-    public function setStartTime($startTime)
+    protected function setStartTime($startTime)
     {
         Assertion::notNull($startTime, 'startTime value "%s" is null, but non null value was expected.');
         $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -340,14 +339,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set endTime
      *
      * @param \DateTime $endTime
      *
      * @return self
      */
-    public function setEndTime($endTime)
+    protected function setEndTime($endTime)
     {
         Assertion::notNull($endTime, 'endTime value "%s" is null, but non null value was expected.');
         $endTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -371,14 +369,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set duration
      *
      * @param float $duration
      *
      * @return self
      */
-    public function setDuration($duration)
+    protected function setDuration($duration)
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
@@ -400,14 +397,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set direction
      *
      * @param string $direction
      *
      * @return self
      */
-    public function setDirection($direction = null)
+    protected function setDirection($direction = null)
     {
         if (!is_null($direction)) {
         }
@@ -428,14 +424,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set caller
      *
      * @param string $caller
      *
      * @return self
      */
-    public function setCaller($caller = null)
+    protected function setCaller($caller = null)
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -457,14 +452,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set callee
      *
      * @param string $callee
      *
      * @return self
      */
-    public function setCallee($callee = null)
+    protected function setCallee($callee = null)
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -486,14 +480,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set diversion
      *
      * @param string $diversion
      *
      * @return self
      */
-    public function setDiversion($diversion = null)
+    protected function setDiversion($diversion = null)
     {
         if (!is_null($diversion)) {
             Assertion::maxLength($diversion, 64, 'diversion value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -515,14 +508,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set referee
      *
      * @param string $referee
      *
      * @return self
      */
-    public function setReferee($referee = null)
+    protected function setReferee($referee = null)
     {
         if (!is_null($referee)) {
             Assertion::maxLength($referee, 128, 'referee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -544,14 +536,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set referrer
      *
      * @param string $referrer
      *
      * @return self
      */
-    public function setReferrer($referrer = null)
+    protected function setReferrer($referrer = null)
     {
         if (!is_null($referrer)) {
             Assertion::maxLength($referrer, 128, 'referrer value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -573,14 +564,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set callid
      *
      * @param string $callid
      *
      * @return self
      */
-    public function setCallid($callid = null)
+    protected function setCallid($callid = null)
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -602,14 +592,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set callidHash
      *
      * @param string $callidHash
      *
      * @return self
      */
-    public function setCallidHash($callidHash = null)
+    protected function setCallidHash($callidHash = null)
     {
         if (!is_null($callidHash)) {
             Assertion::maxLength($callidHash, 128, 'callidHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -631,14 +620,13 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @deprecated
      * Set xcallid
      *
      * @param string $xcallid
      *
      * @return self
      */
-    public function setXcallid($xcallid = null)
+    protected function setXcallid($xcallid = null)
     {
         if (!is_null($xcallid)) {
             Assertion::maxLength($xcallid, 255, 'xcallid value "%s" is too long, it should have no more than %d characters, but has %d characters.');

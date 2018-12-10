@@ -36,41 +36,11 @@ interface DdiInterface extends LoggableEntityInterface
     public function getDdi();
 
     /**
-     * @deprecated
-     * Set ddie164
-     *
-     * @param string $ddie164
-     *
-     * @return self
-     */
-    public function setDdie164($ddie164 = null);
-
-    /**
-     * @deprecated
-     * Set recordCalls
-     *
-     * @param string $recordCalls
-     *
-     * @return self
-     */
-    public function setRecordCalls($recordCalls);
-
-    /**
      * Get recordCalls
      *
      * @return string
      */
     public function getRecordCalls();
-
-    /**
-     * @deprecated
-     * Set displayName
-     *
-     * @param string $displayName
-     *
-     * @return self
-     */
-    public function setDisplayName($displayName = null);
 
     /**
      * Get displayName
@@ -87,31 +57,11 @@ interface DdiInterface extends LoggableEntityInterface
     public function getRouteType();
 
     /**
-     * @deprecated
-     * Set billInboundCalls
-     *
-     * @param boolean $billInboundCalls
-     *
-     * @return self
-     */
-    public function setBillInboundCalls($billInboundCalls);
-
-    /**
      * Get billInboundCalls
      *
      * @return boolean
      */
     public function getBillInboundCalls();
-
-    /**
-     * @deprecated
-     * Set friendValue
-     *
-     * @param string $friendValue
-     *
-     * @return self
-     */
-    public function setFriendValue($friendValue = null);
 
     /**
      * Get friendValue

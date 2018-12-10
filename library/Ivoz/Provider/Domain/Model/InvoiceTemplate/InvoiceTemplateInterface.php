@@ -18,31 +18,11 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function setTemplate($template);
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
 
     /**
      * Get description
@@ -59,31 +39,11 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function getTemplate();
 
     /**
-     * @deprecated
-     * Set templateHeader
-     *
-     * @param string $templateHeader
-     *
-     * @return self
-     */
-    public function setTemplateHeader($templateHeader = null);
-
-    /**
      * Get templateHeader
      *
      * @return string
      */
     public function getTemplateHeader();
-
-    /**
-     * @deprecated
-     * Set templateFooter
-     *
-     * @param string $templateFooter
-     *
-     * @return self
-     */
-    public function setTemplateFooter($templateFooter = null);
 
     /**
      * Get templateFooter

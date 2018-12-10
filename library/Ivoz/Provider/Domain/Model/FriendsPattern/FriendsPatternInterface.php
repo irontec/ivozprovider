@@ -13,31 +13,11 @@ interface FriendsPatternInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set regExp
-     *
-     * @param string $regExp
-     *
-     * @return self
-     */
-    public function setRegExp($regExp);
 
     /**
      * Get regExp

@@ -96,8 +96,10 @@ class Invoices
             return;
         }
 
-        $invoice->setStatus("processing");
-        $this->entityTools->persist($invoice, true);
+        /** @var InvoiceDto $invoiceDto */
+        $invoiceDto = $this->entityTools->entityToDto($invoice);
+        $invoiceDto->setStatus("processing");
+        $this->entityTools->persistDto($invoiceDto, $invoice, true);
 
         $this->logger->info("[INVOICER] Status = processing");
 
@@ -113,7 +115,6 @@ class Invoices
 
             $totals = $this->generator->getTotals();
             /** @var InvoiceDto $invoiceDto */
-            $invoiceDto = $this->entityTools->entityToDto($invoice);
             $invoiceDto
                 ->setPdfPath($tempPdf)
                 ->setPdfBaseName('invoice-' . $invoice->getNumber() . '.pdf')
@@ -129,11 +130,16 @@ class Invoices
             $this->logger->info("[INVOICER] Status = error");
             $this->logger->info("[INVOICER] Error was: ".$e->getMessage());
 
-            $invoice->setStatus("error");
-            $invoice->setStatusMsg(
+            $invoiceDto->setStatus("error");
+            $invoiceDto->setStatusMsg(
                 $e->getMessage()
             );
-            $this->entityTools->persist($invoice, true);
+
+            $this->entityTools->persistDto(
+                $invoiceDto,
+                $invoice,
+                true
+            );
         }
 
         return true;

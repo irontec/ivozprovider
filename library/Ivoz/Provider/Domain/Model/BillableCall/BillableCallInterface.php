@@ -13,31 +13,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set callid
-     *
-     * @param string $callid
-     *
-     * @return self
-     */
-    public function setCallid($callid = null);
-
-    /**
      * Get callid
      *
      * @return string
      */
     public function getCallid();
-
-    /**
-     * @deprecated
-     * Set startTime
-     *
-     * @param \DateTime $startTime
-     *
-     * @return self
-     */
-    public function setStartTime($startTime = null);
 
     /**
      * Get startTime
@@ -47,31 +27,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getStartTime();
 
     /**
-     * @deprecated
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return self
-     */
-    public function setDuration($duration);
-
-    /**
      * Get duration
      *
      * @return float
      */
     public function getDuration();
-
-    /**
-     * @deprecated
-     * Set caller
-     *
-     * @param string $caller
-     *
-     * @return self
-     */
-    public function setCaller($caller = null);
 
     /**
      * Get caller
@@ -81,31 +41,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCaller();
 
     /**
-     * @deprecated
-     * Set callee
-     *
-     * @param string $callee
-     *
-     * @return self
-     */
-    public function setCallee($callee = null);
-
-    /**
      * Get callee
      *
      * @return string
      */
     public function getCallee();
-
-    /**
-     * @deprecated
-     * Set cost
-     *
-     * @param string $cost
-     *
-     * @return self
-     */
-    public function setCost($cost = null);
 
     /**
      * Get cost
@@ -115,31 +55,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCost();
 
     /**
-     * @deprecated
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return self
-     */
-    public function setPrice($price = null);
-
-    /**
      * Get price
      *
      * @return string
      */
     public function getPrice();
-
-    /**
-     * @deprecated
-     * Set priceDetails
-     *
-     * @param array $priceDetails
-     *
-     * @return self
-     */
-    public function setPriceDetails($priceDetails = null);
 
     /**
      * Get priceDetails
@@ -149,31 +69,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getPriceDetails();
 
     /**
-     * @deprecated
-     * Set carrierName
-     *
-     * @param string $carrierName
-     *
-     * @return self
-     */
-    public function setCarrierName($carrierName = null);
-
-    /**
      * Get carrierName
      *
      * @return string
      */
     public function getCarrierName();
-
-    /**
-     * @deprecated
-     * Set destinationName
-     *
-     * @param string $destinationName
-     *
-     * @return self
-     */
-    public function setDestinationName($destinationName = null);
 
     /**
      * Get destinationName
@@ -183,16 +83,6 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDestinationName();
 
     /**
-     * @deprecated
-     * Set ratingPlanName
-     *
-     * @param string $ratingPlanName
-     *
-     * @return self
-     */
-    public function setRatingPlanName($ratingPlanName = null);
-
-    /**
      * Get ratingPlanName
      *
      * @return string
@@ -200,31 +90,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getRatingPlanName();
 
     /**
-     * @deprecated
-     * Set endpointType
-     *
-     * @param string $endpointType
-     *
-     * @return self
-     */
-    public function setEndpointType($endpointType = null);
-
-    /**
      * Get endpointType
      *
      * @return string
      */
     public function getEndpointType();
-
-    /**
-     * @deprecated
-     * Set endpointId
-     *
-     * @param integer $endpointId
-     *
-     * @return self
-     */
-    public function setEndpointId($endpointId = null);
 
     /**
      * Get endpointId

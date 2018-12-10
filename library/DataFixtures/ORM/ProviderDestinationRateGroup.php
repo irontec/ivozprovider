@@ -24,10 +24,13 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
         $manager->getClassMetadata(DestinationRateGroup::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var DestinationRateGroupInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(DestinationRateGroup::class);
-        $item1->setStatus('inProgress');
-        $item1->setName(new Name('Bilbao', 'Bilbao'));
-        $item1->setDescription(new Description('', ''));
+        $item1 = $this->createEntityInstance(DestinationRateGroup::class);
+        (function () {
+            $this->setStatus('inProgress');
+            $this->setName(new Name('Bilbao', 'Bilbao'));
+            $this->setDescription(new Description('', ''));
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
 
         $this->addReference('_reference_ProviderDestinationRateGroup1', $item1);

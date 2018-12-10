@@ -161,7 +161,7 @@ protected function __toArray()
      */
     protected static $setMethodTemplate =
 '/**
- * <deprecated><description>
+ * <description>
  *
  * @param <variableType> $<variableName>
  *
@@ -1177,11 +1177,7 @@ public function <methodName>(<criteriaArgument>)
     {
         $currentField = null;
         $isNullable = false;
-        $visibility = $metadata->isEmbeddedClass
-            ? 'protected'
-            : 'public';
-
-        $deprecated = "@deprecated\n     * ";
+        $visibility = 'protected';
 
         if (array_key_exists($fieldName, $metadata->fieldMappings)) {
             $currentField = (object) $metadata->fieldMappings[$fieldName];
@@ -1199,7 +1195,7 @@ public function <methodName>(<criteriaArgument>)
 
         $isFk = strpos($typeHint, '\\');
         if ($isFk) {
-            $deprecated = '';
+            $visibility = 'public';
         }
 
         $isCollection = strpos($typeHint, 'Doctrine\\Common\\Collections\\Collection') !== false;
@@ -1329,7 +1325,6 @@ public function <methodName>(<criteriaArgument>)
 
         $replacements = array(
             $this->spaces . '<assertions>' => $assertions,
-            '<deprecated>' => $deprecated,
             '<visibility>' => $visibility
         );
 

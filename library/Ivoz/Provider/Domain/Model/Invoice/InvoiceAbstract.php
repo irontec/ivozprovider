@@ -286,14 +286,13 @@ abstract class InvoiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set number
      *
      * @param string $number
      *
      * @return self
      */
-    public function setNumber($number = null)
+    protected function setNumber($number = null)
     {
         if (!is_null($number)) {
             Assertion::maxLength($number, 30, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -315,14 +314,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set inDate
      *
      * @param \DateTime $inDate
      *
      * @return self
      */
-    public function setInDate($inDate = null)
+    protected function setInDate($inDate = null)
     {
         if (!is_null($inDate)) {
             $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -347,14 +345,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set outDate
      *
      * @param \DateTime $outDate
      *
      * @return self
      */
-    public function setOutDate($outDate = null)
+    protected function setOutDate($outDate = null)
     {
         if (!is_null($outDate)) {
             $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -379,14 +376,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set total
      *
      * @param string $total
      *
      * @return self
      */
-    public function setTotal($total = null)
+    protected function setTotal($total = null)
     {
         if (!is_null($total)) {
             if (!is_null($total)) {
@@ -411,14 +407,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate
      *
      * @return self
      */
-    public function setTaxRate($taxRate = null)
+    protected function setTaxRate($taxRate = null)
     {
         if (!is_null($taxRate)) {
             if (!is_null($taxRate)) {
@@ -443,14 +438,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set totalWithTax
      *
      * @param string $totalWithTax
      *
      * @return self
      */
-    public function setTotalWithTax($totalWithTax = null)
+    protected function setTotalWithTax($totalWithTax = null)
     {
         if (!is_null($totalWithTax)) {
             if (!is_null($totalWithTax)) {
@@ -475,14 +469,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set status
      *
      * @param string $status
      *
      * @return self
      */
-    public function setStatus($status = null)
+    protected function setStatus($status = null)
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -510,14 +503,13 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @deprecated
      * Set statusMsg
      *
      * @param string $statusMsg
      *
      * @return self
      */
-    public function setStatusMsg($statusMsg = null)
+    protected function setStatusMsg($statusMsg = null)
     {
         if (!is_null($statusMsg)) {
             Assertion::maxLength($statusMsg, 140, 'statusMsg value "%s" is too long, it should have no more than %d characters, but has %d characters.');

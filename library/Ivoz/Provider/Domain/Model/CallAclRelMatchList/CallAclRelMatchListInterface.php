@@ -13,31 +13,11 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
-
-    /**
      * Get priority
      *
      * @return integer
      */
     public function getPriority();
-
-    /**
-     * @deprecated
-     * Set policy
-     *
-     * @param string $policy
-     *
-     * @return self
-     */
-    public function setPolicy($policy);
 
     /**
      * Get policy

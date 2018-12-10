@@ -42,31 +42,11 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function getCalldate();
 
     /**
-     * @deprecated
-     * Set src
-     *
-     * @param string $src
-     *
-     * @return self
-     */
-    public function setSrc($src = null);
-
-    /**
      * Get src
      *
      * @return string
      */
     public function getSrc();
-
-    /**
-     * @deprecated
-     * Set dst
-     *
-     * @param string $dst
-     *
-     * @return self
-     */
-    public function setDst($dst = null);
 
     /**
      * Get dst
@@ -76,16 +56,6 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function getDst();
 
     /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type = null);
-
-    /**
      * Get type
      *
      * @return string
@@ -93,31 +63,11 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function getType();
 
     /**
-     * @deprecated
-     * Set pages
-     *
-     * @param string $pages
-     *
-     * @return self
-     */
-    public function setPages($pages = null);
-
-    /**
      * Get pages
      *
      * @return string
      */
     public function getPages();
-
-    /**
-     * @deprecated
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return self
-     */
-    public function setStatus($status = null);
 
     /**
      * Get status

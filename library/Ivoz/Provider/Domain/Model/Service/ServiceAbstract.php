@@ -218,14 +218,13 @@ abstract class ServiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set iden
      *
      * @param string $iden
      *
      * @return self
      */
-    public function setIden($iden)
+    protected function setIden($iden)
     {
         Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 50, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -246,14 +245,13 @@ abstract class ServiceAbstract
     }
 
     /**
-     * @deprecated
      * Set defaultCode
      *
      * @param string $defaultCode
      *
      * @return self
      */
-    public function setDefaultCode($defaultCode)
+    protected function setDefaultCode($defaultCode)
     {
         Assertion::notNull($defaultCode, 'defaultCode value "%s" is null, but non null value was expected.');
         Assertion::maxLength($defaultCode, 3, 'defaultCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -274,14 +272,13 @@ abstract class ServiceAbstract
     }
 
     /**
-     * @deprecated
      * Set extraArgs
      *
      * @param boolean $extraArgs
      *
      * @return self
      */
-    public function setExtraArgs($extraArgs)
+    protected function setExtraArgs($extraArgs)
     {
         Assertion::notNull($extraArgs, 'extraArgs value "%s" is null, but non null value was expected.');
         Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');

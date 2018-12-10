@@ -253,14 +253,13 @@ abstract class DdiProviderRegistrationAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set username
      *
      * @param string $username
      *
      * @return self
      */
-    public function setUsername($username)
+    protected function setUsername($username)
     {
         Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -281,14 +280,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set domain
      *
      * @param string $domain
      *
      * @return self
      */
-    public function setDomain($domain)
+    protected function setDomain($domain)
     {
         Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -309,14 +307,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set realm
      *
      * @param string $realm
      *
      * @return self
      */
-    public function setRealm($realm)
+    protected function setRealm($realm)
     {
         Assertion::notNull($realm, 'realm value "%s" is null, but non null value was expected.');
         Assertion::maxLength($realm, 64, 'realm value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -337,14 +334,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set authUsername
      *
      * @param string $authUsername
      *
      * @return self
      */
-    public function setAuthUsername($authUsername)
+    protected function setAuthUsername($authUsername)
     {
         Assertion::notNull($authUsername, 'authUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authUsername, 64, 'authUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -365,14 +361,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
      *
      * @return self
      */
-    public function setAuthPassword($authPassword)
+    protected function setAuthPassword($authPassword)
     {
         Assertion::notNull($authPassword, 'authPassword value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -393,14 +388,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set authProxy
      *
      * @param string $authProxy
      *
      * @return self
      */
-    public function setAuthProxy($authProxy)
+    protected function setAuthProxy($authProxy)
     {
         Assertion::notNull($authProxy, 'authProxy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -421,14 +415,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set expires
      *
      * @param integer $expires
      *
      * @return self
      */
-    public function setExpires($expires)
+    protected function setExpires($expires)
     {
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
@@ -449,14 +442,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set multiDdi
      *
      * @param boolean $multiDdi
      *
      * @return self
      */
-    public function setMultiDdi($multiDdi = null)
+    protected function setMultiDdi($multiDdi = null)
     {
         if (!is_null($multiDdi)) {
             Assertion::between(intval($multiDdi), 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
@@ -478,14 +470,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @deprecated
      * Set contactUsername
      *
      * @param string $contactUsername
      *
      * @return self
      */
-    public function setContactUsername($contactUsername)
+    protected function setContactUsername($contactUsername)
     {
         Assertion::notNull($contactUsername, 'contactUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($contactUsername, 64, 'contactUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');

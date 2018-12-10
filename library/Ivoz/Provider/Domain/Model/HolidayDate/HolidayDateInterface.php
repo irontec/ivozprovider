@@ -13,31 +13,11 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set eventDate
-     *
-     * @param \DateTime $eventDate
-     *
-     * @return self
-     */
-    public function setEventDate($eventDate);
 
     /**
      * Get eventDate

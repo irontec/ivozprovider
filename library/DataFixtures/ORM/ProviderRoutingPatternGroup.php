@@ -20,17 +20,23 @@ class ProviderRoutingPatternGroup extends Fixture implements DependentFixtureInt
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(RoutingPatternGroup::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item7 = $this->createEntityInstanceWithPublicMethods(RoutingPatternGroup::class);
-        $item7->setName("Europe");
-        $item7->setDescription("");
+        $item7 = $this->createEntityInstance(RoutingPatternGroup::class);
+        (function () {
+            $this->setName("Europe");
+            $this->setDescription("");
+        })->call($item7);
+
         $item7->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderRoutingPatternGroup7', $item7);
         $this->sanitizeEntityValues($item7);
         $manager->persist($item7);
 
-        $item21 = $this->createEntityInstanceWithPublicMethods(RoutingPatternGroup::class);
-        $item21->setName("Empty");
-        $item21->setDescription("Empty");
+        $item21 = $this->createEntityInstance(RoutingPatternGroup::class);
+        (function () {
+            $this->setName("Empty");
+            $this->setDescription("Empty");
+        })->call($item21);
+
         $item21->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderRoutingPatternGroup21', $item21);
         $this->sanitizeEntityValues($item21);

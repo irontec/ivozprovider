@@ -23,16 +23,6 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getEntityName();
 
     /**
-     * @deprecated
-     * Set toAddress
-     *
-     * @param string $toAddress
-     *
-     * @return self
-     */
-    public function setToAddress($toAddress = null);
-
-    /**
      * Get toAddress
      *
      * @return string
@@ -40,31 +30,11 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getToAddress();
 
     /**
-     * @deprecated
-     * Set threshold
-     *
-     * @param string $threshold
-     *
-     * @return self
-     */
-    public function setThreshold($threshold = null);
-
-    /**
      * Get threshold
      *
      * @return string
      */
     public function getThreshold();
-
-    /**
-     * @deprecated
-     * Set lastSent
-     *
-     * @param \DateTime $lastSent
-     *
-     * @return self
-     */
-    public function setLastSent($lastSent = null);
 
     /**
      * Get lastSent

@@ -21,7 +21,7 @@ class ProviderConditionalRoutesConditionsRelMatchlist extends Fixture implements
         $manager->getClassMetadata(ConditionalRoutesConditionsRelMatchlist::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ConditionalRoutesConditionsRelMatchlist $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(ConditionalRoutesConditionsRelMatchlist::class);
+        $item1 = $this->createEntityInstance(ConditionalRoutesConditionsRelMatchlist::class);
 
         $item1->setCondition(
             $this->getReference('_reference_ProviderConditionalRoutesCondition1')

@@ -226,14 +226,13 @@ abstract class InvoiceNumberSequenceAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 40, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -254,14 +253,13 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @deprecated
      * Set prefix
      *
      * @param string $prefix
      *
      * @return self
      */
-    public function setPrefix($prefix)
+    protected function setPrefix($prefix)
     {
         Assertion::notNull($prefix, 'prefix value "%s" is null, but non null value was expected.');
         Assertion::maxLength($prefix, 20, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -282,14 +280,13 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @deprecated
      * Set sequenceLength
      *
      * @param integer $sequenceLength
      *
      * @return self
      */
-    public function setSequenceLength($sequenceLength)
+    protected function setSequenceLength($sequenceLength)
     {
         Assertion::notNull($sequenceLength, 'sequenceLength value "%s" is null, but non null value was expected.');
         Assertion::integerish($sequenceLength, 'sequenceLength value "%s" is not an integer or a number castable to integer.');
@@ -311,14 +308,13 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @deprecated
      * Set increment
      *
      * @param integer $increment
      *
      * @return self
      */
-    public function setIncrement($increment)
+    protected function setIncrement($increment)
     {
         Assertion::notNull($increment, 'increment value "%s" is null, but non null value was expected.');
         Assertion::integerish($increment, 'increment value "%s" is not an integer or a number castable to integer.');
@@ -340,14 +336,13 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @deprecated
      * Set latestValue
      *
      * @param string $latestValue
      *
      * @return self
      */
-    public function setLatestValue($latestValue = null)
+    protected function setLatestValue($latestValue = null)
     {
         if (!is_null($latestValue)) {
         }
@@ -368,14 +363,13 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @deprecated
      * Set iteration
      *
      * @param integer $iteration
      *
      * @return self
      */
-    public function setIteration($iteration)
+    protected function setIteration($iteration)
     {
         Assertion::notNull($iteration, 'iteration value "%s" is null, but non null value was expected.');
         Assertion::integerish($iteration, 'iteration value "%s" is not an integer or a number castable to integer.');
@@ -397,14 +391,13 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @deprecated
      * Set version
      *
      * @param integer $version
      *
      * @return self
      */
-    public function setVersion($version)
+    protected function setVersion($version)
     {
         Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
         Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');

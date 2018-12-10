@@ -240,14 +240,13 @@ abstract class TpTimingAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tpid
      *
      * @param string $tpid
      *
      * @return self
      */
-    public function setTpid($tpid)
+    protected function setTpid($tpid)
     {
         Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -268,14 +267,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set tag
      *
      * @param string $tag
      *
      * @return self
      */
-    public function setTag($tag = null)
+    protected function setTag($tag = null)
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -297,14 +295,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set years
      *
      * @param string $years
      *
      * @return self
      */
-    public function setYears($years)
+    protected function setYears($years)
     {
         Assertion::notNull($years, 'years value "%s" is null, but non null value was expected.');
         Assertion::maxLength($years, 255, 'years value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -325,14 +322,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set months
      *
      * @param string $months
      *
      * @return self
      */
-    public function setMonths($months)
+    protected function setMonths($months)
     {
         Assertion::notNull($months, 'months value "%s" is null, but non null value was expected.');
         Assertion::maxLength($months, 255, 'months value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -353,14 +349,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set monthDays
      *
      * @param string $monthDays
      *
      * @return self
      */
-    public function setMonthDays($monthDays)
+    protected function setMonthDays($monthDays)
     {
         Assertion::notNull($monthDays, 'monthDays value "%s" is null, but non null value was expected.');
         Assertion::maxLength($monthDays, 255, 'monthDays value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -381,14 +376,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set weekDays
      *
      * @param string $weekDays
      *
      * @return self
      */
-    public function setWeekDays($weekDays)
+    protected function setWeekDays($weekDays)
     {
         Assertion::notNull($weekDays, 'weekDays value "%s" is null, but non null value was expected.');
         Assertion::maxLength($weekDays, 255, 'weekDays value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -409,14 +403,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set time
      *
      * @param string $time
      *
      * @return self
      */
-    public function setTime($time)
+    protected function setTime($time)
     {
         Assertion::notNull($time, 'time value "%s" is null, but non null value was expected.');
         Assertion::maxLength($time, 32, 'time value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -437,14 +430,13 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt)
     {
         Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
         $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

@@ -30,31 +30,11 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getInterval();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return self
-     */
-    public function setUnit($unit);
 
     /**
      * Get unit
@@ -78,31 +58,11 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getEmail();
 
     /**
-     * @deprecated
-     * Set lastExecution
-     *
-     * @param \DateTime $lastExecution
-     *
-     * @return self
-     */
-    public function setLastExecution($lastExecution = null);
-
-    /**
      * Get lastExecution
      *
      * @return \DateTime
      */
     public function getLastExecution();
-
-    /**
-     * @deprecated
-     * Set lastExecutionError
-     *
-     * @param string $lastExecutionError
-     *
-     * @return self
-     */
-    public function setLastExecutionError($lastExecutionError = null);
 
     /**
      * Get lastExecutionError
@@ -112,31 +72,11 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getLastExecutionError();
 
     /**
-     * @deprecated
-     * Set nextExecution
-     *
-     * @param \DateTime $nextExecution
-     *
-     * @return self
-     */
-    public function setNextExecution($nextExecution = null);
-
-    /**
      * Get nextExecution
      *
      * @return \DateTime
      */
     public function getNextExecution();
-
-    /**
-     * @deprecated
-     * Set taxRate
-     *
-     * @param string $taxRate
-     *
-     * @return self
-     */
-    public function setTaxRate($taxRate = null);
 
     /**
      * Get taxRate

@@ -22,13 +22,17 @@ class ProviderDestinationRate extends Fixture implements DependentFixtureInterfa
         $manager->getClassMetadata(DestinationRate::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var DestinationRateInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(DestinationRate::class);
+        $item1 = $this->createEntityInstance(DestinationRate::class);
+
+        (function () {
+            $this
+                ->setCost('3.3')
+                ->setConnectFee('0.01')
+                ->setRateIncrement('1')
+                ->setGroupIntervalStart('0');
+        })->call($item1);
 
         $item1
-            ->setCost('3.3')
-            ->setConnectFee('0.01')
-            ->setRateIncrement('1')
-            ->setGroupIntervalStart('0')
             ->setDestination(
                 $this->getReference('_reference_ProviderDestination1')
             )

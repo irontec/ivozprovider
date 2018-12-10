@@ -347,14 +347,13 @@ abstract class UsersPuaAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set presUri
      *
      * @param string $presUri
      *
      * @return self
      */
-    public function setPresUri($presUri)
+    protected function setPresUri($presUri)
     {
         Assertion::notNull($presUri, 'presUri value "%s" is null, but non null value was expected.');
         Assertion::maxLength($presUri, 128, 'presUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -375,14 +374,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set presId
      *
      * @param string $presId
      *
      * @return self
      */
-    public function setPresId($presId)
+    protected function setPresId($presId)
     {
         Assertion::notNull($presId, 'presId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($presId, 255, 'presId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -403,14 +401,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set event
      *
      * @param integer $event
      *
      * @return self
      */
-    public function setEvent($event)
+    protected function setEvent($event)
     {
         Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
         Assertion::integerish($event, 'event value "%s" is not an integer or a number castable to integer.');
@@ -431,14 +428,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set expires
      *
      * @param integer $expires
      *
      * @return self
      */
-    public function setExpires($expires)
+    protected function setExpires($expires)
     {
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
@@ -459,14 +455,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set desiredExpires
      *
      * @param integer $desiredExpires
      *
      * @return self
      */
-    public function setDesiredExpires($desiredExpires)
+    protected function setDesiredExpires($desiredExpires)
     {
         Assertion::notNull($desiredExpires, 'desiredExpires value "%s" is null, but non null value was expected.');
         Assertion::integerish($desiredExpires, 'desiredExpires value "%s" is not an integer or a number castable to integer.');
@@ -487,14 +482,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set flag
      *
      * @param integer $flag
      *
      * @return self
      */
-    public function setFlag($flag)
+    protected function setFlag($flag)
     {
         Assertion::notNull($flag, 'flag value "%s" is null, but non null value was expected.');
         Assertion::integerish($flag, 'flag value "%s" is not an integer or a number castable to integer.');
@@ -515,14 +509,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set etag
      *
      * @param string $etag
      *
      * @return self
      */
-    public function setEtag($etag)
+    protected function setEtag($etag)
     {
         Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -543,14 +536,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set tupleId
      *
      * @param string $tupleId
      *
      * @return self
      */
-    public function setTupleId($tupleId = null)
+    protected function setTupleId($tupleId = null)
     {
         if (!is_null($tupleId)) {
             Assertion::maxLength($tupleId, 64, 'tupleId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -572,14 +564,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set watcherUri
      *
      * @param string $watcherUri
      *
      * @return self
      */
-    public function setWatcherUri($watcherUri)
+    protected function setWatcherUri($watcherUri)
     {
         Assertion::notNull($watcherUri, 'watcherUri value "%s" is null, but non null value was expected.');
         Assertion::maxLength($watcherUri, 128, 'watcherUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -600,14 +591,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set callId
      *
      * @param string $callId
      *
      * @return self
      */
-    public function setCallId($callId)
+    protected function setCallId($callId)
     {
         Assertion::notNull($callId, 'callId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callId, 255, 'callId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -628,14 +618,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set toTag
      *
      * @param string $toTag
      *
      * @return self
      */
-    public function setToTag($toTag)
+    protected function setToTag($toTag)
     {
         Assertion::notNull($toTag, 'toTag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -656,14 +645,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set fromTag
      *
      * @param string $fromTag
      *
      * @return self
      */
-    public function setFromTag($fromTag)
+    protected function setFromTag($fromTag)
     {
         Assertion::notNull($fromTag, 'fromTag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -684,14 +672,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set cseq
      *
      * @param integer $cseq
      *
      * @return self
      */
-    public function setCseq($cseq)
+    protected function setCseq($cseq)
     {
         Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
         Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
@@ -712,14 +699,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set recordRoute
      *
      * @param string $recordRoute
      *
      * @return self
      */
-    public function setRecordRoute($recordRoute = null)
+    protected function setRecordRoute($recordRoute = null)
     {
         if (!is_null($recordRoute)) {
             Assertion::maxLength($recordRoute, 65535, 'recordRoute value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -741,14 +727,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set contact
      *
      * @param string $contact
      *
      * @return self
      */
-    public function setContact($contact)
+    protected function setContact($contact)
     {
         Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
         Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -769,14 +754,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set remoteContact
      *
      * @param string $remoteContact
      *
      * @return self
      */
-    public function setRemoteContact($remoteContact)
+    protected function setRemoteContact($remoteContact)
     {
         Assertion::notNull($remoteContact, 'remoteContact value "%s" is null, but non null value was expected.');
         Assertion::maxLength($remoteContact, 128, 'remoteContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -797,14 +781,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set version
      *
      * @param integer $version
      *
      * @return self
      */
-    public function setVersion($version)
+    protected function setVersion($version)
     {
         Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
         Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
@@ -825,14 +808,13 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @deprecated
      * Set extraHeaders
      *
      * @param string $extraHeaders
      *
      * @return self
      */
-    public function setExtraHeaders($extraHeaders)
+    protected function setExtraHeaders($extraHeaders)
     {
         Assertion::notNull($extraHeaders, 'extraHeaders value "%s" is null, but non null value was expected.');
         Assertion::maxLength($extraHeaders, 65535, 'extraHeaders value "%s" is too long, it should have no more than %d characters, but has %d characters.');

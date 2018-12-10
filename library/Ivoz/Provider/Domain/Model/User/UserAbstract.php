@@ -400,14 +400,13 @@ abstract class UserAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -428,14 +427,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set lastname
      *
      * @param string $lastname
      *
      * @return self
      */
-    public function setLastname($lastname)
+    protected function setLastname($lastname)
     {
         Assertion::notNull($lastname, 'lastname value "%s" is null, but non null value was expected.');
         Assertion::maxLength($lastname, 100, 'lastname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -456,14 +454,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set email
      *
      * @param string $email
      *
      * @return self
      */
-    public function setEmail($email = null)
+    protected function setEmail($email = null)
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 100, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -485,14 +482,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set pass
      *
      * @param string $pass
      *
      * @return self
      */
-    public function setPass($pass = null)
+    protected function setPass($pass = null)
     {
         if (!is_null($pass)) {
             Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -514,14 +510,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set doNotDisturb
      *
      * @param boolean $doNotDisturb
      *
      * @return self
      */
-    public function setDoNotDisturb($doNotDisturb)
+    protected function setDoNotDisturb($doNotDisturb)
     {
         Assertion::notNull($doNotDisturb, 'doNotDisturb value "%s" is null, but non null value was expected.');
         Assertion::between(intval($doNotDisturb), 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
@@ -542,14 +537,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set isBoss
      *
      * @param boolean $isBoss
      *
      * @return self
      */
-    public function setIsBoss($isBoss)
+    protected function setIsBoss($isBoss)
     {
         Assertion::notNull($isBoss, 'isBoss value "%s" is null, but non null value was expected.');
         Assertion::between(intval($isBoss), 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
@@ -570,14 +564,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set active
      *
      * @param boolean $active
      *
      * @return self
      */
-    public function setActive($active)
+    protected function setActive($active)
     {
         Assertion::notNull($active, 'active value "%s" is null, but non null value was expected.');
         Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
@@ -598,14 +591,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
      *
      * @return self
      */
-    public function setMaxCalls($maxCalls)
+    protected function setMaxCalls($maxCalls)
     {
         Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
@@ -627,14 +619,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set externalIpCalls
      *
      * @param string $externalIpCalls
      *
      * @return self
      */
-    public function setExternalIpCalls($externalIpCalls)
+    protected function setExternalIpCalls($externalIpCalls)
     {
         Assertion::notNull($externalIpCalls, 'externalIpCalls value "%s" is null, but non null value was expected.');
         Assertion::maxLength($externalIpCalls, 1, 'externalIpCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -661,14 +652,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set voicemailEnabled
      *
      * @param boolean $voicemailEnabled
      *
      * @return self
      */
-    public function setVoicemailEnabled($voicemailEnabled)
+    protected function setVoicemailEnabled($voicemailEnabled)
     {
         Assertion::notNull($voicemailEnabled, 'voicemailEnabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($voicemailEnabled), 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
@@ -689,14 +679,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set voicemailSendMail
      *
      * @param boolean $voicemailSendMail
      *
      * @return self
      */
-    public function setVoicemailSendMail($voicemailSendMail)
+    protected function setVoicemailSendMail($voicemailSendMail)
     {
         Assertion::notNull($voicemailSendMail, 'voicemailSendMail value "%s" is null, but non null value was expected.');
         Assertion::between(intval($voicemailSendMail), 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
@@ -717,14 +706,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set voicemailAttachSound
      *
      * @param boolean $voicemailAttachSound
      *
      * @return self
      */
-    public function setVoicemailAttachSound($voicemailAttachSound)
+    protected function setVoicemailAttachSound($voicemailAttachSound)
     {
         Assertion::notNull($voicemailAttachSound, 'voicemailAttachSound value "%s" is null, but non null value was expected.');
         Assertion::between(intval($voicemailAttachSound), 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
@@ -745,14 +733,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set tokenKey
      *
      * @param string $tokenKey
      *
      * @return self
      */
-    public function setTokenKey($tokenKey = null)
+    protected function setTokenKey($tokenKey = null)
     {
         if (!is_null($tokenKey)) {
             Assertion::maxLength($tokenKey, 125, 'tokenKey value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -774,14 +761,13 @@ abstract class UserAbstract
     }
 
     /**
-     * @deprecated
      * Set gsQRCode
      *
      * @param boolean $gsQRCode
      *
      * @return self
      */
-    public function setGsQRCode($gsQRCode)
+    protected function setGsQRCode($gsQRCode)
     {
         Assertion::notNull($gsQRCode, 'gsQRCode value "%s" is null, but non null value was expected.');
         Assertion::between(intval($gsQRCode), 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');

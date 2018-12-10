@@ -293,14 +293,13 @@ abstract class TpLcrRuleAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tpid
      *
      * @param string $tpid
      *
      * @return self
      */
-    public function setTpid($tpid)
+    protected function setTpid($tpid)
     {
         Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -321,14 +320,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set direction
      *
      * @param string $direction
      *
      * @return self
      */
-    public function setDirection($direction)
+    protected function setDirection($direction)
     {
         Assertion::notNull($direction, 'direction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -349,14 +347,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set tenant
      *
      * @param string $tenant
      *
      * @return self
      */
-    public function setTenant($tenant)
+    protected function setTenant($tenant)
     {
         Assertion::notNull($tenant, 'tenant value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -377,14 +374,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set category
      *
      * @param string $category
      *
      * @return self
      */
-    public function setCategory($category)
+    protected function setCategory($category)
     {
         Assertion::notNull($category, 'category value "%s" is null, but non null value was expected.');
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -405,14 +401,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set account
      *
      * @param string $account
      *
      * @return self
      */
-    public function setAccount($account)
+    protected function setAccount($account)
     {
         Assertion::notNull($account, 'account value "%s" is null, but non null value was expected.');
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -433,14 +428,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set subject
      *
      * @param string $subject
      *
      * @return self
      */
-    public function setSubject($subject = null)
+    protected function setSubject($subject = null)
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -462,14 +456,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set destinationTag
      *
      * @param string $destinationTag
      *
      * @return self
      */
-    public function setDestinationTag($destinationTag = null)
+    protected function setDestinationTag($destinationTag = null)
     {
         if (!is_null($destinationTag)) {
             Assertion::maxLength($destinationTag, 64, 'destinationTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -491,14 +484,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set rpCategory
      *
      * @param string $rpCategory
      *
      * @return self
      */
-    public function setRpCategory($rpCategory)
+    protected function setRpCategory($rpCategory)
     {
         Assertion::notNull($rpCategory, 'rpCategory value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rpCategory, 32, 'rpCategory value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -519,14 +511,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set strategy
      *
      * @param string $strategy
      *
      * @return self
      */
-    public function setStrategy($strategy)
+    protected function setStrategy($strategy)
     {
         Assertion::notNull($strategy, 'strategy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($strategy, 18, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -547,14 +538,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set strategyParams
      *
      * @param string $strategyParams
      *
      * @return self
      */
-    public function setStrategyParams($strategyParams = null)
+    protected function setStrategyParams($strategyParams = null)
     {
         if (!is_null($strategyParams)) {
             Assertion::maxLength($strategyParams, 256, 'strategyParams value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -576,14 +566,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime
      *
      * @return self
      */
-    public function setActivationTime($activationTime)
+    protected function setActivationTime($activationTime)
     {
         Assertion::notNull($activationTime, 'activationTime value "%s" is null, but non null value was expected.');
         $activationTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -607,14 +596,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set weight
      *
      * @param string $weight
      *
      * @return self
      */
-    public function setWeight($weight)
+    protected function setWeight($weight)
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::numeric($weight);
@@ -636,14 +624,13 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt)
     {
         Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
         $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

@@ -236,14 +236,13 @@ abstract class TransformationRuleSetAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description = null)
+    protected function setDescription($description = null)
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 250, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -265,14 +264,13 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @deprecated
      * Set internationalCode
      *
      * @param string $internationalCode
      *
      * @return self
      */
-    public function setInternationalCode($internationalCode = null)
+    protected function setInternationalCode($internationalCode = null)
     {
         if (!is_null($internationalCode)) {
             Assertion::maxLength($internationalCode, 10, 'internationalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -294,14 +292,13 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @deprecated
      * Set trunkPrefix
      *
      * @param string $trunkPrefix
      *
      * @return self
      */
-    public function setTrunkPrefix($trunkPrefix = null)
+    protected function setTrunkPrefix($trunkPrefix = null)
     {
         if (!is_null($trunkPrefix)) {
             Assertion::maxLength($trunkPrefix, 5, 'trunkPrefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,14 +320,13 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @deprecated
      * Set areaCode
      *
      * @param string $areaCode
      *
      * @return self
      */
-    public function setAreaCode($areaCode = null)
+    protected function setAreaCode($areaCode = null)
     {
         if (!is_null($areaCode)) {
             Assertion::maxLength($areaCode, 5, 'areaCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -352,14 +348,13 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @deprecated
      * Set nationalLen
      *
      * @param integer $nationalLen
      *
      * @return self
      */
-    public function setNationalLen($nationalLen = null)
+    protected function setNationalLen($nationalLen = null)
     {
         if (!is_null($nationalLen)) {
             if (!is_null($nationalLen)) {
@@ -384,14 +379,13 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @deprecated
      * Set generateRules
      *
      * @param boolean $generateRules
      *
      * @return self
      */
-    public function setGenerateRules($generateRules = null)
+    protected function setGenerateRules($generateRules = null)
     {
         if (!is_null($generateRules)) {
             Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');

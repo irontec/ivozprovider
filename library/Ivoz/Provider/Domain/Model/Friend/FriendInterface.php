@@ -79,31 +79,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set transport
-     *
-     * @param string $transport
-     *
-     * @return self
-     */
-    public function setTransport($transport);
 
     /**
      * Get transport
@@ -127,16 +107,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
-     * @deprecated
-     * Set authNeeded
-     *
-     * @param string $authNeeded
-     *
-     * @return self
-     */
-    public function setAuthNeeded($authNeeded);
-
-    /**
      * Get authNeeded
      *
      * @return string
@@ -151,31 +121,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
-
-    /**
      * Get priority
      *
      * @return integer
      */
     public function getPriority();
-
-    /**
-     * @deprecated
-     * Set disallow
-     *
-     * @param string $disallow
-     *
-     * @return self
-     */
-    public function setDisallow($disallow);
 
     /**
      * Get disallow
@@ -185,31 +135,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
-     * @deprecated
-     * Set allow
-     *
-     * @param string $allow
-     *
-     * @return self
-     */
-    public function setAllow($allow);
-
-    /**
      * Get allow
      *
      * @return string
      */
     public function getAllow();
-
-    /**
-     * @deprecated
-     * Set directMediaMethod
-     *
-     * @param string $directMediaMethod
-     *
-     * @return self
-     */
-    public function setDirectMediaMethod($directMediaMethod);
 
     /**
      * Get directMediaMethod
@@ -219,31 +149,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDirectMediaMethod();
 
     /**
-     * @deprecated
-     * Set calleridUpdateHeader
-     *
-     * @param string $calleridUpdateHeader
-     *
-     * @return self
-     */
-    public function setCalleridUpdateHeader($calleridUpdateHeader);
-
-    /**
      * Get calleridUpdateHeader
      *
      * @return string
      */
     public function getCalleridUpdateHeader();
-
-    /**
-     * @deprecated
-     * Set updateCallerid
-     *
-     * @param string $updateCallerid
-     *
-     * @return self
-     */
-    public function setUpdateCallerid($updateCallerid);
 
     /**
      * Get updateCallerid
@@ -253,16 +163,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getUpdateCallerid();
 
     /**
-     * @deprecated
-     * Set fromDomain
-     *
-     * @param string $fromDomain
-     *
-     * @return self
-     */
-    public function setFromDomain($fromDomain = null);
-
-    /**
      * Get fromDomain
      *
      * @return string
@@ -270,31 +170,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
-     * @deprecated
-     * Set directConnectivity
-     *
-     * @param string $directConnectivity
-     *
-     * @return self
-     */
-    public function setDirectConnectivity($directConnectivity);
-
-    /**
      * Get directConnectivity
      *
      * @return string
      */
     public function getDirectConnectivity();
-
-    /**
-     * @deprecated
-     * Set ddiIn
-     *
-     * @param string $ddiIn
-     *
-     * @return self
-     */
-    public function setDdiIn($ddiIn);
 
     /**
      * Get ddiIn

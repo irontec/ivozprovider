@@ -168,14 +168,13 @@ abstract class QueueMemberAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set penalty
      *
      * @param integer $penalty
      *
      * @return self
      */
-    public function setPenalty($penalty = null)
+    protected function setPenalty($penalty = null)
     {
         if (!is_null($penalty)) {
             if (!is_null($penalty)) {

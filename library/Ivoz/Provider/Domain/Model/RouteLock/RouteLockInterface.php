@@ -20,16 +20,6 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function isOpen();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -37,31 +27,11 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set open
-     *
-     * @param boolean $open
-     *
-     * @return self
-     */
-    public function setOpen($open);
 
     /**
      * Get open

@@ -209,14 +209,13 @@ abstract class NotificationTemplateContentAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set fromName
      *
      * @param string $fromName
      *
      * @return self
      */
-    public function setFromName($fromName = null)
+    protected function setFromName($fromName = null)
     {
         if (!is_null($fromName)) {
             Assertion::maxLength($fromName, 255, 'fromName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -238,14 +237,13 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
-     * @deprecated
      * Set fromAddress
      *
      * @param string $fromAddress
      *
      * @return self
      */
-    public function setFromAddress($fromAddress = null)
+    protected function setFromAddress($fromAddress = null)
     {
         if (!is_null($fromAddress)) {
             Assertion::maxLength($fromAddress, 255, 'fromAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -267,14 +265,13 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
-     * @deprecated
      * Set subject
      *
      * @param string $subject
      *
      * @return self
      */
-    public function setSubject($subject)
+    protected function setSubject($subject)
     {
         Assertion::notNull($subject, 'subject value "%s" is null, but non null value was expected.');
         Assertion::maxLength($subject, 255, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -295,14 +292,13 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
-     * @deprecated
      * Set body
      *
      * @param string $body
      *
      * @return self
      */
-    public function setBody($body)
+    protected function setBody($body)
     {
         Assertion::notNull($body, 'body value "%s" is null, but non null value was expected.');
         Assertion::maxLength($body, 65535, 'body value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,14 +319,13 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
-     * @deprecated
      * Set bodyType
      *
      * @param string $bodyType
      *
      * @return self
      */
-    public function setBodyType($bodyType)
+    protected function setBodyType($bodyType)
     {
         Assertion::notNull($bodyType, 'bodyType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($bodyType, 25, 'bodyType value "%s" is too long, it should have no more than %d characters, but has %d characters.');

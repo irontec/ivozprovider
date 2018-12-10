@@ -188,14 +188,13 @@ abstract class RatingProfileAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime
      *
      * @return self
      */
-    public function setActivationTime($activationTime)
+    protected function setActivationTime($activationTime)
     {
         Assertion::notNull($activationTime, 'activationTime value "%s" is null, but non null value was expected.');
         $activationTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

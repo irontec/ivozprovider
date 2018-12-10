@@ -24,11 +24,14 @@ class ProviderMediaRelaySet extends Fixture
         );
 
         $item0 = $manager->find(MediaRelaySet::class, 0);
-        $this->addReference('_reference_ProviderMediaRelaySetMediaRelaySet0', $item0);
+        $this->addReference('_reference_ProviderMediaRelaySet', $item0);
 
-        $item1 = $this->createEntityInstanceWithPublicMethods(MediaRelaySet::class);
-        $item1->setName("Test");
-        $item1->setDescription("Test media relay set");
+        $item1 = $this->createEntityInstance(MediaRelaySet::class);
+        (function () {
+            $this->setName("Test");
+            $this->setDescription("Test media relay set");
+        })->call($item1);
+
         $this->addReference('_reference_ProviderMediaRelaySetMediaRelaySet1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

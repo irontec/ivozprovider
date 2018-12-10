@@ -16,7 +16,6 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client;
 
 /**
  * @Gearman\Work(

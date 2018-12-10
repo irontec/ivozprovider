@@ -80,31 +80,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleRouteType();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set holidayTargetType
-     *
-     * @param string $holidayTargetType
-     *
-     * @return self
-     */
-    public function setHolidayTargetType($holidayTargetType = null);
 
     /**
      * Get holidayTargetType
@@ -114,16 +94,6 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getHolidayTargetType();
 
     /**
-     * @deprecated
-     * Set holidayNumberValue
-     *
-     * @param string $holidayNumberValue
-     *
-     * @return self
-     */
-    public function setHolidayNumberValue($holidayNumberValue = null);
-
-    /**
      * Get holidayNumberValue
      *
      * @return string
@@ -131,31 +101,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getHolidayNumberValue();
 
     /**
-     * @deprecated
-     * Set outOfScheduleTargetType
-     *
-     * @param string $outOfScheduleTargetType
-     *
-     * @return self
-     */
-    public function setOutOfScheduleTargetType($outOfScheduleTargetType = null);
-
-    /**
      * Get outOfScheduleTargetType
      *
      * @return string
      */
     public function getOutOfScheduleTargetType();
-
-    /**
-     * @deprecated
-     * Set outOfScheduleNumberValue
-     *
-     * @param string $outOfScheduleNumberValue
-     *
-     * @return self
-     */
-    public function setOutOfScheduleNumberValue($outOfScheduleNumberValue = null);
 
     /**
      * Get outOfScheduleNumberValue

@@ -341,14 +341,13 @@ abstract class QueueAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name = null)
+    protected function setName($name = null)
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 128, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -370,14 +369,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set maxWaitTime
      *
      * @param integer $maxWaitTime
      *
      * @return self
      */
-    public function setMaxWaitTime($maxWaitTime = null)
+    protected function setMaxWaitTime($maxWaitTime = null)
     {
         if (!is_null($maxWaitTime)) {
             if (!is_null($maxWaitTime)) {
@@ -401,14 +399,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set timeoutTargetType
      *
      * @param string $timeoutTargetType
      *
      * @return self
      */
-    public function setTimeoutTargetType($timeoutTargetType = null)
+    protected function setTimeoutTargetType($timeoutTargetType = null)
     {
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -435,14 +432,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set timeoutNumberValue
      *
      * @param string $timeoutNumberValue
      *
      * @return self
      */
-    public function setTimeoutNumberValue($timeoutNumberValue = null)
+    protected function setTimeoutNumberValue($timeoutNumberValue = null)
     {
         if (!is_null($timeoutNumberValue)) {
             Assertion::maxLength($timeoutNumberValue, 25, 'timeoutNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -464,14 +460,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set maxlen
      *
      * @param integer $maxlen
      *
      * @return self
      */
-    public function setMaxlen($maxlen = null)
+    protected function setMaxlen($maxlen = null)
     {
         if (!is_null($maxlen)) {
             if (!is_null($maxlen)) {
@@ -495,14 +490,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set fullTargetType
      *
      * @param string $fullTargetType
      *
      * @return self
      */
-    public function setFullTargetType($fullTargetType = null)
+    protected function setFullTargetType($fullTargetType = null)
     {
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -529,14 +523,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set fullNumberValue
      *
      * @param string $fullNumberValue
      *
      * @return self
      */
-    public function setFullNumberValue($fullNumberValue = null)
+    protected function setFullNumberValue($fullNumberValue = null)
     {
         if (!is_null($fullNumberValue)) {
             Assertion::maxLength($fullNumberValue, 25, 'fullNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -558,14 +551,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set periodicAnnounceFrequency
      *
      * @param integer $periodicAnnounceFrequency
      *
      * @return self
      */
-    public function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
+    protected function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
     {
         if (!is_null($periodicAnnounceFrequency)) {
             if (!is_null($periodicAnnounceFrequency)) {
@@ -589,14 +581,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set memberCallRest
      *
      * @param integer $memberCallRest
      *
      * @return self
      */
-    public function setMemberCallRest($memberCallRest = null)
+    protected function setMemberCallRest($memberCallRest = null)
     {
         if (!is_null($memberCallRest)) {
             if (!is_null($memberCallRest)) {
@@ -620,14 +611,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set memberCallTimeout
      *
      * @param integer $memberCallTimeout
      *
      * @return self
      */
-    public function setMemberCallTimeout($memberCallTimeout = null)
+    protected function setMemberCallTimeout($memberCallTimeout = null)
     {
         if (!is_null($memberCallTimeout)) {
             if (!is_null($memberCallTimeout)) {
@@ -651,14 +641,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set strategy
      *
      * @param string $strategy
      *
      * @return self
      */
-    public function setStrategy($strategy = null)
+    protected function setStrategy($strategy = null)
     {
         if (!is_null($strategy)) {
         }
@@ -679,14 +668,13 @@ abstract class QueueAbstract
     }
 
     /**
-     * @deprecated
      * Set weight
      *
      * @param integer $weight
      *
      * @return self
      */
-    public function setWeight($weight = null)
+    protected function setWeight($weight = null)
     {
         if (!is_null($weight)) {
             if (!is_null($weight)) {

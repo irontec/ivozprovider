@@ -270,14 +270,13 @@ abstract class ConditionalRoutesConditionAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority)
+    protected function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
@@ -298,14 +297,13 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
-     * @deprecated
      * Set routeType
      *
      * @param string $routeType
      *
      * @return self
      */
-    public function setRouteType($routeType = null)
+    protected function setRouteType($routeType = null)
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -338,14 +336,13 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
-     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
      *
      * @return self
      */
-    public function setNumberValue($numberValue = null)
+    protected function setNumberValue($numberValue = null)
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -367,14 +364,13 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
-     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue
      *
      * @return self
      */
-    public function setFriendValue($friendValue = null)
+    protected function setFriendValue($friendValue = null)
     {
         if (!is_null($friendValue)) {
             Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');

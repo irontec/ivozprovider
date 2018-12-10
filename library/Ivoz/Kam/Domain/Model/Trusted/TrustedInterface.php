@@ -22,31 +22,11 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getSrcIp();
 
     /**
-     * @deprecated
-     * Set proto
-     *
-     * @param string $proto
-     *
-     * @return self
-     */
-    public function setProto($proto = null);
-
-    /**
      * Get proto
      *
      * @return string
      */
     public function getProto();
-
-    /**
-     * @deprecated
-     * Set fromPattern
-     *
-     * @param string $fromPattern
-     *
-     * @return self
-     */
-    public function setFromPattern($fromPattern = null);
 
     /**
      * Get fromPattern
@@ -56,31 +36,11 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getFromPattern();
 
     /**
-     * @deprecated
-     * Set ruriPattern
-     *
-     * @param string $ruriPattern
-     *
-     * @return self
-     */
-    public function setRuriPattern($ruriPattern = null);
-
-    /**
      * Get ruriPattern
      *
      * @return string
      */
     public function getRuriPattern();
-
-    /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
 
     /**
      * Get tag
@@ -90,31 +50,11 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
 
     /**
      * Get priority

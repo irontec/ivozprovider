@@ -24,50 +24,62 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
             'INSERT INTO Administrators (id, username, pass, active) VALUES (0, "privateAdmin", "", 0)'
         );
 
-        $item1 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
-        $item1->setUsername("admin");
-        $item1->setPass('changeme');
-        $item1->setEmail("admin@example.com");
-        $item1->setActive(true);
-        $item1->setName("admin");
-        $item1->setLastname("ivozprovider");
+        $item1 = $this->createEntityInstance(Administrator::class);
+        (function () {
+            $this->setUsername("admin");
+            $this->setPass('changeme');
+            $this->setEmail("admin@example.com");
+            $this->setActive(true);
+            $this->setName("admin");
+            $this->setLastname("ivozprovider");
+        })->call($item1);
+
         $item1->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
-        $item2->setUsername("test_brand_admin");
-        $item2->setPass("changeme");
-        $item2->setEmail("nightwatch@irontec.com");
-        $item2->setActive(true);
-        $item2->setName("night");
-        $item2->setLastname("watch");
+        $item2 = $this->createEntityInstance(Administrator::class);
+        (function () {
+            $this->setUsername("test_brand_admin");
+            $this->setPass("changeme");
+            $this->setEmail("nightwatch@irontec.com");
+            $this->setActive(true);
+            $this->setName("night");
+            $this->setLastname("watch");
+        })->call($item2);
+
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item2->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
-        $item3 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
-        $item3->setUsername("irontec");
-        $item3->setPass("changeme");
-        $item3->setEmail("vozip@irontec.com");
-        $item3->setActive(true);
-        $item3->setName("irontec");
-        $item3->setLastname("ivozprovider");
+        $item3 = $this->createEntityInstance(Administrator::class);
+        (function () {
+            $this->setUsername("irontec");
+            $this->setPass("changeme");
+            $this->setEmail("vozip@irontec.com");
+            $this->setActive(true);
+            $this->setName("irontec");
+            $this->setLastname("ivozprovider");
+        })->call($item3);
+
         $item3->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator3', $item3);
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
-        $item4 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
-        $item4->setUsername("test_company_admin");
-        $item4->setPass("changeme");
-        $item4->setEmail("test@irontec.com");
-        $item4->setActive(true);
-        $item4->setName("Admin Name");
-        $item4->setLastname("Admin Lastname");
+        $item4 = $this->createEntityInstance(Administrator::class);
+        (function () {
+            $this->setUsername("test_company_admin");
+            $this->setPass("changeme");
+            $this->setEmail("test@irontec.com");
+            $this->setActive(true);
+            $this->setName("Admin Name");
+            $this->setLastname("Admin Lastname");
+        })->call($item4);
+
         $item4->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item4->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item4->setTimezone($this->getReference('_reference_ProviderTimezone145'));

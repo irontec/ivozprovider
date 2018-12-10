@@ -170,14 +170,13 @@ abstract class CompanyServiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set code
      *
      * @param string $code
      *
      * @return self
      */
-    public function setCode($code)
+    protected function setCode($code)
     {
         Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
         Assertion::maxLength($code, 3, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');

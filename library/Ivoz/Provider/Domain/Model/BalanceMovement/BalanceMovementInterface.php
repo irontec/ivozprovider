@@ -13,16 +13,6 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set amount
-     *
-     * @param string $amount
-     *
-     * @return self
-     */
-    public function setAmount($amount = null);
-
-    /**
      * Get amount
      *
      * @return string
@@ -30,31 +20,11 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     public function getAmount();
 
     /**
-     * @deprecated
-     * Set balance
-     *
-     * @param string $balance
-     *
-     * @return self
-     */
-    public function setBalance($balance = null);
-
-    /**
      * Get balance
      *
      * @return string
      */
     public function getBalance();
-
-    /**
-     * @deprecated
-     * Set createdOn
-     *
-     * @param \DateTime $createdOn
-     *
-     * @return self
-     */
-    public function setCreatedOn($createdOn = null);
 
     /**
      * Get createdOn

@@ -215,14 +215,13 @@ abstract class DestinationRateAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set cost
      *
      * @param string $cost
      *
      * @return self
      */
-    public function setCost($cost)
+    protected function setCost($cost)
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
@@ -244,14 +243,13 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
      *
      * @return self
      */
-    public function setConnectFee($connectFee)
+    protected function setConnectFee($connectFee)
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
@@ -273,14 +271,13 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @deprecated
      * Set rateIncrement
      *
      * @param string $rateIncrement
      *
      * @return self
      */
-    public function setRateIncrement($rateIncrement)
+    protected function setRateIncrement($rateIncrement)
     {
         Assertion::notNull($rateIncrement, 'rateIncrement value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rateIncrement, 16, 'rateIncrement value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -301,14 +298,13 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @deprecated
      * Set groupIntervalStart
      *
      * @param string $groupIntervalStart
      *
      * @return self
      */
-    public function setGroupIntervalStart($groupIntervalStart)
+    protected function setGroupIntervalStart($groupIntervalStart)
     {
         Assertion::notNull($groupIntervalStart, 'groupIntervalStart value "%s" is null, but non null value was expected.');
         Assertion::maxLength($groupIntervalStart, 16, 'groupIntervalStart value "%s" is too long, it should have no more than %d characters, but has %d characters.');

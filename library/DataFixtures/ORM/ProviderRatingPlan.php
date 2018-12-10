@@ -23,10 +23,13 @@ class ProviderRatingPlan extends Fixture implements DependentFixtureInterface
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ratingPlan $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(RatingPlan::class);
+        $item1 = $this->createEntityInstance(RatingPlan::class);
+        (function () {
+            $this
+                ->setTimeIn(new \DateTime('2018-01-01 10:10:10'));
+        })->call($item1);
 
         $item1
-            ->setTimeIn(new \DateTime('2018-01-01 10:10:10'))
             ->setRatingPlanGroup(
                 $this->getReference('_reference_ProviderRatingPlanGroup1')
             )

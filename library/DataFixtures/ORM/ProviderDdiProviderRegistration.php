@@ -22,16 +22,19 @@ class ProviderDdiProviderRegistration extends Fixture implements DependentFixtur
         $manager->getClassMetadata(DdiProviderRegistration::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var DdiProviderRegistrationInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(DdiProviderRegistration::class);
-        $item1->setUsername("DDIRegistrationUsername");
-        $item1->setDomain("DDIRegistrationDomain");
-        $item1->setRealm("DDIRegistrationRealm");
-        $item1->setAuthUsername("DDIRegistrationAuthUsername");
-        $item1->setAuthPassword("DDIRegistrationAuthPassword");
-        $item1->setAuthProxy("sip:DDIRegistrationAuthProxy");
-        $item1->setExpires(2000);
-        $item1->setMultiDdi(0);
-        $item1->setContactUsername("DDIRegistrationContactUsername");
+        $item1 = $this->createEntityInstance(DdiProviderRegistration::class);
+        (function () {
+            $this->setUsername("DDIRegistrationUsername");
+            $this->setDomain("DDIRegistrationDomain");
+            $this->setRealm("DDIRegistrationRealm");
+            $this->setAuthUsername("DDIRegistrationAuthUsername");
+            $this->setAuthPassword("DDIRegistrationAuthPassword");
+            $this->setAuthProxy("sip:DDIRegistrationAuthProxy");
+            $this->setExpires(2000);
+            $this->setMultiDdi(0);
+            $this->setContactUsername("DDIRegistrationContactUsername");
+        })->call($item1);
+
         $item1->setDdiProvider($this->getReference('_reference_ProviderDdiProvider1'));
         $this->addReference('_reference_ProviderDdiProviderRegistration1', $item1);
         $this->sanitizeEntityValues($item1);

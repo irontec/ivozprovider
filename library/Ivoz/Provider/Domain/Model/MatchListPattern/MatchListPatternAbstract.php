@@ -198,14 +198,13 @@ abstract class MatchListPatternAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description = null)
+    protected function setDescription($description = null)
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 55, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -227,14 +226,13 @@ abstract class MatchListPatternAbstract
     }
 
     /**
-     * @deprecated
      * Set type
      *
      * @param string $type
      *
      * @return self
      */
-    public function setType($type)
+    protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -259,14 +257,13 @@ abstract class MatchListPatternAbstract
     }
 
     /**
-     * @deprecated
      * Set regexp
      *
      * @param string $regexp
      *
      * @return self
      */
-    public function setRegexp($regexp = null)
+    protected function setRegexp($regexp = null)
     {
         if (!is_null($regexp)) {
             Assertion::maxLength($regexp, 255, 'regexp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -288,14 +285,13 @@ abstract class MatchListPatternAbstract
     }
 
     /**
-     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue
      *
      * @return self
      */
-    public function setNumbervalue($numbervalue = null)
+    protected function setNumbervalue($numbervalue = null)
     {
         if (!is_null($numbervalue)) {
             Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');

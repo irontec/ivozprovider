@@ -195,14 +195,13 @@ abstract class TrunksDomainAttrAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set did
      *
      * @param string $did
      *
      * @return self
      */
-    public function setDid($did)
+    protected function setDid($did)
     {
         Assertion::notNull($did, 'did value "%s" is null, but non null value was expected.');
         Assertion::maxLength($did, 190, 'did value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -223,14 +222,13 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 32, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -251,14 +249,13 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set type
      *
      * @param integer $type
      *
      * @return self
      */
-    public function setType($type)
+    protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::integerish($type, 'type value "%s" is not an integer or a number castable to integer.');
@@ -280,14 +277,13 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set value
      *
      * @param string $value
      *
      * @return self
      */
-    public function setValue($value)
+    protected function setValue($value)
     {
         Assertion::notNull($value, 'value value "%s" is null, but non null value was expected.');
         Assertion::maxLength($value, 255, 'value value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -308,14 +304,13 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
-     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
      *
      * @return self
      */
-    public function setLastModified($lastModified)
+    protected function setLastModified($lastModified)
     {
         Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
         $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

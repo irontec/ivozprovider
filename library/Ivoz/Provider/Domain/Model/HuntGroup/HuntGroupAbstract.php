@@ -262,14 +262,13 @@ abstract class HuntGroupAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -290,14 +289,13 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -318,14 +316,13 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @deprecated
      * Set strategy
      *
      * @param string $strategy
      *
      * @return self
      */
-    public function setStrategy($strategy)
+    protected function setStrategy($strategy)
     {
         Assertion::notNull($strategy, 'strategy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -352,14 +349,13 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @deprecated
      * Set ringAllTimeout
      *
      * @param integer $ringAllTimeout
      *
      * @return self
      */
-    public function setRingAllTimeout($ringAllTimeout)
+    protected function setRingAllTimeout($ringAllTimeout)
     {
         Assertion::notNull($ringAllTimeout, 'ringAllTimeout value "%s" is null, but non null value was expected.');
         Assertion::integerish($ringAllTimeout, 'ringAllTimeout value "%s" is not an integer or a number castable to integer.');
@@ -380,14 +376,13 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @deprecated
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType
      *
      * @return self
      */
-    public function setNoAnswerTargetType($noAnswerTargetType = null)
+    protected function setNoAnswerTargetType($noAnswerTargetType = null)
     {
         if (!is_null($noAnswerTargetType)) {
             Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -414,14 +409,13 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @deprecated
      * Set noAnswerNumberValue
      *
      * @param string $noAnswerNumberValue
      *
      * @return self
      */
-    public function setNoAnswerNumberValue($noAnswerNumberValue = null)
+    protected function setNoAnswerNumberValue($noAnswerNumberValue = null)
     {
         if (!is_null($noAnswerNumberValue)) {
             Assertion::maxLength($noAnswerNumberValue, 25, 'noAnswerNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -443,14 +437,13 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @deprecated
      * Set preventMissedCalls
      *
      * @param integer $preventMissedCalls
      *
      * @return self
      */
-    public function setPreventMissedCalls($preventMissedCalls)
+    protected function setPreventMissedCalls($preventMissedCalls)
     {
         Assertion::notNull($preventMissedCalls, 'preventMissedCalls value "%s" is null, but non null value was expected.');
         Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');

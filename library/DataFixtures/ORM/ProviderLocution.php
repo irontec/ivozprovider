@@ -22,10 +22,13 @@ class ProviderLocution extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Locution::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(Locution::class);
-        $item1->setName("testLocution");
-        $item1->setEncodedFile(new EncodedFile(1, 'audio/x-wav; charset=binary', 'locution.wav'));
-        $item1->setOriginalFile(new OriginalFile(1, 'audio/mpeg; charset=binary', 'locution.mp3'));
+        $item1 = $this->createEntityInstance(Locution::class);
+        (function () {
+            $this->setName("testLocution");
+            $this->setEncodedFile(new EncodedFile(1, 'audio/x-wav; charset=binary', 'locution.wav'));
+            $this->setOriginalFile(new OriginalFile(1, 'audio/mpeg; charset=binary', 'locution.mp3'));
+        })->call($item1);
+
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderLocution1', $item1);
         $this->sanitizeEntityValues($item1);

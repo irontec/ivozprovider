@@ -130,31 +130,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getFullNameExtension();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set lastname
-     *
-     * @param string $lastname
-     *
-     * @return self
-     */
-    public function setLastname($lastname);
 
     /**
      * Get lastname
@@ -178,31 +158,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getPass();
 
     /**
-     * @deprecated
-     * Set doNotDisturb
-     *
-     * @param boolean $doNotDisturb
-     *
-     * @return self
-     */
-    public function setDoNotDisturb($doNotDisturb);
-
-    /**
      * Get doNotDisturb
      *
      * @return boolean
      */
     public function getDoNotDisturb();
-
-    /**
-     * @deprecated
-     * Set isBoss
-     *
-     * @param boolean $isBoss
-     *
-     * @return self
-     */
-    public function setIsBoss($isBoss);
 
     /**
      * Get isBoss
@@ -212,31 +172,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getIsBoss();
 
     /**
-     * @deprecated
-     * Set active
-     *
-     * @param boolean $active
-     *
-     * @return self
-     */
-    public function setActive($active);
-
-    /**
      * Get active
      *
      * @return boolean
      */
     public function getActive();
-
-    /**
-     * @deprecated
-     * Set maxCalls
-     *
-     * @param integer $maxCalls
-     *
-     * @return self
-     */
-    public function setMaxCalls($maxCalls);
 
     /**
      * Get maxCalls
@@ -246,31 +186,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getMaxCalls();
 
     /**
-     * @deprecated
-     * Set externalIpCalls
-     *
-     * @param string $externalIpCalls
-     *
-     * @return self
-     */
-    public function setExternalIpCalls($externalIpCalls);
-
-    /**
      * Get externalIpCalls
      *
      * @return string
      */
     public function getExternalIpCalls();
-
-    /**
-     * @deprecated
-     * Set voicemailEnabled
-     *
-     * @param boolean $voicemailEnabled
-     *
-     * @return self
-     */
-    public function setVoicemailEnabled($voicemailEnabled);
 
     /**
      * Get voicemailEnabled
@@ -280,31 +200,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailEnabled();
 
     /**
-     * @deprecated
-     * Set voicemailSendMail
-     *
-     * @param boolean $voicemailSendMail
-     *
-     * @return self
-     */
-    public function setVoicemailSendMail($voicemailSendMail);
-
-    /**
      * Get voicemailSendMail
      *
      * @return boolean
      */
     public function getVoicemailSendMail();
-
-    /**
-     * @deprecated
-     * Set voicemailAttachSound
-     *
-     * @param boolean $voicemailAttachSound
-     *
-     * @return self
-     */
-    public function setVoicemailAttachSound($voicemailAttachSound);
 
     /**
      * Get voicemailAttachSound
@@ -314,31 +214,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailAttachSound();
 
     /**
-     * @deprecated
-     * Set tokenKey
-     *
-     * @param string $tokenKey
-     *
-     * @return self
-     */
-    public function setTokenKey($tokenKey = null);
-
-    /**
      * Get tokenKey
      *
      * @return string
      */
     public function getTokenKey();
-
-    /**
-     * @deprecated
-     * Set gsQRCode
-     *
-     * @param boolean $gsQRCode
-     *
-     * @return self
-     */
-    public function setGsQRCode($gsQRCode);
 
     /**
      * Get gsQRCode

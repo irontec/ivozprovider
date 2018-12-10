@@ -254,14 +254,13 @@ abstract class TerminalAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name = null)
+    protected function setName($name = null)
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -283,14 +282,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set disallow
      *
      * @param string $disallow
      *
      * @return self
      */
-    public function setDisallow($disallow)
+    protected function setDisallow($disallow)
     {
         Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -311,14 +309,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set allowAudio
      *
      * @param string $allowAudio
      *
      * @return self
      */
-    public function setAllowAudio($allowAudio)
+    protected function setAllowAudio($allowAudio)
     {
         Assertion::notNull($allowAudio, 'allowAudio value "%s" is null, but non null value was expected.');
         Assertion::maxLength($allowAudio, 200, 'allowAudio value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -339,14 +336,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set allowVideo
      *
      * @param string $allowVideo
      *
      * @return self
      */
-    public function setAllowVideo($allowVideo = null)
+    protected function setAllowVideo($allowVideo = null)
     {
         if (!is_null($allowVideo)) {
             Assertion::maxLength($allowVideo, 200, 'allowVideo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -368,14 +364,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
      *
      * @return self
      */
-    public function setDirectMediaMethod($directMediaMethod)
+    protected function setDirectMediaMethod($directMediaMethod)
     {
         Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, array (
@@ -400,14 +395,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set password
      *
      * @param string $password
      *
      * @return self
      */
-    public function setPassword($password)
+    protected function setPassword($password)
     {
         Assertion::notNull($password, 'password value "%s" is null, but non null value was expected.');
         Assertion::maxLength($password, 25, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -428,14 +422,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set mac
      *
      * @param string $mac
      *
      * @return self
      */
-    public function setMac($mac = null)
+    protected function setMac($mac = null)
     {
         if (!is_null($mac)) {
             Assertion::maxLength($mac, 12, 'mac value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -457,14 +450,13 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @deprecated
      * Set lastProvisionDate
      *
      * @param \DateTime $lastProvisionDate
      *
      * @return self
      */
-    public function setLastProvisionDate($lastProvisionDate = null)
+    protected function setLastProvisionDate($lastProvisionDate = null)
     {
         if (!is_null($lastProvisionDate)) {
             $lastProvisionDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

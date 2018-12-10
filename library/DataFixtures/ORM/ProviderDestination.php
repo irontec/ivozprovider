@@ -23,9 +23,12 @@ class ProviderDestination extends Fixture implements DependentFixtureInterface
         $manager->getClassMetadata(Destination::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var DestinationInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(Destination::class);
-        $item1->setPrefix("+94600");
-        $item1->setName(new Name('Bilbao', 'Bilbao'));
+        $item1 = $this->createEntityInstance(Destination::class);
+        (function () {
+            $this->setPrefix("+94600");
+            $this->setName(new Name('Bilbao', 'Bilbao'));
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
 
         $this->addReference('_reference_ProviderDestination1', $item1);
@@ -34,9 +37,12 @@ class ProviderDestination extends Fixture implements DependentFixtureInterface
         $manager->persist($item1);
 
         /** @var DestinationInterface $item1 */
-        $item2 = $this->createEntityInstanceWithPublicMethods(Destination::class);
-        $item2->setPrefix("+94601");
-        $item2->setName(new Name('Usansolocity', 'Usansolocity'));
+        $item2 = $this->createEntityInstance(Destination::class);
+        (function () {
+            $this->setPrefix("+94601");
+            $this->setName(new Name('Usansolocity', 'Usansolocity'));
+        })->call($item2);
+
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
 
         $this->addReference('_reference_ProviderDestination2', $item2);

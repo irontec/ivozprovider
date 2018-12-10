@@ -31,31 +31,11 @@ interface BrandUrlInterface extends FileContainerInterface, LoggableEntityInterf
     public function getUrl();
 
     /**
-     * @deprecated
-     * Set klearTheme
-     *
-     * @param string $klearTheme
-     *
-     * @return self
-     */
-    public function setKlearTheme($klearTheme = null);
-
-    /**
      * Get klearTheme
      *
      * @return string
      */
     public function getKlearTheme();
-
-    /**
-     * @deprecated
-     * Set urlType
-     *
-     * @param string $urlType
-     *
-     * @return self
-     */
-    public function setUrlType($urlType);
 
     /**
      * Get urlType
@@ -65,31 +45,11 @@ interface BrandUrlInterface extends FileContainerInterface, LoggableEntityInterf
     public function getUrlType();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set userTheme
-     *
-     * @param string $userTheme
-     *
-     * @return self
-     */
-    public function setUserTheme($userTheme = null);
 
     /**
      * Get userTheme

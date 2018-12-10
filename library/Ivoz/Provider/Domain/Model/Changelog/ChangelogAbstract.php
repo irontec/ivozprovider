@@ -204,14 +204,13 @@ abstract class ChangelogAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set entity
      *
      * @param string $entity
      *
      * @return self
      */
-    public function setEntity($entity)
+    protected function setEntity($entity)
     {
         Assertion::notNull($entity, 'entity value "%s" is null, but non null value was expected.');
         Assertion::maxLength($entity, 150, 'entity value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -232,14 +231,13 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @deprecated
      * Set entityId
      *
      * @param string $entityId
      *
      * @return self
      */
-    public function setEntityId($entityId)
+    protected function setEntityId($entityId)
     {
         Assertion::notNull($entityId, 'entityId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($entityId, 36, 'entityId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -260,14 +258,13 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @deprecated
      * Set data
      *
      * @param array $data
      *
      * @return self
      */
-    public function setData($data = null)
+    protected function setData($data = null)
     {
         if (!is_null($data)) {
         }
@@ -288,14 +285,13 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
      *
      * @return self
      */
-    public function setCreatedOn($createdOn)
+    protected function setCreatedOn($createdOn)
     {
         Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
         $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -319,14 +315,13 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @deprecated
      * Set microtime
      *
      * @param integer $microtime
      *
      * @return self
      */
-    public function setMicrotime($microtime)
+    protected function setMicrotime($microtime)
     {
         Assertion::notNull($microtime, 'microtime value "%s" is null, but non null value was expected.');
         Assertion::integerish($microtime, 'microtime value "%s" is not an integer or a number castable to integer.');

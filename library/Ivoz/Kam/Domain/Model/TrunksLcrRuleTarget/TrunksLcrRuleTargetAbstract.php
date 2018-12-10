@@ -200,14 +200,13 @@ abstract class TrunksLcrRuleTargetAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
      *
      * @return self
      */
-    public function setLcrId($lcrId)
+    protected function setLcrId($lcrId)
     {
         Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
         Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
@@ -229,14 +228,13 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority)
+    protected function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
@@ -258,14 +256,13 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
-     * @deprecated
      * Set weight
      *
      * @param integer $weight
      *
      * @return self
      */
-    public function setWeight($weight)
+    protected function setWeight($weight)
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');

@@ -171,14 +171,13 @@ abstract class DomainAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set domain
      *
      * @param string $domain
      *
      * @return self
      */
-    public function setDomain($domain)
+    protected function setDomain($domain)
     {
         Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -199,14 +198,13 @@ abstract class DomainAbstract
     }
 
     /**
-     * @deprecated
      * Set pointsTo
      *
      * @param string $pointsTo
      *
      * @return self
      */
-    public function setPointsTo($pointsTo)
+    protected function setPointsTo($pointsTo)
     {
         Assertion::notNull($pointsTo, 'pointsTo value "%s" is null, but non null value was expected.');
 
@@ -226,14 +224,13 @@ abstract class DomainAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description = null)
+    protected function setDescription($description = null)
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');

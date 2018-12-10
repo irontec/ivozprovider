@@ -23,20 +23,21 @@ class ProviderInvoiceNumberSequence extends Fixture implements DependentFixtureI
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var InvoiceNumberSequence $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(
+        $item1 = $this->createEntityInstance(
             InvoiceNumberSequence::class
         );
+        (function () {
+            $this->setName('GeneratorName');
+            $this->setPrefix('auto');
+            $this->setSequenceLength(4);
+            $this->setIncrement(1);
+            $this->setLatestValue('auto0001');
+            $this->setIteration(1);
+            $this->setVersion(1);
+        })->call($item1);
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
-
-        $item1->setName('GeneratorName');
-        $item1->setPrefix('auto');
-        $item1->setSequenceLength(4);
-        $item1->setIncrement(1);
-        $item1->setLatestValue('auto0001');
-        $item1->setIteration(1);
-        $item1->setVersion(1);
 
         $this->addReference('_reference_ProviderInvoiceNumberSequence1', $item1);
         $this->sanitizeEntityValues($item1);

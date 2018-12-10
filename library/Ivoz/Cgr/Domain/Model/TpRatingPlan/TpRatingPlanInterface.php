@@ -7,31 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpRatingPlanInterface extends EntityInterface
 {
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
      */
     public function getTpid();
-
-    /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
 
     /**
      * Get tag
@@ -41,31 +21,11 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTag();
 
     /**
-     * @deprecated
-     * Set destratesTag
-     *
-     * @param string $destratesTag
-     *
-     * @return self
-     */
-    public function setDestratesTag($destratesTag = null);
-
-    /**
      * Get destratesTag
      *
      * @return string
      */
     public function getDestratesTag();
-
-    /**
-     * @deprecated
-     * Set timingTag
-     *
-     * @param string $timingTag
-     *
-     * @return self
-     */
-    public function setTimingTag($timingTag);
 
     /**
      * Get timingTag
@@ -75,31 +35,11 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTimingTag();
 
     /**
-     * @deprecated
-     * Set weight
-     *
-     * @param string $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight);
-
-    /**
      * Get weight
      *
      * @return string
      */
     public function getWeight();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

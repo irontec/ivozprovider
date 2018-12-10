@@ -29,31 +29,11 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getLUuid();
 
     /**
-     * @deprecated
-     * Set lUsername
-     *
-     * @param string $lUsername
-     *
-     * @return self
-     */
-    public function setLUsername($lUsername);
-
-    /**
      * Get lUsername
      *
      * @return string
      */
     public function getLUsername();
-
-    /**
-     * @deprecated
-     * Set lDomain
-     *
-     * @param string $lDomain
-     *
-     * @return self
-     */
-    public function setLDomain($lDomain);
 
     /**
      * Get lDomain
@@ -63,31 +43,11 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getLDomain();
 
     /**
-     * @deprecated
-     * Set rUsername
-     *
-     * @param string $rUsername
-     *
-     * @return self
-     */
-    public function setRUsername($rUsername);
-
-    /**
      * Get rUsername
      *
      * @return string
      */
     public function getRUsername();
-
-    /**
-     * @deprecated
-     * Set rDomain
-     *
-     * @param string $rDomain
-     *
-     * @return self
-     */
-    public function setRDomain($rDomain);
 
     /**
      * Get rDomain
@@ -97,16 +57,6 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRDomain();
 
     /**
-     * @deprecated
-     * Set realm
-     *
-     * @param string $realm
-     *
-     * @return self
-     */
-    public function setRealm($realm);
-
-    /**
      * Get realm
      *
      * @return string
@@ -114,31 +64,11 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRealm();
 
     /**
-     * @deprecated
-     * Set authUsername
-     *
-     * @param string $authUsername
-     *
-     * @return self
-     */
-    public function setAuthUsername($authUsername);
-
-    /**
      * Get authUsername
      *
      * @return string
      */
     public function getAuthUsername();
-
-    /**
-     * @deprecated
-     * Set authPassword
-     *
-     * @param string $authPassword
-     *
-     * @return self
-     */
-    public function setAuthPassword($authPassword);
 
     /**
      * Get authPassword
@@ -155,31 +85,11 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getAuthProxy();
 
     /**
-     * @deprecated
-     * Set expires
-     *
-     * @param integer $expires
-     *
-     * @return self
-     */
-    public function setExpires($expires);
-
-    /**
      * Get expires
      *
      * @return integer
      */
     public function getExpires();
-
-    /**
-     * @deprecated
-     * Set flags
-     *
-     * @param integer $flags
-     *
-     * @return self
-     */
-    public function setFlags($flags);
 
     /**
      * Get flags
@@ -189,31 +99,11 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getFlags();
 
     /**
-     * @deprecated
-     * Set regDelay
-     *
-     * @param integer $regDelay
-     *
-     * @return self
-     */
-    public function setRegDelay($regDelay);
-
-    /**
      * Get regDelay
      *
      * @return integer
      */
     public function getRegDelay();
-
-    /**
-     * @deprecated
-     * Set authHa1
-     *
-     * @param string $authHa1
-     *
-     * @return self
-     */
-    public function setAuthHa1($authHa1);
 
     /**
      * Get authHa1

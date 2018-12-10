@@ -20,31 +20,11 @@ interface CountryInterface extends LoggableEntityInterface
     public function hasAreaCode();
 
     /**
-     * @deprecated
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return self
-     */
-    public function setCode($code);
-
-    /**
      * Get code
      *
      * @return string
      */
     public function getCode();
-
-    /**
-     * @deprecated
-     * Set countryCode
-     *
-     * @param string $countryCode
-     *
-     * @return self
-     */
-    public function setCountryCode($countryCode = null);
 
     /**
      * Get countryCode

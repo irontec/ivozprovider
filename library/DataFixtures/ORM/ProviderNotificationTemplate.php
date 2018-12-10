@@ -22,9 +22,12 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $manager->getClassMetadata(NotificationTemplate::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var NotificationTemplateInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(NotificationTemplate::class);
-        $item1->setName("Voicemail notification");
-        $item1->setType("voicemail");
+        $item1 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () {
+            $this->setName("Voicemail notification");
+            $this->setType("voicemail");
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderNotificationTemplate1', $item1);
         $this->sanitizeEntityValues($item1);

@@ -13,16 +13,6 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set quantity
-     *
-     * @param integer $quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity = null);
-
-    /**
      * Get quantity
      *
      * @return integer

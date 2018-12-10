@@ -210,14 +210,13 @@ abstract class UsersAddressAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set sourceAddress
      *
      * @param string $sourceAddress
      *
      * @return self
      */
-    public function setSourceAddress($sourceAddress)
+    protected function setSourceAddress($sourceAddress)
     {
         Assertion::notNull($sourceAddress, 'sourceAddress value "%s" is null, but non null value was expected.');
         Assertion::maxLength($sourceAddress, 100, 'sourceAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -238,14 +237,13 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @deprecated
      * Set ipAddr
      *
      * @param string $ipAddr
      *
      * @return self
      */
-    public function setIpAddr($ipAddr = null)
+    protected function setIpAddr($ipAddr = null)
     {
         if (!is_null($ipAddr)) {
             Assertion::maxLength($ipAddr, 50, 'ipAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -267,14 +265,13 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @deprecated
      * Set mask
      *
      * @param integer $mask
      *
      * @return self
      */
-    public function setMask($mask)
+    protected function setMask($mask)
     {
         Assertion::notNull($mask, 'mask value "%s" is null, but non null value was expected.');
         Assertion::integerish($mask, 'mask value "%s" is not an integer or a number castable to integer.');
@@ -295,14 +292,13 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @deprecated
      * Set port
      *
      * @param integer $port
      *
      * @return self
      */
-    public function setPort($port)
+    protected function setPort($port)
     {
         Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
         Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
@@ -323,14 +319,13 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @deprecated
      * Set tag
      *
      * @param string $tag
      *
      * @return self
      */
-    public function setTag($tag = null)
+    protected function setTag($tag = null)
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -352,14 +347,13 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description = null)
+    protected function setDescription($description = null)
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');

@@ -20,9 +20,12 @@ class ProviderProxyTrunk extends Fixture
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ProxyTrunk::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(ProxyTrunk::class);
-        $item1->setName("proxytrunks");
-        $item1->setIp("127.0.0.1");
+        $item1 = $this->createEntityInstance(ProxyTrunk::class);
+        (function () {
+            $this->setName("proxytrunks");
+            $this->setIp("127.0.0.1");
+        })->call($item1);
+
         $this->addReference('_reference_ProviderProxyTrunk1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

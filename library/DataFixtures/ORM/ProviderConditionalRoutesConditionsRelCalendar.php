@@ -21,7 +21,7 @@ class ProviderConditionalRoutesConditionsRelCalendar extends Fixture implements 
         $manager->getClassMetadata(ConditionalRoutesConditionsRelCalendar::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ConditionalRoutesConditionsRelCalendar $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(ConditionalRoutesConditionsRelCalendar::class);
+        $item1 = $this->createEntityInstance(ConditionalRoutesConditionsRelCalendar::class);
 
         $item1->setCondition(
             $this->getReference('_reference_ProviderConditionalRoutesCondition1')

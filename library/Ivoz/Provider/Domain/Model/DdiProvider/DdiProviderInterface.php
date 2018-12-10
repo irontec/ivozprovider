@@ -14,16 +14,6 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
@@ -31,31 +21,11 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set externallyRated
-     *
-     * @param boolean $externallyRated
-     *
-     * @return self
-     */
-    public function setExternallyRated($externallyRated = null);
 
     /**
      * Get externallyRated

@@ -19,16 +19,18 @@ class ProviderOutgoingDdiRule extends Fixture implements DependentFixtureInterfa
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(OutgoingDdiRule::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
-        $item1 = $this->createEntityInstanceWithPublicMethods(OutgoingDdiRule::class);
-        $item1->setName("testRule");
-        $item1->setDefaultAction("keep");
+
+        $item1 = $this->createEntityInstance(OutgoingDdiRule::class);
+        (function () {
+            $this->setName("testRule");
+            $this->setDefaultAction("keep");
+        })->call($item1);
+
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderOutgoingDdiRule1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
         $manager->flush();
     }
 

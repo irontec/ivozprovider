@@ -204,14 +204,13 @@ abstract class CommandlogAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set requestId
      *
      * @param guid $requestId
      *
      * @return self
      */
-    public function setRequestId($requestId)
+    protected function setRequestId($requestId)
     {
         Assertion::notNull($requestId, 'requestId value "%s" is null, but non null value was expected.');
 
@@ -231,14 +230,13 @@ abstract class CommandlogAbstract
     }
 
     /**
-     * @deprecated
      * Set class
      *
      * @param string $class
      *
      * @return self
      */
-    public function setClass($class)
+    protected function setClass($class)
     {
         Assertion::notNull($class, 'class value "%s" is null, but non null value was expected.');
         Assertion::maxLength($class, 50, 'class value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -259,14 +257,13 @@ abstract class CommandlogAbstract
     }
 
     /**
-     * @deprecated
      * Set method
      *
      * @param string $method
      *
      * @return self
      */
-    public function setMethod($method = null)
+    protected function setMethod($method = null)
     {
         if (!is_null($method)) {
             Assertion::maxLength($method, 64, 'method value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -288,14 +285,13 @@ abstract class CommandlogAbstract
     }
 
     /**
-     * @deprecated
      * Set arguments
      *
      * @param array $arguments
      *
      * @return self
      */
-    public function setArguments($arguments = null)
+    protected function setArguments($arguments = null)
     {
         if (!is_null($arguments)) {
         }
@@ -316,14 +312,13 @@ abstract class CommandlogAbstract
     }
 
     /**
-     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
      *
      * @return self
      */
-    public function setCreatedOn($createdOn)
+    protected function setCreatedOn($createdOn)
     {
         Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
         $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -347,14 +342,13 @@ abstract class CommandlogAbstract
     }
 
     /**
-     * @deprecated
      * Set microtime
      *
      * @param integer $microtime
      *
      * @return self
      */
-    public function setMicrotime($microtime)
+    protected function setMicrotime($microtime)
     {
         Assertion::notNull($microtime, 'microtime value "%s" is null, but non null value was expected.');
         Assertion::integerish($microtime, 'microtime value "%s" is not an integer or a number castable to integer.');
