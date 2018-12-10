@@ -12,7 +12,6 @@ services:
   Worker\Multimedia:
     public: true
     arguments:
-      $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $logger: '@logger'
 
   Worker\Rates:
