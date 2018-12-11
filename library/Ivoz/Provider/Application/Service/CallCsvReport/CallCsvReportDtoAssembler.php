@@ -40,7 +40,7 @@ class CallCsvReportDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        if ($entity->getCsv()->getFileSize()) {
+        if (!is_null($entity->getCsv()->getFileSize())) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('Csv');
