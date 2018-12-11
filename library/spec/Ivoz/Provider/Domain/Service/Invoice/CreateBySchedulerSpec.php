@@ -11,6 +11,7 @@ use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoic
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
@@ -196,6 +197,48 @@ class CreateBySchedulerSpec extends ObjectBehavior
         $this->execute($scheduler);
     }
 
+
+    public function it_updates_scheduler_last_execution_even_if_a_exception_is_thrown(
+        InvoiceSchedulerInterface $scheduler,
+        InvoiceSchedulerDto $schedulerDto,
+        InvoiceInterface $invoice,
+        CompanyInterface $company,
+        BrandInterface $brand,
+        TimezoneInterface $timezone,
+        InvoiceTemplateInterface $invoiceTemplate,
+        FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler,
+        FixedCostInterface $fixedCost,
+        InvoiceNumberSequenceInterface $invoiceNumberSequence
+    ) {
+        $this->prepareExecution(
+            $scheduler,
+            $schedulerDto,
+            $invoice,
+            $company,
+            $brand,
+            $timezone,
+            $invoiceTemplate,
+            $fixedCostsRelInvoiceScheduler,
+            $fixedCost,
+            $invoiceNumberSequence
+        );
+
+        $schedulerDto
+            ->setLastExecution(
+                Argument::type(\DateTime::class)
+            )
+            ->shouldBeCalled();
+
+        $scheduler
+            ->getNextExecution()
+            ->willThrow(new \Exception('Some error'))
+            ->shouldBeCalled();
+
+        $this
+            ->shouldThrow(\Exception::class)
+            ->during('execute', [$scheduler]);
+    }
+
     function it_creates_invoices(
         InvoiceSchedulerInterface $scheduler,
         InvoiceSchedulerDto $schedulerDto,
@@ -355,6 +398,14 @@ class CreateBySchedulerSpec extends ObjectBehavior
         $this
             ->entityTools
             ->persist(Argument::type(FixedCostsRelInvoice::class))
+            ->willReturn(null);
+
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                Argument::type(InvoiceSchedulerInterface::class),
+                Argument::type(InvoiceSchedulerDto::class)
+            )
             ->willReturn(null);
 
         $this
