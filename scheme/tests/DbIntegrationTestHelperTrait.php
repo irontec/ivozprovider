@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -19,6 +20,11 @@ trait DbIntegrationTestHelperTrait
      * @var KernelInterface
      */
     protected static $kernel;
+
+    /**
+     * @var ContainerInterface
+     */
+    protected $serviceContainer;
 
     /**
      * @var EntityManager
@@ -56,19 +62,23 @@ trait DbIntegrationTestHelperTrait
     protected function setUp()
     {
         $kernel = self::bootKernel();
-        $serviceContainer = $kernel->getContainer();
+        $this->serviceContainer = $kernel->getContainer();
 
-        $this->em = $serviceContainer
+        $this->em = $this
+            ->serviceContainer
             ->get('doctrine')
             ->getManager();
 
-        $this->eventPublisher = $serviceContainer
+        $this->eventPublisher = $this
+            ->serviceContainer
             ->get(DomainEventPublisher::class);
 
-        $this->entityTools = $serviceContainer
+        $this->entityTools = $this
+            ->serviceContainer
             ->get(EntityTools::class);
 
-        $this->entityEventSubscriber = $serviceContainer
+        $this->entityEventSubscriber = $this
+            ->serviceContainer
             ->get(EntityEventSubscriber::class);
 
         $this->resetDatabase();

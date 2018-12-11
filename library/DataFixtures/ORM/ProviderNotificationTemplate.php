@@ -33,6 +33,18 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+
+        /** @var NotificationTemplateInterface $item1 */
+        $item2 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () {
+            $this->setName("CallCsv notification");
+            $this->setType("callCsv");
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderNotificationTemplate2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 

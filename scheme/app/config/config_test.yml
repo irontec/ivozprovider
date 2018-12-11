@@ -1,6 +1,7 @@
 imports:
     - { resource: config_dev.yml }
     - { resource: fixtures.yml }
+    - { resource: services_test.yml }
 
 framework:
     test: ~
@@ -14,3 +15,5 @@ doctrine:
     driver: 'pdo_sqlite'
     path: '%kernel.cache_dir%/db.sqlite'
     charset: 'UTF8'
+
+
