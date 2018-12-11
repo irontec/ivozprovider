@@ -35,10 +35,7 @@ class CreateByScheduler
      */
     public function execute(CallCsvSchedulerInterface $scheduler)
     {
-        $report = null;
-
         try {
-            $this->updateLastExecutionDate($scheduler);
             $this->createCallCsvReport($scheduler);
         } catch (\Exception $e) {
             $error = $e->getMessage();
@@ -46,9 +43,11 @@ class CreateByScheduler
             $this->logger->error(
                 "Call CSV scheduler #${name} has failed: " . $error
             );
-
             $this->setExecutionError($scheduler, $error);
+
             throw $e;
+        } finally {
+            $this->updateLastExecutionDate($scheduler);
         }
     }
 
@@ -68,9 +67,9 @@ class CreateByScheduler
         $outDate->modify('1 second ago');
 
         $inDate = clone $outDate;
-            $inDate->sub(
-                $scheduler->getInterval()
-            )->modify('+1 second');
+        $inDate->sub(
+            $scheduler->getInterval()
+        )->modify('+1 second');
 
         // Back to UTC
         $utc = new \DateTimeZone('UTC');
@@ -124,7 +123,8 @@ class CreateByScheduler
         $callCsvSchedulerDto
             ->setLastExecution(
                 new \DateTime()
-            )->setLastExecutionError('');
+            )
+            ->setLastExecutionError('');
 
         $this->entityTools->persistDto(
             $callCsvSchedulerDto,
@@ -147,10 +147,9 @@ class CreateByScheduler
         $callCsvSchedulerDto
             ->setLastExecutionError($error);
 
-        $this->entityTools->persistDto(
-            $callCsvSchedulerDto,
+        $this->entityTools->updateEntityByDto(
             $scheduler,
-            true
+            $callCsvSchedulerDto
         );
     }
 }
