@@ -35,7 +35,7 @@ function setup_apache_config()
     [ ! -L /etc/apache2/mods-enabled/php7.0.load ] && /usr/sbin/a2enmod php7.0
     [ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
     [ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
-    [ ! -L /etc/apache2/mods-enabled/http2.load ] && /usr/sbin/a2enmod http2
+    [   -L /etc/apache2/mods-enabled/http2.load ] && /usr/sbin/a2dismod http2 #requires mpm_event or mpm_worker
     [ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
     [ ! -L /etc/apache2/mods-enabled/mpm_prefork.load ] && /usr/sbin/a2enmod mpm_prefork
     [   -L /etc/apache2/mods-enabled/mpm_event.load ] && /usr/sbin/a2dismod mpm_event
