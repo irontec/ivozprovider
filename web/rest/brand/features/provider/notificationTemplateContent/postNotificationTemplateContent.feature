@@ -25,14 +25,14 @@ Feature: Create notification template contents
       {
           "fromName": null,
           "fromAddress": null,
-          "id": 2
+          "id": 3
       }
     """
 
   Scenario: Retrieve created notification template content
     Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "notification_template_contents/2"
+    And I send a "GET" request to "notification_template_contents/3"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -44,7 +44,7 @@ Feature: Create notification template contents
           "subject": "Test subject",
           "body": "Test body",
           "bodyType": "text\/plain",
-          "id": 2,
+          "id": 3,
           "notificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
