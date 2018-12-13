@@ -38,7 +38,6 @@ class CreateByScheduler
     public function execute(InvoiceSchedulerInterface $scheduler)
     {
         try {
-            $this->updateLastExecutionDate($scheduler);
             $invoice = $this->createInvoice($scheduler);
             $this->setFixedCosts($scheduler, $invoice);
         } catch (\Exception $e) {
@@ -47,9 +46,11 @@ class CreateByScheduler
             $this->logger->error(
                 "Invoice scheduler #${name} has failed: " . $error
             );
-
             $this->setExecutionError($scheduler, $error);
+
             throw $e;
+        } finally {
+            $this->updateLastExecutionDate($scheduler);
         }
     }
 
@@ -60,7 +61,6 @@ class CreateByScheduler
     private function createInvoice(InvoiceSchedulerInterface $scheduler)
     {
         $brand = $scheduler->getBrand();
-
         $outDate = clone $scheduler->getNextExecution();
         $outDate->setTimezone(
             new \DateTimeZone(
@@ -71,9 +71,9 @@ class CreateByScheduler
         $outDate->modify('1 second ago');
 
         $inDate = clone $outDate;
-            $inDate->sub(
-                $scheduler->getInterval()
-            )->modify('+1 second');
+        $inDate->sub(
+            $scheduler->getInterval()
+        )->modify('+1 second');
 
         // Back to UTC
         $outDate->setTimezone(new \DateTimeZone('UTC'));
@@ -81,6 +81,14 @@ class CreateByScheduler
 
         $company = $scheduler->getCompany();
         $invoiceDto = new InvoiceDto();
+        $numberSequenceId = $scheduler->getNumberSequence()
+            ? $scheduler->getNumberSequence()->getId()
+            : null;
+
+        $invoiceTemplateId = $scheduler->getInvoiceTemplate()
+            ? $scheduler->getInvoiceTemplate()->getId()
+            : null;
+
         $invoiceDto
             ->setStatus(Invoice::STATUS_WAITING)
             ->setInDate($inDate)
@@ -95,10 +103,10 @@ class CreateByScheduler
                 $brand->getId()
             )
             ->setNumberSequenceId(
-                $scheduler->getNumberSequence()->getId()
+                $numberSequenceId
             )
             ->setInvoiceTemplateId(
-                $scheduler->getInvoiceTemplate()->getId()
+                $invoiceTemplateId
             )
             ->setSchedulerId(
                 $scheduler->getId()
@@ -163,10 +171,9 @@ class CreateByScheduler
         $invoiceSchedulerDto
             ->setLastExecutionError($error);
 
-        $this->entityTools->persistDto(
-            $invoiceSchedulerDto,
+        $this->entityTools->updateEntityByDto(
             $scheduler,
-            true
+            $invoiceSchedulerDto
         );
     }
 }

@@ -101,7 +101,36 @@ class CreateBySchedulerSpec extends ObjectBehavior
         $this->execute($scheduler);
     }
 
+    public function it_updates_scheduler_last_execution_even_if_a_exception_is_thrown(
+        CallCsvSchedulerInterface $scheduler,
+        CallCsvSchedulerDto $schedulerDto,
+        TimezoneInterface $timezone,
+        CompanyInterface $company,
+        CallCsvReportInterface $callCsvReport
+    ) {
+        $this->prepareExecution(
+            $scheduler,
+            $schedulerDto,
+            $timezone,
+            $company,
+            $callCsvReport
+        );
 
+        $schedulerDto
+            ->setLastExecution(
+                Argument::type(\DateTime::class)
+            )
+            ->shouldBeCalled();
+
+        $scheduler
+            ->getNextExecution()
+            ->willThrow(new \Exception('Some error'))
+            ->shouldBeCalled();
+
+        $this
+            ->shouldThrow(\Exception::class)
+            ->during('execute', [$scheduler]);
+    }
 
     public function it_accepts_no_company(
         CallCsvSchedulerInterface $scheduler,
