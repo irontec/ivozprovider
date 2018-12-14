@@ -20,17 +20,17 @@ abstract class BrandAbstract
 
     /**
      * column: domain_users
-     * @var string
+     * @var string | null
      */
     protected $domainUsers;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $recordingsLimitMB;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $recordingsLimitEmail;
 
@@ -336,7 +336,7 @@ abstract class BrandAbstract
     /**
      * Get domainUsers
      *
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers()
     {
@@ -366,7 +366,7 @@ abstract class BrandAbstract
     /**
      * Get recordingsLimitMB
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB()
     {
@@ -394,7 +394,7 @@ abstract class BrandAbstract
     /**
      * Get recordingsLimitEmail
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail()
     {
@@ -446,7 +446,7 @@ abstract class BrandAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {

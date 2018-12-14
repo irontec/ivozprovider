@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ProxyTrunkAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $name;
 
@@ -181,7 +181,7 @@ abstract class ProxyTrunkAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {

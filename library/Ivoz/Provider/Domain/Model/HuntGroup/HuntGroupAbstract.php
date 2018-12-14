@@ -36,12 +36,12 @@ abstract class HuntGroupAbstract
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $noAnswerTargetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $noAnswerNumberValue;
 
@@ -401,7 +401,7 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerTargetType()
     {
@@ -429,7 +429,7 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerNumberValue()
     {

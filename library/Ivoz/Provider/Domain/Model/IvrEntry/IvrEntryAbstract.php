@@ -25,7 +25,7 @@ abstract class IvrEntryAbstract
     protected $routeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $numberValue;
 
@@ -306,7 +306,7 @@ abstract class IvrEntryAbstract
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {

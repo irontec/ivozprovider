@@ -35,23 +35,23 @@ abstract class IvrAbstract
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $noInputRouteType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $noInputNumberValue;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $errorRouteType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $errorNumberValue;
 
@@ -458,7 +458,7 @@ abstract class IvrAbstract
     /**
      * Get noInputRouteType
      *
-     * @return string
+     * @return string | null
      */
     public function getNoInputRouteType()
     {
@@ -486,7 +486,7 @@ abstract class IvrAbstract
     /**
      * Get noInputNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNoInputNumberValue()
     {
@@ -519,7 +519,7 @@ abstract class IvrAbstract
     /**
      * Get errorRouteType
      *
-     * @return string
+     * @return string | null
      */
     public function getErrorRouteType()
     {
@@ -547,7 +547,7 @@ abstract class IvrAbstract
     /**
      * Get errorNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getErrorNumberValue()
     {

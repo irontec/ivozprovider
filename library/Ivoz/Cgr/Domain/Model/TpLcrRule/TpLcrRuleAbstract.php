@@ -39,13 +39,13 @@ abstract class TpLcrRuleAbstract
     protected $account = '*any';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $subject = '*any';
 
     /**
      * column: destination_tag
-     * @var string
+     * @var string | null
      */
     protected $destinationTag = '*any';
 
@@ -62,7 +62,7 @@ abstract class TpLcrRuleAbstract
 
     /**
      * column: strategy_params
-     * @var string
+     * @var string | null
      */
     protected $strategyParams = '';
 
@@ -448,7 +448,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -476,7 +476,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Get destinationTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationTag()
     {
@@ -558,7 +558,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Get strategyParams
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategyParams()
     {
@@ -670,7 +670,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     public function getOutgoingRouting()
     {

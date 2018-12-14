@@ -24,7 +24,7 @@ abstract class ChangelogAbstract
     protected $entityId;
 
     /**
-     * @var array
+     * @var array | null
      */
     protected $data;
 
@@ -277,7 +277,7 @@ abstract class ChangelogAbstract
     /**
      * Get data
      *
-     * @return array
+     * @return array | null
      */
     public function getData()
     {

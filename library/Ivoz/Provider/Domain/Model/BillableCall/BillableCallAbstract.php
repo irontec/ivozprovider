@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class BillableCallAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $callid;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $startTime;
 
@@ -29,52 +29,52 @@ abstract class BillableCallAbstract
     protected $duration = '0.000';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $cost;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $price;
 
     /**
-     * @var array
+     * @var array | null
      */
     protected $priceDetails;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $carrierName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $destinationName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ratingPlanName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $endpointType;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $endpointId;
 
@@ -343,7 +343,7 @@ abstract class BillableCallAbstract
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -374,7 +374,7 @@ abstract class BillableCallAbstract
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime()
     {
@@ -430,7 +430,7 @@ abstract class BillableCallAbstract
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -458,7 +458,7 @@ abstract class BillableCallAbstract
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -489,7 +489,7 @@ abstract class BillableCallAbstract
     /**
      * Get cost
      *
-     * @return string
+     * @return string | null
      */
     public function getCost()
     {
@@ -520,7 +520,7 @@ abstract class BillableCallAbstract
     /**
      * Get price
      *
-     * @return string
+     * @return string | null
      */
     public function getPrice()
     {
@@ -547,7 +547,7 @@ abstract class BillableCallAbstract
     /**
      * Get priceDetails
      *
-     * @return array
+     * @return array | null
      */
     public function getPriceDetails()
     {
@@ -575,7 +575,7 @@ abstract class BillableCallAbstract
     /**
      * Get carrierName
      *
-     * @return string
+     * @return string | null
      */
     public function getCarrierName()
     {
@@ -603,7 +603,7 @@ abstract class BillableCallAbstract
     /**
      * Get destinationName
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationName()
     {
@@ -631,7 +631,7 @@ abstract class BillableCallAbstract
     /**
      * Get ratingPlanName
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanName()
     {
@@ -659,7 +659,7 @@ abstract class BillableCallAbstract
     /**
      * Get endpointType
      *
-     * @return string
+     * @return string | null
      */
     public function getEndpointType()
     {
@@ -690,7 +690,7 @@ abstract class BillableCallAbstract
     /**
      * Get endpointId
      *
-     * @return integer
+     * @return integer | null
      */
     public function getEndpointId()
     {
@@ -762,7 +762,7 @@ abstract class BillableCallAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -786,7 +786,7 @@ abstract class BillableCallAbstract
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     public function getDestination()
     {
@@ -810,7 +810,7 @@ abstract class BillableCallAbstract
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup()
     {
@@ -834,7 +834,7 @@ abstract class BillableCallAbstract
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice()
     {
@@ -858,7 +858,7 @@ abstract class BillableCallAbstract
     /**
      * Get trunksCdr
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr()
     {

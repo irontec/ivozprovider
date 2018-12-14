@@ -14,43 +14,43 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class InvoiceAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $number;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $inDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $outDate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $total;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $taxRate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $totalWithTax;
 
     /**
      * comment: enum:waiting|processing|created|error
-     * @var string
+     * @var string | null
      */
     protected $status;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $statusMsg;
 
@@ -306,7 +306,7 @@ abstract class InvoiceAbstract
     /**
      * Get number
      *
-     * @return string
+     * @return string | null
      */
     public function getNumber()
     {
@@ -337,7 +337,7 @@ abstract class InvoiceAbstract
     /**
      * Get inDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getInDate()
     {
@@ -368,7 +368,7 @@ abstract class InvoiceAbstract
     /**
      * Get outDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getOutDate()
     {
@@ -399,7 +399,7 @@ abstract class InvoiceAbstract
     /**
      * Get total
      *
-     * @return string
+     * @return string | null
      */
     public function getTotal()
     {
@@ -430,7 +430,7 @@ abstract class InvoiceAbstract
     /**
      * Get taxRate
      *
-     * @return string
+     * @return string | null
      */
     public function getTaxRate()
     {
@@ -461,7 +461,7 @@ abstract class InvoiceAbstract
     /**
      * Get totalWithTax
      *
-     * @return string
+     * @return string | null
      */
     public function getTotalWithTax()
     {
@@ -495,7 +495,7 @@ abstract class InvoiceAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {
@@ -523,7 +523,7 @@ abstract class InvoiceAbstract
     /**
      * Get statusMsg
      *
-     * @return string
+     * @return string | null
      */
     public function getStatusMsg()
     {

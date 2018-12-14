@@ -29,22 +29,22 @@ abstract class TerminalModelAbstract
     protected $description = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $genericTemplate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $specificTemplate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $genericUrlPattern;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $specificUrlPattern;
 
@@ -318,7 +318,7 @@ abstract class TerminalModelAbstract
     /**
      * Get genericTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericTemplate()
     {
@@ -346,7 +346,7 @@ abstract class TerminalModelAbstract
     /**
      * Get specificTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificTemplate()
     {
@@ -374,7 +374,7 @@ abstract class TerminalModelAbstract
     /**
      * Get genericUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericUrlPattern()
     {
@@ -402,7 +402,7 @@ abstract class TerminalModelAbstract
     /**
      * Get specificUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificUrlPattern()
     {

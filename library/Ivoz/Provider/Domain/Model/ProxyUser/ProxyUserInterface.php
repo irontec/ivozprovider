@@ -15,14 +15,14 @@ interface ProxyUserInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 }

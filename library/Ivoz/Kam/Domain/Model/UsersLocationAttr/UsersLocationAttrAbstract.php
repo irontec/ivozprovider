@@ -24,7 +24,7 @@ abstract class UsersLocationAttrAbstract
     protected $username = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $domain;
 
@@ -292,7 +292,7 @@ abstract class UsersLocationAttrAbstract
     /**
      * Get domain
      *
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {

@@ -19,7 +19,7 @@ abstract class InvoiceTemplateAbstract
     protected $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -29,12 +29,12 @@ abstract class InvoiceTemplateAbstract
     protected $template;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $templateHeader;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $templateFooter;
 
@@ -245,7 +245,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -300,7 +300,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Get templateHeader
      *
-     * @return string
+     * @return string | null
      */
     public function getTemplateHeader()
     {
@@ -328,7 +328,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Get templateFooter
      *
-     * @return string
+     * @return string | null
      */
     public function getTemplateFooter()
     {

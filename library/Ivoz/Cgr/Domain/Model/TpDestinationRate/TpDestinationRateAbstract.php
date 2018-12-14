@@ -19,19 +19,19 @@ abstract class TpDestinationRateAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
     /**
      * column: destinations_tag
-     * @var string
+     * @var string | null
      */
     protected $destinationsTag;
 
     /**
      * column: rates_tag
-     * @var string
+     * @var string | null
      */
     protected $ratesTag;
 
@@ -298,7 +298,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -326,7 +326,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Get destinationsTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationsTag()
     {
@@ -354,7 +354,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Get ratesTag
      *
-     * @return string
+     * @return string | null
      */
     public function getRatesTag()
     {

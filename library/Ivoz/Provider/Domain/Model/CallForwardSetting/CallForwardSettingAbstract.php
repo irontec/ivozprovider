@@ -32,7 +32,7 @@ abstract class CallForwardSettingAbstract
     protected $targetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $numberValue;
 
@@ -371,7 +371,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -449,7 +449,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser()
     {
@@ -545,7 +545,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice()
     {

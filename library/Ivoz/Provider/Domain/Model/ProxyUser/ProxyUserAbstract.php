@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ProxyUserAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
@@ -179,7 +179,7 @@ abstract class ProxyUserAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -207,7 +207,7 @@ abstract class ProxyUserAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {

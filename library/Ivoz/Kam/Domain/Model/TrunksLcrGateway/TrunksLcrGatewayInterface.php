@@ -29,70 +29,70 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 
     /**
      * Get hostname
      *
-     * @return string
+     * @return string | null
      */
     public function getHostname();
 
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort();
 
     /**
      * Get params
      *
-     * @return string
+     * @return string | null
      */
     public function getParams();
 
     /**
      * Get uriScheme
      *
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme();
 
     /**
      * Get transport
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTransport();
 
     /**
      * Get strip
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getStrip();
 
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix();
 
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 
     /**
      * Get defunct
      *
-     * @return integer
+     * @return integer | null
      */
     public function getDefunct();
 
@@ -108,7 +108,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
      */
     public function getCarrierServer();
 }

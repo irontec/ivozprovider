@@ -52,7 +52,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 

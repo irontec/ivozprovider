@@ -49,7 +49,7 @@ abstract class DdiProviderRegistrationAbstract
     protected $expires = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $multiDdi = '0';
 
@@ -462,7 +462,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Get multiDdi
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMultiDdi()
     {

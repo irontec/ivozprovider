@@ -32,7 +32,7 @@ interface TpRateInterface extends EntityInterface
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 

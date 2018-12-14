@@ -24,7 +24,7 @@ abstract class ConferenceRoomAbstract
     protected $pinProtected = 0;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $pinCode;
 
@@ -264,7 +264,7 @@ abstract class ConferenceRoomAbstract
     /**
      * Get pinCode
      *
-     * @return string
+     * @return string | null
      */
     public function getPinCode()
     {

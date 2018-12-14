@@ -63,7 +63,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -79,7 +79,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -95,7 +95,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get callCsvScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
      */
     public function getCallCsvScheduler();
 

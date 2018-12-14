@@ -36,7 +36,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get tenant
      *
-     * @return string
+     * @return string | null
      */
     public function getTenant();
 
@@ -50,7 +50,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject();
 
@@ -64,21 +64,21 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get ratingPlanTag
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanTag();
 
     /**
      * Get fallbackSubjects
      *
-     * @return string
+     * @return string | null
      */
     public function getFallbackSubjects();
 
     /**
      * Get cdrStatQueueIds
      *
-     * @return string
+     * @return string | null
      */
     public function getCdrStatQueueIds();
 
@@ -101,7 +101,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get ratingProfile
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface | null
      */
     public function getRatingProfile();
 
@@ -117,7 +117,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get outgoingRoutingRelCarrier
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface | null
      */
     public function getOutgoingRoutingRelCarrier();
 }

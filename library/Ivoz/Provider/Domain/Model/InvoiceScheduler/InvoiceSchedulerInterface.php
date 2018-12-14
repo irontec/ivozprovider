@@ -60,28 +60,28 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get lastExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution();
 
     /**
      * Get lastExecutionError
      *
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError();
 
     /**
      * Get nextExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution();
 
     /**
      * Get taxRate
      *
-     * @return string
+     * @return string | null
      */
     public function getTaxRate();
 
@@ -145,7 +145,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get numberSequence
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     public function getNumberSequence();
 

@@ -57,14 +57,14 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     /**
      * Get actionPlanTag
      *
-     * @return string
+     * @return string | null
      */
     public function getActionPlanTag();
 
     /**
      * Get actionTriggersTag
      *
-     * @return string
+     * @return string | null
      */
     public function getActionTriggersTag();
 
@@ -92,14 +92,14 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 }

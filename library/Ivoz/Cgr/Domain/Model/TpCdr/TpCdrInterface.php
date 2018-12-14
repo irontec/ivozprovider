@@ -171,21 +171,21 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt();
 
     /**
      * Get updatedAt
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getUpdatedAt();
 
     /**
      * Get deletedAt
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getDeletedAt();
 }

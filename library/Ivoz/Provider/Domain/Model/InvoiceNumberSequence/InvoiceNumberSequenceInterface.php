@@ -59,7 +59,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     /**
      * Get latestValue
      *
-     * @return string
+     * @return string | null
      */
     public function getLatestValue();
 

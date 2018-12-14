@@ -35,17 +35,17 @@ abstract class CallCsvSchedulerAbstract
     protected $email;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $lastExecution;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $lastExecutionError;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $nextExecution;
 
@@ -365,7 +365,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Get lastExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution()
     {
@@ -393,7 +393,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Get lastExecutionError
      *
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError()
     {
@@ -424,7 +424,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Get nextExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution()
     {
@@ -448,7 +448,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -472,7 +472,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {

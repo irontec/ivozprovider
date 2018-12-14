@@ -51,7 +51,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
@@ -72,7 +72,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get allowVideo
      *
-     * @return string
+     * @return string | null
      */
     public function getAllowVideo();
 
@@ -93,14 +93,14 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get mac
      *
-     * @return string
+     * @return string | null
      */
     public function getMac();
 
     /**
      * Get lastProvisionDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastProvisionDate();
 
@@ -132,7 +132,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 

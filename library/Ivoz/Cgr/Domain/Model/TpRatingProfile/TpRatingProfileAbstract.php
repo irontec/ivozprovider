@@ -29,7 +29,7 @@ abstract class TpRatingProfileAbstract
     protected $direction = '*out';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tenant;
 
@@ -39,7 +39,7 @@ abstract class TpRatingProfileAbstract
     protected $category = 'call';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $subject;
 
@@ -51,19 +51,19 @@ abstract class TpRatingProfileAbstract
 
     /**
      * column: rating_plan_tag
-     * @var string
+     * @var string | null
      */
     protected $ratingPlanTag;
 
     /**
      * column: fallback_subjects
-     * @var string
+     * @var string | null
      */
     protected $fallbackSubjects;
 
     /**
      * column: cdr_stat_queue_ids
-     * @var string
+     * @var string | null
      */
     protected $cdrStatQueueIds;
 
@@ -377,7 +377,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get tenant
      *
-     * @return string
+     * @return string | null
      */
     public function getTenant()
     {
@@ -432,7 +432,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -490,7 +490,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get ratingPlanTag
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanTag()
     {
@@ -518,7 +518,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get fallbackSubjects
      *
-     * @return string
+     * @return string | null
      */
     public function getFallbackSubjects()
     {
@@ -546,7 +546,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get cdrStatQueueIds
      *
-     * @return string
+     * @return string | null
      */
     public function getCdrStatQueueIds()
     {
@@ -600,7 +600,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get ratingProfile
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface | null
      */
     public function getRatingProfile()
     {
@@ -624,7 +624,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get outgoingRoutingRelCarrier
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface | null
      */
     public function getOutgoingRoutingRelCarrier()
     {

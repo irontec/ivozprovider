@@ -36,7 +36,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 

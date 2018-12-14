@@ -95,14 +95,14 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort();
 
@@ -116,7 +116,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get password
      *
-     * @return string
+     * @return string | null
      */
     public function getPassword();
 
@@ -165,7 +165,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain();
 
@@ -211,7 +211,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 

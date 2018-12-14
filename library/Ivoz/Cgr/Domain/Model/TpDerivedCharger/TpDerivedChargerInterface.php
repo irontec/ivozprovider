@@ -57,14 +57,14 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject();
 
     /**
      * Get destinationIds
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationIds();
 

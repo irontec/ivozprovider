@@ -40,63 +40,63 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Get direction
      *
-     * @return string
+     * @return string | null
      */
     public function getDirection();
 
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
      * Get diversion
      *
-     * @return string
+     * @return string | null
      */
     public function getDiversion();
 
     /**
      * Get referee
      *
-     * @return string
+     * @return string | null
      */
     public function getReferee();
 
     /**
      * Get referrer
      *
-     * @return string
+     * @return string | null
      */
     public function getReferrer();
 
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
     /**
      * Get callidHash
      *
-     * @return string
+     * @return string | null
      */
     public function getCallidHash();
 
     /**
      * Get xcallid
      *
-     * @return string
+     * @return string | null
      */
     public function getXcallid();
 

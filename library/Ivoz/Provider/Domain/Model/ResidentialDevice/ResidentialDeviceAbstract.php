@@ -30,12 +30,12 @@ abstract class ResidentialDeviceAbstract
     protected $transport;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $port;
 
@@ -46,7 +46,7 @@ abstract class ResidentialDeviceAbstract
     protected $authNeeded = 'yes';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $password;
 
@@ -83,7 +83,7 @@ abstract class ResidentialDeviceAbstract
 
     /**
      * column: from_domain
-     * @var string
+     * @var string | null
      */
     protected $fromDomain;
 
@@ -470,7 +470,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -501,7 +501,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -555,7 +555,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get password
      *
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -727,7 +727,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -835,7 +835,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {

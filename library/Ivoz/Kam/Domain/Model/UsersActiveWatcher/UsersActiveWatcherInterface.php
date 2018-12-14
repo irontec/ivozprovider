@@ -57,7 +57,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     /**
      * Get eventId
      *
-     * @return string
+     * @return string | null
      */
     public function getEventId();
 
@@ -106,7 +106,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     /**
      * Get recordRoute
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordRoute();
 
@@ -127,7 +127,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     /**
      * Get reason
      *
-     * @return string
+     * @return string | null
      */
     public function getReason();
 

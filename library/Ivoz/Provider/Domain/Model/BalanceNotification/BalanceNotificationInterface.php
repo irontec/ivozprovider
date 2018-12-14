@@ -25,21 +25,21 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get toAddress
      *
-     * @return string
+     * @return string | null
      */
     public function getToAddress();
 
     /**
      * Get threshold
      *
-     * @return string
+     * @return string | null
      */
     public function getThreshold();
 
     /**
      * Get lastSent
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastSent();
 
@@ -55,7 +55,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -71,7 +71,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
@@ -87,7 +87,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get notificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getNotificationTemplate();
 }

@@ -30,28 +30,28 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix();
 
     /**
      * Get fromUri
      *
-     * @return string
+     * @return string | null
      */
     public function getFromUri();
 
     /**
      * Get requestUri
      *
-     * @return string
+     * @return string | null
      */
     public function getRequestUri();
 
     /**
      * Get mtTvalue
      *
-     * @return string
+     * @return string | null
      */
     public function getMtTvalue();
 
@@ -97,7 +97,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get routingPatternGroupsRelPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface | null
      */
     public function getRoutingPatternGroupsRelPattern();
 

@@ -20,23 +20,23 @@ abstract class ExternalCallFilterAbstract
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $holidayTargetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $holidayNumberValue;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $outOfScheduleTargetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $outOfScheduleNumberValue;
 
@@ -332,7 +332,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Get holidayTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getHolidayTargetType()
     {
@@ -360,7 +360,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Get holidayNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getHolidayNumberValue()
     {
@@ -393,7 +393,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Get outOfScheduleTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getOutOfScheduleTargetType()
     {
@@ -421,7 +421,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Get outOfScheduleNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getOutOfScheduleNumberValue()
     {
@@ -493,7 +493,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Get holidayLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getHolidayLocution()
     {

@@ -22,7 +22,7 @@ interface ApplicationServerInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 }

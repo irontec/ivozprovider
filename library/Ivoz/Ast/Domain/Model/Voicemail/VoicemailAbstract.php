@@ -24,159 +24,159 @@ abstract class VoicemailAbstract
     protected $mailbox;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $password;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fullname;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $alias;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $email;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $pager;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $attach;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $attachfmt;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $serveremail;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $language;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tz;
 
     /**
      * column: deleteast_voicemail
-     * @var string
+     * @var string | null
      */
     protected $deleteVoicemail;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $saycid = 'yes';
 
     /**
      * column: sendast_voicemail
-     * @var string
+     * @var string | null
      */
     protected $sendVoicemail;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $review;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tempgreetwarn;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $operator;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $envelope;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $sayduration;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $forcename;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $forcegreetings;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callback;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $dialout;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $exitcontext;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $maxmsg;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $volgain;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $imapuser;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $imappassword;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $imapserver;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $imapport;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $imapflags;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $stamp;
 
@@ -535,7 +535,7 @@ abstract class VoicemailAbstract
     /**
      * Get password
      *
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -563,7 +563,7 @@ abstract class VoicemailAbstract
     /**
      * Get fullname
      *
-     * @return string
+     * @return string | null
      */
     public function getFullname()
     {
@@ -591,7 +591,7 @@ abstract class VoicemailAbstract
     /**
      * Get alias
      *
-     * @return string
+     * @return string | null
      */
     public function getAlias()
     {
@@ -619,7 +619,7 @@ abstract class VoicemailAbstract
     /**
      * Get email
      *
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -647,7 +647,7 @@ abstract class VoicemailAbstract
     /**
      * Get pager
      *
-     * @return string
+     * @return string | null
      */
     public function getPager()
     {
@@ -674,7 +674,7 @@ abstract class VoicemailAbstract
     /**
      * Get attach
      *
-     * @return string
+     * @return string | null
      */
     public function getAttach()
     {
@@ -702,7 +702,7 @@ abstract class VoicemailAbstract
     /**
      * Get attachfmt
      *
-     * @return string
+     * @return string | null
      */
     public function getAttachfmt()
     {
@@ -730,7 +730,7 @@ abstract class VoicemailAbstract
     /**
      * Get serveremail
      *
-     * @return string
+     * @return string | null
      */
     public function getServeremail()
     {
@@ -758,7 +758,7 @@ abstract class VoicemailAbstract
     /**
      * Get language
      *
-     * @return string
+     * @return string | null
      */
     public function getLanguage()
     {
@@ -786,7 +786,7 @@ abstract class VoicemailAbstract
     /**
      * Get tz
      *
-     * @return string
+     * @return string | null
      */
     public function getTz()
     {
@@ -813,7 +813,7 @@ abstract class VoicemailAbstract
     /**
      * Get deleteVoicemail
      *
-     * @return string
+     * @return string | null
      */
     public function getDeleteVoicemail()
     {
@@ -840,7 +840,7 @@ abstract class VoicemailAbstract
     /**
      * Get saycid
      *
-     * @return string
+     * @return string | null
      */
     public function getSaycid()
     {
@@ -867,7 +867,7 @@ abstract class VoicemailAbstract
     /**
      * Get sendVoicemail
      *
-     * @return string
+     * @return string | null
      */
     public function getSendVoicemail()
     {
@@ -894,7 +894,7 @@ abstract class VoicemailAbstract
     /**
      * Get review
      *
-     * @return string
+     * @return string | null
      */
     public function getReview()
     {
@@ -921,7 +921,7 @@ abstract class VoicemailAbstract
     /**
      * Get tempgreetwarn
      *
-     * @return string
+     * @return string | null
      */
     public function getTempgreetwarn()
     {
@@ -948,7 +948,7 @@ abstract class VoicemailAbstract
     /**
      * Get operator
      *
-     * @return string
+     * @return string | null
      */
     public function getOperator()
     {
@@ -975,7 +975,7 @@ abstract class VoicemailAbstract
     /**
      * Get envelope
      *
-     * @return string
+     * @return string | null
      */
     public function getEnvelope()
     {
@@ -1005,7 +1005,7 @@ abstract class VoicemailAbstract
     /**
      * Get sayduration
      *
-     * @return integer
+     * @return integer | null
      */
     public function getSayduration()
     {
@@ -1032,7 +1032,7 @@ abstract class VoicemailAbstract
     /**
      * Get forcename
      *
-     * @return string
+     * @return string | null
      */
     public function getForcename()
     {
@@ -1059,7 +1059,7 @@ abstract class VoicemailAbstract
     /**
      * Get forcegreetings
      *
-     * @return string
+     * @return string | null
      */
     public function getForcegreetings()
     {
@@ -1087,7 +1087,7 @@ abstract class VoicemailAbstract
     /**
      * Get callback
      *
-     * @return string
+     * @return string | null
      */
     public function getCallback()
     {
@@ -1115,7 +1115,7 @@ abstract class VoicemailAbstract
     /**
      * Get dialout
      *
-     * @return string
+     * @return string | null
      */
     public function getDialout()
     {
@@ -1143,7 +1143,7 @@ abstract class VoicemailAbstract
     /**
      * Get exitcontext
      *
-     * @return string
+     * @return string | null
      */
     public function getExitcontext()
     {
@@ -1173,7 +1173,7 @@ abstract class VoicemailAbstract
     /**
      * Get maxmsg
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxmsg()
     {
@@ -1204,7 +1204,7 @@ abstract class VoicemailAbstract
     /**
      * Get volgain
      *
-     * @return string
+     * @return string | null
      */
     public function getVolgain()
     {
@@ -1232,7 +1232,7 @@ abstract class VoicemailAbstract
     /**
      * Get imapuser
      *
-     * @return string
+     * @return string | null
      */
     public function getImapuser()
     {
@@ -1260,7 +1260,7 @@ abstract class VoicemailAbstract
     /**
      * Get imappassword
      *
-     * @return string
+     * @return string | null
      */
     public function getImappassword()
     {
@@ -1288,7 +1288,7 @@ abstract class VoicemailAbstract
     /**
      * Get imapserver
      *
-     * @return string
+     * @return string | null
      */
     public function getImapserver()
     {
@@ -1316,7 +1316,7 @@ abstract class VoicemailAbstract
     /**
      * Get imapport
      *
-     * @return string
+     * @return string | null
      */
     public function getImapport()
     {
@@ -1344,7 +1344,7 @@ abstract class VoicemailAbstract
     /**
      * Get imapflags
      *
-     * @return string
+     * @return string | null
      */
     public function getImapflags()
     {
@@ -1375,7 +1375,7 @@ abstract class VoicemailAbstract
     /**
      * Get stamp
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStamp()
     {

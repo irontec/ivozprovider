@@ -30,7 +30,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Get externallyRated
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated();
 

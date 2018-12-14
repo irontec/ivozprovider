@@ -24,7 +24,7 @@ abstract class UsersLocationAbstract
     protected $username = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $domain;
 
@@ -34,12 +34,12 @@ abstract class UsersLocationAbstract
     protected $contact = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $received;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $path;
 
@@ -86,17 +86,17 @@ abstract class UsersLocationAbstract
     protected $userAgent = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $socket;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $methods;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $instance;
 
@@ -451,7 +451,7 @@ abstract class UsersLocationAbstract
     /**
      * Get domain
      *
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -506,7 +506,7 @@ abstract class UsersLocationAbstract
     /**
      * Get received
      *
-     * @return string
+     * @return string | null
      */
     public function getReceived()
     {
@@ -534,7 +534,7 @@ abstract class UsersLocationAbstract
     /**
      * Get path
      *
-     * @return string
+     * @return string | null
      */
     public function getPath()
     {
@@ -785,7 +785,7 @@ abstract class UsersLocationAbstract
     /**
      * Get socket
      *
-     * @return string
+     * @return string | null
      */
     public function getSocket()
     {
@@ -815,7 +815,7 @@ abstract class UsersLocationAbstract
     /**
      * Get methods
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMethods()
     {
@@ -843,7 +843,7 @@ abstract class UsersLocationAbstract
     /**
      * Get instance
      *
-     * @return string
+     * @return string | null
      */
     public function getInstance()
     {

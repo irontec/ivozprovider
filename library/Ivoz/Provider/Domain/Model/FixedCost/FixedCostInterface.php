@@ -22,14 +22,14 @@ interface FixedCostInterface extends LoggableEntityInterface
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 
     /**
      * Get cost
      *
-     * @return string
+     * @return string | null
      */
     public function getCost();
 

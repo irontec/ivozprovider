@@ -27,7 +27,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 
@@ -41,14 +41,14 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     /**
      * Get templateHeader
      *
-     * @return string
+     * @return string | null
      */
     public function getTemplateHeader();
 
     /**
      * Get templateFooter
      *
-     * @return string
+     * @return string | null
      */
     public function getTemplateFooter();
 

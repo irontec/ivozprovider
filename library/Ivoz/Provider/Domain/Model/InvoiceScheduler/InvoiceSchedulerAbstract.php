@@ -35,22 +35,22 @@ abstract class InvoiceSchedulerAbstract
     protected $email;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $lastExecution;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $lastExecutionError;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $nextExecution;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $taxRate;
 
@@ -392,7 +392,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get lastExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution()
     {
@@ -420,7 +420,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get lastExecutionError
      *
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError()
     {
@@ -451,7 +451,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get nextExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution()
     {
@@ -482,7 +482,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get taxRate
      *
-     * @return string
+     * @return string | null
      */
     public function getTaxRate()
     {
@@ -578,7 +578,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get numberSequence
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     public function getNumberSequence()
     {

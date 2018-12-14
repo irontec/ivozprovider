@@ -29,56 +29,56 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Get number
      *
-     * @return string
+     * @return string | null
      */
     public function getNumber();
 
     /**
      * Get inDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getInDate();
 
     /**
      * Get outDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getOutDate();
 
     /**
      * Get total
      *
-     * @return string
+     * @return string | null
      */
     public function getTotal();
 
     /**
      * Get taxRate
      *
-     * @return string
+     * @return string | null
      */
     public function getTaxRate();
 
     /**
      * Get totalWithTax
      *
-     * @return string
+     * @return string | null
      */
     public function getTotalWithTax();
 
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 
     /**
      * Get statusMsg
      *
-     * @return string
+     * @return string | null
      */
     public function getStatusMsg();
 

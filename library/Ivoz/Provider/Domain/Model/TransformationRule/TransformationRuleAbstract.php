@@ -25,17 +25,17 @@ abstract class TransformationRuleAbstract
     protected $description = '';
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $priority;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $matchExpr;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $replaceExpr;
 
@@ -282,7 +282,7 @@ abstract class TransformationRuleAbstract
     /**
      * Get priority
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -310,7 +310,7 @@ abstract class TransformationRuleAbstract
     /**
      * Get matchExpr
      *
-     * @return string
+     * @return string | null
      */
     public function getMatchExpr()
     {
@@ -338,7 +338,7 @@ abstract class TransformationRuleAbstract
     /**
      * Get replaceExpr
      *
-     * @return string
+     * @return string | null
      */
     public function getReplaceExpr()
     {
@@ -362,7 +362,7 @@ abstract class TransformationRuleAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet()
     {

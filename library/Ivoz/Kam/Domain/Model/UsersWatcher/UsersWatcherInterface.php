@@ -50,7 +50,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     /**
      * Get reason
      *
-     * @return string
+     * @return string | null
      */
     public function getReason();
 

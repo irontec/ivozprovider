@@ -67,28 +67,28 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Get noInputRouteType
      *
-     * @return string
+     * @return string | null
      */
     public function getNoInputRouteType();
 
     /**
      * Get noInputNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNoInputNumberValue();
 
     /**
      * Get errorRouteType
      *
-     * @return string
+     * @return string | null
      */
     public function getErrorRouteType();
 
     /**
      * Get errorNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getErrorNumberValue();
 

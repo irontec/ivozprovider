@@ -22,21 +22,21 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain();
 
     /**
      * Get aors
      *
-     * @return string
+     * @return string | null
      */
     public function getAors();
 
     /**
      * Get callerid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallerid();
 
@@ -64,42 +64,42 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get directMedia
      *
-     * @return string
+     * @return string | null
      */
     public function getDirectMedia();
 
     /**
      * Get directMediaMethod
      *
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod();
 
     /**
      * Get mailboxes
      *
-     * @return string
+     * @return string | null
      */
     public function getMailboxes();
 
     /**
      * Get namedPickupGroup
      *
-     * @return string
+     * @return string | null
      */
     public function getNamedPickupGroup();
 
     /**
      * Get sendDiversion
      *
-     * @return string
+     * @return string | null
      */
     public function getSendDiversion();
 
     /**
      * Get sendPai
      *
-     * @return string
+     * @return string | null
      */
     public function getSendPai();
 
@@ -113,14 +113,14 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get outboundProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy();
 
     /**
      * Get trustIdInbound
      *
-     * @return string
+     * @return string | null
      */
     public function getTrustIdInbound();
 

@@ -19,7 +19,7 @@ abstract class TimezoneAbstract
     protected $tz;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $comment = '';
 
@@ -239,7 +239,7 @@ abstract class TimezoneAbstract
     /**
      * Get comment
      *
-     * @return string
+     * @return string | null
      */
     public function getComment()
     {

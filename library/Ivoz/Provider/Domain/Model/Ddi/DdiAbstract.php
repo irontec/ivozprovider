@@ -19,7 +19,7 @@ abstract class DdiAbstract
     protected $ddi;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ddie164;
 
@@ -30,13 +30,13 @@ abstract class DdiAbstract
     protected $recordCalls = 'none';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $displayName;
 
     /**
      * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
-     * @var string
+     * @var string | null
      */
     protected $routeType;
 
@@ -46,7 +46,7 @@ abstract class DdiAbstract
     protected $billInboundCalls = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $friendValue;
 
@@ -392,7 +392,7 @@ abstract class DdiAbstract
     /**
      * Get ddie164
      *
-     * @return string
+     * @return string | null
      */
     public function getDdie164()
     {
@@ -453,7 +453,7 @@ abstract class DdiAbstract
     /**
      * Get displayName
      *
-     * @return string
+     * @return string | null
      */
     public function getDisplayName()
     {
@@ -493,7 +493,7 @@ abstract class DdiAbstract
     /**
      * Get routeType
      *
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -548,7 +548,7 @@ abstract class DdiAbstract
     /**
      * Get friendValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendValue()
     {

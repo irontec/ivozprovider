@@ -35,12 +35,12 @@ abstract class AdministratorAbstract
     protected $active = '1';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $lastname;
 
@@ -356,7 +356,7 @@ abstract class AdministratorAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -384,7 +384,7 @@ abstract class AdministratorAbstract
     /**
      * Get lastname
      *
-     * @return string
+     * @return string | null
      */
     public function getLastname()
     {
@@ -408,7 +408,7 @@ abstract class AdministratorAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -432,7 +432,7 @@ abstract class AdministratorAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {

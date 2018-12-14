@@ -32,21 +32,21 @@ interface TpDestinationRateInterface extends EntityInterface
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 
     /**
      * Get destinationsTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationsTag();
 
     /**
      * Get ratesTag
      *
-     * @return string
+     * @return string | null
      */
     public function getRatesTag();
 

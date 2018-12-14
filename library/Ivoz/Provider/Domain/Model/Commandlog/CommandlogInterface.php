@@ -30,14 +30,14 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
     /**
      * Get method
      *
-     * @return string
+     * @return string | null
      */
     public function getMethod();
 
     /**
      * Get arguments
      *
-     * @return array
+     * @return array | null
      */
     public function getArguments();
 

@@ -14,17 +14,17 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class BalanceMovementAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $amount = 0;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $balance = 0;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $createdOn;
 
@@ -209,7 +209,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get amount
      *
-     * @return string
+     * @return string | null
      */
     public function getAmount()
     {
@@ -240,7 +240,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance()
     {
@@ -271,7 +271,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedOn()
     {
@@ -295,7 +295,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -319,7 +319,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {

@@ -19,7 +19,7 @@ abstract class MediaRelaySetAbstract
     protected $name = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -208,7 +208,7 @@ abstract class MediaRelaySetAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {

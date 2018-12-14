@@ -24,7 +24,7 @@ abstract class DomainAbstract
     protected $pointsTo = 'proxyusers';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -244,7 +244,7 @@ abstract class DomainAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {

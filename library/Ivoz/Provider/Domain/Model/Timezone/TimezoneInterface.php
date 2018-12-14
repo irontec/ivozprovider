@@ -22,7 +22,7 @@ interface TimezoneInterface extends LoggableEntityInterface
     /**
      * Get comment
      *
-     * @return string
+     * @return string | null
      */
     public function getComment();
 

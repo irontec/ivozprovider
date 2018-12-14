@@ -64,7 +64,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     /**
      * Get tupleId
      *
-     * @return string
+     * @return string | null
      */
     public function getTupleId();
 
@@ -106,7 +106,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     /**
      * Get recordRoute
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordRoute();
 

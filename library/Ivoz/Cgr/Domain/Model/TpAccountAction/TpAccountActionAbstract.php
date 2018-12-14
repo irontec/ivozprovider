@@ -35,13 +35,13 @@ abstract class TpAccountActionAbstract
 
     /**
      * column: action_plan_tag
-     * @var string
+     * @var string | null
      */
     protected $actionPlanTag;
 
     /**
      * column: action_triggers_tag
-     * @var string
+     * @var string | null
      */
     protected $actionTriggersTag;
 
@@ -387,7 +387,7 @@ abstract class TpAccountActionAbstract
     /**
      * Get actionPlanTag
      *
-     * @return string
+     * @return string | null
      */
     public function getActionPlanTag()
     {
@@ -415,7 +415,7 @@ abstract class TpAccountActionAbstract
     /**
      * Get actionTriggersTag
      *
-     * @return string
+     * @return string | null
      */
     public function getActionTriggersTag()
     {
@@ -523,7 +523,7 @@ abstract class TpAccountActionAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -547,7 +547,7 @@ abstract class TpAccountActionAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {

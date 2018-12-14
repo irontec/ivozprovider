@@ -15,7 +15,7 @@ interface QueueMemberInterface extends LoggableEntityInterface
     /**
      * Get penalty
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPenalty();
 

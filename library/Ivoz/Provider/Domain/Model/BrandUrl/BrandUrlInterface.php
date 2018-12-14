@@ -33,7 +33,7 @@ interface BrandUrlInterface extends FileContainerInterface, LoggableEntityInterf
     /**
      * Get klearTheme
      *
-     * @return string
+     * @return string | null
      */
     public function getKlearTheme();
 
@@ -47,14 +47,14 @@ interface BrandUrlInterface extends FileContainerInterface, LoggableEntityInterf
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
      * Get userTheme
      *
-     * @return string
+     * @return string | null
      */
     public function getUserTheme();
 

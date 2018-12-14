@@ -42,7 +42,7 @@ abstract class UsersWatcherAbstract
     protected $status;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $reason;
 
@@ -376,7 +376,7 @@ abstract class UsersWatcherAbstract
     /**
      * Get reason
      *
-     * @return string
+     * @return string | null
      */
     public function getReason()
     {

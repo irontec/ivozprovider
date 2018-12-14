@@ -34,7 +34,7 @@ abstract class InvoiceNumberSequenceAbstract
     protected $increment;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $latestValue = '';
 
@@ -355,7 +355,7 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Get latestValue
      *
-     * @return string
+     * @return string | null
      */
     public function getLatestValue()
     {

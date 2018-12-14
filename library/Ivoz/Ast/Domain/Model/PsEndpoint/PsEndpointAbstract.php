@@ -21,17 +21,17 @@ abstract class PsEndpointAbstract
 
     /**
      * column: from_domain
-     * @var string
+     * @var string | null
      */
     protected $fromDomain;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $aors;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callerid;
 
@@ -52,37 +52,37 @@ abstract class PsEndpointAbstract
 
     /**
      * column: direct_media
-     * @var string
+     * @var string | null
      */
     protected $directMedia = 'yes';
 
     /**
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
-     * @var string
+     * @var string | null
      */
     protected $directMediaMethod = 'update';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $mailboxes;
 
     /**
      * column: named_pickup_group
-     * @var string
+     * @var string | null
      */
     protected $namedPickupGroup;
 
     /**
      * column: send_diversion
-     * @var string
+     * @var string | null
      */
     protected $sendDiversion = 'yes';
 
     /**
      * column: send_pai
-     * @var string
+     * @var string | null
      */
     protected $sendPai = 'yes';
 
@@ -94,13 +94,13 @@ abstract class PsEndpointAbstract
 
     /**
      * column: outbound_proxy
-     * @var string
+     * @var string | null
      */
     protected $outboundProxy;
 
     /**
      * column: trust_id_inbound
-     * @var string
+     * @var string | null
      */
     protected $trustIdInbound;
 
@@ -381,7 +381,7 @@ abstract class PsEndpointAbstract
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -409,7 +409,7 @@ abstract class PsEndpointAbstract
     /**
      * Get aors
      *
-     * @return string
+     * @return string | null
      */
     public function getAors()
     {
@@ -437,7 +437,7 @@ abstract class PsEndpointAbstract
     /**
      * Get callerid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallerid()
     {
@@ -545,7 +545,7 @@ abstract class PsEndpointAbstract
     /**
      * Get directMedia
      *
-     * @return string
+     * @return string | null
      */
     public function getDirectMedia()
     {
@@ -577,7 +577,7 @@ abstract class PsEndpointAbstract
     /**
      * Get directMediaMethod
      *
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod()
     {
@@ -605,7 +605,7 @@ abstract class PsEndpointAbstract
     /**
      * Get mailboxes
      *
-     * @return string
+     * @return string | null
      */
     public function getMailboxes()
     {
@@ -633,7 +633,7 @@ abstract class PsEndpointAbstract
     /**
      * Get namedPickupGroup
      *
-     * @return string
+     * @return string | null
      */
     public function getNamedPickupGroup()
     {
@@ -660,7 +660,7 @@ abstract class PsEndpointAbstract
     /**
      * Get sendDiversion
      *
-     * @return string
+     * @return string | null
      */
     public function getSendDiversion()
     {
@@ -687,7 +687,7 @@ abstract class PsEndpointAbstract
     /**
      * Get sendPai
      *
-     * @return string
+     * @return string | null
      */
     public function getSendPai()
     {
@@ -741,7 +741,7 @@ abstract class PsEndpointAbstract
     /**
      * Get outboundProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy()
     {
@@ -768,7 +768,7 @@ abstract class PsEndpointAbstract
     /**
      * Get trustIdInbound
      *
-     * @return string
+     * @return string | null
      */
     public function getTrustIdInbound()
     {

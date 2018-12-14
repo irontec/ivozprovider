@@ -35,21 +35,21 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Get externallyRated
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated();
 
     /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance();
 
     /**
      * Get calculateCost
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getCalculateCost();
 

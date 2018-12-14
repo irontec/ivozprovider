@@ -19,28 +19,28 @@ abstract class FaxesInOutAbstract
     protected $calldate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $src;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $dst;
 
     /**
      * comment: enum:In|Out
-     * @var string
+     * @var string | null
      */
     protected $type = 'Out';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $pages;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $status;
 
@@ -292,7 +292,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get src
      *
-     * @return string
+     * @return string | null
      */
     public function getSrc()
     {
@@ -320,7 +320,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get dst
      *
-     * @return string
+     * @return string | null
      */
     public function getDst()
     {
@@ -352,7 +352,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get type
      *
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -380,7 +380,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get pages
      *
-     * @return string
+     * @return string | null
      */
     public function getPages()
     {
@@ -407,7 +407,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {

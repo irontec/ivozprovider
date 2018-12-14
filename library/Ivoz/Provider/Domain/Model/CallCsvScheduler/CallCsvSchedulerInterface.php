@@ -54,21 +54,21 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get lastExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution();
 
     /**
      * Get lastExecutionError
      *
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError();
 
     /**
      * Get nextExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution();
 
@@ -84,7 +84,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -100,7 +100,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 }

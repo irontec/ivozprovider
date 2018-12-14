@@ -19,7 +19,7 @@ abstract class ApplicationServerAbstract
     protected $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $name;
 
@@ -208,7 +208,7 @@ abstract class ApplicationServerAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {

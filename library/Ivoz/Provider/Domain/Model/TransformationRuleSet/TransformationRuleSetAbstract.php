@@ -14,32 +14,32 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class TransformationRuleSetAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $internationalCode = '00';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $trunkPrefix = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $areaCode = '';
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $nationalLen = 9;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $generateRules = 0;
 
@@ -256,7 +256,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -284,7 +284,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get internationalCode
      *
-     * @return string
+     * @return string | null
      */
     public function getInternationalCode()
     {
@@ -312,7 +312,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get trunkPrefix
      *
-     * @return string
+     * @return string | null
      */
     public function getTrunkPrefix()
     {
@@ -340,7 +340,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get areaCode
      *
-     * @return string
+     * @return string | null
      */
     public function getAreaCode()
     {
@@ -371,7 +371,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get nationalLen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getNationalLen()
     {
@@ -399,7 +399,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get generateRules
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getGenerateRules()
     {
@@ -423,7 +423,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -447,7 +447,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry()
     {

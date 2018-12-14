@@ -13,13 +13,13 @@ class Name
 {
     /**
      * column: name_en
-     * @var string
+     * @var string | null
      */
     protected $en;
 
     /**
      * column: name_es
-     * @var string
+     * @var string | null
      */
     protected $es;
 
@@ -56,7 +56,7 @@ class Name
     /**
      * Get en
      *
-     * @return string
+     * @return string | null
      */
     public function getEn()
     {
@@ -84,7 +84,7 @@ class Name
     /**
      * Get es
      *
-     * @return string
+     * @return string | null
      */
     public function getEs()
     {

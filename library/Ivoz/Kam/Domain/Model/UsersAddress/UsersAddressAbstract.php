@@ -21,7 +21,7 @@ abstract class UsersAddressAbstract
 
     /**
      * column: ip_addr
-     * @var string
+     * @var string | null
      */
     protected $ipAddr;
 
@@ -36,12 +36,12 @@ abstract class UsersAddressAbstract
     protected $port = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -257,7 +257,7 @@ abstract class UsersAddressAbstract
     /**
      * Get ipAddr
      *
-     * @return string
+     * @return string | null
      */
     public function getIpAddr()
     {
@@ -339,7 +339,7 @@ abstract class UsersAddressAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -367,7 +367,7 @@ abstract class UsersAddressAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {

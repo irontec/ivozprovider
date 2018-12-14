@@ -22,7 +22,7 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     /**
      * Get ipAddr
      *
-     * @return string
+     * @return string | null
      */
     public function getIpAddr();
 
@@ -43,7 +43,7 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 

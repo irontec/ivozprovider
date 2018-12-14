@@ -31,52 +31,52 @@ abstract class TrunksCdrAbstract
     protected $duration = '0.000';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callid;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callidHash;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $xcallid;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $diversion;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $bounced;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $metered = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $direction;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $cgrid;
 
@@ -408,7 +408,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -436,7 +436,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -464,7 +464,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -492,7 +492,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get callidHash
      *
-     * @return string
+     * @return string | null
      */
     public function getCallidHash()
     {
@@ -520,7 +520,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get xcallid
      *
-     * @return string
+     * @return string | null
      */
     public function getXcallid()
     {
@@ -548,7 +548,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get diversion
      *
-     * @return string
+     * @return string | null
      */
     public function getDiversion()
     {
@@ -576,7 +576,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get bounced
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getBounced()
     {
@@ -604,7 +604,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get metered
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMetered()
     {
@@ -631,7 +631,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get direction
      *
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -659,7 +659,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get cgrid
      *
-     * @return string
+     * @return string | null
      */
     public function getCgrid()
     {

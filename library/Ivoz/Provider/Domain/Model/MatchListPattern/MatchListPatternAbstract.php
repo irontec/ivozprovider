@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class MatchListPatternAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -25,12 +25,12 @@ abstract class MatchListPatternAbstract
     protected $type;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $regexp;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $numbervalue;
 
@@ -218,7 +218,7 @@ abstract class MatchListPatternAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -277,7 +277,7 @@ abstract class MatchListPatternAbstract
     /**
      * Get regexp
      *
-     * @return string
+     * @return string | null
      */
     public function getRegexp()
     {
@@ -305,7 +305,7 @@ abstract class MatchListPatternAbstract
     /**
      * Get numbervalue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumbervalue()
     {

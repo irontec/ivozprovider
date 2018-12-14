@@ -20,17 +20,17 @@ abstract class ExtensionAbstract
 
     /**
      * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional
-     * @var string
+     * @var string | null
      */
     protected $routeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $numberValue;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $friendValue;
 
@@ -309,7 +309,7 @@ abstract class ExtensionAbstract
     /**
      * Get routeType
      *
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -337,7 +337,7 @@ abstract class ExtensionAbstract
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -365,7 +365,7 @@ abstract class ExtensionAbstract
     /**
      * Get friendValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendValue()
     {

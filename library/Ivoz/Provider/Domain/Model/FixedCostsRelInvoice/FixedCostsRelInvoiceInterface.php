@@ -22,7 +22,7 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
     /**
      * Get quantity
      *
-     * @return integer
+     * @return integer | null
      */
     public function getQuantity();
 

@@ -44,35 +44,35 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     /**
      * Get src
      *
-     * @return string
+     * @return string | null
      */
     public function getSrc();
 
     /**
      * Get dst
      *
-     * @return string
+     * @return string | null
      */
     public function getDst();
 
     /**
      * Get type
      *
-     * @return string
+     * @return string | null
      */
     public function getType();
 
     /**
      * Get pages
      *
-     * @return string
+     * @return string | null
      */
     public function getPages();
 
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 

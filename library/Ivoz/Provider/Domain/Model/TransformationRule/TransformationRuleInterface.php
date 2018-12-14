@@ -34,21 +34,21 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     /**
      * Get priority
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPriority();
 
     /**
      * Get matchExpr
      *
-     * @return string
+     * @return string | null
      */
     public function getMatchExpr();
 
     /**
      * Get replaceExpr
      *
-     * @return string
+     * @return string | null
      */
     public function getReplaceExpr();
 
@@ -64,7 +64,7 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
 }

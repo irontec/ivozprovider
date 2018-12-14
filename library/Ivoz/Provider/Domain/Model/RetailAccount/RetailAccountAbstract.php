@@ -30,22 +30,22 @@ abstract class RetailAccountAbstract
     protected $transport;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $port;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $password;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fromDomain;
 
@@ -387,7 +387,7 @@ abstract class RetailAccountAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -418,7 +418,7 @@ abstract class RetailAccountAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -446,7 +446,7 @@ abstract class RetailAccountAbstract
     /**
      * Get password
      *
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -474,7 +474,7 @@ abstract class RetailAccountAbstract
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -582,7 +582,7 @@ abstract class RetailAccountAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {

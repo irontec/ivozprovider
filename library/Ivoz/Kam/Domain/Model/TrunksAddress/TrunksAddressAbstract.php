@@ -20,7 +20,7 @@ abstract class TrunksAddressAbstract
 
     /**
      * column: ip_addr
-     * @var string
+     * @var string | null
      */
     protected $ipAddr;
 
@@ -35,7 +35,7 @@ abstract class TrunksAddressAbstract
     protected $port = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
@@ -248,7 +248,7 @@ abstract class TrunksAddressAbstract
     /**
      * Get ipAddr
      *
-     * @return string
+     * @return string | null
      */
     public function getIpAddr()
     {
@@ -330,7 +330,7 @@ abstract class TrunksAddressAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {

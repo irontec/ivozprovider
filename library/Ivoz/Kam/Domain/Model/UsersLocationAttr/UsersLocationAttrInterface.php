@@ -29,7 +29,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return string
+     * @return string | null
      */
     public function getDomain();
 

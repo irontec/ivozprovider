@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class HuntGroupsRelUserAbstract
 {
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $timeoutTime;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $priority;
 
@@ -199,7 +199,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get timeoutTime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTimeoutTime()
     {
@@ -229,7 +229,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get priority
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {

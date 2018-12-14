@@ -15,21 +15,21 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Get amount
      *
-     * @return string
+     * @return string | null
      */
     public function getAmount();
 
     /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance();
 
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedOn();
 
@@ -45,7 +45,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -61,7 +61,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 }
