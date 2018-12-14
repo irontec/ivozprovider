@@ -183,7 +183,7 @@ protected function __toArray()
 '/**
  * <description>
  *
- * @return <variableType>
+ * @return <variableType><nullable>
  */
 public function <methodName>(<criteriaArgument>)
 {<criteriaGetter>
@@ -418,12 +418,17 @@ public function <methodName>(<criteriaArgument>)
             $lines[] = $this->spaces . ' * comment: ' . $comment;
         }
 
-        $lines[] = $this->spaces . ' * @var ' . $this->getType($fieldMapping['type']);
+        $isNullable = isset($fieldMapping['nullable']) && $fieldMapping['nullable'];
+        $lines[] =
+            $this->spaces
+            . ' * @var '
+            . $this->getType($fieldMapping['type'])
+            . ($isNullable ? ' | null' : '');
+
         $lines[] = $this->spaces . ' */';
 
         return implode("\n", $lines);
     }
-
 
     /**
      * @param ClassMetadataInfo $metadata
@@ -1206,6 +1211,16 @@ public function <methodName>(<criteriaArgument>)
         $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
         $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
 
+        $isNullableFk = false;
+        if (array_key_exists($fieldName, $metadata->associationMappings)) {
+            $currentAsoc = (object) $metadata->associationMappings[$fieldName];
+            $isNullableFk =
+                isset($currentAsoc->joinColumns)
+                && isset($currentAsoc->joinColumns[0])
+                && isset($currentAsoc->joinColumns[0]['nullable'])
+                && $currentAsoc->joinColumns[0]['nullable'];
+        }
+
         $assertions = [];
 
         if ($currentField) {
@@ -1224,6 +1239,7 @@ public function <methodName>(<criteriaArgument>)
             } else {
                 $assertions[] = 'if (!is_null($' . $fieldName . ')) {';
             }
+
 
             if (in_array($currentField->type, ['boolean'])) {
                 $assertions = array_merge(
@@ -1325,7 +1341,8 @@ public function <methodName>(<criteriaArgument>)
 
         $replacements = array(
             $this->spaces . '<assertions>' => $assertions,
-            '<visibility>' => $visibility
+            '<visibility>' => $visibility,
+            '<nullable>' => ($isNullable || $isNullableFk) ? ' | null' : ''
         );
 
         if ($type == 'replace') {
