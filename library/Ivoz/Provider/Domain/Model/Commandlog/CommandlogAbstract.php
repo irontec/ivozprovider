@@ -24,12 +24,12 @@ abstract class CommandlogAbstract
     protected $class;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $method;
 
     /**
-     * @var array
+     * @var array | null
      */
     protected $arguments;
 
@@ -277,7 +277,7 @@ abstract class CommandlogAbstract
     /**
      * Get method
      *
-     * @return string
+     * @return string | null
      */
     public function getMethod()
     {
@@ -304,7 +304,7 @@ abstract class CommandlogAbstract
     /**
      * Get arguments
      *
-     * @return array
+     * @return array | null
      */
     public function getArguments()
     {

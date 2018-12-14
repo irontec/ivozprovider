@@ -50,7 +50,7 @@ abstract class UsersActiveWatcherAbstract
 
     /**
      * column: event_id
-     * @var string
+     * @var string | null
      */
     protected $eventId;
 
@@ -90,7 +90,7 @@ abstract class UsersActiveWatcherAbstract
 
     /**
      * column: record_route
-     * @var string
+     * @var string | null
      */
     protected $recordRoute;
 
@@ -105,7 +105,7 @@ abstract class UsersActiveWatcherAbstract
     protected $status = '2';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $reason;
 
@@ -621,7 +621,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Get eventId
      *
-     * @return string
+     * @return string | null
      */
     public function getEventId()
     {
@@ -811,7 +811,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Get recordRoute
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordRoute()
     {
@@ -893,7 +893,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Get reason
      *
-     * @return string
+     * @return string | null
      */
     public function getReason()
     {

@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class OutgoingRoutingAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $type = 'group';
 
@@ -30,22 +30,22 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * comment: enum:static|lcr
-     * @var string
+     * @var string | null
      */
     protected $routingMode = 'static';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $prefix;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $forceClid = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $clid;
 
@@ -290,7 +290,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get type
      *
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -378,7 +378,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get routingMode
      *
-     * @return string
+     * @return string | null
      */
     public function getRoutingMode()
     {
@@ -406,7 +406,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -434,7 +434,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get forceClid
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getForceClid()
     {
@@ -462,7 +462,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get clid
      *
-     * @return string
+     * @return string | null
      */
     public function getClid()
     {
@@ -534,7 +534,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {

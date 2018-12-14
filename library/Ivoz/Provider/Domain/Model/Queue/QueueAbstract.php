@@ -14,64 +14,64 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class QueueAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $name;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $maxWaitTime;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $timeoutTargetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $timeoutNumberValue;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $maxlen;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $fullTargetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fullNumberValue;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $periodicAnnounceFrequency;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $memberCallRest;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $memberCallTimeout;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $strategy;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $weight;
 
@@ -361,7 +361,7 @@ abstract class QueueAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -391,7 +391,7 @@ abstract class QueueAbstract
     /**
      * Get maxWaitTime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxWaitTime()
     {
@@ -424,7 +424,7 @@ abstract class QueueAbstract
     /**
      * Get timeoutTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getTimeoutTargetType()
     {
@@ -452,7 +452,7 @@ abstract class QueueAbstract
     /**
      * Get timeoutNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getTimeoutNumberValue()
     {
@@ -482,7 +482,7 @@ abstract class QueueAbstract
     /**
      * Get maxlen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen()
     {
@@ -515,7 +515,7 @@ abstract class QueueAbstract
     /**
      * Get fullTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getFullTargetType()
     {
@@ -543,7 +543,7 @@ abstract class QueueAbstract
     /**
      * Get fullNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFullNumberValue()
     {
@@ -573,7 +573,7 @@ abstract class QueueAbstract
     /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency()
     {
@@ -603,7 +603,7 @@ abstract class QueueAbstract
     /**
      * Get memberCallRest
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallRest()
     {
@@ -633,7 +633,7 @@ abstract class QueueAbstract
     /**
      * Get memberCallTimeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallTimeout()
     {
@@ -660,7 +660,7 @@ abstract class QueueAbstract
     /**
      * Get strategy
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategy()
     {
@@ -690,7 +690,7 @@ abstract class QueueAbstract
     /**
      * Get weight
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {

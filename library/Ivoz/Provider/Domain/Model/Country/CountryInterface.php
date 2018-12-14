@@ -29,7 +29,7 @@ interface CountryInterface extends LoggableEntityInterface
     /**
      * Get countryCode
      *
-     * @return string
+     * @return string | null
      */
     public function getCountryCode();
 

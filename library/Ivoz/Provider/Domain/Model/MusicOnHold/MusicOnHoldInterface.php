@@ -41,7 +41,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 
@@ -57,7 +57,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -73,7 +73,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 

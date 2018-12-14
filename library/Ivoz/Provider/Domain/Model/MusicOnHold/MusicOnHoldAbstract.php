@@ -20,7 +20,7 @@ abstract class MusicOnHoldAbstract
 
     /**
      * comment: enum:pending|encoding|ready|error
-     * @var string
+     * @var string | null
      */
     protected $status;
 
@@ -288,7 +288,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {
@@ -312,7 +312,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -336,7 +336,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {

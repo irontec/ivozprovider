@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class QueueMemberAbstract
 {
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $penalty;
 
@@ -190,7 +190,7 @@ abstract class QueueMemberAbstract
     /**
      * Get penalty
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPenalty()
     {

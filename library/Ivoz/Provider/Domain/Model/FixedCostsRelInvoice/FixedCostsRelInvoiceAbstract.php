@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class FixedCostsRelInvoiceAbstract
 {
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $quantity;
 
@@ -191,7 +191,7 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Get quantity
      *
-     * @return integer
+     * @return integer | null
      */
     public function getQuantity()
     {

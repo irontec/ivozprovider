@@ -14,19 +14,19 @@ class Csv
     /**
      * column: csvFileSize
      * comment: FSO
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: csvMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: csvBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
@@ -67,7 +67,7 @@ class Csv
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -95,7 +95,7 @@ class Csv
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -123,7 +123,7 @@ class Csv
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {

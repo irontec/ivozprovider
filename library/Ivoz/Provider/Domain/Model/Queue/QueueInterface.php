@@ -50,84 +50,84 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
      * Get maxWaitTime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxWaitTime();
 
     /**
      * Get timeoutTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getTimeoutTargetType();
 
     /**
      * Get timeoutNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getTimeoutNumberValue();
 
     /**
      * Get maxlen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen();
 
     /**
      * Get fullTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getFullTargetType();
 
     /**
      * Get fullNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFullNumberValue();
 
     /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency();
 
     /**
      * Get memberCallRest
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallRest();
 
     /**
      * Get memberCallTimeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallTimeout();
 
     /**
      * Get strategy
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategy();
 
     /**
      * Get weight
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWeight();
 

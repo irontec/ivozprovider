@@ -120,7 +120,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get domainUsers
      *
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers();
 
@@ -183,42 +183,42 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get ipfilter
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getIpfilter();
 
     /**
      * Get onDemandRecord
      *
-     * @return integer
+     * @return integer | null
      */
     public function getOnDemandRecord();
 
     /**
      * Get onDemandRecordCode
      *
-     * @return string
+     * @return string | null
      */
     public function getOnDemandRecordCode();
 
     /**
      * Get externallyextraopts
      *
-     * @return string
+     * @return string | null
      */
     public function getExternallyextraopts();
 
     /**
      * Get recordingsLimitMB
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB();
 
     /**
      * Get recordingsLimitEmail
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail();
 
@@ -232,14 +232,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance();
 
     /**
      * Get showInvoices
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getShowInvoices();
 
@@ -312,7 +312,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 
@@ -392,7 +392,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get outgoingDdiRule
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
      */
     public function getOutgoingDdiRule();
 
@@ -408,7 +408,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get voicemailNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getVoicemailNotificationTemplate();
 
@@ -424,7 +424,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get faxNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getFaxNotificationTemplate();
 
@@ -440,7 +440,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get invoiceNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getInvoiceNotificationTemplate();
 
@@ -456,7 +456,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get callCsvNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate();
 

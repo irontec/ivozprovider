@@ -94,21 +94,21 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get routeType
      *
-     * @return string
+     * @return string | null
      */
     public function getRouteType();
 
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue();
 
     /**
      * Get friendValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendValue();
 

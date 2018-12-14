@@ -19,7 +19,7 @@ abstract class TpRateAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
@@ -290,7 +290,7 @@ abstract class TpRateAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {

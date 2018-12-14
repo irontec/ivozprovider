@@ -19,12 +19,12 @@ abstract class FixedCostAbstract
     protected $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $cost;
 
@@ -225,7 +225,7 @@ abstract class FixedCostAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -256,7 +256,7 @@ abstract class FixedCostAbstract
     /**
      * Get cost
      *
-     * @return string
+     * @return string | null
      */
     public function getCost()
     {

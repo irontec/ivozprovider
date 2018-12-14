@@ -15,7 +15,7 @@ abstract class DestinationRateGroupAbstract
 {
     /**
      * comment: enum:waiting|inProgress|imported|error
-     * @var string
+     * @var string | null
      */
     protected $status;
 
@@ -264,7 +264,7 @@ abstract class DestinationRateGroupAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {

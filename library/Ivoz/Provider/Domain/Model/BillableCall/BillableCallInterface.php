@@ -15,14 +15,14 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime();
 
@@ -36,70 +36,70 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
      * Get cost
      *
-     * @return string
+     * @return string | null
      */
     public function getCost();
 
     /**
      * Get price
      *
-     * @return string
+     * @return string | null
      */
     public function getPrice();
 
     /**
      * Get priceDetails
      *
-     * @return array
+     * @return array | null
      */
     public function getPriceDetails();
 
     /**
      * Get carrierName
      *
-     * @return string
+     * @return string | null
      */
     public function getCarrierName();
 
     /**
      * Get destinationName
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationName();
 
     /**
      * Get ratingPlanName
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanName();
 
     /**
      * Get endpointType
      *
-     * @return string
+     * @return string | null
      */
     public function getEndpointType();
 
     /**
      * Get endpointId
      *
-     * @return integer
+     * @return integer | null
      */
     public function getEndpointId();
 
@@ -147,7 +147,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
@@ -163,7 +163,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     public function getDestination();
 
@@ -179,7 +179,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup();
 
@@ -195,7 +195,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice();
 
@@ -211,7 +211,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get trunksCdr
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr();
 }

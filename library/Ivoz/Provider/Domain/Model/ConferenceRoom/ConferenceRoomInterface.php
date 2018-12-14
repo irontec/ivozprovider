@@ -29,7 +29,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     /**
      * Get pinCode
      *
-     * @return string
+     * @return string | null
      */
     public function getPinCode();
 

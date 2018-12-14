@@ -29,7 +29,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return string
+     * @return string | null
      */
     public function getDomain();
 
@@ -43,14 +43,14 @@ interface UsersLocationInterface extends LoggableEntityInterface
     /**
      * Get received
      *
-     * @return string
+     * @return string | null
      */
     public function getReceived();
 
     /**
      * Get path
      *
-     * @return string
+     * @return string | null
      */
     public function getPath();
 
@@ -113,21 +113,21 @@ interface UsersLocationInterface extends LoggableEntityInterface
     /**
      * Get socket
      *
-     * @return string
+     * @return string | null
      */
     public function getSocket();
 
     /**
      * Get methods
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMethods();
 
     /**
      * Get instance
      *
-     * @return string
+     * @return string | null
      */
     public function getInstance();
 

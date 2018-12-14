@@ -20,14 +20,14 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 

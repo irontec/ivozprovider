@@ -39,7 +39,7 @@ abstract class RtpengineAbstract
     protected $stamp;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -369,7 +369,7 @@ abstract class RtpengineAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {

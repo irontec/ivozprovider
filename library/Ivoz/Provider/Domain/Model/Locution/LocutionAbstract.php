@@ -20,7 +20,7 @@ abstract class LocutionAbstract
 
     /**
      * comment: enum:pending|encoding|ready|error
-     * @var string
+     * @var string | null
      */
     protected $status;
 
@@ -279,7 +279,7 @@ abstract class LocutionAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {

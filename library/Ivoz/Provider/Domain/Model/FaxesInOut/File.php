@@ -14,19 +14,19 @@ class File
     /**
      * column: fileFileSize
      * comment: FSO
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: fileMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: fileBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
@@ -67,7 +67,7 @@ class File
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -95,7 +95,7 @@ class File
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -123,7 +123,7 @@ class File
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {

@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class RecordingAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $callid;
 
@@ -35,17 +35,17 @@ abstract class RecordingAbstract
     protected $duration = '0.000';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $recorder;
 
@@ -268,7 +268,7 @@ abstract class RecordingAbstract
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -384,7 +384,7 @@ abstract class RecordingAbstract
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -412,7 +412,7 @@ abstract class RecordingAbstract
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -440,7 +440,7 @@ abstract class RecordingAbstract
     /**
      * Get recorder
      *
-     * @return string
+     * @return string | null
      */
     public function getRecorder()
     {

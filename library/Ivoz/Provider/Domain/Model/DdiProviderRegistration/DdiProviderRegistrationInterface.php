@@ -64,7 +64,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     /**
      * Get multiDdi
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMultiDdi();
 

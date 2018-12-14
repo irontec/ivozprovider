@@ -15,14 +15,14 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     /**
      * Get fromName
      *
-     * @return string
+     * @return string | null
      */
     public function getFromName();
 
     /**
      * Get fromAddress
      *
-     * @return string
+     * @return string | null
      */
     public function getFromAddress();
 

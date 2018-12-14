@@ -26,42 +26,42 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 
     /**
      * Get internationalCode
      *
-     * @return string
+     * @return string | null
      */
     public function getInternationalCode();
 
     /**
      * Get trunkPrefix
      *
-     * @return string
+     * @return string | null
      */
     public function getTrunkPrefix();
 
     /**
      * Get areaCode
      *
-     * @return string
+     * @return string | null
      */
     public function getAreaCode();
 
     /**
      * Get nationalLen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getNationalLen();
 
     /**
      * Get generateRules
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getGenerateRules();
 
@@ -77,7 +77,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -93,7 +93,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
 

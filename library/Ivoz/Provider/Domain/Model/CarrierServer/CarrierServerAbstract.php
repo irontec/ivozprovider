@@ -14,37 +14,37 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CarrierServerAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $hostname;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $port;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $uriScheme;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $transport;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $sendPAI = 0;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $sendRPID = 0;
 
@@ -54,32 +54,32 @@ abstract class CarrierServerAbstract
     protected $authNeeded = 'no';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $authUser;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $authPassword;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $sipProxy;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $outboundProxy;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fromUser;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fromDomain;
 
@@ -312,7 +312,7 @@ abstract class CarrierServerAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -340,7 +340,7 @@ abstract class CarrierServerAbstract
     /**
      * Get hostname
      *
-     * @return string
+     * @return string | null
      */
     public function getHostname()
     {
@@ -371,7 +371,7 @@ abstract class CarrierServerAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -402,7 +402,7 @@ abstract class CarrierServerAbstract
     /**
      * Get uriScheme
      *
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme()
     {
@@ -433,7 +433,7 @@ abstract class CarrierServerAbstract
     /**
      * Get transport
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTransport()
     {
@@ -461,7 +461,7 @@ abstract class CarrierServerAbstract
     /**
      * Get sendPAI
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendPAI()
     {
@@ -489,7 +489,7 @@ abstract class CarrierServerAbstract
     /**
      * Get sendRPID
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendRPID()
     {
@@ -543,7 +543,7 @@ abstract class CarrierServerAbstract
     /**
      * Get authUser
      *
-     * @return string
+     * @return string | null
      */
     public function getAuthUser()
     {
@@ -571,7 +571,7 @@ abstract class CarrierServerAbstract
     /**
      * Get authPassword
      *
-     * @return string
+     * @return string | null
      */
     public function getAuthPassword()
     {
@@ -599,7 +599,7 @@ abstract class CarrierServerAbstract
     /**
      * Get sipProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getSipProxy()
     {
@@ -627,7 +627,7 @@ abstract class CarrierServerAbstract
     /**
      * Get outboundProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy()
     {
@@ -655,7 +655,7 @@ abstract class CarrierServerAbstract
     /**
      * Get fromUser
      *
-     * @return string
+     * @return string | null
      */
     public function getFromUser()
     {
@@ -683,7 +683,7 @@ abstract class CarrierServerAbstract
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {

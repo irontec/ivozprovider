@@ -51,28 +51,28 @@ interface TerminalModelInterface extends LoggableEntityInterface
     /**
      * Get genericTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericTemplate();
 
     /**
      * Get specificTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificTemplate();
 
     /**
      * Get genericUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericUrlPattern();
 
     /**
      * Get specificUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificUrlPattern();
 

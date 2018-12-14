@@ -146,14 +146,14 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get email
      *
-     * @return string
+     * @return string | null
      */
     public function getEmail();
 
     /**
      * Get pass
      *
-     * @return string
+     * @return string | null
      */
     public function getPass();
 
@@ -216,7 +216,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get tokenKey
      *
-     * @return string
+     * @return string | null
      */
     public function getTokenKey();
 

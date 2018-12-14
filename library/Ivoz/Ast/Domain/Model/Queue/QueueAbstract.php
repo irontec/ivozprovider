@@ -20,18 +20,18 @@ abstract class QueueAbstract
 
     /**
      * column: periodic_announce
-     * @var string
+     * @var string | null
      */
     protected $periodicAnnounce;
 
     /**
      * column: periodic_announce_frequency
-     * @var integer
+     * @var integer | null
      */
     protected $periodicAnnounceFrequency;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $timeout;
 
@@ -46,22 +46,22 @@ abstract class QueueAbstract
     protected $ringinuse = 'no';
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $wrapuptime;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $maxlen;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $strategy;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $weight;
 
@@ -293,7 +293,7 @@ abstract class QueueAbstract
     /**
      * Get periodicAnnounce
      *
-     * @return string
+     * @return string | null
      */
     public function getPeriodicAnnounce()
     {
@@ -323,7 +323,7 @@ abstract class QueueAbstract
     /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency()
     {
@@ -353,7 +353,7 @@ abstract class QueueAbstract
     /**
      * Get timeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTimeout()
     {
@@ -435,7 +435,7 @@ abstract class QueueAbstract
     /**
      * Get wrapuptime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWrapuptime()
     {
@@ -465,7 +465,7 @@ abstract class QueueAbstract
     /**
      * Get maxlen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen()
     {
@@ -492,7 +492,7 @@ abstract class QueueAbstract
     /**
      * Get strategy
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategy()
     {
@@ -522,7 +522,7 @@ abstract class QueueAbstract
     /**
      * Get weight
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {

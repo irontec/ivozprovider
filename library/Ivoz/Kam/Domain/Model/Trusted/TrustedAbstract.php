@@ -15,34 +15,34 @@ abstract class TrustedAbstract
 {
     /**
      * column: src_ip
-     * @var string
+     * @var string | null
      */
     protected $srcIp;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $proto;
 
     /**
      * column: from_pattern
-     * @var string
+     * @var string | null
      */
     protected $fromPattern;
 
     /**
      * column: ruri_pattern
-     * @var string
+     * @var string | null
      */
     protected $ruriPattern;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -238,7 +238,7 @@ abstract class TrustedAbstract
     /**
      * Get srcIp
      *
-     * @return string
+     * @return string | null
      */
     public function getSrcIp()
     {
@@ -266,7 +266,7 @@ abstract class TrustedAbstract
     /**
      * Get proto
      *
-     * @return string
+     * @return string | null
      */
     public function getProto()
     {
@@ -294,7 +294,7 @@ abstract class TrustedAbstract
     /**
      * Get fromPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getFromPattern()
     {
@@ -322,7 +322,7 @@ abstract class TrustedAbstract
     /**
      * Get ruriPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getRuriPattern()
     {
@@ -350,7 +350,7 @@ abstract class TrustedAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -378,7 +378,7 @@ abstract class TrustedAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -429,7 +429,7 @@ abstract class TrustedAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {

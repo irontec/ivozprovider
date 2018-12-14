@@ -21,7 +21,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 
@@ -35,14 +35,14 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     /**
      * Get regexp
      *
-     * @return string
+     * @return string | null
      */
     public function getRegexp();
 
     /**
      * Get numbervalue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumbervalue();
 

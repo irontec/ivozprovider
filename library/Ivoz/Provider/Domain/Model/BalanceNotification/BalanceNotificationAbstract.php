@@ -14,17 +14,17 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class BalanceNotificationAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $toAddress;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $threshold = 0;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $lastSent;
 
@@ -215,7 +215,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get toAddress
      *
-     * @return string
+     * @return string | null
      */
     public function getToAddress()
     {
@@ -246,7 +246,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get threshold
      *
-     * @return string
+     * @return string | null
      */
     public function getThreshold()
     {
@@ -277,7 +277,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get lastSent
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastSent()
     {
@@ -301,7 +301,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -325,7 +325,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -349,7 +349,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get notificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getNotificationTemplate()
     {

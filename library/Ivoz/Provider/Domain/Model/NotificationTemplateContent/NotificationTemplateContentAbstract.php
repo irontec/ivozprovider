@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class NotificationTemplateContentAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $fromName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fromAddress;
 
@@ -229,7 +229,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Get fromName
      *
-     * @return string
+     * @return string | null
      */
     public function getFromName()
     {
@@ -257,7 +257,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Get fromAddress
      *
-     * @return string
+     * @return string | null
      */
     public function getFromAddress()
     {

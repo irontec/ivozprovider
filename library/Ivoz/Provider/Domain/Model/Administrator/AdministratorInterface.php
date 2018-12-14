@@ -71,14 +71,14 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
      * Get lastname
      *
-     * @return string
+     * @return string | null
      */
     public function getLastname();
 
@@ -94,7 +94,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -110,7 +110,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 

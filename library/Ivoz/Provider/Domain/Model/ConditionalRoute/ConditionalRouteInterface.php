@@ -30,21 +30,21 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     /**
      * Get routetype
      *
-     * @return string
+     * @return string | null
      */
     public function getRoutetype();
 
     /**
      * Get numbervalue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumbervalue();
 
     /**
      * Get friendvalue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendvalue();
 

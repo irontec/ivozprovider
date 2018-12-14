@@ -29,7 +29,7 @@ interface FaxInterface extends LoggableEntityInterface
     /**
      * Get email
      *
-     * @return string
+     * @return string | null
      */
     public function getEmail();
 

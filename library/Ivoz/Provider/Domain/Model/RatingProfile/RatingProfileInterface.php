@@ -39,7 +39,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -55,7 +55,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
@@ -87,7 +87,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     public function getRoutingTag();
 

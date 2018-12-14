@@ -19,7 +19,7 @@ abstract class FaxAbstract
     protected $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $email;
 
@@ -236,7 +236,7 @@ abstract class FaxAbstract
     /**
      * Get email
      *
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {

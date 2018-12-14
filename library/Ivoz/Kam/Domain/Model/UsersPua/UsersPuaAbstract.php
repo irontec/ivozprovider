@@ -53,7 +53,7 @@ abstract class UsersPuaAbstract
 
     /**
      * column: tuple_id
-     * @var string
+     * @var string | null
      */
     protected $tupleId;
 
@@ -88,7 +88,7 @@ abstract class UsersPuaAbstract
 
     /**
      * column: record_route
-     * @var string
+     * @var string | null
      */
     protected $recordRoute;
 
@@ -556,7 +556,7 @@ abstract class UsersPuaAbstract
     /**
      * Get tupleId
      *
-     * @return string
+     * @return string | null
      */
     public function getTupleId()
     {
@@ -719,7 +719,7 @@ abstract class UsersPuaAbstract
     /**
      * Get recordRoute
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordRoute()
     {

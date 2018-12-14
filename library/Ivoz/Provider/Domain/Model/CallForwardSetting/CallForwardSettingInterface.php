@@ -59,7 +59,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue();
 
@@ -89,7 +89,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -153,7 +153,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 

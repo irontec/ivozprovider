@@ -15,14 +15,14 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     /**
      * Get timeoutTime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTimeoutTime();
 
     /**
      * Get priority
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPriority();
 

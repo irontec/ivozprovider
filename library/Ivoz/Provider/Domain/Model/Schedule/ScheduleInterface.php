@@ -40,49 +40,49 @@ interface ScheduleInterface extends LoggableEntityInterface
     /**
      * Get monday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMonday();
 
     /**
      * Get tuesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getTuesday();
 
     /**
      * Get wednesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getWednesday();
 
     /**
      * Get thursday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getThursday();
 
     /**
      * Get friday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getFriday();
 
     /**
      * Get saturday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSaturday();
 
     /**
      * Get sunday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSunday();
 

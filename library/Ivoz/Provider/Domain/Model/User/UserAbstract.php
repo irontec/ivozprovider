@@ -24,13 +24,13 @@ abstract class UserAbstract
     protected $lastname;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $email;
 
     /**
      * comment: password
-     * @var string
+     * @var string | null
      */
     protected $pass;
 
@@ -76,7 +76,7 @@ abstract class UserAbstract
     protected $voicemailAttachSound = '1';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tokenKey;
 
@@ -474,7 +474,7 @@ abstract class UserAbstract
     /**
      * Get email
      *
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -502,7 +502,7 @@ abstract class UserAbstract
     /**
      * Get pass
      *
-     * @return string
+     * @return string | null
      */
     public function getPass()
     {
@@ -753,7 +753,7 @@ abstract class UserAbstract
     /**
      * Get tokenKey
      *
-     * @return string
+     * @return string | null
      */
     public function getTokenKey()
     {

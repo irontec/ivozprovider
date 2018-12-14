@@ -29,37 +29,37 @@ abstract class ScheduleAbstract
     protected $timeout;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $monday = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $tuesday = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $wednesday = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $thursday = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $friday = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $saturday = '0';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $sunday = '0';
 
@@ -343,7 +343,7 @@ abstract class ScheduleAbstract
     /**
      * Get monday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMonday()
     {
@@ -371,7 +371,7 @@ abstract class ScheduleAbstract
     /**
      * Get tuesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getTuesday()
     {
@@ -399,7 +399,7 @@ abstract class ScheduleAbstract
     /**
      * Get wednesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getWednesday()
     {
@@ -427,7 +427,7 @@ abstract class ScheduleAbstract
     /**
      * Get thursday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getThursday()
     {
@@ -455,7 +455,7 @@ abstract class ScheduleAbstract
     /**
      * Get friday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getFriday()
     {
@@ -483,7 +483,7 @@ abstract class ScheduleAbstract
     /**
      * Get saturday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSaturday()
     {
@@ -511,7 +511,7 @@ abstract class ScheduleAbstract
     /**
      * Get sunday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSunday()
     {

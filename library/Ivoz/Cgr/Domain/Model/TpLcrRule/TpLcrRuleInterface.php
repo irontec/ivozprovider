@@ -50,14 +50,14 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject();
 
     /**
      * Get destinationTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationTag();
 
@@ -78,7 +78,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get strategyParams
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategyParams();
 
@@ -115,7 +115,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     public function getOutgoingRouting();
 }

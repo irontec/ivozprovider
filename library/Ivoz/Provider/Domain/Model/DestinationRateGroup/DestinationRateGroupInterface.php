@@ -35,7 +35,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 

@@ -22,21 +22,21 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get periodicAnnounce
      *
-     * @return string
+     * @return string | null
      */
     public function getPeriodicAnnounce();
 
     /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency();
 
     /**
      * Get timeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTimeout();
 
@@ -57,28 +57,28 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get wrapuptime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWrapuptime();
 
     /**
      * Get maxlen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen();
 
     /**
      * Get strategy
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategy();
 
     /**
      * Get weight
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWeight();
 

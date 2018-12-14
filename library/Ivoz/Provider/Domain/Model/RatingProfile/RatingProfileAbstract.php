@@ -234,7 +234,7 @@ abstract class RatingProfileAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -258,7 +258,7 @@ abstract class RatingProfileAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -306,7 +306,7 @@ abstract class RatingProfileAbstract
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     public function getRoutingTag()
     {

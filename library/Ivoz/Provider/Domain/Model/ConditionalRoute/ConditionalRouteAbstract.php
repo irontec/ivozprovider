@@ -20,17 +20,17 @@ abstract class ConditionalRouteAbstract
 
     /**
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
-     * @var string
+     * @var string | null
      */
     protected $routetype;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $numbervalue;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $friendvalue;
 
@@ -328,7 +328,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get routetype
      *
-     * @return string
+     * @return string | null
      */
     public function getRoutetype()
     {
@@ -356,7 +356,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get numbervalue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumbervalue()
     {
@@ -384,7 +384,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get friendvalue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendvalue()
     {

@@ -45,14 +45,14 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get displayName
      *
-     * @return string
+     * @return string | null
      */
     public function getDisplayName();
 
     /**
      * Get routeType
      *
-     * @return string
+     * @return string | null
      */
     public function getRouteType();
 
@@ -66,7 +66,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get friendValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendValue();
 

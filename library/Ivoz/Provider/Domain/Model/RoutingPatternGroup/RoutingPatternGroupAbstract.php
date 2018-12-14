@@ -19,7 +19,7 @@ abstract class RoutingPatternGroupAbstract
     protected $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -217,7 +217,7 @@ abstract class RoutingPatternGroupAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {

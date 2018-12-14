@@ -20,25 +20,25 @@ abstract class TrunksLcrRuleAbstract
     protected $lcrId = '1';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $prefix;
 
     /**
      * column: from_uri
-     * @var string
+     * @var string | null
      */
     protected $fromUri;
 
     /**
      * column: request_uri
-     * @var string
+     * @var string | null
      */
     protected $requestUri;
 
     /**
      * column: mt_tvalue
-     * @var string
+     * @var string | null
      */
     protected $mtTvalue;
 
@@ -287,7 +287,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -315,7 +315,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get fromUri
      *
-     * @return string
+     * @return string | null
      */
     public function getFromUri()
     {
@@ -343,7 +343,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get requestUri
      *
-     * @return string
+     * @return string | null
      */
     public function getRequestUri()
     {
@@ -371,7 +371,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get mtTvalue
      *
-     * @return string
+     * @return string | null
      */
     public function getMtTvalue()
     {
@@ -475,7 +475,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get routingPatternGroupsRelPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface | null
      */
     public function getRoutingPatternGroupsRelPattern()
     {

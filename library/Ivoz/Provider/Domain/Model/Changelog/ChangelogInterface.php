@@ -30,7 +30,7 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
     /**
      * Get data
      *
-     * @return array
+     * @return array | null
      */
     public function getData();
 

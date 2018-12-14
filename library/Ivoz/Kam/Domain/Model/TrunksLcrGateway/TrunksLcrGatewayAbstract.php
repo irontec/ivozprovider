@@ -26,53 +26,53 @@ abstract class TrunksLcrGatewayAbstract
     protected $gwName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $hostname;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $port;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $params;
 
     /**
      * column: uri_scheme
-     * @var integer
+     * @var integer | null
      */
     protected $uriScheme;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $transport;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $strip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $prefix;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $defunct;
 
@@ -339,7 +339,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -367,7 +367,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get hostname
      *
-     * @return string
+     * @return string | null
      */
     public function getHostname()
     {
@@ -398,7 +398,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -426,7 +426,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get params
      *
-     * @return string
+     * @return string | null
      */
     public function getParams()
     {
@@ -457,7 +457,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get uriScheme
      *
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme()
     {
@@ -488,7 +488,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get transport
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTransport()
     {
@@ -516,7 +516,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get strip
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getStrip()
     {
@@ -544,7 +544,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -572,7 +572,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -603,7 +603,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get defunct
      *
-     * @return integer
+     * @return integer | null
      */
     public function getDefunct()
     {
@@ -627,7 +627,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
      */
     public function getCarrierServer()
     {

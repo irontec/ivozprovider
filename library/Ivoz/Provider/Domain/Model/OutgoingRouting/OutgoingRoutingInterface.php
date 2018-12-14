@@ -41,7 +41,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get type
      *
-     * @return string
+     * @return string | null
      */
     public function getType();
 
@@ -62,28 +62,28 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get routingMode
      *
-     * @return string
+     * @return string | null
      */
     public function getRoutingMode();
 
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix();
 
     /**
      * Get forceClid
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getForceClid();
 
     /**
      * Get clid
      *
-     * @return string
+     * @return string | null
      */
     public function getClid();
 
@@ -131,7 +131,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 

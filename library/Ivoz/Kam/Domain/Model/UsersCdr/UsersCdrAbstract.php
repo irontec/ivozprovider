@@ -31,47 +31,47 @@ abstract class UsersCdrAbstract
     protected $duration = '0.000';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $direction;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $diversion;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $referee;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $referrer;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callid;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callidHash;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $xcallid;
 
@@ -416,7 +416,7 @@ abstract class UsersCdrAbstract
     /**
      * Get direction
      *
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -444,7 +444,7 @@ abstract class UsersCdrAbstract
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -472,7 +472,7 @@ abstract class UsersCdrAbstract
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -500,7 +500,7 @@ abstract class UsersCdrAbstract
     /**
      * Get diversion
      *
-     * @return string
+     * @return string | null
      */
     public function getDiversion()
     {
@@ -528,7 +528,7 @@ abstract class UsersCdrAbstract
     /**
      * Get referee
      *
-     * @return string
+     * @return string | null
      */
     public function getReferee()
     {
@@ -556,7 +556,7 @@ abstract class UsersCdrAbstract
     /**
      * Get referrer
      *
-     * @return string
+     * @return string | null
      */
     public function getReferrer()
     {
@@ -584,7 +584,7 @@ abstract class UsersCdrAbstract
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -612,7 +612,7 @@ abstract class UsersCdrAbstract
     /**
      * Get callidHash
      *
-     * @return string
+     * @return string | null
      */
     public function getCallidHash()
     {
@@ -640,7 +640,7 @@ abstract class UsersCdrAbstract
     /**
      * Get xcallid
      *
-     * @return string
+     * @return string | null
      */
     public function getXcallid()
     {

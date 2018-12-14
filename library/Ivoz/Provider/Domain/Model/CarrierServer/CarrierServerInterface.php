@@ -21,49 +21,49 @@ interface CarrierServerInterface extends LoggableEntityInterface
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 
     /**
      * Get hostname
      *
-     * @return string
+     * @return string | null
      */
     public function getHostname();
 
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort();
 
     /**
      * Get uriScheme
      *
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme();
 
     /**
      * Get transport
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTransport();
 
     /**
      * Get sendPAI
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendPAI();
 
     /**
      * Get sendRPID
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendRPID();
 
@@ -77,42 +77,42 @@ interface CarrierServerInterface extends LoggableEntityInterface
     /**
      * Get authUser
      *
-     * @return string
+     * @return string | null
      */
     public function getAuthUser();
 
     /**
      * Get authPassword
      *
-     * @return string
+     * @return string | null
      */
     public function getAuthPassword();
 
     /**
      * Get sipProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getSipProxy();
 
     /**
      * Get outboundProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy();
 
     /**
      * Get fromUser
      *
-     * @return string
+     * @return string | null
      */
     public function getFromUser();
 
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain();
 

@@ -14,19 +14,19 @@ class RecordedFile
     /**
      * column: recordedFileFileSize
      * comment: FSO:keepExtension
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: recordedFileMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: recordedFileBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
@@ -67,7 +67,7 @@ class RecordedFile
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -95,7 +95,7 @@ class RecordedFile
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -123,7 +123,7 @@ class RecordedFile
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {

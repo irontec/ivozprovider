@@ -19,7 +19,7 @@ abstract class CountryAbstract
     protected $code = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $countryCode;
 
@@ -252,7 +252,7 @@ abstract class CountryAbstract
     /**
      * Get countryCode
      *
-     * @return string
+     * @return string | null
      */
     public function getCountryCode()
     {

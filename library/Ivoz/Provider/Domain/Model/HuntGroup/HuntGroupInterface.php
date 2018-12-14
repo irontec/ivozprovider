@@ -71,14 +71,14 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get noAnswerTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerTargetType();
 
     /**
      * Get noAnswerNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerNumberValue();
 

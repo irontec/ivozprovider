@@ -71,21 +71,21 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Get domainUsers
      *
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers();
 
     /**
      * Get recordingsLimitMB
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB();
 
     /**
      * Get recordingsLimitEmail
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail();
 
@@ -108,7 +108,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 

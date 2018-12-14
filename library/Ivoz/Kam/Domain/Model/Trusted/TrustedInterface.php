@@ -17,42 +17,42 @@ interface TrustedInterface extends LoggableEntityInterface
     /**
      * Get srcIp
      *
-     * @return string
+     * @return string | null
      */
     public function getSrcIp();
 
     /**
      * Get proto
      *
-     * @return string
+     * @return string | null
      */
     public function getProto();
 
     /**
      * Get fromPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getFromPattern();
 
     /**
      * Get ruriPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getRuriPattern();
 
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 
@@ -75,7 +75,7 @@ interface TrustedInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 }

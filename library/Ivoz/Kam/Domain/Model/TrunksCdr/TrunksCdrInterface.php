@@ -30,70 +30,70 @@ interface TrunksCdrInterface extends EntityInterface
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
     /**
      * Get callidHash
      *
-     * @return string
+     * @return string | null
      */
     public function getCallidHash();
 
     /**
      * Get xcallid
      *
-     * @return string
+     * @return string | null
      */
     public function getXcallid();
 
     /**
      * Get diversion
      *
-     * @return string
+     * @return string | null
      */
     public function getDiversion();
 
     /**
      * Get bounced
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getBounced();
 
     /**
      * Get metered
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMetered();
 
     /**
      * Get direction
      *
-     * @return string
+     * @return string | null
      */
     public function getDirection();
 
     /**
      * Get cgrid
      *
-     * @return string
+     * @return string | null
      */
     public function getCgrid();
 

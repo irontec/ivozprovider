@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class TerminalAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $name;
 
@@ -31,7 +31,7 @@ abstract class TerminalAbstract
 
     /**
      * column: allow_video
-     * @var string
+     * @var string | null
      */
     protected $allowVideo;
 
@@ -49,12 +49,12 @@ abstract class TerminalAbstract
     protected $password = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $mac;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $lastProvisionDate;
 
@@ -274,7 +274,7 @@ abstract class TerminalAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -356,7 +356,7 @@ abstract class TerminalAbstract
     /**
      * Get allowVideo
      *
-     * @return string
+     * @return string | null
      */
     public function getAllowVideo()
     {
@@ -442,7 +442,7 @@ abstract class TerminalAbstract
     /**
      * Get mac
      *
-     * @return string
+     * @return string | null
      */
     public function getMac()
     {
@@ -473,7 +473,7 @@ abstract class TerminalAbstract
     /**
      * Get lastProvisionDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastProvisionDate()
     {
@@ -521,7 +521,7 @@ abstract class TerminalAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {

@@ -16,14 +16,14 @@ interface TpRatingPlanInterface extends EntityInterface
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 
     /**
      * Get destratesTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestratesTag();
 

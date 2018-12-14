@@ -125,19 +125,19 @@ abstract class TpCdrAbstract
 
     /**
      * column: created_at
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $createdAt;
 
     /**
      * column: updated_at
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $updatedAt;
 
     /**
      * column: deleted_at
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $deletedAt;
 
@@ -969,7 +969,7 @@ abstract class TpCdrAbstract
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -1000,7 +1000,7 @@ abstract class TpCdrAbstract
     /**
      * Get updatedAt
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getUpdatedAt()
     {
@@ -1031,7 +1031,7 @@ abstract class TpCdrAbstract
     /**
      * Get deletedAt
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getDeletedAt()
     {

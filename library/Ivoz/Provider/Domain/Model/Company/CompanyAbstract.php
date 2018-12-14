@@ -26,7 +26,7 @@ abstract class CompanyAbstract
 
     /**
      * column: domain_users
-     * @var string
+     * @var string | null
      */
     protected $domainUsers;
 
@@ -73,32 +73,32 @@ abstract class CompanyAbstract
     protected $countryName;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $ipfilter = '1';
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $onDemandRecord = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $onDemandRecordCode;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $externallyextraopts;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $recordingsLimitMB;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $recordingsLimitEmail;
 
@@ -109,12 +109,12 @@ abstract class CompanyAbstract
     protected $billingMethod = 'postpaid';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $balance = 0;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $showInvoices = '0';
 
@@ -555,7 +555,7 @@ abstract class CompanyAbstract
     /**
      * Get domainUsers
      *
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers()
     {
@@ -805,7 +805,7 @@ abstract class CompanyAbstract
     /**
      * Get ipfilter
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getIpfilter()
     {
@@ -835,7 +835,7 @@ abstract class CompanyAbstract
     /**
      * Get onDemandRecord
      *
-     * @return integer
+     * @return integer | null
      */
     public function getOnDemandRecord()
     {
@@ -863,7 +863,7 @@ abstract class CompanyAbstract
     /**
      * Get onDemandRecordCode
      *
-     * @return string
+     * @return string | null
      */
     public function getOnDemandRecordCode()
     {
@@ -891,7 +891,7 @@ abstract class CompanyAbstract
     /**
      * Get externallyextraopts
      *
-     * @return string
+     * @return string | null
      */
     public function getExternallyextraopts()
     {
@@ -921,7 +921,7 @@ abstract class CompanyAbstract
     /**
      * Get recordingsLimitMB
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB()
     {
@@ -949,7 +949,7 @@ abstract class CompanyAbstract
     /**
      * Get recordingsLimitEmail
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail()
     {
@@ -1012,7 +1012,7 @@ abstract class CompanyAbstract
     /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance()
     {
@@ -1040,7 +1040,7 @@ abstract class CompanyAbstract
     /**
      * Get showInvoices
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getShowInvoices()
     {
@@ -1160,7 +1160,7 @@ abstract class CompanyAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {
@@ -1280,7 +1280,7 @@ abstract class CompanyAbstract
     /**
      * Get outgoingDdiRule
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
      */
     public function getOutgoingDdiRule()
     {
@@ -1304,7 +1304,7 @@ abstract class CompanyAbstract
     /**
      * Get voicemailNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getVoicemailNotificationTemplate()
     {
@@ -1328,7 +1328,7 @@ abstract class CompanyAbstract
     /**
      * Get faxNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getFaxNotificationTemplate()
     {
@@ -1352,7 +1352,7 @@ abstract class CompanyAbstract
     /**
      * Get invoiceNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getInvoiceNotificationTemplate()
     {
@@ -1376,7 +1376,7 @@ abstract class CompanyAbstract
     /**
      * Get callCsvNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate()
     {

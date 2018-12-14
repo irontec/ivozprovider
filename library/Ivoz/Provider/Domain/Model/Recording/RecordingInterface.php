@@ -21,7 +21,7 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
@@ -49,21 +49,21 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
      * Get recorder
      *
-     * @return string
+     * @return string | null
      */
     public function getRecorder();
 

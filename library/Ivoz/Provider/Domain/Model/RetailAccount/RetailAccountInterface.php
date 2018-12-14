@@ -54,28 +54,28 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort();
 
     /**
      * Get password
      *
-     * @return string
+     * @return string | null
      */
     public function getPassword();
 
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain();
 
@@ -121,7 +121,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 

@@ -24,17 +24,17 @@ abstract class CarrierAbstract
     protected $name;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $externallyRated = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $balance = 0;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $calculateCost = '0';
 
@@ -281,7 +281,7 @@ abstract class CarrierAbstract
     /**
      * Get externallyRated
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated()
     {
@@ -312,7 +312,7 @@ abstract class CarrierAbstract
     /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance()
     {
@@ -340,7 +340,7 @@ abstract class CarrierAbstract
     /**
      * Get calculateCost
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getCalculateCost()
     {

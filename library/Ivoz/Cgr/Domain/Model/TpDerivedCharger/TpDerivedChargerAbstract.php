@@ -44,13 +44,13 @@ abstract class TpDerivedChargerAbstract
     protected $account = '*any';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $subject = '*any';
 
     /**
      * column: destination_ids
-     * @var string
+     * @var string | null
      */
     protected $destinationIds = '*any';
 
@@ -633,7 +633,7 @@ abstract class TpDerivedChargerAbstract
     /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -661,7 +661,7 @@ abstract class TpDerivedChargerAbstract
     /**
      * Get destinationIds
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationIds()
     {

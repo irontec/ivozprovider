@@ -19,13 +19,13 @@ abstract class TpRatingPlanAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
     /**
      * column: destrates_tag
-     * @var string
+     * @var string | null
      */
     protected $destratesTag;
 
@@ -259,7 +259,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -287,7 +287,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Get destratesTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestratesTag()
     {

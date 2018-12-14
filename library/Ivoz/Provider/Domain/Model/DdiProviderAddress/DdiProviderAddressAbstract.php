@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class DdiProviderAddressAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $description;
 
@@ -193,7 +193,7 @@ abstract class DdiProviderAddressAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -221,7 +221,7 @@ abstract class DdiProviderAddressAbstract
     /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {

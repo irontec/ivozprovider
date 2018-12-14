@@ -89,28 +89,28 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get holidayTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getHolidayTargetType();
 
     /**
      * Get holidayNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getHolidayNumberValue();
 
     /**
      * Get outOfScheduleTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getOutOfScheduleTargetType();
 
     /**
      * Get outOfScheduleNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getOutOfScheduleNumberValue();
 
@@ -158,7 +158,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get holidayLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getHolidayLocution();
 

@@ -19,7 +19,7 @@ abstract class BrandUrlAbstract
     protected $url;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $klearTheme = '';
 
@@ -30,12 +30,12 @@ abstract class BrandUrlAbstract
     protected $urlType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $name = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $userTheme = '';
 
@@ -272,7 +272,7 @@ abstract class BrandUrlAbstract
     /**
      * Get klearTheme
      *
-     * @return string
+     * @return string | null
      */
     public function getKlearTheme()
     {
@@ -333,7 +333,7 @@ abstract class BrandUrlAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -361,7 +361,7 @@ abstract class BrandUrlAbstract
     /**
      * Get userTheme
      *
-     * @return string
+     * @return string | null
      */
     public function getUserTheme()
     {

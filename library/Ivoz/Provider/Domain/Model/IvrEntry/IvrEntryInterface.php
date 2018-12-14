@@ -36,7 +36,7 @@ interface IvrEntryInterface extends LoggableEntityInterface
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue();
 

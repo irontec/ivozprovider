@@ -42,7 +42,7 @@ class Invoice
     protected $country;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $registryData;
 
@@ -253,7 +253,7 @@ class Invoice
     /**
      * Get registryData
      *
-     * @return string
+     * @return string | null
      */
     public function getRegistryData()
     {

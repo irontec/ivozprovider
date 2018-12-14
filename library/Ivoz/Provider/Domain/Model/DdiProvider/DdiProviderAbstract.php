@@ -24,7 +24,7 @@ abstract class DdiProviderAbstract
     protected $name;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $externallyRated = '0';
 
@@ -263,7 +263,7 @@ abstract class DdiProviderAbstract
     /**
      * Get externallyRated
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated()
     {
