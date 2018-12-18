@@ -640,6 +640,10 @@ class CallsController extends BaseController
             if ($this->agi->getVariable("FAXFILE_ID")) {
                 $this->agi->setSIPHeader("X-Info-Special", "fax");
             }
+
+            // Add maxcalls headers for KamTrunks
+            $this->agi->setSIPHeader("X-Info-BrandMaxCalls", $company->getBrand()->getMaxCalls());
+            $this->agi->setSIPHeader("X-Info-CompanyMaxCalls", $company->getMaxCalls());
         }
 
         // Set Special header for Forwarding
