@@ -100,7 +100,11 @@ class Residentials extends RouteHandlerAbstract
         // Set User as the caller
         $caller = new ResidentialAgent($this->agi, $residential);
         $this->channelInfo->setChannelCaller($caller);
-        $this->channelInfo->setChannelOrigin($caller);
+
+        // If this call is not being forwarded, residential is also the origin
+        if ($this->agi->getRedirecting('count') == 0) {
+            $this->channelInfo->setChannelOrigin($caller);
+        }
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {

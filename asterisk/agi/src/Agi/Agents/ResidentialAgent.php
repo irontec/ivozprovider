@@ -69,6 +69,19 @@ class ResidentialAgent implements AgentInterface
             }
         }
 
+        if (!isset($ddi)) {
+            // Allow diversion from any company DDI
+            $callerIdNum = $this->agi->getRedirecting('from-num');
+
+            foreach ($companyDDIs as $companyDDI) {
+                if ($callerIdNum === $companyDDI->getDdie164()) {
+                    $this->agi->notice("Residential %s presented diversion matches company DDI %s", $this->residential, $companyDDI);
+                    $ddi = $companyDDI;
+                    break;
+                }
+            }
+        }
+
         // Use fallback outgoing DDI
         if (empty($ddi)) {
             $ddi = $this->residential->getOutgoingDDI();

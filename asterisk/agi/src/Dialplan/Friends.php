@@ -104,7 +104,11 @@ class Friends extends RouteHandlerAbstract
         // Set Friend as the caller
         $caller = new FriendAgent($this->agi, $friend);
         $this->channelInfo->setChannelCaller($caller);
-        $this->channelInfo->setChannelOrigin($caller);
+
+        // If this call is not being forwarded, residential is also the origin
+        if ($this->agi->getRedirecting('count') == 0) {
+            $this->channelInfo->setChannelOrigin($caller);
+        }
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $friend, $exten);

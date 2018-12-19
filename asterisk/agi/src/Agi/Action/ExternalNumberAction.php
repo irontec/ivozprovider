@@ -84,16 +84,16 @@ class ExternalNumberAction
 
         // Set origin presentation
         if (!is_null($origin)) {
-            $originDddi = $origin->getOutgoingDdi($number);
+            $originDdi = $origin->getOutgoingDdi($number);
             // No valid DDI for this outgoing call!!
-            if (!$originDddi) {
+            if (!$originDdi) {
                 $this->agi->error("%s has not OutgoingDDI configured", $origin);
                 $this->agi->hangup();
                 return;
             }
 
             // Set origin presentation
-            $this->agi->setCallerIdNum($originDddi->getDdie164());
+            $this->agi->setCallerIdNum($originDdi->getDdie164());
         }
 
         // Add caller redirection information
