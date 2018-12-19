@@ -386,5 +386,14 @@ class Wrapper
         return "";
     }
 
+    public function getDialedNumber()
+    {
+        $dialedNumber = $this->getVariable('DIALEDPEERNUMBER');
+
+        $dialedNumberParts = explode('@', $dialedNumber);
+
+        return array_shift($dialedNumberParts);
+    }
+
 }
 

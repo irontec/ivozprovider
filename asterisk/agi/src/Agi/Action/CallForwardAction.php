@@ -1,6 +1,7 @@
 <?php
 namespace Agi\Action;
 
+use Agi\Agents\UserAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -81,6 +82,11 @@ class CallForwardAction
         // Some CLI information
         $this->agi->notice("Processing %s call forward", $this->cfw->getCallForwardType());
 
+        // Use Redirecting user as caller on following routes
+        $user = $this->cfw->getUser();
+        $caller = new UserAgent($this->agi, $user);
+        $this->channelInfo->setChannelCaller($caller);
+
         /**
          * Set Diversion reason based on current Call Forward settings
          *
@@ -111,15 +117,11 @@ class CallForwardAction
             return;
         }
 
-        // Use Redirecting user as caller on following routes
-        $caller = $this->cfw->getUser();
-        $this->channelInfo->setChannelCaller($caller);
+        // Set as diversion number the user extension
+        $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
+        $this->agi->setRedirecting('from-name', $user->getFullName());
 
         if ($this->cfw->getTargetType() == RouterAction::Voicemail) {
-            // Set as diversion number the user extension
-            $this->agi->setRedirecting('from-num,i', $caller->getExtensionNumber());
-            $this->agi->setRedirecting('from-tag,i', $caller->getExtensionNumber());
-            $this->agi->setRedirecting('from-name', $caller->getFullName());
 
             $this->voiceMailAction
                 ->setVoiceMail($this->cfw->getVoiceMailUser())
@@ -127,12 +129,6 @@ class CallForwardAction
                 ->process();
 
         } else if ($this->cfw->getTargetType() == RouterAction::Extension) {
-            // Set as diversion number the user extension
-            $this->agi->setRedirecting('from-num,i', $caller->getExtensionNumber());
-            $this->agi->setRedirecting('from-tag,i', $caller->getExtensionNumber());
-            $this->agi->setRedirecting('from-name',  $caller->getFullName());
-
-            // Route to destination
             $this->routerAction
                 ->setRouteType($this->cfw->getTargetType())
                 ->setRouteExtension($this->cfw->getExtension())
@@ -141,11 +137,6 @@ class CallForwardAction
                 ->route();
 
         } else if ($this->cfw->getTargetType() == RouterAction::External) {
-            // Set as diversion number the user Outgoing DDI
-            $this->agi->setRedirecting('from-num,i', $caller->getOutgoingDDINumber());
-            $this->agi->setRedirecting('from-tag,i', $caller->getExtensionNumber());
-            $this->agi->setRedirecting('from-name',  $caller->getFullName());
-
             // Route to destination
             $this->routerAction
                 ->setRouteType($this->cfw->getTargetType())

@@ -92,7 +92,7 @@ class ExternalFilterAction
         }
 
         // Some feedback for the asterisk cli
-        $this->agi->notice("Procesing Holiday filter %s for DDI %s", $filter, $ddi);
+        $this->agi->notice("Processing Holiday filter %s for DDI %s", $filter, $ddi);
 
         // Play holiday locution
         if (!empty($this->eventLocution)) {
@@ -129,7 +129,7 @@ class ExternalFilterAction
         }
 
         // Some feedback for the asterisk cli
-        $this->agi->notice("Procesing OutOfSchedule filter %s for DDI %s", $filter, $ddi);
+        $this->agi->notice("Processing OutOfSchedule filter %s for DDI %s", $filter, $ddi);
 
         // Play holiday locution
         $this->agi->playbackLocution($this->filter->getOutOfScheduleLocution());

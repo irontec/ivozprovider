@@ -1,6 +1,7 @@
 <?php
 namespace Agi\Action;
 
+use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -31,9 +32,9 @@ class CallForwardResidentialAction
     protected $cfw;
 
     /**
-     * @var ExternalResidentialCallAction
+     * @var ExternalNumberAction
      */
-    protected $externalResidentialCallAction;
+    protected $externalNumberAction;
 
     /**
      * @var VoiceMailAction
@@ -45,19 +46,19 @@ class CallForwardResidentialAction
      *
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
-     * @param RouterAction $routerAction
+     * @param ExternalNumberAction $externalNumberAction
      * @param VoiceMailAction $voiceMailAction
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
-        ExternalResidentialCallAction $externalResidentialCallAction,
+        ExternalNumberAction $externalNumberAction,
         VoiceMailAction $voiceMailAction
     )
     {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
-        $this->externalResidentialCallAction = $externalResidentialCallAction;
+        $this->externalNumberAction = $externalNumberAction;
         $this->voiceMailAction = $voiceMailAction;
     }
 
@@ -112,8 +113,12 @@ class CallForwardResidentialAction
         }
 
         // Use Redirecting user as caller on following routes
-        $caller = $this->cfw->getResidentialDevice();
+        $residential = $this->cfw->getResidentialDevice();
+        $caller = new ResidentialAgent($this->agi, $residential);
         $this->channelInfo->setChannelCaller($caller);
+
+        // Set as diversion number the user extension
+        $this->agi->setRedirecting('from-num', $residential->getOutgoingDdiNumber());
 
         if ($this->cfw->getTargetType() == RouterAction::Voicemail) {
             // Set as diversion number the user extension
@@ -123,11 +128,9 @@ class CallForwardResidentialAction
                 ->processResidential();
 
         } else if ($this->cfw->getTargetType() == RouterAction::External) {
-            // Set as diversion number the user extension
-            $this->agi->setRedirecting('from-num', $caller->getOutgoingDDINumber());
 
             // Route to destination
-            $this->externalResidentialCallAction
+            $this->externalNumberAction
                 ->setDestination($this->cfw->getNumberValueE164())
                 ->process();
         }
