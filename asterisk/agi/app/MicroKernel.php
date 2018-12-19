@@ -88,9 +88,13 @@ class MicroKernel extends Kernel
 
         $this->registerCommand($uri);
 
-        /** @var \Dialplan\RouteHandlerAbstract $routeHandler */
-        $routeHandler = $this->container->get($uri);
-        $routeHandler->process();
+        try {
+            /** @var \Dialplan\RouteHandlerAbstract $routeHandler */
+            $routeHandler = $this->container->get($uri);
+            $routeHandler->process();
+        } catch (\Exception $e) {
+            $this->fastagi->error($e->getMessage());
+        }
 
         return new Response('');
     }
