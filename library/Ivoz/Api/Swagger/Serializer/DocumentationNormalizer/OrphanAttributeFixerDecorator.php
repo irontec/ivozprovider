@@ -57,7 +57,10 @@ class OrphanAttributeFixerDecorator implements NormalizerInterface
             }
 
             foreach ($entityDefinition['properties'] as $propertyName => $property) {
-                $propertyMetadata = $this->propertyMetadataFactory->create($fqdn, $propertyName);
+                $propertyMetadata = $this->propertyMetadataFactory->create(
+                    $fqdn,
+                    $propertyName
+                );
 
                 $propertyType = $propertyMetadata->getType();
                 if (!$propertyType) {

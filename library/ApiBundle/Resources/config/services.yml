@@ -204,9 +204,17 @@ services:
     arguments:
       $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataLinkFactory.inner'
 
-  Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataOverwriteFactory:
+
+  Ivoz\Api\Swagger\Metadata\Property\Factory\PropertySwaggerContextFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'
     decoration_priority: 2
+    arguments:
+      $classMetadataFactory: '@doctrine.orm.default_entity_manager.metadata_factory'
+      $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertySwaggerContextFactory.inner'
+
+  Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataOverwriteFactory:
+    decorates: 'api_platform.metadata.property.metadata_factory'
+    decoration_priority: 3
     arguments:
       $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataOverwriteFactory.inner'
       $reader: '@annotation_reader'
@@ -251,9 +259,16 @@ services:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator.inner'
 
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 8
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator.inner'
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 7
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator.inner'
