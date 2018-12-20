@@ -29,7 +29,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Limits both user generated and external received calls to this value (0 for unlimited).")
+        text: _("Limits external incoming and outgoing calls to this value (0 for unlimited).")
         label: _("Need help?")
     defaultTimezone:
       title: _('Default timezone')
