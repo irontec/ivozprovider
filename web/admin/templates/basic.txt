@@ -196,17 +196,17 @@
                 <div class="tr bold center">
                     <div class="th">Costes fijos</div>
                     <div class="td bold">
-                        {{fixedCostsTotals}} €
+                        {{fixedCostsTotals}} {{invoice.currency}}
                     </div>
                 </div>
                 {{/if}}
                 <div class="tr bold center">
                     <div class="th">Llamadas</div>
-                    <div class="td bold">{{callData.callSumaryTotals.totalPrice}} €</div>
+                    <div class="td bold">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>
                 </div>
                 <div class="tr bold">
                     <div class="th">Total:</div>
-                    <div class="td bold">{{totals.totalPrice}} €</div>
+                    <div class="td bold">{{totals.totalPrice}} {{invoice.currency}}</div>
                 </div>
                 <div class="tr bold">
                     <div class="th">IVA aplicable</div>
@@ -214,11 +214,11 @@
                 </div>
                 <div class="tr bold">
                     <div class="th">IVA</div>
-                    <div class="td bold">{{totals.totalTaxes}} €</div>
+                    <div class="td bold">{{totals.totalTaxes}} {{invoice.currency}}</div>
                 </div>
                 <div class="tr bold">
                     <div class="th">Total con IVA</div>
-                    <div class="td bold">{{totals.totalWithTaxes}} €</div>
+                    <div class="td bold">{{totals.totalWithTaxes}} {{invoice.currency}}</div>
                 </div>
             </div>
         </div>
@@ -245,16 +245,16 @@
                                     <div class="multiline">{{description}}</div>
                                 {{/if}}
                             </div>
-                            <div class="td">{{cost}} €</div>
+                            <div class="td">{{cost}} {{currency}}</div>
                             <div class="td">{{quantity}}</div>
-                            <div class="td">{{subTotal}} €</div>
+                            <div class="td">{{subTotal}} {{currency}}</div>
                         </div>
                     {{/each}}
                     <div class="tr noBorder">
                         <div class="td noBorder"></div>
                         <div class="td noBorder"></div>
                         <div class="th" style="border-right: 1px solid black;">Total:</div>
-                        <div class="td bold">{{fixedCostsTotals}} €</div>
+                        <div class="td bold">{{fixedCostsTotals}} {{invoice.currency}}</div>
                     </div>
                 </div>
             </div>
@@ -276,14 +276,14 @@
                     <div class="td white">{{type}}</div>
                     <div class="td white">{{numberOfCalls}}</div>
                     <div class="td white">{{totalCallsDurationFormatted}}</div>
-                    <div class="td white">{{totalPrice}} €</div>
+                    <div class="td white">{{totalPrice}} {{currency}}</div>
                 </div>
                 {{/each}}
                 <div class="tr bold">
                     <div class="th" style="border-right: 1px solid black;">Totales:</div>
                     <div class="td bold" style="border-left: 1px solid black;">{{callData.callSumaryTotals.numberOfCalls}}</div>
                     <div class="td bold">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</div>
-                    <div class="td bold">{{callData.callSumaryTotals.totalPrice}} €</div>
+                    <div class="td bold">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>
                 </div>
             </div>
         </div>
