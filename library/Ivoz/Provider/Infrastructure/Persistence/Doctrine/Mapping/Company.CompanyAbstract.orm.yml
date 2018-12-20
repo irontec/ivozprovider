@@ -227,6 +227,17 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    currency:
+      targetEntity: \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        currencyId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
     transformationRuleSet:
       targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
       cascade: {  }

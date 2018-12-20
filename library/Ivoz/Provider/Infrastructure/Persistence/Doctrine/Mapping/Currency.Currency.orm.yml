@@ -1,0 +1,14 @@
+Ivoz\Provider\Domain\Model\Currency\Currency:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CurrencyDoctrineRepository
+  type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
+  table: Currencies
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
