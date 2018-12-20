@@ -48,6 +48,11 @@ abstract class CarrierAbstract
      */
     protected $transformationRuleSet;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    protected $currency;
+
 
     use ChangelogTrait;
 
@@ -137,6 +142,7 @@ abstract class CarrierAbstract
             ->setCalculateCost($dto->getCalculateCost())
             ->setBrand($dto->getBrand())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
+            ->setCurrency($dto->getCurrency())
         ;
 
         $self->sanitizeValues();
@@ -164,7 +170,8 @@ abstract class CarrierAbstract
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
             ->setBrand($dto->getBrand())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet());
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
+            ->setCurrency($dto->getCurrency());
 
 
 
@@ -186,7 +193,8 @@ abstract class CarrierAbstract
             ->setBalance(self::getBalance())
             ->setCalculateCost(self::getCalculateCost())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth));
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
     }
 
     /**
@@ -201,7 +209,8 @@ abstract class CarrierAbstract
             'balance' => self::getBalance(),
             'calculateCost' => self::getCalculateCost(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -393,6 +402,30 @@ abstract class CarrierAbstract
     public function getTransformationRuleSet()
     {
         return $this->transformationRuleSet;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     // @codeCoverageIgnoreEnd

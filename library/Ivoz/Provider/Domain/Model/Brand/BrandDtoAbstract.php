@@ -108,6 +108,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $defaultTimezone;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto[] | null
      */
     private $companies = null;
@@ -175,7 +180,8 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'invoice' => ['nif','postalAddress','postalCode','town','province','country','registryData'],
             'domainId' => 'domain',
             'languageId' => 'language',
-            'defaultTimezoneId' => 'defaultTimezone'
+            'defaultTimezoneId' => 'defaultTimezone',
+            'currencyId' => 'currency'
         ];
     }
 
@@ -208,6 +214,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'domain' => $this->getDomain(),
             'language' => $this->getLanguage(),
             'defaultTimezone' => $this->getDefaultTimezone(),
+            'currency' => $this->getCurrency(),
             'companies' => $this->getCompanies(),
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
@@ -227,6 +234,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
         $this->defaultTimezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getDefaultTimezoneId());
+        $this->currency = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Currency\\Currency', $this->getCurrencyId());
         if (!is_null($this->companies)) {
             $items = $this->getCompanies();
             $this->companies = [];
@@ -800,6 +808,52 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getDefaultTimezoneId()
     {
         if ($dto = $this->getDefaultTimezone()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

@@ -154,6 +154,11 @@ abstract class CompanyAbstract
     protected $country;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    protected $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
     protected $transformationRuleSet;
@@ -317,6 +322,7 @@ abstract class CompanyAbstract
             ->setDomain($dto->getDomain())
             ->setApplicationServer($dto->getApplicationServer())
             ->setCountry($dto->getCountry())
+            ->setCurrency($dto->getCurrency())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
@@ -372,6 +378,7 @@ abstract class CompanyAbstract
             ->setDomain($dto->getDomain())
             ->setApplicationServer($dto->getApplicationServer())
             ->setCountry($dto->getCountry())
+            ->setCurrency($dto->getCurrency())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
@@ -421,6 +428,7 @@ abstract class CompanyAbstract
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer::entityToDto(self::getApplicationServer(), $depth))
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
@@ -463,6 +471,7 @@ abstract class CompanyAbstract
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
@@ -1213,6 +1222,30 @@ abstract class CompanyAbstract
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

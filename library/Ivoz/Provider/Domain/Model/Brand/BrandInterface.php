@@ -31,6 +31,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getLanguageCode();
 
     /**
+     * @return string
+     */
+    public function getCurrencySymbol();
+
+    /**
      * Get the size in bytes used by the recordings on this brand
      *
      */
@@ -143,6 +148,22 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
      */
     public function getDefaultTimezone();
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency();
 
     /**
      * Set logo

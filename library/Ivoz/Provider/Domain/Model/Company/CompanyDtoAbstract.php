@@ -153,6 +153,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $country;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
@@ -288,6 +293,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'domainId' => 'domain',
             'applicationServerId' => 'applicationServer',
             'countryId' => 'country',
+            'currencyId' => 'currency',
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
@@ -332,6 +338,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'domain' => $this->getDomain(),
             'applicationServer' => $this->getApplicationServer(),
             'country' => $this->getCountry(),
+            'currency' => $this->getCurrency(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
@@ -365,6 +372,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->applicationServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer', $this->getApplicationServerId());
         $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
+        $this->currency = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Currency\\Currency', $this->getCurrencyId());
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
         $this->outgoingDdiRule = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule', $this->getOutgoingDdiRuleId());
@@ -1271,6 +1279,52 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

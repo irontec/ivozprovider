@@ -28,6 +28,11 @@ abstract class RatingPlanGroupAbstract
      */
     protected $brand;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    protected $currency;
+
 
     use ChangelogTrait;
 
@@ -123,6 +128,7 @@ abstract class RatingPlanGroupAbstract
 
         $self
             ->setBrand($dto->getBrand())
+            ->setCurrency($dto->getCurrency())
         ;
 
         $self->sanitizeValues();
@@ -156,7 +162,8 @@ abstract class RatingPlanGroupAbstract
         $this
             ->setName($name)
             ->setDescription($description)
-            ->setBrand($dto->getBrand());
+            ->setBrand($dto->getBrand())
+            ->setCurrency($dto->getCurrency());
 
 
 
@@ -176,7 +183,8 @@ abstract class RatingPlanGroupAbstract
             ->setNameEs(self::getName()->getEs())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
     }
 
     /**
@@ -189,7 +197,8 @@ abstract class RatingPlanGroupAbstract
             'nameEs' => self::getName()->getEs(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -216,6 +225,30 @@ abstract class RatingPlanGroupAbstract
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

@@ -19,6 +19,11 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getCgrSubject();
 
     /**
+     * @return string
+     */
+    public function getCurrencySymbol();
+
+    /**
      * Get description
      *
      * @return string
@@ -84,6 +89,22 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
     public function getTransformationRuleSet();
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency();
 
     /**
      * Add outgoingRouting

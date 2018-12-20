@@ -53,6 +53,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $transformationRuleSet;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
      */
     private $outgoingRoutings = null;
@@ -102,7 +107,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'calculateCost' => 'calculateCost',
             'id' => 'id',
             'brandId' => 'brand',
-            'transformationRuleSetId' => 'transformationRuleSet'
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'currencyId' => 'currency'
         ];
     }
 
@@ -120,6 +126,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
+            'currency' => $this->getCurrency(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'outgoingRoutingsRelCarriers' => $this->getOutgoingRoutingsRelCarriers(),
             'servers' => $this->getServers(),
@@ -135,6 +142,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
+        $this->currency = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Currency\\Currency', $this->getCurrencyId());
         if (!is_null($this->outgoingRoutings)) {
             $items = $this->getOutgoingRoutings();
             $this->outgoingRoutings = [];
@@ -420,6 +428,52 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

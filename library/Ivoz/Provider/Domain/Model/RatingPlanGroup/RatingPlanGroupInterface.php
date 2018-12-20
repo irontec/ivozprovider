@@ -37,6 +37,22 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function getBrand();
 
     /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency();
+
+    /**
      * Set name
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name

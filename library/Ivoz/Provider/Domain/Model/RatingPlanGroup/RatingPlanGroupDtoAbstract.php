@@ -43,6 +43,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     private $brand;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] | null
      */
     private $ratingPlan = null;
@@ -68,7 +73,8 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
-            'brandId' => 'brand'
+            'brandId' => 'brand',
+            'currencyId' => 'currency'
         ];
     }
 
@@ -88,6 +94,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
                 'es' => $this->getDescriptionEs()
             ],
             'brand' => $this->getBrand(),
+            'currency' => $this->getCurrency(),
             'ratingPlan' => $this->getRatingPlan()
         ];
     }
@@ -98,6 +105,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        $this->currency = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Currency\\Currency', $this->getCurrencyId());
         if (!is_null($this->ratingPlan)) {
             $items = $this->getRatingPlan();
             $this->ratingPlan = [];
@@ -261,6 +269,52 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 
