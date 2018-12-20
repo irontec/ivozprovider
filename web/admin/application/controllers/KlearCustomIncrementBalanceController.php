@@ -1,10 +1,13 @@
 <?php
 
-use Ivoz\Provider\Domain\Service\Company\IncrementBalance;
-use Ivoz\Provider\Domain\Service\Company\DecrementBalance;
-use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance as IncrementCarrierBalance;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Service\Carrier\DecrementBalance as DecrementCarrierBalance;
+use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance as IncrementCarrierBalance;
 use Ivoz\Provider\Domain\Service\Company\AbstractBalanceOperation;
+use Ivoz\Provider\Domain\Service\Company\DecrementBalance;
+use Ivoz\Provider\Domain\Service\Company\IncrementBalance;
 
 class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 {
@@ -51,8 +54,16 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 
         /** @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company */
         $company = $this->dataGateway->find(
-            \Ivoz\Provider\Domain\Model\Company\Company::class,
+            Company::class,
             $id
+        );
+
+        // Get company currency symbol
+        $currencySymbol = $this->dataGateway->remoteProcedureCall(
+            Company::class,
+            $company->getId(),
+            'getCurrencySymbol',
+            []
         );
 
         if (($this->getParam("sent"))) {
@@ -80,7 +91,8 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 
         return $this->_showDialog(
             $company->getName(),
-            $company->getId()
+            $company->getId(),
+            $currencySymbol
         );
     }
 
@@ -94,9 +106,9 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             return $this->_dispatch( $message, $buttons);
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier */
+        /** @var CarrierInterface $carrier */
         $carrier = $this->dataGateway->find(
-            \Ivoz\Provider\Domain\Model\Carrier\Carrier::class,
+            Carrier::class,
             $id
         );
 
@@ -123,13 +135,22 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             return $this->_dispatch( $reponseMessage, $buttons);
         }
 
+        // Get company currency symbol
+        $currencySymbol = $this->dataGateway->remoteProcedureCall(
+            Carrier::class,
+            $carrier->getId(),
+            'getCurrencySymbol',
+            []
+        );
+
         return $this->_showDialog(
             $carrier->getName(),
-            $carrier->getId()
+            $carrier->getId(),
+            $currencySymbol
         );
     }
 
-    private function _showDialog($name, $id)
+    private function _showDialog($name, $id, $symbol)
     {
         $styles = '
             <style>
@@ -198,7 +219,8 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             . '</label>'
             . $operationSelector
             . $inputFld
-            . ' €'
+            . ' '
+            . $symbol
             . '</p>'
             . '</form>';
 

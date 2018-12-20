@@ -43,6 +43,7 @@ production:
           invoice.registryData: true
           language: true
           defaultTimezone: true
+          currency: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -87,6 +88,7 @@ production:
           invoice.nif: true
           logo: true
           defaultTimezone: true
+          currency: true
           language: true
           invoice.postalAddress: true
           invoice.postalCode: true
@@ -113,10 +115,11 @@ production:
             maxCalls: 1
         group2:
           label: _("Locales")
-          colsPerRow: 2
+          colsPerRow: 3
           fields:
             defaultTimezone: 1
             language: 1
+            currency: 1
         group3:
           colsPerRow: 2
           label: _("Invoice data")

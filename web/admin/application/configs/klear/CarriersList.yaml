@@ -49,6 +49,7 @@ production:
         blacklist:
           externallyRated: true
           calculateCost: true
+          currency: true
           billingMethod: true
       options:
         title: _("Options")
@@ -89,6 +90,7 @@ production:
             transformationRuleSet: 3
             externallyRated: 3
             calculateCost: 3
+            currency: 3
         group2:
           label: _("Quality measuring")
           colsPerRow: 2

@@ -14,7 +14,7 @@ production:
             fields:
               - name
               - cost
-            template: '%name% - %cost% €'
+            template: '%name% - %cost%'
           order:
             FixedCost.description: asc
     invoice:

@@ -12,13 +12,18 @@ production:
       trim: both
       required: true
       defaultValue: "0.0000"
-      sufix: "€"
       info:
         type: box
         position: left
         icon: help
         text: _("Use point as decimal delimiter - e.g. 0.02")
         label: _("Need help?")
+    connectFeeCurrency:
+      title: _('Connection fee')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_DestinationRates
+        method: getConnectFee
     cost:
       title: _('Per minute rate')
       type: text
@@ -26,13 +31,18 @@ production:
       trim: both
       required: true
       defaultValue: "0.0000"
-      sufix: "€"
       info:
         type: box
         position: left
         icon: help
         text: _("Use point as decimal delimiter - e.g. 0.02")
         label: _("Need help?")
+    costCurrency:
+      title: _('Per minute rate')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_DestinationRates
+        method: getCost
     rateIncrement:
       title: _('Charge period')
       type: number

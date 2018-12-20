@@ -28,7 +28,6 @@ production:
       title: _('Cost')
       type: text
       pattern: "^[0-9]{1,6}([.][0-9]{1,4})?$"
-      sufix: "€"
       required: true
 staging:
   _extends: production

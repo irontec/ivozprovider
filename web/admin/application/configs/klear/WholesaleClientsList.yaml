@@ -45,6 +45,7 @@ production:
           countryName: true
           registryData: true
           defaultTimezone: true
+          currency: true
           mediaRelaySets: true
           language: true
           balance: true
@@ -129,6 +130,7 @@ production:
             language: 4
             defaultTimezone: 4
             transformationRuleSet: 8
+            currency: 4
         group3:
           colsPerRow: 12
           label: _("Wholesale specific")
@@ -186,7 +188,8 @@ production:
           fields:
             language: 4
             defaultTimezone: 4
-            transformationRuleSet: 4
+            transformationRuleSet: 8
+            currency: 4
         group3:
           colsPerRow: 12
           label: _("Wholesale specific")
