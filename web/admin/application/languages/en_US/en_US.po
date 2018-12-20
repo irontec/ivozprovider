@@ -1308,11 +1308,9 @@ msgid "Leave empty to use the suggested default"
 msgstr "Leave empty to use the suggested default"
 
 msgid ""
-"Limits both user generated and external received calls to this value (0 for "
-"unlimited)."
+"Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
-"Limits both user generated and external received calls to this value (0 for "
-"unlimited)."
+"Limits external incoming and outgoing calls to this value (0 for unlimited)."
 
 msgid ""
 "Limits the number of received calls if the user is handling simultaneously "
