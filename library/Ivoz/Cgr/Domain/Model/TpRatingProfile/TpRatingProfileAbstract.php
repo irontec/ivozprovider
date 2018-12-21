@@ -45,9 +45,9 @@ abstract class TpRatingProfileAbstract
 
     /**
      * column: activation_time
-     * @var \DateTime
+     * @var string
      */
-    protected $activationTime;
+    protected $activationTime = '1970-01-01 00:00:00';
 
     /**
      * column: rating_plan_tag
@@ -442,17 +442,14 @@ abstract class TpRatingProfileAbstract
     /**
      * Set activationTime
      *
-     * @param \DateTime $activationTime
+     * @param string $activationTime
      *
      * @return self
      */
     protected function setActivationTime($activationTime)
     {
         Assertion::notNull($activationTime, 'activationTime value "%s" is null, but non null value was expected.');
-        $activationTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $activationTime,
-            'CURRENT_TIMESTAMP'
-        );
+        Assertion::maxLength($activationTime, 32, 'activationTime value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->activationTime = $activationTime;
 
@@ -462,7 +459,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return string
      */
     public function getActivationTime()
     {

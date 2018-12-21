@@ -57,7 +57,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return string
      */
     public function getActivationTime();
 
