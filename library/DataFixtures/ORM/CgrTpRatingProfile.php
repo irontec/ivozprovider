@@ -31,9 +31,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
             $this->setTenant('b1');
             $this->setCategory('call');
             $this->setSubject('c1');
-            $this->setActivationTime(
-                new \DateTime('2018-01-01 10:10:10')
-            );
+            $this->setActivationTime('2018-01-01 10:10:10');
             $this->setRatingPlanTag('b1rp1');
             $this->setCreatedAt(
                 new \DateTime('2018-01-01 10:10:10')
@@ -55,9 +53,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
             $this->setTenant('b1');
             $this->setCategory('call');
             $this->setSubject('c1rt1');
-            $this->setActivationTime(
-                new \DateTime('2018-02-02 20:20:20')
-            );
+            $this->setActivationTime('2018-02-02 20:20:20');
             $this->setRatingPlanTag('b1rp2');
             $this->setCreatedAt(
                 new \DateTime('2018-02-02 20:20:20')
