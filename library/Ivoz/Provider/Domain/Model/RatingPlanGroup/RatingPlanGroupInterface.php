@@ -21,6 +21,16 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function getCgrTag();
 
     /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
+     * @return string
+     */
+    public function getCurrencySymbol();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

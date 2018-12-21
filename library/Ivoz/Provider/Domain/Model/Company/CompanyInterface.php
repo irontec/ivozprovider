@@ -49,6 +49,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCurrencySymbol();
 
     /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
      * brief: Get musicclass for given company
      *
      * If no specific company music on hold is found, brand music will be used.

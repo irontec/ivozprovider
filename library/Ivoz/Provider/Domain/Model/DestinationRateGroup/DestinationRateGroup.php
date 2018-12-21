@@ -83,4 +83,16 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
         }
         return $currency->getSymbol();
     }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden()
+    {
+        $currency = $this->getCurrency();
+        if (!$currency) {
+            return $this->getBrand()->getCurrencyIden();
+        }
+        return $currency->getIden();
+    }
 }

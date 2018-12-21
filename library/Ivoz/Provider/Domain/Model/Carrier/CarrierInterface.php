@@ -24,6 +24,11 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getCurrencySymbol();
 
     /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
      * Get description
      *
      * @return string

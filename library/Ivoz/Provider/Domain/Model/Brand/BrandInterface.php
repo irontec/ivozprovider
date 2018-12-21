@@ -36,6 +36,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCurrencySymbol();
 
     /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
      * Get the size in bytes used by the recordings on this brand
      *
      */

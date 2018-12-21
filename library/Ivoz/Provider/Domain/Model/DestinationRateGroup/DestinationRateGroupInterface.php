@@ -38,6 +38,11 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getCurrencySymbol();
 
     /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
      * Get status
      *
      * @return string | null
