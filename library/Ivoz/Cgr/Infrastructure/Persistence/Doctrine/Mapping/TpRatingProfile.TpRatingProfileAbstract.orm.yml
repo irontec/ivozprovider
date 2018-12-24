@@ -60,10 +60,11 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
       options:
         fixed: false
     activationTime:
-      type: datetime
+      type: string
       nullable: false
+      length: 32
       options:
-        default: CURRENT_TIMESTAMP
+        default: "1970-01-01 00:00:00"
       column: activation_time
     ratingPlanTag:
       type: string
