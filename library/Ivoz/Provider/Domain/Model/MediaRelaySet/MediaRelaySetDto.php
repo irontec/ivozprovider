@@ -6,6 +6,7 @@ class MediaRelaySetDto extends MediaRelaySetDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

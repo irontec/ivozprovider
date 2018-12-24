@@ -6,6 +6,7 @@ class OutgoingDdiRulesPatternDto extends OutgoingDdiRulesPatternDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

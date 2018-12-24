@@ -7,6 +7,7 @@ class FriendDto extends FriendDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

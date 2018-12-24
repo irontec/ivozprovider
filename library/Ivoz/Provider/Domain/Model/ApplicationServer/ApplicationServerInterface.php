@@ -13,16 +13,6 @@ interface ApplicationServerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return self
-     */
-    public function setIp($ip);
-
-    /**
      * Get ip
      *
      * @return string
@@ -30,19 +20,9 @@ interface ApplicationServerInterface extends LoggableEntityInterface
     public function getIp();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
-
-    /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 }

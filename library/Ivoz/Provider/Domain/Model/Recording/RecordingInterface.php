@@ -19,31 +19,11 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     public function getFileObjects();
 
     /**
-     * @deprecated
-     * Set callid
-     *
-     * @param string $callid
-     *
-     * @return self
-     */
-    public function setCallid($callid = null);
-
-    /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
-
-    /**
-     * @deprecated
-     * Set calldate
-     *
-     * @param \DateTime $calldate
-     *
-     * @return self
-     */
-    public function setCalldate($calldate);
 
     /**
      * Get calldate
@@ -53,31 +33,11 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     public function getCalldate();
 
     /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type);
-
-    /**
      * Get type
      *
      * @return string
      */
     public function getType();
-
-    /**
-     * @deprecated
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return self
-     */
-    public function setDuration($duration);
 
     /**
      * Get duration
@@ -87,53 +47,23 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     public function getDuration();
 
     /**
-     * @deprecated
-     * Set caller
-     *
-     * @param string $caller
-     *
-     * @return self
-     */
-    public function setCaller($caller = null);
-
-    /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
-     * @deprecated
-     * Set callee
-     *
-     * @param string $callee
-     *
-     * @return self
-     */
-    public function setCallee($callee = null);
-
-    /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
-     * @deprecated
-     * Set recorder
-     *
-     * @param string $recorder
-     *
-     * @return self
-     */
-    public function setRecorder($recorder = null);
-
-    /**
      * Get recorder
      *
-     * @return string
+     * @return string | null
      */
     public function getRecorder();
 

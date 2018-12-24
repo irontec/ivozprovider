@@ -23,16 +23,6 @@ interface TpDestinationRateInterface extends EntityInterface
     public function setGroupIntervalStart($groupIntervalStart);
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
@@ -40,65 +30,25 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getTpid();
 
     /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
-
-    /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 
     /**
-     * @deprecated
-     * Set destinationsTag
-     *
-     * @param string $destinationsTag
-     *
-     * @return self
-     */
-    public function setDestinationsTag($destinationsTag = null);
-
-    /**
      * Get destinationsTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationsTag();
 
     /**
-     * @deprecated
-     * Set ratesTag
-     *
-     * @param string $ratesTag
-     *
-     * @return self
-     */
-    public function setRatesTag($ratesTag = null);
-
-    /**
      * Get ratesTag
      *
-     * @return string
+     * @return string | null
      */
     public function getRatesTag();
-
-    /**
-     * @deprecated
-     * Set roundingMethod
-     *
-     * @param string $roundingMethod
-     *
-     * @return self
-     */
-    public function setRoundingMethod($roundingMethod);
 
     /**
      * Get roundingMethod
@@ -108,31 +58,11 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getRoundingMethod();
 
     /**
-     * @deprecated
-     * Set roundingDecimals
-     *
-     * @param integer $roundingDecimals
-     *
-     * @return self
-     */
-    public function setRoundingDecimals($roundingDecimals);
-
-    /**
      * Get roundingDecimals
      *
      * @return integer
      */
     public function getRoundingDecimals();
-
-    /**
-     * @deprecated
-     * Set maxCost
-     *
-     * @param string $maxCost
-     *
-     * @return self
-     */
-    public function setMaxCost($maxCost);
 
     /**
      * Get maxCost
@@ -142,31 +72,11 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getMaxCost();
 
     /**
-     * @deprecated
-     * Set maxCostStrategy
-     *
-     * @param string $maxCostStrategy
-     *
-     * @return self
-     */
-    public function setMaxCostStrategy($maxCostStrategy);
-
-    /**
      * Get maxCostStrategy
      *
      * @return string
      */
     public function getMaxCostStrategy();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

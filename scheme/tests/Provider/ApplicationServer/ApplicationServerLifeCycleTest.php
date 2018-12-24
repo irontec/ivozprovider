@@ -212,8 +212,11 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
     public function updating_applicationServer_updates_kamDispatcher()
     {
         $as = $this->addApplicationServer();
-        $as->setName('UpdatedName')
-            ->setIp('127.2.2.127');
+        (function () {
+            $this
+                ->setName('UpdatedName')
+                ->setIp('127.2.2.127');
+        })->call($as);
 
         $kamDispatcherRepository = $this->em->getRepository(Dispatcher::class);
         $kamDispatcher = $kamDispatcherRepository->findOneBy([
@@ -251,8 +254,10 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         $this->mockInfraestructureServices(2);
 
         $as = $this->addApplicationServer();
-        $as->setName('UpdatedName')
-            ->setIp('127.2.2.127');
+        (function () {
+            $this->setName('UpdatedName')
+                 ->setIp('127.2.2.127');
+        })->call($as);
 
         $kamDispatcherRepository = $this->em->getRepository(Dispatcher::class);
         $kamDispatcher = $kamDispatcherRepository->findOneBy([
@@ -277,7 +282,9 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         $applicationServerRepository = $this->em->getRepository(ApplicationServer::class);
         /** @var ApplicationServer $as */
         $as = $applicationServerRepository->find(1);
-        $as->setName('Something');
+        (function () {
+            $this->setName('Something');
+        })->call($as);
 
         $this->entityTools->persist($as, true);
     }

@@ -6,6 +6,7 @@ class IvrDto extends IvrDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

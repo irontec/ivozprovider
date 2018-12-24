@@ -13,16 +13,6 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set grp
-     *
-     * @param integer $grp
-     *
-     * @return self
-     */
-    public function setGrp($grp);
-
-    /**
      * Get grp
      *
      * @return integer
@@ -30,31 +20,11 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     public function getGrp();
 
     /**
-     * @deprecated
-     * Set ipAddr
-     *
-     * @param string $ipAddr
-     *
-     * @return self
-     */
-    public function setIpAddr($ipAddr = null);
-
-    /**
      * Get ipAddr
      *
-     * @return string
+     * @return string | null
      */
     public function getIpAddr();
-
-    /**
-     * @deprecated
-     * Set mask
-     *
-     * @param integer $mask
-     *
-     * @return self
-     */
-    public function setMask($mask);
 
     /**
      * Get mask
@@ -64,16 +34,6 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     public function getMask();
 
     /**
-     * @deprecated
-     * Set port
-     *
-     * @param integer $port
-     *
-     * @return self
-     */
-    public function setPort($port);
-
-    /**
      * Get port
      *
      * @return integer
@@ -81,19 +41,9 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
-
-    /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 

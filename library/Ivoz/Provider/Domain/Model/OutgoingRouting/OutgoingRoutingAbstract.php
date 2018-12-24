@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class OutgoingRoutingAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $type = 'group';
 
@@ -30,22 +30,22 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * comment: enum:static|lcr
-     * @var string
+     * @var string | null
      */
     protected $routingMode = 'static';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $prefix;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $forceClid = '0';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $clid;
 
@@ -271,14 +271,13 @@ abstract class OutgoingRoutingAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set type
      *
      * @param string $type
      *
      * @return self
      */
-    public function setType($type = null)
+    protected function setType($type = null)
     {
         if (!is_null($type)) {
         }
@@ -291,7 +290,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get type
      *
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -299,14 +298,13 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority)
+    protected function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
@@ -328,14 +326,13 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @deprecated
      * Set weight
      *
      * @param integer $weight
      *
      * @return self
      */
-    public function setWeight($weight)
+    protected function setWeight($weight)
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
@@ -357,14 +354,13 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @deprecated
      * Set routingMode
      *
      * @param string $routingMode
      *
      * @return self
      */
-    public function setRoutingMode($routingMode = null)
+    protected function setRoutingMode($routingMode = null)
     {
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -382,7 +378,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get routingMode
      *
-     * @return string
+     * @return string | null
      */
     public function getRoutingMode()
     {
@@ -390,14 +386,13 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @deprecated
      * Set prefix
      *
      * @param string $prefix
      *
      * @return self
      */
-    public function setPrefix($prefix = null)
+    protected function setPrefix($prefix = null)
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 25, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -411,7 +406,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -419,14 +414,13 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @deprecated
      * Set forceClid
      *
      * @param boolean $forceClid
      *
      * @return self
      */
-    public function setForceClid($forceClid = null)
+    protected function setForceClid($forceClid = null)
     {
         if (!is_null($forceClid)) {
             Assertion::between(intval($forceClid), 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
@@ -440,7 +434,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get forceClid
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getForceClid()
     {
@@ -448,14 +442,13 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @deprecated
      * Set clid
      *
      * @param string $clid
      *
      * @return self
      */
-    public function setClid($clid = null)
+    protected function setClid($clid = null)
     {
         if (!is_null($clid)) {
             Assertion::maxLength($clid, 25, 'clid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -469,7 +462,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get clid
      *
-     * @return string
+     * @return string | null
      */
     public function getClid()
     {
@@ -541,7 +534,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {

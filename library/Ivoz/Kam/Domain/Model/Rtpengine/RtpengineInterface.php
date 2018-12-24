@@ -15,31 +15,11 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null);
 
     /**
-     * @deprecated
-     * Set setid
-     *
-     * @param integer $setid
-     *
-     * @return self
-     */
-    public function setSetid($setid);
-
-    /**
      * Get setid
      *
      * @return integer
      */
     public function getSetid();
-
-    /**
-     * @deprecated
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return self
-     */
-    public function setUrl($url);
 
     /**
      * Get url
@@ -49,31 +29,11 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getUrl();
 
     /**
-     * @deprecated
-     * Set weight
-     *
-     * @param integer $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight);
-
-    /**
      * Get weight
      *
      * @return integer
      */
     public function getWeight();
-
-    /**
-     * @deprecated
-     * Set disabled
-     *
-     * @param boolean $disabled
-     *
-     * @return self
-     */
-    public function setDisabled($disabled);
 
     /**
      * Get disabled
@@ -83,16 +43,6 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getDisabled();
 
     /**
-     * @deprecated
-     * Set stamp
-     *
-     * @param \DateTime $stamp
-     *
-     * @return self
-     */
-    public function setStamp($stamp);
-
-    /**
      * Get stamp
      *
      * @return \DateTime
@@ -100,19 +50,9 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getStamp();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 

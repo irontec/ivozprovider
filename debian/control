@@ -64,9 +64,8 @@ Package: ivozprovider-profile-data
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: bind9
+Pre-Depends: bind9, mysql-server
 Depends: ivozprovider-profile-common (=${binary:Version}),
-    mysql-server,
     ivozprovider-scheme (=${binary:Version}),
     ivozprovider-balances (=${binary:Version}),
     libstring-crc32-perl,

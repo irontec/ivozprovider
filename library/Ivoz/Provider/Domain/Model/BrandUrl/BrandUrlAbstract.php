@@ -19,7 +19,7 @@ abstract class BrandUrlAbstract
     protected $url;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $klearTheme = '';
 
@@ -30,12 +30,12 @@ abstract class BrandUrlAbstract
     protected $urlType;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $name = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $userTheme = '';
 
@@ -225,14 +225,13 @@ abstract class BrandUrlAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set url
      *
      * @param string $url
      *
      * @return self
      */
-    public function setUrl($url)
+    protected function setUrl($url)
     {
         Assertion::notNull($url, 'url value "%s" is null, but non null value was expected.');
         Assertion::maxLength($url, 255, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -253,14 +252,13 @@ abstract class BrandUrlAbstract
     }
 
     /**
-     * @deprecated
      * Set klearTheme
      *
      * @param string $klearTheme
      *
      * @return self
      */
-    public function setKlearTheme($klearTheme = null)
+    protected function setKlearTheme($klearTheme = null)
     {
         if (!is_null($klearTheme)) {
             Assertion::maxLength($klearTheme, 200, 'klearTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -274,7 +272,7 @@ abstract class BrandUrlAbstract
     /**
      * Get klearTheme
      *
-     * @return string
+     * @return string | null
      */
     public function getKlearTheme()
     {
@@ -282,14 +280,13 @@ abstract class BrandUrlAbstract
     }
 
     /**
-     * @deprecated
      * Set urlType
      *
      * @param string $urlType
      *
      * @return self
      */
-    public function setUrlType($urlType)
+    protected function setUrlType($urlType)
     {
         Assertion::notNull($urlType, 'urlType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($urlType, 25, 'urlType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -316,14 +313,13 @@ abstract class BrandUrlAbstract
     }
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name = null)
+    protected function setName($name = null)
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -337,7 +333,7 @@ abstract class BrandUrlAbstract
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -345,14 +341,13 @@ abstract class BrandUrlAbstract
     }
 
     /**
-     * @deprecated
      * Set userTheme
      *
      * @param string $userTheme
      *
      * @return self
      */
-    public function setUserTheme($userTheme = null)
+    protected function setUserTheme($userTheme = null)
     {
         if (!is_null($userTheme)) {
             Assertion::maxLength($userTheme, 200, 'userTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -366,7 +361,7 @@ abstract class BrandUrlAbstract
     /**
      * Get userTheme
      *
-     * @return string
+     * @return string | null
      */
     public function getUserTheme()
     {

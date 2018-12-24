@@ -6,6 +6,7 @@ class MatchListDto extends MatchListDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

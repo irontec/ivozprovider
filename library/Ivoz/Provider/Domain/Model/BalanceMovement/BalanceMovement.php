@@ -33,9 +33,5 @@ class BalanceMovement extends BalanceMovementAbstract implements BalanceMovement
         if ($this->getCarrier()) {
             $this->setCompany(null);
         }
-
-        if ($this->getCompany()) {
-            $this->setCarrier(null);
-        }
     }
 }

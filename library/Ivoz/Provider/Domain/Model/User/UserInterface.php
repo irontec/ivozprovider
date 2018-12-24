@@ -130,31 +130,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getFullNameExtension();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set lastname
-     *
-     * @param string $lastname
-     *
-     * @return self
-     */
-    public function setLastname($lastname);
 
     /**
      * Get lastname
@@ -166,26 +146,16 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get email
      *
-     * @return string
+     * @return string | null
      */
     public function getEmail();
 
     /**
      * Get pass
      *
-     * @return string
+     * @return string | null
      */
     public function getPass();
-
-    /**
-     * @deprecated
-     * Set doNotDisturb
-     *
-     * @param boolean $doNotDisturb
-     *
-     * @return self
-     */
-    public function setDoNotDisturb($doNotDisturb);
 
     /**
      * Get doNotDisturb
@@ -195,31 +165,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getDoNotDisturb();
 
     /**
-     * @deprecated
-     * Set isBoss
-     *
-     * @param boolean $isBoss
-     *
-     * @return self
-     */
-    public function setIsBoss($isBoss);
-
-    /**
      * Get isBoss
      *
      * @return boolean
      */
     public function getIsBoss();
-
-    /**
-     * @deprecated
-     * Set active
-     *
-     * @param boolean $active
-     *
-     * @return self
-     */
-    public function setActive($active);
 
     /**
      * Get active
@@ -229,31 +179,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getActive();
 
     /**
-     * @deprecated
-     * Set maxCalls
-     *
-     * @param integer $maxCalls
-     *
-     * @return self
-     */
-    public function setMaxCalls($maxCalls);
-
-    /**
      * Get maxCalls
      *
      * @return integer
      */
     public function getMaxCalls();
-
-    /**
-     * @deprecated
-     * Set externalIpCalls
-     *
-     * @param string $externalIpCalls
-     *
-     * @return self
-     */
-    public function setExternalIpCalls($externalIpCalls);
 
     /**
      * Get externalIpCalls
@@ -263,31 +193,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getExternalIpCalls();
 
     /**
-     * @deprecated
-     * Set voicemailEnabled
-     *
-     * @param boolean $voicemailEnabled
-     *
-     * @return self
-     */
-    public function setVoicemailEnabled($voicemailEnabled);
-
-    /**
      * Get voicemailEnabled
      *
      * @return boolean
      */
     public function getVoicemailEnabled();
-
-    /**
-     * @deprecated
-     * Set voicemailSendMail
-     *
-     * @param boolean $voicemailSendMail
-     *
-     * @return self
-     */
-    public function setVoicemailSendMail($voicemailSendMail);
 
     /**
      * Get voicemailSendMail
@@ -297,16 +207,6 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailSendMail();
 
     /**
-     * @deprecated
-     * Set voicemailAttachSound
-     *
-     * @param boolean $voicemailAttachSound
-     *
-     * @return self
-     */
-    public function setVoicemailAttachSound($voicemailAttachSound);
-
-    /**
      * Get voicemailAttachSound
      *
      * @return boolean
@@ -314,31 +214,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailAttachSound();
 
     /**
-     * @deprecated
-     * Set tokenKey
-     *
-     * @param string $tokenKey
-     *
-     * @return self
-     */
-    public function setTokenKey($tokenKey = null);
-
-    /**
      * Get tokenKey
      *
-     * @return string
+     * @return string | null
      */
     public function getTokenKey();
-
-    /**
-     * @deprecated
-     * Set gsQRCode
-     *
-     * @param boolean $gsQRCode
-     *
-     * @return self
-     */
-    public function setGsQRCode($gsQRCode);
 
     /**
      * Get gsQRCode

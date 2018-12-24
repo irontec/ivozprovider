@@ -6,6 +6,7 @@ class HolidayDateDto extends HolidayDateDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

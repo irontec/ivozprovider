@@ -24,7 +24,7 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
             ->setEmail('mikel+test-invoice@irontec.com')
             ->setTaxRate(3)
             ->setBrandId(1)
-            ->setCompanyId(1);
+            ->setCompanyId(2);
 
         return $invoiceSchedulerDto;
     }
@@ -154,10 +154,10 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
                 'unit' => 'week',
                 'frequency' => 1,
                 'email' => 'mikel+test-invoice@irontec.com',
-                'taxRate' => 3.0,
+                'taxRate' => 3,
                 'brandId' => 1,
-                'companyId' => 1,
-                'id' => 1,
+                'companyId' => 2,
+                'id' => 2,
             ],
             $diff
         );

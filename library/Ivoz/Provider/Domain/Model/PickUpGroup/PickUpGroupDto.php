@@ -6,6 +6,7 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

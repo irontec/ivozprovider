@@ -14,31 +14,11 @@ interface DomainInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return self
-     */
-    public function setDomain($domain);
-
-    /**
      * Get domain
      *
      * @return string
      */
     public function getDomain();
-
-    /**
-     * @deprecated
-     * Set pointsTo
-     *
-     * @param string $pointsTo
-     *
-     * @return self
-     */
-    public function setPointsTo($pointsTo);
 
     /**
      * Get pointsTo
@@ -48,19 +28,9 @@ interface DomainInterface extends LoggableEntityInterface
     public function getPointsTo();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 

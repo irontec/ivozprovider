@@ -1,0 +1,9 @@
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Ivoz\Provider\Domain\Service\CallCsvReport\CreateByScheduler: ~
+  Ivoz\Provider\Domain\Service\Invoice\CreateByScheduler: ~

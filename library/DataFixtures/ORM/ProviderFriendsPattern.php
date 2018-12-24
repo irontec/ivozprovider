@@ -20,9 +20,12 @@ class ProviderFriendsPattern extends Fixture implements DependentFixtureInterfac
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(FriendsPattern::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(FriendsPattern::class);
-        $item1->setName("Spain");
-        $item1->setRegExp("+34");
+        $item1 = $this->createEntityInstance(FriendsPattern::class);
+        (function () {
+            $this->setName("Spain");
+            $this->setRegExp("+34");
+        })->call($item1);
+
         $item1->setFriend($this->getReference('_reference_ProviderFriend1'));
         $this->addReference('_reference_ProviderFriendsPattern1', $item1);
         $this->sanitizeEntityValues($item1);

@@ -7,6 +7,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

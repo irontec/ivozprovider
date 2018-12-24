@@ -20,24 +20,30 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TerminalModel::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstanceWithPublicMethods(TerminalModel::class);
-        $item1->setIden("Generic");
-        $item1->setName("Generic SIP Model");
-        $item1->setDescription("Generic SIP Model");
-        $item1->setGenericTemplate("");
-        $item1->setSpecificTemplate("");
-        $item1->setGenericUrlPattern("");
-        $item1->setSpecificUrlPattern("");
+        $item1 = $this->createEntityInstance(TerminalModel::class);
+        (function () {
+            $this->setIden("Generic");
+            $this->setName("Generic SIP Model");
+            $this->setDescription("Generic SIP Model");
+            $this->setGenericTemplate("");
+            $this->setSpecificTemplate("");
+            $this->setGenericUrlPattern("");
+            $this->setSpecificUrlPattern("");
+        })->call($item1);
+
         $item1->setTerminalManufacturer($this->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer1'));
         $this->addReference('_reference_ProviderTerminalModel1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(TerminalModel::class);
-        $item2->setIden("YealinkT21P_E2");
-        $item2->setName("YealinkT21P_E2");
-        $item2->setGenericUrlPattern("y000000000052.cfg");
-        $item2->setSpecificUrlPattern("{mac}");
+        $item2 = $this->createEntityInstance(TerminalModel::class);
+        (function () {
+            $this->setIden("YealinkT21P_E2");
+            $this->setName("YealinkT21P_E2");
+            $this->setGenericUrlPattern("y000000000052.cfg");
+            $this->setSpecificUrlPattern("{mac}");
+        })->call($item2);
+
         $item2->setTerminalManufacturer($this->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2'));
         $this->addReference('_reference_ProviderTerminalModel2', $item2);
         $this->sanitizeEntityValues($item2);

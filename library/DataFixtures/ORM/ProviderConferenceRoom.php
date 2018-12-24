@@ -20,11 +20,14 @@ class ProviderConferenceRoom extends Fixture implements DependentFixtureInterfac
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConferenceRoom::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(ConferenceRoom::class);
-        $item1->setName("testConferenceRoom");
-        $item1->setPinProtected(true);
-        $item1->setPinCode("4321");
-        $item1->setMaxMembers(1);
+        $item1 = $this->createEntityInstance(ConferenceRoom::class);
+        (function () {
+            $this->setName("testConferenceRoom");
+            $this->setPinProtected(true);
+            $this->setPinCode("4321");
+            $this->setMaxMembers(1);
+        })->call($item1);
+
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderConferenceRoomConferenceRoom1', $item1);
         $this->sanitizeEntityValues($item1);

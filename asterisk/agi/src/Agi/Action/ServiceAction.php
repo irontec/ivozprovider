@@ -5,7 +5,7 @@ namespace Agi\Action;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDTO;
@@ -39,9 +39,9 @@ class ServiceAction
     protected $em;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CompanyServiceInterface
@@ -53,19 +53,18 @@ class ServiceAction
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
-     * @param EntityPersisterInterface $entityPersister
+     * @param EntityTools $entityTools
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister
-    )
-    {
+        EntityTools $entityTools
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     /**
@@ -272,13 +271,16 @@ class ServiceAction
 
         // Set upload the original file of the locution
         /** @var LocutionDTO $locutionDto */
-        $locutionDto = $locution->toDTO();
+        $locutionDto = $this->entityTools->entityToDto($locution);
         $locutionDto->setOriginalFilePath($originalFile);
         $locutionDto->setOriginalFileBaseName($originalFilename);
 
-        $this->entityPersister->persistDto($locutionDto, $locution);
+        $this->entityTools->persistDto($locutionDto, $locution);
     }
 
+    /**
+     * @return RouteLockInterface|null
+     */
     protected function getRouteLock()
     {
         // Local variables to improve readability
@@ -343,8 +345,10 @@ class ServiceAction
     {
         $routeLock = $this->getRouteLock();
         if ($routeLock) {
-            $routeLock->setOpen(1);
-            $this->entityPersister->persist($routeLock);
+            /** @var RouteLockDto $routeLockDto */
+            $routeLockDto = $this->entityTools->entityToDto($routeLock);
+            $routeLockDto->setOpen(1);
+            $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
     }
@@ -353,8 +357,10 @@ class ServiceAction
     {
         $routeLock = $this->getRouteLock();
         if ($routeLock) {
-            $routeLock->setOpen(0);
-            $this->entityPersister->persist($routeLock);
+            /** @var RouteLockDto $routeLockDto */
+            $routeLockDto = $this->entityTools->entityToDto($routeLock);
+            $routeLockDto->setOpen(0);
+            $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
     }
@@ -363,8 +369,10 @@ class ServiceAction
     {
         $routeLock = $this->getRouteLock();
         if ($routeLock) {
-            $routeLock->setOpen($routeLock->isOpen() ? 0 : 1);
-            $this->entityPersister->persist($routeLock);
+            /** @var RouteLockDto $routeLockDto */
+            $routeLockDto = $this->entityTools->entityToDto($routeLock);
+            $routeLockDto->setOpen($routeLock->isOpen() ? 0 : 1);
+            $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
     }

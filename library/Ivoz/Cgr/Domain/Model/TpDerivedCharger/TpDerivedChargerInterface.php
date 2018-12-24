@@ -13,31 +13,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
      */
     public function getTpid();
-
-    /**
-     * @deprecated
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return self
-     */
-    public function setLoadid($loadid);
 
     /**
      * Get loadid
@@ -47,31 +27,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
-     * @deprecated
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection($direction);
-
-    /**
      * Get direction
      *
      * @return string
      */
     public function getDirection();
-
-    /**
-     * @deprecated
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return self
-     */
-    public function setTenant($tenant);
 
     /**
      * Get tenant
@@ -81,31 +41,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getTenant();
 
     /**
-     * @deprecated
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return self
-     */
-    public function setCategory($category);
-
-    /**
      * Get category
      *
      * @return string
      */
     public function getCategory();
-
-    /**
-     * @deprecated
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return self
-     */
-    public function setAccount($account);
 
     /**
      * Get account
@@ -115,48 +55,18 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getAccount();
 
     /**
-     * @deprecated
-     * Set subject
-     *
-     * @param string $subject
-     *
-     * @return self
-     */
-    public function setSubject($subject = null);
-
-    /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject();
 
     /**
-     * @deprecated
-     * Set destinationIds
-     *
-     * @param string $destinationIds
-     *
-     * @return self
-     */
-    public function setDestinationIds($destinationIds = null);
-
-    /**
      * Get destinationIds
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationIds();
-
-    /**
-     * @deprecated
-     * Set runid
-     *
-     * @param string $runid
-     *
-     * @return self
-     */
-    public function setRunid($runid);
 
     /**
      * Get runid
@@ -166,31 +76,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getRunid();
 
     /**
-     * @deprecated
-     * Set runFilters
-     *
-     * @param string $runFilters
-     *
-     * @return self
-     */
-    public function setRunFilters($runFilters);
-
-    /**
      * Get runFilters
      *
      * @return string
      */
     public function getRunFilters();
-
-    /**
-     * @deprecated
-     * Set reqTypeField
-     *
-     * @param string $reqTypeField
-     *
-     * @return self
-     */
-    public function setReqTypeField($reqTypeField);
 
     /**
      * Get reqTypeField
@@ -200,31 +90,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getReqTypeField();
 
     /**
-     * @deprecated
-     * Set directionField
-     *
-     * @param string $directionField
-     *
-     * @return self
-     */
-    public function setDirectionField($directionField);
-
-    /**
      * Get directionField
      *
      * @return string
      */
     public function getDirectionField();
-
-    /**
-     * @deprecated
-     * Set tenantField
-     *
-     * @param string $tenantField
-     *
-     * @return self
-     */
-    public function setTenantField($tenantField);
 
     /**
      * Get tenantField
@@ -234,31 +104,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getTenantField();
 
     /**
-     * @deprecated
-     * Set categoryField
-     *
-     * @param string $categoryField
-     *
-     * @return self
-     */
-    public function setCategoryField($categoryField);
-
-    /**
      * Get categoryField
      *
      * @return string
      */
     public function getCategoryField();
-
-    /**
-     * @deprecated
-     * Set accountField
-     *
-     * @param string $accountField
-     *
-     * @return self
-     */
-    public function setAccountField($accountField);
 
     /**
      * Get accountField
@@ -268,31 +118,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getAccountField();
 
     /**
-     * @deprecated
-     * Set subjectField
-     *
-     * @param string $subjectField
-     *
-     * @return self
-     */
-    public function setSubjectField($subjectField);
-
-    /**
      * Get subjectField
      *
      * @return string
      */
     public function getSubjectField();
-
-    /**
-     * @deprecated
-     * Set destinationField
-     *
-     * @param string $destinationField
-     *
-     * @return self
-     */
-    public function setDestinationField($destinationField);
 
     /**
      * Get destinationField
@@ -302,31 +132,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDestinationField();
 
     /**
-     * @deprecated
-     * Set setupTimeField
-     *
-     * @param string $setupTimeField
-     *
-     * @return self
-     */
-    public function setSetupTimeField($setupTimeField);
-
-    /**
      * Get setupTimeField
      *
      * @return string
      */
     public function getSetupTimeField();
-
-    /**
-     * @deprecated
-     * Set pddField
-     *
-     * @param string $pddField
-     *
-     * @return self
-     */
-    public function setPddField($pddField);
 
     /**
      * Get pddField
@@ -336,31 +146,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getPddField();
 
     /**
-     * @deprecated
-     * Set answerTimeField
-     *
-     * @param string $answerTimeField
-     *
-     * @return self
-     */
-    public function setAnswerTimeField($answerTimeField);
-
-    /**
      * Get answerTimeField
      *
      * @return string
      */
     public function getAnswerTimeField();
-
-    /**
-     * @deprecated
-     * Set usageField
-     *
-     * @param string $usageField
-     *
-     * @return self
-     */
-    public function setUsageField($usageField);
 
     /**
      * Get usageField
@@ -370,31 +160,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getUsageField();
 
     /**
-     * @deprecated
-     * Set supplierField
-     *
-     * @param string $supplierField
-     *
-     * @return self
-     */
-    public function setSupplierField($supplierField);
-
-    /**
      * Get supplierField
      *
      * @return string
      */
     public function getSupplierField();
-
-    /**
-     * @deprecated
-     * Set disconnectCauseField
-     *
-     * @param string $disconnectCauseField
-     *
-     * @return self
-     */
-    public function setDisconnectCauseField($disconnectCauseField);
 
     /**
      * Get disconnectCauseField
@@ -404,16 +174,6 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDisconnectCauseField();
 
     /**
-     * @deprecated
-     * Set ratedTimeField
-     *
-     * @param string $ratedTimeField
-     *
-     * @return self
-     */
-    public function setRatedTimeField($ratedTimeField);
-
-    /**
      * Get ratedTimeField
      *
      * @return string
@@ -421,31 +181,11 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getRatedTimeField();
 
     /**
-     * @deprecated
-     * Set costField
-     *
-     * @param string $costField
-     *
-     * @return self
-     */
-    public function setCostField($costField);
-
-    /**
      * Get costField
      *
      * @return string
      */
     public function getCostField();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

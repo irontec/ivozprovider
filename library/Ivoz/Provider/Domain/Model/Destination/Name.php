@@ -13,13 +13,13 @@ class Name
 {
     /**
      * column: name_en
-     * @var string
+     * @var string | null
      */
     protected $en;
 
     /**
      * column: name_es
-     * @var string
+     * @var string | null
      */
     protected $es;
 
@@ -36,7 +36,6 @@ class Name
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set en
      *
      * @param string $en
@@ -57,7 +56,7 @@ class Name
     /**
      * Get en
      *
-     * @return string
+     * @return string | null
      */
     public function getEn()
     {
@@ -65,7 +64,6 @@ class Name
     }
 
     /**
-     * @deprecated
      * Set es
      *
      * @param string $es
@@ -86,7 +84,7 @@ class Name
     /**
      * Get es
      *
-     * @return string
+     * @return string | null
      */
     public function getEs()
     {

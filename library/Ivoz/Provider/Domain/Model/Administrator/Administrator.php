@@ -78,6 +78,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
 
     /**
      * @return bool
+     * @deprecated dead code (apparently)
      */
     public function isCompanyAdmin()
     {

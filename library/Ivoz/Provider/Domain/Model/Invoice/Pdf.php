@@ -14,19 +14,19 @@ class Pdf
     /**
      * column: pdfFileFileSize
      * comment: FSO
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: pdfFileMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: pdfFileBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
@@ -44,7 +44,6 @@ class Pdf
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set fileSize
      *
      * @param integer $fileSize
@@ -68,7 +67,7 @@ class Pdf
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -76,7 +75,6 @@ class Pdf
     }
 
     /**
-     * @deprecated
      * Set mimeType
      *
      * @param string $mimeType
@@ -97,7 +95,7 @@ class Pdf
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -105,7 +103,6 @@ class Pdf
     }
 
     /**
-     * @deprecated
      * Set baseName
      *
      * @param string $baseName
@@ -126,7 +123,7 @@ class Pdf
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {

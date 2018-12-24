@@ -21,9 +21,12 @@ class ProviderOutgoingDdiRulesPattern extends Fixture implements DependentFixtur
         $manager->getClassMetadata(OutgoingDdiRulesPattern::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var OutgoingDdiRulesPattern $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(OutgoingDdiRulesPattern::class);
-        $item1->setAction('keep');
-        $item1->setPriority(1);
+        $item1 = $this->createEntityInstance(OutgoingDdiRulesPattern::class);
+        (function () {
+            $this->setAction('keep');
+            $this->setPriority(1);
+        })->call($item1);
+
         $item1->setOutgoingDdiRule(
             $this->getReference('_reference_ProviderOutgoingDdiRule1')
         );

@@ -14,19 +14,19 @@ class OriginalFile
     /**
      * column: originalFileFileSize
      * comment: FSO:keepExtension
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: originalFileMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: originalFileBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
@@ -44,7 +44,6 @@ class OriginalFile
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set fileSize
      *
      * @param integer $fileSize
@@ -68,7 +67,7 @@ class OriginalFile
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -76,7 +75,6 @@ class OriginalFile
     }
 
     /**
-     * @deprecated
      * Set mimeType
      *
      * @param string $mimeType
@@ -97,7 +95,7 @@ class OriginalFile
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -105,7 +103,6 @@ class OriginalFile
     }
 
     /**
-     * @deprecated
      * Set baseName
      *
      * @param string $baseName
@@ -126,7 +123,7 @@ class OriginalFile
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {

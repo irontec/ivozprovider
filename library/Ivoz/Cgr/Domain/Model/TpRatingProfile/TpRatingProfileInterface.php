@@ -13,31 +13,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
      */
     public function getTpid();
-
-    /**
-     * @deprecated
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return self
-     */
-    public function setLoadid($loadid);
 
     /**
      * Get loadid
@@ -47,16 +27,6 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
-     * @deprecated
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection($direction);
-
-    /**
      * Get direction
      *
      * @return string
@@ -64,31 +34,11 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getDirection();
 
     /**
-     * @deprecated
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return self
-     */
-    public function setTenant($tenant = null);
-
-    /**
      * Get tenant
      *
-     * @return string
+     * @return string | null
      */
     public function getTenant();
-
-    /**
-     * @deprecated
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return self
-     */
-    public function setCategory($category);
 
     /**
      * Get category
@@ -98,99 +48,39 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getCategory();
 
     /**
-     * @deprecated
-     * Set subject
-     *
-     * @param string $subject
-     *
-     * @return self
-     */
-    public function setSubject($subject = null);
-
-    /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject();
 
     /**
-     * @deprecated
-     * Set activationTime
-     *
-     * @param \DateTime $activationTime
-     *
-     * @return self
-     */
-    public function setActivationTime($activationTime);
-
-    /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return string
      */
     public function getActivationTime();
 
     /**
-     * @deprecated
-     * Set ratingPlanTag
-     *
-     * @param string $ratingPlanTag
-     *
-     * @return self
-     */
-    public function setRatingPlanTag($ratingPlanTag = null);
-
-    /**
      * Get ratingPlanTag
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanTag();
 
     /**
-     * @deprecated
-     * Set fallbackSubjects
-     *
-     * @param string $fallbackSubjects
-     *
-     * @return self
-     */
-    public function setFallbackSubjects($fallbackSubjects = null);
-
-    /**
      * Get fallbackSubjects
      *
-     * @return string
+     * @return string | null
      */
     public function getFallbackSubjects();
 
     /**
-     * @deprecated
-     * Set cdrStatQueueIds
-     *
-     * @param string $cdrStatQueueIds
-     *
-     * @return self
-     */
-    public function setCdrStatQueueIds($cdrStatQueueIds = null);
-
-    /**
      * Get cdrStatQueueIds
      *
-     * @return string
+     * @return string | null
      */
     public function getCdrStatQueueIds();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt
@@ -211,7 +101,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get ratingProfile
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface | null
      */
     public function getRatingProfile();
 
@@ -227,7 +117,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Get outgoingRoutingRelCarrier
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface | null
      */
     public function getOutgoingRoutingRelCarrier();
 }

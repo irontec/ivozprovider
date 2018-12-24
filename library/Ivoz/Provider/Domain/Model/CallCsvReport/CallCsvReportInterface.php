@@ -24,31 +24,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getTimezone();
 
     /**
-     * @deprecated
-     * Set sentTo
-     *
-     * @param string $sentTo
-     *
-     * @return self
-     */
-    public function setSentTo($sentTo);
-
-    /**
      * Get sentTo
      *
      * @return string
      */
     public function getSentTo();
-
-    /**
-     * @deprecated
-     * Set inDate
-     *
-     * @param \DateTime $inDate
-     *
-     * @return self
-     */
-    public function setInDate($inDate);
 
     /**
      * Get inDate
@@ -58,31 +38,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getInDate();
 
     /**
-     * @deprecated
-     * Set outDate
-     *
-     * @param \DateTime $outDate
-     *
-     * @return self
-     */
-    public function setOutDate($outDate);
-
-    /**
      * Get outDate
      *
      * @return \DateTime
      */
     public function getOutDate();
-
-    /**
-     * @deprecated
-     * Set createdOn
-     *
-     * @param \DateTime $createdOn
-     *
-     * @return self
-     */
-    public function setCreatedOn($createdOn);
 
     /**
      * Get createdOn
@@ -103,7 +63,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -119,7 +79,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -135,7 +95,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get callCsvScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
      */
     public function getCallCsvScheduler();
 

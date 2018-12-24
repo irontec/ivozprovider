@@ -13,48 +13,18 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set callid
-     *
-     * @param string $callid
-     *
-     * @return self
-     */
-    public function setCallid($callid = null);
-
-    /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
     /**
-     * @deprecated
-     * Set startTime
-     *
-     * @param \DateTime $startTime
-     *
-     * @return self
-     */
-    public function setStartTime($startTime = null);
-
-    /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime();
-
-    /**
-     * @deprecated
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return self
-     */
-    public function setDuration($duration);
 
     /**
      * Get duration
@@ -64,172 +34,72 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDuration();
 
     /**
-     * @deprecated
-     * Set caller
-     *
-     * @param string $caller
-     *
-     * @return self
-     */
-    public function setCaller($caller = null);
-
-    /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
-     * @deprecated
-     * Set callee
-     *
-     * @param string $callee
-     *
-     * @return self
-     */
-    public function setCallee($callee = null);
-
-    /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
-     * @deprecated
-     * Set cost
-     *
-     * @param string $cost
-     *
-     * @return self
-     */
-    public function setCost($cost = null);
-
-    /**
      * Get cost
      *
-     * @return string
+     * @return string | null
      */
     public function getCost();
 
     /**
-     * @deprecated
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return self
-     */
-    public function setPrice($price = null);
-
-    /**
      * Get price
      *
-     * @return string
+     * @return string | null
      */
     public function getPrice();
 
     /**
-     * @deprecated
-     * Set priceDetails
-     *
-     * @param array $priceDetails
-     *
-     * @return self
-     */
-    public function setPriceDetails($priceDetails = null);
-
-    /**
      * Get priceDetails
      *
-     * @return array
+     * @return array | null
      */
     public function getPriceDetails();
 
     /**
-     * @deprecated
-     * Set carrierName
-     *
-     * @param string $carrierName
-     *
-     * @return self
-     */
-    public function setCarrierName($carrierName = null);
-
-    /**
      * Get carrierName
      *
-     * @return string
+     * @return string | null
      */
     public function getCarrierName();
 
     /**
-     * @deprecated
-     * Set destinationName
-     *
-     * @param string $destinationName
-     *
-     * @return self
-     */
-    public function setDestinationName($destinationName = null);
-
-    /**
      * Get destinationName
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationName();
 
     /**
-     * @deprecated
-     * Set ratingPlanName
-     *
-     * @param string $ratingPlanName
-     *
-     * @return self
-     */
-    public function setRatingPlanName($ratingPlanName = null);
-
-    /**
      * Get ratingPlanName
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanName();
 
     /**
-     * @deprecated
-     * Set endpointType
-     *
-     * @param string $endpointType
-     *
-     * @return self
-     */
-    public function setEndpointType($endpointType = null);
-
-    /**
      * Get endpointType
      *
-     * @return string
+     * @return string | null
      */
     public function getEndpointType();
 
     /**
-     * @deprecated
-     * Set endpointId
-     *
-     * @param integer $endpointId
-     *
-     * @return self
-     */
-    public function setEndpointId($endpointId = null);
-
-    /**
      * Get endpointId
      *
-     * @return integer
+     * @return integer | null
      */
     public function getEndpointId();
 
@@ -277,7 +147,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
@@ -293,7 +163,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     public function getDestination();
 
@@ -309,7 +179,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup();
 
@@ -325,7 +195,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice();
 
@@ -341,7 +211,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get trunksCdr
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr();
 }

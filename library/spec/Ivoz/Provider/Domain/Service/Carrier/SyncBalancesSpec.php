@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Carrier;
 
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances;
@@ -61,7 +62,6 @@ class SyncBalancesSpec extends ObjectBehavior
 
     function it_logs_errors()
     {
-
         $response = new \stdClass();
         $response->error = 'Message';
 
@@ -78,11 +78,91 @@ class SyncBalancesSpec extends ObjectBehavior
         $this->updateCarriers(1, [1]);
     }
 
-    function it_updates_db_balances(
+    function it_iterates_over_all_carriers(
         CarrierInterface $carrier,
         CarrierDto $carrierDto
     ) {
         $carrierId = 1;
+        $this->prepareExecution(
+            $carrierId,
+            $carrier,
+            $carrierDto
+        );
+
+        $this
+            ->carrierRepository
+            ->getCarrierIdsGroupByBrand()
+            ->willReturn([
+                1 => [$carrierId]
+            ])
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->persistDto(
+                Argument::type(CarrierDto::class),
+                Argument::type(CarrierInterface::class)
+            )
+            ->shouldBeCalled();
+
+        $this->updateAll();
+    }
+
+    function it_updates_balances(
+        CarrierInterface $carrier,
+        CarrierDto $carrierDto
+    ) {
+        $carrierId = 1;
+        $this->prepareExecution(
+            $carrierId,
+            $carrier,
+            $carrierDto
+        );
+
+        $this->entityTools
+            ->persistDto($carrierDto, $carrier)
+            ->shouldBeCalled();
+
+        $this->updateCarriers(1, [1]);
+    }
+
+    function it_logs_not_found_carriers(
+        CarrierInterface $carrier,
+        CarrierDto $carrierDto
+    ) {
+        $carrierId = 1;
+        $this->prepareExecution(
+            $carrierId,
+            $carrier,
+            $carrierDto
+        );
+
+        $this
+            ->carrierRepository
+            ->find($carrierId)
+            ->willReturn(null);
+
+        $this
+            ->logger
+            ->error(
+                Argument::type('string')
+            )->shouldBeCalled();
+
+        $this->updateCarriers(
+            1,
+            [1]
+        );
+    }
+
+    /**
+     * @param CarrierInterface $carrier
+     * @param CarrierDto $carrierDto
+     */
+    private function prepareExecution(
+        int $carrierId,
+        CarrierInterface $carrier,
+        CarrierDto $carrierDto
+    ) {
         $balance = 1000;
 
         $response = new \stdClass();
@@ -95,27 +175,20 @@ class SyncBalancesSpec extends ObjectBehavior
             ->getBalances(
                 Argument::any(),
                 Argument::any()
-            )->willReturn($response)
-            ->shouldBeCalled();
+            )->willReturn($response);
 
         $this->carrierRepository
             ->find($carrierId)
-            ->willReturn($carrier)
-            ->shouldBeCalled();
+            ->willReturn($carrier);
 
         $this->entityTools
             ->entityToDto($carrier)
-            ->willReturn($carrierDto)
-            ->shouldBeCalled();
+            ->willReturn($carrierDto);
 
         $carrierDto
-            ->setBalance($balance)
-            ->shouldBeCalled();
+            ->setBalance($balance);
 
         $this->entityTools
-            ->persistDto($carrierDto, $carrier)
-            ->shouldBeCalled();
-
-        $this->updateCarriers(1, [1]);
+            ->persistDto($carrierDto, $carrier);
     }
 }

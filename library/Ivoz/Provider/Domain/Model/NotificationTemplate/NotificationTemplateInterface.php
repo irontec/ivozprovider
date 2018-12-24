@@ -22,31 +22,11 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     public function getContentsByLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language);
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type);
 
     /**
      * Get type
@@ -67,7 +47,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 

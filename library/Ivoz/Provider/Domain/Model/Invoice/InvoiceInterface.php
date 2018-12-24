@@ -29,126 +29,56 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Get number
      *
-     * @return string
+     * @return string | null
      */
     public function getNumber();
 
     /**
-     * @deprecated
-     * Set inDate
-     *
-     * @param \DateTime $inDate
-     *
-     * @return self
-     */
-    public function setInDate($inDate = null);
-
-    /**
      * Get inDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getInDate();
 
     /**
-     * @deprecated
-     * Set outDate
-     *
-     * @param \DateTime $outDate
-     *
-     * @return self
-     */
-    public function setOutDate($outDate = null);
-
-    /**
      * Get outDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getOutDate();
 
     /**
-     * @deprecated
-     * Set total
-     *
-     * @param string $total
-     *
-     * @return self
-     */
-    public function setTotal($total = null);
-
-    /**
      * Get total
      *
-     * @return string
+     * @return string | null
      */
     public function getTotal();
 
     /**
-     * @deprecated
-     * Set taxRate
-     *
-     * @param string $taxRate
-     *
-     * @return self
-     */
-    public function setTaxRate($taxRate = null);
-
-    /**
      * Get taxRate
      *
-     * @return string
+     * @return string | null
      */
     public function getTaxRate();
 
     /**
-     * @deprecated
-     * Set totalWithTax
-     *
-     * @param string $totalWithTax
-     *
-     * @return self
-     */
-    public function setTotalWithTax($totalWithTax = null);
-
-    /**
      * Get totalWithTax
      *
-     * @return string
+     * @return string | null
      */
     public function getTotalWithTax();
 
     /**
-     * @deprecated
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return self
-     */
-    public function setStatus($status = null);
-
-    /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 
     /**
-     * @deprecated
-     * Set statusMsg
-     *
-     * @param string $statusMsg
-     *
-     * @return self
-     */
-    public function setStatusMsg($statusMsg = null);
-
-    /**
      * Get statusMsg
      *
-     * @return string
+     * @return string | null
      */
     public function getStatusMsg();
 

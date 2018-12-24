@@ -21,121 +21,51 @@ interface CarrierServerInterface extends LoggableEntityInterface
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 
     /**
-     * @deprecated
-     * Set hostname
-     *
-     * @param string $hostname
-     *
-     * @return self
-     */
-    public function setHostname($hostname = null);
-
-    /**
      * Get hostname
      *
-     * @return string
+     * @return string | null
      */
     public function getHostname();
 
     /**
-     * @deprecated
-     * Set port
-     *
-     * @param integer $port
-     *
-     * @return self
-     */
-    public function setPort($port = null);
-
-    /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort();
 
     /**
-     * @deprecated
-     * Set uriScheme
-     *
-     * @param integer $uriScheme
-     *
-     * @return self
-     */
-    public function setUriScheme($uriScheme = null);
-
-    /**
      * Get uriScheme
      *
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme();
 
     /**
-     * @deprecated
-     * Set transport
-     *
-     * @param integer $transport
-     *
-     * @return self
-     */
-    public function setTransport($transport = null);
-
-    /**
      * Get transport
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTransport();
 
     /**
-     * @deprecated
-     * Set sendPAI
-     *
-     * @param boolean $sendPAI
-     *
-     * @return self
-     */
-    public function setSendPAI($sendPAI = null);
-
-    /**
      * Get sendPAI
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendPAI();
 
     /**
-     * @deprecated
-     * Set sendRPID
-     *
-     * @param boolean $sendRPID
-     *
-     * @return self
-     */
-    public function setSendRPID($sendRPID = null);
-
-    /**
      * Get sendRPID
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendRPID();
-
-    /**
-     * @deprecated
-     * Set authNeeded
-     *
-     * @param string $authNeeded
-     *
-     * @return self
-     */
-    public function setAuthNeeded($authNeeded);
 
     /**
      * Get authNeeded
@@ -145,104 +75,44 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getAuthNeeded();
 
     /**
-     * @deprecated
-     * Set authUser
-     *
-     * @param string $authUser
-     *
-     * @return self
-     */
-    public function setAuthUser($authUser = null);
-
-    /**
      * Get authUser
      *
-     * @return string
+     * @return string | null
      */
     public function getAuthUser();
 
     /**
-     * @deprecated
-     * Set authPassword
-     *
-     * @param string $authPassword
-     *
-     * @return self
-     */
-    public function setAuthPassword($authPassword = null);
-
-    /**
      * Get authPassword
      *
-     * @return string
+     * @return string | null
      */
     public function getAuthPassword();
 
     /**
-     * @deprecated
-     * Set sipProxy
-     *
-     * @param string $sipProxy
-     *
-     * @return self
-     */
-    public function setSipProxy($sipProxy = null);
-
-    /**
      * Get sipProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getSipProxy();
 
     /**
-     * @deprecated
-     * Set outboundProxy
-     *
-     * @param string $outboundProxy
-     *
-     * @return self
-     */
-    public function setOutboundProxy($outboundProxy = null);
-
-    /**
      * Get outboundProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy();
 
     /**
-     * @deprecated
-     * Set fromUser
-     *
-     * @param string $fromUser
-     *
-     * @return self
-     */
-    public function setFromUser($fromUser = null);
-
-    /**
      * Get fromUser
      *
-     * @return string
+     * @return string | null
      */
     public function getFromUser();
 
     /**
-     * @deprecated
-     * Set fromDomain
-     *
-     * @param string $fromDomain
-     *
-     * @return self
-     */
-    public function setFromDomain($fromDomain = null);
-
-    /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain();
 

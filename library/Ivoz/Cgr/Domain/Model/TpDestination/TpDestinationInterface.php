@@ -7,16 +7,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpDestinationInterface extends EntityInterface
 {
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
@@ -24,31 +14,11 @@ interface TpDestinationInterface extends EntityInterface
     public function getTpid();
 
     /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
-
-    /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
-
-    /**
-     * @deprecated
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return self
-     */
-    public function setPrefix($prefix);
 
     /**
      * Get prefix
@@ -56,16 +26,6 @@ interface TpDestinationInterface extends EntityInterface
      * @return string
      */
     public function getPrefix();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

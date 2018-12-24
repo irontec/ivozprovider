@@ -4,7 +4,6 @@ namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use GearmanJob;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
@@ -16,7 +15,6 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client;
 
 /**
  * @Gearman\Work(
@@ -101,7 +99,7 @@ class Rates
 
         if (!$destinationRateGroup) {
             $this->logger->error('Unknown destination rate with id ' . $params['id']);
-            throw new \Exception();
+            throw new \Exception('Unknown destination rate');
         }
 
         $destinationRateGroupId = $destinationRateGroup->getId();
@@ -109,12 +107,15 @@ class Rates
         $brandId = $brand->getId();
 
         /** @var DestinationRateGroupDto $destinationRateGroupDto */
-        $destinationRateGroupDto = $this->entityTools->entityToDto(
-            $destinationRateGroup
-        );
+        $destinationRateGroupDto = $this
+            ->entityTools
+            ->entityToDto(
+                $destinationRateGroup
+            );
 
         $destinationRateGroupDto->setStatus('inProgress');
-        $this->entityTools
+        $this
+            ->entityTools
             ->persistDto(
                 $destinationRateGroupDto,
                 $destinationRateGroup,
@@ -184,7 +185,8 @@ class Rates
         if (!$destinationRates) {
             echo "No lines parsed from CSV File: " . $params['filePath'];
             $destinationRateGroupDto->setStatus('error');
-            $this->entityTools
+            $this
+                ->entityTools
                 ->persistDto(
                     $destinationRateGroupDto,
                     $destinationRateGroup,
@@ -266,7 +268,11 @@ class Rates
             $destinationRateGroupDto->setStatus('imported');
             $this
                 ->entityTools
-                ->persistDto($destinationRateGroupDto, $destinationRateGroup, true);
+                ->persistDto(
+                    $destinationRateGroupDto,
+                    $destinationRateGroup,
+                    true
+                );
 
             $this->reloadService->execute($brand->getCgrTenant());
             $this->logger->debug('Importer finished successfuly');
@@ -279,7 +285,11 @@ class Rates
             $destinationRateGroupDto->setStatus('error');
             $this
                 ->entityTools
-                ->persistDto($destinationRateGroupDto, $destinationRateGroup, true);
+                ->persistDto(
+                    $destinationRateGroupDto,
+                    $destinationRateGroup,
+                    true
+                );
 
             $this->em->close();
 

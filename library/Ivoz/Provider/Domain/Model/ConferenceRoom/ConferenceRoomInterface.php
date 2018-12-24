@@ -13,31 +13,11 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set pinProtected
-     *
-     * @param boolean $pinProtected
-     *
-     * @return self
-     */
-    public function setPinProtected($pinProtected);
 
     /**
      * Get pinProtected
@@ -47,31 +27,11 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getPinProtected();
 
     /**
-     * @deprecated
-     * Set pinCode
-     *
-     * @param string $pinCode
-     *
-     * @return self
-     */
-    public function setPinCode($pinCode = null);
-
-    /**
      * Get pinCode
      *
-     * @return string
+     * @return string | null
      */
     public function getPinCode();
-
-    /**
-     * @deprecated
-     * Set maxMembers
-     *
-     * @param integer $maxMembers
-     *
-     * @return self
-     */
-    public function setMaxMembers($maxMembers);
 
     /**
      * Get maxMembers

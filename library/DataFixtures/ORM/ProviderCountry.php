@@ -21,29 +21,38 @@ class ProviderCountry extends Fixture
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Country::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item70 = $this->createEntityInstanceWithPublicMethods(Country::class);
-        $item70->setCode("ES");
-        $item70->setCountryCode("+34");
-        $item70->setName(new Name('Spain', 'España'));
-        $item70->setZone(new Zone('Europe', 'Europa'));
+        $item70 = $this->createEntityInstance(Country::class);
+        (function () {
+            $this->setCode("ES");
+            $this->setCountryCode("+34");
+            $this->setName(new Name('Spain', 'España'));
+            $this->setZone(new Zone('Europe', 'Europa'));
+        })->call($item70);
+
         $this->addReference('_reference_ProviderCountry70', $item70);
         $this->sanitizeEntityValues($item70);
         $manager->persist($item70);
 
-        $item79 = $this->createEntityInstanceWithPublicMethods(Country::class);
-        $item79->setCode("GB");
-        $item79->setCountryCode("+44");
-        $item79->setName(new Name('United Kingdom', 'Reino Unido'));
-        $item79->setZone(new Zone('Europe', 'Europa'));
+        $item79 = $this->createEntityInstance(Country::class);
+        (function () {
+            $this->setCode("GB");
+            $this->setCountryCode("+44");
+            $this->setName(new Name('United Kingdom', 'Reino Unido'));
+            $this->setZone(new Zone('Europe', 'Europa'));
+        })->call($item79);
+
         $this->addReference('_reference_ProviderCountry79', $item79);
         $this->sanitizeEntityValues($item79);
         $manager->persist($item79);
 
-        $item116 = $this->createEntityInstanceWithPublicMethods(Country::class);
-        $item116->setCode("JP");
-        $item116->setCountryCode("+81");
-        $item116->setName(new Name('Japan', 'Japón'));
-        $item116->setZone(new Zone('Asia', 'Asia'));
+        $item116 = $this->createEntityInstance(Country::class);
+        (function () {
+            $this->setCode("JP");
+            $this->setCountryCode("+81");
+            $this->setName(new Name('Japan', 'Japón'));
+            $this->setZone(new Zone('Asia', 'Asia'));
+        })->call($item116);
+
         $this->addReference('_reference_ProviderCountry116', $item116);
         $this->sanitizeEntityValues($item116);
         $manager->persist($item116);

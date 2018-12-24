@@ -26,53 +26,53 @@ abstract class TrunksLcrGatewayAbstract
     protected $gwName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $hostname;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $port;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $params;
 
     /**
      * column: uri_scheme
-     * @var integer
+     * @var integer | null
      */
     protected $uriScheme;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $transport;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $strip;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $prefix;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $tag;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $defunct;
 
@@ -264,14 +264,13 @@ abstract class TrunksLcrGatewayAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
      *
      * @return self
      */
-    public function setLcrId($lcrId)
+    protected function setLcrId($lcrId)
     {
         Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
         Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
@@ -293,14 +292,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set gwName
      *
      * @param string $gwName
      *
      * @return self
      */
-    public function setGwName($gwName)
+    protected function setGwName($gwName)
     {
         Assertion::notNull($gwName, 'gwName value "%s" is null, but non null value was expected.');
         Assertion::maxLength($gwName, 200, 'gwName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -321,14 +319,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set ip
      *
      * @param string $ip
      *
      * @return self
      */
-    public function setIp($ip = null)
+    protected function setIp($ip = null)
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -342,7 +339,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -350,14 +347,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set hostname
      *
      * @param string $hostname
      *
      * @return self
      */
-    public function setHostname($hostname = null)
+    protected function setHostname($hostname = null)
     {
         if (!is_null($hostname)) {
             Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -371,7 +367,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get hostname
      *
-     * @return string
+     * @return string | null
      */
     public function getHostname()
     {
@@ -379,14 +375,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set port
      *
      * @param integer $port
      *
      * @return self
      */
-    public function setPort($port = null)
+    protected function setPort($port = null)
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
@@ -403,7 +398,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -411,14 +406,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set params
      *
      * @param string $params
      *
      * @return self
      */
-    public function setParams($params = null)
+    protected function setParams($params = null)
     {
         if (!is_null($params)) {
             Assertion::maxLength($params, 64, 'params value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -432,7 +426,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get params
      *
-     * @return string
+     * @return string | null
      */
     public function getParams()
     {
@@ -440,14 +434,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set uriScheme
      *
      * @param integer $uriScheme
      *
      * @return self
      */
-    public function setUriScheme($uriScheme = null)
+    protected function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
             if (!is_null($uriScheme)) {
@@ -464,7 +457,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get uriScheme
      *
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme()
     {
@@ -472,14 +465,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set transport
      *
      * @param integer $transport
      *
      * @return self
      */
-    public function setTransport($transport = null)
+    protected function setTransport($transport = null)
     {
         if (!is_null($transport)) {
             if (!is_null($transport)) {
@@ -496,7 +488,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get transport
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTransport()
     {
@@ -504,14 +496,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set strip
      *
      * @param boolean $strip
      *
      * @return self
      */
-    public function setStrip($strip = null)
+    protected function setStrip($strip = null)
     {
         if (!is_null($strip)) {
             Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
@@ -525,7 +516,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get strip
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getStrip()
     {
@@ -533,14 +524,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set prefix
      *
      * @param string $prefix
      *
      * @return self
      */
-    public function setPrefix($prefix = null)
+    protected function setPrefix($prefix = null)
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 16, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -554,7 +544,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get prefix
      *
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -562,14 +552,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set tag
      *
      * @param string $tag
      *
      * @return self
      */
-    public function setTag($tag = null)
+    protected function setTag($tag = null)
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -583,7 +572,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -591,14 +580,13 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @deprecated
      * Set defunct
      *
      * @param integer $defunct
      *
      * @return self
      */
-    public function setDefunct($defunct = null)
+    protected function setDefunct($defunct = null)
     {
         if (!is_null($defunct)) {
             if (!is_null($defunct)) {
@@ -615,7 +603,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get defunct
      *
-     * @return integer
+     * @return integer | null
      */
     public function getDefunct()
     {
@@ -639,7 +627,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
      */
     public function getCarrierServer()
     {

@@ -7,6 +7,7 @@ class DomainDto extends DomainDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

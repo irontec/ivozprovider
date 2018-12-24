@@ -2,7 +2,7 @@
 
 namespace Recording;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
@@ -30,9 +30,9 @@ class Encoder
     protected $ddiRepository;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var string
@@ -48,13 +48,13 @@ class Encoder
         TrunksCdrRepository $trunksCdrRepository,
         UsersCdrRepository $usersCdrRepository,
         DdiRepository $ddiRepository,
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         string $rawRecordingsDir,
         Logger $logger
     ) {
         $this->trunksCdrRepository = $trunksCdrRepository;
         $this->usersCdrRepository = $usersCdrRepository;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->rawRecordingsDir = $rawRecordingsDir;
         $this->ddiRepository = $ddiRepository;
         $this->logger = $logger;
@@ -261,7 +261,7 @@ class Encoder
                     ->setRecordedFilePath($convertMp3);
 
                 // Store this Recording
-                $recording = $this->entityPersister->persistDto($recordingDto, null, true);
+                $recording = $this->entityTools->persistDto($recordingDto, null, true);
                 $this->logger->info(
                     sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recording->getId())
                 );

@@ -17,31 +17,11 @@ interface UsersCdrInterface extends EntityInterface
     public function getParty();
 
     /**
-     * @deprecated
-     * Set startTime
-     *
-     * @param \DateTime $startTime
-     *
-     * @return self
-     */
-    public function setStartTime($startTime);
-
-    /**
      * Get startTime
      *
      * @return \DateTime
      */
     public function getStartTime();
-
-    /**
-     * @deprecated
-     * Set endTime
-     *
-     * @param \DateTime $endTime
-     *
-     * @return self
-     */
-    public function setEndTime($endTime);
 
     /**
      * Get endTime
@@ -51,16 +31,6 @@ interface UsersCdrInterface extends EntityInterface
     public function getEndTime();
 
     /**
-     * @deprecated
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return self
-     */
-    public function setDuration($duration);
-
-    /**
      * Get duration
      *
      * @return float
@@ -68,155 +38,65 @@ interface UsersCdrInterface extends EntityInterface
     public function getDuration();
 
     /**
-     * @deprecated
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection($direction = null);
-
-    /**
      * Get direction
      *
-     * @return string
+     * @return string | null
      */
     public function getDirection();
 
     /**
-     * @deprecated
-     * Set caller
-     *
-     * @param string $caller
-     *
-     * @return self
-     */
-    public function setCaller($caller = null);
-
-    /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
-     * @deprecated
-     * Set callee
-     *
-     * @param string $callee
-     *
-     * @return self
-     */
-    public function setCallee($callee = null);
-
-    /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
-     * @deprecated
-     * Set diversion
-     *
-     * @param string $diversion
-     *
-     * @return self
-     */
-    public function setDiversion($diversion = null);
-
-    /**
      * Get diversion
      *
-     * @return string
+     * @return string | null
      */
     public function getDiversion();
 
     /**
-     * @deprecated
-     * Set referee
-     *
-     * @param string $referee
-     *
-     * @return self
-     */
-    public function setReferee($referee = null);
-
-    /**
      * Get referee
      *
-     * @return string
+     * @return string | null
      */
     public function getReferee();
 
     /**
-     * @deprecated
-     * Set referrer
-     *
-     * @param string $referrer
-     *
-     * @return self
-     */
-    public function setReferrer($referrer = null);
-
-    /**
      * Get referrer
      *
-     * @return string
+     * @return string | null
      */
     public function getReferrer();
 
     /**
-     * @deprecated
-     * Set callid
-     *
-     * @param string $callid
-     *
-     * @return self
-     */
-    public function setCallid($callid = null);
-
-    /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
     /**
-     * @deprecated
-     * Set callidHash
-     *
-     * @param string $callidHash
-     *
-     * @return self
-     */
-    public function setCallidHash($callidHash = null);
-
-    /**
      * Get callidHash
      *
-     * @return string
+     * @return string | null
      */
     public function getCallidHash();
 
     /**
-     * @deprecated
-     * Set xcallid
-     *
-     * @param string $xcallid
-     *
-     * @return self
-     */
-    public function setXcallid($xcallid = null);
-
-    /**
      * Get xcallid
      *
-     * @return string
+     * @return string | null
      */
     public function getXcallid();
 

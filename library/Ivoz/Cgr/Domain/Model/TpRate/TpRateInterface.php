@@ -23,16 +23,6 @@ interface TpRateInterface extends EntityInterface
     public function setGroupIntervalStart($groupIntervalStart);
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
@@ -40,31 +30,11 @@ interface TpRateInterface extends EntityInterface
     public function getTpid();
 
     /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
-
-    /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
-
-    /**
-     * @deprecated
-     * Set connectFee
-     *
-     * @param string $connectFee
-     *
-     * @return self
-     */
-    public function setConnectFee($connectFee);
 
     /**
      * Get connectFee
@@ -74,31 +44,11 @@ interface TpRateInterface extends EntityInterface
     public function getConnectFee();
 
     /**
-     * @deprecated
-     * Set rateCost
-     *
-     * @param string $rateCost
-     *
-     * @return self
-     */
-    public function setRateCost($rateCost);
-
-    /**
      * Get rateCost
      *
      * @return string
      */
     public function getRateCost();
-
-    /**
-     * @deprecated
-     * Set rateUnit
-     *
-     * @param string $rateUnit
-     *
-     * @return self
-     */
-    public function setRateUnit($rateUnit);
 
     /**
      * Get rateUnit
@@ -120,16 +70,6 @@ interface TpRateInterface extends EntityInterface
      * @return string
      */
     public function getGroupIntervalStart();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt

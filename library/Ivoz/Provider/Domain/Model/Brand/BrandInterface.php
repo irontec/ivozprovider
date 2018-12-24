@@ -62,16 +62,6 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getServiceByIden(string $iden);
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -81,53 +71,23 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Get domainUsers
      *
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers();
 
     /**
-     * @deprecated
-     * Set recordingsLimitMB
-     *
-     * @param integer $recordingsLimitMB
-     *
-     * @return self
-     */
-    public function setRecordingsLimitMB($recordingsLimitMB = null);
-
-    /**
      * Get recordingsLimitMB
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB();
 
     /**
-     * @deprecated
-     * Set recordingsLimitEmail
-     *
-     * @param string $recordingsLimitEmail
-     *
-     * @return self
-     */
-    public function setRecordingsLimitEmail($recordingsLimitEmail = null);
-
-    /**
      * Get recordingsLimitEmail
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail();
-
-    /**
-     * @deprecated
-     * Set maxCalls
-     *
-     * @param integer $maxCalls
-     *
-     * @return self
-     */
-    public function setMaxCalls($maxCalls);
 
     /**
      * Get maxCalls
@@ -148,7 +108,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 

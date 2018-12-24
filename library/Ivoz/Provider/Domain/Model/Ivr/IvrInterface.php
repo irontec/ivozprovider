@@ -37,31 +37,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getErrorTarget();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set timeout
-     *
-     * @param integer $timeout
-     *
-     * @return self
-     */
-    public function setTimeout($timeout);
 
     /**
      * Get timeout
@@ -71,31 +51,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getTimeout();
 
     /**
-     * @deprecated
-     * Set maxDigits
-     *
-     * @param integer $maxDigits
-     *
-     * @return self
-     */
-    public function setMaxDigits($maxDigits);
-
-    /**
      * Get maxDigits
      *
      * @return integer
      */
     public function getMaxDigits();
-
-    /**
-     * @deprecated
-     * Set allowExtensions
-     *
-     * @param boolean $allowExtensions
-     *
-     * @return self
-     */
-    public function setAllowExtensions($allowExtensions);
 
     /**
      * Get allowExtensions
@@ -105,70 +65,30 @@ interface IvrInterface extends LoggableEntityInterface
     public function getAllowExtensions();
 
     /**
-     * @deprecated
-     * Set noInputRouteType
-     *
-     * @param string $noInputRouteType
-     *
-     * @return self
-     */
-    public function setNoInputRouteType($noInputRouteType = null);
-
-    /**
      * Get noInputRouteType
      *
-     * @return string
+     * @return string | null
      */
     public function getNoInputRouteType();
 
     /**
-     * @deprecated
-     * Set noInputNumberValue
-     *
-     * @param string $noInputNumberValue
-     *
-     * @return self
-     */
-    public function setNoInputNumberValue($noInputNumberValue = null);
-
-    /**
      * Get noInputNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNoInputNumberValue();
 
     /**
-     * @deprecated
-     * Set errorRouteType
-     *
-     * @param string $errorRouteType
-     *
-     * @return self
-     */
-    public function setErrorRouteType($errorRouteType = null);
-
-    /**
      * Get errorRouteType
      *
-     * @return string
+     * @return string | null
      */
     public function getErrorRouteType();
 
     /**
-     * @deprecated
-     * Set errorNumberValue
-     *
-     * @param string $errorNumberValue
-     *
-     * @return self
-     */
-    public function setErrorNumberValue($errorNumberValue = null);
-
-    /**
      * Get errorNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getErrorNumberValue();
 

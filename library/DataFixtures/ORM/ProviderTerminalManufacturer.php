@@ -19,29 +19,41 @@ class ProviderTerminalManufacturer extends Fixture
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TerminalManufacturer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(TerminalManufacturer::class);
-        $item1->setIden("Generic");
-        $item1->setName("Generic SIP Manufacturer");
-        $item1->setDescription("Generic SIP Manufacturer");
+        $item1 = $this->createEntityInstance(TerminalManufacturer::class);
+        (function () {
+            $this->setIden("Generic");
+            $this->setName("Generic SIP Manufacturer");
+            $this->setDescription("Generic SIP Manufacturer");
+        })->call($item1);
+
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer1', $item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstanceWithPublicMethods(TerminalManufacturer::class);
-        $item2->setIden("Yealink");
-        $item2->setName("Yealink");
+        $item2 = $this->createEntityInstance(TerminalManufacturer::class);
+        (function () {
+            $this->setIden("Yealink");
+            $this->setName("Yealink");
+        })->call($item2);
+
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2', $item2);
         $manager->persist($item2);
 
-        $item3 = $this->createEntityInstanceWithPublicMethods(TerminalManufacturer::class);
-        $item3->setIden("Cisco");
-        $item3->setName("Cisco");
+        $item3 = $this->createEntityInstance(TerminalManufacturer::class);
+        (function () {
+            $this->setIden("Cisco");
+            $this->setName("Cisco");
+        })->call($item3);
+
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer3', $item3);
         $manager->persist($item3);
 
-        $item4 = $this->createEntityInstanceWithPublicMethods(TerminalManufacturer::class);
-        $item4->setIden("Test");
-        $item4->setName("Test SIP Manufacturer");
-        $item4->setDescription("Test SIP Manufacturer");
+        $item4 = $this->createEntityInstance(TerminalManufacturer::class);
+        (function () {
+            $this->setIden("Test");
+            $this->setName("Test SIP Manufacturer");
+            $this->setDescription("Test SIP Manufacturer");
+        })->call($item4);
+
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer4', $item4);
         $manager->persist($item4);
 

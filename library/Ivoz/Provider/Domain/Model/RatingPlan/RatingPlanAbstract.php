@@ -21,7 +21,7 @@ abstract class RatingPlanAbstract
     /**
      * column: timing_type
      * comment: enum:always|custom
-     * @var string
+     * @var string | null
      */
     protected $timingType = 'always';
 
@@ -32,37 +32,37 @@ abstract class RatingPlanAbstract
     protected $timeIn;
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $monday = '1';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $tuesday = '1';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $wednesday = '1';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $thursday = '1';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $friday = '1';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $saturday = '1';
 
     /**
-     * @var boolean
+     * @var boolean | null
      */
     protected $sunday = '1';
 
@@ -255,14 +255,13 @@ abstract class RatingPlanAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set weight
      *
      * @param string $weight
      *
      * @return self
      */
-    public function setWeight($weight)
+    protected function setWeight($weight)
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::numeric($weight);
@@ -284,14 +283,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set timingType
      *
      * @param string $timingType
      *
      * @return self
      */
-    public function setTimingType($timingType = null)
+    protected function setTimingType($timingType = null)
     {
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -309,7 +307,7 @@ abstract class RatingPlanAbstract
     /**
      * Get timingType
      *
-     * @return string
+     * @return string | null
      */
     public function getTimingType()
     {
@@ -317,14 +315,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set timeIn
      *
      * @param \DateTime $timeIn
      *
      * @return self
      */
-    public function setTimeIn($timeIn)
+    protected function setTimeIn($timeIn)
     {
         Assertion::notNull($timeIn, 'timeIn value "%s" is null, but non null value was expected.');
 
@@ -344,14 +341,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set monday
      *
      * @param boolean $monday
      *
      * @return self
      */
-    public function setMonday($monday = null)
+    protected function setMonday($monday = null)
     {
         if (!is_null($monday)) {
             Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
@@ -365,7 +361,7 @@ abstract class RatingPlanAbstract
     /**
      * Get monday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMonday()
     {
@@ -373,14 +369,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set tuesday
      *
      * @param boolean $tuesday
      *
      * @return self
      */
-    public function setTuesday($tuesday = null)
+    protected function setTuesday($tuesday = null)
     {
         if (!is_null($tuesday)) {
             Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
@@ -394,7 +389,7 @@ abstract class RatingPlanAbstract
     /**
      * Get tuesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getTuesday()
     {
@@ -402,14 +397,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set wednesday
      *
      * @param boolean $wednesday
      *
      * @return self
      */
-    public function setWednesday($wednesday = null)
+    protected function setWednesday($wednesday = null)
     {
         if (!is_null($wednesday)) {
             Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
@@ -423,7 +417,7 @@ abstract class RatingPlanAbstract
     /**
      * Get wednesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getWednesday()
     {
@@ -431,14 +425,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set thursday
      *
      * @param boolean $thursday
      *
      * @return self
      */
-    public function setThursday($thursday = null)
+    protected function setThursday($thursday = null)
     {
         if (!is_null($thursday)) {
             Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
@@ -452,7 +445,7 @@ abstract class RatingPlanAbstract
     /**
      * Get thursday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getThursday()
     {
@@ -460,14 +453,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set friday
      *
      * @param boolean $friday
      *
      * @return self
      */
-    public function setFriday($friday = null)
+    protected function setFriday($friday = null)
     {
         if (!is_null($friday)) {
             Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
@@ -481,7 +473,7 @@ abstract class RatingPlanAbstract
     /**
      * Get friday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getFriday()
     {
@@ -489,14 +481,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set saturday
      *
      * @param boolean $saturday
      *
      * @return self
      */
-    public function setSaturday($saturday = null)
+    protected function setSaturday($saturday = null)
     {
         if (!is_null($saturday)) {
             Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
@@ -510,7 +501,7 @@ abstract class RatingPlanAbstract
     /**
      * Get saturday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSaturday()
     {
@@ -518,14 +509,13 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @deprecated
      * Set sunday
      *
      * @param boolean $sunday
      *
      * @return self
      */
-    public function setSunday($sunday = null)
+    protected function setSunday($sunday = null)
     {
         if (!is_null($sunday)) {
             Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
@@ -539,7 +529,7 @@ abstract class RatingPlanAbstract
     /**
      * Get sunday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSunday()
     {

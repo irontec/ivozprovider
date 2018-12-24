@@ -20,31 +20,11 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getNumberValueE164();
 
     /**
-     * @deprecated
-     * Set entry
-     *
-     * @param string $entry
-     *
-     * @return self
-     */
-    public function setEntry($entry);
-
-    /**
      * Get entry
      *
      * @return string
      */
     public function getEntry();
-
-    /**
-     * @deprecated
-     * Set routeType
-     *
-     * @param string $routeType
-     *
-     * @return self
-     */
-    public function setRouteType($routeType);
 
     /**
      * Get routeType
@@ -54,19 +34,9 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getRouteType();
 
     /**
-     * @deprecated
-     * Set numberValue
-     *
-     * @param string $numberValue
-     *
-     * @return self
-     */
-    public function setNumberValue($numberValue = null);
-
-    /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue();
 

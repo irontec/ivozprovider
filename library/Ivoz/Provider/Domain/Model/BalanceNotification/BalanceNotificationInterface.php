@@ -13,7 +13,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @return LanguageInterface
+     * @return LanguageInterface | null
      */
     public function getLanguage();
 
@@ -23,53 +23,23 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getEntityName();
 
     /**
-     * @deprecated
-     * Set toAddress
-     *
-     * @param string $toAddress
-     *
-     * @return self
-     */
-    public function setToAddress($toAddress = null);
-
-    /**
      * Get toAddress
      *
-     * @return string
+     * @return string | null
      */
     public function getToAddress();
 
     /**
-     * @deprecated
-     * Set threshold
-     *
-     * @param string $threshold
-     *
-     * @return self
-     */
-    public function setThreshold($threshold = null);
-
-    /**
      * Get threshold
      *
-     * @return string
+     * @return string | null
      */
     public function getThreshold();
 
     /**
-     * @deprecated
-     * Set lastSent
-     *
-     * @param \DateTime $lastSent
-     *
-     * @return self
-     */
-    public function setLastSent($lastSent = null);
-
-    /**
      * Get lastSent
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastSent();
 
@@ -85,7 +55,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -101,7 +71,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
@@ -117,7 +87,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get notificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getNotificationTemplate();
 }

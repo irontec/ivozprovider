@@ -30,22 +30,22 @@ abstract class RetailAccountAbstract
     protected $transport;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ip;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $port;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $password;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $fromDomain;
 
@@ -281,14 +281,13 @@ abstract class RetailAccountAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -309,14 +308,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -337,14 +335,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set transport
      *
      * @param string $transport
      *
      * @return self
      */
-    public function setTransport($transport)
+    protected function setTransport($transport)
     {
         Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
         Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -370,14 +367,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set ip
      *
      * @param string $ip
      *
      * @return self
      */
-    public function setIp($ip = null)
+    protected function setIp($ip = null)
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -391,7 +387,7 @@ abstract class RetailAccountAbstract
     /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -399,14 +395,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set port
      *
      * @param integer $port
      *
      * @return self
      */
-    public function setPort($port = null)
+    protected function setPort($port = null)
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
@@ -423,7 +418,7 @@ abstract class RetailAccountAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -431,14 +426,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set password
      *
      * @param string $password
      *
      * @return self
      */
-    public function setPassword($password = null)
+    protected function setPassword($password = null)
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -452,7 +446,7 @@ abstract class RetailAccountAbstract
     /**
      * Get password
      *
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -460,14 +454,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
      *
      * @return self
      */
-    public function setFromDomain($fromDomain = null)
+    protected function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -481,7 +474,7 @@ abstract class RetailAccountAbstract
     /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -489,14 +482,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity
      *
      * @return self
      */
-    public function setDirectConnectivity($directConnectivity)
+    protected function setDirectConnectivity($directConnectivity)
     {
         Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
         Assertion::choice($directConnectivity, array (
@@ -520,14 +512,13 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @deprecated
      * Set ddiIn
      *
      * @param string $ddiIn
      *
      * @return self
      */
-    public function setDdiIn($ddiIn)
+    protected function setDdiIn($ddiIn)
     {
         Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
         Assertion::choice($ddiIn, array (
@@ -591,7 +582,7 @@ abstract class RetailAccountAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {

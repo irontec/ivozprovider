@@ -3,8 +3,7 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Symfony\Bridge\Monolog\Logger;
@@ -29,14 +28,9 @@ class Multimedia
     protected $em;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
-
-    /**
-     * @var DtoAssembler
-     */
-    protected $dtoAssembler;
+    protected $entityTools;
 
     /**
      * @var Logger
@@ -46,19 +40,16 @@ class Multimedia
     /**
      * Multimedia constructor.
      * @param EntityManagerInterface $em
-     * @param EntityPersisterInterface $entityPersister
-     * @param DtoAssembler $dtoAssembler
+     * @param EntityTools $entityTools
      * @param Logger $logger
      */
     public function __construct(
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
-        DtoAssembler $dtoAssembler,
+        EntityTools $entityTools,
         Logger $logger
     ) {
         $this->em = $em;
-        $this->entityPersister = $entityPersister;
-        $this->dtoAssembler = $dtoAssembler;
+        $this->entityTools = $entityTools;
         $this->logger = $logger;
     }
 
@@ -103,9 +94,9 @@ class Multimedia
         $this->logger->info(sprintf("Encode process started for %s", $entity));
 
         /** @var LocutionDto $entityDto */
-        $entityDto = $this->dtoAssembler->toDto($entity);
+        $entityDto = $this->entityTools->entityToDto($entity);
         $entityDto->setStatus('encoding');
-        $this->entityPersister->persistDto($entityDto, $entity);
+        $this->entityTools->persistDto($entityDto, $entity);
 
         try {
             $originalFile = $entityDto->getOriginalFilePath();
@@ -148,7 +139,7 @@ class Multimedia
                 ->setEncodedFilePath($encodedFile)
                 ->setStatus('ready');
 
-            $this->entityPersister->persistDto($entityDto, $entity);
+            $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->info(sprintf("Successfully encoded %s", $entity));
 
         } catch(\Exception $e){
@@ -156,7 +147,7 @@ class Multimedia
                 ->setEncodedFilePath(null)
                 ->setStatus('error');
 
-            $this->entityPersister->persistDto($entityDto, $entity);
+            $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->error(sprintf("Failed to encode %s: %s ", $entity, $e->getMessage()));
             throw $e;
         }

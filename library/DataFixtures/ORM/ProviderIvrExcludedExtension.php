@@ -21,7 +21,7 @@ class ProviderIvrExcludedExtension extends Fixture implements DependentFixtureIn
         $manager->getClassMetadata(IvrExcludedExtension::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var IvrExcludedExtension $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(IvrExcludedExtension::class);
+        $item1 = $this->createEntityInstance(IvrExcludedExtension::class);
         $item1->setIvr(
             $this->getReference('_reference_ProviderIvr1')
         );

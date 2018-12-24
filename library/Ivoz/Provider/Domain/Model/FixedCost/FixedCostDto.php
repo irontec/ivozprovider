@@ -6,6 +6,7 @@ class FixedCostDto extends FixedCostDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

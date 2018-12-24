@@ -51,19 +51,9 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set disallow
-     *
-     * @param string $disallow
-     *
-     * @return self
-     */
-    public function setDisallow($disallow);
 
     /**
      * Get disallow
@@ -73,16 +63,6 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
-     * @deprecated
-     * Set allowAudio
-     *
-     * @param string $allowAudio
-     *
-     * @return self
-     */
-    public function setAllowAudio($allowAudio);
-
-    /**
      * Get allowAudio
      *
      * @return string
@@ -90,31 +70,11 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllowAudio();
 
     /**
-     * @deprecated
-     * Set allowVideo
-     *
-     * @param string $allowVideo
-     *
-     * @return self
-     */
-    public function setAllowVideo($allowVideo = null);
-
-    /**
      * Get allowVideo
      *
-     * @return string
+     * @return string | null
      */
     public function getAllowVideo();
-
-    /**
-     * @deprecated
-     * Set directMediaMethod
-     *
-     * @param string $directMediaMethod
-     *
-     * @return self
-     */
-    public function setDirectMediaMethod($directMediaMethod);
 
     /**
      * Get directMediaMethod
@@ -133,24 +93,14 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get mac
      *
-     * @return string
+     * @return string | null
      */
     public function getMac();
 
     /**
-     * @deprecated
-     * Set lastProvisionDate
-     *
-     * @param \DateTime $lastProvisionDate
-     *
-     * @return self
-     */
-    public function setLastProvisionDate($lastProvisionDate = null);
-
-    /**
      * Get lastProvisionDate
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastProvisionDate();
 
@@ -182,7 +132,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 

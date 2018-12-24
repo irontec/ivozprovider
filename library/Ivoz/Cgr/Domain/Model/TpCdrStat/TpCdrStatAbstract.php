@@ -465,14 +465,13 @@ abstract class TpCdrStatAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set tpid
      *
      * @param string $tpid
      *
      * @return self
      */
-    public function setTpid($tpid)
+    protected function setTpid($tpid)
     {
         Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -493,14 +492,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set tag
      *
      * @param string $tag
      *
      * @return self
      */
-    public function setTag($tag)
+    protected function setTag($tag)
     {
         Assertion::notNull($tag, 'tag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -521,14 +519,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set queueLength
      *
      * @param integer $queueLength
      *
      * @return self
      */
-    public function setQueueLength($queueLength)
+    protected function setQueueLength($queueLength)
     {
         Assertion::notNull($queueLength, 'queueLength value "%s" is null, but non null value was expected.');
         Assertion::integerish($queueLength, 'queueLength value "%s" is not an integer or a number castable to integer.');
@@ -549,14 +546,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set timeWindow
      *
      * @param string $timeWindow
      *
      * @return self
      */
-    public function setTimeWindow($timeWindow)
+    protected function setTimeWindow($timeWindow)
     {
         Assertion::notNull($timeWindow, 'timeWindow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($timeWindow, 8, 'timeWindow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -577,14 +573,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set saveInterval
      *
      * @param string $saveInterval
      *
      * @return self
      */
-    public function setSaveInterval($saveInterval)
+    protected function setSaveInterval($saveInterval)
     {
         Assertion::notNull($saveInterval, 'saveInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($saveInterval, 8, 'saveInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -605,14 +600,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set metrics
      *
      * @param string $metrics
      *
      * @return self
      */
-    public function setMetrics($metrics)
+    protected function setMetrics($metrics)
     {
         Assertion::notNull($metrics, 'metrics value "%s" is null, but non null value was expected.');
         Assertion::maxLength($metrics, 64, 'metrics value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -633,14 +627,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set setupInterval
      *
      * @param string $setupInterval
      *
      * @return self
      */
-    public function setSetupInterval($setupInterval)
+    protected function setSetupInterval($setupInterval)
     {
         Assertion::notNull($setupInterval, 'setupInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($setupInterval, 64, 'setupInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -661,14 +654,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set tors
      *
      * @param string $tors
      *
      * @return self
      */
-    public function setTors($tors)
+    protected function setTors($tors)
     {
         Assertion::notNull($tors, 'tors value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tors, 64, 'tors value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -689,14 +681,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set cdrHosts
      *
      * @param string $cdrHosts
      *
      * @return self
      */
-    public function setCdrHosts($cdrHosts)
+    protected function setCdrHosts($cdrHosts)
     {
         Assertion::notNull($cdrHosts, 'cdrHosts value "%s" is null, but non null value was expected.');
         Assertion::maxLength($cdrHosts, 64, 'cdrHosts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -717,14 +708,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set cdrSources
      *
      * @param string $cdrSources
      *
      * @return self
      */
-    public function setCdrSources($cdrSources)
+    protected function setCdrSources($cdrSources)
     {
         Assertion::notNull($cdrSources, 'cdrSources value "%s" is null, but non null value was expected.');
         Assertion::maxLength($cdrSources, 64, 'cdrSources value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -745,14 +735,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set reqTypes
      *
      * @param string $reqTypes
      *
      * @return self
      */
-    public function setReqTypes($reqTypes)
+    protected function setReqTypes($reqTypes)
     {
         Assertion::notNull($reqTypes, 'reqTypes value "%s" is null, but non null value was expected.');
         Assertion::maxLength($reqTypes, 64, 'reqTypes value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -773,14 +762,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set directions
      *
      * @param string $directions
      *
      * @return self
      */
-    public function setDirections($directions)
+    protected function setDirections($directions)
     {
         Assertion::notNull($directions, 'directions value "%s" is null, but non null value was expected.');
         Assertion::maxLength($directions, 8, 'directions value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -801,14 +789,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set tenants
      *
      * @param string $tenants
      *
      * @return self
      */
-    public function setTenants($tenants)
+    protected function setTenants($tenants)
     {
         Assertion::notNull($tenants, 'tenants value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenants, 64, 'tenants value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -829,14 +816,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set categories
      *
      * @param string $categories
      *
      * @return self
      */
-    public function setCategories($categories)
+    protected function setCategories($categories)
     {
         Assertion::notNull($categories, 'categories value "%s" is null, but non null value was expected.');
         Assertion::maxLength($categories, 32, 'categories value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -857,14 +843,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set accounts
      *
      * @param string $accounts
      *
      * @return self
      */
-    public function setAccounts($accounts)
+    protected function setAccounts($accounts)
     {
         Assertion::notNull($accounts, 'accounts value "%s" is null, but non null value was expected.');
         Assertion::maxLength($accounts, 32, 'accounts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -885,14 +870,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set subjects
      *
      * @param string $subjects
      *
      * @return self
      */
-    public function setSubjects($subjects)
+    protected function setSubjects($subjects)
     {
         Assertion::notNull($subjects, 'subjects value "%s" is null, but non null value was expected.');
         Assertion::maxLength($subjects, 64, 'subjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -913,14 +897,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set destinationIds
      *
      * @param string $destinationIds
      *
      * @return self
      */
-    public function setDestinationIds($destinationIds)
+    protected function setDestinationIds($destinationIds)
     {
         Assertion::notNull($destinationIds, 'destinationIds value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destinationIds, 64, 'destinationIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -941,14 +924,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set ppdInterval
      *
      * @param string $ppdInterval
      *
      * @return self
      */
-    public function setPpdInterval($ppdInterval)
+    protected function setPpdInterval($ppdInterval)
     {
         Assertion::notNull($ppdInterval, 'ppdInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ppdInterval, 64, 'ppdInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -969,14 +951,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set usageInterval
      *
      * @param string $usageInterval
      *
      * @return self
      */
-    public function setUsageInterval($usageInterval)
+    protected function setUsageInterval($usageInterval)
     {
         Assertion::notNull($usageInterval, 'usageInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($usageInterval, 64, 'usageInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -997,14 +978,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set suppliers
      *
      * @param string $suppliers
      *
      * @return self
      */
-    public function setSuppliers($suppliers)
+    protected function setSuppliers($suppliers)
     {
         Assertion::notNull($suppliers, 'suppliers value "%s" is null, but non null value was expected.');
         Assertion::maxLength($suppliers, 64, 'suppliers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1025,14 +1005,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set disconnectCauses
      *
      * @param string $disconnectCauses
      *
      * @return self
      */
-    public function setDisconnectCauses($disconnectCauses)
+    protected function setDisconnectCauses($disconnectCauses)
     {
         Assertion::notNull($disconnectCauses, 'disconnectCauses value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disconnectCauses, 64, 'disconnectCauses value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1053,14 +1032,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set mediationRunids
      *
      * @param string $mediationRunids
      *
      * @return self
      */
-    public function setMediationRunids($mediationRunids)
+    protected function setMediationRunids($mediationRunids)
     {
         Assertion::notNull($mediationRunids, 'mediationRunids value "%s" is null, but non null value was expected.');
         Assertion::maxLength($mediationRunids, 64, 'mediationRunids value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1081,14 +1059,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set ratedAccounts
      *
      * @param string $ratedAccounts
      *
      * @return self
      */
-    public function setRatedAccounts($ratedAccounts)
+    protected function setRatedAccounts($ratedAccounts)
     {
         Assertion::notNull($ratedAccounts, 'ratedAccounts value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ratedAccounts, 32, 'ratedAccounts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1109,14 +1086,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set ratedSubjects
      *
      * @param string $ratedSubjects
      *
      * @return self
      */
-    public function setRatedSubjects($ratedSubjects)
+    protected function setRatedSubjects($ratedSubjects)
     {
         Assertion::notNull($ratedSubjects, 'ratedSubjects value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ratedSubjects, 64, 'ratedSubjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1137,14 +1113,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set costInterval
      *
      * @param string $costInterval
      *
      * @return self
      */
-    public function setCostInterval($costInterval)
+    protected function setCostInterval($costInterval)
     {
         Assertion::notNull($costInterval, 'costInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($costInterval, 24, 'costInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1165,14 +1140,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set actionTriggers
      *
      * @param string $actionTriggers
      *
      * @return self
      */
-    public function setActionTriggers($actionTriggers)
+    protected function setActionTriggers($actionTriggers)
     {
         Assertion::notNull($actionTriggers, 'actionTriggers value "%s" is null, but non null value was expected.');
         Assertion::maxLength($actionTriggers, 64, 'actionTriggers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1193,14 +1167,13 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt)
     {
         Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
         $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(

@@ -20,16 +20,6 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getRoutingPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -37,19 +27,9 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 

@@ -5,7 +5,7 @@ namespace Agi\Action;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
@@ -19,9 +19,9 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 class ExternalFaxCallAction extends ExternalCallAction
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected  $entityPersister;
+    protected  $entityTools;
 
     /**
      * @var string
@@ -38,16 +38,16 @@ class ExternalFaxCallAction extends ExternalCallAction
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
-     * @param EntityPersisterInterface $entityPersister
+     * @param EntityTools $entityTools
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     )
     {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
 
         parent::__construct($agi, $channelInfo, $em);
     }
@@ -92,9 +92,9 @@ class ExternalFaxCallAction extends ExternalCallAction
 
 
             /** @var FaxesInOutDTO $faxOutDto */
-            $faxOutDto = $faxOut->toDTO();
+            $faxOutDto = $this->entityTools->entityToDto($faxOut);
             $faxOutDto->setStatus('error');
-            $this->entityPersister->persistDto($faxOutDto, $faxOut);
+            $this->entityTools->persistDto($faxOutDto, $faxOut);
 
             return;
         }

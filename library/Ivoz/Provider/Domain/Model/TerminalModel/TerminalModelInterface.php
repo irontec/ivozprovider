@@ -35,31 +35,11 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getIden();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
 
     /**
      * Get description
@@ -71,48 +51,28 @@ interface TerminalModelInterface extends LoggableEntityInterface
     /**
      * Get genericTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericTemplate();
 
     /**
      * Get specificTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificTemplate();
 
     /**
-     * @deprecated
-     * Set genericUrlPattern
-     *
-     * @param string $genericUrlPattern
-     *
-     * @return self
-     */
-    public function setGenericUrlPattern($genericUrlPattern = null);
-
-    /**
      * Get genericUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericUrlPattern();
 
     /**
-     * @deprecated
-     * Set specificUrlPattern
-     *
-     * @param string $specificUrlPattern
-     *
-     * @return self
-     */
-    public function setSpecificUrlPattern($specificUrlPattern = null);
-
-    /**
      * Get specificUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificUrlPattern();
 

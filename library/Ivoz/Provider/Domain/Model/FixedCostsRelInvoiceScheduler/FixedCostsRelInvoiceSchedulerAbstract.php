@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class FixedCostsRelInvoiceSchedulerAbstract
 {
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $quantity;
 
@@ -168,14 +168,13 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set quantity
      *
      * @param integer $quantity
      *
      * @return self
      */
-    public function setQuantity($quantity = null)
+    protected function setQuantity($quantity = null)
     {
         if (!is_null($quantity)) {
             if (!is_null($quantity)) {
@@ -192,7 +191,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Get quantity
      *
-     * @return integer
+     * @return integer | null
      */
     public function getQuantity()
     {

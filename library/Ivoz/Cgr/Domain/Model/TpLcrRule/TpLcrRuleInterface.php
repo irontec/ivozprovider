@@ -13,31 +13,11 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return self
-     */
-    public function setTpid($tpid);
-
-    /**
      * Get tpid
      *
      * @return string
      */
     public function getTpid();
-
-    /**
-     * @deprecated
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection($direction);
 
     /**
      * Get direction
@@ -47,31 +27,11 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getDirection();
 
     /**
-     * @deprecated
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return self
-     */
-    public function setTenant($tenant);
-
-    /**
      * Get tenant
      *
      * @return string
      */
     public function getTenant();
-
-    /**
-     * @deprecated
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return self
-     */
-    public function setCategory($category);
 
     /**
      * Get category
@@ -81,16 +41,6 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getCategory();
 
     /**
-     * @deprecated
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return self
-     */
-    public function setAccount($account);
-
-    /**
      * Get account
      *
      * @return string
@@ -98,48 +48,18 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getAccount();
 
     /**
-     * @deprecated
-     * Set subject
-     *
-     * @param string $subject
-     *
-     * @return self
-     */
-    public function setSubject($subject = null);
-
-    /**
      * Get subject
      *
-     * @return string
+     * @return string | null
      */
     public function getSubject();
 
     /**
-     * @deprecated
-     * Set destinationTag
-     *
-     * @param string $destinationTag
-     *
-     * @return self
-     */
-    public function setDestinationTag($destinationTag = null);
-
-    /**
      * Get destinationTag
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationTag();
-
-    /**
-     * @deprecated
-     * Set rpCategory
-     *
-     * @param string $rpCategory
-     *
-     * @return self
-     */
-    public function setRpCategory($rpCategory);
 
     /**
      * Get rpCategory
@@ -149,16 +69,6 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getRpCategory();
 
     /**
-     * @deprecated
-     * Set strategy
-     *
-     * @param string $strategy
-     *
-     * @return self
-     */
-    public function setStrategy($strategy);
-
-    /**
      * Get strategy
      *
      * @return string
@@ -166,31 +76,11 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getStrategy();
 
     /**
-     * @deprecated
-     * Set strategyParams
-     *
-     * @param string $strategyParams
-     *
-     * @return self
-     */
-    public function setStrategyParams($strategyParams = null);
-
-    /**
      * Get strategyParams
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategyParams();
-
-    /**
-     * @deprecated
-     * Set activationTime
-     *
-     * @param \DateTime $activationTime
-     *
-     * @return self
-     */
-    public function setActivationTime($activationTime);
 
     /**
      * Get activationTime
@@ -200,31 +90,11 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     public function getActivationTime();
 
     /**
-     * @deprecated
-     * Set weight
-     *
-     * @param string $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight);
-
-    /**
      * Get weight
      *
      * @return string
      */
     public function getWeight();
-
-    /**
-     * @deprecated
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt);
 
     /**
      * Get createdAt
@@ -245,7 +115,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     public function getOutgoingRouting();
 }

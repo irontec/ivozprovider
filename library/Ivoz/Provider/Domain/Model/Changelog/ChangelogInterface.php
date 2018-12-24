@@ -14,31 +14,11 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
     public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event);
 
     /**
-     * @deprecated
-     * Set entity
-     *
-     * @param string $entity
-     *
-     * @return self
-     */
-    public function setEntity($entity);
-
-    /**
      * Get entity
      *
      * @return string
      */
     public function getEntity();
-
-    /**
-     * @deprecated
-     * Set entityId
-     *
-     * @param string $entityId
-     *
-     * @return self
-     */
-    public function setEntityId($entityId);
 
     /**
      * Get entityId
@@ -48,31 +28,11 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
     public function getEntityId();
 
     /**
-     * @deprecated
-     * Set data
-     *
-     * @param array $data
-     *
-     * @return self
-     */
-    public function setData($data = null);
-
-    /**
      * Get data
      *
-     * @return array
+     * @return array | null
      */
     public function getData();
-
-    /**
-     * @deprecated
-     * Set createdOn
-     *
-     * @param \DateTime $createdOn
-     *
-     * @return self
-     */
-    public function setCreatedOn($createdOn);
 
     /**
      * Get createdOn
@@ -80,16 +40,6 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      * @return \DateTime
      */
     public function getCreatedOn();
-
-    /**
-     * @deprecated
-     * Set microtime
-     *
-     * @param integer $microtime
-     *
-     * @return self
-     */
-    public function setMicrotime($microtime);
 
     /**
      * Get microtime

@@ -24,84 +24,44 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function setTrunkPrefix($trunkPrefix = null);
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
 
     /**
      * Get internationalCode
      *
-     * @return string
+     * @return string | null
      */
     public function getInternationalCode();
 
     /**
      * Get trunkPrefix
      *
-     * @return string
+     * @return string | null
      */
     public function getTrunkPrefix();
 
     /**
-     * @deprecated
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null);
-
-    /**
      * Get areaCode
      *
-     * @return string
+     * @return string | null
      */
     public function getAreaCode();
 
     /**
-     * @deprecated
-     * Set nationalLen
-     *
-     * @param integer $nationalLen
-     *
-     * @return self
-     */
-    public function setNationalLen($nationalLen = null);
-
-    /**
      * Get nationalLen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getNationalLen();
 
     /**
-     * @deprecated
-     * Set generateRules
-     *
-     * @param boolean $generateRules
-     *
-     * @return self
-     */
-    public function setGenerateRules($generateRules = null);
-
-    /**
      * Get generateRules
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getGenerateRules();
 
@@ -117,7 +77,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -133,7 +93,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
 

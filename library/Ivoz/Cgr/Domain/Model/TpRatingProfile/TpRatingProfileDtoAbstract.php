@@ -43,9 +43,9 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $subject;
 
     /**
-     * @var \DateTime
+     * @var string
      */
-    private $activationTime = 'CURRENT_TIMESTAMP';
+    private $activationTime = '1970-01-01 00:00:00';
 
     /**
      * @var string
@@ -277,7 +277,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $activationTime
+     * @param string $activationTime
      *
      * @return static
      */
@@ -289,7 +289,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getActivationTime()
     {

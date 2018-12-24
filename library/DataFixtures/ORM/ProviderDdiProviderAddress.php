@@ -22,9 +22,12 @@ class ProviderDdiProviderAddress extends Fixture implements DependentFixtureInte
         $manager->getClassMetadata(DdiProviderAddress::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var DdiProviderAddressInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(DdiProviderAddress::class);
-        $item1->setDescription("DDI Provider Address 1");
-        $item1->setIp("127.0.0.1");
+        $item1 = $this->createEntityInstance(DdiProviderAddress::class);
+        (function () {
+            $this->setDescription("DDI Provider Address 1");
+            $this->setIp("127.0.0.1");
+        })->call($item1);
+
         $item1->setDdiProvider($this->getReference('_reference_ProviderDdiProvider1'));
         $this->addReference('_reference_ProviderDdiProviderAddress1', $item1);
         $this->sanitizeEntityValues($item1);

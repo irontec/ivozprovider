@@ -41,16 +41,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerNumberValueE164();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -58,31 +48,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set strategy
-     *
-     * @param string $strategy
-     *
-     * @return self
-     */
-    public function setStrategy($strategy);
 
     /**
      * Get strategy
@@ -99,48 +69,18 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getRingAllTimeout();
 
     /**
-     * @deprecated
-     * Set noAnswerTargetType
-     *
-     * @param string $noAnswerTargetType
-     *
-     * @return self
-     */
-    public function setNoAnswerTargetType($noAnswerTargetType = null);
-
-    /**
      * Get noAnswerTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerTargetType();
 
     /**
-     * @deprecated
-     * Set noAnswerNumberValue
-     *
-     * @param string $noAnswerNumberValue
-     *
-     * @return self
-     */
-    public function setNoAnswerNumberValue($noAnswerNumberValue = null);
-
-    /**
      * Get noAnswerNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerNumberValue();
-
-    /**
-     * @deprecated
-     * Set preventMissedCalls
-     *
-     * @param integer $preventMissedCalls
-     *
-     * @return self
-     */
-    public function setPreventMissedCalls($preventMissedCalls);
 
     /**
      * Get preventMissedCalls

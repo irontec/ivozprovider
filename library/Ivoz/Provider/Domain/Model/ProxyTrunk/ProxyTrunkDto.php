@@ -7,6 +7,7 @@ class ProxyTrunkDto extends ProxyTrunkDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

@@ -14,31 +14,11 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
     public static function fromEvent(\Ivoz\Core\Application\Event\CommandEventInterface $event);
 
     /**
-     * @deprecated
-     * Set requestId
-     *
-     * @param guid $requestId
-     *
-     * @return self
-     */
-    public function setRequestId($requestId);
-
-    /**
      * Get requestId
      *
      * @return guid
      */
     public function getRequestId();
-
-    /**
-     * @deprecated
-     * Set class
-     *
-     * @param string $class
-     *
-     * @return self
-     */
-    public function setClass($class);
 
     /**
      * Get class
@@ -48,48 +28,18 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
     public function getClass();
 
     /**
-     * @deprecated
-     * Set method
-     *
-     * @param string $method
-     *
-     * @return self
-     */
-    public function setMethod($method = null);
-
-    /**
      * Get method
      *
-     * @return string
+     * @return string | null
      */
     public function getMethod();
 
     /**
-     * @deprecated
-     * Set arguments
-     *
-     * @param array $arguments
-     *
-     * @return self
-     */
-    public function setArguments($arguments = null);
-
-    /**
      * Get arguments
      *
-     * @return array
+     * @return array | null
      */
     public function getArguments();
-
-    /**
-     * @deprecated
-     * Set createdOn
-     *
-     * @param \DateTime $createdOn
-     *
-     * @return self
-     */
-    public function setCreatedOn($createdOn);
 
     /**
      * Get createdOn
@@ -97,16 +47,6 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
      * @return \DateTime
      */
     public function getCreatedOn();
-
-    /**
-     * @deprecated
-     * Set microtime
-     *
-     * @param integer $microtime
-     *
-     * @return self
-     */
-    public function setMicrotime($microtime);
 
     /**
      * Get microtime

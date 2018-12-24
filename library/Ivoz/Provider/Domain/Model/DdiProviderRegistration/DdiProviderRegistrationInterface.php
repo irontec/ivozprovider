@@ -13,31 +13,11 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return self
-     */
-    public function setUsername($username);
-
-    /**
      * Get username
      *
      * @return string
      */
     public function getUsername();
-
-    /**
-     * @deprecated
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return self
-     */
-    public function setDomain($domain);
 
     /**
      * Get domain
@@ -47,31 +27,11 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
-     * @deprecated
-     * Set realm
-     *
-     * @param string $realm
-     *
-     * @return self
-     */
-    public function setRealm($realm);
-
-    /**
      * Get realm
      *
      * @return string
      */
     public function getRealm();
-
-    /**
-     * @deprecated
-     * Set authUsername
-     *
-     * @param string $authUsername
-     *
-     * @return self
-     */
-    public function setAuthUsername($authUsername);
 
     /**
      * Get authUsername
@@ -81,31 +41,11 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getAuthUsername();
 
     /**
-     * @deprecated
-     * Set authPassword
-     *
-     * @param string $authPassword
-     *
-     * @return self
-     */
-    public function setAuthPassword($authPassword);
-
-    /**
      * Get authPassword
      *
      * @return string
      */
     public function getAuthPassword();
-
-    /**
-     * @deprecated
-     * Set authProxy
-     *
-     * @param string $authProxy
-     *
-     * @return self
-     */
-    public function setAuthProxy($authProxy);
 
     /**
      * Get authProxy
@@ -115,16 +55,6 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getAuthProxy();
 
     /**
-     * @deprecated
-     * Set expires
-     *
-     * @param integer $expires
-     *
-     * @return self
-     */
-    public function setExpires($expires);
-
-    /**
      * Get expires
      *
      * @return integer
@@ -132,31 +62,11 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
-     * @deprecated
-     * Set multiDdi
-     *
-     * @param boolean $multiDdi
-     *
-     * @return self
-     */
-    public function setMultiDdi($multiDdi = null);
-
-    /**
      * Get multiDdi
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMultiDdi();
-
-    /**
-     * @deprecated
-     * Set contactUsername
-     *
-     * @param string $contactUsername
-     *
-     * @return self
-     */
-    public function setContactUsername($contactUsername);
 
     /**
      * Get contactUsername

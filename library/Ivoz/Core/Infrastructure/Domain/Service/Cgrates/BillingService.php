@@ -42,7 +42,7 @@ class BillingService implements BillingServiceInterface
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());
-        $answerDateTime->setTimezone(new \DateTimeZone(date_default_timezone_get()));
+        $answerDateTime->setTimezone(new \DateTimeZone('UTC'));
 
         $payload = [
             'Tenant' => $tenant,
@@ -72,7 +72,7 @@ class BillingService implements BillingServiceInterface
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());
-        $answerDateTime->setTimezone(new \DateTimeZone(date_default_timezone_get()));
+        $answerDateTime->setTimezone(new \DateTimeZone('UTC'));
 
         $payload = [
             'Tenant' => $tenant,

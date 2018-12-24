@@ -181,14 +181,13 @@ abstract class RouteLockAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -209,14 +208,13 @@ abstract class RouteLockAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -237,14 +235,13 @@ abstract class RouteLockAbstract
     }
 
     /**
-     * @deprecated
      * Set open
      *
      * @param boolean $open
      *
      * @return self
      */
-    public function setOpen($open)
+    protected function setOpen($open)
     {
         Assertion::notNull($open, 'open value "%s" is null, but non null value was expected.');
         Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');

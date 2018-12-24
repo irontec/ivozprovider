@@ -13,36 +13,16 @@ interface ProxyUserInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
-
-    /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
-     * @deprecated
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return self
-     */
-    public function setIp($ip = null);
-
-    /**
      * Get ip
      *
-     * @return string
+     * @return string | null
      */
     public function getIp();
 }

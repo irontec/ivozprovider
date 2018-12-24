@@ -17,6 +17,7 @@ class TerminalDto extends TerminalDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

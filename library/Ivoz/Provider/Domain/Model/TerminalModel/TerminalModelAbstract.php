@@ -29,22 +29,22 @@ abstract class TerminalModelAbstract
     protected $description = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $genericTemplate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $specificTemplate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $genericUrlPattern;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $specificUrlPattern;
 
@@ -217,14 +217,13 @@ abstract class TerminalModelAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set iden
      *
      * @param string $iden
      *
      * @return self
      */
-    public function setIden($iden)
+    protected function setIden($iden)
     {
         Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -245,14 +244,13 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -273,14 +271,13 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -301,14 +298,13 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @deprecated
      * Set genericTemplate
      *
      * @param string $genericTemplate
      *
      * @return self
      */
-    public function setGenericTemplate($genericTemplate = null)
+    protected function setGenericTemplate($genericTemplate = null)
     {
         if (!is_null($genericTemplate)) {
             Assertion::maxLength($genericTemplate, 65535, 'genericTemplate value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -322,7 +318,7 @@ abstract class TerminalModelAbstract
     /**
      * Get genericTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericTemplate()
     {
@@ -330,14 +326,13 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @deprecated
      * Set specificTemplate
      *
      * @param string $specificTemplate
      *
      * @return self
      */
-    public function setSpecificTemplate($specificTemplate = null)
+    protected function setSpecificTemplate($specificTemplate = null)
     {
         if (!is_null($specificTemplate)) {
             Assertion::maxLength($specificTemplate, 65535, 'specificTemplate value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -351,7 +346,7 @@ abstract class TerminalModelAbstract
     /**
      * Get specificTemplate
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificTemplate()
     {
@@ -359,14 +354,13 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @deprecated
      * Set genericUrlPattern
      *
      * @param string $genericUrlPattern
      *
      * @return self
      */
-    public function setGenericUrlPattern($genericUrlPattern = null)
+    protected function setGenericUrlPattern($genericUrlPattern = null)
     {
         if (!is_null($genericUrlPattern)) {
             Assertion::maxLength($genericUrlPattern, 225, 'genericUrlPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -380,7 +374,7 @@ abstract class TerminalModelAbstract
     /**
      * Get genericUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getGenericUrlPattern()
     {
@@ -388,14 +382,13 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @deprecated
      * Set specificUrlPattern
      *
      * @param string $specificUrlPattern
      *
      * @return self
      */
-    public function setSpecificUrlPattern($specificUrlPattern = null)
+    protected function setSpecificUrlPattern($specificUrlPattern = null)
     {
         if (!is_null($specificUrlPattern)) {
             Assertion::maxLength($specificUrlPattern, 225, 'specificUrlPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -409,7 +402,7 @@ abstract class TerminalModelAbstract
     /**
      * Get specificUrlPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getSpecificUrlPattern()
     {

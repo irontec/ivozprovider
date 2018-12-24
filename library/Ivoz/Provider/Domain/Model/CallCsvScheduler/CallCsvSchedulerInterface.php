@@ -24,31 +24,11 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getInterval();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * @deprecated
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return self
-     */
-    public function setUnit($unit);
 
     /**
      * Get unit
@@ -58,31 +38,11 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getUnit();
 
     /**
-     * @deprecated
-     * Set frequency
-     *
-     * @param integer $frequency
-     *
-     * @return self
-     */
-    public function setFrequency($frequency);
-
-    /**
      * Get frequency
      *
      * @return integer
      */
     public function getFrequency();
-
-    /**
-     * @deprecated
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return self
-     */
-    public function setEmail($email);
 
     /**
      * Get email
@@ -92,53 +52,23 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getEmail();
 
     /**
-     * @deprecated
-     * Set lastExecution
-     *
-     * @param \DateTime $lastExecution
-     *
-     * @return self
-     */
-    public function setLastExecution($lastExecution = null);
-
-    /**
      * Get lastExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution();
 
     /**
-     * @deprecated
-     * Set lastExecutionError
-     *
-     * @param string $lastExecutionError
-     *
-     * @return self
-     */
-    public function setLastExecutionError($lastExecutionError = null);
-
-    /**
      * Get lastExecutionError
      *
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError();
 
     /**
-     * @deprecated
-     * Set nextExecution
-     *
-     * @param \DateTime $nextExecution
-     *
-     * @return self
-     */
-    public function setNextExecution($nextExecution = null);
-
-    /**
      * Get nextExecution
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution();
 
@@ -154,7 +84,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -170,7 +100,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 }

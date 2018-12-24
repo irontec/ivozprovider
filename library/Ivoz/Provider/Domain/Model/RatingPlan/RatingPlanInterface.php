@@ -28,16 +28,6 @@ interface RatingPlanInterface extends EntityInterface
     public function getCgrTimingTag();
 
     /**
-     * @deprecated
-     * Set weight
-     *
-     * @param string $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight);
-
-    /**
      * Get weight
      *
      * @return string
@@ -45,31 +35,11 @@ interface RatingPlanInterface extends EntityInterface
     public function getWeight();
 
     /**
-     * @deprecated
-     * Set timingType
-     *
-     * @param string $timingType
-     *
-     * @return self
-     */
-    public function setTimingType($timingType = null);
-
-    /**
      * Get timingType
      *
-     * @return string
+     * @return string | null
      */
     public function getTimingType();
-
-    /**
-     * @deprecated
-     * Set timeIn
-     *
-     * @param \DateTime $timeIn
-     *
-     * @return self
-     */
-    public function setTimeIn($timeIn);
 
     /**
      * Get timeIn
@@ -79,121 +49,51 @@ interface RatingPlanInterface extends EntityInterface
     public function getTimeIn();
 
     /**
-     * @deprecated
-     * Set monday
-     *
-     * @param boolean $monday
-     *
-     * @return self
-     */
-    public function setMonday($monday = null);
-
-    /**
      * Get monday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMonday();
 
     /**
-     * @deprecated
-     * Set tuesday
-     *
-     * @param boolean $tuesday
-     *
-     * @return self
-     */
-    public function setTuesday($tuesday = null);
-
-    /**
      * Get tuesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getTuesday();
 
     /**
-     * @deprecated
-     * Set wednesday
-     *
-     * @param boolean $wednesday
-     *
-     * @return self
-     */
-    public function setWednesday($wednesday = null);
-
-    /**
      * Get wednesday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getWednesday();
 
     /**
-     * @deprecated
-     * Set thursday
-     *
-     * @param boolean $thursday
-     *
-     * @return self
-     */
-    public function setThursday($thursday = null);
-
-    /**
      * Get thursday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getThursday();
 
     /**
-     * @deprecated
-     * Set friday
-     *
-     * @param boolean $friday
-     *
-     * @return self
-     */
-    public function setFriday($friday = null);
-
-    /**
      * Get friday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getFriday();
 
     /**
-     * @deprecated
-     * Set saturday
-     *
-     * @param boolean $saturday
-     *
-     * @return self
-     */
-    public function setSaturday($saturday = null);
-
-    /**
      * Get saturday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSaturday();
 
     /**
-     * @deprecated
-     * Set sunday
-     *
-     * @param boolean $sunday
-     *
-     * @return self
-     */
-    public function setSunday($sunday = null);
-
-    /**
      * Get sunday
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getSunday();
 

@@ -13,7 +13,6 @@ services:
   fastagi:
     synthetic: true
 
-
   ##################################
   ## External Services
   ##################################
@@ -81,24 +80,17 @@ services:
 
   Dialplan\FaxDial:
     arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $faxStoragePathResolver:
         '@Service\CommonStoragePathResolver::FaxesInOutFile'
 
   Dialplan\FaxDialStatus:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+    arguments: ~
 
   Dialplan\FaxSend:
     arguments: ~
 
   Dialplan\FaxSendStatus:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
+    arguments: ~
   Dialplan\FaxReceiveStatus:
     arguments: ~
 
@@ -200,9 +192,7 @@ services:
 
   Agi\Action\ExternalFaxCallAction:
     lazy: true
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+    arguments: ~
 
   Agi\Action\ExternalFriendCallAction:
     lazy: true
@@ -218,9 +208,7 @@ services:
 
   Agi\Action\ServiceAction:
     lazy: true
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+    arguments: ~
 
   Agi\Action\VoiceMailAction:
     lazy: true

@@ -6,6 +6,7 @@ class QueueMemberDto extends QueueMemberDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

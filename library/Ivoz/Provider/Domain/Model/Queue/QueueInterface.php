@@ -50,174 +50,84 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
      * Get maxWaitTime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxWaitTime();
 
     /**
-     * @deprecated
-     * Set timeoutTargetType
-     *
-     * @param string $timeoutTargetType
-     *
-     * @return self
-     */
-    public function setTimeoutTargetType($timeoutTargetType = null);
-
-    /**
      * Get timeoutTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getTimeoutTargetType();
 
     /**
-     * @deprecated
-     * Set timeoutNumberValue
-     *
-     * @param string $timeoutNumberValue
-     *
-     * @return self
-     */
-    public function setTimeoutNumberValue($timeoutNumberValue = null);
-
-    /**
      * Get timeoutNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getTimeoutNumberValue();
 
     /**
      * Get maxlen
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen();
 
     /**
-     * @deprecated
-     * Set fullTargetType
-     *
-     * @param string $fullTargetType
-     *
-     * @return self
-     */
-    public function setFullTargetType($fullTargetType = null);
-
-    /**
      * Get fullTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getFullTargetType();
 
     /**
-     * @deprecated
-     * Set fullNumberValue
-     *
-     * @param string $fullNumberValue
-     *
-     * @return self
-     */
-    public function setFullNumberValue($fullNumberValue = null);
-
-    /**
      * Get fullNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFullNumberValue();
 
     /**
-     * @deprecated
-     * Set periodicAnnounceFrequency
-     *
-     * @param integer $periodicAnnounceFrequency
-     *
-     * @return self
-     */
-    public function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null);
-
-    /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency();
 
     /**
-     * @deprecated
-     * Set memberCallRest
-     *
-     * @param integer $memberCallRest
-     *
-     * @return self
-     */
-    public function setMemberCallRest($memberCallRest = null);
-
-    /**
      * Get memberCallRest
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallRest();
 
     /**
-     * @deprecated
-     * Set memberCallTimeout
-     *
-     * @param integer $memberCallTimeout
-     *
-     * @return self
-     */
-    public function setMemberCallTimeout($memberCallTimeout = null);
-
-    /**
      * Get memberCallTimeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallTimeout();
 
     /**
-     * @deprecated
-     * Set strategy
-     *
-     * @param string $strategy
-     *
-     * @return self
-     */
-    public function setStrategy($strategy = null);
-
-    /**
      * Get strategy
      *
-     * @return string
+     * @return string | null
      */
     public function getStrategy();
 
     /**
-     * @deprecated
-     * Set weight
-     *
-     * @param integer $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight = null);
-
-    /**
      * Get weight
      *
-     * @return integer
+     * @return integer | null
      */
     public function getWeight();
 

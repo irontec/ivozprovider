@@ -20,10 +20,13 @@ class ProviderIvrEntry extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(IvrEntry::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(IvrEntry::class);
-        $item1->setEntry("test");
-        $item1->setRouteType("number");
-        $item1->setNumberValue("946002050");
+        $item1 = $this->createEntityInstance(IvrEntry::class);
+        (function () {
+            $this->setEntry("test");
+            $this->setRouteType("number");
+            $this->setNumberValue("946002050");
+        })->call($item1);
+
         $item1->setIvr($this->getReference('_reference_ProviderIvr1'));
         $item1->setWelcomeLocution($this->getReference('_reference_ProviderLocution1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));

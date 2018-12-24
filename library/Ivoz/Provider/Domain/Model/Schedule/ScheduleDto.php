@@ -7,6 +7,7 @@ class ScheduleDto extends ScheduleDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

@@ -6,7 +6,8 @@ class CompanyDto extends CompanyDtoAbstract
 {
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @inheritdoc
      */
     public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE)
     {

@@ -4,23 +4,10 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: IvozProvider 2.7\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-11 16:24+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
 
 #: ../../api_rest/integrations.rst:3
 msgid "Third party integrations"
-msgstr ""
+msgstr "Integraciones de terceros"
 
 #: ../../api_rest/integrations.rst:5
 msgid ""
@@ -28,6 +15,9 @@ msgid ""
 "identical to the Swagger 2.0 specification before it was renamed to "
 "\"OpenAPI Specification\")."
 msgstr ""
+"Ivoz Provider hace uso de la especificación **OpenAPI 2.0** (la cual "
+"es idéntica a la especificación Swagger 2.0 antes de que fuera renombrada "
+"a \"OpenAPI\")."
 
 #: ../../api_rest/integrations.rst:8
 msgid ""
@@ -37,6 +27,11 @@ msgid ""
 "during the client development. According to their github page the "
 "following language/framework code auto-generation is supported:"
 msgstr ""
+"Las APIs son la manera de integrar aplicaciones de terceros con "
+"Ivoz Provider. Ciertas herramientas de la comunidad, como `swagger-codegen "
+"<https://github.com/swagger-api/swagger-codegen>`_, pueden ser de gran ayuda "
+"durante el desarrollo de clientes. De acuerdo con su página de github, "
+"es compatible con los siguientes languajes/frameworks:"
 
 #: ../../api_rest/integrations.rst:12
 msgid "ActionScript"
@@ -56,7 +51,7 @@ msgstr ""
 
 #: ../../api_rest/integrations.rst:16
 msgid "C# (.net 2.0, 3.5 or later)"
-msgstr ""
+msgstr "C# (.net 2.0, 3.5 o superior)"
 
 #: ../../api_rest/integrations.rst:17
 msgid "C++ (cpprest, Qt5, Tizen)"
@@ -163,23 +158,23 @@ msgstr ""
 
 #: ../../api_rest/integrations.rst:43
 msgid "You'll find API specs in the URLs below:"
-msgstr ""
+msgstr "La definición de la APIs se encuentra en las siguientes URLs:"
 
 #: ../../api_rest/integrations.rst:45
 msgid "`Platform API spec </api/platform/swagger.json>`_"
-msgstr ""
+msgstr "`Definición de API de plataforma </api/platform/swagger.json>`_"
 
 #: ../../api_rest/integrations.rst:46
 msgid "`Brand API spec </api/brand/swagger.json>`_"
-msgstr ""
+msgstr "`Definición de la API de marca </api/brand/swagger.json>`_"
 
 #: ../../api_rest/integrations.rst:47
 msgid "`Client API spec </api/client/swagger.json>`_"
-msgstr ""
+msgstr "`Definición de la API de cliente </api/client/swagger.json>`_"
 
 #: ../../api_rest/introduction.rst:3
 msgid "Introduction to IvozProvider API"
-msgstr ""
+msgstr "Introducción a la API de Ivoz Provider"
 
 #: ../../api_rest/introduction.rst:5
 msgid ""
@@ -192,52 +187,62 @@ msgid ""
 "Adobe, Google, IBM, Microsoft and `more "
 "<https://www.openapis.org/membership/members)>`_."
 msgstr ""
+"Ivoz Provider cuenta con tres APIs REST dirigidas por `hypermedia "
+"<https://en.wikipedia.org/wiki/HATEOAS>`_, una por cada uno de los "
+"roles de administración. Todas ellas han sido construidas sobre `OpenAPI Specification "
+" <https://www.openapis.org/>`_, una especificación abierta liderada por la comunidad "
+"dentro de la iniciativa OpenAPI, un proyecto colaborativo de la Linux Foundation. "
+"Esta iniciativa cuenta con el respaldo de algunas de las compañias tecnológicas más punteras "
+"como Adobe, Google, IBM, Microsoft `y muchas otras "
+"<https://www.openapis.org/membership/members)>`_."
 
 #: ../../api_rest/introduction.rst:10
 msgid "We support the features below:"
-msgstr ""
+msgstr "Se soportan las funcionalidades listadas a continuación:"
 
 #: ../../api_rest/introduction.rst:12
 msgid "Nice human-readable specification, including a sandbox"
-msgstr ""
+msgstr "Definición representada de forma legible por personas, sanbox incluido"
 
 #: ../../api_rest/introduction.rst:13
 msgid "JSON Web Token (JWT) based authentication"
-msgstr ""
+msgstr "Autorización basada en JSON Web Token (JWT)"
 
 #: ../../api_rest/introduction.rst:14
 msgid "Request and response content type negotiation"
-msgstr ""
+msgstr "Negociación de formato de petición y respuesta"
 
 #: ../../api_rest/introduction.rst:15
 msgid "Result pagination"
-msgstr ""
+msgstr "Paginación de resultados"
 
 #: ../../api_rest/introduction.rst:16
 msgid "Response property filters"
-msgstr ""
+msgstr "Filtros de propiedades en respuesta"
 
 #: ../../api_rest/introduction.rst:17
 msgid "Result filters"
-msgstr ""
+msgstr "Filtro de resultados"
 
 #: ../../api_rest/introduction.rst:18
 msgid "Result ordering"
-msgstr ""
+msgstr "Orden de resultados"
 
 #: ../../api_rest/introduction.rst:19
 msgid "Security layer: Resource and record access control"
-msgstr ""
+msgstr "Capa de seguridad: Control de acceso a recursos y registros"
 
 #: ../../api_rest/web_client.rst:3
 msgid "Built-in web client"
-msgstr ""
+msgstr "Cliente web incorporado"
 
 #: ../../api_rest/web_client.rst:5
 msgid ""
 "APIs come with their own web client so that you can test them easily. Go "
 "to `Platform API </api/platform/index.html>`_ for instance."
 msgstr ""
+"Las APIs incluyen su propio cliente web para que puedan ser probadas fácilmente. "
+"`Cliente web de la API de Plataforma </api/platform/index.html>`_ por ejemplo."
 
 #: ../../api_rest/web_client.rst:10
 msgid ""
@@ -247,6 +252,11 @@ msgid ""
 "`execute` to send the request. You should get a response that contains a "
 "token and a refresh token."
 msgstr ""
+"La API requiere solicitar un token de acceso mediante unas credenciales de administrador válidas. "
+"Esto puede ser realizado desde la sección [Auth] > [POST /admin_login] del cliente web. Será necesario "
+"hacer click en el botón `Try it out`, escribir las credenciales en el formulario y pulsar "
+"sobre `execute` para enviar la petición. La respuesta debería contener un token de acceso y un "
+"token de renovación."
 
 #: ../../api_rest/web_client.rst:15
 msgid ""
@@ -255,6 +265,10 @@ msgid ""
 "refresh token then to get a new one without sending admin credentials "
 "again."
 msgstr ""
+"Una vez solicitado el token, será necesario copiarlo en el botón `Authorize` que se encuentra en la parte "
+"superior de la página. El tiempo de vida del token es de una hora. Una vez expirado es "
+"posible hacer uso del token de refresco para conseguir un nuevo token de acceso sin la necesidad de "
+"reenviar las credenciales de administrador."
 
 #: ../../api_rest/web_client.rst:17
 msgid ""
@@ -262,18 +276,23 @@ msgid ""
 " endpoint, `Try it out` and `Execute`. You may want to switch `Response "
 "content type` as well (JSON or LD+JSON for this endpoint)."
 msgstr ""
+"Con el token correctamente introducido, es posible hacer click en [GET /administrators]"
+", `Try it out` y `Execute` para comprobar el correcto funcionamiento de la API. Igualmente, a través de "
+"`Response content type` se puede seleccionar en formato de respuesta deseado entre las opciones facilitadas "
+"(JSON o LD+JSON en este ejemplo)."
 
 #: ../../api_rest/web_client.rst:22
 msgid ""
 "It's possible to filter and sort response using `Parameters` input fields"
 " as well."
 msgstr ""
+"También es posible filtrar y ordenar la respuesta mediante los campos de entrada del formulario."
 
 #: ../../api_rest/web_client.rst:26
 msgid "Specification"
-msgstr ""
+msgstr "Especificación"
 
 #: ../../api_rest/web_client.rst:27
 msgid "You can check out request and response models from the web client itself."
-msgstr ""
+msgstr "El cliente web contiene la definición de los modelos de entrada y salida de la API."
 

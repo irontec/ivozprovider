@@ -20,9 +20,12 @@ class ProviderDdiProvider extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(DdiProvider::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstanceWithPublicMethods(DdiProvider::class);
-        $item1->setName("DDIProviderName");
-        $item1->setDescription("DDIProviderDescription");
+        $item1 = $this->createEntityInstance(DdiProvider::class);
+        (function () {
+            $this->setName("DDIProviderName");
+            $this->setDescription("DDIProviderDescription");
+        })->call($item1);
+
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderDdiProvider1', $item1);

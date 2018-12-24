@@ -19,31 +19,11 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getCgrSubject();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
      * Get description
      *
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
 
     /**
      * Get name
@@ -53,53 +33,23 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set externallyRated
-     *
-     * @param boolean $externallyRated
-     *
-     * @return self
-     */
-    public function setExternallyRated($externallyRated = null);
-
-    /**
      * Get externallyRated
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated();
 
     /**
-     * @deprecated
-     * Set balance
-     *
-     * @param string $balance
-     *
-     * @return self
-     */
-    public function setBalance($balance = null);
-
-    /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance();
 
     /**
-     * @deprecated
-     * Set calculateCost
-     *
-     * @param boolean $calculateCost
-     *
-     * @return self
-     */
-    public function setCalculateCost($calculateCost = null);
-
-    /**
      * Get calculateCost
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getCalculateCost();
 

@@ -14,25 +14,25 @@ class File
     /**
      * column: fileFileSize
      * comment: FSO
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: fileMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: fileBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
     /**
      * column: fileImporterArguments
-     * @var array
+     * @var array | null
      */
     protected $importerArguments;
 
@@ -55,7 +55,6 @@ class File
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set fileSize
      *
      * @param integer $fileSize
@@ -79,7 +78,7 @@ class File
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -87,7 +86,6 @@ class File
     }
 
     /**
-     * @deprecated
      * Set mimeType
      *
      * @param string $mimeType
@@ -108,7 +106,7 @@ class File
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -116,7 +114,6 @@ class File
     }
 
     /**
-     * @deprecated
      * Set baseName
      *
      * @param string $baseName
@@ -137,7 +134,7 @@ class File
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {
@@ -145,7 +142,6 @@ class File
     }
 
     /**
-     * @deprecated
      * Set importerArguments
      *
      * @param array $importerArguments
@@ -165,7 +161,7 @@ class File
     /**
      * Get importerArguments
      *
-     * @return array
+     * @return array | null
      */
     public function getImporterArguments()
     {

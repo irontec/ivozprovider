@@ -13,36 +13,16 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set timeoutTime
-     *
-     * @param integer $timeoutTime
-     *
-     * @return self
-     */
-    public function setTimeoutTime($timeoutTime = null);
-
-    /**
      * Get timeoutTime
      *
-     * @return integer
+     * @return integer | null
      */
     public function getTimeoutTime();
 
     /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority = null);
-
-    /**
      * Get priority
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPriority();
 

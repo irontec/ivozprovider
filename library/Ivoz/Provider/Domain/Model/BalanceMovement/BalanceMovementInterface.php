@@ -13,53 +13,23 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set amount
-     *
-     * @param string $amount
-     *
-     * @return self
-     */
-    public function setAmount($amount = null);
-
-    /**
      * Get amount
      *
-     * @return string
+     * @return string | null
      */
     public function getAmount();
 
     /**
-     * @deprecated
-     * Set balance
-     *
-     * @param string $balance
-     *
-     * @return self
-     */
-    public function setBalance($balance = null);
-
-    /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance();
 
     /**
-     * @deprecated
-     * Set createdOn
-     *
-     * @param \DateTime $createdOn
-     *
-     * @return self
-     */
-    public function setCreatedOn($createdOn = null);
-
-    /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedOn();
 
@@ -75,7 +45,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -91,7 +61,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 }

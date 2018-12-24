@@ -33,19 +33,9 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getCgrTag();
 
     /**
-     * @deprecated
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return self
-     */
-    public function setStatus($status = null);
-
-    /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus();
 

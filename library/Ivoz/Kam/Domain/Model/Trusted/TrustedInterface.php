@@ -17,104 +17,44 @@ interface TrustedInterface extends LoggableEntityInterface
     /**
      * Get srcIp
      *
-     * @return string
+     * @return string | null
      */
     public function getSrcIp();
 
     /**
-     * @deprecated
-     * Set proto
-     *
-     * @param string $proto
-     *
-     * @return self
-     */
-    public function setProto($proto = null);
-
-    /**
      * Get proto
      *
-     * @return string
+     * @return string | null
      */
     public function getProto();
 
     /**
-     * @deprecated
-     * Set fromPattern
-     *
-     * @param string $fromPattern
-     *
-     * @return self
-     */
-    public function setFromPattern($fromPattern = null);
-
-    /**
      * Get fromPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getFromPattern();
 
     /**
-     * @deprecated
-     * Set ruriPattern
-     *
-     * @param string $ruriPattern
-     *
-     * @return self
-     */
-    public function setRuriPattern($ruriPattern = null);
-
-    /**
      * Get ruriPattern
      *
-     * @return string
+     * @return string | null
      */
     public function getRuriPattern();
 
     /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
-
-    /**
      * Get tag
      *
-     * @return string
+     * @return string | null
      */
     public function getTag();
 
     /**
-     * @deprecated
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description = null);
-
-    /**
      * Get description
      *
-     * @return string
+     * @return string | null
      */
     public function getDescription();
-
-    /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
 
     /**
      * Get priority
@@ -135,7 +75,7 @@ interface TrustedInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 }

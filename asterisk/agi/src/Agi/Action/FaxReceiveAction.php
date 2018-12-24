@@ -2,11 +2,10 @@
 namespace Agi\Action;
 
 use Agi\Wrapper;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
-
 
 class FaxReceiveAction
 {
@@ -16,9 +15,9 @@ class FaxReceiveAction
     protected $agi;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var FaxInterface
@@ -29,15 +28,15 @@ class FaxReceiveAction
      * FaxReceiveAction constructor.
      *
      * @param Wrapper $agi
-     * @param EntityPersisterInterface $entityPersister
+     * @param EntityTools $entityTools
      */
     public function __construct(
         Wrapper $agi,
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     )
     {
         $this->agi = $agi;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     /**
@@ -85,7 +84,7 @@ class FaxReceiveAction
             ->setStatus("inprogress");
 
         /** @var FaxesInOutInterface $faxIn */
-        $faxIn = $this->entityPersister->persistDto($faxInDto);
+        $faxIn = $this->entityTools->persistDto($faxInDto, null, true);
 
         // Store FaxId for later searchs
         $this->agi->setVariable("FAXFILE_ID", $faxIn->getId());

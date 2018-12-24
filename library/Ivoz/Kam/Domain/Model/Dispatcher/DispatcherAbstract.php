@@ -217,14 +217,13 @@ abstract class DispatcherAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set setid
      *
      * @param integer $setid
      *
      * @return self
      */
-    public function setSetid($setid)
+    protected function setSetid($setid)
     {
         Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
         Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
@@ -245,14 +244,13 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @deprecated
      * Set destination
      *
      * @param string $destination
      *
      * @return self
      */
-    public function setDestination($destination)
+    protected function setDestination($destination)
     {
         Assertion::notNull($destination, 'destination value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destination, 192, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -273,14 +271,13 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @deprecated
      * Set flags
      *
      * @param integer $flags
      *
      * @return self
      */
-    public function setFlags($flags)
+    protected function setFlags($flags)
     {
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
@@ -301,14 +298,13 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @deprecated
      * Set priority
      *
      * @param integer $priority
      *
      * @return self
      */
-    public function setPriority($priority)
+    protected function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
@@ -329,14 +325,13 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @deprecated
      * Set attrs
      *
      * @param string $attrs
      *
      * @return self
      */
-    public function setAttrs($attrs)
+    protected function setAttrs($attrs)
     {
         Assertion::notNull($attrs, 'attrs value "%s" is null, but non null value was expected.');
         Assertion::maxLength($attrs, 128, 'attrs value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -357,14 +352,13 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @deprecated
      * Set description
      *
      * @param string $description
      *
      * @return self
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 64, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');

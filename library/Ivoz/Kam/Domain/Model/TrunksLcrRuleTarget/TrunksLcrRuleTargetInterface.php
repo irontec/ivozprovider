@@ -13,16 +13,6 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set lcrId
-     *
-     * @param integer $lcrId
-     *
-     * @return self
-     */
-    public function setLcrId($lcrId);
-
-    /**
      * Get lcrId
      *
      * @return integer
@@ -30,31 +20,11 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function getLcrId();
 
     /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
-
-    /**
      * Get priority
      *
      * @return integer
      */
     public function getPriority();
-
-    /**
-     * @deprecated
-     * Set weight
-     *
-     * @param integer $weight
-     *
-     * @return self
-     */
-    public function setWeight($weight);
 
     /**
      * Get weight

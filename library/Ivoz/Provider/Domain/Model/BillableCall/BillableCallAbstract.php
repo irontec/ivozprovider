@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class BillableCallAbstract
 {
     /**
-     * @var string
+     * @var string | null
      */
     protected $callid;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | null
      */
     protected $startTime;
 
@@ -29,52 +29,52 @@ abstract class BillableCallAbstract
     protected $duration = '0.000';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $cost;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $price;
 
     /**
-     * @var array
+     * @var array | null
      */
     protected $priceDetails;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $carrierName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $destinationName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $ratingPlanName;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $endpointType;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $endpointId;
 
@@ -323,14 +323,13 @@ abstract class BillableCallAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set callid
      *
      * @param string $callid
      *
      * @return self
      */
-    public function setCallid($callid = null)
+    protected function setCallid($callid = null)
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -344,7 +343,7 @@ abstract class BillableCallAbstract
     /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -352,14 +351,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
      *
      * @return self
      */
-    public function setStartTime($startTime = null)
+    protected function setStartTime($startTime = null)
     {
         if (!is_null($startTime)) {
             $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -376,7 +374,7 @@ abstract class BillableCallAbstract
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime()
     {
@@ -384,14 +382,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set duration
      *
      * @param float $duration
      *
      * @return self
      */
-    public function setDuration($duration)
+    protected function setDuration($duration)
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
@@ -413,14 +410,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set caller
      *
      * @param string $caller
      *
      * @return self
      */
-    public function setCaller($caller = null)
+    protected function setCaller($caller = null)
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -434,7 +430,7 @@ abstract class BillableCallAbstract
     /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -442,14 +438,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set callee
      *
      * @param string $callee
      *
      * @return self
      */
-    public function setCallee($callee = null)
+    protected function setCallee($callee = null)
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -463,7 +458,7 @@ abstract class BillableCallAbstract
     /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -471,14 +466,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set cost
      *
      * @param string $cost
      *
      * @return self
      */
-    public function setCost($cost = null)
+    protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
             if (!is_null($cost)) {
@@ -495,7 +489,7 @@ abstract class BillableCallAbstract
     /**
      * Get cost
      *
-     * @return string
+     * @return string | null
      */
     public function getCost()
     {
@@ -503,14 +497,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set price
      *
      * @param string $price
      *
      * @return self
      */
-    public function setPrice($price = null)
+    protected function setPrice($price = null)
     {
         if (!is_null($price)) {
             if (!is_null($price)) {
@@ -527,7 +520,7 @@ abstract class BillableCallAbstract
     /**
      * Get price
      *
-     * @return string
+     * @return string | null
      */
     public function getPrice()
     {
@@ -535,14 +528,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set priceDetails
      *
      * @param array $priceDetails
      *
      * @return self
      */
-    public function setPriceDetails($priceDetails = null)
+    protected function setPriceDetails($priceDetails = null)
     {
         if (!is_null($priceDetails)) {
         }
@@ -555,7 +547,7 @@ abstract class BillableCallAbstract
     /**
      * Get priceDetails
      *
-     * @return array
+     * @return array | null
      */
     public function getPriceDetails()
     {
@@ -563,14 +555,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set carrierName
      *
      * @param string $carrierName
      *
      * @return self
      */
-    public function setCarrierName($carrierName = null)
+    protected function setCarrierName($carrierName = null)
     {
         if (!is_null($carrierName)) {
             Assertion::maxLength($carrierName, 200, 'carrierName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -584,7 +575,7 @@ abstract class BillableCallAbstract
     /**
      * Get carrierName
      *
-     * @return string
+     * @return string | null
      */
     public function getCarrierName()
     {
@@ -592,14 +583,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set destinationName
      *
      * @param string $destinationName
      *
      * @return self
      */
-    public function setDestinationName($destinationName = null)
+    protected function setDestinationName($destinationName = null)
     {
         if (!is_null($destinationName)) {
             Assertion::maxLength($destinationName, 100, 'destinationName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -613,7 +603,7 @@ abstract class BillableCallAbstract
     /**
      * Get destinationName
      *
-     * @return string
+     * @return string | null
      */
     public function getDestinationName()
     {
@@ -621,14 +611,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set ratingPlanName
      *
      * @param string $ratingPlanName
      *
      * @return self
      */
-    public function setRatingPlanName($ratingPlanName = null)
+    protected function setRatingPlanName($ratingPlanName = null)
     {
         if (!is_null($ratingPlanName)) {
             Assertion::maxLength($ratingPlanName, 55, 'ratingPlanName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -642,7 +631,7 @@ abstract class BillableCallAbstract
     /**
      * Get ratingPlanName
      *
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanName()
     {
@@ -650,14 +639,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set endpointType
      *
      * @param string $endpointType
      *
      * @return self
      */
-    public function setEndpointType($endpointType = null)
+    protected function setEndpointType($endpointType = null)
     {
         if (!is_null($endpointType)) {
             Assertion::maxLength($endpointType, 55, 'endpointType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -671,7 +659,7 @@ abstract class BillableCallAbstract
     /**
      * Get endpointType
      *
-     * @return string
+     * @return string | null
      */
     public function getEndpointType()
     {
@@ -679,14 +667,13 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @deprecated
      * Set endpointId
      *
      * @param integer $endpointId
      *
      * @return self
      */
-    public function setEndpointId($endpointId = null)
+    protected function setEndpointId($endpointId = null)
     {
         if (!is_null($endpointId)) {
             if (!is_null($endpointId)) {
@@ -703,7 +690,7 @@ abstract class BillableCallAbstract
     /**
      * Get endpointId
      *
-     * @return integer
+     * @return integer | null
      */
     public function getEndpointId()
     {
@@ -775,7 +762,7 @@ abstract class BillableCallAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -799,7 +786,7 @@ abstract class BillableCallAbstract
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     public function getDestination()
     {
@@ -823,7 +810,7 @@ abstract class BillableCallAbstract
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup()
     {
@@ -847,7 +834,7 @@ abstract class BillableCallAbstract
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice()
     {
@@ -871,7 +858,7 @@ abstract class BillableCallAbstract
     /**
      * Get trunksCdr
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr()
     {

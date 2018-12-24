@@ -20,18 +20,19 @@ class KamUsersAddress extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(UsersAddress::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(UsersAddress::class);
-        $item1->setSourceAddress("127.0.0.1");
-        $item1->setIpAddr("127.0.0.1");
-        $item1->setMask(32);
-        $item1->setPort(0);
-        $item1->setDescription("Irontec HQ");
+        $item1 = $this->createEntityInstance(UsersAddress::class);
+        (function () {
+            $this->setSourceAddress("127.0.0.1");
+            $this->setIpAddr("127.0.0.1");
+            $this->setMask(32);
+            $this->setPort(0);
+            $this->setDescription("Irontec HQ");
+        })->call($item1);
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_KamUsersAddress1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
         $manager->flush();
     }
 

@@ -19,28 +19,28 @@ abstract class FaxesInOutAbstract
     protected $calldate;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $src;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $dst;
 
     /**
      * comment: enum:In|Out
-     * @var string
+     * @var string | null
      */
     protected $type = 'Out';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $pages;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $status;
 
@@ -242,14 +242,13 @@ abstract class FaxesInOutAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
      *
      * @return self
      */
-    public function setCalldate($calldate)
+    protected function setCalldate($calldate)
     {
         Assertion::notNull($calldate, 'calldate value "%s" is null, but non null value was expected.');
         $calldate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
@@ -273,14 +272,13 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @deprecated
      * Set src
      *
      * @param string $src
      *
      * @return self
      */
-    public function setSrc($src = null)
+    protected function setSrc($src = null)
     {
         if (!is_null($src)) {
             Assertion::maxLength($src, 128, 'src value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -294,7 +292,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get src
      *
-     * @return string
+     * @return string | null
      */
     public function getSrc()
     {
@@ -302,14 +300,13 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @deprecated
      * Set dst
      *
      * @param string $dst
      *
      * @return self
      */
-    public function setDst($dst = null)
+    protected function setDst($dst = null)
     {
         if (!is_null($dst)) {
             Assertion::maxLength($dst, 128, 'dst value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,7 +320,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get dst
      *
-     * @return string
+     * @return string | null
      */
     public function getDst()
     {
@@ -331,14 +328,13 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @deprecated
      * Set type
      *
      * @param string $type
      *
      * @return self
      */
-    public function setType($type = null)
+    protected function setType($type = null)
     {
         if (!is_null($type)) {
             Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -356,7 +352,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get type
      *
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -364,14 +360,13 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @deprecated
      * Set pages
      *
      * @param string $pages
      *
      * @return self
      */
-    public function setPages($pages = null)
+    protected function setPages($pages = null)
     {
         if (!is_null($pages)) {
             Assertion::maxLength($pages, 64, 'pages value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -385,7 +380,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get pages
      *
-     * @return string
+     * @return string | null
      */
     public function getPages()
     {
@@ -393,14 +388,13 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @deprecated
      * Set status
      *
      * @param string $status
      *
      * @return self
      */
-    public function setStatus($status = null)
+    protected function setStatus($status = null)
     {
         if (!is_null($status)) {
         }
@@ -413,7 +407,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {

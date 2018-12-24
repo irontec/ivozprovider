@@ -4630,7 +4630,7 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/index.rst:3
 msgid "Residential Clients"
-msgstr ""
+msgstr "Clientes residenciales"
 
 #: ../../administration_portal/client/residential/index.rst:5
 msgid ""
@@ -4982,7 +4982,7 @@ msgstr ""
 
 #: ../../administration_portal/client/retail/index.rst:3
 msgid "Retail Clients"
-msgstr ""
+msgstr "Clientes retail"
 
 #: ../../administration_portal/client/retail/index.rst:5
 msgid ""
@@ -5315,7 +5315,7 @@ msgstr ""
 
 #: ../../administration_portal/client/vpbx/index.rst:3
 msgid "vPBX Clients"
-msgstr ""
+msgstr "Clientes vPBX"
 
 #: ../../administration_portal/client/vpbx/index.rst:5
 msgid ""
@@ -7609,7 +7609,7 @@ msgstr ""
 
 #: ../../administration_portal/client/wholesale/index.rst:3
 msgid "Wholesale clients"
-msgstr ""
+msgstr "Clientes wholesale"
 
 #: ../../administration_portal/client/wholesale/index.rst:5
 msgid "Wholesale clients are the most lightweight client type in IvozProvider."

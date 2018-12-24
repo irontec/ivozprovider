@@ -6,6 +6,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

@@ -19,7 +19,7 @@ abstract class CountryAbstract
     protected $code = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $countryCode;
 
@@ -205,14 +205,13 @@ abstract class CountryAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set code
      *
      * @param string $code
      *
      * @return self
      */
-    public function setCode($code)
+    protected function setCode($code)
     {
         Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
         Assertion::maxLength($code, 100, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -233,14 +232,13 @@ abstract class CountryAbstract
     }
 
     /**
-     * @deprecated
      * Set countryCode
      *
      * @param string $countryCode
      *
      * @return self
      */
-    public function setCountryCode($countryCode = null)
+    protected function setCountryCode($countryCode = null)
     {
         if (!is_null($countryCode)) {
             Assertion::maxLength($countryCode, 10, 'countryCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -254,7 +252,7 @@ abstract class CountryAbstract
     /**
      * Get countryCode
      *
-     * @return string
+     * @return string | null
      */
     public function getCountryCode()
     {

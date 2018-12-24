@@ -13,19 +13,9 @@ interface QueueMemberInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set penalty
-     *
-     * @param integer $penalty
-     *
-     * @return self
-     */
-    public function setPenalty($penalty = null);
-
-    /**
      * Get penalty
      *
-     * @return integer
+     * @return integer | null
      */
     public function getPenalty();
 

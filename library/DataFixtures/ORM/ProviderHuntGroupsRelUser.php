@@ -20,9 +20,12 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(HuntGroupsRelUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item1 = $this->createEntityInstanceWithPublicMethods(HuntGroupsRelUser::class);
-        $item1->setTimeoutTime(1);
-        $item1->setPriority(1);
+        $item1 = $this->createEntityInstance(HuntGroupsRelUser::class);
+        (function () {
+            $this->setTimeoutTime(1);
+            $this->setPriority(1);
+        })->call($item1);
+
         $item1->setHuntGroup($this->getReference('_reference_ProviderHuntGroup1'));
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $this->addReference('_reference_ProviderHuntGroupsRelUser1', $item1);

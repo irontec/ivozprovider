@@ -85,16 +85,6 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getMatchData();
 
     /**
-     * @deprecated
-     * Set priority
-     *
-     * @param integer $priority
-     *
-     * @return self
-     */
-    public function setPriority($priority);
-
-    /**
      * Get priority
      *
      * @return integer
@@ -102,53 +92,23 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
-     * @deprecated
-     * Set routeType
-     *
-     * @param string $routeType
-     *
-     * @return self
-     */
-    public function setRouteType($routeType = null);
-
-    /**
      * Get routeType
      *
-     * @return string
+     * @return string | null
      */
     public function getRouteType();
 
     /**
-     * @deprecated
-     * Set numberValue
-     *
-     * @param string $numberValue
-     *
-     * @return self
-     */
-    public function setNumberValue($numberValue = null);
-
-    /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue();
 
     /**
-     * @deprecated
-     * Set friendValue
-     *
-     * @param string $friendValue
-     *
-     * @return self
-     */
-    public function setFriendValue($friendValue = null);
-
-    /**
      * Get friendValue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendValue();
 

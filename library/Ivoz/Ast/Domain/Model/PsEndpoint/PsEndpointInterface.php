@@ -13,16 +13,6 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set sorceryId
-     *
-     * @param string $sorceryId
-     *
-     * @return self
-     */
-    public function setSorceryId($sorceryId);
-
-    /**
      * Get sorceryId
      *
      * @return string
@@ -30,65 +20,25 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getSorceryId();
 
     /**
-     * @deprecated
-     * Set fromDomain
-     *
-     * @param string $fromDomain
-     *
-     * @return self
-     */
-    public function setFromDomain($fromDomain = null);
-
-    /**
      * Get fromDomain
      *
-     * @return string
+     * @return string | null
      */
     public function getFromDomain();
 
     /**
-     * @deprecated
-     * Set aors
-     *
-     * @param string $aors
-     *
-     * @return self
-     */
-    public function setAors($aors = null);
-
-    /**
      * Get aors
      *
-     * @return string
+     * @return string | null
      */
     public function getAors();
 
     /**
-     * @deprecated
-     * Set callerid
-     *
-     * @param string $callerid
-     *
-     * @return self
-     */
-    public function setCallerid($callerid = null);
-
-    /**
      * Get callerid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallerid();
-
-    /**
-     * @deprecated
-     * Set context
-     *
-     * @param string $context
-     *
-     * @return self
-     */
-    public function setContext($context);
 
     /**
      * Get context
@@ -98,31 +48,11 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getContext();
 
     /**
-     * @deprecated
-     * Set disallow
-     *
-     * @param string $disallow
-     *
-     * @return self
-     */
-    public function setDisallow($disallow);
-
-    /**
      * Get disallow
      *
      * @return string
      */
     public function getDisallow();
-
-    /**
-     * @deprecated
-     * Set allow
-     *
-     * @param string $allow
-     *
-     * @return self
-     */
-    public function setAllow($allow);
 
     /**
      * Get allow
@@ -132,116 +62,46 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getAllow();
 
     /**
-     * @deprecated
-     * Set directMedia
-     *
-     * @param string $directMedia
-     *
-     * @return self
-     */
-    public function setDirectMedia($directMedia = null);
-
-    /**
      * Get directMedia
      *
-     * @return string
+     * @return string | null
      */
     public function getDirectMedia();
 
     /**
-     * @deprecated
-     * Set directMediaMethod
-     *
-     * @param string $directMediaMethod
-     *
-     * @return self
-     */
-    public function setDirectMediaMethod($directMediaMethod = null);
-
-    /**
      * Get directMediaMethod
      *
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod();
 
     /**
-     * @deprecated
-     * Set mailboxes
-     *
-     * @param string $mailboxes
-     *
-     * @return self
-     */
-    public function setMailboxes($mailboxes = null);
-
-    /**
      * Get mailboxes
      *
-     * @return string
+     * @return string | null
      */
     public function getMailboxes();
 
     /**
-     * @deprecated
-     * Set namedPickupGroup
-     *
-     * @param string $namedPickupGroup
-     *
-     * @return self
-     */
-    public function setNamedPickupGroup($namedPickupGroup = null);
-
-    /**
      * Get namedPickupGroup
      *
-     * @return string
+     * @return string | null
      */
     public function getNamedPickupGroup();
 
     /**
-     * @deprecated
-     * Set sendDiversion
-     *
-     * @param string $sendDiversion
-     *
-     * @return self
-     */
-    public function setSendDiversion($sendDiversion = null);
-
-    /**
      * Get sendDiversion
      *
-     * @return string
+     * @return string | null
      */
     public function getSendDiversion();
 
     /**
-     * @deprecated
-     * Set sendPai
-     *
-     * @param string $sendPai
-     *
-     * @return self
-     */
-    public function setSendPai($sendPai = null);
-
-    /**
      * Get sendPai
      *
-     * @return string
+     * @return string | null
      */
     public function getSendPai();
-
-    /**
-     * @deprecated
-     * Set oneHundredRel
-     *
-     * @param string $oneHundredRel
-     *
-     * @return self
-     */
-    public function setOneHundredRel($oneHundredRel);
 
     /**
      * Get oneHundredRel
@@ -251,36 +111,16 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getOneHundredRel();
 
     /**
-     * @deprecated
-     * Set outboundProxy
-     *
-     * @param string $outboundProxy
-     *
-     * @return self
-     */
-    public function setOutboundProxy($outboundProxy = null);
-
-    /**
      * Get outboundProxy
      *
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy();
 
     /**
-     * @deprecated
-     * Set trustIdInbound
-     *
-     * @param string $trustIdInbound
-     *
-     * @return self
-     */
-    public function setTrustIdInbound($trustIdInbound = null);
-
-    /**
      * Get trustIdInbound
      *
-     * @return string
+     * @return string | null
      */
     public function getTrustIdInbound();
 

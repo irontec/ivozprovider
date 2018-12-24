@@ -22,31 +22,37 @@ class ProviderCarrierServer extends Fixture implements DependentFixtureInterface
         $manager->getClassMetadata(CarrierServer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var CarrierServerInterface $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(CarrierServer::class);
-        $item1->setHostname("127.0.0.1");
-        $item1->setPort(5060);
-        $item1->setUriScheme(1);
-        $item1->setTransport(1);
-        $item1->setSendPAI(false);
-        $item1->setSendRPID(false);
-        $item1->setSipProxy("127.0.0.1");
-        $item1->setFromUser("");
-        $item1->setFromDomain("");
+        $item1 = $this->createEntityInstance(CarrierServer::class);
+        (function () {
+            $this->setHostname("127.0.0.1");
+            $this->setPort(5060);
+            $this->setUriScheme(1);
+            $this->setTransport(1);
+            $this->setSendPAI(false);
+            $this->setSendRPID(false);
+            $this->setSipProxy("127.0.0.1");
+            $this->setFromUser("");
+            $this->setFromDomain("");
+        })->call($item1);
+
         $item1->setCarrier($this->getReference('_reference_ProviderCarrier1'));
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderCarrierServer1', $item1);
 
         /** @var CarrierServerInterface $item2 */
-        $item2 = $this->createEntityInstanceWithPublicMethods(CarrierServer::class);
-        $item2->setHostname("127.0.0.2");
-        $item2->setPort(5060);
-        $item2->setUriScheme(2);
-        $item2->setTransport(1);
-        $item2->setSendPAI(false);
-        $item2->setSendRPID(false);
-        $item2->setSipProxy("127.0.0.2");
-        $item2->setFromUser("");
-        $item2->setFromDomain("");
+        $item2 = $this->createEntityInstance(CarrierServer::class);
+        (function () {
+            $this->setHostname("127.0.0.2");
+            $this->setPort(5060);
+            $this->setUriScheme(2);
+            $this->setTransport(1);
+            $this->setSendPAI(false);
+            $this->setSendRPID(false);
+            $this->setSipProxy("127.0.0.2");
+            $this->setFromUser("");
+            $this->setFromDomain("");
+        })->call($item2);
+
         $item2->setCarrier($this->getReference('_reference_ProviderCarrier1'));
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderCarrierServer2', $item2);

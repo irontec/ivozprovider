@@ -7,6 +7,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

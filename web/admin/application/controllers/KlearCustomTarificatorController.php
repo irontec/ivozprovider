@@ -501,9 +501,15 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
             $cost = $response->getCost() + $response->getConnectionFee();
 
+            $callDate = $response->getCallDate();
+            $callDate
+                ->setTimezone(
+                    new \DateTimeZone(date_default_timezone_get())
+                );
+
             $rows[] = [
                 'Plan' => $ratingPlanGroupName,
-                'Call date' => $response->getCallDate()->format('Y-m-d H:i:s'),
+                'Call date' => $callDate->format('Y-m-d H:i:s'),
                 'Duration' => $response->getCallDuration() . ' ' . $this->_helper->translate('seconds'),
                 'Pattern Name' => $response->getPatternName() . ' (' . $response->getPrefix() . ')',
                 'Con. Charge' => $response->getConnectionFee(),

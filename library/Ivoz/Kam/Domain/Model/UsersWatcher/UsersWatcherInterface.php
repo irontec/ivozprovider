@@ -13,31 +13,11 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @deprecated
-     * Set presentityUri
-     *
-     * @param string $presentityUri
-     *
-     * @return self
-     */
-    public function setPresentityUri($presentityUri);
-
-    /**
      * Get presentityUri
      *
      * @return string
      */
     public function getPresentityUri();
-
-    /**
-     * @deprecated
-     * Set watcherUsername
-     *
-     * @param string $watcherUsername
-     *
-     * @return self
-     */
-    public function setWatcherUsername($watcherUsername);
 
     /**
      * Get watcherUsername
@@ -47,31 +27,11 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getWatcherUsername();
 
     /**
-     * @deprecated
-     * Set watcherDomain
-     *
-     * @param string $watcherDomain
-     *
-     * @return self
-     */
-    public function setWatcherDomain($watcherDomain);
-
-    /**
      * Get watcherDomain
      *
      * @return string
      */
     public function getWatcherDomain();
-
-    /**
-     * @deprecated
-     * Set event
-     *
-     * @param string $event
-     *
-     * @return self
-     */
-    public function setEvent($event);
 
     /**
      * Get event
@@ -81,16 +41,6 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getEvent();
 
     /**
-     * @deprecated
-     * Set status
-     *
-     * @param integer $status
-     *
-     * @return self
-     */
-    public function setStatus($status);
-
-    /**
      * Get status
      *
      * @return integer
@@ -98,31 +48,11 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getStatus();
 
     /**
-     * @deprecated
-     * Set reason
-     *
-     * @param string $reason
-     *
-     * @return self
-     */
-    public function setReason($reason = null);
-
-    /**
      * Get reason
      *
-     * @return string
+     * @return string | null
      */
     public function getReason();
-
-    /**
-     * @deprecated
-     * Set insertedTime
-     *
-     * @param integer $insertedTime
-     *
-     * @return self
-     */
-    public function setInsertedTime($insertedTime);
 
     /**
      * Get insertedTime

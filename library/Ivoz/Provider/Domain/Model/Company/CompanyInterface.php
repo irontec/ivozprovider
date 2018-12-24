@@ -104,16 +104,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCgrSubject();
 
     /**
-     * @deprecated
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type);
-
-    /**
      * Get type
      *
      * @return string
@@ -130,19 +120,9 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get domainUsers
      *
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers();
-
-    /**
-     * @deprecated
-     * Set nif
-     *
-     * @param string $nif
-     *
-     * @return self
-     */
-    public function setNif($nif);
 
     /**
      * Get nif
@@ -152,31 +132,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getNif();
 
     /**
-     * @deprecated
-     * Set distributeMethod
-     *
-     * @param string $distributeMethod
-     *
-     * @return self
-     */
-    public function setDistributeMethod($distributeMethod);
-
-    /**
      * Get distributeMethod
      *
      * @return string
      */
     public function getDistributeMethod();
-
-    /**
-     * @deprecated
-     * Set maxCalls
-     *
-     * @param integer $maxCalls
-     *
-     * @return self
-     */
-    public function setMaxCalls($maxCalls);
 
     /**
      * Get maxCalls
@@ -186,31 +146,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getMaxCalls();
 
     /**
-     * @deprecated
-     * Set postalAddress
-     *
-     * @param string $postalAddress
-     *
-     * @return self
-     */
-    public function setPostalAddress($postalAddress);
-
-    /**
      * Get postalAddress
      *
      * @return string
      */
     public function getPostalAddress();
-
-    /**
-     * @deprecated
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return self
-     */
-    public function setPostalCode($postalCode);
 
     /**
      * Get postalCode
@@ -220,31 +160,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getPostalCode();
 
     /**
-     * @deprecated
-     * Set town
-     *
-     * @param string $town
-     *
-     * @return self
-     */
-    public function setTown($town);
-
-    /**
      * Get town
      *
      * @return string
      */
     public function getTown();
-
-    /**
-     * @deprecated
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return self
-     */
-    public function setProvince($province);
 
     /**
      * Get province
@@ -254,16 +174,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getProvince();
 
     /**
-     * @deprecated
-     * Set countryName
-     *
-     * @param string $countryName
-     *
-     * @return self
-     */
-    public function setCountryName($countryName);
-
-    /**
      * Get countryName
      *
      * @return string
@@ -271,106 +181,46 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCountryName();
 
     /**
-     * @deprecated
-     * Set ipfilter
-     *
-     * @param boolean $ipfilter
-     *
-     * @return self
-     */
-    public function setIpfilter($ipfilter = null);
-
-    /**
      * Get ipfilter
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getIpfilter();
 
     /**
-     * @deprecated
-     * Set onDemandRecord
-     *
-     * @param integer $onDemandRecord
-     *
-     * @return self
-     */
-    public function setOnDemandRecord($onDemandRecord = null);
-
-    /**
      * Get onDemandRecord
      *
-     * @return integer
+     * @return integer | null
      */
     public function getOnDemandRecord();
 
     /**
      * Get onDemandRecordCode
      *
-     * @return string
+     * @return string | null
      */
     public function getOnDemandRecordCode();
 
     /**
-     * @deprecated
-     * Set externallyextraopts
-     *
-     * @param string $externallyextraopts
-     *
-     * @return self
-     */
-    public function setExternallyextraopts($externallyextraopts = null);
-
-    /**
      * Get externallyextraopts
      *
-     * @return string
+     * @return string | null
      */
     public function getExternallyextraopts();
 
     /**
-     * @deprecated
-     * Set recordingsLimitMB
-     *
-     * @param integer $recordingsLimitMB
-     *
-     * @return self
-     */
-    public function setRecordingsLimitMB($recordingsLimitMB = null);
-
-    /**
      * Get recordingsLimitMB
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB();
 
     /**
-     * @deprecated
-     * Set recordingsLimitEmail
-     *
-     * @param string $recordingsLimitEmail
-     *
-     * @return self
-     */
-    public function setRecordingsLimitEmail($recordingsLimitEmail = null);
-
-    /**
      * Get recordingsLimitEmail
      *
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail();
-
-    /**
-     * @deprecated
-     * Set billingMethod
-     *
-     * @param string $billingMethod
-     *
-     * @return self
-     */
-    public function setBillingMethod($billingMethod);
 
     /**
      * Get billingMethod
@@ -380,36 +230,16 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBillingMethod();
 
     /**
-     * @deprecated
-     * Set balance
-     *
-     * @param string $balance
-     *
-     * @return self
-     */
-    public function setBalance($balance = null);
-
-    /**
      * Get balance
      *
-     * @return string
+     * @return string | null
      */
     public function getBalance();
 
     /**
-     * @deprecated
-     * Set showInvoices
-     *
-     * @param boolean $showInvoices
-     *
-     * @return self
-     */
-    public function setShowInvoices($showInvoices = null);
-
-    /**
      * Get showInvoices
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getShowInvoices();
 
@@ -482,7 +312,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 
@@ -562,7 +392,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get outgoingDdiRule
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
      */
     public function getOutgoingDdiRule();
 
@@ -578,7 +408,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get voicemailNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getVoicemailNotificationTemplate();
 
@@ -594,7 +424,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get faxNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getFaxNotificationTemplate();
 
@@ -610,7 +440,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get invoiceNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getInvoiceNotificationTemplate();
 
@@ -626,7 +456,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get callCsvNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate();
 

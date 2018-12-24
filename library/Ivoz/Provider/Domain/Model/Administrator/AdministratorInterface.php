@@ -28,6 +28,7 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     /**
      * @return bool
+     * @deprecated dead code (apparently)
      */
     public function isCompanyAdmin();
 
@@ -39,16 +40,6 @@ interface AdministratorInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone();
-
-    /**
-     * @deprecated
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return self
-     */
-    public function setUsername($username);
 
     /**
      * Get username
@@ -65,31 +56,11 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getPass();
 
     /**
-     * @deprecated
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return self
-     */
-    public function setEmail($email);
-
-    /**
      * Get email
      *
      * @return string
      */
     public function getEmail();
-
-    /**
-     * @deprecated
-     * Set active
-     *
-     * @param boolean $active
-     *
-     * @return self
-     */
-    public function setActive($active);
 
     /**
      * Get active
@@ -99,36 +70,16 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getActive();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
-
-    /**
      * Get name
      *
-     * @return string
+     * @return string | null
      */
     public function getName();
 
     /**
-     * @deprecated
-     * Set lastname
-     *
-     * @param string $lastname
-     *
-     * @return self
-     */
-    public function setLastname($lastname = null);
-
-    /**
      * Get lastname
      *
-     * @return string
+     * @return string | null
      */
     public function getLastname();
 
@@ -144,7 +95,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
@@ -160,7 +111,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 

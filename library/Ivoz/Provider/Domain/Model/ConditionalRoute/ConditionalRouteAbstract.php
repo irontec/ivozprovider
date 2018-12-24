@@ -20,17 +20,17 @@ abstract class ConditionalRouteAbstract
 
     /**
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
-     * @var string
+     * @var string | null
      */
     protected $routetype;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $numbervalue;
 
     /**
-     * @var string
+     * @var string | null
      */
     protected $friendvalue;
 
@@ -270,14 +270,13 @@ abstract class ConditionalRouteAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set name
      *
      * @param string $name
      *
      * @return self
      */
-    public function setName($name)
+    protected function setName($name)
     {
         Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -298,14 +297,13 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @deprecated
      * Set routetype
      *
      * @param string $routetype
      *
      * @return self
      */
-    public function setRoutetype($routetype = null)
+    protected function setRoutetype($routetype = null)
     {
         if (!is_null($routetype)) {
             Assertion::maxLength($routetype, 25, 'routetype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -330,7 +328,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get routetype
      *
-     * @return string
+     * @return string | null
      */
     public function getRoutetype()
     {
@@ -338,14 +336,13 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue
      *
      * @return self
      */
-    public function setNumbervalue($numbervalue = null)
+    protected function setNumbervalue($numbervalue = null)
     {
         if (!is_null($numbervalue)) {
             Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -359,7 +356,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get numbervalue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumbervalue()
     {
@@ -367,14 +364,13 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @deprecated
      * Set friendvalue
      *
      * @param string $friendvalue
      *
      * @return self
      */
-    public function setFriendvalue($friendvalue = null)
+    protected function setFriendvalue($friendvalue = null)
     {
         if (!is_null($friendvalue)) {
             Assertion::maxLength($friendvalue, 25, 'friendvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -388,7 +384,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get friendvalue
      *
-     * @return string
+     * @return string | null
      */
     public function getFriendvalue()
     {

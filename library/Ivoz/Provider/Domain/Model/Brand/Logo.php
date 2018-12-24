@@ -14,19 +14,19 @@ class Logo
     /**
      * column: logoFileSize
      * comment: FSO
-     * @var integer
+     * @var integer | null
      */
     protected $fileSize;
 
     /**
      * column: logoMimeType
-     * @var string
+     * @var string | null
      */
     protected $mimeType;
 
     /**
      * column: logoBaseName
-     * @var string
+     * @var string | null
      */
     protected $baseName;
 
@@ -44,7 +44,6 @@ class Logo
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set fileSize
      *
      * @param integer $fileSize
@@ -68,7 +67,7 @@ class Logo
     /**
      * Get fileSize
      *
-     * @return integer
+     * @return integer | null
      */
     public function getFileSize()
     {
@@ -76,7 +75,6 @@ class Logo
     }
 
     /**
-     * @deprecated
      * Set mimeType
      *
      * @param string $mimeType
@@ -97,7 +95,7 @@ class Logo
     /**
      * Get mimeType
      *
-     * @return string
+     * @return string | null
      */
     public function getMimeType()
     {
@@ -105,7 +103,6 @@ class Logo
     }
 
     /**
-     * @deprecated
      * Set baseName
      *
      * @param string $baseName
@@ -126,7 +123,7 @@ class Logo
     /**
      * Get baseName
      *
-     * @return string
+     * @return string | null
      */
     public function getBaseName()
     {

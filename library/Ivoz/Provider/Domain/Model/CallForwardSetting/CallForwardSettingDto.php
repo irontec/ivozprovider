@@ -15,6 +15,7 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

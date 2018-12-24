@@ -80,16 +80,6 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleRouteType();
 
     /**
-     * @deprecated
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -97,70 +87,30 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * @deprecated
-     * Set holidayTargetType
-     *
-     * @param string $holidayTargetType
-     *
-     * @return self
-     */
-    public function setHolidayTargetType($holidayTargetType = null);
-
-    /**
      * Get holidayTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getHolidayTargetType();
 
     /**
-     * @deprecated
-     * Set holidayNumberValue
-     *
-     * @param string $holidayNumberValue
-     *
-     * @return self
-     */
-    public function setHolidayNumberValue($holidayNumberValue = null);
-
-    /**
      * Get holidayNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getHolidayNumberValue();
 
     /**
-     * @deprecated
-     * Set outOfScheduleTargetType
-     *
-     * @param string $outOfScheduleTargetType
-     *
-     * @return self
-     */
-    public function setOutOfScheduleTargetType($outOfScheduleTargetType = null);
-
-    /**
      * Get outOfScheduleTargetType
      *
-     * @return string
+     * @return string | null
      */
     public function getOutOfScheduleTargetType();
 
     /**
-     * @deprecated
-     * Set outOfScheduleNumberValue
-     *
-     * @param string $outOfScheduleNumberValue
-     *
-     * @return self
-     */
-    public function setOutOfScheduleNumberValue($outOfScheduleNumberValue = null);
-
-    /**
      * Get outOfScheduleNumberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getOutOfScheduleNumberValue();
 
@@ -208,7 +158,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get holidayLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getHolidayLocution();
 

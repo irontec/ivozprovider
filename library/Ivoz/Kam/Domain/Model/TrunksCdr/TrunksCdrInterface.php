@@ -7,31 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TrunksCdrInterface extends EntityInterface
 {
     /**
-     * @deprecated
-     * Set startTime
-     *
-     * @param \DateTime $startTime
-     *
-     * @return self
-     */
-    public function setStartTime($startTime);
-
-    /**
      * Get startTime
      *
      * @return \DateTime
      */
     public function getStartTime();
-
-    /**
-     * @deprecated
-     * Set endTime
-     *
-     * @param \DateTime $endTime
-     *
-     * @return self
-     */
-    public function setEndTime($endTime);
 
     /**
      * Get endTime
@@ -41,16 +21,6 @@ interface TrunksCdrInterface extends EntityInterface
     public function getEndTime();
 
     /**
-     * @deprecated
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return self
-     */
-    public function setDuration($duration);
-
-    /**
      * Get duration
      *
      * @return float
@@ -58,172 +28,72 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDuration();
 
     /**
-     * @deprecated
-     * Set caller
-     *
-     * @param string $caller
-     *
-     * @return self
-     */
-    public function setCaller($caller = null);
-
-    /**
      * Get caller
      *
-     * @return string
+     * @return string | null
      */
     public function getCaller();
 
     /**
-     * @deprecated
-     * Set callee
-     *
-     * @param string $callee
-     *
-     * @return self
-     */
-    public function setCallee($callee = null);
-
-    /**
      * Get callee
      *
-     * @return string
+     * @return string | null
      */
     public function getCallee();
 
     /**
-     * @deprecated
-     * Set callid
-     *
-     * @param string $callid
-     *
-     * @return self
-     */
-    public function setCallid($callid = null);
-
-    /**
      * Get callid
      *
-     * @return string
+     * @return string | null
      */
     public function getCallid();
 
     /**
-     * @deprecated
-     * Set callidHash
-     *
-     * @param string $callidHash
-     *
-     * @return self
-     */
-    public function setCallidHash($callidHash = null);
-
-    /**
      * Get callidHash
      *
-     * @return string
+     * @return string | null
      */
     public function getCallidHash();
 
     /**
-     * @deprecated
-     * Set xcallid
-     *
-     * @param string $xcallid
-     *
-     * @return self
-     */
-    public function setXcallid($xcallid = null);
-
-    /**
      * Get xcallid
      *
-     * @return string
+     * @return string | null
      */
     public function getXcallid();
 
     /**
-     * @deprecated
-     * Set diversion
-     *
-     * @param string $diversion
-     *
-     * @return self
-     */
-    public function setDiversion($diversion = null);
-
-    /**
      * Get diversion
      *
-     * @return string
+     * @return string | null
      */
     public function getDiversion();
 
     /**
-     * @deprecated
-     * Set bounced
-     *
-     * @param boolean $bounced
-     *
-     * @return self
-     */
-    public function setBounced($bounced = null);
-
-    /**
      * Get bounced
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getBounced();
 
     /**
-     * @deprecated
-     * Set metered
-     *
-     * @param boolean $metered
-     *
-     * @return self
-     */
-    public function setMetered($metered = null);
-
-    /**
      * Get metered
      *
-     * @return boolean
+     * @return boolean | null
      */
     public function getMetered();
 
     /**
-     * @deprecated
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection($direction = null);
-
-    /**
      * Get direction
      *
-     * @return string
+     * @return string | null
      */
     public function getDirection();
 
     /**
-     * @deprecated
-     * Set cgrid
-     *
-     * @param string $cgrid
-     *
-     * @return self
-     */
-    public function setCgrid($cgrid = null);
-
-    /**
      * Get cgrid
      *
-     * @return string
+     * @return string | null
      */
     public function getCgrid();
 

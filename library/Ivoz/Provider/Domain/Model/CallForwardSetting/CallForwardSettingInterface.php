@@ -36,16 +36,6 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getRouteType();
 
     /**
-     * @deprecated
-     * Set callTypeFilter
-     *
-     * @param string $callTypeFilter
-     *
-     * @return self
-     */
-    public function setCallTypeFilter($callTypeFilter);
-
-    /**
      * Get callTypeFilter
      *
      * @return string
@@ -53,31 +43,11 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getCallTypeFilter();
 
     /**
-     * @deprecated
-     * Set callForwardType
-     *
-     * @param string $callForwardType
-     *
-     * @return self
-     */
-    public function setCallForwardType($callForwardType);
-
-    /**
      * Get callForwardType
      *
      * @return string
      */
     public function getCallForwardType();
-
-    /**
-     * @deprecated
-     * Set targetType
-     *
-     * @param string $targetType
-     *
-     * @return self
-     */
-    public function setTargetType($targetType);
 
     /**
      * Get targetType
@@ -89,19 +59,9 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get numberValue
      *
-     * @return string
+     * @return string | null
      */
     public function getNumberValue();
-
-    /**
-     * @deprecated
-     * Set noAnswerTimeout
-     *
-     * @param integer $noAnswerTimeout
-     *
-     * @return self
-     */
-    public function setNoAnswerTimeout($noAnswerTimeout);
 
     /**
      * Get noAnswerTimeout
@@ -109,16 +69,6 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getNoAnswerTimeout();
-
-    /**
-     * @deprecated
-     * Set enabled
-     *
-     * @param boolean $enabled
-     *
-     * @return self
-     */
-    public function setEnabled($enabled);
 
     /**
      * Get enabled
@@ -139,7 +89,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -203,7 +153,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 

@@ -15,7 +15,7 @@ abstract class DestinationRateGroupAbstract
 {
     /**
      * comment: enum:waiting|inProgress|imported|error
-     * @var string
+     * @var string | null
      */
     protected $status;
 
@@ -238,14 +238,13 @@ abstract class DestinationRateGroupAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set status
      *
      * @param string $status
      *
      * @return self
      */
-    public function setStatus($status = null)
+    protected function setStatus($status = null)
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -265,7 +264,7 @@ abstract class DestinationRateGroupAbstract
     /**
      * Get status
      *
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {

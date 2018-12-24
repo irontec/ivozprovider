@@ -13,13 +13,13 @@ class Description
 {
     /**
      * column: description_en
-     * @var string
+     * @var string | null
      */
     protected $en;
 
     /**
      * column: description_es
-     * @var string
+     * @var string | null
      */
     protected $es;
 
@@ -36,7 +36,6 @@ class Description
     // @codeCoverageIgnoreStart
 
     /**
-     * @deprecated
      * Set en
      *
      * @param string $en
@@ -57,7 +56,7 @@ class Description
     /**
      * Get en
      *
-     * @return string
+     * @return string | null
      */
     public function getEn()
     {
@@ -65,7 +64,6 @@ class Description
     }
 
     /**
-     * @deprecated
      * Set es
      *
      * @param string $es
@@ -86,7 +84,7 @@ class Description
     /**
      * Get es
      *
-     * @return string
+     * @return string | null
      */
     public function getEs()
     {

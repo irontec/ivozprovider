@@ -7,6 +7,7 @@ class ConditionalRoutesConditionsRelScheduleDto extends ConditionalRoutesConditi
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

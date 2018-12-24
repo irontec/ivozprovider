@@ -20,111 +20,120 @@ msgstr ""
 
 #: ../../user_portal/credentials.rst:2
 msgid "Credentials"
-msgstr ""
+msgstr "Credenciales"
 
 #: ../../user_portal/credentials.rst:4
 msgid ""
 "Access credentials to user portal are configured in **Client "
 "configuration > Users** section."
-msgstr ""
+msgstr "Las credenciales de acceso al portal de usuario se configuran en la sección "
+"**Configuración de Cliente > Usuarios**."
 
 #: ../../user_portal/credentials.rst:7
 msgid "Specifically:"
-msgstr ""
+msgstr "En concreto:"
 
 #: ../../user_portal/credentials.rst:9
 msgid ""
 "**Login information** block, the access of each user is enabled or "
 "disabled."
-msgstr ""
+msgstr "En el bloque **Información de Login**, se activa/desactiva el acceso de cada "
+"usuario."
 
 #: ../../user_portal/credentials.rst:11
 msgid "You can set the **Password** too."
-msgstr ""
+msgstr "En el apartado **Contraseña** se especifica la contraseña del usuario."
 
 #: ../../user_portal/credentials.rst:13
 msgid "To log in the user portal, the user must use his/her email address."
-msgstr ""
+msgstr "Para entrar en el portal de usuario, el usuario debe utilizar su dirección de "
+"correo electrónico."
 
 #: ../../user_portal/credentials.rst:15
 msgid "The **email** of each user MUST be **globally unique**."
-msgstr ""
+msgstr "El **email** de cada usuario tiene que ser **único a nivel global**."
 
 #: ../../user_portal/features.rst:3
 msgid "Features"
-msgstr ""
+msgstr "Funcionalidades"
 
 #: ../../user_portal/features.rst:5
 msgid ""
 "IvozProvider provides a web portal where final users can do the following"
 " actions:"
-msgstr ""
+msgstr "IvozProvider provee un portal de usuario donde los usuarios finales pueden "
+"realizar las siguientes acciones:"
 
 #: ../../user_portal/features.rst:8
 msgid "See all calls he or she has been involved."
-msgstr ""
+msgstr "Ver un listado de las llamadas en las que ha participado."
 
 #: ../../user_portal/features.rst:10
 msgid "Configure call forwards:"
-msgstr ""
+msgstr "Configurar sus desvíos:"
 
 #: ../../user_portal/features.rst:12
 msgid "To voicemail"
-msgstr ""
+msgstr "A su buzón de voz"
 
 #: ../../user_portal/features.rst:14
 msgid "To an internal extension"
-msgstr ""
+msgstr "A una extensión interna"
 
 #: ../../user_portal/features.rst:16
 msgid "To an external number"
-msgstr ""
+msgstr "A un número externo"
 
 #: ../../user_portal/features.rst:18
 msgid "Enable functionalities:"
-msgstr ""
+msgstr "Activar funcionalidades:"
 
 #: ../../user_portal/features.rst:20
 msgid "Call waiting"
-msgstr ""
+msgstr "Llamada en espera"
 
 #: ../../user_portal/features.rst:22
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "No molestar"
 
 #: ../../user_portal/features.rst:24
 msgid "See the state of his or her SIP device registration"
-msgstr ""
+msgstr "Ver el estado del registro de su dispositivo SIP"
 
 #: ../../user_portal/index.rst:5
 msgid "User Portal"
-msgstr ""
+msgstr "Portal de usuario"
 
 #: ../../user_portal/index.rst:7
 msgid ""
 ":ref:`Virtual PBX` clients have an additional role apart from god, brand "
 "and client: **user role**."
 msgstr ""
+"Los clientes de :ref:`Virtual PBX` disponen de un rol adicional: **rol de usuario**.
 
 #: ../../user_portal/index.rst:9
 msgid ""
 "As remaining IvozProvider levels, final users have an independent web "
 "portal."
 msgstr ""
+"Al igual que el resto de niveles de IvozProvider, los usuarios finales disponen de un "
+"portal web independiente."
 
 #: ../../user_portal/index.rst:11
 msgid "This section will cover these topics:"
-msgstr ""
+msgstr "Esta sección abarcará los siguientes aspectos:"
 
 #: ../../user_portal/index.rst:21
 msgid ""
 "User portal has a different look-and-feel than remaining portals and is "
 "responsive to work with mobile devices."
 msgstr ""
+"El portal de usuario tiene una apariencia distinta al resto de portales "
+"y funciona en dispositivos móviles."
 
 #: ../../user_portal/urls.rst:2
 msgid "URLs"
-msgstr ""
+msgstr "URLs"
 
 #: ../../user_portal/urls.rst:4
 msgid ""
@@ -132,61 +141,71 @@ msgid ""
 "(domains in these URLs must point to any of the public IP addresses of "
 "the platform)."
 msgstr ""
+"Antes de acceder al portal de usuario, se tienen que configurar las direcciones URL "
+"(los dominios de estas URLs deben apuntar a cualquier IP pública de la plataforma)."
 
 #: ../../user_portal/urls.rst:7
 msgid "2 roles can perform this task:"
-msgstr ""
+msgstr "2 roles pueden ejecutar esta tarea:"
 
 #: ../../user_portal/urls.rst:10
 msgid "God operator"
-msgstr ""
+msgstr "Operador global"
 
 #: ../../user_portal/urls.rst:12
 msgid ""
 "In the section **Platform configuration > Brands** you can configure as "
 "many user URLs as you wish, using the button **Portal list** of each "
 "brand."
-msgstr ""
+msgstr "En la sección **Configuración global > Marcas** se pueden configurar tantas "
+"URLs de Usuario como se desee, por medio del botón **Listado de portales** de "
+"cada marca."
 
 #: ../../user_portal/urls.rst:15
 msgid ""
 "URLs are linked to brands and god operator may choose where to create one"
 " shared user portal URL for all the clients of a brand or creating one "
 "per client."
-msgstr ""
+msgstr "La vinculación, por tanto, es de URL <-> Marca, por lo que el operador "
+"global puede elegir entre crear una URL para cada marca o uno por cada "
+"cliente de dicha marca."
 
 #: ../../user_portal/urls.rst:19
 msgid "URLs MUST be HTTPS."
-msgstr ""
+msgstr "La URL tiene que ser https."
 
 #: ../../user_portal/urls.rst:21
 msgid ""
 "This section also allows setting a logo per URL, a theme and a phrase to "
 "use as the title of user portal."
-msgstr ""
+msgstr "Esta sección permite configurar el logo que se mostrará, así como un tema de colores "
+"y una cadena de caracteres que se utilizará como título."
 
 #: ../../user_portal/urls.rst:24
 msgid "This allows creating corporate user portals."
-msgstr ""
+msgstr "De esta forma, si se desea,  se puede adaptar a los colores corporativos "
+"de cada cliente."
 
 #: ../../user_portal/urls.rst:27
 msgid "Brand Operator"
-msgstr ""
+msgstr "Operador de marca"
 
 #: ../../user_portal/urls.rst:29
 msgid ""
 "Brand Operator can also perform this same task in order to configure the "
 "user portal URLs of his clients."
-msgstr ""
+msgstr "El operador marca puede realizar también esta misma tarea, para ser autónomo y "
+"no depender del operador global para crear las URLs de sus clientes."
 
 #: ../../user_portal/urls.rst:32
 msgid ""
 "This way, he can choose whether to configure one URL per Client (with "
 "custom domains, logos, theme and title) or sharing a global URL for all "
 "of them."
-msgstr ""
+msgstr "De esta forma, puede configurar tantas URLs como quiera, con los dominios, "
+"colores y logos que desee, para cada uno de sus clientes."
 
 #: ../../user_portal/urls.rst:35
 msgid "The section to do this is **Brand configuration > Portal URLs**."
-msgstr ""
-
+msgstr "La sección para realizar esta tarea es **Configuración de Marca** > **Configuraciones** > **URL Portales"
+"URLs**."
