@@ -69,6 +69,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
       Ivoz\Provider\Domain\Model\Country\CountryInterface:
         Ivoz\Provider\Domain\Model\Country\Country
+      Ivoz\Provider\Domain\Model\Currency\CurrencyInterface:
+        Ivoz\Provider\Domain\Model\Currency\Currency
       Ivoz\Provider\Domain\Model\Ddi\DdiInterface:
         Ivoz\Provider\Domain\Model\Ddi\Ddi
       Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface:

@@ -26,6 +26,7 @@ production:
           tag: true
           name: true
           description: true
+          currency: true
         options:
           title: _("Options")
           screens:
@@ -75,6 +76,7 @@ production:
           fields:
             name: 4
             description: 5
+            currency: 4
         group2:
           colsPerRow: 8
           fields:

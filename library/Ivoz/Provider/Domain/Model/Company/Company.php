@@ -234,6 +234,30 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
+     * @return string
+     */
+    public function getCurrencySymbol()
+    {
+        $currency = $this->getCurrency();
+        if (!$currency) {
+            return $this->getBrand()->getCurrencySymbol();
+        }
+        return $currency->getSymbol();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden()
+    {
+        $currency = $this->getCurrency();
+        if (!$currency) {
+            return $this->getBrand()->getCurrencyIden();
+        }
+        return $currency->getIden();
+    }
+
+    /**
      * brief: Get musicclass for given company
      *
      * If no specific company music on hold is found, brand music will be used.

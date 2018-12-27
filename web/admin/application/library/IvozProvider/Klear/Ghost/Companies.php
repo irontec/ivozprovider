@@ -1,11 +1,9 @@
 <?php
 
-use Ivoz\Provider\Domain\Model\Brand\Brand;
-use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
-use IvozProvider\Utils\SizeFormatter;
 
 class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_Abstract
 {
@@ -49,10 +47,23 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
     public function getBalance(CompanyDto $companyDto)
     {
         try {
-            return $this->fetchCompanyBalance->getBalance(
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            $amount = $this->fetchCompanyBalance->getBalance(
                 $companyDto->getBrandId(),
                 $companyDto->getId()
             );
+
+            $currencySymbol = $dataGateway->remoteProcedureCall(
+              Company::class,
+              $companyDto->getId(),
+              'getCurrencySymbol',
+              []
+            );
+
+            return sprintf("%s %s", $amount, $currencySymbol);
+
         } catch (Exception $exception) {
             return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
         }

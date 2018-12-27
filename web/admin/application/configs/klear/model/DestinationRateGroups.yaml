@@ -70,6 +70,19 @@ production:
             title: _("Imported")
           'error':
             title: _("Error")
+    currency:
+      title: ngettext('Currency', 'Currencies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Currency\Currency
+          fieldName:
+            fields:
+              - name${lang}
+              - symbol
+            template: '%name${lang}% (%symbol%)'
+        'null': _("Default currency")
 staging: 
   _extends: production
 testing:

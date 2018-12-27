@@ -34,6 +34,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item1->setDomain($this->getReference('_reference_ProviderDomain6'));
         $item1->setLanguage($this->getReference('_reference_ProviderLanguage1'));
         $item1->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $item1->setCurrency($this->getReference('_reference_ProviderCurrency1'));
         $this->addReference('_reference_ProviderBrand1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
@@ -49,6 +50,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item2->setDomain($this->getReference('_reference_ProviderDomain4'));
         $item2->setLanguage($this->getReference('_reference_ProviderLanguage1'));
         $item2->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $item1->setCurrency($this->getReference('_reference_ProviderCurrency2'));
         $this->addReference('_reference_ProviderBrand2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
@@ -62,7 +64,8 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         return array(
             ProviderDomain::class,
             ProviderLanguage::class,
-            ProviderTimezone::class
+            ProviderTimezone::class,
+            ProviderCurrency::class
         );
     }
 }

@@ -494,9 +494,19 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 continue;
             }
 
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            $currencySymbol = $dataGateway->remoteProcedureCall(
+                RatingPlanGroup::class,
+                $ratingPlanGroup->getId(),
+                'getCurrencySymbol',
+                []
+            );
+
             $chargePeriod = $response->getChargePeriod();
             $rate = $response->getRate()
-                ? $response->getRate() . ' / ' . $chargePeriod . ' ' . $this->_helper->translate('seconds')
+                ? $response->getRate() . " $currencySymbol / " . $chargePeriod . ' ' . $this->_helper->translate('seconds')
                 : '';
 
             $cost = $response->getCost() + $response->getConnectionFee();
@@ -512,10 +522,10 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 'Call date' => $callDate->format('Y-m-d H:i:s'),
                 'Duration' => $response->getCallDuration() . ' ' . $this->_helper->translate('seconds'),
                 'Pattern Name' => $response->getPatternName() . ' (' . $response->getPrefix() . ')',
-                'Con. Charge' => $response->getConnectionFee(),
+                'Con. Charge' => $response->getConnectionFee() . " $currencySymbol",
                 'Interval start' => $response->getIntervalStart(),
                 'Rate' => $rate,
-                'Total cost' => $cost,
+                'Total cost' => "$cost $currencySymbol",
             ];
         }
 

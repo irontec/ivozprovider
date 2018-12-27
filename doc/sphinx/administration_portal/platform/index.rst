@@ -13,6 +13,7 @@ This section is only shown to *God administrator* and allows modifying global co
     antiflood_trusted_ips
     terminal_manufacturers
     services
+    currencies
     default_notification_templates
     sip_domains
     billable_calls

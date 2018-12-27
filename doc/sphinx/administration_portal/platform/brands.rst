@@ -41,7 +41,7 @@ This are the fields shown when a new brand is created:
         (0 for unlimited).
 
     Locales
-        Define default Timezone and Language for clients of this brand.
+        Define default Timezone, Language and Currency for clients of this brand.
 
 .. hint:: Some features are related to brand and cannot be assigned to clients.
     Other ones are also related to clients and lets the brand operator to

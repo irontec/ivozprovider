@@ -14,12 +14,15 @@ production:
       class: ui-silk-money-euro
       title: _("List of %s %2s", ngettext('Rate', 'Rates', 0), "[format| (%parent%)]")
       fields: &destinationRates_fieldsLink
-        order: &destinationRates_orderLink
+        order:
           destination: true
-          connectFee: true
+          connectFeeCurrency: true
           groupIntervalStart: true
-          cost: true
+          costCurrency: true
           rateIncrement: true
+        blacklist:
+          connectFee: true
+          cost: true
         options:
           title: _("Options")
           screens:
@@ -43,8 +46,15 @@ production:
       title: _("Add %s", ngettext('Rate', 'Rates', 1), "[format| (%parent%)]")
       shortcutOption: N
       fields:
-        order:
-          <<: *destinationRates_orderLink
+        order: &destinationRates_orderLink
+          destination: true
+          connectFee: true
+          groupIntervalStart: true
+          cost: true
+          rateIncrement: true
+        blacklist:
+          connectFeeCurrency: true
+          costCurrency: true
       fixedPositions: &destinationRates_fixedPositionsLink
         group1:
           colsPerRow: 9

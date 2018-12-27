@@ -1,6 +1,8 @@
 <?php
 
 
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 
 class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abstract
@@ -34,5 +36,54 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
         }
 
         return $status;
+    }
+
+    /**
+     * * Return total with currency symbol suffix
+     *
+     * @param InvoiceDto $invoice
+     * @return string
+     */
+    public function getTotal(InvoiceDto $invoice)
+    {
+        $currencySymbol = $this->getCompanyCurrencySymbol(
+            $invoice->getCompanyId()
+        );
+
+        return sprintf("%s %s",
+            $invoice->getTotal(),
+            $currencySymbol
+        );
+    }
+
+    /**
+     * Return total with tax and currency symbol suffix
+     *
+     * @param InvoiceDto $invoice
+     * @return string
+     */
+    public function getTotalWithTax(InvoiceDto $invoice)
+    {
+        $currencySymbol = $this->getCompanyCurrencySymbol(
+            $invoice->getCompanyId()
+        );
+
+        return sprintf("%s %s",
+            $invoice->getTotalWithTax(),
+            $currencySymbol
+        );
+    }
+
+    private function getCompanyCurrencySymbol($companyId)
+    {
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        return $dataGateway->remoteProcedureCall(
+            Company::class,
+            $companyId,
+            'getCurrencySymbol',
+            []
+        );
     }
 }

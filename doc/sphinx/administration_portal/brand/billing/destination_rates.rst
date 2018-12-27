@@ -16,6 +16,9 @@ They only have two fields:
     Description
         Additional details
 
+    Currency
+        All rates imported/added will use this currency
+
 .. tip:: Destination rate names are not shown to the final client, you can use whatever makes sense to you.
 
 ******************

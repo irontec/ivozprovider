@@ -31,6 +31,9 @@ This are the fields that define a carrier:
     Calculate cost
         If set, IvozProvider will calculate the cost of the call using the carrier's active rating profile.
 
+    Currency
+        Chosen currency will be used in cost calculation, balance movements and
+        remaining money operations of this carrier.
 
 Carrier Servers
 ***************

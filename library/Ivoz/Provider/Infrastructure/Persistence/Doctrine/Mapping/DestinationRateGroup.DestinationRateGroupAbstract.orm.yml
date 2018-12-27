@@ -32,3 +32,14 @@ Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
+    currency:
+      targetEntity: \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        currencyId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

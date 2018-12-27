@@ -43,6 +43,7 @@ production:
           registryData: true
           maxCalls: true
           defaultTimezone: true
+          currency: true
           distributeMethod: true
           applicationServer: true
           mediaRelaySets: true

@@ -549,6 +549,11 @@ msgstr "Creado"
 msgid "Created on"
 msgstr "Fecha de creación"
 
+msgid "Currency"
+msgid_plural "Currencies"
+msgstr[0] "Divisa"
+msgstr[1] "Divisas"
+
 msgid "Custom"
 msgstr "A medida"
 
@@ -580,6 +585,9 @@ msgstr "Día"
 
 msgid "Default Action"
 msgstr "Acción por defecto"
+
+msgid "Default currency"
+msgstr "Divisa por defecto"
 
 msgid "Default notification template"
 msgid_plural "Default notification templates"
@@ -2319,6 +2327,9 @@ msgstr "Locución Éxito"
 
 msgid "Sunday"
 msgstr "Domingo"
+
+msgid "Symbol"
+msgstr "Símbolo"
 
 msgid "Tag"
 msgstr "Tag"

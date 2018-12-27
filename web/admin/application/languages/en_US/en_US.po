@@ -542,6 +542,11 @@ msgstr "Created"
 msgid "Created on"
 msgstr "Created on"
 
+msgid "Currency"
+msgid_plural "Currencies"
+msgstr[0] "Currency"
+msgstr[1] "Currencies"
+
 msgid "Custom"
 msgstr "Custom"
 
@@ -573,6 +578,9 @@ msgstr "Day"
 
 msgid "Default Action"
 msgstr "Default Action"
+
+msgid "Default currency"
+msgstr "Default currency"
 
 msgid "Default notification template"
 msgid_plural "Default notification templates"
@@ -2291,6 +2299,9 @@ msgstr "Success locution"
 
 msgid "Sunday"
 msgstr "Sunday"
+
+msgid "Symbol"
+msgstr "Symbol"
 
 msgid "Tag"
 msgstr "Tag"

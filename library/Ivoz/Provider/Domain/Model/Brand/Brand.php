@@ -68,6 +68,22 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     }
 
     /**
+     * @return string
+     */
+    public function getCurrencySymbol()
+    {
+        return $this->getCurrency()->getSymbol();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden()
+    {
+        return $this->getCurrency()->getIden();
+    }
+
+    /**
      * Get the size in bytes used by the recordings on this brand
      *
      */

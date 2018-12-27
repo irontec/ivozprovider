@@ -26,6 +26,10 @@ that require feature-full call flows.
         General client configuration for language and timezones. Most of the settings in the section can be
         configured per user if required.
 
+    Currency
+        Chosen currency will be used in price calculation, invoices, balance movements and
+        remaining money operations of this client.
+
     Security
         Limits the external concurrent calls and source of calls for this client.
 

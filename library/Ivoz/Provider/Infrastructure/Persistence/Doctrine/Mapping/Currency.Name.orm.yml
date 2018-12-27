@@ -1,0 +1,19 @@
+Ivoz\Provider\Domain\Model\Currency\Name:
+  type: embeddable
+  fields:
+    en:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        default: ''
+      column: name_en
+    es:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        default: ''
+      column: name_es

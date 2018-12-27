@@ -35,4 +35,28 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     {
         return sprintf("cr%d", $this->getId());
     }
+
+    /**
+     * @return string
+     */
+    public function getCurrencySymbol()
+    {
+        $currency = $this->getCurrency();
+        if (!$currency) {
+            return $this->getBrand()->getCurrencySymbol();
+        }
+        return $currency->getSymbol();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden()
+    {
+        $currency = $this->getCurrency();
+        if (!$currency) {
+            return $this->getBrand()->getCurrencyIden();
+        }
+        return $currency->getIden();
+    }
 }

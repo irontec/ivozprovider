@@ -1,0 +1,77 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: currenciesList_screen
+  screens: &currencies_screensLink
+    currenciesList_screen: &currenciesList_screenLink
+      controller: list
+      order:
+        field:
+          - Currency.iden asc
+      pagination:
+        items: 25
+      <<: *Currencies
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Currency', 'Currencies', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/platform/currencies.html"
+      fields: &currencies_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            currenciesEdit_screen: true
+          dialogs:
+            currenciesDel_dialog: true
+          default: currenciesEdit_screen
+        blacklist:
+          extraArgs: true
+      options:
+        title: _("Options")
+        screens:
+          currenciesNew_screen: true
+        dialogs:
+          currenciesDel_dialog: true
+    currenciesNew_screen: &currenciesNew_screenLink
+      <<: *Currencies
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Currency', 'Currencies', 1), "[format| (%parent%)]")
+      shortcutOption: N
+    currenciesEdit_screen: &currenciesEdit_screenLink
+      <<: *Currencies
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Currency', 'Currencies', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Currency', 'Currencies', 1), "[format| (%item%)]")
+      fields:
+        readOnly:
+          iden: true
+
+  dialogs: &currencies_dialogsLink
+    currenciesDel_dialog: &currenciesDel_dialogLink
+      <<: *Currencies
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Currency', 'Currencies', 1))
+      description: _("Do you want to delete this %s?", ngettext('Currency', 'Currencies', 1))
+      message: _("%s successfully deleted.", ngettext('Currency', 'Currencies', 1))
+      multiItem: 1
+      labelOnList: 1
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

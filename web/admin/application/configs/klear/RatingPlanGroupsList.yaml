@@ -57,6 +57,7 @@ production:
           fields:
             name: 5
             description: 8
+            currency: 4
 
     ratingPlanGroupsEdit_screen: &ratingPlanGroupsEdit_screenLink
       <<: *RatingPlanGroups

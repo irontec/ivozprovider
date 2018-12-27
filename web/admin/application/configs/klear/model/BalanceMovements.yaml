@@ -31,14 +31,16 @@ production:
             Carrier.name: asc
     amount:
       title: _('Movement amount')
-      type: text
-      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
-      sufix: "€"
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_BalanceMovements
+        method: getAmount
     balance:
       title: _('Balance')
-      type: text
-      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
-      sufix: "€"
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_BalanceMovements
+        method: getBalance
     createdOn:
       title: _('Created')
       type: picker

@@ -44,6 +44,16 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getLanguageCode();
 
     /**
+     * @return string
+     */
+    public function getCurrencySymbol();
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
      * brief: Get musicclass for given company
      *
      * If no specific company music on hold is found, brand music will be used.
@@ -347,6 +357,22 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getCountry();
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency();
 
     /**
      * Set transformationRuleSet
