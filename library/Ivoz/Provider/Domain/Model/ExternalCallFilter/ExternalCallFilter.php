@@ -114,7 +114,9 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
             return null;
         }
 
-        $datetime = new \DateTime('now');
+        $company = $this->getCompany();
+        $timezone = $company->getDefaultTimezone();
+        $time = new \DateTime('now', $timezone);
 
         /**
          * @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar
@@ -131,13 +133,20 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 ->where(
                     $expressionBuilder->eq(
                         'eventDate',
-                        $datetime
+                        $time
                     )
                 );
 
             $holidayDates = $calendar->getHolidayDates($holidayDateCriteria);
-            if (!empty($holidayDates)) {
-                return $holidayDates[0];
+            foreach ($holidayDates as $holidayDate) {
+                $eventMatched = $holidayDate
+                    ->checkEventOnTime(
+                        $time
+                    );
+
+                if ($eventMatched) {
+                    return $holidayDate;
+                }
             }
         }
 
