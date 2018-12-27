@@ -589,6 +589,9 @@ msgstr "Acción por defecto"
 msgid "Default currency"
 msgstr "Divisa por defecto"
 
+msgid "Default holiday routing"
+msgstr "Enrutado festivo por defecto"
+
 msgid "Default notification template"
 msgid_plural "Default notification templates"
 msgstr[0] "Plantilla de notificación por defecto"
@@ -2747,6 +2750,9 @@ msgstr ""
 
 msgid "White Lists"
 msgstr "Listas blancas"
+
+msgid "Whole day event"
+msgstr "Todo el día"
 
 msgid "Wholesale"
 msgid_plural "Wholesales"

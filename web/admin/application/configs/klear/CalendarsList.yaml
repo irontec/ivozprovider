@@ -66,9 +66,6 @@ production:
       filterField: Calendar
     holidayDatesEdit_screen:
       <<: *holidayDatesEdit_screenLink
-      fields:
-        readOnly:
-          calendar: true
 
   dialogs: &calendars_dialogsLink
     calendarsDel_dialog: &calendarsDel_dialogLink
