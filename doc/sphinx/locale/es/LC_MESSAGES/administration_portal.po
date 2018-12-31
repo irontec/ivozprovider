@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-27 16:06+0100\n"
+"POT-Creation-Date: 2018-12-31 11:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,7 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/routing_endpoints/hunt_groups.rst:13
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:21
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:26
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:17
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:21
 #: ../../administration_portal/client/vpbx/terminals.rst:15
@@ -6526,21 +6527,69 @@ msgid ""
 "holiday date with the locution \"Happy New Year\"."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:18
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
+msgid "Unique name to identify this holiday date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
+msgid "Locution"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
+msgid "Override default External call filter holiday locution"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
+msgid "Event Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
+msgid "Day of the calendar to be marked as holiday"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
+msgid "Whole day event"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
+msgid "Enable this to create an event that lasts all the day"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
+msgid "Time In/Time out"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
+msgid ""
+"For not whole day events, specify the time interval the event will be "
+"active"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:34
+msgid "Routing options"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:36
+msgid "Override default External call filter holiday routing"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:38
 msgid ""
 "Calendars logic is opposite to Schedulers: If a day is not defined as "
 "holiday in any of the calendars, it will considered a normal day and no "
 "filtering will be applied."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
 msgid ""
 "Holidays without special locutions will apply the external call filter "
-"holiday generic locution (see below)."
+"holiday locution."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
-msgid "Create a new External call filter"
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:45
+msgid ""
+"Holidays without special routing will apply the external call filter "
+"holiday routing."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:7
@@ -8503,29 +8552,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Chosen currency will be used in "
-#~ "price calculation, invoices, balance Choosen"
-#~ " currency will be used in price "
-#~ "calculation, invoices, balance movements and"
-#~ " remaining money operations of this "
-#~ "client."
+#~ "Holidays without special locutions will "
+#~ "apply the external call filter holiday"
+#~ " generic locution (see below)."
 #~ msgstr ""
 
-#~ msgid ""
-#~ "Chosen currency will be used in "
-#~ "cost calculation, balance movements and "
-#~ "Choosen currency will be used in "
-#~ "cost calculation, balance movements and "
-#~ "remaining money operations of this "
-#~ "carrier."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Chosen currency will be used in "
-#~ "price calculation, invoices, invoice's Choosen"
-#~ " currency will be used in price "
-#~ "calculation, invoices, invoice's fixed costs,"
-#~ " balance movements and remaining money "
-#~ "operations of this client."
+#~ msgid "Create a new External call filter"
 #~ msgstr ""
 
