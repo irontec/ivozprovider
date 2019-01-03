@@ -11,18 +11,15 @@ build_doc:
 
 build_library:
 	git config --global http.sslVerify false
-	cd library ; composer --no-interaction --no-dev  --no-progress install
+	cd library ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 build_agis: build_library
-	cd asterisk/agi ; composer --no-interaction --no-dev  --no-progress install
+	cd asterisk/agi ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 build_webrest: build_library
-	cd web/rest/platform ; composer --no-interaction --no-dev  --no-progress install
-	cd web/rest/platform ; composer dump-autoload --optimize --no-dev --classmap-authoritative
-	cd web/rest/brand ; composer --no-interaction --no-dev  --no-progress install
-	cd web/rest/brand ; composer dump-autoload --optimize --no-dev --classmap-authoritative
-	cd web/rest/client ; composer --no-interaction --no-dev  --no-progress install
-	cd web/rest/client ; composer dump-autoload --optimize --no-dev --classmap-authoritative
+	cd web/rest/platform ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd web/rest/brand ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd web/rest/client ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
@@ -37,14 +34,13 @@ build_webuser: build_library build_webadmin
 	cd web/user ; mv dist/index.html ./index.phtml
 
 build_microservices: build_library
-	cd microservices/balances; composer --no-interaction --no-dev  --no-progress install
-	cd microservices/recordings; composer --no-interaction --no-dev  --no-progress install
-	cd microservices/workers; composer --no-interaction --no-dev  --no-progress install
-	cd microservices/scheduler; composer --no-interaction --no-dev  --no-progress install
-
+	cd microservices/balances; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd microservices/recordings; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd microservices/workers; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd microservices/scheduler; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 build_scheme: build_library
-	cd scheme ; composer --no-interaction --no-dev  --no-progress install
+	cd scheme ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
 override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_scheme build_webuser
 
