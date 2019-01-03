@@ -4,7 +4,6 @@ namespace Dialplan;
 
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;

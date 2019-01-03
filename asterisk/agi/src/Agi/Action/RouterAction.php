@@ -136,19 +136,9 @@ class RouterAction
     protected $extensionAction;
 
     /**
-     * @var ExternalUserCallAction
+     * @var ExternalNumberAction
      */
-    protected $externalUserCallAction;
-
-    /**
-     * @var ExternalDdiCallAction
-     */
-    protected $externalDdiCallAction;
-
-    /**
-     * @var ExternalFriendCallAction
-     */
-    protected $externalFriendCallAction;
+    protected $externalNumberCallAction;
 
     /**
      * @var FaxReceiveAction
@@ -202,9 +192,7 @@ class RouterAction
         ConferenceRoomAction $conferenceRoomAction,
         UserCallAction $userCallAction,
         ExtensionAction $extensionAction,
-        ExternalUserCallAction $externalUserCallAction,
-        ExternalDdiCallAction $externalDdiCallAction,
-        ExternalFriendCallAction $externalFriendCallAction,
+        ExternalNumberAction $externalNumberCallAction,
         FaxReceiveAction $faxReceiveAction,
         FriendCallAction $friendCallAction,
         HuntGroupAction $huntGroupAction,
@@ -220,9 +208,7 @@ class RouterAction
         $this->conditionalRouteAction = $conditionalRouteAction;
         $this->conferenceRoomAction = $conferenceRoomAction;
         $this->extensionAction = $extensionAction;
-        $this->externalUserCallAction = $externalUserCallAction;
-        $this->externalDdiCallAction = $externalDdiCallAction;
-        $this->externalFriendCallAction = $externalFriendCallAction;
+        $this->externalNumberCallAction = $externalNumberCallAction;
         $this->faxReceiveAction = $faxReceiveAction;
         $this->friendCallAction = $friendCallAction;
         $this->huntGroupAction = $huntGroupAction;
@@ -246,9 +232,9 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteConferenceRoom(ConferenceRoomInterface $routeConfereceRoom  = null)
+    public function setRouteConferenceRoom(ConferenceRoomInterface $routeConferenceRoom  = null)
     {
-        $this->routeConference = $routeConfereceRoom;
+        $this->routeConference = $routeConferenceRoom;
         return $this;
     }
 
@@ -313,9 +299,9 @@ class RouterAction
     }
 
 
-    public function setRouteResidential(ResidentialDeviceInterface $routeResitential = null)
+    public function setRouteResidential(ResidentialDeviceInterface $routeResidential = null)
     {
-        $this->routeResidential = $routeResitential;
+        $this->routeResidential = $routeResidential;
         return $this;
     }
 
@@ -387,30 +373,9 @@ class RouterAction
 
     protected function routeToExternal()
     {
-        // External Route depends on who is calling
-        $caller = $this->channelInfo->getChannelCaller();
-
-        if ($caller instanceof UserInterface) {
-            // Handle external call route for users
-            $this->externalUserCallAction
-                ->setCheckACL(false)
-                ->setDestination($this->routeExternal)
-                ->process();
-
-        } else if ($caller instanceof FriendInterface) {
-            // Handle external call route for users
-            $this->externalFriendCallAction
-                ->setFriend($caller)
-                ->setCheckACL(false)
-                ->setDestination($this->routeExternal)
-                ->process();
-
-        } else {
-            // Handle external call route
-            $this->externalDdiCallAction
-                ->setDestination($this->routeExternal)
-                ->process();
-        }
+        $this->externalNumberCallAction
+            ->setDestination($this->routeExternal)
+            ->process();
     }
 
     protected function routeToIvr()

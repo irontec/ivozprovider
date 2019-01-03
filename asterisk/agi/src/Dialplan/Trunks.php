@@ -3,6 +3,7 @@
 namespace Dialplan;
 
 use Agi\Action\DdiAction;
+use Agi\Agents\DdiAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Assert\Assertion;
@@ -98,7 +99,7 @@ class Trunks extends RouteHandlerAbstract
         }
 
         // Set DDI as the caller
-        $this->channelInfo->setChannelCaller($ddi);
+        $this->channelInfo->setChannelCaller(new DdiAgent($this->agi, $ddi));
 
         // Process this DDI
         $this->ddiAction
