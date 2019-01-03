@@ -24,6 +24,32 @@ abstract class HolidayDateAbstract
     protected $eventDate;
 
     /**
+     * @var boolean
+     */
+    protected $wholeDayEvent = '1';
+
+    /**
+     * @var \DateTime | null
+     */
+    protected $timeIn;
+
+    /**
+     * @var \DateTime | null
+     */
+    protected $timeOut;
+
+    /**
+     * comment: enum:number|extension|voicemail
+     * @var string | null
+     */
+    protected $routeType;
+
+    /**
+     * @var string | null
+     */
+    protected $numberValue;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
      */
     protected $calendar;
@@ -33,16 +59,32 @@ abstract class HolidayDateAbstract
      */
     protected $locution;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     */
+    protected $extension;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     */
+    protected $voiceMailUser;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $numberCountry;
+
 
     use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $eventDate)
+    protected function __construct($name, $eventDate, $wholeDayEvent)
     {
         $this->setName($name);
         $this->setEventDate($eventDate);
+        $this->setWholeDayEvent($wholeDayEvent);
     }
 
     abstract public function getId();
@@ -113,12 +155,20 @@ abstract class HolidayDateAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getEventDate()
+            $dto->getEventDate(),
+            $dto->getWholeDayEvent()
         );
 
         $self
+            ->setTimeIn($dto->getTimeIn())
+            ->setTimeOut($dto->getTimeOut())
+            ->setRouteType($dto->getRouteType())
+            ->setNumberValue($dto->getNumberValue())
             ->setCalendar($dto->getCalendar())
             ->setLocution($dto->getLocution())
+            ->setExtension($dto->getExtension())
+            ->setVoiceMailUser($dto->getVoiceMailUser())
+            ->setNumberCountry($dto->getNumberCountry())
         ;
 
         $self->sanitizeValues();
@@ -142,8 +192,16 @@ abstract class HolidayDateAbstract
         $this
             ->setName($dto->getName())
             ->setEventDate($dto->getEventDate())
+            ->setWholeDayEvent($dto->getWholeDayEvent())
+            ->setTimeIn($dto->getTimeIn())
+            ->setTimeOut($dto->getTimeOut())
+            ->setRouteType($dto->getRouteType())
+            ->setNumberValue($dto->getNumberValue())
             ->setCalendar($dto->getCalendar())
-            ->setLocution($dto->getLocution());
+            ->setLocution($dto->getLocution())
+            ->setExtension($dto->getExtension())
+            ->setVoiceMailUser($dto->getVoiceMailUser())
+            ->setNumberCountry($dto->getNumberCountry());
 
 
 
@@ -161,8 +219,16 @@ abstract class HolidayDateAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setEventDate(self::getEventDate())
+            ->setWholeDayEvent(self::getWholeDayEvent())
+            ->setTimeIn(self::getTimeIn())
+            ->setTimeOut(self::getTimeOut())
+            ->setRouteType(self::getRouteType())
+            ->setNumberValue(self::getNumberValue())
             ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth))
-            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getLocution(), $depth));
+            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getLocution(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
+            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
@@ -173,8 +239,16 @@ abstract class HolidayDateAbstract
         return [
             'name' => self::getName(),
             'eventDate' => self::getEventDate(),
+            'wholeDayEvent' => self::getWholeDayEvent(),
+            'timeIn' => self::getTimeIn(),
+            'timeOut' => self::getTimeOut(),
+            'routeType' => self::getRouteType(),
+            'numberValue' => self::getNumberValue(),
             'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null,
-            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null
+            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
+            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
+            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
+            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -233,6 +307,148 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * Set wholeDayEvent
+     *
+     * @param boolean $wholeDayEvent
+     *
+     * @return self
+     */
+    protected function setWholeDayEvent($wholeDayEvent)
+    {
+        Assertion::notNull($wholeDayEvent, 'wholeDayEvent value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
+
+        $this->wholeDayEvent = $wholeDayEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get wholeDayEvent
+     *
+     * @return boolean
+     */
+    public function getWholeDayEvent()
+    {
+        return $this->wholeDayEvent;
+    }
+
+    /**
+     * Set timeIn
+     *
+     * @param \DateTime $timeIn
+     *
+     * @return self
+     */
+    protected function setTimeIn($timeIn = null)
+    {
+        if (!is_null($timeIn)) {
+        }
+
+        $this->timeIn = $timeIn;
+
+        return $this;
+    }
+
+    /**
+     * Get timeIn
+     *
+     * @return \DateTime | null
+     */
+    public function getTimeIn()
+    {
+        return $this->timeIn;
+    }
+
+    /**
+     * Set timeOut
+     *
+     * @param \DateTime $timeOut
+     *
+     * @return self
+     */
+    protected function setTimeOut($timeOut = null)
+    {
+        if (!is_null($timeOut)) {
+        }
+
+        $this->timeOut = $timeOut;
+
+        return $this;
+    }
+
+    /**
+     * Get timeOut
+     *
+     * @return \DateTime | null
+     */
+    public function getTimeOut()
+    {
+        return $this->timeOut;
+    }
+
+    /**
+     * Set routeType
+     *
+     * @param string $routeType
+     *
+     * @return self
+     */
+    protected function setRouteType($routeType = null)
+    {
+        if (!is_null($routeType)) {
+            Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($routeType, array (
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
+            ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->routeType = $routeType;
+
+        return $this;
+    }
+
+    /**
+     * Get routeType
+     *
+     * @return string | null
+     */
+    public function getRouteType()
+    {
+        return $this->routeType;
+    }
+
+    /**
+     * Set numberValue
+     *
+     * @param string $numberValue
+     *
+     * @return self
+     */
+    protected function setNumberValue($numberValue = null)
+    {
+        if (!is_null($numberValue)) {
+            Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->numberValue = $numberValue;
+
+        return $this;
+    }
+
+    /**
+     * Get numberValue
+     *
+     * @return string | null
+     */
+    public function getNumberValue()
+    {
+        return $this->numberValue;
+    }
+
+    /**
      * Set calendar
      *
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
@@ -278,6 +494,78 @@ abstract class HolidayDateAbstract
     public function getLocution()
     {
         return $this->locution;
+    }
+
+    /**
+     * Set extension
+     *
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     *
+     * @return self
+     */
+    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
+    {
+        $this->extension = $extension;
+
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * Set voiceMailUser
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
+     *
+     * @return self
+     */
+    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
+    {
+        $this->voiceMailUser = $voiceMailUser;
+
+        return $this;
+    }
+
+    /**
+     * Get voiceMailUser
+     *
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     */
+    public function getVoiceMailUser()
+    {
+        return $this->voiceMailUser;
+    }
+
+    /**
+     * Set numberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     *
+     * @return self
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    {
+        $this->numberCountry = $numberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNumberCountry()
+    {
+        return $this->numberCountry;
     }
 
     // @codeCoverageIgnoreEnd

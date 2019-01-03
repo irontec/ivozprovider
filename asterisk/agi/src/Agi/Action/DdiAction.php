@@ -98,7 +98,7 @@ class DdiAction
                     $this->externalFilterAction
                         ->setDDI($ddi)
                         ->setFilter($externalCallFilter)
-                        ->setLocution($holidayDate->getLocution())
+                        ->setHolidayDate($holidayDate)
                         ->processHoliday();
                     return;
                 }

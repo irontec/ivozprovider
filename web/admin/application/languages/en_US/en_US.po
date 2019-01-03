@@ -582,6 +582,9 @@ msgstr "Default Action"
 msgid "Default currency"
 msgstr "Default currency"
 
+msgid "Default holiday routing"
+msgstr "Default holiday routing"
+
 msgid "Default notification template"
 msgid_plural "Default notification templates"
 msgstr[0] "Default Notification template"
@@ -2714,6 +2717,9 @@ msgstr ""
 
 msgid "White Lists"
 msgstr "White Lists"
+
+msgid "Whole day event"
+msgstr "Whole day event"
 
 msgid "Wholesale"
 msgid_plural "Wholesales"

@@ -5,7 +5,7 @@ namespace Agi\Action;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 
 class ExternalFilterAction
 {
@@ -30,9 +30,9 @@ class ExternalFilterAction
     protected $ddi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @var HolidayDateInterface
      */
-    protected $eventLocution;
+    protected $holidayDate;
 
 
     /**
@@ -51,12 +51,12 @@ class ExternalFilterAction
     }
 
     /**
-     * @param LocutionInterface|null $locution
+     * @param HolidayDateInterface|null $holidayDate
      * @return $this
      */
-    public function setLocution(LocutionInterface $locution = null)
+    public function setHolidayDate(HolidayDateInterface $holidayDate = null)
     {
-        $this->eventLocution = $locution;
+        $this->holidayDate = $holidayDate;
         return $this;
     }
 
@@ -94,12 +94,17 @@ class ExternalFilterAction
         // Some feedback for the asterisk cli
         $this->agi->notice("Processing Holiday filter %s for DDI %s", $filter, $ddi);
 
+        $locution = $filter->getHolidayLocution();
         // Play holiday locution
-        if (!empty($this->eventLocution)) {
-            $this->agi->playbackLocution($this->eventLocution);
-        } else {
-            $this->agi->playbackLocution($filter->getHolidayLocution());
+        if (!is_null($this->holidayDate)) {
+            $eventLocution = $this->holidayDate->getLocution();
+            if (!is_null($eventLocution)) {
+                $locution = $eventLocution;
+            }
         }
+
+        // Play holiday louction
+        $this->agi->playbackLocution($locution);
 
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');
@@ -108,13 +113,23 @@ class ExternalFilterAction
         $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
 
-        // Route to configured destination
-        $this->routerAction
-            ->setRouteType($filter->getHolidayTargetType())
-            ->setRouteExtension($filter->getHolidayExtension())
-            ->setRouteExternal($filter->getHolidayNumberValueE164())
-            ->setRouteVoicemail($filter->getHolidayVoiceMailUser())
-            ->route();
+        if (!is_null($this->holidayDate->getRouteType())) {
+            // Route to using event
+            $this->routerAction
+                ->setRouteType($this->holidayDate->getRouteType())
+                ->setRouteExtension($this->holidayDate->getExtension())
+                ->setRouteExternal($this->holidayDate->getNumberValueE164())
+                ->setRouteVoicemail($this->holidayDate->getVoiceMailUser())
+                ->route();
+        } else {
+            // Route to using filter
+            $this->routerAction
+                ->setRouteType($filter->getHolidayTargetType())
+                ->setRouteExtension($filter->getHolidayExtension())
+                ->setRouteExternal($filter->getHolidayNumberValueE164())
+                ->setRouteVoicemail($filter->getHolidayVoiceMailUser())
+                ->route();
+        }
 
     }
 

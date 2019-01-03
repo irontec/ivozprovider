@@ -46,8 +46,20 @@ class Calendar extends CalendarAbstract implements CalendarInterface
             )
         );
 
-        $holidayDates = $this->getHolidayDates($criteria);
+        $eventMatched = false;
 
-        return !empty($holidayDates);
+        $holidayDates = $this->getHolidayDates($criteria);
+        foreach ($holidayDates as $holidayDate) {
+            $eventMatched = $holidayDate
+                ->checkEventOnTime(
+                    $date
+                );
+
+            if ($eventMatched) {
+                break;
+            }
+        }
+
+        return $eventMatched;
     }
 }

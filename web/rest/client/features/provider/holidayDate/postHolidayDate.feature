@@ -41,6 +41,11 @@ Feature: Create holiday dates
       {
           "name": "New",
           "eventDate": "2017-12-21",
+          "wholeDayEvent": true,
+          "timeIn": null,
+          "timeOut": null,
+          "routeType": null,
+          "numberValue": null,
           "id": 2,
           "calendar": {
               "name": "testCalendar",
@@ -53,15 +58,18 @@ Feature: Create holiday dates
               "id": 1,
               "encodedFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
+                  "mimeType": "audio\/x-wav; charset=binary",
                   "baseName": "locution.wav"
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
-          }
+          },
+          "extension": null,
+          "voiceMailUser": null,
+          "numberCountry": null
       }
     """
