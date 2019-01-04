@@ -6,6 +6,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRepository;
 
 /**
  * Class CheckEventDateCollision
@@ -15,8 +16,15 @@ class CheckEventDateCollision implements HolidayDateLifecycleEventHandlerInterfa
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    public function __construct()
-    {
+    /**
+     * @var HolidayDateRepository
+     */
+    protected $holidayDateRepository;
+
+    public function __construct(
+        HolidayDateRepository $holidayDateRepository
+    ) {
+        $this->holidayDateRepository = $holidayDateRepository;
     }
 
     public static function getSubscribedEvents()
@@ -28,15 +36,8 @@ class CheckEventDateCollision implements HolidayDateLifecycleEventHandlerInterfa
 
     public function execute(HolidayDateInterface $holidayDate)
     {
-        $eventsCriteria = CriteriaHelper::fromArray(
-            [
-                array('id', 'neq', $holidayDate->getId()),
-                array('eventDate', 'eq', $holidayDate->getEventDate()),
-            ]
-        );
-
-        $calendar = $holidayDate->getCalendar();
-        $calendarHolidays = $calendar->getHolidayDates($eventsCriteria);
+        $calendarHolidays = $this->holidayDateRepository
+            ->findMatchingDateSiblings($holidayDate);
 
         foreach ($calendarHolidays as $calendarHoliday) {
             // Only one whole day event allowed per day

@@ -78,12 +78,17 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
 
         // Check if time is between in and out
         $timezone = $time->getTimezone();
+
+        $eventDateStr = $this->getEventDate()->format('Y-m-d');
+        $timeInStr = $this->getTimeIn()->format('H:i:s');
         $timeIn = new \DateTime(
-            $this->getTimeIn()->format('H:i:s'),
+            "$eventDateStr $timeInStr",
             $timezone
         );
+
+        $timeOutStr = $this->getTimeOut()->format('H:i:s');
         $timeOut = new \DateTime(
-            $this->getTimeOut()->format('H:i:s'),
+            "$eventDateStr $timeOutStr",
             $timezone
         );
 
