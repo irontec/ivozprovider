@@ -32,7 +32,28 @@ class ProviderHolidayDate extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
+        /** @var HolidayDate $item2 */
+        $item2 = $this->createEntityInstance(HolidayDate::class);
+        (function () {
+            $this->setName("timeRangeEvent");
+            $this->setEventDate(
+                new \DateTime("2021-12-21 00:00:00", new \DateTimeZone('UTC'))
+            );
+            $this->setWholeDayEvent(0);
+            $this->setTimeIn(
+                new \DateTime('00:00:00')
+            );
+            $this->setTimeOut(
+                new \DateTime('10:00:00')
+            );
+        })->call($item2);
+
+        $item2->setCalendar($this->getReference('_reference_ProviderCalendar1'));
+        $this->addReference('_reference_ProviderHolidayDateHolidayDate2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 

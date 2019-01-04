@@ -18,6 +18,11 @@ Feature: Retrieve holiday dates
               "name": "Name",
               "eventDate": "2021-12-21",
               "id": 1
+          },
+          {
+              "name": "timeRangeEvent",
+              "eventDate": "2021-12-21",
+              "id": 2
           }
       ]
     """
