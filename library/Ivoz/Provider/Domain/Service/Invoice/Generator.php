@@ -123,10 +123,10 @@ class Generator
         $invoiceDate = new \DateTime();
         $invoiceDate->setTimezone($invoiceTz);
 
-        $inDate = clone $invoice->getInDate();
+        $inDate = $invoice->getInDate();
         $inDate->setTimezone($invoiceTz);
 
-        $outDate = clone $invoice->getOutDate();
+        $outDate = $invoice->getOutDate();
         $outDate->setTimezone($invoiceTz);
 
         $invoiceDto = $this->entityTools->entityToDto($invoice);
@@ -189,10 +189,10 @@ class Generator
 
         $currencySymbol = $company->getCurrencySymbol();
 
-        $inDate = clone $invoice->getInDate();
+        $inDate = $invoice->getInDate();
         $utcInDate = $inDate->setTimezone($utcTz);
 
-        $outDate = clone $invoice->getOutDate();
+        $outDate = $invoice->getOutDate();
         $utcOutDate = $outDate->setTimezone($utcTz);
 
         $callsPerType = [];
