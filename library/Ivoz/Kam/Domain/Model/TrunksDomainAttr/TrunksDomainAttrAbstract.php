@@ -334,7 +334,7 @@ abstract class TrunksDomainAttrAbstract
      */
     public function getLastModified()
     {
-        return $this->lastModified;
+        return clone $this->lastModified;
     }
 
     // @codeCoverageIgnoreEnd

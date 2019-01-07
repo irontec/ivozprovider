@@ -465,7 +465,7 @@ abstract class TpRateAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

@@ -342,7 +342,7 @@ abstract class CommandlogAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return clone $this->createdOn;
     }
 
     /**

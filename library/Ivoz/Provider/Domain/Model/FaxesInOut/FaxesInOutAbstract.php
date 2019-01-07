@@ -272,7 +272,7 @@ abstract class FaxesInOutAbstract
      */
     public function getCalldate()
     {
-        return $this->calldate;
+        return clone $this->calldate;
     }
 
     /**

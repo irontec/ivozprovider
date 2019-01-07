@@ -349,7 +349,7 @@ abstract class RtpengineAbstract
      */
     public function getStamp()
     {
-        return $this->stamp;
+        return clone $this->stamp;
     }
 
     /**

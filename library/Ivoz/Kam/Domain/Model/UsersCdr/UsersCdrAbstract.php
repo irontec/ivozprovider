@@ -339,7 +339,7 @@ abstract class UsersCdrAbstract
      */
     public function getStartTime()
     {
-        return $this->startTime;
+        return clone $this->startTime;
     }
 
     /**
@@ -369,7 +369,7 @@ abstract class UsersCdrAbstract
      */
     public function getEndTime()
     {
-        return $this->endTime;
+        return clone $this->endTime;
     }
 
     /**

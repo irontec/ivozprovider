@@ -297,7 +297,7 @@ abstract class CallCsvReportAbstract
      */
     public function getInDate()
     {
-        return $this->inDate;
+        return clone $this->inDate;
     }
 
     /**
@@ -327,7 +327,7 @@ abstract class CallCsvReportAbstract
      */
     public function getOutDate()
     {
-        return $this->outDate;
+        return clone $this->outDate;
     }
 
     /**
@@ -357,7 +357,7 @@ abstract class CallCsvReportAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return clone $this->createdOn;
     }
 
     /**

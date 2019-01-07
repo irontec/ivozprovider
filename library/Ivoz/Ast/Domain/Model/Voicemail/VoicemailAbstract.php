@@ -1383,7 +1383,7 @@ abstract class VoicemailAbstract
      */
     public function getStamp()
     {
-        return $this->stamp;
+        return !is_null($this->stamp) ? clone $this->stamp : null;
     }
 
     /**
