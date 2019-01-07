@@ -191,7 +191,7 @@ protected function __toArray()
  */
 public function <methodName>(<criteriaArgument>)
 {<criteriaGetter>
-<spaces>return $this-><fieldName><forcedArray>;
+<spaces>return <prefix>$this-><fieldName><forcedArray><suffix>;
 }
 ';
 
@@ -1225,6 +1225,19 @@ public function <methodName>(<criteriaArgument>)
         $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
         $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
 
+        $prefix = '';
+        $suffix = '';
+
+        $isNullableFk = false;
+        if (array_key_exists($fieldName, $metadata->associationMappings)) {
+            $currentAsoc = (object) $metadata->associationMappings[$fieldName];
+            $isNullableFk =
+                isset($currentAsoc->joinColumns)
+                && isset($currentAsoc->joinColumns[0])
+                && isset($currentAsoc->joinColumns[0]['nullable'])
+                && $currentAsoc->joinColumns[0]['nullable'];
+        }
+
         $assertions = [];
 
         if ($currentField) {
@@ -1258,10 +1271,12 @@ public function <methodName>(<criteriaArgument>)
 
             if (in_array($currentField->type, ['datetime'])) {
 
-                $integerAssertions = array_map(
-                    $arraySpacerFn,
-                    $this->getIntegerAssertions($currentField)
-                );
+                if ($isNullable) {
+                    $prefix = '!is_null($this->' . Inflector::camelize($fieldName) . ') ? clone ';
+                    $suffix = ' : null';
+                } else {
+                    $prefix = 'clone ';
+                }
 
                 $indent = ($isNullable)
                     ? str_repeat(' ', 4)
@@ -1346,7 +1361,9 @@ public function <methodName>(<criteriaArgument>)
         $replacements = array(
             $this->spaces . '<assertions>' => $assertions,
             '<visibility>' => $visibility,
-            '<nullable>' => ($isNullable || $isNullableFk) ? ' | null' : ''
+            '<nullable>' => ($isNullable || $isNullableFk) ? ' | null' : '',
+            '<prefix>'             => $prefix,
+            '<suffix>'             => $suffix,
         );
 
         if ($type == 'replace') {
