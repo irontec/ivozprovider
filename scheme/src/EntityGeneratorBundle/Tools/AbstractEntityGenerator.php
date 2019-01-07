@@ -1186,14 +1186,24 @@ public function <methodName>(<criteriaArgument>)
     {
         $currentField = null;
         $isNullable = false;
+        $isNullableFk = false;
         $visibility = 'protected';
 
         if (array_key_exists($fieldName, $metadata->fieldMappings)) {
             $currentField = (object) $metadata->fieldMappings[$fieldName];
             $isNullable = isset($currentField->nullable) && $currentField->nullable;
+
+        } elseif (array_key_exists($fieldName, $metadata->associationMappings)) {
+
+            $currentAsoc = (object) $metadata->associationMappings[$fieldName];
+            $isNullableFk =
+                isset($currentAsoc->joinColumns)
+                && isset($currentAsoc->joinColumns[0])
+                && isset($currentAsoc->joinColumns[0]['nullable'])
+                && $currentAsoc->joinColumns[0]['nullable'];
         }
 
-        if (is_null($defaultValue) && $isNullable) {
+        if (is_null($defaultValue) && ($isNullable || $isNullableFk)) {
             $defaultValue = 'null';
         }
 
@@ -1214,16 +1224,6 @@ public function <methodName>(<criteriaArgument>)
 
         $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
         $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
-
-        $isNullableFk = false;
-        if (array_key_exists($fieldName, $metadata->associationMappings)) {
-            $currentAsoc = (object) $metadata->associationMappings[$fieldName];
-            $isNullableFk =
-                isset($currentAsoc->joinColumns)
-                && isset($currentAsoc->joinColumns[0])
-                && isset($currentAsoc->joinColumns[0]['nullable'])
-                && $currentAsoc->joinColumns[0]['nullable'];
-        }
 
         $assertions = [];
 
