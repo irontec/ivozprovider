@@ -13,20 +13,6 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @TODO Optional oneToOne
-     *
-     * @inheritdoc
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
-
-    /**
-     * @TODO Optional oneToOne
-     *
-     * @inheritdoc
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
-
-    /**
      * Get tpid
      *
      * @return string
@@ -90,11 +76,29 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getCreatedAt();
 
     /**
+     * Set company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return self
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+
+    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
+
+    /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
     /**
      * Get carrier
