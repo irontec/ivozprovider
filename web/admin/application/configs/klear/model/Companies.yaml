@@ -271,10 +271,10 @@ production:
               show: []
               hide: ["onDemandRecordCode"]
           '1':
-            title: _("Using BXFER or INFO")
+            title: _("Using INFO")
             visualFilter:
-              show: ["onDemandRecordCode"]
-              hide: []
+              show: []
+              hide: ["onDemandRecordCode"]
           '2':
             title: _("Using DTMFs (read WARNING)")
             visualFilter:

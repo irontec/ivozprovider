@@ -8,7 +8,7 @@ recordingHelp: &recordingHelp
             Recording activation method:
             <ul>
                <li><b>DTMFs</b>  <i>Press the selected code when you are on call</i><br/></li>
-               <li><b>BXFER or INFO</b>  <i>Make a blind-xfer to selected code or use the Record key on your phone (only Yealink)</i><br/></li>
+               <li><b>INFO</b>  <i>Use the Record key on your phone (only Yealink)</i><br/></li>
             </ul>
 
             <b>CAUTION:</b> Selecting DTMF mode makes all audio of this company calls go through application server (decreasing global call concurrency and making RTP-path longer)"

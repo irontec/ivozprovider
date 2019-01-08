@@ -96,34 +96,6 @@ final endpoints.
 .. important:: Enabling this record mode highly affects the performance of the
    platform. Use at your own risk.
 
-
-Activated using a frustrated blind transfer
-===========================================
-
-There is a tricky way to access this feature for terminals that does not support 
-the INFO message and don't want its audio to be parsed:
-
-.. danger:: This method is a workaround for those terminals that does not support
-   the native *Record* key activation (recommended). Take into account that not 
-   all terminals will behave the same way while performing the transfer described 
-   in this section.
-
-The keys for this methods are:
-
-- It's not activated using a code during the conversation.
-
-- It's activated making a **blind transfer** to the on demand record code.
-
-- The system will understand this as a request to record and will reject the transfer.
-
-- The user will continue with the existing call and keep talking.
-
-.. rubric:: Why this method does even exist?
-
-The reason behind this tricky method is based, as explained in the previous 
-block, on the design of the :ref:`architecture` and the :ref:`RTP audio 
-flow <audioflow>`.
-
 ***************
 Recordings list
 ***************

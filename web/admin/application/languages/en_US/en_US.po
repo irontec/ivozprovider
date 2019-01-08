@@ -2635,11 +2635,11 @@ msgstr "User configuration"
 msgid "Username"
 msgstr "Username"
 
-msgid "Using BXFER or INFO"
-msgstr "Using BXFER or INFO"
-
 msgid "Using DTMFs (read WARNING)"
 msgstr "Using DTMFs (read WARNING)"
+
+msgid "Using INFO"
+msgstr "Using INFO"
 
 #, python-format
 msgid "View %s %2s"

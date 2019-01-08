@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-31 11:42+0100\n"
+"POT-Creation-Date: 2019-01-07 18:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4354,97 +4354,26 @@ msgstr ""
 #: ../../administration_portal/client/residential/calls/call_recordings.rst:101
 #: ../../administration_portal/client/retail/calls/call_recordings.rst:101
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:101
-msgid "Activated using a frustrated blind transfer"
+msgid "Recordings list"
 msgstr ""
 
 #: ../../administration_portal/client/residential/calls/call_recordings.rst:103
 #: ../../administration_portal/client/retail/calls/call_recordings.rst:103
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:103
 msgid ""
-"There is a tricky way to access this feature for terminals that does not "
-"support the INFO message and don't want its audio to be parsed:"
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:106
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:106
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:106
-msgid ""
-"This method is a workaround for those terminals that does not support the"
-" native *Record* key activation (recommended). Take into account that not"
-" all terminals will behave the same way while performing the transfer "
-"described in this section."
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:111
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:111
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:111
-msgid "The keys for this methods are:"
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:113
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:113
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:113
-msgid "It's not activated using a code during the conversation."
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:115
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:115
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:115
-msgid "It's activated making a **blind transfer** to the on demand record code."
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:117
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:117
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:117
-msgid ""
-"The system will understand this as a request to record and will reject "
-"the transfer."
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:119
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:119
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:119
-msgid "The user will continue with the existing call and keep talking."
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:122
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:122
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:122
-msgid "Why this method does even exist?"
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:123
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:123
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:123
-msgid ""
-"The reason behind this tricky method is based, as explained in the "
-"previous block, on the design of the :ref:`architecture` and the "
-":ref:`RTP audio flow <audioflow>`."
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:129
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:129
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:129
-msgid "Recordings list"
-msgstr ""
-
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:131
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:131
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:131
-msgid ""
 "The *client administrator* can access to all the recordings in the "
 "section **Client configuration** > **Recordings**:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:135
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:135
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:135
+#: ../../administration_portal/client/residential/calls/call_recordings.rst:107
+#: ../../administration_portal/client/retail/calls/call_recordings.rst:107
+#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:107
 msgid "Recordings can be heard from the *web* or downloaded in MP3 format:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:138
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:138
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:138
+#: ../../administration_portal/client/residential/calls/call_recordings.rst:110
+#: ../../administration_portal/client/retail/calls/call_recordings.rst:110
+#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:110
 msgid ""
 "If the recording has been started on demand, it will also include the "
 "user that requested it:"
@@ -8544,19 +8473,3 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
-
-#~ msgid ""
-#~ msgstr ""
-
-#~ msgid "Define default Timezone and Language for clients of this brand."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Holidays without special locutions will "
-#~ "apply the external call filter holiday"
-#~ " generic locution (see below)."
-#~ msgstr ""
-
-#~ msgid "Create a new External call filter"
-#~ msgstr ""
-
