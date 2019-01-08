@@ -98,6 +98,7 @@ function setup_proxies()
         sed -i -e '/#!define SIPS_PORT/c\#!define SIPS_PORT 7061' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/contact=sip:trunks.ivozprovider.local/c\contact=sip:trunks.ivozprovider.local:7060' /etc/asterisk/pjsip.conf
     else
+        sed -i -e '/#!define TRUNKS_SIP_PORT/c\#!define TRUNKS_SIP_PORT 5060' /etc/kamailio/proxyusers/kamailio.cfg
         sed -i -e '/#!define SIP_PORT/c\#!define SIP_PORT 5060' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/#!define SIPS_PORT/c\#!define SIPS_PORT 5061' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/contact=sip:trunks.ivozprovider.local/c\contact=sip:trunks.ivozprovider.local' /etc/asterisk/pjsip.conf
