@@ -89,9 +89,7 @@ class RestClient
 
     protected static function getBaseUrl($api = 'platform')
     {
-        return 'https://'
-            . $_SERVER['SERVER_NAME']
-            . '/api/'
+        return 'https://127.0.0.1/api/'
             . $api
             . '/'
             . basename($_SERVER['SCRIPT_FILENAME']);
