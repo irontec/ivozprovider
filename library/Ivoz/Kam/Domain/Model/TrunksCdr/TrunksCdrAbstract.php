@@ -172,8 +172,10 @@ abstract class TrunksCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksCdrDto
          */
@@ -196,10 +198,10 @@ abstract class TrunksCdrAbstract
             ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRetailAccount($dto->getRetailAccount())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
         $self->sanitizeValues();
@@ -213,8 +215,10 @@ abstract class TrunksCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksCdrDto
          */
@@ -234,10 +238,10 @@ abstract class TrunksCdrAbstract
             ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRetailAccount($dto->getRetailAccount());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
 
 
 

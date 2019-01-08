@@ -144,8 +144,10 @@ abstract class ExtensionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExtensionDto
          */
@@ -159,14 +161,14 @@ abstract class ExtensionAbstract
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($dto->getCompany())
-            ->setIvr($dto->getIvr())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setConferenceRoom($dto->getConferenceRoom())
-            ->setUser($dto->getUser())
-            ->setQueue($dto->getQueue())
-            ->setConditionalRoute($dto->getConditionalRoute())
-            ->setNumberCountry($dto->getNumberCountry())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setQueue($fkTransformer->transform($dto->getQueue()))
+            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -180,8 +182,10 @@ abstract class ExtensionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExtensionDto
          */
@@ -192,14 +196,14 @@ abstract class ExtensionAbstract
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($dto->getCompany())
-            ->setIvr($dto->getIvr())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setConferenceRoom($dto->getConferenceRoom())
-            ->setUser($dto->getUser())
-            ->setQueue($dto->getQueue())
-            ->setConditionalRoute($dto->getConditionalRoute())
-            ->setNumberCountry($dto->getNumberCountry());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setQueue($fkTransformer->transform($dto->getQueue()))
+            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
 
 

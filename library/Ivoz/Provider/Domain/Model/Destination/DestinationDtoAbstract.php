@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -89,36 +87,6 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'destinationRates' => $this->getDestinationRates()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->tpDestination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getTpDestinationId());
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->destinationRates)) {
-            $items = $this->getDestinationRates();
-            $this->destinationRates = [];
-            foreach ($items as $item) {
-                $this->destinationRates[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->destinationRates = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate',
-            $this->destinationRates
-        );
     }
 
     /**

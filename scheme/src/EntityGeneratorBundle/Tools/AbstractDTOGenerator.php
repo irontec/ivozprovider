@@ -49,22 +49,6 @@ public function toArray($hideSensitiveData = false)
 {
     return [<toArray>];
 }
-
-/**
- * {@inheritDoc}
- */
-public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-{
-<transformForeignKeys>
-}
-
-/**
- * {@inheritDoc}
- */
-public function transformCollections(CollectionTransformerInterface $transformer)
-{
-<transformCollections>
-}
 ';
     /**
      * @var string
@@ -261,53 +245,16 @@ public function <methodName>Id()
     {
         $response = [
             'use Ivoz\\Core\\Application\\DataTransferObjectInterface;',
-            'use Ivoz\\Core\\Application\\ForeignKeyTransformerInterface;',
-            'use Ivoz\\Core\\Application\\CollectionTransformerInterface;',
             'use Ivoz\\Core\\Application\\Model\\DtoNormalizer;'
         ];
 
         return "\n". implode("\n", $response) ."\n";
     }
 
-
     /**
      * {@inheritDoc}
      */
     protected function generateEntityConstructor(ClassMetadataInfo $metadata)
-    {
-        $response = $this->_generateEntityConstructor($metadata);
-        $transformForeignKeys = '';
-        $transformCollections = '';
-
-        $spaces = str_repeat($this->spaces, 2);
-        $fkTransformers = $this->getFkTransformers($metadata);
-        if (!empty($fkTransformers)) {
-            $transformForeignKeys = $spaces . implode("\n" . $spaces, $fkTransformers);
-        }
-
-        $collectionTransformers = $this->getCollectionTransformers($metadata);
-        if (!empty($collectionTransformers)) {
-            $transformCollections = $spaces . implode("\n" . $spaces, $collectionTransformers);
-        }
-
-        if (empty($transformForeignKeys)) {
-            $response = str_replace("\n" . $this->spaces . "<transformForeignKeys>", '', $response);
-        } else {
-            $response = str_replace($this->spaces . '<transformForeignKeys>', $transformForeignKeys, $response);
-        }
-
-        if (empty($transformCollections)) {
-            return str_replace("\n" . $this->spaces . "<transformCollections>", '', $response);
-        } else {
-            return str_replace($this->spaces . '<transformCollections>', $transformCollections, $response);
-        }
-    }
-
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function _generateEntityConstructor(ClassMetadataInfo $metadata)
     {
         list(
             $getters,
@@ -635,8 +582,7 @@ public function <methodName>Id()
                 $fkTransformers[] =
                     '$this->' . $attribute
                     . ' = '
-                    . '$transformer->transform(\'' . $targetEntity . '\''
-                    . ', $this->get' . ucfirst($attribute) . 'Id());';
+                    . '$transformer->transform($this->get' . ucfirst($attribute) . '());';
 
             } else if (isset($field->targetEntity) && $isOneToMany) {
 
@@ -662,13 +608,8 @@ public function <methodName>Id()
                         $twoSpaces
                         . '$this->' . $attribute . '[]'
                         . ' = '
-                        . '$transformer->transform('
-                        . "\n" . $fiveSpaces
-                        . '\'' . $targetEntity . '\','
-                        . "\n" . $fiveSpaces
-                        . '$item' . '->getId() ?? $item'
-                        . "\n" . $fourSpaces
-                        . ');';
+                        . '$transformer->transform($item);';
+
                     $fkTransformers[] = $this->spaces . "}";
                     $fkTransformers[] = "}";
                     continue;
@@ -677,8 +618,7 @@ public function <methodName>Id()
                 $fkTransformers[] =
                     '$this->' . $attribute
                     . ' = '
-                    . '$transformer->transform(\''. $targetEntity .'\''
-                    . ', $this->get'. ucfirst($attribute) .'Id());';
+                    . '$transformer->transform($this->get'. ucfirst($attribute) .'());';
             }
         }
 

@@ -92,8 +92,10 @@ abstract class OutgoingRoutingRelCarrierAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingRoutingRelCarrierDto
          */
@@ -102,8 +104,8 @@ abstract class OutgoingRoutingRelCarrierAbstract
         $self = new static();
 
         $self
-            ->setOutgoingRouting($dto->getOutgoingRouting())
-            ->setCarrier($dto->getCarrier())
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class OutgoingRoutingRelCarrierAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingRoutingRelCarrierDto
          */
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
         $this
-            ->setOutgoingRouting($dto->getOutgoingRouting())
-            ->setCarrier($dto->getCarrier());
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
 
 

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -124,36 +122,6 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'country' => $this->getCountry(),
             'rules' => $this->getRules()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
-        if (!is_null($this->rules)) {
-            $items = $this->getRules();
-            $this->rules = [];
-            foreach ($items as $item) {
-                $this->rules[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\TransformationRule\\TransformationRule',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->rules = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\TransformationRule\\TransformationRule',
-            $this->rules
-        );
     }
 
     /**

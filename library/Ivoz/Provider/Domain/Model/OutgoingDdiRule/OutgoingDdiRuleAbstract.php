@@ -105,8 +105,10 @@ abstract class OutgoingDdiRuleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingDdiRuleDto
          */
@@ -118,8 +120,8 @@ abstract class OutgoingDdiRuleAbstract
         );
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setForcedDdi($dto->getForcedDdi())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()))
         ;
 
         $self->sanitizeValues();
@@ -133,8 +135,10 @@ abstract class OutgoingDdiRuleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingDdiRuleDto
          */
@@ -143,8 +147,8 @@ abstract class OutgoingDdiRuleAbstract
         $this
             ->setName($dto->getName())
             ->setDefaultAction($dto->getDefaultAction())
-            ->setCompany($dto->getCompany())
-            ->setForcedDdi($dto->getForcedDdi());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
 
 

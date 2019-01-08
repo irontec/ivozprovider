@@ -121,8 +121,10 @@ abstract class NotificationTemplateContentAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto NotificationTemplateContentDto
          */
@@ -137,8 +139,8 @@ abstract class NotificationTemplateContentAbstract
         $self
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
-            ->setNotificationTemplate($dto->getNotificationTemplate())
-            ->setLanguage($dto->getLanguage())
+            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
         ;
 
         $self->sanitizeValues();
@@ -152,8 +154,10 @@ abstract class NotificationTemplateContentAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto NotificationTemplateContentDto
          */
@@ -165,8 +169,8 @@ abstract class NotificationTemplateContentAbstract
             ->setSubject($dto->getSubject())
             ->setBody($dto->getBody())
             ->setBodyType($dto->getBodyType())
-            ->setNotificationTemplate($dto->getNotificationTemplate())
-            ->setLanguage($dto->getLanguage());
+            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
 
 

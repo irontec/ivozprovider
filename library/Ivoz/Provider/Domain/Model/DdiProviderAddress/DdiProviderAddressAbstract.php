@@ -102,8 +102,10 @@ abstract class DdiProviderAddressAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DdiProviderAddressDto
          */
@@ -114,7 +116,7 @@ abstract class DdiProviderAddressAbstract
         $self
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setDdiProvider($dto->getDdiProvider())
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
         $self->sanitizeValues();
@@ -128,8 +130,10 @@ abstract class DdiProviderAddressAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DdiProviderAddressDto
          */
@@ -138,7 +142,7 @@ abstract class DdiProviderAddressAbstract
         $this
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setDdiProvider($dto->getDdiProvider());
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
 

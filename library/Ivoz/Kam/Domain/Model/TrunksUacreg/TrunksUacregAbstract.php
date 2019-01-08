@@ -193,8 +193,10 @@ abstract class TrunksUacregAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksUacregDto
          */
@@ -217,8 +219,8 @@ abstract class TrunksUacregAbstract
         );
 
         $self
-            ->setDdiProviderRegistration($dto->getDdiProviderRegistration())
-            ->setBrand($dto->getBrand())
+            ->setDdiProviderRegistration($fkTransformer->transform($dto->getDdiProviderRegistration()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -232,8 +234,10 @@ abstract class TrunksUacregAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksUacregDto
          */
@@ -253,8 +257,8 @@ abstract class TrunksUacregAbstract
             ->setFlags($dto->getFlags())
             ->setRegDelay($dto->getRegDelay())
             ->setAuthHa1($dto->getAuthHa1())
-            ->setDdiProviderRegistration($dto->getDdiProviderRegistration())
-            ->setBrand($dto->getBrand());
+            ->setDdiProviderRegistration($fkTransformer->transform($dto->getDdiProviderRegistration()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

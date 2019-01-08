@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -81,36 +79,6 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
             'forcedDdi' => $this->getForcedDdi(),
             'patterns' => $this->getPatterns()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->forcedDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getForcedDdiId());
-        if (!is_null($this->patterns)) {
-            $items = $this->getPatterns();
-            $this->patterns = [];
-            foreach ($items as $item) {
-                $this->patterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRulesPattern\\OutgoingDdiRulesPattern',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->patterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRulesPattern\\OutgoingDdiRulesPattern',
-            $this->patterns
-        );
     }
 
     /**

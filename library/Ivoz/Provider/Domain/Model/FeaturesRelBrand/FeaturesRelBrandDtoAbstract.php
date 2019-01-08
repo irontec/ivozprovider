@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\FeaturesRelBrand;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -61,22 +59,6 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
             'brand' => $this->getBrand(),
             'feature' => $this->getFeature()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->feature = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Feature\\Feature', $this->getFeatureId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

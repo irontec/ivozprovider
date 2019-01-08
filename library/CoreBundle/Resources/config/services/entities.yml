@@ -1,0 +1,50 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer:
+    arguments:
+    - '@doctrine.orm.entity_manager'
+
+  Ivoz\Core\Domain\Model\EntityInterface\ForeignKeyTransformerInterface:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
+
+  core.doctrine_foreign_key_transformer:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
+
+  Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer:
+    arguments:
+    - '@doctrine.orm.entity_manager'
+
+  Ivoz\Core\Domain\Model\EntityInterface\CollectionTransformerInterface:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
+
+  core.doctrine_collection_transformer:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
+
+  Ivoz\Core\Application\Service\CreateEntityFromDTO: ~
+
+  core.create_entity_from_dto: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+
+  Ivoz\Core\Application\Service\UpdateEntityFromDTO:
+    public: true
+
+  core.update_entity_from_dto:
+    class: Ivoz\Core\Application\Service\UpdateEntityFromDTO
+
+  Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
+    arguments:
+      $softDeleteMap: '%soft_delete%'
+      $logger: '@monolog.logger.changelog'
+    public: true
+
+  Ivoz\Core\Domain\Service\EntityPersisterInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Core\Application\Service\EntityTools:
+    arguments:
+      $entityManager: '@doctrine.orm.entity_manager'
+    public: true
+    lazy: true

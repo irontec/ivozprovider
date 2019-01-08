@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -80,49 +78,6 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'relCompanies' => $this->getRelCompanies()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->outgoingRoutings)) {
-            $items = $this->getOutgoingRoutings();
-            $this->outgoingRoutings = [];
-            foreach ($items as $item) {
-                $this->outgoingRoutings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relCompanies)) {
-            $items = $this->getRelCompanies();
-            $this->relCompanies = [];
-            foreach ($items as $item) {
-                $this->relCompanies[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->outgoingRoutings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-            $this->outgoingRoutings
-        );
-        $this->relCompanies = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
-            $this->relCompanies
-        );
     }
 
     /**

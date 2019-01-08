@@ -115,8 +115,10 @@ abstract class TransformationRuleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TransformationRuleDto
          */
@@ -131,7 +133,7 @@ abstract class TransformationRuleAbstract
             ->setPriority($dto->getPriority())
             ->setMatchExpr($dto->getMatchExpr())
             ->setReplaceExpr($dto->getReplaceExpr())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
         ;
 
         $self->sanitizeValues();
@@ -145,8 +147,10 @@ abstract class TransformationRuleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TransformationRuleDto
          */
@@ -158,7 +162,7 @@ abstract class TransformationRuleAbstract
             ->setPriority($dto->getPriority())
             ->setMatchExpr($dto->getMatchExpr())
             ->setReplaceExpr($dto->getReplaceExpr())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet());
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()));
 
 
 

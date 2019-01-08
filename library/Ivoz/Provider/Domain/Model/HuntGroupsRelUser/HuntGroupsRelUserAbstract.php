@@ -102,8 +102,10 @@ abstract class HuntGroupsRelUserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HuntGroupsRelUserDto
          */
@@ -114,8 +116,8 @@ abstract class HuntGroupsRelUserAbstract
         $self
             ->setTimeoutTime($dto->getTimeoutTime())
             ->setPriority($dto->getPriority())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setUser($dto->getUser())
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
         $self->sanitizeValues();
@@ -129,8 +131,10 @@ abstract class HuntGroupsRelUserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HuntGroupsRelUserDto
          */
@@ -139,8 +143,8 @@ abstract class HuntGroupsRelUserAbstract
         $this
             ->setTimeoutTime($dto->getTimeoutTime())
             ->setPriority($dto->getPriority())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setUser($dto->getUser());
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
 
 

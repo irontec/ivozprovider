@@ -8,30 +8,19 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\CollectionTransformerInterface;
 
+/**
+ * @deprecated
+ */
 class UpdateEntityFromDTO
 {
-    /**
-     * @var ForeignKeyTransformerInterface
-     */
-    private $fkTransformer;
-
-    /**
-     * @var CollectionTransformerInterface
-     */
-    private $collectionTransformer;
-
     /**
      * @var EntityAssembler
      */
     private $entityAssembler;
 
     public function __construct(
-        ForeignKeyTransformerInterface $fkTransformer,
-        CollectionTransformerInterface $collectionTransformer,
         EntityAssembler $entityAssembler
     ) {
-        $this->fkTransformer = $fkTransformer;
-        $this->collectionTransformer = $collectionTransformer;
         $this->entityAssembler = $entityAssembler;
     }
 
@@ -39,8 +28,6 @@ class UpdateEntityFromDTO
     {
         //Ensure that we don't propagate applied changes
         $dto = clone $dto;
-        $dto->transformForeignKeys($this->fkTransformer);
-        $dto->transformCollections($this->collectionTransformer);
 
         $this->entityAssembler->updateFromDto(
             $dto,

@@ -49,7 +49,7 @@ class TerminalSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -101,7 +101,10 @@ class TerminalSpec extends ObjectBehavior
             ]
         );
 
-        $this->updateFromDto($dto);
+        $this->updateFromDto(
+            $dto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
 
         $this
             ->getDomain()

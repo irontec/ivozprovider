@@ -79,44 +79,79 @@ trait BrandTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getCompanies()) {
-            $self->replaceCompanies($dto->getCompanies());
+            $self->replaceCompanies(
+                $fkTransformer->transformCollection(
+                    $dto->getCompanies()
+                )
+            );
         }
 
         if ($dto->getServices()) {
-            $self->replaceServices($dto->getServices());
+            $self->replaceServices(
+                $fkTransformer->transformCollection(
+                    $dto->getServices()
+                )
+            );
         }
 
         if ($dto->getUrls()) {
-            $self->replaceUrls($dto->getUrls());
+            $self->replaceUrls(
+                $fkTransformer->transformCollection(
+                    $dto->getUrls()
+                )
+            );
         }
 
         if ($dto->getRelFeatures()) {
-            $self->replaceRelFeatures($dto->getRelFeatures());
+            $self->replaceRelFeatures(
+                $fkTransformer->transformCollection(
+                    $dto->getRelFeatures()
+                )
+            );
         }
 
         if ($dto->getResidentialDevices()) {
-            $self->replaceResidentialDevices($dto->getResidentialDevices());
+            $self->replaceResidentialDevices(
+                $fkTransformer->transformCollection(
+                    $dto->getResidentialDevices()
+                )
+            );
         }
 
         if ($dto->getMusicsOnHold()) {
-            $self->replaceMusicsOnHold($dto->getMusicsOnHold());
+            $self->replaceMusicsOnHold(
+                $fkTransformer->transformCollection(
+                    $dto->getMusicsOnHold()
+                )
+            );
         }
 
         if ($dto->getMatchLists()) {
-            $self->replaceMatchLists($dto->getMatchLists());
+            $self->replaceMatchLists(
+                $fkTransformer->transformCollection(
+                    $dto->getMatchLists()
+                )
+            );
         }
 
         if ($dto->getOutgoingRoutings()) {
-            $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+            $self->replaceOutgoingRoutings(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutings()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -129,37 +164,72 @@ trait BrandTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getCompanies()) {
-            $this->replaceCompanies($dto->getCompanies());
+            $this->replaceCompanies(
+                $fkTransformer->transformCollection(
+                    $dto->getCompanies()
+                )
+            );
         }
         if ($dto->getServices()) {
-            $this->replaceServices($dto->getServices());
+            $this->replaceServices(
+                $fkTransformer->transformCollection(
+                    $dto->getServices()
+                )
+            );
         }
         if ($dto->getUrls()) {
-            $this->replaceUrls($dto->getUrls());
+            $this->replaceUrls(
+                $fkTransformer->transformCollection(
+                    $dto->getUrls()
+                )
+            );
         }
         if ($dto->getRelFeatures()) {
-            $this->replaceRelFeatures($dto->getRelFeatures());
+            $this->replaceRelFeatures(
+                $fkTransformer->transformCollection(
+                    $dto->getRelFeatures()
+                )
+            );
         }
         if ($dto->getResidentialDevices()) {
-            $this->replaceResidentialDevices($dto->getResidentialDevices());
+            $this->replaceResidentialDevices(
+                $fkTransformer->transformCollection(
+                    $dto->getResidentialDevices()
+                )
+            );
         }
         if ($dto->getMusicsOnHold()) {
-            $this->replaceMusicsOnHold($dto->getMusicsOnHold());
+            $this->replaceMusicsOnHold(
+                $fkTransformer->transformCollection(
+                    $dto->getMusicsOnHold()
+                )
+            );
         }
         if ($dto->getMatchLists()) {
-            $this->replaceMatchLists($dto->getMatchLists());
+            $this->replaceMatchLists(
+                $fkTransformer->transformCollection(
+                    $dto->getMatchLists()
+                )
+            );
         }
         if ($dto->getOutgoingRoutings()) {
-            $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+            $this->replaceOutgoingRoutings(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutings()
+                )
+            );
         }
         return $this;
     }

@@ -197,8 +197,10 @@ abstract class DdiAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DdiDto
          */
@@ -215,21 +217,21 @@ abstract class DdiAbstract
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($dto->getCompany())
-            ->setBrand($dto->getBrand())
-            ->setConferenceRoom($dto->getConferenceRoom())
-            ->setLanguage($dto->getLanguage())
-            ->setQueue($dto->getQueue())
-            ->setExternalCallFilter($dto->getExternalCallFilter())
-            ->setUser($dto->getUser())
-            ->setIvr($dto->getIvr())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setFax($dto->getFax())
-            ->setDdiProvider($dto->getDdiProvider())
-            ->setCountry($dto->getCountry())
-            ->setResidentialDevice($dto->getResidentialDevice())
-            ->setConditionalRoute($dto->getConditionalRoute())
-            ->setRetailAccount($dto->getRetailAccount())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setQueue($fkTransformer->transform($dto->getQueue()))
+            ->setExternalCallFilter($fkTransformer->transform($dto->getExternalCallFilter()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
         $self->sanitizeValues();
@@ -243,8 +245,10 @@ abstract class DdiAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DdiDto
          */
@@ -258,21 +262,21 @@ abstract class DdiAbstract
             ->setRouteType($dto->getRouteType())
             ->setBillInboundCalls($dto->getBillInboundCalls())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($dto->getCompany())
-            ->setBrand($dto->getBrand())
-            ->setConferenceRoom($dto->getConferenceRoom())
-            ->setLanguage($dto->getLanguage())
-            ->setQueue($dto->getQueue())
-            ->setExternalCallFilter($dto->getExternalCallFilter())
-            ->setUser($dto->getUser())
-            ->setIvr($dto->getIvr())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setFax($dto->getFax())
-            ->setDdiProvider($dto->getDdiProvider())
-            ->setCountry($dto->getCountry())
-            ->setResidentialDevice($dto->getResidentialDevice())
-            ->setConditionalRoute($dto->getConditionalRoute())
-            ->setRetailAccount($dto->getRetailAccount());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setQueue($fkTransformer->transform($dto->getQueue()))
+            ->setExternalCallFilter($fkTransformer->transform($dto->getExternalCallFilter()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
 
 
 

@@ -16,8 +16,11 @@ class UserAssembler implements CustomEntityAssemblerInterface
      * @param EntityInterface|UserInterface $entity
      * @throws \Exception
      */
-    public function fromDto(DataTransferObjectInterface $dto, EntityInterface $entity)
-    {
+    public function fromDto(
+        DataTransferObjectInterface $dto,
+        EntityInterface $entity,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         Assertion::isInstanceOf($entity, UserInterface::class);
 
         $oldPass = $dto->getOldPass();
@@ -26,6 +29,6 @@ class UserAssembler implements CustomEntityAssemblerInterface
         }
         // There is not oldPass validation in klear, so, we can't do any further validation
 
-        $entity->updateFromDto($dto);
+        $entity->updateFromDto($dto, $fkTransformer);
     }
 }

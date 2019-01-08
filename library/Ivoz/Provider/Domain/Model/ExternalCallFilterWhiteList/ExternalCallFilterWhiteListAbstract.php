@@ -92,8 +92,10 @@ abstract class ExternalCallFilterWhiteListAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterWhiteListDto
          */
@@ -102,8 +104,8 @@ abstract class ExternalCallFilterWhiteListAbstract
         $self = new static();
 
         $self
-            ->setFilter($dto->getFilter())
-            ->setMatchlist($dto->getMatchlist())
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class ExternalCallFilterWhiteListAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterWhiteListDto
          */
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
 
         $this
-            ->setFilter($dto->getFilter())
-            ->setMatchlist($dto->getMatchlist());
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
 
 
 

@@ -37,16 +37,23 @@ trait RatingPlanGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingPlanGroupDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getRatingPlan()) {
-            $self->replaceRatingPlan($dto->getRatingPlan());
+            $self->replaceRatingPlan(
+                $fkTransformer->transformCollection(
+                    $dto->getRatingPlan()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait RatingPlanGroupTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingPlanGroupDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getRatingPlan()) {
-            $this->replaceRatingPlan($dto->getRatingPlan());
+            $this->replaceRatingPlan(
+                $fkTransformer->transformCollection(
+                    $dto->getRatingPlan()
+                )
+            );
         }
         return $this;
     }

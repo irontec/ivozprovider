@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\BrandService;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -68,22 +66,6 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'service' => $this->getService()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->service = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Service\\Service', $this->getServiceId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

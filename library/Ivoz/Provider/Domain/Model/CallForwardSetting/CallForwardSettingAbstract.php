@@ -150,8 +150,10 @@ abstract class CallForwardSettingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallForwardSettingDto
          */
@@ -167,11 +169,11 @@ abstract class CallForwardSettingAbstract
 
         $self
             ->setNumberValue($dto->getNumberValue())
-            ->setUser($dto->getUser())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry())
-            ->setResidentialDevice($dto->getResidentialDevice())
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
         ;
 
         $self->sanitizeValues();
@@ -185,8 +187,10 @@ abstract class CallForwardSettingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallForwardSettingDto
          */
@@ -199,11 +203,11 @@ abstract class CallForwardSettingAbstract
             ->setNumberValue($dto->getNumberValue())
             ->setNoAnswerTimeout($dto->getNoAnswerTimeout())
             ->setEnabled($dto->getEnabled())
-            ->setUser($dto->getUser())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry())
-            ->setResidentialDevice($dto->getResidentialDevice());
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
 
 
 

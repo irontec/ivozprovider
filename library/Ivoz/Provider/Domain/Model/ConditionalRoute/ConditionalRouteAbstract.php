@@ -154,8 +154,10 @@ abstract class ConditionalRouteAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRouteDto
          */
@@ -169,16 +171,16 @@ abstract class ConditionalRouteAbstract
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
-            ->setCompany($dto->getCompany())
-            ->setIvr($dto->getIvr())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setVoicemailUser($dto->getVoicemailUser())
-            ->setUser($dto->getUser())
-            ->setQueue($dto->getQueue())
-            ->setLocution($dto->getLocution())
-            ->setConferenceRoom($dto->getConferenceRoom())
-            ->setExtension($dto->getExtension())
-            ->setNumberCountry($dto->getNumberCountry())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setQueue($fkTransformer->transform($dto->getQueue()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()))
+            ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -192,8 +194,10 @@ abstract class ConditionalRouteAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRouteDto
          */
@@ -204,16 +208,16 @@ abstract class ConditionalRouteAbstract
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
-            ->setCompany($dto->getCompany())
-            ->setIvr($dto->getIvr())
-            ->setHuntGroup($dto->getHuntGroup())
-            ->setVoicemailUser($dto->getVoicemailUser())
-            ->setUser($dto->getUser())
-            ->setQueue($dto->getQueue())
-            ->setLocution($dto->getLocution())
-            ->setConferenceRoom($dto->getConferenceRoom())
-            ->setExtension($dto->getExtension())
-            ->setNumberCountry($dto->getNumberCountry());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
+            ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setQueue($fkTransformer->transform($dto->getQueue()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()))
+            ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
 
 

@@ -198,8 +198,10 @@ abstract class PsEndpointAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto PsEndpointDto
          */
@@ -225,9 +227,9 @@ abstract class PsEndpointAbstract
             ->setSendPai($dto->getSendPai())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
-            ->setTerminal($dto->getTerminal())
-            ->setFriend($dto->getFriend())
-            ->setResidentialDevice($dto->getResidentialDevice())
+            ->setTerminal($fkTransformer->transform($dto->getTerminal()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
         ;
 
         $self->sanitizeValues();
@@ -241,8 +243,10 @@ abstract class PsEndpointAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto PsEndpointDto
          */
@@ -265,9 +269,9 @@ abstract class PsEndpointAbstract
             ->setOneHundredRel($dto->getOneHundredRel())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
-            ->setTerminal($dto->getTerminal())
-            ->setFriend($dto->getFriend())
-            ->setResidentialDevice($dto->getResidentialDevice());
+            ->setTerminal($fkTransformer->transform($dto->getTerminal()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
 
 
 

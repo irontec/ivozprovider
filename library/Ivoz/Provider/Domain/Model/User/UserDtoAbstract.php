@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -247,74 +245,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'queueMembers' => $this->getQueueMembers(),
             'callForwardSettings' => $this->getCallForwardSettings()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
-        $this->bossAssistant = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getBossAssistantId());
-        $this->bossAssistantWhiteList = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList', $this->getBossAssistantWhiteListId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
-        $this->terminal = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal', $this->getTerminalId());
-        $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
-        $this->timezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getTimezoneId());
-        $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
-        $this->outgoingDdiRule = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule', $this->getOutgoingDdiRuleId());
-        $this->voicemailLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getVoicemailLocutionId());
-        if (!is_null($this->pickUpRelUsers)) {
-            $items = $this->getPickUpRelUsers();
-            $this->pickUpRelUsers = [];
-            foreach ($items as $item) {
-                $this->pickUpRelUsers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->queueMembers)) {
-            $items = $this->getQueueMembers();
-            $this->queueMembers = [];
-            foreach ($items as $item) {
-                $this->queueMembers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\QueueMember\\QueueMember',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->callForwardSettings)) {
-            $items = $this->getCallForwardSettings();
-            $this->callForwardSettings = [];
-            foreach ($items as $item) {
-                $this->callForwardSettings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->pickUpRelUsers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser',
-            $this->pickUpRelUsers
-        );
-        $this->queueMembers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\QueueMember\\QueueMember',
-            $this->queueMembers
-        );
-        $this->callForwardSettings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
-            $this->callForwardSettings
-        );
     }
 
     /**

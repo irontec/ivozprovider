@@ -92,8 +92,10 @@ abstract class ExternalCallFilterRelScheduleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterRelScheduleDto
          */
@@ -102,8 +104,8 @@ abstract class ExternalCallFilterRelScheduleAbstract
         $self = new static();
 
         $self
-            ->setFilter($dto->getFilter())
-            ->setSchedule($dto->getSchedule())
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setSchedule($fkTransformer->transform($dto->getSchedule()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class ExternalCallFilterRelScheduleAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterRelScheduleDto
          */
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
 
         $this
-            ->setFilter($dto->getFilter())
-            ->setSchedule($dto->getSchedule());
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
 
 
 

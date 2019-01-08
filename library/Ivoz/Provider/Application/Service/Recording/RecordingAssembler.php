@@ -24,10 +24,13 @@ class RecordingAssembler implements CustomEntityAssemblerInterface
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface $entity
      */
-    public function fromDto(DataTransferObjectInterface $dto, EntityInterface $entity)
-    {
+    public function fromDto(
+        DataTransferObjectInterface $dto,
+        EntityInterface $entity,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         Assertion::isInstanceOf($entity, RecordingInterface::class);
-        $entity->updateFromDto($dto);
-        $this->handleEntityFiles($entity, $dto);
+        $entity->updateFromDto($dto, $fkTransformer);
+        $this->handleEntityFiles($entity, $dto, $fkTransformer);
     }
 }

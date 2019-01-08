@@ -3,8 +3,6 @@
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -117,23 +115,6 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
             'routingPatternGroupsRelPattern' => $this->getRoutingPatternGroupsRelPattern(),
             'outgoingRouting' => $this->getOutgoingRouting()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->routingPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern', $this->getRoutingPatternId());
-        $this->routingPatternGroupsRelPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroupsRelPattern\\RoutingPatternGroupsRelPattern', $this->getRoutingPatternGroupsRelPatternId());
-        $this->outgoingRouting = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting', $this->getOutgoingRoutingId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

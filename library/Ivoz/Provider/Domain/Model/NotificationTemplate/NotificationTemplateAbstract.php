@@ -100,8 +100,10 @@ abstract class NotificationTemplateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto NotificationTemplateDto
          */
@@ -113,7 +115,7 @@ abstract class NotificationTemplateAbstract
         );
 
         $self
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -127,8 +129,10 @@ abstract class NotificationTemplateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto NotificationTemplateDto
          */
@@ -137,7 +141,7 @@ abstract class NotificationTemplateAbstract
         $this
             ->setName($dto->getName())
             ->setType($dto->getType())
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

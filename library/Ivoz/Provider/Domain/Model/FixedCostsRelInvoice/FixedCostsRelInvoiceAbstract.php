@@ -97,8 +97,10 @@ abstract class FixedCostsRelInvoiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FixedCostsRelInvoiceDto
          */
@@ -108,8 +110,8 @@ abstract class FixedCostsRelInvoiceAbstract
 
         $self
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($dto->getFixedCost())
-            ->setInvoice($dto->getInvoice())
+            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()))
         ;
 
         $self->sanitizeValues();
@@ -123,8 +125,10 @@ abstract class FixedCostsRelInvoiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FixedCostsRelInvoiceDto
          */
@@ -132,8 +136,8 @@ abstract class FixedCostsRelInvoiceAbstract
 
         $this
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($dto->getFixedCost())
-            ->setInvoice($dto->getInvoice());
+            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()));
 
 
 

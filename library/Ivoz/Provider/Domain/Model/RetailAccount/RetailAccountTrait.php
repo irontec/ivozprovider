@@ -37,16 +37,23 @@ trait RetailAccountTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RetailAccountDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getDdis()) {
-            $self->replaceDdis($dto->getDdis());
+            $self->replaceDdis(
+                $fkTransformer->transformCollection(
+                    $dto->getDdis()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait RetailAccountTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RetailAccountDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getDdis()) {
-            $this->replaceDdis($dto->getDdis());
+            $this->replaceDdis(
+                $fkTransformer->transformCollection(
+                    $dto->getDdis()
+                )
+            );
         }
         return $this;
     }

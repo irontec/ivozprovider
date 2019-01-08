@@ -146,8 +146,10 @@ abstract class HolidayDateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HolidayDateDto
          */
@@ -164,11 +166,11 @@ abstract class HolidayDateAbstract
             ->setTimeOut($dto->getTimeOut())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($dto->getCalendar())
-            ->setLocution($dto->getLocution())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry())
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -182,8 +184,10 @@ abstract class HolidayDateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HolidayDateDto
          */
@@ -197,11 +201,11 @@ abstract class HolidayDateAbstract
             ->setTimeOut($dto->getTimeOut())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($dto->getCalendar())
-            ->setLocution($dto->getLocution())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry());
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setLocution($fkTransformer->transform($dto->getLocution()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
 
 

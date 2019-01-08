@@ -92,8 +92,10 @@ abstract class CompanyRelCodecAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyRelCodecDto
          */
@@ -102,8 +104,8 @@ abstract class CompanyRelCodecAbstract
         $self = new static();
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setCodec($dto->getCodec())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCodec($fkTransformer->transform($dto->getCodec()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class CompanyRelCodecAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyRelCodecDto
          */
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
 
         $this
-            ->setCompany($dto->getCompany())
-            ->setCodec($dto->getCodec());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCodec($fkTransformer->transform($dto->getCodec()));
 
 
 

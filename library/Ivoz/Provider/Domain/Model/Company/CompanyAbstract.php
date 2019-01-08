@@ -284,8 +284,10 @@ abstract class CompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyDto
          */
@@ -315,21 +317,21 @@ abstract class CompanyAbstract
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
-            ->setLanguage($dto->getLanguage())
-            ->setMediaRelaySets($dto->getMediaRelaySets())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setApplicationServer($dto->getApplicationServer())
-            ->setCountry($dto->getCountry())
-            ->setCurrency($dto->getCurrency())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
-            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
-            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
-            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate())
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
+            ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
         ;
 
         $self->sanitizeValues();
@@ -343,8 +345,10 @@ abstract class CompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyDto
          */
@@ -371,21 +375,21 @@ abstract class CompanyAbstract
             ->setBillingMethod($dto->getBillingMethod())
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
-            ->setLanguage($dto->getLanguage())
-            ->setMediaRelaySets($dto->getMediaRelaySets())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setApplicationServer($dto->getApplicationServer())
-            ->setCountry($dto->getCountry())
-            ->setCurrency($dto->getCurrency())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
-            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
-            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
-            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate());
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
+            ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()));
 
 
 

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -124,22 +122,6 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
             'fax' => $this->getFax(),
             'dstCountry' => $this->getDstCountry()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->fax = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Fax\\Fax', $this->getFaxId());
-        $this->dstCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getDstCountryId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

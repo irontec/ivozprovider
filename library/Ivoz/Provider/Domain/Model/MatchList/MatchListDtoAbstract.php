@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -74,36 +72,6 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'patterns' => $this->getPatterns()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        if (!is_null($this->patterns)) {
-            $items = $this->getPatterns();
-            $this->patterns = [];
-            foreach ($items as $item) {
-                $this->patterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\MatchListPattern\\MatchListPattern',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->patterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\MatchListPattern\\MatchListPattern',
-            $this->patterns
-        );
     }
 
     /**

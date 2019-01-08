@@ -31,7 +31,7 @@ class ConferenceRoomSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -54,7 +54,10 @@ class ConferenceRoomSpec extends ObjectBehavior
             ['company' => $company->getWrappedObject()]
         );
 
-        $this->updateFromDto($dto);
+        $this->updateFromDto(
+            $dto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
         $this
             ->getPinCode()
             ->shouldBe(null);
@@ -76,7 +79,11 @@ class ConferenceRoomSpec extends ObjectBehavior
             ['company' => $company->getWrappedObject()]
         );
 
-        $this->updateFromDto($dto);
+        $this->updateFromDto(
+            $dto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
+
         $this
             ->getPinCode()
             ->shouldBe($pinCode);

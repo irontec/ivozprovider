@@ -114,8 +114,10 @@ abstract class LocutionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto LocutionDto
          */
@@ -141,7 +143,7 @@ abstract class LocutionAbstract
 
         $self
             ->setStatus($dto->getStatus())
-            ->setCompany($dto->getCompany())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
         $self->sanitizeValues();
@@ -155,8 +157,10 @@ abstract class LocutionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto LocutionDto
          */
@@ -179,7 +183,7 @@ abstract class LocutionAbstract
             ->setStatus($dto->getStatus())
             ->setEncodedFile($encodedFile)
             ->setOriginalFile($originalFile)
-            ->setCompany($dto->getCompany());
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
 
 

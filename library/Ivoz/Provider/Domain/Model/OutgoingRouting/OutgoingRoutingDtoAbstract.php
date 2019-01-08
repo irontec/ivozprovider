@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -170,70 +168,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'lcrRuleTargets' => $this->getLcrRuleTargets(),
             'relCarriers' => $this->getRelCarriers()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
-        $this->routingPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern', $this->getRoutingPatternId());
-        $this->routingPatternGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup', $this->getRoutingPatternGroupId());
-        $this->routingTag = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag', $this->getRoutingTagId());
-        $this->clidCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getClidCountryId());
-        $this->tpLcrRule = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpLcrRule\\TpLcrRule', $this->getTpLcrRuleId());
-        if (!is_null($this->lcrRules)) {
-            $items = $this->getLcrRules();
-            $this->lcrRules = [];
-            foreach ($items as $item) {
-                $this->lcrRules[] = $transformer->transform(
-                    'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->lcrRuleTargets)) {
-            $items = $this->getLcrRuleTargets();
-            $this->lcrRuleTargets = [];
-            foreach ($items as $item) {
-                $this->lcrRuleTargets[] = $transformer->transform(
-                    'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRuleTarget\\TrunksLcrRuleTarget',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relCarriers)) {
-            $items = $this->getRelCarriers();
-            $this->relCarriers = [];
-            foreach ($items as $item) {
-                $this->relCarriers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->lcrRules = $transformer->transform(
-            'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
-            $this->lcrRules
-        );
-        $this->lcrRuleTargets = $transformer->transform(
-            'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRuleTarget\\TrunksLcrRuleTarget',
-            $this->lcrRuleTargets
-        );
-        $this->relCarriers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
-            $this->relCarriers
-        );
     }
 
     /**

@@ -92,8 +92,10 @@ abstract class CompanyRelRoutingTagAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyRelRoutingTagDto
          */
@@ -102,8 +104,8 @@ abstract class CompanyRelRoutingTagAbstract
         $self = new static();
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setRoutingTag($dto->getRoutingTag())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class CompanyRelRoutingTagAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyRelRoutingTagDto
          */
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
 
         $this
-            ->setCompany($dto->getCompany())
-            ->setRoutingTag($dto->getRoutingTag());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
 
 

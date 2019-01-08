@@ -49,24 +49,39 @@ trait DomainTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DomainDto
          */
-        $self = parent::fromDto($dto);
+        $self = parent::fromDto($dto, $fkTransformer);
         if ($dto->getFriends()) {
-            $self->replaceFriends($dto->getFriends());
+            $self->replaceFriends(
+                $fkTransformer->transformCollection(
+                    $dto->getFriends()
+                )
+            );
         }
 
         if ($dto->getResidentialDevices()) {
-            $self->replaceResidentialDevices($dto->getResidentialDevices());
+            $self->replaceResidentialDevices(
+                $fkTransformer->transformCollection(
+                    $dto->getResidentialDevices()
+                )
+            );
         }
 
         if ($dto->getTerminals()) {
-            $self->replaceTerminals($dto->getTerminals());
+            $self->replaceTerminals(
+                $fkTransformer->transformCollection(
+                    $dto->getTerminals()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -79,22 +94,37 @@ trait DomainTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DomainDto
          */
-        parent::updateFromDto($dto);
+        parent::updateFromDto($dto, $fkTransformer);
         if ($dto->getFriends()) {
-            $this->replaceFriends($dto->getFriends());
+            $this->replaceFriends(
+                $fkTransformer->transformCollection(
+                    $dto->getFriends()
+                )
+            );
         }
         if ($dto->getResidentialDevices()) {
-            $this->replaceResidentialDevices($dto->getResidentialDevices());
+            $this->replaceResidentialDevices(
+                $fkTransformer->transformCollection(
+                    $dto->getResidentialDevices()
+                )
+            );
         }
         if ($dto->getTerminals()) {
-            $this->replaceTerminals($dto->getTerminals());
+            $this->replaceTerminals(
+                $fkTransformer->transformCollection(
+                    $dto->getTerminals()
+                )
+            );
         }
         return $this;
     }

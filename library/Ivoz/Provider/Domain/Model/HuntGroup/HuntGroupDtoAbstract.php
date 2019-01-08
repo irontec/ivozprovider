@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -137,39 +135,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'noAnswerNumberCountry' => $this->getNoAnswerNumberCountry(),
             'huntGroupsRelUsers' => $this->getHuntGroupsRelUsers()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->noAnswerLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getNoAnswerLocutionId());
-        $this->noAnswerExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getNoAnswerExtensionId());
-        $this->noAnswerVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getNoAnswerVoiceMailUserId());
-        $this->noAnswerNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNoAnswerNumberCountryId());
-        if (!is_null($this->huntGroupsRelUsers)) {
-            $items = $this->getHuntGroupsRelUsers();
-            $this->huntGroupsRelUsers = [];
-            foreach ($items as $item) {
-                $this->huntGroupsRelUsers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\HuntGroupsRelUser\\HuntGroupsRelUser',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->huntGroupsRelUsers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\HuntGroupsRelUser\\HuntGroupsRelUser',
-            $this->huntGroupsRelUsers
-        );
     }
 
     /**

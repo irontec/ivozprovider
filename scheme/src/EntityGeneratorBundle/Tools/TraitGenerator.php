@@ -35,14 +35,17 @@ protected function __construct(<requiredFields>)<lineBreak>{
  * Factory method
  * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
+ * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
  * @return self
  */
-public static function fromDto(DataTransferObjectInterface $dto)
-{
+public static function fromDto(
+    DataTransferObjectInterface $dto,
+    \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+) {
     /**
      * @var $dto <dtoClass>
      */
-    $self = parent::fromDto($dto);
+    $self = parent::fromDto($dto, $fkTransformer);
 <fromDTO>
     if ($dto->getId()) {
         $self->id = $dto->getId();
@@ -55,14 +58,17 @@ public static function fromDto(DataTransferObjectInterface $dto)
 /**
  * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
+ * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
  * @return self
  */
-public function updateFromDto(DataTransferObjectInterface $dto)
-{
+public function updateFromDto(
+    DataTransferObjectInterface $dto,
+    \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+) {
     /**
      * @var $dto <dtoClass>
      */
-    parent::updateFromDto($dto);
+    parent::updateFromDto($dto, $fkTransformer);
 <updateFromDTO>
     return $this;
 }
@@ -620,7 +626,17 @@ public function <methodName>(<criteriaArgument>)
                         . str_repeat($this->spaces, 2)
                         . '$this->replace'
                         . Inflector::classify($fieldName)
-                        . '(' . $dtoGetter . ');'
+                        . "(\n"
+                        . str_repeat($this->spaces, 3)
+                        . '$fkTransformer->transformCollection('
+                        . "\n"
+                        . str_repeat($this->spaces, 4)
+                        . $dtoGetter
+                        . "\n"
+                        . str_repeat($this->spaces, 3)
+                        . ")\n"
+                        . str_repeat($this->spaces, 2)
+                        . ');'
                         . "\n"
                         . $this->spaces
                         . '}';
@@ -632,7 +648,17 @@ public function <methodName>(<criteriaArgument>)
                         . str_repeat($this->spaces, 2)
                         . '$self->replace'
                         . Inflector::classify($fieldName)
-                        . '(' . $dtoGetter . ');'
+                        . "(\n"
+                        . str_repeat($this->spaces, 3)
+                        . '$fkTransformer->transformCollection('
+                        . "\n"
+                        . str_repeat($this->spaces, 4)
+                        . $dtoGetter
+                        . "\n"
+                        . str_repeat($this->spaces, 3)
+                        . ")\n"
+                        . str_repeat($this->spaces, 2)
+                        . ');'
                         . "\n"
                         . $this->spaces
                         . '}';

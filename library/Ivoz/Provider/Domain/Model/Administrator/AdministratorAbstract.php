@@ -132,8 +132,10 @@ abstract class AdministratorAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto AdministratorDto
          */
@@ -149,9 +151,9 @@ abstract class AdministratorAbstract
         $self
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setTimezone($dto->getTimezone())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setTimezone($fkTransformer->transform($dto->getTimezone()))
         ;
 
         $self->sanitizeValues();
@@ -165,8 +167,10 @@ abstract class AdministratorAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto AdministratorDto
          */
@@ -179,9 +183,9 @@ abstract class AdministratorAbstract
             ->setActive($dto->getActive())
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setTimezone($dto->getTimezone());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setTimezone($fkTransformer->transform($dto->getTimezone()));
 
 
 

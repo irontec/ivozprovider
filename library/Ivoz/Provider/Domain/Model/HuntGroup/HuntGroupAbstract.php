@@ -154,8 +154,10 @@ abstract class HuntGroupAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HuntGroupDto
          */
@@ -172,11 +174,11 @@ abstract class HuntGroupAbstract
         $self
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setCompany($dto->getCompany())
-            ->setNoAnswerLocution($dto->getNoAnswerLocution())
-            ->setNoAnswerExtension($dto->getNoAnswerExtension())
-            ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser())
-            ->setNoAnswerNumberCountry($dto->getNoAnswerNumberCountry())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
+            ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
+            ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
+            ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -190,8 +192,10 @@ abstract class HuntGroupAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HuntGroupDto
          */
@@ -205,11 +209,11 @@ abstract class HuntGroupAbstract
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
             ->setPreventMissedCalls($dto->getPreventMissedCalls())
-            ->setCompany($dto->getCompany())
-            ->setNoAnswerLocution($dto->getNoAnswerLocution())
-            ->setNoAnswerExtension($dto->getNoAnswerExtension())
-            ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser())
-            ->setNoAnswerNumberCountry($dto->getNoAnswerNumberCountry());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
+            ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
+            ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
+            ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
 
 
 
