@@ -103,7 +103,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer);
+    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer = null);
 
     /**
      * Get carrierServer

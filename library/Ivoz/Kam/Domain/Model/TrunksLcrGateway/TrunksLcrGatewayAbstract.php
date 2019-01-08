@@ -621,7 +621,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return self
      */
-    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer)
+    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer = null)
     {
         $this->carrierServer = $carrierServer;
 
