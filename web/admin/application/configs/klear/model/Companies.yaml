@@ -346,7 +346,6 @@ production:
                   - recordingsDiskUsage
                   - recordingsLimitEmail
                   - onDemandRecord
-                  - onDemandRecordCode
               faxes:
                 toggle:
                   - faxNotificationTemplate
