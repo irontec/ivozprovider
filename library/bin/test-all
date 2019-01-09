@@ -1,11 +1,13 @@
 #!/bin/bash
 
 pushd /opt/irontec/ivozprovider
-    ./library/bin/test-phpspec-with-coverage
-    ./scheme/bin/test-orm-with-coverage
-    ./web/rest/platform/bin/test-api-with-coverage
-    ./web/rest/brand/bin/test-api-with-coverage
-    ./web/rest/client/bin/test-api-with-coverage
+    ./library/bin/test-codestyle
 
-    ./library/bin/combine-coverage
+    ./library/bin/test-phpspec
+
+    ./scheme/bin/test-orm
+
+    ./web/rest/platform/bin/test-api
+    ./web/rest/brand/bin/test-api
+    ./web/rest/client/bin/test-api
 popd

@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRepository;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +20,24 @@ class HolidayDateDoctrineRepository extends ServiceEntityRepository implements H
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, HolidayDate::class);
+    }
+
+    public function findMatchingDateSiblings(
+        HolidayDateInterface $holidayDate
+    ) {
+        $criteria = CriteriaHelper::fromArray(
+            [
+                ['id', 'neq', $holidayDate->getId()],
+                ['calendar', 'eq', $holidayDate->getCalendar()],
+                ['eventDate', 'eq', $holidayDate->getEventDate()->format('Y-m-d')],
+            ]
+        );
+
+        $qb = $this->createQueryBuilder('self');
+        $qb
+            ->select('self')
+            ->addCriteria($criteria);
+
+        return $qb->getQuery()->getResult();
     }
 }

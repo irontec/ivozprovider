@@ -25,14 +25,14 @@ Feature: Create holiday dates
       {
           "name": "New",
           "eventDate": "2017-12-21",
-          "id": 2
+          "id": 3
       }
     """
 
   Scenario: Retrieve created holiday date
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "holiday_dates/2"
+      And I send a "GET" request to "holiday_dates/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -46,7 +46,7 @@ Feature: Create holiday dates
           "timeOut": null,
           "routeType": null,
           "numberValue": null,
-          "id": 2,
+          "id": 3,
           "calendar": {
               "name": "testCalendar",
               "id": 1,
