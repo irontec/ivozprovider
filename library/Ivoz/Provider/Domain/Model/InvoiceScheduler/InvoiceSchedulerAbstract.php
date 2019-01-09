@@ -400,7 +400,7 @@ abstract class InvoiceSchedulerAbstract
      */
     public function getLastExecution()
     {
-        return $this->lastExecution;
+        return !is_null($this->lastExecution) ? clone $this->lastExecution : null;
     }
 
     /**
@@ -459,7 +459,7 @@ abstract class InvoiceSchedulerAbstract
      */
     public function getNextExecution()
     {
-        return $this->nextExecution;
+        return !is_null($this->nextExecution) ? clone $this->nextExecution : null;
     }
 
     /**

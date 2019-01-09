@@ -756,7 +756,7 @@ abstract class TpCdrAbstract
      */
     public function getSetupTime()
     {
-        return $this->setupTime;
+        return clone $this->setupTime;
     }
 
     /**
@@ -786,7 +786,7 @@ abstract class TpCdrAbstract
      */
     public function getAnswerTime()
     {
-        return $this->answerTime;
+        return clone $this->answerTime;
     }
 
     /**
@@ -977,7 +977,7 @@ abstract class TpCdrAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
 
     /**
@@ -1008,7 +1008,7 @@ abstract class TpCdrAbstract
      */
     public function getUpdatedAt()
     {
-        return $this->updatedAt;
+        return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
 
     /**
@@ -1039,7 +1039,7 @@ abstract class TpCdrAbstract
      */
     public function getDeletedAt()
     {
-        return $this->deletedAt;
+        return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }
 
     // @codeCoverageIgnoreEnd

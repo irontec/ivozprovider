@@ -382,7 +382,7 @@ abstract class BillableCallAbstract
      */
     public function getStartTime()
     {
-        return $this->startTime;
+        return !is_null($this->startTime) ? clone $this->startTime : null;
     }
 
     /**

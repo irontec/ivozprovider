@@ -345,7 +345,7 @@ abstract class InvoiceAbstract
      */
     public function getInDate()
     {
-        return $this->inDate;
+        return !is_null($this->inDate) ? clone $this->inDate : null;
     }
 
     /**
@@ -376,7 +376,7 @@ abstract class InvoiceAbstract
      */
     public function getOutDate()
     {
-        return $this->outDate;
+        return !is_null($this->outDate) ? clone $this->outDate : null;
     }
 
     /**

@@ -61,7 +61,7 @@ class CreateByScheduler
     private function createInvoice(InvoiceSchedulerInterface $scheduler)
     {
         $brand = $scheduler->getBrand();
-        $outDate = clone $scheduler->getNextExecution();
+        $outDate = $scheduler->getNextExecution();
         $outDate->setTimezone(
             new \DateTimeZone(
                 $brand->getDefaultTimezone()->getTz()

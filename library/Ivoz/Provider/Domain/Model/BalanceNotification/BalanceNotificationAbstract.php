@@ -285,7 +285,7 @@ abstract class BalanceNotificationAbstract
      */
     public function getLastSent()
     {
-        return $this->lastSent;
+        return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }
 
     /**

@@ -218,7 +218,7 @@ abstract class RatingProfileAbstract
      */
     public function getActivationTime()
     {
-        return $this->activationTime;
+        return clone $this->activationTime;
     }
 
     /**

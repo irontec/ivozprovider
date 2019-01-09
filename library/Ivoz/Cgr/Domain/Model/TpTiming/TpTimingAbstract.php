@@ -460,7 +460,7 @@ abstract class TpTimingAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

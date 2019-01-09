@@ -596,7 +596,7 @@ abstract class TpLcrRuleAbstract
      */
     public function getActivationTime()
     {
-        return $this->activationTime;
+        return clone $this->activationTime;
     }
 
     /**
@@ -654,7 +654,7 @@ abstract class TpLcrRuleAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

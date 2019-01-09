@@ -481,7 +481,7 @@ abstract class TerminalAbstract
      */
     public function getLastProvisionDate()
     {
-        return $this->lastProvisionDate;
+        return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }
 
     /**

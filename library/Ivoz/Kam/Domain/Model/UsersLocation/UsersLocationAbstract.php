@@ -572,7 +572,7 @@ abstract class UsersLocationAbstract
      */
     public function getExpires()
     {
-        return $this->expires;
+        return clone $this->expires;
     }
 
     /**
@@ -684,7 +684,7 @@ abstract class UsersLocationAbstract
      */
     public function getLastModified()
     {
-        return $this->lastModified;
+        return clone $this->lastModified;
     }
 
     /**

@@ -315,7 +315,7 @@ abstract class ChangelogAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return clone $this->createdOn;
     }
 
     /**

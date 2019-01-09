@@ -71,7 +71,7 @@ trait NextExecutionResolverTrait
             return;
         }
 
-        $nextExecution = clone $scheduler->getNextExecution();
+        $nextExecution = $scheduler->getNextExecution();
         if (!$nextExecution) {
             return;
         }

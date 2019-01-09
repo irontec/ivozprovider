@@ -330,7 +330,7 @@ abstract class TrunksCdrAbstract
      */
     public function getStartTime()
     {
-        return $this->startTime;
+        return clone $this->startTime;
     }
 
     /**
@@ -360,7 +360,7 @@ abstract class TrunksCdrAbstract
      */
     public function getEndTime()
     {
-        return $this->endTime;
+        return clone $this->endTime;
     }
 
     /**

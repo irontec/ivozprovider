@@ -306,7 +306,7 @@ abstract class RecordingAbstract
      */
     public function getCalldate()
     {
-        return $this->calldate;
+        return clone $this->calldate;
     }
 
     /**

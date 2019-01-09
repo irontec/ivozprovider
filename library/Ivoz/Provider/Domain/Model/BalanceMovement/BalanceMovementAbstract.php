@@ -279,7 +279,7 @@ abstract class BalanceMovementAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }
 
     /**

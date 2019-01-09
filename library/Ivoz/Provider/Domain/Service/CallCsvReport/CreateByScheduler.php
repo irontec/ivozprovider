@@ -57,7 +57,7 @@ class CreateByScheduler
      */
     private function createCallCsvReport(CallCsvSchedulerInterface $scheduler)
     {
-        $outDate = clone $scheduler->getNextExecution();
+        $outDate = $scheduler->getNextExecution();
         $outDate->setTimezone(
             new \DateTimeZone(
                 $scheduler->getTimezone()->getTz()

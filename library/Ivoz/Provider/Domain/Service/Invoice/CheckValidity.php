@@ -65,7 +65,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         /**
          * @var \Datetime $outDate
          */
-        $outDate = clone $invoice->getOutDate();
+        $outDate = $invoice->getOutDate();
         $utcOutDate = $outDate->setTimezone($utcTz);
 
         $this->assertNoFutureDates($invoiceTz, $inDate, $outDate);
