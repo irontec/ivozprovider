@@ -71,6 +71,11 @@ class UserAgent implements AgentInterface
         return $ddi;
     }
 
+    public function getExtensionNumber()
+    {
+        return $this->user->getExtensionNumber();
+    }
+
     /**
      * @param string $destination
      * @return boolean

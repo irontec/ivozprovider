@@ -71,6 +71,11 @@ class RouterAction
     protected $routeVoiceMail;
 
     /**
+     * @var bool Determine if voicemail must play user-not-available banner
+     */
+    protected $routeVoicemailBanner;
+
+    /**
      * @var HuntGroupInterface
      */
     protected $routeHuntGroup;
@@ -268,9 +273,10 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteVoicemail(UserInterface $routeVoicemail = null)
+    public function setRouteVoicemail(UserInterface $routeVoicemail = null, bool $playBanner = false)
     {
         $this->routeVoiceMail = $routeVoicemail;
+        $this->routeVoicemailBanner = $playBanner;
         return $this;
     }
 
@@ -395,6 +401,7 @@ class RouterAction
     protected function routeToVoiceMail()
     {
         $this->voiceMailAction
+            ->setPlayBanner($this->routeVoicemailBanner)
             ->setVoiceMail($this->routeVoiceMail)
             ->process();
     }
