@@ -45,6 +45,11 @@ trait AgentTrait
         return $equals;
     }
 
+    public function getExtensionNumber()
+    {
+        return "";
+    }
+
     public function getPickupGroups()
     {
         return null;

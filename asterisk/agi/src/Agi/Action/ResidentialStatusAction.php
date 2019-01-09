@@ -34,7 +34,7 @@ class ResidentialStatusAction
     protected $dialStatus = null;
 
     /**
-     * @var CallForwardResidentialAction
+     * @var CallForwardAction
      */
     protected $callForwardAction;
 
@@ -42,11 +42,11 @@ class ResidentialStatusAction
      * ResidentialStatusAction constructor.
      *
      * @param Wrapper $agi
-     * @param CallForwardResidentialAction $callForwardAction
+     * @param CallForwardAction $callForwardAction
      */
     public function __construct(
         Wrapper $agi,
-        CallForwardResidentialAction $callForwardAction
+        CallForwardAction $callForwardAction
     )
     {
         $this->agi = $agi;

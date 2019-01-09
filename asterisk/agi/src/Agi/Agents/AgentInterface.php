@@ -45,6 +45,11 @@ interface AgentInterface
     public function getOutgoingDdi($destination);
 
     /**
+     * @return string
+     */
+    public function getExtensionNumber();
+
+    /**
      * @param string $destination
      * @return boolean
      */
@@ -59,5 +64,4 @@ interface AgentInterface
      * @return string
      */
     public function getVoiceMail();
-
 }
