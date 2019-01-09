@@ -89,4 +89,12 @@ class UserAgent implements AgentInterface
     {
         return $this->user->getPickUpGroups();
     }
+
+    /**
+     * Return user voicemail identifier
+     */
+    public function getVoiceMail()
+    {
+        return $this->user->getVoiceMail();
+    }
 }

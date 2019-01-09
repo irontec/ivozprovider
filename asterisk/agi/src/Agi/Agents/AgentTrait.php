@@ -49,4 +49,9 @@ trait AgentTrait
     {
         return null;
     }
+
+    public function getVoiceMail()
+    {
+        return null;
+    }
 }

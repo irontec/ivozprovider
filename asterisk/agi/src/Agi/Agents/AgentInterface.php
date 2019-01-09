@@ -55,4 +55,9 @@ interface AgentInterface
      */
     public function getPickUpGroups();
 
+    /**
+     * @return string
+     */
+    public function getVoiceMail();
+
 }

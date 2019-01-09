@@ -104,4 +104,12 @@ class ResidentialAgent implements AgentInterface
     {
         return true;
     }
+
+    /**
+     * Return residential voicemail identifier
+     */
+    public function getVoiceMail()
+    {
+        return $this->residential->getVoiceMail();
+    }
 }
