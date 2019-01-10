@@ -8,16 +8,6 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
-    /**
-     * @var array
-     */
-    protected $services;
-
-    public function __construct()
-    {
-        $this->services = array();
-    }
-
     public function setServices(array $services)
     {
         foreach ($services as $service) {

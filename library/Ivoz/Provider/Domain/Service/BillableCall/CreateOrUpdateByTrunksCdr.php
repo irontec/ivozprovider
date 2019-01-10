@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 
-class CreateOrUpdateDtoByTrunksCdr
+class CreateOrUpdateByTrunksCdr
 {
     /**
      * @var EntityTools
@@ -25,9 +25,9 @@ class CreateOrUpdateDtoByTrunksCdr
 
     /**
      * @param TrunksCdrInterface $trunksCdr
-     * @param TrunksCdrDto $trunksCdrDto
+     * @param BillableCallInterface $billableCall
      *
-     * @return BillableCallDto
+     * @return BillableCall
      */
     public function execute(
         TrunksCdrInterface $trunksCdr,
@@ -86,6 +86,12 @@ class CreateOrUpdateDtoByTrunksCdr
                 ->setEndpointId($trunksCdrDto->getRetailAccountId());
         }
 
-        return $billableCallDto;
+        $billableCall = $this->entityTools->persistDto(
+            $billableCallDto,
+            $billableCall,
+            false
+        );
+
+        return $billableCall;
     }
 }

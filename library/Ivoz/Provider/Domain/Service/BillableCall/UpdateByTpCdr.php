@@ -8,10 +8,16 @@ use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
+use Ivoz\Core\Domain\Event\DomainEventInterface;
 
-class UpdateDtoByTpCdr
+class UpdateByTpCdr implements DomainEventSubscriberInterface
 {
     /**
      * @var TpCdrRepository
@@ -28,27 +34,72 @@ class UpdateDtoByTpCdr
      */
     protected $tpDestinationRepository;
 
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
     public function __construct(
         TpCdrRepository $tpCdrRepository,
         TpRatingPlanRepository $tpRatingPlanRepository,
-        TpDestinationRepository $tpDestinationRepository
+        TpDestinationRepository $tpDestinationRepository,
+        EntityTools $entityTools
     ) {
         $this->tpCdrRepository = $tpCdrRepository;
         $this->tpRatingPlanRepository = $tpRatingPlanRepository;
         $this->tpDestinationRepository = $tpDestinationRepository;
+        $this->entityTools = $entityTools;
     }
 
     /**
-     * @param BillableCallDto $billableCallDto
-     * @param string $cgrid | null
-     * @param string $languageCode
-     * @return BillableCallDto
+     * @param DomainEventInterface $domainEvent
+     * @return boolean
      */
-    public function execute(BillableCallDto $billableCallDto, string $cgrid = null, string $languageCode)
+    public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if (!$cgrid) {
-            return $billableCallDto;
+        if ($domainEvent instanceof TrunksCdrWasMigrated) {
+            return true;
         }
+
+        return false;
+    }
+
+    /**
+     * @param TrunksCdrWasMigrated $domainEvent
+     * @throws \Exception
+     * @return void
+     */
+    public function handle(DomainEventInterface $domainEvent)
+    {
+        if (!($domainEvent instanceof TrunksCdrWasMigrated)) {
+            throw new \Exception('TrunksCdrWasMigrated was expected');
+        }
+
+        $trunksCdr = $domainEvent->getTrunksCdr();
+        $cgrid = $trunksCdr->getCgrid();
+        if (!$cgrid) {
+            return;
+        }
+        $billableCall = $domainEvent->getBillableCall();
+
+        $this->execute(
+            $trunksCdr,
+            $billableCall
+        );
+    }
+
+    /**
+     * @param BillableCallInterface $billableCall
+     * @return void
+     */
+    protected function execute(
+        TrunksCdrInterface $trunksCdr,
+        BillableCallInterface $billableCall
+    ) {
+        $cgrid = $trunksCdr->getCgrid();
+
+        /** @var BillableCallDto $billableCallDto */
+        $billableCallDto = $this->entityTools->entityToDto($billableCall);
 
         /**
          * @var TpCdrInterface $defaultRunTpCdr
@@ -58,11 +109,11 @@ class UpdateDtoByTpCdr
         );
 
         if (!$defaultRunTpCdr) {
-            return $billableCallDto;
+            return;
         }
 
         if (!$defaultRunTpCdr->getCostDetailsFirstTimespan()) {
-            return $billableCallDto;
+            return;
         }
 
         $callee = $defaultRunTpCdr->getDestination()
@@ -75,6 +126,9 @@ class UpdateDtoByTpCdr
         $tpRatingPlan = $this->tpRatingPlanRepository->findOneByTag(
             $defaultRunTpCdr->getRatingPlanTag()
         );
+        if (!$tpRatingPlan) {
+            return;
+        }
 
         $ratingPlan = $tpRatingPlan->getRatingPlan();
         $ratingPlanGroup = $ratingPlan->getRatingPlanGroup();
@@ -83,6 +137,7 @@ class UpdateDtoByTpCdr
             ? $ratingPlanGroup->getId()
             : null;
 
+        $languageCode = ucfirst($trunksCdr->getBrand()->getLanguageCode());
         $brandLangGetter = 'get' . $languageCode;
         $ratingPlanGroupName = $ratingPlanGroup
             ? $ratingPlanGroup->getName()->{$brandLangGetter}()
@@ -152,6 +207,12 @@ class UpdateDtoByTpCdr
             );
         }
 
-        return $billableCallDto;
+        $this->entityTools->persistDto(
+            $billableCallDto,
+            $billableCall,
+            false
+        );
+
+        return $billableCall;
     }
 }

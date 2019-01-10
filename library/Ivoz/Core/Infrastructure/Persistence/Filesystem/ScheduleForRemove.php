@@ -7,20 +7,29 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
 {
-
     const serviceCollectionPrefix = 'Service\\StoragePathResolverCollection::';
+
     /**
      * @var ContainerInterface
      */
     protected $serviceContainer;
 
-    public function __construct(ContainerInterface $serviceContainer)
-    {
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    public function __construct(
+        ContainerInterface $serviceContainer,
+        LoggerInterface $logger
+    ) {
         $this->serviceContainer = $serviceContainer;
+        $this->logger = $logger;
     }
 
     public function handle(EntityInterface $entity)
@@ -38,7 +47,7 @@ class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
         );
 
         foreach ($entity->getFileObjects() as $fldName) {
-            $fldGetter = 'get'. ucFirst($fldName); // .'BaseName';
+            $fldGetter = 'get'. ucFirst($fldName);
             $valueObject = $entity->{$fldGetter}();
             $baseName = $valueObject->getBaseName();
 
@@ -57,6 +66,14 @@ class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
                     $filePath
                 )
             );
+
+            $debugMsg = sprintf(
+                'Scheduling %s from %s for removal',
+                $fldName,
+                get_class($entity)
+            );
+
+            $this->logger->debug($debugMsg);
         }
     }
 }

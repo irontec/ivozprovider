@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
+use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -351,18 +352,32 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
     private function persistEvents()
     {
+        $commandNum = $this
+            ->commandEventSubscriber
+            ->countEvents();
+
+        if (!$this->latestCommandlog && !$commandNum) {
+            $this->registerFallbackCommand();
+        }
+
         $command = $this
             ->commandEventSubscriber
             ->popEvent();
-
-        if (!$command && !$this->latestCommandlog) {
-            return;
-        }
 
         if ($command) {
             $commandlog = Commandlog::fromEvent($command);
             $this->latestCommandlog = $commandlog;
             $this->persist($commandlog);
+
+            $this->logger->info(
+                sprintf(
+                    '%s > %s::%s(%s)',
+                    (new \ReflectionClass($command))->getShortName(),
+                    $commandlog->getClass(),
+                    $commandlog->getMethod(),
+                    json_encode($commandlog->getArguments())
+                )
+            );
         } else {
             /**
              * Command is null when first persisted entity comes from pre_persist event:
@@ -374,16 +389,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
             $commandlog = $this->latestCommandlog;
         }
-
-        $this->logger->info(
-            sprintf(
-                '%s > %s::%s(%s)',
-                (new \ReflectionClass($command))->getShortName(),
-                $commandlog->getClass(),
-                $commandlog->getMethod(),
-                json_encode($commandlog->getArguments())
-            )
-        );
 
         $entityEvents = $this
             ->entityEventSubscriber
@@ -407,5 +412,25 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
         $this->entityEventSubscriber->clearEvents();
         $this->dispatchQueued();
+    }
+
+    /**
+     * @return CommandWasExecuted
+     * @throws \Exception
+     */
+    private function registerFallbackCommand(): CommandWasExecuted
+    {
+        $command = new CommandWasExecuted(
+            0,
+            'Unregistered',
+            'Unregistered',
+            []
+        );
+
+        $this
+            ->commandEventSubscriber
+            ->handle($command);
+
+        return $command;
     }
 }

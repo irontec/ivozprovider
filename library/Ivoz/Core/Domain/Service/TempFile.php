@@ -61,7 +61,7 @@ class TempFile
         );
 
         if (!$copySucceed) {
-            throw new \Exception("Could not rename file " . $this->tmpPath . " to " . $copySucceed);
+            throw new \Exception('Could not rename file ' . $this->tmpPath . ' to ' . $copySucceed);
         }
 
         chmod($targetPath, 0777);
@@ -95,7 +95,7 @@ class TempFile
     private function buildDirectoryTree(string $targetDir)
     {
         $filePathParts = explode(DIRECTORY_SEPARATOR, $targetDir);
-        $currentDir = "";
+        $currentDir = '';
         foreach ($filePathParts as $dir) {
             $currentDir = $currentDir. DIRECTORY_SEPARATOR. $dir;
             if (!file_exists($currentDir)) {
