@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateDtoByTrunksCdr;
+use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use spec\HelperTrait;
 
-class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
+class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 {
     use HelperTrait;
 
@@ -35,16 +35,18 @@ class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(CreateOrUpdateDtoByTrunksCdr::class);
+        $this->shouldHaveType(CreateOrUpdateByTrunksCdr::class);
     }
 
     function it_creates_new_billableCallDtos_on_empty_billableCall(
         TrunksCdrInterface $trunksCdr,
-        CarrierInterface $carrier
+        CarrierInterface $carrier,
+        BillableCall $billableCall
     ) {
         $this->prepareExecution(
             $trunksCdr,
             $carrier,
+            $billableCall,
             new BillableCallDto(),
             new TrunksCdrDto()
         );
@@ -55,6 +57,15 @@ class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
                 Argument::type(BillableCallInterface::class)
             )
             ->shouldNotBeCalled();
+
+        $this
+            ->entityTools
+            ->persistDto(
+                Argument::type(BillableCallDto::class),
+                null,
+                false
+            )
+            ->willReturn($billableCall);
 
         $this->execute(
             $trunksCdr,
@@ -72,6 +83,7 @@ class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
         $this->prepareExecution(
             $trunksCdr,
             $carrier,
+            $billableCall,
             $billableCallDto,
             new TrunksCdrDto()
         );
@@ -97,6 +109,7 @@ class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
         $this->prepareExecution(
             $trunksCdr,
             $carrier,
+            $billableCall,
             $billableCallDto,
             new TrunksCdrDto()
         );
@@ -127,6 +140,7 @@ class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
     protected function prepareExecution(
         TrunksCdrInterface $trunksCdr,
         CarrierInterface $carrier,
+        BillableCallInterface $billableCall,
         BillableCallDto $billableCallDto,
         TrunksCdrDto $trunksCdrDto
     ) {
@@ -147,5 +161,14 @@ class CreateOrUpdateDtoByTrunksCdrSpec extends ObjectBehavior
                 Argument::type(TrunksCdrInterface::class)
             )
             ->willReturn($trunksCdrDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                Argument::type(BillableCallDto::class),
+                Argument::type(BillableCallInterface::class),
+                false
+            )
+            ->willReturn($billableCall);
     }
 }

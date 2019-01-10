@@ -13,7 +13,7 @@ use Prophecy\Argument;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
-use Ivoz\Core\Domain\Service\DomainEventSubscriberTrait;
+use Ivoz\Core\Domain\Service\DomainEventCollectorTrait;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;

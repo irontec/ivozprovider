@@ -46,7 +46,7 @@ class HolidayDateSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -62,7 +62,7 @@ class HolidayDateSpec extends ObjectBehavior
             ->setTimeIn(new \DateTime('2 days ago'))
             ->setTimeOut(new \DateTime('1 days ago'));
 
-        $this->updateFromDto($this->dto);
+        $this->updateFromDto($this->dto, new \spec\DtoToEntityFakeTransformer());
 
         $this
             ->getTimeIn()
@@ -84,14 +84,14 @@ class HolidayDateSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\DomainException')
-            ->duringUpdateFromDto($dto);
+            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
     }
 
     function it_resolves_e164_munber_value()
     {
         $this->dto
             ->setNumberValue('12345678');
-        $this->updateFromDto($this->dto);
+        $this->updateFromDto($this->dto, new \spec\DtoToEntityFakeTransformer());
 
         $this
             ->getNumberValueE164()
@@ -108,7 +108,7 @@ class HolidayDateSpec extends ObjectBehavior
             ->setTimeIn(new \DateTime('10:00:00'))
             ->setTimeOut(new \DateTime('20:00:00'));
 
-        $this->updateFromDto($this->dto);
+        $this->updateFromDto($this->dto, new \spec\DtoToEntityFakeTransformer());
 
         $time = new \DateTime('2018-12-01 20:00:00');
         $this
@@ -126,7 +126,7 @@ class HolidayDateSpec extends ObjectBehavior
             ->setTimeIn(new \DateTime('2018-12-11 10:00:00'))
             ->setTimeOut(new \DateTime('2018-12-11 20:00:00'));
 
-        $this->updateFromDto($this->dto);
+        $this->updateFromDto($this->dto, new \spec\DtoToEntityFakeTransformer());
 
         $time = new \DateTime('2018-12-01 20:00:00');
         $this

@@ -64,19 +64,18 @@ class CalendarSpec extends ObjectBehavior
             $holidayDate->getWrappedObject(),
             $holidayDate2->getWrappedObject()
         ];
-        $arrayCollection = new ArrayCollection($holidayDates);
 
         $this->hydrate(
             $dto,
             [
                 'company' => $company->getWrappedObject(),
-                'holidayDates' => $arrayCollection
+                'holidayDates' => $holidayDates
             ]
         );
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
