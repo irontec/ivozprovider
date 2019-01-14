@@ -32,7 +32,9 @@ angular
         var type = detour.targetType;
         var result;
         if (type === 'number') {
-            result = detour.numberValue;
+            result =
+                detour.numberCountry.countryCode
+                + detour.numberValue;
         } else if (type === 'extension') {
             result = detour.extension.number;
         } else if (type === 'voicemail') {
