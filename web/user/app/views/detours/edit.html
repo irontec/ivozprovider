@@ -82,28 +82,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-md-12">
-
-                        <label
-                                for="targetType"
-                                class="col-sm-4 control-label"
-                                translate="targetType"
-                        ></label>
-
-                        <div class="col-sm-8">
-                            <select
-                                    class="form-control"
-                                    id="targetType"
-                                    name="targetType"
-                                    ng-model="detour.targetType"
-                                    required="required"
-                            >
-                                <option value="number" translate="number"></option>
-                                <option value="extension" translate="extension"></option>
-                                <option value="voicemail" translate="voicemail"></option>
-                            </select>
-                        </div>
-                    </div>
 
                     <div class="form-group col-md-12">
                         <label
@@ -127,6 +105,29 @@
                             </select>
                         </div>
 
+                    </div>
+
+                    <div class="form-group col-md-12">
+
+                        <label
+                                for="targetType"
+                                class="col-sm-4 control-label"
+                                translate="targetType"
+                        ></label>
+
+                        <div class="col-sm-8">
+                            <select
+                                    class="form-control"
+                                    id="targetType"
+                                    name="targetType"
+                                    ng-model="detour.targetType"
+                                    required="required"
+                            >
+                                <option value="number" translate="number"></option>
+                                <option value="extension" translate="extension"></option>
+                                <option value="voicemail" translate="voicemail"></option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form-group col-md-12" ng-show="numberValueShow">

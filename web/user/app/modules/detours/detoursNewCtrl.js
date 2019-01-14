@@ -7,9 +7,10 @@ angular
         $rootScope,
         appConfig,
         $http,
+        $q,
         ngProgress
     ) {
-        
+
     ngProgress.color('blue');
     ngProgress.start();
     $scope.loading = true;
@@ -19,7 +20,10 @@ angular
     $scope.detour = {
         noAnswerTimeout: 0
     };
-    
+
+    $scope.extensions = [];
+    $scope.countries = [];
+
     $scope.callForwardTypeNoAnswer = false;
     $scope.numberValueShow = false;
     $scope.extensionShow = false;
@@ -35,11 +39,34 @@ angular
             $scope.users[idx].fullName = $scope.users[idx].name + " " + $scope.users[idx].lastname;
         }
 
-        $http.get(
+        var extensionPromise = $http.get(
             appConfig.urlRest + 'my/company_extensions',
             {headers: {accept: 'application/json'}}
         ).then(function(extensions) {
-            $scope.extensions = extensions.data;
+            $scope.extensionPromise = extensions.data;
+        });
+
+        var countryPromise = $http.get(
+            appConfig.urlRest + 'countries?_pagination=false',
+            {headers: {accept: 'application/json'}}
+        ).then(function(countries) {
+            for (var idx in countries.data) {
+                var item = countries.data[idx];
+                $scope.countries.push({
+                    id: item.id,
+                    name: item.name.es + " (" + item.countryCode + ")"
+                });
+            }
+        });
+
+        var companyCountryPromise = $http.get(
+            appConfig.urlRest + 'my/company_country',
+            {headers: {accept: 'application/json'}}
+        ).then(function(country) {
+            $scope.detour.numberCountry= country.data.id;
+        });
+
+        $q.all([companyCountryPromise, countryPromise, extensionPromise]).then(function () {
             $scope.loading = false;
             ngProgress.complete();
         });

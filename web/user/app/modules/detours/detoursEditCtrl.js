@@ -6,6 +6,7 @@ angular
         $scope,
         appConfig,
         $http,
+        $q,
         $stateParams,
         ngProgress
     ) {
@@ -19,7 +20,10 @@ angular
     $scope.formAction = false;
     $scope.success = false;
     $scope.error = false;
-    
+
+    $scope.extensions = [];
+    $scope.countries = [];
+
     $scope.callForwardTypeNoAnswer = true;
     $scope.numberValueShow = true;
     $scope.extensionShow = true;
@@ -35,26 +39,44 @@ angular
             $scope.users[idx].fullName = $scope.users[idx].name + " " + $scope.users[idx].lastname;
         }
 
-        $http.get(
+        var extensionPromise = $http.get(
             appConfig.urlRest + 'my/company_extensions',
             {headers: {accept: 'application/json'}}
         ).then(function(extensions) {
             $scope.extensions = extensions.data;
-            $http.get(
-                appConfig.urlRest + 'call_forward_settings/' + detourId,
-                {headers: {accept: 'application/json'}}
-            ).then(function(detour) {
-
-                detour.data.enabled = detour.data.enabled
-                    ? '1'
-                    : '0';
-
-                $scope.detour = detour.data;
-                $scope.formDisabled = false;
-                $scope.loading = false;
-                ngProgress.complete();
-            });
         });
+
+        var countryPromise = $http.get(
+            appConfig.urlRest + 'countries?_pagination=false',
+            {headers: {accept: 'application/json'}}
+        ).then(function(countries) {
+            for (var idx in countries.data) {
+                var item = countries.data[idx];
+                $scope.countries.push({
+                    id: item.id,
+                    name: item.name.es + " (" + item.countryCode + ")"
+                });
+            }
+        });
+
+        var cfwPromise = $http.get(
+            appConfig.urlRest + 'call_forward_settings/' + detourId,
+            {headers: {accept: 'application/json'}}
+        ).then(function(detour) {
+
+            detour.data.enabled = detour.data.enabled
+                ? '1'
+                : '0';
+
+            $scope.detour = detour.data;
+        });
+
+        $q.all([extensionPromise, cfwPromise, countryPromise]).then(function () {
+            $scope.formDisabled = false;
+            $scope.loading = false;
+            ngProgress.complete();
+        });
+
     });
     
     $scope.save = function() {
