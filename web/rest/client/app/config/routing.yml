@@ -96,6 +96,15 @@ get_my_company_extensions:
     _api_collection_operation_name: 'get_my_company_extensions'
     _api_receive: false
 
+get_my_company_country:
+  path: '/my/company_country'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CompanyCountryAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Country\Country'
+    _api_item_operation_name: 'get_my_company_country'
+    _api_receive: false
+
 get_my_call_forward_settings:
   path: '/my/call_forward_settings'
   methods: ['GET']
