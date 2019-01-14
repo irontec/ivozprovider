@@ -156,7 +156,6 @@ class Xmlrpc
                 $this->logger->error(sprintf("[XMLRPC] Unable to send request %s to server %s [%s:%d]",
                     $method, $server->getName(), $server->getIp(), $port
                 ));
-                return false;
             }
         }
         return true;
