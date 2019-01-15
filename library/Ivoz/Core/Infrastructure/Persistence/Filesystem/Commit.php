@@ -5,16 +5,19 @@ namespace Ivoz\Core\Infrastructure\Persistence\Filesystem;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
+use Psr\Log\LoggerInterface;
 
 class Commit implements CommonLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = 10;
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
 
-    public static function getSubscribedEvents()
-    {
-        return [
-            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
-        ];
+    public function __construct(
+        LoggerInterface $logger
+    ) {
+        $this->logger = $logger;
     }
 
     public function handle(EntityInterface $entity)
@@ -24,9 +27,10 @@ class Commit implements CommonLifecycleEventHandlerInterface
         }
 
         foreach ($entity->getTempFiles() as $tmpFile) {
-            if (is_null($tmpFile->getTmpPath())) {
-                $tmpFile->remove($entity);
-            } else {
+            if (!is_null($tmpFile->getTmpPath())) {
+                $this->logger->debug(
+                    'About to commit a file from ' . get_class($entity) . ' #' . $entity->getId()
+                );
                 $tmpFile->commit($entity);
             }
 

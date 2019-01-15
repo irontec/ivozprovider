@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\Events\CarrierBalanceThresholdWasBroken;

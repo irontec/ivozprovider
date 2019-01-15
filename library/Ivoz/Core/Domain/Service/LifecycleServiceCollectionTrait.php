@@ -3,17 +3,24 @@
 namespace Ivoz\Core\Domain\Service;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Psr\Log\LoggerInterface;
 
 trait LifecycleServiceCollectionTrait
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
      * @var array
      */
-    protected $services;
+    protected $services = [];
 
-    public function __construct()
-    {
-        $this->services = array();
+    public function __construct(
+        LoggerInterface $logger
+    ) {
+        $this->logger = $logger;
     }
 
     public function setServices(array $services)
@@ -31,6 +38,9 @@ trait LifecycleServiceCollectionTrait
     public function execute(EntityInterface $entity)
     {
         foreach ($this->services as $service) {
+            $this->logger->debug(
+                'A lifecycle service is about to be executed: ' . get_class($service)
+            );
             $service->execute($entity);
         }
     }

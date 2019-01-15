@@ -5,7 +5,7 @@ namespace Ivoz\Core\Domain\Service;
 
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 
-trait DomainEventSubscriberTrait
+trait DomainEventCollectorTrait
 {
     protected $events = [];
 
