@@ -9,6 +9,8 @@ class ProxyUser extends ProxyUserAbstract implements ProxyUserInterface
 {
     use ProxyUserTrait;
 
+    const MAIN_ADDRESS_ID = 1;
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserRepository;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +20,24 @@ class ProxyUserDoctrineRepository extends ServiceEntityRepository implements Pro
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, ProxyUser::class);
+    }
+
+    /**
+     * @inheritdoc
+     * @see ProxyUserRepository::getProxyMainAddress
+     */
+    public function getProxyMainAddress()
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    ['id', 'eq', ProxyUser::MAIN_ADDRESS_ID],
+                ])
+            );
+
+        return $qb->getQuery()->getSingleResult();
     }
 }

@@ -7,5 +7,9 @@ use Doctrine\Common\Collections\Selectable;
 
 interface ProxyTrunkRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return ProxyTrunkInterface
+     * @throws \Exception
+     */
+    public function getProxyMainAddress();
 }

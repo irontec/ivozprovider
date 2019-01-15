@@ -9,6 +9,8 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
 {
     use ProxyTrunkTrait;
 
+    const MAIN_ADDRESS_ID = 1;
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -3,8 +3,10 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +20,24 @@ class ProxyTrunkDoctrineRepository extends ServiceEntityRepository implements Pr
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, ProxyTrunk::class);
+    }
+
+    /**
+     * @inheritdoc
+     * @see ProxyTrunk::getProxyMainAddress
+     */
+    public function getProxyMainAddress()
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    ['id', 'eq', ProxyTrunk::MAIN_ADDRESS_ID],
+                ])
+            );
+
+        return $qb->getQuery()->getSingleResult();
     }
 }
