@@ -51,7 +51,7 @@ function setup_apache_config()
 
 function setup_gearman_job_server()
 {
-    sed -i -r 's/"(--listen=).*"/"\10.0.0.0"/' /etc/default/gearman-job-server
+    sed -i -r 's/"(--listen=).*"/"\10.0.0.0 --log-file=stderr"/' /etc/default/gearman-job-server
 }
 
 function setup_klear()
