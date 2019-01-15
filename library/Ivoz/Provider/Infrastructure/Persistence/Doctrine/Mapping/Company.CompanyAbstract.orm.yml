@@ -225,7 +225,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       joinColumns:
         countryId:
           referencedColumnName: id
-          onDelete: set null
+          onDelete: cascade
       orphanRemoval: false
     transformationRuleSet:
       targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
