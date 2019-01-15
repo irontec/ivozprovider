@@ -23,6 +23,11 @@ trait RetailAccountTrait
      */
     protected $ddis;
 
+    /**
+     * @var Collection
+     */
+    protected $callForwardSettings;
+
 
     /**
      * Constructor
@@ -31,6 +36,7 @@ trait RetailAccountTrait
     {
         parent::__construct(...func_get_args());
         $this->ddis = new ArrayCollection();
+        $this->callForwardSettings = new ArrayCollection();
     }
 
     /**
@@ -52,6 +58,14 @@ trait RetailAccountTrait
             $self->replaceDdis(
                 $fkTransformer->transformCollection(
                     $dto->getDdis()
+                )
+            );
+        }
+
+        if ($dto->getCallForwardSettings()) {
+            $self->replaceCallForwardSettings(
+                $fkTransformer->transformCollection(
+                    $dto->getCallForwardSettings()
                 )
             );
         }
@@ -81,6 +95,13 @@ trait RetailAccountTrait
             $this->replaceDdis(
                 $fkTransformer->transformCollection(
                     $dto->getDdis()
+                )
+            );
+        }
+        if ($dto->getCallForwardSettings()) {
+            $this->replaceCallForwardSettings(
+                $fkTransformer->transformCollection(
+                    $dto->getCallForwardSettings()
                 )
             );
         }
@@ -178,5 +199,77 @@ trait RetailAccountTrait
         }
 
         return $this->ddis->toArray();
+    }
+
+    /**
+     * Add callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     *
+     * @return RetailAccountTrait
+     */
+    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
+    {
+        $this->callForwardSettings->add($callForwardSetting);
+
+        return $this;
+    }
+
+    /**
+     * Remove callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     */
+    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
+    {
+        $this->callForwardSettings->removeElement($callForwardSetting);
+    }
+
+    /**
+     * Replace callForwardSettings
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
+     * @return self
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($callForwardSettings as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setRetailAccount($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->callForwardSettings as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->callForwardSettings->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->callForwardSettings->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addCallForwardSetting($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get callForwardSettings
+     *
+     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     */
+    public function getCallForwardSettings(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->callForwardSettings->matching($criteria)->toArray();
+        }
+
+        return $this->callForwardSettings->toArray();
     }
 }

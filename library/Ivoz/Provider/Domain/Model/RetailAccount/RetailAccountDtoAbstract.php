@@ -90,6 +90,11 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
      */
     private $ddis = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto[] | null
+     */
+    private $callForwardSettings = null;
+
 
     use DtoNormalizer;
 
@@ -147,7 +152,8 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
-            'ddis' => $this->getDdis()
+            'ddis' => $this->getDdis(),
+            'callForwardSettings' => $this->getCallForwardSettings()
         ];
     }
 
@@ -599,5 +605,25 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getDdis()
     {
         return $this->ddis;
+    }
+
+    /**
+     * @param array $callForwardSettings
+     *
+     * @return static
+     */
+    public function setCallForwardSettings($callForwardSettings = null)
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCallForwardSettings()
+    {
+        return $this->callForwardSettings;
     }
 }
