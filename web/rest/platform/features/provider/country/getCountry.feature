@@ -16,6 +16,7 @@ Feature: Retrieve countries
       [
           {
               "code": "ES",
+              "countryCode": "+34",
               "id": 1,
               "name": {
                   "en": "Spain",
@@ -24,6 +25,7 @@ Feature: Retrieve countries
           },
           {
               "code": "GB",
+              "countryCode": "+44",
               "id": 2,
               "name": {
                   "en": "United Kingdom",
@@ -32,6 +34,7 @@ Feature: Retrieve countries
           },
           {
               "code": "JP",
+              "countryCode": "+81",
               "id": 3,
               "name": {
                   "en": "Japan",
