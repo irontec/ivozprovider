@@ -57,6 +57,8 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 |experimental (bleeding 2.x) | |
 
 
+You can read about differences between releases [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md#what-release-should-i-use).
+
 ## Documentation
 
 You can browse online documentation in different formats:
