@@ -86,6 +86,11 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdi;
 
     /**
+     * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
+     */
+    private $psEndpoints = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto[] | null
      */
     private $ddis = null;
@@ -152,6 +157,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
+            'psEndpoints' => $this->getPsEndpoints(),
             'ddis' => $this->getDdis(),
             'callForwardSettings' => $this->getCallForwardSettings()
         ];
@@ -585,6 +591,26 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param array $psEndpoints
+     *
+     * @return static
+     */
+    public function setPsEndpoints($psEndpoints = null)
+    {
+        $this->psEndpoints = $psEndpoints;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPsEndpoints()
+    {
+        return $this->psEndpoints;
     }
 
     /**

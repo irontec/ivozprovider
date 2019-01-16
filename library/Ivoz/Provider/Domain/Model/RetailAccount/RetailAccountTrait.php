@@ -21,6 +21,11 @@ trait RetailAccountTrait
     /**
      * @var Collection
      */
+    protected $psEndpoints;
+
+    /**
+     * @var Collection
+     */
     protected $ddis;
 
     /**
@@ -35,6 +40,7 @@ trait RetailAccountTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+        $this->psEndpoints = new ArrayCollection();
         $this->ddis = new ArrayCollection();
         $this->callForwardSettings = new ArrayCollection();
     }
@@ -54,6 +60,14 @@ trait RetailAccountTrait
          * @var $dto RetailAccountDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
+        if ($dto->getPsEndpoints()) {
+            $self->replacePsEndpoints(
+                $fkTransformer->transformCollection(
+                    $dto->getPsEndpoints()
+                )
+            );
+        }
+
         if ($dto->getDdis()) {
             $self->replaceDdis(
                 $fkTransformer->transformCollection(
@@ -91,6 +105,13 @@ trait RetailAccountTrait
          * @var $dto RetailAccountDto
          */
         parent::updateFromDto($dto, $fkTransformer);
+        if ($dto->getPsEndpoints()) {
+            $this->replacePsEndpoints(
+                $fkTransformer->transformCollection(
+                    $dto->getPsEndpoints()
+                )
+            );
+        }
         if ($dto->getDdis()) {
             $this->replaceDdis(
                 $fkTransformer->transformCollection(
@@ -129,6 +150,78 @@ trait RetailAccountTrait
             'id' => self::getId()
         ];
     }
+    /**
+     * Add psEndpoint
+     *
+     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
+     *
+     * @return RetailAccountTrait
+     */
+    public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
+    {
+        $this->psEndpoints->add($psEndpoint);
+
+        return $this;
+    }
+
+    /**
+     * Remove psEndpoint
+     *
+     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
+     */
+    public function removePsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
+    {
+        $this->psEndpoints->removeElement($psEndpoint);
+    }
+
+    /**
+     * Replace psEndpoints
+     *
+     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
+     * @return self
+     */
+    public function replacePsEndpoints(Collection $psEndpoints)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($psEndpoints as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setRetailAccount($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->psEndpoints as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->psEndpoints->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->psEndpoints->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addPsEndpoint($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get psEndpoints
+     *
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
+     */
+    public function getPsEndpoints(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->psEndpoints->matching($criteria)->toArray();
+        }
+
+        return $this->psEndpoints->toArray();
+    }
+
     /**
      * Add ddi
      *

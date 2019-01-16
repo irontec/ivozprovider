@@ -31,6 +31,18 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function setPort($port = null);
 
     /**
+     * @return string
+     */
+    public function getSorcery();
+
+    /**
+     * Get Ddi associated with this retail Account
+     *
+     * @return DdiInterface
+     */
+    public function getDdi($ddieE164);
+
+    /**
      * Get name
      *
      * @return string
@@ -172,6 +184,37 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi();
+
+    /**
+     * Add psEndpoint
+     *
+     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
+     *
+     * @return RetailAccountTrait
+     */
+    public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
+
+    /**
+     * Remove psEndpoint
+     *
+     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
+     */
+    public function removePsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
+
+    /**
+     * Replace psEndpoints
+     *
+     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
+     * @return self
+     */
+    public function replacePsEndpoints(Collection $psEndpoints);
+
+    /**
+     * Get psEndpoints
+     *
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
+     */
+    public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add ddi

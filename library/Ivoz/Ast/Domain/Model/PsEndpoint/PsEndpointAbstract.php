@@ -119,6 +119,11 @@ abstract class PsEndpointAbstract
      */
     protected $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    protected $retailAccount;
+
 
     use ChangelogTrait;
 
@@ -230,6 +235,7 @@ abstract class PsEndpointAbstract
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
         $self->sanitizeValues();
@@ -271,7 +277,8 @@ abstract class PsEndpointAbstract
             ->setTrustIdInbound($dto->getTrustIdInbound())
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
 
 
 
@@ -305,7 +312,8 @@ abstract class PsEndpointAbstract
             ->setTrustIdInbound(self::getTrustIdInbound())
             ->setTerminal(\Ivoz\Provider\Domain\Model\Terminal\Terminal::entityToDto(self::getTerminal(), $depth))
             ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
-            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
     /**
@@ -332,7 +340,8 @@ abstract class PsEndpointAbstract
             'trust_id_inbound' => self::getTrustIdInbound(),
             'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -849,6 +858,30 @@ abstract class PsEndpointAbstract
     public function getResidentialDevice()
     {
         return $this->residentialDevice;
+    }
+
+    /**
+     * Set retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return self
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
     }
 
     // @codeCoverageIgnoreEnd
