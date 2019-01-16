@@ -4,10 +4,7 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
-/**
- * @deprecated Use ApiClient as a collaborator instead
- */
-abstract class AbstractApiBasedService
+class ApiClient
 {
     /**
      * @var ClientInterface
@@ -23,9 +20,9 @@ abstract class AbstractApiBasedService
     /**
      * @param $payload
      * @throws \DomainException
-     * @return void
+     * @return \stdClass
      */
-    protected function sendRequest($method, array $payload)
+    public function sendRequest($method, array $payload)
     {
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Request $request */
         $request = $this->jsonRpcClient
@@ -47,5 +44,7 @@ abstract class AbstractApiBasedService
             );
             throw new \RuntimeException($errorMsg);
         }
+
+        return $objectResponse;
     }
 }

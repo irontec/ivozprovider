@@ -45,3 +45,6 @@ services:
   Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface:
     alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService
     public: true
+
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr: ~

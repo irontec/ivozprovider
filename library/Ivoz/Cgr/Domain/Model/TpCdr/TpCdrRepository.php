@@ -8,6 +8,13 @@ use Doctrine\Common\Collections\Selectable;
 interface TpCdrRepository extends ObjectRepository, Selectable
 {
     /**
+     * @param string $originId
+     * @return TpCdrInterface | null
+     */
+    public function getByOriginId(string $originId);
+
+
+    /**
      * @param string $cgrid
      * @return int
      */

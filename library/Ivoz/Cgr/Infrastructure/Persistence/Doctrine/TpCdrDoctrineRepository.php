@@ -4,6 +4,7 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NoResultException;
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
@@ -20,6 +21,17 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TpCdr::class);
+    }
+
+    /**
+     * @inheritdoc
+     * @see TpCdrRepository::getByOriginId
+     */
+    public function getByOriginId(string $originId)
+    {
+        return $this->findOneBy([
+            'originId' => $originId
+        ]);
     }
 
     /**

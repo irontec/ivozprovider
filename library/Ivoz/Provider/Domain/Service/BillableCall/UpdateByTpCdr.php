@@ -13,9 +13,11 @@ use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
+use Psr\Log\LoggerInterface;
 
 class UpdateByTpCdr implements DomainEventSubscriberInterface
 {
@@ -25,30 +27,30 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
     protected $tpCdrRepository;
 
     /**
-     * @var TpRatingPlanRepository
+     * @var UpdateDtoByDefaultRunTpCdr
      */
-    protected $tpRatingPlanRepository;
-
-    /**
-     * @var TpDestinationRepository
-     */
-    protected $tpDestinationRepository;
+    protected $updateDtoByDefaultRunTpCdr;
 
     /**
      * @var EntityTools
      */
     protected $entityTools;
 
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
     public function __construct(
         TpCdrRepository $tpCdrRepository,
-        TpRatingPlanRepository $tpRatingPlanRepository,
-        TpDestinationRepository $tpDestinationRepository,
-        EntityTools $entityTools
+        UpdateDtoByDefaultRunTpCdr $updateDtoByDefaultRunTpCdr,
+        EntityTools $entityTools,
+        LoggerInterface $logger
     ) {
         $this->tpCdrRepository = $tpCdrRepository;
-        $this->tpRatingPlanRepository = $tpRatingPlanRepository;
-        $this->tpDestinationRepository = $tpDestinationRepository;
+        $this->updateDtoByDefaultRunTpCdr = $updateDtoByDefaultRunTpCdr;
         $this->entityTools = $entityTools;
+        $this->logger = $logger;
     }
 
     /**
@@ -76,11 +78,13 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
         }
 
         $trunksCdr = $domainEvent->getTrunksCdr();
-        $cgrid = $trunksCdr->getCgrid();
-        if (!$cgrid) {
-            return;
-        }
         $billableCall = $domainEvent->getBillableCall();
+
+        $infoMsg = sprintf(
+            'About to update billable call by TpCdr. TrunksCdr#%s',
+            $trunksCdr->getId()
+        ) ;
+        $this->logger->info($infoMsg);
 
         $this->execute(
             $trunksCdr,
@@ -97,9 +101,21 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
         BillableCallInterface $billableCall
     ) {
         $cgrid = $trunksCdr->getCgrid();
+        if (!$cgrid) {
+            $this->logger->error('Cgrid was not found. Skipping');
+            return;
+        }
 
-        /** @var BillableCallDto $billableCallDto */
-        $billableCallDto = $this->entityTools->entityToDto($billableCall);
+        /** @var CarrierInterface $carrier */
+        $carrier = $billableCall->getCarrier();
+        if ($carrier && $carrier->getExternallyRated()) {
+            $infoMsg = sprintf(
+                'Carrier#%s has external rater. Skipping',
+                $carrier->getId()
+            );
+            $this->logger->info($infoMsg);
+            return;
+        }
 
         /**
          * @var TpCdrInterface $defaultRunTpCdr
@@ -109,90 +125,21 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
         );
 
         if (!$defaultRunTpCdr) {
-            return;
-        }
-
-        if (!$defaultRunTpCdr->getCostDetailsFirstTimespan()) {
-            return;
-        }
-
-        $callee = $defaultRunTpCdr->getDestination()
-            ? $defaultRunTpCdr->getDestination()
-            : $billableCallDto->getCallee();
-
-        /**
-         * @var TpRatingPlanInterface $tpRatingPlan
-         */
-        $tpRatingPlan = $this->tpRatingPlanRepository->findOneByTag(
-            $defaultRunTpCdr->getRatingPlanTag()
-        );
-        if (!$tpRatingPlan) {
-            return;
-        }
-
-        $ratingPlan = $tpRatingPlan->getRatingPlan();
-        $ratingPlanGroup = $ratingPlan->getRatingPlanGroup();
-
-        $ratingPlanGroupId = $ratingPlanGroup
-            ? $ratingPlanGroup->getId()
-            : null;
-
-        $languageCode = ucfirst($trunksCdr->getBrand()->getLanguageCode());
-        $brandLangGetter = 'get' . $languageCode;
-        $ratingPlanGroupName = $ratingPlanGroup
-            ? $ratingPlanGroup->getName()->{$brandLangGetter}()
-            : '';
-
-        /** @var TpDestinationInterface $tpDestination */
-        $tpDestination = $this->tpDestinationRepository->findOneByTag(
-            $defaultRunTpCdr->getMatchedDestinationTag()
-        );
-        /** @var DestinationInterface $destination */
-        $destination = $tpDestination
-            ? $tpDestination->getDestination()
-            : null;
-
-        $destinationId = $destination
-            ? $destination->getId()
-            : null;
-
-        $brandLangGetter = 'get' . $languageCode;
-        $destinationName = $destination
-            ? $destination->getName()->{$brandLangGetter}()
-            : '';
-
-        $startTime = $defaultRunTpCdr->getStartTime()
-            ? $defaultRunTpCdr->getStartTime()
-            : $billableCallDto->getStartTime();
-
-        $duration = $defaultRunTpCdr->getDuration()
-            ? $defaultRunTpCdr->getDuration()
-            : $billableCallDto->getDuration();
-
-        $billableCallDto
-            ->setStartTime(
-                $startTime
-            )
-            ->setDuration(
-                $duration
-            )
-            ->setCallee(
-                $callee
-            )
-            ->setDestinationId(
-                $destinationId
-            )
-            ->setDestinationName(
-                $destinationName
-            )
-            ->setRatingPlanGroupId(
-                $ratingPlanGroupId
-            )
-            ->setRatingPlanName(
-                $ratingPlanGroupName
-            )->setPrice(
-                $defaultRunTpCdr->getCost()
+            $errorMsg = sprintf(
+                'No default run TpCdr found for cgrid %s. Skipping',
+                $cgrid
             );
+            $this->logger->error($errorMsg);
+            return;
+        }
+
+        /** @var BillableCallDto $billableCallDto */
+        $billableCallDto = $this->entityTools->entityToDto($billableCall);
+        $billableCallDto = $this->updateDtoByDefaultRunTpCdr->execute(
+            $billableCallDto,
+            $trunksCdr,
+            $defaultRunTpCdr
+        );
 
         /**
          * @var TpCdrInterface $carrierRunTpCdr
@@ -212,7 +159,5 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
             $billableCall,
             false
         );
-
-        return $billableCall;
     }
 }
