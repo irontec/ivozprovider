@@ -57,6 +57,9 @@ services:
   Dialplan\Residentials:
     arguments: ~
 
+  Dialplan\Retails:
+    arguments: ~
+
   Dialplan\Friends:
     arguments: ~
 
