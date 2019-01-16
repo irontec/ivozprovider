@@ -86,7 +86,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
     function it_logs_success_message()
     {
         $this->trunksCdrRepository
-            ->getUnmeteredCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
+            ->getUnparsedCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
             ->willReturn([]);
 
         $this
@@ -199,7 +199,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
 
         $this
             ->trunksCdrRepository
-            ->getUnmeteredCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
+            ->getUnparsedCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
             ->willReturn([[$trunksCdr]]);
 
         $this

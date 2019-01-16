@@ -34,7 +34,8 @@ class KamTrunksCdr extends Fixture implements DependentFixtureInterface
             $this->setCallid('1262640e-18d5-4641-880d-e4f411786711');
             $this->setCallidHash('2789d532');
             $this->setXcallid('9297bdde-309cd48f@10.10.1.123');
-            $this->setMetered(0);
+            $this->setParsed(0);
+            $this->setParserScheduledAt(new \DateTime('2018-11-22 16:54:54'));
         })->call($item1);
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
