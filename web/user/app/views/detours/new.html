@@ -161,7 +161,18 @@
                                 translate="numberValue"
                         ></label>
 
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
+                            <select
+                                    class="form-control"
+                                    id="numberCountry"
+                                    name="numberCountry"
+                                    ng-model="detour.numberCountry"
+                                    ng-options="numberCountry.id as numberCountry.name for numberCountry in countries"
+                            >
+                            </select>
+                        </div>
+
+                        <div class="col-sm-4">
                             <input
                                     type="text"
                                     name="numberValue"
@@ -173,6 +184,7 @@
                         </div>
 
                     </div>
+
 
                     <div class="form-group col-md-12" ng-show="extensionShow">
 

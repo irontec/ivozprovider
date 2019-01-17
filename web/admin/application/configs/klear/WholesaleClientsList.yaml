@@ -43,6 +43,7 @@ production:
           town: true
           province: true
           countryName: true
+          country: true
           registryData: true
           defaultTimezone: true
           currency: true
@@ -128,6 +129,7 @@ production:
           label: _("Geographic Configuration")
           fields:
             language: 4
+            country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
             currency: 4
@@ -187,6 +189,7 @@ production:
           label: _("Geographic Configuration")
           fields:
             language: 4
+            country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
             currency: 4

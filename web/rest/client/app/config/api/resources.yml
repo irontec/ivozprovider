@@ -166,6 +166,7 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
     get: ~
     post: ~
     get_my_call_forward_settings:
+      depth: 1
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/call_forward_settings'
@@ -180,6 +181,25 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
           - 'application/json'
         tags:
           - My
+        parameters: []
+
+Ivoz\Provider\Domain\Model\Country\Country:
+  itemOperations:
+    get_my_company_country:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/company_country'
+      route_name: 'get_my_company_country'
+      operation_normalization_context: 'detailed'
+      normalization_context:
+        groups: ['detailed']
+      parameters: []
+      swagger_context:
+        produces:
+        - 'application/ld+json'
+        - 'application/json'
+        tags:
+        - My
         parameters: []
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
