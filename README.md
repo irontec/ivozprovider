@@ -36,8 +36,6 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
 
 And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_inside.html) open source projects.
 
-Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
-
 ![scaling](web/admin/public/images/horizontalscaling.png)
 
 #### Cloud Service
