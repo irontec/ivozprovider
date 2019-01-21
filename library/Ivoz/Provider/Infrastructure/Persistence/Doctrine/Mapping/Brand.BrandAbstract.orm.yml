@@ -92,4 +92,3 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-
