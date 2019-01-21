@@ -193,6 +193,7 @@ production:
       arguments:
         cache:
           enabled: true
+    <<: *exportBillableCallsToCsv_commandsLink
 
 staging:
   _extends: production

@@ -25,6 +25,7 @@ production:
       fields: &callCsvSchedulers_fieldsLink
         blacklist:
           brand: true
+          callCsvNotificationTemplate: true
         order: &callCsvSchedulers_orderLink
           id: true
           name: true
@@ -60,12 +61,14 @@ production:
         <<: *forcedCompany
       shortcutOption: N
       fields:
-        blacklist:
+        blacklist: &callCsvSchedulersNew_blacklist
           lastExecution: true
           nextExecution: true
+          callCsvNotificationTemplate: true
         order:
           name: 1
           email: 1
+          callCsvNotificationTemplate: 1
           frequency: 1
           unit: 1
           nextExecution: 1
@@ -78,6 +81,7 @@ production:
             name: 1
             company: 1
             email: 1
+            callCsvNotificationTemplate: 1
         group1:
           label: _("Time Information")
           colsPerRow: 2
@@ -96,6 +100,9 @@ production:
       forcedValues:
         self::brand: null
         <<: *forcedCompany
+      fields:
+        blacklist: &callCsvSchedulersEdit_blacklist
+          callCsvNotificationTemplate: true
       fixedPositions:
         <<: *callCsvSchedulersFixedPositions_Link
 

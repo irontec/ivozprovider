@@ -1656,11 +1656,6 @@ msgstr "Ninguna"
 msgid "Not Registered"
 msgstr "No registrado"
 
-msgid "Notification Template"
-msgid_plural "Notifications Templates"
-msgstr[0] "Plantilla de notificación"
-msgstr[1] "Plantillas de notificación"
-
 msgid "Notification Threshold"
 msgstr "Límite de notificación"
 
