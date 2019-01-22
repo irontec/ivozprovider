@@ -63,7 +63,12 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $metered = '0';
+    private $parsed = '0';
+
+    /**
+     * @var \DateTime
+     */
+    private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
     /**
      * @var string
@@ -128,7 +133,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'xcallid' => 'xcallid',
             'diversion' => 'diversion',
             'bounced' => 'bounced',
-            'metered' => 'metered',
+            'parsed' => 'parsed',
+            'parserScheduledAt' => 'parserScheduledAt',
             'direction' => 'direction',
             'cgrid' => 'cgrid',
             'id' => 'id',
@@ -155,7 +161,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'xcallid' => $this->getXcallid(),
             'diversion' => $this->getDiversion(),
             'bounced' => $this->getBounced(),
-            'metered' => $this->getMetered(),
+            'parsed' => $this->getParsed(),
+            'parserScheduledAt' => $this->getParserScheduledAt(),
             'direction' => $this->getDirection(),
             'cgrid' => $this->getCgrid(),
             'id' => $this->getId(),
@@ -367,13 +374,13 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $metered
+     * @param boolean $parsed
      *
      * @return static
      */
-    public function setMetered($metered = null)
+    public function setParsed($parsed = null)
     {
-        $this->metered = $metered;
+        $this->parsed = $parsed;
 
         return $this;
     }
@@ -381,9 +388,29 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return boolean
      */
-    public function getMetered()
+    public function getParsed()
     {
-        return $this->metered;
+        return $this->parsed;
+    }
+
+    /**
+     * @param \DateTime $parserScheduledAt
+     *
+     * @return static
+     */
+    public function setParserScheduledAt($parserScheduledAt = null)
+    {
+        $this->parserScheduledAt = $parserScheduledAt;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getParserScheduledAt()
+    {
+        return $this->parserScheduledAt;
     }
 
     /**
