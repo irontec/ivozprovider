@@ -44,7 +44,7 @@ class CreateOrUpdateByTrunksCdr
 
         $carrierName = $carrier
             ? $carrier->getName()
-            : '';
+            : $billableCallDto->getCarrierName();
 
         /**
          * @var TrunksCdrDto $trunksCdrDto

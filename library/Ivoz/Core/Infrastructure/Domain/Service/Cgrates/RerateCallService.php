@@ -85,14 +85,14 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
         // shared
         $this
             ->billableCallRepository
-            ->resetPrices($pks);
+            ->resetPricingData($pks);
 
         $trunkCdrIds = $this
             ->billableCallRepository
             ->idsToTrunkCdrId($pks);
 
         $this->trunksCdrRepository
-            ->resetMetered($trunkCdrIds);
+            ->resetParsed($trunkCdrIds);
 
         if ($error) {
             throw new \DomainException(

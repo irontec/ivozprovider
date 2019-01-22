@@ -44,7 +44,7 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @param array $ids
      * @return void
      */
-    public function resetPrices(array $ids);
+    public function resetPricingData(array $ids);
 
     /**
      * @param int $invoiceId

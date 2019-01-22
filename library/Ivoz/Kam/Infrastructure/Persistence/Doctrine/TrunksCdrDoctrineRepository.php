@@ -26,8 +26,8 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     }
 
     /**
-     * @param $callid
-     * @return TrunksCdrInterface[]
+     * @inheritdoc
+     * @see TrunksCdrRepository::findByCallid
      */
     public function findByCallid($callid)
     {
@@ -40,8 +40,8 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     }
 
     /**
-     * @param $callid
-     * @return TrunksCdrInterface | null
+     * @inheritdoc
+     * @see TrunksCdrRepository::findOneByCallid
      */
     public function findOneByCallid($callid)
     {
@@ -54,13 +54,13 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     }
 
     /**
-     * This method expects results to be marked as metered as soon as they're used:
+     * This method expects results to be marked as parsed as soon as they're used:
      * a.k.a it does not apply any query offset, just a limit
      *
      * @inheritdoc
-     * @see TrunksCdrRepository::getUnmeteredCallsGeneratorWithoutOffset
+     * @see TrunksCdrRepository::getUnparsedCallsGeneratorWithoutOffset
      */
-    public function getUnmeteredCallsGeneratorWithoutOffset(int $batchSize, array $order = null)
+    public function getUnparsedCallsGeneratorWithoutOffset(int $batchSize, array $order = null)
     {
         $dateFrom = new \DateTime(
             '10 seconds ago',
@@ -72,9 +72,9 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
          */
         $qb = $this->createQueryBuilder('self');
         $qb->addCriteria(CriteriaHelper::fromArray([
-            ['metered', 'eq', '0'],
+            ['parsed', 'eq', '0'],
             ['direction', 'eq', 'outbound'],
-            ['endTime', 'lte', $dateFrom->format('Y-m-d H:i:s')],
+            ['parserScheduledAt', 'lte', $dateFrom->format('Y-m-d H:i:s')],
         ]));
         $qb->setMaxResults($batchSize);
 
@@ -95,16 +95,23 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     }
 
     /**
-     * @param array $ids
-     * @return mixed
+     * @inheritdoc
+     * @see TrunksCdrRepository::resetParsed
      */
-    public function resetMetered(array $ids)
+    public function resetParsed(array $ids)
     {
+        $now = new  \DateTime(
+            'now',
+            new \DateTimeZone('UTC')
+        );
+
         $qb = $this
             ->createQueryBuilder('self')
             ->update($this->_entityName, 'self')
-            ->set('self.metered', ':metered')
-            ->setParameter(':metered', 0)
+            ->set('self.parsed', ':parsed')
+            ->setParameter(':parsed', 0)
+            ->set('self.parserScheduledAt', ':parserScheduledAt')
+            ->setParameter(':parserScheduledAt', $now->format('Y-m-d H:i:s'))
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
 

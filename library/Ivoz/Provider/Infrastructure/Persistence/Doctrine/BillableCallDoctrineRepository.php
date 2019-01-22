@@ -170,9 +170,9 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::resetPrices
+     * @see BillableCallRepository::resetPricingData
      */
-    public function resetPrices(array $ids)
+    public function resetPricingData(array $ids)
     {
         $qb = $this
             ->createQueryBuilder('self')

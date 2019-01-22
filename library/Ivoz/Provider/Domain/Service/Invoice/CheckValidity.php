@@ -6,7 +6,6 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
-use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
@@ -95,7 +94,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
-     * @param $utcOutDate
+     * @param \DateTime $utcOutDate
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException

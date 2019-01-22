@@ -102,7 +102,6 @@ class UpdateDtoByDefaultRunTpCdr
         );
 
         if (is_null($cost) || $cost < 0 || !$tpRatingPlan) {
-
             $errorMsg = empty($tpRatingPlan)
                 ? 'Rating plan not found'
                 : 'Rating price error';
