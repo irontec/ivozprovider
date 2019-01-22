@@ -34,6 +34,14 @@ class LifecycleCompiler implements CompilerPassInterface
             PersistErrorHandlerServiceCollection::class
         );
 
+
+        $commonErrorsHandlers = $this->getServicesByTag('lifecycle.common.error_handler');
+
+        $this->buildService(
+            ['lifecycle.common.error_handler' => $commonErrorsHandlers],
+            PersistErrorHandlerServiceCollection::class
+        );
+
         $domainEventPublisher = $this->container->getDefinition(DomainEventPublisher::class);
         $domainEventSubscribers = $this->getDomainEventSubscriberServices();
         foreach ($domainEventSubscribers as $domainEventSubscriber) {

@@ -295,11 +295,16 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function handleError(EntityInterface $entity, \Exception $exception)
     {
         $errorHandlerName = LifecycleServiceHelper::getServiceNameByEntity($entity, 'error_handler');
-        if (!$this->serviceContainer->has($errorHandlerName)) {
-            throw $exception;
+        if ($this->serviceContainer->has($errorHandlerName)) {
+            $errorHandler = $this->serviceContainer->get($errorHandlerName);
+            $errorHandler->execute($exception);
         }
 
-        $errorHandler = $this->serviceContainer->get($errorHandlerName);
-        $errorHandler->execute($exception);
+        $commonErrorHandler = $this->serviceContainer->get(
+            'lifecycle.common.error_handler'
+        );
+        $commonErrorHandler->execute($exception);
+
+        throw $exception;
     }
 }
