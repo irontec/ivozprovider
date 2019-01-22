@@ -16,6 +16,9 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
     trunksCdr_direction_idx:
       columns:
         - direction
+    trunksCdr_parsed_idx:
+      columns:
+        - parsed
     trunksCdr_cgrid_idx:
       columns:
         - cgrid
@@ -79,11 +82,17 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
     bounced:
       type: boolean
       nullable: true
-    metered:
+    parsed:
       type: boolean
       nullable: true
       options:
         default: '0'
+    parserScheduledAt:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: parserScheduledAt
     direction:
       type: string
       nullable: true
