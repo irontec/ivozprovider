@@ -28,13 +28,12 @@ class PersistErrorHandlerServiceCollection
         $this->services[] = $service;
     }
 
-    /**
-     * @param EntityInterface $entity
-     */
     public function execute(\Exception $exception)
     {
         foreach ($this->services as $service) {
             $service->handle($exception);
         }
+
+        throw $exception;
     }
 }
