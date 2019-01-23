@@ -1260,44 +1260,57 @@ msgid ""
 "to the previous role. The general (God) administrator is in charge of "
 "providing an URL with credentials for its brand portal."
 msgstr ""
+"El operador de marca accede a un portal con menos secciones en comparación con "
+"el rol previo. El administrador global está a cargo de "
+"proveer una URL con credenciales para su portal de marca."
 
 #: ../../basic_concepts/operation_roles/brand.rst:5
 msgid ""
 "The most important task for brand operator is to **create and configure "
 "clients so they can work properly**."
 msgstr ""
+"La tarea más importante del operador de marca es **crear y configurar "
+"clientes de manera que estos puedan trabajar correctamente**."
 
 #: ../../basic_concepts/operation_roles/brand.rst:8
 msgid ""
 "Due to brand operators are also responsible of billing their clients and "
 "make sure the external calls are properly setup, it must also manage:"
 msgstr ""
+"Dado que los operadores de marca son también responsables de la facturación y "
+"de garantizar que las llamas externas están debidamente configuradas, debe gestionar:"
 
 #: ../../basic_concepts/operation_roles/brand.rst:11
 msgid "Peering contracts with other IP providers for PSTN interconnection."
-msgstr ""
+msgstr "Contratos de peering con otros proveedores IP para interconexiones PSTN."
 
 #: ../../basic_concepts/operation_roles/brand.rst:13
 msgid "Include all required client information for the billing process."
-msgstr ""
+msgstr "Incluir toda la información requerida para el proceso de facturación."
 
 #: ../../basic_concepts/operation_roles/brand.rst:15
 msgid ""
 "Pricing plans that will offer to their clients, that will determine how "
 "match they pay for each call."
 msgstr ""
+"Planes de precios que serán ofrecidos a sus clientes y que determinarán cuanto "
+"pagarán por cada llamada."
 
 #: ../../basic_concepts/operation_roles/brand.rst:18
 msgid ""
 "Setup the routes for each outgoing call types based on their final "
 "destination"
 msgstr ""
+"Configurar las rutas para cada tipo de llamada saliente en base a su "
+"destino final."
 
 #: ../../basic_concepts/operation_roles/brand.rst:21
 msgid ""
 "Create the invoices for each billing period and send them to their "
 "clients."
 msgstr ""
+"Crear las facturas por cada periodo de facturación y enviarlas a sus "
+"clientes."
 
 #: ../../basic_concepts/operation_roles/brand.rst:24
 msgid ""
@@ -1305,6 +1318,9 @@ msgid ""
 "global operator, but their importance is vital so the final users can use"
 " all the features includes in IvozProvider"
 msgstr ""
+"Como puede apreciarse, la tarea del operador de marca es muy distinta de la tarea del "
+"administrador global, pero su importancia es vital para que el usuario final pueda usar "
+"todas las funcionalidades incluidas en IvozProvider."
 
 #: ../../basic_concepts/operation_roles/brand.rst:30
 msgid ""
@@ -1312,67 +1328,76 @@ msgid ""
 "administrators and **configure the platform to route and rate their "
 "calls**."
 msgstr ""
+"**En resumen**, los operadores de marca **otorgan acceso** a sus administradores de "
+"**clientes** y **configuran la plataforma para enrutar y tarificar sus "
+"llamadas**."
 
 #: ../../basic_concepts/operation_roles/client.rst:1
 msgid ""
 "The client administrator has access to the portal supplied by the brand "
 "operator."
 msgstr ""
+"El administrador de cliente tiene acceso al portal facilitado por el administrador "
+"de marca."
 
 #: ../../basic_concepts/operation_roles/client.rst:4
 msgid ""
 "From its point of view, it has a virtual pbx in the cloud that must "
 "configure for its users."
 msgstr ""
+"Desde su punto de vista, tiene una PBX virtual en la nube que debe "
+"configurar para sus clientes."
 
 #: ../../basic_concepts/operation_roles/client.rst:7
 msgid "To accomplish that, it's required:"
-msgstr ""
+msgstr "Para realizar esta tarea, es requerido:"
 
 #: ../../basic_concepts/operation_roles/client.rst:9
 msgid "Configure terminals, extensions and users."
-msgstr ""
+msgstr "Configurar terminales, extensiones y usuarios."
 
 #: ../../basic_concepts/operation_roles/client.rst:11
 msgid "Configure the DDI incoming process with the proper logic:"
-msgstr ""
+msgstr "Configurar los DDIs entrantes con las lógicas que correspondan:"
 
 #: ../../basic_concepts/operation_roles/client.rst:13
 msgid "Directly to an user"
-msgstr ""
+msgstr "Directo a usuario"
 
 #: ../../basic_concepts/operation_roles/client.rst:14
 msgid "IVRs"
-msgstr ""
+msgstr "IVRs"
 
 #: ../../basic_concepts/operation_roles/client.rst:15
 msgid "Hunt groups"
-msgstr ""
+msgstr "Grupos de salto"
 
 #: ../../basic_concepts/operation_roles/client.rst:16
 msgid "Faxes"
-msgstr ""
+msgstr "Faxes"
 
 #: ../../basic_concepts/operation_roles/client.rst:18
 msgid ""
 "Give access to the final users to their web portal, so they can configure"
 " their profile options:"
 msgstr ""
+"Dar acceso al usuario final a su portal web, de manera que pueda configurar "
+"las opciones de su perfil:"
 
 #: ../../basic_concepts/operation_roles/client.rst:21
 #: ../../basic_concepts/operation_roles/user.rst:10
 msgid "Call forward"
-msgstr ""
+msgstr "Desvíos"
 
 #: ../../basic_concepts/operation_roles/client.rst:22
 #: ../../basic_concepts/operation_roles/user.rst:11
 msgid "Do not disturb"
-msgstr ""
+msgstr "No molestar"
 
 #: ../../basic_concepts/operation_roles/client.rst:23
 #: ../../basic_concepts/operation_roles/user.rst:12
 msgid "Call waiting"
-msgstr ""
+msgstr "Llamada en espera"
 
 #: ../../basic_concepts/operation_roles/client.rst:25
 msgid ""
@@ -1380,68 +1405,86 @@ msgid ""
 "the telephony system and make use of all the features available in "
 "IvozProvider**."
 msgstr ""
+"En resumen, los administradores de cliente son los responsables de "
+"**configurar su sistema de telefonía a su gusto y de utilizar todas las "
+"funcionalidades que proveé IvozProvider**."
+
 
 #: ../../basic_concepts/operation_roles/god.rst:1
 msgid ""
 "The global administrator role (operator in the image) is usually done by "
 "the installation responsible."
 msgstr ""
+"El rol de administrador global (operador en la imagen) lo desempeña "
+"habitualmente el instalador de IvozProvider."
 
 #: ../../basic_concepts/operation_roles/god.rst:4
 msgid ""
 "All options and platform features are visible to this role and usually is"
 " in charge of its maintenance."
 msgstr ""
+"Tiene visibilidad total de todos los aspectos de la plataforma y suele "
+"ser el encargado del mantenimiento de la misma."
 
 #: ../../basic_concepts/operation_roles/god.rst:7
 msgid ""
 "Their most important task is to **create Brands** and configure them so "
 "they have the enough autonomy to properly use the platform:"
 msgstr ""
+"Su **función más importante es crear Marcas** y hacer todo lo necesario "
+"para que dispongan de la autonomía necesaria para usar la plataforma:"
 
 #: ../../basic_concepts/operation_roles/god.rst:10
 msgid "Configure their web access."
-msgstr ""
+msgstr "Configurar sus accesos web."
 
 #: ../../basic_concepts/operation_roles/god.rst:12
 msgid "Configure their brand portal look and feel: themes, colors, etc."
 msgstr ""
+"Configurar el aspecto de su portal de administración de marca: tema, "
+"colores, etc."
 
 #: ../../basic_concepts/operation_roles/god.rst:14
 msgid ""
 "Apart from their main task, their global visibility and total access "
 "makes them responsible of:"
 msgstr ""
+"Aparte de esta función principal, su visibilidad global y acceso total le"
+" hacen responsable de:"
 
 #: ../../basic_concepts/operation_roles/god.rst:17
 msgid "Monitor the platform so it keeps always UP & RUNNING"
-msgstr ""
+msgstr "Monitorizar la plataforma para que esté siempre UP & RUNNING."
 
 #: ../../basic_concepts/operation_roles/god.rst:19
 msgid "Analyze platform logs to track possible errors."
-msgstr ""
+msgstr "Analizar los logs de la plataforma en busca de posibles errores."
 
 #: ../../basic_concepts/operation_roles/god.rst:21
 msgid "Polish the security mechanisms to avoid external attacks."
-msgstr ""
+msgstr "Afinar los mecanismos de seguridad para evitar ataques externos."
 
 #: ../../basic_concepts/operation_roles/god.rst:23
 msgid "Obtain global statistics of calls audio quality."
-msgstr ""
+msgstr "Obtener estadísticas globales de calidad de llamada."
 
 #: ../../basic_concepts/operation_roles/god.rst:25
 msgid "Increase the available resources of the platform as long as is needed:"
 msgstr ""
+"Ir aumentando los recursos de la plataforma a medida que se vaya "
+"necesitando:"
 
 #: ../../basic_concepts/operation_roles/god.rst:27
 msgid "Increasing resources available in a standalone installation"
-msgstr ""
+msgstr "Aumentando los recursos de la instalación standalone."
 
 #: ../../basic_concepts/operation_roles/god.rst:29
 msgid ""
 "Migrating, whenever required, to a distributed installation with multiple"
 " AS, media relays, etc."
 msgstr ""
+"Migrando, llegado el momento, a una instalación distribuida con múltiples"
+" AS-es, media relays, etc."
 
 #: ../../basic_concepts/operation_roles/god.rst:32
 msgid ""
@@ -1449,6 +1492,9 @@ msgid ""
 "platform**, that's why *God* is a term used in multiple places along this"
 " documentation."
 msgstr ""
+"En resumen, **es el único rol que no tiene límites dentro de la "
+"plataforma**, de ahí la denominación *God* que se utilizará en múltiples "
+"lugares de esta documentación."
 
 #: ../../basic_concepts/operation_roles/god.rst:36
 msgid ""
@@ -1456,74 +1502,85 @@ msgid ""
 "for the correct behaviour. This role **doesn't have any kind of limit** "
 "and **grants access** to the **brand operators**."
 msgstr ""
+"**Este rol se encarga de mantener la plataforma**, adaptándola a las "
+"necesidades de cada momento. Su rol **no tiene ningún tipo de límite y** "
+"es el que **da acceso a** los *n* **operadores de marca**."
 
 #: ../../basic_concepts/operation_roles/index.rst:5
 msgid "Platform roles"
-msgstr ""
+msgstr "Roles de la plataforma"
 
 #: ../../basic_concepts/operation_roles/index.rst:7
 msgid "IvozProvider is a multilevel role provider solution."
-msgstr ""
+msgstr "IvozProvider es una solución de proveedor multinivel."
 
 #: ../../basic_concepts/operation_roles/index.rst:9
 msgid ""
 "The following images shows the different available levels and the "
 "relation between them:"
 msgstr ""
+"La siguiente imagen muestra los distintos niveles disponibles así como "
+"la relación entre ellos:"
 
 #: ../../basic_concepts/operation_roles/index.rst:20
 msgid ""
 "This section will explain each of the available roles, describing their "
 "responsibilities and more important tasks."
 msgstr ""
+"Esta sección explica cada uno de los roles, describe sus responsabilidades "
+"y tareas principales."
 
 #: ../../basic_concepts/operation_roles/index.rst:25
 msgid "Global administrator role"
-msgstr ""
+msgstr "Rol de administrador global"
 
 #: ../../basic_concepts/operation_roles/index.rst:31
 msgid "Brand administrator role"
-msgstr ""
+msgstr "Rol de administrador de marca"
 
 #: ../../basic_concepts/operation_roles/index.rst:37
 msgid "Client administrator role"
-msgstr ""
+msgstr "Rol de administrador de cliente"
 
 #: ../../basic_concepts/operation_roles/index.rst:43
 msgid "Final user role"
-msgstr ""
+msgstr "Rol de usuario final"
 
 #: ../../basic_concepts/operation_roles/user.rst:1
 msgid ""
 "The final user has two different kinds of credentials, both supplied by "
 "its client administrator:"
 msgstr ""
+"El usuario final cuenta con dos tipos distintos de credenciales, ambas "
+"facilitadas por su administrador de cliente:"
 
 #: ../../basic_concepts/operation_roles/user.rst:4
 msgid "User portal access credentials"
-msgstr ""
+msgstr "Credenciales de acceso al portal de usuario"
 
 #: ../../basic_concepts/operation_roles/user.rst:6
 msgid "SIP credentials used to register terminals to IvozProvider"
-msgstr ""
+msgstr "Credenciales SIP utilizadas para registrar el terminal en IvozProvider"
 
 #: ../../basic_concepts/operation_roles/user.rst:8
 msgid "Through the user portal, it can browse their call registry and configure:"
-msgstr ""
+msgstr "A través del portal de usuario, se puede visualizar el histórico de llamas y configurar:"
 
 #: ../../basic_concepts/operation_roles/user.rst:13
 msgid "Displayed data when calling"
-msgstr ""
+msgstr "Datos a mostrar durante la llamada"
 
 #: ../../basic_concepts/operation_roles/user.rst:14
 msgid "Geographical configuration"
-msgstr ""
+msgstr "Configuración geográfica"
 
 #: ../../basic_concepts/operation_roles/user.rst:16
 msgid ""
 "On the other hand, the SIP credentials allow users to configure their "
 "terminals to place and receive calls."
 msgstr ""
+"Por otro lado, las credenciales SIP permiten al usuario configurar su "
+"terminal para realizar y recibir llamadas."
 
 #: ../../basic_concepts/operation_roles/user.rst:18
 msgid ""
@@ -1532,4 +1589,8 @@ msgid ""
 "placed to an user, all the active devices will ring so the user can "
 "answer the call from any of them."
 msgstr ""
+"Las mismas credenciales SIP pueden ser utilizadas en múltiples dispositivos al mismo "
+"tiempo, generado un efecto de bifurcación paralela (*parallel-forking*): cuando se recibe "
+"una llamada, todos los dispositivos activos sonarán permitiendo al usuario "
+"responder desde cualquiera de ellos."
 
