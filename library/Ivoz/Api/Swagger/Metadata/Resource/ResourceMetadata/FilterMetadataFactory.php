@@ -159,6 +159,9 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 
     private function getEntityAttributes(string $resourceClass)
     {
-        return $this->propertyNameCollectionFactory->create($resourceClass);
+        return $this->propertyNameCollectionFactory->create(
+            $resourceClass,
+            ['expandSubResources' => true]
+        );
     }
 }
