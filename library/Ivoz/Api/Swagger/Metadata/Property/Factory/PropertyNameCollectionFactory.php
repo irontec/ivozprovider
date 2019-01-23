@@ -49,9 +49,18 @@ class PropertyNameCollectionFactory implements PropertyNameCollectionFactoryInte
                 $context
             );
             $attributes = $this->normalizePropertyMap($propertyMap);
+            $expandSubResources = isset($options['expandSubResources']) && $options['expandSubResources'];
 
             foreach ($attributes as $key => $value) {
                 if (array_key_exists($value, $propertyMap)) {
+                    if (!is_array($propertyMap[$value]) || !$expandSubResources) {
+                        continue;
+                    }
+
+                    foreach ($propertyMap[$value] as $subAttribute) {
+                        $attributes[] = "$value.$subAttribute";
+                    }
+                    unset($attributes[$key]);
                     continue;
                 }
 
