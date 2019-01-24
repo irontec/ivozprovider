@@ -19,15 +19,24 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      */
     public function areRetarificable(array $pks);
 
+
     /**
-     * @param array $ids
-     * @return array
+     * Return non externally rated calls without cgrid
+     * @param array $pks
+     * @return BillableCallInterface[]
      */
-    public function idsToCgrid(array $ids);
+    public function findUnratedInGroup(array $pks);
 
     /**
      * @param array $ids
      * @return array
+     */
+    public function findRerateableCgridsInGroup(array $ids);
+
+    /**
+     * @param array $ids
+     * @return array
+     * @throws \Exception | \DomainException
      */
     public function idsToTrunkCdrId(array $ids);
 
@@ -35,7 +44,7 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @param array $ids
      * @return void
      */
-    public function resetPrices(array $ids);
+    public function resetPricingData(array $ids);
 
     /**
      * @param int $invoiceId

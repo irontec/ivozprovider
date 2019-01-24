@@ -21,6 +21,11 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     protected $billableCallRepository;
 
     /**
+     * @var ProcessExternalCdr
+     */
+    protected $processExternalCdr;
+
+    /**
      * @var LoggerInterface
      */
     protected $logger;
@@ -29,10 +34,12 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
         ClientInterface $jsonRpcClient,
         BillableCallRepository $billableCallRepository,
         TrunksCdrRepository $trunksCdrRepository,
+        ProcessExternalCdr $processExternalCdr,
         LoggerInterface $logger
     ) {
         $this->billableCallRepository = $billableCallRepository;
         $this->trunksCdrRepository = $trunksCdrRepository;
+        $this->processExternalCdr = $processExternalCdr;
         $this->logger = $logger;
 
         return parent::__construct(
@@ -46,10 +53,60 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
      */
     public function execute(array $pks)
     {
+        $error = false;
         $cgrIds = $this
             ->billableCallRepository
-            ->idsToCgrid($pks);
+            ->findRerateableCgridsInGroup($pks);
 
+        if (!empty($cgrIds)) {
+            try {
+                $this->rerate($cgrIds);
+            } catch (\Exception $e) {
+                $this->logger->error($e->getMessage());
+                $error = true;
+            }
+        }
+
+        $unrated = $this->billableCallRepository->findUnratedInGroup($pks);
+        if (!empty($unrated)) {
+            foreach ($unrated as $billableCall) {
+                try {
+                    $this->processExternalCdr->execute(
+                        $billableCall->getTrunksCdr()
+                    );
+                } catch (\Exception $e) {
+                    $this->logger->error($e->getMessage());
+                    $error = true;
+                    continue;
+                }
+            }
+        }
+
+        // shared
+        $this
+            ->billableCallRepository
+            ->resetPricingData($pks);
+
+        $trunkCdrIds = $this
+            ->billableCallRepository
+            ->idsToTrunkCdrId($pks);
+
+        $this->trunksCdrRepository
+            ->resetParsed($trunkCdrIds);
+
+        if ($error) {
+            throw new \DomainException(
+                'Some calls could not be rerated'
+            );
+        }
+    }
+
+    /**
+     * @param array $cgrIds
+     * @return void
+     */
+    private function rerate(array $cgrIds)
+    {
         $payload = [
             "CgrIds" => $cgrIds,
             "MediationRunIds" => null,
@@ -71,30 +128,9 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
             "SendToStats" => false
         ];
 
-        try {
-            $this->sendRequest(
-                'CdrsV1.RateCDRs',
-                $payload
-            );
-        } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
-
-            throw new \DomainException(
-                'There was an error during API request',
-                $e->getCode(),
-                $e
-            );
-        }
-
-        $this
-            ->billableCallRepository
-            ->resetPrices($pks);
-
-        $trunkCdrIds = $this
-            ->billableCallRepository
-            ->idsToTrunkCdrId($pks);
-
-        $this->trunksCdrRepository
-            ->resetMetered($trunkCdrIds);
+        $this->sendRequest(
+            'CdrsV1.RateCDRs',
+            $payload
+        );
     }
 }

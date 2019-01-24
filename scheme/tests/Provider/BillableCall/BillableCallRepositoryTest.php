@@ -13,8 +13,8 @@ class BillableCallRepositoryTest extends KernelTestCase
     use DbIntegrationTestHelperTrait;
 
     /**
-     * @inheritdoc
      * @test
+     * @see BillableCallRepository::areRetarificable
      */
     public function it_checks_retarificable_calls()
     {
@@ -33,10 +33,10 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
      * @test
+     * @see BillableCallRepository::findUnratedInGroup
      */
-    public function it_transforms_ids_to_cgrid()
+    public function it_finds_unrated_calls_in_group()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -44,7 +44,7 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $cgrids = $billableCallRepository
-            ->idsToCgrid([]);
+            ->findUnratedInGroup([]);
 
         $this->assertInternalType(
             'array',
@@ -53,7 +53,26 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
+     * @test
+     * @see BillableCallRepository::findRerateableCgridsInGroup
+     */
+    public function it_finds_rerateable_cgrids_in_group()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCalls */
+        $cgrids = $billableCallRepository
+            ->findRerateableCgridsInGroup([]);
+
+        $this->assertInternalType(
+            'array',
+            $cgrids
+        );
+    }
+
+    /**
      * @test
      */
     public function it_transforms_ids_to_trunkCdrId()
@@ -73,10 +92,9 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
      * @test
      */
-    public function it_resets_prices()
+    public function it_resets_pricing_data()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -84,7 +102,7 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
-            ->resetPrices([1]);
+            ->resetPricingData([1]);
 
         $this->assertInternalType(
             'null',
@@ -93,7 +111,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
      * @test
      */
     public function it_resets_invoice_id()
@@ -113,7 +130,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
      * @test
      */
     public function it_sets_invoice_id()
@@ -138,7 +154,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
      * @test
      */
     public function it_counts_untarificatted_calls_before_date()
@@ -162,7 +177,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @inheritdoc
      * @test
      */
     public function it_counts_untarificatted_calls_in_range()

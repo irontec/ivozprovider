@@ -67,7 +67,7 @@ class MigrateFromTrunksCdr
         /**
          * @var \Generator
          */
-        $trunksGenerator = $this->trunksCdrRepository->getUnmeteredCallsGeneratorWithoutOffset(self::BATCH_SIZE);
+        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(self::BATCH_SIZE);
 
         $cdrCount = 0;
         foreach ($trunksGenerator as $trunks) {
@@ -118,7 +118,7 @@ class MigrateFromTrunksCdr
         $trunksCdrDto = $this->entityTools->entityToDto(
             $trunksCdr
         );
-        $trunksCdrDto->setMetered(true);
+        $trunksCdrDto->setParsed(true);
         $this->entityTools->persistDto(
             $trunksCdrDto,
             $trunksCdr,

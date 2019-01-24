@@ -44,7 +44,7 @@ class CreateOrUpdateByTrunksCdr
 
         $carrierName = $carrier
             ? $carrier->getName()
-            : '';
+            : $billableCallDto->getCarrierName();
 
         /**
          * @var TrunksCdrDto $trunksCdrDto
@@ -72,13 +72,23 @@ class CreateOrUpdateByTrunksCdr
                 $trunksCdrDto->getCallid()
             )->setCaller(
                 $caller
-            )->setCallee(
-                $trunksCdrDto->getCallee()
-            )->setStartTime(
-                $trunksCdrDto->getStartTime()
-            )->setDuration(
+            );
+
+        $isNew = is_null($billableCall);
+        if ($isNew) {
+            $durantion = round(
                 $trunksCdrDto->getDuration()
             );
+
+            $billableCallDto
+                ->setCallee(
+                    $trunksCdrDto->getCallee()
+                )->setStartTime(
+                    $trunksCdrDto->getStartTime()
+                )->setDuration(
+                    $durantion
+                );
+        }
 
         if ($trunksCdrDto->getRetailAccountId()) {
             $billableCallDto
