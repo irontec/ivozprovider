@@ -103,4 +103,20 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return self
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getCallCsvNotificationTemplate();
 }

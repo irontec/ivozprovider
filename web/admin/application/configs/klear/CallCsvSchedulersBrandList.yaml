@@ -23,11 +23,19 @@ production:
       <<: *callCsvSchedulersNew_screenLink
       forcedValues:
         <<: *forcedBrand
+      fields:
+        blacklist:
+          <<: *callCsvSchedulersNew_blacklist
+          callCsvNotificationTemplate: false
 
     callCsvSchedulersEdit_screen:
       <<: *callCsvSchedulersEdit_screenLink
       forcedValues:
         <<: *forcedBrand
+      fields:
+        blacklist:
+          <<: *callCsvSchedulersEdit_blacklist
+          callCsvNotificationTemplate: false
 
   dialogs:
     <<: *callCsvSchedulers_dialogsLink

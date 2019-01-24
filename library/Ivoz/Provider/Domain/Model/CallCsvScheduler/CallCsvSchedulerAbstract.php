@@ -59,6 +59,11 @@ abstract class CallCsvSchedulerAbstract
      */
     protected $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $callCsvNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -154,6 +159,7 @@ abstract class CallCsvSchedulerAbstract
             ->setNextExecution($dto->getNextExecution())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
         ;
 
         $self->sanitizeValues();
@@ -185,7 +191,8 @@ abstract class CallCsvSchedulerAbstract
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()));
 
 
 
@@ -209,7 +216,8 @@ abstract class CallCsvSchedulerAbstract
             ->setLastExecutionError(self::getLastExecutionError())
             ->setNextExecution(self::getNextExecution())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth));
     }
 
     /**
@@ -226,7 +234,8 @@ abstract class CallCsvSchedulerAbstract
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -481,6 +490,30 @@ abstract class CallCsvSchedulerAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return self
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
     }
 
     // @codeCoverageIgnoreEnd

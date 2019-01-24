@@ -1633,11 +1633,6 @@ msgstr "None"
 msgid "Not Registered"
 msgstr "Not Registered"
 
-msgid "Notification Template"
-msgid_plural "Notifications Templates"
-msgstr[0] "Notification template"
-msgstr[1] "Notification templates"
-
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 

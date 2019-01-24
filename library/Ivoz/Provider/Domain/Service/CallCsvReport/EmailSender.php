@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
+use Ivoz\Provider\Domain\Service\NotificationTemplateContent\CallCsvNotificationTemplateByCallCsvReport;
 use Psr\Log\LoggerInterface;
 
 class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
@@ -21,9 +22,9 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
     protected $entityTools;
 
     /**
-     * @var NotificationTemplateRepository
+     * @var CallCsvNotificationTemplateByCallCsvReport
      */
-    protected $notificationTemplateRepository;
+    protected $callCsvNotificationTemplateByCallCsvReport;
 
     /**
      * @var MailerClientInterface
@@ -37,12 +38,12 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 
     public function __construct(
         EntityTools $entityTools,
-        NotificationTemplateRepository $notificationTemplateRepository,
+        CallCsvNotificationTemplateByCallCsvReport $callCsvNotificationTemplateByCallCsvReport,
         MailerClientInterface $mailer,
         LoggerInterface $logger
     ) {
         $this->entityTools = $entityTools;
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
+        $this->callCsvNotificationTemplateByCallCsvReport = $callCsvNotificationTemplateByCallCsvReport;
         $this->mailer = $mailer;
         $this->logger = $logger;
     }
@@ -71,11 +72,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
             return false;
         }
 
-        if (!$callCsvReport->getCompany()) {
-            throw new \DomainException('Brand email notification not implemented yet');
-        }
+        $notificationTemplateContent = $this
+            ->callCsvNotificationTemplateByCallCsvReport
+            ->execute($callCsvReport);
 
-        $notificationTemplateContent = $this->getNotificationTemplateContent($callCsvReport);
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
         $body = $this->parseVariables(
@@ -120,37 +120,18 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 
     /**
      * @param CallCsvReportInterface $callCsvReport
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
-     */
-    private function getNotificationTemplateContent(CallCsvReportInterface $callCsvReport)
-    {
-        $company = $callCsvReport->getCompany();
-
-        /** @var NotificationTemplateInterface $genericCallCsvNotificationTemplate */
-        $callCsvNotificationTemplate = $company->getCallCsvNotificationTemplate();
-        if (!$callCsvNotificationTemplate) {
-            $callCsvNotificationTemplate = $this
-                ->notificationTemplateRepository
-                ->findGenericCallCsvTemplate();
-        }
-
-        // Get Notification contents for required language
-        $notificationTemplateContent = $callCsvNotificationTemplate->getContentsByLanguage(
-            $company->getLanguage()
-        );
-
-        return $notificationTemplateContent;
-    }
-
-    /**
-     * @param CallCsvReportInterface $callCsvReport
      * @param string $content
      * @return string
      */
     private function parseVariables(CallCsvReportInterface $callCsvReport, string $content): string
     {
         $company = $callCsvReport->getCompany();
-        $timezone = $company->getDefaultTimezone();
+        $brand = $callCsvReport->getBrand();
+
+        $timezone = $company
+            ? $company->getDefaultTimezone()
+            : $brand->getDefaultTimezone();
+
         $dateTimeZone = new \DateTimeZone($timezone->getTz());
 
         $inDate = $callCsvReport
@@ -161,8 +142,12 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
             ->getOutDate()
             ->setTimezone($dateTimeZone);
 
+        $name = $company
+            ? $company->getName()
+            : '';
+
         $substitution = [
-            '${CALLCSV_COMPANY}' => $company->getName(),
+            '${CALLCSV_COMPANY}' => $name,
             '${CALLCSV_DATE_IN}' => $inDate->format('Y-m-d'),
             '${CALLCSV_DATE_OUT}' => $outDate->format('Y-m-d'),
         ];
