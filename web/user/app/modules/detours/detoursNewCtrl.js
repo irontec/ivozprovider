@@ -43,7 +43,7 @@ angular
             appConfig.urlRest + 'my/company_extensions',
             {headers: {accept: 'application/json'}}
         ).then(function(extensions) {
-            $scope.extensionPromise = extensions.data;
+            $scope.extensions = extensions.data;
         });
 
         var countryPromise = $http.get(
