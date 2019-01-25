@@ -46,6 +46,10 @@ class IvozProvider_Klear_Ghost_SchedulerSuccess extends KlearMatrix_Model_Field_
         if (!$lastExecution) {
             return '';
         }
+
+        $lastExecution
+            ->setTimezone(new \DateTimeZone(date_default_timezone_get()));
+
         $lastExecutionStr = $lastExecution->format('Y-m-d H:i:s');
 
         if (empty($errorMsg)) {
