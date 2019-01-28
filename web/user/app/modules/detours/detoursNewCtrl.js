@@ -47,7 +47,7 @@ angular
         });
 
         var countryPromise = $http.get(
-            appConfig.urlRest + 'countries?_pagination=false',
+            appConfig.urlRest + 'countries?_pagination=false&' +  $.param({_order: {'name.es': 'asc'}}),
             {headers: {accept: 'application/json'}}
         ).then(function(countries) {
             for (var idx in countries.data) {
