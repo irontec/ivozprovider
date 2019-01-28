@@ -65,13 +65,13 @@ production:
           '0':
             title: _("No")
             visualFilter:
-              show: [balance, calculateCost]
+              show: [balance, calculateCost, currency]
               hide: []
           '1':
             title: _("Yes")
             visualFilter:
               show: []
-              hide: [balance, calculateCost]
+              hide: [balance, calculateCost, currency]
     calculateCost:
       title: _('Calculate cost?')
       type: select
