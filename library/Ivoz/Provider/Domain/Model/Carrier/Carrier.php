@@ -28,6 +28,21 @@ class Carrier extends CarrierAbstract implements CarrierInterface
         return $this->id;
     }
 
+
+    /**
+     * @inheritdoc
+     */
+    protected function sanitizeValues()
+    {
+        if ($this->getExternallyRated()) {
+            $this->setCalculateCost(false);
+        }
+
+        if (!$this->getCalculateCost()) {
+            $this->setCurrency(null);
+        }
+    }
+
     /**
      * @return string
      */
