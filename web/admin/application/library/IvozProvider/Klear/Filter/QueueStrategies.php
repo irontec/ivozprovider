@@ -47,5 +47,4 @@ class IvozProvider_Klear_Filter_QueueStrategies implements KlearMatrix_Model_Fie
 
         return $excludedStrategies;
     }
-
 }

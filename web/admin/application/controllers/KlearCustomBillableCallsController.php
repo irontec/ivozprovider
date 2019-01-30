@@ -10,7 +10,7 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
     public function init()
     {
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter))) {
-            throw New Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+            throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
         $this->_helper->layout->disableLayout();
@@ -39,7 +39,7 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
         $criteria['_properties'] = CsvExporter::BRAND_PROPERTIES;
 
         $requestFile = $this->_request->getParam('file');
-        switch($requestFile) {
+        switch ($requestFile) {
             case 'BillableCallsList':
                 $criteria['_properties'][] = 'brand';
                 $criteria['_properties'][] = 'company';
@@ -55,7 +55,7 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
         $where = [];
 
         if (isset($requestParams) && array_key_exists('searchFields', $requestParams)) {
-            foreach($requestParams['searchFields'] as $field => $values) {
+            foreach ($requestParams['searchFields'] as $field => $values) {
                 foreach ($values as $key => $value) {
                     $value = urldecode($value);
                     switch ($requestParams['searchOps'][$field][$key]) {

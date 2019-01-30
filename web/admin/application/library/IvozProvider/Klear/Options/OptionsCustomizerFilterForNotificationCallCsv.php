@@ -31,7 +31,7 @@ class IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationCallCsv i
         $this->_mainRouterOriginalParams = $this->_mainRouter->getParams();
     }
 
-    public function setOption (\KlearMatrix_Model_Option_Abstract $option)
+    public function setOption(\KlearMatrix_Model_Option_Abstract $option)
     {
         $this->_option = $option;
     }

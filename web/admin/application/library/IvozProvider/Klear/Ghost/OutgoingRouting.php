@@ -65,5 +65,4 @@ class IvozProvider_Klear_Ghost_OutgoingRouting extends KlearMatrix_Model_Field_G
 
         return implode(',', $carrierNames);
     }
-
 }

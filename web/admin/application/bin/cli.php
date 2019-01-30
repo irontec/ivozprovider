@@ -69,7 +69,7 @@ define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
 
 
     // initialize Zend_Application
-    $application = new Zend_Application (
+    $application = new Zend_Application(
         APPLICATION_ENV,
         APPLICATION_PATH . '/configs/application.ini'
     );
@@ -106,4 +106,4 @@ define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
     // lets bootstrap our application and enjoy!
     $application->bootstrap()
        ->run();
-?>
+    ?>

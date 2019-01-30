@@ -49,9 +49,10 @@ class DTOGenerator extends ParentGenerator
         );
 
         $code = str_replace(
-                array_keys($replacements),
-                array_values($replacements),
-                static::$classTemplate);
+            array_keys($replacements),
+            array_values($replacements),
+            static::$classTemplate
+        );
 
         return str_replace('<spaces>', $this->spaces, $code);
     }

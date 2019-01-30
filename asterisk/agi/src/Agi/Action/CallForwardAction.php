@@ -7,7 +7,6 @@ use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
-
 class CallForwardAction
 {
     /**
@@ -48,8 +47,7 @@ class CallForwardAction
         Wrapper $agi,
         ChannelInfo $channelInfo,
         RouterAction $routerAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->routerAction = $routerAction;
@@ -83,7 +81,6 @@ class CallForwardAction
             $forwarder = $this->cfw->getResidentialDevice();
             if ($forwarder) {
                 $caller = new ResidentialAgent($this->agi, $forwarder);
-
             }
         }
 
@@ -137,5 +134,4 @@ class CallForwardAction
             ->setRouteExternal($this->cfw->getNumberValueE164())
             ->route();
     }
-
 }

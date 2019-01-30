@@ -80,7 +80,7 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
 
         $user
             ->setId($operator->getId())
-            ->setUserName($operator->getName(). ' '. $operator->getLastName() )
+            ->setUserName($operator->getName(). ' '. $operator->getLastName())
             ->setLogin($operator->getUsername())
             ->setEmail($operator->getEmail())
             ->setPassword($operator->getPass())
@@ -126,13 +126,12 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
 
         if ($entity instanceof BrandDTO) {
             $user->setBrandFeatures($features);
-        } else if ($entity instanceof CompanyDTO) {
+        } elseif ($entity instanceof CompanyDTO) {
             $user->setCompanyFeatures($features);
         } else {
             throw new \Exception('Brand or Company DTO was expected');
         }
     }
 
-    protected abstract function _populateCustomPerms(\IvozProvider\Klear\Auth\User $user, $operator);
-
+    abstract protected function _populateCustomPerms(\IvozProvider\Klear\Auth\User $user, $operator);
 }

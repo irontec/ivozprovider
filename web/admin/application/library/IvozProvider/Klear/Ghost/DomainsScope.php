@@ -15,7 +15,7 @@ class IvozProvider_Klear_Ghost_DomainsScope extends KlearMatrix_Model_Field_Ghos
      * @return string name of target based on domain scope
      * @throws Zend_Exception
      */
-    public function getData ($model)
+    public function getData($model)
     {
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');

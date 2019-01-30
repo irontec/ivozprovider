@@ -10,7 +10,7 @@ class IvozProvider_Klear_Ghost_OutgoingRouteType extends KlearMatrix_Model_Field
      * @return string Name of target based on outgoing route type
      * @throws Zend_Exception
      */
-    public function getData ($model)
+    public function getData($model)
     {
         $outgoingRouteType = $model->getType();
         $dataGateway = \Zend_Registry::get('data_gateway');
@@ -26,7 +26,6 @@ class IvozProvider_Klear_Ghost_OutgoingRouteType extends KlearMatrix_Model_Field
             );
 
             return $routingPatternGroup->getName();
-
         } elseif ($outgoingRouteType == 'pattern') {
 
             /**

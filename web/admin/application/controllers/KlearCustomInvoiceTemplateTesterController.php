@@ -15,7 +15,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         // Nos aseguramos que este controlador se ejecuta sólamente desde klear!
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
          ||    (!is_object($this->_mainRouter)) ) {
-          throw New Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+            throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
         //Inicia el contenido en Json
@@ -452,5 +452,4 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
             )
         );
     }
-
 }

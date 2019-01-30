@@ -31,8 +31,7 @@ class HuntGroupStatusAction
     public function __construct(
         Wrapper $agi,
         RouterAction $routerAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
     }
@@ -59,8 +58,9 @@ class HuntGroupStatusAction
 
         // User answered the call. Job's done.
         $dialStatus = $this->agi->getVariable("DIALSTATUS");
-        if ($dialStatus == "ANSWER")
+        if ($dialStatus == "ANSWER") {
             return;
+        }
 
         // Check pending calls
         $huntGroupEndpoints = explode(';', $this->agi->getVariable("HG_ENDPOINTLIST"));
@@ -82,7 +82,6 @@ class HuntGroupStatusAction
 
         // No more users to be called
         if (empty($huntGroupEndpoints)) {
-
             $this->agi->verbose("Processing Hungroup %s no answer handler.", $huntGroup);
 
             // Play NoAnswer Locution
@@ -100,8 +99,8 @@ class HuntGroupStatusAction
         }
 
         // Update pending extensions
-        $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints,';'));
-        $this->agi->setVariable("HG_TIMEOUTLIST", join($huntGroupTimeouts,';'));
+        $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints, ';'));
+        $this->agi->setVariable("HG_TIMEOUTLIST", join($huntGroupTimeouts, ';'));
 
         // Call next!
         $this->agi->redirect('call-huntgroup');

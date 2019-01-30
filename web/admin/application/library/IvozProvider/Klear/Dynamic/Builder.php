@@ -38,10 +38,8 @@ class Builder
         } elseif ($brandURLType == 'admin') {
             $dynamic = new CompanyAdmin();
         } elseif ($brandURLType == 'user') {
-
             header("Location: " . $currentURL . '/portal');
             exit;
-
         } else {
             self::_failConfiguration();
         }

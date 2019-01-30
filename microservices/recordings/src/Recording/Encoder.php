@@ -108,7 +108,6 @@ class Encoder
 
         // Check each recording file
         foreach ($files as $filename) {
-
             // Store valid files
             if (preg_match("/(.*)-\w+-mix.wav/", $filename, $matches)) {
                 $file = $matches[0];
@@ -153,7 +152,6 @@ class Encoder
             $metadata = 'artist="' . $callid . '"';
 
             foreach ($kamAccCdrs as $kamAccCdr) {
-
                 if ($kamAccCdr instanceof TrunksCdrInterface) {
                     $type = 'ddi';
                     $direction = $kamAccCdr->getDirection();
@@ -177,8 +175,12 @@ class Encoder
 
                     if (!in_array($ddi->getRecordCalls(), array('all', $direction), true)) {
                         $this->logger->info(
-                            sprintf("[Recordings][%s] %s has no %s recording enabled. Skipping.\n",
-                                $hashid, $ddi, $recorder)
+                            sprintf(
+                                "[Recordings][%s] %s has no %s recording enabled. Skipping.\n",
+                                $hashid,
+                                $ddi,
+                                $recorder
+                            )
                         );
                         continue;
                     }
@@ -285,5 +287,4 @@ class Encoder
 
         $this->logger->info($summary);
     }
-
 }

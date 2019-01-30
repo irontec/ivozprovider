@@ -19,7 +19,7 @@ class CallForwardSettingsAction
      */
     protected $callForwardSettingRepository;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         CallForwardSettingRepository $callForwardSettingRepository
     ) {

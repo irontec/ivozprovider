@@ -4,7 +4,6 @@ use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
 
-
 class IvozProvider_Klear_Ghost_DestinationRates extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
@@ -17,7 +16,8 @@ class IvozProvider_Klear_Ghost_DestinationRates extends KlearMatrix_Model_Field_
             $destinationRate->getDestinationRateGroupId()
         );
 
-        return sprintf("%s %s",
+        return sprintf(
+            "%s %s",
             $destinationRate->getConnectFee(),
             $currencySymbol
         );
@@ -33,7 +33,8 @@ class IvozProvider_Klear_Ghost_DestinationRates extends KlearMatrix_Model_Field_
             $destinationRate->getDestinationRateGroupId()
         );
 
-        return sprintf("%s %s",
+        return sprintf(
+            "%s %s",
             $destinationRate->getCost(),
             $currencySymbol
         );

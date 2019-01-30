@@ -19,7 +19,7 @@ class CompanyVoicemailsAction
      */
     protected $userRepository;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         UserRepository $userRepository
     ) {

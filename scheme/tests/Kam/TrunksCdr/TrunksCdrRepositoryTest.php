@@ -112,6 +112,4 @@ class TrunksCdrRepositoryTest extends KernelTestCase
 
         $this->assertNotEmpty($result);
     }
-
-
 }

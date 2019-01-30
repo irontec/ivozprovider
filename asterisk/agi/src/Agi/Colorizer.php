@@ -13,7 +13,7 @@ class Colorizer
     /**
      * Colorizer constructor.
      */
-    public function  __construct()
+    public function __construct()
     {
         $this->colors['reset']    = "\e[0m";
         $this->colors['black']    = "\e[0;30m";
@@ -43,7 +43,6 @@ class Colorizer
 
         // Replace each color tag
         foreach ($matches['tag'] as $colorTag) {
-
             if (isset($this->colors[$colorTag])) {
                 // Replace Initial tag with desired color
                 $message = preg_replace('/<' . $colorTag . '>/', $this->colors[$colorTag], $message, 1);
@@ -56,7 +55,4 @@ class Colorizer
 
         return $message;
     }
-
-
-
 }

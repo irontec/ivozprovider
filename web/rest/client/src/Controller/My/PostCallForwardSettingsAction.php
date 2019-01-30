@@ -32,7 +32,7 @@ class PostCallForwardSettingsAction
      * @param Serializer $serializer
      * @param RequestStack $requestStack
      */
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         Serializer $serializer,
         RequestStack $requestStack

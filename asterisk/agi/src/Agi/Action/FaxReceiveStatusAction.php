@@ -9,7 +9,6 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 
-
 class FaxReceiveStatusAction
 {
     /**
@@ -43,8 +42,7 @@ class FaxReceiveStatusAction
         EntityManagerInterface $em,
         EntityTools $entityTools,
         \Swift_Mailer $mailer
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->entityTools = $entityTools;
@@ -200,6 +198,5 @@ class FaxReceiveStatusAction
             // Send the email
             $this->mailer->send($mail);
         }
-
     }
 }

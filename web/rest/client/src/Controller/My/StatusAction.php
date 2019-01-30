@@ -25,7 +25,7 @@ class StatusAction
      */
     protected $usersLocationRepository;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         UsersLocationRepository $usersLocationRepository
     ) {

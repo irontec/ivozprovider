@@ -30,8 +30,7 @@ class VoiceMailAction
      */
     public function __construct(
         Wrapper $agi
-    )
-    {
+    ) {
         $this->agi = $agi;
     }
 
@@ -92,5 +91,4 @@ class VoiceMailAction
             $voicemail->getVoiceMail()
         );
     }
-
 }

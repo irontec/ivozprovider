@@ -5,8 +5,8 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
 
     public function init()
     {
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter)) ) {
-            throw New Zend_Exception('',Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter))) {
+            throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
         $this->_helper->ContextSwitch()
@@ -22,7 +22,8 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
         $this->restoreDefault('generic');
     }
 
-    public function restoreSpecificDefaultAction(){
+    public function restoreSpecificDefaultAction()
+    {
         $this->restoreDefault('specific');
     }
 
@@ -54,10 +55,9 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
             );
         } else {
             $existsBackup = file_exists($filename);
-            if($existsBackup){
+            if ($existsBackup) {
                 $message = $this->_helper->translate("Reset default template?") . " ($filename)";
-            }
-            else {
+            } else {
                 $message =  $this->_helper->translate("No default template found") . " ($filename)";
             }
 
@@ -89,4 +89,3 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
         $jsonResponse->attachView($this->view);
     }
 }
-

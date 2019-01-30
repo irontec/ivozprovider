@@ -46,8 +46,7 @@ class Trunks extends RouteHandlerAbstract
         ChannelInfo $channelInfo,
         EntityManagerInterface $em,
         DDIAction $ddiAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
@@ -106,5 +105,4 @@ class Trunks extends RouteHandlerAbstract
             ->setDDI($ddi)
             ->process();
     }
-
 }

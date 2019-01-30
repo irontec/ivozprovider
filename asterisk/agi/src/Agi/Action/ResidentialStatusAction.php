@@ -7,7 +7,6 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
-
 class ResidentialStatusAction
 {
     const InvalidArgs           = 'INVALIDARGS';
@@ -47,8 +46,7 @@ class ResidentialStatusAction
     public function __construct(
         Wrapper $agi,
         CallForwardAction $callForwardAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->callForwardAction = $callForwardAction;
     }
@@ -147,5 +145,4 @@ class ResidentialStatusAction
 
         return false;
     }
-
 }

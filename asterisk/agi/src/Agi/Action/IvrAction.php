@@ -33,8 +33,7 @@ class IvrAction
     public function __construct(
         Wrapper $agi,
         RouterAction $routerAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
     }
@@ -87,7 +86,6 @@ class IvrAction
         /** @var IvrEntryInterface[] $entries */
         $entries = $ivr->getEntries();
         foreach ($entries as $entry) {
-
             // Numeric entry, handle as just a number
             if (is_numeric($entry->getEntry())) {
                 $entryMatched = $entry->getEntry() == $userPressed;
@@ -122,7 +120,6 @@ class IvrAction
 
         // No Ivr entry matched, check if dialing extensions is supported
         if ($ivr->getAllowExtensions()) {
-
             // Check if the dialed number belongs to a company Extension
             $company = $ivr->getCompany();
             $extension = $company->getExtension($userPressed);
@@ -196,5 +193,4 @@ class IvrAction
             ->setRouteExternal($this->ivr->getErrorNumberValueE164())
             ->route();
     }
-
 }

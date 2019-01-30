@@ -19,7 +19,8 @@ trait AgentTrait
      */
     public function __toString()
     {
-        return sprintf("%s#%d",
+        return sprintf(
+            "%s#%d",
             $this->getType(),
             $this->getId()
         );

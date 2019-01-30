@@ -24,8 +24,7 @@ class FaxAgent implements AgentInterface
     public function __construct(
         Wrapper $agi,
         FaxInterface $user
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->fax = $user;
     }

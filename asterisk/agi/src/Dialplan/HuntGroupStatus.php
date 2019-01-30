@@ -36,8 +36,7 @@ class HuntGroupStatus extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         HuntGroupStatusAction $huntGroupStatusAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->huntGroupStatusAction = $huntGroupStatusAction;

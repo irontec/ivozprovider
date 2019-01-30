@@ -36,7 +36,7 @@ public function __construct(<requiredFields>)<lineBreak>{
      * @var string
      */
     protected static $constructorMethodTemplate =
-'
+    '
 use ChangelogTrait;
 
 /**
@@ -164,7 +164,7 @@ protected function __toArray()
      * @var string
      */
     protected static $setMethodTemplate =
-'/**
+    '/**
  * <description>
  *
  * @param <variableType> $<variableName>
@@ -184,7 +184,7 @@ protected function __toArray()
      * @var string
      */
     protected static $getMethodTemplate =
-'/**
+    '/**
  * <description>
  *
  * @return <variableType><nullable>
@@ -200,7 +200,7 @@ public function <methodName>(<criteriaArgument>)
      * @var string
      */
     protected static $addMethodTemplate =
-'/**
+    '/**
  * <description>
  *
  * @param <variableType> $<variableName>
@@ -218,7 +218,7 @@ public function <methodName>(<criteriaArgument>)
      * @var string
      */
     protected static $removeMethodTemplate =
-'/**
+    '/**
  * <description>
  *
  * @param <variableType> $<variableName>
@@ -232,7 +232,7 @@ public function <methodName>(<criteriaArgument>)
      * @var string
      */
     protected static $replaceMethodTemplate =
-'/**
+    '/**
  * <description>
  *
  * @param \<relEntity>[] $<variableName>
@@ -277,7 +277,6 @@ public function <methodName>(<criteriaArgument>)
     protected function transformMetadata(ClassMetadataInfo $metadata)
     {
         foreach ($metadata->associationMappings as $key => $association) {
-
             $target = $metadata->associationMappings[$key]['targetEntity'];
             if (strpos($target, 'Interface') === false) {
                 $metadata->associationMappings[$key]['targetEntity'] .= 'Interface';
@@ -369,10 +368,10 @@ public function <methodName>(<criteriaArgument>)
         $useCollections = false;
 
         foreach ($metadata->associationMappings as $mapping) {
-             if ($mapping['mappedBy'] && $mapping['type'] !== ClassMetadataInfo::ONE_TO_ONE) {
-                 $useCollections = true;
-                 break;
-             }
+            if ($mapping['mappedBy'] && $mapping['type'] !== ClassMetadataInfo::ONE_TO_ONE) {
+                $useCollections = true;
+                break;
+            }
         }
 
         $response = [];
@@ -541,7 +540,6 @@ public function <methodName>(<criteriaArgument>)
         $lineBreak = "\n";
 
         if (!empty($requiredSetters)) {
-
             $requiredFields = implode(', ', $constructorArguments);
             $requiredFieldSetters =
                 $this->spaces
@@ -549,7 +547,6 @@ public function <methodName>(<criteriaArgument>)
                 . implode("\n". $this->spaces .'$this->', $requiredSetters);
 
             if (!empty($requiredGetters)) {
-
                 $requiredFieldGetters .=
                     "\n"
                     . $spaces
@@ -559,9 +556,7 @@ public function <methodName>(<criteriaArgument>)
 
 
             if (!empty($voContructor)) {
-
                 foreach ($voContructor as $key => $value) {
-
                     if (!empty($requiredFieldGetters)) {
                         $requiredFieldGetters .= ",";
                     }
@@ -583,7 +578,6 @@ public function <methodName>(<criteriaArgument>)
         }
 
         if (is_array($voContructor)) {
-
             foreach ($voContructor as $key => $value) {
                 $voContructor[$key] = implode(' ', $value);
             }
@@ -595,7 +589,6 @@ public function <methodName>(<criteriaArgument>)
         }
 
         if (!empty($setters)) {
-
             $glue = $metadata->isMappedSuperclass
                 ? "\n" . $spaces . '->'
                 : "\n\n";
@@ -614,11 +607,10 @@ public function <methodName>(<criteriaArgument>)
 
         if (!empty($toArray)) {
             $toArrayGetters = "\n" . $spaces . implode(",\n" . $spaces, $toArray) . "\n" . $this->spaces;
-            $propertyMap = "'" . implode("',\n$spaces'" , array_keys($toArray)) . "'";
+            $propertyMap = "'" . implode("',\n$spaces'", array_keys($toArray)) . "'";
         }
 
         if (!empty($updateFrom)) {
-
             $glue = $metadata->isMappedSuperclass
                 ? "\n" . $spaces . '->'
                 : "\n";
@@ -631,7 +623,7 @@ public function <methodName>(<criteriaArgument>)
         if (!empty($requiredFieldSetters)) {
             $response = str_replace('<requiredFieldsSetters>', $requiredFieldSetters, $response);
         } else {
-            $response = str_replace("<requiredFieldsSetters>\n",'', $response);
+            $response = str_replace("<requiredFieldsSetters>\n", '', $response);
         }
         $response = str_replace('<classTableName>', $this->getInstanceClassName($metadata), $response);
 
@@ -654,16 +646,13 @@ public function <methodName>(<criteriaArgument>)
         $response = str_replace('<propertyMap>', $propertyMap, $response);
 
         if (!empty($collections)) {
-
             $prefix = empty($requiredSetters) ? $this->spaces : "\n\n" . $this->spaces;
             $response = str_replace(
                 "<collections>",
                 $prefix . implode("\n" . $this->spaces, $collections),
                 $response
             );
-
         } else {
-
             $response =  str_replace(
                 "<collections>\n",
                 '',
@@ -690,7 +679,6 @@ public function <methodName>(<criteriaArgument>)
         $mappings = array_merge($metadata->fieldMappings, $metadata->associationMappings);
 
         foreach ($mappings as $fieldMapping) {
-
             $field = (object) $fieldMapping;
             $fieldName = $field->fieldName;
             $attribute = Inflector::camelize($fieldName);
@@ -701,7 +689,6 @@ public function <methodName>(<criteriaArgument>)
             $options  = (object) $fieldMapping['options'];
 
             if (isset($field->targetEntity)) {
-
                 $isOneToOne = ($field->type == ClassMetadataInfo::ONE_TO_ONE);
                 if ($isOneToOne && $field->mappedBy) {
                     continue;
@@ -709,7 +696,6 @@ public function <methodName>(<criteriaArgument>)
 
                 $isOneToMany = ($field->type == ClassMetadataInfo::ONE_TO_MANY);
                 if ($isOneToMany) {
-
                     $dtoGetter = '$dto->get' . Inflector::classify($fieldName) . '()';
 
                     $updateFrom[] =
@@ -735,9 +721,7 @@ public function <methodName>(<criteriaArgument>)
                             . "\n"
                         . $this->spaces
                         . '}';
-
                 } else {
-
                     if (!isset($field->declared)) {
                         $updateFrom[] = 'set' . Inflector::classify($fieldName)
                             . '($fkTransformer->transform($dto->get' . Inflector::classify($fieldName) . '()))';
@@ -774,21 +758,18 @@ public function <methodName>(<criteriaArgument>)
                         . '))';
 
                     $selfGetters[$attribute] = $associationSelfGetter;
-
                 }
 
                 continue;
             }
 
             if (strpos($fieldName, '.') && $metadata->isMappedSuperclass) {
-
                 $segments = explode('.', $fieldName);
                 $varName = $segments[0];
                 $options = $fieldMapping['options'];
                 $addVoContructor = !array_key_exists($varName, $voContructor);
 
                 if ($addVoContructor) {
-
                     if (!array_key_exists($varName, $voContructor)) {
                         $voContructor[$varName] = [];
                     }
@@ -832,9 +813,7 @@ public function <methodName>(<criteriaArgument>)
                     'set'
                     . Inflector::classify($segments[0])
                     . '($' . $segments[0] . ')';
-
-            } else if (!strpos($fieldName, '.') || $metadata->isMappedSuperclass) {
-
+            } elseif (!strpos($fieldName, '.') || $metadata->isMappedSuperclass) {
                 if (!isset($field->declared)) {
                     $toArray[]  = '\''. $field->columnName .'\' => self::get' . Inflector::classify($fieldName) . '()';
                     $getters[$attribute] = 'set' . Inflector::classify($fieldName)
@@ -869,8 +848,7 @@ public function <methodName>(<criteriaArgument>)
                 if (end($requiredSetters) !== $setter && $metadata->isMappedSuperclass) {
                     $requiredSetters[$attribute] = $setter;
                 }
-            } else if (!isset($field->declared)) {
-
+            } elseif (!isset($field->declared)) {
                 $setter = 'set' . Inflector::classify($fieldName) . '($'. $attribute .');';
                 $getter = 'get' . Inflector::classify($fieldName) . '()';
 
@@ -883,7 +861,7 @@ public function <methodName>(<criteriaArgument>)
             if ($field->type[0] === '\\') {
                 $class = substr($field->type, strrpos($field->type, '\\') + 1);
                 $attribute = $class. ' $' . $attribute;
-            } else if (strpos($attribute, ' ') === false) {
+            } elseif (strpos($attribute, ' ') === false) {
                 $attribute = '$' . $attribute;
             }
 
@@ -930,7 +908,6 @@ public function <methodName>(<criteriaArgument>)
         $class = [];
 
         foreach ($fieldMappings as $fieldMapping) {
-
             if (false === strpos($fieldMapping['fieldName'], '.')) {
                 continue;
             }
@@ -954,7 +931,6 @@ public function <methodName>(<criteriaArgument>)
         $response = '$' . $voName . ' = new ' . end($class) . "(%s);\n";
 
         if (!empty($arguments)) {
-
             $value =
                 "\n"
                 . $this->spaces
@@ -964,10 +940,9 @@ public function <methodName>(<criteriaArgument>)
 
             $response =
                 $this->spaces
-                . sprintf($response,$value);
-
+                . sprintf($response, $value);
         } else {
-            $response = sprintf($response,'');
+            $response = sprintf($response, '');
         }
 
         return $response;
@@ -1022,7 +997,6 @@ public function <methodName>(<criteriaArgument>)
         $methods = array();
 
         foreach ($metadata->fieldMappings as $fieldMapping) {
-
             if (isset($fieldMapping['declaredField']) &&
                 isset($metadata->embeddedClasses[$fieldMapping['declaredField']])
             ) {
@@ -1052,7 +1026,6 @@ public function <methodName>(<criteriaArgument>)
 
         $metadata->associationMappings = $associationMapping;
         foreach ($metadata->associationMappings as $associationMapping) {
-
             if (isset($associationMapping['declared'])) {
                 continue;
             }
@@ -1130,8 +1103,7 @@ public function <methodName>(<criteriaArgument>)
         $lines = array();
 
         foreach ($metadata->embeddedClasses as $fieldName => $embeddedClass) {
-            if (
-                isset($embeddedClass['declaredField'])
+            if (isset($embeddedClass['declaredField'])
                 || isset($embeddedClass['declared'])
                 || $this->hasProperty($fieldName, $metadata)
             ) {
@@ -1142,7 +1114,7 @@ public function <methodName>(<criteriaArgument>)
             $embeddedClass['class'] = end($classSegments);
 
             $embeddedProperties = $this->generateEmbeddedPropertyDocBlock($embeddedClass);
-            $embeddedProperties = str_replace('\\' . $embeddedClass['class'] , $embeddedClass['class'] , $embeddedProperties);
+            $embeddedProperties = str_replace('\\' . $embeddedClass['class'], $embeddedClass['class'], $embeddedProperties);
 
             $lines[] = $embeddedProperties;
             $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $fieldName . ";\n";
@@ -1182,7 +1154,7 @@ public function <methodName>(<criteriaArgument>)
     /**
      * {@inheritDoc}
      */
-    protected function generateEntityStubMethod(ClassMetadataInfo $metadata, $type, $fieldName, $typeHint = null,  $defaultValue = null)
+    protected function generateEntityStubMethod(ClassMetadataInfo $metadata, $type, $fieldName, $typeHint = null, $defaultValue = null)
     {
         $currentField = null;
         $isNullable = false;
@@ -1192,9 +1164,7 @@ public function <methodName>(<criteriaArgument>)
         if (array_key_exists($fieldName, $metadata->fieldMappings)) {
             $currentField = (object) $metadata->fieldMappings[$fieldName];
             $isNullable = isset($currentField->nullable) && $currentField->nullable;
-
         } elseif (array_key_exists($fieldName, $metadata->associationMappings)) {
-
             $currentAsoc = (object) $metadata->associationMappings[$fieldName];
             $isNullableFk =
                 isset($currentAsoc->joinColumns)
@@ -1222,7 +1192,7 @@ public function <methodName>(<criteriaArgument>)
             $typeHint = 'array';
         }
 
-        $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
+        $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint, $defaultValue);
         $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
 
         $prefix = '';
@@ -1270,7 +1240,6 @@ public function <methodName>(<criteriaArgument>)
             };
 
             if (in_array($currentField->type, ['datetime'])) {
-
                 if ($isNullable) {
                     $prefix = '!is_null($this->' . Inflector::camelize($fieldName) . ') ? clone ';
                     $suffix = ' : null';
@@ -1306,7 +1275,6 @@ public function <methodName>(<criteriaArgument>)
             }
 
             if (in_array($currentField->type, ['smallint', 'integer', 'bigint'])) {
-
                 $integerAssertions = $this->getIntegerAssertions($currentField);
                 $integerAssertions = array_map($arraySpacerFn, $integerAssertions);
 
@@ -1343,7 +1311,6 @@ public function <methodName>(<criteriaArgument>)
                     $acceptedValues,
                     $isNullable
                 );
-
             }
 
             if ($isNullable) {
@@ -1377,7 +1344,6 @@ public function <methodName>(<criteriaArgument>)
         }
 
         if (array_key_exists($fieldName, $metadata->associationMappings)) {
-
             $field = (object) $metadata->associationMappings[$fieldName];
             $isOneToMany = ($field->type == ClassMetadataInfo::ONE_TO_MANY);
 
@@ -1403,7 +1369,6 @@ public function <methodName>(<criteriaArgument>)
         $forcedArray = '';
 
         if ($isCollection && $type === 'get') {
-
             $criteriaArgument = 'Criteria $criteria = null';
             $criteriaGetter = "\n";
             $criteriaGetter .= "if (!is_null(\$criteria)) {\n";
@@ -1440,12 +1405,10 @@ public function <methodName>(<criteriaArgument>)
             $assertions[] = AssertionGenerator::greaterOrEqualThan($currentField->fieldName, 0);
         }
 
-        if (
-            !empty($assertions) &&
+        if (!empty($assertions) &&
             isset($currentField->nullable) &&
             $currentField->nullable
         ) {
-
             foreach ($assertions as $key => $value) {
                 $assertions[$key] = $this->spaces . $assertions[$key];
             }
@@ -1474,12 +1437,10 @@ public function <methodName>(<criteriaArgument>)
             $assertions[] = AssertionGenerator::greaterOrEqualThan($currentField->fieldName, 0);
         }
 
-        if (
-            !empty($assertions) &&
+        if (!empty($assertions) &&
             isset($currentField->nullable) &&
             $currentField->nullable
         ) {
-
             foreach ($assertions as $key => $value) {
                 $assertions[$key] = $this->spaces . $assertions[$key];
             }

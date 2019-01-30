@@ -44,7 +44,7 @@ class FormBuilder extends AbstractFormBuilder
         $table.= "</tr>";
         foreach ($lines as $line) {
             $table.= "<tr>";
-            foreach ($line as $idPart=>$part) {
+            foreach ($line as $idPart => $part) {
                 $table.="<td class='ui-widget-content'>" . $part . "</td>";
             }
             $table.= "</tr>";

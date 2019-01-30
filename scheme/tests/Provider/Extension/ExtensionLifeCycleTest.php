@@ -275,6 +275,5 @@ class ExtensionLifeCycleTest extends KernelTestCase
                 'mailboxes' => 'user2@company1'
             ]
         );
-
     }
 }

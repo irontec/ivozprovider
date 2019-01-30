@@ -26,7 +26,7 @@ class CallStatsAction
      */
     protected $usersCdrRepository;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         CallForwardSettingRepository $callForwardSettingRepository,
         UsersCdrRepository $usersCdrRepository

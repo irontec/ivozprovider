@@ -33,8 +33,7 @@ class FaxReceiveAction
     public function __construct(
         Wrapper $agi,
         EntityTools $entityTools
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->entityTools = $entityTools;
     }
@@ -66,8 +65,8 @@ class FaxReceiveAction
 
         // Set destination file and fax options
         $faxDir = $spoolDir . "/faxes";
-        if(!is_dir($faxDir)){
-            mkdir($faxDir,0777);
+        if (!is_dir($faxDir)) {
+            mkdir($faxDir, 0777);
         }
 
         $this->agi->setVariable("FAXFILE", $spoolDir . "/faxes/fax-" . $did . "-" . time() . ".tif");
@@ -93,10 +92,9 @@ class FaxReceiveAction
         $this->agi->notice("Incoming fax for %s [fax%d])", $fax->getName(), $fax->getId());
 
         // Set recive fax options
-        $this->agi->setVariable("FAX_OPT","zf");
+        $this->agi->setVariable("FAX_OPT", "zf");
 
         // Redirect to the calling dialplan context
         $this->agi->redirect('fax-receive', $did);
     }
-
 }

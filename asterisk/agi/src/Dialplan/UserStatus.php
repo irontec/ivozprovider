@@ -35,8 +35,7 @@ class UserStatus extends RouteHandlerAbstract
         Wrapper $agi,
         EndpointResolver $endpointResolver,
         UserStatusAction $userStatusAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->endpointResolver = $endpointResolver;
         $this->userStatusAction = $userStatusAction;

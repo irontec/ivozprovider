@@ -16,20 +16,23 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
     {
         // Status translated to web language
         $status = Klear_Model_Gettext::gettextCheck(
-            sprintf("_('%s')",
-                    ucfirst($invoice->getStatus())
+            sprintf(
+                "_('%s')",
+                ucfirst($invoice->getStatus())
             )
         );
 
         // Status Message translated to web language (if possible)
         $statusMsg = Klear_Model_Gettext::gettextCheck(
-            sprintf("_('%s')",
+            sprintf(
+                "_('%s')",
                 ucfirst($invoice->getStatusMsg())
             )
         );
 
         if ($invoice->getStatus() === 'error') {
-            return sprintf("%s <span class='ui-silk inline ui-silk-exclamation' title='%s'></span>",
+            return sprintf(
+                "%s <span class='ui-silk inline ui-silk-exclamation' title='%s'></span>",
                 $status,
                 $statusMsg
             );
@@ -50,7 +53,8 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
             $invoice->getCompanyId()
         );
 
-        return sprintf("%s %s",
+        return sprintf(
+            "%s %s",
             $invoice->getTotal(),
             $currencySymbol
         );
@@ -68,7 +72,8 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
             $invoice->getCompanyId()
         );
 
-        return sprintf("%s %s",
+        return sprintf(
+            "%s %s",
             $invoice->getTotalWithTax(),
             $currencySymbol
         );

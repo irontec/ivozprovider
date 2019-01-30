@@ -37,15 +37,14 @@ class ExternalFilterAction
 
     /**
      * ExternalFilterAction constructor.
-     * 
+     *
      * @param Wrapper $agi
      * @param RouterAction $routerAction
      */
     public function __construct(
         Wrapper $agi,
         RouterAction $routerAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
     }
@@ -130,7 +129,6 @@ class ExternalFilterAction
                 ->setRouteVoicemail($filter->getHolidayVoiceMailUser())
                 ->route();
         }
-
     }
 
     public function processOutOfSchedule()
@@ -163,6 +161,5 @@ class ExternalFilterAction
             ->setRouteExternal($filter->getOutOfScheduleNumberValueE164())
             ->setRouteVoicemail($filter->getOutOfScheduleVoiceMailUser())
             ->route();
-
     }
 }

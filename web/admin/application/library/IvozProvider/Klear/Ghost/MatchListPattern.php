@@ -12,7 +12,7 @@ class IvozProvider_Klear_Ghost_MatchListPattern extends KlearMatrix_Model_Field_
      */
     public function getMatchValue($model)
     {
-        switch($model->getType()) {
+        switch ($model->getType()) {
             case 'number':
                 $dataGateway = \Zend_Registry::get('data_gateway');
 

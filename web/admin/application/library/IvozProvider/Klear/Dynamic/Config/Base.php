@@ -65,7 +65,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
         return $this;
     }
 
-    public function init ($siteConfig)
+    public function init($siteConfig)
     {
         $this->_siteConfig = $siteConfig;
         if (\Zend_Auth::getInstance()) {
@@ -76,7 +76,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
             }
         }
         $this->postInit();
-     }
+    }
 
     public function processSiteName($sitename)
     {
@@ -123,10 +123,9 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 
         try {
             return $themeParser->getPathForTheme($this->_brandURL->getKlearTheme());
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $themeParser->getPathForTheme('hot-sneaks');
         }
-
     }
 
     public function processCssExtended($cssExtended)
@@ -174,5 +173,4 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 
         return $newAuthConfig;
     }
-
 }

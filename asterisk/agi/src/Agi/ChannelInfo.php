@@ -52,8 +52,7 @@ class ChannelInfo
     public function __construct(
         Wrapper $agi,
         EntityManagerInterface $em
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
     }
@@ -150,5 +149,4 @@ class ChannelInfo
                 return null;
         }
     }
-
 }

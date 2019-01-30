@@ -24,8 +24,8 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 
     public function init()
     {
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter)) ) {
-            throw New Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter))) {
+            throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
         $this->_helper
@@ -49,7 +49,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 
         if (!$id) {
             $message = $this->_helper->translate('Id not found');
-            return $this->_dispatch( $message, $buttons);
+            return $this->_dispatch($message, $buttons);
         }
 
         /** @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company */
@@ -67,7 +67,6 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         );
 
         if (($this->getParam("sent"))) {
-
             $targetService = $this->getParam("operation") === 'add'
                 ? IncrementBalance::class
                 : DecrementBalance::class;
@@ -86,7 +85,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
                 ? $this->_helper->translate('Balance modified successfully')
                 : sprintf($this->_helper->translate('There was an error: %s'), $balanceService->getLastError());
 
-            return $this->_dispatch( $reponseMessage, $buttons);
+            return $this->_dispatch($reponseMessage, $buttons);
         }
 
         return $this->_showDialog(
@@ -103,7 +102,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 
         if (!$id) {
             $message = $this->_helper->translate('Id not found');
-            return $this->_dispatch( $message, $buttons);
+            return $this->_dispatch($message, $buttons);
         }
 
         /** @var CarrierInterface $carrier */
@@ -113,7 +112,6 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         );
 
         if (($this->getParam("sent"))) {
-
             $targetService = $this->getParam("operation") === 'add'
                 ? IncrementCarrierBalance::class
                 : DecrementCarrierBalance::class;
@@ -132,7 +130,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
                 ? $this->_helper->translate('Balance modified successfully')
                 : sprintf($this->_helper->translate('There was an error: %s'), $balanceService->getLastError());
 
-            return $this->_dispatch( $reponseMessage, $buttons);
+            return $this->_dispatch($reponseMessage, $buttons);
         }
 
         // Get company currency symbol
@@ -231,10 +229,11 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
                 'params' => ['sent' => true]
             ]
         ];
-        $this->_dispatch( $message, $buttons);
+        $this->_dispatch($message, $buttons);
     }
 
-    protected function _dispatch( $message, $buttons = array()){
+    protected function _dispatch($message, $buttons = array())
+    {
         $buttons[$this->_helper->translate('Close')] = [
             'reloadParent' => true,
             'recall' => false,

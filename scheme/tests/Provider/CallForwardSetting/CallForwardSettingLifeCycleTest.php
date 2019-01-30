@@ -5,7 +5,7 @@ namespace Tests\Provider\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-USE Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness;
+use Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness;
 
 class CallForwardSettingLifeCycleTest extends KernelTestCase
 {

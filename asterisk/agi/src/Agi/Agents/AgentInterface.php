@@ -1,7 +1,6 @@
 <?php
 namespace Agi\Agents;
 
-
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
 

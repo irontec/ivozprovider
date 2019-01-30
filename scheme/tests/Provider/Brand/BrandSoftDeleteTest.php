@@ -55,7 +55,7 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $this->assertCount(3, $changelog);
 
-        for ($i = 0; $i < 3 ; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null
@@ -77,7 +77,7 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $this->assertCount(2, $changelog);
 
-        for ($i = 0; $i < 2 ; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null
@@ -117,7 +117,7 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $this->assertCount(3, $changelog);
 
-        for ($i = 0; $i < 3 ; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null

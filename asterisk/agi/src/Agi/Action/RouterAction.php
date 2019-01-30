@@ -206,8 +206,7 @@ class RouterAction
         ResidentialCallAction $residentialCallAction,
         ServiceAction $serviceAction,
         VoiceMailAction $voiceMailAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->conditionalRouteAction = $conditionalRouteAction;
@@ -231,13 +230,13 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteConditional(ConditionalRouteInterface $routeConditional  = null)
+    public function setRouteConditional(ConditionalRouteInterface $routeConditional = null)
     {
         $this->routeConditional = $routeConditional;
         return $this;
     }
 
-    public function setRouteConferenceRoom(ConferenceRoomInterface $routeConferenceRoom  = null)
+    public function setRouteConferenceRoom(ConferenceRoomInterface $routeConferenceRoom = null)
     {
         $this->routeConference = $routeConferenceRoom;
         return $this;
@@ -298,7 +297,7 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteQueue(QueueInterface $routeQueue  = null)
+    public function setRouteQueue(QueueInterface $routeQueue = null)
     {
         $this->routeQueue = $routeQueue;
         return $this;
@@ -320,7 +319,7 @@ class RouterAction
     public function route()
     {
         // Handle based on configured route type
-        switch($this->routeType) {
+        switch ($this->routeType) {
             case RouterAction::User:
                 $this->routeToUser();
                 break;
@@ -462,5 +461,4 @@ class RouterAction
             ->setService($this->routeService)
             ->process();
     }
-
 }
