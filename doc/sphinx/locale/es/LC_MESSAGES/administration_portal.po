@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-24 16:03+0100\n"
+"POT-Creation-Date: 2019-01-30 17:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: ../../administration_portal/brand/billing/destination_rates.rst:12
 #: ../../administration_portal/brand/billing/rating_plans.rst:17
 #: ../../administration_portal/brand/clients/residential.rst:30
-#: ../../administration_portal/brand/clients/retail.rst:61
+#: ../../administration_portal/brand/clients/retail.rst:59
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:11
 #: ../../administration_portal/brand/clients/wholesale.rst:37
 #: ../../administration_portal/brand/invoicing/invoice_number_sequences.rst:11
@@ -88,7 +88,7 @@ msgstr ""
 #: ../../administration_portal/brand/billing/destination_rates.rst:18
 #: ../../administration_portal/brand/billing/rating_plans.rst:23
 #: ../../administration_portal/brand/clients/residential.rst:48
-#: ../../administration_portal/brand/clients/retail.rst:76
+#: ../../administration_portal/brand/clients/retail.rst:74
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:28
 #: ../../administration_portal/brand/clients/wholesale.rst:49
 #: ../../administration_portal/brand/providers/carriers.rst:33
@@ -1478,7 +1478,7 @@ msgid "Adding/Editing residential clients"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:24
-#: ../../administration_portal/brand/clients/retail.rst:55
+#: ../../administration_portal/brand/clients/retail.rst:53
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:8
 #: ../../administration_portal/brand/clients/wholesale.rst:31
 #: ../../administration_portal/brand/providers/carriers.rst:11
@@ -1493,30 +1493,30 @@ msgid "These are the fields shown when **adding** a new residential client:"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:33
-#: ../../administration_portal/brand/clients/retail.rst:64
+#: ../../administration_portal/brand/clients/retail.rst:62
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:21
 #: ../../administration_portal/brand/clients/wholesale.rst:40
 msgid "Billing method"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:35
-#: ../../administration_portal/brand/clients/retail.rst:66
+#: ../../administration_portal/brand/clients/retail.rst:64
 #: ../../administration_portal/brand/clients/wholesale.rst:42
 msgid "To choose among postpaid, prepaid and pseudo-prepaid."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:42
-#: ../../administration_portal/brand/clients/retail.rst:70
+#: ../../administration_portal/brand/clients/retail.rst:68
 msgid "Country code"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:44
-#: ../../administration_portal/brand/clients/retail.rst:72
+#: ../../administration_portal/brand/clients/retail.rst:70
 msgid "Default country code for DDIs."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:50
-#: ../../administration_portal/brand/clients/retail.rst:78
+#: ../../administration_portal/brand/clients/retail.rst:76
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:30
 #: ../../administration_portal/brand/clients/wholesale.rst:51
 msgid ""
@@ -1525,13 +1525,13 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:45
-#: ../../administration_portal/brand/clients/retail.rst:73
+#: ../../administration_portal/brand/clients/retail.rst:71
 #: ../../administration_portal/brand/clients/wholesale.rst:46
 msgid "Default timezone"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:47
-#: ../../administration_portal/brand/clients/retail.rst:75
+#: ../../administration_portal/brand/clients/retail.rst:73
 #: ../../administration_portal/brand/clients/wholesale.rst:48
 msgid "Used for showing call registries dates."
 msgstr ""
@@ -1547,19 +1547,19 @@ msgid "Enable/Disable faxing and call recording for this particular client."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:59
-#: ../../administration_portal/brand/clients/retail.rst:87
+#: ../../administration_portal/brand/clients/retail.rst:85
 msgid "Filter by IP address"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:61
-#: ../../administration_portal/brand/clients/retail.rst:89
+#: ../../administration_portal/brand/clients/retail.rst:87
 msgid ""
 "If set, the platform will only allow calls coming from allowed IP "
 "addresses or network ranges."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:39
-#: ../../administration_portal/brand/clients/retail.rst:67
+#: ../../administration_portal/brand/clients/retail.rst:65
 #: ../../administration_portal/brand/clients/wholesale.rst:43
 #: ../../administration_portal/brand/settings/notification_templates.rst:55
 #: ../../administration_portal/client/residential/residential_devices.rst:59
@@ -1568,20 +1568,20 @@ msgid "Language"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:41
-#: ../../administration_portal/brand/clients/retail.rst:69
+#: ../../administration_portal/brand/clients/retail.rst:67
 #: ../../administration_portal/brand/clients/wholesale.rst:45
 msgid "Used to choose the language of played locutions."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:55
-#: ../../administration_portal/brand/clients/retail.rst:83
+#: ../../administration_portal/brand/clients/retail.rst:81
 #: ../../administration_portal/brand/clients/wholesale.rst:56
 #: ../../administration_portal/platform/brands.rst:38
 msgid "Max calls"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:57
-#: ../../administration_portal/brand/clients/retail.rst:85
+#: ../../administration_portal/brand/clients/retail.rst:83
 #: ../../administration_portal/brand/clients/wholesale.rst:58
 msgid ""
 "Limits both client generated and external received calls to this value (0"
@@ -1590,13 +1590,13 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:32
-#: ../../administration_portal/brand/clients/retail.rst:63
+#: ../../administration_portal/brand/clients/retail.rst:61
 #: ../../administration_portal/brand/clients/wholesale.rst:39
 msgid "Used to reference this particular client."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:52
-#: ../../administration_portal/brand/clients/retail.rst:80
+#: ../../administration_portal/brand/clients/retail.rst:78
 #: ../../administration_portal/brand/clients/wholesale.rst:53
 #: ../../administration_portal/client/residential/residential_devices.rst:62
 #: ../../administration_portal/client/retail/retail_accounts.rst:59
@@ -1604,7 +1604,7 @@ msgid "Numeric transformation"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:54
-#: ../../administration_portal/brand/clients/retail.rst:82
+#: ../../administration_portal/brand/clients/retail.rst:80
 #: ../../administration_portal/brand/clients/wholesale.rst:55
 msgid ""
 "Describes the way the client will \"talk\" and the way the client wants "
@@ -1612,25 +1612,25 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:64
-#: ../../administration_portal/brand/clients/retail.rst:91
+#: ../../administration_portal/brand/clients/retail.rst:89
 #: ../../administration_portal/brand/clients/wholesale.rst:62
 msgid "When **editing** a client, these additional fields can be configured:"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:72
-#: ../../administration_portal/brand/clients/retail.rst:99
+#: ../../administration_portal/brand/clients/retail.rst:97
 #: ../../administration_portal/brand/clients/wholesale.rst:70
 msgid "Externally rater custom options"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:74
-#: ../../administration_portal/brand/clients/retail.rst:101
+#: ../../administration_portal/brand/clients/retail.rst:99
 #: ../../administration_portal/brand/clients/wholesale.rst:72
 msgid "This field is for setting options for an optional external rating module."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:68
-#: ../../administration_portal/brand/clients/retail.rst:95
+#: ../../administration_portal/brand/clients/retail.rst:93
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:35
 #: ../../administration_portal/brand/clients/wholesale.rst:66
 #: ../../administration_portal/platform/brands.rst:20
@@ -1638,7 +1638,7 @@ msgid "Invoice data"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:70
-#: ../../administration_portal/brand/clients/retail.rst:97
+#: ../../administration_portal/brand/clients/retail.rst:95
 #: ../../administration_portal/brand/clients/wholesale.rst:68
 msgid ""
 "All the fields in this group will be included in invoices generated for "
@@ -1657,14 +1657,14 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:75
-#: ../../administration_portal/brand/clients/retail.rst:102
+#: ../../administration_portal/brand/clients/retail.rst:100
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:46
 #: ../../administration_portal/client/vpbx/users.rst:73
 msgid "Outgoing DDI"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:77
-#: ../../administration_portal/brand/clients/retail.rst:104
+#: ../../administration_portal/brand/clients/retail.rst:102
 msgid ""
 "Fallback DDI for external outgoing calls (can be overridden at "
 "residential device level)."
@@ -1683,7 +1683,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:85
-#: ../../administration_portal/brand/clients/retail.rst:115
+#: ../../administration_portal/brand/clients/retail.rst:113
 #: ../../administration_portal/brand/clients/wholesale.rst:82
 msgid ""
 "Apart from these fields, main operator (*aka* God) will also see a "
@@ -1691,7 +1691,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:87
-#: ../../administration_portal/brand/clients/retail.rst:117
+#: ../../administration_portal/brand/clients/retail.rst:115
 #: ../../administration_portal/brand/clients/wholesale.rst:84
 msgid "Choosing an specific media relay set for the client."
 msgstr ""
@@ -1703,7 +1703,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:91
-#: ../../administration_portal/brand/clients/retail.rst:119
+#: ../../administration_portal/brand/clients/retail.rst:117
 msgid ""
 "For outgoing calls, platform will use the CLID provided by the client as "
 "long as it is considered valid, otherwise fallback DDI will be used. The "
@@ -1712,33 +1712,33 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:95
-#: ../../administration_portal/brand/clients/retail.rst:123
+#: ../../administration_portal/brand/clients/retail.rst:121
 #: ../../administration_portal/brand/clients/wholesale.rst:87
 msgid "Additional subsections"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:97
-#: ../../administration_portal/brand/clients/retail.rst:125
+#: ../../administration_portal/brand/clients/retail.rst:123
 #: ../../administration_portal/brand/clients/wholesale.rst:89
 msgid "Each entry in this table has these additional options:"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:99
-#: ../../administration_portal/brand/clients/retail.rst:127
+#: ../../administration_portal/brand/clients/retail.rst:125
 msgid ""
 "**List of authorized sources**: if *Filter by IP address* is enabled, "
 "this subsection allows adding addresses or network ranges."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:101
-#: ../../administration_portal/brand/clients/retail.rst:129
+#: ../../administration_portal/brand/clients/retail.rst:127
 msgid ""
 "No outgoing call will be allowed if *Filter by IP address* is enabled and"
 " the corresponding list is empty."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:103
-#: ../../administration_portal/brand/clients/retail.rst:131
+#: ../../administration_portal/brand/clients/retail.rst:129
 #: ../../administration_portal/brand/clients/wholesale.rst:93
 msgid ""
 "**List of client admins**: this subsection allows managing portal "
@@ -1753,7 +1753,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:107
-#: ../../administration_portal/brand/clients/retail.rst:135
+#: ../../administration_portal/brand/clients/retail.rst:133
 #: ../../administration_portal/brand/clients/wholesale.rst:97
 msgid ""
 "No outgoing call will be allowed for this client unless an active rating "
@@ -1761,7 +1761,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:110
-#: ../../administration_portal/brand/clients/retail.rst:138
+#: ../../administration_portal/brand/clients/retail.rst:136
 #: ../../administration_portal/brand/clients/wholesale.rst:100
 msgid ""
 "**List of Outgoing routes**: this subsections shows routing rules that "
@@ -1769,7 +1769,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:112
-#: ../../administration_portal/brand/clients/retail.rst:140
+#: ../../administration_portal/brand/clients/retail.rst:138
 #: ../../administration_portal/brand/clients/wholesale.rst:102
 msgid ""
 "As *Apply all clients* routing rules also will apply for this client, the"
@@ -1798,8 +1798,7 @@ msgstr ""
 #: ../../administration_portal/brand/clients/retail.rst:17
 msgid ""
 "No users, no extensions, no internal calls, no hunt groups, no IVRs, no "
-"voicemail, no call forwards... just **incoming and outgoing external "
-"calls**."
+"voicemail... just **incoming and outgoing external calls**."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/retail.rst:20
@@ -1823,38 +1822,34 @@ msgid "As a result:"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/retail.rst:30
-msgid "No call forwarding features for retail accounts will be allowed."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/retail.rst:32
 msgid "No virtual faxing service for retail clients."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:34
+#: ../../administration_portal/brand/clients/retail.rst:32
 msgid "No voicemail service for retail clients."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:36
+#: ../../administration_portal/brand/clients/retail.rst:34
 msgid "Mandatory call recording for every retail client call."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:38
+#: ../../administration_portal/brand/clients/retail.rst:36
 msgid "But they also have benefits that make them ideal for some situations:"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:40
+#: ../../administration_portal/brand/clients/retail.rst:38
 msgid "No application server traverse, much less load for the platform."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:42
+#: ../../administration_portal/brand/clients/retail.rst:40
 msgid "Call transcoding as a feature."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:44
+#: ../../administration_portal/brand/clients/retail.rst:42
 msgid "Routing tags for different call routing for same destinations."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:46
+#: ../../administration_portal/brand/clients/retail.rst:44
 msgid ""
 "Residential devices are force to talk the codec selected in their "
 "configuration (just one). Retail clients, on the other hand, can talk in "
@@ -1862,46 +1857,46 @@ msgid ""
 "IvozProvider: IvozProvider will make transcoding when necessary."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:50
+#: ../../administration_portal/brand/clients/retail.rst:48
 msgid ""
 "Use retail client type unless you need any of the services provided by "
-"application servers (fax, call forward or voicemails)."
+"application servers (fax or voicemails)."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:53
+#: ../../administration_portal/brand/clients/retail.rst:51
 msgid "Adding/Editing retail clients"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:57
+#: ../../administration_portal/brand/clients/retail.rst:55
 msgid "These are the fields shown when **adding** a new retail client:"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:109
+#: ../../administration_portal/brand/clients/retail.rst:107
 #: ../../administration_portal/brand/clients/wholesale.rst:77
 msgid "Audio transcoding"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:111
+#: ../../administration_portal/brand/clients/retail.rst:109
 #: ../../administration_portal/brand/clients/wholesale.rst:79
 msgid ""
 "This field allows enabling codecs for this specific client. This codecs "
 "will be added to the ones offered by the client in its SDP."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:105
+#: ../../administration_portal/brand/clients/retail.rst:103
 #: ../../administration_portal/brand/clients/wholesale.rst:73
 #: ../../administration_portal/brand/routing/routing_tags.rst:3
 msgid "Routing tags"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:107
+#: ../../administration_portal/brand/clients/retail.rst:105
 #: ../../administration_portal/brand/clients/wholesale.rst:75
 msgid ""
 "This field allows enabling routing tags for this specific client. Call "
 "preceded with this routing tags will be rated and routed differently."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:133
+#: ../../administration_portal/brand/clients/retail.rst:131
 msgid ""
 "**List of Rating profiles**: this subsection allows managing the rating "
 "profiles that will be used to bill its outgoing calls."
@@ -4894,7 +4889,7 @@ msgid "Device register"
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:111
-#: ../../administration_portal/client/retail/retail_accounts.rst:101
+#: ../../administration_portal/client/retail/retail_accounts.rst:107
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:127
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
@@ -4902,7 +4897,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:114
-#: ../../administration_portal/client/retail/retail_accounts.rst:104
+#: ../../administration_portal/client/retail/retail_accounts.rst:110
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:130
 msgid "Configuration will be something like this:"
 msgstr ""
@@ -5107,29 +5102,49 @@ msgid "There is no voicemail service for retail clients."
 msgstr ""
 
 #: ../../administration_portal/client/retail/retail_accounts.rst:89
-msgid "There are no call forwarding settings for retail accounts."
+msgid ""
+"Each retail account can have a unique enabled call forward setting, "
+"pointing to an external number."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:92
+#: ../../administration_portal/client/retail/retail_accounts.rst:91
+msgid ""
+"This external called will be called whenever the retail account cannot be"
+" reached:"
+msgstr ""
+
+#: ../../administration_portal/client/retail/retail_accounts.rst:93
+msgid ""
+"Direct connectivity accounts: when no answer is received from defined "
+"address."
+msgstr ""
+
+#: ../../administration_portal/client/retail/retail_accounts.rst:95
+msgid ""
+"Accounts using SIP register: when no answer is received from last contact"
+" address or when no active register is found."
+msgstr ""
+
+#: ../../administration_portal/client/retail/retail_accounts.rst:98
 msgid "Asterisk as a retail account"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:94
+#: ../../administration_portal/client/retail/retail_accounts.rst:100
 msgid ""
 "At the other end of a account can be any kind of SIP entity. This section"
 " takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:99
+#: ../../administration_portal/client/retail/retail_accounts.rst:105
 msgid "Account register"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:111
+#: ../../administration_portal/client/retail/retail_accounts.rst:117
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:126
+#: ../../administration_portal/client/retail/retail_accounts.rst:132
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
