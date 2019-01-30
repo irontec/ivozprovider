@@ -7,7 +7,6 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
-
 class ResidentialCallAction
 {
     /**
@@ -33,8 +32,7 @@ class ResidentialCallAction
     public function __construct(
         Wrapper $agi,
         ResidentialStatusAction $residentialStatusAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->residentialStatusAction = $residentialStatusAction;
     }
@@ -165,5 +163,4 @@ class ResidentialCallAction
         $settingNotEmpty = !empty($cfwSettings);
         return $settingNotEmpty;
     }
-
 }

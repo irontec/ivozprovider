@@ -36,7 +36,7 @@ class RatingPlanPricesAction
      */
     protected $requestStack;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         RatingPlanGroupRepository $ratingPlanGroupRepository,
         CollectionExtensionList $collectionExtensions,
@@ -76,7 +76,6 @@ class RatingPlanPricesAction
 
             $queryNameGenerator = new QueryNameGenerator();
             foreach ($collectionExtensions->get() as $extension) {
-
                 $entityClass = RatingPlanGroup::class;
                 $operationName = 'get_my_rating_plan_prices';
 

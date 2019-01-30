@@ -30,8 +30,7 @@ class FaxSend extends RouteHandlerAbstract
     public function __construct(
         Wrapper $agi,
         EntityManagerInterface $em
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
     }

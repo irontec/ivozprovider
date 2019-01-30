@@ -20,7 +20,10 @@ class IvozProvider_Klear_Filter_RouteTag extends IvozProvider_Klear_Filter_Brand
             [   "CompanyRelRoutingTag.company = '$companyId'"   ]
         );
 
-        $tagIds = array_map(function ($tag) { return $tag->getRoutingtagId(); }, $tags);;
+        $tagIds = array_map(function ($tag) {
+            return $tag->getRoutingtagId();
+        }, $tags);
+        ;
         if (count($tagIds) > 0) {
             $this->_condition[] = "self::id in (" . implode(",", $tagIds) . ")";
         } else {
@@ -30,5 +33,4 @@ class IvozProvider_Klear_Filter_RouteTag extends IvozProvider_Klear_Filter_Brand
 
         return true;
     }
-
 }

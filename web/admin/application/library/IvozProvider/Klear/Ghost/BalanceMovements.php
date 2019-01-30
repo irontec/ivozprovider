@@ -5,7 +5,6 @@ use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementDto;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
-
 class IvozProvider_Klear_Ghost_BalanceMovements extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
@@ -24,7 +23,8 @@ class IvozProvider_Klear_Ghost_BalanceMovements extends KlearMatrix_Model_Field_
             );
         }
 
-        return sprintf("%s %s",
+        return sprintf(
+            "%s %s",
             $balanceMovement->getAmount(),
             $currencySymbol
         );
@@ -46,7 +46,8 @@ class IvozProvider_Klear_Ghost_BalanceMovements extends KlearMatrix_Model_Field_
             );
         }
 
-        return sprintf("%s %s",
+        return sprintf(
+            "%s %s",
             $balanceMovement->getBalance(),
             $currencySymbol
         );
@@ -77,7 +78,4 @@ class IvozProvider_Klear_Ghost_BalanceMovements extends KlearMatrix_Model_Field_
             []
         );
     }
-
-
-
 }

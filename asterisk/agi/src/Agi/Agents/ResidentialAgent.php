@@ -24,8 +24,7 @@ class ResidentialAgent implements AgentInterface
     public function __construct(
         Wrapper $agi,
         ResidentialDeviceInterface $residential
-    )
-    {
+    ) {
         $this->residential = $residential;
         $this->agi = $agi;
     }
@@ -61,8 +60,11 @@ class ResidentialAgent implements AgentInterface
             $companyDDIs = $this->residential->getCompany()->getDDIs();
             foreach ($companyDDIs as $companyDDI) {
                 if ($callerIdNum === $companyDDI->getDdie164()) {
-                    $this->agi->notice("Residential %s presented origin matches company DDI %s", $this->residential,
-                        $companyDDI);
+                    $this->agi->notice(
+                        "Residential %s presented origin matches company DDI %s",
+                        $this->residential,
+                        $companyDDI
+                    );
                     $ddi = $companyDDI;
                     break;
                 }
@@ -88,7 +90,9 @@ class ResidentialAgent implements AgentInterface
             if ($ddi) {
                 $this->agi->notice(
                     "Using fallback DDI %s for friend %s because %s does not match any DDI.",
-                    $ddi, $this->residential, $callerIdNum
+                    $ddi,
+                    $this->residential,
+                    $callerIdNum
                 );
             }
         }

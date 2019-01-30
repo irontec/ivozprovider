@@ -7,7 +7,6 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
-
 class UserCallAction
 {
     /**
@@ -41,8 +40,7 @@ class UserCallAction
         Wrapper $agi,
         RouterAction $routerAction,
         UserStatusAction $userStatusAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
         $this->userStatusAction = $userStatusAction;
@@ -147,7 +145,6 @@ class UserCallAction
 
         // Redirect to the calling dialplan context
         $this->agi->redirect('call-user', $extension->getNumber());
-
     }
 
     /**
@@ -243,5 +240,4 @@ class UserCallAction
         $settingNotEmpty = !empty($cfwSettings);
         return $settingNotEmpty;
     }
-
 }

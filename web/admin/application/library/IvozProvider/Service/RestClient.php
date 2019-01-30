@@ -53,7 +53,6 @@ class RestClient
         ]);
 
         try {
-
             $response = self::sendRequest($apiUrl, $options);
 
             if (is_null($response)) {
@@ -66,7 +65,6 @@ class RestClient
             }
 
             return $jsonResponse;
-
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get API access token', 0, $e);
         }
@@ -147,7 +145,6 @@ class RestClient
                 $apiEndpoint,
                 $options
             );
-
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get Rating Plans', 0, $e);
         }
@@ -171,7 +168,6 @@ class RestClient
         $response = self::sendRequest($apiEndpoint, $requestOptions);
 
         if (self::$lastRequestInfo['http_code'] === 401) {
-
             if (!$retryOnExpiredToken) {
                 throw new \Exception('Unauthorized');
             }
@@ -198,7 +194,6 @@ class RestClient
         ]);
 
         try {
-
             $response = self::sendRequest($apiUrl, $options);
 
             $jsonResponse = json_decode($response);
@@ -207,7 +202,6 @@ class RestClient
             }
 
             $this->token = $jsonResponse->token;
-
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get API access token', 0, $e);
         }

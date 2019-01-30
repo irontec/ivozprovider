@@ -4,7 +4,6 @@ use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrDto;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 
-
 class IvozProvider_Klear_Ghost_UsersCdr extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**

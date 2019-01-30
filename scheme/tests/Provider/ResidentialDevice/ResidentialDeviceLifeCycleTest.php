@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 
-
 class ResidentialDeviceLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;

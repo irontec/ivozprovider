@@ -23,5 +23,4 @@ class IvozProvider_Klear_Ghost_ConditionalRoutes extends KlearMatrix_Model_Field
             []
         );
     }
-
 }

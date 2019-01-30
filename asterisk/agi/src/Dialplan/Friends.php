@@ -62,8 +62,7 @@ class Friends extends RouteHandlerAbstract
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
         ExternalNumberAction $externalNumberAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
@@ -98,7 +97,7 @@ class Friends extends RouteHandlerAbstract
         $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set user language and music
-        $this->agi->setVariable("CHANNEL(language)",   $friend->getLanguageCode());
+        $this->agi->setVariable("CHANNEL(language)", $friend->getLanguageCode());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Set Friend as the caller
@@ -115,16 +114,17 @@ class Friends extends RouteHandlerAbstract
 
         // Check if this is an extension call
         if (($dstExtension = $company->getExtension($exten))) {
-
-            $this->agi->verbose("Number %s belongs to a Company Extension [extension%d].",
-                $exten, $dstExtension->getId());
+            $this->agi->verbose(
+                "Number %s belongs to a Company Extension [extension%d].",
+                $exten,
+                $dstExtension->getId()
+            );
 
             // Handle extension
             $this->extensionAction
                 ->setExtension($dstExtension)
                 ->process();
-
-        } else if (($outfriend = $company->getFriend($exten))) {
+        } elseif (($outfriend = $company->getFriend($exten))) {
             $this->agi->verbose("Number %s is handled by friendly trunk.", $exten);
 
             // Handle call through friendly trunk
@@ -132,7 +132,6 @@ class Friends extends RouteHandlerAbstract
                 ->setFriend($outfriend)
                 ->setDestination($exten)
                 ->process();
-
         } else {
             // This number don't belong to IvozProvider
             $this->agi->verbose("Number %s is handled as external number.", $exten);
@@ -151,9 +150,6 @@ class Friends extends RouteHandlerAbstract
             $this->externalNumberAction
                 ->setDestination($exten)
                 ->process();
-
         }
     }
-
-
 }

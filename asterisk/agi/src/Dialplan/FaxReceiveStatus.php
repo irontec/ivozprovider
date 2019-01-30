@@ -38,8 +38,7 @@ class FaxReceiveStatus extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         FaxReceiveStatusAction $faxReceiveStatusAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->faxReceiveStatusAction = $faxReceiveStatusAction;

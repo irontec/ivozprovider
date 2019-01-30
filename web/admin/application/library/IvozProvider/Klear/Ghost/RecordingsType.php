@@ -7,7 +7,7 @@ class IvozProvider_Klear_Ghost_RecordingsType extends KlearMatrix_Model_Field_Gh
      * @param $model Recordings $model
      * @return type
      */
-    public function getData ($model)
+    public function getData($model)
     {
         $type = $model->getType() == 'ondemand'
             ? 'On-demand'

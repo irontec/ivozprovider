@@ -168,5 +168,4 @@ class EndpointResolver
 
         return $residential;
     }
-
 }

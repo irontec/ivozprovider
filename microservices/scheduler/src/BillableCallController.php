@@ -29,7 +29,6 @@ class BillableCallController
         try {
             $this->billableCallFromTrunksCdr->execute();
         } catch (\Exception $e) {
-
             $this->logger->error($e->getMessage());
             return new Response(
                 $e->getMessage() . "\n",

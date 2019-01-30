@@ -89,5 +89,4 @@ class WebTheme
         $this->logo = $logo;
         return $this;
     }
-
 }

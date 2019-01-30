@@ -64,8 +64,7 @@ class FaxDial extends RouteHandlerAbstract
         EntityTools $entityTools,
         CommonStoragePathResolver $faxStoragePathResolver,
         ExternalFaxCallAction $externalFaxCallAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
@@ -136,5 +135,4 @@ class FaxDial extends RouteHandlerAbstract
             ->setDestination($faxOut->getDstE164())
             ->process();
     }
-
 }

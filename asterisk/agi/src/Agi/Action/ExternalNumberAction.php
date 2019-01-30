@@ -1,6 +1,7 @@
 <?php
 
 namespace Agi\Action;
+
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
@@ -45,8 +46,7 @@ class ExternalNumberAction
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityManagerInterface $em
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;

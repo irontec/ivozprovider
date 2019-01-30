@@ -5,8 +5,8 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
 
     public function init()
     {
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter)) ) {
-            throw New Zend_Exception('',Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter))) {
+            throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
         $this->_helper->ContextSwitch()
@@ -22,11 +22,13 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
         $this->restoreBackup('generic');
     }
 
-    public function restoreSpecificBackupAction(){
+    public function restoreSpecificBackupAction()
+    {
         $this->restoreBackup('specific');
     }
 
-    private function restoreBackup($file){
+    private function restoreBackup($file)
+    {
         $id = $this->_mainRouter->getParam('pk');
         $path = $this->getPath();
         $filename = ($path. DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR . $file . '.phtml.back');
@@ -39,10 +41,10 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
                     'title' => $this->_helper->translate("Restore backup"),
                     'message'=>$this->_helper->translate("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"
             );
-        } else{
+        } else {
             $existsBackup = file_exists($filename);
-            if($existsBackup){
-                $message = $this->_helper->translate("Restore backup from") . " " . date ("d m Y H:i:s.", filemtime($filename));
+            if ($existsBackup) {
+                $message = $this->_helper->translate("Restore backup from") . " " . date("d m Y H:i:s.", filemtime($filename));
             } else {
                 $message = $this->_helper->translate("No backup found.");
             }
@@ -76,7 +78,8 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
     }
 
 
-    private function getPath(){
+    private function getPath()
+    {
         $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
         $conf = (Object) $bootstrap->getOptions();
         $path = $conf->Iron['fso']['localStoragePath'];

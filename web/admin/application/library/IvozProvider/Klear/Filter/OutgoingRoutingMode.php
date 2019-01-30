@@ -45,7 +45,6 @@ class IvozProvider_Klear_Filter_OutgoingRoutingMode implements KlearMatrix_Model
 
             /** @var OutgoingRoutingDto $outgoingRouting */
             $this->outgoingRouting = $dataGateway->find(OutgoingRouting::class, $outgoingRoutingId);
-
         }
         return true;
     }
@@ -59,14 +58,14 @@ class IvozProvider_Klear_Filter_OutgoingRoutingMode implements KlearMatrix_Model
         $excludedRoutingModes = [];
 
         if ($this->outgoingRouting) {
-             switch ($this->outgoingRouting->getRoutingMode()) {
-                 case OutgoingRouting::MODE_LCR:
-                     $excludedRoutingModes[] = OutgoingRouting::MODE_STATIC;
-                     break;
-                 case OutgoingRouting::MODE_STATIC:
-                     $excludedRoutingModes[] = OutgoingRouting::MODE_LCR;
-                     break;
-             }
+            switch ($this->outgoingRouting->getRoutingMode()) {
+                case OutgoingRouting::MODE_LCR:
+                    $excludedRoutingModes[] = OutgoingRouting::MODE_STATIC;
+                    break;
+                case OutgoingRouting::MODE_STATIC:
+                    $excludedRoutingModes[] = OutgoingRouting::MODE_LCR;
+                    break;
+            }
         }
 
         return $excludedRoutingModes;

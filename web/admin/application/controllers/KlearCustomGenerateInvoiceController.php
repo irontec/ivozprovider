@@ -9,15 +9,18 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
 
     protected $_brandId;
 
-    public function init ()
+    public function init()
     {
         /**
          * Initialize action controller here
          */
         if ((! $this->_mainRouter = $this->getRequest()->getUserParam(
-                "mainRouter")) || (! is_object($this->_mainRouter))) {
-            throw new Zend_Exception("",
-                    Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+            "mainRouter"
+        )) || (! is_object($this->_mainRouter))) {
+            throw new Zend_Exception(
+                "",
+                Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
+            );
         }
 
         $this->_helper->ContextSwitch()
@@ -45,7 +48,7 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
         }
     }
 
-    protected function _confirmDialog ()
+    protected function _confirmDialog()
     {
         $title = $this->_helper->translate("Generate invoice");
         $message = $this->_helper->translate("Are you sure you want to generate the invoice?");
@@ -112,7 +115,7 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
         $this->_dispatch($data);
     }
 
-    protected function _dispatch (array $data)
+    protected function _dispatch(array $data)
     {
         $jsonResponse = new Klear_Model_DispatchResponse();
         $jsonResponse->setModule('klearMatrix');
@@ -122,4 +125,3 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
         $jsonResponse->attachView($this->view);
     }
 }
-

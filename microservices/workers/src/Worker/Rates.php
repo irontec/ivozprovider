@@ -157,11 +157,11 @@ class Rates
 
         // Parse every CSV line
         foreach ($csvLines as $line) {
-
             $line["Per minute charge"]  = sprintf("%.4f", $line["rateCost"]);
             $line["Connection charge"]  = sprintf("%.4f", $line["connectionCharge"]);
 
-            $destinations[] = sprintf('("%s",  "%s",  "%s", "%d" )',
+            $destinations[] = sprintf(
+                '("%s",  "%s",  "%s", "%d" )',
                 $line['destinationPrefix'],
                 $line['destinationName'],
                 $line['destinationName'],
@@ -169,7 +169,8 @@ class Rates
             );
 
             $destinationRates[] =
-                sprintf('("%s", "%s", "%ss", %s, %d)',
+                sprintf(
+                    '("%s", "%s", "%ss", %s, %d)',
                     $line["rateCost"],
                     $line["connectionCharge"],
                     $line["rateIncrement"],
@@ -179,7 +180,7 @@ class Rates
                         $brandId
                     ),
                     $destinationRateGroupId
-            );
+                );
         }
 
         if (!$destinationRates) {
@@ -205,7 +206,7 @@ class Rates
             $destinationChunks = array_chunk($destinations, 100);
             foreach ($destinationChunks as $destination) {
                 $destinationInsert = 'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, brandId) VALUES '
-                        . implode (",", $destination);
+                        . implode(",", $destination);
                 $this->em->getConnection()->executeQuery($destinationInsert);
             }
 
@@ -223,7 +224,6 @@ class Rates
             $this->logger->debug('About to insert DestinationRates');
             $tpDestinationRateChunks = array_chunk($destinationRates, 100);
             foreach ($tpDestinationRateChunks as $destinationRates) {
-
                 $tpDestinationRateInsert = 'INSERT INTO DestinationRates
                               (rate, connectFee, rateIncrement, destinationId, destinationRateGroupId)
                               VALUES ' . implode(",", $destinationRates) .
@@ -276,9 +276,7 @@ class Rates
 
             $this->reloadService->execute($brand->getCgrTenant());
             $this->logger->debug('Importer finished successfuly');
-
         } catch (\Exception $exception) {
-
             $this->logger->error('Importer error. Rollback');
             $this->em->getConnection()->rollback();
 

@@ -24,8 +24,7 @@ class DdiAgent implements AgentInterface
     public function __construct(
         Wrapper $agi,
         DdiInterface $ddi
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->ddi = $ddi;
     }

@@ -25,8 +25,7 @@ class UserAgent implements AgentInterface
     public function __construct(
         Wrapper $agi,
         UserInterface $user
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->user = $user;
     }

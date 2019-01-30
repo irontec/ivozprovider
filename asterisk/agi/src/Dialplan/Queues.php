@@ -39,8 +39,7 @@ class Queues extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         QueueCallAction $queueCallAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->queueCallAction = $queueCallAction;
@@ -68,6 +67,5 @@ class Queues extends RouteHandlerAbstract
         $this->queueCallAction
             ->setQueueMember($queueMember)
             ->process();
-
     }
 }

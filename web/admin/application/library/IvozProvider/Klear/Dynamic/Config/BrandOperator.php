@@ -17,7 +17,7 @@ class BrandOperator extends Base
             $this->_subTitle = "Main Operator: <strong>". $this->_user->getusername()."</strong>";
 
             if ($this->_user->companyId) {
-                $this->_subTitle .= sprintf('<br />Emulated client: <strong>%s</strong>',  $this->_user->companyName);
+                $this->_subTitle .= sprintf('<br />Emulated client: <strong>%s</strong>', $this->_user->companyName);
             }
         }
     }

@@ -11,9 +11,9 @@ class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghos
      * @return string Forced DDI text based on action
      * @throws Exception
      */
-    public function getOutgoingRuleForcedDDI ($model)
+    public function getOutgoingRuleForcedDDI($model)
     {
-        switch($model->getDefaultAction()) {
+        switch ($model->getDefaultAction()) {
             case 'force':
                 if ($model->getForcedDdi()) {
                     return $model->getForcedDdi()
@@ -34,9 +34,9 @@ class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghos
      * @return string Forced DDI text based on action
      * @throws Exception
      */
-    public function getOutgoingRulePatternForcedDDI ($model)
+    public function getOutgoingRulePatternForcedDDI($model)
     {
-        switch($model->getAction()) {
+        switch ($model->getAction()) {
             case 'force':
                 if ($model->getForcedDDIId()) {
                     return $model->getForcedDDI()->getDDIE164();
@@ -48,5 +48,4 @@ class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghos
                 return "";
         }
     }
-
 }

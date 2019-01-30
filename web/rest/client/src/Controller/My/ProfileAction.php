@@ -13,7 +13,7 @@ class ProfileAction
      */
     protected $tokenStorage;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage
     ) {
         $this->tokenStorage = $tokenStorage;

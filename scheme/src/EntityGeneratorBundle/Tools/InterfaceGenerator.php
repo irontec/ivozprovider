@@ -26,7 +26,7 @@ class InterfaceGenerator extends EntityGenerator
      * @var string
      */
     protected static $classTemplate =
-'<?php
+    '<?php
 
 <namespace>
 <useStatement>
@@ -182,9 +182,7 @@ class InterfaceGenerator extends EntityGenerator
                     $parentInterfaces
                 );
             }
-
         } catch (\Exception $e) {
-
             $parentInterfaces = ['Ivoz\\Core\\Domain\\Model\\EntityInterface'];
         }
 
@@ -202,7 +200,6 @@ class InterfaceGenerator extends EntityGenerator
 
         $potentiallyDuplicated = [];
         foreach ($parentInterfaces as $interfaceFqdn) {
-
             $interfaceReflection = new \ReflectionClass($interfaceFqdn);
             $interfaces = $interfaceReflection->getInterfaceNames();
 
@@ -262,7 +259,6 @@ class InterfaceGenerator extends EntityGenerator
         $publicMethods = $reflectionClass->getMethods(\ReflectionMethod::IS_PUBLIC);
 
         foreach ($publicMethods as $publicMethod) {
-
             if ($publicMethod->isConstructor()) {
                 continue;
             }
@@ -280,7 +276,6 @@ class InterfaceGenerator extends EntityGenerator
 
             $methodParameterArray = [];
             foreach ($methodParameters as $methodParameter) {
-
                 $str = '';
                 try {
                     $parameterClass = $methodParameter->getClass();
@@ -291,16 +286,16 @@ class InterfaceGenerator extends EntityGenerator
 
                 if ($parameterClass) {
                     $str = '\\' . $parameterClass->getName() . ' ';
-                } else if ($methodParameter->isArray()) {
+                } elseif ($methodParameter->isArray()) {
                     $str = 'array ';
-                } else if ($methodParameter->hasType()) {
+                } elseif ($methodParameter->hasType()) {
                     $str = $methodParameter->getType() . ' ';
                 }
 
                 $str .= '$' . $methodParameter->getName();
                 if ($methodParameter->isOptional()  && !is_null($methodParameter->getDefaultValue())) {
                     $str .= " = '" . $methodParameter->getDefaultValue() . "'";
-                } else if ($methodParameter->isOptional()) {
+                } elseif ($methodParameter->isOptional()) {
                     $str .= " = null";
                 }
 

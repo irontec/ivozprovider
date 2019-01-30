@@ -39,8 +39,7 @@ class FaxSendStatus extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         EntityTools $entityTools
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->entityTools = $entityTools;

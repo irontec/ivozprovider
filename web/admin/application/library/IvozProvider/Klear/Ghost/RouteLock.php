@@ -22,7 +22,6 @@ class IvozProvider_Klear_Ghost_RouteLock extends KlearMatrix_Model_Field_Ghost_A
         } else {
             return '<span class="ui-silk inline ui-silk-stop" title="Closed"/>';
         }
-
     }
 
     /**
@@ -108,7 +107,5 @@ class IvozProvider_Klear_Ghost_RouteLock extends KlearMatrix_Model_Field_Ghost_A
         }
 
         return "";
-
     }
-
 }

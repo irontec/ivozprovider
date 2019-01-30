@@ -96,7 +96,8 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
                 []
             );
 
-            return sprintf("%s %s",
+            return sprintf(
+                "%s %s",
                 $balance,
                 $currencySymbol
             );

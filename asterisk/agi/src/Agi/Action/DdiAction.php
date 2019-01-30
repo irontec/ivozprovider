@@ -39,8 +39,7 @@ class DdiAction
         Wrapper $agi,
         RouterAction $routerAction,
         ExternalFilterAction $externalFilterAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
         $this->externalFilterAction = $externalFilterAction;

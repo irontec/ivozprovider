@@ -29,7 +29,7 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
         $this->_mainRouterOriginalParams = $this->_mainRouter->getParams();
     }
 
-    public function setOption (\KlearMatrix_Model_Option_Abstract $option)
+    public function setOption(\KlearMatrix_Model_Option_Abstract $option)
     {
         $this->_option = $option;
     }
@@ -127,15 +127,16 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
 
             return $response;
         }
-
     }
 
-    protected function _isRemovable() {
+    protected function _isRemovable()
+    {
         $name = $this->_parentModel->getName();
         return $name != 'Default';
     }
 
-    protected function _isEditable() {
+    protected function _isEditable()
+    {
         $scope  = $this->_parentModel->getScope();
         $domain = $this->_parentModel->getDomain();
 
@@ -146,13 +147,15 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
         return $isEditable;
     }
 
-    protected function _isBrandData() {
+    protected function _isBrandData()
+    {
         $brandId = $this->_parentModel->getBrandId();
 
         return $brandId != null;
     }
 
-    protected function _isCompanyData() {
+    protected function _isCompanyData()
+    {
         $companyId = $this->_parentModel->getCompanyId();
 
         return $companyId != null;

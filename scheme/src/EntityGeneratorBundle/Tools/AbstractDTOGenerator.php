@@ -20,7 +20,7 @@ class AbstractDTOGenerator extends EntityGenerator
      * @var string
      */
     protected static $constructorMethodTemplate =
-'
+    '
 use DtoNormalizer;
 
 public function __construct($id = null)
@@ -54,7 +54,7 @@ public function toArray($hideSensitiveData = false)
      * @var string
      */
     protected static $setMethodTemplate =
-'/**
+    '/**
  * @param <variableType> $<variableName>
  *
  * @return static
@@ -70,7 +70,7 @@ public function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
      * @var string
      */
     protected static $setIdMethodTemplate =
-'/**
+    '/**
  * @param integer $id | null
  *
  * @return static
@@ -88,7 +88,7 @@ public function <methodName>Id($id)
      * @var string
      */
     protected static $getMethodTemplate =
-'/**
+    '/**
  * @return <variableType>
  */
 public function <methodName>()
@@ -100,7 +100,7 @@ public function <methodName>()
      * @var string
      */
     protected static $getIdMethodTemplate =
-'/**
+    '/**
  * @return integer | null
  */
 public function <methodName>Id()
@@ -204,13 +204,10 @@ public function <methodName>Id()
         $lines[] = $this->spaces . '/**';
 
         if (isset($field->columnName)) {
-
             $lines[] = $this->spaces
                 . ' * @var '
                 . $this->getType($fieldMapping['type']);
-
         } else {
-
             $oneToMany = $fieldMapping['type'] === ClassMetadataInfo::ONE_TO_MANY;
             $type = '\\' . $fieldMapping['targetEntity'] . 'Dto';
             if ($oneToMany) {
@@ -291,7 +288,6 @@ public function <methodName>Id()
         $response = [];
 
         foreach ($propertyMap as $key => $value) {
-
             $value = is_array(($value))
                 ? $this->subPropertyMapStringify($value)
                 : "'" . $value . "'";
@@ -336,7 +332,6 @@ public function <methodName>Id()
             }
 
             if (isset($field->targetEntity)) {
-
                 $isOneToMany = ($field->type == ClassMetadataInfo::ONE_TO_MANY);
                 list($associationToArray, $associationGetterAs) = $this
                     ->getConstructorAssociationFields($attribute, $fieldName, $isOneToMany);
@@ -350,9 +345,7 @@ public function <methodName>Id()
                 }
 
                 $getters[$attribute] = $associationGetterAs;
-
-            } else if (strpos($fieldName, '.')) {
-
+            } elseif (strpos($fieldName, '.')) {
                 $segments = explode('.', $fieldName);
 
                 if (!array_key_exists($segments[0], $toArray)) {
@@ -377,9 +370,7 @@ public function <methodName>Id()
                     . Inflector::classify($segments[1])
                     . '()'
                     . ')';
-
             } else {
-
                 $propertyMap[$fieldName] =  $fieldName;
                 $toArray[$fieldName]  = '\''. $attribute .'\' => $this->get' . Inflector::classify($fieldName) . '()';
                 $getters[$attribute] = 'set' . Inflector::classify($fieldName)
@@ -400,7 +391,6 @@ public function <methodName>Id()
         $class = [];
 
         foreach ($fieldMappings as $fieldMapping) {
-
             if (false === strpos($fieldMapping['fieldName'], '.')) {
                 continue;
             }
@@ -424,7 +414,6 @@ public function <methodName>Id()
         $response = '$' . $voName . ' = new ' . end($class) . "(%s);\n";
 
         if (!empty($arguments)) {
-
             $value =
                 "\n"
                 . $this->spaces
@@ -434,10 +423,9 @@ public function <methodName>Id()
 
             $response =
                 $this->spaces
-                . sprintf($response,$value);
-
+                . sprintf($response, $value);
         } else {
-            $response = sprintf($response,'');
+            $response = sprintf($response, '');
         }
 
         return $response;
@@ -454,7 +442,6 @@ public function <methodName>Id()
         $arguments = [];
 
         foreach ($fieldMappings as $fieldMapping) {
-
             if (false === strpos($fieldMapping['fieldName'], '.')) {
                 continue;
             }
@@ -484,8 +471,6 @@ public function <methodName>Id()
             . "' => [%s]";
 
         if (!empty($arguments)) {
-
-
             $spaces = str_repeat($this->spaces, 2);
             $value =
                 "\n"
@@ -494,10 +479,9 @@ public function <methodName>Id()
                 . "\n"
                 . $spaces;
 
-            $response = sprintf($response,$value);
-
+            $response = sprintf($response, $value);
         } else {
-            $response = sprintf($response,'');
+            $response = sprintf($response, '');
         }
 
         return $response;
@@ -577,19 +561,15 @@ public function <methodName>Id()
             $isOneToMany = $fieldMapping['type'] === ClassMetadataInfo::ONE_TO_MANY;
 
             if (isset($field->targetEntity) && !$isOneToMany) {
-
                 $targetEntity = str_replace('\\', '\\\\', $field->targetEntity);
                 $fkTransformers[] =
                     '$this->' . $attribute
                     . ' = '
                     . '$transformer->transform($this->get' . ucfirst($attribute) . '());';
-
-            } else if (isset($field->targetEntity) && $isOneToMany) {
-
+            } elseif (isset($field->targetEntity) && $isOneToMany) {
                 $targetEntity = str_replace('\\', '\\\\', $field->targetEntity);
 
                 if ($fieldMapping['type'] === ClassMetadataInfo::ONE_TO_MANY) {
-
                     $twoSpaces = str_repeat($this->spaces, 2);
                     $fourSpaces = str_repeat($this->spaces, 4);
                     $fiveSpaces = str_repeat($this->spaces, 5);
@@ -644,7 +624,6 @@ public function <methodName>Id()
             }
 
             if (isset($field->targetEntity) && $fieldMapping['type'] === ClassMetadataInfo::ONE_TO_MANY) {
-
                 $targetEntity = str_replace('\\', '\\\\', $field->targetEntity);
 
                 $twoSpaces = str_repeat($this->spaces, 2);
@@ -660,7 +639,6 @@ public function <methodName>Id()
                     . '$this->' . $attribute . "\n"
                     . $twoSpaces
                     . ');';
-
             }
         }
 
@@ -676,7 +654,6 @@ public function <methodName>Id()
         $mapping = array_merge($metadata->fieldMappings, $metadata->associationMappings);
 
         foreach ($mapping as $fieldMapping) {
-
             $field = (object) $fieldMapping;
             $fieldName = $field->fieldName;
 
@@ -733,7 +710,6 @@ public function <methodName>Id()
             $field = (object) $fieldMapping;
 
             if ($field->type === ClassMetadataInfo::ONE_TO_MANY) {
-
                 $lines[] = $this->generateFieldMappingPropertyDocBlock($fieldMapping, $metadata);
                 $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $fieldMapping['fieldName'] . ' = null;'. "\n";
                 continue;
@@ -742,7 +718,6 @@ public function <methodName>Id()
             $lines[] = $this->generateFieldMappingPropertyDocBlock($fieldMapping, $metadata);
             $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $fieldMapping['fieldName']
                 . (isset($fieldMapping['options']['default']) ? ' = ' . var_export($fieldMapping['options']['default'], true) : null) . ";\n";
-
         }
 
         return implode("\n", $lines);
@@ -756,10 +731,8 @@ public function <methodName>Id()
         $methods = array();
         $fieldMappings = array_merge($metadata->fieldMappings, $metadata->associationMappings);
         foreach ($fieldMappings as $fieldMapping) {
-
             $field = (object) $fieldMapping;
             if (isset($field->targetEntity)) {
-
                 if (in_array($fieldMapping['type'], [ClassMetadataInfo::MANY_TO_ONE, ClassMetadataInfo::ONE_TO_ONE])) {
                     if ($code = $this->generateEntityStubMethod($metadata, 'set', $fieldMapping['fieldName'], $fieldMapping['targetEntity'])) {
                         $methods[] = $code;
@@ -771,7 +744,6 @@ public function <methodName>Id()
 
                     $methods[] = $this->generateIdStubMethod('set', $fieldMapping['fieldName'], $fieldMapping['targetEntity'] . 'Dto');
                     $methods[] = $this->generateIdStubMethod('get', $fieldMapping['fieldName'], $fieldMapping['targetEntity'] . 'Dto');
-
                 } else {
                     if ($code = $this->generateEntityStubMethod($metadata, 'set', $fieldMapping['fieldName'], \Doctrine\DBAL\Types\Type::SIMPLE_ARRAY)) {
                         $methods[] = $code;
@@ -814,7 +786,7 @@ public function <methodName>Id()
     /**
      * {@inheritDoc}
      */
-    protected function generateEntityStubMethod(ClassMetadataInfo $metadata, $type, $fieldName, $typeHint = null,  $defaultValue = null)
+    protected function generateEntityStubMethod(ClassMetadataInfo $metadata, $type, $fieldName, $typeHint = null, $defaultValue = null)
     {
         $isNullable = true;
 
@@ -836,13 +808,13 @@ public function <methodName>Id()
             $typeHint = 'array';
         }
 
-        return $this->_generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
+        return $this->_generateEntityStubMethod($metadata, $type, $fieldName, $typeHint, $defaultValue);
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function _generateEntityStubMethod(ClassMetadataInfo $metadata, $type, $fieldName, $typeHint = null,  $defaultValue = null)
+    protected function _generateEntityStubMethod(ClassMetadataInfo $metadata, $type, $fieldName, $typeHint = null, $defaultValue = null)
     {
         $currentField = null;
         $isNullable = false;
@@ -869,7 +841,7 @@ public function <methodName>Id()
             $typeHint = 'array';
         }
 
-        $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
+        $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint, $defaultValue);
         $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
 
         $replacements = array(
@@ -888,7 +860,6 @@ public function <methodName>Id()
         }
 
         if (array_key_exists($fieldName, $metadata->associationMappings)) {
-
             $field = (object) $metadata->associationMappings[$fieldName];
             $isOneToMany = ($field->type == ClassMetadataInfo::ONE_TO_MANY);
 
@@ -914,7 +885,6 @@ public function <methodName>Id()
         $forcedArray = '';
 
         if ($isCollection && $type === 'get') {
-
             $criteriaArgument = 'Criteria $criteria = null';
             $criteriaGetter = "\n";
             $criteriaGetter .= "if (!is_null(\$criteria)) {\n";

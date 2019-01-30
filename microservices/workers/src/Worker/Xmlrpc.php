@@ -105,9 +105,11 @@ class Xmlrpc
         );
 
         if (!$success) {
-            $this->logger->info(sprintf("[XMLRPC] Delayed %s job request failed: Retrying in %d seconds.",
-               $job->getRpcMethod(), $this->retryInterval)
-            );
+            $this->logger->info(sprintf(
+                "[XMLRPC] Delayed %s job request failed: Retrying in %d seconds.",
+                $job->getRpcMethod(),
+                $this->retryInterval
+            ));
             sleep($this->retryInterval);
             exit(GEARMAN_WORK_ERROR);
         }
@@ -141,7 +143,7 @@ class Xmlrpc
 
         try {
             // Create a new XmlRpc client for each server
-            $client = new Client(sprintf("http://%s:%d/RPC2",  $server->getIp(), $port));
+            $client = new Client(sprintf("http://%s:%d/RPC2", $server->getIp(), $port));
             $client->setUserAgent("xmlrpclib");
             $response = $client->send(new Request($method));
 
@@ -149,18 +151,24 @@ class Xmlrpc
                 throw new \Exception($response->errstr);
             }
 
-            $this->logger->info(sprintf("[XMLRPC] Request %s sent to %s [%s:%d]",
-                $method, $server->getName(), $server->getIp(), $port
+            $this->logger->info(sprintf(
+                "[XMLRPC] Request %s sent to %s [%s:%d]",
+                $method,
+                $server->getName(),
+                $server->getIp(),
+                $port
             ));
-
         } catch (\Exception $e) {
-            $this->logger->error(sprintf("[XMLRPC] Unable to send request %s to server %s [%s:%d]: %s",
-                $method, $server->getName(), $server->getIp(), $port,
+            $this->logger->error(sprintf(
+                "[XMLRPC] Unable to send request %s to server %s [%s:%d]: %s",
+                $method,
+                $server->getName(),
+                $server->getIp(),
+                $port,
                 $e->getMessage()
             ));
             return false;
         }
         return true;
     }
-
 }

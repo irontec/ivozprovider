@@ -24,8 +24,7 @@ class FriendAgent implements AgentInterface
     public function __construct(
         Wrapper $agi,
         FriendInterface $friend
-    )
-    {
+    ) {
         $this->friend = $friend;
         $this->agi = $agi;
     }
@@ -84,7 +83,9 @@ class FriendAgent implements AgentInterface
             if ($ddi) {
                 $this->agi->notice(
                     "Using fallback DDI %s for friend %s because %s does not match any DDI.",
-                    $ddi, $this->friend, $callerIdNum
+                    $ddi,
+                    $this->friend,
+                    $callerIdNum
                 );
             }
         }

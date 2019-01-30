@@ -60,4 +60,3 @@ class MicroKernel extends Kernel
         return __DIR__.'/../var/logs';
     }
 }
-

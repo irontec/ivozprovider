@@ -2,6 +2,7 @@
 namespace IvozProvider\Klear\Dynamic\Config;
 
 use IvozProvider\Mapper\Sql\Companies;
+
 class CompanyAdmin extends Base
 {
 

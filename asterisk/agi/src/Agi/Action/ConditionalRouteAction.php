@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
 
-
 class ConditionalRouteAction
 {
     /**
@@ -34,8 +33,7 @@ class ConditionalRouteAction
     public function __construct(
         Wrapper $agi,
         RouterAction $routerAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
     }
@@ -86,7 +84,6 @@ class ConditionalRouteAction
         /** @var ConditionalRoutesConditionInterface[] $conditions */
         $conditions = $route->getConditions($criteria);
         foreach ($conditions as $condition) {
-
             // Check origin matches route condition
             if (!$condition->matchesOrigin($this->agi->getCallerIdNum())) {
                 continue;
@@ -135,5 +132,4 @@ class ConditionalRouteAction
         // Route this!
         $this->routerAction->route();
     }
-
 }

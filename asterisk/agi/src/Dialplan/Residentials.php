@@ -62,8 +62,7 @@ class Residentials extends RouteHandlerAbstract
         EndpointResolver $endpointResolver,
         ExternalNumberAction $externalNumberAction,
         ServiceAction $serviceAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->brandServiceRepository = $brandServiceRepository;
@@ -137,7 +136,5 @@ class Residentials extends RouteHandlerAbstract
                 ->setDestination($exten)
                 ->process();
         }
-
     }
-
 }

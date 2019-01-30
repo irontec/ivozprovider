@@ -29,7 +29,7 @@ class ExternalFaxCallAction
     /**
      * @var EntityTools
      */
-    protected  $entityTools;
+    protected $entityTools;
 
     /**
      * @var string
@@ -51,8 +51,7 @@ class ExternalFaxCallAction
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EntityTools $entityTools
-    )
-    {
+    ) {
         $this->entityTools = $entityTools;
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;

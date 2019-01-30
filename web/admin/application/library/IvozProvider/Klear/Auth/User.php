@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
 
-
 class User extends \Klear_Model_UserAdvanced
 {
     public $isMainOperator = false;
@@ -151,5 +150,4 @@ class User extends \Klear_Model_UserAdvanced
         // Devuelve un hash basado en las propiedades publicas
         return md5(print_r(call_user_func('get_object_vars', $this), true));
     }
-
 }

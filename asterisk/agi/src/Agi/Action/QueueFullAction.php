@@ -5,7 +5,6 @@ namespace Agi\Action;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 
-
 class QueueFullAction
 {
     /**
@@ -32,8 +31,7 @@ class QueueFullAction
     public function __construct(
         Wrapper $agi,
         RouterAction $routerAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
     }

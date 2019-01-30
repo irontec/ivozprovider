@@ -36,8 +36,7 @@ class HuntGroups extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         HuntGroupCallAction $huntGroupCallAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->huntGroupCallAction = $huntGroupCallAction;

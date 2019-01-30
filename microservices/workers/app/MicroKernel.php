@@ -37,7 +37,6 @@ class MicroKernel extends Kernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-
     }
 
     // optional, to use the standard Symfony cache directory
@@ -52,4 +51,3 @@ class MicroKernel extends Kernel
         return __DIR__.'/../var/logs';
     }
 }
-

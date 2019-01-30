@@ -26,7 +26,7 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
      */
     public function getTypeIcon($model)
     {
-        switch($model->getType()) {
+        switch ($model->getType()) {
             case Company::VPBX:
                 return '<span class="ui-silk inline ui-silk-building" title="Company"></span>';
             case Company::RETAIL:
@@ -56,14 +56,13 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
             );
 
             $currencySymbol = $dataGateway->remoteProcedureCall(
-              Company::class,
-              $companyDto->getId(),
-              'getCurrencySymbol',
-              []
+                Company::class,
+                $companyDto->getId(),
+                'getCurrencySymbol',
+                []
             );
 
             return sprintf("%s %s", $amount, $currencySymbol);
-
         } catch (Exception $exception) {
             return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
         }

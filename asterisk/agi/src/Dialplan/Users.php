@@ -14,7 +14,6 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
 use RouteHandlerAbstract;
 
-
 class Users extends RouteHandlerAbstract
 {
     /**
@@ -71,8 +70,7 @@ class Users extends RouteHandlerAbstract
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
         ExternalNumberAction $externalNumberCallAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
@@ -112,7 +110,7 @@ class Users extends RouteHandlerAbstract
             $transfererDomain = $this->agi->extractURI($transfererHdr, "domain");
 
             $endpointName = $this->endpointResolver->getEndpointNameFromContact($transfererNum, $transfererDomain);
-        } else if (!empty($forwarder)) {
+        } elseif (!empty($forwarder)) {
             /** Redirection from User's terminal - 302 Moved */
             // 302 Moved here caller. The variable MUST store the last dialed endpoint
             $endpointName = $this->agi->getVariable("DIAL_ENDPOINT");
@@ -139,7 +137,7 @@ class Users extends RouteHandlerAbstract
         } elseif (!empty($forwarded)) {
             // Update Diversion Header with User Outgoing DDI
             $this->agi->setRedirecting('from-name,i', $user->getFullName());
-            $this->agi->setRedirecting('from-num,i',  $user->getExtensionNumber());
+            $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
             $this->agi->setRedirecting('count,i', 1);
         } else {
             // For now, origin is also the caller user
@@ -179,12 +177,10 @@ class Users extends RouteHandlerAbstract
 
             /** @var CompanyServiceInterface $service */
             if (($service = $company->getService($exten))) {
-
                 // Handle service code
                 $this->serviceAction
                     ->setService($service)
                     ->process();
-
             } else {
                 // Decline this call if not matching service is found
                 $this->agi->error("Invalid Service code %s for company  %s", $exten, $company);
@@ -199,7 +195,7 @@ class Users extends RouteHandlerAbstract
                 ->process();
 
             // Check if this number matches one of friendly trunks patterns
-        } else if (($friend = $company->getFriend($exten))) {
+        } elseif (($friend = $company->getFriend($exten))) {
             // Handle call through friendly trunk
             $this->friendCallAction
                 ->setFriend($friend)
@@ -224,5 +220,4 @@ class Users extends RouteHandlerAbstract
                 ->process();
         }
     }
-
 }
