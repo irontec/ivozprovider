@@ -4,7 +4,7 @@ namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class CustomParameterDecorator implements NormalizerInterface
+class CollectionResponseHeaderFixedDecorator implements NormalizerInterface
 {
     /**
      * @var NormalizerInterface
@@ -35,16 +35,26 @@ class CustomParameterDecorator implements NormalizerInterface
         foreach ($response['paths'] as $paths) {
             foreach ($paths as $key => $path) {
                 $pathArray = $path->getArrayCopy();
-                if (!array_key_exists('upload_parameters', $pathArray)) {
-                    continue;
-                }
 
-                array_push(
-                    $pathArray['parameters'],
-                    ...$pathArray['upload_parameters']
-                );
-                unset($pathArray['upload_parameters']);
-                $pathArray['consumes'][] = 'multipart/form-data';
+                foreach ($pathArray['responses'] as $responseCode => $responseDef) {
+                    if ($responseCode < 200 || $responseCode >= 300) {
+                        continue;
+                    }
+                    if (!isset($responseDef['schema']['type'])) {
+                        continue;
+                    }
+                    if ($responseDef['schema']['type'] !== 'array') {
+                        continue;
+                    }
+
+                    $pathArray['responses'][$responseCode]['headers'] = [
+                        'X-Total-Items' => ['type' => 'integer'],
+                        'X-Total-Pages' => ['type' => 'integer'],
+                        'X-First-Page' => ['type' => 'string'],
+                        'X-Next-Page' => ['type' => 'string'],
+                        'X-Last-Page' => ['type' => 'string'],
+                    ];
+                }
 
                 $path->exchangeArray($pathArray);
             }

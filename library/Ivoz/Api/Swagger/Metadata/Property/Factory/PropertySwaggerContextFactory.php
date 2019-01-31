@@ -144,13 +144,14 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
                 break;
 
             case 'int':
+                $isId = isset($fldMetadata['id']) && $fldMetadata['id'];
                 $isUnsigned = isset($fldMetadata['options']) && isset($fldMetadata['options']['unsigned']) && $fldMetadata['options']['unsigned'];
-                if ($isUnsigned) {
+                if ($isUnsigned && !$isId) {
                     $propertyMetadata = $this->appendAttributes(
                         $propertyMetadata,
                         [
                             'swagger_context' => [
-                                'minimun' => 0
+                                'minimum' => 0
                             ]
                         ]
                     );
