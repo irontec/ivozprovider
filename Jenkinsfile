@@ -1,9 +1,14 @@
 pipeline {
-    agent { docker { image 'php' } }
+    agent {
+        docker {
+            image 'ironartemis/ivozprovider-testing-base'
+            args '--user jeninks --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+        }
+    }
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'php --version'
+                sh '/opt/irontec/ivozprovider/library/bin/test-phplint'
             }
         }
     }
