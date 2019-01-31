@@ -144,13 +144,46 @@ trait DbIntegrationTestHelperTrait
         );
     }
 
+    /**
+     * Becasuse of how doctrine queues entities (spl_object_hash as array key),
+     * we cannot determine what persist order it will follow
+     */
     protected function assetChangedEntities(array $expected)
     {
         $changedEntities = $this->getChangedEntities();
 
-        $this->assertEquals(
+        $missing = array_filter(
             $expected,
-            $changedEntities
+            function ($item) use ($changedEntities) {
+                return !in_array($item, $changedEntities);
+            }
+        );
+
+        $unexpected = array_filter(
+            $changedEntities,
+            function ($item) use ($expected) {
+                return !in_array($item, $expected);
+            }
+        );
+
+        $this->assertEquals(
+            $missing,
+            $unexpected
+        );
+    }
+
+    /**
+     * @param array $arr
+     * @param array $arr2
+     */
+    private function assertEqualArrayValues(array $arr, array $arr2)
+    {
+        sort($arr);
+        sort($arr2);
+
+        $this->assertEquals(
+            $arr,
+            $arr2
         );
     }
 
