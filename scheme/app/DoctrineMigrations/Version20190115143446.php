@@ -43,11 +43,13 @@ class Version20190115143446 extends AbstractMigration
 
         $this->addSql('INSERT INTO ast_ps_endpoints (
                             sorcery_id,
+                            aors,
                             from_domain,
                             retailAccountId,
                             context
                     ) SELECT
-                            CONCAT("b", C.brandId, "c", C.id, "rt", RA.id),
+                            CONCAT("b", C.brandId, "c", C.id, "rt", RA.id, "_", RA.name),
+                            CONCAT("b", C.brandId, "c", C.id, "rt", RA.id, "_", RA.name),
                             D.domain,
                             RA.id,
                             "retail"
