@@ -19,7 +19,6 @@ production:
         href: "/doc/en/administration_portal/client/retail/ddis.html"
       forcedValues:
         <<: *forcedCompany
-        recordCalls: 'all'
         routeType: 'retail'
       order:
           - Ddi.country: asc
@@ -29,9 +28,13 @@ production:
         order: &ddisFieldsOder_Link
           country: true
           ddi: true
-          externalCallFilter: true
+          ddiProvider: true
+          displayName: true
+          language: true
+          retailAccount: true
           routeType: true
           target: true
+          recordCalls: true
         options:
           title: _("Options")
           screens:
@@ -40,7 +43,7 @@ production:
           dialogs:
             ddisDel_dialog: ${auth.isNotCompanyOperator}
           default: ddisEdit_screen
-        blacklist: &ddisBlacklist_Link
+        blacklist:
           user: true
           fax: true
           ivr: true
@@ -57,7 +60,8 @@ production:
           conditionalRoute: true
           externalCallFilter: true
           target: true
-
+          brand: true
+          target: true
       fixedPositions: &ddisFixedPositions_Link
         group0:
           label: _("Number data")
@@ -68,11 +72,16 @@ production:
             ddiProvider: 1
             displayName: 2
             language: 1
-        group3:
+        group1:
           label: _("Routing configuration")
           colsPerRow: 3
           fields:
             retailAccount: 1
+        group2:
+          label: _("Recording data")
+          colsPerRow: 3
+          fields:
+            recordCalls: 1
       options:
         title: _("Options")
         screens:
@@ -92,16 +101,30 @@ production:
       forcedValues:
         <<: *forcedBrand
         <<: *forcedCompany
-        recordCalls: 'all'
         routeType: 'retail'
       title: _("Add %s", ngettext('DDI', 'DDIs', 1))
       fields:
         order:
           <<: *ddisFieldsOder_Link
-        blacklist:
-          <<: *ddisBlacklist_Link
+        blacklist: &ddisBlacklist_Link
+          user: true
+          fax: true
+          ivr: true
+          huntGroup: true
+          conferenceRoom: true
+          friendValue: true
+          brand: true
+          displayName: true
+          ddiProvider: ${auth.isCompanyOperator}
+          language: true
+          queue: true
+          residentialDevice: true
+          conditionalRoute: true
+          externalCallFilter: true
+          target: true
           brand: true
           target: true
+          recordCalls: ${auth.companyFeatures.recordings.disabled}
       fixedPositions:
         <<: *ddisFixedPositions_Link
 
@@ -113,7 +136,6 @@ production:
       forcedValues:
         <<: *forcedBrand
         <<: *forcedCompany
-        recordCalls: 'all'
         routeType: 'retail'
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
@@ -131,7 +153,6 @@ production:
       label: false
       forcedValues:
         <<: *forcedCompany
-        recordCalls: 'all'
         routeType: 'retail'
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
