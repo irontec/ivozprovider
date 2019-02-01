@@ -5,11 +5,11 @@ use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
- * Class IvozProvider_Klear_Filter_TargetTypes
+ * Class IvozProvider_Klear_Filter_CallForwardTypes
  *
  * Filter Call Forward settings based on client type
  */
-class IvozProvider_Klear_Filter_TargetTypes implements KlearMatrix_Model_Field_Select_Filter_Interface
+class IvozProvider_Klear_Filter_CallForwardTypes implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
@@ -34,7 +34,6 @@ class IvozProvider_Klear_Filter_TargetTypes implements KlearMatrix_Model_Field_S
             Company::class,
             $user->companyId
         );
-
         if (is_null($companyDto)) {
             // No company feature to filter by
             return [];
@@ -42,12 +41,8 @@ class IvozProvider_Klear_Filter_TargetTypes implements KlearMatrix_Model_Field_S
 
         $excludedRoutes = [];
 
-        if ($companyDto->getType() !== Company::VPBX) {
-            $excludedRoutes[] = "extension";
-        }
-
         if ($companyDto->getType() === Company::RETAIL) {
-            $excludedRoutes[] = "voicemail";
+            $excludedRoutes = ["inconditional", "busy", "noAnswer"];
         }
 
         return $excludedRoutes;

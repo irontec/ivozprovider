@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Assert\Assertion;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * RetailAccount
@@ -81,5 +83,43 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         }
 
         return parent::setPort($port);
+    }
+
+    /**
+     * @return string
+     */
+    public function getSorcery()
+    {
+        return sprintf(
+            "b%dc%drt%d_%s",
+            $this->getCompany()->getBrand()->getId(),
+            $this->getCompany()->getId(),
+            $this->getId(),
+            $this->getName()
+        );
+    }
+
+    /**
+     * Get Ddi associated with this retail Account
+     *
+     * @return DdiInterface
+     */
+    public function getDdi($ddieE164)
+    {
+        $criteria = new Criteria();
+
+        if ($ddieE164) {
+            $criteria->where(
+                Criteria::expr()->eq(
+                    'ddie164',
+                    $ddieE164
+                )
+            );
+        }
+
+        $ddis = $this->getDdis($criteria);
+
+
+        return array_shift($ddis);
     }
 }

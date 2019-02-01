@@ -110,6 +110,11 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
      */
     private $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     */
+    private $retailAccount;
+
 
     use DtoNormalizer;
 
@@ -147,7 +152,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'terminalId' => 'terminal',
             'friendId' => 'friend',
-            'residentialDeviceId' => 'residentialDevice'
+            'residentialDeviceId' => 'residentialDevice',
+            'retailAccountId' => 'retailAccount'
         ];
     }
 
@@ -176,7 +182,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'terminal' => $this->getTerminal(),
             'friend' => $this->getFriend(),
-            'residentialDevice' => $this->getResidentialDevice()
+            'residentialDevice' => $this->getResidentialDevice(),
+            'retailAccount' => $this->getRetailAccount()
         ];
     }
 
@@ -652,6 +659,52 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     *
+     * @return static
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRetailAccountId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            : null;
+
+        return $this->setRetailAccount($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRetailAccountId()
+    {
+        if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
         }
 

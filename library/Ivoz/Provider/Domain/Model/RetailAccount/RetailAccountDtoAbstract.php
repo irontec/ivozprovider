@@ -86,9 +86,19 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdi;
 
     /**
+     * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
+     */
+    private $psEndpoints = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto[] | null
      */
     private $ddis = null;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto[] | null
+     */
+    private $callForwardSettings = null;
 
 
     use DtoNormalizer;
@@ -147,7 +157,9 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
-            'ddis' => $this->getDdis()
+            'psEndpoints' => $this->getPsEndpoints(),
+            'ddis' => $this->getDdis(),
+            'callForwardSettings' => $this->getCallForwardSettings()
         ];
     }
 
@@ -582,6 +594,26 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param array $psEndpoints
+     *
+     * @return static
+     */
+    public function setPsEndpoints($psEndpoints = null)
+    {
+        $this->psEndpoints = $psEndpoints;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPsEndpoints()
+    {
+        return $this->psEndpoints;
+    }
+
+    /**
      * @param array $ddis
      *
      * @return static
@@ -599,5 +631,25 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getDdis()
     {
         return $this->ddis;
+    }
+
+    /**
+     * @param array $callForwardSettings
+     *
+     * @return static
+     */
+    public function setCallForwardSettings($callForwardSettings = null)
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCallForwardSettings()
+    {
+        return $this->callForwardSettings;
     }
 }

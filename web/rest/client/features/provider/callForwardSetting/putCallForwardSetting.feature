@@ -79,6 +79,7 @@ Feature: Update call forward settings
                   "es": "Europa"
               }
           },
-          "residentialDevice": null
+          "residentialDevice": null,
+          "retailAccount": null
       }
     """

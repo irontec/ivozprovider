@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include DdisList.yaml
+#include CallForwardSettingsList.yaml
 
 production:
   main:
@@ -44,6 +45,7 @@ production:
           screens:
             retailAccountsEdit_screen: ${auth.canSeeBrand}
             ddisList_screen: true
+            callForwardSettingsList_screen: true
           dialogs:
             retailAccountsDel_dialog: ${auth.canSeeBrand}
           default: retailAccountsEdit_screen
@@ -157,6 +159,26 @@ production:
       <<: *ddisEdit_screenLink
       filterField: retailAccount
 
+    # CallForwardSettings:
+    <<: *callForwardSettings_screensLink
+    callForwardSettingsList_screen:
+      <<: *callForwardSettingsList_screenLink
+      filterField: retailAccount
+      parentOptionCustomizer:
+        - recordCount
+      forcedValues:
+        callTypeFilter: both
+    callForwardSettingsNew_screen:
+      <<: *callForwardSettingsNew_screenLink
+      filterField: retailAccount
+      forcedValues:
+        callTypeFilter: both
+    callForwardSettingsEdit_screen:
+      <<: *callForwardSettingsEdit_screenLink
+      filterField: retailAccount
+      forcedValues:
+        callTypeFilter: both
+
   dialogs: &retailAccounts_dialogsLink
     retailAccountsDel_dialog: &retailAccountsDel_dialogLink
       <<: *RetailAccounts
@@ -170,6 +192,9 @@ production:
       labelOnList: 1
 
     <<: *ddis_dialogsLink
+
+    # CallForwardSettings dialogs:
+    <<: *callForwardSettings_dialogsLink
 
   commands:
     generatePassword_command:
