@@ -31,8 +31,6 @@ As a result:
 
 - No voicemail service for retail clients.
 
-- Mandatory call recording for every retail client call.
-
 But they also have benefits that make them ideal for some situations:
 
 - No application server traverse, much less load for the platform.
