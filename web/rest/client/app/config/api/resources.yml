@@ -54,11 +54,13 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
       parameters: []
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
           - 'text/csv'
         tags:
           - My
+  attributes:
+    pagination_client_enabled: true
 
 ########################################
 ## Custom provider endpoints
@@ -80,8 +82,8 @@ Ivoz\Provider\Domain\Model\User\User:
       parameters: []
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
         tags:
           - My
         parameters: []
@@ -119,8 +121,8 @@ Ivoz\Provider\Domain\Model\User\User:
       parameters: []
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
         tags:
           - My
         parameters: []
@@ -132,8 +134,8 @@ Ivoz\Provider\Domain\Model\User\User:
       parameters: []
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
         tags:
           - My
         parameters: []
@@ -152,8 +154,8 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       swagger_context:
         consumes: ["application/ld+json"]
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
         tags:
           - My
         parameters:
@@ -177,8 +179,8 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         groups: ['detailedCollection']
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
         tags:
           - My
         parameters: []
@@ -196,8 +198,8 @@ Ivoz\Provider\Domain\Model\Country\Country:
       parameters: []
       swagger_context:
         produces:
-        - 'application/ld+json'
         - 'application/json'
+        - 'application/ld+json'
         tags:
         - My
         parameters: []
@@ -216,8 +218,8 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       parameters: []
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
         tags:
           - My
         parameters: []
