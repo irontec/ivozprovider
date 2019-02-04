@@ -47,6 +47,10 @@ These are the fields shown when **adding** a new wholesale client:
     Default timezone
         Used for showing call registries dates.
 
+    Currency
+        Chosen currency will be used in price calculation, invoices, balance movements and
+        remaining money operations of this client.
+
     Numeric transformation
         Describes the way the client will "talk" and the way the client wants to be "talked".
 

@@ -43,7 +43,7 @@ class CarrierServerSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -93,7 +93,10 @@ class CarrierServerSpec extends ObjectBehavior
         $exception = new \Exception('Unknown Carrier');
         $this
             ->shouldThrow($exception)
-            ->during('updateFromDto', [$dto]);
+            ->during(
+                'updateFromDto',
+                [$dto, new \spec\DtoToEntityFakeTransformer()]
+            );
     }
 
     function it_throws_exception_on_empty_carrier_brand(
@@ -109,7 +112,10 @@ class CarrierServerSpec extends ObjectBehavior
         ;
         $this
             ->shouldThrow($exception)
-            ->during('updateFromDto', [$dto]);
+            ->during(
+                'updateFromDto',
+                [$dto, new \spec\DtoToEntityFakeTransformer()]
+            );
     }
 
     function it_sets_brand_when_not_new_and_changed_carrierId(
@@ -133,7 +139,7 @@ class CarrierServerSpec extends ObjectBehavior
         );
 
         $this
-            ->getbrand()
+            ->getBrand()
             ->shouldBe($brand);
     }
 
@@ -145,7 +151,10 @@ class CarrierServerSpec extends ObjectBehavior
             ->setAuthUser('user')
             ->setAuthPassword('password');
 
-        $this->updateFromDto($dto);
+        $this->updateFromDto(
+            $dto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
 
         $this
             ->getAuthUser()

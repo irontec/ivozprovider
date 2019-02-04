@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -80,49 +78,6 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
             'relPatterns' => $this->getRelPatterns(),
             'outgoingRoutings' => $this->getOutgoingRoutings()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->relPatterns)) {
-            $items = $this->getRelPatterns();
-            $this->relPatterns = [];
-            foreach ($items as $item) {
-                $this->relPatterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroupsRelPattern\\RoutingPatternGroupsRelPattern',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->outgoingRoutings)) {
-            $items = $this->getOutgoingRoutings();
-            $this->outgoingRoutings = [];
-            foreach ($items as $item) {
-                $this->outgoingRoutings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->relPatterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroupsRelPattern\\RoutingPatternGroupsRelPattern',
-            $this->relPatterns
-        );
-        $this->outgoingRoutings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-            $this->outgoingRoutings
-        );
     }
 
     /**

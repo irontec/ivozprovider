@@ -4,6 +4,9 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
+/**
+ * @deprecated Use ApiClient as a collaborator instead
+ */
 abstract class AbstractApiBasedService
 {
     /**
@@ -21,7 +24,6 @@ abstract class AbstractApiBasedService
      * @param $payload
      * @throws \DomainException
      * @return void
-     * @throws \DomainException
      */
     protected function sendRequest($method, array $payload)
     {
@@ -38,7 +40,7 @@ abstract class AbstractApiBasedService
         $stringResponse = $response->getBody()->__toString();
         $objectResponse = json_decode($stringResponse);
 
-        if ($objectResponse->error) {
+        if (isset($objectResponse->error) && $objectResponse->error) {
             $errorMsg = sprintf(
                 'CgRates API error response:  %s',
                 $objectResponse->error

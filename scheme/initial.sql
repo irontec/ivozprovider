@@ -173,6 +173,8 @@ CREATE TABLE `BillableCalls` (
   `ratingPlanGroupId` int(10) unsigned DEFAULT NULL,
   `invoiceId` int(10) unsigned DEFAULT NULL,
   `trunksCdrId` int(10) unsigned DEFAULT NULL,
+  `endpointType` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `endpointId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E6F2DA359CBEC244` (`brandId`),
   KEY `IDX_E6F2DA352480E723` (`companyId`),
@@ -181,6 +183,8 @@ CREATE TABLE `BillableCalls` (
   KEY `IDX_E6F2DA353D7BDC51` (`invoiceId`),
   KEY `IDX_E6F2DA353B9439A5` (`trunksCdrId`),
   KEY `IDX_E6F2DA356A765F36` (`ratingPlanGroupId`),
+  KEY `billableCall_endpointType_idx` (`endpointType`),
+  KEY `billableCall_endpointId_idx` (`endpointId`),
   CONSTRAINT `FK_E6F2DA352480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E6F2DA353B9439A5` FOREIGN KEY (`trunksCdrId`) REFERENCES `kam_trunks_cdrs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA353D7BDC51` FOREIGN KEY (`invoiceId`) REFERENCES `Invoices` (`id`) ON DELETE SET NULL,
@@ -418,11 +422,14 @@ CREATE TABLE `CallCsvReports` (
   `csvBaseName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `companyId` int(10) unsigned DEFAULT NULL,
   `callCsvSchedulerId` int(10) unsigned DEFAULT NULL,
+  `brandId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3DC217432480E723` (`companyId`),
   KEY `IDX_3DC217431A2D1FF1` (`callCsvSchedulerId`),
+  KEY `IDX_3DC217439CBEC244` (`brandId`),
   CONSTRAINT `FK_3DC217431A2D1FF1` FOREIGN KEY (`callCsvSchedulerId`) REFERENCES `CallCsvSchedulers` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `FK_3DC217432480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL
+  CONSTRAINT `FK_3DC217432480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_3DC217439CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -445,13 +452,14 @@ DROP TABLE IF EXISTS `CallCsvSchedulers`;
 CREATE TABLE `CallCsvSchedulers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `unit` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'month' COMMENT '[enum:week|month|year]',
+  `unit` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'month' COMMENT '[enum:day|week|month]',
   `frequency` smallint(5) unsigned NOT NULL,
   `email` varchar(140) COLLATE utf8_unicode_ci NOT NULL,
   `lastExecution` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
   `nextExecution` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
   `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `companyId` int(10) unsigned DEFAULT NULL,
+  `lastExecutionError` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `CallCsvScheduler_name_brand` (`name`,`brandId`),
   KEY `IDX_100E171E9CBEC244` (`brandId`),
@@ -717,6 +725,8 @@ CREATE TABLE `Companies` (
   `billingMethod` varchar(25) NOT NULL DEFAULT 'postpaid' COMMENT '[enum:postpaid|prepaid|pseudoprepaid]',
   `balance` decimal(10,4) DEFAULT '0.0000',
   `invoiceNotificationTemplateId` int(10) unsigned DEFAULT NULL,
+  `showInvoices` tinyint(1) DEFAULT '0',
+  `callCsvNotificationTemplateId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `company_name_brand` (`name`,`brandId`),
   UNIQUE KEY `domain_unique` (`domain_users`),
@@ -733,6 +743,7 @@ CREATE TABLE `Companies` (
   KEY `IDX_B528991BA12A15` (`vmNotificationTemplateId`),
   KEY `IDX_B52899E559D278` (`faxNotificationTemplateId`),
   KEY `IDX_B52899A29D8295` (`invoiceNotificationTemplateId`),
+  KEY `IDX_B5289974EE731B` (`callCsvNotificationTemplateId`),
   CONSTRAINT `Companies_ibfk_10` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_12` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_13` FOREIGN KEY (`outgoingDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
@@ -743,6 +754,7 @@ CREATE TABLE `Companies` (
   CONSTRAINT `FK_B528991BA12A15` FOREIGN KEY (`vmNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B528992FECF701` FOREIGN KEY (`transformationRuleSetId`) REFERENCES `TransformationRuleSets` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B52899334600F3` FOREIGN KEY (`domainId`) REFERENCES `Domains` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_B5289974EE731B` FOREIGN KEY (`callCsvNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B52899A29D8295` FOREIGN KEY (`invoiceNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B52899C8555117` FOREIGN KEY (`mediaRelaySetsId`) REFERENCES `MediaRelaySets` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B52899E559D278` FOREIGN KEY (`faxNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL
@@ -755,7 +767,7 @@ CREATE TABLE `Companies` (
 
 LOCK TABLES `Companies` WRITE;
 /*!40000 ALTER TABLE `Companies` DISABLE KEYS */;
-INSERT INTO `Companies` VALUES (1,1,'vpbx','DemoCompany',3,'127.0.0.1','12345678A',145,'hash',NULL,0,'Company Address','54321','Company Town','Company Province','Company Country',70,1,NULL,0,0,'',NULL,NULL,NULL,NULL,NULL,70,NULL,NULL,'postpaid',0.0000,NULL);
+INSERT INTO `Companies` VALUES (1,1,'vpbx','DemoCompany',3,'127.0.0.1','12345678A',145,'hash',NULL,0,'Company Address','54321','Company Town','Company Province','Company Country',70,1,NULL,0,0,'',NULL,NULL,NULL,NULL,NULL,70,NULL,NULL,'postpaid',0.0000,NULL,0,NULL);
 /*!40000 ALTER TABLE `Companies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1916,6 +1928,7 @@ CREATE TABLE `Friends` (
   `directConnectivity` enum('yes','no') NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   `languageId` int(10) unsigned DEFAULT NULL,
   `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `ddiIn` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyPrio` (`companyId`,`priority`),
   UNIQUE KEY `name_domain` (`name`,`domainId`),
@@ -2268,6 +2281,7 @@ CREATE TABLE `InvoiceSchedulers` (
   `taxRate` decimal(10,3) DEFAULT NULL,
   `invoiceTemplateId` int(10) unsigned DEFAULT NULL,
   `companyId` int(10) unsigned NOT NULL,
+  `lastExecutionError` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `invoiceScheduler_name_brand` (`name`,`brandId`),
   UNIQUE KEY `invoiceScheduler_company` (`companyId`),
@@ -2601,6 +2615,7 @@ CREATE TABLE `NotificationTemplatesContents` (
   `body` text COLLATE utf8_unicode_ci NOT NULL,
   `notificationTemplateId` int(10) unsigned NOT NULL,
   `languageId` int(10) unsigned DEFAULT NULL,
+  `bodyType` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'text/plain' COMMENT '[enum:text/plain|text/html]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `notificationTemplateContent_language_unique` (`notificationTemplateId`,`languageId`),
   KEY `IDX_AD99291D1333F77D` (`notificationTemplateId`),
@@ -2616,7 +2631,7 @@ CREATE TABLE `NotificationTemplatesContents` (
 
 LOCK TABLES `NotificationTemplatesContents` WRITE;
 /*!40000 ALTER TABLE `NotificationTemplatesContents` DISABLE KEYS */;
-INSERT INTO `NotificationTemplatesContents` VALUES (1,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Nuevo mensaje en el buzón de voz de ${VM_CIDNAME} (${VM_CIDNUM})','Hola ${VM_NAME}!\n\n${VM_CIDNAME} (${VM_CIDNUM}) te ha dejado un mensaje en tú buzón de voz.\n\n    Día: ${VM_DATE}\n    Duración: ${VM_DUR}\n\nUn saludo,\nIvozProvider Mailbox System',1,1),(2,'IvozProvider Notifications','no-reply@ivozprovider.com','New voicemail from ${VM_CIDNAME} (${VM_CIDNUM})','Greetings ${VM_NAME}!\n\nYou have a new voicemail from ${VM_CIDNAME} (${VM_CIDNUM}) waiting!\n\n    Day: ${VM_DATE}\n    Duration: ${VM_DUR}\n\nBest Regards,\nIvozProvider Mailbox System',1,2),(3,'IvozProvider Notifications','no-reply@ivozprovider.com','Nuevo Fax desde ${FAX_SRC} recibido en ${FAX_NAME} (${FAX_DST})','Buenas,\n\nUn nuevo Fax ha sido recibido en ${FAX_NAME} (ver adjunto).\n\n    Fecha: ${FAX_DATE}\n    Nombre: ${FAX_PDFNAME}\n    Páginas: ${FAX_PAGES}\n\nUn saludo,\nIvozProvider Virtual Fax System',2,1),(4,'IvozProvider Notifications','no-reply@ivozprovider.com','New Fax from ${FAX_SRC} received in ${FAX_NAME} (${FAX_DST})','Greetings!\n\nA new fax has been received at ${FAX_NAME} (see attachment).\n\n    Date: ${FAX_DATE}\n    Name: ${FAX_PDFNAME}\n    Pages: ${FAX_PAGES}\n\nBest Regards,\nIvozProvider Virtual Fax System',2,2),(5,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Alerta de saldo de ${BALANCE_NAME}','Hola ${BALANCE_NAME}!\n\nSu saldo está a punto de agotarse. Cuando esto ocurra no podrá realizar más llamadas\n\n    Saldo: ${BALANCE_AMOUNT}\nPor favor, póngase en contacto con su administador para aumentar su saldo\n\nUn saludo,\nIvozProvider Balance System',3,1),(6,'IvozProvider Notifications','no-reply@ivozprovider.com','Low balance alerts for ${BALANCE_NAME}','Greetings ${BALANCE_NAME}!\n\nYour balance is about to run out. If that happens you won\'t be able to place more calls.\n\n    Balance: ${BALANCE_AMOUNT}\nPlease, contact your administator to increase your balance\n\nBest Regards,\nIvozProvider Balance System',3,2),(7,'IvozProvider Notifications','no-reply@ivozprovider.com','Invoice available','Greetings ${INVOICE_COMPANY}!\n\nYou already have your invoice available.\n\nFor the period ${INVOICE_DATE_IN} - ${INVOICE_DATE_OUT} \nthe amount is ${INVOICE_AMOUNT}${INVOICE_CURRENCY}.\nCheck out attached file for further details.\n\nBest Regards,\nIvozProvider',4,2),(8,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Factura disponible','Hola ${INVOICE_COMPANY}!\n\nYa tienes disponible tu factura.\n\nPara el período ${INVOICE_DATE_IN} - ${INVOICE_DATE_OUT} \nel importe asciende a ${INVOICE_AMOUNT}${INVOICE_CURRENCY}.\nConsulte el fichero adjunto para más detalles. \n\nAtentamente,\nIvozProvider',4,1),(9,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Nuevo informe de llamadas','Hola ${CALLCSV_COMPANY}!\n\nYa tienes disponible tu factura informe de llamadas para el período ${CALLCSV_DATE_IN} - ${CALLCSV_DATE_OUT}.\n\nConsulte el fichero adjunto para más detalles. \n\nAtentamente,\nIvozProvider',5,1),(10,'IvozProvider Notifications','no-reply@ivozprovider.com','New call report','Greetings ${CALLCSV_COMPANY}!\n\nYou already have your call report for the period ${CALLCSV_DATE_IN} - ${CALLCSV_DATE_OUT} available.\n\nCheck out attached file for further details.\n\nBest Regards,\nIvozProvider',5,2);
+INSERT INTO `NotificationTemplatesContents` VALUES (1,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Nuevo mensaje en el buzón de voz de ${VM_CIDNAME} (${VM_CIDNUM})','Hola ${VM_NAME}!\n\n${VM_CIDNAME} (${VM_CIDNUM}) te ha dejado un mensaje en tú buzón de voz.\n\n    Día: ${VM_DATE}\n    Duración: ${VM_DUR}\n\nUn saludo,\nIvozProvider Mailbox System',1,1,'text/plain'),(2,'IvozProvider Notifications','no-reply@ivozprovider.com','New voicemail from ${VM_CIDNAME} (${VM_CIDNUM})','Greetings ${VM_NAME}!\n\nYou have a new voicemail from ${VM_CIDNAME} (${VM_CIDNUM}) waiting!\n\n    Day: ${VM_DATE}\n    Duration: ${VM_DUR}\n\nBest Regards,\nIvozProvider Mailbox System',1,2,'text/plain'),(3,'IvozProvider Notifications','no-reply@ivozprovider.com','Nuevo Fax desde ${FAX_SRC} recibido en ${FAX_NAME} (${FAX_DST})','Buenas,\n\nUn nuevo Fax ha sido recibido en ${FAX_NAME} (ver adjunto).\n\n    Fecha: ${FAX_DATE}\n    Nombre: ${FAX_PDFNAME}\n    Páginas: ${FAX_PAGES}\n\nUn saludo,\nIvozProvider Virtual Fax System',2,1,'text/plain'),(4,'IvozProvider Notifications','no-reply@ivozprovider.com','New Fax from ${FAX_SRC} received in ${FAX_NAME} (${FAX_DST})','Greetings!\n\nA new fax has been received at ${FAX_NAME} (see attachment).\n\n    Date: ${FAX_DATE}\n    Name: ${FAX_PDFNAME}\n    Pages: ${FAX_PAGES}\n\nBest Regards,\nIvozProvider Virtual Fax System',2,2,'text/plain'),(5,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Alerta de saldo de ${BALANCE_NAME}','Hola ${BALANCE_NAME}!\n\nSu saldo está a punto de agotarse. Cuando esto ocurra no podrá realizar más llamadas\n\n    Saldo: ${BALANCE_AMOUNT}\nPor favor, póngase en contacto con su administador para aumentar su saldo\n\nUn saludo,\nIvozProvider Balance System',3,1,'text/plain'),(6,'IvozProvider Notifications','no-reply@ivozprovider.com','Low balance alerts for ${BALANCE_NAME}','Greetings ${BALANCE_NAME}!\n\nYour balance is about to run out. If that happens you won\'t be able to place more calls.\n\n    Balance: ${BALANCE_AMOUNT}\nPlease, contact your administator to increase your balance\n\nBest Regards,\nIvozProvider Balance System',3,2,'text/plain'),(7,'IvozProvider Notifications','no-reply@ivozprovider.com','Invoice available','Greetings ${INVOICE_COMPANY}!\n\nYou already have your invoice available.\n\nFor the period ${INVOICE_DATE_IN} - ${INVOICE_DATE_OUT} \nthe amount is ${INVOICE_AMOUNT}${INVOICE_CURRENCY}.\nCheck out attached file for further details.\n\nBest Regards,\nIvozProvider',4,2,'text/plain'),(8,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Factura disponible','Hola ${INVOICE_COMPANY}!\n\nYa tienes disponible tu factura.\n\nPara el período ${INVOICE_DATE_IN} - ${INVOICE_DATE_OUT} \nel importe asciende a ${INVOICE_AMOUNT}${INVOICE_CURRENCY}.\nConsulte el fichero adjunto para más detalles. \n\nAtentamente,\nIvozProvider',4,1,'text/plain'),(9,'Notificaciones IvozProvider','no-reply@ivozprovider.com','Nuevo informe de llamadas','Hola ${CALLCSV_COMPANY}!\n\nYa tienes disponible tu factura informe de llamadas para el período ${CALLCSV_DATE_IN} - ${CALLCSV_DATE_OUT}.\n\nConsulte el fichero adjunto para más detalles. \n\nAtentamente,\nIvozProvider',5,1,'text/plain'),(10,'IvozProvider Notifications','no-reply@ivozprovider.com','New call report','Greetings ${CALLCSV_COMPANY}!\n\nYou already have your call report for the period ${CALLCSV_DATE_IN} - ${CALLCSV_DATE_OUT} available.\n\nCheck out attached file for further details.\n\nBest Regards,\nIvozProvider',5,2,'text/plain');
 /*!40000 ALTER TABLE `NotificationTemplatesContents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3133,6 +3148,7 @@ CREATE TABLE `ResidentialDevices` (
   `directConnectivity` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   `languageId` int(10) unsigned DEFAULT NULL,
   `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `ddiIn` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `residentialDevice_name_brand` (`name`,`brandId`),
   KEY `IDX_1805369A9CBEC244` (`brandId`),
@@ -3181,6 +3197,7 @@ CREATE TABLE `RetailAccounts` (
   `companyId` int(10) unsigned NOT NULL,
   `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
   `outgoingDdiId` int(10) unsigned DEFAULT NULL,
+  `ddiIn` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `retailAccount_name_brand` (`name`,`brandId`),
   KEY `IDX_732D92509CBEC244` (`brandId`),
@@ -3857,7 +3874,7 @@ CREATE TABLE `ast_voicemail` (
   `language` varchar(20) DEFAULT NULL,
   `tz` varchar(30) DEFAULT NULL,
   `deleteast_voicemail` enum('yes','no') DEFAULT NULL,
-  `saycid` enum('yes','no') DEFAULT NULL,
+  `saycid` varchar(255) DEFAULT 'yes',
   `sendast_voicemail` enum('yes','no') DEFAULT NULL,
   `review` enum('yes','no') DEFAULT NULL,
   `tempgreetwarn` enum('yes','no') DEFAULT NULL,
@@ -3897,7 +3914,7 @@ CREATE TABLE `ast_voicemail` (
 
 LOCK TABLES `ast_voicemail` WRITE;
 /*!40000 ALTER TABLE `ast_voicemail` DISABLE KEYS */;
-INSERT INTO `ast_voicemail` VALUES (1,'company1','user1',NULL,'Alice Allison',NULL,'alice@democompany.com',NULL,'yes',NULL,NULL,NULL,'Europe/Madrid',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL),(2,'company1','user2',NULL,'Bob Bobson',NULL,'bob@democompany.com',NULL,'yes',NULL,NULL,NULL,'Europe/Madrid',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL);
+INSERT INTO `ast_voicemail` VALUES (1,'company1','user1',NULL,'Alice Allison',NULL,'alice@democompany.com',NULL,'yes',NULL,NULL,NULL,'Europe/Madrid',NULL,'yes',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL),(2,'company1','user2',NULL,'Bob Bobson',NULL,'bob@democompany.com',NULL,'yes',NULL,NULL,NULL,'Europe/Madrid',NULL,'yes',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL);
 /*!40000 ALTER TABLE `ast_voicemail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4069,6 +4086,7 @@ CREATE TABLE `kam_trunks_cdrs` (
   `companyId` int(10) unsigned DEFAULT NULL,
   `carrierId` int(10) unsigned DEFAULT NULL,
   `metered` tinyint(1) DEFAULT '0',
+  `retailAccountId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_92E58EB69CBEC244` (`brandId`),
   KEY `IDX_92E58EB62480E723` (`companyId`),
@@ -4079,7 +4097,9 @@ CREATE TABLE `kam_trunks_cdrs` (
   KEY `trunksCdr_direction_idx` (`direction`),
   KEY `trunksCdr_cgrid_idx` (`cgrid`),
   KEY `IDX_92E58EB66709B1C` (`carrierId`),
+  KEY `IDX_92E58EB65EA9D64D` (`retailAccountId`),
   CONSTRAINT `FK_92E58EB62480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_92E58EB65EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_92E58EB66709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_92E58EB69CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -4833,7 +4853,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20170901000000'),('20170901000001'),('20170911135717'),('20171020142228'),('20171024113642'),('20171030065859'),('20171031161520'),('20171031181245'),('20171103142714'),('20171103153932'),('20171103171335'),('20171121171116'),('20171123112244'),('20171127124756'),('20171128151800'),('20171128152948'),('20171128153543'),('20171129150643'),('20180108141912'),('20180109120523'),('20180109153627'),('20180115124902'),('20180115125057'),('20180116104420'),('20180116104428'),('20180212173438'),('20180220144935'),('20180306160405'),('20180307193902'),('20180308143534'),('20180308171319'),('20180314120551'),('20180319152940'),('20180319174246'),('20180321113400'),('20180322122500'),('20180328102026'),('20180403114214'),('20180405103050'),('20180406102202'),('20180410164407'),('20180411143939'),('20180418161848'),('20180419105002'),('20180509163441'),('20180522102027'),('20180523162834'),('20180524110405'),('20180524154405'),('20180524170318'),('20180528114746'),('20180529165016'),('20180606134347'),('20180611142317'),('20180619114825'),('20180621134613'),('20180622091118'),('20180703090754'),('20180705161808'),('20180706071646'),('20180710081244'),('20180712110938'),('20180713111050'),('20180713123645'),('20180717102522'),('20180717150551'),('20180718132230'),('20180719150852'),('20180720150757'),('20180726103223'),('20180726142227'),('20180802142456'),('20180803114755'),('20180807142455'),('20180809101240'),('20180813131742'),('20180817101632'),('20180827100437'),('20180830103124'),('20180830105838'),('20180905061800'),('20180906173440'),('20180913141229'),('20180914104258'),('20180919144526');
+INSERT INTO `migration_versions` VALUES ('20170901000000'),('20170901000001'),('20170911135717'),('20171020142228'),('20171024113642'),('20171030065859'),('20171031161520'),('20171031181245'),('20171103142714'),('20171103153932'),('20171103171335'),('20171121171116'),('20171123112244'),('20171127124756'),('20171128151800'),('20171128152948'),('20171128153543'),('20171129150643'),('20180108141912'),('20180109120523'),('20180109153627'),('20180115124902'),('20180115125057'),('20180116104420'),('20180116104428'),('20180212173438'),('20180220144935'),('20180306160405'),('20180307193902'),('20180308143534'),('20180308171319'),('20180314120551'),('20180319152940'),('20180319174246'),('20180321113400'),('20180322122500'),('20180328102026'),('20180403114214'),('20180405103050'),('20180406102202'),('20180410164407'),('20180411143939'),('20180418161848'),('20180419105002'),('20180509163441'),('20180522102027'),('20180523162834'),('20180524110405'),('20180524154405'),('20180524170318'),('20180528114746'),('20180529165016'),('20180606134347'),('20180611142317'),('20180619114825'),('20180621134613'),('20180622091118'),('20180703090754'),('20180705161808'),('20180706071646'),('20180710081244'),('20180712110938'),('20180713111050'),('20180713123645'),('20180717102522'),('20180717150551'),('20180718132230'),('20180719150852'),('20180720150757'),('20180726103223'),('20180726142227'),('20180802142456'),('20180803114755'),('20180807142455'),('20180809101240'),('20180813131742'),('20180817101632'),('20180827100437'),('20180830103124'),('20180830105838'),('20180905061800'),('20180906173440'),('20180913141229'),('20180914104258'),('20180919144526'),('20181019144832'),('20181019153700'),('20181022130854'),('20181024151114'),('20181105161633'),('20181113095345'),('20181121085714'),('20181121130028'),('20181121165124'),('20181127120015'),('20181221113443');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4934,7 +4954,7 @@ CREATE TABLE `tp_account_actions` (
 
 LOCK TABLES `tp_account_actions` WRITE;
 /*!40000 ALTER TABLE `tp_account_actions` DISABLE KEYS */;
-INSERT INTO `tp_account_actions` VALUES (1,'b1','DATABASE','b1','c1',NULL,NULL,0,0,'2018-10-15 12:58:08',1,NULL);
+INSERT INTO `tp_account_actions` VALUES (1,'b1','DATABASE','b1','c1',NULL,NULL,0,0,'2018-12-26 12:14:18',1,NULL);
 /*!40000 ALTER TABLE `tp_account_actions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5086,7 +5106,7 @@ CREATE TABLE `tp_derived_chargers` (
 
 LOCK TABLES `tp_derived_chargers` WRITE;
 /*!40000 ALTER TABLE `tp_derived_chargers` DISABLE KEYS */;
-INSERT INTO `tp_derived_chargers` VALUES (1,'b1','DATABASE','*out','b1','call','*any','*any','*any','carrier','carrierId','carrierReqtype','*default','*default','*default','carrierId','carrierId','*default','*default','*default','*default','*default','*default','*default','*default','*default','2018-10-15 12:58:28',1);
+INSERT INTO `tp_derived_chargers` VALUES (1,'b1','DATABASE','*out','b1','call','*any','*any','*any','carrier','carrierId','carrierReqtype','*default','*default','*default','carrierId','carrierId','*default','*default','*default','*default','*default','*default','*default','*default','*default','2018-12-26 12:14:39',1);
 /*!40000 ALTER TABLE `tp_derived_chargers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5283,7 +5303,7 @@ CREATE TABLE `tp_rating_profiles` (
   `tenant` varchar(64) DEFAULT NULL,
   `category` varchar(32) NOT NULL DEFAULT 'call',
   `subject` varchar(64) DEFAULT NULL,
-  `activation_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
+  `activation_time` varchar(32) NOT NULL DEFAULT '1970-01-01 00:00:00',
   `rating_plan_tag` varchar(64) DEFAULT NULL,
   `fallback_subjects` varchar(64) DEFAULT NULL,
   `cdr_stat_queue_ids` varchar(64) DEFAULT NULL,
@@ -5542,7 +5562,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-15 13:10:03
+-- Dump completed on 2018-12-26 12:15:07
 
 -- Add needed users to db
 GRANT USAGE ON *.* TO 'asterisk'@'%' IDENTIFIED BY PASSWORD '*B1745AABE8FF81695592076E0F0D90D3FAB17F67';

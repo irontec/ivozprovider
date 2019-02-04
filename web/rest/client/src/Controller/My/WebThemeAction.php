@@ -27,7 +27,7 @@ class WebThemeAction
      */
     protected $requestStack;
 
-    public function __construct (
+    public function __construct(
         DtoAssembler $dtoAssembler,
         BrandUrlRepository $brandUrlRepository,
         RequestStack $requestStack

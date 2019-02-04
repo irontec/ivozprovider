@@ -112,8 +112,10 @@ abstract class BalanceNotificationAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BalanceNotificationDto
          */
@@ -125,9 +127,9 @@ abstract class BalanceNotificationAbstract
             ->setToAddress($dto->getToAddress())
             ->setThreshold($dto->getThreshold())
             ->setLastSent($dto->getLastSent())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setNotificationTemplate($dto->getNotificationTemplate())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
         ;
 
         $self->sanitizeValues();
@@ -141,8 +143,10 @@ abstract class BalanceNotificationAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BalanceNotificationDto
          */
@@ -152,9 +156,9 @@ abstract class BalanceNotificationAbstract
             ->setToAddress($dto->getToAddress())
             ->setThreshold($dto->getThreshold())
             ->setLastSent($dto->getLastSent())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setNotificationTemplate($dto->getNotificationTemplate());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()));
 
 
 
@@ -281,7 +285,7 @@ abstract class BalanceNotificationAbstract
      */
     public function getLastSent()
     {
-        return $this->lastSent;
+        return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }
 
     /**

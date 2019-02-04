@@ -2,8 +2,9 @@
 
 namespace Dialplan;
 
-use Agi\Action\ExternalResidentialCallAction;
+use Agi\Action\ExternalNumberAction;
 use Agi\Action\ServiceAction;
+use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
@@ -35,9 +36,9 @@ class Residentials extends RouteHandlerAbstract
     protected $brandServiceRepository;
 
     /**
-     * @var ExternalResidentialCallAction
+     * @var ExternalNumberAction
      */
-    protected $externalResidentialCallAction;
+    protected $externalNumberAction;
 
     /**
      * @var ServiceAction
@@ -51,7 +52,7 @@ class Residentials extends RouteHandlerAbstract
      * @param ChannelInfo $channelInfo
      * @param BrandServiceRepository $brandServiceRepository
      * @param EndpointResolver $endpointResolver
-     * @param ExternalResidentialCallAction $externalResidentialCallAction
+     * @param ExternalNumberAction $externalNumberAction
      * @param ServiceAction $serviceAction
      */
     public function __construct(
@@ -59,15 +60,14 @@ class Residentials extends RouteHandlerAbstract
         ChannelInfo $channelInfo,
         BrandServiceRepository $brandServiceRepository,
         EndpointResolver $endpointResolver,
-        ExternalResidentialCallAction $externalResidentialCallAction,
+        ExternalNumberAction $externalNumberAction,
         ServiceAction $serviceAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->brandServiceRepository = $brandServiceRepository;
         $this->endpointResolver = $endpointResolver;
-        $this->externalResidentialCallAction = $externalResidentialCallAction;
+        $this->externalNumberAction = $externalNumberAction;
         $this->serviceAction = $serviceAction;
     }
 
@@ -97,7 +97,13 @@ class Residentials extends RouteHandlerAbstract
         $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set User as the caller
-        $this->channelInfo->setChannelCaller($residential);
+        $caller = new ResidentialAgent($this->agi, $residential);
+        $this->channelInfo->setChannelCaller($caller);
+
+        // If this call is not being forwarded, residential is also the origin
+        if ($this->agi->getRedirecting('count') == 0) {
+            $this->channelInfo->setChannelOrigin($caller);
+        }
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
@@ -126,11 +132,9 @@ class Residentials extends RouteHandlerAbstract
             $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $residential, $exten);
 
             // All residential calls are handled as external
-            $this->externalResidentialCallAction
+            $this->externalNumberAction
                 ->setDestination($exten)
                 ->process();
         }
-
     }
-
 }

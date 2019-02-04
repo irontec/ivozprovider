@@ -69,7 +69,7 @@ class FaxDialStatus extends RouteHandlerAbstract
         if (!empty($dialStatus)) {
             $this->agi->notice("Fax file %s dial status %s", $faxOut, $dialStatus);
             // Store fax pages
-            if ($dialStatus != "ANSWER"){
+            if ($dialStatus != "ANSWER") {
                 // Mark as error and save
                 /** @var FaxesInOutDTO $faxOutDto */
                 $faxOutDto = $this->entityTools->entityToDto($faxOut);

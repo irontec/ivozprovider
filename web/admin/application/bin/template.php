@@ -41,17 +41,16 @@ $wrapper->run();
 
 class TemplateWrapper
 {
-    public function __construct($datos)
-    {
-        foreach (unserialize(base64_decode($datos)) as $key => $val) {
-
-            $this->$key = $val;
-        }
+public function __construct($datos)
+{
+    foreach (unserialize(base64_decode($datos)) as $key => $val) {
+        $this->$key = $val;
     }
+}
 
-    public function run()
+public function run()
     {
-        error_reporting( error_reporting() & ~E_NOTICE );
+        error_reporting(error_reporting() & ~E_NOTICE);
 
 ?>
 

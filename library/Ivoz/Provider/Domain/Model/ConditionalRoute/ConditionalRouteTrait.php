@@ -37,16 +37,23 @@ trait ConditionalRouteTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRouteDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getConditions()) {
-            $self->replaceConditions($dto->getConditions());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getConditions())) {
+            $self->replaceConditions(
+                $fkTransformer->transformCollection(
+                    $dto->getConditions()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait ConditionalRouteTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRouteDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getConditions()) {
-            $this->replaceConditions($dto->getConditions());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getConditions())) {
+            $this->replaceConditions(
+                $fkTransformer->transformCollection(
+                    $dto->getConditions()
+                )
+            );
         }
         return $this;
     }

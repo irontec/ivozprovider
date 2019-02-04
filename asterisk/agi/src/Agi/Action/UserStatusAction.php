@@ -7,7 +7,6 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
-
 class UserStatusAction
 {
     const InvalidArgs           = 'INVALIDARGS';
@@ -47,8 +46,7 @@ class UserStatusAction
     public function __construct(
         Wrapper $agi,
         CallForwardAction $callForwardAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->callForwardAction = $callForwardAction;
     }
@@ -142,5 +140,4 @@ class UserStatusAction
 
         return false;
     }
-
 }

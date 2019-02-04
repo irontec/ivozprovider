@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -213,54 +211,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'psEndpoints' => $this->getPsEndpoints(),
             'patterns' => $this->getPatterns()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
-        $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
-        $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
-        if (!is_null($this->psEndpoints)) {
-            $items = $this->getPsEndpoints();
-            $this->psEndpoints = [];
-            foreach ($items as $item) {
-                $this->psEndpoints[] = $transformer->transform(
-                    'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->patterns)) {
-            $items = $this->getPatterns();
-            $this->patterns = [];
-            foreach ($items as $item) {
-                $this->patterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\FriendsPattern\\FriendsPattern',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->psEndpoints = $transformer->transform(
-            'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-            $this->psEndpoints
-        );
-        $this->patterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\FriendsPattern\\FriendsPattern',
-            $this->patterns
-        );
     }
 
     /**

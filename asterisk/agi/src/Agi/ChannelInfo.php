@@ -3,8 +3,14 @@
 
 namespace Agi;
 
+use Agi\Agents\AgentInterface;
+use Agi\Agents\DdiAgent;
+use Agi\Agents\FaxAgent;
+use Agi\Agents\FriendAgent;
+use Agi\Agents\ResidentialAgent;
+use Agi\Agents\RetailAgent;
+use Agi\Agents\UserAgent;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Fax\Fax;
@@ -13,6 +19,8 @@ use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
@@ -29,12 +37,12 @@ class ChannelInfo
     protected $em;
 
     /**
-     * @var EntityInterface
+     * @var AgentInterface
      */
     protected $origin;
 
     /**
-     * @var EntityInterface
+     * @var AgentInterface
      */
     protected $caller;
 
@@ -47,66 +55,37 @@ class ChannelInfo
     public function __construct(
         Wrapper $agi,
         EntityManagerInterface $em
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
     }
 
     /**
-     * @param EntityInterface $origin
+     * @param AgentInterface $agent
      */
-    public function setChannelOrigin(EntityInterface $origin)
+    public function setChannelOrigin(AgentInterface $agent)
     {
-        if (get_class($origin) == get_class($this->origin)
-            && ($origin->getId() == $this->origin->getId()))
-        {
+        if ($agent->isEqual($this->origin)) {
             return;
         }
 
-        $this->setChannelData("ORIGIN", $origin);
+        $this->agi->setVariable("_ORIGIN", $agent);
     }
 
     /**
-     * @param EntityInterface $caller
+     * @param AgentInterface $agent
      */
-    public function setChannelCaller(EntityInterface $caller)
+    public function setChannelCaller(AgentInterface $agent)
     {
-        if (get_class($caller) == get_class($this->caller)
-            && ($caller->getId() == $this->caller->getId()))
-        {
+        if ($agent->isEqual($this->caller)) {
             return;
         }
 
-        $this->setChannelData("CALLER", $caller);
+        $this->agi->setVariable("_CALLER", $agent);
     }
 
     /**
-     * @param string $datatype
-     * @param EntityInterface $data
-     */
-    public function setChannelData(string $datatype, EntityInterface $data)
-    {
-        $id = $data->getId();
-        $type = "Unknown";
-
-        if ($data instanceof UserInterface) {
-            $type = "User";
-        } else if ($data instanceof DdiInterface) {
-            $type = "Ddi";
-        } else if ($data instanceof FriendInterface) {
-            $type = "Friend";
-        } else if ($data instanceof ResidentialDeviceInterface) {
-            $type = "Residential";
-        } else if ($data instanceof FaxInterface) {
-            $type = "Fax";
-        }
-
-        $this->agi->setVariable("_${datatype}", $type . '#' . $id);
-    }
-
-    /**
-     * @return null|object
+     * @return AgentInterface
      */
     public function getChannelCaller()
     {
@@ -118,7 +97,7 @@ class ChannelInfo
     }
 
     /**
-     * @return null|object
+     * @return AgentInterface
      */
     public function getChannelOrigin()
     {
@@ -131,7 +110,7 @@ class ChannelInfo
 
     /**
      * @param $datatype
-     * @return null|object
+     * @return AgentInterface
      */
     public function getChannelData($datatype)
     {
@@ -146,24 +125,36 @@ class ChannelInfo
         switch ($type) {
             case "User":
                 $repository = $this->em->getRepository(User::class);
-                break;
+                /** @var UserInterface $user */
+                $user = $repository->find($id);
+                return new UserAgent($this->agi, $user);
             case "Ddi":
                 $repository = $this->em->getRepository(DDi::class);
-                break;
+                /** @var DdiInterface $ddi */
+                $ddi = $repository->find($id);
+                return new DdiAgent($this->agi, $ddi);
             case "Friend":
                 $repository = $this->em->getRepository(Friend::class);
-                break;
+                /** @var FriendInterface $friend */
+                $friend = $repository->find($id);
+                return new FriendAgent($this->agi, $friend);
             case "Residential":
                 $repository = $this->em->getRepository(ResidentialDevice::class);
-                break;
+                /** @var ResidentialDeviceInterface $residential */
+                $residential = $repository->find($id);
+                return new ResidentialAgent($this->agi, $residential);
+            case "Retail":
+                $repository = $this->em->getRepository(RetailAccount::class);
+                /** @var RetailAccountInterface $retailAccount */
+                $retailAccount = $repository->find($id);
+                return new RetailAgent($this->agi, $retailAccount);
             case "Fax":
                 $repository = $this->em->getRepository(Fax::class);
-                break;
+                /** @var FaxInterface $fax */
+                $fax = $repository->find($id);
+                return new FaxAgent($this->agi, $fax);
             default:
                 return null;
         }
-
-        return $repository->find($id);
     }
-
 }

@@ -100,7 +100,6 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
                 $excludedRoutes[] = 'conditional';
                 $excludedRoutes[] = 'retail';
                 break;
-
         }
 
         return $excludedRoutes;

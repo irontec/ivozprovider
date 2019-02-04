@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -51,6 +49,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
@@ -102,7 +105,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'calculateCost' => 'calculateCost',
             'id' => 'id',
             'brandId' => 'brand',
-            'transformationRuleSetId' => 'transformationRuleSet'
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'currencyId' => 'currency'
         ];
     }
 
@@ -120,98 +124,13 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
+            'currency' => $this->getCurrency(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'outgoingRoutingsRelCarriers' => $this->getOutgoingRoutingsRelCarriers(),
             'servers' => $this->getServers(),
             'ratingProfiles' => $this->getRatingProfiles(),
             'tpCdrStats' => $this->getTpCdrStats()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        if (!is_null($this->outgoingRoutings)) {
-            $items = $this->getOutgoingRoutings();
-            $this->outgoingRoutings = [];
-            foreach ($items as $item) {
-                $this->outgoingRoutings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->outgoingRoutingsRelCarriers)) {
-            $items = $this->getOutgoingRoutingsRelCarriers();
-            $this->outgoingRoutingsRelCarriers = [];
-            foreach ($items as $item) {
-                $this->outgoingRoutingsRelCarriers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->servers)) {
-            $items = $this->getServers();
-            $this->servers = [];
-            foreach ($items as $item) {
-                $this->servers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->ratingProfiles)) {
-            $items = $this->getRatingProfiles();
-            $this->ratingProfiles = [];
-            foreach ($items as $item) {
-                $this->ratingProfiles[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->tpCdrStats)) {
-            $items = $this->getTpCdrStats();
-            $this->tpCdrStats = [];
-            foreach ($items as $item) {
-                $this->tpCdrStats[] = $transformer->transform(
-                    'Ivoz\\Cgr\\Domain\\Model\\TpCdrStat\\TpCdrStat',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->outgoingRoutings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-            $this->outgoingRoutings
-        );
-        $this->outgoingRoutingsRelCarriers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
-            $this->outgoingRoutingsRelCarriers
-        );
-        $this->servers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
-            $this->servers
-        );
-        $this->ratingProfiles = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
-            $this->ratingProfiles
-        );
-        $this->tpCdrStats = $transformer->transform(
-            'Ivoz\\Cgr\\Domain\\Model\\TpCdrStat\\TpCdrStat',
-            $this->tpCdrStats
-        );
     }
 
     /**
@@ -420,6 +339,52 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

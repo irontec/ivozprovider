@@ -33,6 +33,16 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getCgrTag();
 
     /**
+     * @return string
+     */
+    public function getCurrencySymbol();
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden();
+
+    /**
      * Get status
      *
      * @return string | null
@@ -54,6 +64,22 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency();
 
     /**
      * Set name

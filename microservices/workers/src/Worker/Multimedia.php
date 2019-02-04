@@ -113,9 +113,11 @@ class Multimedia
                 $dumpWavFile
             ]);
             $process->mustRun();
-            $this->logger->info(sprintf("Executed %s [exitCode: %d]",
-                $process->getCommandLine(), $process->getExitCode())
-            );
+            $this->logger->info(sprintf(
+                "Executed %s [exitCode: %d]",
+                $process->getCommandLine(),
+                $process->getExitCode()
+            ));
 
             $encodedFile = sprintf("/tmp/%s%d.wav", $entityClass, $entityId);
             $process = new Process([
@@ -127,9 +129,11 @@ class Multimedia
                 "rate", "-ql", "8000"
             ]);
             $process->mustRun();
-            $this->logger->info(sprintf("Executed %s [exitCode: %d]",
-                    $process->getCommandLine(), $process->getExitCode())
-            );
+            $this->logger->info(sprintf(
+                "Executed %s [exitCode: %d]",
+                $process->getCommandLine(),
+                $process->getExitCode()
+            ));
 
             // Remove temp files
             unlink($dumpWavFile);
@@ -141,8 +145,7 @@ class Multimedia
 
             $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->info(sprintf("Successfully encoded %s", $entity));
-
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             $entityDto
                 ->setEncodedFilePath(null)
                 ->setStatus('error');
@@ -155,5 +158,4 @@ class Multimedia
         // Done!
         return true;
     }
-
 }

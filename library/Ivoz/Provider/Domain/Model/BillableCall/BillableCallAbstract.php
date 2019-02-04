@@ -183,8 +183,10 @@ abstract class BillableCallAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BillableCallDto
          */
@@ -207,13 +209,13 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setDestination($dto->getDestination())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setInvoice($dto->getInvoice())
-            ->setTrunksCdr($dto->getTrunksCdr())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setDestination($fkTransformer->transform($dto->getDestination()))
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()))
+            ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
         ;
 
         $self->sanitizeValues();
@@ -227,8 +229,10 @@ abstract class BillableCallAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BillableCallDto
          */
@@ -248,13 +252,13 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setDestination($dto->getDestination())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setInvoice($dto->getInvoice())
-            ->setTrunksCdr($dto->getTrunksCdr());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setDestination($fkTransformer->transform($dto->getDestination()))
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()))
+            ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()));
 
 
 
@@ -378,7 +382,7 @@ abstract class BillableCallAbstract
      */
     public function getStartTime()
     {
-        return $this->startTime;
+        return !is_null($this->startTime) ? clone $this->startTime : null;
     }
 
     /**

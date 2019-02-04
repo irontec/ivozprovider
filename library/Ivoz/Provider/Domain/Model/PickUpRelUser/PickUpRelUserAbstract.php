@@ -92,8 +92,10 @@ abstract class PickUpRelUserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto PickUpRelUserDto
          */
@@ -102,8 +104,8 @@ abstract class PickUpRelUserAbstract
         $self = new static();
 
         $self
-            ->setPickUpGroup($dto->getPickUpGroup())
-            ->setUser($dto->getUser())
+            ->setPickUpGroup($fkTransformer->transform($dto->getPickUpGroup()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class PickUpRelUserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto PickUpRelUserDto
          */
         Assertion::isInstanceOf($dto, PickUpRelUserDto::class);
 
         $this
-            ->setPickUpGroup($dto->getPickUpGroup())
-            ->setUser($dto->getUser());
+            ->setPickUpGroup($fkTransformer->transform($dto->getPickUpGroup()))
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
 
 

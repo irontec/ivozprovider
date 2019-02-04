@@ -3,12 +3,13 @@
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
-
 use Psr\Log\LoggerInterface;
 
 class MigrateFromTrunksCdr
@@ -26,14 +27,14 @@ class MigrateFromTrunksCdr
     protected $billableCallRepository;
 
     /**
-     * @var CreateOrUpdateDtoByTrunksCdr
+     * @var CreateOrUpdateByTrunksCdr
      */
     protected $createOrUpdateBillableCallByTrunksCdr;
 
     /**
-     * @var UpdateDtoByTpCdr
+     * @var DomainEventPublisher
      */
-    protected $updateBillableCallByTpCdr;
+    protected $domainEventPublisher;
 
     /**
      * @var EntityTools
@@ -48,15 +49,15 @@ class MigrateFromTrunksCdr
     public function __construct(
         TrunksCdrRepository  $trunksCdrRepository,
         BillableCallRepository $billableCallRepository,
-        CreateOrUpdateDtoByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
-        UpdateDtoByTpCdr $updateBillableCallByTpCdr,
+        CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
         EntityTools $entityTools,
+        DomainEventPublisher $domainEventPublisher,
         LoggerInterface $logger
     ) {
         $this->trunksCdrRepository = $trunksCdrRepository;
         $this->billableCallRepository = $billableCallRepository;
         $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
-        $this->updateBillableCallByTpCdr = $updateBillableCallByTpCdr;
+        $this->domainEventPublisher = $domainEventPublisher;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
     }
@@ -66,7 +67,7 @@ class MigrateFromTrunksCdr
         /**
          * @var \Generator
          */
-        $trunksGenerator = $this->trunksCdrRepository->getUnmeteredCallsGeneratorWithoutOffset(self::BATCH_SIZE);
+        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(self::BATCH_SIZE);
 
         $cdrCount = 0;
         foreach ($trunksGenerator as $trunks) {
@@ -99,21 +100,14 @@ class MigrateFromTrunksCdr
             $trunksCdr->getId()
         );
 
-        $billableCallDto = $this
+        $billableCall = $this
             ->createOrUpdateBillableCallByTrunksCdr
             ->execute(
                 $trunksCdr,
                 $billableCall
             );
 
-        $this->updateBillableCallByTpCdr->execute(
-            $billableCallDto,
-            $trunksCdr->getCgrid(),
-            ucfirst($trunksCdr->getBrand()->getLanguageCode())
-        );
-
-        $this->entityTools->persistDto(
-            $billableCallDto,
+        $this->entityTools->persist(
             $billableCall,
             false
         );
@@ -124,11 +118,20 @@ class MigrateFromTrunksCdr
         $trunksCdrDto = $this->entityTools->entityToDto(
             $trunksCdr
         );
-        $trunksCdrDto->setMetered(true);
+        $trunksCdrDto->setParsed(true);
         $this->entityTools->persistDto(
             $trunksCdrDto,
             $trunksCdr,
             false
+        );
+
+        $trunksCdrWasMigrated = new TrunksCdrWasMigrated(
+            $trunksCdr,
+            $billableCall
+        );
+
+        $this->domainEventPublisher->publish(
+            $trunksCdrWasMigrated
         );
     }
 }

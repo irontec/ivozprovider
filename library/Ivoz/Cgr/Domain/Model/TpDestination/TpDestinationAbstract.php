@@ -111,8 +111,10 @@ abstract class TpDestinationAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpDestinationDto
          */
@@ -126,7 +128,7 @@ abstract class TpDestinationAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setDestination($dto->getDestination())
+            ->setDestination($fkTransformer->transform($dto->getDestination()))
         ;
 
         $self->sanitizeValues();
@@ -140,8 +142,10 @@ abstract class TpDestinationAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpDestinationDto
          */
@@ -152,7 +156,7 @@ abstract class TpDestinationAbstract
             ->setTag($dto->getTag())
             ->setPrefix($dto->getPrefix())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setDestination($dto->getDestination());
+            ->setDestination($fkTransformer->transform($dto->getDestination()));
 
 
 
@@ -299,7 +303,7 @@ abstract class TpDestinationAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

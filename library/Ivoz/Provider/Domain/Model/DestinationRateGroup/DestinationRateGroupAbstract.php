@@ -39,6 +39,11 @@ abstract class DestinationRateGroupAbstract
      */
     protected $brand;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    protected $currency;
+
 
     use ChangelogTrait;
 
@@ -114,8 +119,10 @@ abstract class DestinationRateGroupAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationRateGroupDto
          */
@@ -146,7 +153,8 @@ abstract class DestinationRateGroupAbstract
 
         $self
             ->setStatus($dto->getStatus())
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
         $self->sanitizeValues();
@@ -160,8 +168,10 @@ abstract class DestinationRateGroupAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationRateGroupDto
          */
@@ -189,7 +199,8 @@ abstract class DestinationRateGroupAbstract
             ->setName($name)
             ->setDescription($description)
             ->setFile($file)
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
 
 
@@ -214,7 +225,8 @@ abstract class DestinationRateGroupAbstract
             ->setFileMimeType(self::getFile()->getMimeType())
             ->setFileBaseName(self::getFile()->getBaseName())
             ->setFileImporterArguments(self::getFile()->getImporterArguments())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
     }
 
     /**
@@ -232,7 +244,8 @@ abstract class DestinationRateGroupAbstract
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
             'fileImporterArguments' => self::getFile()->getImporterArguments(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -293,6 +306,30 @@ abstract class DestinationRateGroupAbstract
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

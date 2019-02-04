@@ -43,20 +43,31 @@ trait TerminalTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TerminalDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getAstPsEndpoints()) {
-            $self->replaceAstPsEndpoints($dto->getAstPsEndpoints());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getAstPsEndpoints())) {
+            $self->replaceAstPsEndpoints(
+                $fkTransformer->transformCollection(
+                    $dto->getAstPsEndpoints()
+                )
+            );
         }
 
-        if ($dto->getUsers()) {
-            $self->replaceUsers($dto->getUsers());
+        if (!is_null($dto->getUsers())) {
+            $self->replaceUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getUsers()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -69,19 +80,30 @@ trait TerminalTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TerminalDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getAstPsEndpoints()) {
-            $this->replaceAstPsEndpoints($dto->getAstPsEndpoints());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getAstPsEndpoints())) {
+            $this->replaceAstPsEndpoints(
+                $fkTransformer->transformCollection(
+                    $dto->getAstPsEndpoints()
+                )
+            );
         }
-        if ($dto->getUsers()) {
-            $this->replaceUsers($dto->getUsers());
+        if (!is_null($dto->getUsers())) {
+            $this->replaceUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getUsers()
+                )
+            );
         }
         return $this;
     }

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -108,6 +106,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $defaultTimezone;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto[] | null
      */
     private $companies = null;
@@ -175,7 +178,8 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'invoice' => ['nif','postalAddress','postalCode','town','province','country','registryData'],
             'domainId' => 'domain',
             'languageId' => 'language',
-            'defaultTimezoneId' => 'defaultTimezone'
+            'defaultTimezoneId' => 'defaultTimezone',
+            'currencyId' => 'currency'
         ];
     }
 
@@ -208,6 +212,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'domain' => $this->getDomain(),
             'language' => $this->getLanguage(),
             'defaultTimezone' => $this->getDefaultTimezone(),
+            'currency' => $this->getCurrency(),
             'companies' => $this->getCompanies(),
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
@@ -217,135 +222,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'matchLists' => $this->getMatchLists(),
             'outgoingRoutings' => $this->getOutgoingRoutings()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
-        $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
-        $this->defaultTimezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getDefaultTimezoneId());
-        if (!is_null($this->companies)) {
-            $items = $this->getCompanies();
-            $this->companies = [];
-            foreach ($items as $item) {
-                $this->companies[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Company\\Company',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->services)) {
-            $items = $this->getServices();
-            $this->services = [];
-            foreach ($items as $item) {
-                $this->services[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->urls)) {
-            $items = $this->getUrls();
-            $this->urls = [];
-            foreach ($items as $item) {
-                $this->urls[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relFeatures)) {
-            $items = $this->getRelFeatures();
-            $this->relFeatures = [];
-            foreach ($items as $item) {
-                $this->relFeatures[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->residentialDevices)) {
-            $items = $this->getResidentialDevices();
-            $this->residentialDevices = [];
-            foreach ($items as $item) {
-                $this->residentialDevices[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->musicsOnHold)) {
-            $items = $this->getMusicsOnHold();
-            $this->musicsOnHold = [];
-            foreach ($items as $item) {
-                $this->musicsOnHold[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->matchLists)) {
-            $items = $this->getMatchLists();
-            $this->matchLists = [];
-            foreach ($items as $item) {
-                $this->matchLists[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->outgoingRoutings)) {
-            $items = $this->getOutgoingRoutings();
-            $this->outgoingRoutings = [];
-            foreach ($items as $item) {
-                $this->outgoingRoutings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->companies = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Company\\Company',
-            $this->companies
-        );
-        $this->services = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService',
-            $this->services
-        );
-        $this->urls = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl',
-            $this->urls
-        );
-        $this->relFeatures = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',
-            $this->relFeatures
-        );
-        $this->residentialDevices = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',
-            $this->residentialDevices
-        );
-        $this->musicsOnHold = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
-            $this->musicsOnHold
-        );
-        $this->matchLists = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList',
-            $this->matchLists
-        );
-        $this->outgoingRoutings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
-            $this->outgoingRoutings
-        );
     }
 
     /**
@@ -800,6 +676,52 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getDefaultTimezoneId()
     {
         if ($dto = $this->getDefaultTimezone()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

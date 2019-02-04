@@ -55,5 +55,4 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
 
         return true;
     }
-
 }

@@ -77,9 +77,19 @@ Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
       ROLE_SUPER_ADMIN:
         raw: "id !== 0"
 Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Service\Service:

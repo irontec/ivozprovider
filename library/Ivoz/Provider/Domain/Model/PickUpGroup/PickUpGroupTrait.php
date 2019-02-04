@@ -37,16 +37,23 @@ trait PickUpGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto PickUpGroupDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getRelUsers()) {
-            $self->replaceRelUsers($dto->getRelUsers());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelUsers())) {
+            $self->replaceRelUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getRelUsers()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait PickUpGroupTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto PickUpGroupDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getRelUsers()) {
-            $this->replaceRelUsers($dto->getRelUsers());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelUsers())) {
+            $this->replaceRelUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getRelUsers()
+                )
+            );
         }
         return $this;
     }

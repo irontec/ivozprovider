@@ -217,10 +217,17 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
         $criteria = [
             ['id', 'neq', $entity->getId()],
-            ['user', 'eq', $entity->getUser()],
             ['callTypeFilter', 'in', $callTypeFilterConditions],
             ['enabled', 'eq', 1]
         ];
+
+        if (!is_null($entity->getUser())) {
+            $criteria[] = ['user', 'eq', $entity->getUser()];
+        } elseif (!is_null($entity->getResidentialDevice())) {
+            $criteria[] = ['residentialDevice', 'eq', $entity->getResidentialDevice()];
+        } elseif (!is_null($entity->getRetailAccount())) {
+            $criteria[] = ['retailAccount', 'eq', $entity->getRetailAccount()];
+        }
 
         if ($callForwardType) {
             $criteria[] = [

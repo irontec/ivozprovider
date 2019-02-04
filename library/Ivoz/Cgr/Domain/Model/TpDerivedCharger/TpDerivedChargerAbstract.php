@@ -283,8 +283,10 @@ abstract class TpDerivedChargerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpDerivedChargerDto
          */
@@ -320,7 +322,7 @@ abstract class TpDerivedChargerAbstract
         $self
             ->setSubject($dto->getSubject())
             ->setDestinationIds($dto->getDestinationIds())
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -334,8 +336,10 @@ abstract class TpDerivedChargerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpDerivedChargerDto
          */
@@ -368,7 +372,7 @@ abstract class TpDerivedChargerAbstract
             ->setRatedTimeField($dto->getRatedTimeField())
             ->setCostField($dto->getCostField())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 
@@ -1154,7 +1158,7 @@ abstract class TpDerivedChargerAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

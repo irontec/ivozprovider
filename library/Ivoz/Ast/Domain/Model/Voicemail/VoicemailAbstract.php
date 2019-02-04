@@ -261,8 +261,10 @@ abstract class VoicemailAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto VoicemailDto
          */
@@ -305,8 +307,8 @@ abstract class VoicemailAbstract
             ->setImapport($dto->getImapport())
             ->setImapflags($dto->getImapflags())
             ->setStamp($dto->getStamp())
-            ->setUser($dto->getUser())
-            ->setResidentialDevice($dto->getResidentialDevice())
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
         ;
 
         $self->sanitizeValues();
@@ -320,8 +322,10 @@ abstract class VoicemailAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto VoicemailDto
          */
@@ -361,8 +365,8 @@ abstract class VoicemailAbstract
             ->setImapport($dto->getImapport())
             ->setImapflags($dto->getImapflags())
             ->setStamp($dto->getStamp())
-            ->setUser($dto->getUser())
-            ->setResidentialDevice($dto->getResidentialDevice());
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
 
 
 
@@ -1379,7 +1383,7 @@ abstract class VoicemailAbstract
      */
     public function getStamp()
     {
-        return $this->stamp;
+        return !is_null($this->stamp) ? clone $this->stamp : null;
     }
 
     /**

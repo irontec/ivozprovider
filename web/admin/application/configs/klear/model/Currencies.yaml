@@ -1,0 +1,32 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\Currency\Currency
+  fields:
+    iden:
+      title: ngettext('Iden', 'Idens', 1)
+      type: text
+      trim: both
+      defaultValue:
+      maxLength: 10
+      default: true
+    name:
+      title: _('Name')
+      type: text
+      isMultilang: true
+      trim: both
+      defaultValue:
+      maxLength: 25
+    symbol:
+      title: _('Symbol')
+      type: text
+      trim: both
+      defaultValue:
+      maxLength: 5
+      default: true
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

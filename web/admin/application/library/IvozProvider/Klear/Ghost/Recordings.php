@@ -6,7 +6,8 @@ use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use IvozProvider\Utils\SizeFormatter;
 
-class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_Abstract {
+class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_Abstract
+{
 
     /**
      * @param BrandDto $model
@@ -59,7 +60,6 @@ class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_
             if ($brandLimit) {
                 $limit = SizeFormatter::sizeToHuman($brandLimit);
                 $limit .= " (" . _("shared") . ")";
-
             } else {
                 $limit = _("unlimited");
             }
@@ -67,5 +67,4 @@ class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_
 
         return sprintf("%s / %s", $used, $limit);
     }
-
 }

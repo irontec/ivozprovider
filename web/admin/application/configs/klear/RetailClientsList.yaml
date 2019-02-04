@@ -45,6 +45,7 @@ production:
           countryName: true
           registryData: true
           defaultTimezone: true
+          currency: true
           mediaRelaySets: true
           ipFilter: true
           language: true
@@ -95,7 +96,6 @@ production:
           province: true
           countryName: true
           mediaRelaySets: true
-          outgoingDDI: true
           maxCalls: false
           externallyExtraOpts: true
           showInvoices: true
@@ -114,11 +114,13 @@ production:
           externallyExtraOpts: true
       fixedPositions: &retailClientsFixedPositions_Link
         group0:
-          colsPerRow: 6
+          colsPerRow: 12
           label: _("Basic Configuration")
           fields:
-            name: 3
-            billingMethod: 3
+            name: 8
+            billingMethod: 4
+            outgoingDDI: 6
+            relFeatures: 3
         group1:
           colsPerRow: 2
           label: _("Security")
@@ -133,6 +135,7 @@ production:
             country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
+            currency: 4
         group3:
           colsPerRow: 12
           label: _("Retail specific")
@@ -180,6 +183,7 @@ production:
             name: 8
             billingMethod: 4
             outgoingDDI: 6
+            relFeatures: 3
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -188,6 +192,7 @@ production:
             country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
+            currency: 4
         group2:
           colsPerRow: 2
           label: _("Security")

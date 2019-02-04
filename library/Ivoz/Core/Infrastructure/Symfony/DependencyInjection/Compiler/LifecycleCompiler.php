@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Symfony\DependencyInjection\Compiler;
 
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -9,6 +10,10 @@ use Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
+/**
+ * Class LifecycleCompiler
+ * Link services into their ServiceCollection
+ */
 class LifecycleCompiler implements CompilerPassInterface
 {
     /**
@@ -28,6 +33,20 @@ class LifecycleCompiler implements CompilerPassInterface
             $this->getErrorHandlerServices(),
             PersistErrorHandlerServiceCollection::class
         );
+
+
+        $commonErrorsHandlers = $this->getServicesByTag('lifecycle.common.error_handler');
+
+        $this->buildService(
+            ['lifecycle.common.error_handler' => $commonErrorsHandlers],
+            PersistErrorHandlerServiceCollection::class
+        );
+
+        $domainEventPublisher = $this->container->getDefinition(DomainEventPublisher::class);
+        $domainEventSubscribers = $this->getDomainEventSubscriberServices();
+        foreach ($domainEventSubscribers as $domainEventSubscriber) {
+            $domainEventPublisher->addMethodCall('subscribe', [$domainEventSubscriber]);
+        }
     }
 
     protected function buildService(array $serviceCollection, $collectionClassName = null)
@@ -49,6 +68,7 @@ class LifecycleCompiler implements CompilerPassInterface
                 $tag
             );
             $eventCollection->setPublic(true);
+            $eventCollection->setAutowired(true);
 
             foreach ($services as $key => $class) {
                 $tagProperties = is_subclass_of($class, LifecycleEventHandlerInterface::class)
@@ -148,6 +168,23 @@ class LifecycleCompiler implements CompilerPassInterface
                     $services[$name] = array();
                 }
                 $services[$name] = $this->getServicesByTag($name);
+            }
+        }
+
+        return $services;
+    }
+
+    protected function getDomainEventSubscriberServices()
+    {
+        $services = [];
+        $servicesDefinitions = $this->container->getDefinitions();
+
+        /**
+         * @var Definition $definition
+         */
+        foreach ($servicesDefinitions as $definition) {
+            if ($definition->hasTag('domain.event.subscriber')) {
+                $services[] = $definition;
             }
         }
 

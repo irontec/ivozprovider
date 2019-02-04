@@ -37,16 +37,23 @@ trait RatingProfileTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingProfileDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getTpRatingProfiles()) {
-            $self->replaceTpRatingProfiles($dto->getTpRatingProfiles());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTpRatingProfiles())) {
+            $self->replaceTpRatingProfiles(
+                $fkTransformer->transformCollection(
+                    $dto->getTpRatingProfiles()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait RatingProfileTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingProfileDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getTpRatingProfiles()) {
-            $this->replaceTpRatingProfiles($dto->getTpRatingProfiles());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTpRatingProfiles())) {
+            $this->replaceTpRatingProfiles(
+                $fkTransformer->transformCollection(
+                    $dto->getTpRatingProfiles()
+                )
+            );
         }
         return $this;
     }

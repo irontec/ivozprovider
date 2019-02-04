@@ -148,7 +148,6 @@ trait ImporterControllerTrait
         $counter = 0;
         $linesArray = array();
         foreach ($lines as $lineFields) {
-
             $linesArray[] = $lineFields;
             $counter++;
             if (!is_null($limit) && $counter==$limit) {
@@ -174,7 +173,6 @@ trait ImporterControllerTrait
 
         $params = $this->getRequest()->getParams();
         foreach ($params as $key => $value) {
-
             if (false === strpos($key, 'field_')) {
                 continue;
             }
@@ -228,7 +226,7 @@ trait ImporterControllerTrait
         $lines = $this->_parseFile($filePath, 1);
         $fileFields = count($lines[0]);
         $fieldsPossitions = array();
-        for($i = 0; $i < $fileFields; $i++) {
+        for ($i = 0; $i < $fileFields; $i++) {
             $fieldName = $this->getRequest()->getParam('field_'.$i);
             $fieldsPossitions[$fieldName] = $i;
         }
@@ -293,8 +291,8 @@ trait ImporterControllerTrait
                     continue;
                 }
 
-                $lineFields = str_getcsv($buffer,";");
-                if ($this->getRequest()->getParam("ingoreFirst") && $firstLine){
+                $lineFields = str_getcsv($buffer, ";");
+                if ($this->getRequest()->getParam("ingoreFirst") && $firstLine) {
                     $firstLine = false;
                     $this->_log("Ignoring first line");
                     continue;
@@ -308,7 +306,7 @@ trait ImporterControllerTrait
                     }
                     $value = $lineFields[$fieldPosition];
 
-                    if(empty($value)) {
+                    if (empty($value)) {
                         $value = "";
                     }
 
@@ -333,7 +331,6 @@ trait ImporterControllerTrait
                 }
 
                 try {
-
                     if ($this->getRequest()->getParam("update", false) && isset($data["id"])) {
                         $model = $this->_mapper->findOneByField(array_keys($conditions), array_values($conditions));
                         if (!is_null($model)) {
@@ -349,13 +346,11 @@ trait ImporterControllerTrait
                             $errors[] = $error;
                         }
                     } else {
-
                         $modelSpec = $this->_item->getModelSpec();
                         $model = clone $modelSpec->getInstance();
                         $this->persist($model, $data);
                     }
-                }  catch (DBALException $e) {
-
+                } catch (DBALException $e) {
                     if ($e->getPrevious()) {
                         $e = $e->getPrevious();
                     }
@@ -363,9 +358,7 @@ trait ImporterControllerTrait
                     $this->_log($e->getMessage());
                     $errors = $e->getMessage();
                     break;
-
                 } catch (\Exception $e) {
-
                     $this->_log($e->getMessage());
                     $errors = $e->getMessage();
                     break;
@@ -401,7 +394,6 @@ trait ImporterControllerTrait
         $columns = $this->_item->getVisibleColumns(true, $model);
 
         foreach ($data as $columnName => $value) {
-
             $setter = 'set' . ucfirst($columnName);
             /** @var \KlearMatrix_Model_Column $column */
             $column = $columns->getColFromDbName($columnName);
@@ -412,7 +404,7 @@ trait ImporterControllerTrait
 
             if ($column->isSelectMapperFieldType()) {
                 $setter .= 'Id';
-            } else if ($column->getType() == 'picker') {
+            } elseif ($column->getType() == 'picker') {
                 $value = $this->stringToDateTime($column, $value);
             }
 
@@ -439,7 +431,6 @@ trait ImporterControllerTrait
         $adapterClass = get_class($fieldModel->getAdapter());
 
         switch ($adapterClass) {
-
             case \KlearMatrix_Model_Field_Picker_Date::class:
                 $dateTime = \DateTime::createFromFormat(
                     'Y-m-d',

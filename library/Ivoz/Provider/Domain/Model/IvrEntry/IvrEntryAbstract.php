@@ -130,8 +130,10 @@ abstract class IvrEntryAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrEntryDto
          */
@@ -144,12 +146,12 @@ abstract class IvrEntryAbstract
 
         $self
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($dto->getIvr())
-            ->setWelcomeLocution($dto->getWelcomeLocution())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setConditionalRoute($dto->getConditionalRoute())
-            ->setNumberCountry($dto->getNumberCountry())
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -163,8 +165,10 @@ abstract class IvrEntryAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrEntryDto
          */
@@ -174,12 +178,12 @@ abstract class IvrEntryAbstract
             ->setEntry($dto->getEntry())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($dto->getIvr())
-            ->setWelcomeLocution($dto->getWelcomeLocution())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setConditionalRoute($dto->getConditionalRoute())
-            ->setNumberCountry($dto->getNumberCountry());
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
 
 

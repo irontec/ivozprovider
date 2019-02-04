@@ -71,6 +71,11 @@ abstract class CallForwardSettingAbstract
      */
     protected $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    protected $retailAccount;
+
 
     use ChangelogTrait;
 
@@ -150,8 +155,10 @@ abstract class CallForwardSettingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallForwardSettingDto
          */
@@ -167,11 +174,12 @@ abstract class CallForwardSettingAbstract
 
         $self
             ->setNumberValue($dto->getNumberValue())
-            ->setUser($dto->getUser())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry())
-            ->setResidentialDevice($dto->getResidentialDevice())
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
         $self->sanitizeValues();
@@ -185,8 +193,10 @@ abstract class CallForwardSettingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallForwardSettingDto
          */
@@ -199,11 +209,12 @@ abstract class CallForwardSettingAbstract
             ->setNumberValue($dto->getNumberValue())
             ->setNoAnswerTimeout($dto->getNoAnswerTimeout())
             ->setEnabled($dto->getEnabled())
-            ->setUser($dto->getUser())
-            ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry())
-            ->setResidentialDevice($dto->getResidentialDevice());
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
 
 
 
@@ -229,7 +240,8 @@ abstract class CallForwardSettingAbstract
             ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
             ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
             ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth))
-            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
     /**
@@ -248,7 +260,8 @@ abstract class CallForwardSettingAbstract
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -550,6 +563,30 @@ abstract class CallForwardSettingAbstract
     public function getResidentialDevice()
     {
         return $this->residentialDevice;
+    }
+
+    /**
+     * Set retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return self
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
     }
 
     // @codeCoverageIgnoreEnd

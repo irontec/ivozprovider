@@ -45,6 +45,19 @@ production:
             template: '%tz%'
           order:
             Timezone.tz: asc
+    currency:
+      title: ngettext('Currency', 'Currencies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Currency\Currency
+          fieldName:
+            fields:
+              - name${lang}
+              - symbol
+            template: '%name${lang}% (%symbol%)'
+        'null': _("Default currency")
     maxCalls:
       title: _('Max calls')
       type: number
@@ -263,6 +276,33 @@ production:
             - name
             template: '%name%'
         'null': _("Use generic template")
+    relFeatures:
+      title: _('Features')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          extraDataAttributes:
+            feature: id
+          relation: \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany
+          relationProperty: company
+          relatedProperty: feature
+          related: \Ivoz\Provider\Domain\Model\Feature\Feature
+          filterClass: IvozProvider_Klear_Filter_RetailFeatures
+          relatedFieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          visualFilter:
+            iden:
+              recordings:
+                toggle:
+                  - recordingsLimitMB
+                  - recordingsDiskUsage
+                  - recordingsLimitEmail
+                  - onDemandRecord
+                  - onDemandRecordCode
+          order: name
 staging:
   _extends: production
 testing:

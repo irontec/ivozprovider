@@ -68,10 +68,8 @@ class Provision_IndexController extends Zend_Controller_Action
         );
 
         if (!$this->view->user) {
-
             $this->view->language = new LanguageDto();
             $this->view->user = new UserDto();
-
         } else {
 
             /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
@@ -161,7 +159,7 @@ class Provision_IndexController extends Zend_Controller_Action
             $criteria
         );
 
-        if ( $terminalModel == null ) {
+        if ($terminalModel == null) {
             $criteria = [ sprintf($criteriaTemplate, "$terminalUrl") ];
             $terminalModel = $this->dataGateway->findOneBy(
                 \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
@@ -169,7 +167,7 @@ class Provision_IndexController extends Zend_Controller_Action
             );
         }
 
-        if ( $terminalModel == null ) {
+        if ($terminalModel == null) {
             $criteria = [ sprintf($criteriaTemplate, preg_replace("/^\//", "", $terminalUrl)) ];
             $terminalModel = $this->dataGateway->findOneBy(
                 \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
@@ -218,7 +216,6 @@ class Provision_IndexController extends Zend_Controller_Action
         );
 
         foreach ($terminals as $candidate) {
-
             $terminalModelId = $candidate->getTerminalModelId();
             if (!$terminalModelId) {
                 continue;
@@ -246,7 +243,6 @@ class Provision_IndexController extends Zend_Controller_Action
 
             $fixedFileName = $fileName;
             if (count($fixedUrlSegments) > 1) {
-
                 $start = strlen($fixedUrlSegments[0]);
                 $end = strlen($fixedUrlSegments[1]) * -1;
 
@@ -281,7 +277,8 @@ class Provision_IndexController extends Zend_Controller_Action
         return pathinfo($route, PATHINFO_EXTENSION);
     }
 
-    protected function _getFilePath(){
+    protected function _getFilePath()
+    {
         $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
         $conf = (Object) $bootstrap->getOptions();
         $path = $conf->Iron['fso']['localStoragePath'];

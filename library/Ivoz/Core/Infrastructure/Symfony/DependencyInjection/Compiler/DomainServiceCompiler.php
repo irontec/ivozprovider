@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Symfony\DependencyInjection\Compiler;
 
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -9,6 +10,10 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Application\Helper\LifecycleServiceHelper;
 
+/**
+ * Class DomainServiceCompiler
+ * Auto register and configure services
+ */
 class DomainServiceCompiler implements CompilerPassInterface
 {
     /**
@@ -20,15 +25,23 @@ class DomainServiceCompiler implements CompilerPassInterface
     {
         $this->container = $container;
 
+        // Register collections
         $lifecycleServiceCollections = $this->getLifecycleServiceCollections();
         foreach ($lifecycleServiceCollections as $lifecycleService) {
             $this->configureLifecycleCollectionService($lifecycleService);
         }
 
+        // Register lifecycle services
         $lifecycleServices = $this->getLifecycleEventHandlerServices();
         foreach ($lifecycleServices as $lifecycleService) {
             $subscribedEvents = $lifecycleService::getSubscribedEvents();
             $this->configureLifecycleService($lifecycleService, $subscribedEvents);
+        }
+
+        // Register domain event services
+        $domainEventSubscribers = $this->getDomainEventSubscribers();
+        foreach ($domainEventSubscribers as $domainEventSubscriber) {
+            $this->configureDomainEventSubscribers($domainEventSubscriber);
         }
     }
 
@@ -53,9 +66,17 @@ class DomainServiceCompiler implements CompilerPassInterface
     {
         $service = $this->container->getDefinition($fqdn);
         $service->setPublic(true);
+        $service->setAutowired(true);
 
         $tag =  LifecycleServiceHelper::getServiceCollectionTag($fqdn);
         $this->container->setAlias($tag, $fqdn);
+    }
+
+    protected function configureDomainEventSubscribers($fqdn)
+    {
+        $service = $this->container->getDefinition($fqdn);
+        $service->addTag('domain.event.subscriber');
+        $service->setPublic(true);
     }
 
     protected function getLifecycleEventHandlerServices()
@@ -86,6 +107,25 @@ class DomainServiceCompiler implements CompilerPassInterface
                 $response = is_subclass_of(
                     $serviceId,
                     LifecycleServiceCollectionInterface::class
+                );
+
+                return $response;
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        return array_keys($services);
+    }
+
+    protected function getDomainEventSubscribers()
+    {
+        $domainServices = $this->container->findTaggedServiceIds('domain.service');
+        $services = array_filter(
+            $domainServices,
+            function ($serviceId) {
+                $response = is_subclass_of(
+                    $serviceId,
+                    DomainEventSubscriberInterface::class
                 );
 
                 return $response;

@@ -71,7 +71,6 @@ trait ExecuteGeneratorTrait
          * @var $m \Doctrine\ORM\Mapping\ClassMetadata
          */
         foreach ($metadata->getMetadata() as $m) {
-
             $skip = $this->skipEmbedded && $m->isEmbeddedClass;
             $skip = $skip || ($this->skipMappedSuperClass && $m->isMappedSuperclass);
             $skip = $skip || ($this->skipEntities && !$m->isMappedSuperclass && !$m->isEmbeddedClass);
@@ -82,7 +81,7 @@ trait ExecuteGeneratorTrait
 
             if ($this->mergeEmbeddedClasses) {
                 $m = $this->meldEmbedded($metadata, $m);
-            } else if ($this->injectEmbeddedClasses) {
+            } elseif ($this->injectEmbeddedClasses) {
                 $m = $this->injectEmbeddedClasses($metadata, $m);
             }
 
@@ -121,7 +120,6 @@ trait ExecuteGeneratorTrait
 
         if (isset($entity->embeddedClasses)) {
             foreach ($entity->embeddedClasses as $property => $embeddableClass) {
-
                 $embeddableMetadata = $this->manager->getClassMetadata(
                     $embeddableClass['class'],
                     $this->input->getOption('path'),
@@ -139,7 +137,6 @@ trait ExecuteGeneratorTrait
     {
         foreach ($entity->fieldMappings as $key => $field) {
             if (strpos($field['type'], '\\') !== false) {
-
                 unset($entity->fieldMappings[$key]);
                 unset($entity->columnNames[$key]);
                 unset($entity->reflFields[$key]);
@@ -161,7 +158,6 @@ trait ExecuteGeneratorTrait
         }
 
         foreach ($metadata->getMetadata() as $key => $entity) {
-
             $name = $entity->name;
             if ($name[0] !== '\\') {
                 $name = '\\' . $name;

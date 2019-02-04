@@ -99,8 +99,10 @@ abstract class RoutingTagAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RoutingTagDto
          */
@@ -112,7 +114,7 @@ abstract class RoutingTagAbstract
         );
 
         $self
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -126,8 +128,10 @@ abstract class RoutingTagAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RoutingTagDto
          */
@@ -136,7 +140,7 @@ abstract class RoutingTagAbstract
         $this
             ->setName($dto->getName())
             ->setTag($dto->getTag())
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

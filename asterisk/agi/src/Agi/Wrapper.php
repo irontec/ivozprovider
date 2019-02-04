@@ -37,7 +37,7 @@ class Wrapper
      * @param CommonStoragePathResolver $locutionPathResolver
      * @param Colorizer $colorizer
      */
-    public function __construct (
+    public function __construct(
         \AGI $fastagi,
         CommonStoragePathResolver $locutionPathResolver,
         Colorizer $colorizer
@@ -49,7 +49,7 @@ class Wrapper
 
     public function dump()
     {
-        return $this->fastagi->exec("DumpChan","");
+        return $this->fastagi->exec("DumpChan", "");
     }
 
     private function getRequestData($name)
@@ -137,7 +137,7 @@ class Wrapper
         return $this->fastagi->Exec("Busy", $duration);
     }
 
-    public  function decline()
+    public function decline()
     {
         $this->fastagi->hangup(21);
     }
@@ -146,8 +146,9 @@ class Wrapper
     {
         $this->fastagi->exec("Progress", "");
 
-        if (!empty($file))
+        if (!empty($file)) {
             $this->playback($file, "noanswer");
+        }
 
         return $this;
     }
@@ -179,7 +180,6 @@ class Wrapper
         $filename = pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
 
         $this->playback($filename, $options);
-
     }
 
     public function playback($filename = "", $options = "")
@@ -190,9 +190,9 @@ class Wrapper
     public function pickup($interface = "")
     {
         if (!empty($interface)) {
-           $this->fastagi->exec("PickupChan", "PJSIP/$interface,p");
+            $this->fastagi->exec("PickupChan", "PJSIP/$interface,p");
         } else {
-            $this->fastagi->exec("Pickup","");
+            $this->fastagi->exec("Pickup", "");
         }
         return $this->getVariable("PICKUPRESULT");
     }
@@ -360,11 +360,13 @@ class Wrapper
 
     public function getCallId()
     {
-        if ($callid = $this->getVariable("CALL_ID"))
+        if ($callid = $this->getVariable("CALL_ID")) {
             return $callid;
+        }
 
-        if ($this->getAgiType() == "Local")
+        if ($this->getAgiType() == "Local") {
             return "";
+        }
 
         return $this->getVariable("CHANNEL(pjsip,call-id)");
     }
@@ -386,5 +388,12 @@ class Wrapper
         return "";
     }
 
-}
+    public function getDialedNumber()
+    {
+        $dialedNumber = $this->getVariable('DIALEDPEERNUMBER');
 
+        $dialedNumberParts = explode('@', $dialedNumber);
+
+        return array_shift($dialedNumberParts);
+    }
+}

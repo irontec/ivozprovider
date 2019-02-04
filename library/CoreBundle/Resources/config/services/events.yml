@@ -6,17 +6,13 @@ services:
 
   Ivoz\Core\Application\RequestId:
     public: true
-    arguments: ~
 
   Ivoz\Core\Application\Service\CommandEventSubscriber: ~
-
   Ivoz\Core\Domain\Service\EntityEventSubscriber: ~
 
-  Ivoz\Provider\Domain\Service\BalanceNotification\NotifyBrokenThreshold: ~
-
+  # DomainEventPublisher calls are autocompleted on cache regenerations (Compiler fase)
   Ivoz\Core\Domain\Service\DomainEventPublisher:
      shared: true
      calls:
       - [subscribe, ['@Ivoz\Core\Application\Service\CommandEventSubscriber']]
       - [subscribe, ['@Ivoz\Core\Domain\Service\EntityEventSubscriber']]
-      - [subscribe, ['@Ivoz\Provider\Domain\Service\BalanceNotification\NotifyBrokenThreshold']]

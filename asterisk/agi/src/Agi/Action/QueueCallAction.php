@@ -5,7 +5,6 @@ namespace Agi\Action;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 
-
 class QueueCallAction
 {
     /**
@@ -25,8 +24,7 @@ class QueueCallAction
      */
     public function __construct(
         Wrapper $agi
-    )
-    {
+    ) {
         $this->agi = $agi;
     }
 
@@ -65,5 +63,4 @@ class QueueCallAction
         $this->agi->setVariable("DIAL_OPTS", "ic");
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $endpoint->getSorceryId());
     }
-
 }

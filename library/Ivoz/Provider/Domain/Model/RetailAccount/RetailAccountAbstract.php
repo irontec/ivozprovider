@@ -165,8 +165,10 @@ abstract class RetailAccountAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RetailAccountDto
          */
@@ -185,11 +187,11 @@ abstract class RetailAccountAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setCompany($dto->getCompany())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
         ;
 
         $self->sanitizeValues();
@@ -203,8 +205,10 @@ abstract class RetailAccountAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RetailAccountDto
          */
@@ -220,11 +224,11 @@ abstract class RetailAccountAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setCompany($dto->getCompany())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
 
 

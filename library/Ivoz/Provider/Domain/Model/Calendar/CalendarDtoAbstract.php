@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -67,35 +65,6 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'holidayDates' => $this->getHolidayDates()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        if (!is_null($this->holidayDates)) {
-            $items = $this->getHolidayDates();
-            $this->holidayDates = [];
-            foreach ($items as $item) {
-                $this->holidayDates[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->holidayDates = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate',
-            $this->holidayDates
-        );
     }
 
     /**

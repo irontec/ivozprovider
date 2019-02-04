@@ -41,7 +41,10 @@ services:
   Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService'
 
-  Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService: ~
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService: ~
   Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface:
-    alias: Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService
+    alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService
     public: true
+
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr: ~

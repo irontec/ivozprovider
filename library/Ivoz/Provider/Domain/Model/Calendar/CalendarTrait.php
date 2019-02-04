@@ -37,16 +37,23 @@ trait CalendarTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CalendarDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getHolidayDates()) {
-            $self->replaceHolidayDates($dto->getHolidayDates());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getHolidayDates())) {
+            $self->replaceHolidayDates(
+                $fkTransformer->transformCollection(
+                    $dto->getHolidayDates()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait CalendarTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CalendarDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getHolidayDates()) {
-            $this->replaceHolidayDates($dto->getHolidayDates());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getHolidayDates())) {
+            $this->replaceHolidayDates(
+                $fkTransformer->transformCollection(
+                    $dto->getHolidayDates()
+                )
+            );
         }
         return $this;
     }

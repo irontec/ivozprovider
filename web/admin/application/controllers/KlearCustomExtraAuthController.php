@@ -6,7 +6,6 @@ use \Ivoz\Provider\Domain\Model\Company\Company;
 use \Ivoz\Provider\Domain\Model\Brand\CompanyDto;
 use \Ivoz\Provider\Domain\Model\Feature\Feature;
 
-
 class KlearCustomExtraAuthController extends Zend_Controller_Action
 {
     protected $_user;
@@ -22,11 +21,10 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 ->addActionContext('emulate', 'json')
                 ->initContext('json');
 
-        if (
-            !$this->_mainRouter = $this->getRequest()->getParam("mainRouter")
+        if (!$this->_mainRouter = $this->getRequest()->getParam("mainRouter")
             || !is_object($this->_mainRouter)
         ) {
-                throw New Zend_Exception(
+                throw new Zend_Exception(
                     $this->view->translate('Access denied'),
                     Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
                 );
@@ -81,7 +79,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             } else {
                 return $this->_noPermission();
             }
-
         } else {
             return $this->_noPermission();
         }
@@ -96,12 +93,20 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 }
                 if ($type == 'brand') {
                     $html .= '<option value="'.$option->getId().'" '.$selected.'>'.$option->getName().'</option>';
-                } else if ($type == 'company') {
-                    switch($option->getType()) {
-                        case 'vpbx': $icon = "building"; break;
-                        case 'retail': $icon = "basket"; break;
-                        case 'wholesale': $icon = "cart"; break;
-                        case 'residential': $icon = "house"; break;
+                } elseif ($type == 'company') {
+                    switch ($option->getType()) {
+                        case 'vpbx':
+                            $icon = "building";
+                            break;
+                        case 'retail':
+                            $icon = "basket";
+                            break;
+                        case 'wholesale':
+                            $icon = "cart";
+                            break;
+                        case 'residential':
+                            $icon = "house";
+                            break;
                     }
                     $html .= '<option data-subtype="'.$option->getType()
                     .'" data-icon="ui-silk inline ui-silk-'.$icon
@@ -138,7 +143,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
 
         if ($type == 'brand') {
             if ($this->_user->canSeeMain) {
-
                 //TODO: verificar que existe y permisos
                 $oldBrandId = $this->_user->brandId;
                 $brandId = $this->getRequest()->getParam("remoteId");
@@ -155,13 +159,11 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 if ($oldBrandId != $brandId) {
                     $this->_user->unsetCompany();
                 }
-
             } else {
                 return $this->_noPermission();
             }
         } elseif ($type == 'company') {
             if ($this->_user->canSeeBrand) {
-
                 //TODO: verificar que existe y permisos
                 $companyId = $this->getRequest()->getParam("remoteId");
                 $remoteId = $companyId;
@@ -173,7 +175,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 );
 
                 $this->_enableFeatures($company);
-
             } else {
                 return $this->_noPermission();
             }
@@ -301,7 +302,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
 
         /** @var \Ivoz\Provider\Domain\Model\Feature\FeatureDto[] $featureList */
         $featureList = $dataGateway->findAll(
-                Feature::class
+            Feature::class
         );
 
         foreach ($featureList as $feature) {
@@ -309,7 +310,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             $featureId = $feature->getId();
 
             $enabled = $dataGateway->remoteProcedureCall(
-                substr(get_class($entity), 0,-3),
+                substr(get_class($entity), 0, -3),
                 $entity->getId(),
                 "hasFeature",
                 [$featureId]

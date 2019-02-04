@@ -25,6 +25,11 @@ Feature: Update holiday dates
       {
           "name": "UpdatedName",
           "eventDate": "2021-12-22",
+          "wholeDayEvent": true,
+          "timeIn": null,
+          "timeOut": null,
+          "routeType": null,
+          "numberValue": null,
           "id": 1,
           "calendar": {
               "name": "testCalendar2",
@@ -37,15 +42,18 @@ Feature: Update holiday dates
               "id": 1,
               "encodedFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
+                  "mimeType": "audio\/x-wav; charset=binary",
                   "baseName": "locution.wav"
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
-          }
+          },
+          "extension": null,
+          "voiceMailUser": null,
+          "numberCountry": null
       }
     """

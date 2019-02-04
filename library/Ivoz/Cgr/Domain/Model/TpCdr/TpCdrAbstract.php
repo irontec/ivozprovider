@@ -250,8 +250,10 @@ abstract class TpCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpCdrDto
          */
@@ -297,8 +299,10 @@ abstract class TpCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpCdrDto
          */
@@ -752,7 +756,7 @@ abstract class TpCdrAbstract
      */
     public function getSetupTime()
     {
-        return $this->setupTime;
+        return clone $this->setupTime;
     }
 
     /**
@@ -782,7 +786,7 @@ abstract class TpCdrAbstract
      */
     public function getAnswerTime()
     {
-        return $this->answerTime;
+        return clone $this->answerTime;
     }
 
     /**
@@ -973,7 +977,7 @@ abstract class TpCdrAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
 
     /**
@@ -1004,7 +1008,7 @@ abstract class TpCdrAbstract
      */
     public function getUpdatedAt()
     {
-        return $this->updatedAt;
+        return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
 
     /**
@@ -1035,7 +1039,7 @@ abstract class TpCdrAbstract
      */
     public function getDeletedAt()
     {
-        return $this->deletedAt;
+        return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }
 
     // @codeCoverageIgnoreEnd

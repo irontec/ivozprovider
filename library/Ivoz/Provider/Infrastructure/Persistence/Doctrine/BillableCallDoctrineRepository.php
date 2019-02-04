@@ -65,36 +65,68 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * Return non externally rated calls without cgrid
      * @inheritdoc
-     * @see BillableCallRepository::idsToCgrid
+     * @see BillableCallRepository::findUnratedInGroup
      */
-    public function idsToCgrid(array $ids)
+    public function findUnratedInGroup(array $pks)
     {
         $qb = $this->createQueryBuilder('self');
 
         $conditions = [
-            ['id', 'in', $ids]
+            ['self.id', 'in', $pks],
+            ['trunksCdr.cgrid', 'isNull'],
+            'or' => [
+                ['carrier.externallyRated', 'eq', 0],
+                ['self.carrier', 'isNUll']
+            ]
         ];
 
         $qb
-            ->select('self')
+            ->select('self, trunksCdr')
+            ->innerJoin('self.trunksCdr', 'trunksCdr')
+            ->leftJoin('self.carrier', 'carrier')
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
             );
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @inheritdoc
+     * @see BillableCallRepository::findRerateableCgridsInGroup
+     */
+    public function findRerateableCgridsInGroup(array $ids)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['id', 'in', $ids],
+            ['trunksCdr.cgrid', 'isNotNull'],
+            'or' => [
+                ['carrier.externallyRated', 'eq', 0],
+                ['self.carrier', 'isNull']
+            ]
+        ];
+
+        $qb
+            ->select('self, trunksCdr')
+            ->innerJoin('self.trunksCdr', 'trunksCdr')
+            ->leftJoin('self.carrier', 'carrier')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        $query = $qb->getQuery();
+
         /** @var BillableCallInterface[] $billableCalls */
-        $billableCalls = $qb
-            ->getQuery()
-            ->getResult();
+        $billableCalls = $query->getResult();
 
         $cgrids = [];
         foreach ($billableCalls as $billableCall) {
-            if (!is_null($billableCall->getTrunksCdr())) {
-                $cgrids[] = $billableCall->getTrunksCdr()->getCgrid();
-            }
-        }
-
-        if (count($ids) !== count($cgrids)) {
-            throw new \DomainException('Some id were not found');
+            $cgrids[] = $billableCall->getTrunksCdr()->getCgrid();
         }
 
         return $cgrids;
@@ -138,15 +170,19 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::resetPrices
+     * @see BillableCallRepository::resetPricingData
      */
-    public function resetPrices(array $ids)
+    public function resetPricingData(array $ids)
     {
         $qb = $this
             ->createQueryBuilder('self')
             ->update($this->_entityName, 'self')
             ->set('self.price', ':nullValue')
             ->set('self.cost', ':nullValue')
+            ->set('self.destination', ':nullValue')
+            ->set('self.destinationName', ':nullValue')
+            ->set('self.ratingPlanGroup', ':nullValue')
+            ->set('self.ratingPlanName', ':nullValue')
             ->setParameter(':nullValue', null)
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
@@ -206,7 +242,6 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
                 ['price', 'isNull'],
                 ['price', 'lt', 0],
             ]
-
         ];
 
         $qb
@@ -232,7 +267,10 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['startTime', 'gt', $startTime],
             ['carrier', 'neq', null],
             ['carrier', 'neq', ''],
-            ['price', 'isNull']
+            'or' => [
+                ['price', 'isNull'],
+                ['price', 'lt', 0],
+            ]
         ];
 
         $qb

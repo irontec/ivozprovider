@@ -49,24 +49,39 @@ trait UserTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto UserDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getPickUpRelUsers()) {
-            $self->replacePickUpRelUsers($dto->getPickUpRelUsers());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPickUpRelUsers())) {
+            $self->replacePickUpRelUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getPickUpRelUsers()
+                )
+            );
         }
 
-        if ($dto->getQueueMembers()) {
-            $self->replaceQueueMembers($dto->getQueueMembers());
+        if (!is_null($dto->getQueueMembers())) {
+            $self->replaceQueueMembers(
+                $fkTransformer->transformCollection(
+                    $dto->getQueueMembers()
+                )
+            );
         }
 
-        if ($dto->getCallForwardSettings()) {
-            $self->replaceCallForwardSettings($dto->getCallForwardSettings());
+        if (!is_null($dto->getCallForwardSettings())) {
+            $self->replaceCallForwardSettings(
+                $fkTransformer->transformCollection(
+                    $dto->getCallForwardSettings()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -79,22 +94,37 @@ trait UserTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto UserDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getPickUpRelUsers()) {
-            $this->replacePickUpRelUsers($dto->getPickUpRelUsers());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPickUpRelUsers())) {
+            $this->replacePickUpRelUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getPickUpRelUsers()
+                )
+            );
         }
-        if ($dto->getQueueMembers()) {
-            $this->replaceQueueMembers($dto->getQueueMembers());
+        if (!is_null($dto->getQueueMembers())) {
+            $this->replaceQueueMembers(
+                $fkTransformer->transformCollection(
+                    $dto->getQueueMembers()
+                )
+            );
         }
-        if ($dto->getCallForwardSettings()) {
-            $this->replaceCallForwardSettings($dto->getCallForwardSettings());
+        if (!is_null($dto->getCallForwardSettings())) {
+            $this->replaceCallForwardSettings(
+                $fkTransformer->transformCollection(
+                    $dto->getCallForwardSettings()
+                )
+            );
         }
         return $this;
     }

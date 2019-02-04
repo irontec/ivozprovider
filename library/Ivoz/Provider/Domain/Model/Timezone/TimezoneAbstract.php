@@ -104,8 +104,10 @@ abstract class TimezoneAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TimezoneDto
          */
@@ -123,7 +125,7 @@ abstract class TimezoneAbstract
 
         $self
             ->setComment($dto->getComment())
-            ->setCountry($dto->getCountry())
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
         ;
 
         $self->sanitizeValues();
@@ -137,8 +139,10 @@ abstract class TimezoneAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TimezoneDto
          */
@@ -153,7 +157,7 @@ abstract class TimezoneAbstract
             ->setTz($dto->getTz())
             ->setComment($dto->getComment())
             ->setLabel($label)
-            ->setCountry($dto->getCountry());
+            ->setCountry($fkTransformer->transform($dto->getCountry()));
 
 
 

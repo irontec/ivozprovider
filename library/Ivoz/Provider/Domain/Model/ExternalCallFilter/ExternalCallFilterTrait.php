@@ -55,28 +55,47 @@ trait ExternalCallFilterTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getCalendars()) {
-            $self->replaceCalendars($dto->getCalendars());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getCalendars())) {
+            $self->replaceCalendars(
+                $fkTransformer->transformCollection(
+                    $dto->getCalendars()
+                )
+            );
         }
 
-        if ($dto->getBlackLists()) {
-            $self->replaceBlackLists($dto->getBlackLists());
+        if (!is_null($dto->getBlackLists())) {
+            $self->replaceBlackLists(
+                $fkTransformer->transformCollection(
+                    $dto->getBlackLists()
+                )
+            );
         }
 
-        if ($dto->getWhiteLists()) {
-            $self->replaceWhiteLists($dto->getWhiteLists());
+        if (!is_null($dto->getWhiteLists())) {
+            $self->replaceWhiteLists(
+                $fkTransformer->transformCollection(
+                    $dto->getWhiteLists()
+                )
+            );
         }
 
-        if ($dto->getSchedules()) {
-            $self->replaceSchedules($dto->getSchedules());
+        if (!is_null($dto->getSchedules())) {
+            $self->replaceSchedules(
+                $fkTransformer->transformCollection(
+                    $dto->getSchedules()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -89,25 +108,44 @@ trait ExternalCallFilterTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExternalCallFilterDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getCalendars()) {
-            $this->replaceCalendars($dto->getCalendars());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getCalendars())) {
+            $this->replaceCalendars(
+                $fkTransformer->transformCollection(
+                    $dto->getCalendars()
+                )
+            );
         }
-        if ($dto->getBlackLists()) {
-            $this->replaceBlackLists($dto->getBlackLists());
+        if (!is_null($dto->getBlackLists())) {
+            $this->replaceBlackLists(
+                $fkTransformer->transformCollection(
+                    $dto->getBlackLists()
+                )
+            );
         }
-        if ($dto->getWhiteLists()) {
-            $this->replaceWhiteLists($dto->getWhiteLists());
+        if (!is_null($dto->getWhiteLists())) {
+            $this->replaceWhiteLists(
+                $fkTransformer->transformCollection(
+                    $dto->getWhiteLists()
+                )
+            );
         }
-        if ($dto->getSchedules()) {
-            $this->replaceSchedules($dto->getSchedules());
+        if (!is_null($dto->getSchedules())) {
+            $this->replaceSchedules(
+                $fkTransformer->transformCollection(
+                    $dto->getSchedules()
+                )
+            );
         }
         return $this;
     }

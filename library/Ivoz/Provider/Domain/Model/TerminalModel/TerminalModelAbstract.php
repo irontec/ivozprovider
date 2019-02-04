@@ -125,8 +125,10 @@ abstract class TerminalModelAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TerminalModelDto
          */
@@ -143,7 +145,7 @@ abstract class TerminalModelAbstract
             ->setSpecificTemplate($dto->getSpecificTemplate())
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
-            ->setTerminalManufacturer($dto->getTerminalManufacturer())
+            ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()))
         ;
 
         $self->sanitizeValues();
@@ -157,8 +159,10 @@ abstract class TerminalModelAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TerminalModelDto
          */
@@ -172,7 +176,7 @@ abstract class TerminalModelAbstract
             ->setSpecificTemplate($dto->getSpecificTemplate())
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
-            ->setTerminalManufacturer($dto->getTerminalManufacturer());
+            ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()));
 
 
 

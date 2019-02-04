@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateDtoByTrunksCdr;
+use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
 use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
@@ -13,7 +13,7 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
-use Ivoz\Provider\Domain\Service\BillableCall\UpdateDtoByTpCdr;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Psr\Log\LoggerInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -34,14 +34,14 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
     protected $billableCallRepository;
 
     /**
-     * @var CreateOrUpdateDtoByTrunksCdr
+     * @var CreateOrUpdateByTrunksCdr
      */
     protected $createOrUpdateBillableCallByTrunksCdr;
 
     /**
-     * @var UpdateDtoByTpCdr
+     * @var DomainEventPublisher
      */
-    protected $updateBillableCallByTpCdr;
+    protected $domainEventPublisher;
 
     /**
      * @var EntityTools
@@ -56,15 +56,15 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
     public function let(
         TrunksCdrRepository  $trunksCdrRepository,
         BillableCallRepository $billableCallRepository,
-        CreateOrUpdateDtoByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
-        UpdateDtoByTpCdr $updateBillableCallByTpCdr,
+        CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
         EntityTools $entityTools,
+        DomainEventPublisher $domainEventPublisher,
         LoggerInterface $logger
     ) {
         $this->trunksCdrRepository = $trunksCdrRepository;
         $this->billableCallRepository = $billableCallRepository;
         $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
-        $this->updateBillableCallByTpCdr = $updateBillableCallByTpCdr;
+        $this->domainEventPublisher = $domainEventPublisher;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
 
@@ -72,8 +72,8 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
             $this->trunksCdrRepository,
             $this->billableCallRepository,
             $this->createOrUpdateBillableCallByTrunksCdr,
-            $this->updateBillableCallByTpCdr,
             $this->entityTools,
+            $this->domainEventPublisher,
             $this->logger
         );
     }
@@ -86,7 +86,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
     function it_logs_success_message()
     {
         $this->trunksCdrRepository
-            ->getUnmeteredCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
+            ->getUnparsedCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
             ->willReturn([]);
 
         $this
@@ -98,7 +98,6 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
 
         $this->execute();
     }
-
 
     function it_logs_error_message_on_exceptions(
         TrunksCdrInterface $trunksCdr,
@@ -150,8 +149,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
 
         $this
             ->entityTools
-            ->persistDto(
-                Argument::type(BillableCallDto::class),
+            ->persist(
                 Argument::type(BillableCallInterface::class),
                 false
             )
@@ -181,9 +179,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
         $this->getterProphecy(
             $trunksCdr,
             [
-                'getId' => 1,
-                'getCgrid' => 'cgrid',
-                'getBrand' => $brand
+                'getId' => 1
             ]
         );
     }
@@ -203,7 +199,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
 
         $this
             ->trunksCdrRepository
-            ->getUnmeteredCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
+            ->getUnparsedCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
             ->willReturn([[$trunksCdr]]);
 
         $this
@@ -219,7 +215,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
                 Argument::type(TrunksCdrInterface::class),
                 Argument::type(BillableCallInterface::class)
             )
-            ->willReturn($billableCallDto);
+            ->willReturn($billableCall);
 
         $this
             ->entityTools
@@ -227,6 +223,14 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
                 Argument::type(TrunksCdrInterface::class)
             )
             ->willReturn($trunksCdrDto);
+
+        $this
+            ->entityTools
+            ->persist(
+                Argument::any(),
+                Argument::any()
+            )
+            ->willReturn(null);
 
         $this
             ->entityTools

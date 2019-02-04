@@ -61,32 +61,55 @@ trait CarrierTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CarrierDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getOutgoingRoutings()) {
-            $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getOutgoingRoutings())) {
+            $self->replaceOutgoingRoutings(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutings()
+                )
+            );
         }
 
-        if ($dto->getOutgoingRoutingsRelCarriers()) {
-            $self->replaceOutgoingRoutingsRelCarriers($dto->getOutgoingRoutingsRelCarriers());
+        if (!is_null($dto->getOutgoingRoutingsRelCarriers())) {
+            $self->replaceOutgoingRoutingsRelCarriers(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutingsRelCarriers()
+                )
+            );
         }
 
-        if ($dto->getServers()) {
-            $self->replaceServers($dto->getServers());
+        if (!is_null($dto->getServers())) {
+            $self->replaceServers(
+                $fkTransformer->transformCollection(
+                    $dto->getServers()
+                )
+            );
         }
 
-        if ($dto->getRatingProfiles()) {
-            $self->replaceRatingProfiles($dto->getRatingProfiles());
+        if (!is_null($dto->getRatingProfiles())) {
+            $self->replaceRatingProfiles(
+                $fkTransformer->transformCollection(
+                    $dto->getRatingProfiles()
+                )
+            );
         }
 
-        if ($dto->getTpCdrStats()) {
-            $self->replaceTpCdrStats($dto->getTpCdrStats());
+        if (!is_null($dto->getTpCdrStats())) {
+            $self->replaceTpCdrStats(
+                $fkTransformer->transformCollection(
+                    $dto->getTpCdrStats()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -99,28 +122,51 @@ trait CarrierTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CarrierDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getOutgoingRoutings()) {
-            $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getOutgoingRoutings())) {
+            $this->replaceOutgoingRoutings(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutings()
+                )
+            );
         }
-        if ($dto->getOutgoingRoutingsRelCarriers()) {
-            $this->replaceOutgoingRoutingsRelCarriers($dto->getOutgoingRoutingsRelCarriers());
+        if (!is_null($dto->getOutgoingRoutingsRelCarriers())) {
+            $this->replaceOutgoingRoutingsRelCarriers(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutingsRelCarriers()
+                )
+            );
         }
-        if ($dto->getServers()) {
-            $this->replaceServers($dto->getServers());
+        if (!is_null($dto->getServers())) {
+            $this->replaceServers(
+                $fkTransformer->transformCollection(
+                    $dto->getServers()
+                )
+            );
         }
-        if ($dto->getRatingProfiles()) {
-            $this->replaceRatingProfiles($dto->getRatingProfiles());
+        if (!is_null($dto->getRatingProfiles())) {
+            $this->replaceRatingProfiles(
+                $fkTransformer->transformCollection(
+                    $dto->getRatingProfiles()
+                )
+            );
         }
-        if ($dto->getTpCdrStats()) {
-            $this->replaceTpCdrStats($dto->getTpCdrStats());
+        if (!is_null($dto->getTpCdrStats())) {
+            $this->replaceTpCdrStats(
+                $fkTransformer->transformCollection(
+                    $dto->getTpCdrStats()
+                )
+            );
         }
         return $this;
     }

@@ -31,14 +31,20 @@ class DoctrineCollectionTransformer implements CollectionTransformerInterface
             return null;
         }
 
+        if (empty($elements)) {
+            return new ArrayCollection();
+        }
+
+
         $entities = new ArrayCollection();
-        $entityReflectionClass = new \ReflectionClass($entityName);
+        $entityClass = substr(get_class($elements), 0, -3);
+        $entityReflectionClass = new \ReflectionClass($entityClass);
         $entityReflection = $entityReflectionClass->newInstanceWithoutConstructor();
 
         foreach ($elements as $element) {
             $entity = $element instanceof EntityInterface
                 ? $element
-                : $this->getEntity($entityReflection, $element);
+                : $this->getEntity($entityClass, $element);
 
             $entities->add($entity);
         }
@@ -47,22 +53,22 @@ class DoctrineCollectionTransformer implements CollectionTransformerInterface
     }
 
     /**
-     * @param EntityInterface $entityReflection
+     * @param string $entityClass
      * @param DataTransferObjectInterface $dto
      *
      * @return EntityInterface
      */
-    private function getEntity(EntityInterface $entityReflection, DataTransferObjectInterface $dto)
+    private function getEntity(string $entityClass, DataTransferObjectInterface $dto)
     {
         if ($dto->getId()) {
             $entity = $this->em->getReference(
-                get_class($entityReflection),
+                $entityClass,
                 $dto->getId()
             );
 
             return $entity;
         }
 
-        return $entityReflection->fromDto($dto);
+        return $entityClass->fromDto($dto);
     }
 }

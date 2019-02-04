@@ -50,6 +50,7 @@ production:
           registryData: true
           maxCalls: true
           defaultTimezone: true
+          currency: true
           distributeMethod: true
           applicationServer: true
           mediaRelaySets: true
@@ -151,13 +152,14 @@ production:
             maxCalls: 1
             ipFilter: 1
         group2:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Geographic Configuration")
           fields:
             defaultTimezone: 1
             country: 1
             language: 1
-            transformationRuleSet: 1
+            transformationRuleSet: 2
+            currency: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -229,7 +231,8 @@ production:
             language: 1
             country: 1
             defaultTimezone: 1
-            transformationRuleSet: 3
+            transformationRuleSet: 2
+            currency: 1
         group3:
           colsPerRow: 12
           collapsed: true

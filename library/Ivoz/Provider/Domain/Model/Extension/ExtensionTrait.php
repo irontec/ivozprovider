@@ -37,16 +37,23 @@ trait ExtensionTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExtensionDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getUsers()) {
-            $self->replaceUsers($dto->getUsers());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getUsers())) {
+            $self->replaceUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getUsers()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait ExtensionTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ExtensionDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getUsers()) {
-            $this->replaceUsers($dto->getUsers());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getUsers())) {
+            $this->replaceUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getUsers()
+                )
+            );
         }
         return $this;
     }

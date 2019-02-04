@@ -131,8 +131,10 @@ abstract class DestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationRateDto
          */
@@ -146,8 +148,8 @@ abstract class DestinationRateAbstract
         );
 
         $self
-            ->setDestinationRateGroup($dto->getDestinationRateGroup())
-            ->setDestination($dto->getDestination())
+            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
+            ->setDestination($fkTransformer->transform($dto->getDestination()))
         ;
 
         $self->sanitizeValues();
@@ -161,8 +163,10 @@ abstract class DestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationRateDto
          */
@@ -173,8 +177,8 @@ abstract class DestinationRateAbstract
             ->setConnectFee($dto->getConnectFee())
             ->setRateIncrement($dto->getRateIncrement())
             ->setGroupIntervalStart($dto->getGroupIntervalStart())
-            ->setDestinationRateGroup($dto->getDestinationRateGroup())
-            ->setDestination($dto->getDestination());
+            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
+            ->setDestination($fkTransformer->transform($dto->getDestination()));
 
 
 

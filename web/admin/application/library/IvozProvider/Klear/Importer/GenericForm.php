@@ -18,7 +18,6 @@ class GenericForm extends AbstractFormBuilder
         $help.= '<ul style="max-height: 150px; overflow-y: auto;">';
 
         foreach ($this->_availableFields as $key => $fieldInfo) {
-
             $fieldLabel = \Klear_Model_Gettext::gettextCheck($fieldInfo->get('title'));
             $required = "";
             if (!is_null($fieldInfo->get('required')) && $fieldInfo->get('required')) {
@@ -43,7 +42,7 @@ class GenericForm extends AbstractFormBuilder
 
         $fieldValues = $this->_postValues;
 
-        for ($i = 0; $i < $lineLength; $i ++){
+        for ($i = 0; $i < $lineLength; $i ++) {
             $optionValue = isset($fieldValues['field_'.$i]) ? $fieldValues['field_'.$i] : null;
 
             $tmp = '<select name="field_'. $i;
@@ -58,7 +57,6 @@ class GenericForm extends AbstractFormBuilder
 
             $fields = [];
             foreach ($availableFieldsKeys as $idf => $xfield) {
-
                 $xfieldLabel = $xfield;
                 $xfieldRequired = "";
                 if ($this->_availableFields[$xfield]->get('required')) {
@@ -96,7 +94,7 @@ class GenericForm extends AbstractFormBuilder
         $table.= "</tr>";
         foreach ($lines as $line) {
             $table .= "<tr>";
-            foreach ($line as $idPart=>$part) {
+            foreach ($line as $idPart => $part) {
                 $table .= "<td class='ui-widget-content'>" . $part . "</td>";
             }
             $table .= "</tr>";

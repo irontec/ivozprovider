@@ -67,5 +67,4 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
         }
         return;
     }
-
 }

@@ -39,8 +39,7 @@ class DdiAction
         Wrapper $agi,
         RouterAction $routerAction,
         ExternalFilterAction $externalFilterAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->routerAction = $routerAction;
         $this->externalFilterAction = $externalFilterAction;
@@ -98,7 +97,7 @@ class DdiAction
                     $this->externalFilterAction
                         ->setDDI($ddi)
                         ->setFilter($externalCallFilter)
-                        ->setLocution($holidayDate->getLocution())
+                        ->setHolidayDate($holidayDate)
                         ->processHoliday();
                     return;
                 }

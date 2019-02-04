@@ -89,5 +89,4 @@ class UsersCdrRepositoryTest extends KernelTestCase
             $result
         );
     }
-
 }

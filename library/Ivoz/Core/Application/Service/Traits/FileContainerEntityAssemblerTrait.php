@@ -29,7 +29,8 @@ trait FileContainerEntityAssemblerTrait
 
     public function handleEntityFiles(
         EntityInterface $entity,
-        DataTransferObjectInterface $dto
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
         foreach ($entity->getFileObjects() as $fieldName) {
             $pathGetter = 'get'. ucFirst($fieldName) .'Path';
@@ -48,7 +49,12 @@ trait FileContainerEntityAssemblerTrait
                 continue;
             }
 
-            $this->handleFile($dto, $entity, $fieldName);
+            $this->handleFile(
+                $dto,
+                $entity,
+                $fieldName,
+                $fkTransformer
+            );
         }
     }
 
@@ -105,10 +111,18 @@ trait FileContainerEntityAssemblerTrait
     protected function handleFile(
         DataTransferObjectInterface $dto,
         EntityInterface $entity,
-        $fldName
+        $fldName,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        $this->updateDtoMetadata($dto, $fldName);
-        $entity->updateFromDto($dto);
+        $this->updateDtoMetadata(
+            $dto,
+            $fldName
+        );
+
+        $entity->updateFromDto(
+            $dto,
+            $fkTransformer
+        );
 
         $pathGetter = 'get' . ucFirst($fldName) . 'Path';
         $baseNameGetter = 'get' . ucFirst($fldName) . 'BaseName';

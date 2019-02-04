@@ -129,8 +129,10 @@ abstract class DispatcherAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DispatcherDto
          */
@@ -146,7 +148,7 @@ abstract class DispatcherAbstract
         );
 
         $self
-            ->setApplicationServer($dto->getApplicationServer())
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
         ;
 
         $self->sanitizeValues();
@@ -160,8 +162,10 @@ abstract class DispatcherAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DispatcherDto
          */
@@ -174,7 +178,7 @@ abstract class DispatcherAbstract
             ->setPriority($dto->getPriority())
             ->setAttrs($dto->getAttrs())
             ->setDescription($dto->getDescription())
-            ->setApplicationServer($dto->getApplicationServer());
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
 
 
 

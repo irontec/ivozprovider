@@ -93,11 +93,9 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
     public function authenticate()
     {
         try {
-
             $user = $this->administrator->findByLoginAndBrand($this->_username, $this->_brand);
 
             if ($this->_userHasValidCredentials($user)) {
-
                 $this->_setApiToken($user);
                 $this->_user = $user;
                 $authResult = \Zend_Auth_Result::SUCCESS;
@@ -140,21 +138,17 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
         $hashParts = explode('$', trim($hash, '$'), 2);
 
         switch ($hashParts[0]) {
-
-            case '1': //md5
-
+            case '1':
                 list(, , $salt,) = explode("$", $hash);
                 $salt = '$1$' . $salt . '$';
                 break;
 
-            case '5': //sha
-
+            case '5':
                 list(, , $rounds, $salt,) = explode("$", $hash);
                 $salt = '$5$' . $rounds . '$' . $salt . '$';
                 break;
 
-            case '2a': //blowfish
-
+            case '2a':
                 $salt = substr($hash, 0, 29);
                 break;
         }

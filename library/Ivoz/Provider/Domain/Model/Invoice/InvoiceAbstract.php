@@ -154,8 +154,10 @@ abstract class InvoiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceDto
          */
@@ -180,11 +182,11 @@ abstract class InvoiceAbstract
             ->setTotalWithTax($dto->getTotalWithTax())
             ->setStatus($dto->getStatus())
             ->setStatusMsg($dto->getStatusMsg())
-            ->setInvoiceTemplate($dto->getInvoiceTemplate())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setNumberSequence($dto->getNumberSequence())
-            ->setScheduler($dto->getScheduler())
+            ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
+            ->setScheduler($fkTransformer->transform($dto->getScheduler()))
         ;
 
         $self->sanitizeValues();
@@ -198,8 +200,10 @@ abstract class InvoiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceDto
          */
@@ -221,11 +225,11 @@ abstract class InvoiceAbstract
             ->setStatus($dto->getStatus())
             ->setStatusMsg($dto->getStatusMsg())
             ->setPdf($pdf)
-            ->setInvoiceTemplate($dto->getInvoiceTemplate())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setNumberSequence($dto->getNumberSequence())
-            ->setScheduler($dto->getScheduler());
+            ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
+            ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
 
 
@@ -341,7 +345,7 @@ abstract class InvoiceAbstract
      */
     public function getInDate()
     {
-        return $this->inDate;
+        return !is_null($this->inDate) ? clone $this->inDate : null;
     }
 
     /**
@@ -372,7 +376,7 @@ abstract class InvoiceAbstract
      */
     public function getOutDate()
     {
-        return $this->outDate;
+        return !is_null($this->outDate) ? clone $this->outDate : null;
     }
 
     /**

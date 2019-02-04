@@ -164,8 +164,10 @@ abstract class TpRatingProfileAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpRatingProfileDto
          */
@@ -186,8 +188,8 @@ abstract class TpRatingProfileAbstract
             ->setRatingPlanTag($dto->getRatingPlanTag())
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
-            ->setRatingProfile($dto->getRatingProfile())
-            ->setOutgoingRoutingRelCarrier($dto->getOutgoingRoutingRelCarrier())
+            ->setRatingProfile($fkTransformer->transform($dto->getRatingProfile()))
+            ->setOutgoingRoutingRelCarrier($fkTransformer->transform($dto->getOutgoingRoutingRelCarrier()))
         ;
 
         $self->sanitizeValues();
@@ -201,8 +203,10 @@ abstract class TpRatingProfileAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpRatingProfileDto
          */
@@ -220,8 +224,8 @@ abstract class TpRatingProfileAbstract
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingProfile($dto->getRatingProfile())
-            ->setOutgoingRoutingRelCarrier($dto->getOutgoingRoutingRelCarrier());
+            ->setRatingProfile($fkTransformer->transform($dto->getRatingProfile()))
+            ->setOutgoingRoutingRelCarrier($fkTransformer->transform($dto->getOutgoingRoutingRelCarrier()));
 
 
 
@@ -577,7 +581,7 @@ abstract class TpRatingProfileAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

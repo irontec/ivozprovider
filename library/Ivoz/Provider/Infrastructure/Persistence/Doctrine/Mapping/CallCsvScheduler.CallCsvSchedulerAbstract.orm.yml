@@ -71,3 +71,15 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
+    callCsvNotificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        callCsvNotificationTemplateId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false

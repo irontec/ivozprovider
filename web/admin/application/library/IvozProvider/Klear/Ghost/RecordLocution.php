@@ -48,5 +48,4 @@ class IvozProvider_Klear_Ghost_RecordLocution extends KlearMatrix_Model_Field_Gh
 
         return "";
     }
-
 }

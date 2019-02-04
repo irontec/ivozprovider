@@ -4,12 +4,8 @@ namespace Ivoz\Provider\Domain\Service\RatingPlan;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
+use Doctrine\DBAL\Driver\PDOException;
 
-/**
- * Class PersistErrorHandler
- * @package Ivoz\Provider\Domain\Service\RatingPlan
- * @lifecycle on_error
- */
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {
     /*
@@ -31,11 +27,14 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
         }
 
         $pdoException = $exception->getPrevious();
-        if (!$pdoException instanceof \PDOException) {
+        if (!$pdoException instanceof PDOException) {
             return;
         }
 
-        $isDuplicatedWeightError = $pdoException->getErrorCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY;
+
+        $isDuplicatedWeightError =
+            $pdoException->getErrorCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
+            && strpos($exception->getMessage(), self::RATING_PLAN_DUPLICATED_WEIGHT);
 
         if ($isDuplicatedWeightError) {
             throw new \DomainException(
@@ -44,7 +43,5 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
                 $exception
             );
         }
-
-        throw $exception;
     }
 }

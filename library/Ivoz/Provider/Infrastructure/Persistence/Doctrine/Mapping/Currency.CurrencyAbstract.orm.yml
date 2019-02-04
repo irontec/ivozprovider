@@ -1,0 +1,24 @@
+Ivoz\Provider\Domain\Model\Currency\CurrencyAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    currencyIden:
+      columns:
+        - iden
+  embedded:
+    name:
+      class: Name
+      columnPrefix: false
+  fields:
+    iden:
+      type: string
+      nullable: false
+      length: 10
+      options:
+        fixed: false
+    symbol:
+      type: string
+      nullable: false
+      length: 5
+      options:
+        fixed: false
+

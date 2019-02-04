@@ -3,13 +3,20 @@
 namespace Ivoz\Core\Application;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface ForeignKeyTransformerInterface
 {
     /**
-     * @param string $entityName
-     * @param DataTransferObjectInterface|mixed $element
-     * @return EntityInterface
+     * @param mixed $element
+     * @param bool $persist
      */
-    public function transform(string $entityName, $element);
+    public function transform($element, $persist = true);
+
+
+    /**
+     * @param array | null $elements
+     * @return ArrayCollection | null
+     */
+    public function transformCollection(array $elements = null);
 }

@@ -56,7 +56,10 @@ class DdiSpec extends ObjectBehavior
             ->getId()
             ->willReturn(1);
 
-        $this->beConstructedThrough('fromDto', [$dto]);
+        $this->beConstructedThrough(
+            'fromDto',
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
+        );
     }
 
     function it_is_initializable()

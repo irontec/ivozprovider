@@ -42,6 +42,137 @@ production:
               - name
             template: '%name%'
         'null': _("Unassigned")
+    wholeDayEvent:
+      title: _('Whole day event')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: [ timeIn, timeOut ]
+              hide: []
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: []
+              hide: [ timeIn, timeOut ]
+    timeIn:
+      title: _('Time in')
+      type: picker
+      required: true
+      source:
+        control: time
+        settings:
+          disabled: 'false'
+    timeOut:
+      title: _('Time out')
+      type: picker
+      required: true
+      source:
+        control: time
+        settings:
+          disabled: 'false'
+    routeType:
+      title: _('Route type')
+      type: select
+      source:
+        data: inline
+        filterClass: IvozProvider_Klear_Filter_RouteTypes
+        values:
+          '__null__':
+            title: _("Default holiday routing")
+            visualFilter:
+              show: [ ]
+              hide: &routableFields
+                - numberCountry
+                - numberValue
+                - extension
+                - voiceMailUser
+          'voicemail':
+            title: ngettext('Voicemail', 'Voicemails', 1)
+            visualFilter:
+              show: [ voiceMailUser ]
+              hide:
+                <<: *routableFields
+          'extension':
+            title: ngettext('Extension', 'Extension', 1)
+            visualFilter:
+              show: [ extension ]
+              hide:
+                <<: *routableFields
+          'number':
+            title: _('Number')
+            visualFilter:
+              show: [ numberCountry, numberValue ]
+              hide:
+                <<: *routableFields
+    numberCountry:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    numberValue:
+      title: _('Number')
+      type: text
+      pattern: "^\\+?[0-9]+$"
+      required: true
+      maxLength: 25
+      trim: both
+    voiceMailUser:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order:
+            User.name: asc
+        'null': _("Unassigned")
+    extension:
+      title: ngettext('Extension', 'Extension', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Extension.number: asc
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unassigned")
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getTarget
+
 staging:
   _extends: production
 testing:

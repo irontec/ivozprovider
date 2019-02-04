@@ -151,8 +151,10 @@ abstract class TpDestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpDestinationRateDto
          */
@@ -171,7 +173,7 @@ abstract class TpDestinationRateAbstract
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setDestinationRate($dto->getDestinationRate())
+            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()))
         ;
 
         $self->sanitizeValues();
@@ -185,8 +187,10 @@ abstract class TpDestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpDestinationRateDto
          */
@@ -202,7 +206,7 @@ abstract class TpDestinationRateAbstract
             ->setMaxCost($dto->getMaxCost())
             ->setMaxCostStrategy($dto->getMaxCostStrategy())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($dto->getDestinationRate());
+            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
 
 
 
@@ -497,7 +501,7 @@ abstract class TpDestinationRateAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

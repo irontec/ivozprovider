@@ -132,8 +132,10 @@ abstract class CallCsvReportAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallCsvReportDto
          */
@@ -154,9 +156,9 @@ abstract class CallCsvReportAbstract
         );
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setBrand($dto->getBrand())
-            ->setCallCsvScheduler($dto->getCallCsvScheduler())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()))
         ;
 
         $self->sanitizeValues();
@@ -170,8 +172,10 @@ abstract class CallCsvReportAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallCsvReportDto
          */
@@ -189,9 +193,9 @@ abstract class CallCsvReportAbstract
             ->setOutDate($dto->getOutDate())
             ->setCreatedOn($dto->getCreatedOn())
             ->setCsv($csv)
-            ->setCompany($dto->getCompany())
-            ->setBrand($dto->getBrand())
-            ->setCallCsvScheduler($dto->getCallCsvScheduler());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()));
 
 
 
@@ -293,7 +297,7 @@ abstract class CallCsvReportAbstract
      */
     public function getInDate()
     {
-        return $this->inDate;
+        return clone $this->inDate;
     }
 
     /**
@@ -323,7 +327,7 @@ abstract class CallCsvReportAbstract
      */
     public function getOutDate()
     {
-        return $this->outDate;
+        return clone $this->outDate;
     }
 
     /**
@@ -353,7 +357,7 @@ abstract class CallCsvReportAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return clone $this->createdOn;
     }
 
     /**

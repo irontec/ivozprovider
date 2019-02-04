@@ -68,7 +68,12 @@ abstract class TrunksCdrAbstract
     /**
      * @var boolean | null
      */
-    protected $metered = '0';
+    protected $parsed = '0';
+
+    /**
+     * @var \DateTime
+     */
+    protected $parserScheduledAt;
 
     /**
      * @var string | null
@@ -106,11 +111,16 @@ abstract class TrunksCdrAbstract
     /**
      * Constructor
      */
-    protected function __construct($startTime, $endTime, $duration)
-    {
+    protected function __construct(
+        $startTime,
+        $endTime,
+        $duration,
+        $parserScheduledAt
+    ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
+        $this->setParserScheduledAt($parserScheduledAt);
     }
 
     abstract public function getId();
@@ -172,8 +182,10 @@ abstract class TrunksCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksCdrDto
          */
@@ -182,7 +194,8 @@ abstract class TrunksCdrAbstract
         $self = new static(
             $dto->getStartTime(),
             $dto->getEndTime(),
-            $dto->getDuration()
+            $dto->getDuration(),
+            $dto->getParserScheduledAt()
         );
 
         $self
@@ -193,13 +206,13 @@ abstract class TrunksCdrAbstract
             ->setXcallid($dto->getXcallid())
             ->setDiversion($dto->getDiversion())
             ->setBounced($dto->getBounced())
-            ->setMetered($dto->getMetered())
+            ->setParsed($dto->getParsed())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRetailAccount($dto->getRetailAccount())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
         $self->sanitizeValues();
@@ -213,8 +226,10 @@ abstract class TrunksCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksCdrDto
          */
@@ -231,13 +246,14 @@ abstract class TrunksCdrAbstract
             ->setXcallid($dto->getXcallid())
             ->setDiversion($dto->getDiversion())
             ->setBounced($dto->getBounced())
-            ->setMetered($dto->getMetered())
+            ->setParsed($dto->getParsed())
+            ->setParserScheduledAt($dto->getParserScheduledAt())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRetailAccount($dto->getRetailAccount());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
 
 
 
@@ -263,7 +279,8 @@ abstract class TrunksCdrAbstract
             ->setXcallid(self::getXcallid())
             ->setDiversion(self::getDiversion())
             ->setBounced(self::getBounced())
-            ->setMetered(self::getMetered())
+            ->setParsed(self::getParsed())
+            ->setParserScheduledAt(self::getParserScheduledAt())
             ->setDirection(self::getDirection())
             ->setCgrid(self::getCgrid())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
@@ -288,7 +305,8 @@ abstract class TrunksCdrAbstract
             'xcallid' => self::getXcallid(),
             'diversion' => self::getDiversion(),
             'bounced' => self::getBounced(),
-            'metered' => self::getMetered(),
+            'parsed' => self::getParsed(),
+            'parserScheduledAt' => self::getParserScheduledAt(),
             'direction' => self::getDirection(),
             'cgrid' => self::getCgrid(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
@@ -326,7 +344,7 @@ abstract class TrunksCdrAbstract
      */
     public function getStartTime()
     {
-        return $this->startTime;
+        return clone $this->startTime;
     }
 
     /**
@@ -356,7 +374,7 @@ abstract class TrunksCdrAbstract
      */
     public function getEndTime()
     {
-        return $this->endTime;
+        return clone $this->endTime;
     }
 
     /**
@@ -584,31 +602,61 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * Set metered
+     * Set parsed
      *
-     * @param boolean $metered
+     * @param boolean $parsed
      *
      * @return self
      */
-    protected function setMetered($metered = null)
+    protected function setParsed($parsed = null)
     {
-        if (!is_null($metered)) {
-            Assertion::between(intval($metered), 0, 1, 'metered provided "%s" is not a valid boolean value.');
+        if (!is_null($parsed)) {
+            Assertion::between(intval($parsed), 0, 1, 'parsed provided "%s" is not a valid boolean value.');
         }
 
-        $this->metered = $metered;
+        $this->parsed = $parsed;
 
         return $this;
     }
 
     /**
-     * Get metered
+     * Get parsed
      *
      * @return boolean | null
      */
-    public function getMetered()
+    public function getParsed()
     {
-        return $this->metered;
+        return $this->parsed;
+    }
+
+    /**
+     * Set parserScheduledAt
+     *
+     * @param \DateTime $parserScheduledAt
+     *
+     * @return self
+     */
+    protected function setParserScheduledAt($parserScheduledAt)
+    {
+        Assertion::notNull($parserScheduledAt, 'parserScheduledAt value "%s" is null, but non null value was expected.');
+        $parserScheduledAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            $parserScheduledAt,
+            'CURRENT_TIMESTAMP'
+        );
+
+        $this->parserScheduledAt = $parserScheduledAt;
+
+        return $this;
+    }
+
+    /**
+     * Get parserScheduledAt
+     *
+     * @return \DateTime
+     */
+    public function getParserScheduledAt()
+    {
+        return clone $this->parserScheduledAt;
     }
 
     /**

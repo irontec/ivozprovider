@@ -56,7 +56,6 @@ class ImportFileController extends Zend_Controller_Action
                 }
                 break;
             default:
-
                 $helpMessages[] = $this->_helper->translate(
                     "This importer expects values to be within quotation marks and separated by semicolons."
                 );

@@ -64,3 +64,14 @@ Ivoz\Provider\Domain\Model\Carrier\CarrierAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    currency:
+      targetEntity: \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        currencyId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

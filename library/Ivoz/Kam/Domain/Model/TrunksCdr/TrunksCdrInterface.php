@@ -77,11 +77,18 @@ interface TrunksCdrInterface extends EntityInterface
     public function getBounced();
 
     /**
-     * Get metered
+     * Get parsed
      *
      * @return boolean | null
      */
-    public function getMetered();
+    public function getParsed();
+
+    /**
+     * Get parserScheduledAt
+     *
+     * @return \DateTime
+     */
+    public function getParserScheduledAt();
 
     /**
      * Get direction

@@ -152,8 +152,10 @@ abstract class TrunksLcrGatewayAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksLcrGatewayDto
          */
@@ -175,7 +177,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix($dto->getPrefix())
             ->setTag($dto->getTag())
             ->setDefunct($dto->getDefunct())
-            ->setCarrierServer($dto->getCarrierServer())
+            ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()))
         ;
 
         $self->sanitizeValues();
@@ -189,8 +191,10 @@ abstract class TrunksLcrGatewayAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksLcrGatewayDto
          */
@@ -209,7 +213,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix($dto->getPrefix())
             ->setTag($dto->getTag())
             ->setDefunct($dto->getDefunct())
-            ->setCarrierServer($dto->getCarrierServer());
+            ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()));
 
 
 
@@ -617,7 +621,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return self
      */
-    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer)
+    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer = null)
     {
         $this->carrierServer = $carrierServer;
 

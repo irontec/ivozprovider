@@ -11,7 +11,6 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use RouteHandlerAbstract;
 
-
 class Headers extends RouteHandlerAbstract
 {
     /**
@@ -33,8 +32,7 @@ class Headers extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         EndpointResolver $endpointResolver
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->endpointResolver = $endpointResolver;
@@ -55,10 +53,10 @@ class Headers extends RouteHandlerAbstract
         $company = $companyRepository->find($companyId);
 
         // Add headers for Friendly Kamailio  Proxy;-))
-        $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
-        $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrand()->getId());
-        $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
-        $this->agi->setSIPHeader("X-Info-Type",          $company->getType());
+        $this->agi->setSIPHeader("X-Call-Id", $this->agi->getVariable("CALL_ID"));
+        $this->agi->setSIPHeader("X-Info-BrandId", $company->getBrand()->getId());
+        $this->agi->setSIPHeader("X-Info-CompanyId", $company->getId());
+        $this->agi->setSIPHeader("X-Info-Type", $company->getType());
 
         // Get Calle data, take if from called endpoint
         $endpoint = $this->endpointResolver->getEndpointFromName($this->agi->getEndpoint());
@@ -77,7 +75,6 @@ class Headers extends RouteHandlerAbstract
             if ($company->getOnDemandRecord()) {
                 $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordDTMFs());
             }
-
         } else {
             // Set special headers for Fax outgoing calls
             if ($this->agi->getVariable("FAXFILE_ID")) {
@@ -95,5 +92,4 @@ class Headers extends RouteHandlerAbstract
             $this->agi->setVariable("CHANNEL(namedcallgroup)", $this->agi->getVariable("CHANNEL(namedpickupgroup)"));
         }
     }
-
 }

@@ -2,8 +2,72 @@
 
 namespace spec;
 
+use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
+
 trait HelperTrait
 {
+    protected $prophet;
+
+    /**
+     * @var ObjectProphecy[]
+     */
+    protected $collaborators = [];
+
+    protected function getTestDouble(string $fqdn, $allowAnyCall = true)
+    {
+        if (!$this->prophet) {
+            $this->prophet = new \Prophecy\Prophet;
+        }
+
+        $collaborator = $this->prophet->prophesize(
+            $fqdn
+        );
+        $this->collaborators[] = $collaborator;
+
+        if (!$allowAnyCall) {
+            return $collaborator;
+        }
+
+        $publicMethods = (new \ReflectionClass($fqdn))
+                ->getMethods(\ReflectionMethod::IS_PUBLIC);
+
+        foreach ($publicMethods as $publicMethod) {
+            $methodName = $publicMethod->getName();
+            if (strpos($methodName, '__') === 0) {
+                continue;
+            }
+
+            $methodArguments = $publicMethod->getParameters();
+
+            $arguments = [];
+            foreach ($methodArguments as $item) {
+                $arguments[] = Argument::any();
+            }
+
+            if (strpos($methodName, 'set') === 0) {
+                $collaborator
+                    ->{$methodName}(...$arguments)
+                    ->willReturn(
+                        $collaborator
+                    );
+            } else {
+                $collaborator
+                    ->{$methodName}(...$arguments)
+                    ->willReturn();
+            }
+        }
+
+        return $collaborator;
+    }
+
+    public function letGo()
+    {
+        foreach ($this->collaborators as $collaborator) {
+            $collaborator->checkProphecyMethodsPredictions();
+        }
+    }
+
     protected function getterProphecy($double, array $values, $shouldBeCalled = true)
     {
         foreach ($values as $method => $value) {
@@ -38,17 +102,11 @@ trait HelperTrait
                 $prophecy = $double
                     ->{$method}(...$arguments)
                     ->willReturn($returnValue);
-
-                if ($shouldBeCalled) {
-                    $prophecy->shouldBeCalled();
-                }
-
-                continue;
+            } else {
+                $prophecy = $double
+                    ->{$method}($value)
+                    ->willReturn(null);
             }
-
-            $prophecy = $double
-                ->{$method}($value)
-                ->willReturn(null);
 
             if ($shouldBeCalled) {
                 $prophecy->shouldBeCalled();

@@ -46,6 +46,10 @@ class IvozProvider_Klear_Filter_TargetTypes implements KlearMatrix_Model_Field_S
             $excludedRoutes[] = "extension";
         }
 
+        if ($companyDto->getType() === Company::RETAIL) {
+            $excludedRoutes[] = "voicemail";
+        }
+
         return $excludedRoutes;
     }
 }

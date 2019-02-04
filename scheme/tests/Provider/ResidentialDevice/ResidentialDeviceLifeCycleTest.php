@@ -4,12 +4,10 @@ namespace Tests\Provider\ResidentialDevice;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
-use Ivoz\Cgr\Domain\Model\TpResidentialDevice\TpResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
-
 
 class ResidentialDeviceLifeCycleTest extends KernelTestCase
 {

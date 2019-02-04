@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -74,35 +72,6 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'relMatchLists' => $this->getRelMatchLists()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        if (!is_null($this->relMatchLists)) {
-            $items = $this->getRelMatchLists();
-            $this->relMatchLists = [];
-            foreach ($items as $item) {
-                $this->relMatchLists[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchList\\CallAclRelMatchList',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->relMatchLists = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchList\\CallAclRelMatchList',
-            $this->relMatchLists
-        );
     }
 
     /**

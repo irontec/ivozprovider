@@ -3,6 +3,7 @@
 namespace Ivoz\Core\Application\Service\Assembler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -18,9 +19,16 @@ class EntityAssembler
      */
     protected $customAssemblers;
 
+    /**
+     * @var ForeignKeyTransformerInterface
+     */
+    private $fkTransformer;
+
     public function __construct(
+        ForeignKeyTransformerInterface $fkTransformer,
         ContainerInterface $serviceContainer
     ) {
+        $this->fkTransformer = $fkTransformer;
         $this->serviceContainer = $serviceContainer;
         $this->customAssemblers = [];
     }
@@ -33,9 +41,19 @@ class EntityAssembler
     public function updateFromDto(DataTransferObjectInterface $dto, EntityInterface $targetEntity)
     {
         $assembler = $this->getAssembler($dto);
-        $assembler
-            ? $assembler->fromDto($dto, $targetEntity)
-            : $targetEntity->updateFromDto($dto);
+
+        if ($assembler) {
+            $assembler->fromDto(
+                $dto,
+                $targetEntity,
+                $this->fkTransformer
+            );
+        } else {
+            $targetEntity->updateFromDto(
+                $dto,
+                $this->fkTransformer
+            );
+        }
 
         return $targetEntity;
     }
@@ -48,10 +66,18 @@ class EntityAssembler
     public function createFromDto(DataTransferObjectInterface $dto, string $entityName)
     {
         $assembler = $this->getAssembler($dto);
-        $targetEntity = $entityName::fromDto($dto);
-        $assembler
-            ? $assembler->fromDto($dto, $targetEntity)
-            : $targetEntity;
+        $targetEntity = $entityName::fromDto(
+            $dto,
+            $this->fkTransformer
+        );
+
+        if ($assembler) {
+            $assembler->fromDto(
+                $dto,
+                $targetEntity,
+                $this->fkTransformer
+            );
+        }
 
         return $targetEntity;
     }

@@ -227,8 +227,10 @@ abstract class FriendAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FriendDto
          */
@@ -254,12 +256,12 @@ abstract class FriendAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
-            ->setCompany($dto->getCompany())
-            ->setDomain($dto->getDomain())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setCallAcl($dto->getCallAcl())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setLanguage($dto->getLanguage())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
         ;
 
         $self->sanitizeValues();
@@ -273,8 +275,10 @@ abstract class FriendAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FriendDto
          */
@@ -297,12 +301,12 @@ abstract class FriendAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
-            ->setCompany($dto->getCompany())
-            ->setDomain($dto->getDomain())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setCallAcl($dto->getCallAcl())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setLanguage($dto->getLanguage());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
 
 

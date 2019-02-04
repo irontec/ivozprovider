@@ -1,0 +1,47 @@
+# This file enables having additional IP addresses (apart from the main one)
+#
+# - KamUsers will talk to registered UACs using the same socket they used in the
+#   register process.
+#
+# - For non-registered UACs (direct-connectivity), main address will be used.
+#
+# - KamUsers will always talk to KamTrunks/AS using main address.
+#
+# KAMUSERS CONFIGURATION
+#
+# - Set A.B.C.D to KamUsers main address (the address pointed by users.ivozprovider.local)
+# - Set E.F.G.H to additional IP address
+# - Add a similar block for every additional address
+# - Rename this file to multisocket.cfg
+# - Restart KamUsers with 'systemctl restart kamailio@users'
+# - Configure rtpengine accordingly (read below)
+#
+# RTPENGINE CONFIGURATION
+#
+# - rtpengine process must have one --interface named A.B.C.D and another one
+#   named E.F.G.H (using appropiate addresses W.X.Y.Z and S.T.U.V):
+#
+#   * W.X.Y.Z is the RTP address when A.B.C.D is the signalling adddress
+#   * S.T.U.V is the RTP address when E.F.G.H is the signalling adddress
+#
+# - To get that, edit /etc/default/rtpengine (and restart rtpengine):
+#
+#   * AUDIO_SOCK=A.B.C.D/W.X.Y.Z
+#   * Add "--interface=E.F.G.H/S.T.U.V" to EXTRA_OPTS string
+#
+# e.g. you must end up with 2 --interface in running proccess
+#      (--interface=A.B.C.D/W.X.Y.Z --interface=E.F.G.H/S.T.U.V)
+#
+# - In standalone installations A.B.C.D==W.X.Y.Z and E.F.G.H==S.T.U.V
+
+#!define WITH_MULTISOCKET
+
+# Main address (pointed by users.ivozprovider.local)
+address.main = "A.B.C.D" desc "KamUsers main address"
+
+# Additional addresses (one line per additional address and protocol)
+listen=udp:E.F.G.H:SIP_PORT
+listen=tcp:E.F.G.H:SIP_PORT
+listen=tls:E.F.G.H:SIPS_PORT
+listen=tcp:E.F.G.H:WS_PORT
+listen=tls:E.F.G.H:WSS_PORT

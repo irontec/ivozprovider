@@ -4,12 +4,8 @@ namespace Ivoz\Provider\Domain\Service\User;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
+use Doctrine\DBAL\Driver\PDOException;
 
-/**
- * Class CryptPass
- * @package Ivoz\Provider\Domain\Service\User
- * @lifecycle on_error
- */
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {
     /*
@@ -30,7 +26,7 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
         }
 
         $pdoException = $exception->getPrevious();
-        if (!$pdoException instanceof \PDOException) {
+        if (!$pdoException instanceof PDOException) {
             return;
         }
 
@@ -41,7 +37,5 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
         if ($isDuplicatedEmailError) {
             throw new \DomainException('Email already in use', 2201, $exception);
         }
-
-        throw $exception;
     }
 }

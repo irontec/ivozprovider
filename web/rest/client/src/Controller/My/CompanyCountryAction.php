@@ -21,7 +21,7 @@ class CompanyCountryAction
      */
     protected $callForwardSettingRepository;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         CountryRepository $countryRepository
     ) {

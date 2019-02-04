@@ -2,19 +2,21 @@
 
 set -e
 
+if [ "$1" == "--full" ]; then
+    CHANGED_FILES="."
+elif [ "$1" == "--branch" ]; then
+    CHANGED_FILES=$(git diff --name-only origin/bleeding --diff-filter=d -- '*.php')
+else
+    CHANGED_FILES=$(git diff --cached --name-only --diff-filter=d -- '*.php')
+fi
 
-APP_PATHS=()
-APP_PATHS+=(library)
-
+if [ -z "$CHANGED_FILES" ]; then
+    echo "No php files were changed in these commits."
+    exit 0
+fi
 
 cd /opt/irontec/ivozprovider/
-for APPLICATION_PATH in ${APP_PATHS[@]}; do
-    library/vendor/bin/phpcbf -p --standard=PSR2 --ignore='*vendor*' --ignore='*coverage*' $APPLICATION_PATH
-done
+library/vendor/bin/phpcbf -p --standard=PSR2 --extensions=php \
+    --ignore='vendor,coverage,var,DoctrineMigrations,config.php' \
+    $CHANGED_FILES
 
-# Check there is no pending files to be commited
-if [ -n "$(git status -s)" ]; then
-    echo "There are code not properly formatted with PSR2 codestyle."
-    git diff
-    exit 1
-fi

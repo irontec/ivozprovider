@@ -92,8 +92,10 @@ abstract class FeaturesRelBrandAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FeaturesRelBrandDto
          */
@@ -102,8 +104,8 @@ abstract class FeaturesRelBrandAbstract
         $self = new static();
 
         $self
-            ->setBrand($dto->getBrand())
-            ->setFeature($dto->getFeature())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setFeature($fkTransformer->transform($dto->getFeature()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class FeaturesRelBrandAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FeaturesRelBrandDto
          */
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
         $this
-            ->setBrand($dto->getBrand())
-            ->setFeature($dto->getFeature());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setFeature($fkTransformer->transform($dto->getFeature()));
 
 
 

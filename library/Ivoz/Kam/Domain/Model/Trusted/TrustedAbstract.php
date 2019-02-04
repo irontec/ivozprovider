@@ -126,8 +126,10 @@ abstract class TrustedAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrustedDto
          */
@@ -144,7 +146,7 @@ abstract class TrustedAbstract
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($dto->getCompany())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
         $self->sanitizeValues();
@@ -158,8 +160,10 @@ abstract class TrustedAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrustedDto
          */
@@ -173,7 +177,7 @@ abstract class TrustedAbstract
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
             ->setPriority($dto->getPriority())
-            ->setCompany($dto->getCompany());
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
 
 

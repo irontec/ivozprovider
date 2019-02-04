@@ -542,6 +542,11 @@ msgstr "Created"
 msgid "Created on"
 msgstr "Created on"
 
+msgid "Currency"
+msgid_plural "Currencies"
+msgstr[0] "Currency"
+msgstr[1] "Currencies"
+
 msgid "Custom"
 msgstr "Custom"
 
@@ -573,6 +578,12 @@ msgstr "Day"
 
 msgid "Default Action"
 msgstr "Default Action"
+
+msgid "Default currency"
+msgstr "Default currency"
+
+msgid "Default holiday routing"
+msgstr "Default holiday routing"
 
 msgid "Default notification template"
 msgid_plural "Default notification templates"
@@ -1622,11 +1633,6 @@ msgstr "None"
 msgid "Not Registered"
 msgstr "Not Registered"
 
-msgid "Notification Template"
-msgid_plural "Notifications Templates"
-msgstr[0] "Notification template"
-msgstr[1] "Notification templates"
-
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 
@@ -2292,6 +2298,9 @@ msgstr "Success locution"
 msgid "Sunday"
 msgstr "Sunday"
 
+msgid "Symbol"
+msgstr "Symbol"
+
 msgid "Tag"
 msgstr "Tag"
 
@@ -2621,11 +2630,11 @@ msgstr "User configuration"
 msgid "Username"
 msgstr "Username"
 
-msgid "Using BXFER or INFO"
-msgstr "Using BXFER or INFO"
-
 msgid "Using DTMFs (read WARNING)"
 msgstr "Using DTMFs (read WARNING)"
+
+msgid "Using INFO"
+msgstr "Using INFO"
 
 #, python-format
 msgid "View %s %2s"
@@ -2703,6 +2712,9 @@ msgstr ""
 
 msgid "White Lists"
 msgstr "White Lists"
+
+msgid "Whole day event"
+msgstr "Whole day event"
 
 msgid "Wholesale"
 msgid_plural "Wholesales"

@@ -8,8 +8,12 @@ This section allows programming the automatic periodical creation of CSV reports
 
 - Brand operators.
 
-.. note:: This section is identical to :ref:`Invoice schedulers` except to the fields that do not apply to CSVs (Invoice
-          number sequence, Template, Call discount, Tax rate).
+.. note:: This section is identical to :ref:`Invoice schedulers` except to the
+          fields that do not apply to CSVs (Invoice number sequence, Tax rate...)
+
+.. tip:: Brand operators can schedule a CSV containing calls of all its clients.
+         In this kind of schedules, a notification template can be chosen. In remaining
+         schedules, the notification template assigned to the specific client will be used.
 
 Apart from the fields above, everything described in :ref:`Invoice schedulers` applies here:
 

@@ -110,8 +110,10 @@ abstract class OutgoingDdiRulesPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingDdiRulesPatternDto
          */
@@ -123,9 +125,9 @@ abstract class OutgoingDdiRulesPatternAbstract
         );
 
         $self
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setMatchList($dto->getMatchList())
-            ->setForcedDdi($dto->getForcedDdi())
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()))
         ;
 
         $self->sanitizeValues();
@@ -139,8 +141,10 @@ abstract class OutgoingDdiRulesPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto OutgoingDdiRulesPatternDto
          */
@@ -149,9 +153,9 @@ abstract class OutgoingDdiRulesPatternAbstract
         $this
             ->setAction($dto->getAction())
             ->setPriority($dto->getPriority())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setMatchList($dto->getMatchList())
-            ->setForcedDdi($dto->getForcedDdi());
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
 
 

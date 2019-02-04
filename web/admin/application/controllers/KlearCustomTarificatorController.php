@@ -19,15 +19,18 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
     protected $_companyId;
 
-    public function init ()
+    public function init()
     {
         /**
          * Initialize action controller here
          */
         if ((! $this->_mainRouter = $this->getRequest()->getUserParam(
-                "mainRouter")) || (! is_object($this->_mainRouter))) {
-            throw new Zend_Exception("",
-                Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+            "mainRouter"
+        )) || (! is_object($this->_mainRouter))) {
+            throw new Zend_Exception(
+                "",
+                Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
+            );
         }
 
         $this->_helper->ContextSwitch()
@@ -49,7 +52,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $this->_companyId = $loggedUser->companyId;
     }
 
-    public function tarificateCallAction ()
+    public function tarificateCallAction()
     {
         $pks = $this->getRequest()->getParam("pk");
         if (!is_array($pks) && !is_null($pks)) {
@@ -92,7 +95,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $this->getParam("parentId")
         );
 
-        $argumentsResolver = function() use($dataGateway, $carrierDto) {
+        $argumentsResolver = function () use ($dataGateway, $carrierDto) {
 
             $callDuration = $this->getParam('duration');
             if ($callDuration < 1) {
@@ -140,7 +143,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $this->getParam("parentId", $this->_companyId)
         );
 
-        $argumentsResolver = function() use($dataGateway, $companyDto) {
+        $argumentsResolver = function () use ($dataGateway, $companyDto) {
 
             $callDuration = $this->getParam('duration');
             if ($callDuration < 1) {
@@ -216,7 +219,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
             $arguments = [];
             foreach ($ratingPlanGroups as $ratingPlanGroup) {
-
                 $cgrTag = $dataGateway->remoteProcedureCall(
                     RatingPlanGroup::class,
                     $ratingPlanGroup->getId(),
@@ -309,7 +311,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
 
         try {
-
             $number = $this->getParam('number');
             if ($number[0] !== '+') {
                 $errorMsg = $this->_helper->translate(
@@ -325,11 +326,10 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 );
             }
             $message = $this->_getTarificationInfo($responses);
-
         } catch (\DomainException $e) {
             $message = $e->getMessage();
             $this->_helper->log("[Tarificator] domain error " . $message);
-        }  catch (\Exception $e) {
+        } catch (\Exception $e) {
             $message = $this->_helper->translate(
                 'There was an error'
             ) . ":" .  $e->getMessage();
@@ -347,7 +347,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         );
     }
 
-    protected function _confirmDialog ($showRatingTags = false, $errorMessage = "")
+    protected function _confirmDialog($showRatingTags = false, $errorMessage = "")
     {
         $title = $this->_helper->translate("Rating Profile Tester");
         $message = $errorMessage;
@@ -374,7 +374,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $message .=     "<tr>";
 
         if ($showRatingTags) {
-
             $routingTags = $this->_getRoutingTagArray();
 
             $message .=     "<td class='ui-widget-content' style='overflow: visible; min-width: 225px;'>";
@@ -466,7 +465,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $rows = [];
 
         foreach ($responses as $response) {
-
             $ratingPlanGroup = $response->getRatingPlanGroup();
             $ratingPlanGroupName = ($ratingPlanGroup)
                     ? $ratingPlanGroup->getNameEn()
@@ -494,9 +492,19 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 continue;
             }
 
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            $currencySymbol = $dataGateway->remoteProcedureCall(
+                RatingPlanGroup::class,
+                $ratingPlanGroup->getId(),
+                'getCurrencySymbol',
+                []
+            );
+
             $chargePeriod = $response->getChargePeriod();
             $rate = $response->getRate()
-                ? $response->getRate() . ' / ' . $chargePeriod . ' ' . $this->_helper->translate('seconds')
+                ? $response->getRate() . " $currencySymbol / " . $chargePeriod . ' ' . $this->_helper->translate('seconds')
                 : '';
 
             $cost = $response->getCost() + $response->getConnectionFee();
@@ -512,10 +520,10 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 'Call date' => $callDate->format('Y-m-d H:i:s'),
                 'Duration' => $response->getCallDuration() . ' ' . $this->_helper->translate('seconds'),
                 'Pattern Name' => $response->getPatternName() . ' (' . $response->getPrefix() . ')',
-                'Con. Charge' => $response->getConnectionFee(),
+                'Con. Charge' => $response->getConnectionFee() . " $currencySymbol",
                 'Interval start' => $response->getIntervalStart(),
                 'Rate' => $rate,
-                'Total cost' => $cost,
+                'Total cost' => "$cost $currencySymbol",
             ];
         }
 
@@ -529,7 +537,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         return $info;
     }
 
-    protected function _drawTable($fieldNames, $array, $dest=null, $duration = null)
+    protected function _drawTable($fieldNames, $array, $dest = null, $duration = null)
     {
         $table = '<table class="kMatrix" style="min-width: 850px;">';
         if (!is_null($dest)) {
@@ -550,7 +558,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         foreach ($array as $row) {
             $table .= "<tr>";
             foreach ($row as $key => $field) {
-
                 $colspan = $key === 'error'
                     ? count($fieldNames) - count(array_keys($row)) + 1
                     : 1;
@@ -566,9 +573,15 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         return $table;
     }
 
-    protected function _showDialog ($title = "Title", $message = "Message", $ok = "Ok",
-                                    $close = "Close", $reloadParent = false, $width = "1000", $height = "auto")
-    {
+    protected function _showDialog(
+        $title = "Title",
+        $message = "Message",
+        $ok = "Ok",
+        $close = "Close",
+        $reloadParent = false,
+        $width = "1000",
+        $height = "auto"
+    ) {
         $ok = $this->_helper->translate($ok);
         $close = $this->_helper->translate($close);
 
@@ -613,7 +626,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $this->_dispatch($data);
     }
 
-    protected function _dispatch (array $data)
+    protected function _dispatch(array $data)
     {
         $jsonResponse = new Klear_Model_DispatchResponse();
         $jsonResponse->setModule('default');
@@ -631,7 +644,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         $retarificable = $this->_checkRetarificables($pks);
         if ($retarificable) {
-
             $serviceContainer = \Zend_Registry::get('container');
             $rerateService = $serviceContainer->get(
                 \Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService::class
@@ -640,7 +652,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             try {
                 $rerateService->execute($pks);
             } catch (\Exception $e) {
-
                 $close = $this->_helper->translate('Close');
 
                 $phpSettings = $this->getInvokeArg('bootstrap')->getOption("phpSettings");
@@ -666,9 +677,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
             $message = "<p>" . $this->_helper->translate("Tarificator Job started") . "</p>";
             $title = $this->_helper->translate("Ok");
-
         } else {
-
             $message = "<p>".$this->_helper->translate("Invoiced calls can't be metered again")."</p>";
             $message .= "<p>".$this->_helper->translate("Please select only uninvoiced calls")."</p>";
 

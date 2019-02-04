@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 
 /**
  * Calendar
@@ -38,16 +39,29 @@ class Calendar extends CalendarAbstract implements CalendarInterface
      */
     public function isHolidayDate($date)
     {
-        $criteria = new Criteria();
-        $criteria->where(
-            Criteria::expr()->eq(
-                'eventDate',
-                $date
-            )
+        $filteredHolidayDates = array_filter(
+            $this->getHolidayDates(),
+            function (HolidayDateInterface $holidayDate) use ($date) {
+
+                $eventDate = $holidayDate->getEventDate();
+                $date->setTimezone($eventDate->getTimezone());
+                $eventDateStr = $eventDate->format('Y-m-d');
+
+                return $eventDateStr === $date->format('Y-m-d');
+            }
         );
 
-        $holidayDates = $this->getHolidayDates($criteria);
+        foreach ($filteredHolidayDates as $holidayDate) {
+            $eventMatched = $holidayDate
+                ->checkEventOnTime(
+                    $date
+                );
 
-        return !empty($holidayDates);
+            if ($eventMatched) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

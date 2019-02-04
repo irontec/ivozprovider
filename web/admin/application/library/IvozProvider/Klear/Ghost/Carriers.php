@@ -1,5 +1,6 @@
 <?php
 
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
@@ -80,9 +81,25 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
         }
 
         try {
-            return $this->fetchCarrierBalance->getBalance(
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            $balance =  $this->fetchCarrierBalance->getBalance(
                 $carrierDto->getBrandId(),
                 $carrierDto->getId()
+            );
+
+            $currencySymbol = $dataGateway->remoteProcedureCall(
+                Carrier::class,
+                $carrierDto->getId(),
+                'getCurrencySymbol',
+                []
+            );
+
+            return sprintf(
+                "%s %s",
+                $balance,
+                $currencySymbol
             );
         } catch (Exception $exception) {
             return Klear_Model_Gettext::gettextCheck('_("Unavailable")');

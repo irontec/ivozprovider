@@ -20,8 +20,6 @@ class PortalController extends Zend_Controller_Action
         if (!$this->_isBrandValid($brand)) {
             throw new Exception('Page not found', 404);
         }
-
-
     }
 
     public function indexAction()
@@ -41,7 +39,5 @@ class PortalController extends Zend_Controller_Action
         }
 
         return true;
-
     }
-
 }

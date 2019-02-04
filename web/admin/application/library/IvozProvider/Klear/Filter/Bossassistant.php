@@ -11,8 +11,8 @@ class IvozProvider_Klear_Filter_Bossassistant extends IvozProvider_Klear_Filter_
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-    	// Add parent filters
-    	parent::setRouteDispatcher($routeDispatcher);
+        // Add parent filters
+        parent::setRouteDispatcher($routeDispatcher);
 
         $pk = $routeDispatcher->getParam("pk", false);
 

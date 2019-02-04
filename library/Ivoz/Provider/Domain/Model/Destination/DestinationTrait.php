@@ -37,16 +37,23 @@ trait DestinationTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getDestinationRates()) {
-            $self->replaceDestinationRates($dto->getDestinationRates());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getDestinationRates())) {
+            $self->replaceDestinationRates(
+                $fkTransformer->transformCollection(
+                    $dto->getDestinationRates()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait DestinationTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DestinationDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getDestinationRates()) {
-            $this->replaceDestinationRates($dto->getDestinationRates());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getDestinationRates())) {
+            $this->replaceDestinationRates(
+                $fkTransformer->transformCollection(
+                    $dto->getDestinationRates()
+                )
+            );
         }
         return $this;
     }

@@ -45,7 +45,6 @@ class Administrator extends Mapper
         $this->_populateCustomPerms($user, $administrator);
 
         if ($user->isMainOperator) {
-
             return $user;
         }
 
@@ -75,7 +74,6 @@ class Administrator extends Mapper
         $user->canSeeCompany = true;
 
         if ($isBrandOperator) {
-
             $brand = $this->dataGateway->find(
                 Brand::class,
                 $operator->getBrandId()
@@ -83,9 +81,7 @@ class Administrator extends Mapper
 
             $user->isBrandOperator = true;
             $user->setBrand($brand);
-
-        } else if ($isCompanyAdmin) {
-
+        } elseif ($isCompanyAdmin) {
             $company = $this->dataGateway->find(
                 Company::class,
                 $operator->getCompanyId()
@@ -97,5 +93,4 @@ class Administrator extends Mapper
 
         return $user;
     }
-
 }

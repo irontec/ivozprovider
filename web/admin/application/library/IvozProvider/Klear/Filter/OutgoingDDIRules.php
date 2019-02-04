@@ -30,5 +30,4 @@ class IvozProvider_Klear_Filter_OutgoingDDIRules implements KlearMatrix_Model_Fi
     {
         return $this->_condition;
     }
-
 }

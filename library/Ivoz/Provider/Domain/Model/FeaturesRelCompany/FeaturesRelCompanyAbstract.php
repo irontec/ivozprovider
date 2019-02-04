@@ -92,8 +92,10 @@ abstract class FeaturesRelCompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FeaturesRelCompanyDto
          */
@@ -102,8 +104,8 @@ abstract class FeaturesRelCompanyAbstract
         $self = new static();
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setFeature($dto->getFeature())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setFeature($fkTransformer->transform($dto->getFeature()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class FeaturesRelCompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FeaturesRelCompanyDto
          */
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
 
         $this
-            ->setCompany($dto->getCompany())
-            ->setFeature($dto->getFeature());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setFeature($fkTransformer->transform($dto->getFeature()));
 
 
 

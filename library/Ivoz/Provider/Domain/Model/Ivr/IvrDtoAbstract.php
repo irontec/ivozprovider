@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -192,59 +190,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
             'entries' => $this->getEntries(),
             'excludedExtensions' => $this->getExcludedExtensions()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->welcomeLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getWelcomeLocutionId());
-        $this->noInputLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getNoInputLocutionId());
-        $this->errorLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getErrorLocutionId());
-        $this->successLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getSuccessLocutionId());
-        $this->noInputExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getNoInputExtensionId());
-        $this->errorExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getErrorExtensionId());
-        $this->noInputVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getNoInputVoiceMailUserId());
-        $this->errorVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getErrorVoiceMailUserId());
-        $this->noInputNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNoInputNumberCountryId());
-        $this->errorNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getErrorNumberCountryId());
-        if (!is_null($this->entries)) {
-            $items = $this->getEntries();
-            $this->entries = [];
-            foreach ($items as $item) {
-                $this->entries[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->excludedExtensions)) {
-            $items = $this->getExcludedExtensions();
-            $this->excludedExtensions = [];
-            foreach ($items as $item) {
-                $this->excludedExtensions[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\IvrExcludedExtension\\IvrExcludedExtension',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->entries = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry',
-            $this->entries
-        );
-        $this->excludedExtensions = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\IvrExcludedExtension\\IvrExcludedExtension',
-            $this->excludedExtensions
-        );
     }
 
     /**

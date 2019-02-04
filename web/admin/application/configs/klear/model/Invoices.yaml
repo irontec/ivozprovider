@@ -54,9 +54,10 @@ production:
 #          timeFormat: '23:59:59'
     total:
       title: _('Total')
-      type: text
-      trim: both
-      sufix: "€"
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_Invoice
+        method: getTotal
     taxRate:
       title: _('Tax rate')
       type: text
@@ -65,9 +66,10 @@ production:
       sufix: "%"
     totalWithTax:
       title: _('Total with tax')
-      type: text
-      trim: both
-      sufix: "€"
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_Invoice
+        method: getTotalWithTax
     status:
       title: _('Status')
       type: ghost
@@ -183,7 +185,7 @@ production:
               field:
                 - name
                 - cost
-              pattern: "%name% - %cost% €"
+              pattern: "%name% - %cost%"
             quantity:
               title: _("Quantity")
         options:

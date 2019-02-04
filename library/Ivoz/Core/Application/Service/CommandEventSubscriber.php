@@ -35,6 +35,11 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
         return $this->events;
     }
 
+    public function countEvents()
+    {
+        return count($this->events);
+    }
+
     /**
      * @return CommandEventInterface
      */

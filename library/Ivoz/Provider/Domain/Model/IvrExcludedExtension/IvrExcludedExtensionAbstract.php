@@ -92,8 +92,10 @@ abstract class IvrExcludedExtensionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrExcludedExtensionDto
          */
@@ -102,8 +104,8 @@ abstract class IvrExcludedExtensionAbstract
         $self = new static();
 
         $self
-            ->setIvr($dto->getIvr())
-            ->setExtension($dto->getExtension())
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
         ;
 
         $self->sanitizeValues();
@@ -117,16 +119,18 @@ abstract class IvrExcludedExtensionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrExcludedExtensionDto
          */
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $this
-            ->setIvr($dto->getIvr())
-            ->setExtension($dto->getExtension());
+            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()));
 
 
 

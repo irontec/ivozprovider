@@ -293,8 +293,10 @@ abstract class TpCdrStatAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpCdrStatDto
          */
@@ -331,7 +333,7 @@ abstract class TpCdrStatAbstract
         );
 
         $self
-            ->setCarrier($dto->getCarrier())
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
         $self->sanitizeValues();
@@ -345,8 +347,10 @@ abstract class TpCdrStatAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpCdrStatDto
          */
@@ -380,7 +384,7 @@ abstract class TpCdrStatAbstract
             ->setCostInterval($dto->getCostInterval())
             ->setActionTriggers($dto->getActionTriggers())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setCarrier($dto->getCarrier());
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
 
 
@@ -1193,7 +1197,7 @@ abstract class TpCdrStatAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

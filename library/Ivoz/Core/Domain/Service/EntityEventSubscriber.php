@@ -7,7 +7,7 @@ use Ivoz\Core\Domain\Event\EntityEventInterface;
 
 class EntityEventSubscriber implements DomainEventSubscriberInterface
 {
-    use DomainEventSubscriberTrait;
+    use DomainEventCollectorTrait;
 
     /**
      * @param DomainEventInterface $domainEvent

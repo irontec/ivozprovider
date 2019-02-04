@@ -51,6 +51,7 @@ production:
           registryData: true
           maxCalls: true
           defaultTimezone: true
+          currency: true
           distributeMethod: true
           applicationServer: true
           mediaRelaySets: true
@@ -148,6 +149,7 @@ production:
             country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
+            currency: 4
         group2:
           colsPerRow: 2
           label: _("Security")
@@ -211,6 +213,7 @@ production:
             country: 4
             defaultTimezone: 4
             transformationRuleSet: 8
+            currency: 4
         group2:
           colsPerRow: 2
           label: _("Security")

@@ -1,6 +1,7 @@
 <?php
 
-class FsoController extends \Zend_Controller_Action {
+class FsoController extends \Zend_Controller_Action
+{
 
     /**
      * Multiplicador de tamaños de las imagenes. Las vistas normales son x1
@@ -32,7 +33,7 @@ class FsoController extends \Zend_Controller_Action {
             $layout->disableLayout();
         }
 
-        $this->_helper->viewRenderer->setNoRender(TRUE);
+        $this->_helper->viewRenderer->setNoRender(true);
 
         $this->_frontInstance = \Zend_Controller_Front::getInstance();
 
@@ -77,7 +78,6 @@ class FsoController extends \Zend_Controller_Action {
             $preDownloadMethod = $this->_currentProfile->preDownloadMethod;
             $this->_model->{$preDownloadMethod}();
         }
-
     }
 
     public function indexAction()
@@ -85,7 +85,6 @@ class FsoController extends \Zend_Controller_Action {
         $config = $this->_setConfiguration($this->_currentProfile);
 
         try {
-
             $fetchFso = 'get' . ucwords($this->getFso());
             $getPath = $fetchFso . 'Path';
             $getBaseName = $fetchFso . 'BaseName';
@@ -102,7 +101,6 @@ class FsoController extends \Zend_Controller_Action {
             $this->setMimeType(
                 $this->_model->$getMimeType()
             );
-
         } catch (\Exception $e) {
             throw new Zend_Controller_Action_Exception(
                 'File not found',
@@ -116,7 +114,6 @@ class FsoController extends \Zend_Controller_Action {
         }
 
         if ($this->_profileType === 'binary') {
-
             if (isset($this->_currentProfile->disposition)) {
                 $this->_downloadFile(
                     $this->_currentProfile->disposition
@@ -124,11 +121,9 @@ class FsoController extends \Zend_Controller_Action {
             } else {
                 $this->_downloadFile();
             }
-
         } elseif ($this->_profileType === 'image') {
             $this->_showImage($config);
         }
-
     }
 
     /**
@@ -182,7 +177,6 @@ class FsoController extends \Zend_Controller_Action {
 
         $file = new Iron_Controller_Action_Helper_SendPartialFileToClient();
         $file->sendFile($this->getFilePath(), $headers);
-
     }
 
     protected function _showImage($config)
@@ -247,14 +241,11 @@ class FsoController extends \Zend_Controller_Action {
         }
 
         if (empty($loadCache)) {
-
             $file = $this->_prepareImageFile($extension, $config);
             $cache->save($file, $cacheKey);
 
             $this->getHeaders(false, $cache, $cacheKey, $mimeType);
-
         } else {
-
             $request = $this->_frontInstance->getRequest();
 
             if ($request->getHeader('IF-MODIFIED-SINCE')) {
@@ -262,9 +253,7 @@ class FsoController extends \Zend_Controller_Action {
             } else {
                 $this->getHeaders(false, $cache, $cacheKey, $mimeType);
             }
-
         }
-
     }
 
     protected function _prepareImageFile($extension, $config)
@@ -342,7 +331,6 @@ class FsoController extends \Zend_Controller_Action {
         }
 
         return $image->getImagesBlob();
-
     }
 
     protected function _initParams()
@@ -404,7 +392,7 @@ class FsoController extends \Zend_Controller_Action {
         $this->_currentProfile = $currentProfile;
         if (!$currentProfile) {
             $this->_defaultImage();
-        } else if (isset($currentProfile->routeMap)) {
+        } elseif (isset($currentProfile->routeMap)) {
             $this->_routeMap = $currentProfile->routeMap;
         }
 
@@ -432,7 +420,6 @@ class FsoController extends \Zend_Controller_Action {
 
         if (sizeof($this->_routeMap) > 0) {
             for ($i = 0; $i < sizeof($this->_routeMap); $i++) {
-
                 $result = explode($this->_routeMap[$i], $routeMap, 2);
                 $routeMap = $result[1];
 
@@ -442,7 +429,6 @@ class FsoController extends \Zend_Controller_Action {
                 } else {
                     $paramsResult[] = $result[0];
                 }
-
             }
         } else {
             $paramsResult[] = $routeMap;
@@ -469,7 +455,6 @@ class FsoController extends \Zend_Controller_Action {
         } else {
             $this->_defaultImage();
         }
-
     }
 
     protected function _setConfiguration($currentProfile)
@@ -502,7 +487,6 @@ class FsoController extends \Zend_Controller_Action {
         }
 
         if (isset($currentProfile->vignette)) {
-
             $vignette = $currentProfile->vignette;
 
             $config['vignette'] = array();
@@ -519,11 +503,9 @@ class FsoController extends \Zend_Controller_Action {
             if (isset($vignette->y)) {
                 $config['vignette']['y'] = $vignette->y;
             }
-
         }
 
         if (isset($currentProfile->border)) {
-
             $border = $currentProfile->border;
 
             $config['border'] = array();
@@ -537,11 +519,9 @@ class FsoController extends \Zend_Controller_Action {
             if (isset($border->height)) {
                 $config['border']['height'] = $border->height;
             }
-
         }
 
         if (isset($currentProfile->framing)) {
-
             $framing = $currentProfile->framing;
 
             $config['framing'] = array();
@@ -565,11 +545,9 @@ class FsoController extends \Zend_Controller_Action {
             if (isset($framing->outerBevel)) {
                 $config['framing']['outerBevel'] = $framing->outerBevel;
             }
-
         }
 
         return $config;
-
     }
 
     /**
@@ -605,7 +583,6 @@ class FsoController extends \Zend_Controller_Action {
         $response->setHeader('Content-transfer-encoding', 'binary', true);
         $response->sendHeaders();
         $response->setBody($cache->load($cacheKey));
-
     }
 
     /**
@@ -769,7 +746,6 @@ class FsoController extends \Zend_Controller_Action {
         $availableLangs = $this->_getAvailableLangs();
 
         if (count($availableLangs) > 0) {
-
             $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
 
             if (is_null($bootstrap)) {
@@ -800,7 +776,6 @@ class FsoController extends \Zend_Controller_Action {
             }
 
             if (empty($lang)) {
-
                 if (isset($conf->translate)) {
                     $lang = $conf->translate['defaultLanguage'];
                 }
@@ -816,15 +791,12 @@ class FsoController extends \Zend_Controller_Action {
         $where = [];
         $arguments = [];
         foreach ($pieces as $key => $piece) {
-
             if ($piece === 'basename') {
-
                 $currentParamResult = $paramsResult[$key];
                 $modelSegments = explode('\\', $model);
                 $field = end($modelSegments) . '.' .  $this->getFso() . '.' . 'baseName';
                 $where[] = $field . ' = :' . $this->getFso();
                 $arguments[$this->getFso()] = $currentParamResult;
-
             } else {
                 $currentParamResult = $paramsResult[$key];
                 $modelSegments = explode('\\', $model);
@@ -854,7 +826,5 @@ class FsoController extends \Zend_Controller_Action {
 
         echo $image;
         die();
-
     }
-
 }

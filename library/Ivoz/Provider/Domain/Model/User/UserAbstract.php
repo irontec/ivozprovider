@@ -236,8 +236,10 @@ abstract class UserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto UserDto
          */
@@ -261,18 +263,18 @@ abstract class UserAbstract
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
             ->setTokenKey($dto->getTokenKey())
-            ->setCompany($dto->getCompany())
-            ->setCallAcl($dto->getCallAcl())
-            ->setBossAssistant($dto->getBossAssistant())
-            ->setBossAssistantWhiteList($dto->getBossAssistantWhiteList())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setLanguage($dto->getLanguage())
-            ->setTerminal($dto->getTerminal())
-            ->setExtension($dto->getExtension())
-            ->setTimezone($dto->getTimezone())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setVoicemailLocution($dto->getVoicemailLocution())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
+            ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
+            ->setBossAssistantWhiteList($fkTransformer->transform($dto->getBossAssistantWhiteList()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setTerminal($fkTransformer->transform($dto->getTerminal()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setTimezone($fkTransformer->transform($dto->getTimezone()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()))
         ;
 
         $self->sanitizeValues();
@@ -286,8 +288,10 @@ abstract class UserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto UserDto
          */
@@ -308,18 +312,18 @@ abstract class UserAbstract
             ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
             ->setTokenKey($dto->getTokenKey())
             ->setGsQRCode($dto->getGsQRCode())
-            ->setCompany($dto->getCompany())
-            ->setCallAcl($dto->getCallAcl())
-            ->setBossAssistant($dto->getBossAssistant())
-            ->setBossAssistantWhiteList($dto->getBossAssistantWhiteList())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setLanguage($dto->getLanguage())
-            ->setTerminal($dto->getTerminal())
-            ->setExtension($dto->getExtension())
-            ->setTimezone($dto->getTimezone())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setVoicemailLocution($dto->getVoicemailLocution());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
+            ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
+            ->setBossAssistantWhiteList($fkTransformer->transform($dto->getBossAssistantWhiteList()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setTerminal($fkTransformer->transform($dto->getTerminal()))
+            ->setExtension($fkTransformer->transform($dto->getExtension()))
+            ->setTimezone($fkTransformer->transform($dto->getTimezone()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()));
 
 
 

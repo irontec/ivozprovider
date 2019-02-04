@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Changelog;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -89,21 +87,6 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'command' => $this->getCommand()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->command = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Commandlog\\Commandlog', $this->getCommandId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

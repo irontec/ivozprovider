@@ -2,11 +2,10 @@
 
 namespace IvozProvider\Utils;
 
-
 class SizeFormatter
 {
 
-    static public function sizeToHuman($total)
+    public static function sizeToHuman($total)
     {
         $size = array('B','KB','MB','GB','TB','PB','EB','ZB','YB');
         $factor = 0;

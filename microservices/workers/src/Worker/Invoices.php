@@ -104,7 +104,6 @@ class Invoices
         $this->logger->info("[INVOICER] Status = processing");
 
         try {
-
             $content = $this->generator->getInvoicePDFContents($id);
             $tempPath = "/opt/irontec/ivozprovider/storage/invoice";
             if (!file_exists($tempPath)) {
@@ -125,7 +124,6 @@ class Invoices
 
             $this->entityTools->persistDto($invoiceDto, $invoice);
             $this->logger->info("[INVOICER] Status = created");
-
         } catch (\Exception $e) {
             $this->logger->info("[INVOICER] Status = error");
             $this->logger->info("[INVOICER] Error was: ".$e->getMessage());
@@ -144,5 +142,4 @@ class Invoices
 
         return true;
     }
-
 }

@@ -56,13 +56,12 @@ class IvozProvider_Klear_Ghost_RouteTarget extends KlearMatrix_Model_Field_Ghost
     public function getTarget(
         DataTransferObjectInterface $model,
         string $method = 'getTarget'
-    )
-    {
+    ) {
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         // Get entity name from the Dto
-        $entityName = substr(get_class($model), 0,-3);
+        $entityName = substr(get_class($model), 0, -3);
 
         return $dataGateway->remoteProcedureCall(
             $entityName,
@@ -70,7 +69,5 @@ class IvozProvider_Klear_Ghost_RouteTarget extends KlearMatrix_Model_Field_Ghost
             $method,
             []
         );
-
     }
-
 }

@@ -103,3 +103,15 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
+    retailAccount:
+      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: callForwardSettings
+      joinColumns:
+        retailAccountId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false

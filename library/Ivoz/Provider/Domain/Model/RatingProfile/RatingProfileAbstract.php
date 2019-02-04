@@ -108,8 +108,10 @@ abstract class RatingProfileAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingProfileDto
          */
@@ -120,10 +122,10 @@ abstract class RatingProfileAbstract
         );
 
         $self
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setRoutingTag($dto->getRoutingTag())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
         ;
 
         $self->sanitizeValues();
@@ -137,8 +139,10 @@ abstract class RatingProfileAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RatingProfileDto
          */
@@ -146,10 +150,10 @@ abstract class RatingProfileAbstract
 
         $this
             ->setActivationTime($dto->getActivationTime())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setRoutingTag($dto->getRoutingTag());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
 
 
@@ -214,7 +218,7 @@ abstract class RatingProfileAbstract
      */
     public function getActivationTime()
     {
-        return $this->activationTime;
+        return clone $this->activationTime;
     }
 
     /**

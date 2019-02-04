@@ -120,8 +120,10 @@ abstract class ChangelogAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ChangelogDto
          */
@@ -136,7 +138,7 @@ abstract class ChangelogAbstract
 
         $self
             ->setData($dto->getData())
-            ->setCommand($dto->getCommand())
+            ->setCommand($fkTransformer->transform($dto->getCommand()))
         ;
 
         $self->sanitizeValues();
@@ -150,8 +152,10 @@ abstract class ChangelogAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ChangelogDto
          */
@@ -163,7 +167,7 @@ abstract class ChangelogAbstract
             ->setData($dto->getData())
             ->setCreatedOn($dto->getCreatedOn())
             ->setMicrotime($dto->getMicrotime())
-            ->setCommand($dto->getCommand());
+            ->setCommand($fkTransformer->transform($dto->getCommand()));
 
 
 
@@ -311,7 +315,7 @@ abstract class ChangelogAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return clone $this->createdOn;
     }
 
     /**

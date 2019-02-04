@@ -107,8 +107,10 @@ abstract class BalanceMovementAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BalanceMovementDto
          */
@@ -120,8 +122,8 @@ abstract class BalanceMovementAbstract
             ->setAmount($dto->getAmount())
             ->setBalance($dto->getBalance())
             ->setCreatedOn($dto->getCreatedOn())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
         $self->sanitizeValues();
@@ -135,8 +137,10 @@ abstract class BalanceMovementAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BalanceMovementDto
          */
@@ -146,8 +150,8 @@ abstract class BalanceMovementAbstract
             ->setAmount($dto->getAmount())
             ->setBalance($dto->getBalance())
             ->setCreatedOn($dto->getCreatedOn())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
 
 
@@ -275,7 +279,7 @@ abstract class BalanceMovementAbstract
      */
     public function getCreatedOn()
     {
-        return $this->createdOn;
+        return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }
 
     /**

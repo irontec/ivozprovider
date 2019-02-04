@@ -21,6 +21,9 @@ This are the fields that define a Rating plan:
     Description
         A field to enter additional information. Not used anywhere.
 
+    Currency
+        All destination rates grouped must use this currency.
+
 .. tip:: Rating plan names appear on final clients' invoices, choose something with commercial sense.
 
 ***************************************

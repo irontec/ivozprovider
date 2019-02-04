@@ -64,6 +64,11 @@ abstract class BrandAbstract
      */
     protected $defaultTimezone;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    protected $currency;
+
 
     use ChangelogTrait;
 
@@ -141,8 +146,10 @@ abstract class BrandAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandDto
          */
@@ -175,9 +182,10 @@ abstract class BrandAbstract
             ->setDomainUsers($dto->getDomainUsers())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setDomain($dto->getDomain())
-            ->setLanguage($dto->getLanguage())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
         $self->sanitizeValues();
@@ -191,8 +199,10 @@ abstract class BrandAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandDto
          */
@@ -222,9 +232,10 @@ abstract class BrandAbstract
             ->setMaxCalls($dto->getMaxCalls())
             ->setLogo($logo)
             ->setInvoice($invoice)
-            ->setDomain($dto->getDomain())
-            ->setLanguage($dto->getLanguage())
-            ->setDefaultTimezone($dto->getDefaultTimezone());
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
 
 
@@ -257,7 +268,8 @@ abstract class BrandAbstract
             ->setInvoiceRegistryData(self::getInvoice()->getRegistryData())
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
-            ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth));
+            ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
     }
 
     /**
@@ -283,7 +295,8 @@ abstract class BrandAbstract
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
+            'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -499,6 +512,30 @@ abstract class BrandAbstract
     public function getDefaultTimezone()
     {
         return $this->defaultTimezone;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

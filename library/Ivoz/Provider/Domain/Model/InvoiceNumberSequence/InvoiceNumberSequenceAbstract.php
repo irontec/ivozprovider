@@ -134,8 +134,10 @@ abstract class InvoiceNumberSequenceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceNumberSequenceDto
          */
@@ -152,7 +154,7 @@ abstract class InvoiceNumberSequenceAbstract
 
         $self
             ->setLatestValue($dto->getLatestValue())
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -166,8 +168,10 @@ abstract class InvoiceNumberSequenceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceNumberSequenceDto
          */
@@ -181,7 +185,7 @@ abstract class InvoiceNumberSequenceAbstract
             ->setLatestValue($dto->getLatestValue())
             ->setIteration($dto->getIteration())
             ->setVersion($dto->getVersion())
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

@@ -34,8 +34,7 @@ class HuntGroupAction
      */
     public function __construct(
         Wrapper $agi
-    )
-    {
+    ) {
         $this->agi = $agi;
     }
 
@@ -110,7 +109,7 @@ class HuntGroupAction
         // Configure the list of users to be called
         if ($huntGroup->getStrategy() == HuntGroupAction::RingAll) {
             $this->agi->setVariable("HG_ID", $huntGroup->getId());
-            $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints,'&'));
+            $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints, '&'));
             $this->agi->setVariable("HG_TIMEOUTLIST", $huntGroup->getRingAllTimeout());
         } else {
             $this->agi->setVariable("HG_ID", $huntGroup->getId());
@@ -121,5 +120,4 @@ class HuntGroupAction
         // Start calling the first user
         $this->agi->redirect('call-huntgroup');
     }
-
 }

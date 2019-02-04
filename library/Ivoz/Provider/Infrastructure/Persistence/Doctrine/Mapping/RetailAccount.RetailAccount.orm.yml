@@ -13,6 +13,12 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       generator:
         strategy: IDENTITY
   oneToMany:
+    psEndpoints:
+      targetEntity: Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+      mappedBy: retailAccount
     ddis:
       targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      mappedBy: retailAccount
+    callForwardSettings:
+      targetEntity: Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
       mappedBy: retailAccount

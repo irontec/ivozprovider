@@ -168,8 +168,10 @@ abstract class CarrierServerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CarrierServerDto
          */
@@ -193,8 +195,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($dto->getCarrier())
-            ->setBrand($dto->getBrand())
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -208,8 +210,10 @@ abstract class CarrierServerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CarrierServerDto
          */
@@ -230,8 +234,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($dto->getCarrier())
-            ->setBrand($dto->getBrand());
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

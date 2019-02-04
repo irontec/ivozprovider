@@ -50,8 +50,7 @@ class Sender extends RouteHandlerAbstract
         EntityManagerInterface $em,
         Parser $parser,
         \Swift_Mailer $mailer
-    )
-    {
+    ) {
         $this->em = $em;
         $this->parser = $parser;
         $this->mailer = $mailer;
@@ -60,7 +59,7 @@ class Sender extends RouteHandlerAbstract
     /**
      * @throws \Assert\AssertionFailedException
      */
-    public function process ()
+    public function process()
     {
         // Load Email data
         $this->parser->setStream(fopen("php://stdin", "r"));
@@ -80,18 +79,22 @@ class Sender extends RouteHandlerAbstract
         // No voicemail, this should not happen
         Assertion::notNull(
             $vm,
-            sprintf("Unable to find voicemail for %s@%s",
+            sprintf(
+                "Unable to find voicemail for %s@%s",
                 $vmdata[self::VM_MAILBOX],
-                $vmdata[self::VM_CONTEXT])
+                $vmdata[self::VM_CONTEXT]
+            )
         );
 
         /** @var \Ivoz\Provider\Domain\Model\User\UserInterface $user */
         $user = $vm->getUser();
         Assertion::notNull(
             $user,
-            sprintf("Unable to find user for voicemail %s@%s",
+            sprintf(
+                "Unable to find user for voicemail %s@%s",
                 $vmdata[self::VM_MAILBOX],
-                $vmdata[self::VM_CONTEXT])
+                $vmdata[self::VM_CONTEXT]
+            )
         );
 
         // Assume user has company and brand

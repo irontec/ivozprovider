@@ -3,6 +3,7 @@
 namespace Dialplan;
 
 use Agi\Action\ExternalFaxCallAction;
+use Agi\Agents\FaxAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
@@ -63,8 +64,7 @@ class FaxDial extends RouteHandlerAbstract
         EntityTools $entityTools,
         CommonStoragePathResolver $faxStoragePathResolver,
         ExternalFaxCallAction $externalFaxCallAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->em = $em;
@@ -125,7 +125,9 @@ class FaxDial extends RouteHandlerAbstract
         }
 
         // Set the virtual fax as caller
-        $this->channelInfo->setChannelCaller($faxOut->getFax());
+        $caller = new FaxAgent($this->agi, $faxOut->getFax());
+        $this->channelInfo->setChannelCaller($caller);
+        $this->channelInfo->setChannelOrigin($caller);
 
         // ProcessDialStatus
         $this->externalFaxCallAction
@@ -133,5 +135,4 @@ class FaxDial extends RouteHandlerAbstract
             ->setDestination($faxOut->getDstE164())
             ->process();
     }
-
 }

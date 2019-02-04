@@ -19,10 +19,6 @@ class ReloadService extends AbstractApiBasedService
         );
     }
 
-    /**
-     * @inheritdoc
-     * @see RerateCallServiceInterface::execute()
-     */
     public function execute(string $tpid)
     {
         $payload = [

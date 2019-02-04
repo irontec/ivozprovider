@@ -150,8 +150,10 @@ abstract class TerminalAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TerminalDto
          */
@@ -169,9 +171,9 @@ abstract class TerminalAbstract
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setCompany($dto->getCompany())
-            ->setDomain($dto->getDomain())
-            ->setTerminalModel($dto->getTerminalModel())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()))
         ;
 
         $self->sanitizeValues();
@@ -185,8 +187,10 @@ abstract class TerminalAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TerminalDto
          */
@@ -201,9 +205,9 @@ abstract class TerminalAbstract
             ->setPassword($dto->getPassword())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setCompany($dto->getCompany())
-            ->setDomain($dto->getDomain())
-            ->setTerminalModel($dto->getTerminalModel());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
 
 
@@ -477,7 +481,7 @@ abstract class TerminalAbstract
      */
     public function getLastProvisionDate()
     {
-        return $this->lastProvisionDate;
+        return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }
 
     /**

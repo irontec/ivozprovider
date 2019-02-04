@@ -44,8 +44,7 @@ class QueueStatus extends RouteHandlerAbstract
         EntityManagerInterface $em,
         QueueTimeoutAction $queueTimeoutAction,
         QueueFullAction $queueFullAction
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->queueTimeoutAction = $queueTimeoutAction;
@@ -70,18 +69,13 @@ class QueueStatus extends RouteHandlerAbstract
 
 
         if ($queueStatus == 'TIMEOUT') {
-
             $this->queueTimeoutAction
                 ->setQueue($queue)
                 ->process();
-
-        } else if ($queueStatus == 'FULL') {
-
+        } elseif ($queueStatus == 'FULL') {
             $this->queueFullAction
                 ->setQueue($queue)
                 ->process();
-
         }
-
     }
 }

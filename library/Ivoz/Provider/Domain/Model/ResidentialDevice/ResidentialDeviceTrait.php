@@ -49,24 +49,39 @@ trait ResidentialDeviceTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ResidentialDeviceDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getPsEndpoints()) {
-            $self->replacePsEndpoints($dto->getPsEndpoints());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPsEndpoints())) {
+            $self->replacePsEndpoints(
+                $fkTransformer->transformCollection(
+                    $dto->getPsEndpoints()
+                )
+            );
         }
 
-        if ($dto->getDdis()) {
-            $self->replaceDdis($dto->getDdis());
+        if (!is_null($dto->getDdis())) {
+            $self->replaceDdis(
+                $fkTransformer->transformCollection(
+                    $dto->getDdis()
+                )
+            );
         }
 
-        if ($dto->getCallForwardSettings()) {
-            $self->replaceCallForwardSettings($dto->getCallForwardSettings());
+        if (!is_null($dto->getCallForwardSettings())) {
+            $self->replaceCallForwardSettings(
+                $fkTransformer->transformCollection(
+                    $dto->getCallForwardSettings()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -79,22 +94,37 @@ trait ResidentialDeviceTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ResidentialDeviceDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getPsEndpoints()) {
-            $this->replacePsEndpoints($dto->getPsEndpoints());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPsEndpoints())) {
+            $this->replacePsEndpoints(
+                $fkTransformer->transformCollection(
+                    $dto->getPsEndpoints()
+                )
+            );
         }
-        if ($dto->getDdis()) {
-            $this->replaceDdis($dto->getDdis());
+        if (!is_null($dto->getDdis())) {
+            $this->replaceDdis(
+                $fkTransformer->transformCollection(
+                    $dto->getDdis()
+                )
+            );
         }
-        if ($dto->getCallForwardSettings()) {
-            $this->replaceCallForwardSettings($dto->getCallForwardSettings());
+        if (!is_null($dto->getCallForwardSettings())) {
+            $this->replaceCallForwardSettings(
+                $fkTransformer->transformCollection(
+                    $dto->getCallForwardSettings()
+                )
+            );
         }
         return $this;
     }

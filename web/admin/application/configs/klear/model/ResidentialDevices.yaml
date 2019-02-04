@@ -107,7 +107,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
-          filterClass: IvozProvider_Klear_Filter_ResidentialDDIs
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - ddie164

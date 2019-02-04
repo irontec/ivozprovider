@@ -194,8 +194,10 @@ abstract class QueueAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto QueueDto
          */
@@ -216,16 +218,16 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setCompany($dto->getCompany())
-            ->setPeriodicAnnounceLocution($dto->getPeriodicAnnounceLocution())
-            ->setTimeoutLocution($dto->getTimeoutLocution())
-            ->setTimeoutExtension($dto->getTimeoutExtension())
-            ->setTimeoutVoiceMailUser($dto->getTimeoutVoiceMailUser())
-            ->setFullLocution($dto->getFullLocution())
-            ->setFullExtension($dto->getFullExtension())
-            ->setFullVoiceMailUser($dto->getFullVoiceMailUser())
-            ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
-            ->setFullNumberCountry($dto->getFullNumberCountry())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
+            ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
+            ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
+            ->setTimeoutVoiceMailUser($fkTransformer->transform($dto->getTimeoutVoiceMailUser()))
+            ->setFullLocution($fkTransformer->transform($dto->getFullLocution()))
+            ->setFullExtension($fkTransformer->transform($dto->getFullExtension()))
+            ->setFullVoiceMailUser($fkTransformer->transform($dto->getFullVoiceMailUser()))
+            ->setTimeoutNumberCountry($fkTransformer->transform($dto->getTimeoutNumberCountry()))
+            ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -239,8 +241,10 @@ abstract class QueueAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto QueueDto
          */
@@ -259,16 +263,16 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setCompany($dto->getCompany())
-            ->setPeriodicAnnounceLocution($dto->getPeriodicAnnounceLocution())
-            ->setTimeoutLocution($dto->getTimeoutLocution())
-            ->setTimeoutExtension($dto->getTimeoutExtension())
-            ->setTimeoutVoiceMailUser($dto->getTimeoutVoiceMailUser())
-            ->setFullLocution($dto->getFullLocution())
-            ->setFullExtension($dto->getFullExtension())
-            ->setFullVoiceMailUser($dto->getFullVoiceMailUser())
-            ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
-            ->setFullNumberCountry($dto->getFullNumberCountry());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
+            ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
+            ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
+            ->setTimeoutVoiceMailUser($fkTransformer->transform($dto->getTimeoutVoiceMailUser()))
+            ->setFullLocution($fkTransformer->transform($dto->getFullLocution()))
+            ->setFullExtension($fkTransformer->transform($dto->getFullExtension()))
+            ->setFullVoiceMailUser($fkTransformer->transform($dto->getFullVoiceMailUser()))
+            ->setTimeoutNumberCountry($fkTransformer->transform($dto->getTimeoutNumberCountry()))
+            ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()));
 
 
 

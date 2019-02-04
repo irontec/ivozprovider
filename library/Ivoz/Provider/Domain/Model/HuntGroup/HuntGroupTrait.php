@@ -37,16 +37,23 @@ trait HuntGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HuntGroupDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getHuntGroupsRelUsers()) {
-            $self->replaceHuntGroupsRelUsers($dto->getHuntGroupsRelUsers());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getHuntGroupsRelUsers())) {
+            $self->replaceHuntGroupsRelUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getHuntGroupsRelUsers()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait HuntGroupTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto HuntGroupDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getHuntGroupsRelUsers()) {
-            $this->replaceHuntGroupsRelUsers($dto->getHuntGroupsRelUsers());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getHuntGroupsRelUsers())) {
+            $this->replaceHuntGroupsRelUsers(
+                $fkTransformer->transformCollection(
+                    $dto->getHuntGroupsRelUsers()
+                )
+            );
         }
         return $this;
     }

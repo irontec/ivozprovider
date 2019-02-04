@@ -6,7 +6,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use GearmanJob;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkRepository;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
+use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserRepository;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Monolog\Logger;
 use PhpXmlRpc\Client;
@@ -103,9 +105,11 @@ class Xmlrpc
         );
 
         if (!$success) {
-            $this->logger->info(sprintf("[XMLRPC] Delayed %s job request failed: Retrying in %d seconds.",
-               $job->getRpcMethod(), $this->retryInterval)
-            );
+            $this->logger->info(sprintf(
+                "[XMLRPC] Delayed %s job request failed: Retrying in %d seconds.",
+                $job->getRpcMethod(),
+                $this->retryInterval
+            ));
             sleep($this->retryInterval);
             exit(GEARMAN_WORK_ERROR);
         }
@@ -127,39 +131,44 @@ class Xmlrpc
      */
     private function sendXmlRpcRequest($entity, $port, $method)
     {
-        // Get servers to send the XmlRpcRequest
+        /** @var ProxyTrunkRepository|ProxyUserRepository $repository */
         $repository = $this->em->getRepository($entity);
         if (!$repository) {
             $this->logger->error(sprintf("Unable to find repository for %s", $entity));
             return false;
         }
 
-        /** @var ProxyTrunk[]|ProxyUser[] $servers */
-        $servers = $repository->findAll();
+        /** @var ProxyTrunk|ProxyUser $server */
+        $server = $repository->getProxyMainAddress();
 
-        foreach ($servers as $server) {
-            try {
-                // Create a new XmlRpc client for each server
-                $client = new Client(sprintf("http://%s:%d/RPC2",  $server->getIp(), $port));
-                $client->setUserAgent("xmlrpclib");
-                $response = $client->send(new Request($method));
+        try {
+            // Create a new XmlRpc client for each server
+            $client = new Client(sprintf("http://%s:%d/RPC2", $server->getIp(), $port));
+            $client->setUserAgent("xmlrpclib");
+            $response = $client->send(new Request($method));
 
-                if ($response->errno) {
-                    throw new \Exception($response->errstr);
-                }
-
-                $this->logger->info(sprintf("[XMLRPC] Request %s sent to %s [%s:%d]",
-                    $method, $server->getName(), $server->getIp(), $port
-                ));
-
-            } catch (\Exception $e) {
-                $this->logger->error(sprintf("[XMLRPC] Unable to send request %s to server %s [%s:%d]",
-                    $method, $server->getName(), $server->getIp(), $port
-                ));
-                return false;
+            if ($response->errno) {
+                throw new \Exception($response->errstr);
             }
+
+            $this->logger->info(sprintf(
+                "[XMLRPC] Request %s sent to %s [%s:%d]",
+                $method,
+                $server->getName(),
+                $server->getIp(),
+                $port
+            ));
+        } catch (\Exception $e) {
+            $this->logger->error(sprintf(
+                "[XMLRPC] Unable to send request %s to server %s [%s:%d]: %s",
+                $method,
+                $server->getName(),
+                $server->getIp(),
+                $port,
+                $e->getMessage()
+            ));
+            return false;
         }
         return true;
     }
-
 }

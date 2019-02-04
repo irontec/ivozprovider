@@ -91,6 +91,10 @@ mappers:
         modelFile: ConferenceRooms,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
     }
+  - &Currencies {
+        modelFile: Currencies,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Currency\\Currency'
+    }
   - &Ddis {
         modelFile: Ddis,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi'

@@ -26,6 +26,19 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
+    currency:
+      title: ngettext('Currency', 'Currencies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Currency\Currency
+          fieldName:
+            fields:
+              - name${lang}
+              - symbol
+            template: '%name${lang}% (%symbol%)'
+        'null': _("Default currency")
     transformationRuleSet:
       title: _('Numeric transformation')
       type: select
@@ -52,13 +65,13 @@ production:
           '0':
             title: _("No")
             visualFilter:
-              show: [balance, calculateCost]
+              show: [balance, calculateCost, currency]
               hide: []
           '1':
             title: _("Yes")
             visualFilter:
               show: []
-              hide: [balance, calculateCost]
+              hide: [balance, calculateCost, currency]
     calculateCost:
       title: _('Calculate cost?')
       type: select
@@ -70,11 +83,11 @@ production:
             title: _("No")
             visualFilter:
               show: []
-              hide: [balance]
+              hide: [balance, currency]
           '1':
             title: _("Yes")
             visualFilter:
-              show: [balance]
+              show: [balance, currency]
               hide: []
     balance:
       title: _('Balance')

@@ -8,6 +8,7 @@ use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 class OperationMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -41,10 +42,22 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         if ($isEntity) {
             $resourceClassSegments = explode('\\', $resourceClass);
 
-            return $this->setEntityOperationMetadata(
+            $resourceMetadata = $this->setEntityOperationMetadata(
                 $resourceMetadata,
                 $resourceClassSegments[1]
             );
+
+            $reflectionClass = new \ReflectionClass($resourceClass);
+            $resourceInstance = $reflectionClass->newInstanceWithoutConstructor();
+            if ($resourceInstance instanceof FileContainerInterface) {
+                $fileObjects = $resourceInstance->getFileObjects();
+                $resourceMetadata = $this->allowFileUpload(
+                    $resourceMetadata,
+                    $fileObjects
+                );
+            }
+
+            return $resourceMetadata;
         }
 
         $manager = $this->managerRegistry->getManagerForClass($resourceClass);
@@ -58,6 +71,46 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         }
 
         throw new ResourceClassNotFoundException($resourceClass);
+    }
+
+    private function allowFileUpload(ResourceMetadata $resourceMetadata, array $fileObjects)
+    {
+        $itemOperations = $resourceMetadata->getItemOperations();
+        $collectionOperations = $resourceMetadata->getCollectionOperations();
+
+        if (!empty($itemOperations) && isset($itemOperations['put'])) {
+            if (!isset($itemOperations['put']['swagger_context']['_parameters'])) {
+                $itemOperations['put']['swagger_context']['upload_parameters'] = [];
+            }
+            foreach ($fileObjects as $fileObject) {
+                $itemOperations['put']['swagger_context']['upload_parameters'][] = [
+                    'name' => $fileObject,
+                    'in' => 'path',
+                    'type' => 'file',
+                    'required' => false
+                ];
+            }
+
+            $resourceMetadata = $resourceMetadata->withItemOperations($itemOperations);
+        }
+
+        if (!empty($collectionOperations) && isset($collectionOperations['post'])) {
+            if (!isset($collectionOperations['post']['swagger_context']['_parameters'])) {
+                $collectionOperations['post']['swagger_context']['upload_parameters'] = [];
+            }
+            foreach ($fileObjects as $fileObject) {
+                $collectionOperations['post']['swagger_context']['upload_parameters'][] = [
+                    'name' => $fileObject,
+                    'in' => 'path',
+                    'type' => 'file',
+                    'required' => false
+                ];
+            }
+
+            $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
+        }
+
+        return $resourceMetadata;
     }
 
     /**
@@ -113,7 +166,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         $resourceMetadata = $resourceMetadata->withItemOperations($itemOperations);
 
         $collectionOperations = $resourceMetadata->getCollectionOperations();
-        $deafultCollectionOperations = [
+        $defaultCollectionOperations = [
             'get' => [
                 'method' => 'GET',
                 'normalization_context' => [
@@ -133,8 +186,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                 ]
             ]
         ];
-        $deafultCollectionOperations = array_filter(
-            $deafultCollectionOperations,
+        $defaultCollectionOperations = array_filter(
+            $defaultCollectionOperations,
             function ($key) use ($collectionOperations) {
                 return array_key_exists($key, $collectionOperations);
             },
@@ -142,7 +195,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         );
 
         $collectionOperations = array_replace_recursive(
-            $deafultCollectionOperations,
+            $defaultCollectionOperations,
             $collectionOperations
         );
         $collectionOperations = array_filter($collectionOperations, function ($value) {
@@ -150,7 +203,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         });
         $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
 
-        return $this->setOperationtags(
+        return $this->setOperationTags(
             $resourceMetadata,
             $tag ?? self::ENTITY_TAG
         );
@@ -161,7 +214,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
      * @param string $tag
      * @return ResourceMetadata
      */
-    private function setOperationtags(ResourceMetadata $resourceMetadata, string $tag): ResourceMetadata
+    private function setOperationTags(ResourceMetadata $resourceMetadata, string $tag): ResourceMetadata
     {
         $operations = [];
         foreach ($resourceMetadata->getItemOperations() as $key => $operation) {

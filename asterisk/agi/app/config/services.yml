@@ -57,6 +57,9 @@ services:
   Dialplan\Residentials:
     arguments: ~
 
+  Dialplan\Retails:
+    arguments: ~
+
   Dialplan\Friends:
     arguments: ~
 
@@ -186,23 +189,11 @@ services:
     lazy: true
     arguments: ~
 
-  Agi\Action\ExternalDdiCallAction:
+  Agi\Action\ExternalNumberAction:
     lazy: true
     arguments: ~
 
   Agi\Action\ExternalFaxCallAction:
-    lazy: true
-    arguments: ~
-
-  Agi\Action\ExternalFriendCallAction:
-    lazy: true
-    arguments: ~
-
-  Agi\Action\ExternalResidentialCallAction:
-    lazy: true
-    arguments: ~
-
-  Agi\Action\ExternalUserCallAction:
     lazy: true
     arguments: ~
 

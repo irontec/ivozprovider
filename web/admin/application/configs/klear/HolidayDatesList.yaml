@@ -14,6 +14,20 @@ production:
       class: ui-silk-calendar-view-day
       title: _("List of %s %2s", ngettext('Holiday date', 'Holiday dates', 0), "[format| (%parent%)]")
       fields:
+        blacklist:
+          numberCountry: true
+          numberValue: true
+          extension: true
+          voiceMailUser: true
+        order:
+          name: true
+          eventDate: true
+          locution: true
+          wholeDayEvent: true
+          timeIn: true
+          timeOut: true
+          routeType: true
+          target: true
         options:
           title: _("Options")
           screens:
@@ -36,12 +50,47 @@ production:
       multiInstance: true
       title: _("Add %s %2s", ngettext('Holiday date', 'Holiday dates', 1), "[format| (%parent%)]")
       shortcutOption: N
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields:
+        blacklist:
+          target: true
+      fixedPositions: &holidayDates_fixedPosLink
+        group0:
+          colsPerRow: 2
+          fields:
+            name: 1
+            locution: 1
+        group1:
+          colsPerRow: 2
+          fields:
+            eventDate: 1
+            wholeDayEvent: 1
+            timeIn: 1
+            timeOut: 1
+        group2:
+          colsPerRow: 7
+          fields:
+            routeType: 4
+            numberCountry: 4
+            numberValue: 3
+            extension: 3
+            voiceMailUser: 3
     holidayDatesEdit_screen: &holidayDatesEdit_screenLink
       <<: *HolidayDates
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Holiday date', 'Holiday dates', 1), "[format| (%item%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields:
+        readOnly:
+          calendar: true
+        blacklist:
+          target: true
+      fixedPositions:
+        <<: *holidayDates_fixedPosLink
   dialogs: &holidayDates_dialogsLink
     holidayDatesDel_dialog: &holidayDatesDel_dialogLink
       <<: *HolidayDates

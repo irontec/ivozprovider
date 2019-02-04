@@ -43,20 +43,31 @@ trait RoutingPatternGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RoutingPatternGroupDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getRelPatterns()) {
-            $self->replaceRelPatterns($dto->getRelPatterns());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelPatterns())) {
+            $self->replaceRelPatterns(
+                $fkTransformer->transformCollection(
+                    $dto->getRelPatterns()
+                )
+            );
         }
 
-        if ($dto->getOutgoingRoutings()) {
-            $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+        if (!is_null($dto->getOutgoingRoutings())) {
+            $self->replaceOutgoingRoutings(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutings()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -69,19 +80,30 @@ trait RoutingPatternGroupTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RoutingPatternGroupDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getRelPatterns()) {
-            $this->replaceRelPatterns($dto->getRelPatterns());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelPatterns())) {
+            $this->replaceRelPatterns(
+                $fkTransformer->transformCollection(
+                    $dto->getRelPatterns()
+                )
+            );
         }
-        if ($dto->getOutgoingRoutings()) {
-            $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+        if (!is_null($dto->getOutgoingRoutings())) {
+            $this->replaceOutgoingRoutings(
+                $fkTransformer->transformCollection(
+                    $dto->getOutgoingRoutings()
+                )
+            );
         }
         return $this;
     }

@@ -4,6 +4,7 @@ namespace EntityGeneratorBundle\Tools;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Tools\EntityGenerator as ParentGenerator;
+
 /**
  * Description of EntityGenerator
  * @codeCoverageIgnore
@@ -15,7 +16,7 @@ class EntityGenerator extends ParentGenerator
     protected $codeCoverageIgnoreBlock = false;
 
     protected static $bodyTemplate =
-'use <className>Trait;
+    'use <className>Trait;
 
 /**
  * @codeCoverageIgnore

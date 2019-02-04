@@ -147,8 +147,10 @@ abstract class TpRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpRateDto
          */
@@ -166,7 +168,7 @@ abstract class TpRateAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setDestinationRate($dto->getDestinationRate())
+            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()))
         ;
 
         $self->sanitizeValues();
@@ -180,8 +182,10 @@ abstract class TpRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpRateDto
          */
@@ -196,7 +200,7 @@ abstract class TpRateAbstract
             ->setRateIncrement($dto->getRateIncrement())
             ->setGroupIntervalStart($dto->getGroupIntervalStart())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($dto->getDestinationRate());
+            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
 
 
 
@@ -461,7 +465,7 @@ abstract class TpRateAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

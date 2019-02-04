@@ -27,30 +27,4 @@ class TpAccountAction extends TpAccountActionAbstract implements TpAccountAction
     {
         return parent::getChangeSet();
     }
-
-    /**
-     * @TODO Optional oneToOne
-     *
-     * @inheritdoc
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
-    {
-        if (!is_null($company)) {
-            parent::setCompany($company);
-        }
-        return $this;
-    }
-
-    /**
-     * @TODO Optional oneToOne
-     *
-     * @inheritdoc
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
-    {
-        if (!is_null($carrier)) {
-            parent::setCarrier($carrier);
-        }
-        return $this;
-    }
 }

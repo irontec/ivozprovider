@@ -49,6 +49,7 @@ production:
         blacklist:
           externallyRated: true
           calculateCost: true
+          currency: true
           billingMethod: true
       options:
         title: _("Options")
@@ -72,6 +73,8 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          calculateCos: ${auth.brandFeatures.billing.disabled}
+          currency: ${auth.brandFeatures.billing.disabled}
           balance: true
           acd: true
           asr: true
@@ -89,6 +92,7 @@ production:
             transformationRuleSet: 3
             externallyRated: 3
             calculateCost: 3
+            currency: 3
         group2:
           label: _("Quality measuring")
           colsPerRow: 2
@@ -109,6 +113,8 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          calculateCost: ${auth.brandFeatures.billing.disabled}
+          currency: ${auth.brandFeatures.billing.disabled}
           balance: true
       fixedPositions:
         <<: *carriersNew_fixedPositionsLink

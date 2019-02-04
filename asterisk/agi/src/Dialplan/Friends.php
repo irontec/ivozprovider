@@ -4,10 +4,13 @@ namespace Dialplan;
 
 use Agi\Action\ExtensionAction;
 use Agi\Action\ExternalFriendCallAction;
+use Agi\Action\ExternalNumberAction;
 use Agi\Action\FriendCallAction;
+use Agi\Agents\FriendAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use RouteHandlerAbstract;
 
 class Friends extends RouteHandlerAbstract
@@ -38,9 +41,9 @@ class Friends extends RouteHandlerAbstract
     protected $friendCallAction;
 
     /**
-     * @var ExternalFriendCallAction
+     * @var ExternalNumberAction
      */
-    protected $externalFriendCallAction;
+    protected $externalNumberAction;
 
     /**
      * Friends constructor.
@@ -50,7 +53,7 @@ class Friends extends RouteHandlerAbstract
      * @param EndpointResolver $endpointResolver
      * @param ExtensionAction $extensionAction
      * @param FriendCallAction $friendCallAction
-     * @param ExternalFriendCallAction $externalFriendCallAction
+     * @param ExternalNumberAction $externalNumberAction
      */
     public function __construct(
         Wrapper $agi,
@@ -58,15 +61,14 @@ class Friends extends RouteHandlerAbstract
         EndpointResolver $endpointResolver,
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
-        ExternalFriendCallAction $externalFriendCallAction
-    )
-    {
+        ExternalNumberAction $externalNumberAction
+    ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
         $this->extensionAction = $extensionAction;
         $this->friendCallAction = $friendCallAction;
-        $this->externalFriendCallAction = $externalFriendCallAction;
+        $this->externalNumberAction = $externalNumberAction;
     }
 
 
@@ -95,28 +97,34 @@ class Friends extends RouteHandlerAbstract
         $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set user language and music
-        $this->agi->setVariable("CHANNEL(language)",   $friend->getLanguageCode());
+        $this->agi->setVariable("CHANNEL(language)", $friend->getLanguageCode());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Set Friend as the caller
-        $this->channelInfo->setChannelCaller($friend);
-        $this->channelInfo->setChannelOrigin($friend);
+        $caller = new FriendAgent($this->agi, $friend);
+        $this->channelInfo->setChannelCaller($caller);
+
+        // If this call is not being forwarded, residential is also the origin
+        if ($this->agi->getRedirecting('count') == 0) {
+            $this->channelInfo->setChannelOrigin($caller);
+        }
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $friend, $exten);
 
         // Check if this is an extension call
         if (($dstExtension = $company->getExtension($exten))) {
-
-            $this->agi->verbose("Number %s belongs to a Company Extension [extension%d].",
-                $exten, $dstExtension->getId());
+            $this->agi->verbose(
+                "Number %s belongs to a Company Extension [extension%d].",
+                $exten,
+                $dstExtension->getId()
+            );
 
             // Handle extension
             $this->extensionAction
                 ->setExtension($dstExtension)
                 ->process();
-
-        } else if (($outfriend = $company->getFriend($exten))) {
+        } elseif (($outfriend = $company->getFriend($exten))) {
             $this->agi->verbose("Number %s is handled by friendly trunk.", $exten);
 
             // Handle call through friendly trunk
@@ -124,19 +132,24 @@ class Friends extends RouteHandlerAbstract
                 ->setFriend($outfriend)
                 ->setDestination($exten)
                 ->process();
-
         } else {
             // This number don't belong to IvozProvider
             $this->agi->verbose("Number %s is handled as external number.", $exten);
 
+            if (!$caller->isAllowedToCall($exten)) {
+                $this->agi->error("%s is not allowed to call %s", $caller, $exten);
+                // Play error notification over progress
+                if ($company->hasFeature(Feature::PROGRESS)) {
+                    $this->agi->progress("ivozprovider/notAllowed");
+                }
+                $this->agi->decline();
+                return;
+            }
+
             // Otherwise, handle this call as external
-            $this->externalFriendCallAction
-                ->setFriend($friend)
+            $this->externalNumberAction
                 ->setDestination($exten)
                 ->process();
-
         }
     }
-
-
 }

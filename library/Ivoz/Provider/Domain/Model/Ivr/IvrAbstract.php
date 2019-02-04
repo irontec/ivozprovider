@@ -187,8 +187,10 @@ abstract class IvrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrDto
          */
@@ -206,17 +208,17 @@ abstract class IvrAbstract
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
             ->setErrorNumberValue($dto->getErrorNumberValue())
-            ->setCompany($dto->getCompany())
-            ->setWelcomeLocution($dto->getWelcomeLocution())
-            ->setNoInputLocution($dto->getNoInputLocution())
-            ->setErrorLocution($dto->getErrorLocution())
-            ->setSuccessLocution($dto->getSuccessLocution())
-            ->setNoInputExtension($dto->getNoInputExtension())
-            ->setErrorExtension($dto->getErrorExtension())
-            ->setNoInputVoiceMailUser($dto->getNoInputVoiceMailUser())
-            ->setErrorVoiceMailUser($dto->getErrorVoiceMailUser())
-            ->setNoInputNumberCountry($dto->getNoInputNumberCountry())
-            ->setErrorNumberCountry($dto->getErrorNumberCountry())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
+            ->setNoInputLocution($fkTransformer->transform($dto->getNoInputLocution()))
+            ->setErrorLocution($fkTransformer->transform($dto->getErrorLocution()))
+            ->setSuccessLocution($fkTransformer->transform($dto->getSuccessLocution()))
+            ->setNoInputExtension($fkTransformer->transform($dto->getNoInputExtension()))
+            ->setErrorExtension($fkTransformer->transform($dto->getErrorExtension()))
+            ->setNoInputVoiceMailUser($fkTransformer->transform($dto->getNoInputVoiceMailUser()))
+            ->setErrorVoiceMailUser($fkTransformer->transform($dto->getErrorVoiceMailUser()))
+            ->setNoInputNumberCountry($fkTransformer->transform($dto->getNoInputNumberCountry()))
+            ->setErrorNumberCountry($fkTransformer->transform($dto->getErrorNumberCountry()))
         ;
 
         $self->sanitizeValues();
@@ -230,8 +232,10 @@ abstract class IvrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrDto
          */
@@ -246,17 +250,17 @@ abstract class IvrAbstract
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
             ->setErrorNumberValue($dto->getErrorNumberValue())
-            ->setCompany($dto->getCompany())
-            ->setWelcomeLocution($dto->getWelcomeLocution())
-            ->setNoInputLocution($dto->getNoInputLocution())
-            ->setErrorLocution($dto->getErrorLocution())
-            ->setSuccessLocution($dto->getSuccessLocution())
-            ->setNoInputExtension($dto->getNoInputExtension())
-            ->setErrorExtension($dto->getErrorExtension())
-            ->setNoInputVoiceMailUser($dto->getNoInputVoiceMailUser())
-            ->setErrorVoiceMailUser($dto->getErrorVoiceMailUser())
-            ->setNoInputNumberCountry($dto->getNoInputNumberCountry())
-            ->setErrorNumberCountry($dto->getErrorNumberCountry());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
+            ->setNoInputLocution($fkTransformer->transform($dto->getNoInputLocution()))
+            ->setErrorLocution($fkTransformer->transform($dto->getErrorLocution()))
+            ->setSuccessLocution($fkTransformer->transform($dto->getSuccessLocution()))
+            ->setNoInputExtension($fkTransformer->transform($dto->getNoInputExtension()))
+            ->setErrorExtension($fkTransformer->transform($dto->getErrorExtension()))
+            ->setNoInputVoiceMailUser($fkTransformer->transform($dto->getNoInputVoiceMailUser()))
+            ->setErrorVoiceMailUser($fkTransformer->transform($dto->getErrorVoiceMailUser()))
+            ->setNoInputNumberCountry($fkTransformer->transform($dto->getNoInputNumberCountry()))
+            ->setErrorNumberCountry($fkTransformer->transform($dto->getErrorNumberCountry()));
 
 
 

@@ -14,7 +14,7 @@ They just provide a SIP trunking service that include these features:
 - **Receive external calls** to their DDIs.
 - Record calls.
 
-.. warning:: No users, no extensions, no internal calls, no hunt groups, no IVRs, no voicemail, no call forwards...
+.. warning:: No users, no extensions, no internal calls, no hunt groups, no IVRs, no voicemail...
              just **incoming and outgoing external calls**.
 
 .. error:: Retail clients and their accounts **MUST use Brand's SIP domain in their SIP messages**.
@@ -27,13 +27,9 @@ any application server**.
 
 As a result:
 
-- No call forwarding features for retail accounts will be allowed.
-
 - No virtual faxing service for retail clients.
 
 - No voicemail service for retail clients.
-
-- Mandatory call recording for every retail client call.
 
 But they also have benefits that make them ideal for some situations:
 
@@ -47,7 +43,7 @@ But they also have benefits that make them ideal for some situations:
              Retail clients, on the other hand, can talk in the codecs they offer in their SDP and in the
              codecs selected in IvozProvider: IvozProvider will make transcoding when necessary.
 
-.. tip:: Use retail client type unless you need any of the services provided by application servers (fax, call forward or voicemails).
+.. tip:: Use retail client type unless you need any of the services provided by application servers (fax or voicemails).
 
 Adding/Editing retail clients
 -----------------------------
@@ -73,6 +69,10 @@ These are the fields shown when **adding** a new retail client:
 
     Default timezone
         Used for showing call registries dates.
+
+    Currency
+        Chosen currency will be used in price calculation, invoices, balance movements and
+        remaining money operations of this client.
 
     Numeric transformation
         Describes the way the client will "talk" and the way the client wants to be "talked".

@@ -65,7 +65,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
          */
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
             (!is_object($this->_mainRouter)) ) {
-            throw New Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+            throw new Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
         $this->_item    = $this->_mainRouter->getCurrentItem();
@@ -225,7 +225,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
 
         $lineLength = count($lines[0]);
         $availableFieldsKeys = array_keys($this->_availableFields);
-        for ($i = 0; $i < $lineLength; $i ++){
+        for ($i = 0; $i < $lineLength; $i ++) {
             $optionValue = $this->getRequest()->getParam('field_'.$i, null);
 
             $tmp = '<select name="field_'.$i.'" class="notcombo visualFilter ui-widget ui-state-default ui-corner-all ui-state-valid">';
@@ -262,7 +262,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         $table.= "</tr>";
         foreach ($lines as $line) {
             $table.= "<tr>";
-            foreach ($line as $idPart=>$part) {
+            foreach ($line as $idPart => $part) {
                 $table.="<td class='ui-widget-content'>" . $part . "</td>";
             }
             $table.= "</tr>";
@@ -403,7 +403,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         $lines = $this->_parseFile($filePath, 1);
         $fileFields = count($lines[0]);
         $fieldsPossitions = array();
-        for($i = 0; $i < $fileFields; $i++) {
+        for ($i = 0; $i < $fileFields; $i++) {
             $fieldName = $this->getRequest()->getParam('field_'.$i);
             $fieldsPossitions[$fieldName] = $i;
         }
@@ -463,5 +463,4 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         }
         $this->_helper->log($message, $priority);
     }
-
 }

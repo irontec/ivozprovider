@@ -31,7 +31,7 @@ class CallHistoryAction
      */
     protected $collectionExtensions;
 
-    public function __construct (
+    public function __construct(
         TokenStorage $tokenStorage,
         UsersCdrRepository $usersCdrRepository,
         CollectionExtensionList $collectionExtensions

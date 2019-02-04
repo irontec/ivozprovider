@@ -50,7 +50,6 @@ class MetadataFactory extends DisconnectedMetadataFactory
             $cmf->setEntityManager($em);
 
             if (!$cmf->isTransient($entity)) {
-
                 if ($disconnectedClassMetadata) {
                     $disconnectedCmf = new DisconnectedClassMetadataFactory();
                     $disconnectedCmf->setEntityManager($em);
@@ -107,7 +106,6 @@ class MetadataFactory extends DisconnectedMetadataFactory
         $metadata = array();
 
         if ($disconnectedClassMetadata) {
-
             $disconnectedCmf = new DisconnectedClassMetadataFactory();
             foreach ($this->registry->getManagers() as $em) {
                 $disconnectedCmf->setEntityManager($em);
@@ -115,9 +113,7 @@ class MetadataFactory extends DisconnectedMetadataFactory
                     $metadata[] = $m;
                 }
             }
-
         } else {
-
             $cmf = new ClassMetadataFactory();
             foreach ($this->registry->getManagers() as $em) {
                 $cmf->setEntityManager($em);

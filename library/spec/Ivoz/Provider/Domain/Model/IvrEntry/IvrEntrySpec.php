@@ -32,7 +32,7 @@ class IvrEntrySpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto]
+            [$dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -60,7 +60,10 @@ class IvrEntrySpec extends ObjectBehavior
             ]
         );
 
-        $this->updateFromDto($dto);
+        $this->updateFromDto(
+            $dto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
 
         $this
             ->getExtension()

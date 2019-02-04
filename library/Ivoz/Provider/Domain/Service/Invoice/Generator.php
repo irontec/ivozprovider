@@ -117,19 +117,23 @@ class Generator
         $invoiceTz = new \DateTimeZone(
             $company->getDefaultTimezone()->getTz()
         );
+
+        $currencySymbol = $company->getCurrencySymbol();
+
         $invoiceDate = new \DateTime();
         $invoiceDate->setTimezone($invoiceTz);
 
-        $inDate = clone $invoice->getInDate();
+        $inDate = $invoice->getInDate();
         $inDate->setTimezone($invoiceTz);
 
-        $outDate = clone $invoice->getOutDate();
+        $outDate = $invoice->getOutDate();
         $outDate->setTimezone($invoiceTz);
 
         $invoiceDto = $this->entityTools->entityToDto($invoice);
 
         $invoiceArray = $invoiceDto->toArray();
         $invoiceArray['invoiceDate'] = $invoiceDate->format(self::DATE_FORMAT);
+        $invoiceArray['currency'] = $currencySymbol;
         $invoiceArray['inDate'] = $inDate->format(self::DATE_FORMAT);
         $invoiceArray['outDate'] = $outDate->format(self::DATE_FORMAT);
         $brandArray = $brandDto->toArray();
@@ -183,10 +187,12 @@ class Generator
         );
         $utcTz = new \DateTimeZone('UTC');
 
-        $inDate = clone $invoice->getInDate();
+        $currencySymbol = $company->getCurrencySymbol();
+
+        $inDate = $invoice->getInDate();
         $utcInDate = $inDate->setTimezone($utcTz);
 
-        $outDate = clone $invoice->getOutDate();
+        $outDate = $invoice->getOutDate();
         $utcOutDate = $outDate->setTimezone($utcTz);
 
         $callsPerType = [];
@@ -195,7 +201,7 @@ class Generator
             'numberOfCalls' => 0,
             'totalCallsDuration' => 0,
             'totalCallsDurationFormatted' => $this->_timeFormat(0),
-            'totalPrice' => 0
+            'totalPrice' => 0,
         ];
         $inboundCalls = [];
 
@@ -241,6 +247,8 @@ class Generator
                     $call->getPrice()
                 );
 
+                $callData['currency'] = $currencySymbol;
+
                 $callData['dst_duration_formatted'] = $this->_timeFormat(
                     $call->getDuration()
                 );
@@ -270,7 +278,6 @@ class Generator
 
                     $callData['targetPattern'] = $destinationDto->toArray();
                     $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();
-                    ;
                     $callData['targetPattern']['description'] = $destination->getName()->{'get' . $lang}();
                 } else {
                     $callData['targetPattern']['name'] = $call->getDestinationName();
@@ -288,7 +295,8 @@ class Generator
                         'type' => $callData['targetPattern']['name'],
                         'numberOfCalls' => 0,
                         'totalCallsDuration' => 0,
-                        'totalPrice' => 0
+                        'totalPrice' => 0,
+                        'currency' => $currencySymbol
                     ];
                 }
 
@@ -414,6 +422,8 @@ class Generator
         $this->fixedCostTotal = 0;
         $fixedCostsRelInvoices = $invoice->getRelFixedCosts();
 
+        $currencySymbol = $invoice->getCompany()->getCurrencySymbol();
+
         foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
             $quantity = $fixedCostsRelInvoice->getQuantity();
@@ -423,7 +433,8 @@ class Generator
                 'name' => $fixedCostsRelInvoice->getFixedCost()->getName(),
                 'description' => $fixedCostsRelInvoice->getFixedCost()->getDescription(),
                 'cost' => $this->roundAndFormat($cost),
-                'subTotal' => $this->roundAndFormat($subTotal)
+                'subTotal' => $this->roundAndFormat($subTotal),
+                'currency' => $currencySymbol
             );
             $this->fixedCostTotal += $this->roundAndFormat($subTotal);
         }

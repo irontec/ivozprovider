@@ -169,4 +169,31 @@ class EndpointResolver
         return $residential;
     }
 
+    /**
+     * @param $endpointName
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @throws \Assert\AssertionFailedException
+     */
+    public function getRetailFromEndpoint($endpointName)
+    {
+        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
+        $endpoint = $this->getEndpointFromName($endpointName);
+
+        Assertion::notNull(
+            $endpoint,
+            sprintf('No endpoint found for "%s".', $endpointName)
+        );
+
+        file_put_contents('/tmp/farsa', var_export($endpoint, true));
+
+        /** @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount */
+        $retailAccount = $endpoint->getRetailAccount();
+
+        Assertion::notNull(
+            $retailAccount,
+            sprintf('Endpoint "%s" has no retail account associated.', $endpointName)
+        );
+
+        return $retailAccount;
+    }
 }

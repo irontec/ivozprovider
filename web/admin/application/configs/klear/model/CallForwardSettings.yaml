@@ -47,6 +47,7 @@ production:
       required: true
       source:
         data: inline
+        filterClass: IvozProvider_Klear_Filter_CallForwardTypes
         values:
           'inconditional':
             title: _('Inconditional')

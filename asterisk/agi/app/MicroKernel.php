@@ -60,6 +60,7 @@ class MicroKernel extends Kernel
         $routes->add('/dialplan/userstatus', 'kernel:handleRequestAction');
         $routes->add('/dialplan/trunks', 'kernel:handleRequestAction');
         $routes->add('/dialplan/residentials', 'kernel:handleRequestAction');
+        $routes->add('/dialplan/retails', 'kernel:handleRequestAction');
         $routes->add('/dialplan/residentialstatus', 'kernel:handleRequestAction');
         $routes->add('/dialplan/friends', 'kernel:handleRequestAction');
         $routes->add('/dialplan/headers', 'kernel:handleRequestAction');
@@ -88,9 +89,13 @@ class MicroKernel extends Kernel
 
         $this->registerCommand($uri);
 
-        /** @var \Dialplan\RouteHandlerAbstract $routeHandler */
-        $routeHandler = $this->container->get($uri);
-        $routeHandler->process();
+        try {
+            /** @var \Dialplan\RouteHandlerAbstract $routeHandler */
+            $routeHandler = $this->container->get($uri);
+            $routeHandler->process();
+        } catch (\Exception $e) {
+            $this->fastagi->error($e->getMessage());
+        }
 
         return new Response('');
     }
@@ -125,4 +130,3 @@ class MicroKernel extends Kernel
         return __DIR__.'/../var/logs';
     }
 }
-

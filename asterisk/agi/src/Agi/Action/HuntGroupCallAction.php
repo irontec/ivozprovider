@@ -24,8 +24,7 @@ class HuntGroupCallAction
      */
     public function __construct(
         Wrapper $agi
-    )
-    {
+    ) {
         $this->agi = $agi;
     }
 
@@ -75,5 +74,4 @@ class HuntGroupCallAction
         $this->agi->setVariable("DIAL_TIMEOUT", $timeout);
         $this->agi->setVariable("DIAL_OPTS", $options);
     }
-
 }

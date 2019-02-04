@@ -116,8 +116,10 @@ abstract class TrunksLcrRuleTargetAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksLcrRuleTargetDto
          */
@@ -130,9 +132,9 @@ abstract class TrunksLcrRuleTargetAbstract
         );
 
         $self
-            ->setRule($dto->getRule())
-            ->setGw($dto->getGw())
-            ->setOutgoingRouting($dto->getOutgoingRouting())
+            ->setRule($fkTransformer->transform($dto->getRule()))
+            ->setGw($fkTransformer->transform($dto->getGw()))
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
         $self->sanitizeValues();
@@ -146,8 +148,10 @@ abstract class TrunksLcrRuleTargetAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TrunksLcrRuleTargetDto
          */
@@ -157,9 +161,9 @@ abstract class TrunksLcrRuleTargetAbstract
             ->setLcrId($dto->getLcrId())
             ->setPriority($dto->getPriority())
             ->setWeight($dto->getWeight())
-            ->setRule($dto->getRule())
-            ->setGw($dto->getGw())
-            ->setOutgoingRouting($dto->getOutgoingRouting());
+            ->setRule($fkTransformer->transform($dto->getRule()))
+            ->setGw($fkTransformer->transform($dto->getGw()))
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
 
 
 

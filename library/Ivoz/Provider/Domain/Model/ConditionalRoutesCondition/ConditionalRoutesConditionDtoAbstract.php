@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -169,86 +167,6 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             'relCalendars' => $this->getRelCalendars(),
             'relRouteLocks' => $this->getRelRouteLocks()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->conditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getConditionalRouteId());
-        $this->ivr = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr', $this->getIvrId());
-        $this->huntGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup', $this->getHuntGroupId());
-        $this->voicemailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getVoicemailUserId());
-        $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
-        $this->queue = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Queue\\Queue', $this->getQueueId());
-        $this->locution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getLocutionId());
-        $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
-        $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
-        $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
-        if (!is_null($this->relMatchlists)) {
-            $items = $this->getRelMatchlists();
-            $this->relMatchlists = [];
-            foreach ($items as $item) {
-                $this->relMatchlists[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relSchedules)) {
-            $items = $this->getRelSchedules();
-            $this->relSchedules = [];
-            foreach ($items as $item) {
-                $this->relSchedules[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relCalendars)) {
-            $items = $this->getRelCalendars();
-            $this->relCalendars = [];
-            foreach ($items as $item) {
-                $this->relCalendars[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relRouteLocks)) {
-            $items = $this->getRelRouteLocks();
-            $this->relRouteLocks = [];
-            foreach ($items as $item) {
-                $this->relRouteLocks[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelRouteLock\\ConditionalRoutesConditionsRelRouteLock',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->relMatchlists = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',
-            $this->relMatchlists
-        );
-        $this->relSchedules = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',
-            $this->relSchedules
-        );
-        $this->relCalendars = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
-            $this->relCalendars
-        );
-        $this->relRouteLocks = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelRouteLock\\ConditionalRoutesConditionsRelRouteLock',
-            $this->relRouteLocks
-        );
     }
 
     /**

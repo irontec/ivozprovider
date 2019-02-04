@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -88,9 +86,19 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdi;
 
     /**
+     * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
+     */
+    private $psEndpoints = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto[] | null
      */
     private $ddis = null;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto[] | null
+     */
+    private $callForwardSettings = null;
 
 
     use DtoNormalizer;
@@ -149,41 +157,10 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
-            'ddis' => $this->getDdis()
+            'psEndpoints' => $this->getPsEndpoints(),
+            'ddis' => $this->getDdis(),
+            'callForwardSettings' => $this->getCallForwardSettings()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
-        if (!is_null($this->ddis)) {
-            $items = $this->getDdis();
-            $this->ddis = [];
-            foreach ($items as $item) {
-                $this->ddis[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->ddis = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-            $this->ddis
-        );
     }
 
     /**
@@ -617,6 +594,26 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param array $psEndpoints
+     *
+     * @return static
+     */
+    public function setPsEndpoints($psEndpoints = null)
+    {
+        $this->psEndpoints = $psEndpoints;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPsEndpoints()
+    {
+        return $this->psEndpoints;
+    }
+
+    /**
      * @param array $ddis
      *
      * @return static
@@ -634,5 +631,25 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getDdis()
     {
         return $this->ddis;
+    }
+
+    /**
+     * @param array $callForwardSettings
+     *
+     * @return static
+     */
+    public function setCallForwardSettings($callForwardSettings = null)
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCallForwardSettings()
+    {
+        return $this->callForwardSettings;
     }
 }

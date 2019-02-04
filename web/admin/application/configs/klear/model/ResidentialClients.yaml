@@ -47,6 +47,19 @@ production:
             template: '%tz%'
           order:
             Timezone.tz: asc
+    currency:
+      title: ngettext('Currency', 'Currencies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Currency\Currency
+          fieldName:
+            fields:
+              - name${lang}
+              - symbol
+            template: '%name${lang}% (%symbol%)'
+        'null': _("Default currency")
     distributeMethod:
       title: _('Distribute method')
       type: select
@@ -238,10 +251,10 @@ production:
               show: []
               hide: ["onDemandRecordCode"]
           '1':
-            title: _("Using BXFER or INFO")
+            title: _("Using INFO")
             visualFilter:
-              show: ["onDemandRecordCode"]
-              hide: []
+              show: []
+              hide: ["onDemandRecordCode"]
           '2':
             title: _("Using DTMFs (read WARNING)")
             visualFilter:

@@ -46,6 +46,19 @@ production:
             template: '%tz%'
           order:
             Timezone.tz: asc
+    currency:
+      title: ngettext('Currency', 'Currencies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Currency\Currency
+          fieldName:
+            fields:
+              - name${lang}
+              - symbol
+            template: '%name${lang}% (%symbol%)'
     logo:
       title: _('Logo')
       type: file

@@ -122,8 +122,10 @@ abstract class RtpengineAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RtpengineDto
          */
@@ -139,7 +141,7 @@ abstract class RtpengineAbstract
 
         $self
             ->setDescription($dto->getDescription())
-            ->setMediaRelaySet($dto->getMediaRelaySet())
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()))
         ;
 
         $self->sanitizeValues();
@@ -153,8 +155,10 @@ abstract class RtpengineAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RtpengineDto
          */
@@ -167,7 +171,7 @@ abstract class RtpengineAbstract
             ->setDisabled($dto->getDisabled())
             ->setStamp($dto->getStamp())
             ->setDescription($dto->getDescription())
-            ->setMediaRelaySet($dto->getMediaRelaySet());
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
 
 
@@ -345,7 +349,7 @@ abstract class RtpengineAbstract
      */
     public function getStamp()
     {
-        return $this->stamp;
+        return clone $this->stamp;
     }
 
     /**

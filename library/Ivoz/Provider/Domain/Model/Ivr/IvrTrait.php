@@ -43,20 +43,31 @@ trait IvrTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getEntries()) {
-            $self->replaceEntries($dto->getEntries());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getEntries())) {
+            $self->replaceEntries(
+                $fkTransformer->transformCollection(
+                    $dto->getEntries()
+                )
+            );
         }
 
-        if ($dto->getExcludedExtensions()) {
-            $self->replaceExcludedExtensions($dto->getExcludedExtensions());
+        if (!is_null($dto->getExcludedExtensions())) {
+            $self->replaceExcludedExtensions(
+                $fkTransformer->transformCollection(
+                    $dto->getExcludedExtensions()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -69,19 +80,30 @@ trait IvrTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto IvrDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getEntries()) {
-            $this->replaceEntries($dto->getEntries());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getEntries())) {
+            $this->replaceEntries(
+                $fkTransformer->transformCollection(
+                    $dto->getEntries()
+                )
+            );
         }
-        if ($dto->getExcludedExtensions()) {
-            $this->replaceExcludedExtensions($dto->getExcludedExtensions());
+        if (!is_null($dto->getExcludedExtensions())) {
+            $this->replaceExcludedExtensions(
+                $fkTransformer->transformCollection(
+                    $dto->getExcludedExtensions()
+                )
+            );
         }
         return $this;
     }

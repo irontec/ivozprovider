@@ -6,7 +6,6 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
-use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
@@ -65,7 +64,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         /**
          * @var \Datetime $outDate
          */
-        $outDate = clone $invoice->getOutDate();
+        $outDate = $invoice->getOutDate();
         $utcOutDate = $outDate->setTimezone($utcTz);
 
         $this->assertNoFutureDates($invoiceTz, $inDate, $outDate);
@@ -95,7 +94,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
-     * @param $utcOutDate
+     * @param \DateTime $utcOutDate
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException

@@ -74,7 +74,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_finds_unmeteredCalls()
+    public function it_finds_unparsedCalls()
     {
         /** @var TrunksCdrRepository $repository */
         $repository = $this
@@ -82,7 +82,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
             ->getRepository(TrunksCdr::class);
 
         $result = $repository
-            ->getUnmeteredCallsGeneratorWithoutOffset(1000);
+            ->getUnparsedCallsGeneratorWithoutOffset(1000);
 
         $this->assertInstanceOf(
             \Generator::class,
@@ -100,7 +100,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_resets_metered_calls()
+    public function it_resets_parsed_calls()
     {
         /** @var TrunksCdrRepository $repository */
         $repository = $this
@@ -108,10 +108,8 @@ class TrunksCdrRepositoryTest extends KernelTestCase
             ->getRepository(TrunksCdr::class);
 
         $result = $repository
-            ->resetMetered([1,2,3]);
+            ->resetParsed([1,2,3]);
 
         $this->assertNotEmpty($result);
     }
-
-
 }

@@ -255,16 +255,17 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
                     $receivedSrc = $matches['domain'];
                 }
 
-                $registerStatus .= sprintf('
+                $registerStatus .= sprintf(
+                    '
                             <tr>
                                 <td><span class="ui-silk inline ui-silk-tick" title="Registered until %s"/> %s </td>
                                 <td><span class="ui-silk inline ui-silk-telephone" title="Contact Address" /> %s</td>
                                 <td><span class="ui-silk inline ui-silk-world" title="Received Address" /> %s</td>
                             </tr>',
-                        $location->getExpires()->format("Y-m-d H:i:s"),
-                        $location->getUserAgent(),
-                        $contactSrc,
-                        $receivedSrc
+                    $location->getExpires()->format("Y-m-d H:i:s"),
+                    $location->getUserAgent(),
+                    $contactSrc,
+                    $receivedSrc
                 );
             }
 

@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -68,6 +66,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     private $brand;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto[] | null
      */
     private $destinationRates = null;
@@ -95,7 +98,8 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
             'name' => ['en','es'],
             'description' => ['en','es'],
             'file' => ['fileSize','mimeType','baseName','importerArguments'],
-            'brandId' => 'brand'
+            'brandId' => 'brand',
+            'currencyId' => 'currency'
         ];
     }
 
@@ -122,37 +126,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
                 'importerArguments' => $this->getFileImporterArguments()
             ],
             'brand' => $this->getBrand(),
+            'currency' => $this->getCurrency(),
             'destinationRates' => $this->getDestinationRates()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->destinationRates)) {
-            $items = $this->getDestinationRates();
-            $this->destinationRates = [];
-            foreach ($items as $item) {
-                $this->destinationRates[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->destinationRates = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate',
-            $this->destinationRates
-        );
     }
 
     /**
@@ -395,6 +371,52 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

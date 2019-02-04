@@ -69,6 +69,10 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
+        CurrenciesList:
+          title: ngettext('Currency', 'Currencies', 0)
+          class: ui-silk-money-pound
+          description: _("List of %s", ngettext('Currency', 'Currencies', 0))
         DefaultNotificationTemplatesList:
           title: ngettext('Default notification template', 'Default notification templates', 0)
           class: ui-silk-email
@@ -442,11 +446,6 @@ production:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule
               description: _("List of %s", ngettext('Call CSV scheduler', 'Call CSV schedulers', 0))
-            RetailRecordingsList:
-              showOnlyIf: ${auth.companyRetail}
-              title: ngettext('Call recording', 'Call recordings', 0)
-              class: ui-silk-application-view-list-record
-              description: _("List of %s", ngettext('Recording', 'Recordings', 0))
             RecordingsList:
               showOnlyIf: ${auth.companyFeatures.recordings.enabled}
               title: ngettext('Call recording', 'Call recordings', 0)

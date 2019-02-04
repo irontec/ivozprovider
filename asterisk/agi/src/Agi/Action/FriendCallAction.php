@@ -5,7 +5,6 @@ namespace Agi\Action;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 
-
 class FriendCallAction
 {
     /**
@@ -83,5 +82,4 @@ class FriendCallAction
         // Redirect to the calling dialplan context
         $this->agi->redirect('call-friend', $number);
     }
-
 }

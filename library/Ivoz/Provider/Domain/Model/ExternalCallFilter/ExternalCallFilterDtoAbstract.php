@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -176,86 +174,6 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
             'whiteLists' => $this->getWhiteLists(),
             'schedules' => $this->getSchedules()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->welcomeLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getWelcomeLocutionId());
-        $this->holidayLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getHolidayLocutionId());
-        $this->outOfScheduleLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getOutOfScheduleLocutionId());
-        $this->holidayExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getHolidayExtensionId());
-        $this->outOfScheduleExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getOutOfScheduleExtensionId());
-        $this->holidayVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getHolidayVoiceMailUserId());
-        $this->outOfScheduleVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getOutOfScheduleVoiceMailUserId());
-        $this->holidayNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getHolidayNumberCountryId());
-        $this->outOfScheduleNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getOutOfScheduleNumberCountryId());
-        if (!is_null($this->calendars)) {
-            $items = $this->getCalendars();
-            $this->calendars = [];
-            foreach ($items as $item) {
-                $this->calendars[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterRelCalendar\\ExternalCallFilterRelCalendar',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->blackLists)) {
-            $items = $this->getBlackLists();
-            $this->blackLists = [];
-            foreach ($items as $item) {
-                $this->blackLists[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterBlackList\\ExternalCallFilterBlackList',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->whiteLists)) {
-            $items = $this->getWhiteLists();
-            $this->whiteLists = [];
-            foreach ($items as $item) {
-                $this->whiteLists[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterWhiteList\\ExternalCallFilterWhiteList',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->schedules)) {
-            $items = $this->getSchedules();
-            $this->schedules = [];
-            foreach ($items as $item) {
-                $this->schedules[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterRelSchedule\\ExternalCallFilterRelSchedule',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->calendars = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterRelCalendar\\ExternalCallFilterRelCalendar',
-            $this->calendars
-        );
-        $this->blackLists = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterBlackList\\ExternalCallFilterBlackList',
-            $this->blackLists
-        );
-        $this->whiteLists = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterWhiteList\\ExternalCallFilterWhiteList',
-            $this->whiteLists
-        );
-        $this->schedules = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterRelSchedule\\ExternalCallFilterRelSchedule',
-            $this->schedules
-        );
     }
 
     /**

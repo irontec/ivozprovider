@@ -130,8 +130,10 @@ abstract class FaxesInOutAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FaxesInOutDto
          */
@@ -154,8 +156,8 @@ abstract class FaxesInOutAbstract
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
-            ->setFax($dto->getFax())
-            ->setDstCountry($dto->getDstCountry())
+            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setDstCountry($fkTransformer->transform($dto->getDstCountry()))
         ;
 
         $self->sanitizeValues();
@@ -169,8 +171,10 @@ abstract class FaxesInOutAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto FaxesInOutDto
          */
@@ -190,8 +194,8 @@ abstract class FaxesInOutAbstract
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
             ->setFile($file)
-            ->setFax($dto->getFax())
-            ->setDstCountry($dto->getDstCountry());
+            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
 
 
@@ -268,7 +272,7 @@ abstract class FaxesInOutAbstract
      */
     public function getCalldate()
     {
-        return $this->calldate;
+        return clone $this->calldate;
     }
 
     /**

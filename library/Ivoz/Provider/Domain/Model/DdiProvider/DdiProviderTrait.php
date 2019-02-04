@@ -43,20 +43,31 @@ trait DdiProviderTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DdiProviderDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getDdiProviderRegistrations()) {
-            $self->replaceDdiProviderRegistrations($dto->getDdiProviderRegistrations());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getDdiProviderRegistrations())) {
+            $self->replaceDdiProviderRegistrations(
+                $fkTransformer->transformCollection(
+                    $dto->getDdiProviderRegistrations()
+                )
+            );
         }
 
-        if ($dto->getDdiProviderAddresses()) {
-            $self->replaceDdiProviderAddresses($dto->getDdiProviderAddresses());
+        if (!is_null($dto->getDdiProviderAddresses())) {
+            $self->replaceDdiProviderAddresses(
+                $fkTransformer->transformCollection(
+                    $dto->getDdiProviderAddresses()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -69,19 +80,30 @@ trait DdiProviderTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto DdiProviderDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getDdiProviderRegistrations()) {
-            $this->replaceDdiProviderRegistrations($dto->getDdiProviderRegistrations());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getDdiProviderRegistrations())) {
+            $this->replaceDdiProviderRegistrations(
+                $fkTransformer->transformCollection(
+                    $dto->getDdiProviderRegistrations()
+                )
+            );
         }
-        if ($dto->getDdiProviderAddresses()) {
-            $this->replaceDdiProviderAddresses($dto->getDdiProviderAddresses());
+        if (!is_null($dto->getDdiProviderAddresses())) {
+            $this->replaceDdiProviderAddresses(
+                $fkTransformer->transformCollection(
+                    $dto->getDdiProviderAddresses()
+                )
+            );
         }
         return $this;
     }

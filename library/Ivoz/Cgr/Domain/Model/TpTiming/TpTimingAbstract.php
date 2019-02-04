@@ -144,8 +144,10 @@ abstract class TpTimingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpTimingDto
          */
@@ -163,7 +165,7 @@ abstract class TpTimingAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setRatingPlan($dto->getRatingPlan())
+            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()))
         ;
 
         $self->sanitizeValues();
@@ -177,8 +179,10 @@ abstract class TpTimingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpTimingDto
          */
@@ -193,7 +197,7 @@ abstract class TpTimingAbstract
             ->setWeekDays($dto->getWeekDays())
             ->setTime($dto->getTime())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingPlan($dto->getRatingPlan());
+            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
 
 
 
@@ -456,7 +460,7 @@ abstract class TpTimingAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**

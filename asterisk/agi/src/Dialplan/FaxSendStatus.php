@@ -4,7 +4,6 @@ namespace Dialplan;
 
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
@@ -40,8 +39,7 @@ class FaxSendStatus extends RouteHandlerAbstract
         Wrapper $agi,
         EntityManagerInterface $em,
         EntityTools $entityTools
-    )
-    {
+    ) {
         $this->agi = $agi;
         $this->em = $em;
         $this->entityTools = $entityTools;

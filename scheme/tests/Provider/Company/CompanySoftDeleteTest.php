@@ -12,8 +12,6 @@ use Ivoz\Provider\Domain\Model\Fax\Fax;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 
-
-
 class CompanySoftDeleteTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
@@ -82,7 +80,6 @@ class CompanySoftDeleteTest extends KernelTestCase
             $changelog[0]->getData(),
             null
         );
-
     }
 
     /**

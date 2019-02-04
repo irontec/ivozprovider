@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -117,23 +115,6 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'callCsvScheduler' => $this->getCallCsvScheduler()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->callCsvScheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallCsvScheduler\\CallCsvScheduler', $this->getCallCsvSchedulerId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

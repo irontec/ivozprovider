@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -62,6 +60,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $callCsvNotificationTemplate;
+
 
     use DtoNormalizer;
 
@@ -89,7 +92,8 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'nextExecution' => 'nextExecution',
             'id' => 'id',
             'brandId' => 'brand',
-            'companyId' => 'company'
+            'companyId' => 'company',
+            'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate'
         ];
     }
 
@@ -108,24 +112,9 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'nextExecution' => $this->getNextExecution(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
-            'company' => $this->getCompany()
+            'company' => $this->getCompany(),
+            'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**
@@ -374,6 +363,52 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setCallCsvNotificationTemplate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCallCsvNotificationTemplateId()
+    {
+        if ($dto = $this->getCallCsvNotificationTemplate()) {
             return $dto->getId();
         }
 

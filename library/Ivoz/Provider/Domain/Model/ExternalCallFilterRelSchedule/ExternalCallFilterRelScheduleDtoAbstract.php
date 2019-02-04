@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -61,22 +59,6 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
             'filter' => $this->getFilter(),
             'schedule' => $this->getSchedule()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->filter = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter', $this->getFilterId());
-        $this->schedule = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Schedule\\Schedule', $this->getScheduleId());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
     }
 
     /**

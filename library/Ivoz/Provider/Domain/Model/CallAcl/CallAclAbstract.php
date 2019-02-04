@@ -100,8 +100,10 @@ abstract class CallAclAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallAclDto
          */
@@ -113,7 +115,7 @@ abstract class CallAclAbstract
         );
 
         $self
-            ->setCompany($dto->getCompany())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
         $self->sanitizeValues();
@@ -127,8 +129,10 @@ abstract class CallAclAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CallAclDto
          */
@@ -137,7 +141,7 @@ abstract class CallAclAbstract
         $this
             ->setName($dto->getName())
             ->setDefaultPolicy($dto->getDefaultPolicy())
-            ->setCompany($dto->getCompany());
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
 
 

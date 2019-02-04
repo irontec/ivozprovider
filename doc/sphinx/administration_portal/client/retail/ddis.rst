@@ -24,4 +24,5 @@ Retail DDIs can only be routed to a :ref:`Retail Accounts <retail_accounts>`
 Retail Recordings
 *****************
 
-All calls are recorded and it is not possible to disable it at DDI level.
+If Retail Client has *Recordings* feature enabled, DDIs can also record incoming and/or
+outgoing calls.

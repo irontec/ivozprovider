@@ -1,10 +1,5 @@
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
   type: mappedSuperclass
-  uniqueConstraints:
-    dateCalendar:
-      columns:
-        - eventDate
-        - calendarId
   fields:
     name:
       column: name
@@ -17,6 +12,35 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
       type: date
       nullable: false
       column: eventDate
+    wholeDayEvent:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+      column: wholeDayEvent
+    timeIn:
+      type: time
+      nullable: true
+      column: timeIn
+    timeOut:
+      type: time
+      nullable: true
+      column: timeOut
+    routeType:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:number|extension|voicemail]'
+      column: routeType
+    numberValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: numberValue
   manyToOne:
     calendar:
       targetEntity: \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
@@ -38,6 +62,39 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
       inversedBy: null
       joinColumns:
         locutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    extension:
+      targetEntity: \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        extensionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    voiceMailUser:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        voiceMailUserId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    numberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        numberCountryId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

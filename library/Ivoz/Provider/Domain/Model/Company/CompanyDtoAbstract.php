@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -153,6 +151,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $country;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     */
+    private $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
@@ -288,6 +291,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'domainId' => 'domain',
             'applicationServerId' => 'applicationServer',
             'countryId' => 'country',
+            'currencyId' => 'currency',
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
@@ -332,6 +336,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'domain' => $this->getDomain(),
             'applicationServer' => $this->getApplicationServer(),
             'country' => $this->getCountry(),
+            'currency' => $this->getCurrency(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
@@ -351,188 +356,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'relCodecs' => $this->getRelCodecs(),
             'relRoutingTags' => $this->getRelRoutingTags()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
-        $this->mediaRelaySets = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\MediaRelaySet\\MediaRelaySet', $this->getMediaRelaySetsId());
-        $this->defaultTimezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getDefaultTimezoneId());
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
-        $this->applicationServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer', $this->getApplicationServerId());
-        $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
-        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
-        $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
-        $this->outgoingDdiRule = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule', $this->getOutgoingDdiRuleId());
-        $this->voicemailNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getVoicemailNotificationTemplateId());
-        $this->faxNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getFaxNotificationTemplateId());
-        $this->invoiceNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getInvoiceNotificationTemplateId());
-        $this->callCsvNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getCallCsvNotificationTemplateId());
-        if (!is_null($this->extensions)) {
-            $items = $this->getExtensions();
-            $this->extensions = [];
-            foreach ($items as $item) {
-                $this->extensions[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Extension\\Extension',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->ddis)) {
-            $items = $this->getDdis();
-            $this->ddis = [];
-            foreach ($items as $item) {
-                $this->ddis[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->friends)) {
-            $items = $this->getFriends();
-            $this->friends = [];
-            foreach ($items as $item) {
-                $this->friends[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->companyServices)) {
-            $items = $this->getCompanyServices();
-            $this->companyServices = [];
-            foreach ($items as $item) {
-                $this->companyServices[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CompanyService\\CompanyService',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->terminals)) {
-            $items = $this->getTerminals();
-            $this->terminals = [];
-            foreach ($items as $item) {
-                $this->terminals[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->ratingProfiles)) {
-            $items = $this->getRatingProfiles();
-            $this->ratingProfiles = [];
-            foreach ($items as $item) {
-                $this->ratingProfiles[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->musicsOnHold)) {
-            $items = $this->getMusicsOnHold();
-            $this->musicsOnHold = [];
-            foreach ($items as $item) {
-                $this->musicsOnHold[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->recordings)) {
-            $items = $this->getRecordings();
-            $this->recordings = [];
-            foreach ($items as $item) {
-                $this->recordings[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relFeatures)) {
-            $items = $this->getRelFeatures();
-            $this->relFeatures = [];
-            foreach ($items as $item) {
-                $this->relFeatures[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relCodecs)) {
-            $items = $this->getRelCodecs();
-            $this->relCodecs = [];
-            foreach ($items as $item) {
-                $this->relCodecs[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-        if (!is_null($this->relRoutingTags)) {
-            $items = $this->getRelRoutingTags();
-            $this->relRoutingTags = [];
-            foreach ($items as $item) {
-                $this->relRoutingTags[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->extensions = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Extension\\Extension',
-            $this->extensions
-        );
-        $this->ddis = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-            $this->ddis
-        );
-        $this->friends = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
-            $this->friends
-        );
-        $this->companyServices = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CompanyService\\CompanyService',
-            $this->companyServices
-        );
-        $this->terminals = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
-            $this->terminals
-        );
-        $this->ratingProfiles = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
-            $this->ratingProfiles
-        );
-        $this->musicsOnHold = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
-            $this->musicsOnHold
-        );
-        $this->recordings = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording',
-            $this->recordings
-        );
-        $this->relFeatures = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
-            $this->relFeatures
-        );
-        $this->relCodecs = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
-            $this->relCodecs
-        );
-        $this->relRoutingTags = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
-            $this->relRoutingTags
-        );
     }
 
     /**
@@ -1271,6 +1094,52 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     *
+     * @return static
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCurrencyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            : null;
+
+        return $this->setCurrency($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCurrencyId()
+    {
+        if ($dto = $this->getCurrency()) {
             return $dto->getId();
         }
 

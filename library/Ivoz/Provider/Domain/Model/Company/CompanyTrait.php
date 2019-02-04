@@ -97,56 +97,103 @@ trait CompanyTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getExtensions()) {
-            $self->replaceExtensions($dto->getExtensions());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getExtensions())) {
+            $self->replaceExtensions(
+                $fkTransformer->transformCollection(
+                    $dto->getExtensions()
+                )
+            );
         }
 
-        if ($dto->getDdis()) {
-            $self->replaceDdis($dto->getDdis());
+        if (!is_null($dto->getDdis())) {
+            $self->replaceDdis(
+                $fkTransformer->transformCollection(
+                    $dto->getDdis()
+                )
+            );
         }
 
-        if ($dto->getFriends()) {
-            $self->replaceFriends($dto->getFriends());
+        if (!is_null($dto->getFriends())) {
+            $self->replaceFriends(
+                $fkTransformer->transformCollection(
+                    $dto->getFriends()
+                )
+            );
         }
 
-        if ($dto->getCompanyServices()) {
-            $self->replaceCompanyServices($dto->getCompanyServices());
+        if (!is_null($dto->getCompanyServices())) {
+            $self->replaceCompanyServices(
+                $fkTransformer->transformCollection(
+                    $dto->getCompanyServices()
+                )
+            );
         }
 
-        if ($dto->getTerminals()) {
-            $self->replaceTerminals($dto->getTerminals());
+        if (!is_null($dto->getTerminals())) {
+            $self->replaceTerminals(
+                $fkTransformer->transformCollection(
+                    $dto->getTerminals()
+                )
+            );
         }
 
-        if ($dto->getRatingProfiles()) {
-            $self->replaceRatingProfiles($dto->getRatingProfiles());
+        if (!is_null($dto->getRatingProfiles())) {
+            $self->replaceRatingProfiles(
+                $fkTransformer->transformCollection(
+                    $dto->getRatingProfiles()
+                )
+            );
         }
 
-        if ($dto->getMusicsOnHold()) {
-            $self->replaceMusicsOnHold($dto->getMusicsOnHold());
+        if (!is_null($dto->getMusicsOnHold())) {
+            $self->replaceMusicsOnHold(
+                $fkTransformer->transformCollection(
+                    $dto->getMusicsOnHold()
+                )
+            );
         }
 
-        if ($dto->getRecordings()) {
-            $self->replaceRecordings($dto->getRecordings());
+        if (!is_null($dto->getRecordings())) {
+            $self->replaceRecordings(
+                $fkTransformer->transformCollection(
+                    $dto->getRecordings()
+                )
+            );
         }
 
-        if ($dto->getRelFeatures()) {
-            $self->replaceRelFeatures($dto->getRelFeatures());
+        if (!is_null($dto->getRelFeatures())) {
+            $self->replaceRelFeatures(
+                $fkTransformer->transformCollection(
+                    $dto->getRelFeatures()
+                )
+            );
         }
 
-        if ($dto->getRelCodecs()) {
-            $self->replaceRelCodecs($dto->getRelCodecs());
+        if (!is_null($dto->getRelCodecs())) {
+            $self->replaceRelCodecs(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCodecs()
+                )
+            );
         }
 
-        if ($dto->getRelRoutingTags()) {
-            $self->replaceRelRoutingTags($dto->getRelRoutingTags());
+        if (!is_null($dto->getRelRoutingTags())) {
+            $self->replaceRelRoutingTags(
+                $fkTransformer->transformCollection(
+                    $dto->getRelRoutingTags()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -159,46 +206,93 @@ trait CompanyTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getExtensions()) {
-            $this->replaceExtensions($dto->getExtensions());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getExtensions())) {
+            $this->replaceExtensions(
+                $fkTransformer->transformCollection(
+                    $dto->getExtensions()
+                )
+            );
         }
-        if ($dto->getDdis()) {
-            $this->replaceDdis($dto->getDdis());
+        if (!is_null($dto->getDdis())) {
+            $this->replaceDdis(
+                $fkTransformer->transformCollection(
+                    $dto->getDdis()
+                )
+            );
         }
-        if ($dto->getFriends()) {
-            $this->replaceFriends($dto->getFriends());
+        if (!is_null($dto->getFriends())) {
+            $this->replaceFriends(
+                $fkTransformer->transformCollection(
+                    $dto->getFriends()
+                )
+            );
         }
-        if ($dto->getCompanyServices()) {
-            $this->replaceCompanyServices($dto->getCompanyServices());
+        if (!is_null($dto->getCompanyServices())) {
+            $this->replaceCompanyServices(
+                $fkTransformer->transformCollection(
+                    $dto->getCompanyServices()
+                )
+            );
         }
-        if ($dto->getTerminals()) {
-            $this->replaceTerminals($dto->getTerminals());
+        if (!is_null($dto->getTerminals())) {
+            $this->replaceTerminals(
+                $fkTransformer->transformCollection(
+                    $dto->getTerminals()
+                )
+            );
         }
-        if ($dto->getRatingProfiles()) {
-            $this->replaceRatingProfiles($dto->getRatingProfiles());
+        if (!is_null($dto->getRatingProfiles())) {
+            $this->replaceRatingProfiles(
+                $fkTransformer->transformCollection(
+                    $dto->getRatingProfiles()
+                )
+            );
         }
-        if ($dto->getMusicsOnHold()) {
-            $this->replaceMusicsOnHold($dto->getMusicsOnHold());
+        if (!is_null($dto->getMusicsOnHold())) {
+            $this->replaceMusicsOnHold(
+                $fkTransformer->transformCollection(
+                    $dto->getMusicsOnHold()
+                )
+            );
         }
-        if ($dto->getRecordings()) {
-            $this->replaceRecordings($dto->getRecordings());
+        if (!is_null($dto->getRecordings())) {
+            $this->replaceRecordings(
+                $fkTransformer->transformCollection(
+                    $dto->getRecordings()
+                )
+            );
         }
-        if ($dto->getRelFeatures()) {
-            $this->replaceRelFeatures($dto->getRelFeatures());
+        if (!is_null($dto->getRelFeatures())) {
+            $this->replaceRelFeatures(
+                $fkTransformer->transformCollection(
+                    $dto->getRelFeatures()
+                )
+            );
         }
-        if ($dto->getRelCodecs()) {
-            $this->replaceRelCodecs($dto->getRelCodecs());
+        if (!is_null($dto->getRelCodecs())) {
+            $this->replaceRelCodecs(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCodecs()
+                )
+            );
         }
-        if ($dto->getRelRoutingTags()) {
-            $this->replaceRelRoutingTags($dto->getRelRoutingTags());
+        if (!is_null($dto->getRelRoutingTags())) {
+            $this->replaceRelRoutingTags(
+                $fkTransformer->transformCollection(
+                    $dto->getRelRoutingTags()
+                )
+            );
         }
         return $this;
     }

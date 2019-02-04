@@ -32,7 +32,6 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
 
         ini_set('xdebug.overload_var_dump', 0);
         $this->_initAuth($request);
-
     }
 
     protected function _checkConfigRequiredAuth($request)
@@ -66,7 +65,6 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
         }
 
         return (boolval($auth));
-
     }
 
     protected function _initAuth(Zend_Controller_Request_Abstract $request)
@@ -89,7 +87,6 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
         $authType = $tokenParts[0];
 
         if ($authType === 'Basic') {
-
             $mapper = new Mappers\MainOperators();
 
             $getData = array(
@@ -103,9 +100,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
             if ($user->getActive() !== 1) {
                 $this->_errorAuth();
             }
-
         } elseif ($authType = 'Hmac') {
-
             $mapper = new Mappers\Users();
 
             $requestDate = $this->getRequest()->getHeader('Request-Date', false);
@@ -120,11 +115,9 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
             if ($user->getCompany()->getBrandId() !== $brandURL->getBrandId()) {
                 $this->_errorAuth();
             }
-
         } else {
             $this->_errorAuth();
         }
-
     }
 
     /**
@@ -143,7 +136,5 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
         $response->setBody(json_encode($resutl));
         $response->sendResponse();
         exit();
-
     }
-
 }

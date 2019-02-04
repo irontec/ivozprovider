@@ -121,8 +121,10 @@ abstract class BrandUrlAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandUrlDto
          */
@@ -144,7 +146,7 @@ abstract class BrandUrlAbstract
             ->setKlearTheme($dto->getKlearTheme())
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
-            ->setBrand($dto->getBrand())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
         $self->sanitizeValues();
@@ -158,8 +160,10 @@ abstract class BrandUrlAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto BrandUrlDto
          */
@@ -178,7 +182,7 @@ abstract class BrandUrlAbstract
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
             ->setLogo($logo)
-            ->setBrand($dto->getBrand());
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
 

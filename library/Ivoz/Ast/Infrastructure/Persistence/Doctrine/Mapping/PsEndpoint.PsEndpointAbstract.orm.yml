@@ -164,3 +164,14 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
+    retailAccount:
+      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: psEndpoints
+      joinColumns:
+        retailAccountId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

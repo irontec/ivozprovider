@@ -154,6 +154,11 @@ abstract class CompanyAbstract
     protected $country;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    protected $currency;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
     protected $transformationRuleSet;
@@ -279,8 +284,10 @@ abstract class CompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyDto
          */
@@ -310,20 +317,21 @@ abstract class CompanyAbstract
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
-            ->setLanguage($dto->getLanguage())
-            ->setMediaRelaySets($dto->getMediaRelaySets())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setApplicationServer($dto->getApplicationServer())
-            ->setCountry($dto->getCountry())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
-            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
-            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
-            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate())
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
+            ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
         ;
 
         $self->sanitizeValues();
@@ -337,8 +345,10 @@ abstract class CompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto CompanyDto
          */
@@ -365,20 +375,21 @@ abstract class CompanyAbstract
             ->setBillingMethod($dto->getBillingMethod())
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
-            ->setLanguage($dto->getLanguage())
-            ->setMediaRelaySets($dto->getMediaRelaySets())
-            ->setDefaultTimezone($dto->getDefaultTimezone())
-            ->setBrand($dto->getBrand())
-            ->setDomain($dto->getDomain())
-            ->setApplicationServer($dto->getApplicationServer())
-            ->setCountry($dto->getCountry())
-            ->setTransformationRuleSet($dto->getTransformationRuleSet())
-            ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
-            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
-            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
-            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
-            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate());
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
+            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDomain($fkTransformer->transform($dto->getDomain()))
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
+            ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()));
 
 
 
@@ -421,6 +432,7 @@ abstract class CompanyAbstract
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer::entityToDto(self::getApplicationServer(), $depth))
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
@@ -463,6 +475,7 @@ abstract class CompanyAbstract
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
@@ -1213,6 +1226,30 @@ abstract class CompanyAbstract
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     *
+     * @return self
+     */
+    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

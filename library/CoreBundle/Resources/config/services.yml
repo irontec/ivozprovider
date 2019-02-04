@@ -1,5 +1,6 @@
 imports:
   - { resource: "@CoreBundle/Resources/config/autoload.yml" }
+  - { resource: '@CoreBundle/Resources/config/services/entities.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure.yml' }
   - { resource: "@CoreBundle/Resources/config/services/path_resolvers.yml" }
   - { resource: "@CoreBundle/Resources/config/services/assemblers.yml" }
@@ -14,45 +15,6 @@ services:
     autowire: true
     autoconfigure: true
     public: false
-
-  Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
-  core.doctrine_foreign_key_transformer:
-    '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
-
-  Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
-  core.doctrine_collection_transformer:
-    '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
-
-  Ivoz\Core\Application\Service\CreateEntityFromDTO: ~
-
-  core.create_entity_from_dto: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
-
-  Ivoz\Core\Application\Service\UpdateEntityFromDTO:
-    public: true
-
-  core.update_entity_from_dto:
-    class: Ivoz\Core\Application\Service\UpdateEntityFromDTO
-
-  Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
-    arguments:
-      $softDeleteMap: '%soft_delete%'
-      $logger: '@monolog.logger.changelog'
-    public: true
-
-  Ivoz\Core\Domain\Service\EntityPersisterInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
-  Ivoz\Core\Application\Service\EntityTools:
-    arguments:
-        $entityManager: '@doctrine.orm.entity_manager'
-    public: true
-    lazy: true
 
   Ivoz\Core\Infrastructure\Symfony\EventListener\DomainExceptionListener:
     tags:

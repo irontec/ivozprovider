@@ -30,7 +30,7 @@ production:
           order:
             Carrier.name: asc
     notificationTemplate:
-      title: ngettext('Notification Template', 'Notifications Templates', 1)
+      title: ngettext('Notification template', 'Notifications Templates', 1)
       type: select
       source:
         data: mapper
@@ -61,7 +61,6 @@ production:
       trim: both
       required: true
       defaultValue: "0.0000"
-      sufix: "€"
       info:
         type: box
         position: left

@@ -155,8 +155,10 @@ abstract class TpAccountActionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpAccountActionDto
          */
@@ -175,8 +177,8 @@ abstract class TpAccountActionAbstract
         $self
             ->setActionPlanTag($dto->getActionPlanTag())
             ->setActionTriggersTag($dto->getActionTriggersTag())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
         $self->sanitizeValues();
@@ -190,8 +192,10 @@ abstract class TpAccountActionAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto TpAccountActionDto
          */
@@ -207,8 +211,8 @@ abstract class TpAccountActionAbstract
             ->setAllowNegative($dto->getAllowNegative())
             ->setDisabled($dto->getDisabled())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier());
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
 
 
@@ -503,7 +507,7 @@ abstract class TpAccountActionAbstract
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**
@@ -513,7 +517,7 @@ abstract class TpAccountActionAbstract
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -537,7 +541,7 @@ abstract class TpAccountActionAbstract
      *
      * @return self
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
         $this->carrier = $carrier;
 

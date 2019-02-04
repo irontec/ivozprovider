@@ -37,16 +37,23 @@ trait InvoiceTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getRelFixedCosts()) {
-            $self->replaceRelFixedCosts($dto->getRelFixedCosts());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelFixedCosts())) {
+            $self->replaceRelFixedCosts(
+                $fkTransformer->transformCollection(
+                    $dto->getRelFixedCosts()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -59,16 +66,23 @@ trait InvoiceTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto InvoiceDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getRelFixedCosts()) {
-            $this->replaceRelFixedCosts($dto->getRelFixedCosts());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelFixedCosts())) {
+            $this->replaceRelFixedCosts(
+                $fkTransformer->transformCollection(
+                    $dto->getRelFixedCosts()
+                )
+            );
         }
         return $this;
     }

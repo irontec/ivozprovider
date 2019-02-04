@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -67,36 +65,6 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
             'carrier' => $this->getCarrier(),
             'tpRatingProfiles' => $this->getTpRatingProfiles()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->outgoingRouting = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting', $this->getOutgoingRoutingId());
-        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
-        if (!is_null($this->tpRatingProfiles)) {
-            $items = $this->getTpRatingProfiles();
-            $this->tpRatingProfiles = [];
-            foreach ($items as $item) {
-                $this->tpRatingProfiles[] = $transformer->transform(
-                    'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->tpRatingProfiles = $transformer->transform(
-            'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
-            $this->tpRatingProfiles
-        );
     }
 
     /**

@@ -136,8 +136,10 @@ abstract class RecordingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RecordingDto
          */
@@ -161,7 +163,7 @@ abstract class RecordingAbstract
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
-            ->setCompany($dto->getCompany())
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
         $self->sanitizeValues();
@@ -175,8 +177,10 @@ abstract class RecordingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto RecordingDto
          */
@@ -197,7 +201,7 @@ abstract class RecordingAbstract
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setRecordedFile($recordedFile)
-            ->setCompany($dto->getCompany());
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
 
 
@@ -302,7 +306,7 @@ abstract class RecordingAbstract
      */
     public function getCalldate()
     {
-        return $this->calldate;
+        return clone $this->calldate;
     }
 
     /**

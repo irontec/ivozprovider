@@ -51,6 +51,21 @@ class PsEndpointDoctrineRepository extends ServiceEntityRepository implements Ps
 
     /**
      * @inheritdoc
+     * @see PsEndpointRepository::findOneByRetailAccountId
+     */
+    public function findOneByRetailAccountId($id)
+    {
+        /** @var PsEndpointInterface $response */
+        $response = $this->findOneBy([
+            'retailAccount' => $id
+        ]);
+
+        return $response;
+    }
+
+
+    /**
+     * @inheritdoc
      * @see PsEndpointRepository::findOneByTerminalId
      */
     public function findOneByTerminalId($id)

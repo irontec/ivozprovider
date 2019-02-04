@@ -55,28 +55,47 @@ trait ConditionalRoutesConditionTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRoutesConditionDto
          */
-        $self = parent::fromDto($dto);
-        if ($dto->getRelMatchlists()) {
-            $self->replaceRelMatchlists($dto->getRelMatchlists());
+        $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelMatchlists())) {
+            $self->replaceRelMatchlists(
+                $fkTransformer->transformCollection(
+                    $dto->getRelMatchlists()
+                )
+            );
         }
 
-        if ($dto->getRelSchedules()) {
-            $self->replaceRelSchedules($dto->getRelSchedules());
+        if (!is_null($dto->getRelSchedules())) {
+            $self->replaceRelSchedules(
+                $fkTransformer->transformCollection(
+                    $dto->getRelSchedules()
+                )
+            );
         }
 
-        if ($dto->getRelCalendars()) {
-            $self->replaceRelCalendars($dto->getRelCalendars());
+        if (!is_null($dto->getRelCalendars())) {
+            $self->replaceRelCalendars(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCalendars()
+                )
+            );
         }
 
-        if ($dto->getRelRouteLocks()) {
-            $self->replaceRelRouteLocks($dto->getRelRouteLocks());
+        if (!is_null($dto->getRelRouteLocks())) {
+            $self->replaceRelRouteLocks(
+                $fkTransformer->transformCollection(
+                    $dto->getRelRouteLocks()
+                )
+            );
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -89,25 +108,44 @@ trait ConditionalRoutesConditionTrait
     /**
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto ConditionalRoutesConditionDto
          */
-        parent::updateFromDto($dto);
-        if ($dto->getRelMatchlists()) {
-            $this->replaceRelMatchlists($dto->getRelMatchlists());
+        parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getRelMatchlists())) {
+            $this->replaceRelMatchlists(
+                $fkTransformer->transformCollection(
+                    $dto->getRelMatchlists()
+                )
+            );
         }
-        if ($dto->getRelSchedules()) {
-            $this->replaceRelSchedules($dto->getRelSchedules());
+        if (!is_null($dto->getRelSchedules())) {
+            $this->replaceRelSchedules(
+                $fkTransformer->transformCollection(
+                    $dto->getRelSchedules()
+                )
+            );
         }
-        if ($dto->getRelCalendars()) {
-            $this->replaceRelCalendars($dto->getRelCalendars());
+        if (!is_null($dto->getRelCalendars())) {
+            $this->replaceRelCalendars(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCalendars()
+                )
+            );
         }
-        if ($dto->getRelRouteLocks()) {
-            $this->replaceRelRouteLocks($dto->getRelRouteLocks());
+        if (!is_null($dto->getRelRouteLocks())) {
+            $this->replaceRelRouteLocks(
+                $fkTransformer->transformCollection(
+                    $dto->getRelRouteLocks()
+                )
+            );
         }
         return $this;
     }

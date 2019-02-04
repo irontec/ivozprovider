@@ -18,6 +18,11 @@ Feature: Retrieve holiday dates
               "name": "Name",
               "eventDate": "2021-12-21",
               "id": 1
+          },
+          {
+              "name": "timeRangeEvent",
+              "eventDate": "2021-12-21",
+              "id": 2
           }
       ]
     """
@@ -34,12 +39,20 @@ Feature: Retrieve holiday dates
       {
           "name": "Name",
           "eventDate": "2021-12-21",
+          "wholeDayEvent": true,
+          "timeIn": null,
+          "timeOut": null,
+          "routeType": null,
+          "numberValue": null,
           "id": 1,
           "calendar": {
               "name": "testCalendar",
               "id": 1,
               "company": 1
           },
-          "locution": null
+          "locution": null,
+          "extension": null,
+          "voiceMailUser": null,
+          "numberCountry": null
       }
     """

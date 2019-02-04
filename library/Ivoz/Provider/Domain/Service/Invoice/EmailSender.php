@@ -176,7 +176,7 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
             '${INVOICE_DATE_IN}' => $inDate->format('Y-m-d'),
             '${INVOICE_DATE_OUT}' => $outDate->format('Y-m-d'),
             '${INVOICE_AMOUNT}' => $invoice->getTotalWithTax(),
-            '${INVOICE_CURRENCY}' => '€'
+            '${INVOICE_CURRENCY}' => $company->getCurrencySymbol()
         ];
 
         return str_replace(

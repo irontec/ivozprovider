@@ -177,8 +177,10 @@ abstract class UsersCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDto(DataTransferObjectInterface $dto)
-    {
+    public static function fromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto UsersCdrDto
          */
@@ -200,12 +202,12 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setUser($dto->getUser())
-            ->setFriend($dto->getFriend())
-            ->setResidentialDevice($dto->getResidentialDevice())
-            ->setRetailAccount($dto->getRetailAccount())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
         $self->sanitizeValues();
@@ -219,8 +221,10 @@ abstract class UsersCdrAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDto(DataTransferObjectInterface $dto)
-    {
+    public function updateFromDto(
+        DataTransferObjectInterface $dto,
+        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+    ) {
         /**
          * @var $dto UsersCdrDto
          */
@@ -239,12 +243,12 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setUser($dto->getUser())
-            ->setFriend($dto->getFriend())
-            ->setResidentialDevice($dto->getResidentialDevice())
-            ->setRetailAccount($dto->getRetailAccount());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
 
 
 
@@ -335,7 +339,7 @@ abstract class UsersCdrAbstract
      */
     public function getStartTime()
     {
-        return $this->startTime;
+        return clone $this->startTime;
     }
 
     /**
@@ -365,7 +369,7 @@ abstract class UsersCdrAbstract
      */
     public function getEndTime()
     {
-        return $this->endTime;
+        return clone $this->endTime;
     }
 
     /**

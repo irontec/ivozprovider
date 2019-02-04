@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
@@ -165,39 +163,6 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'scheduler' => $this->getScheduler(),
             'relFixedCosts' => $this->getRelFixedCosts()
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
-    {
-        $this->invoiceTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate', $this->getInvoiceTemplateId());
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->numberSequence = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence', $this->getNumberSequenceId());
-        $this->scheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler', $this->getSchedulerId());
-        if (!is_null($this->relFixedCosts)) {
-            $items = $this->getRelFixedCosts();
-            $this->relFixedCosts = [];
-            foreach ($items as $item) {
-                $this->relFixedCosts[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function transformCollections(CollectionTransformerInterface $transformer)
-    {
-        $this->relFixedCosts = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice',
-            $this->relFixedCosts
-        );
     }
 
     /**

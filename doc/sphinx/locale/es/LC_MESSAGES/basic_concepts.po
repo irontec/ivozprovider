@@ -250,7 +250,7 @@ msgstr ""
 
 #: ../../basic_concepts/installation/cd_install.rst:3
 msgid "Automatic ISO CD image"
-msgstr ""
+msgstr "CDs automáticos de instalación"
 
 #: ../../basic_concepts/installation/cd_install.rst:5
 msgid ""
@@ -258,48 +258,61 @@ msgid ""
 "<https://github.com/irontec/ivozprovider>`_ (generated using `simplecdd "
 "<https://wiki.debian.org/Simple-CDD>`_) in stable or nightly versions:"
 msgstr ""
+"Puedes descargar uno de los `CDs automáticos de instalación de "
+"IvozProvider <https://github.com/irontec/ivozprovider>`_ (generados "
+"mediante `simplecdd <https://wiki.debian.org/Simple-CDD>`_) en su versión "
+"estable o en una de las builds nocturnas:"
 
 #: ../../basic_concepts/installation/cd_install.rst:10
 msgid "IMPORTANT: Automatic install CDs will format target machine disk!"
 msgstr ""
+"IMPORTANTE: Los CDs de instalación formatearán automáticamente el disco "
+"de la máquina."
 
 #: ../../basic_concepts/installation/cd_install.rst:12
 msgid ""
 "Configure the target machine to boot from CD. It will display the Debian "
 "GNU/Linux installation menu."
 msgstr ""
+"Configure la máquina para iniciar desde CD, mostrará el menú de "
+"instalación de Debian GNU/Linux."
 
 #: ../../basic_concepts/installation/cd_install.rst:15
 msgid ""
 "You can use graphic installation if you prefer, but the following "
 "screenshots show the standard installation."
 msgstr ""
+"Si lo desea puede emplear la instalación gráfica del CD, pero los "
+"pantallazos a continuación se muestran con la instalación estándar."
+
 
 #: ../../basic_concepts/installation/cd_install.rst:20
 msgid "Choose installation language:"
-msgstr ""
+msgstr "Seleccione el idioma de la instalación:"
 
 #: ../../basic_concepts/installation/cd_install.rst:24
 msgid "Choose location:"
-msgstr ""
+msgstr "Seleccione la ubicación:"
 
 #: ../../basic_concepts/installation/cd_install.rst:28
 msgid "Set root password"
-msgstr ""
+msgstr "Introduzca la contraseña para root"
 
 #: ../../basic_concepts/installation/cd_install.rst:32
 msgid "Choose date and time configuration:"
-msgstr ""
+msgstr "Seleccione la configuración de hora:"
 
 #: ../../basic_concepts/installation/cd_install.rst:36
 msgid ""
 "At this point, a generic network configuration and disk partitioning will"
 " be performed, and also a installation of base system."
 msgstr ""
+"En este punto se realizará la configuración automática de red y "
+"particionado de disco, así como la instalación del sistema base."
 
 #: ../../basic_concepts/installation/cd_install.rst:39
 msgid "Setup MySQL Server root password"
-msgstr ""
+msgstr "Configure la contraseña del usuario root del Servidor MySQL"
 
 #: ../../basic_concepts/installation/cd_install.rst:43
 msgid ""
@@ -307,10 +320,13 @@ msgid ""
 "Ivozprovider configuration menu. If you leave this field empty, the "
 "default password will be used (see below)."
 msgstr ""
+"La contraseña de MySQL debe introducirse en esta pantalla y de nuevo en "
+"el menú de configuración de IvozProvider. Si deja este campo vacío, se "
+"empleará la constraseña por defecto (ver abajo)."
 
 #: ../../basic_concepts/installation/cd_install.rst:47
 msgid "Configure IvozProvider:"
-msgstr ""
+msgstr "Configuración IvozProvider:"
 
 #: ../../basic_concepts/installation/cd_install.rst:51
 msgid ""
@@ -318,6 +334,10 @@ msgid ""
 "public IP address for User and Trunk SIP proxies. Remember that if you "
 "use only one, KamTrunks will use different SIP ports to avoid collision."
 msgstr ""
+"Como se mencionó en :ref:`Requisitos mínimos` se requiere al menos una "
+"dirección IP pública para los proxies de Usuarios y Troncales. Recordar que en "
+"caso de utilizar una única dirección IP, los puertos SIP del proxy de "
+"salida se cambiarán para evitar la colisión entre ambos."
 
 #: ../../basic_concepts/installation/cd_install.rst:55
 msgid ""
@@ -325,20 +345,27 @@ msgid ""
 " when the system is fully installed. This menu can be displayed anytime "
 "after the installation."
 msgstr ""
+"Puede asignar sus valores ahora y configurar sus interfaces más tarde, o "
+"bien puede mostar el siguiente menu para configurar estos valores más "
+"adelante."
 
 #: ../../basic_concepts/installation/cd_install.rst:61
 msgid "You can also configure default root MySQL password right now."
 msgstr ""
+"También puede configurar el valor por defecto para acceder a MySQL en "
+"este momento."
 
 #: ../../basic_concepts/installation/cd_install.rst:63
 msgid ""
 "If you don't configure MySQL password, default password will be used "
 "(changeme). You can still change it later."
 msgstr ""
+"Si no configura contraseña para el administrador de MySQL, se empleará la "
+"de por defecto (changeme). Puede cambiarla más adelante si lo desea."
 
 #: ../../basic_concepts/installation/cd_install.rst:68
 msgid "And default language for portals:"
-msgstr ""
+msgstr "Y el idioma por defecto de los portales web:"
 
 #: ../../basic_concepts/installation/cd_install.rst:72
 msgid ""
@@ -346,14 +373,20 @@ msgid ""
 "In case any setting has been left without configuration a warning dialog "
 "will be displayed."
 msgstr ""
+"No es preciso configurar todas estas cosas durante la instalación. En caso "
+"de que algún dato esté sin configurar se mostará un diálogo de aviso:"
 
 #: ../../basic_concepts/installation/cd_install.rst:78
 msgid "At last, select where the GRUB boot loader will be installed."
 msgstr ""
+"Por último, seleccione el disco donde se instalará el cargador de arranque "
+"GRUB."
 
 #: ../../basic_concepts/installation/cd_install.rst:82
 msgid "After the reboot, you are ready to access using the web portals!"
 msgstr ""
+"Una vez reiniciada la máquina podrá entrar y acceder a través de los "
+"portales web!"
 
 #: ../../basic_concepts/installation/cd_install.rst:84
 #: ../../basic_concepts/installation/debian_install.rst:85
@@ -362,10 +395,13 @@ msgid ""
 "work to access the web portal. Default credentials are **admin / "
 "changeme**."
 msgstr ""
+"Cualquiera de las IPs públicas configuradas en la instalación servirá "
+"para acceder al panel web. Las credenciales por defecto son **admin / "
+"changeme**."
 
 #: ../../basic_concepts/installation/debian_install.rst:3
 msgid "Debian packages install"
-msgstr ""
+msgstr "Instalación por paquetes Debian"
 
 #: ../../basic_concepts/installation/debian_install.rst:5
 msgid ""
@@ -373,6 +409,10 @@ msgid ""
 "packages. More exactly, the current release is ready to be installed on "
 "`Debian Stretch 9 <https://www.debian.org/releases/stretch>`_."
 msgstr ""
+"IvozProvider está diseñado para instalarse y actualizarse mediante "
+"paquetes Debian. En concreto, la release actual esta pensada para "
+"funcionar sobre `Debian Stretch 9 "
+"<https://www.debian.org/releases/stretch>`_."
 
 #: ../../basic_concepts/installation/debian_install.rst:9
 msgid ""
@@ -381,6 +421,10 @@ msgid ""
 "minimum base system. The rest of required  dependencies will be installed"
 " automatically with IvozProvider meta packages."
 msgstr ""
+"Se recomienda emplear las `guias oficiales de instalación "
+"<https://www.debian.org/releases/jessie/installmanual>`_ para obtener un "
+"sistema base mínimo, ya que toda dependencia que necesite posteriormente "
+"será instalada automaticamente."
 
 #: ../../basic_concepts/installation/debian_install.rst:14
 msgid ""
@@ -388,10 +432,13 @@ msgid ""
 ":ref:`Distributed install`, it's required to configure Irontec debian "
 "repositories."
 msgstr ""
+"Tanto si deseas realizar una :ref:`instalación standalone` o una "
+":ref:`instalación distribuida`, es preciso configurar los repositorios de"
+" paquetes debian de Irontec."
 
 #: ../../basic_concepts/installation/debian_install.rst:20
 msgid "APT Repository configuration"
-msgstr ""
+msgstr "Configurar repositorios APT"
 
 #: ../../basic_concepts/installation/debian_install.rst:22
 msgid ""
@@ -399,50 +446,56 @@ msgid ""
 "IvozProvider release (called artemis) and it's frontend Klear release "
 "(called tayler)."
 msgstr ""
+"Actualmente se emplean dos repositorios diferentes tanto para la última "
+"release de IvozProvider (llamada artemis) como para la de Klear (llamada tayler)"
 
 #: ../../basic_concepts/installation/debian_install.rst:31
 msgid "Optionally, we can add the repository key to check signed packages:"
-msgstr ""
+msgstr "Opcionalmente, añadimos la clave publica del repositorio:"
 
 #: ../../basic_concepts/installation/debian_install.rst:39
 msgid "Installing profile package"
-msgstr ""
+msgstr "Instalar el paquete del rol"
 
 #: ../../basic_concepts/installation/debian_install.rst:41
 msgid ""
 "Once the repositories are configured, it will be required to select the "
 "proper metapackage depending on the type of installation."
 msgstr ""
+"Una vez configurados los repositorios será preciso seleccionar el paquete "
+"acorde al perfil que queramos instalar:"
 
 #: ../../basic_concepts/installation/debian_install.rst:45
 msgid "For a :ref:`StandAlone install`:"
-msgstr ""
+msgstr "Para una :ref:`instalación standalone`:"
 
 #: ../../basic_concepts/installation/debian_install.rst:45
 msgid "ivozprovider"
-msgstr ""
+msgstr "ivozprovider"
 
 #: ../../basic_concepts/installation/debian_install.rst:52
 msgid ""
 "For a :ref:`Distributed install`: one of the profile packages depending "
 "on the role the machine will perform."
 msgstr ""
+"Para una :ref:`instalación distribuida` uno de los paquetes en función "
+"rol se desee que desempeñe la máquina."
 
 #: ../../basic_concepts/installation/debian_install.rst:55
 msgid "ivozprovider-profile-data"
-msgstr ""
+msgstr "ivozprovider-profile-data"
 
 #: ../../basic_concepts/installation/debian_install.rst:56
 msgid "ivozprovider-profile-proxy"
-msgstr ""
+msgstr "ivozprovider-profile-proxy"
 
 #: ../../basic_concepts/installation/debian_install.rst:57
 msgid "ivozprovider-profile-portal"
-msgstr ""
+msgstr "ivozprovider-profile-portal"
 
 #: ../../basic_concepts/installation/debian_install.rst:58
 msgid "ivozprovider-profile-as"
-msgstr ""
+msgstr "ivozprovider-profile-as"
 
 #: ../../basic_concepts/installation/debian_install.rst:60
 msgid ""
@@ -453,10 +506,14 @@ msgid ""
 "<https://github.com/irontec/ivozprovider/issues/271>`_ for more "
 "information."
 msgstr ""
+"Las instalaciones distribuidas requieren multiples configuraciones en "
+"funcion del rol que se haya instalado. Tenga en cuenta que este proceso de "
+"instalación no ha sido aún documentado. Para mas información vea la "
+"`petición de documentación <https://github.com/irontec/ivozprovider/issues/271>`_"
 
 #: ../../basic_concepts/installation/debian_install.rst:67
 msgid "Finish the installation"
-msgstr ""
+msgstr "Completar instalación"
 
 #: ../../basic_concepts/installation/debian_install.rst:68
 msgid ""
@@ -465,34 +522,40 @@ msgid ""
 "automatically configured to work in the same machine with the default "
 "values."
 msgstr ""
+"Las instalaciones standalone cuentan con un menú que ayuda a configurar "
+"los datos básicos de los servicios empleados en IvozProvider. Puesto que "
+"todos los servicios se ejecutan en la misma máquina, muchos de los "
+"procesos vienen configurados automáticamente con los valores por defecto."
 
 #: ../../basic_concepts/installation/debian_install.rst:72
 msgid "This menu allows:"
-msgstr ""
+msgstr "El menú permite, entre otros:"
 
 #: ../../basic_concepts/installation/debian_install.rst:74
 msgid "Configure IP address(es) for SIP proxies"
-msgstr ""
+msgstr "Configurar la(s) IP(s) pública(s) de los proxies SIP"
 
 #: ../../basic_concepts/installation/debian_install.rst:75
 msgid "Default platform language"
-msgstr ""
+msgstr "El lenguaje por defecto que empleará la plataforma"
 
 #: ../../basic_concepts/installation/debian_install.rst:76
 msgid "Administrator MySQL database password"
-msgstr ""
+msgstr "Las contraseñas para acceder a las bases de datos"
 
 #: ../../basic_concepts/installation/debian_install.rst:78
 msgid "It's possible to change any of this values anytime by running:"
 msgstr ""
+"Es posible cambiar cualquiera de estos valores una vez instalado "
+"IvozProvider volviendo a ejecutar:"
 
 #: ../../basic_concepts/installation/extra_components.rst:3
 msgid "Extra components"
-msgstr ""
+msgstr "Componentes extra"
 
 #: ../../basic_concepts/installation/extra_components.rst:7
 msgid "G.729"
-msgstr ""
+msgstr "G.729"
 
 #: ../../basic_concepts/installation/extra_components.rst:9
 msgid ""
@@ -501,6 +564,10 @@ msgid ""
 "pjsip.conf configuration file. Otherwise, application servers will be "
 "offering a not available codec."
 msgstr ""
+"El códec G.729 será ofrecido por defecto en las llamadas externas. Si no "
+"lo instala empleando las siguientes instrucciones, eliminelo de las configuraciones "
+"en el fichero pjsip.conf. En caso contrarios, los Servidores de Aplicación lo "
+"ofrecerán como códec disponble."
 
 #: ../../basic_concepts/installation/extra_components.rst:13
 msgid ""
@@ -508,6 +575,10 @@ msgid ""
 "G.729 codec to their patent holders. We're not legal advisers regarding "
 "active or withdrawn world patents."
 msgstr ""
+"En algunos paises, es posible que tenga que pagar derechos a los "
+"titulares de las patentes de G.729. No somos asesores legales al respecto "
+"de las patentes activas o retiradas."
+
 
 #: ../../basic_concepts/installation/extra_components.rst:17
 msgid ""
@@ -515,68 +586,86 @@ msgid ""
 "manually. G.729 codec is optimized for each CPU type and version of "
 "asterisk, so each installation may require a different codec module."
 msgstr ""
+"Puede emplear G.729 con IvozProvider, pero la instalación debe ser "
+"realizada manualmente. El codec G.729 esta optimizado para cada tipo de "
+"CPU y versión de asterisk, por lo que cada instalación puede requerir un "
+"módulo de codec diferente."
 
 #: ../../basic_concepts/installation/extra_components.rst:21
 msgid ""
 "You can download codec from `here <http://asterisk.hosting.lv/>`_ under "
 "the section Asterisk 13."
 msgstr ""
+"Puede descargar el codec `aqui <http://asterisk.hosting.lv/>`_ bajo la "
+"sección Asterisk 13."
 
 #: ../../basic_concepts/installation/extra_components.rst:24
 msgid ""
 "Once downloaded, move the `.so` file to **/usr/lib/asterisk/modules/** "
 "and rename it to **codec_g729.so**"
 msgstr ""
+"Una vez descargado, mueva el fichero `.so` a la ruta "
+"**/usr/lib/asterisk/modules/** y renómbrelo a **codec_g729.so**"
 
 #: ../../basic_concepts/installation/extra_components.rst:27
 msgid ""
 "You can check the codec is valid by loading the module in asterisk and "
 "printing the available codec translations using:"
 msgstr ""
+"Puede comprobar si el codec es válido reiniciado asterisk y mostrando la "
+"lista de traducciones de codes disponibles:"
 
 #: ../../basic_concepts/installation/index.rst:3
 msgid "Initial Installation"
-msgstr ""
+msgstr "Instalación inicial"
 
 #: ../../basic_concepts/installation/install_types.rst:3
 msgid "Installation Types"
-msgstr ""
+msgstr "Tipos de instalación"
 
 #: ../../basic_concepts/installation/install_types.rst:7
 msgid "Distributed Install"
-msgstr ""
+msgstr "Instalación distribuida"
 
 #: ../../basic_concepts/installation/install_types.rst:9
 msgid ""
 "IvozProvider software is designed to run distributed between multiple "
 "systems in what we call profiles:"
 msgstr ""
+"IvozProvider está diseñado para que la mayor parte del software trabaje de"
+" manera distribuida en lo que llamamos perfiles."
 
 #: ../../basic_concepts/installation/install_types.rst:12
 msgid "Each profile is in charge of performing one of the platform functions:"
 msgstr ""
+"Cada perfil es encargado de realizar una de las funciones de la "
+"plataforma:"
 
 #: ../../basic_concepts/installation/install_types.rst:14
 msgid "Data storage"
-msgstr ""
+msgstr "Base de Datos"
 
 #: ../../basic_concepts/installation/install_types.rst:15
 msgid "SIP Proxy"
-msgstr ""
+msgstr "Proxy SIP"
+
 
 #: ../../basic_concepts/installation/install_types.rst:16
 msgid "Application Server"
-msgstr ""
+msgstr "Servidor Aplicaciones"
 
 #: ../../basic_concepts/installation/install_types.rst:17
 msgid "Web portal"
-msgstr ""
+msgstr "Portal Web"
 
 #: ../../basic_concepts/installation/install_types.rst:19
 msgid ""
 "For each of this profiles, there's a virtual package that will install "
 "all the required dependencies (see :ref:`Installing profile package`)."
 msgstr ""
+"Para cada uno de estos perfiles existe un paquete virtual que instalará "
+"todas las dependencias necesarias (ver :ref:`Instalar el paquete del "
+"rol`)."
 
 #: ../../basic_concepts/installation/install_types.rst:22
 msgid ""
@@ -586,10 +675,16 @@ msgid ""
 "software so the systems that have the same profile are synchronized (for "
 "example: database replication or http request balancing)."
 msgstr ""
+"Puedes instalar cuantas instancias desees de cada perfil, pero ten en "
+"cuenta que, mientras algunos estan pensados para escalar horizontalmente "
+"de manera nativa (por ejemplo: asterisk o media-relays) otros requerirán "
+"software adicional para que las máquinas del mismo perfil esten "
+"coordinadas (por ejemplo: replicación de bases de datos o balanceo de "
+"peticiones web)."
 
 #: ../../basic_concepts/installation/install_types.rst:30
 msgid "StandAlone Install"
-msgstr ""
+msgstr "Instalación standalone"
 
 #: ../../basic_concepts/installation/install_types.rst:32
 msgid ""
@@ -597,6 +692,9 @@ msgid ""
 "basic service, we have designed all this configuration so they can work "
 "in a single machine."
 msgstr ""
+"Pero si lo que deseas es tener una plataforma pequeña para realizar tus "
+"pruebas o dar un servicio básico, hemos diseñado todas las "
+"configuraciones para que puedan convivir en una sola máquina."
 
 #: ../../basic_concepts/installation/install_types.rst:36
 msgid ""
@@ -604,20 +702,25 @@ msgid ""
 " created :ref:`Automatic ISO CD image` so you can install in a couple of "
 "minutes."
 msgstr ""
+"Hemos bautizado este tipo de instalaciones como **StandAlone** y hemos  "
+"creado :ref:`CDs automáticos de instalación` para que puedas instalarlos "
+"en un par de minutos."
 
 #: ../../basic_concepts/installation/requirements.rst:3
 msgid "Minimum requirements"
-msgstr ""
+msgstr "Requisitos mínimos"
 
 #: ../../basic_concepts/installation/requirements.rst:7
 msgid "System requirements"
-msgstr ""
+msgstr "Requisitos de sistema"
 
 #: ../../basic_concepts/installation/requirements.rst:8
 msgid ""
 "IvozProvider is designed to be installed using Debian GNU/Linux APT "
 "package system."
 msgstr ""
+"IvozProvider está diseñado para funcionar e instalarse a través del "
+"sistema de paquetes APT de Debian GNU/Linux."
 
 #: ../../basic_concepts/installation/requirements.rst:11
 msgid ""
@@ -625,26 +728,29 @@ msgid ""
 "platform. Many of the installed software may not work properly with other"
 " pre-installed services (like MySQL or DNS servers)."
 msgstr ""
+"Es recomendable instalar IvozProvider en una máquina dedicada para la "
+"plataforma. Muchos de los software instalados podrían hacer malfuncionar "
+"otros software pre-instalados (por ejemplo MySQL o servidores DNS)."
 
 #: ../../basic_concepts/installation/requirements.rst:15
 msgid "For a StandAlone installation, we recommend at least:"
-msgstr ""
+msgstr "Para una instalación standalone, se requiere al menos:"
 
 #: ../../basic_concepts/installation/requirements.rst:17
 msgid "4 CPUs (x86_64 or i386)"
-msgstr ""
+msgstr "4 CPUs (x86_64 o i386)"
 
 #: ../../basic_concepts/installation/requirements.rst:18
 msgid "4 Gb memory"
-msgstr ""
+msgstr "4 Gb memoria"
 
 #: ../../basic_concepts/installation/requirements.rst:19
 msgid "30GB HDD"
-msgstr ""
+msgstr "30GB Disco Duro"
 
 #: ../../basic_concepts/installation/requirements.rst:20
 msgid "1/2 public IP Addresses (read note behind)"
-msgstr ""
+msgstr "1/2 IPs públicas (leer nota)"
 
 #: ../../basic_concepts/installation/requirements.rst:22
 msgid ""
@@ -652,18 +758,24 @@ msgid ""
 "IP address. If so, **KamTrunks ports will be changed from 5060 (TCP/UDP) "
 "to 7060 (TCP/UDP) and from 5061 (TCP) to 7061 (TCP)**."
 msgstr ""
+"Es posible hacer que el proxy de usuarios y el proxy "
+"de salida utilicen la misma direción IP pública. En este caso, **se cambiarán "
+"los puertos del proxy de salida de 5060 (TCP/UDP) a 7060 (TCP/UDP) y de 5061 "
+"(TCP) a 7061 (TCP)**."
 
 #: ../../basic_concepts/installation/requirements.rst:27
 msgid "If you're not using a :ref:`Automatic ISO CD image` you will also need:"
 msgstr ""
+"Si no está empleando la :ref:`CDs automáticos de instalación` también "
+"será necesario:"
 
 #: ../../basic_concepts/installation/requirements.rst:29
 msgid "Debian Stretch 9.0 base install"
-msgstr ""
+msgstr "Instalación base de Debian Stretch 9.0"
 
 #: ../../basic_concepts/installation/requirements.rst:30
 msgid "Internet access"
-msgstr ""
+msgstr "Acceso a Internet"
 
 #: ../../basic_concepts/intro/about.rst:3
 msgid "About this documentation"
@@ -1148,44 +1260,57 @@ msgid ""
 "to the previous role. The general (God) administrator is in charge of "
 "providing an URL with credentials for its brand portal."
 msgstr ""
+"El operador de marca accede a un portal con menos secciones en comparación con "
+"el rol previo. El administrador global está a cargo de "
+"proveer una URL con credenciales para su portal de marca."
 
 #: ../../basic_concepts/operation_roles/brand.rst:5
 msgid ""
 "The most important task for brand operator is to **create and configure "
 "clients so they can work properly**."
 msgstr ""
+"La tarea más importante del operador de marca es **crear y configurar "
+"clientes de manera que estos puedan trabajar correctamente**."
 
 #: ../../basic_concepts/operation_roles/brand.rst:8
 msgid ""
 "Due to brand operators are also responsible of billing their clients and "
 "make sure the external calls are properly setup, it must also manage:"
 msgstr ""
+"Dado que los operadores de marca son también responsables de la facturación y "
+"de garantizar que las llamas externas están debidamente configuradas, debe gestionar:"
 
 #: ../../basic_concepts/operation_roles/brand.rst:11
 msgid "Peering contracts with other IP providers for PSTN interconnection."
-msgstr ""
+msgstr "Contratos de peering con otros proveedores IP para interconexiones PSTN."
 
 #: ../../basic_concepts/operation_roles/brand.rst:13
 msgid "Include all required client information for the billing process."
-msgstr ""
+msgstr "Incluir toda la información requerida para el proceso de facturación."
 
 #: ../../basic_concepts/operation_roles/brand.rst:15
 msgid ""
 "Pricing plans that will offer to their clients, that will determine how "
 "match they pay for each call."
 msgstr ""
+"Planes de precios que serán ofrecidos a sus clientes y que determinarán cuanto "
+"pagarán por cada llamada."
 
 #: ../../basic_concepts/operation_roles/brand.rst:18
 msgid ""
 "Setup the routes for each outgoing call types based on their final "
 "destination"
 msgstr ""
+"Configurar las rutas para cada tipo de llamada saliente en base a su "
+"destino final."
 
 #: ../../basic_concepts/operation_roles/brand.rst:21
 msgid ""
 "Create the invoices for each billing period and send them to their "
 "clients."
 msgstr ""
+"Crear las facturas por cada periodo de facturación y enviarlas a sus "
+"clientes."
 
 #: ../../basic_concepts/operation_roles/brand.rst:24
 msgid ""
@@ -1193,6 +1318,9 @@ msgid ""
 "global operator, but their importance is vital so the final users can use"
 " all the features includes in IvozProvider"
 msgstr ""
+"Como puede apreciarse, la tarea del operador de marca es muy distinta de la tarea del "
+"administrador global, pero su importancia es vital para que el usuario final pueda usar "
+"todas las funcionalidades incluidas en IvozProvider."
 
 #: ../../basic_concepts/operation_roles/brand.rst:30
 msgid ""
@@ -1200,67 +1328,76 @@ msgid ""
 "administrators and **configure the platform to route and rate their "
 "calls**."
 msgstr ""
+"**En resumen**, los operadores de marca **otorgan acceso** a sus administradores de "
+"**clientes** y **configuran la plataforma para enrutar y tarificar sus "
+"llamadas**."
 
 #: ../../basic_concepts/operation_roles/client.rst:1
 msgid ""
 "The client administrator has access to the portal supplied by the brand "
 "operator."
 msgstr ""
+"El administrador de cliente tiene acceso al portal facilitado por el administrador "
+"de marca."
 
 #: ../../basic_concepts/operation_roles/client.rst:4
 msgid ""
 "From its point of view, it has a virtual pbx in the cloud that must "
 "configure for its users."
 msgstr ""
+"Desde su punto de vista, tiene una PBX virtual en la nube que debe "
+"configurar para sus clientes."
 
 #: ../../basic_concepts/operation_roles/client.rst:7
 msgid "To accomplish that, it's required:"
-msgstr ""
+msgstr "Para realizar esta tarea, es requerido:"
 
 #: ../../basic_concepts/operation_roles/client.rst:9
 msgid "Configure terminals, extensions and users."
-msgstr ""
+msgstr "Configurar terminales, extensiones y usuarios."
 
 #: ../../basic_concepts/operation_roles/client.rst:11
 msgid "Configure the DDI incoming process with the proper logic:"
-msgstr ""
+msgstr "Configurar los DDIs entrantes con las lógicas que correspondan:"
 
 #: ../../basic_concepts/operation_roles/client.rst:13
 msgid "Directly to an user"
-msgstr ""
+msgstr "Directo a usuario"
 
 #: ../../basic_concepts/operation_roles/client.rst:14
 msgid "IVRs"
-msgstr ""
+msgstr "IVRs"
 
 #: ../../basic_concepts/operation_roles/client.rst:15
 msgid "Hunt groups"
-msgstr ""
+msgstr "Grupos de salto"
 
 #: ../../basic_concepts/operation_roles/client.rst:16
 msgid "Faxes"
-msgstr ""
+msgstr "Faxes"
 
 #: ../../basic_concepts/operation_roles/client.rst:18
 msgid ""
 "Give access to the final users to their web portal, so they can configure"
 " their profile options:"
 msgstr ""
+"Dar acceso al usuario final a su portal web, de manera que pueda configurar "
+"las opciones de su perfil:"
 
 #: ../../basic_concepts/operation_roles/client.rst:21
 #: ../../basic_concepts/operation_roles/user.rst:10
 msgid "Call forward"
-msgstr ""
+msgstr "Desvíos"
 
 #: ../../basic_concepts/operation_roles/client.rst:22
 #: ../../basic_concepts/operation_roles/user.rst:11
 msgid "Do not disturb"
-msgstr ""
+msgstr "No molestar"
 
 #: ../../basic_concepts/operation_roles/client.rst:23
 #: ../../basic_concepts/operation_roles/user.rst:12
 msgid "Call waiting"
-msgstr ""
+msgstr "Llamada en espera"
 
 #: ../../basic_concepts/operation_roles/client.rst:25
 msgid ""
@@ -1268,68 +1405,86 @@ msgid ""
 "the telephony system and make use of all the features available in "
 "IvozProvider**."
 msgstr ""
+"En resumen, los administradores de cliente son los responsables de "
+"**configurar su sistema de telefonía a su gusto y de utilizar todas las "
+"funcionalidades que proveé IvozProvider**."
+
 
 #: ../../basic_concepts/operation_roles/god.rst:1
 msgid ""
 "The global administrator role (operator in the image) is usually done by "
 "the installation responsible."
 msgstr ""
+"El rol de administrador global (operador en la imagen) lo desempeña "
+"habitualmente el instalador de IvozProvider."
 
 #: ../../basic_concepts/operation_roles/god.rst:4
 msgid ""
 "All options and platform features are visible to this role and usually is"
 " in charge of its maintenance."
 msgstr ""
+"Tiene visibilidad total de todos los aspectos de la plataforma y suele "
+"ser el encargado del mantenimiento de la misma."
 
 #: ../../basic_concepts/operation_roles/god.rst:7
 msgid ""
 "Their most important task is to **create Brands** and configure them so "
 "they have the enough autonomy to properly use the platform:"
 msgstr ""
+"Su **función más importante es crear Marcas** y hacer todo lo necesario "
+"para que dispongan de la autonomía necesaria para usar la plataforma:"
 
 #: ../../basic_concepts/operation_roles/god.rst:10
 msgid "Configure their web access."
-msgstr ""
+msgstr "Configurar sus accesos web."
 
 #: ../../basic_concepts/operation_roles/god.rst:12
 msgid "Configure their brand portal look and feel: themes, colors, etc."
 msgstr ""
+"Configurar el aspecto de su portal de administración de marca: tema, "
+"colores, etc."
 
 #: ../../basic_concepts/operation_roles/god.rst:14
 msgid ""
 "Apart from their main task, their global visibility and total access "
 "makes them responsible of:"
 msgstr ""
+"Aparte de esta función principal, su visibilidad global y acceso total le"
+" hacen responsable de:"
 
 #: ../../basic_concepts/operation_roles/god.rst:17
 msgid "Monitor the platform so it keeps always UP & RUNNING"
-msgstr ""
+msgstr "Monitorizar la plataforma para que esté siempre UP & RUNNING."
 
 #: ../../basic_concepts/operation_roles/god.rst:19
 msgid "Analyze platform logs to track possible errors."
-msgstr ""
+msgstr "Analizar los logs de la plataforma en busca de posibles errores."
 
 #: ../../basic_concepts/operation_roles/god.rst:21
 msgid "Polish the security mechanisms to avoid external attacks."
-msgstr ""
+msgstr "Afinar los mecanismos de seguridad para evitar ataques externos."
 
 #: ../../basic_concepts/operation_roles/god.rst:23
 msgid "Obtain global statistics of calls audio quality."
-msgstr ""
+msgstr "Obtener estadísticas globales de calidad de llamada."
 
 #: ../../basic_concepts/operation_roles/god.rst:25
 msgid "Increase the available resources of the platform as long as is needed:"
 msgstr ""
+"Ir aumentando los recursos de la plataforma a medida que se vaya "
+"necesitando:"
 
 #: ../../basic_concepts/operation_roles/god.rst:27
 msgid "Increasing resources available in a standalone installation"
-msgstr ""
+msgstr "Aumentando los recursos de la instalación standalone."
 
 #: ../../basic_concepts/operation_roles/god.rst:29
 msgid ""
 "Migrating, whenever required, to a distributed installation with multiple"
 " AS, media relays, etc."
 msgstr ""
+"Migrando, llegado el momento, a una instalación distribuida con múltiples"
+" AS-es, media relays, etc."
 
 #: ../../basic_concepts/operation_roles/god.rst:32
 msgid ""
@@ -1337,6 +1492,9 @@ msgid ""
 "platform**, that's why *God* is a term used in multiple places along this"
 " documentation."
 msgstr ""
+"En resumen, **es el único rol que no tiene límites dentro de la "
+"plataforma**, de ahí la denominación *God* que se utilizará en múltiples "
+"lugares de esta documentación."
 
 #: ../../basic_concepts/operation_roles/god.rst:36
 msgid ""
@@ -1344,74 +1502,85 @@ msgid ""
 "for the correct behaviour. This role **doesn't have any kind of limit** "
 "and **grants access** to the **brand operators**."
 msgstr ""
+"**Este rol se encarga de mantener la plataforma**, adaptándola a las "
+"necesidades de cada momento. Su rol **no tiene ningún tipo de límite y** "
+"es el que **da acceso a** los *n* **operadores de marca**."
 
 #: ../../basic_concepts/operation_roles/index.rst:5
 msgid "Platform roles"
-msgstr ""
+msgstr "Roles de la plataforma"
 
 #: ../../basic_concepts/operation_roles/index.rst:7
 msgid "IvozProvider is a multilevel role provider solution."
-msgstr ""
+msgstr "IvozProvider es una solución de proveedor multinivel."
 
 #: ../../basic_concepts/operation_roles/index.rst:9
 msgid ""
 "The following images shows the different available levels and the "
 "relation between them:"
 msgstr ""
+"La siguiente imagen muestra los distintos niveles disponibles así como "
+"la relación entre ellos:"
 
 #: ../../basic_concepts/operation_roles/index.rst:20
 msgid ""
 "This section will explain each of the available roles, describing their "
 "responsibilities and more important tasks."
 msgstr ""
+"Esta sección explica cada uno de los roles, describe sus responsabilidades "
+"y tareas principales."
 
 #: ../../basic_concepts/operation_roles/index.rst:25
 msgid "Global administrator role"
-msgstr ""
+msgstr "Rol de administrador global"
 
 #: ../../basic_concepts/operation_roles/index.rst:31
 msgid "Brand administrator role"
-msgstr ""
+msgstr "Rol de administrador de marca"
 
 #: ../../basic_concepts/operation_roles/index.rst:37
 msgid "Client administrator role"
-msgstr ""
+msgstr "Rol de administrador de cliente"
 
 #: ../../basic_concepts/operation_roles/index.rst:43
 msgid "Final user role"
-msgstr ""
+msgstr "Rol de usuario final"
 
 #: ../../basic_concepts/operation_roles/user.rst:1
 msgid ""
 "The final user has two different kinds of credentials, both supplied by "
 "its client administrator:"
 msgstr ""
+"El usuario final cuenta con dos tipos distintos de credenciales, ambas "
+"facilitadas por su administrador de cliente:"
 
 #: ../../basic_concepts/operation_roles/user.rst:4
 msgid "User portal access credentials"
-msgstr ""
+msgstr "Credenciales de acceso al portal de usuario"
 
 #: ../../basic_concepts/operation_roles/user.rst:6
 msgid "SIP credentials used to register terminals to IvozProvider"
-msgstr ""
+msgstr "Credenciales SIP utilizadas para registrar el terminal en IvozProvider"
 
 #: ../../basic_concepts/operation_roles/user.rst:8
 msgid "Through the user portal, it can browse their call registry and configure:"
-msgstr ""
+msgstr "A través del portal de usuario, se puede visualizar el histórico de llamas y configurar:"
 
 #: ../../basic_concepts/operation_roles/user.rst:13
 msgid "Displayed data when calling"
-msgstr ""
+msgstr "Datos a mostrar durante la llamada"
 
 #: ../../basic_concepts/operation_roles/user.rst:14
 msgid "Geographical configuration"
-msgstr ""
+msgstr "Configuración geográfica"
 
 #: ../../basic_concepts/operation_roles/user.rst:16
 msgid ""
 "On the other hand, the SIP credentials allow users to configure their "
 "terminals to place and receive calls."
 msgstr ""
+"Por otro lado, las credenciales SIP permiten al usuario configurar su "
+"terminal para realizar y recibir llamadas."
 
 #: ../../basic_concepts/operation_roles/user.rst:18
 msgid ""
@@ -1420,4 +1589,8 @@ msgid ""
 "placed to an user, all the active devices will ring so the user can "
 "answer the call from any of them."
 msgstr ""
+"Las mismas credenciales SIP pueden ser utilizadas en múltiples dispositivos al mismo "
+"tiempo, generado un efecto de bifurcación paralela (*parallel-forking*): cuando se recibe "
+"una llamada, todos los dispositivos activos sonarán permitiendo al usuario "
+"responder desde cualquiera de ellos."
 
