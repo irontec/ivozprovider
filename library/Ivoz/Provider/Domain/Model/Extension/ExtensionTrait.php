@@ -48,7 +48,7 @@ trait ExtensionTrait
          * @var $dto ExtensionDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getUsers()) {
+        if (!is_null($dto->getUsers())) {
             $self->replaceUsers(
                 $fkTransformer->transformCollection(
                     $dto->getUsers()
@@ -77,7 +77,7 @@ trait ExtensionTrait
          * @var $dto ExtensionDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getUsers()) {
+        if (!is_null($dto->getUsers())) {
             $this->replaceUsers(
                 $fkTransformer->transformCollection(
                     $dto->getUsers()

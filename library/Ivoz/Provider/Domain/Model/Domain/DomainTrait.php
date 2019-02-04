@@ -60,7 +60,7 @@ trait DomainTrait
          * @var $dto DomainDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getFriends()) {
+        if (!is_null($dto->getFriends())) {
             $self->replaceFriends(
                 $fkTransformer->transformCollection(
                     $dto->getFriends()
@@ -68,7 +68,7 @@ trait DomainTrait
             );
         }
 
-        if ($dto->getResidentialDevices()) {
+        if (!is_null($dto->getResidentialDevices())) {
             $self->replaceResidentialDevices(
                 $fkTransformer->transformCollection(
                     $dto->getResidentialDevices()
@@ -76,7 +76,7 @@ trait DomainTrait
             );
         }
 
-        if ($dto->getTerminals()) {
+        if (!is_null($dto->getTerminals())) {
             $self->replaceTerminals(
                 $fkTransformer->transformCollection(
                     $dto->getTerminals()
@@ -105,21 +105,21 @@ trait DomainTrait
          * @var $dto DomainDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getFriends()) {
+        if (!is_null($dto->getFriends())) {
             $this->replaceFriends(
                 $fkTransformer->transformCollection(
                     $dto->getFriends()
                 )
             );
         }
-        if ($dto->getResidentialDevices()) {
+        if (!is_null($dto->getResidentialDevices())) {
             $this->replaceResidentialDevices(
                 $fkTransformer->transformCollection(
                     $dto->getResidentialDevices()
                 )
             );
         }
-        if ($dto->getTerminals()) {
+        if (!is_null($dto->getTerminals())) {
             $this->replaceTerminals(
                 $fkTransformer->transformCollection(
                     $dto->getTerminals()

@@ -606,7 +606,7 @@ public function <methodName>(<criteriaArgument>)
 
                     $updateFrom[] =
                         $this->spaces
-                        . 'if (' . $dtoGetter . ') {'
+                        . 'if (!is_null(' . $dtoGetter . ')) {'
                         . "\n"
                         . str_repeat($this->spaces, 2)
                         . '$this->replace'
@@ -628,7 +628,7 @@ public function <methodName>(<criteriaArgument>)
 
                     $setters[$attribute] =
                         $this->spaces
-                        . 'if (' . $dtoGetter . ') {'
+                        . 'if (!is_null(' . $dtoGetter . ')) {'
                         . "\n"
                         . str_repeat($this->spaces, 2)
                         . '$self->replace'

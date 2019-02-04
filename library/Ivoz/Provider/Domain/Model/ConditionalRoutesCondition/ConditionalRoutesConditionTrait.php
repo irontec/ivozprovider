@@ -66,7 +66,7 @@ trait ConditionalRoutesConditionTrait
          * @var $dto ConditionalRoutesConditionDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRelMatchlists()) {
+        if (!is_null($dto->getRelMatchlists())) {
             $self->replaceRelMatchlists(
                 $fkTransformer->transformCollection(
                     $dto->getRelMatchlists()
@@ -74,7 +74,7 @@ trait ConditionalRoutesConditionTrait
             );
         }
 
-        if ($dto->getRelSchedules()) {
+        if (!is_null($dto->getRelSchedules())) {
             $self->replaceRelSchedules(
                 $fkTransformer->transformCollection(
                     $dto->getRelSchedules()
@@ -82,7 +82,7 @@ trait ConditionalRoutesConditionTrait
             );
         }
 
-        if ($dto->getRelCalendars()) {
+        if (!is_null($dto->getRelCalendars())) {
             $self->replaceRelCalendars(
                 $fkTransformer->transformCollection(
                     $dto->getRelCalendars()
@@ -90,7 +90,7 @@ trait ConditionalRoutesConditionTrait
             );
         }
 
-        if ($dto->getRelRouteLocks()) {
+        if (!is_null($dto->getRelRouteLocks())) {
             $self->replaceRelRouteLocks(
                 $fkTransformer->transformCollection(
                     $dto->getRelRouteLocks()
@@ -119,28 +119,28 @@ trait ConditionalRoutesConditionTrait
          * @var $dto ConditionalRoutesConditionDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRelMatchlists()) {
+        if (!is_null($dto->getRelMatchlists())) {
             $this->replaceRelMatchlists(
                 $fkTransformer->transformCollection(
                     $dto->getRelMatchlists()
                 )
             );
         }
-        if ($dto->getRelSchedules()) {
+        if (!is_null($dto->getRelSchedules())) {
             $this->replaceRelSchedules(
                 $fkTransformer->transformCollection(
                     $dto->getRelSchedules()
                 )
             );
         }
-        if ($dto->getRelCalendars()) {
+        if (!is_null($dto->getRelCalendars())) {
             $this->replaceRelCalendars(
                 $fkTransformer->transformCollection(
                     $dto->getRelCalendars()
                 )
             );
         }
-        if ($dto->getRelRouteLocks()) {
+        if (!is_null($dto->getRelRouteLocks())) {
             $this->replaceRelRouteLocks(
                 $fkTransformer->transformCollection(
                     $dto->getRelRouteLocks()

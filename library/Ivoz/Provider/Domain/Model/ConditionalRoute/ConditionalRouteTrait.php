@@ -48,7 +48,7 @@ trait ConditionalRouteTrait
          * @var $dto ConditionalRouteDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getConditions()) {
+        if (!is_null($dto->getConditions())) {
             $self->replaceConditions(
                 $fkTransformer->transformCollection(
                     $dto->getConditions()
@@ -77,7 +77,7 @@ trait ConditionalRouteTrait
          * @var $dto ConditionalRouteDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getConditions()) {
+        if (!is_null($dto->getConditions())) {
             $this->replaceConditions(
                 $fkTransformer->transformCollection(
                     $dto->getConditions()

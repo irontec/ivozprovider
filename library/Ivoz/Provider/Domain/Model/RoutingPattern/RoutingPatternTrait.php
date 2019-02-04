@@ -60,7 +60,7 @@ trait RoutingPatternTrait
          * @var $dto RoutingPatternDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
@@ -68,7 +68,7 @@ trait RoutingPatternTrait
             );
         }
 
-        if ($dto->getRelPatternGroups()) {
+        if (!is_null($dto->getRelPatternGroups())) {
             $self->replaceRelPatternGroups(
                 $fkTransformer->transformCollection(
                     $dto->getRelPatternGroups()
@@ -76,7 +76,7 @@ trait RoutingPatternTrait
             );
         }
 
-        if ($dto->getLcrRules()) {
+        if (!is_null($dto->getLcrRules())) {
             $self->replaceLcrRules(
                 $fkTransformer->transformCollection(
                     $dto->getLcrRules()
@@ -105,21 +105,21 @@ trait RoutingPatternTrait
          * @var $dto RoutingPatternDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
                 )
             );
         }
-        if ($dto->getRelPatternGroups()) {
+        if (!is_null($dto->getRelPatternGroups())) {
             $this->replaceRelPatternGroups(
                 $fkTransformer->transformCollection(
                     $dto->getRelPatternGroups()
                 )
             );
         }
-        if ($dto->getLcrRules()) {
+        if (!is_null($dto->getLcrRules())) {
             $this->replaceLcrRules(
                 $fkTransformer->transformCollection(
                     $dto->getLcrRules()

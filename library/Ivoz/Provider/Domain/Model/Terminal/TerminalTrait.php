@@ -54,7 +54,7 @@ trait TerminalTrait
          * @var $dto TerminalDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getAstPsEndpoints()) {
+        if (!is_null($dto->getAstPsEndpoints())) {
             $self->replaceAstPsEndpoints(
                 $fkTransformer->transformCollection(
                     $dto->getAstPsEndpoints()
@@ -62,7 +62,7 @@ trait TerminalTrait
             );
         }
 
-        if ($dto->getUsers()) {
+        if (!is_null($dto->getUsers())) {
             $self->replaceUsers(
                 $fkTransformer->transformCollection(
                     $dto->getUsers()
@@ -91,14 +91,14 @@ trait TerminalTrait
          * @var $dto TerminalDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getAstPsEndpoints()) {
+        if (!is_null($dto->getAstPsEndpoints())) {
             $this->replaceAstPsEndpoints(
                 $fkTransformer->transformCollection(
                     $dto->getAstPsEndpoints()
                 )
             );
         }
-        if ($dto->getUsers()) {
+        if (!is_null($dto->getUsers())) {
             $this->replaceUsers(
                 $fkTransformer->transformCollection(
                     $dto->getUsers()

@@ -48,7 +48,7 @@ trait TransformationRuleSetTrait
          * @var $dto TransformationRuleSetDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRules()) {
+        if (!is_null($dto->getRules())) {
             $self->replaceRules(
                 $fkTransformer->transformCollection(
                     $dto->getRules()
@@ -77,7 +77,7 @@ trait TransformationRuleSetTrait
          * @var $dto TransformationRuleSetDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRules()) {
+        if (!is_null($dto->getRules())) {
             $this->replaceRules(
                 $fkTransformer->transformCollection(
                     $dto->getRules()
