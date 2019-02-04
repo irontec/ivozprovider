@@ -48,7 +48,7 @@ trait HuntGroupTrait
          * @var $dto HuntGroupDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getHuntGroupsRelUsers()) {
+        if (!is_null($dto->getHuntGroupsRelUsers())) {
             $self->replaceHuntGroupsRelUsers(
                 $fkTransformer->transformCollection(
                     $dto->getHuntGroupsRelUsers()
@@ -77,7 +77,7 @@ trait HuntGroupTrait
          * @var $dto HuntGroupDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getHuntGroupsRelUsers()) {
+        if (!is_null($dto->getHuntGroupsRelUsers())) {
             $this->replaceHuntGroupsRelUsers(
                 $fkTransformer->transformCollection(
                     $dto->getHuntGroupsRelUsers()

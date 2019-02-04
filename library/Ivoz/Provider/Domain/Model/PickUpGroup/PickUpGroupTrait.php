@@ -48,7 +48,7 @@ trait PickUpGroupTrait
          * @var $dto PickUpGroupDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRelUsers()) {
+        if (!is_null($dto->getRelUsers())) {
             $self->replaceRelUsers(
                 $fkTransformer->transformCollection(
                     $dto->getRelUsers()
@@ -77,7 +77,7 @@ trait PickUpGroupTrait
          * @var $dto PickUpGroupDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRelUsers()) {
+        if (!is_null($dto->getRelUsers())) {
             $this->replaceRelUsers(
                 $fkTransformer->transformCollection(
                     $dto->getRelUsers()

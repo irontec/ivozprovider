@@ -54,7 +54,7 @@ trait RoutingPatternGroupTrait
          * @var $dto RoutingPatternGroupDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRelPatterns()) {
+        if (!is_null($dto->getRelPatterns())) {
             $self->replaceRelPatterns(
                 $fkTransformer->transformCollection(
                     $dto->getRelPatterns()
@@ -62,7 +62,7 @@ trait RoutingPatternGroupTrait
             );
         }
 
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
@@ -91,14 +91,14 @@ trait RoutingPatternGroupTrait
          * @var $dto RoutingPatternGroupDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRelPatterns()) {
+        if (!is_null($dto->getRelPatterns())) {
             $this->replaceRelPatterns(
                 $fkTransformer->transformCollection(
                     $dto->getRelPatterns()
                 )
             );
         }
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()

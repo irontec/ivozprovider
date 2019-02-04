@@ -48,7 +48,7 @@ trait NotificationTemplateTrait
          * @var $dto NotificationTemplateDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getContents()) {
+        if (!is_null($dto->getContents())) {
             $self->replaceContents(
                 $fkTransformer->transformCollection(
                     $dto->getContents()
@@ -77,7 +77,7 @@ trait NotificationTemplateTrait
          * @var $dto NotificationTemplateDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getContents()) {
+        if (!is_null($dto->getContents())) {
             $this->replaceContents(
                 $fkTransformer->transformCollection(
                     $dto->getContents()

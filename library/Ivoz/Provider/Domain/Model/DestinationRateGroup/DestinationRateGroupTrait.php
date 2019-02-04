@@ -48,7 +48,7 @@ trait DestinationRateGroupTrait
          * @var $dto DestinationRateGroupDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getDestinationRates()) {
+        if (!is_null($dto->getDestinationRates())) {
             $self->replaceDestinationRates(
                 $fkTransformer->transformCollection(
                     $dto->getDestinationRates()
@@ -77,7 +77,7 @@ trait DestinationRateGroupTrait
          * @var $dto DestinationRateGroupDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getDestinationRates()) {
+        if (!is_null($dto->getDestinationRates())) {
             $this->replaceDestinationRates(
                 $fkTransformer->transformCollection(
                     $dto->getDestinationRates()

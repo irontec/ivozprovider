@@ -48,7 +48,7 @@ trait RatingProfileTrait
          * @var $dto RatingProfileDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getTpRatingProfiles()) {
+        if (!is_null($dto->getTpRatingProfiles())) {
             $self->replaceTpRatingProfiles(
                 $fkTransformer->transformCollection(
                     $dto->getTpRatingProfiles()
@@ -77,7 +77,7 @@ trait RatingProfileTrait
          * @var $dto RatingProfileDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getTpRatingProfiles()) {
+        if (!is_null($dto->getTpRatingProfiles())) {
             $this->replaceTpRatingProfiles(
                 $fkTransformer->transformCollection(
                     $dto->getTpRatingProfiles()

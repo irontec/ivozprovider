@@ -54,7 +54,7 @@ trait DdiProviderTrait
          * @var $dto DdiProviderDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getDdiProviderRegistrations()) {
+        if (!is_null($dto->getDdiProviderRegistrations())) {
             $self->replaceDdiProviderRegistrations(
                 $fkTransformer->transformCollection(
                     $dto->getDdiProviderRegistrations()
@@ -62,7 +62,7 @@ trait DdiProviderTrait
             );
         }
 
-        if ($dto->getDdiProviderAddresses()) {
+        if (!is_null($dto->getDdiProviderAddresses())) {
             $self->replaceDdiProviderAddresses(
                 $fkTransformer->transformCollection(
                     $dto->getDdiProviderAddresses()
@@ -91,14 +91,14 @@ trait DdiProviderTrait
          * @var $dto DdiProviderDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getDdiProviderRegistrations()) {
+        if (!is_null($dto->getDdiProviderRegistrations())) {
             $this->replaceDdiProviderRegistrations(
                 $fkTransformer->transformCollection(
                     $dto->getDdiProviderRegistrations()
                 )
             );
         }
-        if ($dto->getDdiProviderAddresses()) {
+        if (!is_null($dto->getDdiProviderAddresses())) {
             $this->replaceDdiProviderAddresses(
                 $fkTransformer->transformCollection(
                     $dto->getDdiProviderAddresses()

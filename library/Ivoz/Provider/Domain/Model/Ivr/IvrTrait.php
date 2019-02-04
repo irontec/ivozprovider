@@ -54,7 +54,7 @@ trait IvrTrait
          * @var $dto IvrDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getEntries()) {
+        if (!is_null($dto->getEntries())) {
             $self->replaceEntries(
                 $fkTransformer->transformCollection(
                     $dto->getEntries()
@@ -62,7 +62,7 @@ trait IvrTrait
             );
         }
 
-        if ($dto->getExcludedExtensions()) {
+        if (!is_null($dto->getExcludedExtensions())) {
             $self->replaceExcludedExtensions(
                 $fkTransformer->transformCollection(
                     $dto->getExcludedExtensions()
@@ -91,14 +91,14 @@ trait IvrTrait
          * @var $dto IvrDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getEntries()) {
+        if (!is_null($dto->getEntries())) {
             $this->replaceEntries(
                 $fkTransformer->transformCollection(
                     $dto->getEntries()
                 )
             );
         }
-        if ($dto->getExcludedExtensions()) {
+        if (!is_null($dto->getExcludedExtensions())) {
             $this->replaceExcludedExtensions(
                 $fkTransformer->transformCollection(
                     $dto->getExcludedExtensions()

@@ -60,7 +60,7 @@ trait ResidentialDeviceTrait
          * @var $dto ResidentialDeviceDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getPsEndpoints()) {
+        if (!is_null($dto->getPsEndpoints())) {
             $self->replacePsEndpoints(
                 $fkTransformer->transformCollection(
                     $dto->getPsEndpoints()
@@ -68,7 +68,7 @@ trait ResidentialDeviceTrait
             );
         }
 
-        if ($dto->getDdis()) {
+        if (!is_null($dto->getDdis())) {
             $self->replaceDdis(
                 $fkTransformer->transformCollection(
                     $dto->getDdis()
@@ -76,7 +76,7 @@ trait ResidentialDeviceTrait
             );
         }
 
-        if ($dto->getCallForwardSettings()) {
+        if (!is_null($dto->getCallForwardSettings())) {
             $self->replaceCallForwardSettings(
                 $fkTransformer->transformCollection(
                     $dto->getCallForwardSettings()
@@ -105,21 +105,21 @@ trait ResidentialDeviceTrait
          * @var $dto ResidentialDeviceDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getPsEndpoints()) {
+        if (!is_null($dto->getPsEndpoints())) {
             $this->replacePsEndpoints(
                 $fkTransformer->transformCollection(
                     $dto->getPsEndpoints()
                 )
             );
         }
-        if ($dto->getDdis()) {
+        if (!is_null($dto->getDdis())) {
             $this->replaceDdis(
                 $fkTransformer->transformCollection(
                     $dto->getDdis()
                 )
             );
         }
-        if ($dto->getCallForwardSettings()) {
+        if (!is_null($dto->getCallForwardSettings())) {
             $this->replaceCallForwardSettings(
                 $fkTransformer->transformCollection(
                     $dto->getCallForwardSettings()

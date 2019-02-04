@@ -48,7 +48,7 @@ trait InvoiceSchedulerTrait
          * @var $dto InvoiceSchedulerDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRelFixedCosts()) {
+        if (!is_null($dto->getRelFixedCosts())) {
             $self->replaceRelFixedCosts(
                 $fkTransformer->transformCollection(
                     $dto->getRelFixedCosts()
@@ -77,7 +77,7 @@ trait InvoiceSchedulerTrait
          * @var $dto InvoiceSchedulerDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRelFixedCosts()) {
+        if (!is_null($dto->getRelFixedCosts())) {
             $this->replaceRelFixedCosts(
                 $fkTransformer->transformCollection(
                     $dto->getRelFixedCosts()

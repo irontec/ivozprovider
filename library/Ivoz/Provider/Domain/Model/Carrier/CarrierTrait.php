@@ -72,7 +72,7 @@ trait CarrierTrait
          * @var $dto CarrierDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
@@ -80,7 +80,7 @@ trait CarrierTrait
             );
         }
 
-        if ($dto->getOutgoingRoutingsRelCarriers()) {
+        if (!is_null($dto->getOutgoingRoutingsRelCarriers())) {
             $self->replaceOutgoingRoutingsRelCarriers(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutingsRelCarriers()
@@ -88,7 +88,7 @@ trait CarrierTrait
             );
         }
 
-        if ($dto->getServers()) {
+        if (!is_null($dto->getServers())) {
             $self->replaceServers(
                 $fkTransformer->transformCollection(
                     $dto->getServers()
@@ -96,7 +96,7 @@ trait CarrierTrait
             );
         }
 
-        if ($dto->getRatingProfiles()) {
+        if (!is_null($dto->getRatingProfiles())) {
             $self->replaceRatingProfiles(
                 $fkTransformer->transformCollection(
                     $dto->getRatingProfiles()
@@ -104,7 +104,7 @@ trait CarrierTrait
             );
         }
 
-        if ($dto->getTpCdrStats()) {
+        if (!is_null($dto->getTpCdrStats())) {
             $self->replaceTpCdrStats(
                 $fkTransformer->transformCollection(
                     $dto->getTpCdrStats()
@@ -133,35 +133,35 @@ trait CarrierTrait
          * @var $dto CarrierDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
                 )
             );
         }
-        if ($dto->getOutgoingRoutingsRelCarriers()) {
+        if (!is_null($dto->getOutgoingRoutingsRelCarriers())) {
             $this->replaceOutgoingRoutingsRelCarriers(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutingsRelCarriers()
                 )
             );
         }
-        if ($dto->getServers()) {
+        if (!is_null($dto->getServers())) {
             $this->replaceServers(
                 $fkTransformer->transformCollection(
                     $dto->getServers()
                 )
             );
         }
-        if ($dto->getRatingProfiles()) {
+        if (!is_null($dto->getRatingProfiles())) {
             $this->replaceRatingProfiles(
                 $fkTransformer->transformCollection(
                     $dto->getRatingProfiles()
                 )
             );
         }
-        if ($dto->getTpCdrStats()) {
+        if (!is_null($dto->getTpCdrStats())) {
             $this->replaceTpCdrStats(
                 $fkTransformer->transformCollection(
                     $dto->getTpCdrStats()

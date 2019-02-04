@@ -48,7 +48,7 @@ trait RatingPlanGroupTrait
          * @var $dto RatingPlanGroupDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRatingPlan()) {
+        if (!is_null($dto->getRatingPlan())) {
             $self->replaceRatingPlan(
                 $fkTransformer->transformCollection(
                     $dto->getRatingPlan()
@@ -77,7 +77,7 @@ trait RatingPlanGroupTrait
          * @var $dto RatingPlanGroupDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRatingPlan()) {
+        if (!is_null($dto->getRatingPlan())) {
             $this->replaceRatingPlan(
                 $fkTransformer->transformCollection(
                     $dto->getRatingPlan()

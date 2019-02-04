@@ -66,7 +66,7 @@ trait ExternalCallFilterTrait
          * @var $dto ExternalCallFilterDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getCalendars()) {
+        if (!is_null($dto->getCalendars())) {
             $self->replaceCalendars(
                 $fkTransformer->transformCollection(
                     $dto->getCalendars()
@@ -74,7 +74,7 @@ trait ExternalCallFilterTrait
             );
         }
 
-        if ($dto->getBlackLists()) {
+        if (!is_null($dto->getBlackLists())) {
             $self->replaceBlackLists(
                 $fkTransformer->transformCollection(
                     $dto->getBlackLists()
@@ -82,7 +82,7 @@ trait ExternalCallFilterTrait
             );
         }
 
-        if ($dto->getWhiteLists()) {
+        if (!is_null($dto->getWhiteLists())) {
             $self->replaceWhiteLists(
                 $fkTransformer->transformCollection(
                     $dto->getWhiteLists()
@@ -90,7 +90,7 @@ trait ExternalCallFilterTrait
             );
         }
 
-        if ($dto->getSchedules()) {
+        if (!is_null($dto->getSchedules())) {
             $self->replaceSchedules(
                 $fkTransformer->transformCollection(
                     $dto->getSchedules()
@@ -119,28 +119,28 @@ trait ExternalCallFilterTrait
          * @var $dto ExternalCallFilterDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getCalendars()) {
+        if (!is_null($dto->getCalendars())) {
             $this->replaceCalendars(
                 $fkTransformer->transformCollection(
                     $dto->getCalendars()
                 )
             );
         }
-        if ($dto->getBlackLists()) {
+        if (!is_null($dto->getBlackLists())) {
             $this->replaceBlackLists(
                 $fkTransformer->transformCollection(
                     $dto->getBlackLists()
                 )
             );
         }
-        if ($dto->getWhiteLists()) {
+        if (!is_null($dto->getWhiteLists())) {
             $this->replaceWhiteLists(
                 $fkTransformer->transformCollection(
                     $dto->getWhiteLists()
                 )
             );
         }
-        if ($dto->getSchedules()) {
+        if (!is_null($dto->getSchedules())) {
             $this->replaceSchedules(
                 $fkTransformer->transformCollection(
                     $dto->getSchedules()

@@ -54,7 +54,7 @@ trait RoutingTagTrait
          * @var $dto RoutingTagDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
@@ -62,7 +62,7 @@ trait RoutingTagTrait
             );
         }
 
-        if ($dto->getRelCompanies()) {
+        if (!is_null($dto->getRelCompanies())) {
             $self->replaceRelCompanies(
                 $fkTransformer->transformCollection(
                     $dto->getRelCompanies()
@@ -91,14 +91,14 @@ trait RoutingTagTrait
          * @var $dto RoutingTagDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
                 )
             );
         }
-        if ($dto->getRelCompanies()) {
+        if (!is_null($dto->getRelCompanies())) {
             $this->replaceRelCompanies(
                 $fkTransformer->transformCollection(
                     $dto->getRelCompanies()

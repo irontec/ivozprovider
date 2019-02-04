@@ -65,7 +65,7 @@ trait OutgoingRoutingTrait
          * @var $dto OutgoingRoutingDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getLcrRules()) {
+        if (!is_null($dto->getLcrRules())) {
             $self->replaceLcrRules(
                 $fkTransformer->transformCollection(
                     $dto->getLcrRules()
@@ -73,7 +73,7 @@ trait OutgoingRoutingTrait
             );
         }
 
-        if ($dto->getLcrRuleTargets()) {
+        if (!is_null($dto->getLcrRuleTargets())) {
             $self->replaceLcrRuleTargets(
                 $fkTransformer->transformCollection(
                     $dto->getLcrRuleTargets()
@@ -81,7 +81,7 @@ trait OutgoingRoutingTrait
             );
         }
 
-        if ($dto->getRelCarriers()) {
+        if (!is_null($dto->getRelCarriers())) {
             $self->replaceRelCarriers(
                 $fkTransformer->transformCollection(
                     $dto->getRelCarriers()
@@ -110,21 +110,21 @@ trait OutgoingRoutingTrait
          * @var $dto OutgoingRoutingDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getLcrRules()) {
+        if (!is_null($dto->getLcrRules())) {
             $this->replaceLcrRules(
                 $fkTransformer->transformCollection(
                     $dto->getLcrRules()
                 )
             );
         }
-        if ($dto->getLcrRuleTargets()) {
+        if (!is_null($dto->getLcrRuleTargets())) {
             $this->replaceLcrRuleTargets(
                 $fkTransformer->transformCollection(
                     $dto->getLcrRuleTargets()
                 )
             );
         }
-        if ($dto->getRelCarriers()) {
+        if (!is_null($dto->getRelCarriers())) {
             $this->replaceRelCarriers(
                 $fkTransformer->transformCollection(
                     $dto->getRelCarriers()

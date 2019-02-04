@@ -48,7 +48,7 @@ trait CalendarTrait
          * @var $dto CalendarDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getHolidayDates()) {
+        if (!is_null($dto->getHolidayDates())) {
             $self->replaceHolidayDates(
                 $fkTransformer->transformCollection(
                     $dto->getHolidayDates()
@@ -77,7 +77,7 @@ trait CalendarTrait
          * @var $dto CalendarDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getHolidayDates()) {
+        if (!is_null($dto->getHolidayDates())) {
             $this->replaceHolidayDates(
                 $fkTransformer->transformCollection(
                     $dto->getHolidayDates()

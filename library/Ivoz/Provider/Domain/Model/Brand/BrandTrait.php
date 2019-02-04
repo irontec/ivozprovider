@@ -90,7 +90,7 @@ trait BrandTrait
          * @var $dto BrandDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getCompanies()) {
+        if (!is_null($dto->getCompanies())) {
             $self->replaceCompanies(
                 $fkTransformer->transformCollection(
                     $dto->getCompanies()
@@ -98,7 +98,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getServices()) {
+        if (!is_null($dto->getServices())) {
             $self->replaceServices(
                 $fkTransformer->transformCollection(
                     $dto->getServices()
@@ -106,7 +106,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getUrls()) {
+        if (!is_null($dto->getUrls())) {
             $self->replaceUrls(
                 $fkTransformer->transformCollection(
                     $dto->getUrls()
@@ -114,7 +114,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getRelFeatures()) {
+        if (!is_null($dto->getRelFeatures())) {
             $self->replaceRelFeatures(
                 $fkTransformer->transformCollection(
                     $dto->getRelFeatures()
@@ -122,7 +122,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getResidentialDevices()) {
+        if (!is_null($dto->getResidentialDevices())) {
             $self->replaceResidentialDevices(
                 $fkTransformer->transformCollection(
                     $dto->getResidentialDevices()
@@ -130,7 +130,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getMusicsOnHold()) {
+        if (!is_null($dto->getMusicsOnHold())) {
             $self->replaceMusicsOnHold(
                 $fkTransformer->transformCollection(
                     $dto->getMusicsOnHold()
@@ -138,7 +138,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getMatchLists()) {
+        if (!is_null($dto->getMatchLists())) {
             $self->replaceMatchLists(
                 $fkTransformer->transformCollection(
                     $dto->getMatchLists()
@@ -146,7 +146,7 @@ trait BrandTrait
             );
         }
 
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()
@@ -175,56 +175,56 @@ trait BrandTrait
          * @var $dto BrandDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getCompanies()) {
+        if (!is_null($dto->getCompanies())) {
             $this->replaceCompanies(
                 $fkTransformer->transformCollection(
                     $dto->getCompanies()
                 )
             );
         }
-        if ($dto->getServices()) {
+        if (!is_null($dto->getServices())) {
             $this->replaceServices(
                 $fkTransformer->transformCollection(
                     $dto->getServices()
                 )
             );
         }
-        if ($dto->getUrls()) {
+        if (!is_null($dto->getUrls())) {
             $this->replaceUrls(
                 $fkTransformer->transformCollection(
                     $dto->getUrls()
                 )
             );
         }
-        if ($dto->getRelFeatures()) {
+        if (!is_null($dto->getRelFeatures())) {
             $this->replaceRelFeatures(
                 $fkTransformer->transformCollection(
                     $dto->getRelFeatures()
                 )
             );
         }
-        if ($dto->getResidentialDevices()) {
+        if (!is_null($dto->getResidentialDevices())) {
             $this->replaceResidentialDevices(
                 $fkTransformer->transformCollection(
                     $dto->getResidentialDevices()
                 )
             );
         }
-        if ($dto->getMusicsOnHold()) {
+        if (!is_null($dto->getMusicsOnHold())) {
             $this->replaceMusicsOnHold(
                 $fkTransformer->transformCollection(
                     $dto->getMusicsOnHold()
                 )
             );
         }
-        if ($dto->getMatchLists()) {
+        if (!is_null($dto->getMatchLists())) {
             $this->replaceMatchLists(
                 $fkTransformer->transformCollection(
                     $dto->getMatchLists()
                 )
             );
         }
-        if ($dto->getOutgoingRoutings()) {
+        if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
                 $fkTransformer->transformCollection(
                     $dto->getOutgoingRoutings()

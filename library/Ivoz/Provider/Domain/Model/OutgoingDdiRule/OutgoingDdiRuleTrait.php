@@ -48,7 +48,7 @@ trait OutgoingDdiRuleTrait
          * @var $dto OutgoingDdiRuleDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getPatterns()) {
+        if (!is_null($dto->getPatterns())) {
             $self->replacePatterns(
                 $fkTransformer->transformCollection(
                     $dto->getPatterns()
@@ -77,7 +77,7 @@ trait OutgoingDdiRuleTrait
          * @var $dto OutgoingDdiRuleDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getPatterns()) {
+        if (!is_null($dto->getPatterns())) {
             $this->replacePatterns(
                 $fkTransformer->transformCollection(
                     $dto->getPatterns()

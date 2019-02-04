@@ -60,7 +60,7 @@ trait UserTrait
          * @var $dto UserDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getPickUpRelUsers()) {
+        if (!is_null($dto->getPickUpRelUsers())) {
             $self->replacePickUpRelUsers(
                 $fkTransformer->transformCollection(
                     $dto->getPickUpRelUsers()
@@ -68,7 +68,7 @@ trait UserTrait
             );
         }
 
-        if ($dto->getQueueMembers()) {
+        if (!is_null($dto->getQueueMembers())) {
             $self->replaceQueueMembers(
                 $fkTransformer->transformCollection(
                     $dto->getQueueMembers()
@@ -76,7 +76,7 @@ trait UserTrait
             );
         }
 
-        if ($dto->getCallForwardSettings()) {
+        if (!is_null($dto->getCallForwardSettings())) {
             $self->replaceCallForwardSettings(
                 $fkTransformer->transformCollection(
                     $dto->getCallForwardSettings()
@@ -105,21 +105,21 @@ trait UserTrait
          * @var $dto UserDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getPickUpRelUsers()) {
+        if (!is_null($dto->getPickUpRelUsers())) {
             $this->replacePickUpRelUsers(
                 $fkTransformer->transformCollection(
                     $dto->getPickUpRelUsers()
                 )
             );
         }
-        if ($dto->getQueueMembers()) {
+        if (!is_null($dto->getQueueMembers())) {
             $this->replaceQueueMembers(
                 $fkTransformer->transformCollection(
                     $dto->getQueueMembers()
                 )
             );
         }
-        if ($dto->getCallForwardSettings()) {
+        if (!is_null($dto->getCallForwardSettings())) {
             $this->replaceCallForwardSettings(
                 $fkTransformer->transformCollection(
                     $dto->getCallForwardSettings()

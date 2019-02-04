@@ -54,7 +54,7 @@ trait FriendTrait
          * @var $dto FriendDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getPsEndpoints()) {
+        if (!is_null($dto->getPsEndpoints())) {
             $self->replacePsEndpoints(
                 $fkTransformer->transformCollection(
                     $dto->getPsEndpoints()
@@ -62,7 +62,7 @@ trait FriendTrait
             );
         }
 
-        if ($dto->getPatterns()) {
+        if (!is_null($dto->getPatterns())) {
             $self->replacePatterns(
                 $fkTransformer->transformCollection(
                     $dto->getPatterns()
@@ -91,14 +91,14 @@ trait FriendTrait
          * @var $dto FriendDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getPsEndpoints()) {
+        if (!is_null($dto->getPsEndpoints())) {
             $this->replacePsEndpoints(
                 $fkTransformer->transformCollection(
                     $dto->getPsEndpoints()
                 )
             );
         }
-        if ($dto->getPatterns()) {
+        if (!is_null($dto->getPatterns())) {
             $this->replacePatterns(
                 $fkTransformer->transformCollection(
                     $dto->getPatterns()

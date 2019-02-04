@@ -48,7 +48,7 @@ trait CallAclTrait
          * @var $dto CallAclDto
          */
         $self = parent::fromDto($dto, $fkTransformer);
-        if ($dto->getRelMatchLists()) {
+        if (!is_null($dto->getRelMatchLists())) {
             $self->replaceRelMatchLists(
                 $fkTransformer->transformCollection(
                     $dto->getRelMatchLists()
@@ -77,7 +77,7 @@ trait CallAclTrait
          * @var $dto CallAclDto
          */
         parent::updateFromDto($dto, $fkTransformer);
-        if ($dto->getRelMatchLists()) {
+        if (!is_null($dto->getRelMatchLists())) {
             $this->replaceRelMatchLists(
                 $fkTransformer->transformCollection(
                     $dto->getRelMatchLists()
