@@ -1,3 +1,32 @@
+Mon, 04 Feb 2019 15:13:33 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.9.0 released
+
+    * Billing
+        - Add support for multi currencies per brand
+        - Allow calls when CGRateS is down
+        - Offline billing for calls during CGRateS downtime
+
+    * Proxies
+        - Add support for KamUsers additional IP addresses
+        - Fallback external number call-forward for unreachable retail accounts
+        - Fix bouncing on shared IP setup
+        - Fix BLF presence
+
+    * Core
+        - Retail configurable recordings by DDI
+        - Email notification for 'all companies' CSV reports
+
+    * vPBX
+        - Add calendar event with time periods
+        - Refactored and merged all external calls AGI logics
+        - Add diversion header to all incoming call that generates an outgoing call
+
+    * Documentation
+        - Translate to spanish initial installation section
+        - Translate to spanish platform roles section
+        - Add basic faq documentation
+
 Mon, 24 Dec 2018 11:13:33 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.8.1 released
