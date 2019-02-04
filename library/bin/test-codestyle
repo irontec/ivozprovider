@@ -5,9 +5,9 @@ set -e
 if [ "$1" == "--full" ]; then
     CHANGED_FILES="."
 elif [ "$1" == "--branch" ]; then
-    CHANGED_FILES=$(git diff --name-only origin/bleeding -- '*.php')
+    CHANGED_FILES=$(git diff --name-only origin/bleeding --diff-filter=d -- '*.php')
 else
-    CHANGED_FILES=$(git diff --cached --name-only -- '*.php')
+    CHANGED_FILES=$(git diff --cached --name-only --diff-filter=d -- '*.php')
 fi
 
 if [ -z "$CHANGED_FILES" ]; then
@@ -20,9 +20,3 @@ library/vendor/bin/phpcbf -p --standard=PSR2 --extensions=php \
     --ignore='vendor,coverage,var,DoctrineMigrations,config.php' \
     $CHANGED_FILES
 
-# Check there is no pending files to be commited
-if [ -n "$(git diff -- '*.php')" ]; then
-    echo "There are code not properly formatted with PSR2 codestyle."
-    git diff -- '*.php'
-    exit 1
-fi
