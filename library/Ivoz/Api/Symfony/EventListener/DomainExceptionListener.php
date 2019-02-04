@@ -33,6 +33,8 @@ class DomainExceptionListener
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
+        $this->logger->error($exception->getMessage());
+
         $exceptionClass = get_class($exception);
         $publicExceptions = [
             \DomainException::class,
@@ -57,7 +59,5 @@ class DomainExceptionListener
             ]
         ));
         $event->stopPropagation();
-
-        $this->logger->error($exception->getMessage());
     }
 }
