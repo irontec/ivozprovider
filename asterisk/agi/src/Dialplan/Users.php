@@ -134,7 +134,7 @@ class Users extends RouteHandlerAbstract
             // Set Caller extension in Referred header
             $transfererURI = str_replace($endpointName, $user->getExtensionNumber(), $transfererURI);
             $this->agi->setVariable("__SIPREFERREDBYHDR", $transfererURI);
-        } elseif (!empty($forwarded)) {
+        } elseif (!empty($forwarder)) {
             // Update Diversion Header with User Outgoing DDI
             $this->agi->setRedirecting('from-name,i', $user->getFullName());
             $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
