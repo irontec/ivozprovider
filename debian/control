@@ -38,7 +38,7 @@ Description: IVOZ Provider - Common configuration files
  .
  This package is used to:
   - System wide configuration files
-  - Enviroment configuration requets (testing, production, ..)
+  - Environment configuration requests (testing, production, ..)
  .
 
 Package: ivozprovider-profile-as
@@ -110,7 +110,7 @@ Package: ivozprovider-profile-proxy
 Architecture: all
 Section: admin
 Priority: optional
-Depends: ivozprovider-profile-common,
+Depends: ivozprovider-profile-common (=${binary:Version}),
         sngrep,
         mysql-client,
         netcat-openbsd,
@@ -126,7 +126,7 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-utils-modules,
         ivozprovider-kamailio-trunks (=${binary:Version}),
         ivozprovider-kamailio-users (=${binary:Version}),
-        ivozprovider-recordings,
+        ivozprovider-recordings (=${binary:Version}),
         ivozprovider-cgrates,
         ivozprovider-cgrates-tools,
         ivozprovider-cgrates-config (=${binary:Version}),
