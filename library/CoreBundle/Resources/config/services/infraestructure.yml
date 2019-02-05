@@ -1,4 +1,5 @@
 imports:
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/filesystem.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/asterisk.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/cgrates.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/doctrine.yml' }

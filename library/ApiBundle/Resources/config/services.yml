@@ -74,6 +74,21 @@ services:
   ################################################
   ## Serializers
   ################################################
+  Ivoz\Api\Csv\Serializer\Mixer\CsvMixer: ~
+  Ivoz\Api\Json\Serializer\Mixer\JsonMixer: ~
+  Ivoz\Api\JsonLd\Serializer\Mixer\JsonLdMixer: ~
+
+  Ivoz\Api\Symfony\Serializer\ProgressiveSerializer:
+    decorates: 'api_platform.serializer'
+    autoconfigure: false
+    decoration_priority: 1
+    arguments:
+      $decoratedSerializer: '@Ivoz\Api\Symfony\Serializer\ProgressiveSerializer.inner'
+    calls:
+      - [ addMixer, ['@Ivoz\Api\Csv\Serializer\Mixer\CsvMixer']]
+      - [ addMixer, ['@Ivoz\Api\Json\Serializer\Mixer\JsonMixer']]
+      - [ addMixer, ['@Ivoz\Api\JsonLd\Serializer\Mixer\JsonLdMixer']]
+
   Ivoz\Api\Core\Serializer\SerializerContextBuilder:
     decorates: "api_platform.serializer.context_builder"
     decoration_priority: 20
