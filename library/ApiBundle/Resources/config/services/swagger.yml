@@ -12,7 +12,7 @@ services:
     decoration_priority: 12
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"

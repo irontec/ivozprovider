@@ -113,7 +113,7 @@ services:
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
       $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -132,7 +132,7 @@ services:
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
       $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -178,7 +178,7 @@ services:
     decoration_priority: 2
     arguments:
       $decorated: '@Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FilterMetadataFactory.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
       $managerRegistry: '@doctrine'
 
   Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\OperationMetadataFactory:
@@ -209,7 +209,7 @@ services:
     decoration_priority: 10
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Operation\Factory\SubresourceOperationFactoryDecorator.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
 
   ################################################
   ## Properties
@@ -218,7 +218,7 @@ services:
     arguments:
       $managerRegistry: '@doctrine'
 
-  Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory:
+  Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory:
     arguments:
       $propertyMetadataFactory: '@Ivoz\Api\Doctrine\Orm\Metadata\Property\DoctrineOrmPropertyMetadataFactory'
       $resourceNameCollectionFactory: '@api_platform.metadata.resource.name_collection_factory'
@@ -248,7 +248,7 @@ services:
     decoration_priority: 10
     arguments:
       $decoratedIdentifiersExtractor: '@Ivoz\Api\Swagger\Metadata\Property\IdentifiersExtractor.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
 
   ################################################
   ## ItemDataProviders
@@ -260,7 +260,7 @@ services:
     public: false
     class: 'ApiPlatform\Core\Bridge\Doctrine\Orm\ItemDataProvider'
     arguments:
-      index_1: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      index_1: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: api_platform.item_data_provider }
 
@@ -269,7 +269,7 @@ services:
   ################################################
   Ivoz\Api\Doctrine\Orm\Extension\DynamicLoadingExtension:
     arguments:
-      - '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      - '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
       - "@api_platform.metadata.property.metadata_factory"
       - "@api_platform.metadata.resource.metadata_factory"
       - "@request_stack"
