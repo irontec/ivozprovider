@@ -85,7 +85,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             foreach ($fileObjects as $fileObject) {
                 $itemOperations['put']['swagger_context']['upload_parameters'][] = [
                     'name' => $fileObject,
-                    'in' => 'path',
+                    'in' => 'formData',
                     'type' => 'file',
                     'required' => false
                 ];
@@ -101,7 +101,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             foreach ($fileObjects as $fileObject) {
                 $collectionOperations['post']['swagger_context']['upload_parameters'][] = [
                     'name' => $fileObject,
-                    'in' => 'path',
+                    'in' => 'formData',
                     'type' => 'file',
                     'required' => false
                 ];
@@ -120,8 +120,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
     private function setEntityOperationMetadata(ResourceMetadata $resourceMetadata, string $tag = ''): ResourceMetadata
     {
         $defaultFormats = [
+            'application/json',
             'application/ld+json',
-            'application/json'
         ];
 
         $itemOperations = $resourceMetadata->getItemOperations();

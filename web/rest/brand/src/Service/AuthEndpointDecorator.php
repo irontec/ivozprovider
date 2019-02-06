@@ -62,6 +62,7 @@ class AuthEndpointDecorator implements NormalizerInterface
                         "name" => "password",
                         "in" => "formData",
                         "type" => 'string',
+                        "format" => 'password',
                         "required" => true
                     ]
                 ],

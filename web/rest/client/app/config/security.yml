@@ -8,8 +8,12 @@ security:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
 
-    api_docs:
+    api_index:
       pattern: ^/index.[^.{3,6}]/?.*$
+      security: false
+
+    api_docs:
+      pattern: ^/docs.[^.{3,6}]/?.*$
       security: false
 
     admin_login:
@@ -71,5 +75,5 @@ security:
     - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/, roles: ROLE_USER }
+    - { path: ^/.+, roles: ROLE_USER }
+    - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
