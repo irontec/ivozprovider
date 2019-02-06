@@ -26,6 +26,8 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
         brand:
           eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  itemOperations:
+    get: ~
   collectionOperations:
     get:
       swagger_context:
