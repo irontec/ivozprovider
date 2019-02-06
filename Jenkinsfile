@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'ironartemis/ivozprovider-testing-base'
-            args '--dns 10.60.75.73  --user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider  --entrypoint=\'\''
+            args '-v ${WORKSPACE}:/opt/irontec/ivozprovider  --entrypoint=\'\''
         }
     }
 
@@ -109,10 +109,22 @@ pipeline {
                     }
                 }
                 stage ('scheme') {
+                    agent any
                     steps {
-                        sh 'cp -f /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml.dist /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml'
-                        sh '/bin/sed -i \'s#database_name: ivozprovider#database_name: ivozprovider_scheme_test#g\' /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml'
-                        sh '/opt/irontec/ivozprovider/scheme/bin/test-scheme'
+                        script {
+                            docker.image('mysql:5.7').withRun('-e "MYSQL_ROOT_PASSWORD=changeme"') { c ->
+                                docker.image('mysql:5.7').inside("--link ${c.id}:data.ivozprovider.local") {
+                                    /* Wait until mysql service is up */
+                                    sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
+                                }
+                                docker.image('ironartemis/ivozprovider-testing-base')
+                                      .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
+                                    sh 'cd library/CoreBundle/Resources/config/ && mv parameters.yml.dist parameters.yml'
+                                    sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
+                                    sh '/opt/irontec/ivozprovider/scheme/bin/test-scheme'
+                                }
+                            }
+                        }
                     }
                     post {
                         success { publishStatus("ivozprovider-testing-scheme", "SUCCESS") }
