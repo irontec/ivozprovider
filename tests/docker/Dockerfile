@@ -14,6 +14,7 @@ RUN apt-get install --assume-yes --force-yes \
         curl \
         sqlite3 \
         sphinx-intl \
+        nodejs \
         php7.0 \
         php7.0-cli \
         php7.0-mysql \
@@ -40,6 +41,9 @@ RUN groupadd -g $GID $UNAME
 RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
 RUN chown jenkins.jenkins /opt/
 
+# Install node tools for testing
+RUN npm install -g swagger-cli
+
 # Base project
 USER $UNAME
 RUN mkdir -p /opt/irontec
@@ -55,4 +59,3 @@ RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
 RUN rm -fr /opt/irontec/ivozprovider/
 
 WORKDIR /opt/irontec/ivozprovider/
-ENTRYPOINT [ "/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run" ]
