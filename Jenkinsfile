@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'ironartemis/ivozprovider-testing-base'
-            args '--dns 10.60.75.73  --user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider  --entrypoint=\'\''
+            args '--dns 10.60.75.73  --user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
         }
     }
 
@@ -17,6 +17,7 @@ pipeline {
         stage('Prepare') {
             steps {
                 sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
+                sh '/opt/irontec/ivozprovider/web/rest/platform/bin/generate-keys --test'
             }
         }
 
@@ -74,6 +75,7 @@ pipeline {
                 }
                 stage ('api-platform') {
                     steps {
+                        sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api-spec'
                         sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api'
                     }
                     post {
@@ -83,6 +85,7 @@ pipeline {
                 }
                 stage ('api-brand') {
                     steps {
+                        sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api-spec'
                         sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api'
                     }
                     post {
@@ -92,6 +95,7 @@ pipeline {
                 }
                 stage ('api-client') {
                     steps {
+                        sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec'
                         sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api'
                     }
                     post {
