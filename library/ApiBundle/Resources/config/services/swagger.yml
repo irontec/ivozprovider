@@ -51,6 +51,13 @@ services:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CollectionResponseHeaderFixedDecorator.inner'
 
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\UnusedDefinitionRemover:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 8
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\UnusedDefinitionRemover.inner'
+
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 7
