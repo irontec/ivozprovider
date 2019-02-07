@@ -102,15 +102,18 @@ final class SwaggerUiAction
         ];
 
         $swaggerData = [
-            'url' => 'swagger.json',
+            'url' => $this->urlGenerator->generate('api_doc', ['_format' => 'json']),
             'spec' => [],
         ];
 
         if (!in_array($this->environment, ['prod', ''])) {
-            $swaggerData = [
-                'url' => $this->urlGenerator->generate('api_doc', ['format' => 'json']),
-                'spec' => $this->normalizer->normalize($documentation, 'json', ['base_url' => $request->getBaseUrl()]),
-            ];
+            $swaggerData['spec'] = $this
+                ->normalizer
+                ->normalize(
+                    $documentation,
+                    'json',
+                    ['base_url' => $request->getBaseUrl()]
+                );
         }
 
         $swaggerData['oauth'] = [
