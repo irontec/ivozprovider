@@ -5,6 +5,9 @@ pushd /opt/irontec/ivozprovider/web/rest/platform
     if [ $1 == '--initial' ]; then
         openssl genrsa -out var/jwt/private.pem -passout pass:changeme -aes256 4096
         openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem -passin pass:changeme
+    elif [ $1 == '--test' ]; then
+        openssl genrsa -out var/jwt/private-test.pem -passout pass:changeme -aes256 4096
+        openssl rsa -pubout -in var/jwt/private-test.pem -out var/jwt/public-test.pem -passin pass:changeme
     else
         openssl genrsa -out var/jwt/private.pem -aes256 4096
         openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
