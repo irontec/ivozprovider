@@ -109,14 +109,13 @@ class SearchFilterDecorator implements NormalizerInterface
                 continue;
             }
 
-            $parameterExists = array_filter($parameters, function ($item) use ($name) {
-                return $item['name'] === $name;
+            $parameterExists = array_filter($parameters, function ($item) use ($prefix, $name) {
+                return $item['name'] === ($prefix . $name);
             });
 
             if (!empty($parameterExists)) {
                 continue;
             }
-
 
             if (!isset($values['type']) || is_null($values['type'])) {
                 continue;
