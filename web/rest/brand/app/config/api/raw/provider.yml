@@ -26,14 +26,17 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
         brand:
           eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  itemOperations:
+    get: ~
   collectionOperations:
     get:
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
           - 'text/csv'
   attributes:
+    pagination_client_enabled: true
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:

@@ -81,7 +81,7 @@ api_platform:
             enabled: true
 
             # To allow the client to enable or disable the pagination.
-            client_enabled: true
+            client_enabled: false
 
             # To allow the client to set the number of items per page.
             client_items_per_page: true
@@ -90,7 +90,7 @@ api_platform:
             items_per_page: 30
 
             # The maximum number of items per page.
-#            maximum_items_per_page: ~
+            maximum_items_per_page: 500
 
             # The default name of the parameter handling the page number.
             page_parameter_name: '_page'

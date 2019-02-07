@@ -10,13 +10,40 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class UpdateByPickUpRelUserSpec extends ObjectBehavior
 {
+    use HelperTrait;
+
     /**
      * @var EntityTools
      */
     protected $entityTools;
+
+    //////////////////////////////////////
+    ///
+    //////////////////////////////////////
+
+    /**
+     * @var PickUpRelUserInterface
+     */
+    protected $pickUpRelUser;
+
+    /**
+     * @var UserInterface
+     */
+    protected $user;
+
+    /**
+     * @var PsEndpointInterface
+     */
+    protected $psEndpoint;
+
+    /**
+     * @var PsEndpointDto
+     */
+    protected $psEndpointDto;
 
     public function let(
         EntityTools $entityTools
@@ -24,6 +51,8 @@ class UpdateByPickUpRelUserSpec extends ObjectBehavior
         $this->entityTools = $entityTools;
 
         $this->beConstructedWith($entityTools);
+
+        $this->prepareExecution();
     }
 
     function it_is_initializable()
@@ -31,42 +60,98 @@ class UpdateByPickUpRelUserSpec extends ObjectBehavior
         $this->shouldHaveType(UpdateByPickUpRelUser::class);
     }
 
-
-    function it_updates_named_pickup_group(
-        PickUpRelUserInterface $pickUpRelUser,
-        UserInterface $user,
-        PsEndpointInterface $psEndpoint,
-        PsEndpointDto $psEndpointDto
-    ) {
-        $pickUpRelUser
+    function it_returns_on_empty_user()
+    {
+        $this
+            ->pickUpRelUser
             ->getUser()
-            ->willReturn($user);
-
-        $user
-            ->getEndpoint()
-            ->willReturn($psEndpoint);
+            ->willReturn(null)
+            ->shouldBeCalled();
 
         $this
-            ->entityTools
-            ->entityToDto($psEndpoint)
-            ->willReturn($psEndpointDto);
+            ->user
+            ->getEndpoint()
+            ->shouldNotBeCalled();
 
-        $user
-            ->getPickUpGroupsIds()
-            ->willReturn('1,2,3');
+        $this->execute($this->pickUpRelUser);
+    }
 
-        $psEndpointDto
-            ->setNamedPickupGroup('1,2,3')
+
+    function it_returns_on_empty_endpoint()
+    {
+        $this
+            ->user
+            ->getEndpoint()
+            ->willReturn(null)
             ->shouldBeCalled();
 
         $this
             ->entityTools
-            ->persistDto(
-                $psEndpointDto,
-                $psEndpoint,
-                false
-            )->shouldBeCalled();
+            ->entityToDto(
+                Argument::type(PsEndpointInterface::class)
+            )
+            ->shouldNotBeCalled();
 
-        $this->execute($pickUpRelUser);
+        $this->execute($this->pickUpRelUser);
+    }
+
+    function it_updates_named_pickup_group()
+    {
+        $this->user
+            ->getPickUpGroupsIds()
+            ->willReturn('1,2,3')
+            ->shouldBeCalled();
+
+        $this
+            ->psEndpointDto
+            ->setNamedPickupGroup('1,2,3')
+            ->shouldBeCalled();
+
+        $this->execute($this->pickUpRelUser);
+    }
+
+
+    protected function prepareExecution()
+    {
+        $this->pickUpRelUser = $this->getTestDouble(
+            PickUpRelUserInterface::class
+        );
+        $this->user = $this->getTestDouble(
+            UserInterface::class
+        );
+        $this->psEndpoint = $this->getTestDouble(
+            PsEndpointInterface::class
+        );
+        $this->psEndpointDto = $this->getTestDouble(
+            PsEndpointDto::class
+        );
+
+        $this
+            ->pickUpRelUser
+            ->getUser()
+            ->willReturn($this->user);
+
+        $this->getterProphecy(
+            $this->user,
+            [
+                'getEndpoint' => $this->psEndpoint,
+                'getPickUpGroupsIds' => ''
+            ],
+            false
+        );
+
+        $this
+            ->entityTools
+            ->entityToDto($this->psEndpoint)
+            ->willReturn($this->psEndpointDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $this->psEndpointDto,
+                $this->psEndpoint,
+                false
+            )
+            ->willReturn($this->psEndpoint);
     }
 }

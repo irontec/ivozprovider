@@ -13,7 +13,7 @@ services:
     public: true
     arguments:
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
-      $propertyNameCollectionFactory: '@Ivoz\Api\JsonLd\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
       $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
       $resourceClassResolver: '@api_platform.resource_class_resolver'
       $operationMethodResolver: '@api_platform.operation_method_resolver'

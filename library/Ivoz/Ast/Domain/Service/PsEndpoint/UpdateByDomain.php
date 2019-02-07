@@ -14,6 +14,7 @@ use Ivoz\Provider\Domain\Service\Domain\DomainLifecycleEventHandlerInterface;
 class UpdateByDomain implements DomainLifecycleEventHandlerInterface
 {
     /**
+     * @todo replace by EntityTools
      * @var EntityPersisterInterface
      */
     protected $entityPersister;
