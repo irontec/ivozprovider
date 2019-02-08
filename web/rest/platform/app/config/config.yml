@@ -21,11 +21,3 @@ twig:
   paths:
     '%kernel.project_dir%/../../../library/ApiBundle/Resources/views': ApiBundle
 
-nelmio_cors:
-  paths:
-    '^/':
-      allow_origin: ['*']
-      allow_headers: ['authorization','content-type','request-date']
-      expose_headers: ['Link']
-      allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
-      max_age: 3600

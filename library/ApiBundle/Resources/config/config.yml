@@ -38,3 +38,25 @@ twig:
 #  paths:
 #    This must be set on application
 #    '../views': ApiBundle
+
+nelmio_cors:
+  paths:
+    '^/':
+      allow_origin: ['*']
+      allow_headers:
+        - 'authorization'
+        - 'content-type'
+        - 'request-date'
+      expose_headers:
+        - 'Link'
+        - 'X-First-Page'
+        - 'X-Next-Page'
+        - 'X-Last-Page'
+        - 'X-Total-Items'
+        - 'X-Total-Pages'
+      allow_methods:
+        - 'POST'
+        - 'PUT'
+        - 'GET'
+        - 'DELETE'
+      max_age: 3600
