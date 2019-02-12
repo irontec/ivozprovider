@@ -74,11 +74,16 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 
         $attributes = $this->getEntityAttributes($resourceClass);
         foreach ($attributes as $attribute) {
+
+            $type = $this->getFieldType($resourceClass, $attribute);
+            if (!is_null($type)) {
+                $filters['ivoz.api.filter.order'][$attribute] = Filter\OrderFilter::NULLS_LARGEST;
+            }
+
             if ($attribute === 'id') {
                 continue;
             }
 
-            $type = $this->getFieldType($resourceClass, $attribute);
             switch ($type) {
                 case 'string':
                 case 'guid':
@@ -110,10 +115,6 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                     break;
                 default:
                     // Value object and ClassMetadataInfo::ONE_TO_MANY
-            }
-
-            if (!is_null($type)) {
-                $filters['ivoz.api.filter.order'][$attribute] = Filter\OrderFilter::NULLS_LARGEST;
             }
         }
 
