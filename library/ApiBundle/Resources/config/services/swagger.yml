@@ -1,0 +1,94 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  ################################################
+  ## Documentation
+  ################################################
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 12
+    arguments:
+      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator.inner'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
+      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
+      $resourceClassResolver: "@api_platform.resource_class_resolver"
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 11
+    arguments:
+      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator.inner'
+      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 10
+    arguments:
+      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator.inner'
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 9
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator.inner'
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 8
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator.inner'
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CollectionResponseHeaderFixedDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 8
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CollectionResponseHeaderFixedDecorator.inner'
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\UnusedDefinitionRemover:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 8
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\UnusedDefinitionRemover.inner'
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 7
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator.inner'
+      $router:
+        '@router'
+
+  ################################################
+  ## UI
+  ################################################
+  api_platform.swagger.action.ui:
+    class: Ivoz\Api\Swagger\Ui\SwaggerUiAction
+    public: true
+    arguments:
+      - '@Ivoz\Api\Swagger\Metadata\Resource\Factory\YmlExtractorResourceNameCollectionFactory'
+      - "@api_platform.metadata.resource.metadata_factory"
+      - "@api_platform.serializer"
+      - "@twig"
+      - "@router"
+      - '%api_platform.title%'
+      - '%api_platform.description%'
+      - '%api_platform.version%'
+      - '%api_platform.formats%'
+      - '%api_platform.oauth.enabled%'
+      - '%api_platform.oauth.clientId%'
+      - '%api_platform.oauth.clientSecret%'
+      - '%api_platform.oauth.type%'
+      - '%api_platform.oauth.flow%'
+      - '%api_platform.oauth.tokenUrl%'
+      - '%api_platform.oauth.authorizationUrl%'
+      - '%api_platform.oauth.scopes%'
+      - '%kernel.environment%'

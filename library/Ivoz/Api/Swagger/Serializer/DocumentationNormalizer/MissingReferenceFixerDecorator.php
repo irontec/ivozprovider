@@ -302,6 +302,20 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
             );
         }
 
+        foreach ($definitions as $definition) {
+            foreach ($definition['properties'] as $property) {
+                if (!isset($property['$ref'])) {
+                    continue;
+                }
+
+                $ref = $this->cleanSchema($property['$ref'], true);
+                if (in_array($ref, $schemas, true)) {
+                    continue;
+                }
+                $schemas[] = $ref;
+            }
+        }
+
         $definitionKeys = array_keys($definitions->getArrayCopy());
         return array_filter($schemas, function ($schema) use ($definitionKeys) {
             return !in_array($schema, $definitionKeys);
@@ -314,26 +328,43 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
         foreach ($path as $method => $definition) {
             $response = array_merge_recursive(
                 $response,
-                $this->getDefinitionSchemas($definition)
+                $this->getPathDefinitionSchemas($definition)
             );
         }
 
-        return $this->cleanSchema($response);
+        return $this->cleanSchemaArray($response);
     }
 
     /**
      * @param $response
      * @return array
      */
-    private function cleanSchema($response): array
+    private function cleanSchemaArray(array $response): array
     {
         return array_map(function ($schema) {
-            $schemaSegments = explode('/', $schema);
-            return end($schemaSegments);
+            return $this->cleanSchema($schema);
         }, array_unique($response));
     }
 
-    private function getDefinitionSchemas(\ArrayObject $definition)
+    /**
+     * @param string $schema
+     * @param bool $removeContext
+     * @return string
+     */
+    private function cleanSchema(string $schema, $removeContext = false): string
+    {
+        $schemaSegments = explode('/', $schema);
+        $schema = end($schemaSegments);
+
+        if ($removeContext) {
+            $schemaSegments = explode('-', $schema);
+            $schema = $schemaSegments[0];
+        }
+
+        return $schema;
+    }
+
+    private function getPathDefinitionSchemas(\ArrayObject $definition)
     {
         $schemas = [];
         foreach ($definition['parameters'] as $parameter) {

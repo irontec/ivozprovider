@@ -125,7 +125,7 @@ class UserCallAction
 
         // Configure Dial options
         $timeout = $this->getDialTimeout();
-        $options = "i";
+        $options = "";
 
         if ($this->getUserStatusRequired()) {
             $options .= "g";

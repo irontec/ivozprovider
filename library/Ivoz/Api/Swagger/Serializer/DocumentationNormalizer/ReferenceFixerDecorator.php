@@ -122,6 +122,10 @@ class ReferenceFixerDecorator implements NormalizerInterface
         $refSegments = explode('-', $property['$ref']);
         $property['$ref'] = $refSegments[0];
 
+        if (array_key_exists('description', $property)) {
+            unset($property['description']);
+        }
+
         return $property;
     }
 }

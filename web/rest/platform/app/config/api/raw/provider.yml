@@ -2,14 +2,17 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  itemOperations:
+    get: ~
   collectionOperations:
     get:
       swagger_context:
         produces:
-          - 'application/ld+json'
           - 'application/json'
+          - 'application/ld+json'
           - 'text/csv'
   attributes:
+    pagination_client_enabled: true
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Brand\Brand:
   attributes:

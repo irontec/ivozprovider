@@ -22,3 +22,5 @@ Model\RatingPlanPrices:
             type: integer
             required: true
             description: 'Rating plan group Id'
+  attributes:
+    pagination_client_enabled: true

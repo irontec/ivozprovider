@@ -1,5 +1,7 @@
 imports:
   - { resource: "filters.yml" }
+  - { resource: "services/swagger.yml" }
+  - { resource: "services/hydra.yml" }
 
 services:
   _defaults:
@@ -72,6 +74,21 @@ services:
   ################################################
   ## Serializers
   ################################################
+  Ivoz\Api\Csv\Serializer\Mixer\CsvMixer: ~
+  Ivoz\Api\Json\Serializer\Mixer\JsonMixer: ~
+  Ivoz\Api\JsonLd\Serializer\Mixer\JsonLdMixer: ~
+
+  Ivoz\Api\Symfony\Serializer\ProgressiveSerializer:
+    decorates: 'api_platform.serializer'
+    autoconfigure: false
+    decoration_priority: 1
+    arguments:
+      $decoratedSerializer: '@Ivoz\Api\Symfony\Serializer\ProgressiveSerializer.inner'
+    calls:
+      - [ addMixer, ['@Ivoz\Api\Csv\Serializer\Mixer\CsvMixer']]
+      - [ addMixer, ['@Ivoz\Api\Json\Serializer\Mixer\JsonMixer']]
+      - [ addMixer, ['@Ivoz\Api\JsonLd\Serializer\Mixer\JsonLdMixer']]
+
   Ivoz\Api\Core\Serializer\SerializerContextBuilder:
     decorates: "api_platform.serializer.context_builder"
     decoration_priority: 20
@@ -96,9 +113,17 @@ services:
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
       $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
+
+  Ivoz\Api\Json\EventListener\AddCollectionHeaders:
+    arguments:
+      $orderParameterName: "%api_platform.collection.order_parameter_name%"
+      $pageParameterName: "%api_platform.collection.pagination.page_parameter_name%"
+      $enabledParameterName: "%api_platform.collection.pagination.enabled_parameter_name%"
+    tags:
+      - { name: kernel.event_listener, event: kernel.response }
 
   Ivoz\Api\JsonLd\Serializer\Normalizer\EntityNormalizer:
     arguments:
@@ -107,7 +132,7 @@ services:
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
       $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -153,7 +178,7 @@ services:
     decoration_priority: 2
     arguments:
       $decorated: '@Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FilterMetadataFactory.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
       $managerRegistry: '@doctrine'
 
   Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\OperationMetadataFactory:
@@ -184,7 +209,7 @@ services:
     decoration_priority: 10
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Operation\Factory\SubresourceOperationFactoryDecorator.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
 
   ################################################
   ## Properties
@@ -193,7 +218,7 @@ services:
     arguments:
       $managerRegistry: '@doctrine'
 
-  Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory:
+  Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory:
     arguments:
       $propertyMetadataFactory: '@Ivoz\Api\Doctrine\Orm\Metadata\Property\DoctrineOrmPropertyMetadataFactory'
       $resourceNameCollectionFactory: '@api_platform.metadata.resource.name_collection_factory'
@@ -203,7 +228,6 @@ services:
     decoration_priority: 1
     arguments:
       $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataLinkFactory.inner'
-
 
   Ivoz\Api\Swagger\Metadata\Property\Factory\PropertySwaggerContextFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'
@@ -224,56 +248,7 @@ services:
     decoration_priority: 10
     arguments:
       $decoratedIdentifiersExtractor: '@Ivoz\Api\Swagger\Metadata\Property\IdentifiersExtractor.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
-
-  ################################################
-  ## Documentation
-  ################################################
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 12
-    arguments:
-      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
-      $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
-      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
-      $resourceClassResolver: "@api_platform.resource_class_resolver"
-
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 11
-    arguments:
-      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator.inner'
-      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
-
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 10
-    arguments:
-      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator.inner'
-
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 9
-    arguments:
-      $decoratedNormalizer:
-        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator.inner'
-
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 8
-    arguments:
-      $decoratedNormalizer:
-        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator.inner'
-
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 7
-    arguments:
-      $decoratedNormalizer:
-        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator.inner'
-      $router:
-        '@router'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
 
   ################################################
   ## ItemDataProviders
@@ -285,42 +260,16 @@ services:
     public: false
     class: 'ApiPlatform\Core\Bridge\Doctrine\Orm\ItemDataProvider'
     arguments:
-      index_1: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      index_1: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: api_platform.item_data_provider }
-
-  ################################################
-  ## UI
-  ################################################
-  api_platform.swagger.action.ui:
-    class: Ivoz\Api\Swagger\Ui\SwaggerUiAction
-    public: true
-    arguments:
-      - '@Ivoz\Api\Swagger\Metadata\Resource\Factory\YmlExtractorResourceNameCollectionFactory'
-      - "@api_platform.metadata.resource.metadata_factory"
-      - "@api_platform.serializer"
-      - "@twig"
-      - "@router"
-      - '%api_platform.title%'
-      - '%api_platform.description%'
-      - '%api_platform.version%'
-      - '%api_platform.formats%'
-      - '%api_platform.oauth.enabled%'
-      - '%api_platform.oauth.clientId%'
-      - '%api_platform.oauth.clientSecret%'
-      - '%api_platform.oauth.type%'
-      - '%api_platform.oauth.flow%'
-      - '%api_platform.oauth.tokenUrl%'
-      - '%api_platform.oauth.authorizationUrl%'
-      - '%api_platform.oauth.scopes%'
-      - '%kernel.environment%'
 
   ################################################
   ## ORM
   ################################################
   Ivoz\Api\Doctrine\Orm\Extension\DynamicLoadingExtension:
     arguments:
-      - '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      - '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
       - "@api_platform.metadata.property.metadata_factory"
       - "@api_platform.metadata.resource.metadata_factory"
       - "@request_stack"
@@ -336,6 +285,17 @@ services:
     tags:
       - { name: api_platform.doctrine.orm.query_extension.collection, priority: 11 }
       - { name: api_platform.doctrine.orm.query_extension.item, priority: 11 }
+
+  Ivoz\Api\Doctrine\Orm\Extension\UnpaginatedResultGeneratorExtension:
+    arguments:
+      $requestStack: '@request_stack'
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+      $entityManager: '@doctrine.orm.entity_manager'
+      $enabled: '%api_platform.collection.pagination.enabled%'
+      $clientEnabled: '%api_platform.collection.pagination.client_enabled%'
+      $enabledParameterName: '%api_platform.collection.pagination.enabled_parameter_name%'
+    tags:
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 7 }
 
   Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList:
     calls:

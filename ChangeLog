@@ -1,3 +1,20 @@
+Tue, 12 Feb 2019 16:52:41 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.9.1 released
+
+    * vPBX
+        - Fix call-forward in 302 Moved Temporarily from UACs handling
+
+    * Web
+        - Improve performance on big CSV files generation
+        - Reduce memory usage on unpaginated API requests
+        - API specs on /docs.json instead of swagger.json
+        - Make APIs fully OpenAPI 2.0 spec compliant
+
+    * CI
+        - Tests are now configured using Jenkinsfile
+        - Add new API validator tests
+
 Mon, 04 Feb 2019 15:13:33 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.9.0 released

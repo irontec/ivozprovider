@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Api\Swagger\Metadata\Property\Factory;
+namespace Ivoz\Api\Entity\Metadata\Property\Factory;
 
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;

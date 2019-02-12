@@ -44,6 +44,22 @@ class CustomParameterDecorator implements NormalizerInterface
                     ...$pathArray['upload_parameters']
                 );
                 unset($pathArray['upload_parameters']);
+                $pathArray['consumes'][] = 'multipart/form-data';
+                foreach ($pathArray['parameters'] as $key => $parameter) {
+                    if ($parameter['in'] === 'body') {
+                        $parameter['in'] = 'formData';
+                    }
+
+                    if (isset($parameter['schema'])) {
+                        // Complex types are not supported with formData parameters yet
+                        // @see https://github.com/swagger-api/swagger-editor/issues/1156
+                        unset($parameter['schema']);
+                        $parameter['type'] = 'string';
+                    }
+
+                    $pathArray['parameters'][$key] = $parameter;
+                }
+
                 $path->exchangeArray($pathArray);
             }
         }

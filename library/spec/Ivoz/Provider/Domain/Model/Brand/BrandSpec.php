@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
@@ -36,14 +37,21 @@ class BrandSpec extends ObjectBehavior
      */
     protected $timezone;
 
-    public function let(
-        DomainInterface $domain,
-        LanguageInterface $language,
-        TimezoneInterface $timezone
-    ) {
-        $this->domain =  $domain;
-        $this->language =  $language;
-        $this->timezone = $timezone;
+    public function let()
+    {
+        $this->prepareExecution();
+
+        $this->beConstructedThrough(
+            'fromDto',
+            [$this->dto, new \spec\DtoToEntityFakeTransformer()]
+        );
+    }
+
+    protected function prepareExecution()
+    {
+        $this->domain =  $this->getTestDouble(DomainInterface::class);
+        $this->language =  $this->getTestDouble(LanguageInterface::class);
+        $this->timezone = $this->getTestDouble(TimezoneInterface::class);
 
         $this->dto = new BrandDto();
 
@@ -58,13 +66,8 @@ class BrandSpec extends ObjectBehavior
                 'invoiceProvince' => '',
                 'invoiceCountry' => '',
                 'invoiceRegistryData' => '',
-                'defaultTimezone' => $timezone->getWrappedObject()
+                'defaultTimezone' => $this->timezone->reveal()
             ]
-        );
-
-        $this->beConstructedThrough(
-            'fromDto',
-            [$this->dto, new \spec\DtoToEntityFakeTransformer()]
         );
     }
 
@@ -105,7 +108,7 @@ class BrandSpec extends ObjectBehavior
         $this->hydrate(
             $this->dto,
             [
-                'language' => $this->language->getWrappedObject()
+                'language' => $this->language->reveal()
             ]
         );
 
@@ -119,10 +122,11 @@ class BrandSpec extends ObjectBehavior
             ->shouldReturn('myLang');
     }
 
-    function it_sums_company_recordingsDiskUsages(
-        CompanyInterface $company,
-        CompanyInterface $company2
-    ) {
+    function it_sums_company_recordingsDiskUsages()
+    {
+        $company = $this->getTestDouble(CompanyInterface::class);
+        $company2 = $this->getTestDouble(CompanyInterface::class);
+
         $this->getterProphecy(
             $company,
             [
@@ -162,12 +166,68 @@ class BrandSpec extends ObjectBehavior
         );
 
         $this->dto->setCompanies([
-            $company->getWrappedObject(),
-            $company2->getWrappedObject()
+            $company->reveal(),
+            $company2->reveal()
         ]);
 
         $this
             ->getRecordingsDiskUsage()
             ->shouldReturn(17);
+    }
+
+    function it_ignores_null_replationship_values()
+    {
+        $updateDto = clone $this->dto;
+
+        $feature = $this->getTestDouble(
+            FeaturesRelBrandInterface::class
+        );
+        $feature
+            ->getId()
+            ->willreturn(1);
+
+        $this
+            ->dto
+            ->setRelFeatures([$feature->reveal()]);
+
+        $updateDto
+            ->setRelFeatures(null);
+
+        $this->updateFromDto(
+            $updateDto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
+
+        $this
+            ->getRelFeatures()
+            ->shouldReturn([$feature]);
+    }
+
+    function it_applies_empty_array_replationship_values()
+    {
+        $updateDto = clone $this->dto;
+
+        $feature = $this->getTestDouble(
+            FeaturesRelBrandInterface::class
+        );
+        $feature
+            ->getId()
+            ->willreturn(1);
+
+        $this
+            ->dto
+            ->setRelFeatures([$feature->reveal()]);
+
+        $updateDto
+            ->setRelFeatures([]);
+
+        $this->updateFromDto(
+            $updateDto,
+            new \spec\DtoToEntityFakeTransformer()
+        );
+
+        $this
+            ->getRelFeatures()
+            ->shouldReturn([]);
     }
 }

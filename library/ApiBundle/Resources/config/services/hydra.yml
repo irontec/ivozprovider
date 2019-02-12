@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+
+  ################################################
+  ## UI
+  ################################################
+  api_platform.hydra.normalizer.documentation:
+    class: ApiPlatform\Core\Hydra\Serializer\DocumentationNormalizer
+    public: true
+    arguments:
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
+      $resourceClassResolver: '@api_platform.resource_class_resolver'
+      $operationMethodResolver: '@api_platform.operation_method_resolver'
+      $urlGenerator: '@api_platform.router'
+      $subresourceOperationFactory: '@api_platform.subresource_operation_factory'
+    tags:
+    - { name: serializer.normalizer, priority: 32 }

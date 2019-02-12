@@ -7,7 +7,7 @@ use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
+use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 
