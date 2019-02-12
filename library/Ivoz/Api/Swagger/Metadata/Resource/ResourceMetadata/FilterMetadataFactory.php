@@ -74,7 +74,6 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 
         $attributes = $this->getEntityAttributes($resourceClass);
         foreach ($attributes as $attribute) {
-
             $type = $this->getFieldType($resourceClass, $attribute);
             if (!is_null($type)) {
                 $filters['ivoz.api.filter.order'][$attribute] = Filter\OrderFilter::NULLS_LARGEST;
@@ -87,8 +86,6 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             switch ($type) {
                 case 'string':
                 case 'guid':
-                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;
-                    break;
                 case 'text':
                     $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_PARTIAL;
                     break;
