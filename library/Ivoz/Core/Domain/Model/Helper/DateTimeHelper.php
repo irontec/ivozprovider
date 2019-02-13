@@ -5,6 +5,28 @@ namespace Ivoz\Core\Domain\Model\Helper;
 class DateTimeHelper
 {
     /**
+     * @param string $value
+     * @param string $format
+     * @param \DateTimeZone|null $initialTimeZone
+     * @return string
+     */
+    public function stringToUtc(
+        string $value,
+        string $format = 'Y-m-d H:i:s',
+        \DateTimeZone $initialTimeZone = null
+    ) {
+        $dateTime = \DateTime::createFromFormat(
+            $format,
+            $value,
+            $initialTimeZone
+        );
+
+        $utcDateTime = self::ensureUTC($dateTime);
+
+        return $utcDateTime->format($format);
+    }
+
+    /**
      * @param mixed $value
      * @param mixed $defaultValue
      */
@@ -31,6 +53,25 @@ class DateTimeHelper
         }
 
         throw new \Exception('Unkown format');
+    }
+
+    /**
+     * @param \Datetime $dateTime
+     * @return \Datetime
+     */
+    public static function ensureUTC(\Datetime $dateTime)
+    {
+        $timeZoneName = $dateTime
+            ->getTimezone()
+            ->getName();
+
+        if ($timeZoneName !== 'UTC') {
+            $dateTime->setTimezone(
+                new \DateTimeZone('UTC')
+            );
+        }
+
+        return $dateTime;
     }
 
     /**
@@ -61,21 +102,6 @@ class DateTimeHelper
             $value,
             $dateTimeZone
         );
-    }
-
-    protected static function ensureUTC(\Datetime $dateTime)
-    {
-        $timeZoneName = $dateTime
-            ->getTimezone()
-            ->getName();
-
-        if ($timeZoneName !== 'UTC') {
-            $dateTime->setTimezone(
-                new \DateTimeZone('UTC')
-            );
-        }
-
-        return $dateTime;
     }
 
     protected static function getCurrentUtcDateTime()

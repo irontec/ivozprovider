@@ -10,6 +10,7 @@ services:
     arguments:
       $properties: ~
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+      $tokenStorage: '@security.token_storage'
     tags: [ 'api_platform.filter' ]
 
   ################################################
@@ -24,6 +25,7 @@ services:
     arguments:
       $properties: ~
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+      $tokenStorage: '@security.token_storage'
     tags:  [ 'api_platform.filter' ]
 
   ################################################
