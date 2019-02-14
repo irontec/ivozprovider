@@ -140,6 +140,15 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
                             ]
                         ]
                     );
+                } elseif ($ormType == 'time') {
+                    $propertyMetadata = $this->appendAttributes(
+                        $propertyMetadata,
+                        [
+                            'swagger_context' => [
+                                'format' => 'time'
+                            ]
+                        ]
+                    );
                 }
                 break;
 
