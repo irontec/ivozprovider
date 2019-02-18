@@ -24,7 +24,7 @@ class SearchFilter extends BaseSearchFilter
 
     use FilterTrait;
 
-    protected $tokenStorage;
+    protected $requestStack;
 
     public function __construct(
         ManagerRegistry $managerRegistry,
@@ -33,11 +33,10 @@ class SearchFilter extends BaseSearchFilter
         PropertyAccessorInterface $propertyAccessor = null,
         LoggerInterface $logger = null,
         array $properties = null,
-        ResourceMetadataFactoryInterface $resourceMetadataFactory,
-        TokenStorage $tokenStorage
+        ResourceMetadataFactoryInterface $resourceMetadataFactory
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->tokenStorage = $tokenStorage;
+        $this->requestStack = $requestStack;
         return parent::__construct(
             $managerRegistry,
             $requestStack,
@@ -104,7 +103,7 @@ class SearchFilter extends BaseSearchFilter
         return DateTimeHelper::stringToUtc(
             $value,
             'Y-m-d H:i:s',
-            $this->getUserDateTimeZone()
+            $this->getTimezone()
         );
     }
 
@@ -119,13 +118,10 @@ class SearchFilter extends BaseSearchFilter
             'filterFields'
         );
 
-        if (!array_key_exists('ivoz.api.filter.date', $filterFields)) {
+        if (!array_key_exists(DateFilter::SERVICE_NAME, $filterFields)) {
             return;
         }
-
-        $dateFilterFields = $filterFields[
-            'ivoz.api.filter.date'
-        ];
+        $dateFilterFields = $filterFields[DateFilter::SERVICE_NAME];
 
         return array_key_exists(
             $field,
@@ -136,18 +132,15 @@ class SearchFilter extends BaseSearchFilter
     /**
      * @return \DateTimeZone
      */
-    private function getUserDateTimeZone()
+    private function getTimezone()
     {
-        $token = $this->tokenStorage->getToken();
+        $request = $this->requestStack->getCurrentRequest();
 
-        $timeZone = $token
-            ->getUser()
-            ->getTimezone();
+        $timezone = $request->query->get('_timezone', null);
+        if (!$timezone) {
+            return new \DateTimeZone('UTC');
+        }
 
-        $tz = $timeZone
-            ? $timeZone->getTz()
-            : 'UTC';
-
-        return new \DateTimeZone($tz);
+        return new \DateTimeZone($timezone);
     }
 }

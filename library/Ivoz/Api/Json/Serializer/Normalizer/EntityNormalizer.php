@@ -5,7 +5,7 @@ namespace Ivoz\Api\Json\Serializer\Normalizer;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
-use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer;
+use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
@@ -40,7 +40,7 @@ class EntityNormalizer implements NormalizerInterface
     private $dtoAssembler;
 
     /**
-     * @var DateTimeNormalizer
+     * @var DateTimeNormalizerInterface
      */
     private $dateTimeNormalizer;
 
@@ -54,7 +54,7 @@ class EntityNormalizer implements NormalizerInterface
         ResourceClassResolverInterface $resourceClassResolver,
         ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
-        DateTimeNormalizer $dateTimeNormalizer,
+        DateTimeNormalizerInterface $dateTimeNormalizer,
         PropertyNameCollectionFactory $propertyNameCollectionFactory
     ) {
         $this->resourceClassResolver = $resourceClassResolver;

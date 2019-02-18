@@ -21,18 +21,17 @@ class DateFilter extends BaseDateFilter
 
     use FilterTrait;
 
-    protected $tokenStorage;
+    protected $requestStack;
 
     public function __construct(
         ManagerRegistry $managerRegistry,
         $requestStack = null,
         LoggerInterface $logger = null,
         array $properties = null,
-        ResourceMetadataFactoryInterface $resourceMetadataFactory,
-        TokenStorage $tokenStorage
+        ResourceMetadataFactoryInterface $resourceMetadataFactory
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->tokenStorage = $tokenStorage;
+        $this->requestStack = $requestStack;
         return parent::__construct($managerRegistry, $requestStack, $logger, $properties);
     }
 
@@ -74,27 +73,21 @@ class DateFilter extends BaseDateFilter
         $value = DateTimeHelper::stringToUtc(
             $value,
             'Y-m-d H:i:s',
-            $this->getUserDateTimeZone()
+            $this->getTimezone()
         );
 
         return parent::addWhere(...func_get_args());
     }
 
-    /**
-     * @return \DateTimeZone
-     */
-    private function getUserDateTimeZone()
+    private function getTimezone()
     {
-        $token = $this->tokenStorage->getToken();
+        $request = $this->requestStack->getCurrentRequest();
 
-        $timeZone = $token
-            ->getUser()
-            ->getTimezone();
+        $timezone = $request->query->get('_timezone', null);
+        if (!$timezone) {
+            return new \DateTimeZone('UTC');
+        }
 
-        $tz = $timeZone
-            ? $timeZone->getTz()
-            : 'UTC';
-
-        return new \DateTimeZone($tz);
+        return new \DateTimeZone($timezone);
     }
 }

@@ -9,8 +9,8 @@ services:
     shared: false
     arguments:
       $properties: ~
+      $requestStack: '@request_stack'
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
-      $tokenStorage: '@security.token_storage'
     tags: [ 'api_platform.filter' ]
 
   ################################################
@@ -24,8 +24,8 @@ services:
     shared: false
     arguments:
       $properties: ~
+      $requestStack: '@request_stack'
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
-      $tokenStorage: '@security.token_storage'
     tags:  [ 'api_platform.filter' ]
 
   ################################################
