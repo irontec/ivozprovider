@@ -7,7 +7,5 @@ pushd /opt/irontec/ivozprovider
 
     ./scheme/bin/test-orm
 
-    ./web/rest/platform/bin/test-api
-    ./web/rest/brand/bin/test-api
-    ./web/rest/client/bin/test-api
+    ./library/bin/test-api
 popd
