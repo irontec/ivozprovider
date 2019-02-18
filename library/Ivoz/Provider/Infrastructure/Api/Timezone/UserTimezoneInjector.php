@@ -2,6 +2,9 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Timezone;
 
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -62,10 +65,14 @@ class UserTimezoneInjector
             return;
         }
 
+        /** @var AdministratorInterface | UserInterface $user */
+        $user = $token->getUser();
+        if (!$user instanceof EntityInterface) {
+            return;
+        }
+
         /** @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timeZone */
-        $timeZone = $token
-            ->getUser()
-            ->getTimezone();
+        $timeZone = $user->getTimezone();
 
         return $timeZone
             ? $timeZone->getTz()
