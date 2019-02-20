@@ -1,6 +1,6 @@
 Template: ivozprovider/menu_data
 Type: select
-Choices: configure_dns_address, configure_dns_menu, configure_mysql_password, configure_mysql_server_id, configure_finish
+Choices: configure_dns_address, configure_dns_menu, configure_mysql_password, configure_finish
 Choices-es.UTF-8: Configurar dirección DNS local, Configurar IPs DNS local, Configurar password de MySQL, Configurar server-id MySQL, >> Finalizar configuración
 Choices-en.UTF-8: Configure local DNS address, Configure local DNS IPs, Configure MySQL root password, Configure MySQL server-id, >> Finish configurating
 Default: configure_dns_address
@@ -27,17 +27,6 @@ Choices-en.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivoz
 Default: configure_dns_address
 Description: Configure DNS server resolution for .local domain
 Description-es.UTF-8: Configure las entradas DNS para el dominio .local
-
-Template: ivozprovider/mysql_server_id
-Type: string
-Default: 0
-Description: Enter serverid of current node for MySQL replication:
-Description-es.UTF-8: Introduzca el serverid de el nodo actual para replicación MySQL:
-
-Template: ivozprovider/mysql_server_id_invalid
-Type: error
-Description: Invalid value for Replication Server ID. Choose unique number between 1-32 for this node.
-Description-es.UTF-8: Valor inválido para ID de Replicacion. Elija un número entre 1-32 para este nodo.
 
 Template: ivozprovider/users_address
 Type: string
