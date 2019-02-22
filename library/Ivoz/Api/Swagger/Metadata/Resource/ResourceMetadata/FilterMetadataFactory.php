@@ -11,6 +11,13 @@ use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 
+use Ivoz\Api\Doctrine\Orm\Filter\OrderFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\SearchFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\DateFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\NumericFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\BooleanFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\RangeFilter;
+
 class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
     /**
@@ -64,56 +71,54 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
     private function getEntityFilters(string $resourceClass)
     {
         $filters = [
-            'ivoz.api.filter.search' => [],
-            'ivoz.api.filter.date' => [],
-            'ivoz.api.filter.boolean' => [],
-            'ivoz.api.filter.numeric' => [],
-            'ivoz.api.filter.range' => [],
-            'ivoz.api.filter.order' => []
+            SearchFilter::SERVICE_NAME => [],
+            DateFilter::SERVICE_NAME => [],
+            BooleanFilter::SERVICE_NAME => [],
+            NumericFilter::SERVICE_NAME => [],
+            RangeFilter::SERVICE_NAME => [],
+            OrderFilter::SERVICE_NAME => []
         ];
 
         $attributes = $this->getEntityAttributes($resourceClass);
         foreach ($attributes as $attribute) {
+            $type = $this->getFieldType($resourceClass, $attribute);
+            if (!is_null($type)) {
+                $filters[OrderFilter::SERVICE_NAME][$attribute] = Filter\OrderFilter::NULLS_LARGEST;
+            }
+
             if ($attribute === 'id') {
                 continue;
             }
 
-            $type = $this->getFieldType($resourceClass, $attribute);
             switch ($type) {
                 case 'string':
                 case 'guid':
-                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;
-                    break;
                 case 'text':
-                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_PARTIAL;
+                    $filters[SearchFilter::SERVICE_NAME][$attribute] = Filter\SearchFilter::STRATEGY_PARTIAL;
                     break;
                 case 'smallint':
                 case 'integer':
                 case 'bigint':
                 case 'decimal':
                 case 'float':
-                    $filters['ivoz.api.filter.numeric'][$attribute] = null;
-                    $filters['ivoz.api.filter.range'][$attribute] = null;
+                    $filters[NumericFilter::SERVICE_NAME][$attribute] = null;
+                    $filters[RangeFilter::SERVICE_NAME][$attribute] = null;
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
-                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;
+                    $filters[SearchFilter::SERVICE_NAME][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;
                     break;
                 case 'boolean':
-                    $filters['ivoz.api.filter.boolean'][$attribute] = null;
+                    $filters[BooleanFilter::SERVICE_NAME][$attribute] = null;
                     break;
                 case 'date':
                 case 'datetime':
                 case 'datetimetz':
                 case 'time':
-                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;
-                    $filters['ivoz.api.filter.date'][$attribute] = null;
+                    $filters[SearchFilter::SERVICE_NAME][$attribute] = Filter\SearchFilter::STRATEGY_START;
+                    $filters[DateFilter::SERVICE_NAME][$attribute] = null;
                     break;
                 default:
                     // Value object and ClassMetadataInfo::ONE_TO_MANY
-            }
-
-            if (!is_null($type)) {
-                $filters['ivoz.api.filter.order'][$attribute] = Filter\OrderFilter::NULLS_LARGEST;
             }
         }
 
