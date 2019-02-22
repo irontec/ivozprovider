@@ -1,0 +1,6 @@
+# Rename file to custom_settings.cfg to have custom settings for this particular installation
+
+# Define WITHOUT_BOUNCER to disable bouncing mechanism: all calls will be
+# delivered to carriers, even those to DDIs belonging to the platform
+#!define WITHOUT_BOUNCER
+
