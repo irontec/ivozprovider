@@ -101,18 +101,19 @@ services:
   ################################################
   Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer:
     arguments:
-      $tokenStorage: '@security.token_storage'
       $classMetadataFactory: '@doctrine.orm.default_entity_manager.metadata_factory'
       $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
+
+  Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface:
+    alias: Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer
 
   Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer:
     arguments:
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
-      $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
       $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }

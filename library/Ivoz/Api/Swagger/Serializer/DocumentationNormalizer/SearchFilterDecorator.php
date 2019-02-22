@@ -69,6 +69,13 @@ class SearchFilterDecorator implements NormalizerInterface
                 $path['get']['parameters'],
                 $responseModel['properties']
             );
+
+            $path['get']['parameters'][]  = [
+                'name' => '_pagination',
+                'in' => 'query',
+                'required' => false,
+                'type' => 'boolean'
+            ];
         }
 
         return $paths;

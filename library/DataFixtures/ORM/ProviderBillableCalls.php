@@ -29,7 +29,11 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                 $this->setCallid(
                     '017cc7c8-eb38-4bbd-9318-524a274f7' . str_pad($i, 3, '0', STR_PAD_LEFT)
                 );
-                $this->setStartTime(new \DateTime('2019-01-01 08:00:00'));
+
+                $startTime = new \DateTime('2019-01-01 08:00:00');
+                $startTime->modify("+$i second");
+
+                $this->setStartTime($startTime);
                 $this->setCaller('+34633646464');
                 $this->setCallee('+34633656565');
             })->call($item);

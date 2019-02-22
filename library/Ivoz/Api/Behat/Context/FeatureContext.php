@@ -1,5 +1,7 @@
 <?php
 
+namespace Ivoz\Api\Behat\Context;
+
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Symfony\Component\Filesystem\Filesystem;
@@ -37,15 +39,23 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @Given I add Authorization header for :username
+     */
+    public function setAuthorizationHeaderFor($username)
+    {
+        self::setAuthorizationHeader($username);
+    }
+
+    /**
      * @Given I add Authorization header
      */
-    public function setAuthorizationHeader()
+    public function setAuthorizationHeader($username = 'admin')
     {
         $response = $this->request->send(
             'POST',
             'admin_login',
             [
-                'username' => 'admin',
+                'username' => $username,
                 'password' => 'changeme'
             ]
         );

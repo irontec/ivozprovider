@@ -65,6 +65,7 @@ class RatingPlanPricesAction
 
             $queryArguments = $request->query->all();
             unset($queryArguments['id']);
+            unset($queryArguments['_timezone']);
 
             foreach ($queryArguments as $name => $value) {
 

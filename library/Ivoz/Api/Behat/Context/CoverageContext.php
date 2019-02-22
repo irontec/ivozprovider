@@ -1,5 +1,7 @@
 <?php
 
+namespace Ivoz\Api\Behat\Context;
+
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
@@ -34,8 +36,8 @@ class CoverageContext implements Context
     public static function tearDown()
     {
         $feature = getenv('FEATURE') ?: 'behat';
-        (new Facade())->process(self::$coverage, __DIR__."/../coverage/");
-        (new PHP())->process(self::$coverage, __DIR__."/../coverage/coverage.php");
+        (new Facade())->process(self::$coverage, __DIR__ . "/../coverage/");
+        (new PHP())->process(self::$coverage, __DIR__ . "/../coverage/coverage.php");
     }
 
     /**

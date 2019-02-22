@@ -4,12 +4,12 @@ default:
   suites:
     default:
       contexts:
-        - FeatureContext: { kernel: "@kernel" }
+        - Ivoz\Api\Behat\Context\FeatureContext: { kernel: "@kernel" }
         - Behat\MinkExtension\Context\MinkContext
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
         - Ivoz\Api\Behat\Context\JsonContext: { kernel: "@kernel" }
-#        - CoverageContext: {}
+#        - Ivoz\Api\Behat\Context\CoverageContext: {}
   extensions:
     Behat\Symfony2Extension:
       kernel:

@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 use Ivoz\Core\Domain\Service\ApiClientInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -145,7 +146,6 @@ class CsvExporterSpec extends ObjectBehavior
         $inDate = new \DateTime('2010-01-01 01:01:01');
         $outDate = new \DateTime('2015-01-01 01:01:01');
 
-
         $this
             ->apiClient
             ->get(
@@ -166,10 +166,30 @@ class CsvExporterSpec extends ObjectBehavior
         BrandInterface $brand = null
     ) {
 
+        $timezone = $this->getTestDouble(
+            TimezoneInterface::class
+        );
+
+        $timezone
+            ->getTz()
+            ->willReturn('UTC');
+
         if ($company) {
             $company
                 ->getId()
                 ->willReturn(1);
+
+            $company
+                ->getDefaultTimezone()
+                ->willReturn($timezone);
+        } elseif ($brand) {
+            $brand
+                ->getId()
+                ->willReturn(1);
+
+            $brand
+                ->getDefaultTimezone()
+                ->willReturn($timezone);
         }
 
         $responseBody
@@ -192,7 +212,7 @@ class CsvExporterSpec extends ObjectBehavior
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
-            "_pagination" => 'false'
+            "_pagination" => 'false',
         ];
 
         if ($company) {
@@ -204,6 +224,8 @@ class CsvExporterSpec extends ObjectBehavior
             $criteria['brand'] = $brand->getWrappedObject()->getId();
             $criteria['_properties'] = CsvExporter::BRAND_PROPERTIES;
         }
+
+        $criteria['_timezone'] = 'UTC';
 
         return
             CsvExporter::API_ENDPOINT

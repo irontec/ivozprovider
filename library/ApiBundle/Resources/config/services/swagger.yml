@@ -30,6 +30,13 @@ services:
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator.inner'
 
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\TimezoneSelectorDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 10
+    arguments:
+      $decoratedNormalizer:
+        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\TimezoneSelectorDecorator.inner'
+
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 9

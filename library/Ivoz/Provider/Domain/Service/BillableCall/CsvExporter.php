@@ -56,6 +56,17 @@ class CsvExporter
         CompanyInterface $company = null,
         BrandInterface $brand = null
     ) {
+        $timezone = 'UTC';
+        if ($company) {
+            $timezone = $company->getDefaultTimezone()->getTz();
+        } elseif ($brand) {
+            $timezone = $brand->getDefaultTimezone()->getTz();
+        }
+        $dateTimeZone = new \DateTimeZone($timezone);
+
+        $inDate->setTimezone($dateTimeZone);
+        $outDate->setTimezone($dateTimeZone);
+
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
@@ -65,11 +76,13 @@ class CsvExporter
         if ($company) {
             $criteria['company'] = $company->getId();
             $criteria['_properties'] = self::CLIENT_PROPERTIES;
+            $criteria['_timezone'] = $company->getDefaultTimezone()->getTz();
         }
 
         if ($brand) {
             $criteria['brand'] = $brand->getId();
             $criteria['_properties'] = self::BRAND_PROPERTIES;
+            $criteria['_timezone'] = $brand->getDefaultTimezone()->getTz();
         }
 
         $endpoint =
