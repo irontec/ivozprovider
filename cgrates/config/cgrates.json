@@ -20,10 +20,11 @@
 	"data_db": {
 		"db_type": "redis",
 		"db_host": "data.ivozprovider.local",
-		"db_port": 6379,
+		"db_port": 26379,
 		"db_name": "10",
 		"db_user": "cgrates",
-		"db_password": ""
+		"db_password": "",
+		"redis_sentinel": "mymaster"
 	},
 	"rals": {
 		"enabled": true
