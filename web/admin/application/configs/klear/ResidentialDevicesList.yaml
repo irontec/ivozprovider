@@ -41,6 +41,7 @@ production:
           language: true
           status: true
           ddiIn: true
+          maxCalls: true
         order:
           name: true
           domain: true
@@ -131,9 +132,10 @@ production:
           label: _("Advanced Configuration")
           colsPerRow: 6
           fields:
-            allow: 2
-            fromDomain: 2
-            ddiIn: 2
+            allow: 3
+            fromDomain: 3
+            ddiIn: 3
+            maxCalls: 3
 
     residentialDevicesEdit_screen: &residentialDevicesEdit_screenLink
       <<: *ResidentialDevices
