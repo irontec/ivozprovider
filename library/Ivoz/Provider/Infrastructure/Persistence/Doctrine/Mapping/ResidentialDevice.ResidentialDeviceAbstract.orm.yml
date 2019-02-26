@@ -117,6 +117,13 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
         comment: '[enum:yes|no]'
         default: 'yes'
       column: ddiIn
+    maxCalls:
+      type: integer
+      nullable: false
+      options:
+        default: '1'
+        unsigned: true
+      column: maxCalls
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface
