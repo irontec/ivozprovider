@@ -88,9 +88,7 @@ Basic Configuration
         still place calls.
 
     Max Calls
-        Limits the number of received calls if the user is handling 
-        simultaneously (inbound and outbound) more than the number set. 
-        Set 0 for unlimited calls.
+        Limits the number of concurrent received calls. Set 0 for unlimited calls.
 
     Calls from non-granted IPs:
         Enable calling from non-granted IP addresses for this user. 
