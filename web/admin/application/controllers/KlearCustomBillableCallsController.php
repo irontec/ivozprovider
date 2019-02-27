@@ -74,10 +74,19 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
                 }
             }
         }
-
         $criteria += $where;
 
-        $billableCalls = $apiClient->getBillableCalls($criteria);
+        $endpoint = 'platform';
+        switch (true) {
+            case $user->isBrandOperator:
+                $endpoint = 'brand';
+                break;
+            case $user->isCompanyAdmin:
+                $endpoint = 'client';
+                break;
+        }
+
+        $billableCalls = $apiClient->getBillableCalls($criteria, $endpoint);
         $response = $this->getResponse();
         $response->clearHeaders();
         $response->setHeader('Content-Length', mb_strlen($billableCalls));
