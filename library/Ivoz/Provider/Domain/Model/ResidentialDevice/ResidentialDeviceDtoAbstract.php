@@ -88,6 +88,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var integer
      */
+    private $maxCalls = '1';
+
+    /**
+     * @var integer
+     */
     private $id;
 
     /**
@@ -168,6 +173,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
+            'maxCalls' => 'maxCalls',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -199,6 +205,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
+            'maxCalls' => $this->getMaxCalls(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -510,6 +517,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getDdiIn()
     {
         return $this->ddiIn;
+    }
+
+    /**
+     * @param integer $maxCalls
+     *
+     * @return static
+     */
+    public function setMaxCalls($maxCalls = null)
+    {
+        $this->maxCalls = $maxCalls;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMaxCalls()
+    {
+        return $this->maxCalls;
     }
 
     /**

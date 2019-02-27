@@ -44,12 +44,7 @@ function setup_mysql_access()
 
 function setup_mysql_replication()
 {
-    # Configure this node server-id
-    db_get ivozprovider/mysql_server_id         || true
-    if [ $RET -gt 0 ]; then
-        sed -r -i "s/(server-id       =) .*/\1 $RET/"       /etc/mysql/conf.d/ivozprovider-replication.cnf
-        sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"      /etc/mysql/mysql.conf.d/mysqld.cnf
-    fi
+    sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"      /etc/mysql/mysql.conf.d/mysqld.cnf
 }
 
 #######################################################################################################################

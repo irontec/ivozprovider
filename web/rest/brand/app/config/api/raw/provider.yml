@@ -222,6 +222,14 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
         brand:
           eq: "user.getBrand().getId()"
 
+Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
   itemOperations: []
   collectionOperations: []

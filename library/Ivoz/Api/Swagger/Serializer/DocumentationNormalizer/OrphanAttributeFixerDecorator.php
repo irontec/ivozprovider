@@ -77,6 +77,10 @@ class OrphanAttributeFixerDecorator implements NormalizerInterface
                 }
 
                 $propertyType = $property['type'];
+                if ($propertyClass === 'DateTime' && $propertyType === 'string') {
+                    continue;
+                }
+
                 if ($propertyClass !== $propertyType) {
                     unset($entityDefinition['properties'][$propertyName]);
                 }

@@ -184,6 +184,13 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getDdiIn();
 
     /**
+     * Get maxCalls
+     *
+     * @return integer
+     */
+    public function getMaxCalls();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

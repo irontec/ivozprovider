@@ -14,6 +14,7 @@ class Client implements ApiClientInterface
     protected $jwtTokenManager;
 
     protected $jwtToken;
+    protected $administratorRepository;
 
     public function __construct(
         ClientInterface $platformHttpClient,

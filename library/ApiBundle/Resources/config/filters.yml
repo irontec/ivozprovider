@@ -9,6 +9,7 @@ services:
     shared: false
     arguments:
       $properties: ~
+      $requestStack: '@request_stack'
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
     tags: [ 'api_platform.filter' ]
 
@@ -23,6 +24,7 @@ services:
     shared: false
     arguments:
       $properties: ~
+      $requestStack: '@request_stack'
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
     tags:  [ 'api_platform.filter' ]
 

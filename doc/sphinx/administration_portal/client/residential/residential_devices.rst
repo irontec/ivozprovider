@@ -78,6 +78,9 @@ These are the configurable settings of *Residential devices*:
         If set to 'Yes', use endpoint username in R-URI when calling this residential device. If set to 'No', use called
         number instead.
 
+    Max Calls
+        Limits the number of concurrent received calls. Set 0 for unlimited calls.
+
 Voicemail settings
 ==================
 

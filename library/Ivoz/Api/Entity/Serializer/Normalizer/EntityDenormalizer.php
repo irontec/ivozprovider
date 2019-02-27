@@ -17,34 +17,11 @@ use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
  */
 class EntityDenormalizer implements DenormalizerInterface
 {
-    /**
-     * @var CreateEntityFromDTO
-     */
     private $createEntityFromDTO;
-
-    /**
-     * @var UpdateEntityFromDTO
-     */
     private $updateEntityFromDTO;
-
-    /**
-     * @var DtoAssembler
-     */
     private $dtoAssembler;
-
-    /**
-     * @var PropertyMetadataFactoryInterface
-     */
     private $propertyMetadataFactory;
-
-    /**
-     * @var LoggerInterface
-     */
     private $logger;
-
-    /**
-     * @var DateTimeNormalizer
-     */
     private $dateTimeNormalizer;
 
     /**
@@ -54,6 +31,7 @@ class EntityDenormalizer implements DenormalizerInterface
      * @param DtoAssembler $dtoAssembler
      * @param PropertyMetadataFactoryInterface $propertyMetadataFactory
      * @param LoggerInterface $logger
+     * @param DateTimeNormalizerInterface $dateTimeNormalizer
      */
     public function __construct(
         CreateEntityFromDTO $createEntityFromDTO,
@@ -61,7 +39,7 @@ class EntityDenormalizer implements DenormalizerInterface
         DtoAssembler $dtoAssembler,
         PropertyMetadataFactoryInterface $propertyMetadataFactory,
         LoggerInterface $logger,
-        DateTimeNormalizer $dateTimeNormalizer
+        DateTimeNormalizerInterface $dateTimeNormalizer
     ) {
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->updateEntityFromDTO = $updateEntityFromDTO;

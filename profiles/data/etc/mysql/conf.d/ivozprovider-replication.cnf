@@ -1,4 +1,0 @@
-[mysqld]
-log_bin         = /var/log/mysql/mysql-bin.log
-binlog-do-db    = ivozprovider
-server-id       = 0

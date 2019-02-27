@@ -9,7 +9,7 @@ default:
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
         - Ivoz\Api\Behat\Context\JsonContext: { kernel: "@kernel" }
-#        - CoverageContext: {}
+#        - Ivoz\Api\Behat\Context\CoverageContext: {}
   extensions:
     Behat\Symfony2Extension:
       kernel:
