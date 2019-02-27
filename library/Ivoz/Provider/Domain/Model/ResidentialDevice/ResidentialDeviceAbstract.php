@@ -100,6 +100,11 @@ abstract class ResidentialDeviceAbstract
     protected $ddiIn = 'yes';
 
     /**
+     * @var integer
+     */
+    protected $maxCalls = '1';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -146,7 +151,8 @@ abstract class ResidentialDeviceAbstract
         $calleridUpdateHeader,
         $updateCallerid,
         $directConnectivity,
-        $ddiIn
+        $ddiIn,
+        $maxCalls
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -159,6 +165,7 @@ abstract class ResidentialDeviceAbstract
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
+        $this->setMaxCalls($maxCalls);
     }
 
     abstract public function getId();
@@ -240,7 +247,8 @@ abstract class ResidentialDeviceAbstract
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
             $dto->getDirectConnectivity(),
-            $dto->getDdiIn()
+            $dto->getDdiIn(),
+            $dto->getMaxCalls()
         );
 
         $self
@@ -292,6 +300,7 @@ abstract class ResidentialDeviceAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
+            ->setMaxCalls($dto->getMaxCalls())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -328,6 +337,7 @@ abstract class ResidentialDeviceAbstract
             ->setFromDomain(self::getFromDomain())
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
+            ->setMaxCalls(self::getMaxCalls())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -357,6 +367,7 @@ abstract class ResidentialDeviceAbstract
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
+            'maxCalls' => self::getMaxCalls(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
@@ -796,6 +807,34 @@ abstract class ResidentialDeviceAbstract
     public function getDdiIn()
     {
         return $this->ddiIn;
+    }
+
+    /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return self
+     */
+    protected function setMaxCalls($maxCalls)
+    {
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
+
+        $this->maxCalls = $maxCalls;
+
+        return $this;
+    }
+
+    /**
+     * Get maxCalls
+     *
+     * @return integer
+     */
+    public function getMaxCalls()
+    {
+        return $this->maxCalls;
     }
 
     /**

@@ -263,6 +263,20 @@ production:
           order:
             TransformationRuleSet.name.${lang}: asc
         'null': _("Company's default")
+    maxCalls:
+      title: _('Max calls')
+      type: number
+      defaultValue: 1
+      source:
+        control: Spinner
+        min: 0
+        max: 100
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limits the number of concurrent received calls. Set 0 for unlimited calls.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:
