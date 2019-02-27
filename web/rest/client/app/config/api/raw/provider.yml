@@ -398,13 +398,7 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
     read_access_control:
       inherited:
         outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
-Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
-  attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
-    read_access_control:
-      ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
