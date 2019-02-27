@@ -105,11 +105,11 @@ class RestClient
         ];
     }
 
-    public function getBillableCalls(array $where = [])
+    public function getBillableCalls(array $where = [], $api = 'platform')
     {
         $where['_pagination'] = "false";
         $apiEndpoint =
-            self::getBaseUrl()
+            self::getBaseUrl($api)
             . self::BILLABLE_CALL_ENDPOINT
             . '?' . http_build_query($where);
 
