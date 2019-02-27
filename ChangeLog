@@ -1,3 +1,25 @@
+Wed, 27 Feb 2019 10:10:30 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.9.2 released
+
+    * Billing
+        - Added Redis Sentinel support to CGrateS
+
+    * Proxies
+        - Fixed incoming DDI recognition logic
+        - Added an option to configure how bounced calls are handled
+
+    * Web
+        - Improved API search and order strategies
+        - Added new response headers with pagination information
+        - Added date conversions from/to client user timezone
+        - Added global Numeric transformation for E.164 without + sign
+        - Added max concurrent calls field in residential devices
+        - Fixed a bug while exporting calls CSVs from Brand and Client portals
+
+    * Packaging
+        - Removed all mysql replication information from debian packages
+
 Tue, 12 Feb 2019 16:52:41 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.9.1 released
