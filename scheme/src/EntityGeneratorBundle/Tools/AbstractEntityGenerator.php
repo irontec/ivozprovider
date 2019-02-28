@@ -440,6 +440,7 @@ public function <methodName>(<criteriaArgument>)
      */
     protected function generateEntityFieldMappingProperties(ClassMetadataInfo $metadata)
     {
+        $constants = [];
         $lines = array();
 
         foreach ($metadata->fieldMappings as $fieldMapping) {
@@ -453,6 +454,25 @@ public function <methodName>(<criteriaArgument>)
                 continue;
             }
 
+            $comment = isset($fieldMapping['options']['comment'])
+                    ? $fieldMapping['options']['comment']
+                    : '';
+
+            if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
+                $acceptedValues = explode('|', $matches['fieldValues']);
+                $choices = $this->getEnumConstants($fieldMapping['fieldName'], $acceptedValues);
+                foreach ($acceptedValues as $key => $acceptedValue) {
+                    $choice = $choices[$key];
+                    $constants[] =
+                        $this->spaces
+                        . 'const '
+                        . $choice
+                        . " = '${acceptedValue}';";
+                }
+
+                $constants[] = "\n";
+            }
+
             $lines[] = $this->generateFieldMappingPropertyDocBlock($fieldMapping, $metadata);
             $classAttr = $this->spaces . $this->fieldVisibility . ' $' . $fieldMapping['fieldName'];
 
@@ -463,7 +483,29 @@ public function <methodName>(<criteriaArgument>)
             $lines[] = $classAttr . ";\n";
         }
 
-        return implode("\n", $lines);
+        return
+            implode("\n", $constants)
+            . implode("\n", $lines);
+    }
+
+
+    private function getEnumConstants($fieldName, $acceptedValues, $prefix = '')
+    {
+
+        $choices = [];
+        foreach ($acceptedValues as $acceptedValue) {
+            $choice =
+                $prefix
+                . strtoupper($fieldName)
+                . '_'
+                . strtoupper(
+                    preg_replace('/[^A-Z0-9]/i', '', $acceptedValue)
+                );
+
+            $choices[] = $choice;
+        }
+
+        return $choices;
     }
 
     /**
@@ -1305,10 +1347,12 @@ public function <methodName>(<criteriaArgument>)
 
             if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
                 $acceptedValues = explode('|', $matches['fieldValues']);
+                $choices = $this->getEnumConstants($currentField->fieldName, $acceptedValues, 'self::');
 
+                $glue = "\n" . $this->spaces;
                 $assertions[] = AssertionGenerator::choice(
                     $currentField->fieldName,
-                    $acceptedValues,
+                    "[$glue". implode(',' . $glue, $choices) . "\n]",
                     $isNullable
                 );
             }
