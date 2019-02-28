@@ -148,9 +148,12 @@ peer
     secret=friend-password
     fromdomain=ivozprovider-client.sip-domain.com
     insecure=port,invite
+    sendrpid=pai
 
 .. warning:: *Friends*, like terminals, MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.
+
+.. note:: As from username is used to identify the friend, P-Asserted-Identity must be used to specify caller number.
 
 Summary
 =======

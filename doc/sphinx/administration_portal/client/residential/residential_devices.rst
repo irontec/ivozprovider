@@ -135,9 +135,11 @@ Device peer
     secret=device-password
     fromdomain=ivozprovider-brand.sip-domain.com
     insecure=port,invite
+    sendrpid=pai
 
 .. warning:: *Residential devices* MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.
 
+.. note:: As from username is used to identify the retail account, P-Asserted-Identity must be used to specify caller number.
 
 
