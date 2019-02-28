@@ -55,6 +55,8 @@ a :ref:`friend <friends>` following this logic:
 
 3. If not: This is an external call.
 
+.. important:: Avoid PCRE regular expressions in friend configuration: use [0-9] instead of \\d.
+
 Configuration
 =============
 

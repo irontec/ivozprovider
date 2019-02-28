@@ -203,6 +203,9 @@ msgstr[1] "Authorized sources"
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
 
+msgid "Avoid PCRE regular expressions here: use [0-9] instead of \\d."
+msgstr "Avoid PCRE regular expressions here: use [0-9] instead of \\d."
+
 msgid "Balance"
 msgstr "Balance"
 
