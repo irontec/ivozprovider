@@ -28,7 +28,9 @@ function scheme_initialize()
     # During first time, create database and import initial dump
     cd /opt/irontec/ivozprovider/scheme
     bin/console doctrine:database:create
-    bin/console doctrine:database:import initial.sql
+    if [ $? -eq 0 ]; then
+        bin/console doctrine:database:import initial.sql
+    fi
 }
 
 function mysql_upgrade()
