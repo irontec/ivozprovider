@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-26 16:01+0100\n"
+"POT-Creation-Date: 2019-02-28 09:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4826,75 +4826,65 @@ msgid ""
 "residential device. If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:80
-#: ../../administration_portal/client/vpbx/users.rst:89
-msgid "Max Calls"
-msgstr ""
-
 #: ../../administration_portal/client/residential/residential_devices.rst:82
-#: ../../administration_portal/client/vpbx/users.rst:91
-msgid "Limits the number of concurrent received calls. Set 0 for unlimited calls."
-msgstr ""
-
-#: ../../administration_portal/client/residential/residential_devices.rst:85
 #: ../../administration_portal/client/retail/retail_accounts.rst:82
 msgid "Voicemail settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:87
+#: ../../administration_portal/client/residential/residential_devices.rst:84
 msgid ""
 "Every residential device has a voicemail that can be accessed using "
 "voicemail service code defined at brand level."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:90
+#: ../../administration_portal/client/residential/residential_devices.rst:87
 #: ../../administration_portal/client/retail/retail_accounts.rst:87
 msgid "Call forwarding settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:92
+#: ../../administration_portal/client/residential/residential_devices.rst:89
 msgid ""
 "Apart from unconditional call forwarding to external number through "
 ":ref:`External call filters` applied to DDI, residential devices may have"
 " additional call forwarding settings that allow:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:95
+#: ../../administration_portal/client/residential/residential_devices.rst:92
 msgid "Forwarding to another external number."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:97
+#: ../../administration_portal/client/residential/residential_devices.rst:94
 msgid "Forwarding to voicemail associated to each residential device."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:99
+#: ../../administration_portal/client/residential/residential_devices.rst:96
 msgid ""
 "Supported forwarding types: unconditional, no-answer, non-registered, "
 "busy."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:101
+#: ../../administration_portal/client/residential/residential_devices.rst:98
 msgid ""
 ":ref:`External call filters` have precedence over residential devices "
 "call forwarding settings."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:105
+#: ../../administration_portal/client/residential/residential_devices.rst:102
 msgid "Asterisk as a residential device"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:107
+#: ../../administration_portal/client/residential/residential_devices.rst:104
 msgid ""
 "At the other end of a device can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:112
+#: ../../administration_portal/client/residential/residential_devices.rst:109
 msgid "Device register"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:114
+#: ../../administration_portal/client/residential/residential_devices.rst:111
 #: ../../administration_portal/client/retail/retail_accounts.rst:107
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:127
 msgid ""
@@ -4902,20 +4892,27 @@ msgid ""
 "in the platform (like a terminal will do)."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:117
+#: ../../administration_portal/client/residential/residential_devices.rst:114
 #: ../../administration_portal/client/retail/retail_accounts.rst:110
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:130
 msgid "Configuration will be something like this:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:124
+#: ../../administration_portal/client/residential/residential_devices.rst:121
 msgid "Device peer"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:139
+#: ../../administration_portal/client/residential/residential_devices.rst:137
 msgid ""
 "*Residential devices* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:140
+#: ../../administration_portal/client/retail/retail_accounts.rst:136
+msgid ""
+"As from username is used to identify the retail account, P-Asserted-"
+"Identity must be used to specify caller number."
 msgstr ""
 
 #: ../../administration_portal/client/retail/calls/index.rst:5
@@ -5152,7 +5149,7 @@ msgstr ""
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:132
+#: ../../administration_portal/client/retail/retail_accounts.rst:133
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
@@ -5881,47 +5878,53 @@ msgstr ""
 msgid "peer"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:152
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:153
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:156
+msgid ""
+"As from username is used to identify the friend, P-Asserted-Identity must"
+" be used to specify caller number."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:159
 msgid "Summary"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:158
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:161
 msgid ""
 "The key point is understanding that a *friend* has a direct relation with"
 " the extension-user-terminal trio:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:161
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:164
 msgid "Can place calls to all internal extensions and other friends."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:163
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:166
 msgid "Can place external calls that its ACL allows"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:165
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:168
 msgid "Display their configured outgoing DDI when calling to external entities"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:167
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:170
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:169
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:172
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be authenticated for security reasons)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:172
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:175
 msgid ""
 "Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
 "traffic from friends are identical to any other user terminal traffic in "
@@ -7423,11 +7426,22 @@ msgid ""
 "still place calls."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:92
-msgid "Calls from non-granted IPs:"
+#: ../../administration_portal/client/vpbx/users.rst:89
+msgid "Max Calls"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:91
+msgid ""
+"Limits the number of received calls if the user is handling "
+"simultaneously (inbound and outbound) more than the number set. Set 0 for"
+" unlimited calls."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/users.rst:94
+msgid "Calls from non-granted IPs:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/users.rst:96
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the"
 " number of outgoing calls to avoid toll-fraud. 'None' value makes "
@@ -7435,208 +7449,208 @@ msgid ""
 ":ref:`roadwarrior_users` for further reference."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:101
+#: ../../administration_portal/client/vpbx/users.rst:103
 msgid "Voicemail"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:105
+#: ../../administration_portal/client/vpbx/users.rst:107
 msgid "VoiceMail enabled"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:107
+#: ../../administration_portal/client/vpbx/users.rst:109
 msgid ""
 "Enables or disables the **existance** of a users voicemail. This only "
 "makes the voicemail available to be routed as destination of a call "
 "forwarding."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:109
+#: ../../administration_portal/client/vpbx/users.rst:111
 msgid "Voicemail Locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:111
+#: ../../administration_portal/client/vpbx/users.rst:113
 msgid ""
 "If set, this locution is played as voicemail welcome message when a "
 "voicemail for this user is going to be recorded. This only applies for "
 "call forwards to voicemail."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:114
+#: ../../administration_portal/client/vpbx/users.rst:116
 msgid "Email notification"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:116
+#: ../../administration_portal/client/vpbx/users.rst:118
 msgid ""
 "Send an email to the configured user address when a new voicemail is "
 "received."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:118
+#: ../../administration_portal/client/vpbx/users.rst:120
 msgid "Attach sounds:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:120
+#: ../../administration_portal/client/vpbx/users.rst:122
 msgid "Attach the audio message to the sent email."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:122
+#: ../../administration_portal/client/vpbx/users.rst:124
 msgid ""
 "If voicemail locution is not assigned, default locution will be used as "
 "long as the user has not recorded a custom message through the voicemail "
 "menu (calling to voicemail service code)."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:128
+#: ../../administration_portal/client/vpbx/users.rst:130
 msgid "Boss-Assistant"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:130
+#: ../../administration_portal/client/vpbx/users.rst:132
 msgid ""
 "This feature will turn the user into a boss that can only be directly "
 "call by:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:132
+#: ../../administration_portal/client/vpbx/users.rst:134
 msgid "The selected assistant."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:134
+#: ../../administration_portal/client/vpbx/users.rst:136
 msgid "Any origin that matches the white list."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:136
+#: ../../administration_portal/client/vpbx/users.rst:138
 msgid "The rest of the calls to *a boss* will be redirected to the assistant."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:139
+#: ../../administration_portal/client/vpbx/users.rst:141
 msgid "Is boss"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:141
+#: ../../administration_portal/client/vpbx/users.rst:143
 msgid "Determines if this user is a boss."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:142
+#: ../../administration_portal/client/vpbx/users.rst:144
 msgid "Assistant"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:144
+#: ../../administration_portal/client/vpbx/users.rst:146
 msgid "Who will receive the redirected calls of this boss."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:145
+#: ../../administration_portal/client/vpbx/users.rst:147
 msgid "Whitelist"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:147
+#: ../../administration_portal/client/vpbx/users.rst:149
 msgid ""
 ":ref:`match_lists` with origins that are allowed to call directly to the "
 "boss."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:150
+#: ../../administration_portal/client/vpbx/users.rst:152
 msgid ""
 "With the setup in the image, every call to *Alice* will be redirected to "
 "*Bob*, except the ones placed by *Bob* itself and those coming from any "
 "origin that matches *Alice's friends* matchlist."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:156
+#: ../../administration_portal/client/vpbx/users.rst:158
 msgid "Group Configuration"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:158
+#: ../../administration_portal/client/vpbx/users.rst:160
 msgid ""
 "As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
 " the user can be part of one or more hunt groups and pickup groups."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:161
+#: ../../administration_portal/client/vpbx/users.rst:163
 msgid ""
 "Those groups can be configured from the sections :ref:`huntgroups` and "
 ":ref:`capture_groups` or the user's screen if the groups already exists."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:164
+#: ../../administration_portal/client/vpbx/users.rst:166
 msgid ""
 "You can also configure the user's **hunt groups** from the icon in each "
 "user line of the users list."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:169
+#: ../../administration_portal/client/vpbx/users.rst:171
 msgid "User Call Forward"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:171
+#: ../../administration_portal/client/vpbx/users.rst:173
 msgid ""
 "The user's call forward can be configured with the **List of call forward"
 " settings**  button."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:173
+#: ../../administration_portal/client/vpbx/users.rst:175
 msgid "These are the fields and available values:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:176
+#: ../../administration_portal/client/vpbx/users.rst:178
 msgid "Call Type"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:178
+#: ../../administration_portal/client/vpbx/users.rst:180
 msgid ""
 "Determines if the forward must be applied to external, internal or any "
 "type of call."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:180
+#: ../../administration_portal/client/vpbx/users.rst:182
 msgid "Forward type"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:189
+#: ../../administration_portal/client/vpbx/users.rst:191
 msgid "When this forward must be applied:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:183
+#: ../../administration_portal/client/vpbx/users.rst:185
 msgid "Unconditional: always"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:184
+#: ../../administration_portal/client/vpbx/users.rst:186
 msgid "No answer: when the call is not answered in X seconds"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:185
+#: ../../administration_portal/client/vpbx/users.rst:187
 msgid ""
 "Busy: When the user is talking to someone (and call waiting is disabled),"
 " when *Do not disturb* is enabled or when the user rejects an incoming "
 "call."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:188
+#: ../../administration_portal/client/vpbx/users.rst:190
 msgid ""
 "Not registered: when the user SIP terminal is not registered against "
 "IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:190
+#: ../../administration_portal/client/vpbx/users.rst:192
 msgid "Target type"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:194
+#: ../../administration_portal/client/vpbx/users.rst:196
 msgid "What route will use the forwarded call."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:193
+#: ../../administration_portal/client/vpbx/users.rst:195
 msgid "VoiceMail"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:194
+#: ../../administration_portal/client/vpbx/users.rst:196
 msgid "Number (external)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:195
+#: ../../administration_portal/client/vpbx/users.rst:197
 msgid "Extension (internal)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/users.rst:197
+#: ../../administration_portal/client/vpbx/users.rst:199
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
