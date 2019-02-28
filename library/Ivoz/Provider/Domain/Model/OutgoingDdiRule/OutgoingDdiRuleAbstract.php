@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingDdiRuleAbstract
 {
+    const DEFAULTACTION_KEEP = 'keep';
+    const DEFAULTACTION_FORCE = 'force';
+
     /**
      * @var string
      */
@@ -222,10 +225,10 @@ abstract class OutgoingDdiRuleAbstract
     {
         Assertion::notNull($defaultAction, 'defaultAction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($defaultAction, 10, 'defaultAction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($defaultAction, array (
-          0 => 'keep',
-          1 => 'force',
-        ), 'defaultActionvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($defaultAction, [
+            self::DEFAULTACTION_KEEP,
+            self::DEFAULTACTION_FORCE
+        ], 'defaultActionvalue "%s" is not an element of the valid values: %s');
 
         $this->defaultAction = $defaultAction;
 

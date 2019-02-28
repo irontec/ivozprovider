@@ -13,6 +13,13 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class NotificationTemplateAbstract
 {
+    const TYPE_VOICEMAIL = 'voicemail';
+    const TYPE_FAX = 'fax';
+    const TYPE_LIMIT = 'limit';
+    const TYPE_LOWBALANCE = 'lowbalance';
+    const TYPE_INVOICE = 'invoice';
+    const TYPE_CALLCSV = 'callCsv';
+
     /**
      * @var string
      */
@@ -213,14 +220,14 @@ abstract class NotificationTemplateAbstract
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, array (
-          0 => 'voicemail',
-          1 => 'fax',
-          2 => 'limit',
-          3 => 'lowbalance',
-          4 => 'invoice',
-          5 => 'callCsv',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($type, [
+            self::TYPE_VOICEMAIL,
+            self::TYPE_FAX,
+            self::TYPE_LIMIT,
+            self::TYPE_LOWBALANCE,
+            self::TYPE_INVOICE,
+            self::TYPE_CALLCSV
+        ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 

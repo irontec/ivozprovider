@@ -13,6 +13,16 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class HuntGroupAbstract
 {
+    const STRATEGY_RINGALL = 'ringAll';
+    const STRATEGY_LINEAR = 'linear';
+    const STRATEGY_ROUNDROBIN = 'roundRobin';
+    const STRATEGY_RANDOM = 'random';
+
+
+    const NOANSWERTARGETTYPE_NUMBER = 'number';
+    const NOANSWERTARGETTYPE_EXTENSION = 'extension';
+    const NOANSWERTARGETTYPE_VOICEMAIL = 'voicemail';
+
     /**
      * @var string
      */
@@ -330,12 +340,12 @@ abstract class HuntGroupAbstract
     {
         Assertion::notNull($strategy, 'strategy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($strategy, array (
-          0 => 'ringAll',
-          1 => 'linear',
-          2 => 'roundRobin',
-          3 => 'random',
-        ), 'strategyvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($strategy, [
+            self::STRATEGY_RINGALL,
+            self::STRATEGY_LINEAR,
+            self::STRATEGY_ROUNDROBIN,
+            self::STRATEGY_RANDOM
+        ], 'strategyvalue "%s" is not an element of the valid values: %s');
 
         $this->strategy = $strategy;
 
@@ -390,11 +400,11 @@ abstract class HuntGroupAbstract
     {
         if (!is_null($noAnswerTargetType)) {
             Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($noAnswerTargetType, array (
-              0 => 'number',
-              1 => 'extension',
-              2 => 'voicemail',
-            ), 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($noAnswerTargetType, [
+                self::NOANSWERTARGETTYPE_NUMBER,
+                self::NOANSWERTARGETTYPE_EXTENSION,
+                self::NOANSWERTARGETTYPE_VOICEMAIL
+            ], 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->noAnswerTargetType = $noAnswerTargetType;

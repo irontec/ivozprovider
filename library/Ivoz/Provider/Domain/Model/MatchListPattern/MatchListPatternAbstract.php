@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class MatchListPatternAbstract
 {
+    const TYPE_NUMBER = 'number';
+    const TYPE_REGEXP = 'regexp';
+
     /**
      * @var string | null
      */
@@ -240,10 +243,10 @@ abstract class MatchListPatternAbstract
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, array (
-          0 => 'number',
-          1 => 'regexp',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($type, [
+            self::TYPE_NUMBER,
+            self::TYPE_REGEXP
+        ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 

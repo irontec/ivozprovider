@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CallAclRelMatchListAbstract
 {
+    const POLICY_ALLOW = 'allow';
+    const POLICY_DENY = 'deny';
+
     /**
      * @var integer
      */
@@ -222,10 +225,10 @@ abstract class CallAclRelMatchListAbstract
     {
         Assertion::notNull($policy, 'policy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($policy, 25, 'policy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($policy, array (
-          0 => 'allow',
-          1 => 'deny',
-        ), 'policyvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($policy, [
+            self::POLICY_ALLOW,
+            self::POLICY_DENY
+        ], 'policyvalue "%s" is not an element of the valid values: %s');
 
         $this->policy = $policy;
 

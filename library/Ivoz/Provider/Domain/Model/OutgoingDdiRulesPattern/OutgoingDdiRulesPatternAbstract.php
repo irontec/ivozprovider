@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingDdiRulesPatternAbstract
 {
+    const ACTION_KEEP = 'keep';
+    const ACTION_FORCE = 'force';
+
     /**
      * comment: enum:keep|force
      * @var string
@@ -204,10 +207,10 @@ abstract class OutgoingDdiRulesPatternAbstract
     {
         Assertion::notNull($action, 'action value "%s" is null, but non null value was expected.');
         Assertion::maxLength($action, 10, 'action value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($action, array (
-          0 => 'keep',
-          1 => 'force',
-        ), 'actionvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($action, [
+            self::ACTION_KEEP,
+            self::ACTION_FORCE
+        ], 'actionvalue "%s" is not an element of the valid values: %s');
 
         $this->action = $action;
 
