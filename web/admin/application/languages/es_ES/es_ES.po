@@ -208,6 +208,9 @@ msgstr[1] "Redes autorizadas"
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
 
+msgid "Avoid PCRE regular expressions here: use [0-9] instead of \\d."
+msgstr "Evitar las expresiones regulares PCRE: utilizar [0-9] en lugar de \\d."
+
 msgid "Balance"
 msgstr "Saldo"
 

@@ -26,6 +26,12 @@ production:
       type: text
       required: true
       maxLength: 255
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("Avoid PCRE regular expressions here: use [0-9] instead of \\d.")
 staging:
   _extends: production
 testing:
