@@ -55,9 +55,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{api_url}}/admin_login",
+							"raw": "{{platform_api_url}}/admin_login",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"admin_login"
@@ -113,9 +113,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{api_url}}/brands/{{brandId}}",
+							"raw": "{{platform_api_url}}/brands/{{brandId}}",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"brands",
@@ -161,12 +161,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"brand-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
+							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"brand-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"currency\": 1,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/brands",
+							"raw": "{{platform_api_url}}/brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"brands"
@@ -211,9 +211,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 1\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -258,9 +258,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 2\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -305,9 +305,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 3\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -352,9 +352,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 4\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -399,9 +399,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -446,9 +446,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 6\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -493,9 +493,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 7\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -540,9 +540,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 8\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -587,9 +587,9 @@
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 9\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_brands",
+							"raw": "{{platform_api_url}}/features_rel_brands",
 							"host": [
-								"{{api_url}}"
+								"{{platform_api_url}}"
 							],
 							"path": [
 								"features_rel_brands"
@@ -637,9 +637,9 @@
 							"raw": "{\n  \"description\": \"Spanish\",\n  \"internationalCode\": \"00\",\n  \"trunkPrefix\": \"\",\n  \"areaCode\": \"\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"Spanish Operator\",\n     \"es\": \"Operador Español\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/transformation_rule_sets",
+							"raw": "{{brand_api_url}}/transformation_rule_sets",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"transformation_rule_sets"
@@ -687,9 +687,9 @@
 							"raw": "{\n  \"description\": \"USA (Area 999)\",\n  \"internationalCode\": \"011\",\n  \"trunkPrefix\": \"1\",\n  \"areaCode\": \"999\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"USA (Area 999)\",\n     \"es\": \"USA (Area 999)\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 235\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/transformation_rule_sets",
+							"raw": "{{brand_api_url}}/transformation_rule_sets",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"transformation_rule_sets"
@@ -738,9 +738,9 @@
 							"raw": "{\n  \"description\": \"BBS DDI Provider\",\n  \"name\": \"BBS DDI Provider\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70\n}\n"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddi_providers",
+							"raw": "{{brand_api_url}}/ddi_providers",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"ddi_providers"
@@ -790,9 +790,9 @@
 							"raw": "{\n  \"ddiProvider\": {{ddiProviderId}},\n  \"ip\": \"151.80.176.3\"\n}\n"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddi_provider_addresses",
+							"raw": "{{brand_api_url}}/ddi_provider_addresses",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"ddi_provider_addresses"
@@ -842,9 +842,9 @@
 							"raw": "{\n  \"description\": \"BBS Carrier\",\n  \"name\": \"BBS Carrier\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70\n}\n"
 						},
 						"url": {
-							"raw": "{{api_url}}/carriers",
+							"raw": "{{brand_api_url}}/carriers",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"carriers"
@@ -893,9 +893,9 @@
 							"raw": "{\n  \"sipProxy\": \"127.0.0.1\",\t\n  \"carrier\": {{carrierId}},\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/carrier_servers",
+							"raw": "{{brand_api_url}}/carrier_servers",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"carrier_servers"
@@ -943,9 +943,9 @@
 							"raw": "{\n  \"prefix\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/routing_patterns",
+							"raw": "{{brand_api_url}}/routing_patterns",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"routing_patterns"
@@ -993,9 +993,9 @@
 							"raw": "{\n  \"type\": \"pattern\",\n  \"priority\": 1,\n  \"brand\": {{brandId}},\n  \"carrier\": {{carrierId}},\n  \"routingPattern\": {{routingPatternESId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/outgoing_routings",
+							"raw": "{{brand_api_url}}/outgoing_routings",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"outgoing_routings"
@@ -1043,9 +1043,9 @@
 							"raw": "{\n  \"prefix\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/routing_patterns",
+							"raw": "{{brand_api_url}}/routing_patterns",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"routing_patterns"
@@ -1093,9 +1093,9 @@
 							"raw": "{\n  \"type\": \"pattern\",\n  \"priority\": 2,\n  \"brand\": {{brandId}},\n  \"carrier\": {{carrierId}},\n  \"routingPattern\": {{routingPatternUSId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/outgoing_routings",
+							"raw": "{{brand_api_url}}/outgoing_routings",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"outgoing_routings"
@@ -1105,11 +1105,13 @@
 					"response": []
 				},
 				{
-					"name": "Create Destination Rate",
+					"name": "Create Destination ES",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
+								"id": "2c02eca0-42c8-410f-89fe-b498c51f5bc3",
+								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -1119,11 +1121,9 @@
 									"",
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"destinationRateId\", jsonData.id);",
+									"postman.setGlobalVariable(\"destinationESId\", jsonData.id);",
 									""
-								],
-								"id": "f14a8e6f-a677-4a81-9333-0d7eebb4ed29",
-								"type": "text/javascript"
+								]
 							}
 						}
 					],
@@ -1141,15 +1141,117 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"prefix\": \"+34\",\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/destination_rates",
+							"raw": "{{brand_api_url}}/destinations",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"destination_rates"
+								"destinations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Destination US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dc308185-2e75-4396-b04e-c0bb9596f278",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"destinationUSId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"USA\",\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"prefix\": \"+1\",\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/destinations",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"destinations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Destination Rate Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "24f86570-6aca-4720-8f58-e7eb36480311",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"destinationRateGroupId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"description\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/destination_rate_groups",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"destination_rate_groups"
 							]
 						}
 					},
@@ -1190,15 +1292,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"destination\": {\n    \"prefix\": \"+34\",\n    \"prefixName\": \"Spain\"\n  },\n  \"rate\": {\n    \"cost\": \"0.3\",\n    \"connectFee\": \"0.001\",\n    \"rateIncrement\": \"1s\",\n    \"groupIntervalStart\": \"0s\"\n  },\n  \"destinationRate\": {{destinationRateId}}\n}"
+							"raw": "{\n  \"cost\": \"0.3\",\n  \"connectFee\": \"0.001\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"destination\": {{destinationESId}},\n  \"destinationRateGroup\": {{destinationRateGroupId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/tp_destination_rates",
+							"raw": "{{brand_api_url}}/destination_rates",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"tp_destination_rates"
+								"destination_rates"
 							]
 						}
 					},
@@ -1239,26 +1341,28 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"destination\": {\n    \"prefix\": \"+1\",\n    \"prefixName\": \"USA\"\n  },\n  \"rate\": {\n    \"cost\": \"0.3\",\n    \"connectFee\": \"0.001\",\n    \"rateIncrement\": \"1s\",\n    \"groupIntervalStart\": \"0s\"\n  },\n  \"destinationRate\": {{destinationRateId}}\n}"
+							"raw": "{\n  \"cost\": \"0.3\",\n  \"connectFee\": \"0.001\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"destination\": {{destinationUSId}},\n  \"destinationRateGroup\": {{destinationRateGroupId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/tp_destination_rates",
+							"raw": "{{brand_api_url}}/destination_rates",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"tp_destination_rates"
+								"destination_rates"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create Rating Plan",
+					"name": "Create Rating Plan Group",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
+								"id": "386ee912-1549-40f8-b69b-7c47a1659ceb",
+								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -1268,11 +1372,9 @@
 									"",
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"ratingPlanId\", jsonData.id);",
+									"postman.setGlobalVariable(\"ratingPlanGroupId\", jsonData.id);",
 									""
-								],
-								"id": "0f5b00b1-a78d-4e52-92dc-5b9089e64721",
-								"type": "text/javascript"
+								]
 							}
 						}
 					],
@@ -1293,12 +1395,12 @@
 							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard 2017\",\n  \t\"es\": \"Estándar 2017\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/rating_plans",
+							"raw": "{{brand_api_url}}/rating_plan_groups",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"rating_plans"
+								"rating_plan_groups"
 							]
 						}
 					},
@@ -1340,15 +1442,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"weight\": \"1\",\n  \"timing\": \"1\",\n  \"ratingPlan\": {{ratingPlanId}},\n  \"destinationRate\": {{destinationRateId}}\n}"
+							"raw": "{\n  \"weight\": \"1\",\n  \"timingType\": \"always\",\n  \"timeIn\": \"01-01-2018\",\n  \"ratingPlanGroup\": {{ratingPlanGroupId}},\n  \"destinationRateGroup\": {{destinationRateGroupId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/tp_rating_plans",
+							"raw": "{{brand_api_url}}/rating_plans",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"tp_rating_plans"
+								"rating_plans"
 							]
 						}
 					},
@@ -1398,9 +1500,9 @@
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies",
+							"raw": "{{brand_api_url}}/companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies"
@@ -1445,15 +1547,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{companyId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{companyId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/tp_rating_profiles",
+							"raw": "{{brand_api_url}}/rating_profiles",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"tp_rating_profiles"
+								"rating_profiles"
 							]
 						}
 					},
@@ -1496,9 +1598,9 @@
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{companyId}}",
+							"raw": "{{brand_api_url}}/companies/{{companyId}}",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies",
@@ -1546,9 +1648,9 @@
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 1\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -1595,9 +1697,9 @@
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 2\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -1644,9 +1746,9 @@
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 3\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -1693,9 +1795,9 @@
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 4\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -1742,9 +1844,9 @@
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -1791,9 +1893,9 @@
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 8\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -1841,9 +1943,9 @@
 							"raw": "{\n  \"name\": \"alice\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"4l1C3P4sSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/terminals",
+							"raw": "{{client_api_url}}/terminals",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"terminals"
@@ -1892,9 +1994,9 @@
 							"raw": "{\n  \"name\": \"Alice\",\n  \"lastname\": \"Allison\",\n  \"email\": \"alice@bbs.ivozprovider.local\",\n  \"pass\": \"4l1c3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{aliceTerminalId}},\n  \"transformationRuleSet\": 70,\n  \"timezone\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/users",
+							"raw": "{{client_api_url}}/users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"users"
@@ -1942,9 +2044,9 @@
 							"raw": "{\n  \"number\": \"1001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{aliceUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -1992,9 +2094,9 @@
 							"raw": "{\n  \"ddi\": \"999661001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{aliceUserId}},\n  \"peeringContract\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -2043,9 +2145,9 @@
 							"raw": "{\n  \"name\": \"bob\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"b0bP4sSW0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/terminals",
+							"raw": "{{client_api_url}}/terminals",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"terminals"
@@ -2093,9 +2195,9 @@
 							"raw": "{\n  \"name\": \"Bob\",\n  \"lastname\": \"Bobson\",\n  \"email\": \"bob@bbs.ivozprovider.local\",\n  \"pass\": \"b0bp4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{bobTerminalId}},\n  \"transformationRuleSet\": 70,  \n  \"timezone\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/users",
+							"raw": "{{client_api_url}}/users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"users"
@@ -2144,9 +2246,9 @@
 							"raw": "{\n  \"number\": \"1002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -2194,9 +2296,9 @@
 							"raw": "{\n  \"ddi\": \"999661002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{bobUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -2245,9 +2347,9 @@
 							"raw": "{\n  \"name\": \"charlie\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"Ch4rL1Ep4SSword+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/terminals",
+							"raw": "{{client_api_url}}/terminals",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"terminals"
@@ -2296,9 +2398,9 @@
 							"raw": "{\n  \"name\": \"Charlie\",\n  \"lastname\": \"Charlieson\",\n  \"email\": \"charlie@bbs.ivozprovider.local\",\n  \"pass\": \"ch4rl1ep4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{charlieTerminalId}},\n  \"transformationRuleSet\": 70,  \n  \"timezone\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/users",
+							"raw": "{{client_api_url}}/users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"users"
@@ -2347,9 +2449,9 @@
 							"raw": "{\n  \"number\": \"1003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -2397,9 +2499,9 @@
 							"raw": "{\n  \"ddi\": \"999661003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{charlieUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -2448,9 +2550,9 @@
 							"raw": "{\n  \"name\": \"dave\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"D4vEp4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/terminals",
+							"raw": "{{client_api_url}}/terminals",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"terminals"
@@ -2499,9 +2601,9 @@
 							"raw": "{\n  \"name\": \"Dave\",\n  \"lastname\": \"Daveson\",\n  \"email\": \"deve@bbs.ivozprovider.local\",\n  \"pass\": \"d4v3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{daveTerminalId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"timezone\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/users",
+							"raw": "{{client_api_url}}/users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"users"
@@ -2549,9 +2651,9 @@
 							"raw": "\n{\n  \"number\": \"1004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -2599,9 +2701,9 @@
 							"raw": "\n{\n  \"ddi\": \"999661004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{daveUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -2649,9 +2751,9 @@
 							"raw": "{\n  \"name\": \"eve\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"Ev3p4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/terminals",
+							"raw": "{{client_api_url}}/terminals",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"terminals"
@@ -2700,9 +2802,9 @@
 							"raw": "{\n  \"name\": \"Eve\",\n  \"lastname\": \"Eveson\",\n  \"email\": \"eve@bbs.ivozprovider.local\",\n  \"pass\": \"3v3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{eveTerminalId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"timezone\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/users",
+							"raw": "{{client_api_url}}/users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"users"
@@ -2751,9 +2853,9 @@
 							"raw": "{\n  \"number\": \"1005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{eveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -2801,9 +2903,9 @@
 							"raw": "{\n  \"ddi\": \"999661005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{eveUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -2852,9 +2954,9 @@
 							"raw": "{\n  \"name\": \"White List for Boss Frank\",\n  \"company\": {{companyId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/match_lists",
+							"raw": "{{client_api_url}}/match_lists",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"match_lists"
@@ -2901,9 +3003,9 @@
 							"raw": "{\n  \"description\": \"Alice DDI Number\",\n  \"type\": \"number\",\n  \"numbervalue\": \"999661001\",\n  \"matchList\": {{bossAssistantWatchListId}},\n  \"numberCountry\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/match_list_patterns",
+							"raw": "{{client_api_url}}/match_list_patterns",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"match_list_patterns"
@@ -2950,9 +3052,9 @@
 							"raw": "{\n  \"description\": \"Alice Extension Number\",\n  \"type\": \"regexp\",\n  \"regexp\": \"^1001$\",\n  \"matchList\": {{bossAssistantWatchListId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/match_list_patterns",
+							"raw": "{{client_api_url}}/match_list_patterns",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"match_list_patterns"
@@ -3000,9 +3102,9 @@
 							"raw": "{\n  \"name\": \"frank\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"fr4Nkp4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/terminals",
+							"raw": "{{client_api_url}}/terminals",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"terminals"
@@ -3050,9 +3152,9 @@
 							"raw": "{\n  \"name\": \"Frank\",\n  \"lastname\": \"Frankson\",\n  \"email\": \"frank@bbs.ivozprovider.local\",\n  \"pass\": \"fr4nkp4ssw0rd\",\n  \"isBoss\": true,\n  \"company\": {{companyId}},\n  \"bossAssistant\": {{daveUserId}},\n  \"bossAssistantWhiteList\": {{bossAssistantWatchListId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"terminal\": {{frankTerminalId}},\n  \"timezone\": 1\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/users",
+							"raw": "{{client_api_url}}/users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"users"
@@ -3100,9 +3202,9 @@
 							"raw": "{\n  \"number\": \"1006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{frankUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -3150,9 +3252,9 @@
 							"raw": "\n{\n  \"ddi\": \"999661006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{frankUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -3208,9 +3310,9 @@
 							"raw": "{{companyData}}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{companyId}}",
+							"raw": "{{brand_api_url}}/companies/{{companyId}}",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies",
@@ -3260,9 +3362,9 @@
 							"raw": "{\n  \"name\": \"friend\",\n  \"description\": \"BBS - Friend\",\n  \"transport\": \"udp\",\n  \"password\": \"fr13ndp4SSW0rd+\",\n  \"priority\": 1,\n  \"directConnectivity\": \"no\",\n  \"company\": {{companyId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/friends",
+							"raw": "{{client_api_url}}/friends",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"friends"
@@ -3311,9 +3413,9 @@
 							"raw": "{\n  \"name\": \"2XXX Extensions\",\n  \"regExp\": \"^2[0-9]{3}$\",\n  \"friend\": {{friendId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/friends_patterns",
+							"raw": "{{client_api_url}}/friends_patterns",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"friends_patterns"
@@ -3361,9 +3463,9 @@
 							"raw": "{\n  \"number\": \"2001\",\n  \"routeType\": \"friend\",\n  \"company\": {{companyId}},\n  \"friendValue\": \"2001\"\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -3412,9 +3514,9 @@
 							"raw": "{\n  \"name\": \"BBS Route Lock\",\n  \"description\": \"For testing Conditional Routes\",\n  \"open\": false,\n  \"company\": {{companyId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/route_locks",
+							"raw": "{{client_api_url}}/route_locks",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"route_locks"
@@ -3467,9 +3569,9 @@
 							"raw": "{\n  \"type\": \"residential\",\n  \"name\": \"BBS - Residential for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Residential address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Residential town\",\n  \"province\": \"Residential province\",\n  \"countryName\": \"Residential country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies",
+							"raw": "{{brand_api_url}}/companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies"
@@ -3514,15 +3616,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{residentialId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{residentialId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/tp_rating_profiles",
+							"raw": "{{brand_api_url}}/rating_profiles",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"tp_rating_profiles"
+								"rating_profiles"
 							]
 						}
 					},
@@ -3565,9 +3667,9 @@
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{residentialId}}",
+							"raw": "{{brand_api_url}}/companies/{{residentialId}}",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies",
@@ -3615,9 +3717,9 @@
 							"raw": "\n{\n  \"company\": {{residentialId}},\n  \"feature\": 2\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -3664,9 +3766,9 @@
 							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 3\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -3713,9 +3815,9 @@
 							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 8\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/features_rel_companies",
+							"raw": "{{brand_api_url}}/features_rel_companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"features_rel_companies"
@@ -3764,9 +3866,9 @@
 							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3S1d3nT14lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/residential_devices",
+							"raw": "{{client_api_url}}/residential_devices",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"residential_devices"
@@ -3814,9 +3916,9 @@
 							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"residential\",\n  \"company\": {{residentialId}},\n  \"brand\": {{brandId}},\n  \"residentialDevice\": {{residentialDeviceId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -3872,9 +3974,9 @@
 							"raw": "{{residentialData}}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{residentialId}}",
+							"raw": "{{brand_api_url}}/companies/{{residentialId}}",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies",
@@ -3929,9 +4031,9 @@
 							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies",
+							"raw": "{{brand_api_url}}/companies",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies"
@@ -3976,15 +4078,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{retailId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{retailId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/tp_rating_profiles",
+							"raw": "{{brand_api_url}}/rating_profiles",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
-								"tp_rating_profiles"
+								"rating_profiles"
 							]
 						}
 					},
@@ -4028,9 +4130,9 @@
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{retailId}}",
+							"raw": "{{brand_api_url}}/companies/{{retailId}}",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies",
@@ -4081,9 +4183,9 @@
 							"raw": "{\n  \"name\": \"999666001\",\n  \"transport\": \"udp\",\n  \"password\": \"r3t41lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/retail_accounts",
+							"raw": "{{client_api_url}}/retail_accounts",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"retail_accounts"
@@ -4132,9 +4234,9 @@
 							"raw": "{\n  \"ddi\": \"999666001\",\n  \"routeType\": \"retail\",\n  \"company\": {{retailId}},\n  \"brand\": {{brandId}},\n  \"retailAccount\": {{retailAccountId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ddis",
+							"raw": "{{client_api_url}}/ddis",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ddis"
@@ -4192,9 +4294,9 @@
 							"raw": "{{retailData}}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{retailId}}",
+							"raw": "{{brand_api_url}}/companies/{{retailId}}",
 							"host": [
-								"{{api_url}}"
+								"{{brand_api_url}}"
 							],
 							"path": [
 								"companies",
@@ -4209,21 +4311,21 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "da1ec893-531a-468b-9014-41e176fad847",
-						"type": "text/javascript",
 						"exec": [
 							""
-						]
+						],
+						"id": "da1ec893-531a-468b-9014-41e176fad847",
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
-						"id": "f8b5d42e-ebff-4f29-88ca-20da0b115d78",
-						"type": "text/javascript",
 						"exec": [
 							""
-						]
+						],
+						"id": "f8b5d42e-ebff-4f29-88ca-20da0b115d78",
+						"type": "text/javascript"
 					}
 				}
 			]
@@ -4270,9 +4372,9 @@
 							"raw": "{\n  \"name\": \"BBS Generic IVR\",\n  \"timeout\": 5,\n  \"maxDigits\": 4,\n  \"allowExtensions\": true,\n  \"noInputRouteType\": \"extension\",\n  \"errorRouteType\": \"number\",\n  \"errorNumberValue\": \"999661001\",\n  \"company\": {{companyId}},\n  \"noInputExtension\": {{daveExtensionId}},\n  \"errorNumberCountry\": 70\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ivrs",
+							"raw": "{{client_api_url}}/ivrs",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ivrs"
@@ -4323,9 +4425,9 @@
 							"raw": "{\n  \"number\": \"600\",\n  \"routeType\": \"ivr\",\n  \"company\": {{companyId}},\n  \"ivr\": {{ivrCommonId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -4373,9 +4475,9 @@
 							"raw": "{\n  \"name\": \"BBS Custom IVR\",\n  \"timeout\": 5,\n  \"maxDigits\": 1,\n  \"noInputRouteType\": \"extension\",\n  \"errorRouteType\": \"extension\",\n  \"company\": {{companyId}},\n  \"noInputExtension\": {{daveExtensionId}},\n  \"errorExtension\": {{eveExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ivrs",
+							"raw": "{{client_api_url}}/ivrs",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ivrs"
@@ -4425,9 +4527,9 @@
 							"raw": "{\n  \"number\": \"601\",\n  \"routeType\": \"ivr\",\n  \"company\": {{companyId}},\n  \"ivr\": {{ivrCustomId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -4474,9 +4576,9 @@
 							"raw": "{\n  \"entry\": \"1\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{aliceExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ivr_entries",
+							"raw": "{{client_api_url}}/ivr_entries",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ivr_entries"
@@ -4522,9 +4624,9 @@
 							"raw": "{\n  \"entry\": \"5\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{eveExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/ivr_entries",
+							"raw": "{{client_api_url}}/ivr_entries",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"ivr_entries"
@@ -4577,9 +4679,9 @@
 							"raw": "{\n  \"name\": \"BBS Pickup Group\",\n  \"company\": {{companyId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/pick_up_groups",
+							"raw": "{{client_api_url}}/pick_up_groups",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"pick_up_groups"
@@ -4627,9 +4729,9 @@
 							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{aliceUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/pick_up_rel_users",
+							"raw": "{{client_api_url}}/pick_up_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"pick_up_rel_users"
@@ -4677,9 +4779,9 @@
 							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/pick_up_rel_users",
+							"raw": "{{client_api_url}}/pick_up_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"pick_up_rel_users"
@@ -4727,9 +4829,9 @@
 							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/pick_up_rel_users",
+							"raw": "{{client_api_url}}/pick_up_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"pick_up_rel_users"
@@ -4783,9 +4885,9 @@
 							"raw": "{\n  \"name\": \"BBS Conference Room\",\n  \"pinProtected\": true,\n  \"pinCode\": \"1234\",\n  \"maxMembers\": 2,\n  \"company\": {{companyId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/conference_rooms",
+							"raw": "{{client_api_url}}/conference_rooms",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"conference_rooms"
@@ -4834,9 +4936,9 @@
 							"raw": "\n{\n  \"number\": \"500\",\n  \"routeType\": \"conferenceRoom\",\n  \"company\": {{companyId}},\n  \"conferenceRoom\": {{conferenceRoomId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -4889,9 +4991,9 @@
 							"raw": "{\n  \"name\": \"BBS RingAll HuntGroup\",\n  \"description\": \"BBS RingAll HuntGroup\",\n  \"strategy\": \"ringAll\",\n  \"ringAllTimeout\": 10,\n  \"noAnswerTargetType\": \"extension\",\n  \"company\": {{companyId}},\n  \"noAnswerExtension\": {{eveExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups",
+							"raw": "{{client_api_url}}/hunt_groups",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups"
@@ -4939,9 +5041,9 @@
 							"raw": "{\n  \"number\": \"700\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRingAllId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -4988,9 +5090,9 @@
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_groups_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups_rel_users"
@@ -5037,9 +5139,9 @@
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_groups_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups_rel_users"
@@ -5086,9 +5188,9 @@
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_groups_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups_rel_users"
@@ -5136,9 +5238,9 @@
 							"raw": "{\n  \"name\": \"BBS RR HuntGroup\",\n  \"description\": \"BBS RR HuntGroup\",\n  \"strategy\": \"roundRobin\",\n  \"noAnswerTargetType\": \"extension\",\n  \"company\": {{companyId}},\n  \"noAnswerExtension\": {{eveExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups",
+							"raw": "{{client_api_url}}/hunt_groups",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups"
@@ -5186,9 +5288,9 @@
 							"raw": "{\n  \"number\": \"701\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRRId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -5235,9 +5337,9 @@
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_groups_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups_rel_users"
@@ -5284,9 +5386,9 @@
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_groups_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups_rel_users"
@@ -5333,9 +5435,9 @@
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 3,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_groups_rel_users",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"hunt_groups_rel_users"
@@ -5389,9 +5491,9 @@
 							"raw": "{\n  \"name\": \"BBS Conditional Route\",\n  \"routetype\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/conditional_routes",
+							"raw": "{{client_api_url}}/conditional_routes",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"conditional_routes"
@@ -5442,9 +5544,9 @@
 							"raw": "{\n  \"number\": \"800\",\n  \"routeType\": \"conditional\",\n  \"company\": {{companyId}},\n  \"conditionalRoute\": {{conditionalRouteId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/extensions",
+							"raw": "{{client_api_url}}/extensions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"extensions"
@@ -5493,9 +5595,9 @@
 							"raw": "{\n  \"priority\": 1,\n  \"routeType\": \"extension\",\n  \"conditionalRoute\": {{conditionalRouteId}},\n  \"extension\": {{aliceExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/conditional_routes_conditions",
+							"raw": "{{client_api_url}}/conditional_routes_conditions",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"conditional_routes_conditions"
@@ -5543,9 +5645,9 @@
 							"raw": "{\n  \"condition\": {{conditionalRouteConditionId}},\n  \"routeLock\": {{routeLockId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/conditional_routes_conditions_rel_route_locks",
+							"raw": "{{client_api_url}}/conditional_routes_conditions_rel_route_locks",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"conditional_routes_conditions_rel_route_locks"
@@ -5620,9 +5722,9 @@
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"busy\",\n  \"targetType\": \"extension\",\n  \"user\": {{eveUserId}},\n  \"extension\": {{charlieExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/call_forward_settings",
+							"raw": "{{client_api_url}}/call_forward_settings",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"call_forward_settings"
@@ -5670,9 +5772,9 @@
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"noAnswer\",\n  \"targetType\": \"extension\",\n  \"noAnswerTimeout\": 5,\n  \"user\": {{eveUserId}},\n  \"extension\": {{bobExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/call_forward_settings",
+							"raw": "{{client_api_url}}/call_forward_settings",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"call_forward_settings"
@@ -5720,9 +5822,9 @@
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"userNotRegistered\",\n  \"targetType\": \"extension\",\n  \"user\": {{eveUserId}},\n  \"extension\": {{daveExtensionId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/call_forward_settings",
+							"raw": "{{client_api_url}}/call_forward_settings",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"call_forward_settings"
@@ -5770,9 +5872,9 @@
 							"raw": "{\n  \"callTypeFilter\": \"external\",\n  \"callForwardType\": \"inconditional\",\n  \"targetType\": \"number\",\n  \"user\": {{charlieUserId}},\n  \"numberCountry\": 70,\n  \"numberValue\": \"999661001\"\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/call_forward_settings",
+							"raw": "{{client_api_url}}/call_forward_settings",
 							"host": [
-								"{{api_url}}"
+								"{{client_api_url}}"
 							],
 							"path": [
 								"call_forward_settings"
