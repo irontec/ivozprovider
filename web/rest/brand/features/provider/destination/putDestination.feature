@@ -1,19 +1,22 @@
-Feature: Update notification templates
-  In order to manage notification templates
+Feature: Update destination
+  In order to manage destination
   As an super admin
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update an notification template
+  Scenario: Update a destination
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/notification_templates/1" with body:
+      And I send a "PUT" request to "/destinations/1" with body:
     """
       {
-          "name": "New fax notification",
-          "type": "voicemail",
-          "brand": 1
+          "prefix": "+94600",
+          "id": 1,
+          "name": {
+              "en": "Bilbao Updated",
+              "es": "Bilbao Actualizado"
+          }
       }
     """
     Then the response status code should be 200
@@ -22,9 +25,12 @@ Feature: Update notification templates
      And the JSON should be like:
     """
       {
-          "name": "New fax notification",
-          "type": "voicemail",
+          "prefix": "+94600",
           "id": 1,
+          "name": {
+              "en": "Bilbao Updated",
+              "es": "Bilbao Actualizado"
+          },
           "brand": "~"
       }
     """

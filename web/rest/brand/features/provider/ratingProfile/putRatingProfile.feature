@@ -1,19 +1,21 @@
-Feature: Update notification templates
-  In order to manage notification templates
+Feature: Update rating profile
+  In order to manage rating profile
   As an super admin
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update an notification template
+  Scenario: Update a rating profile
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/notification_templates/1" with body:
+      And I send a "PUT" request to "/rating_profiles/1" with body:
     """
       {
-          "name": "New fax notification",
-          "type": "voicemail",
-          "brand": 1
+          "activationTime": "2018-03-03 20:30:30",
+          "id": 1,
+          "company": 2,
+          "carrier": null,
+          "ratingPlanGroup": 1
       }
     """
     Then the response status code should be 200
@@ -22,9 +24,10 @@ Feature: Update notification templates
      And the JSON should be like:
     """
       {
-          "name": "New fax notification",
-          "type": "voicemail",
+          "activationTime": "2018-03-03 20:30:30",
           "id": 1,
-          "brand": "~"
+          "company": "~",
+          "carrier": null,
+          "ratingPlanGroup": "~"
       }
     """
