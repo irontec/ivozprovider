@@ -26,8 +26,10 @@ Feature: Create conference rooms
       {
           "name": "newConferenceRoom",
           "pinProtected": true,
+          "pinCode": "1234",
           "maxMembers": 1,
-          "id": 2
+          "id": 2,
+          "company": 2
       }
     """
 

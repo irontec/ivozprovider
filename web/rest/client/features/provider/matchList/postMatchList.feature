@@ -22,7 +22,8 @@ Feature: Create match lists
     """
       {
           "name": "newMatchlist",
-          "id": 3
+          "id": 3,
+          "company": 1
       }
     """
 

@@ -36,7 +36,19 @@ Feature: Create conditional routes
       {
           "name": "testPost",
           "routetype": "user",
-          "id": 3
+          "numbervalue": null,
+          "friendvalue": null,
+          "id": 3,
+          "company": 1,
+          "ivr": null,
+          "huntGroup": null,
+          "voicemailUser": null,
+          "user": 2,
+          "queue": null,
+          "locution": null,
+          "conferenceRoom": null,
+          "extension": null,
+          "numberCountry": null
       }
     """
 

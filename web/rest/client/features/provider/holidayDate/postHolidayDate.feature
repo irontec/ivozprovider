@@ -25,7 +25,17 @@ Feature: Create holiday dates
       {
           "name": "New",
           "eventDate": "2017-12-21",
-          "id": 3
+          "wholeDayEvent": true,
+          "timeIn": null,
+          "timeOut": null,
+          "routeType": null,
+          "numberValue": null,
+          "id": 3,
+          "calendar": 1,
+          "locution": 1,
+          "extension": null,
+          "voiceMailUser": null,
+          "numberCountry": null
       }
     """
 

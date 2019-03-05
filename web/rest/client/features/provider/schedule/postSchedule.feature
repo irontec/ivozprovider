@@ -40,7 +40,8 @@ Feature: Create schedules
           "friday": true,
           "saturday": false,
           "sunday": false,
-          "id": 3
+          "id": 3,
+          "company": 2
       }
     """
 
