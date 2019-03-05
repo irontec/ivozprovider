@@ -162,7 +162,16 @@ class EntityNormalizer implements NormalizerInterface
         $resourceClass,
         $resourceMetadata
     ): array {
-        $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
+        $normalizationContext = $context['operation_normalization_context'] ?? null;
+        if (!$normalizationContext) {
+            $isPostOperation =
+                isset($context['collection_operation_name'])
+                && $context['collection_operation_name'] === 'post';
+
+            $normalizationContext = $isPostOperation
+                ? ''
+                : $context['operation_type'];
+        }
         $forcedAttributes = $context['attributes'] ?? [];
 
         $rawData = $this->filterProperties(
