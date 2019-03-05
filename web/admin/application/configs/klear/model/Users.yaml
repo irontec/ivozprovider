@@ -330,38 +330,6 @@ production:
           related: \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
           relatedFieldName: name
           filterClass: IvozProvider_Klear_Filter_Company
-    HuntGroupsRelUsers:
-      title: ngettext('Hunt Group', 'Hunt Groups', 0)
-      searchable: false
-      type: ghost
-      source:
-        predefined: list
-      data: mapper
-      config:
-        entity: \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
-        filterField: HuntGroupsRelUser.user
-        showAsTable: true
-        fieldName:
-          fields:
-            huntGroup:
-              title: ngettext('Hunt Group', 'Hunt Groups', 1)
-              entity: \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
-              field:
-                - name
-              pattern: "%name%"
-            timeoutTime:
-              title: _("Timeout")
-            priority:
-              title: _("Priority")
-        options:
-          dialogs:
-            huntGroupsRelUsersDel_dialog: true
-          screens:
-            huntGroupsRelUsersEdit_screen: true
-          default:
-      options:
-        screens:
-          huntGroupsRelUsersNew_screen: true
     language:
       title: _('Language')
       type: select

@@ -218,14 +218,16 @@ production:
       filterField: User
       parentOptionCustomizer:
         - recordCount
-    huntGroupsRelUsersNew_screen:
-      <<: *huntGroupsRelUsersNew_screenLink
-      title: _("Join to %s %2s", ngettext("Hunt Group", "Hunt Groups", 1), "[format| (%parent%)]")
-      filterField: User
-    huntGroupsRelUsersEdit_screen:
-      <<: *huntGroupsRelUsersEdit_screenLink
-      filterField: User
-      title: _("Edit Join of %s", ngettext('Hunt Group', 'Hunt Groups', 1))
+      fields:
+        options:
+          title: _("Options")
+          dialogs:
+            huntGroupsRelUsersDel_dialog: true
+          default: huntGroupsRelUsersEdit_screen
+      options:
+        title: _("Options")
+        dialogs:
+          huntGroupsRelUsersDel_dialog: true
 
     #CallForwardSettings
     <<: *callForwardSettings_screensLink

@@ -719,10 +719,6 @@ msgid "Edit %s %2s"
 msgstr "Editar %s %2s"
 
 #, python-format
-msgid "Edit Join of %s"
-msgstr "Editar Union de %s"
-
-#, python-format
 msgid "Edit pattern of %s"
 msgstr "Editar patrón de %s"
 
@@ -1295,10 +1291,6 @@ msgstr "Enviado como usuario en la cabecera Contact de los REGISTER"
 
 msgid "Iteration"
 msgstr "Números generados"
-
-#, python-format
-msgid "Join to %s %2s"
-msgstr "Unirse a %s %2s"
 
 msgid "Keep Original DDI"
 msgstr "Mantener DDI original"
