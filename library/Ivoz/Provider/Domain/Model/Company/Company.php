@@ -17,16 +17,17 @@ class Company extends CompanyAbstract implements CompanyInterface
 {
     const EMPTY_DOMAIN_EXCEPTION = 2001;
 
-    /**
-     * Available Company Types
-     */
-    const VPBX          = 'vpbx';
+    /** @deprecated */
+    const VPBX          = self::TYPE_VPBX;
 
-    const RETAIL        = 'retail';
+    /** @deprecated */
+    const RETAIL        = self::TYPE_RETAIL;
 
-    const WHOLESALE     = 'wholesale';
+    /** @deprecated */
+    const WHOLESALE     = self::TYPE_WHOLESALE;
 
-    const RESIDENTIAL   = 'residential';
+    /** @deprecated */
+    const RESIDENTIAL   = self::TYPE_RESIDENTIAL;
 
     use CompanyTrait;
 

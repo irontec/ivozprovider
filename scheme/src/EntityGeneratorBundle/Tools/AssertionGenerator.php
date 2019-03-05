@@ -53,8 +53,7 @@ class AssertionGenerator
     public static function choice($fieldName, $choices, $extraTab = false)
     {
         $message = $fieldName . 'value "%s" is not an element of the valid values: %s';
-        $choicesString = var_export($choices, true);
-        $response = "Assertion::choice($" . $fieldName . ", " . $choicesString . ", '" . $message . "');";
+        $response = "Assertion::choice($" . $fieldName . ", " . $choices . ", '" . $message . "');";
 
         if ($extraTab) {
             $response = str_replace("\n", "\n" . str_repeat(" ", 4), $response);

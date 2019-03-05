@@ -10,11 +10,6 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
  */
 class Invoice extends InvoiceAbstract implements FileContainerInterface, InvoiceInterface
 {
-    const STATUS_WAITING = 'waiting';
-    const STATUS_PROCESSING = 'processing';
-    const STATUS_CREATED = 'created';
-    const STATUS_ERROR = 'error';
-
     use InvoiceTrait;
     use TempFileContainnerTrait;
 

@@ -13,6 +13,16 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class ConditionalRouteAbstract
 {
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_EXTENSION = 'extension';
+
     /**
      * @var string
      */
@@ -311,17 +321,17 @@ abstract class ConditionalRouteAbstract
     {
         if (!is_null($routetype)) {
             Assertion::maxLength($routetype, 25, 'routetype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($routetype, array (
-              0 => 'user',
-              1 => 'number',
-              2 => 'ivr',
-              3 => 'huntGroup',
-              4 => 'voicemail',
-              5 => 'friend',
-              6 => 'queue',
-              7 => 'conferenceRoom',
-              8 => 'extension',
-            ), 'routetypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routetype, [
+                self::ROUTETYPE_USER,
+                self::ROUTETYPE_NUMBER,
+                self::ROUTETYPE_IVR,
+                self::ROUTETYPE_HUNTGROUP,
+                self::ROUTETYPE_VOICEMAIL,
+                self::ROUTETYPE_FRIEND,
+                self::ROUTETYPE_QUEUE,
+                self::ROUTETYPE_CONFERENCEROOM,
+                self::ROUTETYPE_EXTENSION
+            ], 'routetypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routetype = $routetype;

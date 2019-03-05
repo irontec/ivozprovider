@@ -13,6 +13,15 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class ExtensionAbstract
 {
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONDITIONAL = 'conditional';
+
     /**
      * @var string
      */
@@ -293,16 +302,16 @@ abstract class ExtensionAbstract
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($routeType, array (
-              0 => 'user',
-              1 => 'number',
-              2 => 'ivr',
-              3 => 'huntGroup',
-              4 => 'conferenceRoom',
-              5 => 'friend',
-              6 => 'queue',
-              7 => 'conditional',
-            ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routeType, [
+                self::ROUTETYPE_USER,
+                self::ROUTETYPE_NUMBER,
+                self::ROUTETYPE_IVR,
+                self::ROUTETYPE_HUNTGROUP,
+                self::ROUTETYPE_CONFERENCEROOM,
+                self::ROUTETYPE_FRIEND,
+                self::ROUTETYPE_QUEUE,
+                self::ROUTETYPE_CONDITIONAL
+            ], 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;
