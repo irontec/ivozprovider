@@ -24,7 +24,8 @@ Feature: Create ddi provider addresses
       {
           "ip": "1.1.1.1",
           "description": "NewDDIProviderAddress",
-          "id": 2
+          "id": 2,
+          "ddiProvider": 1
       }
     """
 

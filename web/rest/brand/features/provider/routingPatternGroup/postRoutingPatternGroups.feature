@@ -24,8 +24,9 @@ Feature: Create routing pattern groups
       {
           "name": "Usansolocity",
           "description": "Usansolocity",
-          "id": 3
-      } 
+          "id": 3,
+          "brand": 1
+      }
     """
 
   Scenario: Retrieve created routing pattern group

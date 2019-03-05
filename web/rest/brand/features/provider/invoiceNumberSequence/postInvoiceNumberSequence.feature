@@ -26,8 +26,14 @@
     """
       {
           "name": "Identifier",
+          "prefix": "test",
+          "sequenceLength": 4,
+          "increment": 1,
           "latestValue": "",
-          "id": 2
+          "iteration": 0,
+          "version": 1,
+          "id": 2,
+          "brand": 1
       }
     """
 

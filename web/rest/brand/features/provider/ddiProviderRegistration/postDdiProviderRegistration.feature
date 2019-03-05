@@ -29,7 +29,17 @@ Feature: Create ddi provider registrations
      And the JSON should be equal to:
     """
       {
-          "id": 2
+          "username": "NewDDIRegistrationUsername",
+          "domain": "NewDDIRegistrationDomain",
+          "realm": "NewDDIRegistrationRealm",
+          "authUsername": "NewDDIRegistrationAuthUsername",
+          "authPassword": "NewDDIRegistrationAuthPassword",
+          "authProxy": "sip:NewDDIRegistrationAuthProxy",
+          "expires": 3600,
+          "multiDdi": true,
+          "contactUsername": "",
+          "id": 2,
+          "ddiProvider": 1
       }
     """
 

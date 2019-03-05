@@ -34,8 +34,13 @@ Feature: Create routing patterns
           "id": 3,
           "name": {
               "en": "Spain",
-              "es": "España"
-          }
+              "es": "Espa\u00f1a"
+          },
+          "description": {
+              "en": "desc en",
+              "es": "desc es"
+          },
+          "brand": 1
       }
     """
 

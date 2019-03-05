@@ -26,7 +26,12 @@ Feature: Create invoice templates
     """
       {
           "name": "New",
-          "id": 2
+          "description": "Description",
+          "template": "body",
+          "templateHeader": "header",
+          "templateFooter": "footer",
+          "id": 2,
+          "brand": 1
       }
     """
 

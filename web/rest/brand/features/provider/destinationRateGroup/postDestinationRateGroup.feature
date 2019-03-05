@@ -35,6 +35,10 @@
               "en": "New DR",
               "es": "New DR"
           },
+          "description": {
+              "en": "",
+              "es": ""
+          },
           "file": {
               "fileSize": null,
               "mimeType": null,

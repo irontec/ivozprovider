@@ -27,7 +27,12 @@ Feature: Create carriers
           "description": "Artemis-New",
           "name": "Artemis-New",
           "externallyRated": false,
-          "id": 2
+          "balance": 0,
+          "calculateCost": false,
+          "id": 2,
+          "brand": 1,
+          "transformationRuleSet": 1,
+          "currency": null
       }
     """
 

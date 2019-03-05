@@ -37,9 +37,21 @@ Feature: Create carrier servers
       {
           "ip": null,
           "hostname": "127.0.0.3",
+          "port": 5060,
+          "uriScheme": 2,
+          "transport": 1,
+          "sendPAI": false,
+          "sendRPID": false,
           "authNeeded": "no",
+          "authUser": null,
+          "authPassword": null,
           "sipProxy": "127.0.0.3",
-          "id": 2
+          "outboundProxy": null,
+          "fromUser": "",
+          "fromDomain": "",
+          "id": 2,
+          "carrier": 1,
+          "brand": 1
       }
     """
 
