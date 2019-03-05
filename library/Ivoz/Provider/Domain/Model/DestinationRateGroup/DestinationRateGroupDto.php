@@ -6,6 +6,25 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
 {
     private $filePath;
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'status' => 'status',
+                'id' => 'id',
+                'name' => ['en', 'es'],
+                'file' => ['fileSize', 'mimeType', 'baseName', 'importerArguments'],
+                'brandId' => 'brand',
+                'currencyId' => 'currency'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
+
     public function getFileObjects()
     {
         return [

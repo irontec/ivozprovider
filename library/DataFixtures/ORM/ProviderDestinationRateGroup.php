@@ -27,7 +27,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
         $item1 = $this->createEntityInstance(DestinationRateGroup::class);
         (function () {
             $this->setStatus('inProgress');
-            $this->setName(new Name('Bilbao', 'Bilbao'));
+            $this->setName(new Name('Standard', 'Standard'));
             $this->setDescription(new Description('', ''));
         })->call($item1);
 
