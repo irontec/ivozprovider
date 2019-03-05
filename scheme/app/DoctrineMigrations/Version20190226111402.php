@@ -39,6 +39,10 @@ class Version20190226111402 extends AbstractMigration
                                     SELECT "residential" AS type, name, domainId, password, companyId, transformationRuleSetId,
                                     id, NULL AS extension, NULL AS externalIpCalls, RD.maxCalls
                                         FROM ResidentialDevices RD
+                                UNION
+                                    SELECT "retail" AS type, name, domainId, password, companyId, transformationRuleSetId,
+                                    id, NULL AS extension, NULL AS externalIpCalls, 0 AS maxCalls
+                                        FROM RetailAccounts RA
                             ) AS E
                             INNER JOIN Companies C ON C.id = E.companyId
                             INNER JOIN TransformationRuleSets T ON T.id = COALESCE(E.transformationRuleSetId, C.transformationRuleSetId)
@@ -74,6 +78,10 @@ class Version20190226111402 extends AbstractMigration
                                     SELECT "residential" AS type, name, domainId, password, companyId, transformationRuleSetId,
                                     id, NULL AS extension, NULL AS externalIpCalls, 0 AS maxCalls
                                         FROM ResidentialDevices
+                                UNION
+                                    SELECT "retail" AS type, name, domainId, password, companyId, transformationRuleSetId,
+                                    id, NULL AS extension, NULL AS externalIpCalls, 0 AS maxCalls
+                                        FROM RetailAccounts RA
                             ) AS E
                             INNER JOIN Companies C ON C.id = E.companyId
                             INNER JOIN TransformationRuleSets T ON T.id = COALESCE(E.transformationRuleSetId, C.transformationRuleSetId)
