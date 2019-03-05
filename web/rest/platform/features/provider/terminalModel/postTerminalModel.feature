@@ -29,7 +29,13 @@ Feature: Create terminal models
       {
           "iden": "New",
           "name": "New SIP Model",
-          "id": 3
+          "description": "New SIP Model",
+          "genericTemplate": "",
+          "specificTemplate": "",
+          "genericUrlPattern": "",
+          "specificUrlPattern": "",
+          "id": 3,
+          "terminalManufacturer": 1
       }
     """
 

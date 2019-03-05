@@ -33,8 +33,29 @@ Feature: Manage brands
      And the JSON should be equal to:
     """
       {
-        "name": "api_brand",
-        "id": 3
+          "name": "api_brand",
+          "domainUsers": "sip-api.irontec.com",
+          "recordingsLimitMB": 10,
+          "recordingsLimitEmail": "mikel@irontec.com",
+          "maxCalls": 0,
+          "id": 3,
+          "logo": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "invoice": {
+              "nif": "123",
+              "postalAddress": "",
+              "postalCode": "48971",
+              "town": "Bilbo",
+              "province": "Bizkaia",
+              "country": "Spain",
+              "registryData": "registryData"
+          },
+          "domain": 7,
+          "language": null,
+          "defaultTimezone": 1
       }
     """
 

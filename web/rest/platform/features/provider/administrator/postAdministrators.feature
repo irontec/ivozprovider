@@ -29,11 +29,16 @@ Feature: Create administrators
      And the JSON should be equal to:
     """
       {
+          "username": "post-test",
+          "pass": "****",
           "email": "post-test@example.com",
           "active": true,
           "name": "post",
           "lastname": "test",
-          "id": 6
+          "id": 6,
+          "brand": null,
+          "company": null,
+          "timezone": 1
       }
     """
 

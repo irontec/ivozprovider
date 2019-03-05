@@ -25,7 +25,11 @@ Feature: Create features
     """
       {
           "iden": "newFeature",
-          "id": 10
+          "id": 10,
+          "name": {
+              "en": "name",
+              "es": "nombre"
+          }
       }
     """
 
