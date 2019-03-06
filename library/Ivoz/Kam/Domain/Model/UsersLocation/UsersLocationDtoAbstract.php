@@ -48,7 +48,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var float
      */
-    private $q = '1.00';
+    private $q = 1.0;
 
     /**
      * @var string
@@ -58,7 +58,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $cseq = '1';
+    private $cseq = 1;
 
     /**
      * @var \DateTime
@@ -68,12 +68,12 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $flags = '0';
+    private $flags = 0;
 
     /**
      * @var integer
      */
-    private $cflags = '0';
+    private $cflags = 0;
 
     /**
      * @var string
@@ -98,27 +98,27 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $regId = '0';
+    private $regId = 0;
 
     /**
      * @var integer
      */
-    private $serverId = '0';
+    private $serverId = 0;
 
     /**
      * @var integer
      */
-    private $connectionId = '0';
+    private $connectionId = 0;
 
     /**
      * @var integer
      */
-    private $keepalive = '0';
+    private $keepalive = 0;
 
     /**
      * @var integer
      */
-    private $partition = '0';
+    private $partition = 0;
 
     /**
      * @var integer

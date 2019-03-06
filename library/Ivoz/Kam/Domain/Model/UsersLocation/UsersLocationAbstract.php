@@ -51,7 +51,7 @@ abstract class UsersLocationAbstract
     /**
      * @var float
      */
-    protected $q = '1.00';
+    protected $q = 1.0;
 
     /**
      * @var string
@@ -61,7 +61,7 @@ abstract class UsersLocationAbstract
     /**
      * @var integer
      */
-    protected $cseq = '1';
+    protected $cseq = 1;
 
     /**
      * column: last_modified
@@ -72,12 +72,12 @@ abstract class UsersLocationAbstract
     /**
      * @var integer
      */
-    protected $flags = '0';
+    protected $flags = 0;
 
     /**
      * @var integer
      */
-    protected $cflags = '0';
+    protected $cflags = 0;
 
     /**
      * column: user_agent
@@ -104,29 +104,29 @@ abstract class UsersLocationAbstract
      * column: reg_id
      * @var integer
      */
-    protected $regId = '0';
+    protected $regId = 0;
 
     /**
      * column: server_id
      * @var integer
      */
-    protected $serverId = '0';
+    protected $serverId = 0;
 
     /**
      * column: connection_id
      * @var integer
      */
-    protected $connectionId = '0';
+    protected $connectionId = 0;
 
     /**
      * @var integer
      */
-    protected $keepalive = '0';
+    protected $keepalive = 0;
 
     /**
      * @var integer
      */
-    protected $partition = '0';
+    protected $partition = 0;
 
 
     use ChangelogTrait;

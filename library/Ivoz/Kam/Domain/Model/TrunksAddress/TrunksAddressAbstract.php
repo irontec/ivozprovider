@@ -16,7 +16,7 @@ abstract class TrunksAddressAbstract
     /**
      * @var integer
      */
-    protected $grp = '1';
+    protected $grp = 1;
 
     /**
      * column: ip_addr
@@ -27,12 +27,12 @@ abstract class TrunksAddressAbstract
     /**
      * @var integer
      */
-    protected $mask = '32';
+    protected $mask = 32;
 
     /**
      * @var integer
      */
-    protected $port = '0';
+    protected $port = 0;
 
     /**
      * @var string | null

@@ -13,7 +13,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $setid = '0';
+    private $setid = 0;
 
     /**
      * @var string
@@ -23,12 +23,12 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $flags = '0';
+    private $flags = 0;
 
     /**
      * @var integer
      */
-    private $priority = '0';
+    private $priority = 0;
 
     /**
      * @var string

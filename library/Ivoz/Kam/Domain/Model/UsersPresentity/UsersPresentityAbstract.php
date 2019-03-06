@@ -57,7 +57,7 @@ abstract class UsersPresentityAbstract
     /**
      * @var integer
      */
-    protected $priority = '0';
+    protected $priority = 0;
 
 
     use ChangelogTrait;

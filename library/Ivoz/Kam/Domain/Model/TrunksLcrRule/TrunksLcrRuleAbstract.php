@@ -17,7 +17,7 @@ abstract class TrunksLcrRuleAbstract
      * column: lcr_id
      * @var integer
      */
-    protected $lcrId = '1';
+    protected $lcrId = 1;
 
     /**
      * @var string | null
@@ -45,12 +45,12 @@ abstract class TrunksLcrRuleAbstract
     /**
      * @var integer
      */
-    protected $stopper = '0';
+    protected $stopper = 0;
 
     /**
      * @var integer
      */
-    protected $enabled = '1';
+    protected $enabled = 1;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface

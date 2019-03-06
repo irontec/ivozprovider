@@ -69,18 +69,18 @@ abstract class TrunksUacregAbstract
     /**
      * @var integer
      */
-    protected $expires = '0';
+    protected $expires = 0;
 
     /**
      * @var integer
      */
-    protected $flags = '0';
+    protected $flags = 0;
 
     /**
      * column: reg_delay
      * @var integer
      */
-    protected $regDelay = '0';
+    protected $regDelay = 0;
 
     /**
      * column: auth_ha1

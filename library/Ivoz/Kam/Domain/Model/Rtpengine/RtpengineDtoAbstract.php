@@ -23,7 +23,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $weight = '1';
+    private $weight = 1;
 
     /**
      * @var boolean

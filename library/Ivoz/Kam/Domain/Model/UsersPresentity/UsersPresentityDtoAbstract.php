@@ -53,7 +53,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $priority = '0';
+    private $priority = 0;
 
     /**
      * @var integer

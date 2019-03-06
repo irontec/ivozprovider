@@ -18,12 +18,12 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $keyType = '0';
+    private $keyType = 0;
 
     /**
      * @var integer
      */
-    private $valueType = '0';
+    private $valueType = 0;
 
     /**
      * @var string
@@ -33,7 +33,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $expires = '0';
+    private $expires = 0;
 
     /**
      * @var integer

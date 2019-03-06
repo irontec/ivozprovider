@@ -49,7 +49,7 @@ abstract class TrustedAbstract
     /**
      * @var integer
      */
-    protected $priority = '0';
+    protected $priority = 0;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface

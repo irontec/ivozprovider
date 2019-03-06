@@ -23,13 +23,13 @@ abstract class TrunksHtableAbstract
      * column: key_type
      * @var integer
      */
-    protected $keyType = '0';
+    protected $keyType = 0;
 
     /**
      * column: value_type
      * @var integer
      */
-    protected $valueType = '0';
+    protected $valueType = 0;
 
     /**
      * column: key_value
@@ -40,7 +40,7 @@ abstract class TrunksHtableAbstract
     /**
      * @var integer
      */
-    protected $expires = '0';
+    protected $expires = 0;
 
 
     use ChangelogTrait;

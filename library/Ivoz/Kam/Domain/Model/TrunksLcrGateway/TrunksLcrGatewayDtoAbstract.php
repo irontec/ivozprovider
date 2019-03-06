@@ -13,7 +13,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var integer
      */
-    private $lcrId = '1';
+    private $lcrId = 1;
 
     /**
      * @var string

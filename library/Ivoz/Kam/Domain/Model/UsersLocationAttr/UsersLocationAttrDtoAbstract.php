@@ -33,7 +33,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var integer
      */
-    private $atype = '0';
+    private $atype = 0;
 
     /**
      * @var string

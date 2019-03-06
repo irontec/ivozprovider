@@ -26,7 +26,7 @@ abstract class RtpengineAbstract
     /**
      * @var integer
      */
-    protected $weight = '1';
+    protected $weight = 1;
 
     /**
      * @var boolean

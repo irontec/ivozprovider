@@ -16,7 +16,7 @@ abstract class DispatcherAbstract
     /**
      * @var integer
      */
-    protected $setid = '0';
+    protected $setid = 0;
 
     /**
      * @var string
@@ -26,12 +26,12 @@ abstract class DispatcherAbstract
     /**
      * @var integer
      */
-    protected $flags = '0';
+    protected $flags = 0;
 
     /**
      * @var integer
      */
-    protected $priority = '0';
+    protected $priority = 0;
 
     /**
      * @var string
