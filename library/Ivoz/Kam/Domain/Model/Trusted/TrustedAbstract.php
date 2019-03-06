@@ -401,7 +401,7 @@ abstract class TrustedAbstract
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }

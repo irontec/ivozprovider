@@ -240,7 +240,7 @@ abstract class TrunksHtableAbstract
         Assertion::notNull($keyType, 'keyType value "%s" is null, but non null value was expected.');
         Assertion::integerish($keyType, 'keyType value "%s" is not an integer or a number castable to integer.');
 
-        $this->keyType = $keyType;
+        $this->keyType = (int) $keyType;
 
         return $this;
     }
@@ -267,7 +267,7 @@ abstract class TrunksHtableAbstract
         Assertion::notNull($valueType, 'valueType value "%s" is null, but non null value was expected.');
         Assertion::integerish($valueType, 'valueType value "%s" is not an integer or a number castable to integer.');
 
-        $this->valueType = $valueType;
+        $this->valueType = (int) $valueType;
 
         return $this;
     }
@@ -321,7 +321,7 @@ abstract class TrunksHtableAbstract
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
-        $this->expires = $expires;
+        $this->expires = (int) $expires;
 
         return $this;
     }

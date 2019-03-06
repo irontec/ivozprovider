@@ -586,9 +586,8 @@ abstract class UsersLocationAbstract
     {
         Assertion::notNull($q, 'q value "%s" is null, but non null value was expected.');
         Assertion::numeric($q);
-        $q = (float) $q;
 
-        $this->q = $q;
+        $this->q = (float) $q;
 
         return $this;
     }
@@ -642,7 +641,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
         Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
 
-        $this->cseq = $cseq;
+        $this->cseq = (int) $cseq;
 
         return $this;
     }
@@ -699,7 +698,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
-        $this->flags = $flags;
+        $this->flags = (int) $flags;
 
         return $this;
     }
@@ -726,7 +725,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($cflags, 'cflags value "%s" is null, but non null value was expected.');
         Assertion::integerish($cflags, 'cflags value "%s" is not an integer or a number castable to integer.');
 
-        $this->cflags = $cflags;
+        $this->cflags = (int) $cflags;
 
         return $this;
     }
@@ -808,6 +807,7 @@ abstract class UsersLocationAbstract
         if (!is_null($methods)) {
             if (!is_null($methods)) {
                 Assertion::integerish($methods, 'methods value "%s" is not an integer or a number castable to integer.');
+                $methods = (int) $methods;
             }
         }
 
@@ -866,7 +866,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($regId, 'regId value "%s" is null, but non null value was expected.');
         Assertion::integerish($regId, 'regId value "%s" is not an integer or a number castable to integer.');
 
-        $this->regId = $regId;
+        $this->regId = (int) $regId;
 
         return $this;
     }
@@ -893,7 +893,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($serverId, 'serverId value "%s" is null, but non null value was expected.');
         Assertion::integerish($serverId, 'serverId value "%s" is not an integer or a number castable to integer.');
 
-        $this->serverId = $serverId;
+        $this->serverId = (int) $serverId;
 
         return $this;
     }
@@ -920,7 +920,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($connectionId, 'connectionId value "%s" is null, but non null value was expected.');
         Assertion::integerish($connectionId, 'connectionId value "%s" is not an integer or a number castable to integer.');
 
-        $this->connectionId = $connectionId;
+        $this->connectionId = (int) $connectionId;
 
         return $this;
     }
@@ -947,7 +947,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($keepalive, 'keepalive value "%s" is null, but non null value was expected.');
         Assertion::integerish($keepalive, 'keepalive value "%s" is not an integer or a number castable to integer.');
 
-        $this->keepalive = $keepalive;
+        $this->keepalive = (int) $keepalive;
 
         return $this;
     }
@@ -974,7 +974,7 @@ abstract class UsersLocationAbstract
         Assertion::notNull($partition, 'partition value "%s" is null, but non null value was expected.');
         Assertion::integerish($partition, 'partition value "%s" is not an integer or a number castable to integer.');
 
-        $this->partition = $partition;
+        $this->partition = (int) $partition;
 
         return $this;
     }
