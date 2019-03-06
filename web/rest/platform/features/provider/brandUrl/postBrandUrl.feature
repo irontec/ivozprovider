@@ -31,9 +31,18 @@ Feature: Create brand urls
      And the JSON should be equal to:
     """
       {
-          "url": "https://post-example.com",
+          "url": "https:\/\/post-example.com",
+          "klearTheme": "redmond",
+          "urlType": "user",
           "name": "Platform user Portal",
-          "id": 4
+          "userTheme": "default",
+          "id": 4,
+          "logo": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "brand": 1
       }
     """
 

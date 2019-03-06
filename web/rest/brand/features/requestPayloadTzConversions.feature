@@ -32,8 +32,10 @@ Feature: Input timezone convertion
           "inDate": "2018-12-31 18:00:00",
           "outDate": "2019-01-01 17:59:59",
           "total": null,
+          "taxRate": 21,
           "totalWithTax": null,
           "status": null,
+          "statusMsg": null,
           "id": 2,
           "pdf": {
               "fileSize": null,
@@ -41,7 +43,9 @@ Feature: Input timezone convertion
               "baseName": null
           },
           "invoiceTemplate": 1,
-          "company": 1
+          "brand": 1,
+          "company": 1,
+          "numberSequence": null
       }
     """
 

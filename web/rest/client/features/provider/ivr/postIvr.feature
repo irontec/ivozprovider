@@ -40,7 +40,25 @@ Feature: Create IVRs
     """
       {
           "name": "testNewIvrCustom",
-          "id": 3
+          "timeout": 6,
+          "maxDigits": 0,
+          "allowExtensions": false,
+          "noInputRouteType": "number",
+          "noInputNumberValue": "946002021",
+          "errorRouteType": "number",
+          "errorNumberValue": "946002022",
+          "id": 3,
+          "company": 1,
+          "welcomeLocution": 1,
+          "noInputLocution": null,
+          "errorLocution": null,
+          "successLocution": 1,
+          "noInputExtension": null,
+          "errorExtension": null,
+          "noInputVoiceMailUser": null,
+          "errorVoiceMailUser": null,
+          "noInputNumberCountry": 2,
+          "errorNumberCountry": 3
       }
     """
 

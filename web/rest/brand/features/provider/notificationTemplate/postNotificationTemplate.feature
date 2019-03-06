@@ -24,7 +24,8 @@ Feature: Create notification templates
       {
           "name": "New fax notification",
           "type": "fax",
-          "id": 3
+          "id": 3,
+          "brand": 1
       }
     """
 

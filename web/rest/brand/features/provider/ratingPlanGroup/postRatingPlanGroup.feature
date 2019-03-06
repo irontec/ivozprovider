@@ -33,6 +33,10 @@
               "en": "New",
               "es": "Nuevo"
           },
+          "description": {
+              "en": "New Rating plan",
+              "es": "Nuevo Rating plan"
+          },
           "brand": 1,
           "currency": null
       }

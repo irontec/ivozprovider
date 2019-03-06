@@ -24,7 +24,10 @@ Feature: Create balance notifications
       {
           "toAddress": "new@address.com",
           "threshold": 1230.0001,
-          "id": 3
+          "lastSent": null,
+          "id": 3,
+          "company": 1,
+          "notificationTemplate": null
       }
     """
 

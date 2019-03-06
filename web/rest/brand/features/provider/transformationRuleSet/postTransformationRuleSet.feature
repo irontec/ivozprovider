@@ -36,7 +36,14 @@ Feature: Create transformation rule sets
           "trunkPrefix": "",
           "areaCode": "",
           "nationalLen": 9,
-          "id": 3
+          "generateRules": false,
+          "id": 3,
+          "name": {
+              "en": "usansolocity",
+              "es": "usansolo"
+          },
+          "brand": 1,
+          "country": 2
       }
     """
 

@@ -25,7 +25,12 @@ Feature: Create notification template contents
       {
           "fromName": null,
           "fromAddress": null,
-          "id": 3
+          "subject": "Test subject",
+          "body": "Test body",
+          "bodyType": "text\/plain",
+          "id": 3,
+          "notificationTemplate": 1,
+          "language": 2
       }
     """
 

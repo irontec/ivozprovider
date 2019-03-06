@@ -36,7 +36,19 @@ Feature: Create conditional routes conditions
       {
           "priority": 2,
           "routeType": "extension",
-          "id": 2
+          "numberValue": null,
+          "friendValue": null,
+          "id": 2,
+          "conditionalRoute": 1,
+          "ivr": null,
+          "huntGroup": null,
+          "voicemailUser": null,
+          "user": null,
+          "queue": null,
+          "locution": null,
+          "conferenceRoom": null,
+          "extension": 1,
+          "numberCountry": null
       }
     """
 

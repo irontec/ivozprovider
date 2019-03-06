@@ -48,9 +48,38 @@ Feature: Create companies
      And the JSON should be equal to:
     """
       {
+          "type": "vpbx",
           "name": "API company",
+          "domainUsers": "api.irontec.com",
           "nif": "",
-          "id": 4
+          "distributeMethod": "hash",
+          "maxCalls": 0,
+          "postalAddress": "",
+          "postalCode": "",
+          "town": "",
+          "province": "",
+          "countryName": "",
+          "ipfilter": true,
+          "onDemandRecord": 0,
+          "onDemandRecordCode": "",
+          "externallyextraopts": "",
+          "recordingsLimitMB": 0,
+          "recordingsLimitEmail": "",
+          "billingMethod": "postpaid",
+          "balance": 0,
+          "showInvoices": false,
+          "id": 4,
+          "language": 1,
+          "defaultTimezone": 1,
+          "brand": 1,
+          "domain": 1,
+          "country": 1,
+          "currency": null,
+          "transformationRuleSet": 1,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null
       }
     """
 

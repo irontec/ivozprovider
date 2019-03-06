@@ -26,7 +26,9 @@ Feature: Create outgoing ddi rules
       {
           "name": "newRule",
           "defaultAction": "keep",
-          "id": 2
+          "id": 2,
+          "company": 2,
+          "forcedDdi": null
       }
     """
 

@@ -42,8 +42,25 @@ Feature: Create Ddis
       {
           "ddi": "1234",
           "ddie164": "+341234",
+          "recordCalls": "none",
+          "displayName": "",
           "routeType": "user",
-          "id": 2
+          "billInboundCalls": false,
+          "friendValue": "",
+          "id": 2,
+          "company": 2,
+          "conferenceRoom": null,
+          "language": null,
+          "queue": null,
+          "externalCallFilter": null,
+          "user": 1,
+          "ivr": null,
+          "huntGroup": null,
+          "fax": null,
+          "country": 1,
+          "residentialDevice": null,
+          "conditionalRoute": null,
+          "retailAccount": null
       }
     """
 

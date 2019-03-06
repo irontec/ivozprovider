@@ -25,7 +25,10 @@ Feature: Create ddi providers
       {
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
-          "id": 2
+          "externallyRated": false,
+          "id": 2,
+          "brand": 1,
+          "transformationRuleSet": 1
       }
     """
 

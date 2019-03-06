@@ -34,7 +34,18 @@ Feature: Create locutions
       {
           "name": "newLocution",
           "status": null,
-          "id": 2
+          "id": 2,
+          "encodedFile": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "originalFile": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "company": 1
       }
     """
 

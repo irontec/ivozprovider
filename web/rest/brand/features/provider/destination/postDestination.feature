@@ -30,7 +30,8 @@
           "name": {
               "en": "Germany",
               "es": "Alemania"
-          }
+          },
+          "brand": 1
       }
     """
 

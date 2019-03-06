@@ -42,8 +42,28 @@ Feature: Create queues
     """
       {
           "name": "newQueue",
+          "maxWaitTime": 10,
+          "timeoutTargetType": "number",
+          "timeoutNumberValue": "946002121",
+          "maxlen": 5,
+          "fullTargetType": "number",
+          "fullNumberValue": "946002023",
+          "periodicAnnounceFrequency": 7,
+          "memberCallRest": 0,
+          "memberCallTimeout": 1,
+          "strategy": "rrmemory",
           "weight": 2,
-          "id": 2
+          "id": 2,
+          "company": 2,
+          "periodicAnnounceLocution": 1,
+          "timeoutLocution": 1,
+          "timeoutExtension": null,
+          "timeoutVoiceMailUser": null,
+          "fullLocution": 1,
+          "fullExtension": null,
+          "fullVoiceMailUser": null,
+          "timeoutNumberCountry": 1,
+          "fullNumberCountry": 1
       }
     """
 

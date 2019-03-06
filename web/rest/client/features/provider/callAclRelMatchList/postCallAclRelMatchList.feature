@@ -25,7 +25,9 @@ Feature: Create call acl rel match lists
       {
           "priority": 2,
           "policy": "deny",
-          "id": 2
+          "id": 2,
+          "callAcl": 2,
+          "matchList": 2
       }
     """
 

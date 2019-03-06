@@ -21,6 +21,7 @@ Feature: Create application servers
      And the JSON should be equal to:
     """
       {
+          "ip": "127.2.2.2",
           "name": "test002",
           "id": 3
       }
