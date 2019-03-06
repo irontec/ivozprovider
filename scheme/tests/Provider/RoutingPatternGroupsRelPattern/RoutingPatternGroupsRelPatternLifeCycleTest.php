@@ -174,6 +174,7 @@ class RoutingPatternGroupsRelPatternLifeCycleTest extends KernelTestCase
                 'lcr_id' => 1,
                 'prefix' => 'aTag+35',
                 'from_uri' => '^b1c1$',
+                'stopper' => 0,
                 'enabled' => 1,
                 'routingPatternId' => 2,
                 'outgoingRoutingId' => 1,
@@ -202,7 +203,7 @@ class RoutingPatternGroupsRelPatternLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             $changelog->getData(),
             [
-                'lcr_id' => '1',
+                'lcr_id' => 1,
                 'priority' => 1,
                 'weight' => 1,
                 'ruleId' => 3,

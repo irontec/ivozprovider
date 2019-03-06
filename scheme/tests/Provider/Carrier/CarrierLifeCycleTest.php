@@ -144,6 +144,10 @@ class CarrierLifeCycleTest extends KernelTestCase
         $changelog = $changelogEntries[0];
 
         $diff = $changelog->getData();
+        //Skip empty default values
+        $diff = array_filter($diff, function ($value) {
+            return !empty($value);
+        });
         $this->assertArraySubset(
             [
                 'tpid' => 'b1',
@@ -187,6 +191,11 @@ class CarrierLifeCycleTest extends KernelTestCase
         $changelog = $changelogEntries[0];
 
         $diff = $changelog->getData();
+        //Skip empty default values
+        $diff = array_filter($diff, function ($value) {
+            return !empty($value);
+        });
+
         $expectedSubset = [
             'tpid' => 'b1',
             'loadid' => 'DATABASE',
