@@ -801,7 +801,7 @@ abstract class TpCdrAbstract
         Assertion::notNull($usage, 'usage value "%s" is null, but non null value was expected.');
         Assertion::integerish($usage, 'usage value "%s" is not an integer or a number castable to integer.');
 
-        $this->usage = $usage;
+        $this->usage = (int) $usage;
 
         return $this;
     }
@@ -880,9 +880,8 @@ abstract class TpCdrAbstract
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
-        $cost = (float) $cost;
 
-        $this->cost = $cost;
+        $this->cost = (float) $cost;
 
         return $this;
     }
