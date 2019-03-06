@@ -38,7 +38,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $maxCalls = '0';
+    private $maxCalls = 0;
 
     /**
      * @var string
@@ -73,7 +73,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $onDemandRecord = '0';
+    private $onDemandRecord = 0;
 
     /**
      * @var string

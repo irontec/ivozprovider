@@ -59,7 +59,7 @@ abstract class CompanyAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '0';
+    protected $maxCalls = 0;
 
     /**
      * @var string
@@ -95,7 +95,7 @@ abstract class CompanyAbstract
     /**
      * @var integer | null
      */
-    protected $onDemandRecord = '0';
+    protected $onDemandRecord = 0;
 
     /**
      * @var string | null

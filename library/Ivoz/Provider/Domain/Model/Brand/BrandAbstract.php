@@ -37,7 +37,7 @@ abstract class BrandAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '0';
+    protected $maxCalls = 0;
 
     /**
      * @var Logo

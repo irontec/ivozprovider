@@ -43,7 +43,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $preventMissedCalls = '1';
+    private $preventMissedCalls = 1;
 
     /**
      * @var integer

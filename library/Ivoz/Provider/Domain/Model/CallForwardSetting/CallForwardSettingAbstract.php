@@ -54,7 +54,7 @@ abstract class CallForwardSettingAbstract
     /**
      * @var integer
      */
-    protected $noAnswerTimeout = '10';
+    protected $noAnswerTimeout = 10;
 
     /**
      * @var boolean

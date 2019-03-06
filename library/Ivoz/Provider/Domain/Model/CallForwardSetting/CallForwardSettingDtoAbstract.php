@@ -33,7 +33,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @var integer
      */
-    private $noAnswerTimeout = '10';
+    private $noAnswerTimeout = 10;
 
     /**
      * @var boolean
