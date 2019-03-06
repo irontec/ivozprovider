@@ -43,7 +43,7 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '0'
+        default: 0
       column: maxCalls
   manyToOne:
     domain:

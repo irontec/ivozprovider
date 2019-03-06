@@ -11,7 +11,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       nullable: false
       options:
         unsigned: false
-        default: '1'
+        default: 1
     routeType:
       type: string
       nullable: true

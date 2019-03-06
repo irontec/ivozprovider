@@ -67,7 +67,7 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '1'
+        default: 1
     disallow:
       column: disallow
       type: string

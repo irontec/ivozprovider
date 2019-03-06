@@ -40,14 +40,14 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
       type: boolean
       nullable: false
       options:
-        default: '0'
+        default: 0
         unsigned: true
       column: doNotDisturb
     isBoss:
       type: boolean
       nullable: false
       options:
-        default: '0'
+        default: 0
         unsigned: true
       column: isBoss
     active:
@@ -60,7 +60,7 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
       type: integer
       nullable: false
       options:
-        default: '0'
+        default: 0
         unsigned: true
       column: maxCalls
     externalIpCalls:

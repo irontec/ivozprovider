@@ -51,7 +51,7 @@ Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationAbstra
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     multiDdi:
       type: boolean
       nullable: true

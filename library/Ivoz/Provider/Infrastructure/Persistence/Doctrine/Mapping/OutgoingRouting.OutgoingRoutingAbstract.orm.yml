@@ -18,7 +18,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '1'
+        default: 1
     routingMode:
       type: string
       nullable: true
