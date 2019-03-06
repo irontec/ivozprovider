@@ -51,7 +51,7 @@ abstract class TpDestinationRateAbstract
      * column: max_cost
      * @var string
      */
-    protected $maxCost = '0.000';
+    protected $maxCost = 0.0;
 
     /**
      * column: max_cost_strategy

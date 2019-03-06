@@ -43,7 +43,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var string
      */
-    private $maxCost = '0.000';
+    private $maxCost = 0.0;
 
     /**
      * @var string
