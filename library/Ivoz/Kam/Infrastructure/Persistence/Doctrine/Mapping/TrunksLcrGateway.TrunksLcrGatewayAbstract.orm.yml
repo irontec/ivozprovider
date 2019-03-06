@@ -10,7 +10,7 @@ Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '1'
+        default: 1
       column: lcr_id
     gwName:
       type: string

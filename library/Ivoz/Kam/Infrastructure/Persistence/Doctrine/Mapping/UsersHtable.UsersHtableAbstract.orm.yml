@@ -14,14 +14,14 @@ Ivoz\Kam\Domain\Model\UsersHtable\UsersHtableAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
       column: key_type
     valueType:
       type: integer
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
       column: value_type
     keyValue:
       type: string
@@ -36,4 +36,4 @@ Ivoz\Kam\Domain\Model\UsersHtable\UsersHtableAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0

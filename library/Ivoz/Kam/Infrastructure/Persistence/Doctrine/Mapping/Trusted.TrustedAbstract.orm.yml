@@ -53,7 +53,7 @@ Ivoz\Kam\Domain\Model\Trusted\TrustedAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
