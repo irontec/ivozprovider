@@ -54,7 +54,7 @@ abstract protected function sanitizeValues();
  * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
  * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
- * @return self
+ * @return static
  */
 public static function fromDto(
     DataTransferObjectInterface $dto,
@@ -78,7 +78,7 @@ public static function fromDto(
  * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
  * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
- * @return self
+ * @return static
  */
 public function updateFromDto(
     DataTransferObjectInterface $dto,
@@ -122,7 +122,7 @@ protected function __toArray()
  *
  * @param <variableType> $<variableName>
  *
- * @return self
+ * @return static
  */
 <visibility> function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
 {
@@ -155,7 +155,7 @@ public function <methodName>(<criteriaArgument>)
  *
  * @param <variableType> $<variableName>
  *
- * @return <entity>
+ * @return static
  */
 <visibility> function <methodName>(<methodTypeHint>$<variableName>)
 {
@@ -172,7 +172,7 @@ public function <methodName>(<criteriaArgument>)
  * <description>
  *
  * @param \<relEntity>[] $<variableName>
- * @return self
+ * @return static
  */
 <visibility> function <methodName>(Collection $<variableName>)
 {
