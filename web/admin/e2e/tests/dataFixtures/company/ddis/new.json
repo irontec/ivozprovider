@@ -1,6 +1,6 @@
 {
   "country": "70",
-  "DDI": "123",
+  "ddi": "123",
   "ddiProvider": "1",
   "displayName": "",
   "language": "__NULL__",
@@ -15,6 +15,5 @@
   "queue": "__NULL__",
   "residentialDevice": "__NULL__",
   "conditionalRoute": "__NULL__",
-  "recordCalls": "none",
-  "billInboundCalls": "0"
+  "recordCalls": "none"
 }
