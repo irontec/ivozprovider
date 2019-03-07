@@ -11,7 +11,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 trait ChangelogTrait
 {
     /**
-     * @var guid
+     * @var string
      */
     protected $id;
 

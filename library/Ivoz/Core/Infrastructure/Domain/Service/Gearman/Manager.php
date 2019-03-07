@@ -68,7 +68,7 @@ class Manager
      *
      * @param string $workerName
      * @param string $logFile
-     * @return \Iron_Gearman_Worker
+     * @return \GearmanWorker
      */
     public static function runWorker($workerName, $logFile = null)
     {

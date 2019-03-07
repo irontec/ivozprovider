@@ -16,6 +16,7 @@ use Doctrine\DBAL\Types\Type;
 class TraitGenerator extends EntityGenerator
 {
     protected $typeAlias = array(
+        'guid'              => 'string',
         Type::DATETIMETZ    => '\DateTime',
         Type::DATETIME      => '\DateTime',
         Type::DATE          => '\DateTime',
