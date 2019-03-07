@@ -65,7 +65,7 @@ interface MatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern
      *
-     * @return MatchListTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern);
 
@@ -80,7 +80,7 @@ interface MatchListInterface extends LoggableEntityInterface
      * Replace patterns
      *
      * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[] $patterns
-     * @return self
+     * @return static
      */
     public function replacePatterns(Collection $patterns);
 

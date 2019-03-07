@@ -116,7 +116,7 @@ interface CarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
@@ -131,7 +131,7 @@ interface CarrierInterface extends LoggableEntityInterface
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings);
 
@@ -147,7 +147,7 @@ interface CarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
 
@@ -162,7 +162,7 @@ interface CarrierInterface extends LoggableEntityInterface
      * Replace outgoingRoutingsRelCarriers
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers);
 
@@ -178,7 +178,7 @@ interface CarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server);
 
@@ -193,7 +193,7 @@ interface CarrierInterface extends LoggableEntityInterface
      * Replace servers
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[] $servers
-     * @return self
+     * @return static
      */
     public function replaceServers(Collection $servers);
 
@@ -209,7 +209,7 @@ interface CarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
 
@@ -224,7 +224,7 @@ interface CarrierInterface extends LoggableEntityInterface
      * Replace ratingProfiles
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
-     * @return self
+     * @return static
      */
     public function replaceRatingProfiles(Collection $ratingProfiles);
 
@@ -240,7 +240,7 @@ interface CarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
 
@@ -255,7 +255,7 @@ interface CarrierInterface extends LoggableEntityInterface
      * Replace tpCdrStats
      *
      * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[] $tpCdrStats
-     * @return self
+     * @return static
      */
     public function replaceTpCdrStats(Collection $tpCdrStats);
 

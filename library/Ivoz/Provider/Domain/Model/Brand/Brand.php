@@ -108,7 +108,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     }
 
     /**
-     * @return FeatureInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface[]
      */
     public function getFeatures()
     {

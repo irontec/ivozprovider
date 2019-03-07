@@ -58,7 +58,7 @@ trait ConditionalRoutesConditionTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -112,7 +112,7 @@ trait ConditionalRoutesConditionTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -181,7 +181,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist)
     {
@@ -204,7 +204,7 @@ trait ConditionalRoutesConditionTrait
      * Replace relMatchlists
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $relMatchlists
-     * @return self
+     * @return static
      */
     public function replaceRelMatchlists(Collection $relMatchlists)
     {
@@ -253,7 +253,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule)
     {
@@ -276,7 +276,7 @@ trait ConditionalRoutesConditionTrait
      * Replace relSchedules
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $relSchedules
-     * @return self
+     * @return static
      */
     public function replaceRelSchedules(Collection $relSchedules)
     {
@@ -325,7 +325,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar)
     {
@@ -348,7 +348,7 @@ trait ConditionalRoutesConditionTrait
      * Replace relCalendars
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $relCalendars
-     * @return self
+     * @return static
      */
     public function replaceRelCalendars(Collection $relCalendars)
     {
@@ -397,7 +397,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock)
     {
@@ -420,7 +420,7 @@ trait ConditionalRoutesConditionTrait
      * Replace relRouteLocks
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[] $relRouteLocks
-     * @return self
+     * @return static
      */
     public function replaceRelRouteLocks(Collection $relRouteLocks)
     {

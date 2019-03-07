@@ -52,7 +52,7 @@ trait RoutingPatternTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -98,7 +98,7 @@ trait RoutingPatternTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -160,7 +160,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -183,7 +183,7 @@ trait RoutingPatternTrait
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings)
     {
@@ -232,7 +232,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup)
     {
@@ -255,7 +255,7 @@ trait RoutingPatternTrait
      * Replace relPatternGroups
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
-     * @return self
+     * @return static
      */
     public function replaceRelPatternGroups(Collection $relPatternGroups)
     {
@@ -304,7 +304,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
@@ -327,7 +327,7 @@ trait RoutingPatternTrait
      * Replace lcrRules
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
-     * @return self
+     * @return static
      */
     public function replaceLcrRules(Collection $lcrRules)
     {

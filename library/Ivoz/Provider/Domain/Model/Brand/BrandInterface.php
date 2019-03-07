@@ -52,7 +52,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getRecordingsLimit();
 
     /**
-     * @return FeatureInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface[]
      */
     public function getFeatures();
 
@@ -205,7 +205,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -220,7 +220,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace companies
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface[] $companies
-     * @return self
+     * @return static
      */
     public function replaceCompanies(Collection $companies);
 
@@ -236,7 +236,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addService(\Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service);
 
@@ -251,7 +251,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace services
      *
      * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $services
-     * @return self
+     * @return static
      */
     public function replaceServices(Collection $services);
 
@@ -267,7 +267,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addUrl(\Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url);
 
@@ -282,7 +282,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace urls
      *
      * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[] $urls
-     * @return self
+     * @return static
      */
     public function replaceUrls(Collection $urls);
 
@@ -298,7 +298,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature);
 
@@ -313,7 +313,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace relFeatures
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[] $relFeatures
-     * @return self
+     * @return static
      */
     public function replaceRelFeatures(Collection $relFeatures);
 
@@ -329,7 +329,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice);
 
@@ -344,7 +344,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace residentialDevices
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
-     * @return self
+     * @return static
      */
     public function replaceResidentialDevices(Collection $residentialDevices);
 
@@ -360,7 +360,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold);
 
@@ -375,7 +375,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace musicsOnHold
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
-     * @return self
+     * @return static
      */
     public function replaceMusicsOnHold(Collection $musicsOnHold);
 
@@ -391,7 +391,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
 
@@ -406,7 +406,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace matchLists
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[] $matchLists
-     * @return self
+     * @return static
      */
     public function replaceMatchLists(Collection $matchLists);
 
@@ -422,7 +422,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
@@ -437,7 +437,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings);
 
@@ -450,7 +450,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
 
     /**
      * @param $fldName
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -461,13 +461,13 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

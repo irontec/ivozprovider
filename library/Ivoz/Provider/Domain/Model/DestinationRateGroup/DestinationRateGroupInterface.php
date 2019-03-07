@@ -134,7 +134,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
-     * @return DestinationRateGroupTrait
+     * @return static
      */
     public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
 
@@ -149,7 +149,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      * Replace destinationRates
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[] $destinationRates
-     * @return self
+     * @return static
      */
     public function replaceDestinationRates(Collection $destinationRates);
 
@@ -167,13 +167,13 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

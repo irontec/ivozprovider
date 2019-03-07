@@ -52,7 +52,7 @@ trait DomainTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -98,7 +98,7 @@ trait DomainTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -160,7 +160,7 @@ trait DomainTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return DomainTrait
+     * @return static
      */
     public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend)
     {
@@ -183,7 +183,7 @@ trait DomainTrait
      * Replace friends
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
-     * @return self
+     * @return static
      */
     public function replaceFriends(Collection $friends)
     {
@@ -232,7 +232,7 @@ trait DomainTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return DomainTrait
+     * @return static
      */
     public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice)
     {
@@ -255,7 +255,7 @@ trait DomainTrait
      * Replace residentialDevices
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
-     * @return self
+     * @return static
      */
     public function replaceResidentialDevices(Collection $residentialDevices)
     {
@@ -304,7 +304,7 @@ trait DomainTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return DomainTrait
+     * @return static
      */
     public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal)
     {
@@ -327,7 +327,7 @@ trait DomainTrait
      * Replace terminals
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
-     * @return self
+     * @return static
      */
     public function replaceTerminals(Collection $terminals)
     {

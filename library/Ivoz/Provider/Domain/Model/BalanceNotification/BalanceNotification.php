@@ -41,7 +41,7 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
     }
 
     /**
-     * @return LanguageInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage()
     {

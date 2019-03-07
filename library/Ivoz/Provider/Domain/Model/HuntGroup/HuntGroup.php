@@ -58,7 +58,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 
     /**
      * Get this Hungroup related users
-     * @return UserInterface[]
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getHuntGroupUsersArray()
     {

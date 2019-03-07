@@ -154,7 +154,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $relFixedCost
      *
-     * @return InvoiceSchedulerTrait
+     * @return static
      */
     public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $relFixedCost);
 
@@ -169,7 +169,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * Replace relFixedCosts
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts
-     * @return self
+     * @return static
      */
     public function replaceRelFixedCosts(Collection $relFixedCosts);
 

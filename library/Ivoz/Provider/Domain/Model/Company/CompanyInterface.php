@@ -93,7 +93,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOnDemandRecordDTMFs();
 
     /**
-     * @return FeatureInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface[]
      */
     public function getFeatures();
 
@@ -491,7 +491,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension);
 
@@ -506,7 +506,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace extensions
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[] $extensions
-     * @return self
+     * @return static
      */
     public function replaceExtensions(Collection $extensions);
 
@@ -522,7 +522,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi);
 
@@ -537,7 +537,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace ddis
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
-     * @return self
+     * @return static
      */
     public function replaceDdis(Collection $ddis);
 
@@ -553,7 +553,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
 
@@ -568,7 +568,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace friends
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
-     * @return self
+     * @return static
      */
     public function replaceFriends(Collection $friends);
 
@@ -584,7 +584,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addCompanyService(\Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService);
 
@@ -599,7 +599,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace companyServices
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[] $companyServices
-     * @return self
+     * @return static
      */
     public function replaceCompanyServices(Collection $companyServices);
 
@@ -615,7 +615,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal);
 
@@ -630,7 +630,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace terminals
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
-     * @return self
+     * @return static
      */
     public function replaceTerminals(Collection $terminals);
 
@@ -646,7 +646,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
 
@@ -661,7 +661,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace ratingProfiles
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
-     * @return self
+     * @return static
      */
     public function replaceRatingProfiles(Collection $ratingProfiles);
 
@@ -677,7 +677,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold);
 
@@ -692,7 +692,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace musicsOnHold
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
-     * @return self
+     * @return static
      */
     public function replaceMusicsOnHold(Collection $musicsOnHold);
 
@@ -708,7 +708,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRecording(\Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording);
 
@@ -723,7 +723,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace recordings
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[] $recordings
-     * @return self
+     * @return static
      */
     public function replaceRecordings(Collection $recordings);
 
@@ -739,7 +739,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature);
 
@@ -754,7 +754,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace relFeatures
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[] $relFeatures
-     * @return self
+     * @return static
      */
     public function replaceRelFeatures(Collection $relFeatures);
 
@@ -770,7 +770,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
 
@@ -785,7 +785,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace relCodecs
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
-     * @return self
+     * @return static
      */
     public function replaceRelCodecs(Collection $relCodecs);
 
@@ -801,7 +801,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
 
@@ -816,7 +816,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * Replace relRoutingTags
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
-     * @return self
+     * @return static
      */
     public function replaceRelRoutingTags(Collection $relRoutingTags);
 

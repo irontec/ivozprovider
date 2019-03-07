@@ -40,7 +40,7 @@ trait OutgoingRoutingRelCarrierTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait OutgoingRoutingRelCarrierTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait OutgoingRoutingRelCarrierTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
      *
-     * @return OutgoingRoutingRelCarrierTrait
+     * @return static
      */
     public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile)
     {
@@ -141,7 +141,7 @@ trait OutgoingRoutingRelCarrierTrait
      * Replace tpRatingProfiles
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
-     * @return self
+     * @return static
      */
     public function replaceTpRatingProfiles(Collection $tpRatingProfiles)
     {

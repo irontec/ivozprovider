@@ -64,7 +64,7 @@ trait CarrierTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -126,7 +126,7 @@ trait CarrierTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -202,7 +202,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -225,7 +225,7 @@ trait CarrierTrait
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings)
     {
@@ -274,7 +274,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier)
     {
@@ -297,7 +297,7 @@ trait CarrierTrait
      * Replace outgoingRoutingsRelCarriers
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers)
     {
@@ -346,7 +346,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server)
     {
@@ -369,7 +369,7 @@ trait CarrierTrait
      * Replace servers
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[] $servers
-     * @return self
+     * @return static
      */
     public function replaceServers(Collection $servers)
     {
@@ -418,7 +418,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
@@ -441,7 +441,7 @@ trait CarrierTrait
      * Replace ratingProfiles
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
-     * @return self
+     * @return static
      */
     public function replaceRatingProfiles(Collection $ratingProfiles)
     {
@@ -490,7 +490,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat)
     {
@@ -513,7 +513,7 @@ trait CarrierTrait
      * Replace tpCdrStats
      *
      * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[] $tpCdrStats
-     * @return self
+     * @return static
      */
     public function replaceTpCdrStats(Collection $tpCdrStats)
     {

@@ -53,7 +53,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingTagTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
@@ -68,7 +68,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings);
 
@@ -84,7 +84,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
      *
-     * @return RoutingTagTrait
+     * @return static
      */
     public function addRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany);
 
@@ -99,7 +99,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
      * Replace relCompanies
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relCompanies
-     * @return self
+     * @return static
      */
     public function replaceRelCompanies(Collection $relCompanies);
 

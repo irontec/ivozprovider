@@ -72,7 +72,7 @@ interface RoutingPatternInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
@@ -87,7 +87,7 @@ interface RoutingPatternInterface extends EntityInterface
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings);
 
@@ -103,7 +103,7 @@ interface RoutingPatternInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup);
 
@@ -118,7 +118,7 @@ interface RoutingPatternInterface extends EntityInterface
      * Replace relPatternGroups
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
-     * @return self
+     * @return static
      */
     public function replaceRelPatternGroups(Collection $relPatternGroups);
 
@@ -134,7 +134,7 @@ interface RoutingPatternInterface extends EntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule);
 
@@ -149,7 +149,7 @@ interface RoutingPatternInterface extends EntityInterface
      * Replace lcrRules
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
-     * @return self
+     * @return static
      */
     public function replaceLcrRules(Collection $lcrRules);
 

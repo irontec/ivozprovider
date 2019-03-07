@@ -24,7 +24,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     /**
      * Get this Hungroup related users
-     * @return UserInterface[]
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getHuntGroupUsersArray();
 
@@ -174,7 +174,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface $huntGroupsRelUser
      *
-     * @return HuntGroupTrait
+     * @return static
      */
     public function addHuntGroupsRelUser(\Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface $huntGroupsRelUser);
 
@@ -189,7 +189,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * Replace huntGroupsRelUsers
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[] $huntGroupsRelUsers
-     * @return self
+     * @return static
      */
     public function replaceHuntGroupsRelUsers(Collection $huntGroupsRelUsers);
 

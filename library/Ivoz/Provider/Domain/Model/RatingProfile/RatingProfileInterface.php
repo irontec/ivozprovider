@@ -96,7 +96,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
      *
-     * @return RatingProfileTrait
+     * @return static
      */
     public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
 
@@ -111,7 +111,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
      * Replace tpRatingProfiles
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
-     * @return self
+     * @return static
      */
     public function replaceTpRatingProfiles(Collection $tpRatingProfiles);
 

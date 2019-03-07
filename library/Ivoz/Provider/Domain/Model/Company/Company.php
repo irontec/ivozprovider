@@ -380,7 +380,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * @return FeatureInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface[]
      */
     public function getFeatures()
     {

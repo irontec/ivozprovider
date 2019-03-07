@@ -42,7 +42,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllow();
 
     /**
-     * @return PsEndpointInterface
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      */
     public function getAstPsEndpoint();
 
@@ -157,7 +157,7 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint
      *
-     * @return TerminalTrait
+     * @return static
      */
     public function addAstPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint);
 
@@ -172,7 +172,7 @@ interface TerminalInterface extends LoggableEntityInterface
      * Replace astPsEndpoints
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $astPsEndpoints
-     * @return self
+     * @return static
      */
     public function replaceAstPsEndpoints(Collection $astPsEndpoints);
 
@@ -188,7 +188,7 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return TerminalTrait
+     * @return static
      */
     public function addUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
@@ -203,7 +203,7 @@ interface TerminalInterface extends LoggableEntityInterface
      * Replace users
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
-     * @return self
+     * @return static
      */
     public function replaceUsers(Collection $users);
 

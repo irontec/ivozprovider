@@ -11,8 +11,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * guid
-     * @var string
+     * @var guid
      */
     private $requestId;
 
@@ -42,8 +41,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $microtime;
 
     /**
-     * guid
-     * @var string
+     * @var guid
      */
     private $id;
 
@@ -92,7 +90,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $requestId
+     * @param guid $requestId
      *
      * @return static
      */
@@ -104,7 +102,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return guid
      */
     public function getRequestId()
     {
@@ -212,8 +210,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * guid
-     * @param string $id
+     * @param guid $id
      *
      * @return static
      */
@@ -225,7 +222,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return guid
      */
     public function getId()
     {

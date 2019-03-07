@@ -41,7 +41,7 @@ trait RatingPlanTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -65,7 +65,7 @@ trait RatingPlanTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -107,7 +107,7 @@ trait RatingPlanTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
      *
-     * @return self
+     * @return static
      */
     public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null)
     {
@@ -131,7 +131,7 @@ trait RatingPlanTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
      *
-     * @return self
+     * @return static
      */
     public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null)
     {

@@ -213,7 +213,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return ConditionalRouteTrait
+     * @return static
      */
     public function addCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition);
 
@@ -228,7 +228,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
      * Replace conditions
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface[] $conditions
-     * @return self
+     * @return static
      */
     public function replaceConditions(Collection $conditions);
 

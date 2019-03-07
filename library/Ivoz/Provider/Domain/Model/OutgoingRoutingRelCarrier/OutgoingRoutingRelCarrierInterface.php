@@ -50,7 +50,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
      *
-     * @return OutgoingRoutingRelCarrierTrait
+     * @return static
      */
     public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
 
@@ -65,7 +65,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      * Replace tpRatingProfiles
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
-     * @return self
+     * @return static
      */
     public function replaceTpRatingProfiles(Collection $tpRatingProfiles);
 
