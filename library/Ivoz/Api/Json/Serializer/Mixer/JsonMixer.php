@@ -8,12 +8,8 @@ class JsonMixer implements MixerInterface
 {
     const FORMAT = 'json';
 
-    public function __construct()
-    {
-    }
-
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function supportsFormat($format = null)
     {
@@ -21,7 +17,7 @@ class JsonMixer implements MixerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function mix(array $segments)
     {

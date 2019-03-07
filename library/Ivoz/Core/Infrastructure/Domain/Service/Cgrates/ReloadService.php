@@ -14,7 +14,7 @@ class ReloadService extends AbstractApiBasedService
      */
     public function __construct(ClientInterface $jsonRpcClient)
     {
-        return parent::__construct(
+        parent::__construct(
             $jsonRpcClient
         );
     }

@@ -36,7 +36,7 @@ class TokenAuthenticator extends JWTTokenAuthenticator
         $this->jwtManager = $jwtManager;
         $this->tokenStorage = $tokenStorage;
 
-        return parent::__construct(...func_get_args());
+        parent::__construct($jwtManager, $dispatcher, $tokenExtractor);
     }
 
     /**

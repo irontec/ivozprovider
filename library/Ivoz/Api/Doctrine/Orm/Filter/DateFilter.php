@@ -32,7 +32,7 @@ class DateFilter extends BaseDateFilter
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->requestStack = $requestStack;
-        return parent::__construct($managerRegistry, $requestStack, $logger, $properties);
+        parent::__construct($managerRegistry, $requestStack, $logger, $properties);
     }
 
     /**

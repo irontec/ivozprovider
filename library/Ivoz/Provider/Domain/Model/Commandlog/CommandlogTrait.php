@@ -11,10 +11,10 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 trait CommandlogTrait
 {
     /**
-     * @var guid
+     * guid
+     * @var string
      */
     protected $id;
-
 
     /**
      * Constructor

@@ -10,7 +10,7 @@ class DateTimeHelper
      * @param \DateTimeZone|null $initialTimeZone
      * @return string
      */
-    public function stringToUtc(
+    public static function stringToUtc(
         string $value,
         string $format = 'Y-m-d H:i:s',
         \DateTimeZone $initialTimeZone = null

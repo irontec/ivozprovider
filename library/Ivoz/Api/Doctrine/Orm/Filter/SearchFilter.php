@@ -37,7 +37,7 @@ class SearchFilter extends BaseSearchFilter
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->requestStack = $requestStack;
-        return parent::__construct(
+        parent::__construct(
             $managerRegistry,
             $requestStack,
             $iriConverter,

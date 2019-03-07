@@ -7,22 +7,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpDestinationRateInterface extends EntityInterface
 {
     /**
-     * Validate RateIncrement has valid unit
-     *
-     * @param string $rateIncrement
-     * @return $this|TpRateAbstract|TpRateInterface
-     */
-    public function setRateIncrement($rateIncrement);
-
-    /**
-     * Validate GroupIntervalStart has valid unit
-     *
-     * @param string $groupIntervalStart
-     * @return $this|TpRateAbstract|TpRateInterface
-     */
-    public function setGroupIntervalStart($groupIntervalStart);
-
-    /**
      * Get tpid
      *
      * @return string

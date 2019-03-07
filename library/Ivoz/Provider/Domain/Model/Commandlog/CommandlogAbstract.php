@@ -14,7 +14,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CommandlogAbstract
 {
     /**
-     * @var guid
+     * guid
+     * @var string
      */
     protected $requestId;
 
@@ -206,9 +207,9 @@ abstract class CommandlogAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * Set requestId
+     * Set guid requestId
      *
-     * @param guid $requestId
+     * @param string $requestId
      *
      * @return self
      */
@@ -224,7 +225,7 @@ abstract class CommandlogAbstract
     /**
      * Get requestId
      *
-     * @return guid
+     * @return string
      */
     public function getRequestId()
     {

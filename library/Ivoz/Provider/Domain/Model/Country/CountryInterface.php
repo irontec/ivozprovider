@@ -13,13 +13,6 @@ interface CountryInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Check if a country uses Area code
-     *
-     * return true if the country has area code in its e164 pattern
-     */
-    public function hasAreaCode();
-
-    /**
      * Get code
      *
      * @return string

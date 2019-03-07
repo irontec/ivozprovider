@@ -29,9 +29,6 @@ class ARIConnector
     protected $_user;
     protected $_pass;
 
-    /**
-     * @var Zend_Log
-     */
     protected $_logger;
 
     /**
@@ -61,7 +58,7 @@ class ARIConnector
      * Initialize connection handler options that can be used for multiple
      * further requests.
      *
-     * @return cURL handler on success, FALSE otherwise
+     * @return resource cURL handler on success, FALSE otherwise
      */
     private function _createConnectionHandler()
     {

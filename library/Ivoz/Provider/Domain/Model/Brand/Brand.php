@@ -147,17 +147,4 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
             $this->getId()
         );
     }
-
-    public function getServiceByIden(string $iden)
-    {
-        $service = $this->serviceRepsitory->getByIden($iden);
-
-        $services = $this->getServices(
-            CriteriaHelper::fromArray([
-                'service' => $service
-            ])
-        );
-
-        return array_shift($services);
-    }
 }

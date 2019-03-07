@@ -4,48 +4,29 @@ namespace Ivoz\Provider\Application\Service\MusicOnHold;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class StoragePathResolver extends CommonStoragePathResolver
 {
-    /**
-     * @var string
-     */
-    protected $localStoragePath;
-
-    /**
-     * @var string
-     */
-    protected $basePath;
-
-    /**
-     * @var bool
-     */
-    protected $storeInBaseFolder = false;
-
-    /**
-     * @var bool
-     */
-    protected $keepExtension = true;
-
-    /**
-     * @var string|null
-     */
-    protected $originalFileName;
-
     public function __construct(
         string $localStoragePath,
         string $basePath
     ) {
-        $this->localStoragePath = $this->sanitizePath($localStoragePath);
-        $this->basePath = $this->sanitizePath($basePath);
+        parent::__construct(
+            $localStoragePath,
+            $basePath,
+            false,
+            true
+        );
     }
 
     /**
      * @param EntityInterface $entity
      * @return null | string
      */
-    public function getFilePath(EntityInterface $entity)/* @todo : ?string */
+    public function getFilePath(EntityInterface $entity)
     {
+        /** @var MusicOnHoldInterface $entity */
         $id = $entity->getId();
         if (!$id) {
             return null;
