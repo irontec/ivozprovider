@@ -90,7 +90,7 @@ class InterfaceGenerator extends EntityGenerator
         );
 
         $code = str_replace($placeHolders, $replacements, static::$classTemplate);
-        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
+        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'ArrayCollection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
         $classTrait = $metadata->name . 'Trait';
@@ -129,7 +129,8 @@ class InterfaceGenerator extends EntityGenerator
         );
 
         if ($useCollections) {
-            $response[] = 'use Doctrine\\Common\Collections\\Collection;';
+            $response[] = 'use Doctrine\Common\Collections\Criteria;';
+            $response[] = 'use Doctrine\\Common\Collections\\ArrayCollection;';
         }
 
         return "\n". implode("\n", $response) ."\n";
