@@ -15,12 +15,12 @@ abstract class DestinationRateAbstract
 {
     /**
      * column: rate
-     * @var string
+     * @var float
      */
     protected $cost;
 
     /**
-     * @var string
+     * @var float
      */
     protected $connectFee;
 
@@ -221,7 +221,7 @@ abstract class DestinationRateAbstract
     /**
      * Set cost
      *
-     * @param string $cost
+     * @param float $cost
      *
      * @return self
      */
@@ -239,7 +239,7 @@ abstract class DestinationRateAbstract
     /**
      * Get cost
      *
-     * @return string
+     * @return float
      */
     public function getCost()
     {
@@ -249,7 +249,7 @@ abstract class DestinationRateAbstract
     /**
      * Set connectFee
      *
-     * @param string $connectFee
+     * @param float $connectFee
      *
      * @return self
      */
@@ -267,7 +267,7 @@ abstract class DestinationRateAbstract
     /**
      * Get connectFee
      *
-     * @return string
+     * @return float
      */
     public function getConnectFee()
     {

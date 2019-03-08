@@ -58,14 +58,14 @@ interface DestinationRateInterface extends LoggableEntityInterface
     /**
      * Get cost
      *
-     * @return string
+     * @return float
      */
     public function getCost();
 
     /**
      * Get connectFee
      *
-     * @return string
+     * @return float
      */
     public function getConnectFee();
 

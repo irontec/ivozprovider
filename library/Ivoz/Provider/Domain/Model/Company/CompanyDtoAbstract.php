@@ -101,7 +101,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $billingMethod = 'postpaid';
 
     /**
-     * @var string
+     * @var float
      */
     private $balance = 0;
 
@@ -719,7 +719,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $balance
+     * @param float $balance
      *
      * @return static
      */
@@ -731,7 +731,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getBalance()
     {

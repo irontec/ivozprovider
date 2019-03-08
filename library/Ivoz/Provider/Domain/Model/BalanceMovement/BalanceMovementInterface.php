@@ -15,14 +15,14 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Get amount
      *
-     * @return string | null
+     * @return float | null
      */
     public function getAmount();
 
     /**
      * Get balance
      *
-     * @return string | null
+     * @return float | null
      */
     public function getBalance();
 

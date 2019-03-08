@@ -30,7 +30,7 @@ interface RatingPlanInterface extends EntityInterface
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight();
 

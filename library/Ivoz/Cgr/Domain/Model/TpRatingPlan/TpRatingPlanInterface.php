@@ -37,7 +37,7 @@ interface TpRatingPlanInterface extends EntityInterface
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight();
 

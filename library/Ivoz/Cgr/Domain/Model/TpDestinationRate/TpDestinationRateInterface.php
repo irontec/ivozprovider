@@ -67,7 +67,7 @@ interface TpDestinationRateInterface extends EntityInterface
     /**
      * Get maxCost
      *
-     * @return string
+     * @return float
      */
     public function getMaxCost();
 

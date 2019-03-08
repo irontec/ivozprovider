@@ -49,7 +49,7 @@ abstract class TpDestinationRateAbstract
 
     /**
      * column: max_cost
-     * @var string
+     * @var float
      */
     protected $maxCost = 0.0;
 
@@ -422,7 +422,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Set maxCost
      *
-     * @param string $maxCost
+     * @param float $maxCost
      *
      * @return self
      */
@@ -440,7 +440,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Get maxCost
      *
-     * @return string
+     * @return float
      */
     public function getMaxCost()
     {

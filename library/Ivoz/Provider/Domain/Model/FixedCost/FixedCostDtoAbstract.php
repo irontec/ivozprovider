@@ -21,7 +21,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     private $description;
 
     /**
-     * @var string
+     * @var float
      */
     private $cost;
 
@@ -116,7 +116,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $cost
+     * @param float $cost
      *
      * @return static
      */
@@ -128,7 +128,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getCost()
     {

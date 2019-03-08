@@ -146,7 +146,7 @@ abstract class VoicemailAbstract
     protected $maxmsg;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $volgain;
 
@@ -1187,7 +1187,7 @@ abstract class VoicemailAbstract
     /**
      * Set volgain
      *
-     * @param string $volgain
+     * @param float $volgain
      *
      * @return self
      */
@@ -1208,7 +1208,7 @@ abstract class VoicemailAbstract
     /**
      * Get volgain
      *
-     * @return string | null
+     * @return float | null
      */
     public function getVolgain()
     {

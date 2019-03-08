@@ -124,7 +124,7 @@ abstract class CompanyAbstract
     protected $billingMethod = 'postpaid';
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $balance = 0;
 
@@ -1019,7 +1019,7 @@ abstract class CompanyAbstract
     /**
      * Set balance
      *
-     * @param string $balance
+     * @param float $balance
      *
      * @return self
      */
@@ -1040,7 +1040,7 @@ abstract class CompanyAbstract
     /**
      * Get balance
      *
-     * @return string | null
+     * @return float | null
      */
     public function getBalance()
     {

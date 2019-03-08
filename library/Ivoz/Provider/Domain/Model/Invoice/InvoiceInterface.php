@@ -50,21 +50,21 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Get total
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTotal();
 
     /**
      * Get taxRate
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTaxRate();
 
     /**
      * Get totalWithTax
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTotalWithTax();
 

@@ -52,7 +52,7 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Get balance
      *
-     * @return string | null
+     * @return float | null
      */
     public function getBalance();
 
