@@ -29,7 +29,7 @@ trait CallCsvSchedulerTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallCsvSchedulerDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -37,9 +37,7 @@ trait CallCsvSchedulerTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallCsvSchedulerDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
         $self->sanitizeValues();
@@ -53,7 +51,7 @@ trait CallCsvSchedulerTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallCsvSchedulerDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -61,9 +59,6 @@ trait CallCsvSchedulerTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallCsvSchedulerDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();

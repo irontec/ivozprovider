@@ -29,7 +29,7 @@ trait IvrEntryTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrEntryDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -37,9 +37,7 @@ trait IvrEntryTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrEntryDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
         $self->sanitizeValues();
@@ -53,7 +51,7 @@ trait IvrEntryTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrEntryDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -61,9 +59,6 @@ trait IvrEntryTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrEntryDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();

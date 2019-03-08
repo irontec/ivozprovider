@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface DdiProviderInterface extends LoggableEntityInterface
 {
@@ -85,14 +86,14 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Replace ddiProviderRegistrations
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[] $ddiProviderRegistrations
+     * @param ArrayCollection $ddiProviderRegistrations of Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
      * @return static
      */
-    public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations);
+    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations);
 
     /**
      * Get ddiProviderRegistrations
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[]
      */
     public function getDdiProviderRegistrations(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -116,14 +117,14 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Replace ddiProviderAddresses
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[] $ddiProviderAddresses
+     * @param ArrayCollection $ddiProviderAddresses of Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
      * @return static
      */
-    public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses);
+    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses);
 
     /**
      * Get ddiProviderAddresses
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[]
      */
     public function getDdiProviderAddresses(\Doctrine\Common\Collections\Criteria $criteria = null);

@@ -147,16 +147,13 @@ abstract class HolidayDateAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param HolidayDateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto HolidayDateDto
-         */
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
 
         $self = new static(
@@ -184,16 +181,13 @@ abstract class HolidayDateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param HolidayDateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto HolidayDateDto
-         */
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
 
         $this

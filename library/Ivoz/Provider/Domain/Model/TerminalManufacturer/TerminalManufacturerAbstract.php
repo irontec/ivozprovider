@@ -97,16 +97,13 @@ abstract class TerminalManufacturerAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalManufacturerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalManufacturerDto
-         */
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
         $self = new static(
@@ -122,16 +119,13 @@ abstract class TerminalManufacturerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalManufacturerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalManufacturerDto
-         */
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
         $this

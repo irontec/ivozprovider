@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait InvoiceSchedulerTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relFixedCosts;
 
@@ -38,7 +37,7 @@ trait InvoiceSchedulerTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceSchedulerDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait InvoiceSchedulerTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceSchedulerDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelFixedCosts())) {
             $self->replaceRelFixedCosts(
@@ -68,7 +65,7 @@ trait InvoiceSchedulerTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceSchedulerDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait InvoiceSchedulerTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceSchedulerDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelFixedCosts())) {
             $this->replaceRelFixedCosts(
@@ -140,10 +134,10 @@ trait InvoiceSchedulerTrait
     /**
      * Replace relFixedCosts
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts
+     * @param ArrayCollection $relFixedCosts of Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface
      * @return static
      */
-    public function replaceRelFixedCosts(Collection $relFixedCosts)
+    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait InvoiceSchedulerTrait
 
     /**
      * Get relFixedCosts
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[]
      */
     public function getRelFixedCosts(Criteria $criteria = null)

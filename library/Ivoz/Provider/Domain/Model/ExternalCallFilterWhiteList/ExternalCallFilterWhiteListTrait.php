@@ -29,7 +29,7 @@ trait ExternalCallFilterWhiteListTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterWhiteListDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -37,9 +37,7 @@ trait ExternalCallFilterWhiteListTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterWhiteListDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
         $self->sanitizeValues();
@@ -53,7 +51,7 @@ trait ExternalCallFilterWhiteListTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterWhiteListDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -61,9 +59,6 @@ trait ExternalCallFilterWhiteListTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterWhiteListDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();

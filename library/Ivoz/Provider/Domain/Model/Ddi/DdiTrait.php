@@ -29,7 +29,7 @@ trait DdiTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -37,9 +37,7 @@ trait DdiTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
         $self->sanitizeValues();
@@ -53,7 +51,7 @@ trait DdiTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -61,9 +59,6 @@ trait DdiTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();

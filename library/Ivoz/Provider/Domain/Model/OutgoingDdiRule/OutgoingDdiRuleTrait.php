@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait OutgoingDdiRuleTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $patterns;
 
@@ -38,7 +37,7 @@ trait OutgoingDdiRuleTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingDdiRuleDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait OutgoingDdiRuleTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingDdiRuleDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPatterns())) {
             $self->replacePatterns(
@@ -68,7 +65,7 @@ trait OutgoingDdiRuleTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingDdiRuleDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait OutgoingDdiRuleTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingDdiRuleDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPatterns())) {
             $this->replacePatterns(
@@ -140,10 +134,10 @@ trait OutgoingDdiRuleTrait
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[] $patterns
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface
      * @return static
      */
-    public function replacePatterns(Collection $patterns)
+    public function replacePatterns(ArrayCollection $patterns)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait OutgoingDdiRuleTrait
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[]
      */
     public function getPatterns(Criteria $criteria = null)

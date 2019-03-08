@@ -150,16 +150,13 @@ abstract class ExtensionAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExtensionDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExtensionDto
-         */
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
         $self = new static(
@@ -187,16 +184,13 @@ abstract class ExtensionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExtensionDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExtensionDto
-         */
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
         $this

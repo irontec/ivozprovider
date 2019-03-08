@@ -29,7 +29,7 @@ trait FaxesInOutTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxesInOutDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -37,9 +37,7 @@ trait FaxesInOutTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxesInOutDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
         $self->sanitizeValues();
@@ -53,7 +51,7 @@ trait FaxesInOutTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxesInOutDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -61,9 +59,6 @@ trait FaxesInOutTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxesInOutDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();

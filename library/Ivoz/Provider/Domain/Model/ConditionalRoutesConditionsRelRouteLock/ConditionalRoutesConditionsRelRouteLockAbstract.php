@@ -89,16 +89,13 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelRouteLockDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelRouteLockDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $self = new static();
@@ -115,16 +112,13 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelRouteLockDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelRouteLockDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $this

@@ -166,16 +166,13 @@ abstract class ExternalCallFilterAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterDto
-         */
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
 
         $self = new static(
@@ -206,16 +203,13 @@ abstract class ExternalCallFilterAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterDto
-         */
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
 
         $this

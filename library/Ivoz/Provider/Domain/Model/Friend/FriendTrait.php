@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,12 +18,12 @@ trait FriendTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $psEndpoints;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $patterns;
 
@@ -44,7 +43,7 @@ trait FriendTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FriendDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -52,9 +51,7 @@ trait FriendTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FriendDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoints())) {
             $self->replacePsEndpoints(
@@ -82,7 +79,7 @@ trait FriendTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FriendDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -90,9 +87,6 @@ trait FriendTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FriendDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoints())) {
             $this->replacePsEndpoints(
@@ -161,10 +155,10 @@ trait FriendTrait
     /**
      * Replace psEndpoints
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
+     * @param ArrayCollection $psEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      * @return static
      */
-    public function replacePsEndpoints(Collection $psEndpoints)
+    public function replacePsEndpoints(ArrayCollection $psEndpoints)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -194,7 +188,7 @@ trait FriendTrait
 
     /**
      * Get psEndpoints
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(Criteria $criteria = null)
@@ -233,10 +227,10 @@ trait FriendTrait
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[] $patterns
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface
      * @return static
      */
-    public function replacePatterns(Collection $patterns)
+    public function replacePatterns(ArrayCollection $patterns)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -266,7 +260,7 @@ trait FriendTrait
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(Criteria $criteria = null)

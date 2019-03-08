@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -24,17 +23,17 @@ trait OutgoingRoutingTrait
     protected $tpLcrRule;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $lcrRules;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $lcrRuleTargets;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relCarriers;
 
@@ -55,7 +54,7 @@ trait OutgoingRoutingTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -63,9 +62,7 @@ trait OutgoingRoutingTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getLcrRules())) {
             $self->replaceLcrRules(
@@ -101,7 +98,7 @@ trait OutgoingRoutingTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -109,9 +106,6 @@ trait OutgoingRoutingTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getLcrRules())) {
             $this->replaceLcrRules(
@@ -211,10 +205,10 @@ trait OutgoingRoutingTrait
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
+     * @param ArrayCollection $lcrRules of Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
      * @return static
      */
-    public function replaceLcrRules(Collection $lcrRules)
+    public function replaceLcrRules(ArrayCollection $lcrRules)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -244,7 +238,7 @@ trait OutgoingRoutingTrait
 
     /**
      * Get lcrRules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(Criteria $criteria = null)
@@ -283,10 +277,10 @@ trait OutgoingRoutingTrait
     /**
      * Replace lcrRuleTargets
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
+     * @param ArrayCollection $lcrRuleTargets of Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface
      * @return static
      */
-    public function replaceLcrRuleTargets(Collection $lcrRuleTargets)
+    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -316,7 +310,7 @@ trait OutgoingRoutingTrait
 
     /**
      * Get lcrRuleTargets
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
      */
     public function getLcrRuleTargets(Criteria $criteria = null)
@@ -355,10 +349,10 @@ trait OutgoingRoutingTrait
     /**
      * Replace relCarriers
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
+     * @param ArrayCollection $relCarriers of Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
      * @return static
      */
-    public function replaceRelCarriers(Collection $relCarriers)
+    public function replaceRelCarriers(ArrayCollection $relCarriers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -388,7 +382,7 @@ trait OutgoingRoutingTrait
 
     /**
      * Get relCarriers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
      */
     public function getRelCarriers(Criteria $criteria = null)

@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface TerminalInterface extends LoggableEntityInterface
 {
@@ -171,14 +172,14 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Replace astPsEndpoints
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $astPsEndpoints
+     * @param ArrayCollection $astPsEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      * @return static
      */
-    public function replaceAstPsEndpoints(Collection $astPsEndpoints);
+    public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints);
 
     /**
      * Get astPsEndpoints
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getAstPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -202,14 +203,14 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Replace users
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
+     * @param ArrayCollection $users of Ivoz\Provider\Domain\Model\User\UserInterface
      * @return static
      */
-    public function replaceUsers(Collection $users);
+    public function replaceUsers(ArrayCollection $users);
 
     /**
      * Get users
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);

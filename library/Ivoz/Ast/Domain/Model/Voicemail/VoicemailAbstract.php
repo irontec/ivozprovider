@@ -258,16 +258,13 @@ abstract class VoicemailAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param VoicemailDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto VoicemailDto
-         */
         Assertion::isInstanceOf($dto, VoicemailDto::class);
 
         $self = new static(
@@ -318,16 +315,13 @@ abstract class VoicemailAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param VoicemailDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto VoicemailDto
-         */
         Assertion::isInstanceOf($dto, VoicemailDto::class);
 
         $this

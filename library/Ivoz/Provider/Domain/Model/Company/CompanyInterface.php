@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface CompanyInterface extends LoggableEntityInterface
 {
@@ -523,14 +524,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace extensions
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[] $extensions
+     * @param ArrayCollection $extensions of Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      * @return static
      */
-    public function replaceExtensions(Collection $extensions);
+    public function replaceExtensions(ArrayCollection $extensions);
 
     /**
      * Get extensions
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[]
      */
     public function getExtensions(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -554,14 +555,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace ddis
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
+     * @param ArrayCollection $ddis of Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      * @return static
      */
-    public function replaceDdis(Collection $ddis);
+    public function replaceDdis(ArrayCollection $ddis);
 
     /**
      * Get ddis
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -585,14 +586,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace friends
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
+     * @param ArrayCollection $friends of Ivoz\Provider\Domain\Model\Friend\FriendInterface
      * @return static
      */
-    public function replaceFriends(Collection $friends);
+    public function replaceFriends(ArrayCollection $friends);
 
     /**
      * Get friends
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -616,14 +617,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace companyServices
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[] $companyServices
+     * @param ArrayCollection $companyServices of Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface
      * @return static
      */
-    public function replaceCompanyServices(Collection $companyServices);
+    public function replaceCompanyServices(ArrayCollection $companyServices);
 
     /**
      * Get companyServices
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[]
      */
     public function getCompanyServices(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -647,14 +648,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace terminals
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
+     * @param ArrayCollection $terminals of Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
      * @return static
      */
-    public function replaceTerminals(Collection $terminals);
+    public function replaceTerminals(ArrayCollection $terminals);
 
     /**
      * Get terminals
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -678,14 +679,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace ratingProfiles
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
+     * @param ArrayCollection $ratingProfiles of Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
      * @return static
      */
-    public function replaceRatingProfiles(Collection $ratingProfiles);
+    public function replaceRatingProfiles(ArrayCollection $ratingProfiles);
 
     /**
      * Get ratingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
      */
     public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -709,14 +710,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
+     * @param ArrayCollection $musicsOnHold of Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
      * @return static
      */
-    public function replaceMusicsOnHold(Collection $musicsOnHold);
+    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold);
 
     /**
      * Get musicsOnHold
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -740,14 +741,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace recordings
      *
-     * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[] $recordings
+     * @param ArrayCollection $recordings of Ivoz\Provider\Domain\Model\Recording\RecordingInterface
      * @return static
      */
-    public function replaceRecordings(Collection $recordings);
+    public function replaceRecordings(ArrayCollection $recordings);
 
     /**
      * Get recordings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[]
      */
     public function getRecordings(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -771,14 +772,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace relFeatures
      *
-     * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[] $relFeatures
+     * @param ArrayCollection $relFeatures of Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface
      * @return static
      */
-    public function replaceRelFeatures(Collection $relFeatures);
+    public function replaceRelFeatures(ArrayCollection $relFeatures);
 
     /**
      * Get relFeatures
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[]
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -802,14 +803,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace relCodecs
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
+     * @param ArrayCollection $relCodecs of Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface
      * @return static
      */
-    public function replaceRelCodecs(Collection $relCodecs);
+    public function replaceRelCodecs(ArrayCollection $relCodecs);
 
     /**
      * Get relCodecs
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
      */
     public function getRelCodecs(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -833,14 +834,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Replace relRoutingTags
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
+     * @param ArrayCollection $relRoutingTags of Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
      * @return static
      */
-    public function replaceRelRoutingTags(Collection $relRoutingTags);
+    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags);
 
     /**
      * Get relRoutingTags
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);

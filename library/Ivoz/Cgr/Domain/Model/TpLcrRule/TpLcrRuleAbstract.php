@@ -174,16 +174,13 @@ abstract class TpLcrRuleAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpLcrRuleDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpLcrRuleDto
-         */
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
         $self = new static(
@@ -213,16 +210,13 @@ abstract class TpLcrRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpLcrRuleDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpLcrRuleDto
-         */
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
         $this

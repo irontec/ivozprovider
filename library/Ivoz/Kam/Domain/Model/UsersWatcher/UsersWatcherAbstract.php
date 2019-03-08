@@ -130,16 +130,13 @@ abstract class UsersWatcherAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersWatcherDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersWatcherDto
-         */
         Assertion::isInstanceOf($dto, UsersWatcherDto::class);
 
         $self = new static(
@@ -162,16 +159,13 @@ abstract class UsersWatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersWatcherDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersWatcherDto
-         */
         Assertion::isInstanceOf($dto, UsersWatcherDto::class);
 
         $this

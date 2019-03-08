@@ -137,16 +137,13 @@ abstract class UsersXcapAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersXcapDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersXcapDto
-         */
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
         $self = new static(
@@ -167,16 +164,13 @@ abstract class UsersXcapAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersXcapDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersXcapDto
-         */
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
         $this

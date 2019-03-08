@@ -180,16 +180,13 @@ abstract class BillableCallAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BillableCallDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BillableCallDto
-         */
         Assertion::isInstanceOf($dto, BillableCallDto::class);
 
         $self = new static(
@@ -225,16 +222,13 @@ abstract class BillableCallAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BillableCallDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BillableCallDto
-         */
         Assertion::isInstanceOf($dto, BillableCallDto::class);
 
         $this

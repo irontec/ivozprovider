@@ -89,16 +89,13 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternGroupsRelPatternDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternGroupsRelPatternDto
-         */
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $self = new static();
@@ -115,16 +112,13 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternGroupsRelPatternDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternGroupsRelPatternDto
-         */
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $this

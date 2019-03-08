@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface ConditionalRouteInterface extends LoggableEntityInterface
 {
@@ -227,14 +228,14 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     /**
      * Replace conditions
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface[] $conditions
+     * @param ArrayCollection $conditions of Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
      * @return static
      */
-    public function replaceConditions(Collection $conditions);
+    public function replaceConditions(ArrayCollection $conditions);
 
     /**
      * Get conditions
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface[]
      */
     public function getConditions(\Doctrine\Common\Collections\Criteria $criteria = null);

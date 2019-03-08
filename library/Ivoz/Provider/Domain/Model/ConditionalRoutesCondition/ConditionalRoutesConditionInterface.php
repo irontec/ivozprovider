@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 {
@@ -291,14 +292,14 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Replace relMatchlists
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $relMatchlists
+     * @param ArrayCollection $relMatchlists of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface
      * @return static
      */
-    public function replaceRelMatchlists(Collection $relMatchlists);
+    public function replaceRelMatchlists(ArrayCollection $relMatchlists);
 
     /**
      * Get relMatchlists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[]
      */
     public function getRelMatchlists(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -322,14 +323,14 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Replace relSchedules
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $relSchedules
+     * @param ArrayCollection $relSchedules of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface
      * @return static
      */
-    public function replaceRelSchedules(Collection $relSchedules);
+    public function replaceRelSchedules(ArrayCollection $relSchedules);
 
     /**
      * Get relSchedules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[]
      */
     public function getRelSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -353,14 +354,14 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Replace relCalendars
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $relCalendars
+     * @param ArrayCollection $relCalendars of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface
      * @return static
      */
-    public function replaceRelCalendars(Collection $relCalendars);
+    public function replaceRelCalendars(ArrayCollection $relCalendars);
 
     /**
      * Get relCalendars
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[]
      */
     public function getRelCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -384,14 +385,14 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Replace relRouteLocks
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[] $relRouteLocks
+     * @param ArrayCollection $relRouteLocks of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface
      * @return static
      */
-    public function replaceRelRouteLocks(Collection $relRouteLocks);
+    public function replaceRelRouteLocks(ArrayCollection $relRouteLocks);
 
     /**
      * Get relRouteLocks
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[]
      */
     public function getRelRouteLocks(\Doctrine\Common\Collections\Criteria $criteria = null);

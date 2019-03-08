@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,17 +18,17 @@ trait UserTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $pickUpRelUsers;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $queueMembers;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $callForwardSettings;
 
@@ -50,7 +49,7 @@ trait UserTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UserDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -58,9 +57,7 @@ trait UserTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UserDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPickUpRelUsers())) {
             $self->replacePickUpRelUsers(
@@ -96,7 +93,7 @@ trait UserTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UserDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -104,9 +101,6 @@ trait UserTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UserDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPickUpRelUsers())) {
             $this->replacePickUpRelUsers(
@@ -182,10 +176,10 @@ trait UserTrait
     /**
      * Replace pickUpRelUsers
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[] $pickUpRelUsers
+     * @param ArrayCollection $pickUpRelUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
      * @return static
      */
-    public function replacePickUpRelUsers(Collection $pickUpRelUsers)
+    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -215,7 +209,7 @@ trait UserTrait
 
     /**
      * Get pickUpRelUsers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getPickUpRelUsers(Criteria $criteria = null)
@@ -254,10 +248,10 @@ trait UserTrait
     /**
      * Replace queueMembers
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[] $queueMembers
+     * @param ArrayCollection $queueMembers of Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
      * @return static
      */
-    public function replaceQueueMembers(Collection $queueMembers)
+    public function replaceQueueMembers(ArrayCollection $queueMembers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -287,7 +281,7 @@ trait UserTrait
 
     /**
      * Get queueMembers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
      */
     public function getQueueMembers(Criteria $criteria = null)
@@ -326,10 +320,10 @@ trait UserTrait
     /**
      * Replace callForwardSettings
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
+     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
      * @return static
      */
-    public function replaceCallForwardSettings(Collection $callForwardSettings)
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -359,7 +353,7 @@ trait UserTrait
 
     /**
      * Get callForwardSettings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(Criteria $criteria = null)

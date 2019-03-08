@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface CallAclInterface extends LoggableEntityInterface
 {
@@ -68,14 +69,14 @@ interface CallAclInterface extends LoggableEntityInterface
     /**
      * Replace relMatchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[] $relMatchLists
+     * @param ArrayCollection $relMatchLists of Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface
      * @return static
      */
-    public function replaceRelMatchLists(Collection $relMatchLists);
+    public function replaceRelMatchLists(ArrayCollection $relMatchLists);
 
     /**
      * Get relMatchLists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[]
      */
     public function getRelMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);

@@ -101,16 +101,13 @@ abstract class DestinationAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationDto
-         */
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
         $name = new Name(
@@ -134,16 +131,13 @@ abstract class DestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationDto
-         */
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
         $name = new Name(

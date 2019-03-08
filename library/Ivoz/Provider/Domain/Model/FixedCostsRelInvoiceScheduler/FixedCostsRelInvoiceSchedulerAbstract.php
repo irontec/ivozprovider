@@ -94,16 +94,13 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostsRelInvoiceSchedulerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostsRelInvoiceSchedulerDto
-         */
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $self = new static();
@@ -121,16 +118,13 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostsRelInvoiceSchedulerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostsRelInvoiceSchedulerDto
-         */
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $this

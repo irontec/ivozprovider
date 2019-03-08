@@ -102,16 +102,13 @@ abstract class RouteLockAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RouteLockDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RouteLockDto
-         */
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
         $self = new static(
@@ -131,16 +128,13 @@ abstract class RouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RouteLockDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RouteLockDto
-         */
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
         $this

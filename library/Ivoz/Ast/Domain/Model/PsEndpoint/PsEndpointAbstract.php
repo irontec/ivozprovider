@@ -204,16 +204,13 @@ abstract class PsEndpointAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PsEndpointDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PsEndpointDto
-         */
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
         $self = new static(
@@ -249,16 +246,13 @@ abstract class PsEndpointAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PsEndpointDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PsEndpointDto
-         */
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
         $this

@@ -190,16 +190,13 @@ abstract class TrunksUacregAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksUacregDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksUacregDto
-         */
         Assertion::isInstanceOf($dto, TrunksUacregDto::class);
 
         $self = new static(
@@ -230,16 +227,13 @@ abstract class TrunksUacregAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksUacregDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksUacregDto
-         */
         Assertion::isInstanceOf($dto, TrunksUacregDto::class);
 
         $this

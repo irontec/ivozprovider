@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait RatingProfileTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $tpRatingProfiles;
 
@@ -38,7 +37,7 @@ trait RatingProfileTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingProfileDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait RatingProfileTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingProfileDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRatingProfiles())) {
             $self->replaceTpRatingProfiles(
@@ -68,7 +65,7 @@ trait RatingProfileTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingProfileDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait RatingProfileTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingProfileDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRatingProfiles())) {
             $this->replaceTpRatingProfiles(
@@ -140,10 +134,10 @@ trait RatingProfileTrait
     /**
      * Replace tpRatingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
+     * @param ArrayCollection $tpRatingProfiles of Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
      * @return static
      */
-    public function replaceTpRatingProfiles(Collection $tpRatingProfiles)
+    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait RatingProfileTrait
 
     /**
      * Get tpRatingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
     public function getTpRatingProfiles(Criteria $criteria = null)

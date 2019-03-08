@@ -167,16 +167,13 @@ abstract class CallForwardSettingAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallForwardSettingDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallForwardSettingDto
-         */
         Assertion::isInstanceOf($dto, CallForwardSettingDto::class);
 
         $self = new static(
@@ -204,16 +201,13 @@ abstract class CallForwardSettingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallForwardSettingDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallForwardSettingDto
-         */
         Assertion::isInstanceOf($dto, CallForwardSettingDto::class);
 
         $this

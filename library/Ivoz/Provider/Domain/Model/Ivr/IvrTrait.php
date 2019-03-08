@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Ivr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,12 +18,12 @@ trait IvrTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $entries;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $excludedExtensions;
 
@@ -44,7 +43,7 @@ trait IvrTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -52,9 +51,7 @@ trait IvrTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getEntries())) {
             $self->replaceEntries(
@@ -82,7 +79,7 @@ trait IvrTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -90,9 +87,6 @@ trait IvrTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getEntries())) {
             $this->replaceEntries(
@@ -161,10 +155,10 @@ trait IvrTrait
     /**
      * Replace entries
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[] $entries
+     * @param ArrayCollection $entries of Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface
      * @return static
      */
-    public function replaceEntries(Collection $entries)
+    public function replaceEntries(ArrayCollection $entries)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -194,7 +188,7 @@ trait IvrTrait
 
     /**
      * Get entries
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[]
      */
     public function getEntries(Criteria $criteria = null)
@@ -233,10 +227,10 @@ trait IvrTrait
     /**
      * Replace excludedExtensions
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[] $excludedExtensions
+     * @param ArrayCollection $excludedExtensions of Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface
      * @return static
      */
-    public function replaceExcludedExtensions(Collection $excludedExtensions)
+    public function replaceExcludedExtensions(ArrayCollection $excludedExtensions)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -266,7 +260,7 @@ trait IvrTrait
 
     /**
      * Get excludedExtensions
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[]
      */
     public function getExcludedExtensions(Criteria $criteria = null)

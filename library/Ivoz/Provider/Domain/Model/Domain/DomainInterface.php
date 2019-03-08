@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Domain;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface DomainInterface extends LoggableEntityInterface
 {
@@ -53,14 +54,14 @@ interface DomainInterface extends LoggableEntityInterface
     /**
      * Replace friends
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
+     * @param ArrayCollection $friends of Ivoz\Provider\Domain\Model\Friend\FriendInterface
      * @return static
      */
-    public function replaceFriends(Collection $friends);
+    public function replaceFriends(ArrayCollection $friends);
 
     /**
      * Get friends
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -84,14 +85,14 @@ interface DomainInterface extends LoggableEntityInterface
     /**
      * Replace residentialDevices
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
+     * @param ArrayCollection $residentialDevices of Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      * @return static
      */
-    public function replaceResidentialDevices(Collection $residentialDevices);
+    public function replaceResidentialDevices(ArrayCollection $residentialDevices);
 
     /**
      * Get residentialDevices
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
      */
     public function getResidentialDevices(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -115,14 +116,14 @@ interface DomainInterface extends LoggableEntityInterface
     /**
      * Replace terminals
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
+     * @param ArrayCollection $terminals of Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
      * @return static
      */
-    public function replaceTerminals(Collection $terminals);
+    public function replaceTerminals(ArrayCollection $terminals);
 
     /**
      * Get terminals
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);

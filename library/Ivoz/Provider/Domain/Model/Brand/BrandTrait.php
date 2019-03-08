@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,42 +18,42 @@ trait BrandTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $companies;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $services;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $urls;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relFeatures;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $residentialDevices;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $musicsOnHold;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $matchLists;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $outgoingRoutings;
 
@@ -80,7 +79,7 @@ trait BrandTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BrandDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -88,9 +87,7 @@ trait BrandTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BrandDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getCompanies())) {
             $self->replaceCompanies(
@@ -166,7 +163,7 @@ trait BrandTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BrandDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -174,9 +171,6 @@ trait BrandTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BrandDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getCompanies())) {
             $this->replaceCompanies(
@@ -287,10 +281,10 @@ trait BrandTrait
     /**
      * Replace companies
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface[] $companies
+     * @param ArrayCollection $companies of Ivoz\Provider\Domain\Model\Company\CompanyInterface
      * @return static
      */
-    public function replaceCompanies(Collection $companies)
+    public function replaceCompanies(ArrayCollection $companies)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -320,7 +314,7 @@ trait BrandTrait
 
     /**
      * Get companies
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface[]
      */
     public function getCompanies(Criteria $criteria = null)
@@ -359,10 +353,10 @@ trait BrandTrait
     /**
      * Replace services
      *
-     * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $services
+     * @param ArrayCollection $services of Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface
      * @return static
      */
-    public function replaceServices(Collection $services)
+    public function replaceServices(ArrayCollection $services)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -392,7 +386,7 @@ trait BrandTrait
 
     /**
      * Get services
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[]
      */
     public function getServices(Criteria $criteria = null)
@@ -431,10 +425,10 @@ trait BrandTrait
     /**
      * Replace urls
      *
-     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[] $urls
+     * @param ArrayCollection $urls of Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface
      * @return static
      */
-    public function replaceUrls(Collection $urls)
+    public function replaceUrls(ArrayCollection $urls)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -464,7 +458,7 @@ trait BrandTrait
 
     /**
      * Get urls
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[]
      */
     public function getUrls(Criteria $criteria = null)
@@ -503,10 +497,10 @@ trait BrandTrait
     /**
      * Replace relFeatures
      *
-     * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[] $relFeatures
+     * @param ArrayCollection $relFeatures of Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface
      * @return static
      */
-    public function replaceRelFeatures(Collection $relFeatures)
+    public function replaceRelFeatures(ArrayCollection $relFeatures)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -536,7 +530,7 @@ trait BrandTrait
 
     /**
      * Get relFeatures
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[]
      */
     public function getRelFeatures(Criteria $criteria = null)
@@ -575,10 +569,10 @@ trait BrandTrait
     /**
      * Replace residentialDevices
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
+     * @param ArrayCollection $residentialDevices of Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      * @return static
      */
-    public function replaceResidentialDevices(Collection $residentialDevices)
+    public function replaceResidentialDevices(ArrayCollection $residentialDevices)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -608,7 +602,7 @@ trait BrandTrait
 
     /**
      * Get residentialDevices
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
      */
     public function getResidentialDevices(Criteria $criteria = null)
@@ -647,10 +641,10 @@ trait BrandTrait
     /**
      * Replace musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
+     * @param ArrayCollection $musicsOnHold of Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
      * @return static
      */
-    public function replaceMusicsOnHold(Collection $musicsOnHold)
+    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -680,7 +674,7 @@ trait BrandTrait
 
     /**
      * Get musicsOnHold
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(Criteria $criteria = null)
@@ -719,10 +713,10 @@ trait BrandTrait
     /**
      * Replace matchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[] $matchLists
+     * @param ArrayCollection $matchLists of Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      * @return static
      */
-    public function replaceMatchLists(Collection $matchLists)
+    public function replaceMatchLists(ArrayCollection $matchLists)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -752,7 +746,7 @@ trait BrandTrait
 
     /**
      * Get matchLists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[]
      */
     public function getMatchLists(Criteria $criteria = null)
@@ -791,10 +785,10 @@ trait BrandTrait
     /**
      * Replace outgoingRoutings
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      * @return static
      */
-    public function replaceOutgoingRoutings(Collection $outgoingRoutings)
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -824,7 +818,7 @@ trait BrandTrait
 
     /**
      * Get outgoingRoutings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(Criteria $criteria = null)

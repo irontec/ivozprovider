@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface NotificationTemplateInterface extends LoggableEntityInterface
 {
@@ -70,14 +71,14 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     /**
      * Replace contents
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[] $contents
+     * @param ArrayCollection $contents of Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
      * @return static
      */
-    public function replaceContents(Collection $contents);
+    public function replaceContents(ArrayCollection $contents);
 
     /**
      * Get contents
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[]
      */
     public function getContents(\Doctrine\Common\Collections\Criteria $criteria = null);

@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface RatingPlanGroupInterface extends LoggableEntityInterface
 {
@@ -113,14 +114,14 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     /**
      * Replace ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[] $ratingPlan
+     * @param ArrayCollection $ratingPlan of Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      * @return static
      */
-    public function replaceRatingPlan(Collection $ratingPlan);
+    public function replaceRatingPlan(ArrayCollection $ratingPlan);
 
     /**
      * Get ratingPlan
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[]
      */
     public function getRatingPlan(\Doctrine\Common\Collections\Criteria $criteria = null);
