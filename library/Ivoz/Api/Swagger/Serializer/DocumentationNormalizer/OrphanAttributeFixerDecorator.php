@@ -40,6 +40,7 @@ class OrphanAttributeFixerDecorator implements NormalizerInterface
     {
         $response = $this->decoratedNormalizer->normalize(...func_get_args());
 
+        $resourceNames = [];
         foreach ($object->getResourceNameCollection() as $resourceName) {
             $resourceNameSegments = explode('\\', $resourceName);
             $resourceNames[$resourceName] = end($resourceNameSegments);
