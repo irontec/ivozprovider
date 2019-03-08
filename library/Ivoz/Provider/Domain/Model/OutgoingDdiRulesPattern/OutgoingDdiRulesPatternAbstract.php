@@ -25,7 +25,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * @var integer
      */
-    protected $priority = '1';
+    protected $priority = 1;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface

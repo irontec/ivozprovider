@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class BalanceMovementAbstract
 {
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $amount = 0;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $balance = 0;
 
@@ -192,7 +192,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set amount
      *
-     * @param string $amount
+     * @param float $amount
      *
      * @return self
      */
@@ -213,7 +213,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get amount
      *
-     * @return string | null
+     * @return float | null
      */
     public function getAmount()
     {
@@ -223,7 +223,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set balance
      *
-     * @param string $balance
+     * @param float $balance
      *
      * @return self
      */
@@ -244,7 +244,7 @@ abstract class BalanceMovementAbstract
     /**
      * Get balance
      *
-     * @return string | null
+     * @return float | null
      */
     public function getBalance()
     {

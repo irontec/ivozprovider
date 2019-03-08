@@ -41,9 +41,9 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $roundingDecimals = 4;
 
     /**
-     * @var string
+     * @var float
      */
-    private $maxCost = '0.000';
+    private $maxCost = 0.0;
 
     /**
      * @var string
@@ -238,7 +238,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param string $maxCost
+     * @param float $maxCost
      *
      * @return static
      */
@@ -250,7 +250,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getMaxCost()
     {

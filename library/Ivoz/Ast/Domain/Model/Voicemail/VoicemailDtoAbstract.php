@@ -141,7 +141,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     private $maxmsg;
 
     /**
-     * @var string
+     * @var float
      */
     private $volgain;
 
@@ -813,7 +813,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $volgain
+     * @param float $volgain
      *
      * @return static
      */
@@ -825,7 +825,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getVolgain()
     {

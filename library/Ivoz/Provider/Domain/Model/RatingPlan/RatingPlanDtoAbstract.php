@@ -11,7 +11,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var string
+     * @var float
      */
     private $weight = 10;
 
@@ -146,7 +146,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $weight
+     * @param float $weight
      *
      * @return static
      */
@@ -158,7 +158,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

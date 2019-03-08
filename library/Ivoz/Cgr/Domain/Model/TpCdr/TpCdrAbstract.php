@@ -107,7 +107,7 @@ abstract class TpCdrAbstract
     protected $costSource;
 
     /**
-     * @var string
+     * @var float
      */
     protected $cost;
 
@@ -872,7 +872,7 @@ abstract class TpCdrAbstract
     /**
      * Set cost
      *
-     * @param string $cost
+     * @param float $cost
      *
      * @return self
      */
@@ -890,7 +890,7 @@ abstract class TpCdrAbstract
     /**
      * Get cost
      *
-     * @return string
+     * @return float
      */
     public function getCost()
     {

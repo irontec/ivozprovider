@@ -29,7 +29,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * @var integer
      */
-    protected $weight = '1';
+    protected $weight = 1;
 
     /**
      * comment: enum:static|lcr

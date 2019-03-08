@@ -96,7 +96,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $costSource;
 
     /**
-     * @var string
+     * @var float
      */
     private $cost;
 
@@ -549,7 +549,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $cost
+     * @param float $cost
      *
      * @return static
      */
@@ -561,7 +561,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getCost()
     {

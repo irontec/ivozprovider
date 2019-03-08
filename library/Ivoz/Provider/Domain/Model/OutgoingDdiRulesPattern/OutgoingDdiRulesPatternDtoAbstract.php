@@ -18,7 +18,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @var integer
      */
-    private $priority = '1';
+    private $priority = 1;
 
     /**
      * @var integer

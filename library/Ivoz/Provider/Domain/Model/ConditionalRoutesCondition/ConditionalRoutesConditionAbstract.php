@@ -26,7 +26,7 @@ abstract class ConditionalRoutesConditionAbstract
     /**
      * @var integer
      */
-    protected $priority = '1';
+    protected $priority = 1;
 
     /**
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension

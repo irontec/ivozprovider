@@ -73,7 +73,7 @@ abstract class TpLcrRuleAbstract
     protected $activationTime;
 
     /**
-     * @var string
+     * @var float
      */
     protected $weight = 10;
 
@@ -602,7 +602,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Set weight
      *
-     * @param string $weight
+     * @param float $weight
      *
      * @return self
      */
@@ -620,7 +620,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

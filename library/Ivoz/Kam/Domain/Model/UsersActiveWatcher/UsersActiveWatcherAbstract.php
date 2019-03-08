@@ -102,7 +102,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @var integer
      */
-    protected $status = '2';
+    protected $status = 2;
 
     /**
      * @var string | null
@@ -112,7 +112,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @var integer
      */
-    protected $version = '0';
+    protected $version = 0;
 
     /**
      * column: socket_info
@@ -152,7 +152,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @var integer
      */
-    protected $flags = '0';
+    protected $flags = 0;
 
     /**
      * column: user_agent

@@ -121,7 +121,7 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
       type: integer
       nullable: false
       options:
-        default: '1'
+        default: 1
         unsigned: true
       column: maxCalls
   manyToOne:

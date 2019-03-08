@@ -28,7 +28,7 @@ Ivoz\Kam\Domain\Model\Rtpengine\RtpengineAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '1'
+        default: 1
     disabled:
       type: boolean
       nullable: false

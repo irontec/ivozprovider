@@ -92,7 +92,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight();
 

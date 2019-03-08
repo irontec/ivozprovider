@@ -43,7 +43,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @var integer
      */
-    private $expires = '0';
+    private $expires = 0;
 
     /**
      * @var boolean

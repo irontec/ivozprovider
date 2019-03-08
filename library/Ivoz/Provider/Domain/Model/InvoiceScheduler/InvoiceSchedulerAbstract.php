@@ -54,7 +54,7 @@ abstract class InvoiceSchedulerAbstract
     protected $nextExecution;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $taxRate;
 
@@ -469,7 +469,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set taxRate
      *
-     * @param string $taxRate
+     * @param float $taxRate
      *
      * @return self
      */
@@ -490,7 +490,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get taxRate
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTaxRate()
     {

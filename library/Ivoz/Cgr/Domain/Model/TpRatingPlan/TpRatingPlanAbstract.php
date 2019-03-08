@@ -36,7 +36,7 @@ abstract class TpRatingPlanAbstract
     protected $timingTag = '*any';
 
     /**
-     * @var string
+     * @var float
      */
     protected $weight = 10;
 
@@ -328,7 +328,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Set weight
      *
-     * @param string $weight
+     * @param float $weight
      *
      * @return self
      */
@@ -346,7 +346,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

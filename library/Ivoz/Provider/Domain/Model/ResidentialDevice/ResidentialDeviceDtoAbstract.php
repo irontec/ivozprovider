@@ -88,7 +88,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var integer
      */
-    private $maxCalls = '1';
+    private $maxCalls = 1;
 
     /**
      * @var integer

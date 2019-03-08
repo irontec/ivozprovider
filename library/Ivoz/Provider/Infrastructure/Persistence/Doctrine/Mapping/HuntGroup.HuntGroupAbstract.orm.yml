@@ -55,7 +55,7 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
       type: integer
       nullable: false
       options:
-        default: '1'
+        default: 1
         unsigned: true
       column: preventMissedCalls
   manyToOne:

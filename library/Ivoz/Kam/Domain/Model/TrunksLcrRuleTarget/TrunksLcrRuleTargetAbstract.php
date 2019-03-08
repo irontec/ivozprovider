@@ -17,7 +17,7 @@ abstract class TrunksLcrRuleTargetAbstract
      * column: lcr_id
      * @var integer
      */
-    protected $lcrId = '1';
+    protected $lcrId = 1;
 
     /**
      * @var integer
@@ -27,7 +27,7 @@ abstract class TrunksLcrRuleTargetAbstract
     /**
      * @var integer
      */
-    protected $weight = '1';
+    protected $weight = 1;
 
     /**
      * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface

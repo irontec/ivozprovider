@@ -81,19 +81,19 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     flags:
       type: integer
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     regDelay:
       type: integer
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
       column: reg_delay
     authHa1:
       type: string

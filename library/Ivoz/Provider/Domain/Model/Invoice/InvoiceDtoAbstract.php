@@ -26,17 +26,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     private $outDate;
 
     /**
-     * @var string
+     * @var float
      */
     private $total;
 
     /**
-     * @var string
+     * @var float
      */
     private $taxRate;
 
     /**
-     * @var string
+     * @var float
      */
     private $totalWithTax;
 
@@ -226,7 +226,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $total
+     * @param float $total
      *
      * @return static
      */
@@ -238,7 +238,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getTotal()
     {
@@ -246,7 +246,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $taxRate
+     * @param float $taxRate
      *
      * @return static
      */
@@ -258,7 +258,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getTaxRate()
     {
@@ -266,7 +266,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $totalWithTax
+     * @param float $totalWithTax
      *
      * @return static
      */
@@ -278,7 +278,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getTotalWithTax()
     {

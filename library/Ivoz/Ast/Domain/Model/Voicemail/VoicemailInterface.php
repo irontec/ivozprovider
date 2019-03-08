@@ -196,7 +196,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     /**
      * Get volgain
      *
-     * @return string | null
+     * @return float | null
      */
     public function getVolgain();
 

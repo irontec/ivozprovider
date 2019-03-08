@@ -35,7 +35,7 @@ abstract class RecordingAbstract
     /**
      * @var float
      */
-    protected $duration = '0.000';
+    protected $duration = 0.0;
 
     /**
      * @var string | null

@@ -42,12 +42,12 @@ abstract class UserAbstract
     /**
      * @var boolean
      */
-    protected $doNotDisturb = '0';
+    protected $doNotDisturb = 0;
 
     /**
      * @var boolean
      */
-    protected $isBoss = '0';
+    protected $isBoss = 0;
 
     /**
      * @var boolean
@@ -57,7 +57,7 @@ abstract class UserAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '0';
+    protected $maxCalls = 0;
 
     /**
      * comment: enum:0|1|2|3

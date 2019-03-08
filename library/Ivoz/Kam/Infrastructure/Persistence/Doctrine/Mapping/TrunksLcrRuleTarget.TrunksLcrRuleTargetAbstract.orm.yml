@@ -10,7 +10,7 @@ Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '1'
+        default: 1
       column: lcr_id
     priority:
       type: smallint
@@ -22,7 +22,7 @@ Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '1'
+        default: 1
   manyToOne:
     rule:
       targetEntity: \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface

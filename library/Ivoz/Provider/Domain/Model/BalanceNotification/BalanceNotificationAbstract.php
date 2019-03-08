@@ -19,7 +19,7 @@ abstract class BalanceNotificationAbstract
     protected $toAddress;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $threshold = 0;
 
@@ -229,7 +229,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Set threshold
      *
-     * @param string $threshold
+     * @param float $threshold
      *
      * @return self
      */
@@ -250,7 +250,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Get threshold
      *
-     * @return string | null
+     * @return float | null
      */
     public function getThreshold()
     {

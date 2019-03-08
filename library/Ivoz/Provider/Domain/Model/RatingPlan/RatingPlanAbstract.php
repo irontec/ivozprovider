@@ -17,7 +17,7 @@ abstract class RatingPlanAbstract
     const TIMINGTYPE_CUSTOM = 'custom';
 
     /**
-     * @var string
+     * @var float
      */
     protected $weight = 10;
 
@@ -264,7 +264,7 @@ abstract class RatingPlanAbstract
     /**
      * Set weight
      *
-     * @param string $weight
+     * @param float $weight
      *
      * @return self
      */
@@ -282,7 +282,7 @@ abstract class RatingPlanAbstract
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

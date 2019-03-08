@@ -46,7 +46,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $nextExecution;
 
     /**
-     * @var string
+     * @var float
      */
     private $taxRate;
 
@@ -278,7 +278,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $taxRate
+     * @param float $taxRate
      *
      * @return static
      */
@@ -290,7 +290,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getTaxRate()
     {

@@ -24,7 +24,7 @@ abstract class FixedCostAbstract
     protected $description;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $cost;
 
@@ -239,7 +239,7 @@ abstract class FixedCostAbstract
     /**
      * Set cost
      *
-     * @param string $cost
+     * @param float $cost
      *
      * @return self
      */
@@ -260,7 +260,7 @@ abstract class FixedCostAbstract
     /**
      * Get cost
      *
-     * @return string | null
+     * @return float | null
      */
     public function getCost()
     {

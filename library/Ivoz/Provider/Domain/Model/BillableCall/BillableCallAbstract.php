@@ -26,7 +26,7 @@ abstract class BillableCallAbstract
     /**
      * @var float
      */
-    protected $duration = '0.000';
+    protected $duration = 0.0;
 
     /**
      * @var string | null
@@ -39,12 +39,12 @@ abstract class BillableCallAbstract
     protected $callee;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $cost;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $price;
 
@@ -472,7 +472,7 @@ abstract class BillableCallAbstract
     /**
      * Set cost
      *
-     * @param string $cost
+     * @param float $cost
      *
      * @return self
      */
@@ -493,7 +493,7 @@ abstract class BillableCallAbstract
     /**
      * Get cost
      *
-     * @return string | null
+     * @return float | null
      */
     public function getCost()
     {
@@ -503,7 +503,7 @@ abstract class BillableCallAbstract
     /**
      * Set price
      *
-     * @param string $price
+     * @param float $price
      *
      * @return self
      */
@@ -524,7 +524,7 @@ abstract class BillableCallAbstract
     /**
      * Get price
      *
-     * @return string | null
+     * @return float | null
      */
     public function getPrice()
     {

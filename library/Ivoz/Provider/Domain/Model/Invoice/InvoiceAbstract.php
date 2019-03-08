@@ -34,17 +34,17 @@ abstract class InvoiceAbstract
     protected $outDate;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $total;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $taxRate;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $totalWithTax;
 
@@ -387,7 +387,7 @@ abstract class InvoiceAbstract
     /**
      * Set total
      *
-     * @param string $total
+     * @param float $total
      *
      * @return self
      */
@@ -408,7 +408,7 @@ abstract class InvoiceAbstract
     /**
      * Get total
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTotal()
     {
@@ -418,7 +418,7 @@ abstract class InvoiceAbstract
     /**
      * Set taxRate
      *
-     * @param string $taxRate
+     * @param float $taxRate
      *
      * @return self
      */
@@ -439,7 +439,7 @@ abstract class InvoiceAbstract
     /**
      * Get taxRate
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTaxRate()
     {
@@ -449,7 +449,7 @@ abstract class InvoiceAbstract
     /**
      * Set totalWithTax
      *
-     * @param string $totalWithTax
+     * @param float $totalWithTax
      *
      * @return self
      */
@@ -470,7 +470,7 @@ abstract class InvoiceAbstract
     /**
      * Get totalWithTax
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTotalWithTax()
     {

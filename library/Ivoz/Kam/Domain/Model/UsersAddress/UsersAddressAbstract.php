@@ -28,12 +28,12 @@ abstract class UsersAddressAbstract
     /**
      * @var integer
      */
-    protected $mask = '32';
+    protected $mask = 32;
 
     /**
      * @var integer
      */
-    protected $port = '0';
+    protected $port = 0;
 
     /**
      * @var string | null

@@ -58,7 +58,7 @@ abstract class HuntGroupAbstract
     /**
      * @var integer
      */
-    protected $preventMissedCalls = '1';
+    protected $preventMissedCalls = 1;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface

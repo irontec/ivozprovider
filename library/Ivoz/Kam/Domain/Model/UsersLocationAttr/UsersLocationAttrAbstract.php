@@ -36,7 +36,7 @@ abstract class UsersLocationAttrAbstract
     /**
      * @var integer
      */
-    protected $atype = '0';
+    protected $atype = 0;
 
     /**
      * @var string

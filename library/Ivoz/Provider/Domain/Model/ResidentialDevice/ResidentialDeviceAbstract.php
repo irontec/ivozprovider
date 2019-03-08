@@ -126,7 +126,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '1';
+    protected $maxCalls = 1;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface

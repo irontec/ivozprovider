@@ -150,7 +150,7 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Get cost
      *
-     * @return string
+     * @return float
      */
     public function getCost();
 

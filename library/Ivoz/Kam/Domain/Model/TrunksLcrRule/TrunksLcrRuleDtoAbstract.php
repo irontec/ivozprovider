@@ -13,7 +13,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $lcrId = '1';
+    private $lcrId = 1;
 
     /**
      * @var string
@@ -38,12 +38,12 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $stopper = '0';
+    private $stopper = 0;
 
     /**
      * @var integer
      */
-    private $enabled = '1';
+    private $enabled = 1;
 
     /**
      * @var integer

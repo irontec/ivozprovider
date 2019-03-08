@@ -46,7 +46,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * @var integer
      */
-    protected $expires = '0';
+    protected $expires = 0;
 
     /**
      * @var boolean | null

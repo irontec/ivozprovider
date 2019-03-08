@@ -50,14 +50,14 @@ interface BillableCallInterface extends LoggableEntityInterface
     /**
      * Get cost
      *
-     * @return string | null
+     * @return float | null
      */
     public function getCost();
 
     /**
      * Get price
      *
-     * @return string | null
+     * @return float | null
      */
     public function getPrice();
 

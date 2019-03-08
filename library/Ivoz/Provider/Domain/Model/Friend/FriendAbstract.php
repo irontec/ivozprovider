@@ -77,7 +77,7 @@ abstract class FriendAbstract
     /**
      * @var integer
      */
-    protected $priority = '1';
+    protected $priority = 1;
 
     /**
      * @var string

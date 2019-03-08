@@ -17,7 +17,7 @@ abstract class TrunksLcrGatewayAbstract
      * column: lcr_id
      * @var integer
      */
-    protected $lcrId = '1';
+    protected $lcrId = 1;
 
     /**
      * column: gw_name

@@ -69,4 +69,4 @@ Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentityAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
