@@ -44,8 +44,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phplint'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-phplint", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-phplint", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('codestyle') {
@@ -60,8 +60,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-codestyle --branch'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-codestyle", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-codestyle", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('i18n') {
@@ -220,10 +220,18 @@ pipeline {
     }
 }
 
-void publishStatus(test, status) {
+void publishSuccess() {
     githubNotify([
-        context: "${test}",
+        context: "ivozprovider-testing-${STAGE_NAME}",
         description: "Finished",
-        status: "${status}"
+        status: "SUCCESS"
+    ])
+}
+
+void publishFailure() {
+    githubNotify([
+        context: "ivozprovider-testing-${STAGE_NAME}",
+        description: "Finished",
+        status: "Failure"
     ])
 }
