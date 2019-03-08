@@ -5,7 +5,14 @@ pipeline {
         timeout(time: 25, unit: 'MINUTES')
         timestamps()
         disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
+        buildDiscarder(
+            logRotator(
+                artifactDaysToKeepStr: '10',
+                artifactNumToKeepStr: '10',
+                daysToKeepStr: '10',
+                numToKeepStr: '10'
+            )
+        )
     }
 
     stages {
@@ -69,8 +76,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-i18n'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-i18n", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-i18n", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('generators') {
@@ -85,8 +92,9 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/scheme/bin/test-generators'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-generators", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-generators", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
+                        always  { cleanWs() }
                     }
                 }
             }
@@ -106,8 +114,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpspec'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-library", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-library", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('api-platform') {
@@ -123,8 +131,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-api-platform", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-api-platform", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('api-brand') {
@@ -140,8 +148,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-api-brand", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-api-brand", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('api-client') {
@@ -157,8 +165,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-api-client", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-api-client", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('orm') {
@@ -173,8 +181,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/scheme/bin/test-orm'
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-orm", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-orm", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
                     }
                 }
                 stage ('scheme') {
@@ -196,11 +204,18 @@ pipeline {
                         }
                     }
                     post {
-                        success { publishStatus("ivozprovider-testing-scheme", "SUCCESS") }
-                        failure { publishStatus("ivozprovider-testing-scheme", "FAILURE") }
+                        success { publishSuccess() }
+                        failure { publishFailure() }
+                        always  { cleanWs() }
                     }
                 }
             }
+        }
+    }
+
+    post {
+        cleanup {
+            cleanWs()
         }
     }
 }
