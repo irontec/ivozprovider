@@ -1,6 +1,12 @@
-pipeline {
-    agent any;
 
+
+pipeline {
+
+    agent any
+
+    // ------------------------------------------------------------------------
+    // Pipeline options
+    // ------------------------------------------------------------------------
     options {
         timeout(time: 25, unit: 'MINUTES')
         timestamps()
@@ -16,6 +22,9 @@ pipeline {
     }
 
     stages {
+        // --------------------------------------------------------------------
+        // Prepare stage
+        // --------------------------------------------------------------------
         stage('Prepare') {
             agent {
                 docker {
@@ -30,7 +39,10 @@ pipeline {
             }
         }
 
-        stage('Static Analysis') {
+        // --------------------------------------------------------------------
+        // Testing stage
+        // --------------------------------------------------------------------
+        stage('Testing') {
             parallel {
                 stage ('phplint') {
                     agent {
@@ -80,28 +92,6 @@ pipeline {
                         failure { publishFailure() }
                     }
                 }
-                stage ('generators') {
-                    agent {
-                        docker {
-                            image 'ironartemis/ivozprovider-testing-base'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                        }
-                    }
-                    steps {
-                        sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
-                        sh '/opt/irontec/ivozprovider/scheme/bin/test-generators'
-                    }
-                    post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
-                        always  { cleanWs() }
-                    }
-                }
-            }
-        }
-
-        stage('Testing') {
-            parallel {
                 stage ('phpspec') {
                     agent {
                         docker {
@@ -185,8 +175,24 @@ pipeline {
                         failure { publishFailure() }
                     }
                 }
+                stage ('generators') {
+                    agent {
+                        docker {
+                            image 'ironartemis/ivozprovider-testing-base'
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                        }
+                    }
+                    steps {
+                        sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
+                        sh '/opt/irontec/ivozprovider/scheme/bin/test-generators'
+                    }
+                    post {
+                        success { publishSuccess() }
+                        failure { publishFailure() }
+                        always  { cleanWs() }
+                    }
+                }
                 stage ('scheme') {
-                    agent any
                     steps {
                         script {
                             docker.image('mysql:5.7').withRun('-e "MYSQL_ROOT_PASSWORD=changeme"') { c ->
@@ -206,19 +212,25 @@ pipeline {
                     post {
                         success { publishSuccess() }
                         failure { publishFailure() }
-                        always  { cleanWs() }
                     }
                 }
             }
         }
     }
 
+    // ------------------------------------------------------------------------
+    // Pipeline post-actions
+    // ------------------------------------------------------------------------
     post {
         cleanup {
             cleanWs()
         }
     }
 }
+
+// -----------------------------------------------------------------------------
+// Helper Functions
+// -----------------------------------------------------------------------------
 
 void publishSuccess() {
     githubNotify([
@@ -232,6 +244,6 @@ void publishFailure() {
     githubNotify([
         context: "ivozprovider-testing-${STAGE_NAME}",
         description: "Finished",
-        status: "Failure"
+        status: "FAILURE"
     ])
 }
