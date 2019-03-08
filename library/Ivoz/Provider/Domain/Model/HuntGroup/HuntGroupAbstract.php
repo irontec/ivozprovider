@@ -374,7 +374,7 @@ abstract class HuntGroupAbstract
         Assertion::notNull($ringAllTimeout, 'ringAllTimeout value "%s" is null, but non null value was expected.');
         Assertion::integerish($ringAllTimeout, 'ringAllTimeout value "%s" is not an integer or a number castable to integer.');
 
-        $this->ringAllTimeout = $ringAllTimeout;
+        $this->ringAllTimeout = (int) $ringAllTimeout;
 
         return $this;
     }
@@ -463,7 +463,7 @@ abstract class HuntGroupAbstract
         Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->preventMissedCalls = $preventMissedCalls;
+        $this->preventMissedCalls = (int) $preventMissedCalls;
 
         return $this;
     }

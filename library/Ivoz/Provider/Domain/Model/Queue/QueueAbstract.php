@@ -393,6 +393,7 @@ abstract class QueueAbstract
         if (!is_null($maxWaitTime)) {
             if (!is_null($maxWaitTime)) {
                 Assertion::integerish($maxWaitTime, 'maxWaitTime value "%s" is not an integer or a number castable to integer.');
+                $maxWaitTime = (int) $maxWaitTime;
             }
         }
 
@@ -484,6 +485,7 @@ abstract class QueueAbstract
         if (!is_null($maxlen)) {
             if (!is_null($maxlen)) {
                 Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
+                $maxlen = (int) $maxlen;
             }
         }
 
@@ -575,6 +577,7 @@ abstract class QueueAbstract
         if (!is_null($periodicAnnounceFrequency)) {
             if (!is_null($periodicAnnounceFrequency)) {
                 Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
+                $periodicAnnounceFrequency = (int) $periodicAnnounceFrequency;
             }
         }
 
@@ -605,6 +608,7 @@ abstract class QueueAbstract
         if (!is_null($memberCallRest)) {
             if (!is_null($memberCallRest)) {
                 Assertion::integerish($memberCallRest, 'memberCallRest value "%s" is not an integer or a number castable to integer.');
+                $memberCallRest = (int) $memberCallRest;
             }
         }
 
@@ -635,6 +639,7 @@ abstract class QueueAbstract
         if (!is_null($memberCallTimeout)) {
             if (!is_null($memberCallTimeout)) {
                 Assertion::integerish($memberCallTimeout, 'memberCallTimeout value "%s" is not an integer or a number castable to integer.');
+                $memberCallTimeout = (int) $memberCallTimeout;
             }
         }
 
@@ -692,6 +697,7 @@ abstract class QueueAbstract
         if (!is_null($weight)) {
             if (!is_null($weight)) {
                 Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+                $weight = (int) $weight;
             }
         }
 

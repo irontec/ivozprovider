@@ -280,6 +280,7 @@ abstract class TransformationRuleAbstract
             if (!is_null($priority)) {
                 Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
+                $priority = (int) $priority;
             }
         }
 

@@ -418,7 +418,7 @@ abstract class CallForwardSettingAbstract
         Assertion::notNull($noAnswerTimeout, 'noAnswerTimeout value "%s" is null, but non null value was expected.');
         Assertion::integerish($noAnswerTimeout, 'noAnswerTimeout value "%s" is not an integer or a number castable to integer.');
 
-        $this->noAnswerTimeout = $noAnswerTimeout;
+        $this->noAnswerTimeout = (int) $noAnswerTimeout;
 
         return $this;
     }

@@ -375,7 +375,7 @@ abstract class IvrAbstract
         Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($timeout, 0, 'timeout provided "%s" is not greater or equal than "%s".');
 
-        $this->timeout = $timeout;
+        $this->timeout = (int) $timeout;
 
         return $this;
     }
@@ -403,7 +403,7 @@ abstract class IvrAbstract
         Assertion::integerish($maxDigits, 'maxDigits value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxDigits, 0, 'maxDigits provided "%s" is not greater or equal than "%s".');
 
-        $this->maxDigits = $maxDigits;
+        $this->maxDigits = (int) $maxDigits;
 
         return $this;
     }

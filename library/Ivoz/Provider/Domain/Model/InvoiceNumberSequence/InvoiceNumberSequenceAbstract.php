@@ -296,7 +296,7 @@ abstract class InvoiceNumberSequenceAbstract
         Assertion::integerish($sequenceLength, 'sequenceLength value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($sequenceLength, 0, 'sequenceLength provided "%s" is not greater or equal than "%s".');
 
-        $this->sequenceLength = $sequenceLength;
+        $this->sequenceLength = (int) $sequenceLength;
 
         return $this;
     }
@@ -324,7 +324,7 @@ abstract class InvoiceNumberSequenceAbstract
         Assertion::integerish($increment, 'increment value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($increment, 0, 'increment provided "%s" is not greater or equal than "%s".');
 
-        $this->increment = $increment;
+        $this->increment = (int) $increment;
 
         return $this;
     }
@@ -379,7 +379,7 @@ abstract class InvoiceNumberSequenceAbstract
         Assertion::integerish($iteration, 'iteration value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($iteration, 0, 'iteration provided "%s" is not greater or equal than "%s".');
 
-        $this->iteration = $iteration;
+        $this->iteration = (int) $iteration;
 
         return $this;
     }
@@ -406,7 +406,7 @@ abstract class InvoiceNumberSequenceAbstract
         Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
         Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
 
-        $this->version = $version;
+        $this->version = (int) $version;
 
         return $this;
     }

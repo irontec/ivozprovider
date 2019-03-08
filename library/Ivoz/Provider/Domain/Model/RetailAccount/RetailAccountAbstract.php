@@ -423,6 +423,7 @@ abstract class RetailAccountAbstract
             if (!is_null($port)) {
                 Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
+                $port = (int) $port;
             }
         }
 

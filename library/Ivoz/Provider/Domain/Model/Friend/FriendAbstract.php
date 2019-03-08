@@ -529,6 +529,7 @@ abstract class FriendAbstract
             if (!is_null($port)) {
                 Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
+                $port = (int) $port;
             }
         }
 
@@ -613,7 +614,7 @@ abstract class FriendAbstract
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }

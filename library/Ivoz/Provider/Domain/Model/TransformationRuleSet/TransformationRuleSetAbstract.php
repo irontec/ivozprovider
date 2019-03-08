@@ -364,6 +364,7 @@ abstract class TransformationRuleSetAbstract
             if (!is_null($nationalLen)) {
                 Assertion::integerish($nationalLen, 'nationalLen value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($nationalLen, 0, 'nationalLen provided "%s" is not greater or equal than "%s".');
+                $nationalLen = (int) $nationalLen;
             }
         }
 

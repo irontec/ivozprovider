@@ -364,6 +364,7 @@ abstract class CarrierServerAbstract
             if (!is_null($port)) {
                 Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
+                $port = (int) $port;
             }
         }
 
@@ -395,6 +396,7 @@ abstract class CarrierServerAbstract
             if (!is_null($uriScheme)) {
                 Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
+                $uriScheme = (int) $uriScheme;
             }
         }
 
@@ -426,6 +428,7 @@ abstract class CarrierServerAbstract
             if (!is_null($transport)) {
                 Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
+                $transport = (int) $transport;
             }
         }
 

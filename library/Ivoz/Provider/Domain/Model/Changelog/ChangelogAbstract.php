@@ -330,7 +330,7 @@ abstract class ChangelogAbstract
         Assertion::notNull($microtime, 'microtime value "%s" is null, but non null value was expected.');
         Assertion::integerish($microtime, 'microtime value "%s" is not an integer or a number castable to integer.');
 
-        $this->microtime = $microtime;
+        $this->microtime = (int) $microtime;
 
         return $this;
     }

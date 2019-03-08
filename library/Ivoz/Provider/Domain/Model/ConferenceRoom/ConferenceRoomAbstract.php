@@ -288,7 +288,7 @@ abstract class ConferenceRoomAbstract
         Assertion::integerish($maxMembers, 'maxMembers value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxMembers, 0, 'maxMembers provided "%s" is not greater or equal than "%s".');
 
-        $this->maxMembers = $maxMembers;
+        $this->maxMembers = (int) $maxMembers;
 
         return $this;
     }
