@@ -158,8 +158,6 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
             'auth_password' => '****',
             'auth_proxy' => 'sip:testAuthProxy',
             'expires' => 1,
-            'flags' => '0',
-            'reg_delay' => '0',
             'ddiProviderRegistrationId' => 2,
             'brandId' => 1,
             'id' => 2
