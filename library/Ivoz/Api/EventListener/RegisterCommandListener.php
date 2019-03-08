@@ -43,7 +43,7 @@ final class RegisterCommandListener
     /**
      * Sets the applicable format to the HttpFoundation Request.
      *
-     * @param GetResponseEvent $event
+     * @param GetResponseForControllerResultEvent $event
      *
      * @throws NotFoundHttpException
      * @throws NotAcceptableHttpException

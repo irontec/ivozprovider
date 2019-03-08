@@ -121,9 +121,9 @@ class CreateByScheduler
 
     /**
      * @param InvoiceSchedulerInterface $scheduler
-     * @param $invoice
+     * @param InvoiceInterface $invoice
      */
-    private function setFixedCosts(InvoiceSchedulerInterface $scheduler, $invoice)
+    private function setFixedCosts(InvoiceSchedulerInterface $scheduler, InvoiceInterface $invoice)
     {
         /** @var FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts */
         $relFixedCosts = $scheduler->getRelFixedCosts();
@@ -159,7 +159,7 @@ class CreateByScheduler
 
     /**
      * @param InvoiceSchedulerInterface $scheduler
-     * @param $error
+     * @param string $error
      */
     private function setExecutionError(InvoiceSchedulerInterface $scheduler, string $error)
     {

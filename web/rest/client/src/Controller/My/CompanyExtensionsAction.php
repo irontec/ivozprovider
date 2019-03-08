@@ -6,20 +6,14 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class CompanyExtensionsAction
 {
-    /**
-     * @var TokenStorage
-     */
     protected $tokenStorage;
-
-    /**
-     * @var CallForwardSettingRepository
-     */
-    protected $callForwardSettingRepository;
+    protected $extensionRepository;
 
     public function __construct(
         TokenStorage $tokenStorage,
@@ -38,8 +32,12 @@ class CompanyExtensionsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
+        /** @var UserInterface $user */
+        $user = $token->getUser();
+
         /** @var CompanyInterface $company */
-        $company = $token->getUser()->getCompany();
+        $company = $user->getCompany();
+
         return $this
             ->extensionRepository
             ->findByCompanyId($company->getId());

@@ -57,7 +57,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getFeatures();
 
     /**
-     * @param $featureId
+     * @param int $featureId
      * @return bool
      */
     public function hasFeature($featureId);
@@ -449,13 +449,13 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @param $fldName
+     * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);

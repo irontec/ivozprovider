@@ -51,7 +51,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * {@inheritDoc}
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setNumberValue($numberValue = null)
     {

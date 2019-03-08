@@ -14,13 +14,13 @@ interface TerminalInterface extends LoggableEntityInterface
 
     /**
      * {@inheritDoc}
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setName($name = null);
 
     /**
      * {@inheritDoc}
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setPassword($password);
 

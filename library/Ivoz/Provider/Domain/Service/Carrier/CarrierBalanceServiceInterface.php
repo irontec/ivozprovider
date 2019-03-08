@@ -21,15 +21,15 @@ interface CarrierBalanceServiceInterface
     public function decrementBalance(CarrierInterface $carrier, float $amount);
 
     /**
-     * @param $brandId
+     * @param int $brandId
      * @param array $carrierIds
      * @return \stdClass
      */
     public function getBalances($brandId, array $carrierIds);
 
     /**
-     * @param $brandId
-     * @param $carrierId
+     * @param int $brandId
+     * @param int $carrierId
      * @return mixed
      */
     public function getBalance($brandId, $carrierId);

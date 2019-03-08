@@ -15,7 +15,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     /**
      * Return LcrRule FromUri string based on OutgoingRouting configuration
      *
-     * @param OutgoingRoutingInterface $outgoingRouting
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      * @return string
      */
     public static function getFromUriForOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);

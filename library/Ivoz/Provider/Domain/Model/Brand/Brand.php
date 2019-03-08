@@ -121,7 +121,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     }
 
     /**
-     * @param $featureId
+     * @param int $featureId
      * @return bool
      */
     public function hasFeature($featureId)

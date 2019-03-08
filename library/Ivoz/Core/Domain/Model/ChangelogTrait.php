@@ -85,8 +85,8 @@ trait ChangelogTrait
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
+     * @param string $dbFieldName
+     * @return bool
      * @throws \Exception
      */
     public function hasChanged($dbFieldName)
@@ -100,7 +100,7 @@ trait ChangelogTrait
     }
 
     /**
-     * @param $dbFieldName
+     * @param string $dbFieldName
      * @return mixed
      * @throws \Exception
      */

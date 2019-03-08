@@ -64,8 +64,8 @@ abstract class AbstractBalanceService
     }
 
     /**
-     * @param $brandId
-     * @param array $ids
+     * @param string $tenant
+     * @param array $accountIds
      * @return array|mixed
      */
     protected function getAccountsBalances(string $tenant, array $accountIds)

@@ -5,6 +5,7 @@ namespace Ivoz\Core\Application\Service\Traits;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
 trait FileContainerEntityAssemblerTrait
@@ -28,7 +29,7 @@ trait FileContainerEntityAssemblerTrait
     }
 
     public function handleEntityFiles(
-        EntityInterface $entity,
+        FileContainerInterface $entity,
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
@@ -106,7 +107,9 @@ trait FileContainerEntityAssemblerTrait
     /**
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface $entity
-     * @param $fldName
+     * @param string $fldName
+     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+     * @throws \InvalidArgumentException
      */
     protected function handleFile(
         DataTransferObjectInterface $dto,
@@ -114,6 +117,12 @@ trait FileContainerEntityAssemblerTrait
         $fldName,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
+        if (!$entity instanceof FileContainerInterface) {
+            throw new \InvalidArgumentException(
+                'Entity was expected to be instanceof of FileContainerInterface.'
+            );
+        }
+
         $this->updateDtoMetadata(
             $dto,
             $fldName
@@ -135,6 +144,8 @@ trait FileContainerEntityAssemblerTrait
         );
         $tmpFilepath = $dto->{$pathGetter}();
 
+
+        /** @var FileContainerInterface $entity */
         $entity->addTmpFile(
             $fldName,
             new TempFile(
@@ -147,7 +158,7 @@ trait FileContainerEntityAssemblerTrait
 
     /**
      * @param DataTransferObjectInterface $dto
-     * @param $fieldName
+     * @param string $fieldName
      * @throws \Exception
      */
     protected function updateDtoMetadata(

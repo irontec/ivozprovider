@@ -31,6 +31,12 @@ class DateTimeNormalizer implements DateTimeNormalizerInterface
         $this->requestStack = $requestStack;
     }
 
+    /**
+     * @param string $class
+     * @param string $fieldName
+     * @param \DateTime $value
+     * @return string
+     */
     public function normalize($class, $fieldName, \DateTimeInterface $value)
     {
         $targetClass = $this->getPropertyMappedClass($class, $fieldName);

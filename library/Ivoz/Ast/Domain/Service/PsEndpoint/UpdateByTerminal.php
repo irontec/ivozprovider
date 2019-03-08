@@ -39,7 +39,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     }
 
     /**
-     * @param Friend $terminal
+     * @param TerminalInterface $terminal
      */
     public function execute(TerminalInterface $terminal)
     {

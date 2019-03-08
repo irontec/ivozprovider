@@ -82,8 +82,8 @@ class SearchFilterDecorator implements NormalizerInterface
     }
 
     /**
-     * @param \ArrayObject $responses
-     * @return string
+     * @param string $name
+     * @return string | null
      */
     private function cleanRef(string $name)
     {

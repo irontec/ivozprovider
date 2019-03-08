@@ -5,6 +5,7 @@ namespace Controller\My;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Model\CallStats as CallStatsModel;
@@ -45,6 +46,7 @@ class CallStatsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
+        /** @var UserInterface $user */
         $user = $token->getUser();
         $detours = $this
             ->callForwardSettingRepository

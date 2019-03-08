@@ -22,7 +22,7 @@ class RoutingPatternGroupDoctrineRepository extends ServiceEntityRepository impl
     }
 
     /**
-     * @param $brandId
+     * @param int $brandId
      * @param string $name
      * @return RoutingPatternGroupInterface
      */

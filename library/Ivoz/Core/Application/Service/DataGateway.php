@@ -164,10 +164,10 @@ class DataGateway
 
     /**
      * @param string $entityName
-     * @param array|null $criteria
-     * @param array|null $orderBy
-     * @param int|null $chunkSize
-     * @param int|null $offset
+     * @param array | null $criteria
+     * @param array | null $orderBy
+     * @param int $chunkSize
+     * @param int $offset
      * @return \Generator
      */
     public function findAllBy(
@@ -315,8 +315,8 @@ class DataGateway
 
     /**
      * @param string $entityName
-     * @param $id
-     * @param $method
+     * @param int $id
+     * @param string $method
      * @param array $arguments
      * @return mixed
      */

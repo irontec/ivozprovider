@@ -41,6 +41,7 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
             $user->getId()
         );
 
+        /** @var VoicemailDto $voicemailDto */
         $voicemailDto = is_null($voicemail)
             ? new VoicemailDto()
             : $voicemail->toDto();

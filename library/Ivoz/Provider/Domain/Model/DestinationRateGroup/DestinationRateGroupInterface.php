@@ -22,8 +22,8 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     /**
      * Add TempFile and set status to pending
      *
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -161,7 +161,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);

@@ -9,7 +9,7 @@ interface DomainRepository extends ObjectRepository, Selectable
 {
 
     /**
-     * @param $endpointDomain
+     * @param string $endpointDomain
      * @return DomainInterface | null
      */
     public function findOneByDomain($endpointDomain);

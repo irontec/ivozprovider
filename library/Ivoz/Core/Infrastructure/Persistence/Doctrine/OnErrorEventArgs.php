@@ -18,11 +18,6 @@ class OnErrorEventArgs extends EventArgs
      */
     protected $exception;
 
-    /**
-     * Constructor.
-     *
-     * @param EntityManagerInterface $em
-     */
     public function __construct(
         EntityInterface $entity,
         \Exception $exception

@@ -25,7 +25,10 @@ final class DoctrineOrmPropertyMetadataFactory implements PropertyMetadataFactor
     }
 
     /**
-     * @return \Doctrine\Common\Persistence\Mapping\ClassMetadata | null
+     * @param string $resourceClass
+     * @param string $property
+     * @param array $options
+     * @return PropertyMetadata
      */
     public function create(string $resourceClass, string $property, array $options = []): PropertyMetadata
     {

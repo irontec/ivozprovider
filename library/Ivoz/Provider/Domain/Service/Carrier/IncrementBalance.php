@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Domain\Service\Carrier;
 class IncrementBalance extends AbstractBalanceOperation
 {
     /**
-     * @param $carrierId
+     * @param int $carrierId
      * @param float $amount
      * @return boolean
      */

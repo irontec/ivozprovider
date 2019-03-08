@@ -22,8 +22,8 @@ class DdiDoctrineRepository extends ServiceEntityRepository implements DdiReposi
     }
 
     /**
-     * @param $ddiE164
-     * @return DdiInterface | null
+     * @param string $ddiE164
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function findOneByDdiE164($ddiE164)
     {

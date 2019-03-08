@@ -97,7 +97,7 @@ class TimezoneSelectorDecorator implements NormalizerInterface
 
 
     /**
-     * @param $path
+     * @param string $path
      * @return array | null
      */
     private function getResponseDefinition($path)

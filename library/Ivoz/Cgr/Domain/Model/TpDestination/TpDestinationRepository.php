@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface TpDestinationRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $destinationTag
+     * @param string $destinationTag
      * @return null| TpDestinationInterface
      */
     public function findOneByTag($destinationTag);

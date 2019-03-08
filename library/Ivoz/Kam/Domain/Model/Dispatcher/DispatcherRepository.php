@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface DispatcherRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return null|DispatcherInterface
      */
     public function findOneByApplicationServerId($id);

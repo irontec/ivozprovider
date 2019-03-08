@@ -48,7 +48,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getSorcery();
 
     /**
-     * @param $exten
+     * @param string $exten
      * @return bool
      */
     public function checkExtension($exten);

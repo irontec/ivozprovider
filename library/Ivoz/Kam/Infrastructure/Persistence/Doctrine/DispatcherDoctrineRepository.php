@@ -22,7 +22,7 @@ class DispatcherDoctrineRepository extends ServiceEntityRepository implements Di
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return null|DispatcherInterface
      */
     public function findOneByApplicationServerId($id)

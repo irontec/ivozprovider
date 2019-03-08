@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
@@ -25,13 +26,13 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
     /**
      * @param MusicOnHoldInterface $entity
      * @param integer $depth
-     * @return BrandDTO
+     * @return MusicOnHoldDto
      */
     public function toDto(EntityInterface $entity, $depth = 0)
     {
         Assertion::isInstanceOf($entity, MusicOnHoldInterface::class);
 
-        /** @var BrandDTO $dto */
+        /** @var MusicOnHoldDto $dto */
         $dto = $entity->toDto($depth);
         $id = $entity->getId();
 

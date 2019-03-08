@@ -14,6 +14,7 @@ interface DataTransferObjectInterface
         self::CONTEXT_DETAILED
     ];
 
+    public function setId($id = null);
     public function getId();
 
     /**
@@ -34,5 +35,5 @@ interface DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray();
+    public function toArray($hideSensitiveData = false);
 }

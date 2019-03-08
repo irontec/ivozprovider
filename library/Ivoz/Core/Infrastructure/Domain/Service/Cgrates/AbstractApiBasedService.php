@@ -21,9 +21,8 @@ abstract class AbstractApiBasedService
     }
 
     /**
-     * @param $payload
-     * @throws \DomainException
-     * @return void
+     * @param string $method
+     * @param array $payload
      */
     protected function sendRequest($method, array $payload)
     {

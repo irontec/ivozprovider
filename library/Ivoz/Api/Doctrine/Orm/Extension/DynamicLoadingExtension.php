@@ -104,8 +104,8 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
      * @param QueryNameGeneratorInterface $queryNameGenerator
      * @param string $resourceClass
      * @param array $context
-     * @param $options
-     * @param $serializerContext
+     * @param array $options
+     * @param array $serializerContext
      */
     private function apply(
         QueryBuilder $queryBuilder,
@@ -137,7 +137,6 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
      * @param QueryBuilder $queryBuilder
      * @param QueryNameGeneratorInterface $queryNameGenerator
      * @param string $resourceClass
-     * @param bool $forceEager
      * @param string $parentAlias
      * @param array $propertyMetadataOptions
      * @param array $context
@@ -339,7 +338,10 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
     }
 
     /**
-     * @param array $resourceClass
+     * @param string $resourceClass
+     * @param array $context
+     * @return array
+     * @throws ResourceClassNotFoundException
      */
     private function getTargetPropertiesByContext(string $resourceClass, array $context)
     {

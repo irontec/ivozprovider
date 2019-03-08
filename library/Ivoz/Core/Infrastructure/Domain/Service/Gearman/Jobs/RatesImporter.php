@@ -24,7 +24,7 @@ class RatesImporter extends AbstractJob
     );
 
     /**
-     * @param $params
+     * @param array $params
      * @return $this
      */
     public function setParams($params)

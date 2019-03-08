@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 interface CompanyRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return CompanyInterface[]
      */
     public function findByBrandId($id);

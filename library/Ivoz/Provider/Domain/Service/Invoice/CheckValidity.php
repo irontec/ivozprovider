@@ -79,9 +79,9 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
-     * @param $invoiceTz
-     * @param $inDate
-     * @param $outDate
+     * @param \DateTimeZone $invoiceTz
+     * @param \DateTime $inDate
+     * @param \DateTime $outDate
      */
     private function assertNoFutureDates($invoiceTz, $inDate, $outDate)
     {
@@ -114,8 +114,8 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
-     * @param $utcOutDate
-     * @param $utcTz
+     * @param \DateTime $utcOutDate
+     * @param \DateTimeZone $utcTz
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
@@ -153,10 +153,10 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
-     * @param $utcInDate
-     * @param $utcOutDate
+     * @param \DateTime $utcInDate
+     * @param \DateTime $utcOutDate
      */
-    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, $utcInDate, $utcOutDate)
+    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
     {
         $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
             $invoice->getCompany()->getId(),

@@ -34,7 +34,7 @@ class NotificationTemplate extends NotificationTemplateAbstract implements Notif
     /**
      * Get contents by language
      *
-     * @param LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
      */
     public function getContentsByLanguage(LanguageInterface $language)

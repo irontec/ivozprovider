@@ -85,10 +85,6 @@ class StatusAction
         return $userStatus;
     }
 
-    /**
-     * @param $userStatus
-     * @param $terminal
-     */
     private function setTerminalData(UserStatus $userStatus, TerminalInterface $terminal)
     {
         $userStatus
@@ -99,10 +95,6 @@ class StatusAction
             );
     }
 
-    /**
-     * @param $userLocation
-     * @param $userStatus
-     */
     private function setUserLocationData(UsersLocationInterface $userLocation, UserStatus $userStatus)
     {
         $contact = $userLocation->getContact();
@@ -114,10 +106,6 @@ class StatusAction
             ->setUserAgent($userLocation->getUserAgent());
     }
 
-    /**
-     * @param $userStatus
-     * @param $extension
-     */
     private function setExtensionData(UserStatus $userStatus, ExtensionInterface $extension)
     {
         $userStatus
@@ -126,10 +114,6 @@ class StatusAction
             );
     }
 
-    /**
-     * @param $userStatus
-     * @param $company
-     */
     private function setCompanyData(UserStatus $userStatus, CompanyInterface $company)
     {
         $userStatus->setCompanyName(

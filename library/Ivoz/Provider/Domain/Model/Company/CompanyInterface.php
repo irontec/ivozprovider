@@ -30,17 +30,28 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getExtension($exten);
 
     /**
-     * @param $ddieE164
+     * @param string $ddieE164
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
      */
     public function getDdi($ddieE164);
 
     public function getFriend($exten);
 
+    /**
+     * @param string $exten
+     * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface|null
+     */
     public function getService($exten);
 
+    /**
+     * @param string $name
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface|mixed
+     */
     public function getTerminal($name);
 
+    /**
+     * @return string
+     */
     public function getLanguageCode();
 
     /**
@@ -59,6 +70,7 @@ interface CompanyInterface extends LoggableEntityInterface
      * If no specific company music on hold is found, brand music will be used.
      * If no specific brand music  on hold is found, dafault music will be sued.
      *
+     * @return string
      */
     public function getMusicClass();
 
@@ -67,28 +79,34 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function setDomainUsers($domainUsers = null);
 
+    /**
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;[]
+     */
     public function getOutgoingRoutings();
 
     /**
      * Get the size in bytes used by the recordings on this company
+     * @return int|null
      */
     public function getRecordingsDiskUsage();
 
     /**
      * Get the size in bytes for disk usage limit on this company
+     * @return float|int
      */
     public function getRecordingsLimit();
 
     /**
      * Check if a Company has a given Feature by id
      *
-     * @param $featureId
+     * @param int $featureId
      * @return bool
      */
     public function hasFeature($featureId);
 
     /**
      * Get On demand recording code DTMFs
+     * @return string
      */
     public function getOnDemandRecordDTMFs();
 

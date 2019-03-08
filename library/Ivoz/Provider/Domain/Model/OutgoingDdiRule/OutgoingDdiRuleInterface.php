@@ -21,8 +21,8 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 
     /**
      * Check final outgoing Ddi presentation for given destination
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $originalDdi
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null $e164destination
      */
     public function getOutgoingDdi($originalDdi, $e164destination);
 

@@ -32,7 +32,7 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         }
 
         /**
-         * @var $dto CompanyDTO
+         * @var CompanyDto $dto
          */
         $dto = $this->entityTools->entityToDto($company);
         if (!$dto->getMediaRelaySetsId()) {

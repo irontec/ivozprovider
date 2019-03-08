@@ -18,7 +18,8 @@ class ApiClient
     }
 
     /**
-     * @param $payload
+     * @param string $method
+     * @param array $payload
      * @throws \DomainException
      * @return \stdClass
      */

@@ -53,7 +53,7 @@ class SyncBalances
     }
 
     /**
-     * @param $brandId
+     * @param int $brandId
      * @param array $companyIds
      * @return bool
      */

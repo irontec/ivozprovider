@@ -23,7 +23,6 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
 
     /**
      * CreateByCarrierServer constructor.
-     * @param EntityPersisterInterface $entityPersister
      * @param TrunksLcrRuleTargetFactory $lcrRuleTargetFactory
      */
     public function __construct(

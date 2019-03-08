@@ -5,6 +5,7 @@ namespace Controller\My;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryResultCollectionExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
@@ -16,19 +17,13 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 
 class CallHistoryAction
 {
-    /**
-     * @var TokenStorage
-     */
     protected $tokenStorage;
 
     /**
-     * @var UsersCdrRepository
+     * @var EntityRepository
      */
     protected $usersCdrRepository;
 
-    /**
-     * @var CollectionExtensionList
-     */
     protected $collectionExtensions;
 
     public function __construct(
@@ -50,6 +45,7 @@ class CallHistoryAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
+        /** @var UserInterface $user */
         $user = $token->getUser();
         $qb = $this
             ->usersCdrRepository
@@ -78,7 +74,7 @@ class CallHistoryAction
 
     /**
      * @param UserInterface $user
-     * @param UsersCdr[] $calls
+     * @param \Traversable $calls
      * @return Paginator
      */
     protected function setUserTimezone(UserInterface $user, \Traversable $calls)

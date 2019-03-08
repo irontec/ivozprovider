@@ -23,7 +23,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return CompanyInterface[]
      */
     public function findByBrandId($id)

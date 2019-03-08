@@ -140,7 +140,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * Checks if this condition mathes the given origin
      *
-     * @param $number Number in E.164 format
+     * @param string $number in E.164 format
      * @return bool true if condition matches
      */
     public function matchesOrigin($number)

@@ -7,7 +7,7 @@ trait DtoNormalizer
     /**
      * @return array
      */
-    abstract public function toArray();
+    abstract public function toArray($hideSensitiveData = false);
 
     /**
      * @return array

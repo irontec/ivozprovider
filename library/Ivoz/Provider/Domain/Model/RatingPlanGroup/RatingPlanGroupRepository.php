@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface RatingPlanGroupRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $ratingPlanGroupId
+     * @param int $ratingPlanGroupId
      * @return \Generator
      */
     public function getAllRatesByRatingPlanId($ratingPlanGroupId, $batchSize = 10000, callable $queryModifier = null);

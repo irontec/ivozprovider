@@ -8,31 +8,31 @@ use Doctrine\Common\Collections\Selectable;
 interface PsEndpointRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return null|PsEndpointInterface
      */
     public function findOneByFriendId($id);
 
     /**
-     * @param $id
+     * @param int $id
      * @return null|PsEndpointInterface
      */
     public function findOneByResidentialDeviceId($id);
 
     /**
-     * @param $id
+     * @param int $id
      * @return null|PsEndpointInterface
      */
     public function findOneByRetailAccountId($id);
 
     /**
-     * @param $id
+     * @param int $id
      * @return null|PsEndpointInterface
      */
     public function findOneByTerminalId($id);
 
     /**
-     * @param $sorceryId
+     * @param string $sorceryId
      * @return PsEndpointInterface | null
      */
     public function findOneBySorceryId($sorceryId);

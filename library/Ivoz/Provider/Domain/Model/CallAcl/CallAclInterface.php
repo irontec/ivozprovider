@@ -14,7 +14,7 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param $dst
+     * @param string $dst
      * @return bool
      */
     public function dstIsCallable($dst);

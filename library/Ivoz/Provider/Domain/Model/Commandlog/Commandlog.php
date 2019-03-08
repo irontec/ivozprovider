@@ -20,8 +20,8 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
     }
 
     /**
-     * @param CommandEventInterface $event
-     * @return Commandlog
+     * @param \Ivoz\Core\Application\Event\CommandEventInterface $event
+     * @return self
      */
     public static function fromEvent(CommandEventInterface $event)
     {

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface BillableCallRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return BillableCallInterface
      */
     public function findOneByTrunksCdrId($id);

@@ -64,14 +64,14 @@ abstract class AbstractBalanceOperation
     }
 
     /**
-     * @param $carrierId
+     * @param int $carrierId
      * @param float $amount
      * @return boolean
      */
     abstract public function execute($carrierId, float $amount);
 
     /**
-     * @param $amount
+     * @param string $amount
      * @param array $response
      * @param CarrierInterface $carrier
      * @return boolean

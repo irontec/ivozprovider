@@ -6,6 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
@@ -65,6 +66,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             return $this->setCustomOperationMetadata($resourceClass, $resourceMetadata);
         }
 
+        /** @var ClassMetadata $doctrineClassMetadata */
         $doctrineClassMetadata = $manager->getClassMetadata($resourceClass);
         if ($doctrineClassMetadata->isEmbeddedClass) {
             return $this->setEmbeddableOperationMetadata($resourceClass, $resourceMetadata);

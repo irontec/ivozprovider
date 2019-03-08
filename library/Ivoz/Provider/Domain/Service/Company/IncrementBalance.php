@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Domain\Service\Company;
 class IncrementBalance extends AbstractBalanceOperation
 {
     /**
-     * @param $companyId
+     * @param int $companyId
      * @param float $amount
      * @return boolean
      */
