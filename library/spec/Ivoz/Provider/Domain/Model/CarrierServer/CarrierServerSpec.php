@@ -180,7 +180,7 @@ class CarrierServerSpec extends ObjectBehavior
 
         $this
             ->getPort()
-            ->shouldBe('489');
+            ->shouldBe(489);
     }
 
     function it_sets_proxy_values_by_outbound_proxy()
