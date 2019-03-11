@@ -154,7 +154,8 @@ class DdiProviderAddressLifeCycleTest extends KernelTestCase
             'ip_addr' => '127.1.1.1',
             'mask' => 32,
             'ddiProviderAddressId' => 2,
-            'id' => 1
+            'id' => 1,
+            'port' => 0
         ];
 
         $this->assertEquals(

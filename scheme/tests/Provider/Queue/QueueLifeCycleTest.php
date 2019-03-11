@@ -165,6 +165,7 @@ class QueueLifeCycleTest extends KernelTestCase
                 'timeout' => 1,
                 'autopause' => 'no',
                 'ringinuse' => 'no',
+                'wrapuptime' => 0,
                 'maxlen' => 5,
                 'strategy' => 'rrmemory',
                 'weight' => 5,
