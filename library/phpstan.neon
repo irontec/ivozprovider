@@ -1,6 +1,11 @@
 parameters:
+    includes:
+        - vendor/phpstan/phpstan-beberlei-assert/extension.neon
+        - vendor/phpstan/phpstan-symfony/extension.neon
     ignoreErrors:
-        - '#.* has invalid typehint type AppKernel#'
+        - '#.*ObjectManager::flush().*invoked with 1 parameter, 0 required#'
+        - '#Access to an undefined property .*EntityInterface::\$__isInitialized__#'
     excludes_analyse:
-        - %rootDir%/spec/*
-        - %rootDir%/vendor/*
+        - "*/vendor/*"
+        - %currentWorkingDirectory%/library/Ivoz/Api/Behat/Context/FeatureContext.php
+        - %currentWorkingDirectory%/library/Ivoz/Provider/Domain/Service/Invoice/Generator.php
