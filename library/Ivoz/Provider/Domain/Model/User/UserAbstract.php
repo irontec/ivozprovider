@@ -612,7 +612,7 @@ abstract class UserAbstract
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = $maxCalls;
+        $this->maxCalls = (int) $maxCalls;
 
         return $this;
     }

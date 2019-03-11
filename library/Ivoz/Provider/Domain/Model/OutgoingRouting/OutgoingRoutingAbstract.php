@@ -317,7 +317,7 @@ abstract class OutgoingRoutingAbstract
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }
@@ -345,7 +345,7 @@ abstract class OutgoingRoutingAbstract
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
-        $this->weight = $weight;
+        $this->weight = (int) $weight;
 
         return $this;
     }

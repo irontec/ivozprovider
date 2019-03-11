@@ -404,7 +404,7 @@ abstract class TpDestinationRateAbstract
         Assertion::notNull($roundingDecimals, 'roundingDecimals value "%s" is null, but non null value was expected.');
         Assertion::integerish($roundingDecimals, 'roundingDecimals value "%s" is not an integer or a number castable to integer.');
 
-        $this->roundingDecimals = $roundingDecimals;
+        $this->roundingDecimals = (int) $roundingDecimals;
 
         return $this;
     }
@@ -430,9 +430,8 @@ abstract class TpDestinationRateAbstract
     {
         Assertion::notNull($maxCost, 'maxCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($maxCost);
-        $maxCost = (float) $maxCost;
 
-        $this->maxCost = $maxCost;
+        $this->maxCost = (float) $maxCost;
 
         return $this;
     }

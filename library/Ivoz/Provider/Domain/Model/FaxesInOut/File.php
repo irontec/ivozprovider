@@ -56,6 +56,7 @@ class File
             if (!is_null($fileSize)) {
                 Assertion::integerish($fileSize, 'fileSize value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($fileSize, 0, 'fileSize provided "%s" is not greater or equal than "%s".');
+                $fileSize = (int) $fileSize;
             }
         }
 

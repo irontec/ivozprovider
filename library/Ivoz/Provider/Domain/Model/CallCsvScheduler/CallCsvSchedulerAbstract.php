@@ -316,7 +316,7 @@ abstract class CallCsvSchedulerAbstract
         Assertion::integerish($frequency, 'frequency value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($frequency, 0, 'frequency provided "%s" is not greater or equal than "%s".');
 
-        $this->frequency = $frequency;
+        $this->frequency = (int) $frequency;
 
         return $this;
     }

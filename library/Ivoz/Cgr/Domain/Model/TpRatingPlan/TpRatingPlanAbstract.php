@@ -336,9 +336,8 @@ abstract class TpRatingPlanAbstract
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::numeric($weight);
-        $weight = (float) $weight;
 
-        $this->weight = $weight;
+        $this->weight = (float) $weight;
 
         return $this;
     }

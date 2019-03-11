@@ -998,6 +998,7 @@ abstract class VoicemailAbstract
         if (!is_null($sayduration)) {
             if (!is_null($sayduration)) {
                 Assertion::integerish($sayduration, 'sayduration value "%s" is not an integer or a number castable to integer.');
+                $sayduration = (int) $sayduration;
             }
         }
 
@@ -1166,6 +1167,7 @@ abstract class VoicemailAbstract
         if (!is_null($maxmsg)) {
             if (!is_null($maxmsg)) {
                 Assertion::integerish($maxmsg, 'maxmsg value "%s" is not an integer or a number castable to integer.');
+                $maxmsg = (int) $maxmsg;
             }
         }
 

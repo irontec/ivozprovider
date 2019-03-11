@@ -183,6 +183,7 @@ abstract class QueueMemberAbstract
         if (!is_null($penalty)) {
             if (!is_null($penalty)) {
                 Assertion::integerish($penalty, 'penalty value "%s" is not an integer or a number castable to integer.');
+                $penalty = (int) $penalty;
             }
         }
 

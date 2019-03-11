@@ -662,7 +662,7 @@ abstract class CompanyAbstract
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = $maxCalls;
+        $this->maxCalls = (int) $maxCalls;
 
         return $this;
     }
@@ -852,6 +852,7 @@ abstract class CompanyAbstract
         if (!is_null($onDemandRecord)) {
             if (!is_null($onDemandRecord)) {
                 Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
+                $onDemandRecord = (int) $onDemandRecord;
             }
         }
 
@@ -938,6 +939,7 @@ abstract class CompanyAbstract
         if (!is_null($recordingsLimitMB)) {
             if (!is_null($recordingsLimitMB)) {
                 Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
+                $recordingsLimitMB = (int) $recordingsLimitMB;
             }
         }
 

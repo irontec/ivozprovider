@@ -255,7 +255,7 @@ abstract class TrunksLcrRuleAbstract
         Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
-        $this->lcrId = $lcrId;
+        $this->lcrId = (int) $lcrId;
 
         return $this;
     }
@@ -395,7 +395,7 @@ abstract class TrunksLcrRuleAbstract
         Assertion::integerish($stopper, 'stopper value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($stopper, 0, 'stopper provided "%s" is not greater or equal than "%s".');
 
-        $this->stopper = $stopper;
+        $this->stopper = (int) $stopper;
 
         return $this;
     }
@@ -423,7 +423,7 @@ abstract class TrunksLcrRuleAbstract
         Assertion::integerish($enabled, 'enabled value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($enabled, 0, 'enabled provided "%s" is not greater or equal than "%s".');
 
-        $this->enabled = $enabled;
+        $this->enabled = (int) $enabled;
 
         return $this;
     }

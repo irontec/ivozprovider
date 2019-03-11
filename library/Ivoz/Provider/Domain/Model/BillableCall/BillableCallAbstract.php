@@ -396,9 +396,8 @@ abstract class BillableCallAbstract
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
-        $duration = (float) $duration;
 
-        $this->duration = $duration;
+        $this->duration = (float) $duration;
 
         return $this;
     }
@@ -683,6 +682,7 @@ abstract class BillableCallAbstract
             if (!is_null($endpointId)) {
                 Assertion::integerish($endpointId, 'endpointId value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
+                $endpointId = (int) $endpointId;
             }
         }
 

@@ -571,7 +571,7 @@ abstract class TrunksUacregAbstract
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
-        $this->expires = $expires;
+        $this->expires = (int) $expires;
 
         return $this;
     }
@@ -598,7 +598,7 @@ abstract class TrunksUacregAbstract
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
-        $this->flags = $flags;
+        $this->flags = (int) $flags;
 
         return $this;
     }
@@ -625,7 +625,7 @@ abstract class TrunksUacregAbstract
         Assertion::notNull($regDelay, 'regDelay value "%s" is null, but non null value was expected.');
         Assertion::integerish($regDelay, 'regDelay value "%s" is not an integer or a number castable to integer.');
 
-        $this->regDelay = $regDelay;
+        $this->regDelay = (int) $regDelay;
 
         return $this;
     }

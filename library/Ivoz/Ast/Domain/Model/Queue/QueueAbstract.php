@@ -316,6 +316,7 @@ abstract class QueueAbstract
         if (!is_null($periodicAnnounceFrequency)) {
             if (!is_null($periodicAnnounceFrequency)) {
                 Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
+                $periodicAnnounceFrequency = (int) $periodicAnnounceFrequency;
             }
         }
 
@@ -346,6 +347,7 @@ abstract class QueueAbstract
         if (!is_null($timeout)) {
             if (!is_null($timeout)) {
                 Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
+                $timeout = (int) $timeout;
             }
         }
 
@@ -428,6 +430,7 @@ abstract class QueueAbstract
         if (!is_null($wrapuptime)) {
             if (!is_null($wrapuptime)) {
                 Assertion::integerish($wrapuptime, 'wrapuptime value "%s" is not an integer or a number castable to integer.');
+                $wrapuptime = (int) $wrapuptime;
             }
         }
 
@@ -458,6 +461,7 @@ abstract class QueueAbstract
         if (!is_null($maxlen)) {
             if (!is_null($maxlen)) {
                 Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
+                $maxlen = (int) $maxlen;
             }
         }
 
@@ -515,6 +519,7 @@ abstract class QueueAbstract
         if (!is_null($weight)) {
             if (!is_null($weight)) {
                 Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+                $weight = (int) $weight;
             }
         }
 

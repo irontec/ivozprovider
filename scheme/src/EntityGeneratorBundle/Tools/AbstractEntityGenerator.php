@@ -189,7 +189,7 @@ protected function __toArray()
  */
 <visibility> function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
 {
-<assertions>$this-><fieldName> = $<variableName>;
+<assertions>$this-><fieldName> = <casting>$<variableName>;
 
 <spaces>return $this;
 }
@@ -1049,6 +1049,7 @@ public function <methodName>(<criteriaArgument>)
 
         $parentMethodsStr = parent::generateEntityStubMethods($metadata);
         $parentMethods = explode("\n\n", $parentMethodsStr);
+        $parentMethods = str_replace('<casting>', '', $parentMethods);
 
         $metadata->fieldMappings = $fieldMappings;
         $metadata->embeddedClasses = $embeddedClasses;
@@ -1073,6 +1074,7 @@ public function <methodName>(<criteriaArgument>)
                 )
             ) {
                 if ($code = $this->generateEntityStubMethod($metadata, 'set', $fieldMapping['fieldName'], $fieldMapping['type'])) {
+                    $code = str_replace('<casting>', $this->getTypeCastingByType($fieldMapping['type'], ($fieldMapping['nullable'] ?? false)), $code);
                     $methods[] = $code;
                 }
             }
@@ -1092,6 +1094,7 @@ public function <methodName>(<criteriaArgument>)
                 $nullable = $this->isAssociationIsNullable($associationMapping) ? 'null' : null;
 
                 if ($code = $this->generateEntityStubMethod($metadata, 'set', $associationMapping['fieldName'], $associationMapping['targetEntity'], $nullable)) {
+                    $code = str_replace('<casting>', '', $code);
                     $methods[] = $code;
                 }
                 if ($code = $this->generateEntityStubMethod($metadata, 'get', $associationMapping['fieldName'], $associationMapping['targetEntity'])) {
@@ -1123,6 +1126,37 @@ public function <methodName>(<criteriaArgument>)
         }
 
         return $stubMethods;
+    }
+
+    private function getTypeCastingByType(string $type, bool $nullable = false): string
+    {
+        if ($nullable) {
+            return '';
+        }
+
+        switch ($type) {
+            case 'boolean':
+//                return '(bool) ';
+            case 'text':
+            case 'string':
+                return '';
+            case 'bigint':
+            case 'smallint':
+            case 'integer':
+                return '(int) ';
+            case 'float':
+            case 'decimal':
+                return '(float) ';
+            case 'guid':
+            case 'json_array':
+            case 'blob':
+            case 'datetime':
+            case 'time':
+            case 'date':
+                return '';
+        }
+
+        return '';
     }
 
     /**
@@ -1291,6 +1325,11 @@ public function <methodName>(<criteriaArgument>)
                     $assertions,
                     [$spaces . AssertionGenerator::boolean($currentField->fieldName)]
                 );
+
+                $isNullable = isset($currentField->nullable) && $currentField->nullable;
+                if ($isNullable) {
+//                    $assertions[] = $this->spaces . '$' . $currentField->fieldName . ' = (bool) $' . $currentField->fieldName . ';';
+                }
             }
 
             $arraySpacerFn = function ($value) use ($spaces) {
@@ -1459,15 +1498,18 @@ public function <methodName>(<criteriaArgument>)
         $options = (object) $currentField->options;
 
         $assertions[] = AssertionGenerator::float($currentField->fieldName);
-        $assertions[] = '$' . $currentField->fieldName . ' = (float) $' . $currentField->fieldName . ';';
+
 
         if (isset($options->unsigned) && $options->unsigned) {
             $assertions[] = AssertionGenerator::greaterOrEqualThan($currentField->fieldName, 0);
         }
 
-        if (!empty($assertions) &&
-            isset($currentField->nullable) &&
-            $currentField->nullable
+        $isNullable = isset($currentField->nullable) && $currentField->nullable;
+        if ($isNullable) {
+            $assertions[] = '$' . $currentField->fieldName . ' = (float) $' . $currentField->fieldName . ';';
+        }
+
+        if (!empty($assertions) && $isNullable
         ) {
             foreach ($assertions as $key => $value) {
                 $assertions[$key] = $this->spaces . $assertions[$key];
@@ -1497,10 +1539,12 @@ public function <methodName>(<criteriaArgument>)
             $assertions[] = AssertionGenerator::greaterOrEqualThan($currentField->fieldName, 0);
         }
 
-        if (!empty($assertions) &&
-            isset($currentField->nullable) &&
-            $currentField->nullable
-        ) {
+        $isNullable = isset($currentField->nullable) && $currentField->nullable;
+        if ($isNullable) {
+            $assertions[] = '$' . $currentField->fieldName . ' = (int) $' . $currentField->fieldName . ';';
+        }
+
+        if (!empty($assertions) && $isNullable) {
             foreach ($assertions as $key => $value) {
                 $assertions[$key] = $this->spaces . $assertions[$key];
             }

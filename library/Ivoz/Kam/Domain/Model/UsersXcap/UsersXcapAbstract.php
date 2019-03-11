@@ -324,7 +324,7 @@ abstract class UsersXcapAbstract
         Assertion::notNull($docType, 'docType value "%s" is null, but non null value was expected.');
         Assertion::integerish($docType, 'docType value "%s" is not an integer or a number castable to integer.');
 
-        $this->docType = $docType;
+        $this->docType = (int) $docType;
 
         return $this;
     }
@@ -378,7 +378,7 @@ abstract class UsersXcapAbstract
         Assertion::notNull($source, 'source value "%s" is null, but non null value was expected.');
         Assertion::integerish($source, 'source value "%s" is not an integer or a number castable to integer.');
 
-        $this->source = $source;
+        $this->source = (int) $source;
 
         return $this;
     }
@@ -432,7 +432,7 @@ abstract class UsersXcapAbstract
         Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
         Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
 
-        $this->port = $port;
+        $this->port = (int) $port;
 
         return $this;
     }
