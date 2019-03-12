@@ -60,7 +60,7 @@ production:
           name: true
           nif: true
           billingMethod: true
-          outgoingDDI: true
+          outgoingDdi: true
           relRoutingTags: true
           relCodecs: true
       options:
@@ -119,7 +119,7 @@ production:
           fields:
             name: 8
             billingMethod: 4
-            outgoingDDI: 6
+            outgoingDdi: 6
             relFeatures: 3
         group1:
           colsPerRow: 2
@@ -182,7 +182,7 @@ production:
           fields:
             name: 8
             billingMethod: 4
-            outgoingDDI: 6
+            outgoingDdi: 6
             relFeatures: 3
         group1:
           colsPerRow: 12

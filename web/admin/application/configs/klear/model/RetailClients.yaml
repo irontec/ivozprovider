@@ -218,7 +218,7 @@ production:
               - name
               - tag
             template: '%name% (%tag%)'
-    outgoingDDI:
+    outgoingDdi:
       title: _('Outgoing DDI')
       type: select
       source:
