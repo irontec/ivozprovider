@@ -15,17 +15,6 @@ Background:
     And I click on "BrandServices" CTA
    Then I am on "BrandServices" list
 
-@skip
-Scenario: I create new brand services admin page
-   When I click on add button
-    And I fill out the form with "brand/brandServices/new" data fixture
-    And I click on save button
-   Then I can see confirmation dialog
-   When I click on close button
-   Then I am on "BrandServices" list
-   When I click on "BrandServices" last elements edit button
-   Then I compare the form data with "brand/brandServices/new" data fixture
-
 Scenario: I can edit brand service
   Given I can see at least one row
    When I click on "BrandServices" first elements edit button
