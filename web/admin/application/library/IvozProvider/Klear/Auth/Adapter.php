@@ -105,7 +105,7 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
                 $authMessage = array('message' => 'Usuario o contraseña incorrectos.');
             }
             return new \Zend_Auth_Result($authResult, $this->_username, $authMessage);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $authResult = \Zend_Auth_Result::FAILURE_UNCATEGORIZED;
             $authMessage['message'] = $e->getMessage();
             return new \Zend_Auth_Result($authResult, $this->_username, $authMessage);
