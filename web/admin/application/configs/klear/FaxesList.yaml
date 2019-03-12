@@ -24,7 +24,7 @@ production:
       fields: &faxes_fieldsLink
         order: &faxes_orderLink
           name: true
-          outgoingDDI: true
+          outgoingDdi: true
           sendByEmail: true
           email: true
         options:
@@ -61,7 +61,7 @@ production:
           colsPerRow: 12
           fields:
             name: 6
-            outgoingDDI: 6
+            outgoingDdi: 6
         group1:
           label: _("Inbound configuration")
           colsPerRow: 12

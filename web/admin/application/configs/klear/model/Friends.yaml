@@ -139,7 +139,7 @@ production:
           order:
             TransformationRuleSet.name.${lang}: asc
         'null': _("Company's default")
-    outgoingDDI:
+    outgoingDdi:
       title: _('Fallback Outgoing DDI')
       type: select
       source:

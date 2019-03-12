@@ -59,7 +59,7 @@ production:
         order:
           name: true
           nif: true
-          outgoingDDI: true
+          outgoingDdi: true
           billingMethod: true
           relRoutingTags: true
           relCodecs: true

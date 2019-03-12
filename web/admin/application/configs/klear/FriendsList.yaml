@@ -44,7 +44,7 @@ production:
           name: true
           domain: true
           description: true
-          outgoingDDI: true
+          outgoingDdi: true
           priority: true
           statusIcon: true
         options:
@@ -96,7 +96,7 @@ production:
           port: true
           language: true
           callACL: true
-          outgoingDDI: true
+          outgoingDdi: true
           allow: true
           transformationRuleSet: true
           fromDomain: true
@@ -127,7 +127,7 @@ production:
           colsPerRow: 12
           fields:
             callACL: 5
-            outgoingDDI: 5
+            outgoingDdi: 5
         group3:
           label: _("Advanced Configuration")
           colsPerRow: 6

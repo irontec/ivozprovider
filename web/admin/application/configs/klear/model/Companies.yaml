@@ -178,7 +178,7 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
-    outgoingDDI:
+    outgoingDdi:
       title: _('Outgoing DDI')
       type: select
       source:
