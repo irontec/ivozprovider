@@ -9,6 +9,7 @@ use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\Service\Service;
 use RouteHandlerAbstract;
@@ -74,7 +75,7 @@ class Residentials extends RouteHandlerAbstract
     /**
      * Outgoing calls from residential devices
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {
@@ -107,13 +108,13 @@ class Residentials extends RouteHandlerAbstract
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
+            /** @var BrandServiceInterface $service */
             $service = $this->brandServiceRepository
                 ->findByIden(
                     $brand,
                     Service::VOICEMAIL
                 );
 
-            /** @var BrandService $service */
             if ($service) {
                 if ($service->getCode() == substr($exten, 1)) {
                     $this->agi->verbose("Number %s belongs to a %s.", $exten, $service);

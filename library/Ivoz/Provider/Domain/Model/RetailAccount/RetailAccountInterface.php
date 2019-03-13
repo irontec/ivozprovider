@@ -39,7 +39,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get Ddi associated with this retail Account
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @param string $ddieE164
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getDdi($ddieE164);
 

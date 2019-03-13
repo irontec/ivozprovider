@@ -130,6 +130,9 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDdie164()
     {
         return

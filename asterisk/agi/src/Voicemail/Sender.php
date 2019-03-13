@@ -57,7 +57,7 @@ class Sender extends RouteHandlerAbstract
     }
 
     /**
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {

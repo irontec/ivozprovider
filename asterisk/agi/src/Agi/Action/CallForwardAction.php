@@ -79,15 +79,14 @@ class CallForwardAction
             $caller = new UserAgent($this->agi, $forwarder);
         } else {
             $forwarder = $this->cfw->getResidentialDevice();
-            if ($forwarder) {
-                $caller = new ResidentialAgent($this->agi, $forwarder);
-            }
-        }
 
-        // Cfw without owner. This should not happen.
-        if (!$forwarder) {
-            $this->agi->error("Call forward without owner. Check configuration.");
-            return;
+            if (!$forwarder) {
+                // Cfw without owner. This should not happen.
+                $this->agi->error("Call forward without owner. Check configuration.");
+                return;
+            }
+
+            $caller = new ResidentialAgent($this->agi, $forwarder);
         }
 
         // Set the new caller

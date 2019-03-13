@@ -71,7 +71,7 @@ class ResidentialAgent implements AgentInterface
             }
         }
 
-        if (!isset($ddi)) {
+        if (empty($ddi) && isset($companyDDIs)) {
             // Allow diversion from any company DDI
             $callerIdNum = $this->agi->getRedirecting('from-num');
 

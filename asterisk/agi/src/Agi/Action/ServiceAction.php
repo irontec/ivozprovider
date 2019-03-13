@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
-use Ivoz\Provider\Domain\Model\Locution\LocutionDTO;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionRepository;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLock;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLockDto;
@@ -68,7 +68,7 @@ class ServiceAction
     }
 
     /**
-     * @param $service
+     * @param CompanyServiceInterface $service
      * @return $this
      */
     public function setService($service)
@@ -271,7 +271,7 @@ class ServiceAction
         $this->agi->record($originalFile, ",,ky");
 
         // Set upload the original file of the locution
-        /** @var LocutionDTO $locutionDto */
+        /** @var LocutionDto $locutionDto */
         $locutionDto = $this->entityTools->entityToDto($locution);
         $locutionDto->setOriginalFilePath($originalFile);
         $locutionDto->setOriginalFileBaseName($originalFilename);

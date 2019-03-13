@@ -6,7 +6,7 @@ use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;
 use RouteHandlerAbstract;
@@ -73,7 +73,7 @@ class FaxSendStatus extends RouteHandlerAbstract
         if (! empty($error) && $statusstr != "OK") {
             // Show error message in asterisk CLI
             $this->agi->error("Error sending fax: $statusstr ($error)");
-            /** @var FaxesInOutDTO $faxOutDto */
+            /** @var FaxesInOutDto $faxOutDto */
             $faxOutDto = $this->entityTools->entityToDto($faxOut);
             $faxOutDto->setStatus('error');
             $this->entityTools->persistDto(

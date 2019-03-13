@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;
 use RouteHandlerAbstract;
@@ -34,7 +34,7 @@ class FaxDial extends RouteHandlerAbstract
     protected $em;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
     protected $entityTools;
 
@@ -110,7 +110,7 @@ class FaxDial extends RouteHandlerAbstract
         ]);
         $process->mustRun();
 
-        /** @var FaxesInOutDTO $faxOutDto */
+        /** @var FaxesInOutDto $faxOutDto */
         $faxOutDto = $this->entityTools->entityToDto($faxOut);
 
         // Execute conversion command

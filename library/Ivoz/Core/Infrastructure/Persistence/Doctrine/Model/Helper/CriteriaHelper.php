@@ -102,4 +102,181 @@ class CriteriaHelper implements CriteriaHelperInterface
 
         return $expr->{$operator}($field, $value);
     }
+
+    ////////////////////////////////////////////////
+    /// toArray
+    ////////////////////////////////////////////////
+
+    /**
+     * @param Criteria $criteria
+     * @return array
+     */
+    public static function toArray(Criteria $criteria): array
+    {
+        /** @var CompositeExpression $whereExpression */
+        $whereExpression = $criteria->getWhereExpression();
+        $expressionType = $whereExpression->getType();
+
+        /** @var CompositeExpression[] | Comparison[] $expressionList */
+        $expressionList = $whereExpression->getExpressionList();
+        $expressions = self::expressionListToArray($expressionList);
+        $expressions = self::simplifyExpressionList($expressions);
+
+        if ($expressionType === CompositeExpression::TYPE_AND) {
+            return $expressions;
+        }
+
+        return [$expressionType => $expressions];
+    }
+
+    /**
+     * @param array $expressions
+     * @return array
+     */
+    private static function simplifyExpressionList(array $expressions): array
+    {
+        $response = [];
+        foreach ($expressions as $key => $expression) {
+            $type = strtolower(key($expression));
+            if (!is_numeric($type)
+                && count($expression) === 1
+                && !array_key_exists($type, $response)
+            ) {
+                $currentExpression = current($expression);
+                $response[$type] = self::simplifyExpressionList($currentExpression);
+                continue;
+            }
+
+            $response[] = $expression;
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param  CompositeExpression[] | Comparison[] $expressionList
+     *
+     * @return array
+     */
+    private static function expressionListToArray(array $expressionList)
+    {
+        $response = [];
+        foreach ($expressionList as $expression) {
+            if ($expression instanceof Comparison) {
+                /** @var Comparison $expression */
+                $response[] = self::comparisonToArray($expression);
+                continue;
+            }
+
+            $response[] = self::expressionToArray($expression);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param CompositeExpression $expression
+     * @return array
+     */
+    private static function expressionToArray(CompositeExpression $expression)
+    {
+        $type = strtolower(
+            $expression->getType()
+        );
+        $conditions = [];
+
+        /** @var CompositeExpression[] | Comparison[] $expressionList */
+        $expressionList = $expression->getExpressionList();
+
+        return [
+            $type => self::expressionListToArray($expressionList)
+        ];
+    }
+
+    /**
+     * @param Comparison $comparison
+     * @return array
+     */
+    private static function comparisonToArray(Comparison $comparison)
+    {
+        return [
+            $comparison->getField(),
+            self::operatorMap(
+                $comparison->getOperator()
+            ),
+            $comparison->getValue()->getValue()
+        ];
+    }
+
+    private static function operatorMap(string $operator)
+    {
+        $values = [
+            '=' => 'eq',
+            '<>' => 'neq',
+            '<' => 'lt',
+            '<=' => 'LTE',
+            '>' => 'GT',
+            '>=' => 'GTE',
+            'IN' => 'IN',
+            'NIN' => 'NIN',
+            'CONTAINS' => 'CONTAINS',
+            'MEMBER_OF' => 'MEMBER_OF',
+            'STARTS_WITH' => 'STARTS_WITH',
+            'ENDS_WITH' => 'ENDS_WITH'
+        ];
+
+        return $values[strtolower($operator)];
+    }
+
+    ////////////////////////////////////////////////
+    /// append
+    ////////////////////////////////////////////////
+
+    /**
+     * @param string $operator
+     * @param Criteria $baseCriteria
+     * @param Criteria[] ...$criteriasToAppend
+     * @return Criteria
+     */
+    public static function append(string $operator, Criteria $baseCriteria, Criteria ...$criteriasToAppend): Criteria
+    {
+        $operator = strtoupper($operator);
+        if (!in_array($operator, [CompositeExpression::TYPE_OR, CompositeExpression::TYPE_AND])) {
+            throw new \InvalidArgumentException('Unkown operator ' . $operator);
+        }
+
+        /** @var CompositeExpression $baseExpression */
+        $expression = self::simplifyCompositeExpression(
+            $baseCriteria->getWhereExpression()
+        );
+
+        foreach ($criteriasToAppend as $criteria) {
+            $newExpression = self::simplifyCompositeExpression(
+                $criteria->getWhereExpression()
+            );
+
+            $expression = new CompositeExpression(
+                $operator,
+                [
+                    $expression,
+                    $newExpression
+                ]
+            );
+        }
+
+        return new Criteria($expression);
+    }
+
+    private static function simplifyCompositeExpression(CompositeExpression $expression): CompositeExpression
+    {
+        $expressionList = $expression->getExpressionList();
+        $firstExpression = current($expressionList);
+        $isAndCondition = $expression->getType() === CompositeExpression::TYPE_AND;
+
+        if ($isAndCondition && count($expressionList) === 1) {
+            return $firstExpression;
+        }
+
+        return $expression;
+    }
 }

@@ -221,16 +221,20 @@ class UserCallAction
 
         // Build the criteria to look for call forward settings
         $criteria = [
-            'or' => array(
-                array('callForwardType', 'eq', 'noAnswer'),
-                array('callForwardType', 'eq', 'busy'),
-                array('callForwardType', 'eq', 'userNotRegistered'),
-            ),
-            'or' => array(
-                array('callTypeFilter', 'eq', 'both'),
-                array('callTypeFilter', 'eq', $callType),
-            ),
-            array('enabled', 'eq', '1')
+            [
+                'or' => [
+                    ['callForwardType', 'eq', 'noAnswer'],
+                    ['callForwardType', 'eq', 'busy'],
+                    ['callForwardType', 'eq', 'userNotRegistered'],
+                ]
+            ],
+            [
+                'or' => [
+                    ['callTypeFilter', 'eq', 'both'],
+                    ['callTypeFilter', 'eq', $callType],
+                ]
+            ],
+            ['enabled', 'eq', '1']
         ];
 
         /** @var CallForwardSettingInterface[] $cfwSettings */

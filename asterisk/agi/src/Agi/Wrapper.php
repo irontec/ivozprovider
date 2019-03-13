@@ -101,7 +101,7 @@ class Wrapper
     /**
      * Get Channel variable value
      *
-     * @param $variable
+     * @param string $variable
      * @return string
      */
     public function getVariable($variable)

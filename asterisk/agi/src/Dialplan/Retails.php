@@ -39,7 +39,6 @@ class Retails extends RouteHandlerAbstract
      * @param ChannelInfo $channelInfo
      * @param EndpointResolver $endpointResolver
      * @param ExternalNumberAction $externalNumberAction
-     * @param ServiceAction $serviceAction
      */
     public function __construct(
         Wrapper $agi,
@@ -56,7 +55,7 @@ class Retails extends RouteHandlerAbstract
     /**
      * Outgoing calls from retail accounts
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {
