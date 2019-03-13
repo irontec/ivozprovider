@@ -85,6 +85,9 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
             $endpointDto->setMailboxes($user->getVoiceMail());
         }
 
+        // Update endpoint pickup groups
+        $endpointDto->setNamedPickupGroup($user->getPickUpGroupsIds());
+
         $this->entityTools->persistDto(
             $endpointDto,
             $endpoint
