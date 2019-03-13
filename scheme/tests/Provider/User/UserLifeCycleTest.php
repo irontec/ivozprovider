@@ -143,6 +143,7 @@ class UserLifeCycleTest extends KernelTestCase
     {
         $this->removeUser();
         $this->assetChangedEntities([
+            PsEndpoint::class,
             PickUpRelUser::class, // Orphan removal
             User::class,
             Extension::class,
