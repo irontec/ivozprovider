@@ -3,6 +3,7 @@
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper;
 
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\Query\Expr\Composite;
 use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\Value;
@@ -11,6 +12,11 @@ use Doctrine\Common\Collections\Expr\Expression;
 
 class CriteriaHelper implements CriteriaHelperInterface
 {
+    const VALID_COMPOSITION_KEYS = [
+        'or',
+        'and'
+    ];
+
     /**
      * @param array $conditions
      * @return Criteria
@@ -21,6 +27,10 @@ class CriteriaHelper implements CriteriaHelperInterface
      *          array('field1', 'like', '%field1Value%'),
      *          array('field2', 'like', '%field2Value%')
      *      ),
+     *      ['or' => array(
+     *          array('field1', 'like', '%field1Value%'),
+     *          array('field2', 'like', '%field2Value%')
+     *      )],
      *      'and' => array(
      *          array('field3', 'eq', 3),
      *          array('field4', 'eq', 'four')
@@ -56,7 +66,21 @@ class CriteriaHelper implements CriteriaHelperInterface
                 throw new \RuntimeException("Raw (string) conditions cannot be converted into expressions");
             }
 
-            if (!in_array($key, ['or', 'and'], true)) {
+            /**
+             * Unwrap ['or' => [...]] conditions
+             */
+            $isConditionWrapper =
+                is_array($comparison)
+                && count($comparison) === 1
+                && in_array(key($comparison), self::VALID_COMPOSITION_KEYS);
+
+            if ($isConditionWrapper) {
+                $response = self::arrayToExpressions($comparison);
+                $expressions[] = current($response);
+                continue;
+            }
+
+            if (!in_array($key, self::VALID_COMPOSITION_KEYS, true)) {
                 list($field, $operator) = $comparison;
                 $value = $comparison[2] ?? null;
 
