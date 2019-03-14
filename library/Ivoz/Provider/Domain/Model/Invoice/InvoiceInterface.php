@@ -94,7 +94,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Get invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate();
 
@@ -142,7 +142,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Get numberSequence
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     public function getNumberSequence();
 
@@ -158,7 +158,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Get scheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getScheduler();
 

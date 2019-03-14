@@ -43,7 +43,7 @@ abstract class MatchListPatternAbstract
     protected $matchList;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $numberCountry;
 
@@ -138,7 +138,6 @@ abstract class MatchListPatternAbstract
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -168,7 +167,6 @@ abstract class MatchListPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -360,7 +358,7 @@ abstract class MatchListPatternAbstract
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry()
     {

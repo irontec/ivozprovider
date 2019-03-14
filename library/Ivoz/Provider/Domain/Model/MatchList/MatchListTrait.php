@@ -33,6 +33,8 @@ trait MatchListTrait
         $this->patterns = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -55,6 +57,7 @@ trait MatchListTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -84,6 +87,8 @@ trait MatchListTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

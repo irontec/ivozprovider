@@ -311,7 +311,6 @@ abstract class VoicemailAbstract
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -370,7 +369,6 @@ abstract class VoicemailAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

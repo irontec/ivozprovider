@@ -248,7 +248,6 @@ abstract class UsersPuaAbstract
             ->setRecordRoute($dto->getRecordRoute())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -290,7 +289,6 @@ abstract class UsersPuaAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

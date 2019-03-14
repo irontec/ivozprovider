@@ -29,7 +29,7 @@ abstract class TimezoneAbstract
     protected $label;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $country;
 
@@ -128,7 +128,6 @@ abstract class TimezoneAbstract
             ->setCountry($fkTransformer->transform($dto->getCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -161,7 +160,6 @@ abstract class TimezoneAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -267,7 +265,7 @@ abstract class TimezoneAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry()
     {

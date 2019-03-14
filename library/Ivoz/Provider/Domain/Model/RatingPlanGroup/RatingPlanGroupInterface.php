@@ -58,7 +58,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency();
 

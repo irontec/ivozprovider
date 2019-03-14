@@ -33,6 +33,8 @@ trait OutgoingRoutingRelCarrierTrait
         $this->tpRatingProfiles = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -55,6 +57,7 @@ trait OutgoingRoutingRelCarrierTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -84,6 +87,8 @@ trait OutgoingRoutingRelCarrierTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

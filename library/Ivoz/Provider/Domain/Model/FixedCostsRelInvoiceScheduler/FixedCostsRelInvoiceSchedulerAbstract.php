@@ -114,7 +114,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -141,7 +140,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

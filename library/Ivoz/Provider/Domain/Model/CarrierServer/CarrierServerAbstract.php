@@ -199,7 +199,6 @@ abstract class CarrierServerAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -239,7 +238,6 @@ abstract class CarrierServerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

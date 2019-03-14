@@ -122,7 +122,6 @@ abstract class FixedCostAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -150,7 +149,6 @@ abstract class FixedCostAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

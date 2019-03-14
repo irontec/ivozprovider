@@ -24,6 +24,8 @@ trait ExternalCallFilterWhiteListTrait
         parent::__construct(...func_get_args());
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -40,6 +42,7 @@ trait ExternalCallFilterWhiteListTrait
          */
         $self = parent::fromDto($dto, $fkTransformer);
 
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -62,6 +65,8 @@ trait ExternalCallFilterWhiteListTrait
          * @var $dto ExternalCallFilterWhiteListDto
          */
         parent::updateFromDto($dto, $fkTransformer);
+
+        $this->sanitizeValues();
 
         return $this;
     }

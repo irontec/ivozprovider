@@ -176,7 +176,6 @@ abstract class TpDestinationRateAbstract
             ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -210,7 +209,6 @@ abstract class TpDestinationRateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

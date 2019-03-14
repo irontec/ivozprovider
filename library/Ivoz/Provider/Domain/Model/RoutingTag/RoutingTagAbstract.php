@@ -117,7 +117,6 @@ abstract class RoutingTagAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -144,7 +143,6 @@ abstract class RoutingTagAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

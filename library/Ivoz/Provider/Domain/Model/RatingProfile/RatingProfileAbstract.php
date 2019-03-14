@@ -19,12 +19,12 @@ abstract class RatingProfileAbstract
     protected $activationTime;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
@@ -34,7 +34,7 @@ abstract class RatingProfileAbstract
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     protected $routingTag;
 
@@ -128,7 +128,6 @@ abstract class RatingProfileAbstract
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -157,7 +156,6 @@ abstract class RatingProfileAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

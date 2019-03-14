@@ -120,7 +120,6 @@ abstract class HuntGroupsRelUserAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -148,7 +147,6 @@ abstract class HuntGroupsRelUserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

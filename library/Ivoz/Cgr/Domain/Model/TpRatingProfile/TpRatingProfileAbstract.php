@@ -74,12 +74,12 @@ abstract class TpRatingProfileAbstract
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface | null
      */
     protected $ratingProfile;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface | null
      */
     protected $outgoingRoutingRelCarrier;
 
@@ -192,7 +192,6 @@ abstract class TpRatingProfileAbstract
             ->setOutgoingRoutingRelCarrier($fkTransformer->transform($dto->getOutgoingRoutingRelCarrier()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -229,7 +228,6 @@ abstract class TpRatingProfileAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

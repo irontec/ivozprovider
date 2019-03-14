@@ -108,7 +108,6 @@ abstract class ExternalCallFilterRelCalendarAbstract
             ->setCalendar($fkTransformer->transform($dto->getCalendar()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class ExternalCallFilterRelCalendarAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

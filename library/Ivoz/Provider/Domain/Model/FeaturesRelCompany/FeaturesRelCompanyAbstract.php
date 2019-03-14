@@ -108,7 +108,6 @@ abstract class FeaturesRelCompanyAbstract
             ->setFeature($fkTransformer->transform($dto->getFeature()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class FeaturesRelCompanyAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -169,7 +169,6 @@ abstract class RecordingAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -208,7 +207,6 @@ abstract class RecordingAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

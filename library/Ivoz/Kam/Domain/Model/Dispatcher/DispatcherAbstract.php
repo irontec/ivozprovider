@@ -151,7 +151,6 @@ abstract class DispatcherAbstract
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -182,7 +181,6 @@ abstract class DispatcherAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

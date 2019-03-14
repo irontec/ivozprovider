@@ -148,7 +148,6 @@ abstract class TerminalModelAbstract
             ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -180,7 +179,6 @@ abstract class TerminalModelAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

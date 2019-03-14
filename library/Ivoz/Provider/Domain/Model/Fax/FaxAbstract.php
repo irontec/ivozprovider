@@ -34,7 +34,7 @@ abstract class FaxAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $outgoingDdi;
 
@@ -129,7 +129,6 @@ abstract class FaxAbstract
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -158,7 +157,6 @@ abstract class FaxAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -315,7 +313,7 @@ abstract class FaxAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi()
     {

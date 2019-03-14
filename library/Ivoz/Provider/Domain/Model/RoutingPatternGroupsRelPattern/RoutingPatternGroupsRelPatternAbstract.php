@@ -108,7 +108,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             ->setRoutingPatternGroup($fkTransformer->transform($dto->getRoutingPatternGroup()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

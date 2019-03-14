@@ -116,7 +116,6 @@ abstract class BrandServiceAbstract
             ->setService($fkTransformer->transform($dto->getService()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -143,7 +142,6 @@ abstract class BrandServiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

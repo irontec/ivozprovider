@@ -96,12 +96,12 @@ abstract class TrunksCdrAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     protected $retailAccount;
 
@@ -215,7 +215,6 @@ abstract class TrunksCdrAbstract
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -257,7 +256,6 @@ abstract class TrunksCdrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -778,7 +776,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -802,7 +800,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount()
     {

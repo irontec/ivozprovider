@@ -45,6 +45,8 @@ trait DomainTrait
         $this->terminals = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -83,6 +85,7 @@ trait DomainTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -126,6 +129,8 @@ trait DomainTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

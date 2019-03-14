@@ -168,7 +168,6 @@ abstract class QueueAbstract
             ->setQueue($fkTransformer->transform($dto->getQueue()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -203,7 +202,6 @@ abstract class QueueAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -29,17 +29,17 @@ abstract class BalanceNotificationAbstract
     protected $lastSent;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     protected $notificationTemplate;
 
@@ -132,7 +132,6 @@ abstract class BalanceNotificationAbstract
             ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -162,7 +161,6 @@ abstract class BalanceNotificationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

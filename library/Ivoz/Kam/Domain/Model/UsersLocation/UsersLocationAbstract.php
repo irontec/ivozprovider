@@ -266,7 +266,6 @@ abstract class UsersLocationAbstract
             ->setInstance($dto->getInstance())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -312,7 +311,6 @@ abstract class UsersLocationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

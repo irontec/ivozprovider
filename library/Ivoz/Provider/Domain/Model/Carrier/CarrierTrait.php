@@ -57,6 +57,8 @@ trait CarrierTrait
         $this->tpCdrStats = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -111,6 +113,7 @@ trait CarrierTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -168,6 +171,8 @@ trait CarrierTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

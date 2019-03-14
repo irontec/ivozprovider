@@ -124,7 +124,6 @@ abstract class RouteLockAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -152,7 +151,6 @@ abstract class RouteLockAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

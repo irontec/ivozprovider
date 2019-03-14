@@ -38,7 +38,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $matchList;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $forcedDdi;
 
@@ -133,7 +133,6 @@ abstract class OutgoingDdiRulesPatternAbstract
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -162,7 +161,6 @@ abstract class OutgoingDdiRulesPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -319,7 +317,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Get forcedDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getForcedDdi()
     {

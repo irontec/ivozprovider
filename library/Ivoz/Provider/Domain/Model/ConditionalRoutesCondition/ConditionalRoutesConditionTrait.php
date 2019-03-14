@@ -51,6 +51,8 @@ trait ConditionalRoutesConditionTrait
         $this->relRouteLocks = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -97,6 +99,7 @@ trait ConditionalRoutesConditionTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -147,6 +150,8 @@ trait ConditionalRoutesConditionTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

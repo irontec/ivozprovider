@@ -223,7 +223,6 @@ abstract class TrunksUacregAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -262,7 +261,6 @@ abstract class TrunksUacregAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

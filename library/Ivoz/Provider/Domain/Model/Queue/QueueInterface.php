@@ -159,7 +159,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get periodicAnnounceLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getPeriodicAnnounceLocution();
 
@@ -175,7 +175,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get timeoutLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getTimeoutLocution();
 
@@ -191,7 +191,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get timeoutExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getTimeoutExtension();
 
@@ -207,7 +207,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get timeoutVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getTimeoutVoiceMailUser();
 
@@ -223,7 +223,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get fullLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getFullLocution();
 
@@ -239,7 +239,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get fullExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getFullExtension();
 
@@ -255,7 +255,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get fullVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getFullVoiceMailUser();
 
@@ -271,7 +271,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get timeoutNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getTimeoutNumberCountry();
 
@@ -287,7 +287,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get fullNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getFullNumberCountry();
 

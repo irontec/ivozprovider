@@ -110,7 +110,6 @@ abstract class PickUpGroupAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -136,7 +135,6 @@ abstract class PickUpGroupAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -108,7 +108,6 @@ abstract class IvrExcludedExtensionAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class IvrExcludedExtensionAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

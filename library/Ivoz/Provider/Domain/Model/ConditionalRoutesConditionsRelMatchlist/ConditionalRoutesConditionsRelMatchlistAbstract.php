@@ -108,7 +108,6 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
             ->setMatchlist($fkTransformer->transform($dto->getMatchlist()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

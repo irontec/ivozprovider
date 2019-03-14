@@ -265,7 +265,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
 
@@ -281,7 +281,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get mediaRelaySets
      *
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
      */
     public function getMediaRelaySets();
 
@@ -338,7 +338,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get applicationServer
      *
-     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
+     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface | null
      */
     public function getApplicationServer();
 
@@ -370,7 +370,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency();
 
@@ -386,7 +386,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
 
@@ -402,7 +402,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi();
 

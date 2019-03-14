@@ -154,7 +154,6 @@ abstract class BrandUrlAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -191,7 +190,6 @@ abstract class BrandUrlAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -33,6 +33,8 @@ trait ConditionalRouteTrait
         $this->conditions = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -55,6 +57,7 @@ trait ConditionalRouteTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -84,6 +87,8 @@ trait ConditionalRouteTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

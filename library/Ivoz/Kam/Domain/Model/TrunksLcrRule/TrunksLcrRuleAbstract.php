@@ -58,7 +58,7 @@ abstract class TrunksLcrRuleAbstract
     protected $routingPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface | null
      */
     protected $routingPatternGroupsRelPattern;
 
@@ -164,7 +164,6 @@ abstract class TrunksLcrRuleAbstract
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -198,7 +197,6 @@ abstract class TrunksLcrRuleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

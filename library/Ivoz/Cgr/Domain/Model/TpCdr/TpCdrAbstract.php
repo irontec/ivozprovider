@@ -288,7 +288,6 @@ abstract class TpCdrAbstract
             ->setDeletedAt($dto->getDeletedAt())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -335,7 +334,6 @@ abstract class TpCdrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

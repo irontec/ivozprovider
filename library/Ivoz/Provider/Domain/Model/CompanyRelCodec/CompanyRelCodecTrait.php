@@ -24,6 +24,8 @@ trait CompanyRelCodecTrait
         parent::__construct(...func_get_args());
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -40,6 +42,7 @@ trait CompanyRelCodecTrait
          */
         $self = parent::fromDto($dto, $fkTransformer);
 
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -62,6 +65,8 @@ trait CompanyRelCodecTrait
          * @var $dto CompanyRelCodecDto
          */
         parent::updateFromDto($dto, $fkTransformer);
+
+        $this->sanitizeValues();
 
         return $this;
     }

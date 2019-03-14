@@ -137,7 +137,6 @@ abstract class TrunksLcrRuleTargetAbstract
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -167,7 +166,6 @@ abstract class TrunksLcrRuleTargetAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

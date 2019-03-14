@@ -117,7 +117,6 @@ abstract class FriendsPatternAbstract
             ->setFriend($fkTransformer->transform($dto->getFriend()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -144,7 +143,6 @@ abstract class FriendsPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

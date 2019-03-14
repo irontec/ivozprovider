@@ -108,7 +108,6 @@ abstract class PickUpRelUserAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class PickUpRelUserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

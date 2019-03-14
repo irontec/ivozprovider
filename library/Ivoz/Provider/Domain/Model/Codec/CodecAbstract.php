@@ -119,7 +119,6 @@ abstract class CodecAbstract
             $dto->getName()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -146,7 +145,6 @@ abstract class CodecAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

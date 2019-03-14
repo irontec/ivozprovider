@@ -108,7 +108,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

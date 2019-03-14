@@ -138,7 +138,6 @@ abstract class UsersHtableAbstract
             $dto->getExpires()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -167,7 +166,6 @@ abstract class UsersHtableAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

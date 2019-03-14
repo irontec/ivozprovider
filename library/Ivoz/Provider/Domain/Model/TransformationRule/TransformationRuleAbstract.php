@@ -45,7 +45,7 @@ abstract class TransformationRuleAbstract
     protected $replaceExpr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
@@ -141,7 +141,6 @@ abstract class TransformationRuleAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -171,7 +170,6 @@ abstract class TransformationRuleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

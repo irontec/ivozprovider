@@ -110,7 +110,6 @@ abstract class MediaRelaySetAbstract
             ->setDescription($dto->getDescription())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -136,7 +135,6 @@ abstract class MediaRelaySetAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

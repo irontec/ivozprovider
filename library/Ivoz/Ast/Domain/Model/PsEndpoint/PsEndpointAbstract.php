@@ -242,7 +242,6 @@ abstract class PsEndpointAbstract
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -286,7 +285,6 @@ abstract class PsEndpointAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

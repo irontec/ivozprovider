@@ -113,7 +113,6 @@ abstract class LanguageAbstract
             $name
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -144,7 +143,6 @@ abstract class LanguageAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

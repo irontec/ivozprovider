@@ -68,12 +68,12 @@ abstract class TerminalAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
+     * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
      */
     protected $terminalModel;
 
@@ -180,7 +180,6 @@ abstract class TerminalAbstract
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -215,7 +214,6 @@ abstract class TerminalAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -553,7 +551,7 @@ abstract class TerminalAbstract
     /**
      * Get terminalModel
      *
-     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
+     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
      */
     public function getTerminalModel()
     {

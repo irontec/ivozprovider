@@ -195,7 +195,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get clidCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getClidCountry();
 

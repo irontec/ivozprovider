@@ -32,7 +32,7 @@ abstract class NotificationTemplateAbstract
     protected $type;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
@@ -125,7 +125,6 @@ abstract class NotificationTemplateAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -152,7 +151,6 @@ abstract class NotificationTemplateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

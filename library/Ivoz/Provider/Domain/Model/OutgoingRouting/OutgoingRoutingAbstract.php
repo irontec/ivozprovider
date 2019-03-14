@@ -63,7 +63,7 @@ abstract class OutgoingRoutingAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
@@ -83,7 +83,7 @@ abstract class OutgoingRoutingAbstract
     protected $routingTag;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $clidCountry;
 
@@ -187,7 +187,6 @@ abstract class OutgoingRoutingAbstract
             ->setClidCountry($fkTransformer->transform($dto->getClidCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -225,7 +224,6 @@ abstract class OutgoingRoutingAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -637,7 +635,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get clidCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getClidCountry()
     {

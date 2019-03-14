@@ -130,7 +130,6 @@ abstract class ConferenceRoomAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -159,7 +158,6 @@ abstract class ConferenceRoomAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

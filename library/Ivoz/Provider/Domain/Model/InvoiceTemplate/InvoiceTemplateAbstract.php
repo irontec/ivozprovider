@@ -135,7 +135,6 @@ abstract class InvoiceTemplateAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -165,7 +164,6 @@ abstract class InvoiceTemplateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

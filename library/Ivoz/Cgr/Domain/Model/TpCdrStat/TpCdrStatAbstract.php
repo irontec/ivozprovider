@@ -336,7 +336,6 @@ abstract class TpCdrStatAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -388,7 +387,6 @@ abstract class TpCdrStatAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

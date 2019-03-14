@@ -166,7 +166,6 @@ abstract class ScheduleAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -201,7 +200,6 @@ abstract class ScheduleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

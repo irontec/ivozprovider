@@ -197,6 +197,7 @@ trait CompanyTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -296,6 +297,8 @@ trait CompanyTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

@@ -144,7 +144,6 @@ abstract class UsersAddressAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -175,7 +174,6 @@ abstract class UsersAddressAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

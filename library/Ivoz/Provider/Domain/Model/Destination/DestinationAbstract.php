@@ -127,7 +127,6 @@ abstract class DestinationAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -159,7 +158,6 @@ abstract class DestinationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

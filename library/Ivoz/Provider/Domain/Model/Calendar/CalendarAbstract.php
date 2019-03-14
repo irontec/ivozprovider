@@ -110,7 +110,6 @@ abstract class CalendarAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -136,7 +135,6 @@ abstract class CalendarAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

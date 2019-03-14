@@ -114,7 +114,6 @@ abstract class FixedCostsRelInvoiceAbstract
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -141,7 +140,6 @@ abstract class FixedCostsRelInvoiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
