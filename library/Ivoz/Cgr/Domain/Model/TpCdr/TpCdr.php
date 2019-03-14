@@ -54,7 +54,7 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
             return;
         }
 
-        return new \DateTime($timespan['TimeStart']);
+        return new \DateTime($timespan['TimeStart'], new \DateTimeZone('UTC'));
     }
 
     /**

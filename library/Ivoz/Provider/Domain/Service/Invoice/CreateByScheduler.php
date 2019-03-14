@@ -147,7 +147,7 @@ class CreateByScheduler
             ->entityToDto($scheduler);
 
         $invoiceSchedulerDto
-            ->setLastExecution(new \DateTime())
+            ->setLastExecution(new \DateTime(null, new \DateTimeZone('UTC')))
             ->setLastExecutionError('');
 
         $this->entityTools->persistDto(
