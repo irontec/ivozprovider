@@ -13,6 +13,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class IvrEntryAbstract
 {
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_EXTENSION = 'extension';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    const ROUTETYPE_CONDITIONAL = 'conditional';
+
     /**
      * @var string
      */
@@ -267,12 +272,12 @@ abstract class IvrEntryAbstract
     {
         Assertion::notNull($routeType, 'routeType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routeType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-          3 => 'conditional',
-        ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($routeType, [
+            self::ROUTETYPE_NUMBER,
+            self::ROUTETYPE_EXTENSION,
+            self::ROUTETYPE_VOICEMAIL,
+            self::ROUTETYPE_CONDITIONAL
+        ], 'routeTypevalue "%s" is not an element of the valid values: %s');
 
         $this->routeType = $routeType;
 

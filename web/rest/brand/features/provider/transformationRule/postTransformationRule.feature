@@ -30,7 +30,8 @@ Feature: Create transformation rules
           "priority": 10,
           "matchExpr": "^\\+34([0-9]+)$",
           "replaceExpr": "\u0001",
-          "id": 9
+          "id": 9,
+          "transformationRuleSet": 2
       }
     """
 

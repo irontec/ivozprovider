@@ -58,17 +58,17 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $expires = '0';
+    private $expires = 0;
 
     /**
      * @var integer
      */
-    private $flags = '0';
+    private $flags = 0;
 
     /**
      * @var integer
      */
-    private $regDelay = '0';
+    private $regDelay = 0;
 
     /**
      * @var string

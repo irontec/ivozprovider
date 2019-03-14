@@ -20,6 +20,18 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
 
+        $controller = $routeDispatcher->getControllerName();
+        if (!in_array($controller, ['edit', 'new'])) {
+            return true;
+        }
+
+        $screen = $routeDispatcher->getCurrentScreen();
+        $filterField = $screen->getFilterField();
+
+        if ($filterField !== 'HuntGroup') {
+            return true;
+        }
+
         $huntGroupId = $routeDispatcher->getParam("parentId", false);
         if (!$huntGroupId) {
             return true;
@@ -34,9 +46,6 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
             $huntGroupId
         );
 
-        if ($huntGroupDto->getStrategy() !== 'ringAll') {
-            return true;
-        }
         $condition = "HuntGroupsRelUser.huntGroup = " . $huntGroupId;
         $currentPk = $routeDispatcher->getParam("pk", false);
         $isEditScreen = $routeDispatcher->getControllerName() === 'edit';

@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class RecordingAbstract
 {
+    const TYPE_ONDEMAND = 'ondemand';
+    const TYPE_DDI = 'ddi';
+
     /**
      * @var string | null
      */
@@ -32,7 +35,7 @@ abstract class RecordingAbstract
     /**
      * @var float
      */
-    protected $duration = '0.000';
+    protected $duration = 0.0;
 
     /**
      * @var string | null
@@ -319,10 +322,10 @@ abstract class RecordingAbstract
     protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
-        Assertion::choice($type, array (
-          0 => 'ondemand',
-          1 => 'ddi',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($type, [
+            self::TYPE_ONDEMAND,
+            self::TYPE_DDI
+        ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -350,9 +353,8 @@ abstract class RecordingAbstract
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
-        $duration = (float) $duration;
 
-        $this->duration = $duration;
+        $this->duration = (float) $duration;
 
         return $this;
     }

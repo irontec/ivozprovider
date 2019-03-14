@@ -33,7 +33,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $maxCalls = '0';
+    private $maxCalls = 0;
 
     /**
      * @var integer

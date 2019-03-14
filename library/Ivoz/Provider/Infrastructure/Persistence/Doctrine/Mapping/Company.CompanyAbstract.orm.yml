@@ -50,7 +50,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       nullable: false
       options:
         unsigned: true
-        default: '0'
+        default: 0
       column: maxCalls
     postalAddress:
       type: string
@@ -95,7 +95,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       type: smallint
       nullable: true
       options:
-        default: '0'
+        default: 0
       column: onDemandRecord
     onDemandRecordCode:
       type: string

@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingRoutingAbstract
 {
+    const ROUTINGMODE_STATIC = 'static';
+    const ROUTINGMODE_LCR = 'lcr';
+
     /**
      * @var string | null
      */
@@ -26,7 +29,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * @var integer
      */
-    protected $weight = '1';
+    protected $weight = 1;
 
     /**
      * comment: enum:static|lcr
@@ -314,7 +317,7 @@ abstract class OutgoingRoutingAbstract
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }
@@ -342,7 +345,7 @@ abstract class OutgoingRoutingAbstract
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
-        $this->weight = $weight;
+        $this->weight = (int) $weight;
 
         return $this;
     }
@@ -368,10 +371,10 @@ abstract class OutgoingRoutingAbstract
     {
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($routingMode, array (
-              0 => 'static',
-              1 => 'lcr',
-            ), 'routingModevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routingMode, [
+                self::ROUTINGMODE_STATIC,
+                self::ROUTINGMODE_LCR
+            ], 'routingModevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routingMode = $routingMode;

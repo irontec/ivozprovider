@@ -16,7 +16,7 @@ abstract class TrunksAddressAbstract
     /**
      * @var integer
      */
-    protected $grp = '1';
+    protected $grp = 1;
 
     /**
      * column: ip_addr
@@ -27,12 +27,12 @@ abstract class TrunksAddressAbstract
     /**
      * @var integer
      */
-    protected $mask = '32';
+    protected $mask = 32;
 
     /**
      * @var integer
      */
-    protected $port = '0';
+    protected $port = 0;
 
     /**
      * @var string | null
@@ -216,7 +216,7 @@ abstract class TrunksAddressAbstract
         Assertion::integerish($grp, 'grp value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($grp, 0, 'grp provided "%s" is not greater or equal than "%s".');
 
-        $this->grp = $grp;
+        $this->grp = (int) $grp;
 
         return $this;
     }
@@ -271,7 +271,7 @@ abstract class TrunksAddressAbstract
         Assertion::notNull($mask, 'mask value "%s" is null, but non null value was expected.');
         Assertion::integerish($mask, 'mask value "%s" is not an integer or a number castable to integer.');
 
-        $this->mask = $mask;
+        $this->mask = (int) $mask;
 
         return $this;
     }
@@ -298,7 +298,7 @@ abstract class TrunksAddressAbstract
         Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
         Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
 
-        $this->port = $port;
+        $this->port = (int) $port;
 
         return $this;
     }

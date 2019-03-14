@@ -31,7 +31,14 @@ Feature: Create IVR entries
       {
           "entry": "new ivr entry",
           "routeType": "extension",
-          "id": 2
+          "numberValue": null,
+          "id": 2,
+          "ivr": 1,
+          "welcomeLocution": 1,
+          "extension": 1,
+          "voiceMailUser": null,
+          "conditionalRoute": null,
+          "numberCountry": null
       }
     """
 

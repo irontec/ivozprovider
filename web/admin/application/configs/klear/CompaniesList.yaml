@@ -73,7 +73,7 @@ production:
           name: true
           nif: true
           billingMethod: true
-          outgoingDDI: true
+          outgoingDdi: true
           domainUsers: true
           relFeatures: true
       options:
@@ -114,7 +114,7 @@ production:
           distributeMethod: true
           applicationServer: true
           countryName: true
-          outgoingDDI: true
+          outgoingDdi: true
           outgoingDdiRule: true
           externallyExtraOpts: true
           recordingsLimitMB: true
@@ -131,7 +131,7 @@ production:
           name: true
           maxCalls: true
           language: true
-          outgoingDDI: true
+          outgoingDdi: true
           showInvoices: true
           onDemandRecord: true
           voicemailNotificationTemplate: true
@@ -238,8 +238,8 @@ production:
           collapsed: true
           label: _("Platform data")
           fields:
-            outgoingDDI: 6
-            outgoingDDIRule: 6
+            outgoingDdi: 6
+            outgoingDdiRule: 6
             domain_users: 9
             mediaRelaySets: 4
             distributeMethod: 4

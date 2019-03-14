@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-26 16:01+0100\n"
+"POT-Creation-Date: 2019-02-28 09:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 #: ../../administration_portal/client/retail/retail_accounts.rst:43
 #: ../../administration_portal/client/vpbx/faxes.rst:24
 #: ../../administration_portal/client/vpbx/routing_endpoints/conference_rooms.rst:22
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:69
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:71
 #: ../../administration_portal/client/vpbx/routing_endpoints/hunt_groups.rst:13
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:21
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:26
@@ -75,7 +75,7 @@ msgstr ""
 #: ../../administration_portal/brand/settings/numeric_transformations.rst:96
 #: ../../administration_portal/client/residential/residential_devices.rst:48
 #: ../../administration_portal/client/retail/retail_accounts.rst:48
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:73
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:75
 #: ../../administration_portal/client/vpbx/routing_endpoints/hunt_groups.rst:16
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:24
 msgid "Description"
@@ -2916,7 +2916,7 @@ msgstr ""
 #: ../../administration_portal/brand/providers/ddi_providers.rst:65
 #: ../../administration_portal/client/residential/residential_devices.rst:51
 #: ../../administration_portal/client/retail/retail_accounts.rst:51
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:81
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:83
 #: ../../administration_portal/client/vpbx/terminals.rst:19
 #: ../../administration_portal/client/vpbx/users.rst:50
 #: ../../administration_portal/platform/main_operators.rst:14
@@ -3071,7 +3071,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:26
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:76
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:78
 msgid "Priority"
 msgstr ""
 
@@ -4781,7 +4781,7 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:65
 #: ../../administration_portal/client/retail/retail_accounts.rst:62
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:94
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:96
 msgid "Fallback Outgoing DDI"
 msgstr ""
 
@@ -4804,7 +4804,7 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:72
 #: ../../administration_portal/client/retail/retail_accounts.rst:66
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:104
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:106
 msgid "From domain"
 msgstr ""
 
@@ -4816,7 +4816,7 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:76
 #: ../../administration_portal/client/retail/retail_accounts.rst:70
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:108
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:110
 msgid "DDI In"
 msgstr ""
 
@@ -4896,7 +4896,7 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:114
 #: ../../administration_portal/client/retail/retail_accounts.rst:107
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:127
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:129
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
@@ -4904,7 +4904,7 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:117
 #: ../../administration_portal/client/retail/retail_accounts.rst:110
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:130
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:132
 msgid "Configuration will be something like this:"
 msgstr ""
 
@@ -4912,10 +4912,17 @@ msgstr ""
 msgid "Device peer"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:139
+#: ../../administration_portal/client/residential/residential_devices.rst:140
 msgid ""
 "*Residential devices* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:143
+#: ../../administration_portal/client/retail/retail_accounts.rst:136
+msgid ""
+"As from username is used to identify the retail account, P-Asserted-"
+"Identity must be used to specify caller number."
 msgstr ""
 
 #: ../../administration_portal/client/retail/calls/index.rst:5
@@ -5152,7 +5159,7 @@ msgstr ""
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:132
+#: ../../administration_portal/client/retail/retail_accounts.rst:133
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
@@ -5754,174 +5761,186 @@ msgstr ""
 msgid "If not: This is an external call."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:59
-msgid "Configuration"
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:58
+msgid ""
+"Avoid PCRE regular expressions in friend configuration: use [0-9] instead"
+" of \\\\d."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:61
+msgid "Configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:63
 msgid ""
 "The **Friend** configuration is a merge between a **User** and a "
 "**Terminal**"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:63
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:65
 msgid ""
 "**Friends** are so similar to **Users** that both talk SIP with the "
 ":ref:`proxyusers`."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:66
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:68
 msgid "This are the configurable settings of *friends*:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:71
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:73
 msgid ""
 "Name of the **friend**, like in **Terminals**. This will also be used in "
 "SIP messages (sent **From User**)."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:75
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:77
 msgid "Optional. Extra information for this **friend**."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:78
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:80
 msgid ""
 "Used to solve conflicts while routing calls through **friends**. If a "
 "call destination **matches** more than one friend regular expression the "
 "call will be routed through the friend with **less priority value**."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:83
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:85
 msgid ""
 "When the *friend* send requests, IvozProvider will authenticate it using "
 "this password. Like in terminals **using password IS A MUST**."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:85
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:87
 msgid "Direct connection"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:87
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:89
 msgid ""
 "If you choose 'Yes' here, you'll have to fill the protocol, address and "
 "port where this *friend* can be contacted."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:89
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:91
 #: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:40
 #: ../../administration_portal/client/vpbx/users.rst:81
 msgid "Call ACL"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:91
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:93
 msgid ""
 "Similar to :ref:`internal users <users>`, friends can place internal "
 "client calls without restriction (including Extension or other Friends). "
 "When calling to external numbers, this ACL will be checked if set."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:96
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:98
 msgid ""
 "External calls from this *friend* will be presented with this DDI, "
 "**unless the source presented by friend is a DDI that exists in DDIs "
 "section**."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:98
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:100
 msgid "Country and Area code"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:100
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:102
 msgid "Used for number transformation from and to this friend."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:101
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:103
 msgid "Allowed codecs"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:103
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:105
 msgid "Like a terminal, *friends* will talk the selected codec."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:106
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:108
 msgid ""
 "Request from IvozProvider to this friend will include this domain in the "
 "From header."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:110
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:112
 msgid ""
 "If set to 'Yes', use endpoint username in R-URI when calling this friend."
 " If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:113
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:115
 msgid ""
 "Calls to *friends* are considered internal. That means that ACLs won't be"
 " checked when calling a friend, no matter if the origin of the call is a "
 "user or another friend."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:118
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:120
 msgid "Asterisk as a friend"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:120
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:122
 msgid ""
 "At the other end of a friend can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:125
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:127
 msgid "register"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:137
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:139
 msgid "peer"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:152
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:155
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:156
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:158
+msgid ""
+"As from username is used to identify the friend, P-Asserted-Identity must"
+" be used to specify caller number."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:161
 msgid "Summary"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:158
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:163
 msgid ""
 "The key point is understanding that a *friend* has a direct relation with"
 " the extension-user-terminal trio:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:161
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:166
 msgid "Can place calls to all internal extensions and other friends."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:163
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:168
 msgid "Can place external calls that its ACL allows"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:165
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:170
 msgid "Display their configured outgoing DDI when calling to external entities"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:167
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:172
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:169
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:174
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be authenticated for security reasons)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:172
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:177
 msgid ""
 "Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
 "traffic from friends are identical to any other user terminal traffic in "

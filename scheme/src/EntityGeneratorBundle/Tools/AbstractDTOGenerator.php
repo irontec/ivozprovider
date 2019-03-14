@@ -6,6 +6,7 @@ use Doctrine\ORM\Tools\EntityGenerator;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\Common\Util\Inflector;
+use Doctrine\DBAL\Types\Type;
 
 /**
  * Description of DTOGenerator
@@ -14,6 +15,21 @@ use Doctrine\Common\Util\Inflector;
  */
 class AbstractDTOGenerator extends EntityGenerator
 {
+    protected $typeAlias = array(
+        Type::DATETIMETZ    => '\DateTime',
+        Type::DATETIME      => '\DateTime',
+        Type::DATE          => '\DateTime',
+        Type::TIME          => '\DateTime',
+        Type::OBJECT        => '\stdClass',
+        Type::BIGINT        => 'integer',
+        Type::SMALLINT      => 'integer',
+        Type::TEXT          => 'string',
+        Type::BLOB          => 'string',
+        Type::DECIMAL       => 'float',
+        Type::JSON_ARRAY    => 'array',
+        Type::SIMPLE_ARRAY  => 'array',
+    );
+
     protected $codeCoverageIgnoreBlock = false;
 
     /**

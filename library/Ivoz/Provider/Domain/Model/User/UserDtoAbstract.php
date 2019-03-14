@@ -33,12 +33,12 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $doNotDisturb = '0';
+    private $doNotDisturb = 0;
 
     /**
      * @var boolean
      */
-    private $isBoss = '0';
+    private $isBoss = 0;
 
     /**
      * @var boolean
@@ -48,7 +48,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $maxCalls = '0';
+    private $maxCalls = 0;
 
     /**
      * @var string

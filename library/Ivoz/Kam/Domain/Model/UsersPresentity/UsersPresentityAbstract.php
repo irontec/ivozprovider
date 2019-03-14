@@ -57,7 +57,7 @@ abstract class UsersPresentityAbstract
     /**
      * @var integer
      */
-    protected $priority = '0';
+    protected $priority = 0;
 
 
     use ChangelogTrait;
@@ -362,7 +362,7 @@ abstract class UsersPresentityAbstract
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
-        $this->expires = $expires;
+        $this->expires = (int) $expires;
 
         return $this;
     }
@@ -389,7 +389,7 @@ abstract class UsersPresentityAbstract
         Assertion::notNull($receivedTime, 'receivedTime value "%s" is null, but non null value was expected.');
         Assertion::integerish($receivedTime, 'receivedTime value "%s" is not an integer or a number castable to integer.');
 
-        $this->receivedTime = $receivedTime;
+        $this->receivedTime = (int) $receivedTime;
 
         return $this;
     }
@@ -469,7 +469,7 @@ abstract class UsersPresentityAbstract
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }

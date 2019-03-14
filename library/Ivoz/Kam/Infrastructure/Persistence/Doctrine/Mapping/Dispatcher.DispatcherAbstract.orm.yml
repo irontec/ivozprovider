@@ -10,7 +10,7 @@ Ivoz\Kam\Domain\Model\Dispatcher\DispatcherAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     destination:
       type: string
       nullable: false
@@ -23,13 +23,13 @@ Ivoz\Kam\Domain\Model\Dispatcher\DispatcherAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     priority:
       type: integer
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     attrs:
       type: string
       nullable: false

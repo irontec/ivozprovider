@@ -17,7 +17,7 @@ abstract class TrunksLcrGatewayAbstract
      * column: lcr_id
      * @var integer
      */
-    protected $lcrId = '1';
+    protected $lcrId = 1;
 
     /**
      * column: gw_name
@@ -280,7 +280,7 @@ abstract class TrunksLcrGatewayAbstract
         Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
-        $this->lcrId = $lcrId;
+        $this->lcrId = (int) $lcrId;
 
         return $this;
     }
@@ -391,6 +391,7 @@ abstract class TrunksLcrGatewayAbstract
             if (!is_null($port)) {
                 Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
+                $port = (int) $port;
             }
         }
 
@@ -450,6 +451,7 @@ abstract class TrunksLcrGatewayAbstract
             if (!is_null($uriScheme)) {
                 Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
+                $uriScheme = (int) $uriScheme;
             }
         }
 
@@ -481,6 +483,7 @@ abstract class TrunksLcrGatewayAbstract
             if (!is_null($transport)) {
                 Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
+                $transport = (int) $transport;
             }
         }
 
@@ -596,6 +599,7 @@ abstract class TrunksLcrGatewayAbstract
             if (!is_null($defunct)) {
                 Assertion::integerish($defunct, 'defunct value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($defunct, 0, 'defunct provided "%s" is not greater or equal than "%s".');
+                $defunct = (int) $defunct;
             }
         }
 

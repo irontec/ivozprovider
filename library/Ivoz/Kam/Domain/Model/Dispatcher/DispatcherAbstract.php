@@ -16,7 +16,7 @@ abstract class DispatcherAbstract
     /**
      * @var integer
      */
-    protected $setid = '0';
+    protected $setid = 0;
 
     /**
      * @var string
@@ -26,12 +26,12 @@ abstract class DispatcherAbstract
     /**
      * @var integer
      */
-    protected $flags = '0';
+    protected $flags = 0;
 
     /**
      * @var integer
      */
-    protected $priority = '0';
+    protected $priority = 0;
 
     /**
      * @var string
@@ -232,7 +232,7 @@ abstract class DispatcherAbstract
         Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
         Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
 
-        $this->setid = $setid;
+        $this->setid = (int) $setid;
 
         return $this;
     }
@@ -286,7 +286,7 @@ abstract class DispatcherAbstract
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
-        $this->flags = $flags;
+        $this->flags = (int) $flags;
 
         return $this;
     }
@@ -313,7 +313,7 @@ abstract class DispatcherAbstract
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }

@@ -21,12 +21,12 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     private $tag;
 
     /**
-     * @var string
+     * @var float
      */
     private $connectFee;
 
     /**
-     * @var string
+     * @var float
      */
     private $rateCost;
 
@@ -151,7 +151,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $connectFee
+     * @param float $connectFee
      *
      * @return static
      */
@@ -163,7 +163,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getConnectFee()
     {
@@ -171,7 +171,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $rateCost
+     * @param float $rateCost
      *
      * @return static
      */
@@ -183,7 +183,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getRateCost()
     {

@@ -25,13 +25,13 @@ abstract class TpRateAbstract
 
     /**
      * column: connect_fee
-     * @var string
+     * @var float
      */
     protected $connectFee;
 
     /**
      * column: rate
-     * @var string
+     * @var float
      */
     protected $rateCost;
 
@@ -304,7 +304,7 @@ abstract class TpRateAbstract
     /**
      * Set connectFee
      *
-     * @param string $connectFee
+     * @param float $connectFee
      *
      * @return self
      */
@@ -312,9 +312,8 @@ abstract class TpRateAbstract
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
-        $connectFee = (float) $connectFee;
 
-        $this->connectFee = $connectFee;
+        $this->connectFee = (float) $connectFee;
 
         return $this;
     }
@@ -322,7 +321,7 @@ abstract class TpRateAbstract
     /**
      * Get connectFee
      *
-     * @return string
+     * @return float
      */
     public function getConnectFee()
     {
@@ -332,7 +331,7 @@ abstract class TpRateAbstract
     /**
      * Set rateCost
      *
-     * @param string $rateCost
+     * @param float $rateCost
      *
      * @return self
      */
@@ -340,9 +339,8 @@ abstract class TpRateAbstract
     {
         Assertion::notNull($rateCost, 'rateCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($rateCost);
-        $rateCost = (float) $rateCost;
 
-        $this->rateCost = $rateCost;
+        $this->rateCost = (float) $rateCost;
 
         return $this;
     }
@@ -350,7 +348,7 @@ abstract class TpRateAbstract
     /**
      * Get rateCost
      *
-     * @return string
+     * @return float
      */
     public function getRateCost()
     {

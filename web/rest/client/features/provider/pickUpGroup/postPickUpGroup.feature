@@ -22,7 +22,8 @@ Feature: Create pick up groups
     """
       {
           "name": "new pick up group",
-          "id": 2
+          "id": 2,
+          "company": 2
       }
     """
 

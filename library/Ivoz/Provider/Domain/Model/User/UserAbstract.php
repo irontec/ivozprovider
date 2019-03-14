@@ -13,6 +13,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class UserAbstract
 {
+    const EXTERNALIPCALLS_0 = '0';
+    const EXTERNALIPCALLS_1 = '1';
+    const EXTERNALIPCALLS_2 = '2';
+    const EXTERNALIPCALLS_3 = '3';
+
     /**
      * @var string
      */
@@ -37,12 +42,12 @@ abstract class UserAbstract
     /**
      * @var boolean
      */
-    protected $doNotDisturb = '0';
+    protected $doNotDisturb = 0;
 
     /**
      * @var boolean
      */
-    protected $isBoss = '0';
+    protected $isBoss = 0;
 
     /**
      * @var boolean
@@ -52,7 +57,7 @@ abstract class UserAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '0';
+    protected $maxCalls = 0;
 
     /**
      * comment: enum:0|1|2|3
@@ -607,7 +612,7 @@ abstract class UserAbstract
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = $maxCalls;
+        $this->maxCalls = (int) $maxCalls;
 
         return $this;
     }
@@ -633,12 +638,12 @@ abstract class UserAbstract
     {
         Assertion::notNull($externalIpCalls, 'externalIpCalls value "%s" is null, but non null value was expected.');
         Assertion::maxLength($externalIpCalls, 1, 'externalIpCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($externalIpCalls, array (
-          0 => '0',
-          1 => '1',
-          2 => '2',
-          3 => '3',
-        ), 'externalIpCallsvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($externalIpCalls, [
+            self::EXTERNALIPCALLS_0,
+            self::EXTERNALIPCALLS_1,
+            self::EXTERNALIPCALLS_2,
+            self::EXTERNALIPCALLS_3
+        ], 'externalIpCallsvalue "%s" is not an element of the valid values: %s');
 
         $this->externalIpCalls = $externalIpCalls;
 

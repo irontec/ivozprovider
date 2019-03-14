@@ -11,12 +11,12 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var string
+     * @var float
      */
     private $cost;
 
     /**
-     * @var string
+     * @var float
      */
     private $connectFee;
 
@@ -104,7 +104,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $cost
+     * @param float $cost
      *
      * @return static
      */
@@ -116,7 +116,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getCost()
     {
@@ -124,7 +124,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $connectFee
+     * @param float $connectFee
      *
      * @return static
      */
@@ -136,7 +136,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getConnectFee()
     {

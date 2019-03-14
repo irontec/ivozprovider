@@ -85,6 +85,7 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
                 'inDate' => '2017-12-31 23:00:00',
                 'outDate' => '2018-12-31 22:59:59',
                 'createdOn' => '2018-12-31 23:59:59',
+                'csvFileSize' => 0,
                 'csvMimeType' => 'inode/x-empty; charset=binary',
                 'csvBaseName' => 'DemoCompany-20180101-20181231.csv',
                 'companyId' => 1,

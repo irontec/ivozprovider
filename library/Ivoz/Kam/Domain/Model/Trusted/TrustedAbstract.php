@@ -49,7 +49,7 @@ abstract class TrustedAbstract
     /**
      * @var integer
      */
-    protected $priority = '0';
+    protected $priority = 0;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -401,7 +401,7 @@ abstract class TrustedAbstract
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }

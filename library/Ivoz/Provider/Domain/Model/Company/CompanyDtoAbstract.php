@@ -38,7 +38,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $maxCalls = '0';
+    private $maxCalls = 0;
 
     /**
      * @var string
@@ -73,7 +73,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $onDemandRecord = '0';
+    private $onDemandRecord = 0;
 
     /**
      * @var string
@@ -101,7 +101,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $billingMethod = 'postpaid';
 
     /**
-     * @var string
+     * @var float
      */
     private $balance = 0;
 
@@ -719,7 +719,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $balance
+     * @param float $balance
      *
      * @return static
      */
@@ -731,7 +731,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getBalance()
     {

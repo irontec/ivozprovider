@@ -35,7 +35,21 @@ Feature: Create external call filters
     """
       {
           "name": "newFilter",
-          "id": 2
+          "holidayTargetType": "number",
+          "holidayNumberValue": "946002021",
+          "outOfScheduleTargetType": "number",
+          "outOfScheduleNumberValue": "946002022",
+          "id": 2,
+          "company": 1,
+          "welcomeLocution": null,
+          "holidayLocution": null,
+          "outOfScheduleLocution": null,
+          "holidayExtension": null,
+          "outOfScheduleExtension": null,
+          "holidayVoiceMailUser": null,
+          "outOfScheduleVoiceMailUser": null,
+          "holidayNumberCountry": 2,
+          "outOfScheduleNumberCountry": 2
       }
     """
 

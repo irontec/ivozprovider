@@ -13,10 +13,20 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class ConditionalRoutesConditionAbstract
 {
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_EXTENSION = 'extension';
+
     /**
      * @var integer
      */
-    protected $priority = '1';
+    protected $priority = 1;
 
     /**
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
@@ -285,7 +295,7 @@ abstract class ConditionalRoutesConditionAbstract
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }
@@ -311,17 +321,17 @@ abstract class ConditionalRoutesConditionAbstract
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($routeType, array (
-              0 => 'user',
-              1 => 'number',
-              2 => 'ivr',
-              3 => 'huntGroup',
-              4 => 'voicemail',
-              5 => 'friend',
-              6 => 'queue',
-              7 => 'conferenceRoom',
-              8 => 'extension',
-            ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routeType, [
+                self::ROUTETYPE_USER,
+                self::ROUTETYPE_NUMBER,
+                self::ROUTETYPE_IVR,
+                self::ROUTETYPE_HUNTGROUP,
+                self::ROUTETYPE_VOICEMAIL,
+                self::ROUTETYPE_FRIEND,
+                self::ROUTETYPE_QUEUE,
+                self::ROUTETYPE_CONFERENCEROOM,
+                self::ROUTETYPE_EXTENSION
+            ], 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;

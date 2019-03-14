@@ -13,6 +13,21 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CallForwardSettingAbstract
 {
+    const CALLTYPEFILTER_INTERNAL = 'internal';
+    const CALLTYPEFILTER_EXTERNAL = 'external';
+    const CALLTYPEFILTER_BOTH = 'both';
+
+
+    const CALLFORWARDTYPE_INCONDITIONAL = 'inconditional';
+    const CALLFORWARDTYPE_NOANSWER = 'noAnswer';
+    const CALLFORWARDTYPE_BUSY = 'busy';
+    const CALLFORWARDTYPE_USERNOTREGISTERED = 'userNotRegistered';
+
+
+    const TARGETTYPE_NUMBER = 'number';
+    const TARGETTYPE_EXTENSION = 'extension';
+    const TARGETTYPE_VOICEMAIL = 'voicemail';
+
     /**
      * comment: enum:internal|external|both
      * @var string
@@ -39,7 +54,7 @@ abstract class CallForwardSettingAbstract
     /**
      * @var integer
      */
-    protected $noAnswerTimeout = '10';
+    protected $noAnswerTimeout = 10;
 
     /**
      * @var boolean
@@ -277,11 +292,11 @@ abstract class CallForwardSettingAbstract
     {
         Assertion::notNull($callTypeFilter, 'callTypeFilter value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callTypeFilter, 25, 'callTypeFilter value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($callTypeFilter, array (
-          0 => 'internal',
-          1 => 'external',
-          2 => 'both',
-        ), 'callTypeFiltervalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($callTypeFilter, [
+            self::CALLTYPEFILTER_INTERNAL,
+            self::CALLTYPEFILTER_EXTERNAL,
+            self::CALLTYPEFILTER_BOTH
+        ], 'callTypeFiltervalue "%s" is not an element of the valid values: %s');
 
         $this->callTypeFilter = $callTypeFilter;
 
@@ -309,12 +324,12 @@ abstract class CallForwardSettingAbstract
     {
         Assertion::notNull($callForwardType, 'callForwardType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callForwardType, 25, 'callForwardType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($callForwardType, array (
-          0 => 'inconditional',
-          1 => 'noAnswer',
-          2 => 'busy',
-          3 => 'userNotRegistered',
-        ), 'callForwardTypevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($callForwardType, [
+            self::CALLFORWARDTYPE_INCONDITIONAL,
+            self::CALLFORWARDTYPE_NOANSWER,
+            self::CALLFORWARDTYPE_BUSY,
+            self::CALLFORWARDTYPE_USERNOTREGISTERED
+        ], 'callForwardTypevalue "%s" is not an element of the valid values: %s');
 
         $this->callForwardType = $callForwardType;
 
@@ -342,11 +357,11 @@ abstract class CallForwardSettingAbstract
     {
         Assertion::notNull($targetType, 'targetType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($targetType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'targetTypevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($targetType, [
+            self::TARGETTYPE_NUMBER,
+            self::TARGETTYPE_EXTENSION,
+            self::TARGETTYPE_VOICEMAIL
+        ], 'targetTypevalue "%s" is not an element of the valid values: %s');
 
         $this->targetType = $targetType;
 
@@ -403,7 +418,7 @@ abstract class CallForwardSettingAbstract
         Assertion::notNull($noAnswerTimeout, 'noAnswerTimeout value "%s" is null, but non null value was expected.');
         Assertion::integerish($noAnswerTimeout, 'noAnswerTimeout value "%s" is not an integer or a number castable to integer.');
 
-        $this->noAnswerTimeout = $noAnswerTimeout;
+        $this->noAnswerTimeout = (int) $noAnswerTimeout;
 
         return $this;
     }

@@ -36,7 +36,7 @@ abstract class UsersLocationAttrAbstract
     /**
      * @var integer
      */
-    protected $atype = '0';
+    protected $atype = 0;
 
     /**
      * @var string
@@ -342,7 +342,7 @@ abstract class UsersLocationAttrAbstract
         Assertion::notNull($atype, 'atype value "%s" is null, but non null value was expected.');
         Assertion::integerish($atype, 'atype value "%s" is not an integer or a number castable to integer.');
 
-        $this->atype = $atype;
+        $this->atype = (int) $atype;
 
         return $this;
     }

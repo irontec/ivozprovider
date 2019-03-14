@@ -88,7 +88,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var integer
      */
-    private $status = '2';
+    private $status = 2;
 
     /**
      * @var string
@@ -98,7 +98,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var integer
      */
-    private $version = '0';
+    private $version = 0;
 
     /**
      * @var string
@@ -133,7 +133,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var integer
      */
-    private $flags = '0';
+    private $flags = 0;
 
     /**
      * @var string

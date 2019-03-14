@@ -55,7 +55,7 @@ Feature: Manage brands
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
+              "tz": "Europe\/Madrid",
               "comment": "mainland",
               "id": 1,
               "label": {
@@ -63,6 +63,15 @@ Feature: Manage brands
                   "es": "es"
               },
               "country": 1
+          },
+          "currency": {
+              "iden": "USD",
+              "symbol": "$",
+              "id": 2,
+              "name": {
+                  "en": "Dollar",
+                  "es": "D\u00f3llar"
+              }
           }
       }
     """

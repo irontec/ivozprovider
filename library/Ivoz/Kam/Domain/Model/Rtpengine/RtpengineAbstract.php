@@ -26,7 +26,7 @@ abstract class RtpengineAbstract
     /**
      * @var integer
      */
-    protected $weight = '1';
+    protected $weight = 1;
 
     /**
      * @var boolean
@@ -225,7 +225,7 @@ abstract class RtpengineAbstract
         Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
         Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
 
-        $this->setid = $setid;
+        $this->setid = (int) $setid;
 
         return $this;
     }
@@ -280,7 +280,7 @@ abstract class RtpengineAbstract
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
-        $this->weight = $weight;
+        $this->weight = (int) $weight;
 
         return $this;
     }

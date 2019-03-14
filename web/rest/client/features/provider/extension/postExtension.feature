@@ -30,9 +30,20 @@ Feature: Create extensions
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-       {
+      {
           "number": "111",
-          "id": 4
+          "routeType": "user",
+          "numberValue": null,
+          "friendValue": null,
+          "id": 4,
+          "company": 1,
+          "ivr": null,
+          "huntGroup": null,
+          "conferenceRoom": null,
+          "user": 1,
+          "queue": null,
+          "conditionalRoute": null,
+          "numberCountry": null
       }
     """
 

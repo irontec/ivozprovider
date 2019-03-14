@@ -13,6 +13,15 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class IvrAbstract
 {
+    const NOINPUTROUTETYPE_NUMBER = 'number';
+    const NOINPUTROUTETYPE_EXTENSION = 'extension';
+    const NOINPUTROUTETYPE_VOICEMAIL = 'voicemail';
+
+
+    const ERRORROUTETYPE_NUMBER = 'number';
+    const ERRORROUTETYPE_EXTENSION = 'extension';
+    const ERRORROUTETYPE_VOICEMAIL = 'voicemail';
+
     /**
      * @var string
      */
@@ -366,7 +375,7 @@ abstract class IvrAbstract
         Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($timeout, 0, 'timeout provided "%s" is not greater or equal than "%s".');
 
-        $this->timeout = $timeout;
+        $this->timeout = (int) $timeout;
 
         return $this;
     }
@@ -394,7 +403,7 @@ abstract class IvrAbstract
         Assertion::integerish($maxDigits, 'maxDigits value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxDigits, 0, 'maxDigits provided "%s" is not greater or equal than "%s".');
 
-        $this->maxDigits = $maxDigits;
+        $this->maxDigits = (int) $maxDigits;
 
         return $this;
     }
@@ -447,11 +456,11 @@ abstract class IvrAbstract
     {
         if (!is_null($noInputRouteType)) {
             Assertion::maxLength($noInputRouteType, 25, 'noInputRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($noInputRouteType, array (
-              0 => 'number',
-              1 => 'extension',
-              2 => 'voicemail',
-            ), 'noInputRouteTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($noInputRouteType, [
+                self::NOINPUTROUTETYPE_NUMBER,
+                self::NOINPUTROUTETYPE_EXTENSION,
+                self::NOINPUTROUTETYPE_VOICEMAIL
+            ], 'noInputRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->noInputRouteType = $noInputRouteType;
@@ -508,11 +517,11 @@ abstract class IvrAbstract
     {
         if (!is_null($errorRouteType)) {
             Assertion::maxLength($errorRouteType, 25, 'errorRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($errorRouteType, array (
-              0 => 'number',
-              1 => 'extension',
-              2 => 'voicemail',
-            ), 'errorRouteTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($errorRouteType, [
+                self::ERRORROUTETYPE_NUMBER,
+                self::ERRORROUTETYPE_EXTENSION,
+                self::ERRORROUTETYPE_VOICEMAIL
+            ], 'errorRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->errorRouteType = $errorRouteType;

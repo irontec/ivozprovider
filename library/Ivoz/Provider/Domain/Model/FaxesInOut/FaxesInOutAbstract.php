@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class FaxesInOutAbstract
 {
+    const TYPE_IN = 'In';
+    const TYPE_OUT = 'Out';
+
     /**
      * @var \DateTime
      */
@@ -342,10 +345,10 @@ abstract class FaxesInOutAbstract
     {
         if (!is_null($type)) {
             Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($type, array (
-              0 => 'In',
-              1 => 'Out',
-            ), 'typevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($type, [
+                self::TYPE_IN,
+                self::TYPE_OUT
+            ], 'typevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->type = $type;

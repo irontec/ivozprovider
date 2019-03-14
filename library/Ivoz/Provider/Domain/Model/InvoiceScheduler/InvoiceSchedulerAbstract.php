@@ -13,6 +13,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class InvoiceSchedulerAbstract
 {
+    const UNIT_WEEK = 'week';
+    const UNIT_MONTH = 'month';
+    const UNIT_YEAR = 'year';
+
     /**
      * @var string
      */
@@ -50,7 +54,7 @@ abstract class InvoiceSchedulerAbstract
     protected $nextExecution;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $taxRate;
 
@@ -296,11 +300,11 @@ abstract class InvoiceSchedulerAbstract
     {
         Assertion::notNull($unit, 'unit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($unit, array (
-          0 => 'week',
-          1 => 'month',
-          2 => 'year',
-        ), 'unitvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($unit, [
+            self::UNIT_WEEK,
+            self::UNIT_MONTH,
+            self::UNIT_YEAR
+        ], 'unitvalue "%s" is not an element of the valid values: %s');
 
         $this->unit = $unit;
 
@@ -330,7 +334,7 @@ abstract class InvoiceSchedulerAbstract
         Assertion::integerish($frequency, 'frequency value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($frequency, 0, 'frequency provided "%s" is not greater or equal than "%s".');
 
-        $this->frequency = $frequency;
+        $this->frequency = (int) $frequency;
 
         return $this;
     }
@@ -465,7 +469,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set taxRate
      *
-     * @param string $taxRate
+     * @param float $taxRate
      *
      * @return self
      */
@@ -486,7 +490,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get taxRate
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTaxRate()
     {

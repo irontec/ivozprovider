@@ -39,14 +39,14 @@ interface TpRateInterface extends EntityInterface
     /**
      * Get connectFee
      *
-     * @return string
+     * @return float
      */
     public function getConnectFee();
 
     /**
      * Get rateCost
      *
-     * @return string
+     * @return float
      */
     public function getRateCost();
 

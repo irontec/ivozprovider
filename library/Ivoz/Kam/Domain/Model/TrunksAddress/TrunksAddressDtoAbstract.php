@@ -13,7 +13,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $grp = '1';
+    private $grp = 1;
 
     /**
      * @var string
@@ -23,12 +23,12 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $mask = '32';
+    private $mask = 32;
 
     /**
      * @var integer
      */
-    private $port = '0';
+    private $port = 0;
 
     /**
      * @var string

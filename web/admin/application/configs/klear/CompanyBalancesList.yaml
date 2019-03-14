@@ -38,7 +38,7 @@ production:
           town: true
           province: true
           countryName: true
-          outgoingDDI: true
+          outgoingDdi: true
           outgoingDdiRule: true
           registryData: true
           maxCalls: true

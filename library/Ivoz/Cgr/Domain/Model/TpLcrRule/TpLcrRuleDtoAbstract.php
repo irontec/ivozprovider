@@ -66,7 +66,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $activationTime = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var string
+     * @var float
      */
     private $weight = 10;
 
@@ -366,7 +366,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $weight
+     * @param float $weight
      *
      * @return static
      */
@@ -378,7 +378,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

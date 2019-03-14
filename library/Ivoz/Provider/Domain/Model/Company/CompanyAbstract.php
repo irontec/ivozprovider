@@ -13,6 +13,21 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CompanyAbstract
 {
+    const TYPE_VPBX = 'vpbx';
+    const TYPE_RETAIL = 'retail';
+    const TYPE_WHOLESALE = 'wholesale';
+    const TYPE_RESIDENTIAL = 'residential';
+
+
+    const DISTRIBUTEMETHOD_STATIC = 'static';
+    const DISTRIBUTEMETHOD_RR = 'rr';
+    const DISTRIBUTEMETHOD_HASH = 'hash';
+
+
+    const BILLINGMETHOD_POSTPAID = 'postpaid';
+    const BILLINGMETHOD_PREPAID = 'prepaid';
+    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
+
     /**
      * comment: enum:vpbx|retail|wholesale|residential
      * @var string
@@ -44,7 +59,7 @@ abstract class CompanyAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '0';
+    protected $maxCalls = 0;
 
     /**
      * @var string
@@ -80,7 +95,7 @@ abstract class CompanyAbstract
     /**
      * @var integer | null
      */
-    protected $onDemandRecord = '0';
+    protected $onDemandRecord = 0;
 
     /**
      * @var string | null
@@ -109,7 +124,7 @@ abstract class CompanyAbstract
     protected $billingMethod = 'postpaid';
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $balance = 0;
 
@@ -498,12 +513,12 @@ abstract class CompanyAbstract
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, array (
-          0 => 'vpbx',
-          1 => 'retail',
-          2 => 'wholesale',
-          3 => 'residential',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($type, [
+            self::TYPE_VPBX,
+            self::TYPE_RETAIL,
+            self::TYPE_WHOLESALE,
+            self::TYPE_RESIDENTIAL
+        ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -613,11 +628,11 @@ abstract class CompanyAbstract
     {
         Assertion::notNull($distributeMethod, 'distributeMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($distributeMethod, 25, 'distributeMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($distributeMethod, array (
-          0 => 'static',
-          1 => 'rr',
-          2 => 'hash',
-        ), 'distributeMethodvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($distributeMethod, [
+            self::DISTRIBUTEMETHOD_STATIC,
+            self::DISTRIBUTEMETHOD_RR,
+            self::DISTRIBUTEMETHOD_HASH
+        ], 'distributeMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->distributeMethod = $distributeMethod;
 
@@ -647,7 +662,7 @@ abstract class CompanyAbstract
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = $maxCalls;
+        $this->maxCalls = (int) $maxCalls;
 
         return $this;
     }
@@ -837,6 +852,7 @@ abstract class CompanyAbstract
         if (!is_null($onDemandRecord)) {
             if (!is_null($onDemandRecord)) {
                 Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
+                $onDemandRecord = (int) $onDemandRecord;
             }
         }
 
@@ -923,6 +939,7 @@ abstract class CompanyAbstract
         if (!is_null($recordingsLimitMB)) {
             if (!is_null($recordingsLimitMB)) {
                 Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
+                $recordingsLimitMB = (int) $recordingsLimitMB;
             }
         }
 
@@ -980,11 +997,11 @@ abstract class CompanyAbstract
     {
         Assertion::notNull($billingMethod, 'billingMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($billingMethod, 25, 'billingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($billingMethod, array (
-          0 => 'postpaid',
-          1 => 'prepaid',
-          2 => 'pseudoprepaid',
-        ), 'billingMethodvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($billingMethod, [
+            self::BILLINGMETHOD_POSTPAID,
+            self::BILLINGMETHOD_PREPAID,
+            self::BILLINGMETHOD_PSEUDOPREPAID
+        ], 'billingMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->billingMethod = $billingMethod;
 
@@ -1004,7 +1021,7 @@ abstract class CompanyAbstract
     /**
      * Set balance
      *
-     * @param string $balance
+     * @param float $balance
      *
      * @return self
      */
@@ -1025,7 +1042,7 @@ abstract class CompanyAbstract
     /**
      * Get balance
      *
-     * @return string | null
+     * @return float | null
      */
     public function getBalance()
     {

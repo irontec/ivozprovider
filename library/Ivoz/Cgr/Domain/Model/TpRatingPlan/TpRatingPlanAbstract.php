@@ -36,7 +36,7 @@ abstract class TpRatingPlanAbstract
     protected $timingTag = '*any';
 
     /**
-     * @var string
+     * @var float
      */
     protected $weight = 10;
 
@@ -328,7 +328,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Set weight
      *
-     * @param string $weight
+     * @param float $weight
      *
      * @return self
      */
@@ -336,9 +336,8 @@ abstract class TpRatingPlanAbstract
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::numeric($weight);
-        $weight = (float) $weight;
 
-        $this->weight = $weight;
+        $this->weight = (float) $weight;
 
         return $this;
     }
@@ -346,7 +345,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

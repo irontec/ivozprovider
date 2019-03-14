@@ -11,8 +11,8 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
 {
     use RatingPlanTrait;
 
-    const TIMING_TYPE_ALWAYS = 'always';
-    const TIMING_TYPE_CUSTOM = 'custom';
+    const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
+    const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
 
     /**
      * Get id

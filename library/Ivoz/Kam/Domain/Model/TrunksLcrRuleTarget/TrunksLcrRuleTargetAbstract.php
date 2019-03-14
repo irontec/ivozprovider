@@ -17,7 +17,7 @@ abstract class TrunksLcrRuleTargetAbstract
      * column: lcr_id
      * @var integer
      */
-    protected $lcrId = '1';
+    protected $lcrId = 1;
 
     /**
      * @var integer
@@ -27,7 +27,7 @@ abstract class TrunksLcrRuleTargetAbstract
     /**
      * @var integer
      */
-    protected $weight = '1';
+    protected $weight = 1;
 
     /**
      * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
@@ -216,7 +216,7 @@ abstract class TrunksLcrRuleTargetAbstract
         Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
-        $this->lcrId = $lcrId;
+        $this->lcrId = (int) $lcrId;
 
         return $this;
     }
@@ -244,7 +244,7 @@ abstract class TrunksLcrRuleTargetAbstract
         Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }
@@ -272,7 +272,7 @@ abstract class TrunksLcrRuleTargetAbstract
         Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
-        $this->weight = $weight;
+        $this->weight = (int) $weight;
 
         return $this;
     }

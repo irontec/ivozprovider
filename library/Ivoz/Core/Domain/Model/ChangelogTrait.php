@@ -121,7 +121,7 @@ trait ChangelogTrait
         $changes = [];
         $currentValues = $this->__toArray();
         foreach ($currentValues as $key => $value) {
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
+            if ($this->_initialValues[$key] === $currentValues[$key]) {
                 continue;
             }
 

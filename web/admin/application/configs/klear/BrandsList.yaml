@@ -74,8 +74,6 @@ production:
       title: _("Add %s", ngettext('Brand', 'Brands', 1))
       shortcutOption: N
       forcedValues:
-        defaultTimezone: 145
-        language: 1
         invoice.nif: '12345678-Z'
         invoice.postalAddress: 'Postal address'
         invoice.postalCode: 'ZIP'
@@ -87,9 +85,6 @@ production:
         blacklist:
           invoice.nif: true
           logo: true
-          defaultTimezone: true
-          currency: true
-          language: true
           invoice.postalAddress: true
           invoice.postalCode: true
           invoice.town: true

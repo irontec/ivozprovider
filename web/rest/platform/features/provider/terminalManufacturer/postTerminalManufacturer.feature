@@ -24,6 +24,7 @@ Feature: Create terminal manufacturers
       {
           "iden": "New",
           "name": "New SIP Manufacturer",
+          "description": "New SIP Manufacturer",
           "id": 5
       }
     """

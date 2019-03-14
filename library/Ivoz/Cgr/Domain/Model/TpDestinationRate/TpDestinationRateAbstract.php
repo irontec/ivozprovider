@@ -49,9 +49,9 @@ abstract class TpDestinationRateAbstract
 
     /**
      * column: max_cost
-     * @var string
+     * @var float
      */
-    protected $maxCost = '0.000';
+    protected $maxCost = 0.0;
 
     /**
      * column: max_cost_strategy
@@ -404,7 +404,7 @@ abstract class TpDestinationRateAbstract
         Assertion::notNull($roundingDecimals, 'roundingDecimals value "%s" is null, but non null value was expected.');
         Assertion::integerish($roundingDecimals, 'roundingDecimals value "%s" is not an integer or a number castable to integer.');
 
-        $this->roundingDecimals = $roundingDecimals;
+        $this->roundingDecimals = (int) $roundingDecimals;
 
         return $this;
     }
@@ -422,7 +422,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Set maxCost
      *
-     * @param string $maxCost
+     * @param float $maxCost
      *
      * @return self
      */
@@ -430,9 +430,8 @@ abstract class TpDestinationRateAbstract
     {
         Assertion::notNull($maxCost, 'maxCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($maxCost);
-        $maxCost = (float) $maxCost;
 
-        $this->maxCost = $maxCost;
+        $this->maxCost = (float) $maxCost;
 
         return $this;
     }
@@ -440,7 +439,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Get maxCost
      *
-     * @return string
+     * @return float
      */
     public function getMaxCost()
     {

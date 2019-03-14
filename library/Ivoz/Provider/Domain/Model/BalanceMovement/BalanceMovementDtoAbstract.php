@@ -11,12 +11,12 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var string
+     * @var float
      */
     private $amount = 0;
 
     /**
-     * @var string
+     * @var float
      */
     private $balance = 0;
 
@@ -83,7 +83,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $amount
+     * @param float $amount
      *
      * @return static
      */
@@ -95,7 +95,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getAmount()
     {
@@ -103,7 +103,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $balance
+     * @param float $balance
      *
      * @return static
      */
@@ -115,7 +115,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getBalance()
     {

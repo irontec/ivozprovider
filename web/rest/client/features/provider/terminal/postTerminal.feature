@@ -30,9 +30,16 @@ Feature: Create terminals
     """
       {
           "name": "alice2",
+          "disallow": "all",
+          "allowAudio": "alaw",
+          "allowVideo": null,
+          "directMediaMethod": "invite",
+          "password": "****",
           "mac": "",
           "lastProvisionDate": "1970-03-04 11:12:13",
-          "id": 4
+          "id": 4,
+          "company": 1,
+          "terminalModel": 1
       }
     """
 

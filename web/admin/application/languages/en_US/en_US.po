@@ -203,6 +203,9 @@ msgstr[1] "Authorized sources"
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
 
+msgid "Avoid PCRE regular expressions here: use [0-9] instead of \\d."
+msgstr "Avoid PCRE regular expressions here: use [0-9] instead of \\d."
+
 msgid "Balance"
 msgstr "Balance"
 
@@ -703,10 +706,6 @@ msgstr "Edit %s"
 #, python-format
 msgid "Edit %s %2s"
 msgstr "Edit %s %2s"
-
-#, python-format
-msgid "Edit Join of %s"
-msgstr "Edit Join of %s"
 
 #, python-format
 msgid "Edit pattern of %s"
@@ -1277,10 +1276,6 @@ msgstr "Is sent in the username of Contact header in generated REGISTER."
 
 msgid "Iteration"
 msgstr "Iteration"
-
-#, python-format
-msgid "Join to %s %2s"
-msgstr "Join to %s %2s"
 
 msgid "Keep Original DDI"
 msgstr "Keep Original DDI"

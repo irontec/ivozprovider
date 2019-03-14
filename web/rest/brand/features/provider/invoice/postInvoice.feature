@@ -35,8 +35,10 @@
           "inDate": "2019-01-01 01:00:00",
           "outDate": "2019-01-31 23:59:59",
           "total": null,
+          "taxRate": 21,
           "totalWithTax": null,
           "status": null,
+          "statusMsg": null,
           "id": 2,
           "pdf": {
               "fileSize": null,
@@ -44,7 +46,9 @@
               "baseName": null
           },
           "invoiceTemplate": 1,
-          "company": 1
+          "brand": 1,
+          "company": 1,
+          "numberSequence": null
       }
     """
 

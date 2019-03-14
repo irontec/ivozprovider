@@ -13,6 +13,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class BrandUrlAbstract
 {
+    const URLTYPE_GOD = 'god';
+    const URLTYPE_BRAND = 'brand';
+    const URLTYPE_ADMIN = 'admin';
+    const URLTYPE_USER = 'user';
+
     /**
      * @var string
      */
@@ -294,12 +299,12 @@ abstract class BrandUrlAbstract
     {
         Assertion::notNull($urlType, 'urlType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($urlType, 25, 'urlType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($urlType, array (
-          0 => 'god',
-          1 => 'brand',
-          2 => 'admin',
-          3 => 'user',
-        ), 'urlTypevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($urlType, [
+            self::URLTYPE_GOD,
+            self::URLTYPE_BRAND,
+            self::URLTYPE_ADMIN,
+            self::URLTYPE_USER
+        ], 'urlTypevalue "%s" is not an element of the valid values: %s');
 
         $this->urlType = $urlType;
 

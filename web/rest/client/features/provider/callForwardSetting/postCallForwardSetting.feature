@@ -32,8 +32,16 @@ Feature: Create call forward setting
           "callTypeFilter": "internal",
           "callForwardType": "inconditional",
           "targetType": "number",
+          "numberValue": "946002020",
+          "noAnswerTimeout": 0,
           "enabled": true,
-          "id": 5
+          "id": 5,
+          "user": 2,
+          "extension": null,
+          "voiceMailUser": null,
+          "numberCountry": 1,
+          "residentialDevice": null,
+          "retailAccount": null
       }
     """
 

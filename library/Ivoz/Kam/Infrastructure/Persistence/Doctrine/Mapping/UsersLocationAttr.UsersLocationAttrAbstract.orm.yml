@@ -42,7 +42,7 @@ Ivoz\Kam\Domain\Model\UsersLocationAttr\UsersLocationAttrAbstract:
       nullable: false
       options:
         unsigned: false
-        default: '0'
+        default: 0
     avalue:
       type: string
       nullable: false

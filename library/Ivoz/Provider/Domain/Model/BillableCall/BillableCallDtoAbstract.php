@@ -23,7 +23,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @var float
      */
-    private $duration = '0.000';
+    private $duration = 0.0;
 
     /**
      * @var string
@@ -36,12 +36,12 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $callee;
 
     /**
-     * @var string
+     * @var float
      */
     private $cost;
 
     /**
-     * @var string
+     * @var float
      */
     private $price;
 
@@ -288,7 +288,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $cost
+     * @param float $cost
      *
      * @return static
      */
@@ -300,7 +300,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getCost()
     {
@@ -308,7 +308,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $price
+     * @param float $price
      *
      * @return static
      */
@@ -320,7 +320,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getPrice()
     {

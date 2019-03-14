@@ -6,15 +6,20 @@ class RatingProfileDto extends RatingProfileDtoAbstract
 {
     /**
      * @inheritdoc
-     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {
-        $response = parent::getPropertyMap(...func_get_args());
-        if (array_key_exists('tpRatingProfileId', $response)) {
-            unset($response['tpRatingProfileId']);
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'activationTime' => 'activationTime',
+                'id' => 'id',
+                'companyId' => 'company',
+                'carrierId' => 'carrier',
+                'ratingPlanGroupId' => 'ratingPlanGroup',
+                'routingTagId' => 'routingTag'
+            ];
         }
 
-        return $response;
+        return parent::getPropertyMap(...func_get_args());
     }
 }

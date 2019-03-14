@@ -344,7 +344,7 @@ abstract class UsersWatcherAbstract
         Assertion::notNull($status, 'status value "%s" is null, but non null value was expected.');
         Assertion::integerish($status, 'status value "%s" is not an integer or a number castable to integer.');
 
-        $this->status = $status;
+        $this->status = (int) $status;
 
         return $this;
     }
@@ -399,7 +399,7 @@ abstract class UsersWatcherAbstract
         Assertion::notNull($insertedTime, 'insertedTime value "%s" is null, but non null value was expected.');
         Assertion::integerish($insertedTime, 'insertedTime value "%s" is not an integer or a number castable to integer.');
 
-        $this->insertedTime = $insertedTime;
+        $this->insertedTime = (int) $insertedTime;
 
         return $this;
     }

@@ -21,24 +21,6 @@ Background:
    When I click on "Users" first elements "huntGroupsRelUsers" button
    Then I am on "UsersList_huntGroupsRelUsers" subscreen list
 
-Scenario: I create hunt groups rel users
-  When I click on add button
-   And I fill out the form with "company/huntGroupsRelUsers/new" data fixture
-   And I click on save button
-  Then I can see confirmation dialog
-  When I click on close dialog button
-  Then I am on "UsersList_huntGroupsRelUsers" subscreen list
-  When I click on "huntGroupsRelUsers" last elements edit button
-  Then I compare the form data with "company/huntGroupsRelUsers/new" data fixture
-
-Scenario: I can save hunt groups rel users
-  Given I can see at least one row
-   When I click on "huntGroupsRelUsers" first elements edit button
-    And I click on save button
-   Then I can see confirmation dialog
-   When I click on close dialog button
-   Then I am on "UsersList_huntGroupsRelUsers" subscreen list
-
 Scenario: I can click on delete hunt groups rel users button
   Given I can see at least one row
    When I select element at position "1"

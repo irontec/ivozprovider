@@ -37,7 +37,7 @@ abstract class BrandAbstract
     /**
      * @var integer
      */
-    protected $maxCalls = '0';
+    protected $maxCalls = 0;
 
     /**
      * @var Logo
@@ -368,6 +368,7 @@ abstract class BrandAbstract
         if (!is_null($recordingsLimitMB)) {
             if (!is_null($recordingsLimitMB)) {
                 Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
+                $recordingsLimitMB = (int) $recordingsLimitMB;
             }
         }
 
@@ -427,7 +428,7 @@ abstract class BrandAbstract
         Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = $maxCalls;
+        $this->maxCalls = (int) $maxCalls;
 
         return $this;
     }

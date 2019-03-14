@@ -15,12 +15,12 @@ abstract class DestinationRateAbstract
 {
     /**
      * column: rate
-     * @var string
+     * @var float
      */
     protected $cost;
 
     /**
-     * @var string
+     * @var float
      */
     protected $connectFee;
 
@@ -221,7 +221,7 @@ abstract class DestinationRateAbstract
     /**
      * Set cost
      *
-     * @param string $cost
+     * @param float $cost
      *
      * @return self
      */
@@ -229,9 +229,8 @@ abstract class DestinationRateAbstract
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
-        $cost = (float) $cost;
 
-        $this->cost = $cost;
+        $this->cost = (float) $cost;
 
         return $this;
     }
@@ -239,7 +238,7 @@ abstract class DestinationRateAbstract
     /**
      * Get cost
      *
-     * @return string
+     * @return float
      */
     public function getCost()
     {
@@ -249,7 +248,7 @@ abstract class DestinationRateAbstract
     /**
      * Set connectFee
      *
-     * @param string $connectFee
+     * @param float $connectFee
      *
      * @return self
      */
@@ -257,9 +256,8 @@ abstract class DestinationRateAbstract
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
-        $connectFee = (float) $connectFee;
 
-        $this->connectFee = $connectFee;
+        $this->connectFee = (float) $connectFee;
 
         return $this;
     }
@@ -267,7 +265,7 @@ abstract class DestinationRateAbstract
     /**
      * Get connectFee
      *
-     * @return string
+     * @return float
      */
     public function getConnectFee()
     {

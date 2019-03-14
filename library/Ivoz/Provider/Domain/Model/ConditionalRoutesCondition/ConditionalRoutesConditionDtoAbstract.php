@@ -13,7 +13,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @var integer
      */
-    private $priority = '1';
+    private $priority = 1;
 
     /**
      * @var string

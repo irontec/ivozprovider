@@ -416,7 +416,7 @@ abstract class UsersPuaAbstract
         Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
         Assertion::integerish($event, 'event value "%s" is not an integer or a number castable to integer.');
 
-        $this->event = $event;
+        $this->event = (int) $event;
 
         return $this;
     }
@@ -443,7 +443,7 @@ abstract class UsersPuaAbstract
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
-        $this->expires = $expires;
+        $this->expires = (int) $expires;
 
         return $this;
     }
@@ -470,7 +470,7 @@ abstract class UsersPuaAbstract
         Assertion::notNull($desiredExpires, 'desiredExpires value "%s" is null, but non null value was expected.');
         Assertion::integerish($desiredExpires, 'desiredExpires value "%s" is not an integer or a number castable to integer.');
 
-        $this->desiredExpires = $desiredExpires;
+        $this->desiredExpires = (int) $desiredExpires;
 
         return $this;
     }
@@ -497,7 +497,7 @@ abstract class UsersPuaAbstract
         Assertion::notNull($flag, 'flag value "%s" is null, but non null value was expected.');
         Assertion::integerish($flag, 'flag value "%s" is not an integer or a number castable to integer.');
 
-        $this->flag = $flag;
+        $this->flag = (int) $flag;
 
         return $this;
     }
@@ -687,7 +687,7 @@ abstract class UsersPuaAbstract
         Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
         Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
 
-        $this->cseq = $cseq;
+        $this->cseq = (int) $cseq;
 
         return $this;
     }
@@ -796,7 +796,7 @@ abstract class UsersPuaAbstract
         Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
         Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
 
-        $this->version = $version;
+        $this->version = (int) $version;
 
         return $this;
     }

@@ -6,7 +6,7 @@
 
 Feature: Carrier admin page
   As a main operator
-  I want to be able to access peer servers admin page
+  I want to be able to access carrier servers admin page
   In order to check and manage them
 
 Background:
@@ -18,7 +18,7 @@ Background:
    When I click on "Carriers" first elements "carrierServers" button
    Then I am on "CarriersList_carrierServers" subscreen list
 
-Scenario: I can create peer servers
+Scenario: I can create carrier servers
   When I click on add button
    And I fill out the form with "brand/carrierServers/new" data fixture
    And I click on save button
@@ -28,7 +28,7 @@ Scenario: I can create peer servers
   When I click on "carrierServers" last elements edit button
   Then I compare the form data with "brand/carrierServers/new" data fixture
 
-Scenario: I can save peer servers
+Scenario: I can save carrier servers
   Given I can see at least one row
    When I click on "carrierServers" first elements edit button
     And I click on save button
@@ -36,7 +36,7 @@ Scenario: I can save peer servers
    When I click on close dialog button
    Then I am on "CarriersList_carrierServers" subscreen list
 
-Scenario: I can click on delete peer server button
+Scenario: I can click on delete carrier server button
   Given I can see at least one row
    When I click on "carrierServers" first elements delete button
    Then I can see confirmation dialog

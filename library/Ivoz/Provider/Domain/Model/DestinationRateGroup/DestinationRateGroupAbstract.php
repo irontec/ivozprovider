@@ -13,6 +13,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class DestinationRateGroupAbstract
 {
+    const STATUS_WAITING = 'waiting';
+    const STATUS_INPROGRESS = 'inProgress';
+    const STATUS_IMPORTED = 'imported';
+    const STATUS_ERROR = 'error';
+
     /**
      * comment: enum:waiting|inProgress|imported|error
      * @var string | null
@@ -261,12 +266,12 @@ abstract class DestinationRateGroupAbstract
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($status, array (
-              0 => 'waiting',
-              1 => 'inProgress',
-              2 => 'imported',
-              3 => 'error',
-            ), 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($status, [
+                self::STATUS_WAITING,
+                self::STATUS_INPROGRESS,
+                self::STATUS_IMPORTED,
+                self::STATUS_ERROR
+            ], 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;

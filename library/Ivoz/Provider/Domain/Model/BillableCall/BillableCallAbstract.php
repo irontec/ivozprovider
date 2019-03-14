@@ -26,7 +26,7 @@ abstract class BillableCallAbstract
     /**
      * @var float
      */
-    protected $duration = '0.000';
+    protected $duration = 0.0;
 
     /**
      * @var string | null
@@ -39,12 +39,12 @@ abstract class BillableCallAbstract
     protected $callee;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $cost;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $price;
 
@@ -396,9 +396,8 @@ abstract class BillableCallAbstract
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
-        $duration = (float) $duration;
 
-        $this->duration = $duration;
+        $this->duration = (float) $duration;
 
         return $this;
     }
@@ -472,7 +471,7 @@ abstract class BillableCallAbstract
     /**
      * Set cost
      *
-     * @param string $cost
+     * @param float $cost
      *
      * @return self
      */
@@ -493,7 +492,7 @@ abstract class BillableCallAbstract
     /**
      * Get cost
      *
-     * @return string | null
+     * @return float | null
      */
     public function getCost()
     {
@@ -503,7 +502,7 @@ abstract class BillableCallAbstract
     /**
      * Set price
      *
-     * @param string $price
+     * @param float $price
      *
      * @return self
      */
@@ -524,7 +523,7 @@ abstract class BillableCallAbstract
     /**
      * Get price
      *
-     * @return string | null
+     * @return float | null
      */
     public function getPrice()
     {
@@ -683,6 +682,7 @@ abstract class BillableCallAbstract
             if (!is_null($endpointId)) {
                 Assertion::integerish($endpointId, 'endpointId value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
+                $endpointId = (int) $endpointId;
             }
         }
 

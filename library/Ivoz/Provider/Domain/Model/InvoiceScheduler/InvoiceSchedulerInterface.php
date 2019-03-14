@@ -81,7 +81,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Get taxRate
      *
-     * @return string | null
+     * @return float | null
      */
     public function getTaxRate();
 

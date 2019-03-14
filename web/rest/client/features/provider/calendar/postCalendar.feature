@@ -22,7 +22,8 @@ Feature: Create calendars
     """
       {
           "name": "testNewCalendar",
-          "id": 3
+          "id": 3,
+          "company": 1
       }
     """
 

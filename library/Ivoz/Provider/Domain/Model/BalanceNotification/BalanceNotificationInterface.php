@@ -32,7 +32,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Get threshold
      *
-     * @return string | null
+     * @return float | null
      */
     public function getThreshold();
 

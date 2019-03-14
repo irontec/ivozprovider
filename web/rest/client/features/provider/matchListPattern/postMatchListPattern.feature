@@ -29,7 +29,9 @@ Feature: Create match list patterns
           "type": "number",
           "regexp": null,
           "numbervalue": "946002051",
-          "id": 2
+          "id": 2,
+          "matchList": 2,
+          "numberCountry": 2
       }
     """
 

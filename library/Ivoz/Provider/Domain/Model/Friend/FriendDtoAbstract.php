@@ -48,7 +48,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $priority = '1';
+    private $priority = 1;
 
     /**
      * @var string

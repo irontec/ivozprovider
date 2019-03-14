@@ -265,7 +265,7 @@ abstract class TrunksDomainAttrAbstract
         Assertion::integerish($type, 'type value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($type, 0, 'type provided "%s" is not greater or equal than "%s".');
 
-        $this->type = $type;
+        $this->type = (int) $type;
 
         return $this;
     }

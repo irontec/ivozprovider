@@ -32,8 +32,18 @@ Feature: Create hunt groups
     """
       {
           "name": "newHuntGroup",
+          "description": "none",
           "strategy": "random",
-          "id": 2
+          "ringAllTimeout": 0,
+          "noAnswerTargetType": "extension",
+          "noAnswerNumberValue": null,
+          "preventMissedCalls": 1,
+          "id": 2,
+          "company": 2,
+          "noAnswerLocution": null,
+          "noAnswerExtension": 1,
+          "noAnswerVoiceMailUser": null,
+          "noAnswerNumberCountry": null
       }
     """
 

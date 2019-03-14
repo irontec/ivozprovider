@@ -29,11 +29,16 @@ Feature: Create administrators
      And the JSON should be equal to:
     """
       {
+          "username": "post-test",
+          "pass": "****",
           "email": "post-test@example.com",
           "active": true,
           "name": "post",
           "lastname": "test",
-          "id": 6
+          "id": 6,
+          "brand": 1,
+          "company": null,
+          "timezone": 1
       }
     """
 
@@ -44,7 +49,7 @@ Feature: Create administrators
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "username": "post-test",
@@ -54,31 +59,7 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "id": 6,
-          "brand": {
-              "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 6,
-              "language": 1,
-              "defaultTimezone": 1
-          },
+          "brand": "~",
           "company": null,
           "timezone": {
               "tz": "Europe\/Madrid",

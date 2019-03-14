@@ -16,7 +16,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     private $toAddress;
 
     /**
-     * @var string
+     * @var float
      */
     private $threshold = 0;
 
@@ -110,7 +110,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param string $threshold
+     * @param float $threshold
      *
      * @return static
      */
@@ -122,7 +122,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getThreshold()
     {

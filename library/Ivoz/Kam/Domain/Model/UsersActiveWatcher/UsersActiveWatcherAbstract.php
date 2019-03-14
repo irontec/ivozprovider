@@ -102,7 +102,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @var integer
      */
-    protected $status = '2';
+    protected $status = 2;
 
     /**
      * @var string | null
@@ -112,7 +112,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @var integer
      */
-    protected $version = '0';
+    protected $version = 0;
 
     /**
      * column: socket_info
@@ -152,7 +152,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @var integer
      */
-    protected $flags = '0';
+    protected $flags = 0;
 
     /**
      * column: user_agent
@@ -725,7 +725,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($localCseq, 'localCseq value "%s" is null, but non null value was expected.');
         Assertion::integerish($localCseq, 'localCseq value "%s" is not an integer or a number castable to integer.');
 
-        $this->localCseq = $localCseq;
+        $this->localCseq = (int) $localCseq;
 
         return $this;
     }
@@ -752,7 +752,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($remoteCseq, 'remoteCseq value "%s" is null, but non null value was expected.');
         Assertion::integerish($remoteCseq, 'remoteCseq value "%s" is not an integer or a number castable to integer.');
 
-        $this->remoteCseq = $remoteCseq;
+        $this->remoteCseq = (int) $remoteCseq;
 
         return $this;
     }
@@ -834,7 +834,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
-        $this->expires = $expires;
+        $this->expires = (int) $expires;
 
         return $this;
     }
@@ -861,7 +861,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($status, 'status value "%s" is null, but non null value was expected.');
         Assertion::integerish($status, 'status value "%s" is not an integer or a number castable to integer.');
 
-        $this->status = $status;
+        $this->status = (int) $status;
 
         return $this;
     }
@@ -916,7 +916,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
         Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
 
-        $this->version = $version;
+        $this->version = (int) $version;
 
         return $this;
     }
@@ -1051,7 +1051,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($updated, 'updated value "%s" is null, but non null value was expected.');
         Assertion::integerish($updated, 'updated value "%s" is not an integer or a number castable to integer.');
 
-        $this->updated = $updated;
+        $this->updated = (int) $updated;
 
         return $this;
     }
@@ -1078,7 +1078,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($updatedWinfo, 'updatedWinfo value "%s" is null, but non null value was expected.');
         Assertion::integerish($updatedWinfo, 'updatedWinfo value "%s" is not an integer or a number castable to integer.');
 
-        $this->updatedWinfo = $updatedWinfo;
+        $this->updatedWinfo = (int) $updatedWinfo;
 
         return $this;
     }
@@ -1105,7 +1105,7 @@ abstract class UsersActiveWatcherAbstract
         Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
         Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
-        $this->flags = $flags;
+        $this->flags = (int) $flags;
 
         return $this;
     }

@@ -24,7 +24,8 @@ Feature: Create call acls
       {
           "name": "testNewACL",
           "defaultPolicy": "allow",
-          "id": 3
+          "id": 3,
+          "company": 1
       }
     """
 

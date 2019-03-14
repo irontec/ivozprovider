@@ -534,7 +534,7 @@ abstract class TpCdrStatAbstract
         Assertion::notNull($queueLength, 'queueLength value "%s" is null, but non null value was expected.');
         Assertion::integerish($queueLength, 'queueLength value "%s" is not an integer or a number castable to integer.');
 
-        $this->queueLength = $queueLength;
+        $this->queueLength = (int) $queueLength;
 
         return $this;
     }

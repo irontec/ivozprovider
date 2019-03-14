@@ -31,7 +31,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $timingTag = '*any';
 
     /**
-     * @var string
+     * @var float
      */
     private $weight = 10;
 
@@ -177,7 +177,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $weight
+     * @param float $weight
      *
      * @return static
      */
@@ -189,7 +189,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getWeight()
     {

@@ -13,8 +13,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class RatingPlanAbstract
 {
+    const TIMINGTYPE_ALWAYS = 'always';
+    const TIMINGTYPE_CUSTOM = 'custom';
+
     /**
-     * @var string
+     * @var float
      */
     protected $weight = 10;
 
@@ -261,7 +264,7 @@ abstract class RatingPlanAbstract
     /**
      * Set weight
      *
-     * @param string $weight
+     * @param float $weight
      *
      * @return self
      */
@@ -269,9 +272,8 @@ abstract class RatingPlanAbstract
     {
         Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
         Assertion::numeric($weight);
-        $weight = (float) $weight;
 
-        $this->weight = $weight;
+        $this->weight = (float) $weight;
 
         return $this;
     }
@@ -279,7 +281,7 @@ abstract class RatingPlanAbstract
     /**
      * Get weight
      *
-     * @return string
+     * @return float
      */
     public function getWeight()
     {
@@ -297,10 +299,10 @@ abstract class RatingPlanAbstract
     {
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($timingType, array (
-              0 => 'always',
-              1 => 'custom',
-            ), 'timingTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($timingType, [
+                self::TIMINGTYPE_ALWAYS,
+                self::TIMINGTYPE_CUSTOM
+            ], 'timingTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timingType = $timingType;

@@ -37,9 +37,25 @@ Feature: Create residential devices
     """
       {
           "name": "newRetail",
+          "description": "",
           "transport": "udp",
+          "ip": null,
+          "port": null,
           "authNeeded": "yes",
-          "id": 2
+          "password": "****",
+          "disallow": "all",
+          "allow": "alaw",
+          "directMediaMethod": "invite",
+          "calleridUpdateHeader": "pai",
+          "updateCallerid": "yes",
+          "fromDomain": null,
+          "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "maxCalls": 1,
+          "id": 2,
+          "company": 3,
+          "outgoingDdi": null,
+          "language": null
       }
     """
 

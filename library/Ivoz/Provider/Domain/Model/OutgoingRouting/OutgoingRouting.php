@@ -13,6 +13,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
 
     /**
      * Available OutgoingRoutings Types
+     * @todo restrict values on the setter
      */
     const TYPE_PATTERN   = 'pattern';
     const TYPE_GROUP     = 'group';
@@ -21,8 +22,11 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     /**
      * Available OugoingRoutings Route Mode
      */
-    const MODE_STATIC = 'static';
-    const MODE_LCR    = 'lcr';
+    /** @deprecated */
+    const MODE_STATIC = self::ROUTINGMODE_STATIC;
+
+    /** @deprecated */
+    const MODE_LCR    = self::ROUTINGMODE_LCR;
 
     /**
      * @codeCoverageIgnore

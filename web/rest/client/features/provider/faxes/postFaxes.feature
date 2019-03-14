@@ -27,7 +27,9 @@ Feature: Create faxes
           "name": "New Fax",
           "email": "something@irontec.com",
           "sendByEmail": true,
-          "id": 2
+          "id": 2,
+          "company": 1,
+          "outgoingDdi": null
       }
     """
 

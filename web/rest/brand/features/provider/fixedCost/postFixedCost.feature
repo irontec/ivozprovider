@@ -25,7 +25,10 @@ Feature: Create fixed costs
     """
       {
           "name": "24x7 support",
-          "id": 2
+          "description": "Something",
+          "cost": 10,
+          "id": 2,
+          "brand": 1
       }
     """
 

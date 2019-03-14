@@ -24,7 +24,8 @@ Feature: Create friends patterns
       {
           "name": "Baske Country",
           "regExp": "+3494",
-          "id": 2
+          "id": 2,
+          "friend": 1
       }
     """
 

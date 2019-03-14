@@ -196,8 +196,9 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
             [
                 'setid' => 1,
                 'destination' => 'sip:127.2.2.2:6060',
-                'flags' => '0',
-                'priority' => '0',
+                'flags' => 0,
+                'priority' => 0,
+                'attrs' => '',
                 'description' => 'test002',
                 'applicationServerId' => 3,
                 'id' => 3,

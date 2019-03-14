@@ -65,7 +65,7 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       scale: 4
       column: max_cost
       options:
-        default: '0.000'
+        default: 0.0
     maxCostStrategy:
       type: string
       nullable: false

@@ -13,6 +13,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CallAclAbstract
 {
+    const DEFAULTPOLICY_ALLOW = 'allow';
+    const DEFAULTPOLICY_DENY = 'deny';
+
     /**
      * @var string
      */
@@ -213,10 +216,10 @@ abstract class CallAclAbstract
     {
         Assertion::notNull($defaultPolicy, 'defaultPolicy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($defaultPolicy, 10, 'defaultPolicy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($defaultPolicy, array (
-          0 => 'allow',
-          1 => 'deny',
-        ), 'defaultPolicyvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($defaultPolicy, [
+            self::DEFAULTPOLICY_ALLOW,
+            self::DEFAULTPOLICY_DENY
+        ], 'defaultPolicyvalue "%s" is not an element of the valid values: %s');
 
         $this->defaultPolicy = $defaultPolicy;
 

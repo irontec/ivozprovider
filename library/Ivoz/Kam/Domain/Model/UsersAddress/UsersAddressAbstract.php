@@ -28,12 +28,12 @@ abstract class UsersAddressAbstract
     /**
      * @var integer
      */
-    protected $mask = '32';
+    protected $mask = 32;
 
     /**
      * @var integer
      */
-    protected $port = '0';
+    protected $port = 0;
 
     /**
      * @var string | null
@@ -280,7 +280,7 @@ abstract class UsersAddressAbstract
         Assertion::notNull($mask, 'mask value "%s" is null, but non null value was expected.');
         Assertion::integerish($mask, 'mask value "%s" is not an integer or a number castable to integer.');
 
-        $this->mask = $mask;
+        $this->mask = (int) $mask;
 
         return $this;
     }
@@ -307,7 +307,7 @@ abstract class UsersAddressAbstract
         Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
         Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
 
-        $this->port = $port;
+        $this->port = (int) $port;
 
         return $this;
     }

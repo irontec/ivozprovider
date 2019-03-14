@@ -29,7 +29,7 @@ abstract class CarrierAbstract
     protected $externallyRated = '0';
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $balance = 0;
 
@@ -304,7 +304,7 @@ abstract class CarrierAbstract
     /**
      * Set balance
      *
-     * @param string $balance
+     * @param float $balance
      *
      * @return self
      */
@@ -325,7 +325,7 @@ abstract class CarrierAbstract
     /**
      * Get balance
      *
-     * @return string | null
+     * @return float | null
      */
     public function getBalance()
     {

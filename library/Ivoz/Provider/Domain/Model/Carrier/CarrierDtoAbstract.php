@@ -26,7 +26,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $externallyRated = '0';
 
     /**
-     * @var string
+     * @var float
      */
     private $balance = 0;
 
@@ -194,7 +194,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $balance
+     * @param float $balance
      *
      * @return static
      */
@@ -206,7 +206,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getBalance()
     {

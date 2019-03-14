@@ -13,7 +13,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     /**
      * @var integer
      */
-    private $lcrId = '1';
+    private $lcrId = 1;
 
     /**
      * @var integer
@@ -23,7 +23,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     /**
      * @var integer
      */
-    private $weight = '1';
+    private $weight = 1;
 
     /**
      * @var integer

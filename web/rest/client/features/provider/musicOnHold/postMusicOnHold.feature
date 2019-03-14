@@ -34,7 +34,18 @@ Feature: Create music on holds
       {
           "name": "Something new",
           "status": null,
-          "id": 3
+          "id": 3,
+          "originalFile": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "encodedFile": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "company": 1
       }
     """
 

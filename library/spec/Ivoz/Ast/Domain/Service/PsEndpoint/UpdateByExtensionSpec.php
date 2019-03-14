@@ -126,6 +126,14 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->setMailboxes('userVoiceMail')
             ->shouldBeCalled();
 
+        $user
+            ->getPickUpGroupsIds()
+            ->willReturn(1);
+
+        $psEndpointDto
+            ->setNamedPickupGroup(1)
+            ->shouldBeCalled();
+
         $this
             ->entityTools
             ->persistDto(

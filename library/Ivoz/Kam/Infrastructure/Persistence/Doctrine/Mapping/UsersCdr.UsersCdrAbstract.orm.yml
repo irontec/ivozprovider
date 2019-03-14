@@ -47,7 +47,7 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       precision: 10
       scale: 3
       options:
-        default: '0.000'
+        default: 0.0
     direction:
       type: string
       nullable: true

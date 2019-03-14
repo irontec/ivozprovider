@@ -13,6 +13,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class TransformationRuleAbstract
 {
+    const TYPE_CALLERIN = 'callerin';
+    const TYPE_CALLEEIN = 'calleein';
+    const TYPE_CALLEROUT = 'callerout';
+    const TYPE_CALLEEOUT = 'calleeout';
+
     /**
      * comment: enum:callerin|calleein|callerout|calleeout
      * @var string
@@ -213,12 +218,12 @@ abstract class TransformationRuleAbstract
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, array (
-          0 => 'callerin',
-          1 => 'calleein',
-          2 => 'callerout',
-          3 => 'calleeout',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice($type, [
+            self::TYPE_CALLERIN,
+            self::TYPE_CALLEEIN,
+            self::TYPE_CALLEROUT,
+            self::TYPE_CALLEEOUT
+        ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -275,6 +280,7 @@ abstract class TransformationRuleAbstract
             if (!is_null($priority)) {
                 Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
                 Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
+                $priority = (int) $priority;
             }
         }
 

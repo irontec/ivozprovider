@@ -23,7 +23,9 @@ Feature: Create company services
     """
       {
           "code": "92",
-          "id": 8
+          "id": 8,
+          "company": 2,
+          "service": 4
       }
     """
 

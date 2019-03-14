@@ -13,6 +13,15 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class QueueAbstract
 {
+    const TIMEOUTTARGETTYPE_NUMBER = 'number';
+    const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
+    const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
+    const FULLTARGETTYPE_NUMBER = 'number';
+    const FULLTARGETTYPE_EXTENSION = 'extension';
+    const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+
     /**
      * @var string | null
      */
@@ -384,6 +393,7 @@ abstract class QueueAbstract
         if (!is_null($maxWaitTime)) {
             if (!is_null($maxWaitTime)) {
                 Assertion::integerish($maxWaitTime, 'maxWaitTime value "%s" is not an integer or a number castable to integer.');
+                $maxWaitTime = (int) $maxWaitTime;
             }
         }
 
@@ -413,11 +423,11 @@ abstract class QueueAbstract
     {
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($timeoutTargetType, array (
-              0 => 'number',
-              1 => 'extension',
-              2 => 'voicemail',
-            ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($timeoutTargetType, [
+                self::TIMEOUTTARGETTYPE_NUMBER,
+                self::TIMEOUTTARGETTYPE_EXTENSION,
+                self::TIMEOUTTARGETTYPE_VOICEMAIL
+            ], 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timeoutTargetType = $timeoutTargetType;
@@ -475,6 +485,7 @@ abstract class QueueAbstract
         if (!is_null($maxlen)) {
             if (!is_null($maxlen)) {
                 Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
+                $maxlen = (int) $maxlen;
             }
         }
 
@@ -504,11 +515,11 @@ abstract class QueueAbstract
     {
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($fullTargetType, array (
-              0 => 'number',
-              1 => 'extension',
-              2 => 'voicemail',
-            ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($fullTargetType, [
+                self::FULLTARGETTYPE_NUMBER,
+                self::FULLTARGETTYPE_EXTENSION,
+                self::FULLTARGETTYPE_VOICEMAIL
+            ], 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->fullTargetType = $fullTargetType;
@@ -566,6 +577,7 @@ abstract class QueueAbstract
         if (!is_null($periodicAnnounceFrequency)) {
             if (!is_null($periodicAnnounceFrequency)) {
                 Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
+                $periodicAnnounceFrequency = (int) $periodicAnnounceFrequency;
             }
         }
 
@@ -596,6 +608,7 @@ abstract class QueueAbstract
         if (!is_null($memberCallRest)) {
             if (!is_null($memberCallRest)) {
                 Assertion::integerish($memberCallRest, 'memberCallRest value "%s" is not an integer or a number castable to integer.');
+                $memberCallRest = (int) $memberCallRest;
             }
         }
 
@@ -626,6 +639,7 @@ abstract class QueueAbstract
         if (!is_null($memberCallTimeout)) {
             if (!is_null($memberCallTimeout)) {
                 Assertion::integerish($memberCallTimeout, 'memberCallTimeout value "%s" is not an integer or a number castable to integer.');
+                $memberCallTimeout = (int) $memberCallTimeout;
             }
         }
 
@@ -683,6 +697,7 @@ abstract class QueueAbstract
         if (!is_null($weight)) {
             if (!is_null($weight)) {
                 Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+                $weight = (int) $weight;
             }
         }
 

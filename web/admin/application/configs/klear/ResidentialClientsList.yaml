@@ -71,7 +71,7 @@ production:
           name: true
           nif: true
           billingMethod: true
-          outgoingDDI: true
+          outgoingDdi: true
           relFeatures: true
       options:
         title: _("Options")
@@ -140,7 +140,7 @@ production:
             name: 3
             relFeatures: 3
             billingMethod: 3
-            outgoingDDI: 3
+            outgoingDdi: 3
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -204,7 +204,7 @@ production:
             name: 8
             relFeatures: 4
             billingMethod: 4
-            outgoingDDI: 6
+            outgoingDdi: 6
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")

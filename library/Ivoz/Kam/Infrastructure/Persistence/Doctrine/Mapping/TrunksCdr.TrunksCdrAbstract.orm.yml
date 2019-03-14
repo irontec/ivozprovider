@@ -41,7 +41,7 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       precision: 10
       scale: 3
       options:
-        default: '0.000'
+        default: 0.0
     caller:
       type: string
       nullable: true

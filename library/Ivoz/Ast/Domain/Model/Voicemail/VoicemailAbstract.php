@@ -146,7 +146,7 @@ abstract class VoicemailAbstract
     protected $maxmsg;
 
     /**
-     * @var string | null
+     * @var float | null
      */
     protected $volgain;
 
@@ -998,6 +998,7 @@ abstract class VoicemailAbstract
         if (!is_null($sayduration)) {
             if (!is_null($sayduration)) {
                 Assertion::integerish($sayduration, 'sayduration value "%s" is not an integer or a number castable to integer.');
+                $sayduration = (int) $sayduration;
             }
         }
 
@@ -1166,6 +1167,7 @@ abstract class VoicemailAbstract
         if (!is_null($maxmsg)) {
             if (!is_null($maxmsg)) {
                 Assertion::integerish($maxmsg, 'maxmsg value "%s" is not an integer or a number castable to integer.');
+                $maxmsg = (int) $maxmsg;
             }
         }
 
@@ -1187,7 +1189,7 @@ abstract class VoicemailAbstract
     /**
      * Set volgain
      *
-     * @param string $volgain
+     * @param float $volgain
      *
      * @return self
      */
@@ -1208,7 +1210,7 @@ abstract class VoicemailAbstract
     /**
      * Get volgain
      *
-     * @return string | null
+     * @return float | null
      */
     public function getVolgain()
     {

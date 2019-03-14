@@ -23,7 +23,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var float
      */
-    private $duration = '0.000';
+    private $duration = 0.0;
 
     /**
      * @var string

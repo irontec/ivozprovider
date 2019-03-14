@@ -39,7 +39,26 @@ Feature: Create friends
     """
       {
           "name": "beWatterMyFriend",
-          "id": 2
+          "description": "something",
+          "transport": "tls",
+          "ip": "129.1.2.3",
+          "port": 5060,
+          "authNeeded": "yes",
+          "password": "****",
+          "priority": 2,
+          "disallow": "all",
+          "allow": "alaw",
+          "directMediaMethod": "update",
+          "calleridUpdateHeader": "pai",
+          "updateCallerid": "yes",
+          "fromDomain": "",
+          "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "id": 2,
+          "company": 1,
+          "callAcl": null,
+          "outgoingDdi": null,
+          "language": null
       }
     """
 

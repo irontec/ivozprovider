@@ -18,7 +18,7 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternAbstra
       nullable: false
       options:
         unsigned: false
-        default: '1'
+        default: 1
   manyToOne:
     outgoingDdiRule:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface

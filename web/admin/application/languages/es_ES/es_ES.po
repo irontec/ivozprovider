@@ -208,6 +208,9 @@ msgstr[1] "Redes autorizadas"
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
 
+msgid "Avoid PCRE regular expressions here: use [0-9] instead of \\d."
+msgstr "Evitar las expresiones regulares PCRE: utilizar [0-9] en lugar de \\d."
+
 msgid "Balance"
 msgstr "Saldo"
 
@@ -714,10 +717,6 @@ msgstr "Editar %s"
 #, python-format
 msgid "Edit %s %2s"
 msgstr "Editar %s %2s"
-
-#, python-format
-msgid "Edit Join of %s"
-msgstr "Editar Union de %s"
 
 #, python-format
 msgid "Edit pattern of %s"
@@ -1292,10 +1291,6 @@ msgstr "Enviado como usuario en la cabecera Contact de los REGISTER"
 
 msgid "Iteration"
 msgstr "Números generados"
-
-#, python-format
-msgid "Join to %s %2s"
-msgstr "Unirse a %s %2s"
 
 msgid "Keep Original DDI"
 msgstr "Mantener DDI original"
