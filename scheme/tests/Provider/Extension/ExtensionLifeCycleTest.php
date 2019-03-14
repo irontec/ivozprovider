@@ -223,7 +223,8 @@ class ExtensionLifeCycleTest extends KernelTestCase
                 $changelogEntry->getData(),
                 [
                     'callerid' => 'Alice Allison <104>',
-                    'mailboxes' => 'user1@company1'
+                    'mailboxes' => 'user1@company1',
+                    'named_pickup_group' => '1'
                 ]
             );
         }
