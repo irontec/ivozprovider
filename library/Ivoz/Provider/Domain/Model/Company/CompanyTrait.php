@@ -93,6 +93,8 @@ trait CompanyTrait
         $this->relRoutingTags = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead

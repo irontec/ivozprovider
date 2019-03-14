@@ -133,7 +133,6 @@ public static function fromDto(
 <voContructor>
     $self = new static(<requiredFieldsGetters>);
 <fromDTO>
-    $self->sanitizeValues();
     $self->initChangelog();
 
     return $self;
@@ -155,7 +154,6 @@ public function updateFromDto(
 <voContructor>
     <updateFromDTO>
 
-    $this->sanitizeValues();
     return $this;
 }
 
@@ -1177,8 +1175,7 @@ public function <methodName>(<criteriaArgument>)
                 continue;
             }
 
-            $doc = $this->generateAssociationMappingPropertyDocBlock($associationMapping, $metadata);
-            $lines[] = $doc;
+            $lines[] = $this->generateAssociationMappingPropertyDocBlock($associationMapping, $metadata);
             $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $associationMapping['fieldName']
                 . ($associationMapping['type'] == 'manyToMany' ? ' = array()' : null) . ";\n";
         }
