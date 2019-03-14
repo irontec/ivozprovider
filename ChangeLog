@@ -1,3 +1,30 @@
+Thu, 14 Mar 2019 12:32:55 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.9.3 released
+
+    * Proxies
+        - Fixed a bug with unsolicited MWI NOTIFYs not being properly handled
+
+    * Web
+        - Demo Brand has now all features enabled by default
+        - Fixed a crash while sorting tables by outgoingDDI field
+        - Brand creation screen has now all Locale fields visible
+        - Removed Hunt Group relation table from User edit screen
+
+    * API
+        - Added Routing, Destination and Rating endpoints to brand API
+
+    * vPBx
+        - Fixed a bug with PickupGroups not being properly updated
+
+    * Packaging
+        - Added missed dependency on ghostscript for PDF thumbnails
+        - Avoid initial scheme import if database already exists
+
+    * Other
+        - Improved changes detection for entity changelog tables
+
+
 Wed, 27 Feb 2019 10:10:30 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.9.2 released
