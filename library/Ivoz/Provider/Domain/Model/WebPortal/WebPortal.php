@@ -23,6 +23,18 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
         return parent::getChangeSet();
     }
 
+    protected function sanitizeValues()
+    {
+        $isGodUrlType = $this->getUrlType() === self::URLTYPE_GOD;
+        if (!$isGodUrlType && !$this->getBrand()) {
+            $errorMsg = sprintf(
+                'Brand is required in %s urls',
+                $this->getUrlType()
+            );
+            throw new \DomainException($errorMsg);
+        }
+    }
+
     /**
      * @return array
      */
