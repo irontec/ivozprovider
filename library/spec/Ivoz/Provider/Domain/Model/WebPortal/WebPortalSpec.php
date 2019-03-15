@@ -2,19 +2,27 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\WebPortal;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
 use Ivoz\Provider\Domain\Model\WebPortal\Logo;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
+use spec\HelperTrait;
 
 class WebPortalSpec extends ObjectBehavior
 {
+    /**
+     * @var WebPortalDto
+     */
     protected $dto;
 
-    function let()
-    {
+    use HelperTrait;
 
+    function let(
+        BrandInterface $brand
+    ) {
         $this->dto = $dto = new WebPortalDto();
 
         $dto->setUrl('https://something.net')
@@ -22,6 +30,13 @@ class WebPortalSpec extends ObjectBehavior
             ->setLogoFileSize(50)
             ->setLogoMimeType('')
             ->setLogoBaseName('logo.png');
+
+        $this->hydrate(
+            $dto,
+            [
+                'brand' => $brand->getWrappedObject()
+            ]
+        );
 
         $this->beConstructedThrough(
             'fromDto',
@@ -36,9 +51,12 @@ class WebPortalSpec extends ObjectBehavior
 
     function it_throws_exception_on_invalid_url()
     {
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setUrl', ['something.net']);
+        try {
+            $this
+                ->shouldThrow('\Exception')
+                ->during('setUrl', ['something.net']);
+        } catch (\Exception $e) {
+        }
 
         $this
             ->shouldThrow('\Exception')
@@ -61,5 +79,52 @@ class WebPortalSpec extends ObjectBehavior
         $this
             ->shouldNotThrow('Exception')
             ->during('setUrl', ['https://www.something.net']);
+    }
+
+    function it_requires_brand_unless_god_type()
+    {
+        $fkTransformer = new DtoToEntityFakeTransformer();
+        $this->hydrate(
+            $this->dto,
+            ['brand' => null]
+        );
+
+        $this->dto
+            ->setUrlType('user');
+
+        try {
+            $this
+                ->shouldThrow('\DomainException')
+                ->duringUpdateFromDto($this->dto, $fkTransformer);
+        } catch (\Exception $e) {
+        }
+
+
+        try {
+            $this->dto
+                ->setUrlType('admin');
+
+            $this
+                ->shouldThrow('\DomainException')
+                ->duringUpdateFromDto($this->dto, $fkTransformer);
+        } catch (\Exception $e) {
+        }
+
+        try {
+            $this->dto
+                ->setUrlType('brand');
+            $this
+                ->shouldThrow('\DomainException')
+                ->duringUpdateFromDto($this->dto, $fkTransformer);
+        } catch (\Exception $e) {
+        }
+
+        $this->dto
+            ->setBrandId(null)
+            ->setUrlType('god');
+
+        $this
+            ->shouldNotThrow('\Exception')
+            ->duringUpdateFromDto($this->dto, $fkTransformer);
     }
 }
