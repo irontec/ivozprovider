@@ -2,7 +2,7 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include AdministratorsList.yaml
-#include WebPortalsList.yaml
+#include BrandPortalsList.yaml
 
 production:
   main:
@@ -53,7 +53,7 @@ production:
           screens:
             brandsEdit_screen: true
             administratorsList_screen: true
-            webPortalsList_screen: true
+            brandPortalsList_screen: true
           dialogs:
             emulateBrand_dialog: true
             brandsDel_dialog: false
@@ -168,18 +168,18 @@ production:
       title: _("Edit %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%item%)]")
       filterField: Brand
 
-    # Web Portals
-    <<: *webPortals_screensLink
-    webPortalsList_screen:
-      <<: *webPortalsList_screenLink
+    # Brand Portals
+    <<: *brandPortals_screensLink
+    brandPortalsList_screen:
+      <<: *brandPortalsList_screenLink
       filterField: Brand
       parentOptionCustomizer:
         - recordCount
-    webPortalsNew_screen:
-      <<: *webPortalsNew_screenLink
+    brandPortalsNew_screen:
+      <<: *brandPortalsNew_screenLink
       filterField: Brand
-    webPortalsEdit_screen:
-      <<: *webPortalsEdit_screenLink
+    brandPortalsEdit_screen:
+      <<: *brandPortalsEdit_screenLink
       filterField: Brand
 
   dialogs:
@@ -218,7 +218,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Brand operator', 'Brand operators', 1))
 
     # Brand URLs dialogs
-    <<: *webPortals_dialogsLink
+    <<: *brandPortals_dialogsLink
 
   commands: &brands_commandsLink
     brandsLogoDownload_command: &brandsLogoDownload_commandLink
@@ -238,7 +238,7 @@ production:
       mainColumn: logo
 
     # Brand URLs commands
-    <<: *webPortals_commandsLink
+    <<: *brandPortals_commandsLink
 
 testing:
   _extends: production

@@ -71,8 +71,8 @@ mappers:
         modelFile: CompanyServices,
         entity: 'Ivoz\\Provider\\Domain\\Model\\CompanyService\\CompanyService'
     }
-  - &CompanyURLs {
-        modelFile: CompanyUrls,
+  - &CompanyPortals {
+        modelFile: CompanyPortals,
         entity: 'Ivoz\\Provider\\Domain\\Model\\WebPortal\\WebPortal'
     }
   - &ConditionalRoutesConditions {

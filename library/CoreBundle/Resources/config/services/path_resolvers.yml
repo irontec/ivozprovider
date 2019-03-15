@@ -31,7 +31,7 @@ services:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
-      $basePath: 'ivozprovider_model_webportal.logo'
+      $basePath: 'ivozprovider_model_brandurls.logo'
 
   ##########################################
   ## CallCsvReport
