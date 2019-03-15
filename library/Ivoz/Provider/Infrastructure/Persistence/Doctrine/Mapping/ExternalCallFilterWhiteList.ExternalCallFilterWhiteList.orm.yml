@@ -1,4 +1,5 @@
 Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ExternalCallFilterWhiteListDoctrineRepository
   type: entity
   changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ExternalCallFilterWhiteLists
