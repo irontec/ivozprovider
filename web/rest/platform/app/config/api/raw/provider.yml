@@ -35,7 +35,7 @@ Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
+Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Company\Company:

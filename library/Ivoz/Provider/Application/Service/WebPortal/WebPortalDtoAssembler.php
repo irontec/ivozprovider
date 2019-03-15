@@ -1,44 +1,38 @@
 <?php
 
-namespace Ivoz\Provider\Application\Service\DestinationRateGroup;
+namespace Ivoz\Provider\Application\Service\WebPortal;
 
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 use Assert\Assertion;
-use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
-use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 
-class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
+class WebPortalDtoAssembler implements CustomDtoAssemblerInterface
 {
     /**
      * @var StoragePathResolverCollection
      */
     protected $storagePathResolver;
 
-    /**
-     * DestinationRateGroupDtoAssembler constructor.
-     *
-     * @param StoragePathResolverCollection $storagePathResolver
-     */
     public function __construct(
         StoragePathResolverCollection $storagePathResolver
     ) {
         $this->storagePathResolver = $storagePathResolver;
     }
 
+
     /**
-     * @param DestinationRateGroupInterface $entity
+     * @param WebPortalInterface $entity
      * @param integer $depth
-     * @return DestinationRateGroupDto
-     * @throws \Exception
+     * @return WebPortalDTO
      */
     public function toDto(EntityInterface $entity, $depth = 0)
     {
-        Assertion::isInstanceOf($entity, DestinationRateGroupInterface::class);
+        Assertion::isInstanceOf($entity, WebPortalInterface::class);
 
-        /** @var DestinationRateGroupDto $dto */
+        /** @var WebPortalDTO $dto */
         $dto = $entity->toDto($depth);
         $id = $entity->getId();
 
@@ -46,17 +40,12 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        if ($entity->getFile()->getFileSize()) {
+        if ($entity->getLogo()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
-                ->getPathResolver('File');
+                ->getPathResolver('Logo');
 
-            $pathResolver
-                ->setOriginalFileName(
-                    $entity->getFile()->getBaseName()
-                );
-
-            $dto->setFilePath(
+            $dto->setLogoPath(
                 $pathResolver->getFilePath($entity)
             );
         }

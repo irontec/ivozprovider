@@ -71,7 +71,7 @@ Ivoz\Provider\Domain\Model\BrandService\BrandService:
         brand:
           eq: "user.getBrand().getId()"
 
-Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
+Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:

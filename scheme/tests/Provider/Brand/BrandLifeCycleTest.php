@@ -27,7 +27,7 @@ use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 
 class BrandLifeCycleTest extends KernelTestCase
 {
@@ -138,7 +138,7 @@ class BrandLifeCycleTest extends KernelTestCase
     {
         $this->removeBrand();
         $this->assetChangedEntities([
-            BrandUrl::class,
+            WebPortal::class,
             MusicOnHold::class,
             FixedCostsRelInvoice::class,
             Invoice::class,

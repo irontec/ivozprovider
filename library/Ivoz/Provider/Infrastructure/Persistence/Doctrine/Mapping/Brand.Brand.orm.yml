@@ -20,7 +20,7 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
       targetEntity: Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface
       mappedBy: brand
     urls:
-      targetEntity: Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface
+      targetEntity: Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface
       mappedBy: brand
     relFeatures:
       targetEntity: Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface

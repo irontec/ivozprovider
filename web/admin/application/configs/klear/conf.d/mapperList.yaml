@@ -27,9 +27,9 @@ mappers:
         modelFile: Brands,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Brand\\Brand'
     }
-  - &BrandURLs {
-        modelFile: BrandUrls,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl'
+  - &WebPortals {
+        modelFile: WebPortals,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\WebPortal\\WebPortal'
     }
   - &Calendars {
         modelFile: Calendars,
@@ -73,7 +73,7 @@ mappers:
     }
   - &CompanyURLs {
         modelFile: CompanyUrls,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl'
+        entity: 'Ivoz\\Provider\\Domain\\Model\\WebPortal\\WebPortal'
     }
   - &ConditionalRoutesConditions {
         modelFile: ConditionalRoutesConditions,

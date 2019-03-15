@@ -1,10 +1,10 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include BrandURLsList.yaml
+#include WebPortalsList.yaml
 
 # This yaml handles CompanyURLs screens
-# We call CompanyURLs to the BrandURLs that have urlType 'admin' or 'user', so both
+# We call CompanyURLs to the WebPortals that have urlType 'admin' or 'user', so both
 # views share the same database table, while the list have special conditions and the
 # urlType in CompanyURLs have only 'admin' and 'user' available.
 
@@ -15,7 +15,7 @@ production:
   screens: &companyURLs_screensLink
     companyURLsList_screen: &companyURLsList_screenLink
       controller: list
-      rawCondition: "BrandUrl.urlType IN ('admin', 'user')"
+      rawCondition: "WebPortal.urlType IN ('admin', 'user')"
       forcedValues:
         <<: *forcedBrand
       pagination:
@@ -100,7 +100,7 @@ production:
       labelOnList: 1
 
   commands:
-    <<: *brandURLs_commandsLink
+    <<: *webPortals_commandsLink
 staging:
   _extends: production
 testing:
