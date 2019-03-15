@@ -50,7 +50,7 @@ abstract class WebPortalAbstract
     protected $logo;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
@@ -386,7 +386,7 @@ abstract class WebPortalAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
