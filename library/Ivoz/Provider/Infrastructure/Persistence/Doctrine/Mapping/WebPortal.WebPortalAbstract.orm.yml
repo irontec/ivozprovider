@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\WebPortal\WebPortalAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    url:
+    webportal_url:
       columns:
         - url
   embedded:
@@ -56,6 +56,6 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortalAbstract:
       joinColumns:
         brandId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
