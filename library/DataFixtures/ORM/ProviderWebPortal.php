@@ -20,7 +20,7 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(WebPortal::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(WebPortal::class);
         (function () {
             $this->setUrl("https://example.com");
