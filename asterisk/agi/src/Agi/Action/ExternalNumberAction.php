@@ -99,6 +99,8 @@ class ExternalNumberAction
         // Add caller redirection information
         if (is_null($origin) || !$origin->isEqual($caller)) {
             // Set as diversion number the user extension
+            $count = $this->agi->getRedirecting('count');
+            $this->agi->setRedirecting('count,i', ++$count);
             $this->agi->setRedirecting('from-num,i', $callerDdi->getDdie164());
             $this->agi->setRedirecting('from-name', "");
         }
