@@ -19,7 +19,7 @@ production:
       title: _("List of %s %2s", ngettext('Platform Portal', 'Platform Portals', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/en/administration_portal/platform/brands.html#brand-urls"
+        href: "/doc/en/administration_portal/platform/portals.html"
       fields: &platformPortal_fieldsLink
         options:
           title: _("Options")

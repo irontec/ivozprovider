@@ -63,12 +63,12 @@ Brand operators
 **List of brand operators** subsection allows adding/editing/deleting credentials for brand portal access.
 
 
-Brand URLs
-----------
+Brand Portals
+-------------
 
-**List of brand URLs** subsection allows managing URLs to access to the different web portals available for a given brand.
+**List of brand portals** subsection allows managing URLs to access to the different web portals available for a given brand.
 
-See :ref:`Portals URLs` for further reference.
+See :ref:`Client Portals` for further reference.
 
 .. warning:: URLs are assigned to brands. This means that through a given URL the brand can be guessed, but not the client.
              As a result, username collision domain will be at brand level (there cannot exist to client administrators

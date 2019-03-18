@@ -1,6 +1,8 @@
-############
-Portals URLs
-############
+.. _client_portals:
+
+##############
+Client Portals
+##############
 
 This section allows configuration of client portals:
 
