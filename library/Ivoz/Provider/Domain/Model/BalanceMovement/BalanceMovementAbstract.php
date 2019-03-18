@@ -29,12 +29,12 @@ abstract class BalanceMovementAbstract
     protected $createdOn;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
@@ -126,7 +126,6 @@ abstract class BalanceMovementAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -155,7 +154,6 @@ abstract class BalanceMovementAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

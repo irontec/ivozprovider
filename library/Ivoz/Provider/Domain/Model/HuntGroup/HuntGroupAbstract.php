@@ -66,22 +66,22 @@ abstract class HuntGroupAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     protected $noAnswerLocution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     protected $noAnswerExtension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $noAnswerVoiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $noAnswerNumberCountry;
 
@@ -191,7 +191,6 @@ abstract class HuntGroupAbstract
             ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -227,7 +226,6 @@ abstract class HuntGroupAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -519,7 +517,7 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getNoAnswerLocution()
     {
@@ -543,7 +541,7 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getNoAnswerExtension()
     {
@@ -567,7 +565,7 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getNoAnswerVoiceMailUser()
     {
@@ -591,7 +589,7 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNoAnswerNumberCountry()
     {

@@ -120,7 +120,6 @@ abstract class CurrencyAbstract
             $name
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -152,7 +151,6 @@ abstract class CurrencyAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -40,12 +40,12 @@ abstract class MusicOnHoldAbstract
     protected $encodedFile;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -157,7 +157,6 @@ abstract class MusicOnHoldAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -199,7 +198,6 @@ abstract class MusicOnHoldAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

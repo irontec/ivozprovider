@@ -39,17 +39,17 @@ abstract class CallCsvReportAbstract
     protected $csv;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface
+     * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
      */
     protected $callCsvScheduler;
 
@@ -161,7 +161,6 @@ abstract class CallCsvReportAbstract
             ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -199,7 +198,6 @@ abstract class CallCsvReportAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -38,7 +38,7 @@ interface TimezoneInterface extends LoggableEntityInterface
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
 

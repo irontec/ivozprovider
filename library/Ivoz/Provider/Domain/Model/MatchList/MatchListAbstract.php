@@ -19,12 +19,12 @@ abstract class MatchListAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -116,7 +116,6 @@ abstract class MatchListAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -143,7 +142,6 @@ abstract class MatchListAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

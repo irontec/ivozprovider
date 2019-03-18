@@ -84,7 +84,7 @@ abstract class TpLcrRuleAbstract
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     protected $outgoingRouting;
 
@@ -206,7 +206,6 @@ abstract class TpLcrRuleAbstract
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -244,7 +243,6 @@ abstract class TpLcrRuleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

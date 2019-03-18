@@ -160,7 +160,6 @@ abstract class UsersXcapAbstract
             $dto->getPort()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -192,7 +191,6 @@ abstract class UsersXcapAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

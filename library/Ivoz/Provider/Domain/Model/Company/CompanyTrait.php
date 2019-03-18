@@ -93,6 +93,8 @@ trait CompanyTrait
         $this->relRoutingTags = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -195,6 +197,7 @@ trait CompanyTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -294,6 +297,8 @@ trait CompanyTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

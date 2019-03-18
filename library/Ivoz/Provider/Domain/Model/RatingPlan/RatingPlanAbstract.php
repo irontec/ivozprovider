@@ -177,7 +177,6 @@ abstract class RatingPlanAbstract
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -213,7 +212,6 @@ abstract class RatingPlanAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

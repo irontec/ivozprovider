@@ -108,7 +108,6 @@ abstract class ProxyUserAbstract
             ->setIp($dto->getIp())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class ProxyUserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

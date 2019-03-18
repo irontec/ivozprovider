@@ -133,7 +133,6 @@ public static function fromDto(
 <voContructor>
     $self = new static(<requiredFieldsGetters>);
 <fromDTO>
-    $self->sanitizeValues();
     $self->initChangelog();
 
     return $self;
@@ -155,7 +154,6 @@ public function updateFromDto(
 <voContructor>
     <updateFromDTO>
 
-    $this->sanitizeValues();
     return $this;
 }
 
@@ -1185,7 +1183,47 @@ public function <methodName>(<criteriaArgument>)
         return implode("\n", $lines);
     }
 
+
     /**
+     * @param array             $associationMapping
+     * @param ClassMetadataInfo $metadata
+     *
+     * @return string
+     */
+    protected function generateAssociationMappingPropertyDocBlock(array $associationMapping, ClassMetadataInfo $metadata)
+    {
+        $lines = array();
+        $lines[] = $this->spaces . '/**';
+
+        if ($associationMapping['type'] & ClassMetadataInfo::TO_MANY) {
+            $lines[] = $this->spaces . ' * @var \Doctrine\Common\Collections\Collection';
+        } else {
+            $line =
+                $this->spaces
+                . ' * @var \\'
+                . ltrim($associationMapping['targetEntity'], '\\');
+
+            $column = $associationMapping['joinColumns'][0] ?? null;
+            $isNullableFk =
+                isset($column)
+                && (
+                    (isset($column['nullable']) && $column['nullable'])
+                    || (isset($column['onDelete']) && $column['onDelete'] === 'set null')
+                );
+
+            if ($isNullableFk) {
+                $line .= ' | null';
+            }
+
+            $lines[] = $line;
+        }
+
+        $lines[] = $this->spaces . ' */';
+
+        return implode("\n", $lines);
+    }
+
+        /**
      * @param ClassMetadataInfo $metadata
      *
      * @return string
@@ -1261,8 +1299,10 @@ public function <methodName>(<criteriaArgument>)
             $isNullableFk =
                 isset($currentAsoc->joinColumns)
                 && isset($currentAsoc->joinColumns[0])
-                && isset($currentAsoc->joinColumns[0]['nullable'])
-                && $currentAsoc->joinColumns[0]['nullable'];
+                && (
+                    (isset($currentAsoc->joinColumns[0]['nullable']) && $currentAsoc->joinColumns[0]['nullable'])
+                    || (isset($currentAsoc->joinColumns[0]['onDelete']) && $currentAsoc->joinColumns[0]['onDelete'] === 'set null')
+                );
         }
 
         if (is_null($defaultValue) && ($isNullable || $isNullableFk)) {
@@ -1296,8 +1336,10 @@ public function <methodName>(<criteriaArgument>)
             $isNullableFk =
                 isset($currentAsoc->joinColumns)
                 && isset($currentAsoc->joinColumns[0])
-                && isset($currentAsoc->joinColumns[0]['nullable'])
-                && $currentAsoc->joinColumns[0]['nullable'];
+                && (
+                    (isset($currentAsoc->joinColumns[0]['nullable']) && $currentAsoc->joinColumns[0]['nullable'])
+                    || (isset($currentAsoc->joinColumns[0]['onDelete']) && $currentAsoc->joinColumns[0]['onDelete'] === 'set null')
+                );
         }
 
         $assertions = [];

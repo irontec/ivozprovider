@@ -77,7 +77,7 @@ abstract class TrunksLcrGatewayAbstract
     protected $defunct;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
      */
     protected $carrierServer;
 
@@ -180,7 +180,6 @@ abstract class TrunksLcrGatewayAbstract
             ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -217,7 +216,6 @@ abstract class TrunksLcrGatewayAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

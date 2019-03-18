@@ -39,6 +39,8 @@ trait RoutingTagTrait
         $this->relCompanies = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -69,6 +71,7 @@ trait RoutingTagTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -105,6 +108,8 @@ trait RoutingTagTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

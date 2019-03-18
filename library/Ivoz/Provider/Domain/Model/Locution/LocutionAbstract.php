@@ -151,7 +151,6 @@ abstract class LocutionAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -192,7 +191,6 @@ abstract class LocutionAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

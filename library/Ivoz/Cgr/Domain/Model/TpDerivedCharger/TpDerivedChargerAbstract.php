@@ -325,7 +325,6 @@ abstract class TpDerivedChargerAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -376,7 +375,6 @@ abstract class TpDerivedChargerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

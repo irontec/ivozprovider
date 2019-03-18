@@ -59,7 +59,7 @@ abstract class InvoiceSchedulerAbstract
     protected $taxRate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     protected $invoiceTemplate;
 
@@ -74,7 +74,7 @@ abstract class InvoiceSchedulerAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     protected $numberSequence;
 
@@ -178,7 +178,6 @@ abstract class InvoiceSchedulerAbstract
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -214,7 +213,6 @@ abstract class InvoiceSchedulerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -514,7 +512,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate()
     {

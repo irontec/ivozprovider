@@ -39,6 +39,8 @@ trait DdiProviderTrait
         $this->ddiProviderAddresses = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -69,6 +71,7 @@ trait DdiProviderTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -105,6 +108,8 @@ trait DdiProviderTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

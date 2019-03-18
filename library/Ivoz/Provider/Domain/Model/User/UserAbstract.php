@@ -96,57 +96,57 @@ abstract class UserAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     protected $callAcl;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $bossAssistant;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     protected $bossAssistantWhiteList;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     protected $language;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
      */
     protected $terminal;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     protected $timezone;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $outgoingDdi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface
+     * @var \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
      */
     protected $outgoingDdiRule;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     protected $voicemailLocution;
 
@@ -282,7 +282,6 @@ abstract class UserAbstract
             ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -332,7 +331,6 @@ abstract class UserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -837,7 +835,7 @@ abstract class UserAbstract
     /**
      * Get callAcl
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     public function getCallAcl()
     {
@@ -861,7 +859,7 @@ abstract class UserAbstract
     /**
      * Get bossAssistant
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getBossAssistant()
     {
@@ -885,7 +883,7 @@ abstract class UserAbstract
     /**
      * Get bossAssistantWhiteList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     public function getBossAssistantWhiteList()
     {
@@ -909,7 +907,7 @@ abstract class UserAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet()
     {
@@ -933,7 +931,7 @@ abstract class UserAbstract
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage()
     {
@@ -957,7 +955,7 @@ abstract class UserAbstract
     /**
      * Get terminal
      *
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
      */
     public function getTerminal()
     {
@@ -981,7 +979,7 @@ abstract class UserAbstract
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension()
     {
@@ -1005,7 +1003,7 @@ abstract class UserAbstract
     /**
      * Get timezone
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone()
     {
@@ -1029,7 +1027,7 @@ abstract class UserAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi()
     {
@@ -1053,7 +1051,7 @@ abstract class UserAbstract
     /**
      * Get outgoingDdiRule
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
      */
     public function getOutgoingDdiRule()
     {
@@ -1077,7 +1075,7 @@ abstract class UserAbstract
     /**
      * Get voicemailLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getVoicemailLocution()
     {

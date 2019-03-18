@@ -157,7 +157,6 @@ abstract class InvoiceNumberSequenceAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -189,7 +188,6 @@ abstract class InvoiceNumberSequenceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -121,7 +121,6 @@ abstract class CallAclAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -148,7 +147,6 @@ abstract class CallAclAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

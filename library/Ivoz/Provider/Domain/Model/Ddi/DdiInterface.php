@@ -114,7 +114,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get conferenceRoom
      *
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
      */
     public function getConferenceRoom();
 
@@ -130,7 +130,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
 
@@ -146,7 +146,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
      */
     public function getQueue();
 
@@ -162,7 +162,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get externalCallFilter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getExternalCallFilter();
 
@@ -178,7 +178,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -194,7 +194,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr();
 
@@ -210,7 +210,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup();
 
@@ -226,7 +226,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get fax
      *
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
      */
     public function getFax();
 
@@ -242,7 +242,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     public function getDdiProvider();
 
@@ -274,7 +274,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 
@@ -290,7 +290,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get conditionalRoute
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface | null
      */
     public function getConditionalRoute();
 
@@ -306,7 +306,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
 

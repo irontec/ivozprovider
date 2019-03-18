@@ -108,7 +108,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             ->setRouteLock($fkTransformer->transform($dto->getRouteLock()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

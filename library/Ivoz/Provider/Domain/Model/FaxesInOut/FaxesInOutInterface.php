@@ -104,7 +104,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     /**
      * Get dstCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getDstCountry();
 

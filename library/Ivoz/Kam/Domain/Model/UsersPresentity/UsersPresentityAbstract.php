@@ -167,7 +167,6 @@ abstract class UsersPresentityAbstract
             $dto->getPriority()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -200,7 +199,6 @@ abstract class UsersPresentityAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

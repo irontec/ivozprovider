@@ -52,7 +52,7 @@ abstract class TrustedAbstract
     protected $priority = 0;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -149,7 +149,6 @@ abstract class TrustedAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -181,7 +180,6 @@ abstract class TrustedAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

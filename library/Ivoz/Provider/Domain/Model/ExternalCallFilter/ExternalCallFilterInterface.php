@@ -142,7 +142,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get welcomeLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getWelcomeLocution();
 
@@ -174,7 +174,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get outOfScheduleLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getOutOfScheduleLocution();
 
@@ -190,7 +190,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get holidayExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getHolidayExtension();
 
@@ -206,7 +206,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get outOfScheduleExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getOutOfScheduleExtension();
 
@@ -222,7 +222,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get holidayVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getHolidayVoiceMailUser();
 
@@ -238,7 +238,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get outOfScheduleVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getOutOfScheduleVoiceMailUser();
 
@@ -254,7 +254,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get holidayNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getHolidayNumberCountry();
 
@@ -270,7 +270,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Get outOfScheduleNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getOutOfScheduleNumberCountry();
 

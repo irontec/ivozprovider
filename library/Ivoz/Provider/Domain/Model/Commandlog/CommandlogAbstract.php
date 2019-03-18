@@ -141,7 +141,6 @@ abstract class CommandlogAbstract
             ->setArguments($dto->getArguments())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -171,7 +170,6 @@ abstract class CommandlogAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

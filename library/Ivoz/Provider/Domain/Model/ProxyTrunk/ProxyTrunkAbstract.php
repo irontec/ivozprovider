@@ -110,7 +110,6 @@ abstract class ProxyTrunkAbstract
             ->setName($dto->getName())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -136,7 +135,6 @@ abstract class ProxyTrunkAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

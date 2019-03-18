@@ -108,7 +108,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
             ->setSchedule($fkTransformer->transform($dto->getSchedule()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

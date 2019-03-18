@@ -49,12 +49,12 @@ abstract class TransformationRuleSetAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $country;
 
@@ -157,7 +157,6 @@ abstract class TransformationRuleSetAbstract
             ->setCountry($fkTransformer->transform($dto->getCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -195,7 +194,6 @@ abstract class TransformationRuleSetAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

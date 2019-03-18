@@ -117,7 +117,6 @@ abstract class DomainAbstract
             ->setDescription($dto->getDescription())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -144,7 +143,6 @@ abstract class DomainAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

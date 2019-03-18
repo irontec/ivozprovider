@@ -178,7 +178,6 @@ abstract class DdiProviderRegistrationAbstract
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -212,7 +211,6 @@ abstract class DdiProviderRegistrationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -144,7 +144,6 @@ abstract class RtpengineAbstract
             ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -175,7 +174,6 @@ abstract class RtpengineAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

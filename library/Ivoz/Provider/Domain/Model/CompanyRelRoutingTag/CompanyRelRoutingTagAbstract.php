@@ -108,7 +108,6 @@ abstract class CompanyRelRoutingTagAbstract
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class CompanyRelRoutingTagAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

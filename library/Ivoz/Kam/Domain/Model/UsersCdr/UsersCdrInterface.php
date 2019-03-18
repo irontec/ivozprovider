@@ -144,7 +144,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -160,7 +160,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
      */
     public function getFriend();
 
@@ -176,7 +176,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 
@@ -192,7 +192,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
 }

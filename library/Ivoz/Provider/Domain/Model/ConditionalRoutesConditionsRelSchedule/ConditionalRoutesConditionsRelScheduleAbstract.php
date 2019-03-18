@@ -108,7 +108,6 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             ->setSchedule($fkTransformer->transform($dto->getSchedule()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -134,7 +133,6 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -58,7 +58,7 @@ abstract class FaxesInOutAbstract
     protected $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $dstCountry;
 
@@ -163,7 +163,6 @@ abstract class FaxesInOutAbstract
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -202,7 +201,6 @@ abstract class FaxesInOutAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -462,7 +460,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get dstCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getDstCountry()
     {

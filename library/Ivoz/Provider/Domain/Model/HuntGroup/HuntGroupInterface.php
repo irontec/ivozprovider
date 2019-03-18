@@ -117,7 +117,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get noAnswerLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getNoAnswerLocution();
 
@@ -133,7 +133,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get noAnswerExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getNoAnswerExtension();
 
@@ -149,7 +149,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get noAnswerVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getNoAnswerVoiceMailUser();
 
@@ -165,7 +165,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get noAnswerNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNoAnswerNumberCountry();
 

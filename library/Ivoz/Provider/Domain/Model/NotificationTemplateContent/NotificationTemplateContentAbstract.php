@@ -48,7 +48,7 @@ abstract class NotificationTemplateContentAbstract
     protected $notificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     protected $language;
 
@@ -146,7 +146,6 @@ abstract class NotificationTemplateContentAbstract
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -177,7 +176,6 @@ abstract class NotificationTemplateContentAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -397,7 +395,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage()
     {

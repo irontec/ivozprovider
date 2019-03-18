@@ -135,7 +135,6 @@ abstract class TrunksDomainAttrAbstract
             $dto->getLastModified()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -164,7 +163,6 @@ abstract class TrunksDomainAttrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

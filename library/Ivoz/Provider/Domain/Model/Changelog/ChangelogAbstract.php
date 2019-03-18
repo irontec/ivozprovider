@@ -141,7 +141,6 @@ abstract class ChangelogAbstract
             ->setCommand($fkTransformer->transform($dto->getCommand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -171,7 +170,6 @@ abstract class ChangelogAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

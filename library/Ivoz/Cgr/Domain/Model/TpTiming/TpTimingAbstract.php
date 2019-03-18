@@ -168,7 +168,6 @@ abstract class TpTimingAbstract
             ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -201,7 +200,6 @@ abstract class TpTimingAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

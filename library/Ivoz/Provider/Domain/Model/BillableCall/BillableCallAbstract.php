@@ -89,27 +89,27 @@ abstract class BillableCallAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     protected $destination;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     protected $invoice;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     protected $trunksCdr;
 
@@ -218,7 +218,6 @@ abstract class BillableCallAbstract
             ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -262,7 +261,6 @@ abstract class BillableCallAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -255,7 +255,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get callAcl
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     public function getCallAcl();
 
@@ -271,7 +271,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get bossAssistant
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getBossAssistant();
 
@@ -287,7 +287,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get bossAssistantWhiteList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     public function getBossAssistantWhiteList();
 
@@ -303,7 +303,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
 
@@ -328,7 +328,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get terminal
      *
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
      */
     public function getTerminal();
 
@@ -344,7 +344,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension();
 
@@ -387,7 +387,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get voicemailLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getVoicemailLocution();
 

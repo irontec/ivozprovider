@@ -127,7 +127,6 @@ abstract class CallAclRelMatchListAbstract
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -155,7 +154,6 @@ abstract class CallAclRelMatchListAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

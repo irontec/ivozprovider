@@ -140,7 +140,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr();
 
@@ -156,7 +156,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup();
 
@@ -172,7 +172,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get voicemailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoicemailUser();
 
@@ -188,7 +188,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -204,7 +204,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
      */
     public function getQueue();
 
@@ -220,7 +220,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get locution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getLocution();
 
@@ -236,7 +236,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get conferenceRoom
      *
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
      */
     public function getConferenceRoom();
 
@@ -252,7 +252,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension();
 
@@ -268,7 +268,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
 

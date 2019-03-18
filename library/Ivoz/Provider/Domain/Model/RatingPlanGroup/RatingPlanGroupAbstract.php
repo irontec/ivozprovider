@@ -29,7 +29,7 @@ abstract class RatingPlanGroupAbstract
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     protected $currency;
 
@@ -133,7 +133,6 @@ abstract class RatingPlanGroupAbstract
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -171,7 +170,6 @@ abstract class RatingPlanGroupAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -248,7 +246,7 @@ abstract class RatingPlanGroupAbstract
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency()
     {

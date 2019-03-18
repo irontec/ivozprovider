@@ -155,7 +155,6 @@ abstract class UsersWatcherAbstract
             ->setReason($dto->getReason())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -186,7 +185,6 @@ abstract class UsersWatcherAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

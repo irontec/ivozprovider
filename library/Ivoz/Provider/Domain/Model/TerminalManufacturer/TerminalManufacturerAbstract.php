@@ -115,7 +115,6 @@ abstract class TerminalManufacturerAbstract
             $dto->getDescription()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -142,7 +141,6 @@ abstract class TerminalManufacturerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

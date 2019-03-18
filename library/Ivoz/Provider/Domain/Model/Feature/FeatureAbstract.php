@@ -113,7 +113,6 @@ abstract class FeatureAbstract
             $name
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -144,7 +143,6 @@ abstract class FeatureAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -144,7 +144,6 @@ abstract class ServiceAbstract
             $description
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -183,7 +182,6 @@ abstract class ServiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

@@ -45,6 +45,8 @@ trait RetailAccountTrait
         $this->callForwardSettings = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
@@ -83,6 +85,7 @@ trait RetailAccountTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -126,6 +129,8 @@ trait RetailAccountTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 

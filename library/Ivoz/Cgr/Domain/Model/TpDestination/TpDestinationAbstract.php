@@ -131,7 +131,6 @@ abstract class TpDestinationAbstract
             ->setDestination($fkTransformer->transform($dto->getDestination()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -160,7 +159,6 @@ abstract class TpDestinationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

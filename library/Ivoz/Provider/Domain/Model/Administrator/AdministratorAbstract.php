@@ -45,17 +45,17 @@ abstract class AdministratorAbstract
     protected $lastname;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     protected $timezone;
 
@@ -156,7 +156,6 @@ abstract class AdministratorAbstract
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -189,7 +188,6 @@ abstract class AdministratorAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -460,7 +458,7 @@ abstract class AdministratorAbstract
     /**
      * Get timezone
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone()
     {

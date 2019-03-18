@@ -47,6 +47,8 @@ protected function __construct(<requiredFields>)<lineBreak>{
 <collections>
 }
 
+abstract protected function sanitizeValues();
+
 /**
  * Factory method
  * @internal use EntityTools instead
@@ -63,6 +65,7 @@ public static function fromDto(
      */
     $self = parent::fromDto($dto, $fkTransformer);
 <fromDTO>
+    $self->sanitizeValues();
     if ($dto->getId()) {
         $self->id = $dto->getId();
         $self->initChangelog();
@@ -86,6 +89,8 @@ public function updateFromDto(
      */
     parent::updateFromDto($dto, $fkTransformer);
 <updateFromDTO>
+    $this->sanitizeValues();
+
     return $this;
 }
 

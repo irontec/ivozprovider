@@ -152,7 +152,6 @@ abstract class UsersLocationAttrAbstract
             ->setDomain($dto->getDomain())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -183,7 +182,6 @@ abstract class UsersLocationAttrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

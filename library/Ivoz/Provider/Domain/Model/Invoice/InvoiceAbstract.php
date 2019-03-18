@@ -65,7 +65,7 @@ abstract class InvoiceAbstract
     protected $pdf;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     protected $invoiceTemplate;
 
@@ -80,12 +80,12 @@ abstract class InvoiceAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     protected $numberSequence;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     protected $scheduler;
 
@@ -194,7 +194,6 @@ abstract class InvoiceAbstract
             ->setScheduler($fkTransformer->transform($dto->getScheduler()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -238,7 +237,6 @@ abstract class InvoiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -556,7 +554,7 @@ abstract class InvoiceAbstract
     /**
      * Get invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate()
     {
@@ -628,7 +626,7 @@ abstract class InvoiceAbstract
     /**
      * Get numberSequence
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     public function getNumberSequence()
     {
@@ -652,7 +650,7 @@ abstract class InvoiceAbstract
     /**
      * Get scheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getScheduler()
     {

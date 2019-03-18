@@ -134,7 +134,6 @@ abstract class CountryAbstract
             ->setCountryCode($dto->getCountryCode())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -172,7 +171,6 @@ abstract class CountryAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 

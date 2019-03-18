@@ -114,7 +114,6 @@ abstract class QueueMemberAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -141,7 +140,6 @@ abstract class QueueMemberAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
