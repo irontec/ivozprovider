@@ -44,20 +44,21 @@ pipeline {
         // --------------------------------------------------------------------
         stage('Testing') {
             parallel {
-                stage ('phplint') {
+                stage ('phpstan') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                            reuseNode true
+                            image 'ironartemis/ivozprovider-testing-phpstan'
+                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider/ --entrypoint ""'
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/library/bin/test-phplint'
+                        sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
+                        sh '/opt/irontec/ivozprovider/library/bin/test-phpstan'
                     }
                     post {
                         success { publishSuccess() }
                         failure { publishFailure() }
+                        always  { cleanWs() }
                     }
                 }
                 stage ('codestyle') {
