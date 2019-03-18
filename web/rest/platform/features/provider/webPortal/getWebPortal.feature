@@ -53,6 +53,6 @@ Feature: Retrieve web portals
               "mimeType": null,
               "baseName": null
           },
-          "brand": "~"
+          "brand": null
       }
     """
