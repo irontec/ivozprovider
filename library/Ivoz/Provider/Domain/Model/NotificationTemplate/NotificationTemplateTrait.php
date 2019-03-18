@@ -40,7 +40,7 @@ trait NotificationTemplateTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait NotificationTemplateTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait NotificationTemplateTrait
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface $content
      *
-     * @return NotificationTemplateTrait
+     * @return static
      */
     public function addContent(\Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface $content)
     {
@@ -141,7 +141,7 @@ trait NotificationTemplateTrait
      * Replace contents
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[] $contents
-     * @return self
+     * @return static
      */
     public function replaceContents(Collection $contents)
     {

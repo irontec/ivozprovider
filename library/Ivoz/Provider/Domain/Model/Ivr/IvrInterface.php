@@ -14,7 +14,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @return LocutionInterface[] with key=>value
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface[] with key=>value
      */
     public function getAllLocutions();
 
@@ -32,8 +32,14 @@ interface IvrInterface extends LoggableEntityInterface
      */
     public function getErrorNumberValueE164();
 
+    /**
+     * @return null|string
+     */
     public function getNoInputTarget();
 
+    /**
+     * @return null|string
+     */
     public function getErrorTarget();
 
     /**
@@ -273,7 +279,7 @@ interface IvrInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface $entry
      *
-     * @return IvrTrait
+     * @return static
      */
     public function addEntry(\Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface $entry);
 
@@ -288,7 +294,7 @@ interface IvrInterface extends LoggableEntityInterface
      * Replace entries
      *
      * @param \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[] $entries
-     * @return self
+     * @return static
      */
     public function replaceEntries(Collection $entries);
 
@@ -304,7 +310,7 @@ interface IvrInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface $excludedExtension
      *
-     * @return IvrTrait
+     * @return static
      */
     public function addExcludedExtension(\Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface $excludedExtension);
 
@@ -319,7 +325,7 @@ interface IvrInterface extends LoggableEntityInterface
      * Replace excludedExtensions
      *
      * @param \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[] $excludedExtensions
-     * @return self
+     * @return static
      */
     public function replaceExcludedExtensions(Collection $excludedExtensions);
 

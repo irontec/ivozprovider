@@ -42,7 +42,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
         $this->processExternalCdr = $processExternalCdr;
         $this->logger = $logger;
 
-        return parent::__construct(
+        parent::__construct(
             $jsonRpcClient
         );
     }

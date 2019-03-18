@@ -134,7 +134,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
      *
-     * @return self
+     * @return static
      */
     public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null);
 
@@ -150,7 +150,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
      *
-     * @return self
+     * @return static
      */
     public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null);
 

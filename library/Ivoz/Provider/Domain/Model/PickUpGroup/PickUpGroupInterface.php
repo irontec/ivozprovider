@@ -41,7 +41,7 @@ interface PickUpGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser
      *
-     * @return PickUpGroupTrait
+     * @return static
      */
     public function addRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser);
 
@@ -56,7 +56,7 @@ interface PickUpGroupInterface extends LoggableEntityInterface
      * Replace relUsers
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[] $relUsers
-     * @return self
+     * @return static
      */
     public function replaceRelUsers(Collection $relUsers);
 

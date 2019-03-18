@@ -40,7 +40,7 @@ trait CalendarTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait CalendarTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait CalendarTrait
      *
      * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate
      *
-     * @return CalendarTrait
+     * @return static
      */
     public function addHolidayDate(\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate)
     {
@@ -141,7 +141,7 @@ trait CalendarTrait
      * Replace holidayDates
      *
      * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[] $holidayDates
-     * @return self
+     * @return static
      */
     public function replaceHolidayDates(Collection $holidayDates)
     {

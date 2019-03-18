@@ -58,7 +58,7 @@ trait ExternalCallFilterTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -112,7 +112,7 @@ trait ExternalCallFilterTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -181,7 +181,7 @@ trait ExternalCallFilterTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar
      *
-     * @return ExternalCallFilterTrait
+     * @return static
      */
     public function addCalendar(\Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar)
     {
@@ -204,7 +204,7 @@ trait ExternalCallFilterTrait
      * Replace calendars
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface[] $calendars
-     * @return self
+     * @return static
      */
     public function replaceCalendars(Collection $calendars)
     {
@@ -253,7 +253,7 @@ trait ExternalCallFilterTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface $blackList
      *
-     * @return ExternalCallFilterTrait
+     * @return static
      */
     public function addBlackList(\Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface $blackList)
     {
@@ -276,7 +276,7 @@ trait ExternalCallFilterTrait
      * Replace blackLists
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface[] $blackLists
-     * @return self
+     * @return static
      */
     public function replaceBlackLists(Collection $blackLists)
     {
@@ -325,7 +325,7 @@ trait ExternalCallFilterTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface $whiteList
      *
-     * @return ExternalCallFilterTrait
+     * @return static
      */
     public function addWhiteList(\Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface $whiteList)
     {
@@ -348,7 +348,7 @@ trait ExternalCallFilterTrait
      * Replace whiteLists
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface[] $whiteLists
-     * @return self
+     * @return static
      */
     public function replaceWhiteLists(Collection $whiteLists)
     {
@@ -397,7 +397,7 @@ trait ExternalCallFilterTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface $schedule
      *
-     * @return ExternalCallFilterTrait
+     * @return static
      */
     public function addSchedule(\Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface $schedule)
     {
@@ -420,7 +420,7 @@ trait ExternalCallFilterTrait
      * Replace schedules
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface[] $schedules
-     * @return self
+     * @return static
      */
     public function replaceSchedules(Collection $schedules)
     {

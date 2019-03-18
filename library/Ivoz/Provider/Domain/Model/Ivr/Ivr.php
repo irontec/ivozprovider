@@ -54,7 +54,7 @@ class Ivr extends IvrAbstract implements IvrInterface
     }
 
     /**
-     * @return LocutionInterface[] with key=>value
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface[] with key=>value
      */
     public function getAllLocutions()
     {
@@ -98,11 +98,17 @@ class Ivr extends IvrAbstract implements IvrInterface
             $this->getErrorNumberValue();
     }
 
+    /**
+     * @return null|string
+     */
     public function getNoInputTarget()
     {
         return $this->getTarget("NoInput");
     }
 
+    /**
+     * @return null|string
+     */
     public function getErrorTarget()
     {
         return $this->getTarget("Error");

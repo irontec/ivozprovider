@@ -118,7 +118,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule
      *
-     * @return TransformationRuleSetTrait
+     * @return static
      */
     public function addRule(\Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule);
 
@@ -133,7 +133,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
      * Replace rules
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[] $rules
-     * @return self
+     * @return static
      */
     public function replaceRules(Collection $rules);
 

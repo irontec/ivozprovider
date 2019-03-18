@@ -277,7 +277,7 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return FriendTrait
+     * @return static
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
 
@@ -292,7 +292,7 @@ interface FriendInterface extends LoggableEntityInterface
      * Replace psEndpoints
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
-     * @return self
+     * @return static
      */
     public function replacePsEndpoints(Collection $psEndpoints);
 
@@ -308,7 +308,7 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface $pattern
      *
-     * @return FriendTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface $pattern);
 
@@ -323,7 +323,7 @@ interface FriendInterface extends LoggableEntityInterface
      * Replace patterns
      *
      * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[] $patterns
-     * @return self
+     * @return static
      */
     public function replacePatterns(Collection $patterns);
 

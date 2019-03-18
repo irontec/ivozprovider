@@ -29,7 +29,7 @@ interface InvoiceRepository extends ObjectRepository, Selectable
      * @param $brandId
      * @param $utcOutDate
      * @param $invoiceIdToBeExcluded
-     * @return AccCdrInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Invoice\Invoice[]
      */
     public function getInvoices(
         int $companyId,

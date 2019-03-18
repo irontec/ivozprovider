@@ -7,17 +7,9 @@ use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
-/**
- * Class SanitizeEmptyValues
- * @package Ivoz\Provider\Domain\Service\Company
- * @lifecycle pre_persist
- */
 class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
 {
-    /**
-     * @var UpdateEntityFromDTO
-     */
-    protected $entityUpdater;
+    protected $entityTools;
 
     public function __construct(
         EntityTools $entityTools

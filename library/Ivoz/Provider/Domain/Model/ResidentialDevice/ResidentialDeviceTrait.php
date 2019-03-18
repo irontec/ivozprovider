@@ -52,7 +52,7 @@ trait ResidentialDeviceTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -98,7 +98,7 @@ trait ResidentialDeviceTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -160,7 +160,7 @@ trait ResidentialDeviceTrait
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return ResidentialDeviceTrait
+     * @return static
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
     {
@@ -183,7 +183,7 @@ trait ResidentialDeviceTrait
      * Replace psEndpoints
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
-     * @return self
+     * @return static
      */
     public function replacePsEndpoints(Collection $psEndpoints)
     {
@@ -232,7 +232,7 @@ trait ResidentialDeviceTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return ResidentialDeviceTrait
+     * @return static
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
     {
@@ -255,7 +255,7 @@ trait ResidentialDeviceTrait
      * Replace ddis
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
-     * @return self
+     * @return static
      */
     public function replaceDdis(Collection $ddis)
     {
@@ -304,7 +304,7 @@ trait ResidentialDeviceTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
      *
-     * @return ResidentialDeviceTrait
+     * @return static
      */
     public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
     {
@@ -327,7 +327,7 @@ trait ResidentialDeviceTrait
      * Replace callForwardSettings
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
-     * @return self
+     * @return static
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings)
     {

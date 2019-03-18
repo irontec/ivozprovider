@@ -108,7 +108,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     }
 
     /**
-     * @return FeatureInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface[]
      */
     public function getFeatures()
     {
@@ -146,18 +146,5 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
             "b%d",
             $this->getId()
         );
-    }
-
-    public function getServiceByIden(string $iden)
-    {
-        $service = $this->serviceRepsitory->getByIden($iden);
-
-        $services = $this->getServices(
-            CriteriaHelper::fromArray([
-                'service' => $service
-            ])
-        );
-
-        return array_shift($services);
     }
 }

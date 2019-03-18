@@ -25,17 +25,6 @@ class Cgrates extends AbstractJob
         'tpid',
     );
 
-    /**
-     * Recoder constructor.
-     *
-     * @param Manager $manager
-     * @param array $settings
-     */
-    public function __construct(Manager $manager, array $settings)
-    {
-        return parent::__construct($manager, $settings);
-    }
-
     public function setTpid($tpid)
     {
         $this->tpid = $tpid;

@@ -85,7 +85,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
-     * @return DestinationTrait
+     * @return static
      */
     public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
 
@@ -100,7 +100,7 @@ interface DestinationInterface extends LoggableEntityInterface
      * Replace destinationRates
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[] $destinationRates
-     * @return self
+     * @return static
      */
     public function replaceDestinationRates(Collection $destinationRates);
 

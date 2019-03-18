@@ -4,17 +4,10 @@ namespace Ivoz\Core\Domain\Service;
 
 class PersistErrorHandlerServiceCollection
 {
-    use LifecycleServiceCollectionTrait;
-
     /**
      * @var array
      */
-    protected $services;
-
-    public function __construct()
-    {
-        $this->services = array();
-    }
+    protected $services = [];
 
     public function setServices(array $services)
     {

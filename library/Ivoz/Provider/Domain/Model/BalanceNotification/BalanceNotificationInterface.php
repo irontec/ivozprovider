@@ -13,7 +13,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @return LanguageInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
 

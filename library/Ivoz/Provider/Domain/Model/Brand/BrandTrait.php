@@ -82,7 +82,7 @@ trait BrandTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -168,7 +168,7 @@ trait BrandTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -265,7 +265,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -288,7 +288,7 @@ trait BrandTrait
      * Replace companies
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface[] $companies
-     * @return self
+     * @return static
      */
     public function replaceCompanies(Collection $companies)
     {
@@ -337,7 +337,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addService(\Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service)
     {
@@ -360,7 +360,7 @@ trait BrandTrait
      * Replace services
      *
      * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $services
-     * @return self
+     * @return static
      */
     public function replaceServices(Collection $services)
     {
@@ -409,7 +409,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addUrl(\Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url)
     {
@@ -432,7 +432,7 @@ trait BrandTrait
      * Replace urls
      *
      * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[] $urls
-     * @return self
+     * @return static
      */
     public function replaceUrls(Collection $urls)
     {
@@ -481,7 +481,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature)
     {
@@ -504,7 +504,7 @@ trait BrandTrait
      * Replace relFeatures
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[] $relFeatures
-     * @return self
+     * @return static
      */
     public function replaceRelFeatures(Collection $relFeatures)
     {
@@ -553,7 +553,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice)
     {
@@ -576,7 +576,7 @@ trait BrandTrait
      * Replace residentialDevices
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
-     * @return self
+     * @return static
      */
     public function replaceResidentialDevices(Collection $residentialDevices)
     {
@@ -625,7 +625,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold)
     {
@@ -648,7 +648,7 @@ trait BrandTrait
      * Replace musicsOnHold
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
-     * @return self
+     * @return static
      */
     public function replaceMusicsOnHold(Collection $musicsOnHold)
     {
@@ -697,7 +697,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
@@ -720,7 +720,7 @@ trait BrandTrait
      * Replace matchLists
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[] $matchLists
-     * @return self
+     * @return static
      */
     public function replaceMatchLists(Collection $matchLists)
     {
@@ -769,7 +769,7 @@ trait BrandTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return BrandTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -792,7 +792,7 @@ trait BrandTrait
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings)
     {

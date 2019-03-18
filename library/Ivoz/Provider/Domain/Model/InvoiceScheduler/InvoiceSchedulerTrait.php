@@ -40,7 +40,7 @@ trait InvoiceSchedulerTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait InvoiceSchedulerTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait InvoiceSchedulerTrait
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $relFixedCost
      *
-     * @return InvoiceSchedulerTrait
+     * @return static
      */
     public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $relFixedCost)
     {
@@ -141,7 +141,7 @@ trait InvoiceSchedulerTrait
      * Replace relFixedCosts
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts
-     * @return self
+     * @return static
      */
     public function replaceRelFixedCosts(Collection $relFixedCosts)
     {

@@ -40,7 +40,7 @@ trait HuntGroupTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait HuntGroupTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait HuntGroupTrait
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface $huntGroupsRelUser
      *
-     * @return HuntGroupTrait
+     * @return static
      */
     public function addHuntGroupsRelUser(\Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface $huntGroupsRelUser)
     {
@@ -141,7 +141,7 @@ trait HuntGroupTrait
      * Replace huntGroupsRelUsers
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[] $huntGroupsRelUsers
-     * @return self
+     * @return static
      */
     public function replaceHuntGroupsRelUsers(Collection $huntGroupsRelUsers)
     {

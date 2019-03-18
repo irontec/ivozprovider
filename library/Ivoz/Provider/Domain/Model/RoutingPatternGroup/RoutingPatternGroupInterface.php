@@ -54,7 +54,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern
      *
-     * @return RoutingPatternGroupTrait
+     * @return static
      */
     public function addRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern);
 
@@ -69,7 +69,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      * Replace relPatterns
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatterns
-     * @return self
+     * @return static
      */
     public function replaceRelPatterns(Collection $relPatterns);
 
@@ -85,7 +85,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingPatternGroupTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
@@ -100,7 +100,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings);
 

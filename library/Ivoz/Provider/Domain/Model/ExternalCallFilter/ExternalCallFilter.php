@@ -105,7 +105,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     }
 
     /**
-     * @return Null | HolidayDateInterface
+     * @return null | \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
      */
     public function getHolidayDateForToday()
     {

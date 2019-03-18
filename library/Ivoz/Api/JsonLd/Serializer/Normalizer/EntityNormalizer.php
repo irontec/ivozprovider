@@ -45,7 +45,7 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
         $this->iriConverter = $iriConverter;
         $this->contextBuilder = $contextBuilder;
 
-        return parent::__construct(
+        parent::__construct(
             $resourceMetadataFactory,
             $resourceClassResolver,
             $contextBuilder,

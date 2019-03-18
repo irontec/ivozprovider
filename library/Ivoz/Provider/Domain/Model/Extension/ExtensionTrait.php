@@ -40,7 +40,7 @@ trait ExtensionTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait ExtensionTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait ExtensionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return ExtensionTrait
+     * @return static
      */
     public function addUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
     {
@@ -141,7 +141,7 @@ trait ExtensionTrait
      * Replace users
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
-     * @return self
+     * @return static
      */
     public function replaceUsers(Collection $users)
     {

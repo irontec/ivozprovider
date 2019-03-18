@@ -46,7 +46,7 @@ trait TerminalTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -84,7 +84,7 @@ trait TerminalTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -139,7 +139,7 @@ trait TerminalTrait
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint
      *
-     * @return TerminalTrait
+     * @return static
      */
     public function addAstPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint)
     {
@@ -162,7 +162,7 @@ trait TerminalTrait
      * Replace astPsEndpoints
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $astPsEndpoints
-     * @return self
+     * @return static
      */
     public function replaceAstPsEndpoints(Collection $astPsEndpoints)
     {
@@ -211,7 +211,7 @@ trait TerminalTrait
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return TerminalTrait
+     * @return static
      */
     public function addUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
     {
@@ -234,7 +234,7 @@ trait TerminalTrait
      * Replace users
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
-     * @return self
+     * @return static
      */
     public function replaceUsers(Collection $users)
     {

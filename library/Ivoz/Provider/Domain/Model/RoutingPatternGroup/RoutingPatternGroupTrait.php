@@ -46,7 +46,7 @@ trait RoutingPatternGroupTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -84,7 +84,7 @@ trait RoutingPatternGroupTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -139,7 +139,7 @@ trait RoutingPatternGroupTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern
      *
-     * @return RoutingPatternGroupTrait
+     * @return static
      */
     public function addRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern)
     {
@@ -162,7 +162,7 @@ trait RoutingPatternGroupTrait
      * Replace relPatterns
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatterns
-     * @return self
+     * @return static
      */
     public function replaceRelPatterns(Collection $relPatterns)
     {
@@ -211,7 +211,7 @@ trait RoutingPatternGroupTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingPatternGroupTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -234,7 +234,7 @@ trait RoutingPatternGroupTrait
      * Replace outgoingRoutings
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @return static
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings)
     {

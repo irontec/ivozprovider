@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Assert\Assertion;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 
 /**
  * Terminal
@@ -134,7 +133,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     }
 
     /**
-     * @return PsEndpointInterface
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      */
     public function getAstPsEndpoint()
     {

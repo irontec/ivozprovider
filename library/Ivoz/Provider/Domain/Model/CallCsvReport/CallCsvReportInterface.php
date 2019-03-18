@@ -117,7 +117,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
 
     /**
      * @param $fldName
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -128,13 +128,13 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

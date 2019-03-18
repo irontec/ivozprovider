@@ -36,7 +36,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     private $microtime;
 
     /**
-     * @var guid
+     * @var string
      */
     private $id;
 
@@ -190,7 +190,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param guid $id
+     * @param string $id
      *
      * @return static
      */
@@ -202,7 +202,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return guid
+     * @return string
      */
     public function getId()
     {

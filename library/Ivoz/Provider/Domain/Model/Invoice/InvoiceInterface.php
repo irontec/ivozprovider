@@ -183,7 +183,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost
      *
-     * @return InvoiceTrait
+     * @return static
      */
     public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost);
 
@@ -198,7 +198,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      * Replace relFixedCosts
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[] $relFixedCosts
-     * @return self
+     * @return static
      */
     public function replaceRelFixedCosts(Collection $relFixedCosts);
 
@@ -211,7 +211,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
 
     /**
      * @param $fldName
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -222,13 +222,13 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

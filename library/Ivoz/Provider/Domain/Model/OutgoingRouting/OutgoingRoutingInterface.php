@@ -14,7 +14,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @return RoutingPatternInterface[]
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
      */
     public function getRoutingPatterns();
 
@@ -33,7 +33,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getCgrRpCategory();
 
     /**
-     * @param RoutingPatternInterface $pattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern
      * @return bool
      */
     public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
@@ -204,7 +204,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule
      *
-     * @return self
+     * @return static
      */
     public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule = null);
 
@@ -220,7 +220,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
-     * @return OutgoingRoutingTrait
+     * @return static
      */
     public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule);
 
@@ -235,7 +235,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * Replace lcrRules
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
-     * @return self
+     * @return static
      */
     public function replaceLcrRules(Collection $lcrRules);
 
@@ -251,7 +251,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
      *
-     * @return OutgoingRoutingTrait
+     * @return static
      */
     public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
 
@@ -266,7 +266,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * Replace lcrRuleTargets
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
-     * @return self
+     * @return static
      */
     public function replaceLcrRuleTargets(Collection $lcrRuleTargets);
 
@@ -282,7 +282,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
      *
-     * @return OutgoingRoutingTrait
+     * @return static
      */
     public function addRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
 
@@ -297,7 +297,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * Replace relCarriers
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
-     * @return self
+     * @return static
      */
     public function replaceRelCarriers(Collection $relCarriers);
 

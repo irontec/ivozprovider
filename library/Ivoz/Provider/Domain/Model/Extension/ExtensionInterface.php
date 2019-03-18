@@ -200,7 +200,7 @@ interface ExtensionInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return ExtensionTrait
+     * @return static
      */
     public function addUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
@@ -215,7 +215,7 @@ interface ExtensionInterface extends LoggableEntityInterface
      * Replace users
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
-     * @return self
+     * @return static
      */
     public function replaceUsers(Collection $users);
 

@@ -46,7 +46,7 @@ trait IvrTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -84,7 +84,7 @@ trait IvrTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -139,7 +139,7 @@ trait IvrTrait
      *
      * @param \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface $entry
      *
-     * @return IvrTrait
+     * @return static
      */
     public function addEntry(\Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface $entry)
     {
@@ -162,7 +162,7 @@ trait IvrTrait
      * Replace entries
      *
      * @param \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[] $entries
-     * @return self
+     * @return static
      */
     public function replaceEntries(Collection $entries)
     {
@@ -211,7 +211,7 @@ trait IvrTrait
      *
      * @param \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface $excludedExtension
      *
-     * @return IvrTrait
+     * @return static
      */
     public function addExcludedExtension(\Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface $excludedExtension)
     {
@@ -234,7 +234,7 @@ trait IvrTrait
      * Replace excludedExtensions
      *
      * @param \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[] $excludedExtensions
-     * @return self
+     * @return static
      */
     public function replaceExcludedExtensions(Collection $excludedExtensions)
     {

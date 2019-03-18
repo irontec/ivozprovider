@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class DomainExceptionListener
 {
     private $serializer;
+    private $logger;
     private $errorFormats;
 
     public function __construct(

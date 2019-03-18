@@ -185,7 +185,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $orphans = $this->orphanAccesor->getValue($unitOfWork);
             $this->orphanAccesor->setValue($unitOfWork, []);
             foreach ($orphans as $orphan) {
-                $this->remove($orphan, false);
+                $this->remove($orphan);
             }
 
             if (in_array($state, $singleComputationValidStates)) {

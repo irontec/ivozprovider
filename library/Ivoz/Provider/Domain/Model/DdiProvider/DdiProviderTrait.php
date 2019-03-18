@@ -46,7 +46,7 @@ trait DdiProviderTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -84,7 +84,7 @@ trait DdiProviderTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -139,7 +139,7 @@ trait DdiProviderTrait
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
      *
-     * @return DdiProviderTrait
+     * @return static
      */
     public function addDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration)
     {
@@ -162,7 +162,7 @@ trait DdiProviderTrait
      * Replace ddiProviderRegistrations
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[] $ddiProviderRegistrations
-     * @return self
+     * @return static
      */
     public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations)
     {
@@ -211,7 +211,7 @@ trait DdiProviderTrait
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
      *
-     * @return DdiProviderTrait
+     * @return static
      */
     public function addDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress)
     {
@@ -234,7 +234,7 @@ trait DdiProviderTrait
      * Replace ddiProviderAddresses
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[] $ddiProviderAddresses
-     * @return self
+     * @return static
      */
     public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses)
     {

@@ -23,28 +23,28 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Return MatchLists associated with this condition
      *
-     * @return MatchListInterface[]
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[]
      */
     public function getMatchLists();
 
     /**
      * Return Schedules associated with this condition
      *
-     * @return ScheduleInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface[]
      */
     public function getSchedules();
 
     /**
      * Return Calendars associated with this condition
      *
-     * @return CalendarInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface[]
      */
     public function getCalendars();
 
     /**
      * Return Route Locks associated with this condition
      *
-     * @return RouteLockInterface[]
+     * @return \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface[]
      */
     public function getRouteLocks();
 
@@ -277,7 +277,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist);
 
@@ -292,7 +292,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * Replace relMatchlists
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $relMatchlists
-     * @return self
+     * @return static
      */
     public function replaceRelMatchlists(Collection $relMatchlists);
 
@@ -308,7 +308,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule);
 
@@ -323,7 +323,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * Replace relSchedules
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $relSchedules
-     * @return self
+     * @return static
      */
     public function replaceRelSchedules(Collection $relSchedules);
 
@@ -339,7 +339,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar);
 
@@ -354,7 +354,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * Replace relCalendars
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $relCalendars
-     * @return self
+     * @return static
      */
     public function replaceRelCalendars(Collection $relCalendars);
 
@@ -370,7 +370,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock);
 
@@ -385,7 +385,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * Replace relRouteLocks
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[] $relRouteLocks
-     * @return self
+     * @return static
      */
     public function replaceRelRouteLocks(Collection $relRouteLocks);
 

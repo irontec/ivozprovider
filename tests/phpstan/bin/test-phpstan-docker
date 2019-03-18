@@ -1,0 +1,6 @@
+#!/bin/bash
+docker run --rm \
+    --entrypoint "" \
+    --volume /opt/irontec/ivozprovider:/opt/irontec/ivozprovider \
+    ironartemis/ivozprovider-testing-phpstan \
+    /opt/irontec/ivozprovider/library/bin/test-phpstan

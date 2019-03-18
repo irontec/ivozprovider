@@ -56,7 +56,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface $content
      *
-     * @return NotificationTemplateTrait
+     * @return static
      */
     public function addContent(\Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface $content);
 
@@ -71,7 +71,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      * Replace contents
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[] $contents
-     * @return self
+     * @return static
      */
     public function replaceContents(Collection $contents);
 

@@ -49,7 +49,7 @@ interface CalendarInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate
      *
-     * @return CalendarTrait
+     * @return static
      */
     public function addHolidayDate(\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate);
 
@@ -64,7 +64,7 @@ interface CalendarInterface extends LoggableEntityInterface
      * Replace holidayDates
      *
      * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[] $holidayDates
-     * @return self
+     * @return static
      */
     public function replaceHolidayDates(Collection $holidayDates);
 

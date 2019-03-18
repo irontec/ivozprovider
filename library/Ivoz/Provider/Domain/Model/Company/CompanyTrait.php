@@ -100,7 +100,7 @@ trait CompanyTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -210,7 +210,7 @@ trait CompanyTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -328,7 +328,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension)
     {
@@ -351,7 +351,7 @@ trait CompanyTrait
      * Replace extensions
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[] $extensions
-     * @return self
+     * @return static
      */
     public function replaceExtensions(Collection $extensions)
     {
@@ -400,7 +400,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
     {
@@ -423,7 +423,7 @@ trait CompanyTrait
      * Replace ddis
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
-     * @return self
+     * @return static
      */
     public function replaceDdis(Collection $ddis)
     {
@@ -472,7 +472,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend)
     {
@@ -495,7 +495,7 @@ trait CompanyTrait
      * Replace friends
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
-     * @return self
+     * @return static
      */
     public function replaceFriends(Collection $friends)
     {
@@ -544,7 +544,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addCompanyService(\Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService)
     {
@@ -567,7 +567,7 @@ trait CompanyTrait
      * Replace companyServices
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[] $companyServices
-     * @return self
+     * @return static
      */
     public function replaceCompanyServices(Collection $companyServices)
     {
@@ -616,7 +616,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal)
     {
@@ -639,7 +639,7 @@ trait CompanyTrait
      * Replace terminals
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
-     * @return self
+     * @return static
      */
     public function replaceTerminals(Collection $terminals)
     {
@@ -688,7 +688,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
@@ -711,7 +711,7 @@ trait CompanyTrait
      * Replace ratingProfiles
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
-     * @return self
+     * @return static
      */
     public function replaceRatingProfiles(Collection $ratingProfiles)
     {
@@ -760,7 +760,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold)
     {
@@ -783,7 +783,7 @@ trait CompanyTrait
      * Replace musicsOnHold
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
-     * @return self
+     * @return static
      */
     public function replaceMusicsOnHold(Collection $musicsOnHold)
     {
@@ -832,7 +832,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRecording(\Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording)
     {
@@ -855,7 +855,7 @@ trait CompanyTrait
      * Replace recordings
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[] $recordings
-     * @return self
+     * @return static
      */
     public function replaceRecordings(Collection $recordings)
     {
@@ -904,7 +904,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature)
     {
@@ -927,7 +927,7 @@ trait CompanyTrait
      * Replace relFeatures
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[] $relFeatures
-     * @return self
+     * @return static
      */
     public function replaceRelFeatures(Collection $relFeatures)
     {
@@ -976,7 +976,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec)
     {
@@ -999,7 +999,7 @@ trait CompanyTrait
      * Replace relCodecs
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
-     * @return self
+     * @return static
      */
     public function replaceRelCodecs(Collection $relCodecs)
     {
@@ -1048,7 +1048,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag)
     {
@@ -1071,7 +1071,7 @@ trait CompanyTrait
      * Replace relRoutingTags
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
-     * @return self
+     * @return static
      */
     public function replaceRelRoutingTags(Collection $relRoutingTags)
     {

@@ -1,0 +1,6 @@
+parameters:
+    ignoreErrors:
+        - '#.* has invalid typehint type AppKernel#'
+    excludes_analyse:
+        - %rootDir%/spec/*
+        - %rootDir%/vendor/*

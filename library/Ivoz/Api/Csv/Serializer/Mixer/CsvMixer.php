@@ -13,7 +13,7 @@ class CsvMixer implements MixerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function supportsFormat($format = null)
     {
@@ -21,7 +21,7 @@ class CsvMixer implements MixerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function mix(array $segments)
     {

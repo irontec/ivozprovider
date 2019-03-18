@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+cd /opt/irontec/ivozprovider/
+
+run_test () {
+    local ROOT=$1
+    local TARGET="$1/$2"
+    echo "======================"
+    echo "== $1"
+    echo "======================"
+
+    phpstan analyse \
+        --level 1 \
+        --no-progress \
+        --autoload-file ${ROOT}/vendor/autoload.php \
+        --configuration ${ROOT}/phpstan.neon \
+        ${TARGET}
+}
+
+
+run_test library Ivoz

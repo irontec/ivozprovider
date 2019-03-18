@@ -71,7 +71,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
      *
-     * @return DdiProviderTrait
+     * @return static
      */
     public function addDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration);
 
@@ -86,7 +86,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      * Replace ddiProviderRegistrations
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[] $ddiProviderRegistrations
-     * @return self
+     * @return static
      */
     public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations);
 
@@ -102,7 +102,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
      *
-     * @return DdiProviderTrait
+     * @return static
      */
     public function addDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress);
 
@@ -117,7 +117,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      * Replace ddiProviderAddresses
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[] $ddiProviderAddresses
-     * @return self
+     * @return static
      */
     public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses);
 

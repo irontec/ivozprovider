@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * ResidentialDevice
@@ -122,6 +121,9 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
         );
     }
 
+    /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
     public function getAstPsEndpoint()
     {
         $psEndpoints = $this->getPsEndpoints();
@@ -129,6 +131,9 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
         return array_shift($psEndpoints);
     }
 
+    /**
+     * @return string
+     */
     public function getLanguageCode()
     {
         $language = $this->getLanguage();
@@ -172,7 +177,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * Get Ddi associated with this residential device
      *
-     * @return DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getDdi($ddieE164)
     {

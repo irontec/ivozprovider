@@ -46,7 +46,7 @@ trait FriendTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -84,7 +84,7 @@ trait FriendTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -139,7 +139,7 @@ trait FriendTrait
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return FriendTrait
+     * @return static
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
     {
@@ -162,7 +162,7 @@ trait FriendTrait
      * Replace psEndpoints
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
-     * @return self
+     * @return static
      */
     public function replacePsEndpoints(Collection $psEndpoints)
     {
@@ -211,7 +211,7 @@ trait FriendTrait
      *
      * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface $pattern
      *
-     * @return FriendTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface $pattern)
     {
@@ -234,7 +234,7 @@ trait FriendTrait
      * Replace patterns
      *
      * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[] $patterns
-     * @return self
+     * @return static
      */
     public function replacePatterns(Collection $patterns)
     {

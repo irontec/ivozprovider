@@ -99,7 +99,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
-     * @return RatingPlanGroupTrait
+     * @return static
      */
     public function addRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
 
@@ -114,7 +114,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      * Replace ratingPlan
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[] $ratingPlan
-     * @return self
+     * @return static
      */
     public function replaceRatingPlan(Collection $ratingPlan);
 

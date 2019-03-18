@@ -6,7 +6,6 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 class Xmlrpc extends AbstractJob
 {
-
     /**
      * @var string
      */
@@ -21,11 +20,6 @@ class Xmlrpc extends AbstractJob
      * @var string
      */
     protected $rpcMethod;
-
-    /**
-     * @var string
-     */
-    protected $method;
 
     /**
      * @var array
@@ -46,7 +40,7 @@ class Xmlrpc extends AbstractJob
     public function __construct($method = "WorkerXmlrpc~immediate", Manager $manager, array $settings)
     {
         $this->method = $method;
-        return parent::__construct($manager, $settings);
+        parent::__construct($manager, $settings);
     }
 
     /**

@@ -39,7 +39,7 @@ interface DomainInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return DomainTrait
+     * @return static
      */
     public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
 
@@ -54,7 +54,7 @@ interface DomainInterface extends LoggableEntityInterface
      * Replace friends
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
-     * @return self
+     * @return static
      */
     public function replaceFriends(Collection $friends);
 
@@ -70,7 +70,7 @@ interface DomainInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return DomainTrait
+     * @return static
      */
     public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice);
 
@@ -85,7 +85,7 @@ interface DomainInterface extends LoggableEntityInterface
      * Replace residentialDevices
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
-     * @return self
+     * @return static
      */
     public function replaceResidentialDevices(Collection $residentialDevices);
 
@@ -101,7 +101,7 @@ interface DomainInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return DomainTrait
+     * @return static
      */
     public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal);
 
@@ -116,7 +116,7 @@ interface DomainInterface extends LoggableEntityInterface
      * Replace terminals
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
-     * @return self
+     * @return static
      */
     public function replaceTerminals(Collection $terminals);
 

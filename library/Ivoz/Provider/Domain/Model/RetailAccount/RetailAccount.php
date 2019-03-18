@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * RetailAccount
@@ -102,7 +101,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * Get Ddi associated with this retail Account
      *
-     * @return DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getDdi($ddieE164)
     {

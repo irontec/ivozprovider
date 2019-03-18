@@ -57,7 +57,7 @@ trait OutgoingRoutingTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -103,7 +103,7 @@ trait OutgoingRoutingTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -165,7 +165,7 @@ trait OutgoingRoutingTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule
      *
-     * @return self
+     * @return static
      */
     public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule = null)
     {
@@ -189,7 +189,7 @@ trait OutgoingRoutingTrait
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
-     * @return OutgoingRoutingTrait
+     * @return static
      */
     public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
@@ -212,7 +212,7 @@ trait OutgoingRoutingTrait
      * Replace lcrRules
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
-     * @return self
+     * @return static
      */
     public function replaceLcrRules(Collection $lcrRules)
     {
@@ -261,7 +261,7 @@ trait OutgoingRoutingTrait
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
      *
-     * @return OutgoingRoutingTrait
+     * @return static
      */
     public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget)
     {
@@ -284,7 +284,7 @@ trait OutgoingRoutingTrait
      * Replace lcrRuleTargets
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
-     * @return self
+     * @return static
      */
     public function replaceLcrRuleTargets(Collection $lcrRuleTargets)
     {
@@ -333,7 +333,7 @@ trait OutgoingRoutingTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
      *
-     * @return OutgoingRoutingTrait
+     * @return static
      */
     public function addRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier)
     {
@@ -356,7 +356,7 @@ trait OutgoingRoutingTrait
      * Replace relCarriers
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
-     * @return self
+     * @return static
      */
     public function replaceRelCarriers(Collection $relCarriers)
     {

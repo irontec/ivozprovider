@@ -6,7 +6,6 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 class Recoder extends AbstractJob
 {
-
     /**
      * @var integer
      */
@@ -29,17 +28,6 @@ class Recoder extends AbstractJob
         'id',
         'entityName'
     );
-
-    /**
-     * Recoder constructor.
-     *
-     * @param Manager $manager
-     * @param array $settings
-     */
-    public function __construct(Manager $manager, array $settings)
-    {
-        return parent::__construct($manager, $settings);
-    }
 
     public function setId($id)
     {

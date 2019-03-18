@@ -40,7 +40,7 @@ trait TransformationRuleSetTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,7 +70,7 @@ trait TransformationRuleSetTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -118,7 +118,7 @@ trait TransformationRuleSetTrait
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule
      *
-     * @return TransformationRuleSetTrait
+     * @return static
      */
     public function addRule(\Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule)
     {
@@ -141,7 +141,7 @@ trait TransformationRuleSetTrait
      * Replace rules
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[] $rules
-     * @return self
+     * @return static
      */
     public function replaceRules(Collection $rules)
     {

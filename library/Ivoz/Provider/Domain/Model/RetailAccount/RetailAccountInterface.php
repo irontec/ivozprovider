@@ -38,7 +38,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get Ddi associated with this retail Account
      *
-     * @return DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getDdi($ddieE164);
 
@@ -190,7 +190,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return RetailAccountTrait
+     * @return static
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
 
@@ -205,7 +205,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * Replace psEndpoints
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
-     * @return self
+     * @return static
      */
     public function replacePsEndpoints(Collection $psEndpoints);
 
@@ -221,7 +221,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return RetailAccountTrait
+     * @return static
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi);
 
@@ -236,7 +236,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * Replace ddis
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
-     * @return self
+     * @return static
      */
     public function replaceDdis(Collection $ddis);
 
@@ -252,7 +252,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
      *
-     * @return RetailAccountTrait
+     * @return static
      */
     public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
 
@@ -267,7 +267,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * Replace callForwardSettings
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
-     * @return self
+     * @return static
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings);
 

@@ -16,7 +16,7 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
     /**
      * Get requestId
      *
-     * @return guid
+     * @return string
      */
     public function getRequestId();
 

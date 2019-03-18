@@ -52,7 +52,7 @@ trait UserTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -98,7 +98,7 @@ trait UserTrait
      * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -160,7 +160,7 @@ trait UserTrait
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser
      *
-     * @return UserTrait
+     * @return static
      */
     public function addPickUpRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser)
     {
@@ -183,7 +183,7 @@ trait UserTrait
      * Replace pickUpRelUsers
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[] $pickUpRelUsers
-     * @return self
+     * @return static
      */
     public function replacePickUpRelUsers(Collection $pickUpRelUsers)
     {
@@ -232,7 +232,7 @@ trait UserTrait
      *
      * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember
      *
-     * @return UserTrait
+     * @return static
      */
     public function addQueueMember(\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember)
     {
@@ -255,7 +255,7 @@ trait UserTrait
      * Replace queueMembers
      *
      * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[] $queueMembers
-     * @return self
+     * @return static
      */
     public function replaceQueueMembers(Collection $queueMembers)
     {
@@ -304,7 +304,7 @@ trait UserTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
      *
-     * @return UserTrait
+     * @return static
      */
     public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
     {
@@ -327,7 +327,7 @@ trait UserTrait
      * Replace callForwardSettings
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
-     * @return self
+     * @return static
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings)
     {
