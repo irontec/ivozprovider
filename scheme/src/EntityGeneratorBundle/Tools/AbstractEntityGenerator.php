@@ -449,7 +449,6 @@ public function <methodName>(<criteriaArgument>)
      */
     protected function generateEntityFieldMappingProperties(ClassMetadataInfo $metadata)
     {
-        $constants = [];
         $lines = array();
 
         foreach ($metadata->fieldMappings as $fieldMapping) {
@@ -463,25 +462,6 @@ public function <methodName>(<criteriaArgument>)
                 continue;
             }
 
-            $comment = isset($fieldMapping['options']['comment'])
-                    ? $fieldMapping['options']['comment']
-                    : '';
-
-            if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
-                $acceptedValues = explode('|', $matches['fieldValues']);
-                $choices = $this->getEnumConstants($fieldMapping['fieldName'], $acceptedValues);
-                foreach ($acceptedValues as $key => $acceptedValue) {
-                    $choice = $choices[$key];
-                    $constants[] =
-                        $this->spaces
-                        . 'const '
-                        . $choice
-                        . " = '${acceptedValue}';";
-                }
-
-                $constants[] = "\n";
-            }
-
             $lines[] = $this->generateFieldMappingPropertyDocBlock($fieldMapping, $metadata);
             $classAttr = $this->spaces . $this->fieldVisibility . ' $' . $fieldMapping['fieldName'];
 
@@ -492,9 +472,7 @@ public function <methodName>(<criteriaArgument>)
             $lines[] = $classAttr . ";\n";
         }
 
-        return
-            implode("\n", $constants)
-            . implode("\n", $lines);
+        return implode("\n", $lines);
     }
 
 
@@ -1439,7 +1417,16 @@ public function <methodName>(<criteriaArgument>)
 
             if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
                 $acceptedValues = explode('|', $matches['fieldValues']);
-                $choices = $this->getEnumConstants($currentField->fieldName, $acceptedValues, 'self::');
+                $entityFqdn = substr(
+                    $metadata->name,
+                    0,
+                    strlen('Abstract') * -1
+                );
+
+                $entityFqdnSegments = explode('\\', $entityFqdn);
+                $interface = end($entityFqdnSegments) . 'Interface';
+
+                $choices = $this->getEnumConstants($currentField->fieldName, $acceptedValues, $interface . '::');
 
                 $glue = "\n" . $this->spaces;
                 $assertions[] = AssertionGenerator::choice(
