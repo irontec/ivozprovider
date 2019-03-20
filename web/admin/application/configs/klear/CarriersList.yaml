@@ -44,13 +44,13 @@ production:
           description: true
           transformationRuleSet: true
           balance: true
-          acd: true
-          asr: true
         blacklist:
           externallyRated: true
           calculateCost: true
           currency: true
           billingMethod: true
+          acd: true
+          asr: true
       options:
         title: _("Options")
         screens:
@@ -116,6 +116,8 @@ production:
           calculateCost: ${auth.brandFeatures.billing.disabled}
           currency: ${auth.brandFeatures.billing.disabled}
           balance: true
+          acd: true
+          asr: true
       fixedPositions:
         <<: *carriersNew_fixedPositionsLink
 
