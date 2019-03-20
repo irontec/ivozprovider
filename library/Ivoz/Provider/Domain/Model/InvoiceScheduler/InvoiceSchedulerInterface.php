@@ -9,6 +9,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
+    const UNIT_WEEK = 'week';
+    const UNIT_MONTH = 'month';
+    const UNIT_YEAR = 'year';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

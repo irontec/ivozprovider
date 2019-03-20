@@ -8,6 +8,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface CompanyInterface extends LoggableEntityInterface
 {
+    const TYPE_VPBX = 'vpbx';
+    const TYPE_RETAIL = 'retail';
+    const TYPE_WHOLESALE = 'wholesale';
+    const TYPE_RESIDENTIAL = 'residential';
+
+
+    const DISTRIBUTEMETHOD_STATIC = 'static';
+    const DISTRIBUTEMETHOD_RR = 'rr';
+    const DISTRIBUTEMETHOD_HASH = 'hash';
+
+
+    const BILLINGMETHOD_POSTPAID = 'postpaid';
+    const BILLINGMETHOD_PREPAID = 'prepaid';
+    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -7,6 +7,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface RecordingInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const TYPE_ONDEMAND = 'ondemand';
+    const TYPE_DDI = 'ddi';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

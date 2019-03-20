@@ -8,6 +8,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface UserInterface extends LoggableEntityInterface
 {
+    const EXTERNALIPCALLS_0 = '0';
+    const EXTERNALIPCALLS_1 = '1';
+    const EXTERNALIPCALLS_2 = '2';
+    const EXTERNALIPCALLS_3 = '3';
+
+
     /**
      * @return array
      */

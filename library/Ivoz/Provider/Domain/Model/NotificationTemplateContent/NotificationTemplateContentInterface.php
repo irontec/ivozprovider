@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface NotificationTemplateContentInterface extends LoggableEntityInterface
 {
+    const BODYTYPE_TEXTPLAIN = 'text/plain';
+    const BODYTYPE_TEXTHTML = 'text/html';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

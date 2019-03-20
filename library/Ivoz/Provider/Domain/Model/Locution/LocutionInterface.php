@@ -7,6 +7,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface LocutionInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const STATUS_PENDING = 'pending';
+    const STATUS_ENCODING = 'encoding';
+    const STATUS_READY = 'ready';
+    const STATUS_ERROR = 'error';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

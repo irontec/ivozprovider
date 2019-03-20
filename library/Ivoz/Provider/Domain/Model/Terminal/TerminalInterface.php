@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface TerminalInterface extends LoggableEntityInterface
 {
+    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+
+
     /**
      * @return array
      */

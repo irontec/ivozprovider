@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CodecAbstract
 {
-    const TYPE_AUDIO = 'audio';
-    const TYPE_VIDEO = 'video';
-
     /**
      * comment: enum:audio|video
      * @var string
@@ -180,8 +177,8 @@ abstract class CodecAbstract
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
-            self::TYPE_AUDIO,
-            self::TYPE_VIDEO
+            CodecInterface::TYPE_AUDIO,
+            CodecInterface::TYPE_VIDEO
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;

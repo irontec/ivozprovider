@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CallCsvSchedulerAbstract
 {
-    const UNIT_DAY = 'day';
-    const UNIT_WEEK = 'week';
-    const UNIT_MONTH = 'month';
-
     /**
      * @var string
      */
@@ -275,9 +271,9 @@ abstract class CallCsvSchedulerAbstract
         Assertion::notNull($unit, 'unit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($unit, [
-            self::UNIT_DAY,
-            self::UNIT_WEEK,
-            self::UNIT_MONTH
+            CallCsvSchedulerInterface::UNIT_DAY,
+            CallCsvSchedulerInterface::UNIT_WEEK,
+            CallCsvSchedulerInterface::UNIT_MONTH
         ], 'unitvalue "%s" is not an element of the valid values: %s');
 
         $this->unit = $unit;

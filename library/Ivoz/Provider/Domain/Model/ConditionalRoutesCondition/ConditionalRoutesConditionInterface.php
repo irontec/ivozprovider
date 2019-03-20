@@ -8,6 +8,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 {
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_EXTENSION = 'extension';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

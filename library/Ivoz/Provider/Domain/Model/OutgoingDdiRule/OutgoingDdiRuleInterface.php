@@ -8,6 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 {
+    const DEFAULTACTION_KEEP = 'keep';
+    const DEFAULTACTION_FORCE = 'force';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

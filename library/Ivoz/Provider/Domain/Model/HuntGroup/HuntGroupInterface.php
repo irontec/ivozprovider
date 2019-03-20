@@ -8,6 +8,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface HuntGroupInterface extends LoggableEntityInterface
 {
+    const STRATEGY_RINGALL = 'ringAll';
+    const STRATEGY_LINEAR = 'linear';
+    const STRATEGY_ROUNDROBIN = 'roundRobin';
+    const STRATEGY_RANDOM = 'random';
+
+
+    const NOANSWERTARGETTYPE_NUMBER = 'number';
+    const NOANSWERTARGETTYPE_EXTENSION = 'extension';
+    const NOANSWERTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

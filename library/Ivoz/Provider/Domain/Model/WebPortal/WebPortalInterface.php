@@ -7,6 +7,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface WebPortalInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const URLTYPE_GOD = 'god';
+    const URLTYPE_BRAND = 'brand';
+    const URLTYPE_ADMIN = 'admin';
+    const URLTYPE_USER = 'user';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

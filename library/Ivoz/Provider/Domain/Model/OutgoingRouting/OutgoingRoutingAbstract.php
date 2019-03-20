@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingRoutingAbstract
 {
-    const ROUTINGMODE_STATIC = 'static';
-    const ROUTINGMODE_LCR = 'lcr';
-
     /**
      * @var string | null
      */
@@ -364,8 +361,8 @@ abstract class OutgoingRoutingAbstract
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routingMode, [
-                self::ROUTINGMODE_STATIC,
-                self::ROUTINGMODE_LCR
+                OutgoingRoutingInterface::ROUTINGMODE_STATIC,
+                OutgoingRoutingInterface::ROUTINGMODE_LCR
             ], 'routingModevalue "%s" is not an element of the valid values: %s');
         }
 

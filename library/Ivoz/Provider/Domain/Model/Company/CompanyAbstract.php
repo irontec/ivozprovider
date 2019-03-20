@@ -13,21 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CompanyAbstract
 {
-    const TYPE_VPBX = 'vpbx';
-    const TYPE_RETAIL = 'retail';
-    const TYPE_WHOLESALE = 'wholesale';
-    const TYPE_RESIDENTIAL = 'residential';
-
-
-    const DISTRIBUTEMETHOD_STATIC = 'static';
-    const DISTRIBUTEMETHOD_RR = 'rr';
-    const DISTRIBUTEMETHOD_HASH = 'hash';
-
-
-    const BILLINGMETHOD_POSTPAID = 'postpaid';
-    const BILLINGMETHOD_PREPAID = 'prepaid';
-    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
-
     /**
      * comment: enum:vpbx|retail|wholesale|residential
      * @var string
@@ -506,10 +491,10 @@ abstract class CompanyAbstract
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
-            self::TYPE_VPBX,
-            self::TYPE_RETAIL,
-            self::TYPE_WHOLESALE,
-            self::TYPE_RESIDENTIAL
+            CompanyInterface::TYPE_VPBX,
+            CompanyInterface::TYPE_RETAIL,
+            CompanyInterface::TYPE_WHOLESALE,
+            CompanyInterface::TYPE_RESIDENTIAL
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -621,9 +606,9 @@ abstract class CompanyAbstract
         Assertion::notNull($distributeMethod, 'distributeMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($distributeMethod, 25, 'distributeMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($distributeMethod, [
-            self::DISTRIBUTEMETHOD_STATIC,
-            self::DISTRIBUTEMETHOD_RR,
-            self::DISTRIBUTEMETHOD_HASH
+            CompanyInterface::DISTRIBUTEMETHOD_STATIC,
+            CompanyInterface::DISTRIBUTEMETHOD_RR,
+            CompanyInterface::DISTRIBUTEMETHOD_HASH
         ], 'distributeMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->distributeMethod = $distributeMethod;
@@ -990,9 +975,9 @@ abstract class CompanyAbstract
         Assertion::notNull($billingMethod, 'billingMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($billingMethod, 25, 'billingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($billingMethod, [
-            self::BILLINGMETHOD_POSTPAID,
-            self::BILLINGMETHOD_PREPAID,
-            self::BILLINGMETHOD_PSEUDOPREPAID
+            CompanyInterface::BILLINGMETHOD_POSTPAID,
+            CompanyInterface::BILLINGMETHOD_PREPAID,
+            CompanyInterface::BILLINGMETHOD_PSEUDOPREPAID
         ], 'billingMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->billingMethod = $billingMethod;

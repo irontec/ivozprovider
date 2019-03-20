@@ -8,6 +8,31 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface FriendInterface extends LoggableEntityInterface
 {
+    const TRANSPORT_UDP = 'udp';
+    const TRANSPORT_TCP = 'tcp';
+    const TRANSPORT_TLS = 'tls';
+
+
+    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+
+
+    const CALLERIDUPDATEHEADER_PAI = 'pai';
+    const CALLERIDUPDATEHEADER_RPID = 'rpid';
+
+
+    const UPDATECALLERID_YES = 'yes';
+    const UPDATECALLERID_NO = 'no';
+
+
+    const DIRECTCONNECTIVITY_YES = 'yes';
+    const DIRECTCONNECTIVITY_NO = 'no';
+
+
+    const DDIIN_YES = 'yes';
+    const DDIIN_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -6,6 +6,22 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface CallForwardSettingInterface extends LoggableEntityInterface
 {
+    const CALLTYPEFILTER_INTERNAL = 'internal';
+    const CALLTYPEFILTER_EXTERNAL = 'external';
+    const CALLTYPEFILTER_BOTH = 'both';
+
+
+    const CALLFORWARDTYPE_INCONDITIONAL = 'inconditional';
+    const CALLFORWARDTYPE_NOANSWER = 'noAnswer';
+    const CALLFORWARDTYPE_BUSY = 'busy';
+    const CALLFORWARDTYPE_USERNOTREGISTERED = 'userNotRegistered';
+
+
+    const TARGETTYPE_NUMBER = 'number';
+    const TARGETTYPE_EXTENSION = 'extension';
+    const TARGETTYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

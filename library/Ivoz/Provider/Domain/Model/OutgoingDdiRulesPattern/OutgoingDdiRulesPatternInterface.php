@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 {
+    const ACTION_KEEP = 'keep';
+    const ACTION_FORCE = 'force';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

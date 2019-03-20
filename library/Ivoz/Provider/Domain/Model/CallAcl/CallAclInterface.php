@@ -8,6 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface CallAclInterface extends LoggableEntityInterface
 {
+    const DEFAULTPOLICY_ALLOW = 'allow';
+    const DEFAULTPOLICY_DENY = 'deny';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -13,30 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class FriendAbstract
 {
-    const TRANSPORT_UDP = 'udp';
-    const TRANSPORT_TCP = 'tcp';
-    const TRANSPORT_TLS = 'tls';
-
-
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
-
-
-    const CALLERIDUPDATEHEADER_PAI = 'pai';
-    const CALLERIDUPDATEHEADER_RPID = 'rpid';
-
-
-    const UPDATECALLERID_YES = 'yes';
-    const UPDATECALLERID_NO = 'no';
-
-
-    const DIRECTCONNECTIVITY_YES = 'yes';
-    const DIRECTCONNECTIVITY_NO = 'no';
-
-
-    const DDIIN_YES = 'yes';
-    const DDIIN_NO = 'no';
-
     /**
      * @var string
      */
@@ -460,9 +436,9 @@ abstract class FriendAbstract
         Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
         Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($transport, [
-            self::TRANSPORT_UDP,
-            self::TRANSPORT_TCP,
-            self::TRANSPORT_TLS
+            FriendInterface::TRANSPORT_UDP,
+            FriendInterface::TRANSPORT_TCP,
+            FriendInterface::TRANSPORT_TLS
         ], 'transportvalue "%s" is not an element of the valid values: %s');
 
         $this->transport = $transport;
@@ -686,8 +662,8 @@ abstract class FriendAbstract
     {
         Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, [
-            self::DIRECTMEDIAMETHOD_INVITE,
-            self::DIRECTMEDIAMETHOD_UPDATE
+            FriendInterface::DIRECTMEDIAMETHOD_INVITE,
+            FriendInterface::DIRECTMEDIAMETHOD_UPDATE
         ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->directMediaMethod = $directMediaMethod;
@@ -716,8 +692,8 @@ abstract class FriendAbstract
     {
         Assertion::notNull($calleridUpdateHeader, 'calleridUpdateHeader value "%s" is null, but non null value was expected.');
         Assertion::choice($calleridUpdateHeader, [
-            self::CALLERIDUPDATEHEADER_PAI,
-            self::CALLERIDUPDATEHEADER_RPID
+            FriendInterface::CALLERIDUPDATEHEADER_PAI,
+            FriendInterface::CALLERIDUPDATEHEADER_RPID
         ], 'calleridUpdateHeadervalue "%s" is not an element of the valid values: %s');
 
         $this->calleridUpdateHeader = $calleridUpdateHeader;
@@ -746,8 +722,8 @@ abstract class FriendAbstract
     {
         Assertion::notNull($updateCallerid, 'updateCallerid value "%s" is null, but non null value was expected.');
         Assertion::choice($updateCallerid, [
-            self::UPDATECALLERID_YES,
-            self::UPDATECALLERID_NO
+            FriendInterface::UPDATECALLERID_YES,
+            FriendInterface::UPDATECALLERID_NO
         ], 'updateCalleridvalue "%s" is not an element of the valid values: %s');
 
         $this->updateCallerid = $updateCallerid;
@@ -804,8 +780,8 @@ abstract class FriendAbstract
     {
         Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
         Assertion::choice($directConnectivity, [
-            self::DIRECTCONNECTIVITY_YES,
-            self::DIRECTCONNECTIVITY_NO
+            FriendInterface::DIRECTCONNECTIVITY_YES,
+            FriendInterface::DIRECTCONNECTIVITY_NO
         ], 'directConnectivityvalue "%s" is not an element of the valid values: %s');
 
         $this->directConnectivity = $directConnectivity;
@@ -834,8 +810,8 @@ abstract class FriendAbstract
     {
         Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
         Assertion::choice($ddiIn, [
-            self::DDIIN_YES,
-            self::DDIIN_NO
+            FriendInterface::DDIIN_YES,
+            FriendInterface::DDIIN_NO
         ], 'ddiInvalue "%s" is not an element of the valid values: %s');
 
         $this->ddiIn = $ddiIn;

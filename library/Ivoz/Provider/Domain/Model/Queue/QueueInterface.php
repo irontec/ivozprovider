@@ -6,6 +6,16 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface QueueInterface extends LoggableEntityInterface
 {
+    const TIMEOUTTARGETTYPE_NUMBER = 'number';
+    const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
+    const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
+    const FULLTARGETTYPE_NUMBER = 'number';
+    const FULLTARGETTYPE_EXTENSION = 'extension';
+    const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
+    const UNIT_DAY = 'day';
+    const UNIT_WEEK = 'week';
+    const UNIT_MONTH = 'month';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

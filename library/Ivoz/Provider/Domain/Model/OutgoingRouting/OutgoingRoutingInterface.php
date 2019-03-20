@@ -8,6 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
+    const ROUTINGMODE_STATIC = 'static';
+    const ROUTINGMODE_LCR = 'lcr';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

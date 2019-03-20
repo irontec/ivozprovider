@@ -6,6 +6,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface IvrEntryInterface extends LoggableEntityInterface
 {
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_EXTENSION = 'extension';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    const ROUTETYPE_CONDITIONAL = 'conditional';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface MatchListPatternInterface extends LoggableEntityInterface
 {
+    const TYPE_NUMBER = 'number';
+    const TYPE_REGEXP = 'regexp';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

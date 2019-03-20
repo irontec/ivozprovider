@@ -8,6 +8,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface NotificationTemplateInterface extends LoggableEntityInterface
 {
+    const TYPE_VOICEMAIL = 'voicemail';
+    const TYPE_FAX = 'fax';
+    const TYPE_LIMIT = 'limit';
+    const TYPE_LOWBALANCE = 'lowbalance';
+    const TYPE_INVOICE = 'invoice';
+    const TYPE_CALLCSV = 'callCsv';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

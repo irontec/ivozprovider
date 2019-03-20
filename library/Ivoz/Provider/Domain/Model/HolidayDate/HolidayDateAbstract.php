@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class HolidayDateAbstract
 {
-    const ROUTETYPE_NUMBER = 'number';
-    const ROUTETYPE_EXTENSION = 'extension';
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
-
     /**
      * @var string
      */
@@ -399,9 +395,9 @@ abstract class HolidayDateAbstract
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routeType, [
-                self::ROUTETYPE_NUMBER,
-                self::ROUTETYPE_EXTENSION,
-                self::ROUTETYPE_VOICEMAIL
+                HolidayDateInterface::ROUTETYPE_NUMBER,
+                HolidayDateInterface::ROUTETYPE_EXTENSION,
+                HolidayDateInterface::ROUTETYPE_VOICEMAIL
             ], 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 

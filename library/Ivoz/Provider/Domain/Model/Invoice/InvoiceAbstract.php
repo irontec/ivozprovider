@@ -13,11 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class InvoiceAbstract
 {
-    const STATUS_WAITING = 'waiting';
-    const STATUS_PROCESSING = 'processing';
-    const STATUS_CREATED = 'created';
-    const STATUS_ERROR = 'error';
-
     /**
      * @var string | null
      */
@@ -481,10 +476,10 @@ abstract class InvoiceAbstract
         if (!is_null($status)) {
             Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($status, [
-                self::STATUS_WAITING,
-                self::STATUS_PROCESSING,
-                self::STATUS_CREATED,
-                self::STATUS_ERROR
+                InvoiceInterface::STATUS_WAITING,
+                InvoiceInterface::STATUS_PROCESSING,
+                InvoiceInterface::STATUS_CREATED,
+                InvoiceInterface::STATUS_ERROR
             ], 'statusvalue "%s" is not an element of the valid values: %s');
         }
 

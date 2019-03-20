@@ -6,6 +6,24 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface DdiInterface extends LoggableEntityInterface
 {
+    const RECORDCALLS_NONE = 'none';
+    const RECORDCALLS_ALL = 'all';
+    const RECORDCALLS_INBOUND = 'inbound';
+    const RECORDCALLS_OUTBOUND = 'outbound';
+
+
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_FAX = 'fax';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONDITIONAL = 'conditional';
+    const ROUTETYPE_RESIDENTIAL = 'residential';
+    const ROUTETYPE_RETAIL = 'retail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

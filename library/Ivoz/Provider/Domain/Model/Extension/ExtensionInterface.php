@@ -8,6 +8,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface ExtensionInterface extends LoggableEntityInterface
 {
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONDITIONAL = 'conditional';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

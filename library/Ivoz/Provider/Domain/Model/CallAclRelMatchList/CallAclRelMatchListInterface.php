@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface CallAclRelMatchListInterface extends LoggableEntityInterface
 {
+    const POLICY_ALLOW = 'allow';
+    const POLICY_DENY = 'deny';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

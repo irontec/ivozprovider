@@ -9,6 +9,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface DestinationRateGroupInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const STATUS_WAITING = 'waiting';
+    const STATUS_INPROGRESS = 'inProgress';
+    const STATUS_IMPORTED = 'imported';
+    const STATUS_ERROR = 'error';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

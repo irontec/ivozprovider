@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class RatingPlanAbstract
 {
-    const TIMINGTYPE_ALWAYS = 'always';
-    const TIMINGTYPE_CUSTOM = 'custom';
-
     /**
      * @var float
      */
@@ -292,8 +289,8 @@ abstract class RatingPlanAbstract
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($timingType, [
-                self::TIMINGTYPE_ALWAYS,
-                self::TIMINGTYPE_CUSTOM
+                RatingPlanInterface::TIMINGTYPE_ALWAYS,
+                RatingPlanInterface::TIMINGTYPE_CUSTOM
             ], 'timingTypevalue "%s" is not an element of the valid values: %s');
         }
 
