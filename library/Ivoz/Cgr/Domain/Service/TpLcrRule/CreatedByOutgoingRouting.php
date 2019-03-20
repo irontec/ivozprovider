@@ -41,7 +41,7 @@ class CreatedByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerIn
      */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {
-        if ($outgoingRouting->getRoutingMode() != OutgoingRouting::MODE_LCR) {
+        if ($outgoingRouting->getRoutingMode() != OutgoingRoutingInterface::ROUTINGMODE_LCR) {
             return;
         }
 

@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
+
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
@@ -38,7 +39,7 @@ class CreatedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
     public function execute(RatingPlanInterface $ratingPlan)
     {
         // Always timings don't have timing entity related
-        if ($ratingPlan->getTimingType() == RatingPlan::TIMING_TYPE_ALWAYS) {
+        if ($ratingPlan->getTimingType() == RatingPlanInterface::TIMINGTYPE_ALWAYS) {
             return;
         }
 

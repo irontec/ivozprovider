@@ -11,7 +11,14 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
 {
     use RatingPlanTrait;
 
+    /**
+     * @deprecated
+     */
     const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
+
+    /**
+     * @deprecated
+     */
     const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
 
     /**
@@ -26,7 +33,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
 
     protected function sanitizeValues()
     {
-        if ($this->getTimingType() == RatingPlan::TIMING_TYPE_ALWAYS) {
+        if ($this->getTimingType() == self::TIMINGTYPE_ALWAYS) {
             $this
                 ->setMonday(true)
                 ->setTuesday(true)
