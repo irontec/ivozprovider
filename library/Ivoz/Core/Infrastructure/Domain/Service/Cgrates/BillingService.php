@@ -97,7 +97,7 @@ class BillingService implements BillingServiceInterface
     }
 
     /**
-     * @param $payload
+     * @param array $payload
      * @throws \DomainException
      * @return SimulatedCall
      */

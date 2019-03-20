@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface QueueRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return QueueInterface
      */
     public function findOneByProviderQueueId($id);

@@ -146,7 +146,7 @@ class Friend extends FriendAbstract implements FriendInterface
     }
 
     /**
-     * @param $exten
+     * @param string $exten
      * @return bool
      */
     public function checkExtension($exten)

@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface FriendInterface extends LoggableEntityInterface
 {
@@ -48,7 +49,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getSorcery();
 
     /**
-     * @param $exten
+     * @param string $exten
      * @return bool
      */
     public function checkExtension($exten);
@@ -291,14 +292,14 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Replace psEndpoints
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
+     * @param ArrayCollection $psEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      * @return static
      */
-    public function replacePsEndpoints(Collection $psEndpoints);
+    public function replacePsEndpoints(ArrayCollection $psEndpoints);
 
     /**
      * Get psEndpoints
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -322,14 +323,14 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[] $patterns
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface
      * @return static
      */
-    public function replacePatterns(Collection $patterns);
+    public function replacePatterns(ArrayCollection $patterns);
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);

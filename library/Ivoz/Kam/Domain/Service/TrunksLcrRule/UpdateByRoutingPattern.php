@@ -50,7 +50,6 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
 
     /**
      * @param RoutingPatternInterface $routingPattern
-     * @param $isNew
      * @throws \Exception
      */
     public function execute(RoutingPatternInterface $routingPattern)

@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait ExtensionTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $users;
 
@@ -38,7 +37,7 @@ trait ExtensionTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExtensionDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait ExtensionTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExtensionDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getUsers())) {
             $self->replaceUsers(
@@ -68,7 +65,7 @@ trait ExtensionTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExtensionDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait ExtensionTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExtensionDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getUsers())) {
             $this->replaceUsers(
@@ -140,10 +134,10 @@ trait ExtensionTrait
     /**
      * Replace users
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
+     * @param ArrayCollection $users of Ivoz\Provider\Domain\Model\User\UserInterface
      * @return static
      */
-    public function replaceUsers(Collection $users)
+    public function replaceUsers(ArrayCollection $users)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait ExtensionTrait
 
     /**
      * Get users
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(Criteria $criteria = null)

@@ -8,8 +8,8 @@ use Doctrine\Common\Collections\Selectable;
 interface CompanyServiceRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $companyId
-     * @param $serviceId
+     * @param int $companyId
+     * @param int $serviceId
      * @return CompanyServiceInterface
      */
     public function findCompanyService($companyId, $serviceId);

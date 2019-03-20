@@ -121,16 +121,13 @@ abstract class MusicOnHoldAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MusicOnHoldDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MusicOnHoldDto
-         */
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
@@ -164,16 +161,13 @@ abstract class MusicOnHoldAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MusicOnHoldDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MusicOnHoldDto
-         */
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(

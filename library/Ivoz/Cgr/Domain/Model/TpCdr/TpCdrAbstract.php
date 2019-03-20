@@ -247,16 +247,13 @@ abstract class TpCdrAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpCdrDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpCdrDto
-         */
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
         $self = new static(
@@ -295,16 +292,13 @@ abstract class TpCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpCdrDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpCdrDto
-         */
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
         $this

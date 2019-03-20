@@ -88,7 +88,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
 
     /**
      * @param int $id
-     * @return null|string
+     * @return string
      * @throws \Exception
      */
     protected function buildDirectoryTreeById(int $id): string
@@ -116,7 +116,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
 
     /**
      * @param string $storagePath
-     * @return bool|string
+     * @return string
      */
     protected function sanitizePath(string $storagePath): string
     {

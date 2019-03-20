@@ -41,9 +41,8 @@ abstract class AbstractBalanceOperation
     protected $lastError;
 
     /**
-     * IncrementBalance constructor.
-     *
-     * @param EntityTools $entityPersister
+     * AbstractBalanceOperation constructor.
+     * @param EntityTools $entityTools
      * @param Logger $logger
      * @param CompanyBalanceServiceInterface $client
      * @param CompanyRepository $companyRepository
@@ -64,16 +63,17 @@ abstract class AbstractBalanceOperation
     }
 
     /**
-     * @param $companyId
+     * @param int $companyId
      * @param float $amount
      * @return boolean
      */
     abstract public function execute($companyId, float $amount);
 
     /**
-     * @param CompanyInterface $companyId
-     * @param float $amount
-     * @return boolean
+     * @param string $amount
+     * @param array $response
+     * @param CompanyInterface $company
+     * @return bool|mixed
      */
     protected function handleResponse($amount, array $response, CompanyInterface $company)
     {
@@ -107,6 +107,9 @@ abstract class AbstractBalanceOperation
         return $success;
     }
 
+    /**
+     * @return string
+     */
     public function getLastError()
     {
         return $this->lastError;

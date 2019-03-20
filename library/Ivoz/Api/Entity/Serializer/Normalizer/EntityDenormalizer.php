@@ -80,8 +80,8 @@ class EntityDenormalizer implements DenormalizerInterface
     }
 
     /**
-     * @param $data
-     * @param $class
+     * @param array $data
+     * @param string $class
      */
     protected function denormalizeDateTimes($data, $class)
     {
@@ -131,10 +131,10 @@ class EntityDenormalizer implements DenormalizerInterface
     /**
      * @param string $class
      * @param EntityInterface $entity
-     * @param $dto
+     * @param DataTransferObjectInterface $dto
      * @return EntityInterface
      */
-    private function mapToEntity(string $class, EntityInterface $entity = null, DataTransferObjectInterface$dto): EntityInterface
+    private function mapToEntity(string $class, EntityInterface $entity = null, DataTransferObjectInterface $dto): EntityInterface
     {
         if ($entity) {
             $this->updateEntityFromDTO->execute(

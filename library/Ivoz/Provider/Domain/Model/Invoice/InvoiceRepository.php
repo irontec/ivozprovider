@@ -25,10 +25,10 @@ interface InvoiceRepository extends ObjectRepository, Selectable
     );
 
     /**
-     * @param $companyId
-     * @param $brandId
-     * @param $utcOutDate
-     * @param $invoiceIdToBeExcluded
+     * @param int $companyId
+     * @param int $brandId
+     * @param string $utcOutDate
+     * @param int $invoiceIdToBeExcluded
      * @return \Ivoz\Provider\Domain\Model\Invoice\Invoice[]
      */
     public function getInvoices(

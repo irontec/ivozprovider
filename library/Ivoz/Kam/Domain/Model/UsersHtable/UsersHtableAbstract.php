@@ -118,16 +118,13 @@ abstract class UsersHtableAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersHtableDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersHtableDto
-         */
         Assertion::isInstanceOf($dto, UsersHtableDto::class);
 
         $self = new static(
@@ -145,16 +142,13 @@ abstract class UsersHtableAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersHtableDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersHtableDto
-         */
         Assertion::isInstanceOf($dto, UsersHtableDto::class);
 
         $this

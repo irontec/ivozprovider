@@ -4,7 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
 {
@@ -57,7 +58,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getFeatures();
 
     /**
-     * @param $featureId
+     * @param int $featureId
      * @return bool
      */
     public function hasFeature($featureId);
@@ -219,14 +220,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace companies
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface[] $companies
+     * @param ArrayCollection $companies of Ivoz\Provider\Domain\Model\Company\CompanyInterface
      * @return static
      */
-    public function replaceCompanies(Collection $companies);
+    public function replaceCompanies(ArrayCollection $companies);
 
     /**
      * Get companies
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface[]
      */
     public function getCompanies(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -250,14 +251,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace services
      *
-     * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $services
+     * @param ArrayCollection $services of Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface
      * @return static
      */
-    public function replaceServices(Collection $services);
+    public function replaceServices(ArrayCollection $services);
 
     /**
      * Get services
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[]
      */
     public function getServices(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -281,14 +282,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace urls
      *
-     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[] $urls
+     * @param ArrayCollection $urls of Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface
      * @return static
      */
-    public function replaceUrls(Collection $urls);
+    public function replaceUrls(ArrayCollection $urls);
 
     /**
      * Get urls
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[]
      */
     public function getUrls(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -312,14 +313,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace relFeatures
      *
-     * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[] $relFeatures
+     * @param ArrayCollection $relFeatures of Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface
      * @return static
      */
-    public function replaceRelFeatures(Collection $relFeatures);
+    public function replaceRelFeatures(ArrayCollection $relFeatures);
 
     /**
      * Get relFeatures
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[]
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -343,14 +344,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace residentialDevices
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
+     * @param ArrayCollection $residentialDevices of Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      * @return static
      */
-    public function replaceResidentialDevices(Collection $residentialDevices);
+    public function replaceResidentialDevices(ArrayCollection $residentialDevices);
 
     /**
      * Get residentialDevices
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
      */
     public function getResidentialDevices(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -374,14 +375,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
+     * @param ArrayCollection $musicsOnHold of Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
      * @return static
      */
-    public function replaceMusicsOnHold(Collection $musicsOnHold);
+    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold);
 
     /**
      * Get musicsOnHold
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -405,14 +406,14 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace matchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[] $matchLists
+     * @param ArrayCollection $matchLists of Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      * @return static
      */
-    public function replaceMatchLists(Collection $matchLists);
+    public function replaceMatchLists(ArrayCollection $matchLists);
 
     /**
      * Get matchLists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[]
      */
     public function getMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -436,26 +437,26 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Replace outgoingRoutings
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      * @return static
      */
-    public function replaceOutgoingRoutings(Collection $outgoingRoutings);
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings);
 
     /**
      * Get outgoingRoutings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @param $fldName
+     * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);

@@ -280,16 +280,13 @@ abstract class TpDerivedChargerAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDerivedChargerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDerivedChargerDto
-         */
         Assertion::isInstanceOf($dto, TpDerivedChargerDto::class);
 
         $self = new static(
@@ -332,16 +329,13 @@ abstract class TpDerivedChargerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDerivedChargerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDerivedChargerDto
-         */
         Assertion::isInstanceOf($dto, TpDerivedChargerDto::class);
 
         $this

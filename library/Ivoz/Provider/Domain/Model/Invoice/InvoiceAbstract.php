@@ -156,16 +156,13 @@ abstract class InvoiceAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceDto
-         */
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
         $pdf = new Pdf(
@@ -201,16 +198,13 @@ abstract class InvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceDto
-         */
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
         $pdf = new Pdf(

@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait CalendarTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $holidayDates;
 
@@ -38,7 +37,7 @@ trait CalendarTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CalendarDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait CalendarTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CalendarDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getHolidayDates())) {
             $self->replaceHolidayDates(
@@ -68,7 +65,7 @@ trait CalendarTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CalendarDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait CalendarTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CalendarDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getHolidayDates())) {
             $this->replaceHolidayDates(
@@ -140,10 +134,10 @@ trait CalendarTrait
     /**
      * Replace holidayDates
      *
-     * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[] $holidayDates
+     * @param ArrayCollection $holidayDates of Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
      * @return static
      */
-    public function replaceHolidayDates(Collection $holidayDates)
+    public function replaceHolidayDates(ArrayCollection $holidayDates)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait CalendarTrait
 
     /**
      * Get holidayDates
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
      */
     public function getHolidayDates(Criteria $criteria = null)

@@ -53,7 +53,7 @@ abstract protected function sanitizeValues();
 /**
  * Factory method
  * @internal use EntityTools instead
- * @param DataTransferObjectInterface $dto
+ * @param <dtoClass> $dto
  * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
  * @return static
  */
@@ -61,9 +61,7 @@ public static function fromDto(
     DataTransferObjectInterface $dto,
     \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
 ) {
-    /**
-     * @var $dto <dtoClass>
-     */
+    /** @var static $self */
     $self = parent::fromDto($dto, $fkTransformer);
 <fromDTO>
     $self->sanitizeValues();
@@ -77,7 +75,7 @@ public static function fromDto(
 
 /**
  * @internal use EntityTools instead
- * @param DataTransferObjectInterface $dto
+ * @param <dtoClass> $dto
  * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
  * @return static
  */
@@ -85,9 +83,6 @@ public function updateFromDto(
     DataTransferObjectInterface $dto,
     \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
 ) {
-    /**
-     * @var $dto <dtoClass>
-     */
     parent::updateFromDto($dto, $fkTransformer);
 <updateFromDTO>
     $this->sanitizeValues();
@@ -139,7 +134,7 @@ protected function __toArray()
     protected static $getMethodTemplate =
     '/**
  * <description>
- *
+ *<criteriaArgumentDoc>
  * @return <variableType>
  */
 public function <methodName>(<criteriaArgument>)
@@ -172,10 +167,10 @@ public function <methodName>(<criteriaArgument>)
     '/**
  * <description>
  *
- * @param \<relEntity>[] $<variableName>
+ * @param ArrayCollection $<variableName> of <relEntity>
  * @return static
  */
-<visibility> function <methodName>(Collection $<variableName>)
+<visibility> function <methodName>(ArrayCollection $<variableName>)
 {
 <spaces>$updatedEntities = [];
 <spaces>$fallBackId = -1;
@@ -267,7 +262,7 @@ public function <methodName>(<criteriaArgument>)
         );
 
         $code = str_replace($placeHolders, $replacements, static::$classTemplate);
-        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
+        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'ArrayCollection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
         $classTrait = $metadata->name . 'Trait';
@@ -311,7 +306,6 @@ public function <methodName>(<criteriaArgument>)
 
         if ($useCollections) {
             $response[] = 'use Doctrine\\Common\\Collections\\ArrayCollection;';
-            $response[] = 'use Doctrine\\Common\\Collections\\Collection;';
             $response[] = 'use Doctrine\\Common\\Collections\\Criteria;';
         }
 
@@ -855,7 +849,7 @@ public function <methodName>(<criteriaArgument>)
                 if ($code = $this->generateEntityStubMethod($metadata, 'replace', $associationMapping['fieldName'], 'IteratorAggregate')) {
                     $methods[] = $code;
                 }
-                if ($code = $this->generateEntityStubMethod($metadata, 'get', $associationMapping['fieldName'], 'Doctrine\Common\Collections\Collection')) {
+                if ($code = $this->generateEntityStubMethod($metadata, 'get', $associationMapping['fieldName'], 'Doctrine\Common\Collections\ArrayCollection')) {
                     $methods[] = str_replace(
                         '@return array',
                         '@return \\' . $associationMapping['targetEntity'] . '[]',
@@ -973,7 +967,7 @@ public function <methodName>(<criteriaArgument>)
                 if ($code = $this->generateEntityStubMethod($metadata, 'replace', $associationMapping['fieldName'], 'IteratorAggregate')) {
                     $methods[] = $code;
                 }
-                if ($code = $this->generateEntityStubMethod($metadata, 'get', $associationMapping['fieldName'], 'Doctrine\Common\Collections\Collection')) {
+                if ($code = $this->generateEntityStubMethod($metadata, 'get', $associationMapping['fieldName'], 'Doctrine\Common\Collections\ArrayCollection')) {
                     $methods[] = $code;
                 }
             }
@@ -1017,7 +1011,7 @@ public function <methodName>(<criteriaArgument>)
             $typeHint = substr($typeHint, 1);
         }
 
-        $isCollection = strpos($typeHint, 'Doctrine\\Common\\Collections\\Collection') !== false;
+        $isCollection = strpos($typeHint, 'Doctrine\\Common\\Collections\\ArrayCollection') !== false;
         if ($isCollection) {
             $typeHint = 'array';
         }
@@ -1063,11 +1057,13 @@ public function <methodName>(<criteriaArgument>)
 
         //Collection + Criteria
         $criteriaArgument = '';
+        $criteriaArgumentDoc = '';
         $criteriaGetter = '';
         $forcedArray = '';
 
         if ($isCollection && $type === 'get') {
             $criteriaArgument = 'Criteria $criteria = null';
+            $criteriaArgumentDoc = ' @param Criteria | null $criteria';
             $criteriaGetter = "\n";
             $criteriaGetter .= "if (!is_null(\$criteria)) {\n";
             $criteriaGetter .= $this->spaces;
@@ -1080,8 +1076,8 @@ public function <methodName>(<criteriaArgument>)
         }
 
         $response = str_replace(
-            ['<criteriaArgument>', '<criteriaGetter>', '<forcedArray>'],
-            [$criteriaArgument, $criteriaGetter, $forcedArray],
+            ['<criteriaArgument>', '<criteriaArgumentDoc>', '<criteriaGetter>', '<forcedArray>'],
+            [$criteriaArgument, $criteriaArgumentDoc, $criteriaGetter, $forcedArray],
             $response
         );
 

@@ -23,7 +23,9 @@ class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implemen
     }
 
     /**
-     * @param $ratingPlanGroupId
+     * @param int $ratingPlanGroupId
+     * @param int $batchSize
+     * @param callable|null $queryModifier
      * @return \Generator
      */
     public function getAllRatesByRatingPlanId($ratingPlanGroupId, $batchSize = 10000, callable $queryModifier = null)
@@ -62,8 +64,7 @@ class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implemen
     }
 
     /**
-     * @param $ratingPlanId
-     * @param callable $queryModifier
+     * @param int $ratingPlanId
      * @return \Doctrine\ORM\QueryBuilder
      */
     private function preparePricesQuery($ratingPlanId): \Doctrine\ORM\QueryBuilder
@@ -98,12 +99,12 @@ class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implemen
     }
 
     /**
-     * @param $results
+     * @param array $results
      * @param string|null $currentPrefix
      * @param array $rateWindows
      * @return mixed
      */
-    private function cleanUpResults($results, string &$currentPrefix = null, array &$rateWindows)
+    private function cleanUpResults(array $results, string &$currentPrefix = null, array &$rateWindows)
     {
         foreach ($results as $key => $item) {
             $item['timeIn'] = $item['timeIn']->format(self::TIME_FORMAT);

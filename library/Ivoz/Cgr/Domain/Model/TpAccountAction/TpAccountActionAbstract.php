@@ -152,16 +152,13 @@ abstract class TpAccountActionAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpAccountActionDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpAccountActionDto
-         */
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
         $self = new static(
@@ -188,16 +185,13 @@ abstract class TpAccountActionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpAccountActionDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpAccountActionDto
-         */
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
         $this

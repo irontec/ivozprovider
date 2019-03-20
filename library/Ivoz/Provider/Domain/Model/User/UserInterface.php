@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface UserInterface extends LoggableEntityInterface
 {
@@ -410,14 +411,14 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Replace pickUpRelUsers
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[] $pickUpRelUsers
+     * @param ArrayCollection $pickUpRelUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
      * @return static
      */
-    public function replacePickUpRelUsers(Collection $pickUpRelUsers);
+    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers);
 
     /**
      * Get pickUpRelUsers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getPickUpRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -441,14 +442,14 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Replace queueMembers
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[] $queueMembers
+     * @param ArrayCollection $queueMembers of Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
      * @return static
      */
-    public function replaceQueueMembers(Collection $queueMembers);
+    public function replaceQueueMembers(ArrayCollection $queueMembers);
 
     /**
      * Get queueMembers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
      */
     public function getQueueMembers(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -472,14 +473,14 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Replace callForwardSettings
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
+     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
      * @return static
      */
-    public function replaceCallForwardSettings(Collection $callForwardSettings);
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings);
 
     /**
      * Get callForwardSettings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);

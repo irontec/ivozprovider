@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Domain;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,17 +18,17 @@ trait DomainTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $friends;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $residentialDevices;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $terminals;
 
@@ -50,7 +49,7 @@ trait DomainTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DomainDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -58,9 +57,7 @@ trait DomainTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DomainDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getFriends())) {
             $self->replaceFriends(
@@ -96,7 +93,7 @@ trait DomainTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DomainDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -104,9 +101,6 @@ trait DomainTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DomainDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getFriends())) {
             $this->replaceFriends(
@@ -182,10 +176,10 @@ trait DomainTrait
     /**
      * Replace friends
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
+     * @param ArrayCollection $friends of Ivoz\Provider\Domain\Model\Friend\FriendInterface
      * @return static
      */
-    public function replaceFriends(Collection $friends)
+    public function replaceFriends(ArrayCollection $friends)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -215,7 +209,7 @@ trait DomainTrait
 
     /**
      * Get friends
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(Criteria $criteria = null)
@@ -254,10 +248,10 @@ trait DomainTrait
     /**
      * Replace residentialDevices
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
+     * @param ArrayCollection $residentialDevices of Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      * @return static
      */
-    public function replaceResidentialDevices(Collection $residentialDevices)
+    public function replaceResidentialDevices(ArrayCollection $residentialDevices)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -287,7 +281,7 @@ trait DomainTrait
 
     /**
      * Get residentialDevices
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
      */
     public function getResidentialDevices(Criteria $criteria = null)
@@ -326,10 +320,10 @@ trait DomainTrait
     /**
      * Replace terminals
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
+     * @param ArrayCollection $terminals of Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
      * @return static
      */
-    public function replaceTerminals(Collection $terminals)
+    public function replaceTerminals(ArrayCollection $terminals)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -359,7 +353,7 @@ trait DomainTrait
 
     /**
      * Get terminals
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(Criteria $criteria = null)

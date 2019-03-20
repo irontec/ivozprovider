@@ -89,16 +89,13 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FeaturesRelBrandDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FeaturesRelBrandDto
-         */
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
         $self = new static();
@@ -115,16 +112,13 @@ abstract class FeaturesRelBrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FeaturesRelBrandDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FeaturesRelBrandDto
-         */
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
         $this

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
@@ -25,6 +26,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         EntityPersisterInterface $entityPersister,
         PsEndpointRepository $psEndpointRepository
     ) {
+        //@todo use entityTools instead
         $this->entityPersister = $entityPersister;
         $this->psEndpointRepository = $psEndpointRepository;
     }
@@ -56,6 +58,8 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
+            // @todo use entityTools here
+            /** @var PsEndpointDto $endpointDto */
             $endpointDto  = $endpoint->toDto();
         }
 

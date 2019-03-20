@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface DdiRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $ddiE164
+     * @param string $ddiE164
      * @return DdiInterface | null
      */
     public function findOneByDdiE164($ddiE164);

@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait NotificationTemplateTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $contents;
 
@@ -38,7 +37,7 @@ trait NotificationTemplateTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param NotificationTemplateDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait NotificationTemplateTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto NotificationTemplateDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getContents())) {
             $self->replaceContents(
@@ -68,7 +65,7 @@ trait NotificationTemplateTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param NotificationTemplateDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait NotificationTemplateTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto NotificationTemplateDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getContents())) {
             $this->replaceContents(
@@ -140,10 +134,10 @@ trait NotificationTemplateTrait
     /**
      * Replace contents
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[] $contents
+     * @param ArrayCollection $contents of Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
      * @return static
      */
-    public function replaceContents(Collection $contents)
+    public function replaceContents(ArrayCollection $contents)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait NotificationTemplateTrait
 
     /**
      * Get contents
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[]
      */
     public function getContents(Criteria $criteria = null)

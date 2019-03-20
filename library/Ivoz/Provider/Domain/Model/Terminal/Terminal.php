@@ -58,7 +58,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     /**
      * {@inheritDoc}
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setName($name = null)
     {
@@ -71,7 +71,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     /**
      * {@inheritDoc}
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setPassword($password)
     {

@@ -15,7 +15,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setNumberValue($numberValue = null);
 

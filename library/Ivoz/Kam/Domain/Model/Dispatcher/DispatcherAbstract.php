@@ -126,16 +126,13 @@ abstract class DispatcherAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DispatcherDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DispatcherDto
-         */
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
         $self = new static(
@@ -158,16 +155,13 @@ abstract class DispatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DispatcherDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DispatcherDto
-         */
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
         $this

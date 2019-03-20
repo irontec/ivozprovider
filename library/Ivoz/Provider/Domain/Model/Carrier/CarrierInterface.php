@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface CarrierInterface extends LoggableEntityInterface
 {
@@ -130,14 +131,14 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Replace outgoingRoutings
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      * @return static
      */
-    public function replaceOutgoingRoutings(Collection $outgoingRoutings);
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings);
 
     /**
      * Get outgoingRoutings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -161,14 +162,14 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Replace outgoingRoutingsRelCarriers
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
+     * @param ArrayCollection $outgoingRoutingsRelCarriers of Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
      * @return static
      */
-    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers);
+    public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers);
 
     /**
      * Get outgoingRoutingsRelCarriers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
      */
     public function getOutgoingRoutingsRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -192,14 +193,14 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Replace servers
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[] $servers
+     * @param ArrayCollection $servers of Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
      * @return static
      */
-    public function replaceServers(Collection $servers);
+    public function replaceServers(ArrayCollection $servers);
 
     /**
      * Get servers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[]
      */
     public function getServers(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -223,14 +224,14 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Replace ratingProfiles
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
+     * @param ArrayCollection $ratingProfiles of Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
      * @return static
      */
-    public function replaceRatingProfiles(Collection $ratingProfiles);
+    public function replaceRatingProfiles(ArrayCollection $ratingProfiles);
 
     /**
      * Get ratingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
      */
     public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -254,14 +255,14 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Replace tpCdrStats
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[] $tpCdrStats
+     * @param ArrayCollection $tpCdrStats of Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface
      * @return static
      */
-    public function replaceTpCdrStats(Collection $tpCdrStats);
+    public function replaceTpCdrStats(ArrayCollection $tpCdrStats);
 
     /**
      * Get tpCdrStats
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
      */
     public function getTpCdrStats(\Doctrine\Common\Collections\Criteria $criteria = null);

@@ -6,7 +6,7 @@ use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;
 use RouteHandlerAbstract;

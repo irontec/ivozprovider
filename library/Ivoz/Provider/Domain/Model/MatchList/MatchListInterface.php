@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface MatchListInterface extends LoggableEntityInterface
 {
@@ -79,14 +80,14 @@ interface MatchListInterface extends LoggableEntityInterface
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[] $patterns
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface
      * @return static
      */
-    public function replacePatterns(Collection $patterns);
+    public function replacePatterns(ArrayCollection $patterns);
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);

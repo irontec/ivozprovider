@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits;
 
+use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 trait GetGeneratorByConditionsTrait
@@ -14,9 +15,7 @@ trait GetGeneratorByConditionsTrait
      */
     public function getGeneratorByConditions(array $conditions, int $batchSize, array $order = null)
     {
-        /**
-         * @var \Doctrine\ORM\EntityRepository $this
-         */
+        /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('self');
         $qb->addCriteria(CriteriaHelper::fromArray($conditions));
 

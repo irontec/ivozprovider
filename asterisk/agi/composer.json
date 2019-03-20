@@ -34,7 +34,8 @@
             "CoreBundle\\": "../../library/CoreBundle"
         },
         "classmap": [
-            "app/MicroKernel.php"
+            "app/MicroKernel.php",
+            "phpagi/phpagi.php"
         ]
     },
     "autoload-dev": {

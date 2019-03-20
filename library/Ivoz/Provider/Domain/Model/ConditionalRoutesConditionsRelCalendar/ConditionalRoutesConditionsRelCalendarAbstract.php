@@ -89,16 +89,13 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelCalendarDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelCalendarDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
 
         $self = new static();
@@ -115,16 +112,13 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelCalendarDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelCalendarDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
 
         $this

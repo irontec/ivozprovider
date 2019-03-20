@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
@@ -234,14 +235,14 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
+     * @param ArrayCollection $lcrRules of Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
      * @return static
      */
-    public function replaceLcrRules(Collection $lcrRules);
+    public function replaceLcrRules(ArrayCollection $lcrRules);
 
     /**
      * Get lcrRules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -265,14 +266,14 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Replace lcrRuleTargets
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
+     * @param ArrayCollection $lcrRuleTargets of Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface
      * @return static
      */
-    public function replaceLcrRuleTargets(Collection $lcrRuleTargets);
+    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets);
 
     /**
      * Get lcrRuleTargets
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
      */
     public function getLcrRuleTargets(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -296,14 +297,14 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Replace relCarriers
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
+     * @param ArrayCollection $relCarriers of Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
      * @return static
      */
-    public function replaceRelCarriers(Collection $relCarriers);
+    public function replaceRelCarriers(ArrayCollection $relCarriers);
 
     /**
      * Get relCarriers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
      */
     public function getRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);

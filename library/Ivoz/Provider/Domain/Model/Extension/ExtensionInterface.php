@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface ExtensionInterface extends LoggableEntityInterface
 {
@@ -214,14 +215,14 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Replace users
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
+     * @param ArrayCollection $users of Ivoz\Provider\Domain\Model\User\UserInterface
      * @return static
      */
-    public function replaceUsers(Collection $users);
+    public function replaceUsers(ArrayCollection $users);
 
     /**
      * Get users
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);

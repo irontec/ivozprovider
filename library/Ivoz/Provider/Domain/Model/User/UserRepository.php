@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 interface UserRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return UserInterface[]
      */
     public function findByBossAssistantId($id);

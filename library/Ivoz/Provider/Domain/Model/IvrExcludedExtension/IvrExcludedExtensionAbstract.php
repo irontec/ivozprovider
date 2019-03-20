@@ -89,16 +89,13 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrExcludedExtensionDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrExcludedExtensionDto
-         */
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $self = new static();
@@ -115,16 +112,13 @@ abstract class IvrExcludedExtensionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrExcludedExtensionDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrExcludedExtensionDto
-         */
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $this

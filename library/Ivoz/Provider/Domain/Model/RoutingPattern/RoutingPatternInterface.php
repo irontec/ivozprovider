@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface RoutingPatternInterface extends EntityInterface
 {
@@ -86,14 +87,14 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Replace outgoingRoutings
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      * @return static
      */
-    public function replaceOutgoingRoutings(Collection $outgoingRoutings);
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings);
 
     /**
      * Get outgoingRoutings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -117,14 +118,14 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Replace relPatternGroups
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
+     * @param ArrayCollection $relPatternGroups of Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
      * @return static
      */
-    public function replaceRelPatternGroups(Collection $relPatternGroups);
+    public function replaceRelPatternGroups(ArrayCollection $relPatternGroups);
 
     /**
      * Get relPatternGroups
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
      */
     public function getRelPatternGroups(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -148,14 +149,14 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
+     * @param ArrayCollection $lcrRules of Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
      * @return static
      */
-    public function replaceLcrRules(Collection $lcrRules);
+    public function replaceLcrRules(ArrayCollection $lcrRules);
 
     /**
      * Get lcrRules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);

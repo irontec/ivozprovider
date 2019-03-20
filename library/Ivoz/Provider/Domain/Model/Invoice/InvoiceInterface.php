@@ -4,7 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterface
 {
@@ -197,26 +198,26 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Replace relFixedCosts
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[] $relFixedCosts
+     * @param ArrayCollection $relFixedCosts of Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface
      * @return static
      */
-    public function replaceRelFixedCosts(Collection $relFixedCosts);
+    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts);
 
     /**
      * Get relFixedCosts
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[]
      */
     public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @param $fldName
+     * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);

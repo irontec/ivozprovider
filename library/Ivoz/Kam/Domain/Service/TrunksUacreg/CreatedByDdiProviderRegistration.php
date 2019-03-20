@@ -41,7 +41,6 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
 
     /**
      * @param DdiProviderRegistrationInterface $ddiProviderRegistration
-     * @param $isNew
      * @throws \Exception
      */
     public function execute(DdiProviderRegistrationInterface $ddiProviderRegistration)

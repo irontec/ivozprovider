@@ -105,16 +105,13 @@ abstract class RatingProfileAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingProfileDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingProfileDto
-         */
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $self = new static(
@@ -135,16 +132,13 @@ abstract class RatingProfileAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingProfileDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingProfileDto
-         */
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $this

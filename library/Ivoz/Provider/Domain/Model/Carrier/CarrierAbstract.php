@@ -121,16 +121,13 @@ abstract class CarrierAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CarrierDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CarrierDto
-         */
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
         $self = new static(
@@ -154,16 +151,13 @@ abstract class CarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CarrierDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CarrierDto
-         */
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
         $this

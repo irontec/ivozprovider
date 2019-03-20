@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface ExternalCallFilterInterface extends LoggableEntityInterface
 {
@@ -293,14 +294,14 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Replace calendars
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface[] $calendars
+     * @param ArrayCollection $calendars of Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface
      * @return static
      */
-    public function replaceCalendars(Collection $calendars);
+    public function replaceCalendars(ArrayCollection $calendars);
 
     /**
      * Get calendars
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface[]
      */
     public function getCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -324,14 +325,14 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Replace blackLists
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface[] $blackLists
+     * @param ArrayCollection $blackLists of Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface
      * @return static
      */
-    public function replaceBlackLists(Collection $blackLists);
+    public function replaceBlackLists(ArrayCollection $blackLists);
 
     /**
      * Get blackLists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface[]
      */
     public function getBlackLists(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -355,14 +356,14 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Replace whiteLists
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface[] $whiteLists
+     * @param ArrayCollection $whiteLists of Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface
      * @return static
      */
-    public function replaceWhiteLists(Collection $whiteLists);
+    public function replaceWhiteLists(ArrayCollection $whiteLists);
 
     /**
      * Get whiteLists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface[]
      */
     public function getWhiteLists(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -386,14 +387,14 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Replace schedules
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface[] $schedules
+     * @param ArrayCollection $schedules of Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface
      * @return static
      */
-    public function replaceSchedules(Collection $schedules);
+    public function replaceSchedules(ArrayCollection $schedules);
 
     /**
      * Get schedules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface[]
      */
     public function getSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);

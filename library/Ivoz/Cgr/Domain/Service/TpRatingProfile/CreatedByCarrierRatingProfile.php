@@ -45,7 +45,6 @@ class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandle
      * Update TpRatingPlan for Carrier OutgoingRoutings
      *
      * @param RatingProfileInterface $ratingProfile
-     * @param $isNew
      */
     public function execute(RatingProfileInterface $ratingProfile)
     {

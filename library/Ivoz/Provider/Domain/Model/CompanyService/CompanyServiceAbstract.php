@@ -95,16 +95,13 @@ abstract class CompanyServiceAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyServiceDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyServiceDto
-         */
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
         $self = new static(
@@ -123,16 +120,13 @@ abstract class CompanyServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyServiceDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyServiceDto
-         */
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
         $this

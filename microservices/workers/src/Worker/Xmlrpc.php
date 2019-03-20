@@ -84,7 +84,7 @@ class Xmlrpc
     /**
      * Send delayed XMLRPC request to Kamailio Proxies
      *
-     * @param GearmanJob $job Object with job parameters
+     * @param GearmanJob $serializedJob Object with job parameters
      *
      * @return boolean
      *
@@ -123,9 +123,9 @@ class Xmlrpc
     /**
      * Send XML request to all servers of the given type
      *
-     * @param $entity Entity Name of the servers
-     * @param $port RPC Port
-     * @param $method RPC Method
+     * @param string $entity Name of the servers
+     * @param int $port RPC Port
+     * @param string$method RPC Method
      *
      * @return bool
      */

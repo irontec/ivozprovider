@@ -130,16 +130,13 @@ abstract class FaxesInOutAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxesInOutDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxesInOutDto
-         */
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
@@ -170,16 +167,13 @@ abstract class FaxesInOutAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxesInOutDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxesInOutDto
-         */
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(

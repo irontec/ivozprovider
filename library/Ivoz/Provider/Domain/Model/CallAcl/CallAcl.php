@@ -34,7 +34,7 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
     }
 
     /**
-     * @param $dst
+     * @param string $dst
      * @return bool
      */
     public function dstIsCallable($dst)

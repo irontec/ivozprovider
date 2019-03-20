@@ -123,16 +123,13 @@ abstract class TrustedAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrustedDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrustedDto
-         */
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $self = new static(
@@ -156,16 +153,13 @@ abstract class TrustedAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrustedDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrustedDto
-         */
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $this

@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface TransformationRuleSetInterface extends LoggableEntityInterface
 {
@@ -132,14 +133,14 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Replace rules
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[] $rules
+     * @param ArrayCollection $rules of Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface
      * @return static
      */
-    public function replaceRules(Collection $rules);
+    public function replaceRules(ArrayCollection $rules);
 
     /**
      * Get rules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[]
      */
     public function getRules(\Doctrine\Common\Collections\Criteria $criteria = null);

@@ -135,7 +135,7 @@ class CreateByScheduler
 
     /**
      * @param CallCsvSchedulerInterface $scheduler
-     * @param $error
+     * @param string $error
      */
     private function setExecutionError(CallCsvSchedulerInterface $scheduler, string $error)
     {

@@ -19,33 +19,15 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
  */
 class TrunksLcrRuleTargetFactory
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var TrunksLcrRuleRepository
-     */
     protected $trunksLcrRuleTargetRepository;
-
-    /**
-     * @var TrunksLcrGatewayRepository
-     */
     protected $trunksLcrGatewayRepository;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
         TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
         TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
         EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
         $this->trunksLcrRuleTargetRepository = $trunksLcrRuleTargetRepository;
         $this->trunksLcrGatewayRepository = $trunksLcrGatewayRepository;
         $this->entityTools = $entityTools;
@@ -107,7 +89,7 @@ class TrunksLcrRuleTargetFactory
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time
-                $lcrRuleTargets[] = $this->entityPersister->persistDto(
+                $lcrRuleTargets[] = $this->entityTools->persistDto(
                     $lcrRuleTargetDto,
                     $lcrRuleTarget,
                     true

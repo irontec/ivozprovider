@@ -149,16 +149,13 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksLcrGatewayDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksLcrGatewayDto
-         */
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
         $self = new static(
@@ -187,16 +184,13 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksLcrGatewayDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksLcrGatewayDto
-         */
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
         $this

@@ -56,7 +56,7 @@ class DdiAction
     }
 
     /**
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {

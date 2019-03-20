@@ -24,7 +24,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
-     * @param $id
+     * @param string | int $id
      * @return UserInterface[]
      */
     public function findByBossAssistantId($id)

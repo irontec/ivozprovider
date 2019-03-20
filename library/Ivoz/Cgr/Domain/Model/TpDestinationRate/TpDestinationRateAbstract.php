@@ -148,16 +148,13 @@ abstract class TpDestinationRateAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDestinationRateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDestinationRateDto
-         */
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $self = new static(
@@ -183,16 +180,13 @@ abstract class TpDestinationRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDestinationRateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDestinationRateDto
-         */
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $this

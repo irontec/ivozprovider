@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface RetailAccountInterface extends LoggableEntityInterface
 {
@@ -38,7 +39,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get Ddi associated with this retail Account
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @param string $ddieE164
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getDdi($ddieE164);
 
@@ -204,14 +206,14 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Replace psEndpoints
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
+     * @param ArrayCollection $psEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      * @return static
      */
-    public function replacePsEndpoints(Collection $psEndpoints);
+    public function replacePsEndpoints(ArrayCollection $psEndpoints);
 
     /**
      * Get psEndpoints
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -235,14 +237,14 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Replace ddis
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
+     * @param ArrayCollection $ddis of Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      * @return static
      */
-    public function replaceDdis(Collection $ddis);
+    public function replaceDdis(ArrayCollection $ddis);
 
     /**
      * Get ddis
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -266,14 +268,14 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Replace callForwardSettings
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
+     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
      * @return static
      */
-    public function replaceCallForwardSettings(Collection $callForwardSettings);
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings);
 
     /**
      * Get callForwardSettings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);

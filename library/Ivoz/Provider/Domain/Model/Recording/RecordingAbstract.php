@@ -136,16 +136,13 @@ abstract class RecordingAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RecordingDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RecordingDto
-         */
         Assertion::isInstanceOf($dto, RecordingDto::class);
 
         $recordedFile = new RecordedFile(
@@ -176,16 +173,13 @@ abstract class RecordingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RecordingDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RecordingDto
-         */
         Assertion::isInstanceOf($dto, RecordingDto::class);
 
         $recordedFile = new RecordedFile(

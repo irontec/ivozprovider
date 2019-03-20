@@ -8,8 +8,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
 {
     /**
-     * @param EntityEventInterface $event
-     * @return Changelog
+     * @param \Ivoz\Core\Domain\Event\EntityEventInterface $event
+     * @return self
      */
     public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event);
 

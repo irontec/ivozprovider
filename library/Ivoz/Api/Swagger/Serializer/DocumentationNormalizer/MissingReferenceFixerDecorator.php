@@ -336,7 +336,7 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
     }
 
     /**
-     * @param $response
+     * @param array $response
      * @return array
      */
     private function cleanSchemaArray(array $response): array

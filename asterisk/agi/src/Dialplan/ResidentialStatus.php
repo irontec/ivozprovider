@@ -45,7 +45,7 @@ class ResidentialStatus extends RouteHandlerAbstract
     /**
      * Outgoing calls from terminals to Extensions, Services or World
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {

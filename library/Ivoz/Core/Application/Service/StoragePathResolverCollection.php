@@ -20,7 +20,6 @@ class StoragePathResolverCollection
 
     /**
      * @param string $objName
-     * @param null $originalFileName
      * @return StoragePathResolverInterface
      * @throws \Exception
      */

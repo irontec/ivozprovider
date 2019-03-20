@@ -8,8 +8,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
 {
     /**
-     * @param CommandEventInterface $event
-     * @return Commandlog
+     * @param \Ivoz\Core\Application\Event\CommandEventInterface $event
+     * @return self
      */
     public static function fromEvent(\Ivoz\Core\Application\Event\CommandEventInterface $event);
 

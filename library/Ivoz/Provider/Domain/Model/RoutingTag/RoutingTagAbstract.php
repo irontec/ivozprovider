@@ -96,16 +96,13 @@ abstract class RoutingTagAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingTagDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingTagDto
-         */
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
         $self = new static(
@@ -124,16 +121,13 @@ abstract class RoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingTagDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingTagDto
-         */
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
         $this

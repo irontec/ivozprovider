@@ -11,6 +11,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -227,7 +228,7 @@ class DataAccessControlParser
     }
 
     /**
-     * @param $accessControl
+     * @param array $accessControl
      * @return array
      */
     protected function accessControlToArrayCriteria($accessControl): array

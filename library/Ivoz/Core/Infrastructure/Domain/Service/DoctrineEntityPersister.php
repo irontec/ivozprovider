@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
@@ -325,6 +326,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             ->getMetadataFactory();
 
         foreach ($dependantEntityClasses as $dependantEntityClass) {
+            /** @var ClassMetadata $entityMetadata */
             $entityMetadata = $metadataFactory->getMetadataFor($dependantEntityClass);
             $associations = $entityMetadata->getAssociationsByTargetClass($entityClass);
             foreach ($associations as $field => $association) {

@@ -67,9 +67,6 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             new \DateTimeZone('UTC')
         );
 
-        /**
-         * @var \Doctrine\ORM\EntityRepository $this
-         */
         $qb = $this->createQueryBuilder('self');
         $qb->addCriteria(CriteriaHelper::fromArray([
             ['parsed', 'eq', '0'],

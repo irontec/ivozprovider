@@ -90,16 +90,13 @@ abstract class PickUpGroupAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PickUpGroupDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PickUpGroupDto
-         */
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
         $self = new static(
@@ -117,16 +114,13 @@ abstract class PickUpGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PickUpGroupDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PickUpGroupDto
-         */
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
         $this

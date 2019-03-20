@@ -193,7 +193,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
 
         $this->triggerDomainEvents($eventName, $args, $isNew);
-        $this->runSharedServices($eventName, $args, $isNew);
+        $this->runSharedServices($eventName, $args);
         $this->runEntityServices($eventName, $args, $isNew);
     }
 
@@ -250,7 +250,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
-    private function runSharedServices($eventName, LifecycleEventArgs $args, bool $isNew)
+    private function runSharedServices($eventName, LifecycleEventArgs $args)
     {
         $serviceName = 'lifecycle.' . $eventName . '.common';
 
@@ -264,7 +264,7 @@ class DoctrineEventSubscriber implements EventSubscriber
          * @var CommonLifecycleServiceCollection $service
          */
         $service = $this->serviceContainer->get($serviceName);
-        $service->execute($entity, $isNew);
+        $service->execute($entity);
     }
 
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)

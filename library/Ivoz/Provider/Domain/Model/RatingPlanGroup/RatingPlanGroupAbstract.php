@@ -101,16 +101,13 @@ abstract class RatingPlanGroupAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanGroupDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanGroupDto
-         */
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
         $name = new Name(
@@ -140,16 +137,13 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanGroupDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanGroupDto
-         */
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
         $name = new Name(

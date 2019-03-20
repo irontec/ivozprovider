@@ -22,8 +22,8 @@ class CompanyServiceDoctrineRepository extends ServiceEntityRepository implement
     }
 
     /**
-     * @param $companyId
-     * @param $serviceId
+     * @param int $companyId
+     * @param int $serviceId
      * @return CompanyServiceInterface
      */
     public function findCompanyService($companyId, $serviceId)

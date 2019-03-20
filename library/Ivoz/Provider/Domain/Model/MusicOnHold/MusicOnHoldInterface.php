@@ -26,8 +26,8 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     /**
      * Add TempFile and set status to pending
      *
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -110,7 +110,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     public function getEncodedFile();
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);

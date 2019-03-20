@@ -415,7 +415,7 @@ class AGI
      * @link http://www.voip-info.org/wiki-get+variable
      * @link http://www.voip-info.org/wiki-Asterisk+variables
      * @param string $variable name
-     * @return array, see evaluate for return information. ['result'] is 0 if variable hasn't been set, 1 if it has. ['data'] holds the value.
+     * @return string | array, see evaluate for return information. ['result'] is 0 if variable hasn't been set, 1 if it has. ['data'] holds the value.
      */
     function get_variable($variable, $getvalue = true)
     {

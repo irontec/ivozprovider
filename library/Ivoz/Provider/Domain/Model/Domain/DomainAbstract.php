@@ -96,16 +96,13 @@ abstract class DomainAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DomainDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DomainDto
-         */
         Assertion::isInstanceOf($dto, DomainDto::class);
 
         $self = new static(
@@ -124,16 +121,13 @@ abstract class DomainAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DomainDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DomainDto
-         */
         Assertion::isInstanceOf($dto, DomainDto::class);
 
         $this

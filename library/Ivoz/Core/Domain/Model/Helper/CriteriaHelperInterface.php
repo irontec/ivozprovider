@@ -24,4 +24,19 @@ interface CriteriaHelperInterface
      * ];
      */
     public static function fromArray(array $conditions);
+
+
+    /**
+     * @param Criteria $criteria
+     * @return array
+     */
+    public static function toArray(Criteria $criteria): array;
+
+    /**
+     * @param string $operator
+     * @param Criteria $baseCriteria
+     * @param Criteria[] ...$criteriasToAppend
+     * @return Criteria
+     */
+    public static function append(string $operator, Criteria $baseCriteria, Criteria ...$criteriasToAppend): Criteria;
 }

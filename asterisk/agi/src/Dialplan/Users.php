@@ -83,7 +83,7 @@ class Users extends RouteHandlerAbstract
     /**
      * Outgoing calls from terminals to Extensions, Services or World
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {
@@ -130,7 +130,7 @@ class Users extends RouteHandlerAbstract
         $this->channelInfo->setChannelCaller($caller);
 
         // If this call is being transferred
-        if (!empty($transferred)) {
+        if (!empty($transferred) && isset($transfererURI)) {
             // Set Caller extension in Referred header
             $transfererURI = str_replace($endpointName, $user->getExtensionNumber(), $transfererURI);
             $this->agi->setVariable("__SIPREFERREDBYHDR", $transfererURI);

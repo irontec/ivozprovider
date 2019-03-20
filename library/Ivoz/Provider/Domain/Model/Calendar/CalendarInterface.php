@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface CalendarInterface extends LoggableEntityInterface
 {
@@ -63,14 +64,14 @@ interface CalendarInterface extends LoggableEntityInterface
     /**
      * Replace holidayDates
      *
-     * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[] $holidayDates
+     * @param ArrayCollection $holidayDates of Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
      * @return static
      */
-    public function replaceHolidayDates(Collection $holidayDates);
+    public function replaceHolidayDates(ArrayCollection $holidayDates);
 
     /**
      * Get holidayDates
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
      */
     public function getHolidayDates(\Doctrine\Common\Collections\Criteria $criteria = null);

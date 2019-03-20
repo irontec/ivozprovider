@@ -123,16 +123,13 @@ abstract class BrandUrlAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BrandUrlDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BrandUrlDto
-         */
         Assertion::isInstanceOf($dto, BrandUrlDto::class);
 
         $logo = new Logo(
@@ -161,16 +158,13 @@ abstract class BrandUrlAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BrandUrlDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BrandUrlDto
-         */
         Assertion::isInstanceOf($dto, BrandUrlDto::class);
 
         $logo = new Logo(

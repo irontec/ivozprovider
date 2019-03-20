@@ -125,16 +125,13 @@ abstract class TransformationRuleSetAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TransformationRuleSetDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TransformationRuleSetDto
-         */
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
         $name = new Name(
@@ -164,16 +161,13 @@ abstract class TransformationRuleSetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TransformationRuleSetDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TransformationRuleSetDto
-         */
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
         $name = new Name(

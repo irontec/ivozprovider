@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface IvrInterface extends LoggableEntityInterface
 {
@@ -293,14 +294,14 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Replace entries
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[] $entries
+     * @param ArrayCollection $entries of Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface
      * @return static
      */
-    public function replaceEntries(Collection $entries);
+    public function replaceEntries(ArrayCollection $entries);
 
     /**
      * Get entries
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[]
      */
     public function getEntries(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -324,14 +325,14 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Replace excludedExtensions
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[] $excludedExtensions
+     * @param ArrayCollection $excludedExtensions of Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface
      * @return static
      */
-    public function replaceExcludedExtensions(Collection $excludedExtensions);
+    public function replaceExcludedExtensions(ArrayCollection $excludedExtensions);
 
     /**
      * Get excludedExtensions
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[]
      */
     public function getExcludedExtensions(\Doctrine\Common\Collections\Criteria $criteria = null);

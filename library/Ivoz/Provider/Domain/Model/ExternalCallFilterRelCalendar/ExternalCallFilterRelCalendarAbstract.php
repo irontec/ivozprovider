@@ -89,16 +89,13 @@ abstract class ExternalCallFilterRelCalendarAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterRelCalendarDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterRelCalendarDto
-         */
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
         $self = new static();
@@ -115,16 +112,13 @@ abstract class ExternalCallFilterRelCalendarAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterRelCalendarDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterRelCalendarDto
-         */
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
         $this

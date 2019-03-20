@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait DestinationTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $destinationRates;
 
@@ -38,7 +37,7 @@ trait DestinationTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -46,9 +45,7 @@ trait DestinationTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getDestinationRates())) {
             $self->replaceDestinationRates(
@@ -68,7 +65,7 @@ trait DestinationTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
@@ -76,9 +73,6 @@ trait DestinationTrait
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getDestinationRates())) {
             $this->replaceDestinationRates(
@@ -140,10 +134,10 @@ trait DestinationTrait
     /**
      * Replace destinationRates
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[] $destinationRates
+     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      * @return static
      */
-    public function replaceDestinationRates(Collection $destinationRates)
+    public function replaceDestinationRates(ArrayCollection $destinationRates)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -173,7 +167,7 @@ trait DestinationTrait
 
     /**
      * Get destinationRates
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
      */
     public function getDestinationRates(Criteria $criteria = null)

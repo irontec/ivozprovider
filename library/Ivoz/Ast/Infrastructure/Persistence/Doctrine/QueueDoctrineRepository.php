@@ -22,7 +22,7 @@ class QueueDoctrineRepository extends ServiceEntityRepository implements QueueRe
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return QueueInterface
      */
     public function findOneByProviderQueueId($id)

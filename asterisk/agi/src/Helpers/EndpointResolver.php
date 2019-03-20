@@ -20,9 +20,9 @@ class EndpointResolver
     }
 
     /**
-     * @param $endpointName
+     * @param string $endpointName
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function getUserFromEndpoint($endpointName)
     {
@@ -62,7 +62,7 @@ class EndpointResolver
     }
 
     /**
-     * @param $endpointName
+     * @param string $endpointName
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
      */
     public function getEndpointFromName($endpointName)
@@ -77,10 +77,10 @@ class EndpointResolver
     }
 
     /**
-     * @param $endpointNum
-     * @param $endpointDomain
+     * @param string $endpointNum
+     * @param string $endpointDomain
      * @return string
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function getEndpointNameFromContact($endpointNum, $endpointDomain)
     {
@@ -118,9 +118,9 @@ class EndpointResolver
     }
 
     /**
-     * @param $endpointName
+     * @param string $endpointName
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface|null
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function getFriendFromEndpoint($endpointName)
     {
@@ -144,9 +144,9 @@ class EndpointResolver
     }
 
     /**
-     * @param $endpointName
+     * @param string $endpointName
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function getResidentialFromEndpoint($endpointName)
     {
@@ -170,9 +170,9 @@ class EndpointResolver
     }
 
     /**
-     * @param $endpointName
+     * @param string $endpointName
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function getRetailFromEndpoint($endpointName)
     {

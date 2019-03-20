@@ -56,10 +56,10 @@ class DateTimeHelper
     }
 
     /**
-     * @param \Datetime $dateTime
-     * @return \Datetime
+     * @param \DateTime $dateTime
+     * @return \DateTime
      */
-    public static function ensureUTC(\Datetime $dateTime)
+    public static function ensureUTC(\DateTime $dateTime)
     {
         $timeZoneName = $dateTime
             ->getTimezone()

@@ -5,6 +5,7 @@ namespace Ivoz\Api\Json\Serializer\Normalizer;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -148,10 +149,10 @@ class EntityNormalizer implements NormalizerInterface
     /**
      * @param DataTransferObjectInterface $dto
      * @param array $context
-     * @param $isSubresource
-     * @param $depth
-     * @param $resourceClass
-     * @param $resourceMetadata
+     * @param bool $isSubresource
+     * @param int $depth
+     * @param string $resourceClass
+     * @param ResourceMetadata $resourceMetadata
      * @return array
      */
     protected function normalizeDto(

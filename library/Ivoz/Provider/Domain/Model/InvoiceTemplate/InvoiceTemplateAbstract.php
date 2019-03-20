@@ -111,16 +111,13 @@ abstract class InvoiceTemplateAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceTemplateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceTemplateDto
-         */
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
         $self = new static(
@@ -142,16 +139,13 @@ abstract class InvoiceTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceTemplateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceTemplateDto
-         */
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
         $this

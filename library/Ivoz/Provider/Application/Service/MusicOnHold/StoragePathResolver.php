@@ -21,12 +21,11 @@ class StoragePathResolver extends CommonStoragePathResolver
     }
 
     /**
-     * @param EntityInterface $entity
+     * @param MusicOnHoldInterface $entity
      * @return null | string
      */
     public function getFilePath(EntityInterface $entity)
     {
-        /** @var MusicOnHoldInterface $entity */
         $id = $entity->getId();
         if (!$id) {
             return null;

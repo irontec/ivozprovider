@@ -4,7 +4,8 @@ namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface DestinationRateGroupInterface extends FileContainerInterface, LoggableEntityInterface
 {
@@ -22,8 +23,8 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     /**
      * Add TempFile and set status to pending
      *
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -148,20 +149,20 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     /**
      * Replace destinationRates
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[] $destinationRates
+     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      * @return static
      */
-    public function replaceDestinationRates(Collection $destinationRates);
+    public function replaceDestinationRates(ArrayCollection $destinationRates);
 
     /**
      * Get destinationRates
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
      */
     public function getDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);

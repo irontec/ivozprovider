@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface HuntGroupInterface extends LoggableEntityInterface
 {
@@ -188,14 +189,14 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Replace huntGroupsRelUsers
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[] $huntGroupsRelUsers
+     * @param ArrayCollection $huntGroupsRelUsers of Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface
      * @return static
      */
-    public function replaceHuntGroupsRelUsers(Collection $huntGroupsRelUsers);
+    public function replaceHuntGroupsRelUsers(ArrayCollection $huntGroupsRelUsers);
 
     /**
      * Get huntGroupsRelUsers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[]
      */
     public function getHuntGroupsRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
