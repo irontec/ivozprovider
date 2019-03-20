@@ -30,12 +30,6 @@
 		"enabled": true
 	},
 	"cdrs": {
-		"cdrstats_conns": [
-			{"address": "*internal"}
-		],
-		"enabled": true
-	},
-	"cdrstats": {
 		"enabled": true
 	},
 	"sm_kamailio": {
