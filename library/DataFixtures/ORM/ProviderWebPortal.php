@@ -37,10 +37,10 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
 
         $item2 = $this->createEntityInstance(WebPortal::class);
         (function () {
-            $this->setUrl("https://test-ivozprovider.irontec.com");
+            $this->setUrl("https://brand-ivozprovider.irontec.com");
             $this->setKlearTheme("irontec-red");
             $this->setUrlType("brand");
-            $this->setName("Irontec Ivozprovider God Portal");
+            $this->setName("Irontec Ivozprovider Brand Admin Portal");
             $this->setUserTheme("default");
             $this->setLogo(new Logo(null, null, null));
         })->call($item2);
@@ -50,12 +50,13 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
+
         $item3 = $this->createEntityInstance(WebPortal::class);
         (function () {
-            $this->setUrl("https://users.artemis.irontec.com");
-            $this->setKlearTheme("redmond");
-            $this->setUrlType("user");
-            $this->setName("Users");
+            $this->setUrl("https://client-ivozprovider.irontec.com");
+            $this->setKlearTheme("irontec-red");
+            $this->setUrlType("admin");
+            $this->setName("Irontec Ivozprovider Client Admin Portal");
             $this->setUserTheme("default");
             $this->setLogo(new Logo(null, null, null));
         })->call($item3);
@@ -64,6 +65,21 @@ class ProviderWebPortal extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderWebPortal3', $item3);
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
+
+        $item4 = $this->createEntityInstance(WebPortal::class);
+        (function () {
+            $this->setUrl("https://users-ivozprovider.irontec.com");
+            $this->setKlearTheme("redmond");
+            $this->setUrlType("user");
+            $this->setName("Irontec Ivozprovider User Admin Portal");
+            $this->setUserTheme("default");
+            $this->setLogo(new Logo(null, null, null));
+        })->call($item4);
+
+        $item4->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderWebPortal4', $item4);
+        $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
 
     
         $manager->flush();

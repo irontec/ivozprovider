@@ -25,7 +25,7 @@ Feature: Create residential devices
           "updateCallerid": "yes",
           "fromDomain": null,
           "directConnectivity": "yes",
-          "company": 3,
+          "company": 1,
           "outgoingDdi": null,
           "language": null
       }
@@ -53,7 +53,7 @@ Feature: Create residential devices
           "ddiIn": "yes",
           "maxCalls": 1,
           "id": 2,
-          "company": 3,
+          "company": 1,
           "outgoingDdi": null,
           "language": null
       }

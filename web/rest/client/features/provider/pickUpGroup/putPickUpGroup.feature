@@ -12,7 +12,7 @@ Feature: Update pick up groups
     """
       {
           "name": "updated pick up group",
-          "company": 2
+          "company": 1
       }
     """
     Then the response status code should be 200

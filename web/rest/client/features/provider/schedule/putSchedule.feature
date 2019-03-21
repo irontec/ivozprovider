@@ -21,7 +21,7 @@ Feature: Update schedules
           "friday": true,
           "saturday": false,
           "sunday": false,
-          "company": 2
+          "company": 1
       }
     """
     Then the response status code should be 200

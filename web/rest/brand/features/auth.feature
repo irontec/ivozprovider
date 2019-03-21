@@ -4,13 +4,13 @@ Feature: Authorization checking
   I need to be authorized to access a given resource.
 
   @createSchema
-  Scenario: An anonymous user retrieve a secured resource
+  Scenario: An anonymous user cannot retrieve a secured resource
     When I add "Accept" header equal to "application/ld+json"
     And  I send a "GET" request to "companies"
     Then the response status code should be 401
 
   @dropSchema
-  Scenario: An authenticated user retrieve a secured resource
+  Scenario: An authenticated user can retrieve a secured resource
     When I add Brand Authorization header
     And  I add "Accept" header equal to "application/ld+json"
     And  I send a "GET" request to "companies"

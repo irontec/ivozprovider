@@ -15,19 +15,24 @@ Feature: Retrieve web portals
     """
       [
           {
-              "url": "https://example.com",
+              "url": "https:\/\/example.com",
               "name": "Platform Administration Portal",
               "id": 1
           },
           {
-              "url": "https://test-ivozprovider.irontec.com",
-              "name": "Irontec Ivozprovider God Portal",
+              "url": "https:\/\/brand-ivozprovider.irontec.com",
+              "name": "Irontec Ivozprovider Brand Admin Portal",
               "id": 2
           },
           {
-              "url": "https://users.artemis.irontec.com",
-              "name": "Users",
+              "url": "https:\/\/client-ivozprovider.irontec.com",
+              "name": "Irontec Ivozprovider Client Admin Portal",
               "id": 3
+          },
+          {
+              "url": "https:\/\/users-ivozprovider.irontec.com",
+              "name": "Irontec Ivozprovider User Admin Portal",
+              "id": 4
           }
       ]
     """
