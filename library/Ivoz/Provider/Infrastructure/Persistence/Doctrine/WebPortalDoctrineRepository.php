@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
@@ -35,5 +36,40 @@ class WebPortalDoctrineRepository extends ServiceEntityRepository implements Web
         $response = $this->findOneBy($conditions);
 
         return $response;
+    }
+
+    /**
+     * @param string $url
+     * @return int | null
+     * @throws \DomainException
+     */
+    public function findBrandIdByUrl(string $url)
+    {
+        $criteria = CriteriaHelper::fromArray([
+            ['url', 'eq',  $url]
+        ]);
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('IDENTITY(self.brand)')
+            ->addCriteria($criteria);
+
+        try {
+            $brandId = $qb
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (\Exception $e) {
+            throw new \DomainException(
+                'Could not resolve WebPortal by request URL: ' . $url,
+                0,
+                $e
+            );
+        }
+
+        if (is_null($brandId)) {
+            return null;
+        }
+
+        return (int) $brandId;
     }
 }

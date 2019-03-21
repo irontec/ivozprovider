@@ -26,14 +26,14 @@ trait AdministratorSecurityTrait
             ];
         }
 
-        if (!is_null($brand)) {
+        if (!is_null($company)) {
             return [
-                'ROLE_BRAND_ADMIN'
+                'ROLE_COMPANY_ADMIN'
             ];
         }
 
         return [
-            'ROLE_COMPANY_ADMIN'
+            'ROLE_BRAND_ADMIN'
         ];
     }
 

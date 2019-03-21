@@ -2,6 +2,10 @@
 ## http://symfony.com/doc/current/security.html
 security:
 
+  providers:
+    admin_orm:
+      id: 'Service\UserProvider'
+
   firewalls:
     # disables authentication for assets and the profiler, adapt it according to your needs
     dev:
@@ -40,12 +44,7 @@ security:
       stateless: true
       guard:
         authenticators:
-          - Ivoz\Provider\Infrastructure\Api\Jwt\TokenAuthenticator
-
-    refresh:
-        pattern:  ^/api/token/refresh
-        stateless: true
-        anonymous: true
+          - Ivoz\Provider\Infrastructure\Api\Jwt\AdminTokenAuthenticator
 
     main:
       anonymous: ~

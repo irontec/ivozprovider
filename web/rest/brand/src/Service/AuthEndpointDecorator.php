@@ -2,10 +2,13 @@
 
 namespace Service;
 
+use Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\AuthEndpointTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class AuthEndpointDecorator implements NormalizerInterface
 {
+    use AuthEndpointTrait;
+
     /**
      * @var NormalizerInterface
      */
@@ -35,90 +38,21 @@ class AuthEndpointDecorator implements NormalizerInterface
      */
     public function normalize($object, $format = null, array $context = [])
     {
-        $response = $this->decoratedNormalizer->normalize(...func_get_args());
+        $response = $this->decoratedNormalizer->normalize(
+            ...func_get_args()
+        );
         $paths = $response['paths']->getArrayCopy();
 
-        $authAdminDefinition = [
-            'post' => [
-                "tags" => [
-                    "Auth"
-                ],
-                "operationId" => "postAdminAuthenticate",
-                "consumes" => [
-                    "application/x-www-form-urlencoded",
-                ],
-                "produces" => [
-                    "application/json",
-                ],
-                "summary" => "Retrieve JWT token",
-                "parameters" => [
-                    [
-                        "name" => "username",
-                        "in" => "formData",
-                        "type" => 'string',
-                        "required" => true
-                    ],
-                    [
-                        "name" => "password",
-                        "in" => "formData",
-                        "type" => 'string',
-                        "format" => 'password',
-                        "required" => true
-                    ]
-                ],
-                "responses" => [
-                    "200" => [
-                        "description" => "Valid credentials"
-                    ],
-                    "400" => [
-                        "description" => "Invalid input"
-                    ],
-                    "401" => [
-                        "description" => "Bad credentials"
-                    ]
-                ]
-            ]
-        ];
-
         $auth = [
-            '/admin_login' => $authAdminDefinition,
-            '/token/refresh' => [
-                'post' => [
-                    "tags" => [
-                        "Auth"
-                    ],
-                    "operationId" => "postTokenRefresh",
-                    "consumes" => [
-                        "application/x-www-form-urlencoded",
-                    ],
-                    "produces" => [
-                        "application/json",
-                    ],
-                    "summary" => "Retrieve JWT token",
-                    "parameters" => [
-                        [
-                            "name" => "refresh_token",
-                            "in" => "formData",
-                            "type" => 'string',
-                            "required" => true
-                        ]
-                    ],
-                    "responses" => [
-                        "200" => [
-                            "description" => "Valid credentials"
-                        ],
-                        "400" => [
-                            "description" => "Invalid input"
-                        ],
-                        "401" => [
-                            "description" => "Bad credentials"
-                        ]
-                    ]
-                ]
-            ]
+            '/admin_login' => $this->getAdminLoginSpec(),
+            '/token/refresh' => $this->getTokenRefreshSpec()
         ];
 
-        $response['paths'] = array_merge($auth, $paths);
+        $response['paths'] = array_merge(
+            $auth,
+            $paths
+        );
+
         return $response;
     }
 }

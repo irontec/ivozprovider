@@ -144,7 +144,7 @@ Ivoz\Provider\Domain\Model\Country\Country:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -334,7 +334,7 @@ Ivoz\Provider\Domain\Model\Language\Language:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Language\Name:
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
@@ -492,7 +492,7 @@ Ivoz\Provider\Domain\Model\Service\Service:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -506,14 +506,14 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
     get: ~
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\User\User:
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
@@ -523,4 +523,4 @@ Ivoz\Provider\Domain\Model\User\User:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
         company:
-          in: "user.getCompany().getId()"
+          eq: "user.getCompany().getId()"
