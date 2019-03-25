@@ -28,9 +28,20 @@ services:
       $decoratedNormalizer:
         '@Service\AuthEndpointDecorator.inner'
 
+  Ivoz\Api\Operation\ExchangeToken:
+    arguments:
+      $userProvider: '@Service\UserProvider::Administrator'
+      $requiredInputRole: 'ROLE_BRAND_ADMIN'
+      $requiredOutputRole: 'ROLE_COMPANY_ADMIN'
+
+
   #######################################
   ## Controllers
   #######################################
+  Controller\Auth\:
+    resource: '../../src/Controller/Auth/*'
+    tags: ['controller.service_arguments']
+
   Controller\My\:
     resource: '../../src/Controller/My/*'
     tags: ['controller.service_arguments']
