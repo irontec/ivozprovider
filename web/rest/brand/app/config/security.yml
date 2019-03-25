@@ -39,6 +39,11 @@ security:
         stateless: true
         anonymous: true
 
+    exchange:
+      pattern:  ^/token/exchange
+      stateless: true
+      anonymous: true
+
     api:
       pattern:   ^/.+
       stateless: true
@@ -59,5 +64,6 @@ security:
   access_control:
     - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/token/exchange, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/.+, roles: ROLE_USER }
     - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

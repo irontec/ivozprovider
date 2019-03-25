@@ -58,6 +58,10 @@ final class WriteListener
         }
 
         $controllerResult = $event->getControllerResult();
+        $isEntity = $controllerResult instanceof EntityInterface;
+        if (!$isEntity) {
+            return;
+        }
 
         switch ($request->getMethod()) {
             case Request::METHOD_PUT:

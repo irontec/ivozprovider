@@ -202,7 +202,7 @@ class DataAccessControlParser
      */
     protected function getUserOrThrowException(): UserInterface
     {
-        /** @var TokenInterface $token */
+        /** @var TokenInterface | null $token */
         $token = $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

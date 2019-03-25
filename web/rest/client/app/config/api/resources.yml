@@ -1,6 +1,33 @@
 ########################################
 ## Custom models
 ########################################
+
+Model\Token:
+  itemOperations: []
+  collectionOperations:
+    post_auth_token_exchange:
+      method: 'POST'
+      path: '/token/exchange'
+      route_name: 'post_auth_token_exchange'
+      swagger_context:
+        consumes:
+        - 'application/x-www-form-urlencoded'
+        produces:
+        - 'application/json'
+        tags:
+        - Auth
+        parameters:
+        - name: token
+          in: formData
+          type: string
+          required: true
+          description: 'Brand admin token'
+        - name: username
+          in: formData
+          type: string
+          required: true
+          description: 'Target client admin user name'
+
 Model\WebTheme:
   itemOperations:
     get:
