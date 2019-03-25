@@ -42,6 +42,13 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
     public function getArguments();
 
     /**
+     * Get agent
+     *
+     * @return array | null
+     */
+    public function getAgent();
+
+    /**
      * Get createdOn
      *
      * @return \DateTime
