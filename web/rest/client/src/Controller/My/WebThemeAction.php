@@ -4,9 +4,9 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlRepository;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Model\WebTheme;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -18,9 +18,9 @@ class WebThemeAction
     protected $dtoAssembler;
 
     /**
-     * @var BrandUrlRepository
+     * @var WebPortalRepository
      */
-    protected $brandUrlRepository;
+    protected $webPortalRepository;
 
     /**
      * @var RequestStack
@@ -29,11 +29,11 @@ class WebThemeAction
 
     public function __construct(
         DtoAssembler $dtoAssembler,
-        BrandUrlRepository $brandUrlRepository,
+        WebPortalRepository $webPortalRepository,
         RequestStack $requestStack
     ) {
         $this->dtoAssembler = $dtoAssembler;
-        $this->brandUrlRepository = $brandUrlRepository;
+        $this->webPortalRepository = $webPortalRepository;
         $this->requestStack = $requestStack;
     }
 
@@ -41,29 +41,29 @@ class WebThemeAction
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        /** @var BrandUrl $brandUrl */
-        $brandUrl = $this->brandUrlRepository->findUserUrlByServerName(
+        /** @var WebPortal $webPortal */
+        $webPortal = $this->webPortalRepository->findUserUrlByServerName(
             $request->server->get('SERVER_NAME')
         );
 
-        if (!$brandUrl) {
-            throw new ResourceClassNotFoundException('BrandUrl not found');
+        if (!$webPortal) {
+            throw new ResourceClassNotFoundException('WebPortal not found');
         }
 
-        /** @var BrandUrlDto $brandUrlDto */
-        $brandUrlDto = $this->dtoAssembler->toDto($brandUrl);
+        /** @var WebPortalDto $webPortalDto */
+        $webPortalDto = $this->dtoAssembler->toDto($webPortal);
 
         $publicLogoUrl =
             'https://'
             . $request->server->get('SERVER_NAME')
-            . '/fso/brandUrl/'
-            . $brandUrlDto->getId()
+            . '/fso/webPortal/'
+            . $webPortalDto->getId()
             . '-'
-            . urlencode($brandUrlDto->getLogoBaseName());
+            . urlencode($webPortalDto->getLogoBaseName());
 
         return new WebTheme(
-            $brandUrlDto->getName(),
-            $brandUrlDto->getUserTheme(),
+            $webPortalDto->getName(),
+            $webPortalDto->getUserTheme(),
             $publicLogoUrl
         );
     }

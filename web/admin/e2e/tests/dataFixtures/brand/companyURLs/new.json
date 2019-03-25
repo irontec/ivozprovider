@@ -1,7 +1,7 @@
 {
-  "name": "Users",
-  "urlType": "user",
-  "url": "https://users.artemis.irontec.com",
-  "klearTheme": "redmond",
+  "name": "Irontec Ivozprovider Client Portal",
+  "urlType": "admin",
+  "url": "https://client-ivozprovider.irontec.com",
+  "klearTheme": "irontec-red",
   "userTheme": "default"
 }

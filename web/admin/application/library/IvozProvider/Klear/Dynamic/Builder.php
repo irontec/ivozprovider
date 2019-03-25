@@ -4,8 +4,8 @@ namespace IvozProvider\Klear\Dynamic;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
 use IvozProvider\Klear\Dynamic\Config\MainOperator;
 use IvozProvider\Klear\Dynamic\Config\BrandOperator;
 use IvozProvider\Klear\Dynamic\Config\CompanyAdmin;
@@ -19,7 +19,7 @@ class Builder
     protected static $_brand;
 
     /**
-     * @var BrandUrlDto
+     * @var WebPortalDto
      */
     protected static $_URL;
 
@@ -48,7 +48,7 @@ class Builder
             $dynamic->setBrand(self::$_brand);
         }
 
-        $dynamic->setBrandUrl(self::$_URL);
+        $dynamic->setWebPortal(self::$_URL);
         $dynamic->setLogo(self::_resolveLogo());
 
         return $dynamic;
@@ -75,15 +75,15 @@ class Builder
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         self::$_URL = $dataGateway->findOneBy(
-            BrandUrl::class,
+            WebPortal::class,
             [
-                "BrandUrl.url = '" . $url . "'"
+                "WebPortal.url = '" . $url . "'"
             ]
         );
 
 
-        if (!self::$_URL instanceof BrandUrlDto) {
-            self::$_URL = new BrandUrlDto();
+        if (!self::$_URL instanceof WebPortalDto) {
+            self::$_URL = new WebPortalDto();
             self::$_URL
                 ->setBrandId(null)
                 ->setName('Global Administration portal')
@@ -112,7 +112,7 @@ class Builder
     {
         $brandURLLogoBaseName = self::$_URL->getLogoBaseName();
         if (!empty($brandURLLogoBaseName)) {
-            return "fso/klearBrandUrl/".self::$_URL->getId()."-".$brandURLLogoBaseName;
+            return "fso/klearWebPortal/".self::$_URL->getId()."-".$brandURLLogoBaseName;
         }
 
         if (!self::$_brand) {

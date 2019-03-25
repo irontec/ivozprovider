@@ -4,12 +4,11 @@ namespace Tests\Provider\Brand;
 
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\Recording\Recording;
 
 class BrandSoftDeleteTest extends KernelTestCase
 {
@@ -45,17 +44,17 @@ class BrandSoftDeleteTest extends KernelTestCase
     /**
      * @test
      */
-    public function removes_brand_brandUrls()
+    public function removes_brand_webPortals()
     {
         $this->removeBrand(1);
 
         $changelog = $this->getChangelogByClass(
-            BrandUrl::class
+            WebPortal::class
         );
 
-        $this->assertCount(3, $changelog);
+        $this->assertCount(2, $changelog);
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $this->assertEquals(
                 $changelog[$i]->getData(),
                 null

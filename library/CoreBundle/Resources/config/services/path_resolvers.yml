@@ -19,15 +19,15 @@ services:
       $basePath: 'ivozprovider_model_brands.logo'
 
   ##########################################
-  ## BrandUrl
+  ## WebPortal
   ##########################################
-  Service\StoragePathResolverCollection::BrandUrl:
+  Service\StoragePathResolverCollection::WebPortal:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
-      - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::BrandUrlLogo']]
+      - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::WebPortalLogo']]
      public: true
 
-  Service\CommonStoragePathResolver::BrandUrlLogo:
+  Service\CommonStoragePathResolver::WebPortalLogo:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'

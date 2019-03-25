@@ -81,6 +81,10 @@ production:
           title: ngettext('SIP Domain', 'SIP Domains', 0)
           class: ui-silk-link
           description: _("List of %s", ngettext('Domain', 'Domains', 0))
+        PlatformPortalsList:
+          title: ngettext('Platform Portal', 'Platform Portals', 0)
+          class: ui-silk-world-link
+          description: _("List of %s", ngettext('Platform Portal', 'Platform Portals', 0))
         BillableCallsList:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list-money
@@ -229,10 +233,10 @@ production:
           title: _("Settings")
           class: ui-silk-wrench
           submenus:
-            CompanyURLsList:
-              title: ngettext('Portal URL', 'Portal URLs', 0)
+            ClientPortalsList:
+              title: ngettext('Client Portal', 'Client Portals', 0)
               class: ui-silk-world-link
-              description: _("List of %s", ngettext('Portal URL', 'Portal URLs', 0))
+              description: _("List of %s", ngettext('Client Portal', 'Client Portals', 0))
             TransformationRuleSetsList:
               title: ngettext('Numeric transformation', 'Numeric transformations', 0)
               class: ui-silk-application-side-expand

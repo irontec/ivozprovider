@@ -121,7 +121,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $services = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto[] | null
+     * @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto[] | null
      */
     private $urls = null;
 

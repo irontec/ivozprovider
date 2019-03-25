@@ -266,23 +266,23 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Add url
      *
-     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url
+     * @param \Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface $url
      *
      * @return static
      */
-    public function addUrl(\Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url);
+    public function addUrl(\Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface $url);
 
     /**
      * Remove url
      *
-     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url
+     * @param \Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface $url
      */
-    public function removeUrl(\Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url);
+    public function removeUrl(\Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface $url);
 
     /**
      * Replace urls
      *
-     * @param ArrayCollection $urls of Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface
+     * @param ArrayCollection $urls of Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface
      * @return static
      */
     public function replaceUrls(ArrayCollection $urls);
@@ -290,7 +290,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Get urls
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[]
+     * @return \Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface[]
      */
     public function getUrls(\Doctrine\Common\Collections\Criteria $criteria = null);
 

@@ -16,5 +16,6 @@ This section is only shown to *God administrator* and allows modifying global co
     currencies
     default_notification_templates
     sip_domains
+    portals
     billable_calls
     infrastructure/index

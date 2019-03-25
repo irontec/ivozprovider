@@ -3,6 +3,8 @@
 namespace spec;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 class DtoToEntityFakeTransformer implements \Ivoz\Core\Application\ForeignKeyTransformerInterface
 {

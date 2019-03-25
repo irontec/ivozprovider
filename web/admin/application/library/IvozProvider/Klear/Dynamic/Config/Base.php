@@ -2,8 +2,8 @@
 namespace IvozProvider\Klear\Dynamic\Config;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDTO;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 use IvozProvider\Klear\Auth\User;
 
 abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
@@ -15,7 +15,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
     protected $_brand;
 
     /**
-     * @var  BrandUrlDTO
+     * @var  WebPortalDTO
      */
     protected $_brandURL;
 
@@ -53,7 +53,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
         return $this;
     }
 
-    public function setBrandUrl(BrandUrlDTO $brandURL)
+    public function setWebPortal(WebPortalDTO $brandURL)
     {
         $this->_brandURL = $brandURL;
         return $this;

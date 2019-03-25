@@ -24,15 +24,15 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
 
   ##########################################
-  ## BrandUrl
+  ## WebPortal
   ##########################################
-  Ivoz\Provider\Application\Service\BrandUrl\BrandUrlAssembler:
+  Ivoz\Provider\Application\Service\WebPortal\WebPortalAssembler:
     arguments:
-      $storagePathResolver: '@Service\StoragePathResolverCollection::BrandUrl'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::WebPortal'
 
-  Ivoz\Provider\Application\Service\BrandUrl\BrandUrlDtoAssembler:
+  Ivoz\Provider\Application\Service\WebPortal\WebPortalDtoAssembler:
     arguments:
-      $storagePathResolver: '@Service\StoragePathResolverCollection::BrandUrl'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::WebPortal'
 
   ##########################################
   ## CallCsvReport
