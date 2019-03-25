@@ -37,8 +37,8 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
     arguments:
       $softDeleteMap: '%soft_delete%'
-      $logger: '@monolog.logger.changelog'
     public: true
+    lazy: true
 
   Ivoz\Core\Domain\Service\EntityPersisterInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

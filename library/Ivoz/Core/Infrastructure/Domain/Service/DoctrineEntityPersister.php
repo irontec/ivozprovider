@@ -11,8 +11,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\UnitOfWork;
-use Ivoz\Core\Application\Service\CommandEventSubscriber;
-use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
@@ -49,22 +47,12 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     /**
      * @var CreateEntityFromDTO
      */
-    protected $createEntityFromDTO;
+    protected $createEntityFromDto;
 
     /**
      * @var UpdateEntityFromDTO
      */
     protected $entityUpdater;
-
-    /**
-     * @var CommandEventSubscriber
-     */
-    protected $commandEventSubscriber;
-
-    /**
-     * @var EntityEventSubscriber
-     */
-    protected $entityEventSubscriber;
 
     /**
      * @var bool
@@ -77,24 +65,14 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     protected $pendingUpdates = [];
 
     /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
      * @var array
      */
     protected $softDeleteMap = [];
-
-    protected $latestCommandlog = null;
 
     public function __construct(
         EntityManagerInterface $em,
         CreateEntityFromDTO $createEntityFromDTO,
         UpdateEntityFromDTO $entityUpdater,
-        CommandEventSubscriber $commandEventSubscriber,
-        EntityEventSubscriber $entityEventSubscriber,
-        LoggerInterface $logger,
         array $softDeleteMap
     ) {
         $this->em = $em;
@@ -107,11 +85,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->orphanAccesor = $unitOfWorkRef->getProperty('orphanRemovals');
         $this->orphanAccesor->setAccessible(true);
 
-        $this->createEntityFromDTO = $createEntityFromDTO;
+        $this->createEntityFromDto = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
-        $this->commandEventSubscriber = $commandEventSubscriber;
-        $this->entityEventSubscriber = $entityEventSubscriber;
-        $this->logger = $logger;
         $this->softDeleteMap = $softDeleteMap;
     }
 
@@ -142,7 +117,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         if (is_null($entity)) {
             $entityClass = substr(get_class($dto), 0, -3);
             $entity = $this
-                ->createEntityFromDTO
+                ->createEntityFromDto
                 ->execute($entityClass, $dto);
         } else {
             $this->entityUpdater->execute($entity, $dto);
@@ -281,7 +256,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
         $this->rootEntity = $entity;
         $connection = $this->em->getConnection();
-        $connection->transactional(function () use ($transaction) {
+        $eventManager = $this->em->getEventManager();
+        $connection->transactional(function () use ($transaction, $eventManager) {
             $transaction(true);
 
             /**
@@ -301,10 +277,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
                 $this->em->flush();
             }
 
-            $this->persistEvents();
+            $eventManager->dispatchEvent(
+                CustomEvents::preCommit
+            );
         });
 
-        $eventManager = $this->em->getEventManager();
         $eventManager->dispatchEvent(
             CustomEvents::onCommit,
             new OnCommitEventArgs($this->em)
@@ -350,89 +327,5 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
 
         return $dependantEntities;
-    }
-
-    private function persistEvents()
-    {
-        $commandNum = $this
-            ->commandEventSubscriber
-            ->countEvents();
-
-        if (!$this->latestCommandlog && !$commandNum) {
-            $this->registerFallbackCommand();
-        }
-
-        $command = $this
-            ->commandEventSubscriber
-            ->popEvent();
-
-        if ($command) {
-            $commandlog = Commandlog::fromEvent($command);
-            $this->latestCommandlog = $commandlog;
-            $this->persist($commandlog);
-
-            $this->logger->info(
-                sprintf(
-                    '%s > %s::%s(%s)',
-                    (new \ReflectionClass($command))->getShortName(),
-                    $commandlog->getClass(),
-                    $commandlog->getMethod(),
-                    json_encode($commandlog->getArguments())
-                )
-            );
-        } else {
-            /**
-             * Command is null when first persisted entity comes from pre_persist event:
-             * changelog will require to hit db twice
-             */
-            $command = $this
-                ->commandEventSubscriber
-                ->getLatest();
-
-            $commandlog = $this->latestCommandlog;
-        }
-
-        $entityEvents = $this
-            ->entityEventSubscriber
-            ->getEvents();
-
-        foreach ($entityEvents as $event) {
-            $changeLog = Changelog::fromEvent($event);
-            $changeLog->setCommand($commandlog);
-            $this->persist($changeLog);
-
-            $this->logger->info(
-                sprintf(
-                    '%s > %s#%s > %s',
-                    (new \ReflectionClass($event))->getShortName(),
-                    $changeLog->getEntity(),
-                    $changeLog->getEntityId(),
-                    json_encode($changeLog->getData())
-                )
-            );
-        }
-
-        $this->entityEventSubscriber->clearEvents();
-        $this->dispatchQueued();
-    }
-
-    /**
-     * @return CommandWasExecuted
-     * @throws \Exception
-     */
-    private function registerFallbackCommand(): CommandWasExecuted
-    {
-        $command = new CommandWasExecuted(
-            0,
-            'Unregistered',
-            'Unregistered',
-            []
-        );
-
-        $this
-            ->commandEventSubscriber
-            ->handle($command);
-
-        return $command;
     }
 }
