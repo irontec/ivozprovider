@@ -150,4 +150,9 @@ class User extends \Klear_Model_UserAdvanced
         // Devuelve un hash basado en las propiedades publicas
         return md5(print_r(call_user_func('get_object_vars', $this), true));
     }
+
+    public function __toString()
+    {
+        return 'Administrator#' . $this->getId();
+    }
 }

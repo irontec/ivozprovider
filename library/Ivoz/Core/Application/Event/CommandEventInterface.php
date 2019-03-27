@@ -10,7 +10,8 @@ interface CommandEventInterface extends DomainEventInterface
         string $requestId,
         string $service,
         string $method,
-        array $arguments
+        array $arguments,
+        array $agent
     );
 
     public function getId();
@@ -22,4 +23,6 @@ interface CommandEventInterface extends DomainEventInterface
     public function getMethod();
 
     public function getArguments();
+
+    public function getAgent();
 }

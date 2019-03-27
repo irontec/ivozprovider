@@ -2,8 +2,10 @@
 
 namespace Ivoz\Api\EventListener;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,32 +14,26 @@ use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 final class RegisterCommandListener
 {
-    /**
-     * @var DomainEventPublisher
-     */
     protected $eventPublisher;
+    protected $tokenStorage;
 
     /**
      * @var string
      */
     protected $requestId;
 
-    /**
-     * @var JWTTokenAuthenticator
-     */
-    protected $jwtTokenAuthenticator;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        JWTTokenAuthenticator $jwtTokenAuthenticator
+        TokenStorage $tokenStorage
     ) {
         $this->eventPublisher = $eventPublisher;
+        $this->tokenStorage = $tokenStorage;
         $this->requestId = $requestId->toString();
-        $this->jwtTokenAuthenticator = $jwtTokenAuthenticator;
     }
 
     /**
@@ -60,44 +56,92 @@ final class RegisterCommandListener
             return;
         }
 
-        $routeParams = $attributes['_route_params'];
-        $credentials = $this->jwtTokenAuthenticator->getCredentials($request);
+        $params = $attributes['_route_params'];
+        $params['_format'] = $request->headers->get('Content-Type');
+        $params['_route'] = $attributes['_route'];
+        ksort($params);
+
+        $token =  $this->tokenStorage->getToken();
+        $user = $token && $token->getUser()
+            ? $token->getUser()
+            : null;
+
         $this->triggerEvent(
-            $routeParams,
+            $params,
             $body,
-            $credentials
+            $user
         );
 
         return;
     }
 
     private function triggerEvent(
-        array $routeParams,
+        array $params,
         array $body = null,
-        PreAuthenticationJWTUserToken $credentials = null
+        EntityInterface $user = null
     ) {
-        if (array_key_exists('_api_collection_operation_name', $routeParams)) {
-            $action = $routeParams['_api_collection_operation_name'];
-        } elseif (array_key_exists('_api_item_operation_name', $routeParams)) {
-            $action = $routeParams['_api_item_operation_name'];
+
+        $resourceClass = $params['_api_resource_class'] ?? '';
+
+        if (array_key_exists('_api_collection_operation_name', $params)) {
+            $action = $params['_api_collection_operation_name'];
+            unset($params['_api_collection_operation_name']);
+        } elseif (array_key_exists('_api_item_operation_name', $params)) {
+            $action = $params['_api_item_operation_name'];
+            unset($params['_api_item_operation_name']);
         } else {
             return;
         }
 
-        $auth = $credentials
-            ? $credentials->getPayload()
-            : null;
+        $agent = [
+            'ip' => $_SERVER['REMOTE_ADDR'] ?? '',
+            'user' => (string) $user,
+        ];
+
+        $payload = $this->cleanUpPayload(
+            $resourceClass,
+            $body ?? []
+        );
+
+        $arguments = array_values($params);
+        $arguments[] = $payload;
 
         $event = new CommandWasExecuted(
             $this->requestId,
             'API',
             $action,
-            [
-                'auth' => $auth,
-                'operation' => $routeParams
-            ]
+            $arguments,
+            $agent
         );
 
-        $this->eventPublisher->publish($event);
+        $this->eventPublisher->publish(
+            $event
+        );
+    }
+
+    private function cleanUpPayload(string $resourceClass, array $payload)
+    {
+        $dtoClass = $resourceClass . 'Dto';
+        if (!class_exists($dtoClass)) {
+            return $payload;
+        }
+
+        /** @var DataTransferObjectInterface $dto */
+        $dto = new $dtoClass();
+        $dto->denormalize($payload, DataTransferObjectInterface::CONTEXT_DETAILED);
+        $maskedPayload = $dto->toArray(true);
+        $response = [];
+
+        foreach ($payload as $key => $value) {
+            $replaceValue =
+                array_key_exists($key, $maskedPayload)
+                && is_scalar($maskedPayload[$key]);
+
+            $response[$key] = $replaceValue
+                ? $maskedPayload[$key]
+                : $value;
+        }
+
+        return $response;
     }
 }
