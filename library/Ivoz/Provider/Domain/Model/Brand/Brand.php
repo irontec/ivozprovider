@@ -6,6 +6,7 @@ use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 
 /**
@@ -43,6 +44,14 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     public function getId()
     {
         return $this->id;
+    }
+
+    protected function sanitizeValues()
+    {
+        if (!$this->hasFeature(Feature::RETAIL)
+            && !$this->hasFeature(Feature::RESIDENTIAL)) {
+                $this->setDomainUsers("");
+        }
     }
 
     /**
