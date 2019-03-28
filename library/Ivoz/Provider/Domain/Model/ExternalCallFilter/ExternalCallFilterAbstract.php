@@ -13,15 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class ExternalCallFilterAbstract
 {
-    const HOLIDAYTARGETTYPE_NUMBER = 'number';
-    const HOLIDAYTARGETTYPE_EXTENSION = 'extension';
-    const HOLIDAYTARGETTYPE_VOICEMAIL = 'voicemail';
-
-
-    const OUTOFSCHEDULETARGETTYPE_NUMBER = 'number';
-    const OUTOFSCHEDULETARGETTYPE_EXTENSION = 'extension';
-    const OUTOFSCHEDULETARGETTYPE_VOICEMAIL = 'voicemail';
-
     /**
      * @var string
      */
@@ -323,9 +314,9 @@ abstract class ExternalCallFilterAbstract
         if (!is_null($holidayTargetType)) {
             Assertion::maxLength($holidayTargetType, 25, 'holidayTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($holidayTargetType, [
-                self::HOLIDAYTARGETTYPE_NUMBER,
-                self::HOLIDAYTARGETTYPE_EXTENSION,
-                self::HOLIDAYTARGETTYPE_VOICEMAIL
+                ExternalCallFilterInterface::HOLIDAYTARGETTYPE_NUMBER,
+                ExternalCallFilterInterface::HOLIDAYTARGETTYPE_EXTENSION,
+                ExternalCallFilterInterface::HOLIDAYTARGETTYPE_VOICEMAIL
             ], 'holidayTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -384,9 +375,9 @@ abstract class ExternalCallFilterAbstract
         if (!is_null($outOfScheduleTargetType)) {
             Assertion::maxLength($outOfScheduleTargetType, 25, 'outOfScheduleTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($outOfScheduleTargetType, [
-                self::OUTOFSCHEDULETARGETTYPE_NUMBER,
-                self::OUTOFSCHEDULETARGETTYPE_EXTENSION,
-                self::OUTOFSCHEDULETARGETTYPE_VOICEMAIL
+                ExternalCallFilterInterface::OUTOFSCHEDULETARGETTYPE_NUMBER,
+                ExternalCallFilterInterface::OUTOFSCHEDULETARGETTYPE_EXTENSION,
+                ExternalCallFilterInterface::OUTOFSCHEDULETARGETTYPE_VOICEMAIL
             ], 'outOfScheduleTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 

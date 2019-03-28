@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class TerminalAbstract
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
-
     /**
      * @var string | null
      */
@@ -374,9 +370,9 @@ abstract class TerminalAbstract
     {
         Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, [
-            self::DIRECTMEDIAMETHOD_UPDATE,
-            self::DIRECTMEDIAMETHOD_INVITE,
-            self::DIRECTMEDIAMETHOD_REINVITE
+            TerminalInterface::DIRECTMEDIAMETHOD_UPDATE,
+            TerminalInterface::DIRECTMEDIAMETHOD_INVITE,
+            TerminalInterface::DIRECTMEDIAMETHOD_REINVITE
         ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->directMediaMethod = $directMediaMethod;

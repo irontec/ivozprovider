@@ -8,6 +8,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface RetailAccountInterface extends LoggableEntityInterface
 {
+    const TRANSPORT_UDP = 'udp';
+    const TRANSPORT_TCP = 'tcp';
+    const TRANSPORT_TLS = 'tls';
+
+
+    const DIRECTCONNECTIVITY_YES = 'yes';
+    const DIRECTCONNECTIVITY_NO = 'no';
+
+
+    const DDIIN_YES = 'yes';
+    const DDIIN_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

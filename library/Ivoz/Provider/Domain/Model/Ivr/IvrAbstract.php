@@ -13,15 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class IvrAbstract
 {
-    const NOINPUTROUTETYPE_NUMBER = 'number';
-    const NOINPUTROUTETYPE_EXTENSION = 'extension';
-    const NOINPUTROUTETYPE_VOICEMAIL = 'voicemail';
-
-
-    const ERRORROUTETYPE_NUMBER = 'number';
-    const ERRORROUTETYPE_EXTENSION = 'extension';
-    const ERRORROUTETYPE_VOICEMAIL = 'voicemail';
-
     /**
      * @var string
      */
@@ -449,9 +440,9 @@ abstract class IvrAbstract
         if (!is_null($noInputRouteType)) {
             Assertion::maxLength($noInputRouteType, 25, 'noInputRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($noInputRouteType, [
-                self::NOINPUTROUTETYPE_NUMBER,
-                self::NOINPUTROUTETYPE_EXTENSION,
-                self::NOINPUTROUTETYPE_VOICEMAIL
+                IvrInterface::NOINPUTROUTETYPE_NUMBER,
+                IvrInterface::NOINPUTROUTETYPE_EXTENSION,
+                IvrInterface::NOINPUTROUTETYPE_VOICEMAIL
             ], 'noInputRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -510,9 +501,9 @@ abstract class IvrAbstract
         if (!is_null($errorRouteType)) {
             Assertion::maxLength($errorRouteType, 25, 'errorRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($errorRouteType, [
-                self::ERRORROUTETYPE_NUMBER,
-                self::ERRORROUTETYPE_EXTENSION,
-                self::ERRORROUTETYPE_VOICEMAIL
+                IvrInterface::ERRORROUTETYPE_NUMBER,
+                IvrInterface::ERRORROUTETYPE_EXTENSION,
+                IvrInterface::ERRORROUTETYPE_VOICEMAIL
             ], 'errorRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 

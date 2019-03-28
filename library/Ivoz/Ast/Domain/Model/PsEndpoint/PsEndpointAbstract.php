@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class PsEndpointAbstract
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
-
     /**
      * column: sorcery_id
      * @var string
@@ -572,9 +568,9 @@ abstract class PsEndpointAbstract
     {
         if (!is_null($directMediaMethod)) {
             Assertion::choice($directMediaMethod, [
-                self::DIRECTMEDIAMETHOD_UPDATE,
-                self::DIRECTMEDIAMETHOD_INVITE,
-                self::DIRECTMEDIAMETHOD_REINVITE
+                PsEndpointInterface::DIRECTMEDIAMETHOD_UPDATE,
+                PsEndpointInterface::DIRECTMEDIAMETHOD_INVITE,
+                PsEndpointInterface::DIRECTMEDIAMETHOD_REINVITE
             ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
         }
 

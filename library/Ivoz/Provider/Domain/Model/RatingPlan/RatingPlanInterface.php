@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface RatingPlanInterface extends EntityInterface
 {
+    const TIMINGTYPE_ALWAYS = 'always';
+    const TIMINGTYPE_CUSTOM = 'custom';
+
+
     /**
      * Transform Weekdays booleans to a string for TpTimings
      *

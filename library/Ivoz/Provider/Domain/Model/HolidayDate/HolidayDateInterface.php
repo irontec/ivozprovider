@@ -6,6 +6,11 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface HolidayDateInterface extends LoggableEntityInterface
 {
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_EXTENSION = 'extension';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

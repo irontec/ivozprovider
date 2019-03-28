@@ -13,11 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class TransformationRuleAbstract
 {
-    const TYPE_CALLERIN = 'callerin';
-    const TYPE_CALLEEIN = 'calleein';
-    const TYPE_CALLEROUT = 'callerout';
-    const TYPE_CALLEEOUT = 'calleeout';
-
     /**
      * comment: enum:callerin|calleein|callerout|calleeout
      * @var string
@@ -211,10 +206,10 @@ abstract class TransformationRuleAbstract
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
-            self::TYPE_CALLERIN,
-            self::TYPE_CALLEEIN,
-            self::TYPE_CALLEROUT,
-            self::TYPE_CALLEEOUT
+            TransformationRuleInterface::TYPE_CALLERIN,
+            TransformationRuleInterface::TYPE_CALLEEIN,
+            TransformationRuleInterface::TYPE_CALLEROUT,
+            TransformationRuleInterface::TYPE_CALLEEOUT
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;

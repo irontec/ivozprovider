@@ -13,15 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class QueueAbstract
 {
-    const TIMEOUTTARGETTYPE_NUMBER = 'number';
-    const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
-    const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
-
-
-    const FULLTARGETTYPE_NUMBER = 'number';
-    const FULLTARGETTYPE_EXTENSION = 'extension';
-    const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
-
     /**
      * @var string | null
      */
@@ -416,9 +407,9 @@ abstract class QueueAbstract
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($timeoutTargetType, [
-                self::TIMEOUTTARGETTYPE_NUMBER,
-                self::TIMEOUTTARGETTYPE_EXTENSION,
-                self::TIMEOUTTARGETTYPE_VOICEMAIL
+                QueueInterface::TIMEOUTTARGETTYPE_NUMBER,
+                QueueInterface::TIMEOUTTARGETTYPE_EXTENSION,
+                QueueInterface::TIMEOUTTARGETTYPE_VOICEMAIL
             ], 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -508,9 +499,9 @@ abstract class QueueAbstract
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($fullTargetType, [
-                self::FULLTARGETTYPE_NUMBER,
-                self::FULLTARGETTYPE_EXTENSION,
-                self::FULLTARGETTYPE_VOICEMAIL
+                QueueInterface::FULLTARGETTYPE_NUMBER,
+                QueueInterface::FULLTARGETTYPE_EXTENSION,
+                QueueInterface::FULLTARGETTYPE_VOICEMAIL
             ], 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 

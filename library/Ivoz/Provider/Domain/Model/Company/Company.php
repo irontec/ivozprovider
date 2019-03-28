@@ -87,7 +87,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             $this->setOnDemandRecordCode('');
         }
 
-        if ($this->getType() == Company::RETAIL) {
+        if ($this->getType() == self::TYPE_RETAIL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()
@@ -95,7 +95,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             }
         }
 
-        if ($this->getType() == Company::RESIDENTIAL) {
+        if ($this->getType() == self::TYPE_RESIDENTIAL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()

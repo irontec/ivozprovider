@@ -6,6 +6,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface TransformationRuleInterface extends LoggableEntityInterface
 {
+    const TYPE_CALLERIN = 'callerin';
+    const TYPE_CALLEEIN = 'calleein';
+    const TYPE_CALLEROUT = 'callerout';
+    const TYPE_CALLEEOUT = 'calleeout';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

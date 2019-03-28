@@ -3,6 +3,7 @@ namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 
 /**
  * HuntGroupsRelUser
@@ -15,7 +16,7 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
     {
         $huntGroup = $this->getHuntGroup();
 
-        if ($huntGroup->getStrategy() === HuntGroup::STRATEGY_RINGALL) {
+        if ($huntGroup->getStrategy() === HuntGroupInterface::STRATEGY_RINGALL) {
             return;
         }
 

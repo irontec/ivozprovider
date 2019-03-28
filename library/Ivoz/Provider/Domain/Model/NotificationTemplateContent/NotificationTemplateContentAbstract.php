@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class NotificationTemplateContentAbstract
 {
-    const BODYTYPE_TEXTPLAIN = 'text/plain';
-    const BODYTYPE_TEXTHTML = 'text/html';
-
     /**
      * @var string | null
      */
@@ -329,8 +326,8 @@ abstract class NotificationTemplateContentAbstract
         Assertion::notNull($bodyType, 'bodyType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($bodyType, 25, 'bodyType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($bodyType, [
-            self::BODYTYPE_TEXTPLAIN,
-            self::BODYTYPE_TEXTHTML
+            NotificationTemplateContentInterface::BODYTYPE_TEXTPLAIN,
+            NotificationTemplateContentInterface::BODYTYPE_TEXTHTML
         ], 'bodyTypevalue "%s" is not an element of the valid values: %s');
 
         $this->bodyType = $bodyType;

@@ -6,6 +6,11 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface PsEndpointInterface extends LoggableEntityInterface
 {
+    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

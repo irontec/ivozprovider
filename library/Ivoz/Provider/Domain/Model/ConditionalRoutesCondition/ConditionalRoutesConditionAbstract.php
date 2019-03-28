@@ -13,16 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class ConditionalRoutesConditionAbstract
 {
-    const ROUTETYPE_USER = 'user';
-    const ROUTETYPE_NUMBER = 'number';
-    const ROUTETYPE_IVR = 'ivr';
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
-    const ROUTETYPE_FRIEND = 'friend';
-    const ROUTETYPE_QUEUE = 'queue';
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
-    const ROUTETYPE_EXTENSION = 'extension';
-
     /**
      * @var integer
      */
@@ -314,15 +304,15 @@ abstract class ConditionalRoutesConditionAbstract
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routeType, [
-                self::ROUTETYPE_USER,
-                self::ROUTETYPE_NUMBER,
-                self::ROUTETYPE_IVR,
-                self::ROUTETYPE_HUNTGROUP,
-                self::ROUTETYPE_VOICEMAIL,
-                self::ROUTETYPE_FRIEND,
-                self::ROUTETYPE_QUEUE,
-                self::ROUTETYPE_CONFERENCEROOM,
-                self::ROUTETYPE_EXTENSION
+                ConditionalRoutesConditionInterface::ROUTETYPE_USER,
+                ConditionalRoutesConditionInterface::ROUTETYPE_NUMBER,
+                ConditionalRoutesConditionInterface::ROUTETYPE_IVR,
+                ConditionalRoutesConditionInterface::ROUTETYPE_HUNTGROUP,
+                ConditionalRoutesConditionInterface::ROUTETYPE_VOICEMAIL,
+                ConditionalRoutesConditionInterface::ROUTETYPE_FRIEND,
+                ConditionalRoutesConditionInterface::ROUTETYPE_QUEUE,
+                ConditionalRoutesConditionInterface::ROUTETYPE_CONFERENCEROOM,
+                ConditionalRoutesConditionInterface::ROUTETYPE_EXTENSION
             ], 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 

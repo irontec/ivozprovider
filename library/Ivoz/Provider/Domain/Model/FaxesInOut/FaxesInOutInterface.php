@@ -7,6 +7,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const TYPE_IN = 'In';
+    const TYPE_OUT = 'Out';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

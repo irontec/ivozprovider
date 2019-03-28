@@ -43,7 +43,7 @@ class TrunksLcrRuleTargetFactory
         $lcrGateways = array();
 
         switch ($outgoingRouting->getRoutingMode()) {
-            case OutgoingRouting::MODE_STATIC:
+            case OutgoingRoutingInterface::ROUTINGMODE_STATIC:
                 $carrier = $outgoingRouting->getCarrier();
                 if (empty($carrier)) {
                     throw new \DomainException('Carrier not found');
@@ -57,7 +57,7 @@ class TrunksLcrRuleTargetFactory
                 }
                 break;
 
-            case OutgoingRouting::MODE_LCR:
+            case OutgoingRoutingInterface::ROUTINGMODE_LCR:
                 // Lcr Rules use special dummy gateway
                 $lcrGateways[] = $this->trunksLcrGatewayRepository->findDummyGateway();
                 break;

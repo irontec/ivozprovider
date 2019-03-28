@@ -8,6 +8,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface IvrInterface extends LoggableEntityInterface
 {
+    const NOINPUTROUTETYPE_NUMBER = 'number';
+    const NOINPUTROUTETYPE_EXTENSION = 'extension';
+    const NOINPUTROUTETYPE_VOICEMAIL = 'voicemail';
+
+
+    const ERRORROUTETYPE_NUMBER = 'number';
+    const ERRORROUTETYPE_EXTENSION = 'extension';
+    const ERRORROUTETYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

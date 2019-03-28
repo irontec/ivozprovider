@@ -8,6 +8,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface ExternalCallFilterInterface extends LoggableEntityInterface
 {
+    const HOLIDAYTARGETTYPE_NUMBER = 'number';
+    const HOLIDAYTARGETTYPE_EXTENSION = 'extension';
+    const HOLIDAYTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
+    const OUTOFSCHEDULETARGETTYPE_NUMBER = 'number';
+    const OUTOFSCHEDULETARGETTYPE_EXTENSION = 'extension';
+    const OUTOFSCHEDULETARGETTYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array

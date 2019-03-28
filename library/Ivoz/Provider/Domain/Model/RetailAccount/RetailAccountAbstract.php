@@ -13,18 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class RetailAccountAbstract
 {
-    const TRANSPORT_UDP = 'udp';
-    const TRANSPORT_TCP = 'tcp';
-    const TRANSPORT_TLS = 'tls';
-
-
-    const DIRECTCONNECTIVITY_YES = 'yes';
-    const DIRECTCONNECTIVITY_NO = 'no';
-
-
-    const DDIIN_YES = 'yes';
-    const DDIIN_NO = 'no';
-
     /**
      * @var string
      */
@@ -354,9 +342,9 @@ abstract class RetailAccountAbstract
         Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
         Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($transport, [
-            self::TRANSPORT_UDP,
-            self::TRANSPORT_TCP,
-            self::TRANSPORT_TLS
+            RetailAccountInterface::TRANSPORT_UDP,
+            RetailAccountInterface::TRANSPORT_TCP,
+            RetailAccountInterface::TRANSPORT_TLS
         ], 'transportvalue "%s" is not an element of the valid values: %s');
 
         $this->transport = $transport;
@@ -501,8 +489,8 @@ abstract class RetailAccountAbstract
     {
         Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
         Assertion::choice($directConnectivity, [
-            self::DIRECTCONNECTIVITY_YES,
-            self::DIRECTCONNECTIVITY_NO
+            RetailAccountInterface::DIRECTCONNECTIVITY_YES,
+            RetailAccountInterface::DIRECTCONNECTIVITY_NO
         ], 'directConnectivityvalue "%s" is not an element of the valid values: %s');
 
         $this->directConnectivity = $directConnectivity;
@@ -531,8 +519,8 @@ abstract class RetailAccountAbstract
     {
         Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
         Assertion::choice($ddiIn, [
-            self::DDIIN_YES,
-            self::DDIIN_NO
+            RetailAccountInterface::DDIIN_YES,
+            RetailAccountInterface::DDIIN_NO
         ], 'ddiInvalue "%s" is not an element of the valid values: %s');
 
         $this->ddiIn = $ddiIn;

@@ -13,23 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class DdiAbstract
 {
-    const RECORDCALLS_NONE = 'none';
-    const RECORDCALLS_ALL = 'all';
-    const RECORDCALLS_INBOUND = 'inbound';
-    const RECORDCALLS_OUTBOUND = 'outbound';
-
-
-    const ROUTETYPE_USER = 'user';
-    const ROUTETYPE_IVR = 'ivr';
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
-    const ROUTETYPE_FAX = 'fax';
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
-    const ROUTETYPE_FRIEND = 'friend';
-    const ROUTETYPE_QUEUE = 'queue';
-    const ROUTETYPE_CONDITIONAL = 'conditional';
-    const ROUTETYPE_RESIDENTIAL = 'residential';
-    const ROUTETYPE_RETAIL = 'retail';
-
     /**
      * @var string
      */
@@ -424,10 +407,10 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'recordCalls value "%s" is null, but non null value was expected.');
         Assertion::maxLength($recordCalls, 25, 'recordCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($recordCalls, [
-            self::RECORDCALLS_NONE,
-            self::RECORDCALLS_ALL,
-            self::RECORDCALLS_INBOUND,
-            self::RECORDCALLS_OUTBOUND
+            DdiInterface::RECORDCALLS_NONE,
+            DdiInterface::RECORDCALLS_ALL,
+            DdiInterface::RECORDCALLS_INBOUND,
+            DdiInterface::RECORDCALLS_OUTBOUND
         ], 'recordCallsvalue "%s" is not an element of the valid values: %s');
 
         $this->recordCalls = $recordCalls;
@@ -485,16 +468,16 @@ abstract class DdiAbstract
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routeType, [
-                self::ROUTETYPE_USER,
-                self::ROUTETYPE_IVR,
-                self::ROUTETYPE_HUNTGROUP,
-                self::ROUTETYPE_FAX,
-                self::ROUTETYPE_CONFERENCEROOM,
-                self::ROUTETYPE_FRIEND,
-                self::ROUTETYPE_QUEUE,
-                self::ROUTETYPE_CONDITIONAL,
-                self::ROUTETYPE_RESIDENTIAL,
-                self::ROUTETYPE_RETAIL
+                DdiInterface::ROUTETYPE_USER,
+                DdiInterface::ROUTETYPE_IVR,
+                DdiInterface::ROUTETYPE_HUNTGROUP,
+                DdiInterface::ROUTETYPE_FAX,
+                DdiInterface::ROUTETYPE_CONFERENCEROOM,
+                DdiInterface::ROUTETYPE_FRIEND,
+                DdiInterface::ROUTETYPE_QUEUE,
+                DdiInterface::ROUTETYPE_CONDITIONAL,
+                DdiInterface::ROUTETYPE_RESIDENTIAL,
+                DdiInterface::ROUTETYPE_RETAIL
             ], 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
