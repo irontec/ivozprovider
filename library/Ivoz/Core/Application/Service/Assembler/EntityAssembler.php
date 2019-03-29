@@ -92,7 +92,7 @@ class EntityAssembler
 
     /**
      * @param DataTransferObjectInterface $dto
-     * @return \Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface
+     * @return \Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface | null
      */
     private function create(DataTransferObjectInterface $dto)
     {

@@ -56,10 +56,13 @@ class AdministratorDoctrineRepository extends ServiceEntityRepository implements
      */
     public function findPlatformAdminByUsername(string $username)
     {
-        return $this->findOneBy([
+        /** @var AdministratorInterface | null $admin */
+        $admin = $this->findOneBy([
             'username' => $username,
             'brand' => null,
             'company' => null
         ]);
+
+        return $admin;
     }
 }

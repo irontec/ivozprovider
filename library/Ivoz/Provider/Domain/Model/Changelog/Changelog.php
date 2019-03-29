@@ -36,7 +36,7 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
+     * @return string
      */
     public function getId()
     {

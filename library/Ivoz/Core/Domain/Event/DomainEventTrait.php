@@ -16,7 +16,7 @@ trait DomainEventTrait
 
     protected function setEventTimestamp()
     {
-        $this->occurredOn = new \DateTime(
+        $this->occurredOn = new \DateTimeImmutable(
             'now',
             new \DateTimeZone('UTC')
         );
@@ -26,7 +26,7 @@ trait DomainEventTrait
 
     public function getOccurredOn()
     {
-        return $this->occurredOn;
+        return clone $this->occurredOn;
     }
 
     public function getMicrotime()

@@ -94,7 +94,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
     protected function buildDirectoryTreeById(int $id): string
     {
         if ($this->storeInBaseFolder) {
-            return null;
+            return '';
         }
 
         if (!is_numeric($id)) {

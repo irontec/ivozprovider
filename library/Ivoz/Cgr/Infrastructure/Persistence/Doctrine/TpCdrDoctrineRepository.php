@@ -36,7 +36,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
 
     /**
      * @param string $cgrid
-     * @return int
+     * @return int | null
      */
     public function getDefaultRunByCgrid(string $cgrid)
     {

@@ -108,6 +108,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
                 -3
             );
 
+            /** @var EntityInterface $entity */
             $entity = $this->em->find(
                 $entityClass,
                 $dto->getId()
@@ -116,6 +117,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
         if (is_null($entity)) {
             $entityClass = substr(get_class($dto), 0, -3);
+
             $entity = $this
                 ->createEntityFromDto
                 ->execute($entityClass, $dto);

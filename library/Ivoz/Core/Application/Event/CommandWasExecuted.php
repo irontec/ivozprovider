@@ -100,7 +100,7 @@ class CommandWasExecuted implements CommandEventInterface
 
     public function getOccurredOn()
     {
-        return $this->occurredOn;
+        return clone $this->occurredOn;
     }
 
     public function getMicrotime()

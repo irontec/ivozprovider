@@ -62,13 +62,13 @@ class UserTimezoneInjector
     {
         $token = $this->tokenStorage->getToken();
         if (!$token) {
-            return;
+            return null;
         }
 
         /** @var AdministratorInterface | UserInterface $user */
         $user = $token->getUser();
         if (!$user instanceof EntityInterface) {
-            return;
+            return null;
         }
 
         /** @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timeZone */

@@ -80,7 +80,8 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
+     * @todo awkward return type
+     * @return array of \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface or null
      */
     public function getRoutingPatterns()
     {

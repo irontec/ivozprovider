@@ -146,7 +146,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     /**
      * return associated endpoint with the user
      *
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface | null
      */
     public function getEndpoint()
     {
@@ -160,7 +160,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     }
 
     /**
-     * @return string or null
+     * @return string | null
      */
     public function getUserTerminalInterface()
     {
@@ -199,7 +199,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOutgoingDdiNumber()
     {
