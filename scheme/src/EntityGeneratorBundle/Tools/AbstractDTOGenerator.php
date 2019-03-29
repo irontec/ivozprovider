@@ -88,7 +88,7 @@ public function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
      */
     protected static $setIdMethodTemplate =
     '/**
- * @param integer $id | null
+ * @param mixed | null $id
  *
  * @return static
  */
@@ -118,7 +118,7 @@ public function <methodName>()
      */
     protected static $getIdMethodTemplate =
     '/**
- * @return integer | null
+ * @return mixed | null
  */
 public function <methodName>Id()
 {
