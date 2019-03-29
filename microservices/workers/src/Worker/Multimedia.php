@@ -10,6 +10,9 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use GearmanJob;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 /**
  * @Gearman\Work(
@@ -21,33 +24,23 @@ use GearmanJob;
  */
 class Multimedia
 {
+    use RegisterCommandTrait;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    private $eventPublisher;
+    private $requestId;
+    private $em;
+    private $entityTools;
+    private $logger;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
-    /**
-     * Multimedia constructor.
-     * @param EntityManagerInterface $em
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     */
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         EntityManagerInterface $em,
         EntityTools $entityTools,
         Logger $logger
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->em = $em;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
@@ -70,6 +63,7 @@ class Multimedia
     {
         // Thanks Gearmand, you've done your job
         $serializedJob->sendComplete("DONE");
+        $this->registerCommand('Worker', 'multimedia');
 
         $job = igbinary_unserialize($serializedJob->workload());
 

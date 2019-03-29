@@ -12,6 +12,9 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 /**
  * @Gearman\Work(
@@ -23,46 +26,27 @@ use Psr\Log\LoggerInterface;
  */
 class Invoices
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    use RegisterCommandTrait;
 
-    /**
-     * @var InvoiceRepository
-     */
-    protected $invoiceRepository;
+    private $eventPublisher;
+    private $requestId;
+    private $entityTools;
+    private $invoiceRepository;
+    private $billableCallRepository;
+    private $generator;
+    private $logger;
 
-    /**
-     * @var BillableCallRepository
-     */
-    protected $billableCallRepository;
-
-    /**
-     * @var Generator
-     */
-    protected $generator;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * Invoices constructor.
-     * @param EntityTools $entityTools
-     * @param InvoiceRepository $invoiceRepository
-     * @param BillableCallRepository $billableCallRepository
-     * @param Generator $generator
-     * @param LoggerInterface $logger
-     */
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         EntityTools $entityTools,
         InvoiceRepository $invoiceRepository,
         BillableCallRepository $billableCallRepository,
         Generator $generator,
         LoggerInterface $logger
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->entityTools = $entityTools;
         $this->invoiceRepository = $invoiceRepository;
         $this->billableCallRepository = $billableCallRepository;
@@ -82,6 +66,9 @@ class Invoices
     public function create(GearmanJob $serializedJob)
     {
         // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
+        $this->registerCommand('Worker', 'invoices');
+
         $job = igbinary_unserialize($serializedJob->workload());
 
         $id = $job->getId();
