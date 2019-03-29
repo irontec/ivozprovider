@@ -13,6 +13,9 @@ use Mmoreram\GearmanBundle\Driver\Gearman;
 use Monolog\Logger;
 use PhpXmlRpc\Client;
 use PhpXmlRpc\Request;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 /**
  * @Gearman\Work(
@@ -24,39 +27,29 @@ use PhpXmlRpc\Request;
  */
 class Xmlrpc
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    use RegisterCommandTrait;
 
-    /**
-     * @var Logger
-     */
-    protected $logger;
+    private $eventPublisher;
+    private $requestId;
+    private $em;
+    private $logger;
+    private $retryInterval = 180;
 
-    /**
-     * Retry interval for delayed jobs
-     *
-     * @var int
-     */
-    protected $retryInterval = 180;
-
-    /**
-     * Xmlrpc constructor.
-     *
-     * @param EntityManagerInterface $em
-     * @param Logger $logger
-     */
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         EntityManagerInterface $em,
         Logger $logger
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->em = $em;
         $this->logger = $logger;
     }
 
     /**
      * Send Inmmediate XMLRPC request to Kamailio Proxies
+     *
      *
      * @Gearman\Job(
      *     name = "immediate",
@@ -70,6 +63,7 @@ class Xmlrpc
     {
         // Thanks Gearmand, you've done your job
         $serializedJob->sendComplete("DONE");
+        $this->registerCommand('Worker', 'xmlrpc');
 
         /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
         $job = igbinary_unserialize($serializedJob->workload());

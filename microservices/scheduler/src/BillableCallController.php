@@ -2,31 +2,36 @@
 
 use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr as BillableCallFromTrunksCdr;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 use Psr\Log\LoggerInterface;
 
 class BillableCallController
 {
-    /**
-     * @var BillableCallFromTrunksCdr
-     */
-    protected $billableCallFromTrunksCdr;
+    use RegisterCommandTrait;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    private $billableCallFromTrunksCdr;
+    private $eventPublisher;
+    private $requestId;
+    private $logger;
 
     public function __construct(
         BillableCallFromTrunksCdr $billableCallFromTrunksCdr,
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         LoggerInterface $logger
     ) {
         $this->billableCallFromTrunksCdr = $billableCallFromTrunksCdr;
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->logger = $logger;
     }
 
     public function indexAction()
     {
         try {
+            $this->registerCommand('Scheduler', 'billableCall');
             $this->billableCallFromTrunksCdr->execute();
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());

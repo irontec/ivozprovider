@@ -7,6 +7,9 @@ use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates as CgratesJob;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 /**
  * @Gearman\Work(
@@ -18,26 +21,21 @@ use Psr\Log\LoggerInterface;
  */
 class Cgrates
 {
+    use RegisterCommandTrait;
 
-    /**
-     * @var ReloadService
-     */
-    protected $reloadService;
+    private $eventPublisher;
+    private $requestId;
+    private $reloadService;
+    private $logger;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * Multimedia constructor.
-     * @param ReloadService $reloadService
-     * @param LoggerInterface $logger
-     */
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         ReloadService $reloadService,
         LoggerInterface $logger
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->reloadService = $reloadService;
         $this->logger = $logger;
     }
@@ -59,6 +57,7 @@ class Cgrates
     {
         // Thanks Gearmand, you've done your job
         $serializedJob->sendComplete("DONE");
+        $this->registerCommand('Worker', 'cgrates');
 
         /** @var CgratesJob $job */
         $job = igbinary_unserialize($serializedJob->workload());
