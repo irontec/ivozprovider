@@ -15,14 +15,19 @@ Feature: Retrieve web portals
     """
       [
           {
-              "url": "https://test-ivozprovider.irontec.com",
-              "name": "Irontec Ivozprovider God Portal",
+              "url": "https://brand-ivozprovider.irontec.com",
+              "name": "Irontec Ivozprovider Brand Admin Portal",
               "id": 2
           },
           {
-              "url": "https://users.artemis.irontec.com",
-              "name": "Users",
+              "url": "https://client-ivozprovider.irontec.com",
+              "name": "Irontec Ivozprovider Client Admin Portal",
               "id": 3
+          },
+          {
+              "url": "https://users-ivozprovider.irontec.com",
+              "name": "Irontec Ivozprovider User Admin Portal",
+              "id": 4
           }
       ]
     """
@@ -37,10 +42,10 @@ Feature: Retrieve web portals
       And the JSON should be like:
     """
       {
-          "url": "https:\/\/test-ivozprovider.irontec.com",
+          "url": "https://brand-ivozprovider.irontec.com",
           "klearTheme": "irontec-red",
           "urlType": "brand",
-          "name": "Irontec Ivozprovider God Portal",
+          "name": "Irontec Ivozprovider Brand Admin Portal",
           "userTheme": "default",
           "id": 2,
           "logo": {

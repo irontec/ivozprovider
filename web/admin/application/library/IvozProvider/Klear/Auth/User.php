@@ -3,9 +3,9 @@
 namespace IvozProvider\Klear\Auth;
 
 use Ivoz\Provider\Domain\Model\Brand\Brand;
-use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 class User extends \Klear_Model_UserAdvanced
 {
@@ -56,7 +56,7 @@ class User extends \Klear_Model_UserAdvanced
         return $this;
     }
 
-    public function setBrand(BrandDTO $brand)
+    public function setBrand(BrandDto $brand)
     {
         $this->brand = $brand;
         $this->brandId = $brand->getId();
@@ -85,7 +85,7 @@ class User extends \Klear_Model_UserAdvanced
     }
 
 
-    public function setCompany(CompanyDTO $company)
+    public function setCompany(CompanyDto $company)
     {
         $this->company = $company;
         $this->companyId = $company->getId();

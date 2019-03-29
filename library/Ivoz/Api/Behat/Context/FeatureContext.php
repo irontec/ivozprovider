@@ -4,13 +4,15 @@ namespace Ivoz\Api\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\MinkExtension\Context\MinkAwareContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 use Symfony\Component\Filesystem\Filesystem;
 use Behatch\HttpCall\Request;
 
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context, SnippetAcceptingContext
+class FeatureContext extends RawMinkContext implements Context, SnippetAcceptingContext
 {
     protected $cacheDir;
 
@@ -53,7 +55,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         $response = $this->request->send(
             'POST',
-            'admin_login',
+            $this->locatePath('admin_login'),
             [
                 'username' => $username,
                 'password' => 'changeme'

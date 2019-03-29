@@ -9,6 +9,18 @@ services:
     autoconfigure: true
     public: false
 
+  Service\UserProvider::User:
+    class: Service\UserProvider
+    arguments:
+      $identifierField: 'email'
+      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
+
+  Service\UserProvider::Administrator:
+    class: Service\UserProvider
+    arguments:
+      $identifierField: 'username'
+      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
   Service\AuthEndpointDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 5

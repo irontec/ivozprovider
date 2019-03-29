@@ -2,23 +2,23 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Jwt;
 
+use Ivoz\Provider\Infrastructure\Api\Security\User\MutableUserProviderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\TokenExtractorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Ivoz\Provider\Domain\Model\User\User;
-use \Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider;
 
-class TokenAuthenticator extends JWTTokenAuthenticator
+class UserTokenAuthenticator extends JWTTokenAuthenticator
 {
     /**
      * @var JWTTokenManagerInterface
      */
     protected $jwtManager;
-
 
     protected $tokenStorage;
 
@@ -37,6 +37,21 @@ class TokenAuthenticator extends JWTTokenAuthenticator
         $this->tokenStorage = $tokenStorage;
 
         parent::__construct($jwtManager, $dispatcher, $tokenExtractor);
+    }
+
+    public function supports(Request $request)
+    {
+        $canExtractToken = parent::supports($request);
+        if (!$canExtractToken) {
+            return false;
+        }
+
+        $payload =  $this->getCredentials($request)->getPayload();
+        $roles = $payload['roles'] ?? [];
+
+        $isCompanyUser = in_array('ROLE_COMPANY_USER', $roles, true);
+
+        return $isCompanyUser;
     }
 
     /**
@@ -68,15 +83,16 @@ class TokenAuthenticator extends JWTTokenAuthenticator
      */
     protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity)
     {
-        if (!$userProvider instanceof UserProvider) {
-            return parent::loadUser(...func_get_args());
+        if (!$userProvider instanceof MutableUserProviderInterface) {
+            throw new \RuntimeException(
+                'MutableUserProviderInterface was espected in order to load a user'
+            );
         }
 
-        if (in_array('ROLE_COMPANY_USER', $payload['roles'])) {
-            $userProvider
-                ->setEntityClass(User::class)
-                ->setUserIdentityField('email');
-        }
+        /** @var MutableUserProviderInterface $userProvider */
+        $userProvider
+            ->setEntityClass(User::class)
+            ->setUserIdentityField('email');
 
         return $userProvider->loadUserByUsername($identity);
     }

@@ -5,21 +5,37 @@ namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\User\User;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
-class UserProvider implements UserProviderInterface
+trait UserProviderTrait
 {
     private $registry;
+    private $requestStack;
+    private $webPortalRepository;
+    private $logger;
     private $managerName;
     private $entityClass;
     private $identifierField;
 
-    public function __construct(ManagerRegistry $registry, $managerName = null, string $entityClass, string $identifierField)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        RequestStack $requestStack,
+        WebPortalRepository $webPortalRepository,
+        LoggerInterface $logger,
+        string $entityClass,
+        string $identifierField,
+        $managerName = null
+    ) {
         $this->registry = $registry;
+        $this->requestStack = $requestStack;
+        $this->webPortalRepository = $webPortalRepository;
+        $this->logger = $logger;
         $this->managerName = $managerName;
 
         $this->entityClass = $entityClass;
@@ -27,41 +43,29 @@ class UserProvider implements UserProviderInterface
     }
 
     /**
-     * @param string $class
-     * @return $this
-     */
-    public function setEntityClass(string $class)
-    {
-        $this->entityClass = $class;
-
-        return $this;
-    }
-
-    /**
-     * @param string $identifierField
-     * @return $this
-     */
-    public function setUserIdentityField(string $identifierField)
-    {
-        $this->identifierField = $identifierField;
-
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function loadUserByUsername($username)
     {
-        $repository = $this->getRepository();
-        $user = $repository->findOneBy(array($this->identifierField => $username));
+        try {
+            $user = $this->findUser([
+                $this->identifierField => $username
+            ]);
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+            throw $e;
+        }
 
         if (null === $user) {
-            throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
+            $errorMsg = sprintf('User "%s" not found.', $username);
+            $this->logger->debug($errorMsg);
+            throw new UsernameNotFoundException($errorMsg);
         }
 
         return $user;
     }
+
+    abstract protected function findUser(array $criteria);
 
     /**
      * {@inheritdoc}
@@ -93,14 +97,11 @@ class UserProvider implements UserProviderInterface
         return $refreshedUser;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsClass($class)
+    private function getCurrentHost(): string
     {
-        return
-            ($class === Administrator::class || is_subclass_of($class, Administrator::class))
-            || ($class === User::class || is_subclass_of($class, User::class));
+        $request = $this->requestStack->getCurrentRequest();
+
+        return $request->getSchemeAndHttpHost();
     }
 
     private function getObjectManager()

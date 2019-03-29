@@ -12,4 +12,11 @@ interface WebPortalRepository extends ObjectRepository, Selectable
      * @return WebPortalInterface | null
      */
     public function findUserUrlByServerName(string $serverName);
+
+    /**
+     * @param string $url
+     * @return int | null
+     * @throws \DomainException
+     */
+    public function findBrandIdByUrl(string $url);
 }

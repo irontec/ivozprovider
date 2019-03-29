@@ -16,7 +16,7 @@ default:
         env: "test"
         debug: "true"
     Behat\MinkExtension:
-      base_url: "https://ivozprovider/"
+      base_url: "https://client-ivozprovider.irontec.com"
       sessions:
         default:
           symfony2: ~

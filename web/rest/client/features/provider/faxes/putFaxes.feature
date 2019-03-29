@@ -14,7 +14,7 @@ Feature: Update faxes
           "name": "Updated Fax",
           "email": "something@irontec.com",
           "sendByEmail": true,
-          "company": 2,
+          "company": 1,
           "outgoingDdi": 1
       }
     """

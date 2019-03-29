@@ -48,6 +48,13 @@ Feature: Retrieve administrators
               "name": "Admin in UTC timezone",
               "lastname": "Admin Lastname",
               "id": 5
+          },
+          {
+              "email": "utc@irontec.com",
+              "active": true,
+              "name": "Brand Admin in UTC timezone",
+              "lastname": "Lastname",
+              "id": 6
           }
       ]
     """

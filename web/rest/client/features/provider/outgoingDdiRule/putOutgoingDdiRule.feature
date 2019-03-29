@@ -13,7 +13,7 @@ Feature: Update outgoing ddi rules
       {
           "name": "updatedRule",
           "defaultAction": "force",
-          "company": 2,
+          "company": 1,
           "forcedDdi": 1
       }
     """
