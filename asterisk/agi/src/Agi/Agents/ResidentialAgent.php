@@ -111,6 +111,7 @@ class ResidentialAgent implements AgentInterface
 
     /**
      * Return residential voicemail identifier
+     * @return string
      */
     public function getVoiceMail()
     {

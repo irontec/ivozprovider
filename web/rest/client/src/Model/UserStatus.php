@@ -154,7 +154,7 @@ class UserStatus
     }
 
     /**
-     * @return string
+     * @return UserStatus
      */
     public function setLanguage($language)
     {

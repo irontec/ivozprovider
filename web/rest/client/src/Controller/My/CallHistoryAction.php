@@ -20,7 +20,7 @@ class CallHistoryAction
     protected $tokenStorage;
 
     /**
-     * @var EntityRepository
+     * @var EntityRepository | UsersCdrRepository
      */
     protected $usersCdrRepository;
 
@@ -99,7 +99,7 @@ class CallHistoryAction
      * @param QueryBuilder $qb
      * @param string $entityClass
      * @param string $operationName
-     * @return Paginator
+     * @return Paginator | array
      */
     protected function applyCollectionExtensions(QueryBuilder $qb, string $entityClass, string $operationName)
     {
