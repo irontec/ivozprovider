@@ -1436,7 +1436,9 @@ public function <methodName>(<criteriaArgument>)
                 );
             }
 
-            if ($isNullable) {
+            if ($isNullable && count($assertions) === 1) {
+                $assertions = [];
+            } elseif ($isNullable) {
                 $assertions[] = '}';
             }
         }
