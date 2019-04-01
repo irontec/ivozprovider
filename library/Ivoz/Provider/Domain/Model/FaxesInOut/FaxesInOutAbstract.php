@@ -392,9 +392,6 @@ abstract class FaxesInOutAbstract
      */
     protected function setStatus($status = null)
     {
-        if (!is_null($status)) {
-        }
-
         $this->status = $status;
 
         return $this;

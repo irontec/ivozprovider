@@ -210,9 +210,6 @@ abstract class FixedCostAbstract
      */
     protected function setDescription($description = null)
     {
-        if (!is_null($description)) {
-        }
-
         $this->description = $description;
 
         return $this;

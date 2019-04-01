@@ -531,9 +531,6 @@ abstract class BillableCallAbstract
      */
     protected function setPriceDetails($priceDetails = null)
     {
-        if (!is_null($priceDetails)) {
-        }
-
         $this->priceDetails = $priceDetails;
 
         return $this;

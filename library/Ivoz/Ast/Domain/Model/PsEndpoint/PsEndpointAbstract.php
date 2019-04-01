@@ -539,9 +539,6 @@ abstract class PsEndpointAbstract
      */
     protected function setDirectMedia($directMedia = null)
     {
-        if (!is_null($directMedia)) {
-        }
-
         $this->directMedia = $directMedia;
 
         return $this;
@@ -654,9 +651,6 @@ abstract class PsEndpointAbstract
      */
     protected function setSendDiversion($sendDiversion = null)
     {
-        if (!is_null($sendDiversion)) {
-        }
-
         $this->sendDiversion = $sendDiversion;
 
         return $this;
@@ -681,9 +675,6 @@ abstract class PsEndpointAbstract
      */
     protected function setSendPai($sendPai = null)
     {
-        if (!is_null($sendPai)) {
-        }
-
         $this->sendPai = $sendPai;
 
         return $this;
@@ -762,9 +753,6 @@ abstract class PsEndpointAbstract
      */
     protected function setTrustIdInbound($trustIdInbound = null)
     {
-        if (!is_null($trustIdInbound)) {
-        }
-
         $this->trustIdInbound = $trustIdInbound;
 
         return $this;

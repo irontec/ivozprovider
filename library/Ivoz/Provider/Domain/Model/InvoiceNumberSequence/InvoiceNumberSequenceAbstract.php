@@ -340,9 +340,6 @@ abstract class InvoiceNumberSequenceAbstract
      */
     protected function setLatestValue($latestValue = null)
     {
-        if (!is_null($latestValue)) {
-        }
-
         $this->latestValue = $latestValue;
 
         return $this;

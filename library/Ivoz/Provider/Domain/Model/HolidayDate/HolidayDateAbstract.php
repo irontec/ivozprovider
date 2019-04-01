@@ -338,9 +338,6 @@ abstract class HolidayDateAbstract
      */
     protected function setTimeIn($timeIn = null)
     {
-        if (!is_null($timeIn)) {
-        }
-
         $this->timeIn = $timeIn;
 
         return $this;
@@ -365,9 +362,6 @@ abstract class HolidayDateAbstract
      */
     protected function setTimeOut($timeOut = null)
     {
-        if (!is_null($timeOut)) {
-        }
-
         $this->timeOut = $timeOut;
 
         return $this;

@@ -659,9 +659,6 @@ abstract class VoicemailAbstract
      */
     protected function setAttach($attach = null)
     {
-        if (!is_null($attach)) {
-        }
-
         $this->attach = $attach;
 
         return $this;
@@ -798,9 +795,6 @@ abstract class VoicemailAbstract
      */
     protected function setDeleteVoicemail($deleteVoicemail = null)
     {
-        if (!is_null($deleteVoicemail)) {
-        }
-
         $this->deleteVoicemail = $deleteVoicemail;
 
         return $this;
@@ -825,9 +819,6 @@ abstract class VoicemailAbstract
      */
     protected function setSaycid($saycid = null)
     {
-        if (!is_null($saycid)) {
-        }
-
         $this->saycid = $saycid;
 
         return $this;
@@ -852,9 +843,6 @@ abstract class VoicemailAbstract
      */
     protected function setSendVoicemail($sendVoicemail = null)
     {
-        if (!is_null($sendVoicemail)) {
-        }
-
         $this->sendVoicemail = $sendVoicemail;
 
         return $this;
@@ -879,9 +867,6 @@ abstract class VoicemailAbstract
      */
     protected function setReview($review = null)
     {
-        if (!is_null($review)) {
-        }
-
         $this->review = $review;
 
         return $this;
@@ -906,9 +891,6 @@ abstract class VoicemailAbstract
      */
     protected function setTempgreetwarn($tempgreetwarn = null)
     {
-        if (!is_null($tempgreetwarn)) {
-        }
-
         $this->tempgreetwarn = $tempgreetwarn;
 
         return $this;
@@ -933,9 +915,6 @@ abstract class VoicemailAbstract
      */
     protected function setOperator($operator = null)
     {
-        if (!is_null($operator)) {
-        }
-
         $this->operator = $operator;
 
         return $this;
@@ -960,9 +939,6 @@ abstract class VoicemailAbstract
      */
     protected function setEnvelope($envelope = null)
     {
-        if (!is_null($envelope)) {
-        }
-
         $this->envelope = $envelope;
 
         return $this;
@@ -1018,9 +994,6 @@ abstract class VoicemailAbstract
      */
     protected function setForcename($forcename = null)
     {
-        if (!is_null($forcename)) {
-        }
-
         $this->forcename = $forcename;
 
         return $this;
@@ -1045,9 +1018,6 @@ abstract class VoicemailAbstract
      */
     protected function setForcegreetings($forcegreetings = null)
     {
-        if (!is_null($forcegreetings)) {
-        }
-
         $this->forcegreetings = $forcegreetings;
 
         return $this;

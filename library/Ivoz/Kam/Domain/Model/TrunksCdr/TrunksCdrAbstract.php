@@ -659,9 +659,6 @@ abstract class TrunksCdrAbstract
      */
     protected function setDirection($direction = null)
     {
-        if (!is_null($direction)) {
-        }
-
         $this->direction = $direction;
 
         return $this;
