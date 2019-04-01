@@ -110,6 +110,14 @@ class ResidentialAgent implements AgentInterface
     }
 
     /**
+     * Residential devices have always voicemail enabled
+     */
+    public function getVoicemailEnabled()
+    {
+        return true;
+    }
+
+    /**
      * Return residential voicemail identifier
      * @return string
      */

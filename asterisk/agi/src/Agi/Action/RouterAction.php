@@ -1,6 +1,7 @@
 <?php
 namespace Agi\Action;
 
+use Agi\Agents\AgentInterface;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -272,7 +273,7 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteVoicemail(UserInterface $routeVoicemail = null, bool $playBanner = false)
+    public function setRouteVoicemail(AgentInterface $routeVoicemail = null, bool $playBanner = false)
     {
         $this->routeVoiceMail = $routeVoicemail;
         $this->routeVoicemailBanner = $playBanner;
