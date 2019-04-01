@@ -275,9 +275,6 @@ abstract class OutgoingRoutingAbstract
      */
     protected function setType($type = null)
     {
-        if (!is_null($type)) {
-        }
-
         $this->type = $type;
 
         return $this;

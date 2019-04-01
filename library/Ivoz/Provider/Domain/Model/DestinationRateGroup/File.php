@@ -151,9 +151,6 @@ class File
      */
     protected function setImporterArguments($importerArguments = null)
     {
-        if (!is_null($importerArguments)) {
-        }
-
         $this->importerArguments = $importerArguments;
 
         return $this;

@@ -481,9 +481,6 @@ abstract class QueueAbstract
      */
     protected function setStrategy($strategy = null)
     {
-        if (!is_null($strategy)) {
-        }
-
         $this->strategy = $strategy;
 
         return $this;

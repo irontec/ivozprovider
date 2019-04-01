@@ -262,9 +262,6 @@ abstract class ChangelogAbstract
      */
     protected function setData($data = null)
     {
-        if (!is_null($data)) {
-        }
-
         $this->data = $data;
 
         return $this;

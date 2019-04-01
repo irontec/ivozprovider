@@ -298,9 +298,6 @@ abstract class CommandlogAbstract
      */
     protected function setArguments($arguments = null)
     {
-        if (!is_null($arguments)) {
-        }
-
         $this->arguments = $arguments;
 
         return $this;
@@ -325,9 +322,6 @@ abstract class CommandlogAbstract
      */
     protected function setAgent($agent = null)
     {
-        if (!is_null($agent)) {
-        }
-
         $this->agent = $agent;
 
         return $this;
