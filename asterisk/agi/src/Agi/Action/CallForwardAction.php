@@ -129,7 +129,7 @@ class CallForwardAction
         $this->routerAction
             ->setRouteType($this->cfw->getTargetType())
             ->setRouteExtension($this->cfw->getExtension())
-            ->setRouteVoicemail($this->cfw->getVoiceMailUser(), true)
+            ->setRouteVoicemail($caller, true)
             ->setRouteExternal($this->cfw->getNumberValueE164())
             ->route();
     }

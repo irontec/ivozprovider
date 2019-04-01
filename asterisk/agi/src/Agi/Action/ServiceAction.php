@@ -155,11 +155,11 @@ class ServiceAction
                 return;
             }
 
-            // Checkvoicemail for exten user
+            // Check voicemail for exten user
             $this->agi->verbose("Checking user %s voicemail", $extension->getUser()->getName());
             $this->agi->checkVoicemail($extension->getUser()->getVoiceMail());
         } else {
-            // Checkvoicemail for caller user (without requesting password)
+            // Check voicemail for caller user (without requesting password)
             $this->agi->checkVoicemail($caller->getVoiceMail(), "s");
         }
     }
