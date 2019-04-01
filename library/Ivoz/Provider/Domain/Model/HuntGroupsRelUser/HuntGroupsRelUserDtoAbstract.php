@@ -156,7 +156,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -170,7 +170,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getHuntGroupId()
     {
@@ -202,7 +202,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -216,7 +216,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getUserId()
     {

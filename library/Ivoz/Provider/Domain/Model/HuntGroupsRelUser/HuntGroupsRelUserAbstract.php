@@ -73,7 +73,7 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param HuntGroupsRelUserInterface|null $entity
      * @param int $depth
      * @return HuntGroupsRelUserDto|null
      */
@@ -93,7 +93,10 @@ abstract class HuntGroupsRelUserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var HuntGroupsRelUserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -177,7 +180,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param integer $timeoutTime
      *
-     * @return self
+     * @return static
      */
     protected function setTimeoutTime($timeoutTime = null)
     {
@@ -208,7 +211,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority = null)
     {
@@ -239,7 +242,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
      *
-     * @return self
+     * @return static
      */
     public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
     {
@@ -263,7 +266,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
     {

@@ -63,7 +63,7 @@ abstract class PickUpRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param PickUpRelUserInterface|null $entity
      * @param int $depth
      * @return PickUpRelUserDto|null
      */
@@ -83,7 +83,10 @@ abstract class PickUpRelUserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var PickUpRelUserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class PickUpRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup
      *
-     * @return self
+     * @return static
      */
     public function setPickUpGroup(\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup = null)
     {
@@ -183,7 +186,7 @@ abstract class PickUpRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {

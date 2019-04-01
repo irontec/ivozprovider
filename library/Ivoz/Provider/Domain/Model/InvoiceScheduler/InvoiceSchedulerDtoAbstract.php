@@ -338,7 +338,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -352,7 +352,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getInvoiceTemplateId()
     {
@@ -384,7 +384,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -398,7 +398,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {
@@ -430,7 +430,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -444,7 +444,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -476,7 +476,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -490,7 +490,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNumberSequenceId()
     {

@@ -318,7 +318,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -332,7 +332,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -364,7 +364,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -378,7 +378,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoAnswerLocutionId()
     {
@@ -410,7 +410,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -424,7 +424,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoAnswerExtensionId()
     {
@@ -456,7 +456,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -470,7 +470,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoAnswerVoiceMailUserId()
     {
@@ -502,7 +502,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -516,7 +516,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoAnswerNumberCountryId()
     {

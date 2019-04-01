@@ -89,7 +89,7 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksDomainAttrInterface|null $entity
      * @param int $depth
      * @return TrunksDomainAttrDto|null
      */
@@ -109,7 +109,10 @@ abstract class TrunksDomainAttrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksDomainAttrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -195,7 +198,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param string $did
      *
-     * @return self
+     * @return static
      */
     protected function setDid($did)
     {
@@ -222,7 +225,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -249,7 +252,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param integer $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -277,7 +280,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param string $value
      *
-     * @return self
+     * @return static
      */
     protected function setValue($value)
     {
@@ -304,7 +307,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param \DateTime $lastModified
      *
-     * @return self
+     * @return static
      */
     protected function setLastModified($lastModified)
     {

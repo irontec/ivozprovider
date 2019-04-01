@@ -86,7 +86,7 @@ abstract class TransformationRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TransformationRuleInterface|null $entity
      * @param int $depth
      * @return TransformationRuleDto|null
      */
@@ -106,7 +106,10 @@ abstract class TransformationRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TransformationRuleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -199,7 +202,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -232,7 +235,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -259,7 +262,7 @@ abstract class TransformationRuleAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority = null)
     {
@@ -291,7 +294,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $matchExpr
      *
-     * @return self
+     * @return static
      */
     protected function setMatchExpr($matchExpr = null)
     {
@@ -319,7 +322,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $replaceExpr
      *
-     * @return self
+     * @return static
      */
     protected function setReplaceExpr($replaceExpr = null)
     {
@@ -347,7 +350,7 @@ abstract class TransformationRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {

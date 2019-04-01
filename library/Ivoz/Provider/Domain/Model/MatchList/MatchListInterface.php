@@ -18,7 +18,7 @@ interface MatchListInterface extends LoggableEntityInterface
      * Check if the given number matches the list rules
      *
      * @param string $number in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function numberMatches($number);
 
@@ -34,7 +34,7 @@ interface MatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -50,7 +50,7 @@ interface MatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 

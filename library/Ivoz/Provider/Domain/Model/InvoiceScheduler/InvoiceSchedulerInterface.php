@@ -96,7 +96,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null);
 
@@ -112,7 +112,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -128,7 +128,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -144,7 +144,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null);
 

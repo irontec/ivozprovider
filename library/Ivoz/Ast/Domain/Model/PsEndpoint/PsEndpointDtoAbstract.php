@@ -548,7 +548,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -562,7 +562,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTerminalId()
     {
@@ -594,7 +594,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -608,7 +608,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFriendId()
     {
@@ -640,7 +640,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -654,7 +654,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getResidentialDeviceId()
     {
@@ -686,7 +686,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -700,7 +700,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getRetailAccountId()
     {

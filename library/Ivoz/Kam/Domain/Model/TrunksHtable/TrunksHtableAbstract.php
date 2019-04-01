@@ -92,7 +92,7 @@ abstract class TrunksHtableAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksHtableInterface|null $entity
      * @param int $depth
      * @return TrunksHtableDto|null
      */
@@ -112,7 +112,10 @@ abstract class TrunksHtableAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksHtableDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -198,7 +201,7 @@ abstract class TrunksHtableAbstract
      *
      * @param string $keyName
      *
-     * @return self
+     * @return static
      */
     protected function setKeyName($keyName)
     {
@@ -225,7 +228,7 @@ abstract class TrunksHtableAbstract
      *
      * @param integer $keyType
      *
-     * @return self
+     * @return static
      */
     protected function setKeyType($keyType)
     {
@@ -252,7 +255,7 @@ abstract class TrunksHtableAbstract
      *
      * @param integer $valueType
      *
-     * @return self
+     * @return static
      */
     protected function setValueType($valueType)
     {
@@ -279,7 +282,7 @@ abstract class TrunksHtableAbstract
      *
      * @param string $keyValue
      *
-     * @return self
+     * @return static
      */
     protected function setKeyValue($keyValue)
     {
@@ -306,7 +309,7 @@ abstract class TrunksHtableAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {

@@ -63,7 +63,7 @@ abstract class FeaturesRelCompanyAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FeaturesRelCompanyInterface|null $entity
      * @param int $depth
      * @return FeaturesRelCompanyDto|null
      */
@@ -83,7 +83,10 @@ abstract class FeaturesRelCompanyAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FeaturesRelCompanyDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class FeaturesRelCompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -183,7 +186,7 @@ abstract class FeaturesRelCompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature
      *
-     * @return self
+     * @return static
      */
     public function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
     {

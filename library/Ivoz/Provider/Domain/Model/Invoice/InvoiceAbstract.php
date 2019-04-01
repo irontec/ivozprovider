@@ -125,7 +125,7 @@ abstract class InvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param InvoiceInterface|null $entity
      * @param int $depth
      * @return InvoiceDto|null
      */
@@ -145,7 +145,10 @@ abstract class InvoiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var InvoiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -286,7 +289,7 @@ abstract class InvoiceAbstract
      *
      * @param string $number
      *
-     * @return self
+     * @return static
      */
     protected function setNumber($number = null)
     {
@@ -314,7 +317,7 @@ abstract class InvoiceAbstract
      *
      * @param \DateTime $inDate
      *
-     * @return self
+     * @return static
      */
     protected function setInDate($inDate = null)
     {
@@ -345,7 +348,7 @@ abstract class InvoiceAbstract
      *
      * @param \DateTime $outDate
      *
-     * @return self
+     * @return static
      */
     protected function setOutDate($outDate = null)
     {
@@ -376,7 +379,7 @@ abstract class InvoiceAbstract
      *
      * @param float $total
      *
-     * @return self
+     * @return static
      */
     protected function setTotal($total = null)
     {
@@ -407,7 +410,7 @@ abstract class InvoiceAbstract
      *
      * @param float $taxRate
      *
-     * @return self
+     * @return static
      */
     protected function setTaxRate($taxRate = null)
     {
@@ -438,7 +441,7 @@ abstract class InvoiceAbstract
      *
      * @param float $totalWithTax
      *
-     * @return self
+     * @return static
      */
     protected function setTotalWithTax($totalWithTax = null)
     {
@@ -469,7 +472,7 @@ abstract class InvoiceAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
@@ -503,7 +506,7 @@ abstract class InvoiceAbstract
      *
      * @param string $statusMsg
      *
-     * @return self
+     * @return static
      */
     protected function setStatusMsg($statusMsg = null)
     {
@@ -531,7 +534,7 @@ abstract class InvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
     {
@@ -555,7 +558,7 @@ abstract class InvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -579,7 +582,7 @@ abstract class InvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -603,7 +606,7 @@ abstract class InvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
     {
@@ -627,7 +630,7 @@ abstract class InvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
      *
-     * @return self
+     * @return static
      */
     public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null)
     {
@@ -651,7 +654,7 @@ abstract class InvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
      *
-     * @return self
+     * @return static
      */
     public function setPdf(Pdf $pdf)
     {

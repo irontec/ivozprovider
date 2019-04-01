@@ -17,7 +17,7 @@ interface PickUpRelUserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup
      *
-     * @return self
+     * @return static
      */
     public function setPickUpGroup(\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup = null);
 
@@ -33,7 +33,7 @@ interface PickUpRelUserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 

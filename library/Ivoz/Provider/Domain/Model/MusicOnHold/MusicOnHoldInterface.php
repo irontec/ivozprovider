@@ -56,7 +56,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -72,7 +72,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -88,7 +88,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
      *
-     * @return self
+     * @return static
      */
     public function setOriginalFile(\Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile);
 
@@ -104,7 +104,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
      *
-     * @return self
+     * @return static
      */
     public function setEncodedFile(\Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile);
 

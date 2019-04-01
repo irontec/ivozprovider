@@ -103,7 +103,7 @@ abstract class AdministratorAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param AdministratorInterface|null $entity
      * @param int $depth
      * @return AdministratorDto|null
      */
@@ -123,7 +123,10 @@ abstract class AdministratorAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var AdministratorDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -228,7 +231,7 @@ abstract class AdministratorAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -255,7 +258,7 @@ abstract class AdministratorAbstract
      *
      * @param string $pass
      *
-     * @return self
+     * @return static
      */
     protected function setPass($pass)
     {
@@ -282,7 +285,7 @@ abstract class AdministratorAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email)
     {
@@ -309,7 +312,7 @@ abstract class AdministratorAbstract
      *
      * @param boolean $active
      *
-     * @return self
+     * @return static
      */
     protected function setActive($active)
     {
@@ -336,7 +339,7 @@ abstract class AdministratorAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -364,7 +367,7 @@ abstract class AdministratorAbstract
      *
      * @param string $lastname
      *
-     * @return self
+     * @return static
      */
     protected function setLastname($lastname = null)
     {
@@ -392,7 +395,7 @@ abstract class AdministratorAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -416,7 +419,7 @@ abstract class AdministratorAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -440,7 +443,7 @@ abstract class AdministratorAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone
      *
-     * @return self
+     * @return static
      */
     public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null)
     {

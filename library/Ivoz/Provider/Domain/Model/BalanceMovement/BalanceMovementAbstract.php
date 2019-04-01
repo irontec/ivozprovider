@@ -78,7 +78,7 @@ abstract class BalanceMovementAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BalanceMovementInterface|null $entity
      * @param int $depth
      * @return BalanceMovementDto|null
      */
@@ -98,7 +98,10 @@ abstract class BalanceMovementAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BalanceMovementDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -186,7 +189,7 @@ abstract class BalanceMovementAbstract
      *
      * @param float $amount
      *
-     * @return self
+     * @return static
      */
     protected function setAmount($amount = null)
     {
@@ -217,7 +220,7 @@ abstract class BalanceMovementAbstract
      *
      * @param float $balance
      *
-     * @return self
+     * @return static
      */
     protected function setBalance($balance = null)
     {
@@ -248,7 +251,7 @@ abstract class BalanceMovementAbstract
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn = null)
     {
@@ -279,7 +282,7 @@ abstract class BalanceMovementAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -303,7 +306,7 @@ abstract class BalanceMovementAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {

@@ -100,7 +100,7 @@ abstract class DispatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DispatcherInterface|null $entity
      * @param int $depth
      * @return DispatcherDto|null
      */
@@ -120,7 +120,10 @@ abstract class DispatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DispatcherDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -217,7 +220,7 @@ abstract class DispatcherAbstract
      *
      * @param integer $setid
      *
-     * @return self
+     * @return static
      */
     protected function setSetid($setid)
     {
@@ -244,7 +247,7 @@ abstract class DispatcherAbstract
      *
      * @param string $destination
      *
-     * @return self
+     * @return static
      */
     protected function setDestination($destination)
     {
@@ -271,7 +274,7 @@ abstract class DispatcherAbstract
      *
      * @param integer $flags
      *
-     * @return self
+     * @return static
      */
     protected function setFlags($flags)
     {
@@ -298,7 +301,7 @@ abstract class DispatcherAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -325,7 +328,7 @@ abstract class DispatcherAbstract
      *
      * @param string $attrs
      *
-     * @return self
+     * @return static
      */
     protected function setAttrs($attrs)
     {
@@ -352,7 +355,7 @@ abstract class DispatcherAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -379,7 +382,7 @@ abstract class DispatcherAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer
      *
-     * @return self
+     * @return static
      */
     public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer)
     {

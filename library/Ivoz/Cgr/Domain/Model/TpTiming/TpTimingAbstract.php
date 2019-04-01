@@ -115,7 +115,7 @@ abstract class TpTimingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpTimingInterface|null $entity
      * @param int $depth
      * @return TpTimingDto|null
      */
@@ -135,7 +135,10 @@ abstract class TpTimingAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpTimingDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -240,7 +243,7 @@ abstract class TpTimingAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -267,7 +270,7 @@ abstract class TpTimingAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -295,7 +298,7 @@ abstract class TpTimingAbstract
      *
      * @param string $years
      *
-     * @return self
+     * @return static
      */
     protected function setYears($years)
     {
@@ -322,7 +325,7 @@ abstract class TpTimingAbstract
      *
      * @param string $months
      *
-     * @return self
+     * @return static
      */
     protected function setMonths($months)
     {
@@ -349,7 +352,7 @@ abstract class TpTimingAbstract
      *
      * @param string $monthDays
      *
-     * @return self
+     * @return static
      */
     protected function setMonthDays($monthDays)
     {
@@ -376,7 +379,7 @@ abstract class TpTimingAbstract
      *
      * @param string $weekDays
      *
-     * @return self
+     * @return static
      */
     protected function setWeekDays($weekDays)
     {
@@ -403,7 +406,7 @@ abstract class TpTimingAbstract
      *
      * @param string $time
      *
-     * @return self
+     * @return static
      */
     protected function setTime($time)
     {
@@ -430,7 +433,7 @@ abstract class TpTimingAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -460,7 +463,7 @@ abstract class TpTimingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
     {

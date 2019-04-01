@@ -797,7 +797,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -811,7 +811,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {

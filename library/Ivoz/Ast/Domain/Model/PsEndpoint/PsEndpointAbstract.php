@@ -174,7 +174,7 @@ abstract class PsEndpointAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param PsEndpointInterface|null $entity
      * @param int $depth
      * @return PsEndpointDto|null
      */
@@ -194,7 +194,10 @@ abstract class PsEndpointAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var PsEndpointDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -343,7 +346,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $sorceryId
      *
-     * @return self
+     * @return static
      */
     protected function setSorceryId($sorceryId)
     {
@@ -370,7 +373,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain = null)
     {
@@ -398,7 +401,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $aors
      *
-     * @return self
+     * @return static
      */
     protected function setAors($aors = null)
     {
@@ -426,7 +429,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $callerid
      *
-     * @return self
+     * @return static
      */
     protected function setCallerid($callerid = null)
     {
@@ -454,7 +457,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $context
      *
-     * @return self
+     * @return static
      */
     protected function setContext($context)
     {
@@ -481,7 +484,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $disallow
      *
-     * @return self
+     * @return static
      */
     protected function setDisallow($disallow)
     {
@@ -508,7 +511,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $allow
      *
-     * @return self
+     * @return static
      */
     protected function setAllow($allow)
     {
@@ -535,7 +538,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $directMedia
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMedia($directMedia = null)
     {
@@ -559,7 +562,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $directMediaMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMediaMethod($directMediaMethod = null)
     {
@@ -591,7 +594,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $mailboxes
      *
-     * @return self
+     * @return static
      */
     protected function setMailboxes($mailboxes = null)
     {
@@ -619,7 +622,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $namedPickupGroup
      *
-     * @return self
+     * @return static
      */
     protected function setNamedPickupGroup($namedPickupGroup = null)
     {
@@ -647,7 +650,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $sendDiversion
      *
-     * @return self
+     * @return static
      */
     protected function setSendDiversion($sendDiversion = null)
     {
@@ -671,7 +674,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $sendPai
      *
-     * @return self
+     * @return static
      */
     protected function setSendPai($sendPai = null)
     {
@@ -695,7 +698,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $oneHundredRel
      *
-     * @return self
+     * @return static
      */
     protected function setOneHundredRel($oneHundredRel)
     {
@@ -721,7 +724,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $outboundProxy
      *
-     * @return self
+     * @return static
      */
     protected function setOutboundProxy($outboundProxy = null)
     {
@@ -749,7 +752,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $trustIdInbound
      *
-     * @return self
+     * @return static
      */
     protected function setTrustIdInbound($trustIdInbound = null)
     {
@@ -773,7 +776,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return self
+     * @return static
      */
     public function setTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal = null)
     {
@@ -797,7 +800,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return self
+     * @return static
      */
     public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
     {
@@ -821,7 +824,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return self
+     * @return static
      */
     public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
     {
@@ -845,7 +848,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
      *
-     * @return self
+     * @return static
      */
     public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
     {

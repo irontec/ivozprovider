@@ -69,7 +69,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -85,7 +85,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @param \Ivoz\Provider\Domain\Model\WebPortal\Logo $logo
      *
-     * @return self
+     * @return static
      */
     public function setLogo(\Ivoz\Provider\Domain\Model\WebPortal\Logo $logo);
 

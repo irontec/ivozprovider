@@ -210,7 +210,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -224,7 +224,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getMatchListId()
     {
@@ -256,7 +256,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -270,7 +270,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNumberCountryId()
     {

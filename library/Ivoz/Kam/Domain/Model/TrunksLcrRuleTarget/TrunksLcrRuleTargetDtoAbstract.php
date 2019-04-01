@@ -190,7 +190,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -204,7 +204,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getRuleId()
     {
@@ -236,7 +236,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -250,7 +250,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getGwId()
     {
@@ -282,7 +282,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -296,7 +296,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutgoingRoutingId()
     {

@@ -27,14 +27,14 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Check if the given number matches External Filter black list
      * @param string $origin in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function isBlackListed($origin);
 
     /**
      * Check if the given number matches External Filter white list
      * @param string $origin in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function isWhitelisted($origin);
 
@@ -130,7 +130,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -146,7 +146,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
      *
-     * @return self
+     * @return static
      */
     public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null);
 
@@ -162,7 +162,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution
      *
-     * @return self
+     * @return static
      */
     public function setHolidayLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution = null);
 
@@ -178,7 +178,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution
      *
-     * @return self
+     * @return static
      */
     public function setOutOfScheduleLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution = null);
 
@@ -194,7 +194,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension
      *
-     * @return self
+     * @return static
      */
     public function setHolidayExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension = null);
 
@@ -210,7 +210,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension
      *
-     * @return self
+     * @return static
      */
     public function setOutOfScheduleExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension = null);
 
@@ -226,7 +226,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setHolidayVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser = null);
 
@@ -242,7 +242,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setOutOfScheduleVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser = null);
 
@@ -258,7 +258,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null);
 
@@ -274,7 +274,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null);
 

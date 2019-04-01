@@ -345,7 +345,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -359,7 +359,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTrunksUacregId()
     {
@@ -391,7 +391,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -405,7 +405,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDdiProviderId()
     {

@@ -264,7 +264,7 @@ abstract class TpCdrStatAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpCdrStatInterface|null $entity
      * @param int $depth
      * @return TpCdrStatDto|null
      */
@@ -284,7 +284,10 @@ abstract class TpCdrStatAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpCdrStatDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -465,7 +468,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -492,7 +495,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag)
     {
@@ -519,7 +522,7 @@ abstract class TpCdrStatAbstract
      *
      * @param integer $queueLength
      *
-     * @return self
+     * @return static
      */
     protected function setQueueLength($queueLength)
     {
@@ -546,7 +549,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $timeWindow
      *
-     * @return self
+     * @return static
      */
     protected function setTimeWindow($timeWindow)
     {
@@ -573,7 +576,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $saveInterval
      *
-     * @return self
+     * @return static
      */
     protected function setSaveInterval($saveInterval)
     {
@@ -600,7 +603,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $metrics
      *
-     * @return self
+     * @return static
      */
     protected function setMetrics($metrics)
     {
@@ -627,7 +630,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $setupInterval
      *
-     * @return self
+     * @return static
      */
     protected function setSetupInterval($setupInterval)
     {
@@ -654,7 +657,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $tors
      *
-     * @return self
+     * @return static
      */
     protected function setTors($tors)
     {
@@ -681,7 +684,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $cdrHosts
      *
-     * @return self
+     * @return static
      */
     protected function setCdrHosts($cdrHosts)
     {
@@ -708,7 +711,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $cdrSources
      *
-     * @return self
+     * @return static
      */
     protected function setCdrSources($cdrSources)
     {
@@ -735,7 +738,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $reqTypes
      *
-     * @return self
+     * @return static
      */
     protected function setReqTypes($reqTypes)
     {
@@ -762,7 +765,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $directions
      *
-     * @return self
+     * @return static
      */
     protected function setDirections($directions)
     {
@@ -789,7 +792,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $tenants
      *
-     * @return self
+     * @return static
      */
     protected function setTenants($tenants)
     {
@@ -816,7 +819,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $categories
      *
-     * @return self
+     * @return static
      */
     protected function setCategories($categories)
     {
@@ -843,7 +846,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $accounts
      *
-     * @return self
+     * @return static
      */
     protected function setAccounts($accounts)
     {
@@ -870,7 +873,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $subjects
      *
-     * @return self
+     * @return static
      */
     protected function setSubjects($subjects)
     {
@@ -897,7 +900,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $destinationIds
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationIds($destinationIds)
     {
@@ -924,7 +927,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $ppdInterval
      *
-     * @return self
+     * @return static
      */
     protected function setPpdInterval($ppdInterval)
     {
@@ -951,7 +954,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $usageInterval
      *
-     * @return self
+     * @return static
      */
     protected function setUsageInterval($usageInterval)
     {
@@ -978,7 +981,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $suppliers
      *
-     * @return self
+     * @return static
      */
     protected function setSuppliers($suppliers)
     {
@@ -1005,7 +1008,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $disconnectCauses
      *
-     * @return self
+     * @return static
      */
     protected function setDisconnectCauses($disconnectCauses)
     {
@@ -1032,7 +1035,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $mediationRunids
      *
-     * @return self
+     * @return static
      */
     protected function setMediationRunids($mediationRunids)
     {
@@ -1059,7 +1062,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $ratedAccounts
      *
-     * @return self
+     * @return static
      */
     protected function setRatedAccounts($ratedAccounts)
     {
@@ -1086,7 +1089,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $ratedSubjects
      *
-     * @return self
+     * @return static
      */
     protected function setRatedSubjects($ratedSubjects)
     {
@@ -1113,7 +1116,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $costInterval
      *
-     * @return self
+     * @return static
      */
     protected function setCostInterval($costInterval)
     {
@@ -1140,7 +1143,7 @@ abstract class TpCdrStatAbstract
      *
      * @param string $actionTriggers
      *
-     * @return self
+     * @return static
      */
     protected function setActionTriggers($actionTriggers)
     {
@@ -1167,7 +1170,7 @@ abstract class TpCdrStatAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -1197,7 +1200,7 @@ abstract class TpCdrStatAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {

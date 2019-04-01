@@ -246,7 +246,7 @@ abstract class UsersActiveWatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersActiveWatcherInterface|null $entity
      * @param int $depth
      * @return UsersActiveWatcherDto|null
      */
@@ -266,7 +266,10 @@ abstract class UsersActiveWatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersActiveWatcherDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -439,7 +442,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $presentityUri
      *
-     * @return self
+     * @return static
      */
     protected function setPresentityUri($presentityUri)
     {
@@ -466,7 +469,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $watcherUsername
      *
-     * @return self
+     * @return static
      */
     protected function setWatcherUsername($watcherUsername)
     {
@@ -493,7 +496,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $watcherDomain
      *
-     * @return self
+     * @return static
      */
     protected function setWatcherDomain($watcherDomain)
     {
@@ -520,7 +523,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $toUser
      *
-     * @return self
+     * @return static
      */
     protected function setToUser($toUser)
     {
@@ -547,7 +550,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $toDomain
      *
-     * @return self
+     * @return static
      */
     protected function setToDomain($toDomain)
     {
@@ -574,7 +577,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $event
      *
-     * @return self
+     * @return static
      */
     protected function setEvent($event)
     {
@@ -601,7 +604,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $eventId
      *
-     * @return self
+     * @return static
      */
     protected function setEventId($eventId = null)
     {
@@ -629,7 +632,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $toTag
      *
-     * @return self
+     * @return static
      */
     protected function setToTag($toTag)
     {
@@ -656,7 +659,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $fromTag
      *
-     * @return self
+     * @return static
      */
     protected function setFromTag($fromTag)
     {
@@ -683,7 +686,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $callid
      *
-     * @return self
+     * @return static
      */
     protected function setCallid($callid)
     {
@@ -710,7 +713,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $localCseq
      *
-     * @return self
+     * @return static
      */
     protected function setLocalCseq($localCseq)
     {
@@ -737,7 +740,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $remoteCseq
      *
-     * @return self
+     * @return static
      */
     protected function setRemoteCseq($remoteCseq)
     {
@@ -764,7 +767,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $contact
      *
-     * @return self
+     * @return static
      */
     protected function setContact($contact)
     {
@@ -791,7 +794,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $recordRoute
      *
-     * @return self
+     * @return static
      */
     protected function setRecordRoute($recordRoute = null)
     {
@@ -819,7 +822,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {
@@ -846,7 +849,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status)
     {
@@ -873,7 +876,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $reason
      *
-     * @return self
+     * @return static
      */
     protected function setReason($reason = null)
     {
@@ -901,7 +904,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $version
      *
-     * @return self
+     * @return static
      */
     protected function setVersion($version)
     {
@@ -928,7 +931,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $socketInfo
      *
-     * @return self
+     * @return static
      */
     protected function setSocketInfo($socketInfo)
     {
@@ -955,7 +958,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $localContact
      *
-     * @return self
+     * @return static
      */
     protected function setLocalContact($localContact)
     {
@@ -982,7 +985,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $fromUser
      *
-     * @return self
+     * @return static
      */
     protected function setFromUser($fromUser)
     {
@@ -1009,7 +1012,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain)
     {
@@ -1036,7 +1039,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $updated
      *
-     * @return self
+     * @return static
      */
     protected function setUpdated($updated)
     {
@@ -1063,7 +1066,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $updatedWinfo
      *
-     * @return self
+     * @return static
      */
     protected function setUpdatedWinfo($updatedWinfo)
     {
@@ -1090,7 +1093,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param integer $flags
      *
-     * @return self
+     * @return static
      */
     protected function setFlags($flags)
     {
@@ -1117,7 +1120,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @param string $userAgent
      *
-     * @return self
+     * @return static
      */
     protected function setUserAgent($userAgent)
     {

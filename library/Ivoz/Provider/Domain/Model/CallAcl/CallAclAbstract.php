@@ -71,7 +71,7 @@ abstract class CallAclAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CallAclInterface|null $entity
      * @param int $depth
      * @return CallAclDto|null
      */
@@ -91,7 +91,10 @@ abstract class CallAclAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CallAclDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -172,7 +175,7 @@ abstract class CallAclAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -199,7 +202,7 @@ abstract class CallAclAbstract
      *
      * @param string $defaultPolicy
      *
-     * @return self
+     * @return static
      */
     protected function setDefaultPolicy($defaultPolicy)
     {
@@ -230,7 +233,7 @@ abstract class CallAclAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

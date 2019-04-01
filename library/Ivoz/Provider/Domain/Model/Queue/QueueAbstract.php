@@ -165,7 +165,7 @@ abstract class QueueAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param QueueInterface|null $entity
      * @param int $depth
      * @return QueueDto|null
      */
@@ -185,7 +185,10 @@ abstract class QueueAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var QueueDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -341,7 +344,7 @@ abstract class QueueAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -369,7 +372,7 @@ abstract class QueueAbstract
      *
      * @param integer $maxWaitTime
      *
-     * @return self
+     * @return static
      */
     protected function setMaxWaitTime($maxWaitTime = null)
     {
@@ -400,7 +403,7 @@ abstract class QueueAbstract
      *
      * @param string $timeoutTargetType
      *
-     * @return self
+     * @return static
      */
     protected function setTimeoutTargetType($timeoutTargetType = null)
     {
@@ -433,7 +436,7 @@ abstract class QueueAbstract
      *
      * @param string $timeoutNumberValue
      *
-     * @return self
+     * @return static
      */
     protected function setTimeoutNumberValue($timeoutNumberValue = null)
     {
@@ -461,7 +464,7 @@ abstract class QueueAbstract
      *
      * @param integer $maxlen
      *
-     * @return self
+     * @return static
      */
     protected function setMaxlen($maxlen = null)
     {
@@ -492,7 +495,7 @@ abstract class QueueAbstract
      *
      * @param string $fullTargetType
      *
-     * @return self
+     * @return static
      */
     protected function setFullTargetType($fullTargetType = null)
     {
@@ -525,7 +528,7 @@ abstract class QueueAbstract
      *
      * @param string $fullNumberValue
      *
-     * @return self
+     * @return static
      */
     protected function setFullNumberValue($fullNumberValue = null)
     {
@@ -553,7 +556,7 @@ abstract class QueueAbstract
      *
      * @param integer $periodicAnnounceFrequency
      *
-     * @return self
+     * @return static
      */
     protected function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
     {
@@ -584,7 +587,7 @@ abstract class QueueAbstract
      *
      * @param integer $memberCallRest
      *
-     * @return self
+     * @return static
      */
     protected function setMemberCallRest($memberCallRest = null)
     {
@@ -615,7 +618,7 @@ abstract class QueueAbstract
      *
      * @param integer $memberCallTimeout
      *
-     * @return self
+     * @return static
      */
     protected function setMemberCallTimeout($memberCallTimeout = null)
     {
@@ -646,7 +649,7 @@ abstract class QueueAbstract
      *
      * @param string $strategy
      *
-     * @return self
+     * @return static
      */
     protected function setStrategy($strategy = null)
     {
@@ -670,7 +673,7 @@ abstract class QueueAbstract
      *
      * @param integer $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight = null)
     {
@@ -701,7 +704,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -725,7 +728,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution
      *
-     * @return self
+     * @return static
      */
     public function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null)
     {
@@ -749,7 +752,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null)
     {
@@ -773,7 +776,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null)
     {
@@ -797,7 +800,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null)
     {
@@ -821,7 +824,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution
      *
-     * @return self
+     * @return static
      */
     public function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null)
     {
@@ -845,7 +848,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension
      *
-     * @return self
+     * @return static
      */
     public function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null)
     {
@@ -869,7 +872,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null)
     {
@@ -893,7 +896,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
     {
@@ -917,7 +920,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
     {

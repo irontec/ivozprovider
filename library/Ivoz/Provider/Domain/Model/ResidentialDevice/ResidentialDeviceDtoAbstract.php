@@ -580,7 +580,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -594,7 +594,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {
@@ -626,7 +626,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -640,7 +640,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDomainId()
     {
@@ -672,7 +672,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -686,7 +686,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -718,7 +718,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -732,7 +732,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTransformationRuleSetId()
     {
@@ -764,7 +764,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -778,7 +778,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutgoingDdiId()
     {
@@ -810,7 +810,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -824,7 +824,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getLanguageId()
     {

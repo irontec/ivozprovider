@@ -198,7 +198,7 @@ abstract class ResidentialDeviceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ResidentialDeviceInterface|null $entity
      * @param int $depth
      * @return ResidentialDeviceDto|null
      */
@@ -218,7 +218,10 @@ abstract class ResidentialDeviceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ResidentialDeviceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -375,7 +378,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -402,7 +405,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -429,7 +432,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $transport
      *
-     * @return self
+     * @return static
      */
     protected function setTransport($transport)
     {
@@ -461,7 +464,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {
@@ -489,7 +492,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port = null)
     {
@@ -521,7 +524,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $authNeeded
      *
-     * @return self
+     * @return static
      */
     protected function setAuthNeeded($authNeeded)
     {
@@ -547,7 +550,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $password
      *
-     * @return self
+     * @return static
      */
     protected function setPassword($password = null)
     {
@@ -575,7 +578,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $disallow
      *
-     * @return self
+     * @return static
      */
     protected function setDisallow($disallow)
     {
@@ -602,7 +605,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $allow
      *
-     * @return self
+     * @return static
      */
     protected function setAllow($allow)
     {
@@ -629,7 +632,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $directMediaMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMediaMethod($directMediaMethod)
     {
@@ -659,7 +662,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $calleridUpdateHeader
      *
-     * @return self
+     * @return static
      */
     protected function setCalleridUpdateHeader($calleridUpdateHeader)
     {
@@ -689,7 +692,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $updateCallerid
      *
-     * @return self
+     * @return static
      */
     protected function setUpdateCallerid($updateCallerid)
     {
@@ -719,7 +722,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain = null)
     {
@@ -747,7 +750,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $directConnectivity
      *
-     * @return self
+     * @return static
      */
     protected function setDirectConnectivity($directConnectivity)
     {
@@ -777,7 +780,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param string $ddiIn
      *
-     * @return self
+     * @return static
      */
     protected function setDdiIn($ddiIn)
     {
@@ -807,7 +810,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param integer $maxCalls
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCalls($maxCalls)
     {
@@ -835,7 +838,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -859,7 +862,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -883,7 +886,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -907,7 +910,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -931,7 +934,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
@@ -955,7 +958,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {

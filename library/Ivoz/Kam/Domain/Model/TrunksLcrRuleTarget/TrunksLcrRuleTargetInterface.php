@@ -38,7 +38,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule
      *
-     * @return self
+     * @return static
      */
     public function setRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule);
 
@@ -54,7 +54,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw
      *
-     * @return self
+     * @return static
      */
     public function setGw(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw);
 
@@ -70,7 +70,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
 

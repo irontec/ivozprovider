@@ -68,7 +68,7 @@ abstract class FixedCostsRelInvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FixedCostsRelInvoiceInterface|null $entity
      * @param int $depth
      * @return FixedCostsRelInvoiceDto|null
      */
@@ -88,7 +88,10 @@ abstract class FixedCostsRelInvoiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FixedCostsRelInvoiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -168,7 +171,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @param integer $quantity
      *
-     * @return self
+     * @return static
      */
     protected function setQuantity($quantity = null)
     {
@@ -200,7 +203,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
      *
-     * @return self
+     * @return static
      */
     public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
     {
@@ -224,7 +227,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
     {

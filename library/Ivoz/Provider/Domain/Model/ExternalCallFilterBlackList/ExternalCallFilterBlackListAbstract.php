@@ -63,7 +63,7 @@ abstract class ExternalCallFilterBlackListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ExternalCallFilterBlackListInterface|null $entity
      * @param int $depth
      * @return ExternalCallFilterBlackListDto|null
      */
@@ -83,7 +83,10 @@ abstract class ExternalCallFilterBlackListAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ExternalCallFilterBlackListDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ExternalCallFilterBlackListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
      *
-     * @return self
+     * @return static
      */
     public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null)
     {
@@ -183,7 +186,7 @@ abstract class ExternalCallFilterBlackListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist
      *
-     * @return self
+     * @return static
      */
     public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
     {

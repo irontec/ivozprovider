@@ -164,7 +164,7 @@ abstract class TrunksUacregAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksUacregInterface|null $entity
      * @param int $depth
      * @return TrunksUacregDto|null
      */
@@ -184,7 +184,10 @@ abstract class TrunksUacregAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksUacregDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -313,7 +316,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $lUuid
      *
-     * @return self
+     * @return static
      */
     protected function setLUuid($lUuid)
     {
@@ -340,7 +343,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $lUsername
      *
-     * @return self
+     * @return static
      */
     protected function setLUsername($lUsername)
     {
@@ -367,7 +370,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $lDomain
      *
-     * @return self
+     * @return static
      */
     protected function setLDomain($lDomain)
     {
@@ -394,7 +397,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $rUsername
      *
-     * @return self
+     * @return static
      */
     protected function setRUsername($rUsername)
     {
@@ -421,7 +424,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $rDomain
      *
-     * @return self
+     * @return static
      */
     protected function setRDomain($rDomain)
     {
@@ -448,7 +451,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $realm
      *
-     * @return self
+     * @return static
      */
     protected function setRealm($realm)
     {
@@ -475,7 +478,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $authUsername
      *
-     * @return self
+     * @return static
      */
     protected function setAuthUsername($authUsername)
     {
@@ -502,7 +505,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $authPassword
      *
-     * @return self
+     * @return static
      */
     protected function setAuthPassword($authPassword)
     {
@@ -529,7 +532,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $authProxy
      *
-     * @return self
+     * @return static
      */
     protected function setAuthProxy($authProxy)
     {
@@ -556,7 +559,7 @@ abstract class TrunksUacregAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {
@@ -583,7 +586,7 @@ abstract class TrunksUacregAbstract
      *
      * @param integer $flags
      *
-     * @return self
+     * @return static
      */
     protected function setFlags($flags)
     {
@@ -610,7 +613,7 @@ abstract class TrunksUacregAbstract
      *
      * @param integer $regDelay
      *
-     * @return self
+     * @return static
      */
     protected function setRegDelay($regDelay)
     {
@@ -637,7 +640,7 @@ abstract class TrunksUacregAbstract
      *
      * @param string $authHa1
      *
-     * @return self
+     * @return static
      */
     protected function setAuthHa1($authHa1)
     {
@@ -664,7 +667,7 @@ abstract class TrunksUacregAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
      *
-     * @return self
+     * @return static
      */
     public function setDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration)
     {
@@ -688,7 +691,7 @@ abstract class TrunksUacregAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

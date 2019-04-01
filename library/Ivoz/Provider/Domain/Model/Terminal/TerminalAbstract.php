@@ -121,7 +121,7 @@ abstract class TerminalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TerminalInterface|null $entity
      * @param int $depth
      * @return TerminalDto|null
      */
@@ -141,7 +141,10 @@ abstract class TerminalAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TerminalDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -254,7 +257,7 @@ abstract class TerminalAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -282,7 +285,7 @@ abstract class TerminalAbstract
      *
      * @param string $disallow
      *
-     * @return self
+     * @return static
      */
     protected function setDisallow($disallow)
     {
@@ -309,7 +312,7 @@ abstract class TerminalAbstract
      *
      * @param string $allowAudio
      *
-     * @return self
+     * @return static
      */
     protected function setAllowAudio($allowAudio)
     {
@@ -336,7 +339,7 @@ abstract class TerminalAbstract
      *
      * @param string $allowVideo
      *
-     * @return self
+     * @return static
      */
     protected function setAllowVideo($allowVideo = null)
     {
@@ -364,7 +367,7 @@ abstract class TerminalAbstract
      *
      * @param string $directMediaMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMediaMethod($directMediaMethod)
     {
@@ -395,7 +398,7 @@ abstract class TerminalAbstract
      *
      * @param string $password
      *
-     * @return self
+     * @return static
      */
     protected function setPassword($password)
     {
@@ -422,7 +425,7 @@ abstract class TerminalAbstract
      *
      * @param string $mac
      *
-     * @return self
+     * @return static
      */
     protected function setMac($mac = null)
     {
@@ -450,7 +453,7 @@ abstract class TerminalAbstract
      *
      * @param \DateTime $lastProvisionDate
      *
-     * @return self
+     * @return static
      */
     protected function setLastProvisionDate($lastProvisionDate = null)
     {
@@ -481,7 +484,7 @@ abstract class TerminalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -505,7 +508,7 @@ abstract class TerminalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -529,7 +532,7 @@ abstract class TerminalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel
      *
-     * @return self
+     * @return static
      */
     public function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null)
     {

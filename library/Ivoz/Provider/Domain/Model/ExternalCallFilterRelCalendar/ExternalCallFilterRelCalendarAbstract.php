@@ -63,7 +63,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ExternalCallFilterRelCalendarInterface|null $entity
      * @param int $depth
      * @return ExternalCallFilterRelCalendarDto|null
      */
@@ -83,7 +83,10 @@ abstract class ExternalCallFilterRelCalendarAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ExternalCallFilterRelCalendarDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
      *
-     * @return self
+     * @return static
      */
     public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null)
     {
@@ -183,7 +186,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
      *
-     * @return self
+     * @return static
      */
     public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
     {

@@ -17,7 +17,7 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -33,7 +33,7 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
      *
-     * @return self
+     * @return static
      */
     public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null);
 

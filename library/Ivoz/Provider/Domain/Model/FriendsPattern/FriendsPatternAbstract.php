@@ -70,7 +70,7 @@ abstract class FriendsPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FriendsPatternInterface|null $entity
      * @param int $depth
      * @return FriendsPatternDto|null
      */
@@ -90,7 +90,10 @@ abstract class FriendsPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FriendsPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -171,7 +174,7 @@ abstract class FriendsPatternAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -198,7 +201,7 @@ abstract class FriendsPatternAbstract
      *
      * @param string $regExp
      *
-     * @return self
+     * @return static
      */
     protected function setRegExp($regExp)
     {
@@ -225,7 +228,7 @@ abstract class FriendsPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return self
+     * @return static
      */
     public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
     {

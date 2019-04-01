@@ -69,7 +69,7 @@ abstract class BrandServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BrandServiceInterface|null $entity
      * @param int $depth
      * @return BrandServiceDto|null
      */
@@ -89,7 +89,10 @@ abstract class BrandServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BrandServiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -170,7 +173,7 @@ abstract class BrandServiceAbstract
      *
      * @param string $code
      *
-     * @return self
+     * @return static
      */
     protected function setCode($code)
     {
@@ -197,7 +200,7 @@ abstract class BrandServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -221,7 +224,7 @@ abstract class BrandServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Service\ServiceInterface $service
      *
-     * @return self
+     * @return static
      */
     public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
     {

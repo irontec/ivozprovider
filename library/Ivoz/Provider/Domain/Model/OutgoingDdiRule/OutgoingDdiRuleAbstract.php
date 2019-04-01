@@ -76,7 +76,7 @@ abstract class OutgoingDdiRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingDdiRuleInterface|null $entity
      * @param int $depth
      * @return OutgoingDdiRuleDto|null
      */
@@ -96,7 +96,10 @@ abstract class OutgoingDdiRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingDdiRuleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -181,7 +184,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -208,7 +211,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param string $defaultAction
      *
-     * @return self
+     * @return static
      */
     protected function setDefaultAction($defaultAction)
     {
@@ -239,7 +242,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -263,7 +266,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
      *
-     * @return self
+     * @return static
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
     {

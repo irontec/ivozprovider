@@ -53,7 +53,7 @@ interface TpRatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
 

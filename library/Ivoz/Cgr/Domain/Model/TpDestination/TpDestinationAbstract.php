@@ -82,7 +82,7 @@ abstract class TpDestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpDestinationInterface|null $entity
      * @param int $depth
      * @return TpDestinationDto|null
      */
@@ -102,7 +102,10 @@ abstract class TpDestinationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpDestinationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -191,7 +194,7 @@ abstract class TpDestinationAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -218,7 +221,7 @@ abstract class TpDestinationAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -246,7 +249,7 @@ abstract class TpDestinationAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix)
     {
@@ -273,7 +276,7 @@ abstract class TpDestinationAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -303,7 +306,7 @@ abstract class TpDestinationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
-     * @return self
+     * @return static
      */
     public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination)
     {

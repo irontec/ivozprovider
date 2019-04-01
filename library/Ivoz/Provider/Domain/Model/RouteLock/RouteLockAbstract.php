@@ -76,7 +76,7 @@ abstract class RouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RouteLockInterface|null $entity
      * @param int $depth
      * @return RouteLockDto|null
      */
@@ -96,7 +96,10 @@ abstract class RouteLockAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RouteLockDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -181,7 +184,7 @@ abstract class RouteLockAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -208,7 +211,7 @@ abstract class RouteLockAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -235,7 +238,7 @@ abstract class RouteLockAbstract
      *
      * @param boolean $open
      *
-     * @return self
+     * @return static
      */
     protected function setOpen($open)
     {
@@ -262,7 +265,7 @@ abstract class RouteLockAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

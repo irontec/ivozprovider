@@ -135,7 +135,7 @@ abstract class TpRatingProfileAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpRatingProfileInterface|null $entity
      * @param int $depth
      * @return TpRatingProfileDto|null
      */
@@ -155,7 +155,10 @@ abstract class TpRatingProfileAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpRatingProfileDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -276,7 +279,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -303,7 +306,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $loadid
      *
-     * @return self
+     * @return static
      */
     protected function setLoadid($loadid)
     {
@@ -330,7 +333,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $direction
      *
-     * @return self
+     * @return static
      */
     protected function setDirection($direction)
     {
@@ -357,7 +360,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $tenant
      *
-     * @return self
+     * @return static
      */
     protected function setTenant($tenant = null)
     {
@@ -385,7 +388,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $category
      *
-     * @return self
+     * @return static
      */
     protected function setCategory($category)
     {
@@ -412,7 +415,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $subject
      *
-     * @return self
+     * @return static
      */
     protected function setSubject($subject = null)
     {
@@ -440,7 +443,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $activationTime
      *
-     * @return self
+     * @return static
      */
     protected function setActivationTime($activationTime)
     {
@@ -467,7 +470,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $ratingPlanTag
      *
-     * @return self
+     * @return static
      */
     protected function setRatingPlanTag($ratingPlanTag = null)
     {
@@ -495,7 +498,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $fallbackSubjects
      *
-     * @return self
+     * @return static
      */
     protected function setFallbackSubjects($fallbackSubjects = null)
     {
@@ -523,7 +526,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param string $cdrStatQueueIds
      *
-     * @return self
+     * @return static
      */
     protected function setCdrStatQueueIds($cdrStatQueueIds = null)
     {
@@ -551,7 +554,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -581,7 +584,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return self
+     * @return static
      */
     public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile = null)
     {
@@ -605,7 +608,7 @@ abstract class TpRatingProfileAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null)
     {

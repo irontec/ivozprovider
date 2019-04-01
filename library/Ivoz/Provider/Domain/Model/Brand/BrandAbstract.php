@@ -117,7 +117,7 @@ abstract class BrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BrandInterface|null $entity
      * @param int $depth
      * @return BrandDto|null
      */
@@ -137,7 +137,10 @@ abstract class BrandAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BrandDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -298,7 +301,7 @@ abstract class BrandAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -325,7 +328,7 @@ abstract class BrandAbstract
      *
      * @param string $domainUsers
      *
-     * @return self
+     * @return static
      */
     protected function setDomainUsers($domainUsers = null)
     {
@@ -353,7 +356,7 @@ abstract class BrandAbstract
      *
      * @param integer $recordingsLimitMB
      *
-     * @return self
+     * @return static
      */
     protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
@@ -384,7 +387,7 @@ abstract class BrandAbstract
      *
      * @param string $recordingsLimitEmail
      *
-     * @return self
+     * @return static
      */
     protected function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
@@ -412,7 +415,7 @@ abstract class BrandAbstract
      *
      * @param integer $maxCalls
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCalls($maxCalls)
     {
@@ -440,7 +443,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -464,7 +467,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
@@ -488,7 +491,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
      *
-     * @return self
+     * @return static
      */
     public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone)
     {
@@ -512,7 +515,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -536,7 +539,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
      *
-     * @return self
+     * @return static
      */
     public function setLogo(Logo $logo)
     {
@@ -559,7 +562,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(Invoice $invoice)
     {

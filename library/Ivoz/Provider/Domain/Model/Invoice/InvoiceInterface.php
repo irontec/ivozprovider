@@ -94,7 +94,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null);
 
@@ -110,7 +110,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -126,7 +126,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -142,7 +142,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null);
 
@@ -158,7 +158,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
      *
-     * @return self
+     * @return static
      */
     public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null);
 
@@ -174,7 +174,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
      *
-     * @return self
+     * @return static
      */
     public function setPdf(\Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf);
 

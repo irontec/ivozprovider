@@ -292,7 +292,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -306,7 +306,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getUserId()
     {
@@ -338,7 +338,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -352,7 +352,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getExtensionId()
     {
@@ -384,7 +384,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -398,7 +398,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getVoiceMailUserId()
     {
@@ -430,7 +430,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -444,7 +444,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNumberCountryId()
     {
@@ -476,7 +476,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -490,7 +490,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getResidentialDeviceId()
     {
@@ -522,7 +522,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -536,7 +536,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getRetailAccountId()
     {

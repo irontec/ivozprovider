@@ -102,7 +102,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -116,7 +116,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getIvrId()
     {
@@ -148,7 +148,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -162,7 +162,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getExtensionId()
     {

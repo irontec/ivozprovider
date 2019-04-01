@@ -155,7 +155,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -169,7 +169,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {

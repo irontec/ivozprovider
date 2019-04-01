@@ -63,7 +63,7 @@ abstract class CompanyRelRoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CompanyRelRoutingTagInterface|null $entity
      * @param int $depth
      * @return CompanyRelRoutingTagDto|null
      */
@@ -83,7 +83,10 @@ abstract class CompanyRelRoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CompanyRelRoutingTagDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class CompanyRelRoutingTagAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -183,7 +186,7 @@ abstract class CompanyRelRoutingTagAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
      *
-     * @return self
+     * @return static
      */
     public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
     {

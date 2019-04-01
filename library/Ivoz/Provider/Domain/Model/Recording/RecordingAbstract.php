@@ -107,7 +107,7 @@ abstract class RecordingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RecordingInterface|null $entity
      * @param int $depth
      * @return RecordingDto|null
      */
@@ -127,7 +127,10 @@ abstract class RecordingAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RecordingDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -248,7 +251,7 @@ abstract class RecordingAbstract
      *
      * @param string $callid
      *
-     * @return self
+     * @return static
      */
     protected function setCallid($callid = null)
     {
@@ -276,7 +279,7 @@ abstract class RecordingAbstract
      *
      * @param \DateTime $calldate
      *
-     * @return self
+     * @return static
      */
     protected function setCalldate($calldate)
     {
@@ -306,7 +309,7 @@ abstract class RecordingAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -336,7 +339,7 @@ abstract class RecordingAbstract
      *
      * @param float $duration
      *
-     * @return self
+     * @return static
      */
     protected function setDuration($duration)
     {
@@ -363,7 +366,7 @@ abstract class RecordingAbstract
      *
      * @param string $caller
      *
-     * @return self
+     * @return static
      */
     protected function setCaller($caller = null)
     {
@@ -391,7 +394,7 @@ abstract class RecordingAbstract
      *
      * @param string $callee
      *
-     * @return self
+     * @return static
      */
     protected function setCallee($callee = null)
     {
@@ -419,7 +422,7 @@ abstract class RecordingAbstract
      *
      * @param string $recorder
      *
-     * @return self
+     * @return static
      */
     protected function setRecorder($recorder = null)
     {
@@ -447,7 +450,7 @@ abstract class RecordingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -471,7 +474,7 @@ abstract class RecordingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile
      *
-     * @return self
+     * @return static
      */
     public function setRecordedFile(RecordedFile $recordedFile)
     {

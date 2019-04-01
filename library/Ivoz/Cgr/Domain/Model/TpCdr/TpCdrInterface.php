@@ -14,7 +14,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCostDetailsFirstTimespan();
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime();
 

@@ -24,7 +24,7 @@ interface LanguageInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\Language\Name $name);
 

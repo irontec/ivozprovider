@@ -106,7 +106,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
 
@@ -122,7 +122,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup);
 

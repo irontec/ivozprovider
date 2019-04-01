@@ -108,7 +108,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -124,7 +124,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -140,7 +140,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
@@ -156,7 +156,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
-     * @return self
+     * @return static
      */
     public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null);
 
@@ -172,7 +172,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
 
@@ -188,7 +188,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
 
@@ -204,7 +204,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr
      *
-     * @return self
+     * @return static
      */
     public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null);
 

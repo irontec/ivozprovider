@@ -103,7 +103,7 @@ abstract class CallCsvReportAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CallCsvReportInterface|null $entity
      * @param int $depth
      * @return CallCsvReportDto|null
      */
@@ -123,7 +123,10 @@ abstract class CallCsvReportAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CallCsvReportDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -240,7 +243,7 @@ abstract class CallCsvReportAbstract
      *
      * @param string $sentTo
      *
-     * @return self
+     * @return static
      */
     protected function setSentTo($sentTo)
     {
@@ -267,7 +270,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \DateTime $inDate
      *
-     * @return self
+     * @return static
      */
     protected function setInDate($inDate)
     {
@@ -297,7 +300,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \DateTime $outDate
      *
-     * @return self
+     * @return static
      */
     protected function setOutDate($outDate)
     {
@@ -327,7 +330,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn)
     {
@@ -357,7 +360,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -381,7 +384,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -405,7 +408,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null)
     {
@@ -429,7 +432,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv
      *
-     * @return self
+     * @return static
      */
     public function setCsv(Csv $csv)
     {

@@ -254,7 +254,7 @@ abstract class TpDerivedChargerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpDerivedChargerInterface|null $entity
      * @param int $depth
      * @return TpDerivedChargerDto|null
      */
@@ -274,7 +274,10 @@ abstract class TpDerivedChargerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpDerivedChargerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -451,7 +454,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -478,7 +481,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $loadid
      *
-     * @return self
+     * @return static
      */
     protected function setLoadid($loadid)
     {
@@ -505,7 +508,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $direction
      *
-     * @return self
+     * @return static
      */
     protected function setDirection($direction)
     {
@@ -532,7 +535,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $tenant
      *
-     * @return self
+     * @return static
      */
     protected function setTenant($tenant)
     {
@@ -559,7 +562,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $category
      *
-     * @return self
+     * @return static
      */
     protected function setCategory($category)
     {
@@ -586,7 +589,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $account
      *
-     * @return self
+     * @return static
      */
     protected function setAccount($account)
     {
@@ -613,7 +616,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $subject
      *
-     * @return self
+     * @return static
      */
     protected function setSubject($subject = null)
     {
@@ -641,7 +644,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $destinationIds
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationIds($destinationIds = null)
     {
@@ -669,7 +672,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $runid
      *
-     * @return self
+     * @return static
      */
     protected function setRunid($runid)
     {
@@ -696,7 +699,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $runFilters
      *
-     * @return self
+     * @return static
      */
     protected function setRunFilters($runFilters)
     {
@@ -723,7 +726,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $reqTypeField
      *
-     * @return self
+     * @return static
      */
     protected function setReqTypeField($reqTypeField)
     {
@@ -750,7 +753,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $directionField
      *
-     * @return self
+     * @return static
      */
     protected function setDirectionField($directionField)
     {
@@ -777,7 +780,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $tenantField
      *
-     * @return self
+     * @return static
      */
     protected function setTenantField($tenantField)
     {
@@ -804,7 +807,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $categoryField
      *
-     * @return self
+     * @return static
      */
     protected function setCategoryField($categoryField)
     {
@@ -831,7 +834,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $accountField
      *
-     * @return self
+     * @return static
      */
     protected function setAccountField($accountField)
     {
@@ -858,7 +861,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $subjectField
      *
-     * @return self
+     * @return static
      */
     protected function setSubjectField($subjectField)
     {
@@ -885,7 +888,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $destinationField
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationField($destinationField)
     {
@@ -912,7 +915,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $setupTimeField
      *
-     * @return self
+     * @return static
      */
     protected function setSetupTimeField($setupTimeField)
     {
@@ -939,7 +942,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $pddField
      *
-     * @return self
+     * @return static
      */
     protected function setPddField($pddField)
     {
@@ -966,7 +969,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $answerTimeField
      *
-     * @return self
+     * @return static
      */
     protected function setAnswerTimeField($answerTimeField)
     {
@@ -993,7 +996,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $usageField
      *
-     * @return self
+     * @return static
      */
     protected function setUsageField($usageField)
     {
@@ -1020,7 +1023,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $supplierField
      *
-     * @return self
+     * @return static
      */
     protected function setSupplierField($supplierField)
     {
@@ -1047,7 +1050,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $disconnectCauseField
      *
-     * @return self
+     * @return static
      */
     protected function setDisconnectCauseField($disconnectCauseField)
     {
@@ -1074,7 +1077,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $ratedTimeField
      *
-     * @return self
+     * @return static
      */
     protected function setRatedTimeField($ratedTimeField)
     {
@@ -1101,7 +1104,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param string $costField
      *
-     * @return self
+     * @return static
      */
     protected function setCostField($costField)
     {
@@ -1128,7 +1131,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -1158,7 +1161,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

@@ -154,7 +154,7 @@ abstract class BillableCallAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BillableCallInterface|null $entity
      * @param int $depth
      * @return BillableCallDto|null
      */
@@ -174,7 +174,10 @@ abstract class BillableCallAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BillableCallDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -323,7 +326,7 @@ abstract class BillableCallAbstract
      *
      * @param string $callid
      *
-     * @return self
+     * @return static
      */
     protected function setCallid($callid = null)
     {
@@ -351,7 +354,7 @@ abstract class BillableCallAbstract
      *
      * @param \DateTime $startTime
      *
-     * @return self
+     * @return static
      */
     protected function setStartTime($startTime = null)
     {
@@ -382,7 +385,7 @@ abstract class BillableCallAbstract
      *
      * @param float $duration
      *
-     * @return self
+     * @return static
      */
     protected function setDuration($duration)
     {
@@ -409,7 +412,7 @@ abstract class BillableCallAbstract
      *
      * @param string $caller
      *
-     * @return self
+     * @return static
      */
     protected function setCaller($caller = null)
     {
@@ -437,7 +440,7 @@ abstract class BillableCallAbstract
      *
      * @param string $callee
      *
-     * @return self
+     * @return static
      */
     protected function setCallee($callee = null)
     {
@@ -465,7 +468,7 @@ abstract class BillableCallAbstract
      *
      * @param float $cost
      *
-     * @return self
+     * @return static
      */
     protected function setCost($cost = null)
     {
@@ -496,7 +499,7 @@ abstract class BillableCallAbstract
      *
      * @param float $price
      *
-     * @return self
+     * @return static
      */
     protected function setPrice($price = null)
     {
@@ -527,7 +530,7 @@ abstract class BillableCallAbstract
      *
      * @param array $priceDetails
      *
-     * @return self
+     * @return static
      */
     protected function setPriceDetails($priceDetails = null)
     {
@@ -551,7 +554,7 @@ abstract class BillableCallAbstract
      *
      * @param string $carrierName
      *
-     * @return self
+     * @return static
      */
     protected function setCarrierName($carrierName = null)
     {
@@ -579,7 +582,7 @@ abstract class BillableCallAbstract
      *
      * @param string $destinationName
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationName($destinationName = null)
     {
@@ -607,7 +610,7 @@ abstract class BillableCallAbstract
      *
      * @param string $ratingPlanName
      *
-     * @return self
+     * @return static
      */
     protected function setRatingPlanName($ratingPlanName = null)
     {
@@ -635,7 +638,7 @@ abstract class BillableCallAbstract
      *
      * @param string $endpointType
      *
-     * @return self
+     * @return static
      */
     protected function setEndpointType($endpointType = null)
     {
@@ -663,7 +666,7 @@ abstract class BillableCallAbstract
      *
      * @param integer $endpointId
      *
-     * @return self
+     * @return static
      */
     protected function setEndpointId($endpointId = null)
     {
@@ -695,7 +698,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -719,7 +722,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -743,7 +746,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -767,7 +770,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
-     * @return self
+     * @return static
      */
     public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
     {
@@ -791,7 +794,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
     {
@@ -815,7 +818,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
     {
@@ -839,7 +842,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr
      *
-     * @return self
+     * @return static
      */
     public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null)
     {

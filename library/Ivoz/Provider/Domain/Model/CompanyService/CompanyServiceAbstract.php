@@ -69,7 +69,7 @@ abstract class CompanyServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CompanyServiceInterface|null $entity
      * @param int $depth
      * @return CompanyServiceDto|null
      */
@@ -89,7 +89,10 @@ abstract class CompanyServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CompanyServiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -170,7 +173,7 @@ abstract class CompanyServiceAbstract
      *
      * @param string $code
      *
-     * @return self
+     * @return static
      */
     protected function setCode($code)
     {
@@ -197,7 +200,7 @@ abstract class CompanyServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -221,7 +224,7 @@ abstract class CompanyServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Service\ServiceInterface $service
      *
-     * @return self
+     * @return static
      */
     public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
     {

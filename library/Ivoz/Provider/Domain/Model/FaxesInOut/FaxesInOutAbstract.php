@@ -101,7 +101,7 @@ abstract class FaxesInOutAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FaxesInOutInterface|null $entity
      * @param int $depth
      * @return FaxesInOutDto|null
      */
@@ -121,7 +121,10 @@ abstract class FaxesInOutAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FaxesInOutDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -242,7 +245,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \DateTime $calldate
      *
-     * @return self
+     * @return static
      */
     protected function setCalldate($calldate)
     {
@@ -272,7 +275,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $src
      *
-     * @return self
+     * @return static
      */
     protected function setSrc($src = null)
     {
@@ -300,7 +303,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $dst
      *
-     * @return self
+     * @return static
      */
     protected function setDst($dst = null)
     {
@@ -328,7 +331,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type = null)
     {
@@ -360,7 +363,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $pages
      *
-     * @return self
+     * @return static
      */
     protected function setPages($pages = null)
     {
@@ -388,7 +391,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
@@ -412,7 +415,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
      *
-     * @return self
+     * @return static
      */
     public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax)
     {
@@ -436,7 +439,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
      *
-     * @return self
+     * @return static
      */
     public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null)
     {
@@ -460,7 +463,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file
      *
-     * @return self
+     * @return static
      */
     public function setFile(File $file)
     {

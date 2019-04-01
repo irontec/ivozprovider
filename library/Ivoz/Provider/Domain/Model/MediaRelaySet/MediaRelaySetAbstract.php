@@ -64,7 +64,7 @@ abstract class MediaRelaySetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param MediaRelaySetInterface|null $entity
      * @param int $depth
      * @return MediaRelaySetDto|null
      */
@@ -84,7 +84,10 @@ abstract class MediaRelaySetAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var MediaRelaySetDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -161,7 +164,7 @@ abstract class MediaRelaySetAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -188,7 +191,7 @@ abstract class MediaRelaySetAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {

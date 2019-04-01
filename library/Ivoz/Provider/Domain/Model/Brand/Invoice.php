@@ -75,7 +75,7 @@ class Invoice
      *
      * @param string $nif
      *
-     * @return self
+     * @return static
      */
     protected function setNif($nif)
     {
@@ -102,7 +102,7 @@ class Invoice
      *
      * @param string $postalAddress
      *
-     * @return self
+     * @return static
      */
     protected function setPostalAddress($postalAddress)
     {
@@ -129,7 +129,7 @@ class Invoice
      *
      * @param string $postalCode
      *
-     * @return self
+     * @return static
      */
     protected function setPostalCode($postalCode)
     {
@@ -156,7 +156,7 @@ class Invoice
      *
      * @param string $town
      *
-     * @return self
+     * @return static
      */
     protected function setTown($town)
     {
@@ -183,7 +183,7 @@ class Invoice
      *
      * @param string $province
      *
-     * @return self
+     * @return static
      */
     protected function setProvince($province)
     {
@@ -210,7 +210,7 @@ class Invoice
      *
      * @param string $country
      *
-     * @return self
+     * @return static
      */
     protected function setCountry($country)
     {
@@ -237,7 +237,7 @@ class Invoice
      *
      * @param string $registryData
      *
-     * @return self
+     * @return static
      */
     protected function setRegistryData($registryData = null)
     {

@@ -63,7 +63,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRoutesConditionsRelMatchlistInterface|null $entity
      * @param int $depth
      * @return ConditionalRoutesConditionsRelMatchlistDto|null
      */
@@ -83,7 +83,10 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRoutesConditionsRelMatchlistDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
     {
@@ -183,7 +186,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist
      *
-     * @return self
+     * @return static
      */
     public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
     {

@@ -71,7 +71,7 @@ abstract class CurrencyAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CurrencyInterface|null $entity
      * @param int $depth
      * @return CurrencyDto|null
      */
@@ -91,7 +91,10 @@ abstract class CurrencyAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CurrencyDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -181,7 +184,7 @@ abstract class CurrencyAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -208,7 +211,7 @@ abstract class CurrencyAbstract
      *
      * @param string $symbol
      *
-     * @return self
+     * @return static
      */
     protected function setSymbol($symbol)
     {
@@ -235,7 +238,7 @@ abstract class CurrencyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {

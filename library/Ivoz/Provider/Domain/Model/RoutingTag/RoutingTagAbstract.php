@@ -70,7 +70,7 @@ abstract class RoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RoutingTagInterface|null $entity
      * @param int $depth
      * @return RoutingTagDto|null
      */
@@ -90,7 +90,10 @@ abstract class RoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RoutingTagDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -171,7 +174,7 @@ abstract class RoutingTagAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -198,7 +201,7 @@ abstract class RoutingTagAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag)
     {
@@ -225,7 +228,7 @@ abstract class RoutingTagAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

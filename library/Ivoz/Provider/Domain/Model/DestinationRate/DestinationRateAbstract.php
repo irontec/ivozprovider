@@ -102,7 +102,7 @@ abstract class DestinationRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DestinationRateInterface|null $entity
      * @param int $depth
      * @return DestinationRateDto|null
      */
@@ -122,7 +122,10 @@ abstract class DestinationRateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DestinationRateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -215,7 +218,7 @@ abstract class DestinationRateAbstract
      *
      * @param float $cost
      *
-     * @return self
+     * @return static
      */
     protected function setCost($cost)
     {
@@ -242,7 +245,7 @@ abstract class DestinationRateAbstract
      *
      * @param float $connectFee
      *
-     * @return self
+     * @return static
      */
     protected function setConnectFee($connectFee)
     {
@@ -269,7 +272,7 @@ abstract class DestinationRateAbstract
      *
      * @param string $rateIncrement
      *
-     * @return self
+     * @return static
      */
     protected function setRateIncrement($rateIncrement)
     {
@@ -296,7 +299,7 @@ abstract class DestinationRateAbstract
      *
      * @param string $groupIntervalStart
      *
-     * @return self
+     * @return static
      */
     protected function setGroupIntervalStart($groupIntervalStart)
     {
@@ -323,7 +326,7 @@ abstract class DestinationRateAbstract
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
      *
-     * @return self
+     * @return static
      */
     public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null)
     {
@@ -347,7 +350,7 @@ abstract class DestinationRateAbstract
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
      *
-     * @return self
+     * @return static
      */
     public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null)
     {
@@ -371,7 +374,7 @@ abstract class DestinationRateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup = null)
     {
@@ -395,7 +398,7 @@ abstract class DestinationRateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
-     * @return self
+     * @return static
      */
     public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
     {
