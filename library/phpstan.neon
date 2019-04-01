@@ -7,5 +7,6 @@ parameters:
         - '#Access to an undefined property .*EntityInterface::\$__isInitialized__#'
     excludes_analyse:
         - "*/vendor/*"
+        - "*/coverage/*"
         - %currentWorkingDirectory%/library/Ivoz/Api/Behat/Context/FeatureContext.php
         - %currentWorkingDirectory%/library/Ivoz/Provider/Domain/Service/Invoice/Generator.php
