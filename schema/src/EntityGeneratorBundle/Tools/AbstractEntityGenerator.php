@@ -469,9 +469,19 @@ public function <methodName>(<criteriaArgument>)
             $classAttr = $this->spaces . $this->fieldVisibility . ' $' . $fieldMapping['fieldName'];
 
             $isDateType = $this->isDateType($fieldMapping['type']);
-            if (isset($fieldMapping['options']['default']) && !$isDateType) {
+            $defaultValue = '';
+            $isBoolean = $fieldMapping['type'] === 'boolean' ?? false;
+            $hasDefaultValue = isset($fieldMapping['options']['default']);
+
+            if ($hasDefaultValue && $isBoolean) {
+                $classAttr .= ' = ' . var_export(
+                    boolval($fieldMapping['options']['default']),
+                    true
+                );
+            } elseif ($hasDefaultValue && !$isDateType) {
                 $classAttr .= ' = ' . var_export($fieldMapping['options']['default'], true);
             }
+
             $lines[] = $classAttr . ";\n";
         }
 
@@ -1110,7 +1120,7 @@ public function <methodName>(<criteriaArgument>)
 
         switch ($type) {
             case 'boolean':
-//                return '(bool) ';
+                return '(bool) ';
             case 'text':
             case 'string':
                 return '';
