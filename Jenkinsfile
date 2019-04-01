@@ -44,6 +44,22 @@ pipeline {
         // --------------------------------------------------------------------
         stage('Testing') {
             parallel {
+                stage ('app-console') {
+                    agent {
+                        docker {
+                            image 'ironartemis/ivozprovider-testing-base'
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '/opt/irontec/ivozprovider/library/bin/test-app-console'
+                    }
+                    post {
+                        success { publishSuccess() }
+                        failure { publishFailure() }
+                    }
+                }
                 stage ('phpstan') {
                     agent {
                         docker {
