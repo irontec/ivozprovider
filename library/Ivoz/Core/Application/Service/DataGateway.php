@@ -48,6 +48,11 @@ class DataGateway
     protected $requestId;
 
     /**
+     * @var string
+     */
+    public static $user = '';
+
+    /**
      * DataGateway constructor.
      * @param EntityManager $entityManager
      * @param QueryBuilderFactory $queryBuilderFactory
@@ -344,11 +349,17 @@ class DataGateway
             }
         }
 
+        $agent = [
+            'ip' => $_SERVER['REMOTE_ADDR'],
+            'user' => self::$user,
+        ];
+
         $event = new CommandWasExecuted(
             $this->requestId,
             $class,
             $method,
-            $arguments
+            $arguments,
+            $agent
         );
 
         $this->eventPublisher->publish($event);

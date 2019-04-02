@@ -34,6 +34,11 @@ abstract class CommandlogAbstract
     protected $arguments;
 
     /**
+     * @var array | null
+     */
+    protected $agent;
+
+    /**
      * @var \DateTime
      */
     protected $createdOn;
@@ -136,6 +141,7 @@ abstract class CommandlogAbstract
         $self
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
+            ->setAgent($dto->getAgent())
         ;
 
         $self->initChangelog();
@@ -159,6 +165,7 @@ abstract class CommandlogAbstract
             ->setClass($dto->getClass())
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
+            ->setAgent($dto->getAgent())
             ->setCreatedOn($dto->getCreatedOn())
             ->setMicrotime($dto->getMicrotime());
 
@@ -179,6 +186,7 @@ abstract class CommandlogAbstract
             ->setClass(self::getClass())
             ->setMethod(self::getMethod())
             ->setArguments(self::getArguments())
+            ->setAgent(self::getAgent())
             ->setCreatedOn(self::getCreatedOn())
             ->setMicrotime(self::getMicrotime());
     }
@@ -193,6 +201,7 @@ abstract class CommandlogAbstract
             'class' => self::getClass(),
             'method' => self::getMethod(),
             'arguments' => self::getArguments(),
+            'agent' => self::getAgent(),
             'createdOn' => self::getCreatedOn(),
             'microtime' => self::getMicrotime()
         ];
@@ -305,6 +314,33 @@ abstract class CommandlogAbstract
     public function getArguments()
     {
         return $this->arguments;
+    }
+
+    /**
+     * Set agent
+     *
+     * @param array $agent
+     *
+     * @return self
+     */
+    protected function setAgent($agent = null)
+    {
+        if (!is_null($agent)) {
+        }
+
+        $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Get agent
+     *
+     * @return array | null
+     */
+    public function getAgent()
+    {
+        return $this->agent;
     }
 
     /**

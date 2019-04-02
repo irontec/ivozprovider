@@ -1,6 +1,7 @@
 <?php
 namespace IvozProvider\Klear\Dynamic\Config;
 
+use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDTO;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
@@ -69,8 +70,10 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
     {
         $this->_siteConfig = $siteConfig;
         if (\Zend_Auth::getInstance()) {
+            /** @var \IvozProvider\Klear\Auth\User $identity */
             $identity = \Zend_Auth::getInstance()->getIdentity();
             if ($identity) {
+                DataGateway::$user = (string) $identity;
                 $this->_user = $identity;
                 $this->_user->postLogin();
             }

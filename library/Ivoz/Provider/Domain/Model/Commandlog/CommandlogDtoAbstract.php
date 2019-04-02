@@ -31,6 +31,11 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $arguments;
 
     /**
+     * @var array
+     */
+    private $agent;
+
+    /**
      * @var \DateTime
      */
     private $createdOn;
@@ -67,6 +72,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
             'class' => 'class',
             'method' => 'method',
             'arguments' => 'arguments',
+            'agent' => 'agent',
             'createdOn' => 'createdOn',
             'microtime' => 'microtime',
             'id' => 'id'
@@ -83,6 +89,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
             'class' => $this->getClass(),
             'method' => $this->getMethod(),
             'arguments' => $this->getArguments(),
+            'agent' => $this->getAgent(),
             'createdOn' => $this->getCreatedOn(),
             'microtime' => $this->getMicrotime(),
             'id' => $this->getId()
@@ -167,6 +174,26 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     public function getArguments()
     {
         return $this->arguments;
+    }
+
+    /**
+     * @param array $agent
+     *
+     * @return static
+     */
+    public function setAgent($agent = null)
+    {
+        $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAgent()
+    {
+        return $this->agent;
     }
 
     /**

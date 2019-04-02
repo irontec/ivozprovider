@@ -9,5 +9,7 @@ final class Events
      */
     const onCommit = 'onCommit';
 
+    const preCommit = 'preCommit';
+
     const onError = 'onError';
 }

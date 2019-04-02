@@ -33,6 +33,9 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
         );
 
         $entity->id = $event->getId();
+        $entity->setAgent(
+            $event->getAgent()
+        );
         $entity->setMethod(
             $event->getMethod()
         );

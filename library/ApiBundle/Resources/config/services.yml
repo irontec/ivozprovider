@@ -64,7 +64,6 @@ services:
     arguments:
       $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
       $requestId: '@Ivoz\Core\Application\RequestId'
-      $jwtTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 33 }
 

@@ -29,24 +29,10 @@ class DoctrineEventSubscriber implements EventSubscriber
 {
     const UnaccesibleChangeset = 'Unaccesible changeset';
 
-    /**
-     * @var EntityManagerInterface
-     */
     protected $em;
-
-    /**
-     * @var ContainerInterface
-     */
     protected $serviceContainer;
-
-    /**
-     * @var DomainEventPublisher
-     */
     protected $eventPublisher;
-
-    /**
-     * @var bool
-     */
+    protected $commandPersister;
     protected $forcedEntityChangeLog;
 
     /**
@@ -58,11 +44,13 @@ class DoctrineEventSubscriber implements EventSubscriber
         ContainerInterface $serviceContainer,
         EntityManagerInterface $em,
         DomainEventPublisher $eventPublisher,
+        CommandPersister $commandPersister,
         bool $forcedEntityChangeLog = false
     ) {
         $this->serviceContainer = $serviceContainer;
         $this->em = $em;
         $this->eventPublisher = $eventPublisher;
+        $this->commandPersister = $commandPersister;
         $this->forcedEntityChangeLog = $forcedEntityChangeLog;
     }
 
@@ -79,9 +67,9 @@ class DoctrineEventSubscriber implements EventSubscriber
             Events::postRemove,
 
             Events::onFlush,
-
             Events::postLoad,
 
+            CustomEvents::preCommit,
             CustomEvents::onCommit,
             CustomEvents::onError
         ];
@@ -155,6 +143,13 @@ class DoctrineEventSubscriber implements EventSubscriber
                 $this->flushedEntities[] = $entity;
             }
         }
+    }
+
+    public function preCommit()
+    {
+        $this
+            ->commandPersister
+            ->persistEvents();
     }
 
     public function onCommit(OnCommitEventArgs $args)
