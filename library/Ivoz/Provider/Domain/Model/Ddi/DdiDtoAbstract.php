@@ -38,7 +38,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $billInboundCalls = '0';
+    private $billInboundCalls = false;
 
     /**
      * @var string

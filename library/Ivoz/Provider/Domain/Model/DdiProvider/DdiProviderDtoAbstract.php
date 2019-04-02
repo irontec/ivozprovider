@@ -23,7 +23,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $externallyRated = '0';
+    private $externallyRated = false;
 
     /**
      * @var integer

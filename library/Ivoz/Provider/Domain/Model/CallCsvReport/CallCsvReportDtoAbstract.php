@@ -16,17 +16,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     private $sentTo = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $inDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $outDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn;
 

@@ -61,7 +61,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $cdrStatQueueIds;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

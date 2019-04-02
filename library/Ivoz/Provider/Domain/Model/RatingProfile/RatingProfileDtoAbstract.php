@@ -11,7 +11,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 

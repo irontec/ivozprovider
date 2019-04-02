@@ -36,7 +36,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $weight = 10;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

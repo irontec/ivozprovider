@@ -38,12 +38,12 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $sendPAI = 0;
+    private $sendPAI = false;
 
     /**
      * @var boolean
      */
-    private $sendRPID = 0;
+    private $sendRPID = false;
 
     /**
      * @var string

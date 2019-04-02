@@ -41,7 +41,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     private $avalue = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastModified = '1900-01-01 00:00:01';
 

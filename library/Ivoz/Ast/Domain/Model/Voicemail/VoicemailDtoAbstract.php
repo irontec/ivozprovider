@@ -171,7 +171,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     private $imapflags;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $stamp;
 

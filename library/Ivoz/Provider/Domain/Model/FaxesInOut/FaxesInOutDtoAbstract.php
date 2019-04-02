@@ -11,7 +11,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $calldate;
 

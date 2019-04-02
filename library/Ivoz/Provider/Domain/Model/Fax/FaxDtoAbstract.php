@@ -23,7 +23,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $sendByEmail = '1';
+    private $sendByEmail = true;
 
     /**
      * @var integer

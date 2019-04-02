@@ -48,7 +48,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @var boolean
      */
-    private $multiDdi = '0';
+    private $multiDdi = false;
 
     /**
      * @var string

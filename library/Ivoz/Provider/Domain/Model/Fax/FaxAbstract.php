@@ -26,7 +26,7 @@ abstract class FaxAbstract
     /**
      * @var boolean
      */
-    protected $sendByEmail = '1';
+    protected $sendByEmail = true;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -254,7 +254,7 @@ abstract class FaxAbstract
         Assertion::notNull($sendByEmail, 'sendByEmail value "%s" is null, but non null value was expected.');
         Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
 
-        $this->sendByEmail = $sendByEmail;
+        $this->sendByEmail = (bool) $sendByEmail;
 
         return $this;
     }

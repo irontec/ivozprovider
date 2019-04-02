@@ -41,12 +41,12 @@ abstract class CarrierServerAbstract
     /**
      * @var boolean | null
      */
-    protected $sendPAI = 0;
+    protected $sendPAI = false;
 
     /**
      * @var boolean | null
      */
-    protected $sendRPID = 0;
+    protected $sendRPID = false;
 
     /**
      * @var string

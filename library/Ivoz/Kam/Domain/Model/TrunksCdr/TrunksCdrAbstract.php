@@ -68,7 +68,7 @@ abstract class TrunksCdrAbstract
     /**
      * @var boolean | null
      */
-    protected $parsed = '0';
+    protected $parsed = false;
 
     /**
      * @var \DateTime

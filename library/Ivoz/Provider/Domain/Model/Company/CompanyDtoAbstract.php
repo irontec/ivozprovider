@@ -68,7 +68,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $ipfilter = '1';
+    private $ipfilter = true;
 
     /**
      * @var integer
@@ -108,7 +108,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $showInvoices = '0';
+    private $showInvoices = false;
 
     /**
      * @var integer

@@ -51,7 +51,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $maxCostStrategy = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

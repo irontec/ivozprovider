@@ -16,49 +16,49 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $timeIn;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $timeout;
 
     /**
      * @var boolean
      */
-    private $monday = '0';
+    private $monday = false;
 
     /**
      * @var boolean
      */
-    private $tuesday = '0';
+    private $tuesday = false;
 
     /**
      * @var boolean
      */
-    private $wednesday = '0';
+    private $wednesday = false;
 
     /**
      * @var boolean
      */
-    private $thursday = '0';
+    private $thursday = false;
 
     /**
      * @var boolean
      */
-    private $friday = '0';
+    private $friday = false;
 
     /**
      * @var boolean
      */
-    private $saturday = '0';
+    private $saturday = false;
 
     /**
      * @var boolean
      */
-    private $sunday = '0';
+    private $sunday = false;
 
     /**
      * @var integer

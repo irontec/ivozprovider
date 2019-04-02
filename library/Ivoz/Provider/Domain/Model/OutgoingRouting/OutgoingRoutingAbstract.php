@@ -42,7 +42,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * @var boolean | null
      */
-    protected $forceClid = '0';
+    protected $forceClid = false;
 
     /**
      * @var string | null

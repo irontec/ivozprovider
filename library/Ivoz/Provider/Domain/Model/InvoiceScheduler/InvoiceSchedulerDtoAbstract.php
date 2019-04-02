@@ -31,7 +31,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $email;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastExecution;
 
@@ -41,7 +41,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $lastExecutionError;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $nextExecution;
 

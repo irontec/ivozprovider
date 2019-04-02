@@ -38,7 +38,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $forceClid = '0';
+    private $forceClid = false;
 
     /**
      * @var string

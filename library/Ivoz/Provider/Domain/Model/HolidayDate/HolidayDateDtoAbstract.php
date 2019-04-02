@@ -16,22 +16,22 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $eventDate;
 
     /**
      * @var boolean
      */
-    private $wholeDayEvent = '1';
+    private $wholeDayEvent = true;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $timeIn;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $timeOut;
 

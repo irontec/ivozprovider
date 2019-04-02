@@ -46,7 +46,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $mac;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastProvisionDate;
 

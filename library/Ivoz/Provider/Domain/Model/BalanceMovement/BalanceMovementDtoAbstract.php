@@ -21,7 +21,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     private $balance = 0;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn = 'CURRENT_TIMESTAMP';
 

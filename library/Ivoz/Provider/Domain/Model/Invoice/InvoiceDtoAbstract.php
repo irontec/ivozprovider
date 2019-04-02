@@ -16,12 +16,12 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     private $number;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $inDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $outDate;
 

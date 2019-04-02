@@ -31,7 +31,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     private $value;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastModified = '1900-01-01 00:00:01';
 

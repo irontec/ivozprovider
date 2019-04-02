@@ -21,44 +21,44 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     private $timingType = 'always';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $timeIn;
 
     /**
      * @var boolean
      */
-    private $monday = '1';
+    private $monday = true;
 
     /**
      * @var boolean
      */
-    private $tuesday = '1';
+    private $tuesday = true;
 
     /**
      * @var boolean
      */
-    private $wednesday = '1';
+    private $wednesday = true;
 
     /**
      * @var boolean
      */
-    private $thursday = '1';
+    private $thursday = true;
 
     /**
      * @var boolean
      */
-    private $friday = '1';
+    private $friday = true;
 
     /**
      * @var boolean
      */
-    private $saturday = '1';
+    private $saturday = true;
 
     /**
      * @var boolean
      */
-    private $sunday = '1';
+    private $sunday = true;
 
     /**
      * @var integer

@@ -46,7 +46,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     private $time = '00:00:00';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

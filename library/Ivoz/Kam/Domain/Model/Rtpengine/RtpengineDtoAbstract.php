@@ -28,10 +28,10 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $disabled = '0';
+    private $disabled = false;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $stamp = '2000-01-01 00:00:00';
 
