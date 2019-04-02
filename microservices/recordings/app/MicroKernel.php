@@ -69,6 +69,7 @@ class MicroKernel extends Kernel
             $requestId->toString(),
             'Recordings',
             'processRtpRecording',
+            [],
             []
         );
 

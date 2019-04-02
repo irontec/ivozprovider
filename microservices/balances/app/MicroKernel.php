@@ -77,6 +77,7 @@ class MicroKernel extends Kernel
             $requestId->toString(),
             'Balances',
             'sync',
+            [],
             []
         );
 
