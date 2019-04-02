@@ -24,6 +24,7 @@ trait RegisterCommandTrait
             $this->requestId->toString(),
             $service,
             $method,
+            [],
             []
         );
 

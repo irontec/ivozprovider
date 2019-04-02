@@ -112,6 +112,7 @@ class MicroKernel extends Kernel
             $requestId->toString(),
             'AGI:' . $service,
             'process',
+            [],
             []
         );
 
