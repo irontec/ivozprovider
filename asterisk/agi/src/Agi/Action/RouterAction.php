@@ -1,4 +1,5 @@
 <?php
+
 namespace Agi\Action;
 
 use Agi\Agents\AgentInterface;
@@ -69,7 +70,7 @@ class RouterAction
     protected $routeIvr;
 
     /**
-     * @var UserInterface
+     * @var AgentInterface | null
      */
     protected $routeVoiceMail;
 
