@@ -61,7 +61,7 @@ class Invoices
      * )
      *
      * @param GearmanJob $serializedJob Serialized object with job parameters
-     * @return bool
+     * @return bool | null
      */
     public function create(GearmanJob $serializedJob)
     {
@@ -80,7 +80,7 @@ class Invoices
         $invoice = $this->invoiceRepository->find($id);
         if (!$invoice) {
             $this->logger->error("Invoice #${id} was not found!");
-            return;
+            return null;
         }
 
         /** @var InvoiceDto $invoiceDto */

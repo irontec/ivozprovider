@@ -298,7 +298,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -312,7 +312,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {
@@ -344,7 +344,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -358,7 +358,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -390,7 +390,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -404,7 +404,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCallCsvNotificationTemplateId()
     {

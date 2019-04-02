@@ -85,7 +85,7 @@ abstract class MatchListPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param MatchListPatternInterface|null $entity
      * @param int $depth
      * @return MatchListPatternDto|null
      */
@@ -105,7 +105,10 @@ abstract class MatchListPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var MatchListPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -198,7 +201,7 @@ abstract class MatchListPatternAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -226,7 +229,7 @@ abstract class MatchListPatternAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -257,7 +260,7 @@ abstract class MatchListPatternAbstract
      *
      * @param string $regexp
      *
-     * @return self
+     * @return static
      */
     protected function setRegexp($regexp = null)
     {
@@ -285,7 +288,7 @@ abstract class MatchListPatternAbstract
      *
      * @param string $numbervalue
      *
-     * @return self
+     * @return static
      */
     protected function setNumbervalue($numbervalue = null)
     {
@@ -313,7 +316,7 @@ abstract class MatchListPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return self
+     * @return static
      */
     public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null)
     {
@@ -337,7 +340,7 @@ abstract class MatchListPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {

@@ -85,7 +85,7 @@ abstract class LocutionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param LocutionInterface|null $entity
      * @param int $depth
      * @return LocutionDto|null
      */
@@ -105,7 +105,10 @@ abstract class LocutionAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var LocutionDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -226,7 +229,7 @@ abstract class LocutionAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -253,7 +256,7 @@ abstract class LocutionAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
@@ -287,7 +290,7 @@ abstract class LocutionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -311,7 +314,7 @@ abstract class LocutionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile
      *
-     * @return self
+     * @return static
      */
     public function setEncodedFile(EncodedFile $encodedFile)
     {
@@ -334,7 +337,7 @@ abstract class LocutionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile
      *
-     * @return self
+     * @return static
      */
     public function setOriginalFile(OriginalFile $originalFile)
     {

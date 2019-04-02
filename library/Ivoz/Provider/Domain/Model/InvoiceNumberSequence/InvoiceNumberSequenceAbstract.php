@@ -105,7 +105,7 @@ abstract class InvoiceNumberSequenceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param InvoiceNumberSequenceInterface|null $entity
      * @param int $depth
      * @return InvoiceNumberSequenceDto|null
      */
@@ -125,7 +125,10 @@ abstract class InvoiceNumberSequenceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var InvoiceNumberSequenceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -226,7 +229,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -253,7 +256,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix)
     {
@@ -280,7 +283,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param integer $sequenceLength
      *
-     * @return self
+     * @return static
      */
     protected function setSequenceLength($sequenceLength)
     {
@@ -308,7 +311,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param integer $increment
      *
-     * @return self
+     * @return static
      */
     protected function setIncrement($increment)
     {
@@ -336,7 +339,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param string $latestValue
      *
-     * @return self
+     * @return static
      */
     protected function setLatestValue($latestValue = null)
     {
@@ -360,7 +363,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param integer $iteration
      *
-     * @return self
+     * @return static
      */
     protected function setIteration($iteration)
     {
@@ -388,7 +391,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param integer $version
      *
-     * @return self
+     * @return static
      */
     protected function setVersion($version)
     {
@@ -415,7 +418,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

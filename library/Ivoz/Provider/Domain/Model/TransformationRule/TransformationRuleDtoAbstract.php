@@ -230,7 +230,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -244,7 +244,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTransformationRuleSetId()
     {

@@ -112,11 +112,14 @@ class CreateByScheduler
                 $scheduler->getId()
             );
 
-        return $this->entityTools->persistDto(
+        /** @var InvoiceInterface $invoice */
+        $invoice = $this->entityTools->persistDto(
             $invoiceDto,
             null,
             true
         );
+
+        return $invoice;
     }
 
     /**
@@ -142,6 +145,7 @@ class CreateByScheduler
      */
     private function updateLastExecutionDate(InvoiceSchedulerInterface $scheduler)
     {
+        /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
         $invoiceSchedulerDto = $this
             ->entityTools
             ->entityToDto($scheduler);

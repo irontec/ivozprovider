@@ -71,7 +71,7 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param NotificationTemplateInterface|null $entity
      * @param int $depth
      * @return NotificationTemplateDto|null
      */
@@ -91,7 +91,10 @@ abstract class NotificationTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var NotificationTemplateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -172,7 +175,7 @@ abstract class NotificationTemplateAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -199,7 +202,7 @@ abstract class NotificationTemplateAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -234,7 +237,7 @@ abstract class NotificationTemplateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {

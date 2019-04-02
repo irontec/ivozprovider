@@ -121,13 +121,17 @@ class RatingPlanPricesAction
         return new Response($payload);
     }
 
+    /**
+     * @param array $fields
+     * @return string
+     */
     private function array2csv(array $fields) : string
     {
         unset($fields['weight']);
 
         $f = fopen('php://memory', 'r+');
         if (fputcsv($f, $fields) === false) {
-            return false;
+            return '';
         }
         rewind($f);
         $csv_line = stream_get_contents($f);

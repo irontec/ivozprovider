@@ -81,7 +81,7 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingDdiRulesPatternInterface|null $entity
      * @param int $depth
      * @return OutgoingDdiRulesPatternDto|null
      */
@@ -101,7 +101,10 @@ abstract class OutgoingDdiRulesPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingDdiRulesPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -190,7 +193,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param string $action
      *
-     * @return self
+     * @return static
      */
     protected function setAction($action)
     {
@@ -221,7 +224,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -248,7 +251,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
     {
@@ -272,7 +275,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return self
+     * @return static
      */
     public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
@@ -296,7 +299,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
      *
-     * @return self
+     * @return static
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
     {

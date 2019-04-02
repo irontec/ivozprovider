@@ -31,7 +31,7 @@ interface CountryInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\Country\Name $name);
 
@@ -47,7 +47,7 @@ interface CountryInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
      *
-     * @return self
+     * @return static
      */
     public function setZone(\Ivoz\Provider\Domain\Model\Country\Zone $zone);
 

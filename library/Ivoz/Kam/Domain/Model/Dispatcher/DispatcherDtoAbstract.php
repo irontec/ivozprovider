@@ -257,7 +257,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -271,7 +271,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getApplicationServerId()
     {

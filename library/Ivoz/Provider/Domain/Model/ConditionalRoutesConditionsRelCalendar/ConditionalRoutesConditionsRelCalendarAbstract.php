@@ -63,7 +63,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRoutesConditionsRelCalendarInterface|null $entity
      * @param int $depth
      * @return ConditionalRoutesConditionsRelCalendarDto|null
      */
@@ -83,7 +83,10 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRoutesConditionsRelCalendarDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
     {
@@ -183,7 +186,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
      *
-     * @return self
+     * @return static
      */
     public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
     {

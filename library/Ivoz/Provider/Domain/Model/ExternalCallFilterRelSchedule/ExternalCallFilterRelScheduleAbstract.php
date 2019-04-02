@@ -63,7 +63,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ExternalCallFilterRelScheduleInterface|null $entity
      * @param int $depth
      * @return ExternalCallFilterRelScheduleDto|null
      */
@@ -83,7 +83,10 @@ abstract class ExternalCallFilterRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ExternalCallFilterRelScheduleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
      *
-     * @return self
+     * @return static
      */
     public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null)
     {
@@ -183,7 +186,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
      *
-     * @return self
+     * @return static
      */
     public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
     {

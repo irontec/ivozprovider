@@ -345,7 +345,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -359,7 +359,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFaxId()
     {
@@ -391,7 +391,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -405,7 +405,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDstCountryId()
     {

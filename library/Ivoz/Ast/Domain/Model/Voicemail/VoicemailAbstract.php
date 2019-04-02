@@ -232,7 +232,7 @@ abstract class VoicemailAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param VoicemailInterface|null $entity
      * @param int $depth
      * @return VoicemailDto|null
      */
@@ -252,7 +252,10 @@ abstract class VoicemailAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var VoicemailDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -461,7 +464,7 @@ abstract class VoicemailAbstract
      *
      * @param string $context
      *
-     * @return self
+     * @return static
      */
     protected function setContext($context)
     {
@@ -488,7 +491,7 @@ abstract class VoicemailAbstract
      *
      * @param string $mailbox
      *
-     * @return self
+     * @return static
      */
     protected function setMailbox($mailbox)
     {
@@ -515,7 +518,7 @@ abstract class VoicemailAbstract
      *
      * @param string $password
      *
-     * @return self
+     * @return static
      */
     protected function setPassword($password = null)
     {
@@ -543,7 +546,7 @@ abstract class VoicemailAbstract
      *
      * @param string $fullname
      *
-     * @return self
+     * @return static
      */
     protected function setFullname($fullname = null)
     {
@@ -571,7 +574,7 @@ abstract class VoicemailAbstract
      *
      * @param string $alias
      *
-     * @return self
+     * @return static
      */
     protected function setAlias($alias = null)
     {
@@ -599,7 +602,7 @@ abstract class VoicemailAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email = null)
     {
@@ -627,7 +630,7 @@ abstract class VoicemailAbstract
      *
      * @param string $pager
      *
-     * @return self
+     * @return static
      */
     protected function setPager($pager = null)
     {
@@ -655,7 +658,7 @@ abstract class VoicemailAbstract
      *
      * @param string $attach
      *
-     * @return self
+     * @return static
      */
     protected function setAttach($attach = null)
     {
@@ -679,7 +682,7 @@ abstract class VoicemailAbstract
      *
      * @param string $attachfmt
      *
-     * @return self
+     * @return static
      */
     protected function setAttachfmt($attachfmt = null)
     {
@@ -707,7 +710,7 @@ abstract class VoicemailAbstract
      *
      * @param string $serveremail
      *
-     * @return self
+     * @return static
      */
     protected function setServeremail($serveremail = null)
     {
@@ -735,7 +738,7 @@ abstract class VoicemailAbstract
      *
      * @param string $language
      *
-     * @return self
+     * @return static
      */
     protected function setLanguage($language = null)
     {
@@ -763,7 +766,7 @@ abstract class VoicemailAbstract
      *
      * @param string $tz
      *
-     * @return self
+     * @return static
      */
     protected function setTz($tz = null)
     {
@@ -791,7 +794,7 @@ abstract class VoicemailAbstract
      *
      * @param string $deleteVoicemail
      *
-     * @return self
+     * @return static
      */
     protected function setDeleteVoicemail($deleteVoicemail = null)
     {
@@ -815,7 +818,7 @@ abstract class VoicemailAbstract
      *
      * @param string $saycid
      *
-     * @return self
+     * @return static
      */
     protected function setSaycid($saycid = null)
     {
@@ -839,7 +842,7 @@ abstract class VoicemailAbstract
      *
      * @param string $sendVoicemail
      *
-     * @return self
+     * @return static
      */
     protected function setSendVoicemail($sendVoicemail = null)
     {
@@ -863,7 +866,7 @@ abstract class VoicemailAbstract
      *
      * @param string $review
      *
-     * @return self
+     * @return static
      */
     protected function setReview($review = null)
     {
@@ -887,7 +890,7 @@ abstract class VoicemailAbstract
      *
      * @param string $tempgreetwarn
      *
-     * @return self
+     * @return static
      */
     protected function setTempgreetwarn($tempgreetwarn = null)
     {
@@ -911,7 +914,7 @@ abstract class VoicemailAbstract
      *
      * @param string $operator
      *
-     * @return self
+     * @return static
      */
     protected function setOperator($operator = null)
     {
@@ -935,7 +938,7 @@ abstract class VoicemailAbstract
      *
      * @param string $envelope
      *
-     * @return self
+     * @return static
      */
     protected function setEnvelope($envelope = null)
     {
@@ -959,7 +962,7 @@ abstract class VoicemailAbstract
      *
      * @param integer $sayduration
      *
-     * @return self
+     * @return static
      */
     protected function setSayduration($sayduration = null)
     {
@@ -990,7 +993,7 @@ abstract class VoicemailAbstract
      *
      * @param string $forcename
      *
-     * @return self
+     * @return static
      */
     protected function setForcename($forcename = null)
     {
@@ -1014,7 +1017,7 @@ abstract class VoicemailAbstract
      *
      * @param string $forcegreetings
      *
-     * @return self
+     * @return static
      */
     protected function setForcegreetings($forcegreetings = null)
     {
@@ -1038,7 +1041,7 @@ abstract class VoicemailAbstract
      *
      * @param string $callback
      *
-     * @return self
+     * @return static
      */
     protected function setCallback($callback = null)
     {
@@ -1066,7 +1069,7 @@ abstract class VoicemailAbstract
      *
      * @param string $dialout
      *
-     * @return self
+     * @return static
      */
     protected function setDialout($dialout = null)
     {
@@ -1094,7 +1097,7 @@ abstract class VoicemailAbstract
      *
      * @param string $exitcontext
      *
-     * @return self
+     * @return static
      */
     protected function setExitcontext($exitcontext = null)
     {
@@ -1122,7 +1125,7 @@ abstract class VoicemailAbstract
      *
      * @param integer $maxmsg
      *
-     * @return self
+     * @return static
      */
     protected function setMaxmsg($maxmsg = null)
     {
@@ -1153,7 +1156,7 @@ abstract class VoicemailAbstract
      *
      * @param float $volgain
      *
-     * @return self
+     * @return static
      */
     protected function setVolgain($volgain = null)
     {
@@ -1184,7 +1187,7 @@ abstract class VoicemailAbstract
      *
      * @param string $imapuser
      *
-     * @return self
+     * @return static
      */
     protected function setImapuser($imapuser = null)
     {
@@ -1212,7 +1215,7 @@ abstract class VoicemailAbstract
      *
      * @param string $imappassword
      *
-     * @return self
+     * @return static
      */
     protected function setImappassword($imappassword = null)
     {
@@ -1240,7 +1243,7 @@ abstract class VoicemailAbstract
      *
      * @param string $imapserver
      *
-     * @return self
+     * @return static
      */
     protected function setImapserver($imapserver = null)
     {
@@ -1268,7 +1271,7 @@ abstract class VoicemailAbstract
      *
      * @param string $imapport
      *
-     * @return self
+     * @return static
      */
     protected function setImapport($imapport = null)
     {
@@ -1296,7 +1299,7 @@ abstract class VoicemailAbstract
      *
      * @param string $imapflags
      *
-     * @return self
+     * @return static
      */
     protected function setImapflags($imapflags = null)
     {
@@ -1324,7 +1327,7 @@ abstract class VoicemailAbstract
      *
      * @param \DateTime $stamp
      *
-     * @return self
+     * @return static
      */
     protected function setStamp($stamp = null)
     {
@@ -1355,7 +1358,7 @@ abstract class VoicemailAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
@@ -1379,7 +1382,7 @@ abstract class VoicemailAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return self
+     * @return static
      */
     public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
     {

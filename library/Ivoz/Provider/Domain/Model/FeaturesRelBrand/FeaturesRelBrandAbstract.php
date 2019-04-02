@@ -63,7 +63,7 @@ abstract class FeaturesRelBrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FeaturesRelBrandInterface|null $entity
      * @param int $depth
      * @return FeaturesRelBrandDto|null
      */
@@ -83,7 +83,10 @@ abstract class FeaturesRelBrandAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FeaturesRelBrandDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class FeaturesRelBrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -183,7 +186,7 @@ abstract class FeaturesRelBrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature
      *
-     * @return self
+     * @return static
      */
     public function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
     {

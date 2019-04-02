@@ -106,7 +106,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -122,7 +122,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution
      *
-     * @return self
+     * @return static
      */
     public function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null);
 
@@ -138,7 +138,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension
      *
-     * @return self
+     * @return static
      */
     public function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null);
 
@@ -154,7 +154,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null);
 
@@ -170,7 +170,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null);
 

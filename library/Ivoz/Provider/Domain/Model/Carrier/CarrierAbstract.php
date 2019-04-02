@@ -95,7 +95,7 @@ abstract class CarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CarrierInterface|null $entity
      * @param int $depth
      * @return CarrierDto|null
      */
@@ -115,7 +115,10 @@ abstract class CarrierAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CarrierDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -216,7 +219,7 @@ abstract class CarrierAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -243,7 +246,7 @@ abstract class CarrierAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -270,7 +273,7 @@ abstract class CarrierAbstract
      *
      * @param boolean $externallyRated
      *
-     * @return self
+     * @return static
      */
     protected function setExternallyRated($externallyRated = null)
     {
@@ -298,7 +301,7 @@ abstract class CarrierAbstract
      *
      * @param float $balance
      *
-     * @return self
+     * @return static
      */
     protected function setBalance($balance = null)
     {
@@ -329,7 +332,7 @@ abstract class CarrierAbstract
      *
      * @param boolean $calculateCost
      *
-     * @return self
+     * @return static
      */
     protected function setCalculateCost($calculateCost = null)
     {
@@ -357,7 +360,7 @@ abstract class CarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -381,7 +384,7 @@ abstract class CarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -405,7 +408,7 @@ abstract class CarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {

@@ -82,7 +82,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -98,7 +98,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -114,7 +114,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
 

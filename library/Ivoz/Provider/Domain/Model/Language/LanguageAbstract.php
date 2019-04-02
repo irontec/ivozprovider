@@ -65,7 +65,7 @@ abstract class LanguageAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param LanguageInterface|null $entity
      * @param int $depth
      * @return LanguageDto|null
      */
@@ -85,7 +85,10 @@ abstract class LanguageAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var LanguageDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -171,7 +174,7 @@ abstract class LanguageAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -198,7 +201,7 @@ abstract class LanguageAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {

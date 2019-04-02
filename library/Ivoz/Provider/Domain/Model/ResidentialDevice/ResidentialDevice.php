@@ -145,7 +145,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOutgoingDdiNumber()
     {

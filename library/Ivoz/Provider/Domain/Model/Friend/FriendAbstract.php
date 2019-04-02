@@ -198,7 +198,7 @@ abstract class FriendAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FriendInterface|null $entity
      * @param int $depth
      * @return FriendDto|null
      */
@@ -218,7 +218,10 @@ abstract class FriendAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FriendDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -375,7 +378,7 @@ abstract class FriendAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -402,7 +405,7 @@ abstract class FriendAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -429,7 +432,7 @@ abstract class FriendAbstract
      *
      * @param string $transport
      *
-     * @return self
+     * @return static
      */
     protected function setTransport($transport)
     {
@@ -461,7 +464,7 @@ abstract class FriendAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {
@@ -489,7 +492,7 @@ abstract class FriendAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port = null)
     {
@@ -521,7 +524,7 @@ abstract class FriendAbstract
      *
      * @param string $authNeeded
      *
-     * @return self
+     * @return static
      */
     protected function setAuthNeeded($authNeeded)
     {
@@ -547,7 +550,7 @@ abstract class FriendAbstract
      *
      * @param string $password
      *
-     * @return self
+     * @return static
      */
     protected function setPassword($password = null)
     {
@@ -575,7 +578,7 @@ abstract class FriendAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -602,7 +605,7 @@ abstract class FriendAbstract
      *
      * @param string $disallow
      *
-     * @return self
+     * @return static
      */
     protected function setDisallow($disallow)
     {
@@ -629,7 +632,7 @@ abstract class FriendAbstract
      *
      * @param string $allow
      *
-     * @return self
+     * @return static
      */
     protected function setAllow($allow)
     {
@@ -656,7 +659,7 @@ abstract class FriendAbstract
      *
      * @param string $directMediaMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMediaMethod($directMediaMethod)
     {
@@ -686,7 +689,7 @@ abstract class FriendAbstract
      *
      * @param string $calleridUpdateHeader
      *
-     * @return self
+     * @return static
      */
     protected function setCalleridUpdateHeader($calleridUpdateHeader)
     {
@@ -716,7 +719,7 @@ abstract class FriendAbstract
      *
      * @param string $updateCallerid
      *
-     * @return self
+     * @return static
      */
     protected function setUpdateCallerid($updateCallerid)
     {
@@ -746,7 +749,7 @@ abstract class FriendAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain = null)
     {
@@ -774,7 +777,7 @@ abstract class FriendAbstract
      *
      * @param string $directConnectivity
      *
-     * @return self
+     * @return static
      */
     protected function setDirectConnectivity($directConnectivity)
     {
@@ -804,7 +807,7 @@ abstract class FriendAbstract
      *
      * @param string $ddiIn
      *
-     * @return self
+     * @return static
      */
     protected function setDdiIn($ddiIn)
     {
@@ -834,7 +837,7 @@ abstract class FriendAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -858,7 +861,7 @@ abstract class FriendAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -882,7 +885,7 @@ abstract class FriendAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -906,7 +909,7 @@ abstract class FriendAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
      *
-     * @return self
+     * @return static
      */
     public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null)
     {
@@ -930,7 +933,7 @@ abstract class FriendAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
@@ -954,7 +957,7 @@ abstract class FriendAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {

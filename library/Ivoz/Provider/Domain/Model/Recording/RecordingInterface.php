@@ -76,7 +76,7 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -92,7 +92,7 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile
      *
-     * @return self
+     * @return static
      */
     public function setRecordedFile(\Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile);
 

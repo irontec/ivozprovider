@@ -63,7 +63,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RoutingPatternGroupsRelPatternInterface|null $entity
      * @param int $depth
      * @return RoutingPatternGroupsRelPatternDto|null
      */
@@ -83,7 +83,10 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RoutingPatternGroupsRelPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null)
     {
@@ -183,7 +186,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup = null)
     {

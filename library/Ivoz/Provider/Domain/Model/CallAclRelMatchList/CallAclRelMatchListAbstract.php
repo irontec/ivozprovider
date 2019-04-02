@@ -76,7 +76,7 @@ abstract class CallAclRelMatchListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CallAclRelMatchListInterface|null $entity
      * @param int $depth
      * @return CallAclRelMatchListDto|null
      */
@@ -96,7 +96,10 @@ abstract class CallAclRelMatchListAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CallAclRelMatchListDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -181,7 +184,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -208,7 +211,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @param string $policy
      *
-     * @return self
+     * @return static
      */
     protected function setPolicy($policy)
     {
@@ -239,7 +242,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
      *
-     * @return self
+     * @return static
      */
     public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null)
     {
@@ -263,7 +266,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return self
+     * @return static
      */
     public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {

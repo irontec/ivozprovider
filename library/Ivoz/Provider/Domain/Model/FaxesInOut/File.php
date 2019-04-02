@@ -48,7 +48,7 @@ class File
      *
      * @param integer $fileSize
      *
-     * @return self
+     * @return static
      */
     protected function setFileSize($fileSize = null)
     {
@@ -80,7 +80,7 @@ class File
      *
      * @param string $mimeType
      *
-     * @return self
+     * @return static
      */
     protected function setMimeType($mimeType = null)
     {
@@ -108,7 +108,7 @@ class File
      *
      * @param string $baseName
      *
-     * @return self
+     * @return static
      */
     protected function setBaseName($baseName = null)
     {

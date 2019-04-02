@@ -40,7 +40,7 @@ class Zone
      *
      * @param string $en
      *
-     * @return self
+     * @return static
      */
     protected function setEn($en)
     {
@@ -67,7 +67,7 @@ class Zone
      *
      * @param string $es
      *
-     * @return self
+     * @return static
      */
     protected function setEs($es)
     {

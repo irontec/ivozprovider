@@ -63,7 +63,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingRoutingRelCarrierInterface|null $entity
      * @param int $depth
      * @return OutgoingRoutingRelCarrierDto|null
      */
@@ -83,7 +83,10 @@ abstract class OutgoingRoutingRelCarrierAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingRoutingRelCarrierDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {
@@ -183,7 +186,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {

@@ -284,7 +284,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -298,7 +298,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {

@@ -69,7 +69,7 @@ abstract class RoutingPatternGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RoutingPatternGroupInterface|null $entity
      * @param int $depth
      * @return RoutingPatternGroupDto|null
      */
@@ -89,7 +89,10 @@ abstract class RoutingPatternGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RoutingPatternGroupDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -170,7 +173,7 @@ abstract class RoutingPatternGroupAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -197,7 +200,7 @@ abstract class RoutingPatternGroupAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -225,7 +228,7 @@ abstract class RoutingPatternGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

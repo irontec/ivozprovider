@@ -110,7 +110,7 @@ abstract class TrunksLcrRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksLcrRuleInterface|null $entity
      * @param int $depth
      * @return TrunksLcrRuleDto|null
      */
@@ -130,7 +130,10 @@ abstract class TrunksLcrRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksLcrRuleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -239,7 +242,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param integer $lcrId
      *
-     * @return self
+     * @return static
      */
     protected function setLcrId($lcrId)
     {
@@ -267,7 +270,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix = null)
     {
@@ -295,7 +298,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param string $fromUri
      *
-     * @return self
+     * @return static
      */
     protected function setFromUri($fromUri = null)
     {
@@ -323,7 +326,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param string $requestUri
      *
-     * @return self
+     * @return static
      */
     protected function setRequestUri($requestUri = null)
     {
@@ -351,7 +354,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param string $mtTvalue
      *
-     * @return self
+     * @return static
      */
     protected function setMtTvalue($mtTvalue = null)
     {
@@ -379,7 +382,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param integer $stopper
      *
-     * @return self
+     * @return static
      */
     protected function setStopper($stopper)
     {
@@ -407,7 +410,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param integer $enabled
      *
-     * @return self
+     * @return static
      */
     protected function setEnabled($enabled)
     {
@@ -435,7 +438,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null)
     {
@@ -459,7 +462,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null)
     {
@@ -483,7 +486,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {

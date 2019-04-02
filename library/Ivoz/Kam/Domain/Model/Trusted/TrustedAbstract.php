@@ -97,7 +97,7 @@ abstract class TrustedAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrustedInterface|null $entity
      * @param int $depth
      * @return TrustedDto|null
      */
@@ -117,7 +117,10 @@ abstract class TrustedAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrustedDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -218,7 +221,7 @@ abstract class TrustedAbstract
      *
      * @param string $srcIp
      *
-     * @return self
+     * @return static
      */
     protected function setSrcIp($srcIp = null)
     {
@@ -246,7 +249,7 @@ abstract class TrustedAbstract
      *
      * @param string $proto
      *
-     * @return self
+     * @return static
      */
     protected function setProto($proto = null)
     {
@@ -274,7 +277,7 @@ abstract class TrustedAbstract
      *
      * @param string $fromPattern
      *
-     * @return self
+     * @return static
      */
     protected function setFromPattern($fromPattern = null)
     {
@@ -302,7 +305,7 @@ abstract class TrustedAbstract
      *
      * @param string $ruriPattern
      *
-     * @return self
+     * @return static
      */
     protected function setRuriPattern($ruriPattern = null)
     {
@@ -330,7 +333,7 @@ abstract class TrustedAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -358,7 +361,7 @@ abstract class TrustedAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -386,7 +389,7 @@ abstract class TrustedAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -413,7 +416,7 @@ abstract class TrustedAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {

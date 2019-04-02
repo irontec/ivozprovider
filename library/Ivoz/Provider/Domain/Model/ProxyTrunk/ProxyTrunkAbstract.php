@@ -64,7 +64,7 @@ abstract class ProxyTrunkAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ProxyTrunkInterface|null $entity
      * @param int $depth
      * @return ProxyTrunkDto|null
      */
@@ -84,7 +84,10 @@ abstract class ProxyTrunkAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ProxyTrunkDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -161,7 +164,7 @@ abstract class ProxyTrunkAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -189,7 +192,7 @@ abstract class ProxyTrunkAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip)
     {

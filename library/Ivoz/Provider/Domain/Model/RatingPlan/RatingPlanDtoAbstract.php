@@ -386,7 +386,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -400,7 +400,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getRatingPlanGroupId()
     {
@@ -432,7 +432,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -446,7 +446,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDestinationRateGroupId()
     {
@@ -478,7 +478,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -492,7 +492,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTpTimingId()
     {
@@ -524,7 +524,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -538,7 +538,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTpRatingPlanId()
     {

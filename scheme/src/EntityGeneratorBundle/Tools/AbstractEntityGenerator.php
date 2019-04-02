@@ -94,7 +94,7 @@ public static function createDto($id = null)
 
 /**
  * @internal use EntityTools instead
- * @param EntityInterface|null $entity
+ * @param <entityClass>Interface|null $entity
  * @param int $depth
  * @return <dtoClass>|null
  */
@@ -114,7 +114,10 @@ public static function entityToDto(EntityInterface $entity = null, $depth = 0)
         return static::createDto($entity->getId());
     }
 
-    return $entity->toDto($depth-1);
+    /** @var <dtoClass> $dto */
+    $dto = $entity->toDto($depth-1);
+
+    return $dto;
 }
 
 /**
@@ -178,7 +181,7 @@ protected function __toArray()
  *
  * @param <variableType> $<variableName>
  *
- * @return self
+ * @return static
  */
 <visibility> function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
 {

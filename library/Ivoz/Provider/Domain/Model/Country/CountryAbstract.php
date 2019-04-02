@@ -76,7 +76,7 @@ abstract class CountryAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CountryInterface|null $entity
      * @param int $depth
      * @return CountryDto|null
      */
@@ -96,7 +96,10 @@ abstract class CountryAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CountryDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -205,7 +208,7 @@ abstract class CountryAbstract
      *
      * @param string $code
      *
-     * @return self
+     * @return static
      */
     protected function setCode($code)
     {
@@ -232,7 +235,7 @@ abstract class CountryAbstract
      *
      * @param string $countryCode
      *
-     * @return self
+     * @return static
      */
     protected function setCountryCode($countryCode = null)
     {
@@ -260,7 +263,7 @@ abstract class CountryAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -283,7 +286,7 @@ abstract class CountryAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
      *
-     * @return self
+     * @return static
      */
     public function setZone(Zone $zone)
     {

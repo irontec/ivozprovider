@@ -255,7 +255,7 @@ abstract class CompanyAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CompanyInterface|null $entity
      * @param int $depth
      * @return CompanyDto|null
      */
@@ -275,7 +275,10 @@ abstract class CompanyAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CompanyDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -484,7 +487,7 @@ abstract class CompanyAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -517,7 +520,7 @@ abstract class CompanyAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -544,7 +547,7 @@ abstract class CompanyAbstract
      *
      * @param string $domainUsers
      *
-     * @return self
+     * @return static
      */
     protected function setDomainUsers($domainUsers = null)
     {
@@ -572,7 +575,7 @@ abstract class CompanyAbstract
      *
      * @param string $nif
      *
-     * @return self
+     * @return static
      */
     protected function setNif($nif)
     {
@@ -599,7 +602,7 @@ abstract class CompanyAbstract
      *
      * @param string $distributeMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDistributeMethod($distributeMethod)
     {
@@ -631,7 +634,7 @@ abstract class CompanyAbstract
      *
      * @param integer $maxCalls
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCalls($maxCalls)
     {
@@ -659,7 +662,7 @@ abstract class CompanyAbstract
      *
      * @param string $postalAddress
      *
-     * @return self
+     * @return static
      */
     protected function setPostalAddress($postalAddress)
     {
@@ -686,7 +689,7 @@ abstract class CompanyAbstract
      *
      * @param string $postalCode
      *
-     * @return self
+     * @return static
      */
     protected function setPostalCode($postalCode)
     {
@@ -713,7 +716,7 @@ abstract class CompanyAbstract
      *
      * @param string $town
      *
-     * @return self
+     * @return static
      */
     protected function setTown($town)
     {
@@ -740,7 +743,7 @@ abstract class CompanyAbstract
      *
      * @param string $province
      *
-     * @return self
+     * @return static
      */
     protected function setProvince($province)
     {
@@ -767,7 +770,7 @@ abstract class CompanyAbstract
      *
      * @param string $countryName
      *
-     * @return self
+     * @return static
      */
     protected function setCountryName($countryName)
     {
@@ -794,7 +797,7 @@ abstract class CompanyAbstract
      *
      * @param boolean $ipfilter
      *
-     * @return self
+     * @return static
      */
     protected function setIpfilter($ipfilter = null)
     {
@@ -822,7 +825,7 @@ abstract class CompanyAbstract
      *
      * @param integer $onDemandRecord
      *
-     * @return self
+     * @return static
      */
     protected function setOnDemandRecord($onDemandRecord = null)
     {
@@ -853,7 +856,7 @@ abstract class CompanyAbstract
      *
      * @param string $onDemandRecordCode
      *
-     * @return self
+     * @return static
      */
     protected function setOnDemandRecordCode($onDemandRecordCode = null)
     {
@@ -881,7 +884,7 @@ abstract class CompanyAbstract
      *
      * @param string $externallyextraopts
      *
-     * @return self
+     * @return static
      */
     protected function setExternallyextraopts($externallyextraopts = null)
     {
@@ -909,7 +912,7 @@ abstract class CompanyAbstract
      *
      * @param integer $recordingsLimitMB
      *
-     * @return self
+     * @return static
      */
     protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
@@ -940,7 +943,7 @@ abstract class CompanyAbstract
      *
      * @param string $recordingsLimitEmail
      *
-     * @return self
+     * @return static
      */
     protected function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
@@ -968,7 +971,7 @@ abstract class CompanyAbstract
      *
      * @param string $billingMethod
      *
-     * @return self
+     * @return static
      */
     protected function setBillingMethod($billingMethod)
     {
@@ -1000,7 +1003,7 @@ abstract class CompanyAbstract
      *
      * @param float $balance
      *
-     * @return self
+     * @return static
      */
     protected function setBalance($balance = null)
     {
@@ -1031,7 +1034,7 @@ abstract class CompanyAbstract
      *
      * @param boolean $showInvoices
      *
-     * @return self
+     * @return static
      */
     protected function setShowInvoices($showInvoices = null)
     {
@@ -1059,7 +1062,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
@@ -1083,7 +1086,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets
      *
-     * @return self
+     * @return static
      */
     public function setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets = null)
     {
@@ -1107,7 +1110,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
      *
-     * @return self
+     * @return static
      */
     public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null)
     {
@@ -1131,7 +1134,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -1155,7 +1158,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -1179,7 +1182,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer
      *
-     * @return self
+     * @return static
      */
     public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer = null)
     {
@@ -1203,7 +1206,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
-     * @return self
+     * @return static
      */
     public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
@@ -1227,7 +1230,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -1251,7 +1254,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -1275,7 +1278,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
@@ -1299,7 +1302,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
     {
@@ -1323,7 +1326,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
     {
@@ -1347,7 +1350,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
     {
@@ -1371,7 +1374,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
     {
@@ -1395,7 +1398,7 @@ abstract class CompanyAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
     {

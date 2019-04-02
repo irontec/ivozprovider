@@ -117,7 +117,7 @@ abstract class HolidayDateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param HolidayDateInterface|null $entity
      * @param int $depth
      * @return HolidayDateDto|null
      */
@@ -137,7 +137,10 @@ abstract class HolidayDateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var HolidayDateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -254,7 +257,7 @@ abstract class HolidayDateAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -281,7 +284,7 @@ abstract class HolidayDateAbstract
      *
      * @param \DateTime $eventDate
      *
-     * @return self
+     * @return static
      */
     protected function setEventDate($eventDate)
     {
@@ -307,7 +310,7 @@ abstract class HolidayDateAbstract
      *
      * @param boolean $wholeDayEvent
      *
-     * @return self
+     * @return static
      */
     protected function setWholeDayEvent($wholeDayEvent)
     {
@@ -334,7 +337,7 @@ abstract class HolidayDateAbstract
      *
      * @param \DateTime $timeIn
      *
-     * @return self
+     * @return static
      */
     protected function setTimeIn($timeIn = null)
     {
@@ -358,7 +361,7 @@ abstract class HolidayDateAbstract
      *
      * @param \DateTime $timeOut
      *
-     * @return self
+     * @return static
      */
     protected function setTimeOut($timeOut = null)
     {
@@ -382,7 +385,7 @@ abstract class HolidayDateAbstract
      *
      * @param string $routeType
      *
-     * @return self
+     * @return static
      */
     protected function setRouteType($routeType = null)
     {
@@ -415,7 +418,7 @@ abstract class HolidayDateAbstract
      *
      * @param string $numberValue
      *
-     * @return self
+     * @return static
      */
     protected function setNumberValue($numberValue = null)
     {
@@ -443,7 +446,7 @@ abstract class HolidayDateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
      *
-     * @return self
+     * @return static
      */
     public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar = null)
     {
@@ -467,7 +470,7 @@ abstract class HolidayDateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
      *
-     * @return self
+     * @return static
      */
     public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
     {
@@ -491,7 +494,7 @@ abstract class HolidayDateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return self
+     * @return static
      */
     public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
     {
@@ -515,7 +518,7 @@ abstract class HolidayDateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
     {
@@ -539,7 +542,7 @@ abstract class HolidayDateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {

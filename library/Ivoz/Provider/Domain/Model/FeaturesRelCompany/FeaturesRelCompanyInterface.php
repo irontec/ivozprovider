@@ -17,7 +17,7 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -33,7 +33,7 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature
      *
-     * @return self
+     * @return static
      */
     public function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature);
 

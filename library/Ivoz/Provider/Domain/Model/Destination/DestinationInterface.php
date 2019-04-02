@@ -38,7 +38,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
      *
-     * @return self
+     * @return static
      */
     public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
 
@@ -54,7 +54,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -70,7 +70,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\Destination\Name $name);
 

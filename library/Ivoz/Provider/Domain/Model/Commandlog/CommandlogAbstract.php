@@ -96,7 +96,7 @@ abstract class CommandlogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CommandlogInterface|null $entity
      * @param int $depth
      * @return CommandlogDto|null
      */
@@ -116,7 +116,10 @@ abstract class CommandlogAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CommandlogDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -213,7 +216,7 @@ abstract class CommandlogAbstract
      *
      * @param string $requestId
      *
-     * @return self
+     * @return static
      */
     protected function setRequestId($requestId)
     {
@@ -239,7 +242,7 @@ abstract class CommandlogAbstract
      *
      * @param string $class
      *
-     * @return self
+     * @return static
      */
     protected function setClass($class)
     {
@@ -266,7 +269,7 @@ abstract class CommandlogAbstract
      *
      * @param string $method
      *
-     * @return self
+     * @return static
      */
     protected function setMethod($method = null)
     {
@@ -294,7 +297,7 @@ abstract class CommandlogAbstract
      *
      * @param array $arguments
      *
-     * @return self
+     * @return static
      */
     protected function setArguments($arguments = null)
     {
@@ -318,7 +321,7 @@ abstract class CommandlogAbstract
      *
      * @param array $agent
      *
-     * @return self
+     * @return static
      */
     protected function setAgent($agent = null)
     {
@@ -342,7 +345,7 @@ abstract class CommandlogAbstract
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn)
     {
@@ -372,7 +375,7 @@ abstract class CommandlogAbstract
      *
      * @param integer $microtime
      *
-     * @return self
+     * @return static
      */
     protected function setMicrotime($microtime)
     {

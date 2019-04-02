@@ -63,7 +63,7 @@ abstract class ProxyUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ProxyUserInterface|null $entity
      * @param int $depth
      * @return ProxyUserDto|null
      */
@@ -83,7 +83,10 @@ abstract class ProxyUserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ProxyUserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ProxyUserAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -187,7 +190,7 @@ abstract class ProxyUserAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {

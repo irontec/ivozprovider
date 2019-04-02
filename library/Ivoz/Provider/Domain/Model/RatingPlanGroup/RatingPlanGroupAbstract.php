@@ -75,7 +75,7 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RatingPlanGroupInterface|null $entity
      * @param int $depth
      * @return RatingPlanGroupDto|null
      */
@@ -95,7 +95,10 @@ abstract class RatingPlanGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RatingPlanGroupDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -204,7 +207,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -228,7 +231,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -252,7 +255,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -275,7 +278,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(Description $description)
     {

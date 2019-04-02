@@ -31,12 +31,12 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * return associated endpoint with the user
      *
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface | null
      */
     public function getEndpoint();
 
     /**
-     * @return string or null
+     * @return string | null
      */
     public function getUserTerminalInterface();
 
@@ -56,7 +56,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoiceMailContext();
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOutgoingDdiNumber();
 
@@ -239,7 +239,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -255,7 +255,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
      *
-     * @return self
+     * @return static
      */
     public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null);
 
@@ -271,7 +271,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant
      *
-     * @return self
+     * @return static
      */
     public function setBossAssistant(\Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant = null);
 
@@ -287,7 +287,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList
      *
-     * @return self
+     * @return static
      */
     public function setBossAssistantWhiteList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList = null);
 
@@ -303,7 +303,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
 
@@ -319,7 +319,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
@@ -328,7 +328,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return self
+     * @return static
      */
     public function setTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal = null);
 
@@ -344,7 +344,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return self
+     * @return static
      */
     public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null);
 
@@ -360,7 +360,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone
      *
-     * @return self
+     * @return static
      */
     public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null);
 
@@ -369,7 +369,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
 
@@ -378,7 +378,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null);
 
@@ -387,7 +387,7 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution
      *
-     * @return self
+     * @return static
      */
     public function setVoicemailLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution = null);
 

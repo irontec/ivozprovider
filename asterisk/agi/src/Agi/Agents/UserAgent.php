@@ -96,6 +96,7 @@ class UserAgent implements AgentInterface
 
     /**
      * Return user voicemail identifier
+     * @return string
      */
     public function getVoiceMail()
     {

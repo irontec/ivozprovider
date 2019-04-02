@@ -45,16 +45,19 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime()
     {
         $timespan = $this->getCostDetailsFirstTimespan();
         if (!$timespan) {
-            return;
+            return null;
         }
 
-        return new \DateTime($timespan['TimeStart'], new \DateTimeZone('UTC'));
+        return new \DateTime(
+            $timespan['TimeStart'],
+            new \DateTimeZone('UTC')
+        );
     }
 
     /**
@@ -64,7 +67,7 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
     {
         $timespan = $this->getCostDetailsFirstTimespan();
         if (!$timespan) {
-            return;
+            return '';
         }
 
         return $timespan['RatingPlanId'];
@@ -77,7 +80,7 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
     {
         $timespan = $this->getCostDetailsFirstTimespan();
         if (!$timespan) {
-            return;
+            return '';
         }
 
         return $timespan['MatchedDestId'];

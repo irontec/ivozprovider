@@ -101,7 +101,7 @@ abstract class UsersLocationAttrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersLocationAttrInterface|null $entity
      * @param int $depth
      * @return UsersLocationAttrDto|null
      */
@@ -121,7 +121,10 @@ abstract class UsersLocationAttrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersLocationAttrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -218,7 +221,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $ruid
      *
-     * @return self
+     * @return static
      */
     protected function setRuid($ruid)
     {
@@ -245,7 +248,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -272,7 +275,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain = null)
     {
@@ -300,7 +303,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $aname
      *
-     * @return self
+     * @return static
      */
     protected function setAname($aname)
     {
@@ -327,7 +330,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param integer $atype
      *
-     * @return self
+     * @return static
      */
     protected function setAtype($atype)
     {
@@ -354,7 +357,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $avalue
      *
-     * @return self
+     * @return static
      */
     protected function setAvalue($avalue)
     {
@@ -381,7 +384,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param \DateTime $lastModified
      *
-     * @return self
+     * @return static
      */
     protected function setLastModified($lastModified)
     {

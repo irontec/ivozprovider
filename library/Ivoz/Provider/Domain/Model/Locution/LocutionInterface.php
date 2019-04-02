@@ -51,7 +51,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -67,7 +67,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile
      *
-     * @return self
+     * @return static
      */
     public function setEncodedFile(\Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile);
 
@@ -83,7 +83,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile
      *
-     * @return self
+     * @return static
      */
     public function setOriginalFile(\Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile);
 

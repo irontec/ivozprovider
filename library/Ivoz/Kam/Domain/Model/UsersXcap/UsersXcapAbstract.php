@@ -111,7 +111,7 @@ abstract class UsersXcapAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersXcapInterface|null $entity
      * @param int $depth
      * @return UsersXcapDto|null
      */
@@ -131,7 +131,10 @@ abstract class UsersXcapAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersXcapDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -229,7 +232,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -256,7 +259,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain)
     {
@@ -283,7 +286,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $doc
      *
-     * @return self
+     * @return static
      */
     protected function setDoc($doc)
     {
@@ -309,7 +312,7 @@ abstract class UsersXcapAbstract
      *
      * @param integer $docType
      *
-     * @return self
+     * @return static
      */
     protected function setDocType($docType)
     {
@@ -336,7 +339,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $etag
      *
-     * @return self
+     * @return static
      */
     protected function setEtag($etag)
     {
@@ -363,7 +366,7 @@ abstract class UsersXcapAbstract
      *
      * @param integer $source
      *
-     * @return self
+     * @return static
      */
     protected function setSource($source)
     {
@@ -390,7 +393,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $docUri
      *
-     * @return self
+     * @return static
      */
     protected function setDocUri($docUri)
     {
@@ -417,7 +420,7 @@ abstract class UsersXcapAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port)
     {

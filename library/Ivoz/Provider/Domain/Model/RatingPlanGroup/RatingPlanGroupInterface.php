@@ -36,7 +36,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -52,7 +52,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
@@ -68,7 +68,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name);
 
@@ -84,7 +84,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(\Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description);
 

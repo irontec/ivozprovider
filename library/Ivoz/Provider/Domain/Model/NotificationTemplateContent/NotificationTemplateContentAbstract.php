@@ -92,7 +92,7 @@ abstract class NotificationTemplateContentAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param NotificationTemplateContentInterface|null $entity
      * @param int $depth
      * @return NotificationTemplateContentDto|null
      */
@@ -112,7 +112,10 @@ abstract class NotificationTemplateContentAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var NotificationTemplateContentDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -209,7 +212,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $fromName
      *
-     * @return self
+     * @return static
      */
     protected function setFromName($fromName = null)
     {
@@ -237,7 +240,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $fromAddress
      *
-     * @return self
+     * @return static
      */
     protected function setFromAddress($fromAddress = null)
     {
@@ -265,7 +268,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $subject
      *
-     * @return self
+     * @return static
      */
     protected function setSubject($subject)
     {
@@ -292,7 +295,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $body
      *
-     * @return self
+     * @return static
      */
     protected function setBody($body)
     {
@@ -319,7 +322,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $bodyType
      *
-     * @return self
+     * @return static
      */
     protected function setBodyType($bodyType)
     {
@@ -350,7 +353,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
     {
@@ -374,7 +377,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {

@@ -61,7 +61,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -77,7 +77,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
@@ -93,7 +93,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name);
 
@@ -109,7 +109,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(\Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description);
 
@@ -125,7 +125,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file
      *
-     * @return self
+     * @return static
      */
     public function setFile(\Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file);
 

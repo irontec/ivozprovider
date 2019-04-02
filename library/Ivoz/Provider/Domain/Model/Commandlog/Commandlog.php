@@ -12,7 +12,7 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
+     * @return string
      */
     public function getId()
     {

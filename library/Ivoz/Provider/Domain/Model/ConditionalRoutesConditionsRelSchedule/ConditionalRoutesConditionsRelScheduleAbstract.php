@@ -63,7 +63,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRoutesConditionsRelScheduleInterface|null $entity
      * @param int $depth
      * @return ConditionalRoutesConditionsRelScheduleDto|null
      */
@@ -83,7 +83,10 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRoutesConditionsRelScheduleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
     {
@@ -183,7 +186,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
      *
-     * @return self
+     * @return static
      */
     public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
     {

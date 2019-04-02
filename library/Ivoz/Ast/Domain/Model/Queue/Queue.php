@@ -21,7 +21,7 @@ class Queue extends QueueAbstract implements QueueInterface
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return string
+     * @return int
      */
     public function getId()
     {

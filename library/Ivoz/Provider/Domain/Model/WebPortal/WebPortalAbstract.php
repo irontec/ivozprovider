@@ -92,7 +92,7 @@ abstract class WebPortalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param WebPortalInterface|null $entity
      * @param int $depth
      * @return WebPortalDto|null
      */
@@ -112,7 +112,10 @@ abstract class WebPortalAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var WebPortalDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -225,7 +228,7 @@ abstract class WebPortalAbstract
      *
      * @param string $url
      *
-     * @return self
+     * @return static
      */
     protected function setUrl($url)
     {
@@ -252,7 +255,7 @@ abstract class WebPortalAbstract
      *
      * @param string $klearTheme
      *
-     * @return self
+     * @return static
      */
     protected function setKlearTheme($klearTheme = null)
     {
@@ -280,7 +283,7 @@ abstract class WebPortalAbstract
      *
      * @param string $urlType
      *
-     * @return self
+     * @return static
      */
     protected function setUrlType($urlType)
     {
@@ -313,7 +316,7 @@ abstract class WebPortalAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -341,7 +344,7 @@ abstract class WebPortalAbstract
      *
      * @param string $userTheme
      *
-     * @return self
+     * @return static
      */
     protected function setUserTheme($userTheme = null)
     {
@@ -369,7 +372,7 @@ abstract class WebPortalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -393,7 +396,7 @@ abstract class WebPortalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\WebPortal\Logo $logo
      *
-     * @return self
+     * @return static
      */
     public function setLogo(Logo $logo)
     {

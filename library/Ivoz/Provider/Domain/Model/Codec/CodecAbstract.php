@@ -72,7 +72,7 @@ abstract class CodecAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CodecInterface|null $entity
      * @param int $depth
      * @return CodecDto|null
      */
@@ -92,7 +92,10 @@ abstract class CodecAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CodecDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -170,7 +173,7 @@ abstract class CodecAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -201,7 +204,7 @@ abstract class CodecAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -228,7 +231,7 @@ abstract class CodecAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {

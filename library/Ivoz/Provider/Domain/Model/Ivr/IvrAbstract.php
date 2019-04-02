@@ -158,7 +158,7 @@ abstract class IvrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param IvrInterface|null $entity
      * @param int $depth
      * @return IvrDto|null
      */
@@ -178,7 +178,10 @@ abstract class IvrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var IvrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -323,7 +326,7 @@ abstract class IvrAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -350,7 +353,7 @@ abstract class IvrAbstract
      *
      * @param integer $timeout
      *
-     * @return self
+     * @return static
      */
     protected function setTimeout($timeout)
     {
@@ -378,7 +381,7 @@ abstract class IvrAbstract
      *
      * @param integer $maxDigits
      *
-     * @return self
+     * @return static
      */
     protected function setMaxDigits($maxDigits)
     {
@@ -406,7 +409,7 @@ abstract class IvrAbstract
      *
      * @param boolean $allowExtensions
      *
-     * @return self
+     * @return static
      */
     protected function setAllowExtensions($allowExtensions)
     {
@@ -433,7 +436,7 @@ abstract class IvrAbstract
      *
      * @param string $noInputRouteType
      *
-     * @return self
+     * @return static
      */
     protected function setNoInputRouteType($noInputRouteType = null)
     {
@@ -466,7 +469,7 @@ abstract class IvrAbstract
      *
      * @param string $noInputNumberValue
      *
-     * @return self
+     * @return static
      */
     protected function setNoInputNumberValue($noInputNumberValue = null)
     {
@@ -494,7 +497,7 @@ abstract class IvrAbstract
      *
      * @param string $errorRouteType
      *
-     * @return self
+     * @return static
      */
     protected function setErrorRouteType($errorRouteType = null)
     {
@@ -527,7 +530,7 @@ abstract class IvrAbstract
      *
      * @param string $errorNumberValue
      *
-     * @return self
+     * @return static
      */
     protected function setErrorNumberValue($errorNumberValue = null)
     {
@@ -555,7 +558,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -579,7 +582,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
      *
-     * @return self
+     * @return static
      */
     public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null)
     {
@@ -603,7 +606,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution
      *
-     * @return self
+     * @return static
      */
     public function setNoInputLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution = null)
     {
@@ -627,7 +630,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution
      *
-     * @return self
+     * @return static
      */
     public function setErrorLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution = null)
     {
@@ -651,7 +654,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution
      *
-     * @return self
+     * @return static
      */
     public function setSuccessLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution = null)
     {
@@ -675,7 +678,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension
      *
-     * @return self
+     * @return static
      */
     public function setNoInputExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension = null)
     {
@@ -699,7 +702,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension
      *
-     * @return self
+     * @return static
      */
     public function setErrorExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension = null)
     {
@@ -723,7 +726,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setNoInputVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser = null)
     {
@@ -747,7 +750,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setErrorVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser = null)
     {
@@ -771,7 +774,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNoInputNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry = null)
     {
@@ -795,7 +798,7 @@ abstract class IvrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setErrorNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry = null)
     {

@@ -118,7 +118,7 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param InvoiceSchedulerInterface|null $entity
      * @param int $depth
      * @return InvoiceSchedulerDto|null
      */
@@ -138,7 +138,10 @@ abstract class InvoiceSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var InvoiceSchedulerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -255,7 +258,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -282,7 +285,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $unit
      *
-     * @return self
+     * @return static
      */
     protected function setUnit($unit)
     {
@@ -314,7 +317,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param integer $frequency
      *
-     * @return self
+     * @return static
      */
     protected function setFrequency($frequency)
     {
@@ -342,7 +345,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email)
     {
@@ -369,7 +372,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \DateTime $lastExecution
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecution($lastExecution = null)
     {
@@ -400,7 +403,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $lastExecutionError
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecutionError($lastExecutionError = null)
     {
@@ -428,7 +431,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \DateTime $nextExecution
      *
-     * @return self
+     * @return static
      */
     protected function setNextExecution($nextExecution = null)
     {
@@ -459,7 +462,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param float $taxRate
      *
-     * @return self
+     * @return static
      */
     protected function setTaxRate($taxRate = null)
     {
@@ -490,7 +493,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
     {
@@ -514,7 +517,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -538,7 +541,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -562,7 +565,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
     {

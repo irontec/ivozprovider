@@ -64,7 +64,7 @@ abstract class ApplicationServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ApplicationServerInterface|null $entity
      * @param int $depth
      * @return ApplicationServerDto|null
      */
@@ -84,7 +84,10 @@ abstract class ApplicationServerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ApplicationServerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -161,7 +164,7 @@ abstract class ApplicationServerAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip)
     {
@@ -188,7 +191,7 @@ abstract class ApplicationServerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {

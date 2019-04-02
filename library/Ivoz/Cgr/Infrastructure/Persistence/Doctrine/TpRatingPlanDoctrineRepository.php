@@ -28,6 +28,7 @@ class TpRatingPlanDoctrineRepository extends ServiceEntityRepository implements 
      */
     public function findOneByTag(string $tag)
     {
+        /** @var TpRatingPlanInterface | null $response */
         $response = $this->findOneBy([
             'tag' => $tag
         ]);

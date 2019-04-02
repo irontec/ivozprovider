@@ -83,7 +83,7 @@ abstract class BalanceNotificationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BalanceNotificationInterface|null $entity
      * @param int $depth
      * @return BalanceNotificationDto|null
      */
@@ -103,7 +103,10 @@ abstract class BalanceNotificationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BalanceNotificationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -195,7 +198,7 @@ abstract class BalanceNotificationAbstract
      *
      * @param string $toAddress
      *
-     * @return self
+     * @return static
      */
     protected function setToAddress($toAddress = null)
     {
@@ -223,7 +226,7 @@ abstract class BalanceNotificationAbstract
      *
      * @param float $threshold
      *
-     * @return self
+     * @return static
      */
     protected function setThreshold($threshold = null)
     {
@@ -254,7 +257,7 @@ abstract class BalanceNotificationAbstract
      *
      * @param \DateTime $lastSent
      *
-     * @return self
+     * @return static
      */
     protected function setLastSent($lastSent = null)
     {
@@ -285,7 +288,7 @@ abstract class BalanceNotificationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -309,7 +312,7 @@ abstract class BalanceNotificationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -333,7 +336,7 @@ abstract class BalanceNotificationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
     {

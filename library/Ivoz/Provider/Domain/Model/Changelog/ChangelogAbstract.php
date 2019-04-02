@@ -91,7 +91,7 @@ abstract class ChangelogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ChangelogInterface|null $entity
      * @param int $depth
      * @return ChangelogDto|null
      */
@@ -111,7 +111,10 @@ abstract class ChangelogAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ChangelogDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -204,7 +207,7 @@ abstract class ChangelogAbstract
      *
      * @param string $entity
      *
-     * @return self
+     * @return static
      */
     protected function setEntity($entity)
     {
@@ -231,7 +234,7 @@ abstract class ChangelogAbstract
      *
      * @param string $entityId
      *
-     * @return self
+     * @return static
      */
     protected function setEntityId($entityId)
     {
@@ -258,7 +261,7 @@ abstract class ChangelogAbstract
      *
      * @param array $data
      *
-     * @return self
+     * @return static
      */
     protected function setData($data = null)
     {
@@ -282,7 +285,7 @@ abstract class ChangelogAbstract
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn)
     {
@@ -312,7 +315,7 @@ abstract class ChangelogAbstract
      *
      * @param integer $microtime
      *
-     * @return self
+     * @return static
      */
     protected function setMicrotime($microtime)
     {
@@ -339,7 +342,7 @@ abstract class ChangelogAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command
      *
-     * @return self
+     * @return static
      */
     public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command)
     {

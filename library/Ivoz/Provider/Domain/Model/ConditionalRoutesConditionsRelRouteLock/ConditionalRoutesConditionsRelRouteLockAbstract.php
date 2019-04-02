@@ -63,7 +63,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRoutesConditionsRelRouteLockInterface|null $entity
      * @param int $depth
      * @return ConditionalRoutesConditionsRelRouteLockDto|null
      */
@@ -83,7 +83,10 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRoutesConditionsRelRouteLockDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -159,7 +162,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
     {
@@ -183,7 +186,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock
      *
-     * @return self
+     * @return static
      */
     public function setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock)
     {

@@ -210,7 +210,7 @@ class DataGateway
      * @param array|null $orderBy
      * @param int|null $limit
      * @param int|null $offset
-     * @return DataTransferObjectInterface[]
+     * @return DataTransferObjectInterface | null
      */
     public function findOneBy(
         string $entityName,
@@ -219,6 +219,7 @@ class DataGateway
         int $limit = null,
         int $offset = null
     ) {
+        /** @var DataTransferObjectInterface[] $response */
         $response = $this->findBy(
             $entityName,
             $criteria,

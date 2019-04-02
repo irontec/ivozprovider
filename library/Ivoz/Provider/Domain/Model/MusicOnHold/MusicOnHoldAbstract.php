@@ -90,7 +90,7 @@ abstract class MusicOnHoldAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param MusicOnHoldInterface|null $entity
      * @param int $depth
      * @return MusicOnHoldDto|null
      */
@@ -110,7 +110,10 @@ abstract class MusicOnHoldAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var MusicOnHoldDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -235,7 +238,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -262,7 +265,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
@@ -296,7 +299,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -320,7 +323,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -344,7 +347,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
      *
-     * @return self
+     * @return static
      */
     public function setOriginalFile(OriginalFile $originalFile)
     {
@@ -367,7 +370,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
      *
-     * @return self
+     * @return static
      */
     public function setEncodedFile(EncodedFile $encodedFile)
     {

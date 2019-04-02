@@ -207,7 +207,7 @@ abstract class UserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UserInterface|null $entity
      * @param int $depth
      * @return UserDto|null
      */
@@ -227,7 +227,10 @@ abstract class UserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -400,7 +403,7 @@ abstract class UserAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -427,7 +430,7 @@ abstract class UserAbstract
      *
      * @param string $lastname
      *
-     * @return self
+     * @return static
      */
     protected function setLastname($lastname)
     {
@@ -454,7 +457,7 @@ abstract class UserAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email = null)
     {
@@ -482,7 +485,7 @@ abstract class UserAbstract
      *
      * @param string $pass
      *
-     * @return self
+     * @return static
      */
     protected function setPass($pass = null)
     {
@@ -510,7 +513,7 @@ abstract class UserAbstract
      *
      * @param boolean $doNotDisturb
      *
-     * @return self
+     * @return static
      */
     protected function setDoNotDisturb($doNotDisturb)
     {
@@ -537,7 +540,7 @@ abstract class UserAbstract
      *
      * @param boolean $isBoss
      *
-     * @return self
+     * @return static
      */
     protected function setIsBoss($isBoss)
     {
@@ -564,7 +567,7 @@ abstract class UserAbstract
      *
      * @param boolean $active
      *
-     * @return self
+     * @return static
      */
     protected function setActive($active)
     {
@@ -591,7 +594,7 @@ abstract class UserAbstract
      *
      * @param integer $maxCalls
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCalls($maxCalls)
     {
@@ -619,7 +622,7 @@ abstract class UserAbstract
      *
      * @param string $externalIpCalls
      *
-     * @return self
+     * @return static
      */
     protected function setExternalIpCalls($externalIpCalls)
     {
@@ -652,7 +655,7 @@ abstract class UserAbstract
      *
      * @param boolean $voicemailEnabled
      *
-     * @return self
+     * @return static
      */
     protected function setVoicemailEnabled($voicemailEnabled)
     {
@@ -679,7 +682,7 @@ abstract class UserAbstract
      *
      * @param boolean $voicemailSendMail
      *
-     * @return self
+     * @return static
      */
     protected function setVoicemailSendMail($voicemailSendMail)
     {
@@ -706,7 +709,7 @@ abstract class UserAbstract
      *
      * @param boolean $voicemailAttachSound
      *
-     * @return self
+     * @return static
      */
     protected function setVoicemailAttachSound($voicemailAttachSound)
     {
@@ -733,7 +736,7 @@ abstract class UserAbstract
      *
      * @param string $tokenKey
      *
-     * @return self
+     * @return static
      */
     protected function setTokenKey($tokenKey = null)
     {
@@ -761,7 +764,7 @@ abstract class UserAbstract
      *
      * @param boolean $gsQRCode
      *
-     * @return self
+     * @return static
      */
     protected function setGsQRCode($gsQRCode)
     {
@@ -788,7 +791,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -812,7 +815,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
      *
-     * @return self
+     * @return static
      */
     public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null)
     {
@@ -836,7 +839,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant
      *
-     * @return self
+     * @return static
      */
     public function setBossAssistant(UserInterface $bossAssistant = null)
     {
@@ -860,7 +863,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList
      *
-     * @return self
+     * @return static
      */
     public function setBossAssistantWhiteList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList = null)
     {
@@ -884,7 +887,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -908,7 +911,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
@@ -932,7 +935,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return self
+     * @return static
      */
     public function setTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal = null)
     {
@@ -956,7 +959,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return self
+     * @return static
      */
     public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
     {
@@ -980,7 +983,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone
      *
-     * @return self
+     * @return static
      */
     public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null)
     {
@@ -1004,7 +1007,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
@@ -1028,7 +1031,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
     {
@@ -1052,7 +1055,7 @@ abstract class UserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution
      *
-     * @return self
+     * @return static
      */
     public function setVoicemailLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution = null)
     {

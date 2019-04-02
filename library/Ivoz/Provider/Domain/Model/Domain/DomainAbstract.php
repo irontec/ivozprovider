@@ -70,7 +70,7 @@ abstract class DomainAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DomainInterface|null $entity
      * @param int $depth
      * @return DomainDto|null
      */
@@ -90,7 +90,10 @@ abstract class DomainAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DomainDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -171,7 +174,7 @@ abstract class DomainAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain)
     {
@@ -198,7 +201,7 @@ abstract class DomainAbstract
      *
      * @param string $pointsTo
      *
-     * @return self
+     * @return static
      */
     protected function setPointsTo($pointsTo)
     {
@@ -224,7 +227,7 @@ abstract class DomainAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {

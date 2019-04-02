@@ -75,7 +75,7 @@ abstract class DestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DestinationInterface|null $entity
      * @param int $depth
      * @return DestinationDto|null
      */
@@ -95,7 +95,10 @@ abstract class DestinationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DestinationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -188,7 +191,7 @@ abstract class DestinationAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix)
     {
@@ -215,7 +218,7 @@ abstract class DestinationAbstract
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
      *
-     * @return self
+     * @return static
      */
     public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
     {
@@ -239,7 +242,7 @@ abstract class DestinationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -263,7 +266,7 @@ abstract class DestinationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {

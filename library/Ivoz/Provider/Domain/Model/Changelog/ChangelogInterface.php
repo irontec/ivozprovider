@@ -53,7 +53,7 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command
      *
-     * @return self
+     * @return static
      */
     public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command);
 

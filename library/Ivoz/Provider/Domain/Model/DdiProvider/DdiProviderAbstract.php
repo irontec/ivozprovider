@@ -80,7 +80,7 @@ abstract class DdiProviderAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DdiProviderInterface|null $entity
      * @param int $depth
      * @return DdiProviderDto|null
      */
@@ -100,7 +100,10 @@ abstract class DdiProviderAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DdiProviderDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -189,7 +192,7 @@ abstract class DdiProviderAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -216,7 +219,7 @@ abstract class DdiProviderAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -243,7 +246,7 @@ abstract class DdiProviderAbstract
      *
      * @param boolean $externallyRated
      *
-     * @return self
+     * @return static
      */
     protected function setExternallyRated($externallyRated = null)
     {
@@ -271,7 +274,7 @@ abstract class DdiProviderAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -295,7 +298,7 @@ abstract class DdiProviderAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {

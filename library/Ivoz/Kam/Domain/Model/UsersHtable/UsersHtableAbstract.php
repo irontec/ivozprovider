@@ -92,7 +92,7 @@ abstract class UsersHtableAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersHtableInterface|null $entity
      * @param int $depth
      * @return UsersHtableDto|null
      */
@@ -112,7 +112,10 @@ abstract class UsersHtableAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersHtableDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -198,7 +201,7 @@ abstract class UsersHtableAbstract
      *
      * @param string $keyName
      *
-     * @return self
+     * @return static
      */
     protected function setKeyName($keyName)
     {
@@ -225,7 +228,7 @@ abstract class UsersHtableAbstract
      *
      * @param integer $keyType
      *
-     * @return self
+     * @return static
      */
     protected function setKeyType($keyType)
     {
@@ -252,7 +255,7 @@ abstract class UsersHtableAbstract
      *
      * @param integer $valueType
      *
-     * @return self
+     * @return static
      */
     protected function setValueType($valueType)
     {
@@ -279,7 +282,7 @@ abstract class UsersHtableAbstract
      *
      * @param string $keyValue
      *
-     * @return self
+     * @return static
      */
     protected function setKeyValue($keyValue)
     {
@@ -306,7 +309,7 @@ abstract class UsersHtableAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {

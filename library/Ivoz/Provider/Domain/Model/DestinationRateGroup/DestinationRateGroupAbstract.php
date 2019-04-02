@@ -90,7 +90,7 @@ abstract class DestinationRateGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DestinationRateGroupInterface|null $entity
      * @param int $depth
      * @return DestinationRateGroupDto|null
      */
@@ -110,7 +110,10 @@ abstract class DestinationRateGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DestinationRateGroupDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -247,7 +250,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
@@ -281,7 +284,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -305,7 +308,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -329,7 +332,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -352,7 +355,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(Description $description)
     {
@@ -375,7 +378,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file
      *
-     * @return self
+     * @return static
      */
     public function setFile(File $file)
     {

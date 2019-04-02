@@ -74,7 +74,7 @@ abstract class FixedCostAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FixedCostInterface|null $entity
      * @param int $depth
      * @return FixedCostDto|null
      */
@@ -94,7 +94,10 @@ abstract class FixedCostAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FixedCostDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -179,7 +182,7 @@ abstract class FixedCostAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -206,7 +209,7 @@ abstract class FixedCostAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -230,7 +233,7 @@ abstract class FixedCostAbstract
      *
      * @param float $cost
      *
-     * @return self
+     * @return static
      */
     protected function setCost($cost = null)
     {
@@ -261,7 +264,7 @@ abstract class FixedCostAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

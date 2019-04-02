@@ -64,7 +64,7 @@ abstract class PickUpGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param PickUpGroupInterface|null $entity
      * @param int $depth
      * @return PickUpGroupDto|null
      */
@@ -84,7 +84,10 @@ abstract class PickUpGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var PickUpGroupDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -161,7 +164,7 @@ abstract class PickUpGroupAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -188,7 +191,7 @@ abstract class PickUpGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

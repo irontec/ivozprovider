@@ -162,7 +162,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -176,7 +176,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -208,7 +208,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -222,7 +222,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getForcedDdiId()
     {

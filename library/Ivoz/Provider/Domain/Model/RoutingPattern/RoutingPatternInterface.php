@@ -25,7 +25,7 @@ interface RoutingPatternInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -41,7 +41,7 @@ interface RoutingPatternInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\RoutingPattern\Name $name);
 
@@ -57,7 +57,7 @@ interface RoutingPatternInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(\Ivoz\Provider\Domain\Model\RoutingPattern\Description $description);
 

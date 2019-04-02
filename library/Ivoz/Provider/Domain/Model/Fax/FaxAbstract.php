@@ -80,7 +80,7 @@ abstract class FaxAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FaxInterface|null $entity
      * @param int $depth
      * @return FaxDto|null
      */
@@ -100,7 +100,10 @@ abstract class FaxAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FaxDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -189,7 +192,7 @@ abstract class FaxAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -216,7 +219,7 @@ abstract class FaxAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email = null)
     {
@@ -244,7 +247,7 @@ abstract class FaxAbstract
      *
      * @param boolean $sendByEmail
      *
-     * @return self
+     * @return static
      */
     protected function setSendByEmail($sendByEmail)
     {
@@ -271,7 +274,7 @@ abstract class FaxAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -295,7 +298,7 @@ abstract class FaxAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {

@@ -186,7 +186,7 @@ abstract class UsersPuaAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersPuaInterface|null $entity
      * @param int $depth
      * @return UsersPuaDto|null
      */
@@ -206,7 +206,10 @@ abstract class UsersPuaAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersPuaDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -347,7 +350,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $presUri
      *
-     * @return self
+     * @return static
      */
     protected function setPresUri($presUri)
     {
@@ -374,7 +377,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $presId
      *
-     * @return self
+     * @return static
      */
     protected function setPresId($presId)
     {
@@ -401,7 +404,7 @@ abstract class UsersPuaAbstract
      *
      * @param integer $event
      *
-     * @return self
+     * @return static
      */
     protected function setEvent($event)
     {
@@ -428,7 +431,7 @@ abstract class UsersPuaAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {
@@ -455,7 +458,7 @@ abstract class UsersPuaAbstract
      *
      * @param integer $desiredExpires
      *
-     * @return self
+     * @return static
      */
     protected function setDesiredExpires($desiredExpires)
     {
@@ -482,7 +485,7 @@ abstract class UsersPuaAbstract
      *
      * @param integer $flag
      *
-     * @return self
+     * @return static
      */
     protected function setFlag($flag)
     {
@@ -509,7 +512,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $etag
      *
-     * @return self
+     * @return static
      */
     protected function setEtag($etag)
     {
@@ -536,7 +539,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $tupleId
      *
-     * @return self
+     * @return static
      */
     protected function setTupleId($tupleId = null)
     {
@@ -564,7 +567,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $watcherUri
      *
-     * @return self
+     * @return static
      */
     protected function setWatcherUri($watcherUri)
     {
@@ -591,7 +594,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $callId
      *
-     * @return self
+     * @return static
      */
     protected function setCallId($callId)
     {
@@ -618,7 +621,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $toTag
      *
-     * @return self
+     * @return static
      */
     protected function setToTag($toTag)
     {
@@ -645,7 +648,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $fromTag
      *
-     * @return self
+     * @return static
      */
     protected function setFromTag($fromTag)
     {
@@ -672,7 +675,7 @@ abstract class UsersPuaAbstract
      *
      * @param integer $cseq
      *
-     * @return self
+     * @return static
      */
     protected function setCseq($cseq)
     {
@@ -699,7 +702,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $recordRoute
      *
-     * @return self
+     * @return static
      */
     protected function setRecordRoute($recordRoute = null)
     {
@@ -727,7 +730,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $contact
      *
-     * @return self
+     * @return static
      */
     protected function setContact($contact)
     {
@@ -754,7 +757,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $remoteContact
      *
-     * @return self
+     * @return static
      */
     protected function setRemoteContact($remoteContact)
     {
@@ -781,7 +784,7 @@ abstract class UsersPuaAbstract
      *
      * @param integer $version
      *
-     * @return self
+     * @return static
      */
     protected function setVersion($version)
     {
@@ -808,7 +811,7 @@ abstract class UsersPuaAbstract
      *
      * @param string $extraHeaders
      *
-     * @return self
+     * @return static
      */
     protected function setExtraHeaders($extraHeaders)
     {

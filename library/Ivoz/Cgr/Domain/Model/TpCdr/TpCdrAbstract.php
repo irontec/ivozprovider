@@ -221,7 +221,7 @@ abstract class TpCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpCdrInterface|null $entity
      * @param int $depth
      * @return TpCdrDto|null
      */
@@ -241,7 +241,10 @@ abstract class TpCdrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpCdrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -402,7 +405,7 @@ abstract class TpCdrAbstract
      *
      * @param string $cgrid
      *
-     * @return self
+     * @return static
      */
     protected function setCgrid($cgrid)
     {
@@ -429,7 +432,7 @@ abstract class TpCdrAbstract
      *
      * @param string $runId
      *
-     * @return self
+     * @return static
      */
     protected function setRunId($runId)
     {
@@ -456,7 +459,7 @@ abstract class TpCdrAbstract
      *
      * @param string $originHost
      *
-     * @return self
+     * @return static
      */
     protected function setOriginHost($originHost)
     {
@@ -483,7 +486,7 @@ abstract class TpCdrAbstract
      *
      * @param string $source
      *
-     * @return self
+     * @return static
      */
     protected function setSource($source)
     {
@@ -510,7 +513,7 @@ abstract class TpCdrAbstract
      *
      * @param string $originId
      *
-     * @return self
+     * @return static
      */
     protected function setOriginId($originId)
     {
@@ -537,7 +540,7 @@ abstract class TpCdrAbstract
      *
      * @param string $tor
      *
-     * @return self
+     * @return static
      */
     protected function setTor($tor)
     {
@@ -564,7 +567,7 @@ abstract class TpCdrAbstract
      *
      * @param string $requestType
      *
-     * @return self
+     * @return static
      */
     protected function setRequestType($requestType)
     {
@@ -591,7 +594,7 @@ abstract class TpCdrAbstract
      *
      * @param string $tenant
      *
-     * @return self
+     * @return static
      */
     protected function setTenant($tenant)
     {
@@ -618,7 +621,7 @@ abstract class TpCdrAbstract
      *
      * @param string $category
      *
-     * @return self
+     * @return static
      */
     protected function setCategory($category)
     {
@@ -645,7 +648,7 @@ abstract class TpCdrAbstract
      *
      * @param string $account
      *
-     * @return self
+     * @return static
      */
     protected function setAccount($account)
     {
@@ -672,7 +675,7 @@ abstract class TpCdrAbstract
      *
      * @param string $subject
      *
-     * @return self
+     * @return static
      */
     protected function setSubject($subject)
     {
@@ -699,7 +702,7 @@ abstract class TpCdrAbstract
      *
      * @param string $destination
      *
-     * @return self
+     * @return static
      */
     protected function setDestination($destination)
     {
@@ -726,7 +729,7 @@ abstract class TpCdrAbstract
      *
      * @param \DateTime $setupTime
      *
-     * @return self
+     * @return static
      */
     protected function setSetupTime($setupTime)
     {
@@ -756,7 +759,7 @@ abstract class TpCdrAbstract
      *
      * @param \DateTime $answerTime
      *
-     * @return self
+     * @return static
      */
     protected function setAnswerTime($answerTime)
     {
@@ -786,7 +789,7 @@ abstract class TpCdrAbstract
      *
      * @param integer $usage
      *
-     * @return self
+     * @return static
      */
     protected function setUsage($usage)
     {
@@ -813,7 +816,7 @@ abstract class TpCdrAbstract
      *
      * @param string $extraFields
      *
-     * @return self
+     * @return static
      */
     protected function setExtraFields($extraFields)
     {
@@ -839,7 +842,7 @@ abstract class TpCdrAbstract
      *
      * @param string $costSource
      *
-     * @return self
+     * @return static
      */
     protected function setCostSource($costSource)
     {
@@ -866,7 +869,7 @@ abstract class TpCdrAbstract
      *
      * @param float $cost
      *
-     * @return self
+     * @return static
      */
     protected function setCost($cost)
     {
@@ -893,7 +896,7 @@ abstract class TpCdrAbstract
      *
      * @param array $costDetails
      *
-     * @return self
+     * @return static
      */
     protected function setCostDetails($costDetails)
     {
@@ -919,7 +922,7 @@ abstract class TpCdrAbstract
      *
      * @param string $extraInfo
      *
-     * @return self
+     * @return static
      */
     protected function setExtraInfo($extraInfo)
     {
@@ -945,7 +948,7 @@ abstract class TpCdrAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt = null)
     {
@@ -976,7 +979,7 @@ abstract class TpCdrAbstract
      *
      * @param \DateTime $updatedAt
      *
-     * @return self
+     * @return static
      */
     protected function setUpdatedAt($updatedAt = null)
     {
@@ -1007,7 +1010,7 @@ abstract class TpCdrAbstract
      *
      * @param \DateTime $deletedAt
      *
-     * @return self
+     * @return static
      */
     protected function setDeletedAt($deletedAt = null)
     {

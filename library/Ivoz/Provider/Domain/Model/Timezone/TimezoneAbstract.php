@@ -75,7 +75,7 @@ abstract class TimezoneAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TimezoneInterface|null $entity
      * @param int $depth
      * @return TimezoneDto|null
      */
@@ -95,7 +95,10 @@ abstract class TimezoneAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TimezoneDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -192,7 +195,7 @@ abstract class TimezoneAbstract
      *
      * @param string $tz
      *
-     * @return self
+     * @return static
      */
     protected function setTz($tz)
     {
@@ -219,7 +222,7 @@ abstract class TimezoneAbstract
      *
      * @param string $comment
      *
-     * @return self
+     * @return static
      */
     protected function setComment($comment = null)
     {
@@ -247,7 +250,7 @@ abstract class TimezoneAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
-     * @return self
+     * @return static
      */
     public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
@@ -271,7 +274,7 @@ abstract class TimezoneAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
      *
-     * @return self
+     * @return static
      */
     public function setLabel(Label $label)
     {

@@ -95,7 +95,7 @@ abstract class TpRatingPlanAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpRatingPlanInterface|null $entity
      * @param int $depth
      * @return TpRatingPlanDto|null
      */
@@ -115,7 +115,10 @@ abstract class TpRatingPlanAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpRatingPlanDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -212,7 +215,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -239,7 +242,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -267,7 +270,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param string $destratesTag
      *
-     * @return self
+     * @return static
      */
     protected function setDestratesTag($destratesTag = null)
     {
@@ -295,7 +298,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param string $timingTag
      *
-     * @return self
+     * @return static
      */
     protected function setTimingTag($timingTag)
     {
@@ -322,7 +325,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param float $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight)
     {
@@ -349,7 +352,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -379,7 +382,7 @@ abstract class TpRatingPlanAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
     {

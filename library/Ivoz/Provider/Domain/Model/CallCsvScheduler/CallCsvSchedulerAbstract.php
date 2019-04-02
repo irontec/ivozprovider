@@ -108,7 +108,7 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CallCsvSchedulerInterface|null $entity
      * @param int $depth
      * @return CallCsvSchedulerDto|null
      */
@@ -128,7 +128,10 @@ abstract class CallCsvSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CallCsvSchedulerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
@@ -237,7 +240,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -264,7 +267,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $unit
      *
-     * @return self
+     * @return static
      */
     protected function setUnit($unit)
     {
@@ -296,7 +299,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param integer $frequency
      *
-     * @return self
+     * @return static
      */
     protected function setFrequency($frequency)
     {
@@ -324,7 +327,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email)
     {
@@ -351,7 +354,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \DateTime $lastExecution
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecution($lastExecution = null)
     {
@@ -382,7 +385,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $lastExecutionError
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecutionError($lastExecutionError = null)
     {
@@ -410,7 +413,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \DateTime $nextExecution
      *
-     * @return self
+     * @return static
      */
     protected function setNextExecution($nextExecution = null)
     {
@@ -441,7 +444,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -465,7 +468,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -489,7 +492,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
     {

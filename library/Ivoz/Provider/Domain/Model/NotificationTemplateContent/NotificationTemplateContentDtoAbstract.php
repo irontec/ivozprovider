@@ -237,7 +237,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -251,7 +251,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNotificationTemplateId()
     {
@@ -283,7 +283,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -297,7 +297,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getLanguageId()
     {

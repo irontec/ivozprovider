@@ -110,7 +110,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
 
@@ -126,7 +126,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
@@ -142,7 +142,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
      *
-     * @return self
+     * @return static
      */
     public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone);
 
@@ -158,7 +158,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
@@ -174,7 +174,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
      *
-     * @return self
+     * @return static
      */
     public function setLogo(\Ivoz\Provider\Domain\Model\Brand\Logo $logo);
 
@@ -190,7 +190,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Brand\Invoice $invoice);
 
