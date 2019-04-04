@@ -67,11 +67,12 @@ class Invoices
     {
         // Thanks Gearmand, you've done your job
         $serializedJob->sendComplete("DONE");
-        $this->registerCommand('Worker', 'invoices');
 
         $job = igbinary_unserialize($serializedJob->workload());
-
         $id = $job->getId();
+
+        $this->registerCommand('Worker', 'invoices', ['id' => $id]);
+
         $this->logger->info("[INVOICER] ID = " . $id);
 
         $this->billableCallRepository->resetInvoiceId($id);
@@ -85,7 +86,7 @@ class Invoices
 
         /** @var InvoiceDto $invoiceDto */
         $invoiceDto = $this->entityTools->entityToDto($invoice);
-        $invoiceDto->setStatus("processing");
+        $invoiceDto->setStatus(InvoiceInterface::STATUS_PROCESSING);
         $this->entityTools->persistDto($invoiceDto, $invoice, true);
 
         $this->logger->info("[INVOICER] Status = processing");
@@ -107,7 +108,7 @@ class Invoices
                 ->setPdfMimeType('application/pdf; charset=binary')
                 ->setTotal($totals["totalPrice"])
                 ->setTotalWithTax($totals["totalWithTaxes"])
-                ->setStatus("created");
+                ->setStatus(InvoiceInterface::STATUS_CREATED);
 
             $this->entityTools->persistDto($invoiceDto, $invoice);
             $this->logger->info("[INVOICER] Status = created");
@@ -115,7 +116,7 @@ class Invoices
             $this->logger->info("[INVOICER] Status = error");
             $this->logger->info("[INVOICER] Error was: ".$e->getMessage());
 
-            $invoiceDto->setStatus("error");
+            $invoiceDto->setStatus(InvoiceInterface::STATUS_ERROR);
             $invoiceDto->setStatusMsg(
                 $e->getMessage()
             );
