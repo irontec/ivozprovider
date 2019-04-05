@@ -116,7 +116,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
         $company = $this->getCompany();
         $timezone = $company->getDefaultTimezone();
-        $time = new \DateTime('now', $timezone);
+        $time = new \DateTime('now', new \DateTime($timezone->getTz()));
 
         /**
          * @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar
