@@ -12,21 +12,25 @@ services:
   Worker\Multimedia:
     public: true
     arguments:
-      $logger: '@logger'
+      $logger: '@monolog.logger.workers'
 
   Worker\Rates:
     public: true
     arguments:
       $em: '@=service("doctrine.orm.entity_manager")'
-      $logger: '@logger'
+      $logger: '@monolog.logger.workers'
 
   Worker\Invoices:
+    arguments:
+      $logger: '@monolog.logger.workers'
     public: true
 
   Worker\Cgrates:
+    arguments:
+      $logger: '@monolog.logger.workers'
     public: true
 
   Worker\Xmlrpc:
     public: true
     arguments:
-      $logger: '@logger'
+      $logger: '@monolog.logger.workers'

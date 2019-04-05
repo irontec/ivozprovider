@@ -8,6 +8,10 @@ services:
     autowire: true
     public: false
 
+  Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\CommandPersister:
+    arguments:
+      $logger: '@monolog.logger.changelog'
+
   Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber:
     arguments:
       $serviceContainer: '@service_container'

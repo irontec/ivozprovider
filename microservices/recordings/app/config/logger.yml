@@ -1,10 +1,10 @@
 monolog:
-  channels: ['workers']
+  channels: ['recordings']
   handlers:
     app_syslog:
-      ident: worker
+      ident: recording
       type: syslog
       bubble: false
       level: info
       priority: 5
-      channels: workers
+      channels: recordings
