@@ -85,9 +85,11 @@ class Version20180713123645 extends AbstractMigration
         );
 
 
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE kam_users_cdrs ADD retailAccountId INT UNSIGNED DEFAULT NULL');
         $this->addSql('ALTER TABLE kam_users_cdrs ADD CONSTRAINT FK_238F735B5EA9D64D FOREIGN KEY (retailAccountId) REFERENCES RetailAccounts (id) ON DELETE SET NULL');
         $this->addSql('CREATE INDEX IDX_238F735B5EA9D64D ON kam_users_cdrs (retailAccountId)');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     /**

@@ -18,8 +18,10 @@ class Version20180306160405 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE HuntGroups DROP nextUserPosition');
         $this->addSql('ALTER TABLE DDIs CHANGE countryId countryId INT UNSIGNED NOT NULL');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     /**

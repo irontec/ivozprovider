@@ -18,6 +18,7 @@ class Version20180212173438 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE Commandlog RENAME INDEX requestid TO commandlog_requestId');
         $this->addSql('ALTER TABLE ast_ps_endpoints RENAME INDEX terminalid TO psEndpoint_terminalId');
         $this->addSql('ALTER TABLE ast_ps_endpoints RENAME INDEX friendid TO psEndpoint_friendId');
@@ -71,6 +72,7 @@ class Version20180212173438 extends AbstractMigration
         $this->addSql('ALTER TABLE tp_timings RENAME INDEX tpid TO tpTiming_tpid');
         $this->addSql('ALTER TABLE tp_destinations RENAME INDEX tpid TO tpDestination_tpid');
         $this->addSql('ALTER TABLE tp_destinations RENAME INDEX tpid_dstid TO tpDestination_tpid_dstid');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     /**

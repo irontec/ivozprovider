@@ -53,11 +53,15 @@ class Version20180914104258 extends AbstractMigration
         $this->addSql('ALTER TABLE RatingPlans ADD CONSTRAINT FK_EB67DB9C6A765F36 FOREIGN KEY (ratingPlanGroupId) REFERENCES RatingPlanGroups (id) ON DELETE CASCADE');
         $this->addSql('CREATE INDEX IDX_EB67DB9C6A765F36 ON RatingPlans (ratingPlanGroupId)');
         $this->addSql('ALTER TABLE RatingPlans RENAME INDEX idx_4cc2bcabc11683d9 TO IDX_EB67DB9CC11683D9');
+
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE BillableCalls DROP FOREIGN KEY FK_E6F2DA355C17F7F9');
         $this->addSql('DROP INDEX IDX_E6F2DA355C17F7F9 ON BillableCalls');
         $this->addSql('ALTER TABLE BillableCalls CHANGE ratingplanid ratingPlanGroupId INT UNSIGNED DEFAULT NULL');
         $this->addSql('ALTER TABLE BillableCalls ADD CONSTRAINT FK_E6F2DA356A765F36 FOREIGN KEY (ratingPlanGroupId) REFERENCES RatingPlanGroups (id) ON DELETE SET NULL');
         $this->addSql('CREATE INDEX IDX_E6F2DA356A765F36 ON BillableCalls (ratingPlanGroupId)');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
+
         $this->addSql('ALTER TABLE RatingProfiles DROP FOREIGN KEY FK_282687BB5C17F7F9');
         $this->addSql('DROP INDEX IDX_282687BB5C17F7F9 ON RatingProfiles');
         $this->addSql('DROP INDEX ratingProfile_company_plan_tag ON RatingProfiles');

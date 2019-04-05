@@ -60,12 +60,23 @@ class Version20180406102202 extends AbstractMigration
                               WHERE TDR.id NOT IN (SELECT tpDestinationRateId FROM tp_destinations)');
 
         // Associate kam_trunks_cdrs with tp_destinations instead of Destinations
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE kam_trunks_cdrs DROP FOREIGN KEY FK_92E58EB6BF3434FC');
         $this->addSql('ALTER TABLE kam_trunks_cdrs ADD tpDestinationId INT UNSIGNED DEFAULT NULL');
-        $this->addSql('UPDATE kam_trunks_cdrs KTC INNER JOIN tp_destinations TD ON TD.destinationId = KTC.destinationId SET KTC.tpDestinationId = TD.id');
+
+        $step = 500000;
+        $rows = $this->connection->query("SELECT 1 FROM kam_trunks_cdrs")->rowCount();
+        while ($rows > 0) {
+            $limit = ($rows > $step) ? $step : $rows;
+            $this->addSql("UPDATE kam_trunks_cdrs KTC SET KTC.tpDestinationId = (SELECT id FROM tp_destinations TD WHERE TD.destinationId = KTC.destinationId LIMIT 1) WHERE KTC.tpDestinationId IS NULL LIMIT $limit");
+            $rows -= $limit;
+        }
+
+
         $this->addSql('CREATE INDEX IDX_92E58EB6B2A236E6 ON kam_trunks_cdrs (tpDestinationId)');
         $this->addSql('ALTER TABLE kam_trunks_cdrs ADD CONSTRAINT FK_92E58EB6B2A236E6 FOREIGN KEY (tpDestinationId) REFERENCES tp_destinations (id) ON DELETE SET NULL');
         $this->addSql('ALTER TABLE kam_trunks_cdrs DROP destinationId');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
 
         // Update new tp_destination_rates fields with tp_destinations and tp_rates contents
         $this->addSql('UPDATE tp_destination_rates TDR INNER JOIN tp_destinations TD ON TD.tpDestinationRateId = TDR.id
