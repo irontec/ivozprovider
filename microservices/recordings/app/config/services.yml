@@ -13,4 +13,4 @@ services:
     public: true
     arguments:
       $rawRecordingsDir: '%raw_recordings_dir%'
-      $logger: '@logger'
+      $logger: '@monolog.logger.recordings'
