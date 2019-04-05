@@ -14,7 +14,7 @@ Feature: Retrieve fixed costs rel invoices
     And the JSON should be like:
     """
       [
-          {
+           {
               "quantity": 1,
               "id": 1,
               "fixedCost": {
@@ -28,10 +28,10 @@ Feature: Retrieve fixed costs rel invoices
                   "number": "1",
                   "inDate": "2018-01-01 01:00:00",
                   "outDate": "2018-01-31 23:59:59",
-                  "total": null,
+                  "total": 0.272,
                   "taxRate": 21,
-                  "totalWithTax": null,
-                  "status": null,
+                  "totalWithTax": 0.33,
+                  "status": "processing",
                   "statusMsg": null,
                   "id": 1,
                   "pdf": {
@@ -71,10 +71,10 @@ Feature: Retrieve fixed costs rel invoices
               "number": "1",
               "inDate": "2018-01-01 01:00:00",
               "outDate": "2018-01-31 23:59:59",
-              "total": null,
+              "total": 0.272,
               "taxRate": 21,
-              "totalWithTax": null,
-              "status": null,
+              "totalWithTax": 0.33,
+              "status": "processing",
               "statusMsg": null,
               "id": 1,
               "pdf": {
