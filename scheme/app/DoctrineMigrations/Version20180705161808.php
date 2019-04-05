@@ -80,11 +80,13 @@ class Version20180705161808 extends AbstractMigration
         $this->addSql('ALTER TABLE OutgoingRouting CHANGE peeringcontractid carrierId INT UNSIGNED NOT NULL');
         $this->addSql('ALTER TABLE OutgoingRouting ADD CONSTRAINT FK_569314726709B1C FOREIGN KEY (carrierId) REFERENCES Carriers (id) ON DELETE CASCADE');
         $this->addSql('CREATE INDEX IDX_569314726709B1C ON OutgoingRouting (carrierId)');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('DROP INDEX IDX_92E58EB67DB780F8 ON kam_trunks_cdrs');
         $this->addSql('ALTER TABLE kam_trunks_cdrs CHANGE peeringcontractid carrierId INT UNSIGNED DEFAULT NULL');
         $this->addSql('UPDATE kam_trunks_cdrs SET carrierId = NULL WHERE carrierId NOT IN (SELECT id FROM Carriers)');
         $this->addSql('ALTER TABLE kam_trunks_cdrs ADD CONSTRAINT FK_92E58EB66709B1C FOREIGN KEY (carrierId) REFERENCES Carriers (id) ON DELETE SET NULL');
         $this->addSql('CREATE INDEX IDX_92E58EB66709B1C ON kam_trunks_cdrs (carrierId)');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
         $this->addSql('DROP INDEX peerServerIdUnique ON kam_trunks_lcr_gateways');
         $this->addSql('ALTER TABLE kam_trunks_lcr_gateways CHANGE peerserverid carrierServerId INT UNSIGNED NOT NULL');
         $this->addSql('ALTER TABLE kam_trunks_lcr_gateways ADD CONSTRAINT FK_C13516F0472FDC9C FOREIGN KEY (carrierServerId) REFERENCES CarrierServers (id) ON DELETE CASCADE');

@@ -29,7 +29,7 @@ class Version20181220182244 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_790E410291000B8A ON Brands (currencyId)');
 
         // Set First currency as default for all existing brands
-        $this->addSql('UPDATE Brands set currencyId = 1');
+        $this->addSql('UPDATE Brands set currencyId = (SELECT id From Currencies where iden = "EUR")');
 
         $this->addSql('ALTER TABLE DestinationRateGroups ADD currencyId INT UNSIGNED DEFAULT NULL');
         $this->addSql('ALTER TABLE DestinationRateGroups ADD CONSTRAINT FK_2930FE1691000B8A FOREIGN KEY (currencyId) REFERENCES Currencies (id) ON DELETE SET NULL');

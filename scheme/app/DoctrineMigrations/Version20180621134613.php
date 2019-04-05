@@ -103,9 +103,11 @@ class Version20180621134613 extends AbstractMigration
         $this->addSql('UPDATE ast_ps_endpoints SET context = "residential" WHERE context = "retail"');
         $this->addSql('CREATE INDEX IDX_800B60518B329DCD ON ast_ps_endpoints (residentialDeviceId)');
         $this->addSql('DROP INDEX usersCdr_retailAccountId ON kam_users_cdrs');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE kam_users_cdrs CHANGE retailaccountid residentialDeviceId INT UNSIGNED DEFAULT NULL');
         $this->addSql('ALTER TABLE kam_users_cdrs ADD CONSTRAINT FK_238F735B8B329DCD FOREIGN KEY (residentialDeviceId) REFERENCES ResidentialDevices (id) ON DELETE SET NULL');
         $this->addSql('CREATE INDEX usersCdr_residentialDeviceId ON kam_users_cdrs (residentialDeviceId)');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
 
         $this->addSql('UPDATE Features SET iden = "residential", name_en = "Residential Clients", name_es = "Clientes Residencial" WHERE id = 9');
 
