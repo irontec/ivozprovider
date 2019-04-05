@@ -10,6 +10,7 @@ scenarios:
     timeout: 20
     sessions:
       - ivr_uac_bob:
+          - wait: 3
           - call:
               dest: 601             # IVR custom extension
               credentials:

@@ -5,6 +5,7 @@ scenarios:
     timeout: 20
     sessions:
       - alice:
+          - wait
           - call:
               dest: 1002
               credentials:

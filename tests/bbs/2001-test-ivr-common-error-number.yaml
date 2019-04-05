@@ -5,6 +5,7 @@ scenarios:
     timeout: 20
     sessions:
       - bob:
+          - wait: 3
           - call:
               dest: 600             # IVR common extension
               credentials:
