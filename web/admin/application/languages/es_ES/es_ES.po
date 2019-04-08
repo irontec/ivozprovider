@@ -712,6 +712,9 @@ msgstr "Descargar"
 msgid "Download file"
 msgstr "Descargar fichero"
 
+msgid "Duplicated prefix"
+msgstr "Prefijo duplicado"
+
 msgid "Duration"
 msgstr "Duración"
 
