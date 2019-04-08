@@ -247,8 +247,6 @@ class Rates
                           WHERE DRG.id = $destinationRateGroupId";
             $this->em->getConnection()->executeQuery($tpDestinationRatesInsert);
 
-            $this->em->getConnection()->commit();
-
             $destinationRateGroupDto->setStatus('imported');
             $this
                 ->entityTools
@@ -258,8 +256,7 @@ class Rates
                     true
                 );
 
-            $this->reloadService->execute($brand->getCgrTenant());
-            $this->logger->debug('Importer finished successfuly');
+            $this->em->getConnection()->commit();
         } catch (\Exception $exception) {
             $this->logger->error('Importer error. Rollback');
             $this->em->getConnection()->rollback();
@@ -276,6 +273,13 @@ class Rates
             $this->em->close();
 
             throw $exception;
+        }
+
+        try {
+            $this->reloadService->execute($brand->getCgrTenant());
+            $this->logger->debug('Importer finished successfuly');
+        } catch (\Exception $e) {
+            $this->logger->error('Service reload failed');
         }
 
         return true;
