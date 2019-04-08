@@ -16,19 +16,37 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
     {
         $huntGroup = $this->getHuntGroup();
 
-        if ($huntGroup->getStrategy() === HuntGroupInterface::STRATEGY_RINGALL) {
-            return;
+        $priorityRequired = !in_array(
+            $huntGroup->getStrategy(),
+            [
+                HuntGroupInterface::STRATEGY_RINGALL,
+                HuntGroupInterface::STRATEGY_RANDOM
+            ],
+            true
+        );
+
+        if ($priorityRequired) {
+            Assertion::integerish(
+                $this->getPriority(),
+                'priority value "%s" is not an integer or a number castable to integer.'
+            );
         }
 
-        Assertion::integerish(
-            $this->getPriority(),
-            'priority value "%s" is not an integer or a number castable to integer.'
+
+        $timeOutRequired = !in_array(
+            $huntGroup->getStrategy(),
+            [
+                HuntGroupInterface::STRATEGY_RINGALL
+            ],
+            true
         );
 
-        Assertion::integerish(
-            $this->getTimeoutTime(),
-            'timeoutTime value "%s" is not an integer or a number castable to integer.'
-        );
+        if ($timeOutRequired) {
+            Assertion::integerish(
+                $this->getTimeoutTime(),
+                'timeoutTime value "%s" is not an integer or a number castable to integer.'
+            );
+        }
     }
 
     /**
