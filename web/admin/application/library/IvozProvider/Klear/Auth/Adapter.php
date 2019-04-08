@@ -114,13 +114,27 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
 
     protected function _setApiToken(\IvozProvider\Klear\Auth\User $user)
     {
-        $apiCredentials = RestClient::getAdminToken($this->_username, $this->_password);
+        $type = 'platform';
+        if ($user->isCompanyAdmin) {
+            $type = 'client';
+        } elseif ($user->isBrandOperator) {
+            $type = 'brand';
+        }
+
+        $apiCredentials = RestClient::getAdminToken($this->_username, $this->_password, $type);
+        if (!$apiCredentials || !isset($apiCredentials->token)) {
+            if ($apiCredentials && $apiCredentials->code === 401) {
+                throw new \DomainException('Invalid credentials');
+            }
+
+            throw new \DomainException('Unable to log in');
+        }
+
         $user->setToken(
             $apiCredentials->token,
             $apiCredentials->refresh_token
         );
     }
-
 
     protected function _userHasValidCredentials(\Klear_Auth_Adapter_Interfaces_BasicUserModel $user = null)
     {
