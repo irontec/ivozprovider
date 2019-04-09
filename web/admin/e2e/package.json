@@ -8,6 +8,7 @@
     "platform": "npm run xvfbStart; npm run prepareDatabase && DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag platform; npm run xvfbStop",
     "brand": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag brand; npm run xvfbStop",
     "company": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag company; npm run xvfbStop",
+    "login": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag login; npm run xvfbStop",
     "xvfbStart": "Xvfb :1 -screen 0 1280x720x24 &",
     "prepareDatabase": "npm run reCreateDb && npm run loadDbSchema && npm run updateDbSchema",
     "test": "node ./node_modules/nightwatch/bin/nightwatch -e chromium --skiptags skip",
