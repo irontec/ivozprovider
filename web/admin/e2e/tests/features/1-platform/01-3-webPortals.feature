@@ -1,4 +1,5 @@
 @platform
+@login
 @webPortals
 @platform01
 @platform01-3

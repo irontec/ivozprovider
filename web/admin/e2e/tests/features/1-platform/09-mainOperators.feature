@@ -1,4 +1,5 @@
 @platform
+@login
 @mainOperators
 @platform09
 
