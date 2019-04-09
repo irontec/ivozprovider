@@ -32,9 +32,10 @@ class TerminalModelLifeCycleTest extends KernelTestCase
 
     protected function addTerminalModel()
     {
+        $dto = $this->getTerminalModelDto();
         return $this
             ->entityTools
-            ->persistDto($this->getTerminalModelDto(), null, true);
+            ->persistDto($dto, null, true);
     }
 
     protected function updateTerminalModel()

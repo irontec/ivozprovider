@@ -18,14 +18,14 @@ trait RegisterCommandTrait
      */
     private $requestId;
 
-    private function registerCommand(string $service, string $method)
+    private function registerCommand(string $service, string $method, $aguments = [], $agent = [])
     {
         $event = new CommandWasExecuted(
             $this->requestId->toString(),
             $service,
             $method,
-            [],
-            []
+            $aguments,
+            $agent
         );
 
         $this->eventPublisher->publish($event);

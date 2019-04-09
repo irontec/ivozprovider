@@ -47,9 +47,10 @@ class UserLifeCycleTest extends KernelTestCase
 
     protected function addUser()
     {
+        $dto = $this->getUserDto();
         return $this
             ->entityTools
-            ->persistDto($this->getUserDto(), null, true);
+            ->persistDto($dto, null, true);
     }
 
     protected function updateUser()

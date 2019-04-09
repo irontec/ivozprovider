@@ -127,13 +127,18 @@ class EntityTools
      * @return EntityInterface
      */
     public function persistDto(
-        DataTransferObjectInterface $dto,
+        DataTransferObjectInterface &$dto,
         EntityInterface $entity = null,
         $dispatchImmediately = false
     ) {
-        return $this
+        $entity = $this
             ->entityPersister
             ->persistDto($dto, $entity, $dispatchImmediately);
+
+        // Resync dto
+        $dto = $this->entityToDto($entity);
+
+        return $entity;
     }
 
     public function updateEntityByDto(
