@@ -27,6 +27,7 @@ interface FriendInterface extends LoggableEntityInterface
 
     const DIRECTCONNECTIVITY_YES = 'yes';
     const DIRECTCONNECTIVITY_NO = 'no';
+    const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
 
 
     const DDIIN_YES = 'yes';
@@ -42,12 +43,6 @@ interface FriendInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet();
-
-    /**
-     * {@inheritDoc}
-     * @see FriendAbstract::setName
-     */
-    public function setName($name);
 
     /**
      * {@inheritDoc}
@@ -100,6 +95,12 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi();
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public function getInterCompanyName();
 
     /**
      * Get name
@@ -308,6 +309,22 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
+
+    /**
+     * Set interCompany
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany
+     *
+     * @return static
+     */
+    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null);
+
+    /**
+     * Get interCompany
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     */
+    public function getInterCompany();
 
     /**
      * Add psEndpoint

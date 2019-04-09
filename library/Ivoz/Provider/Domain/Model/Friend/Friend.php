@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Assert\Assertion;
+use Assert\AssertionFailedException;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
@@ -51,27 +52,34 @@ class Friend extends FriendAbstract implements FriendInterface
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function sanitizeValues()
     {
+        if ($this->getDirectConnectivity() == FriendInterface::DIRECTCONNECTIVITY_INTERVPBX) {
+            // Force Inter company friends name
+            $this->setName($this->getInterCompanyName());
+            // Force DDI In mode
+            $this->setDdiIn(FriendInterface::DDIIN_YES);
+            // Set From Domain from target company
+            $this->setFromDomain($this->getInterCompany()->getDomainUsers());
+        } else {
+            $this->setInterCompany(null);
+        }
+
+        // Validate Name format
+        Assertion::regex(
+            $this->getName(),
+            '/^[a-zA-Z0-9_*]+$/',
+            'Friend.name value "%s" does not match expression.'
+        );
+
         $this->setDomain(
             $this
                 ->getCompany()
                 ->getDomain()
         );
-    }
-
-    /**
-     * {@inheritDoc}
-     * @see FriendAbstract::setName
-     */
-    public function setName($name)
-    {
-        Assertion::regex(
-            $name,
-            '/^[a-zA-Z0-9_*]+$/',
-            'Friend.name value "%s" does not match expression.'
-        );
-        return parent::setName($name);
     }
 
     /**
@@ -219,5 +227,35 @@ class Friend extends FriendAbstract implements FriendInterface
         }
 
         return $ddi;
+    }
+
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public function getInterCompanyName()
+    {
+        $company = $this->getCompany();
+
+        $interCompany = $this->getInterCompany();
+
+        Assertion::notNull(
+            $interCompany,
+            'InterCompany Friend without target company.'
+        );
+
+        /*
+         * Return the same name for Interconnected friends no matter what company is its owner.
+         */
+        if ($interCompany->getId() > $company->getId()) {
+            $companyOneId = $company->getId();
+            $companyTwoId = $interCompany->getId();
+        } else {
+            $companyOneId = $interCompany->getId();
+            $companyTwoId = $company->getId();
+        }
+
+        return sprintf("InterCompany%d_%d", $companyOneId, $companyTwoId);
     }
 }

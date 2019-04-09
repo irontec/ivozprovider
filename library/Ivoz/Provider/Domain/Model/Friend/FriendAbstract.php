@@ -93,7 +93,7 @@ abstract class FriendAbstract
     protected $fromDomain;
 
     /**
-     * comment: enum:yes|no
+     * comment: enum:yes|no|intervpbx
      * @var string
      */
     protected $directConnectivity = 'yes';
@@ -139,6 +139,11 @@ abstract class FriendAbstract
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     protected $language;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     */
+    protected $interCompany;
 
 
     use ChangelogTrait;
@@ -271,6 +276,7 @@ abstract class FriendAbstract
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()))
         ;
 
         $self->initChangelog();
@@ -312,7 +318,8 @@ abstract class FriendAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
+            ->setInterCompany($fkTransformer->transform($dto->getInterCompany()));
 
 
 
@@ -349,7 +356,8 @@ abstract class FriendAbstract
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto(self::getCallAcl(), $depth))
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth));
+            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
+            ->setInterCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getInterCompany(), $depth));
     }
 
     /**
@@ -380,7 +388,8 @@ abstract class FriendAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
+            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
+            'interCompanyId' => self::getInterCompany() ? self::getInterCompany()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -794,9 +803,11 @@ abstract class FriendAbstract
     protected function setDirectConnectivity($directConnectivity)
     {
         Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($directConnectivity, 20, 'directConnectivity value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($directConnectivity, [
             FriendInterface::DIRECTCONNECTIVITY_YES,
-            FriendInterface::DIRECTCONNECTIVITY_NO
+            FriendInterface::DIRECTCONNECTIVITY_NO,
+            FriendInterface::DIRECTCONNECTIVITY_INTERVPBX
         ], 'directConnectivityvalue "%s" is not an element of the valid values: %s');
 
         $this->directConnectivity = $directConnectivity;
@@ -1016,6 +1027,30 @@ abstract class FriendAbstract
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * Set interCompany
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany
+     *
+     * @return static
+     */
+    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null)
+    {
+        $this->interCompany = $interCompany;
+
+        return $this;
+    }
+
+    /**
+     * Get interCompany
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     */
+    public function getInterCompany()
+    {
+        return $this->interCompany;
     }
 
     // @codeCoverageIgnoreEnd
