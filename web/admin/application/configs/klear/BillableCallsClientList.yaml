@@ -27,7 +27,7 @@ production:
         <<: *forcedCompany
       info:
         <<: *documentationLink
-        href: "/doc/en/administration_portal/client/vpbx/calls/billable_calls.html"
+        href: "/doc/en/administration_portal/client/vpbx/calls/external_calls.html"
       fields: &billableCalls_fieldsLink
         options:
           title: _("Options")
@@ -47,6 +47,7 @@ production:
           endpointId: true
         order:
           startTime: true
+          direction: true
           brand: true
           company: true
           caller: true
@@ -85,6 +86,8 @@ production:
           fields:
             startTime: 6
             duration: 6
+            direction: 6
+            __empty: 6
             caller: 6
             callee: 6
         group1:

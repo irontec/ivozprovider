@@ -868,12 +868,6 @@ msgid_plural "External call filters"
 msgstr[0] "External call filter"
 msgstr[1] "External call filters"
 
-msgid "External inbound calls"
-msgstr "External inbound calls"
-
-msgid "External outbound calls"
-msgstr "External outbound calls"
-
 msgid "Externally rated"
 msgstr "Externally rated"
 
@@ -1195,6 +1189,9 @@ msgstr "Inbound"
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
+
+msgid "Inbound calls"
+msgstr "Inbound calls"
 
 msgid "Inbound configuration"
 msgstr "Inbound configuration"
@@ -1746,6 +1743,9 @@ msgstr "Outbound Proxy"
 
 msgid "Outbound Proxy IP value is not valid."
 msgstr "Outbound Proxy IP value is not valid."
+
+msgid "Outbound calls"
+msgstr "Outbound calls"
 
 msgid "Outbound configuration"
 msgstr "Outbound configuration"
