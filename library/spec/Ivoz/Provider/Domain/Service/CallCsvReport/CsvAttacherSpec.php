@@ -212,16 +212,20 @@ class CsvAttacherSpec extends ObjectBehavior
                 'getOutDate' => $outDate,
                 'getCompany' => $company,
                 'getBrand' => $brand,
-                'getTimezone' => $timezone
+                'getTimezone' => $timezone,
+                'getCallCsvScheduler' => null,
             ],
             false
         );
+
+
 
         $this
             ->csvExporter
             ->execute(
                 Argument::type('DateTime'),
                 Argument::type('DateTime'),
+                Argument::any(),
                 Argument::any(),
                 Argument::any()
             )

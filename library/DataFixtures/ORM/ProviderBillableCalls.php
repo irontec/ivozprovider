@@ -36,6 +36,7 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                 $this->setStartTime($startTime);
                 $this->setCaller('+34633646464');
                 $this->setCallee('+34633656565');
+                $this->setDirection('outbound');
             })->call($item);
 
             $item->setBrand($this->getReference('_reference_ProviderBrand1'));

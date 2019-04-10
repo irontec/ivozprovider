@@ -146,6 +146,11 @@ class UpdateByTpCdrSpec extends ObjectBehavior
             ->getCarrier()
             ->willReturn($this->carrier);
 
+        $this
+            ->billableCall
+            ->isOutboundCall()
+            ->willReturn(true);
+
         $this->getterProphecy(
             $this->carrier,
             [
@@ -202,7 +207,36 @@ class UpdateByTpCdrSpec extends ObjectBehavior
         $this->shouldHaveType(DomainEventSubscriberInterface::class);
     }
 
-    function it_logs_an_error_and_returns_on_empty_cgrid()
+    function it_returns_on_non_outbound_calls()
+    {
+        $this
+            ->billableCall
+            ->isOutboundCall()
+            ->willReturn(false)
+            ->shouldBeCalled();
+
+        $this
+            ->billableCall
+            ->getId()
+            ->willReturn(1)
+            ->shouldBeCalled();
+
+        $this
+            ->logger
+            ->info(Argument::type('string'))
+            ->shouldBeCalled();
+
+        $this
+            ->trunksCdr
+            ->getCgrid()
+            ->shouldNotbeCalled();
+
+        $this->handle(
+            $this->event
+        );
+    }
+
+    function it_logs_a_info_msg_and_returns_on_empty_cgrid()
     {
         $this
             ->trunksCdr
@@ -211,7 +245,7 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
         $this
             ->logger
-            ->error(Argument::type('string'))
+            ->info(Argument::type('string'))
             ->shouldBeCalled();
 
         $this
