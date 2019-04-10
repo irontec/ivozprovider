@@ -16,6 +16,8 @@ interface BillableCallInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function isOutboundCall();
+
     /**
      * Get callid
      *

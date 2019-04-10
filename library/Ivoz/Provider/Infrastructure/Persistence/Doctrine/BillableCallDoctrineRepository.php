@@ -75,7 +75,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
         $conditions = [
             ['self.id', 'in', $pks],
-            ['trunksCdr.cgrid', 'isNull'],
+            ['self.invoice', 'in', $pks],
+            ['self.direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['carrier.externallyRated', 'eq', 0],
                 ['self.carrier', 'isNUll']
@@ -105,6 +106,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         $conditions = [
             ['id', 'in', $ids],
             ['trunksCdr.cgrid', 'isNotNull'],
+            ['self.direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['carrier.externallyRated', 'eq', 0],
                 ['self.carrier', 'isNull']

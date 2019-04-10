@@ -9,7 +9,7 @@ use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigratedSubscriberInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
@@ -19,7 +19,7 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Psr\Log\LoggerInterface;
 
-class UpdateByTpCdr implements DomainEventSubscriberInterface
+class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
 {
     /**
      * @var TpCdrRepository
@@ -80,6 +80,18 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
         $trunksCdr = $domainEvent->getTrunksCdr();
         $billableCall = $domainEvent->getBillableCall();
 
+        $isNotOutbound = !$billableCall->isOutboundCall();
+        if ($isNotOutbound) {
+            $msg = sprintf(
+                'Skipping %s call #%d',
+                $billableCall->getDirection(),
+                $billableCall->getId()
+            );
+            $this->logger->info($msg);
+
+            return;
+        }
+
         $infoMsg = sprintf(
             'About to update billable call by TpCdr. TrunksCdr#%s',
             $trunksCdr->getId()
@@ -102,7 +114,7 @@ class UpdateByTpCdr implements DomainEventSubscriberInterface
     ) {
         $cgrid = $trunksCdr->getCgrid();
         if (!$cgrid) {
-            $this->logger->error('Cgrid was not found. Skipping');
+            $this->logger->info('Cgrid was not found. Skipping');
             return;
         }
 
