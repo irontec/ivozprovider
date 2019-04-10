@@ -86,9 +86,9 @@ production:
           class: ui-silk-world-link
           description: _("List of %s", ngettext('Platform Portal', 'Platform Portals', 0))
         BillableCallsList:
-          title: ngettext('Billable call', 'Billable calls', 0)
+          title: ngettext('External call', 'External calls', 0)
           class: ui-silk-application-view-list-money
-          description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+          description: _("List of %s", ngettext('External call', 'External calls', 0))
         Infrastructure:
           title: _("Infrastructure")
           class: ui-silk-sitemap-color
@@ -222,9 +222,9 @@ production:
           class: ui-silk-application-view-list-telephone
           submenus:
             BillableCallsBrandList:
-              title: ngettext('Billable call', 'Billable calls', 0)
+              title: ngettext('External call', 'External calls', 0)
               class: ui-silk-application-view-list-money
-              description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+              description: _("List of %s", ngettext('External call', 'External calls', 0))
             CallCsvSchedulersBrandList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 1)
               class: ui-silk-application-view-list-schedule
@@ -443,9 +443,9 @@ production:
               description: _("List of %s", ngettext('Call', 'Calls', 0))
               showOnlyIf: ${auth.companyNotWholesale}
             BillableCallsClientList:
-              title: ngettext('Billable call', 'Billable calls', 0)
+              title: ngettext('External call', 'External calls', 0)
               class: ui-silk-application-view-list-money
-              description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+              description: _("List of %s", ngettext('External call', 'External calls', 0))
             CallCsvSchedulersList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule

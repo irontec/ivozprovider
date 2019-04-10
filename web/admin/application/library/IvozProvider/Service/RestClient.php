@@ -128,7 +128,7 @@ class RestClient
                 $options
             );
         } catch (\Exception $e) {
-            throw new \DomainException('Unable to get Billable Calls', 0, $e);
+            throw new \DomainException('Unable to get External Calls', 0, $e);
         }
     }
 

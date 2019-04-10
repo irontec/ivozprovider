@@ -21,7 +21,7 @@ production:
         items: 25
       <<: *BillableCalls
       class: ui-silk-application-view-list
-      title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('External call', 'External calls', 0), "[format| (%parent%)]")
       options:
         commands:
           exportBillableCallsToCsv_command: true
@@ -57,8 +57,8 @@ production:
       class: ui-silk-eye
       label: false
       disableSave: true
-      labelOnPostAction: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
-      title: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
+      labelOnPostAction: _("View %s %2s", ngettext('External call', 'External calls', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('External call', 'External calls', 1), "[format| (%item%)]")
       fields: &billableCallsView_fieldsLink
         order:
           brand: true

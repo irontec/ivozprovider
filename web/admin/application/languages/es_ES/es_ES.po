@@ -239,11 +239,6 @@ msgstr "Configuración Básica"
 msgid "Basic Information"
 msgstr "Información Básica"
 
-msgid "Billable call"
-msgid_plural "Billable calls"
-msgstr[0] "Llamada facturable"
-msgstr[1] "Llamadas facturables"
-
 msgid "Billing"
 msgstr "Tarificación"
 
@@ -363,6 +358,9 @@ msgstr "ID de llamada"
 
 msgid "Call destination"
 msgstr "Destino llamada"
+
+msgid "Call direction"
+msgstr "Dirección de llamada"
 
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
@@ -872,10 +870,21 @@ msgstr "Externa"
 msgid "External Filter destination"
 msgstr "Destino llamada filtro"
 
+msgid "External call"
+msgid_plural "External calls"
+msgstr[0] "Llamada externa"
+msgstr[1] "Llamadas externas"
+
 msgid "External call filter"
 msgid_plural "External call filters"
 msgstr[0] "Filtro de entrada externo"
 msgstr[1] "Filtros de entrada externo"
+
+msgid "External inbound calls"
+msgstr "Llamada externa entrante"
+
+msgid "External outbound calls"
+msgstr "Llamada external saliente"
 
 msgid "Externally rated"
 msgstr "Tarificación externa"

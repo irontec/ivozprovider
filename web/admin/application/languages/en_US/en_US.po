@@ -234,11 +234,6 @@ msgstr "Basic Info"
 msgid "Basic Information"
 msgstr "Basic Information"
 
-msgid "Billable call"
-msgid_plural "Billable calls"
-msgstr[0] "Billable call"
-msgstr[1] "Billable calls"
-
 msgid "Billing"
 msgstr "Billing"
 
@@ -356,6 +351,9 @@ msgstr "Call ID"
 
 msgid "Call destination"
 msgstr "Call destination"
+
+msgid "Call direction"
+msgstr "Call direction"
 
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
@@ -860,10 +858,21 @@ msgstr "External"
 msgid "External Filter destination"
 msgstr "External Filter destination"
 
+msgid "External call"
+msgid_plural "External calls"
+msgstr[0] "External call"
+msgstr[1] "External calls"
+
 msgid "External call filter"
 msgid_plural "External call filters"
 msgstr[0] "External call filter"
 msgstr[1] "External call filters"
+
+msgid "External inbound calls"
+msgstr "External inbound calls"
+
+msgid "External outbound calls"
+msgstr "External outbound calls"
 
 msgid "Externally rated"
 msgstr "Externally rated"
