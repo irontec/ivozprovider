@@ -9,8 +9,45 @@ defineSupportCode(({setDefaultTimeout}) => {
 var login = client.page.login();
 
 Given(/^I am on the Dashboard$/, goToDashboard);
-Given(/^I go to the admin page$/, goToAdminPage);
-When(/^I send valid admin credentials$/, sendValidAdminCredentials);
+Given(/^I go to the admin page$/, goToAdminPage.bind(this, client.launchUrl));
+Given(
+    /^I go to the brand admin page$/,
+    goToAdminPage.bind(
+        this,
+        client.globals.brand.portal
+    )
+);
+Given(
+    /^I go to the client admin page$/,
+    goToAdminPage.bind(
+        this,
+        client.globals.client.portal
+    )
+);
+When(
+    /^I send valid admin credentials$/,
+    sendValidAdminCredentials.bind(
+        this,
+        client.globals.user,
+        client.globals.password
+    )
+);
+When(
+    /^I send valid brand admin credentials$/,
+    sendValidAdminCredentials.bind(
+        this,
+        client.globals.brand.user,
+        client.globals.brand.password
+    )
+);
+When(
+    /^I send valid client admin credentials$/,
+    sendValidAdminCredentials.bind(
+        this,
+        client.globals.client.user,
+        client.globals.client.password
+    )
+);
 When(/^I send invalid admin credentials$/, () => {
 return login.sendCredentials('invalidUser', 'invalidPass');
 });
@@ -32,30 +69,38 @@ function goToDashboard(resolve) {
             `).waitForElementVisible('.ui-tabs-nav .ui-icon-close', 5000);
     }
 
-    goToAdminPage();
-    sendValidAdminCredentials();
+    goToAdminPage(client.launchUrl);
+    sendValidAdminCredentials(
+        client.globals.user,
+        client.globals.password
+    );
     resolve(null, client);
   });
 
   resolve(null, client);
 }
 
-function goToAdminPage() {
+/**
+ * @param string url
+ */
+function goToAdminPage(url) {
+
   return client
       .execute(`
             localStorage.clear();
             sessionStorage.clear();
       `)
       .deleteCookies()
-      .url(client.launchUrl)
+      .url(url)
       .acceptAlert();
 }
 
-function sendValidAdminCredentials() {
+function sendValidAdminCredentials(user, password) {
+
   return login
       .sendCredentials(
-          client.globals.user,
-          client.globals.password
+          user,
+          password
       );
 }
 

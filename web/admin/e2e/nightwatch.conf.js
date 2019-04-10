@@ -30,8 +30,18 @@ module.exports = {
     "chromium" : {
       "launch_url" : "https://127.0.0.1/e2e.php",
       "globals" : {
-        'user': 'admin',
-        'password': 'changeme',
+        user: 'admin',
+        password: 'changeme',
+        brand: {
+          portal: 'https://brand.artemis-test.irontec.com/e2e.php',
+          user: 'test_brand_admin',
+          password: '1234'
+        },
+        client: {
+            portal: 'https://client.artemis-test.irontec.com/e2e.php',
+            user: 'test_company_admin',
+            password: '1234'
+        },
         'waitForConditionTimeout': 20000,
         'retryAssertionTimeout': 20000
       },
