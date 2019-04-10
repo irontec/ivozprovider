@@ -88,6 +88,14 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       options:
         fixed: false
       column: endpointId
+    direction:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:inbound|outbound]'
+        default: 'outbound'
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
