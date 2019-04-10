@@ -30,6 +30,12 @@ abstract class CallCsvSchedulerAbstract
     protected $frequency;
 
     /**
+     * comment: enum:inbound|outbound
+     * @var string | null
+     */
+    protected $callDirection = 'outbound';
+
+    /**
      * @var string
      */
     protected $email;
@@ -154,6 +160,7 @@ abstract class CallCsvSchedulerAbstract
         );
 
         $self
+            ->setCallDirection($dto->getCallDirection())
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
@@ -182,6 +189,7 @@ abstract class CallCsvSchedulerAbstract
             ->setName($dto->getName())
             ->setUnit($dto->getUnit())
             ->setFrequency($dto->getFrequency())
+            ->setCallDirection($dto->getCallDirection())
             ->setEmail($dto->getEmail())
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
@@ -206,6 +214,7 @@ abstract class CallCsvSchedulerAbstract
             ->setName(self::getName())
             ->setUnit(self::getUnit())
             ->setFrequency(self::getFrequency())
+            ->setCallDirection(self::getCallDirection())
             ->setEmail(self::getEmail())
             ->setLastExecution(self::getLastExecution())
             ->setLastExecutionError(self::getLastExecutionError())
@@ -224,6 +233,7 @@ abstract class CallCsvSchedulerAbstract
             'name' => self::getName(),
             'unit' => self::getUnit(),
             'frequency' => self::getFrequency(),
+            'callDirection' => self::getCallDirection(),
             'email' => self::getEmail(),
             'lastExecution' => self::getLastExecution(),
             'lastExecutionError' => self::getLastExecutionError(),
@@ -320,6 +330,37 @@ abstract class CallCsvSchedulerAbstract
     public function getFrequency()
     {
         return $this->frequency;
+    }
+
+    /**
+     * Set callDirection
+     *
+     * @param string $callDirection
+     *
+     * @return static
+     */
+    protected function setCallDirection($callDirection = null)
+    {
+        if (!is_null($callDirection)) {
+            Assertion::choice($callDirection, [
+                CallCsvSchedulerInterface::CALLDIRECTION_INBOUND,
+                CallCsvSchedulerInterface::CALLDIRECTION_OUTBOUND
+            ], 'callDirectionvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->callDirection = $callDirection;
+
+        return $this;
+    }
+
+    /**
+     * Get callDirection
+     *
+     * @return string | null
+     */
+    public function getCallDirection()
+    {
+        return $this->callDirection;
     }
 
     /**
