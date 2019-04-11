@@ -1,4 +1,5 @@
 @platform
+@login
 @brandOperators
 @platform01
 @platform01-2

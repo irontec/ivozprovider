@@ -1,6 +1,7 @@
 @brand
 @clientPortals
 @brand04
+@login
 
 Feature: Company URLs admin page
   As a main operator

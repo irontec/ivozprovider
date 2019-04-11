@@ -1,7 +1,7 @@
 {
   "name": "TestAdmin",
   "urlType": "admin",
-  "url": "https://admin.artemis.irontec.com",
+  "url": "https://client.artemis-test.irontec.com",
   "klearTheme": "redmond",
   "userTheme": "default"
 }
