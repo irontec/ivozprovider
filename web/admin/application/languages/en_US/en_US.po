@@ -704,6 +704,9 @@ msgstr "Download file"
 msgid "Duplicated prefix"
 msgstr "Duplicated prefix"
 
+msgid "Duplicated priority"
+msgstr "Duplicated priority"
+
 msgid "Duration"
 msgstr "Duration"
 

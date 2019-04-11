@@ -715,6 +715,9 @@ msgstr "Descargar fichero"
 msgid "Duplicated prefix"
 msgstr "Prefijo duplicado"
 
+msgid "Duplicated priority"
+msgstr "Prioridad duplicada"
+
 msgid "Duration"
 msgstr "Duración"
 
