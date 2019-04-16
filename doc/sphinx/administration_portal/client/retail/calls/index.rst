@@ -9,6 +9,6 @@ These are the call-list sections for retail clients:
     :titlesonly:
 
     call_registry
-    billable_calls
+    external_calls
     call_csv_schedulers
     call_recordings

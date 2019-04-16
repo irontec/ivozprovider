@@ -17,5 +17,5 @@ This section is only shown to *God administrator* and allows modifying global co
     default_notification_templates
     sip_domains
     portals
-    billable_calls
+    external_calls
     infrastructure/index

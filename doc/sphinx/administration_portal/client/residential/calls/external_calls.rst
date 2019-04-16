@@ -1,0 +1,1 @@
+/opt/irontec/ivozprovider/doc/sphinx/administration_portal/platform/external_calls.rst

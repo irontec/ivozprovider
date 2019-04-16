@@ -12,7 +12,7 @@ Billing calls depends upon an automatic process:
            a given client and for the specific destination) it won't be possible to
            bill the call, IvozProvider will prevent its establishment.
 
-- Once a call that implies cost is hung up and is parsed by an asynchronous process, it is listed in :ref:`billable_calls`.
+- Once a call that implies cost is hung up and is parsed by an asynchronous process, it is listed in :ref:`external_calls`.
 
 ***************
 Billing methods

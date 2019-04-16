@@ -1,10 +1,10 @@
-.. _billable_calls:
+.. _external_calls:
 
 ##############
-Billable calls
+External calls
 ##############
 
-**Billable calls** section only lists **calls that imply cost for clients**, usually external outgoing calls.
+**External calls** section lists **both inbound and outbound external calls**.
 
 This section is shown at different levels:
 
@@ -65,13 +65,12 @@ Each entry shows this information:
         For retail client calls, shows the retail account's id of the call. Empty for remaining client types.
 
 
-.. note:: An asynchronous process parses each billable call and adds it to this list a few minutes after call hangup.
+.. note:: An asynchronous process parses each external call and adds it to this list a few minutes after call hangup. Billing related fields, such as cost and price, will be empty for external incoming calls.
 
 Call rerating
 =============
 
-At **brand level**, there is an additional available operation: **Rerate call**. This option allows calling rating engine
-again for a call or a bunch of calls.
+At **brand level**, there is an additional available operation for outbound calls: **Rerate call**. This option allows calling rating engine again for a call or a bunch of calls.
 
 Notes about this rerating process:
 
