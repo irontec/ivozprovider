@@ -65,6 +65,11 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
             ? $entity->getFromDomain()
             : $entity->getDomain()->getDomain();
 
+        // Disable directMedia for intervpbx friends
+        if ($entity->isInterPbxConnectivity()) {
+            $endPointDto->setDirectMedia('no');
+        }
+
         // Update/Insert endpoint data
         $endPointDto
             ->setFriendId($entity->getId())

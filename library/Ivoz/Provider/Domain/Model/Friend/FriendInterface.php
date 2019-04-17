@@ -45,20 +45,34 @@ interface FriendInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return bool
+     */
+    public function isInterPbxConnectivity();
+
+    /**
+     * @param string $number
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     */
+    public function getInterCompanyExtension($number);
+
+    /**
      * {@inheritDoc}
      * @see FriendAbstract::setIp
+     * @deprecated this method will be protected
      */
     public function setIp($ip = null);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPort
+     * @deprecated this method will be protected
      */
     public function setPort($port = null);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPassword
+     * @deprecated this method will be protected
      */
     public function setPassword($password = null);
 
@@ -95,12 +109,6 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi();
-
-    /**
-     * @return string
-     * @throws \Exception
-     */
-    public function getInterCompanyName();
 
     /**
      * Get name
