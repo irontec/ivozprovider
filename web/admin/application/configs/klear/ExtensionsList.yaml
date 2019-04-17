@@ -12,7 +12,8 @@ production:
       pagination:
         items: 25
       order:
-          number: true
+        field:
+          - Extension.number asc
       <<: *Extensions
       title: _("List of %s %2s", ngettext('Extension', 'Extensions', 0), "[format| (%parent%)]")
       info:
