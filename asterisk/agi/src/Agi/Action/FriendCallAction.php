@@ -66,6 +66,12 @@ class FriendCallAction
         // Some verbose dolan pls
         $this->agi->notice("Preparing call to %s through friend <cyan>%s</cyan>", $number, $friend);
 
+        // Intervpbx friends can only call to valid extensions in destination company
+        if ($friend->isInterPbxConnectivity() && !$friend->getInterCompanyExtension($number)) {
+            $this->agi->error("%s is NOT a valid extension in %s", $number, $friend->getInterCompany());
+            return;
+        }
+
         // Check if user is available before placing the call
         $endpointName = $friend->getSorcery();
 
