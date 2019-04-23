@@ -77,7 +77,7 @@ class Headers extends RouteHandlerAbstract
             }
         } else {
             // Set special headers for Fax outgoing calls
-            if ($this->agi->getVariable("FAXFILE_ID")) {
+            if ($this->agi->getVariable("FAXFILE_ID") || $this->agi->getVariable("T38PASSTHROUGH")) {
                 $this->agi->setSIPHeader("X-Info-Special", "fax");
             }
         }
