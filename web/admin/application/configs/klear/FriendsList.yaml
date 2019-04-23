@@ -40,6 +40,8 @@ production:
           updateCallerid: true
           callACL: true
           ddiIn: true
+          t38Passthrough: true
+          outgoingDdi: true
         order:
           name: true
           domain: true
@@ -85,6 +87,14 @@ production:
           disallow: true
           status: true
           statusIcon: true
+          t38Passthrough: true
+          language: true
+          transformationRuleSet: true
+          callACL: true
+          outgoingDdi: true
+          allow: true
+          fromDomain: true
+          ddiIn: true
         order: &friends_orderLink
           name: true
           description: true
@@ -102,6 +112,7 @@ production:
           fromDomain: true
           ddiIn: true
           status: true
+          t38Passthrough: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -130,11 +141,12 @@ production:
             outgoingDdi: 5
         group3:
           label: _("Advanced Configuration")
-          colsPerRow: 6
+          colsPerRow: 4
           fields:
             allow: 2
             fromDomain: 2
             ddiIn: 2
+            t38Passthrough: 2
       shortcutOption: N
 
     friendsEdit_screen: &friendsEdit_screenLink

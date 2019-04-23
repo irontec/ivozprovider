@@ -34,6 +34,8 @@ production:
           language: true
           status: true
           ddiIn: true
+          t38Passthrough: true
+          outgoingDdi: true
         order:
           name: true
           domain: true
@@ -75,6 +77,11 @@ production:
           domain: true
           status: true
           statusIcon: true
+          t38Passthrough: true
+          outgoingDdi: true
+          transformationRuleSet: true
+          fromDomain: true
+          ddiIn: true
         order: &retailAccounts_orderLink
           id: true
           name: true
@@ -120,6 +127,7 @@ production:
           fields:
             fromDomain: 3
             ddiIn: 3
+            t38Passthrough: 3
 
     retailAccountsEdit_screen: &retailAccountsEdit_screenLink
       <<: *RetailAccounts
