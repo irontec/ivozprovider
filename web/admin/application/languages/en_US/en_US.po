@@ -762,6 +762,9 @@ msgstr "Emulate Retail Client %s"
 msgid "Emulate Wholesale Client %s"
 msgstr "Emulate Wholesale Client %s"
 
+msgid "Enable T.38 passthrough"
+msgstr "Enable T.38 passthrough"
+
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "
