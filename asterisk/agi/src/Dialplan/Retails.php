@@ -8,6 +8,7 @@ use Agi\Agents\RetailAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use RouteHandlerAbstract;
 
 class Retails extends RouteHandlerAbstract
@@ -81,15 +82,23 @@ class Retails extends RouteHandlerAbstract
         $caller = new RetailAgent($this->agi, $retailAccount);
         $this->channelInfo->setChannelCaller($caller);
 
-        // Only forwarded calls are allowed from retail accounts
-        if ($this->agi->getRedirecting('count') == 0) {
+        // Only forwarded calls or T.38 calls are allowed from retail accounts
+        $isCallForward = $this->agi->getRedirecting('count') != 0;
+        $isFax = $retailAccount->getT38Passthrough() === RetailAccountInterface::T38PASSTHROUGH_YES;
+
+        if (!$isFax && !$isCallForward) {
             $this->agi->error(
-                "Call without Diversion header from <cyan>%s</cyan> to number %s, drop call",
+                "Non-T.38 call without Diversion header from <cyan>%s</cyan> to number %s, drop call",
                 $retailAccount,
                 $exten
             );
             $this->agi->hangup();
             return;
+        }
+
+        // If this call is not being forwarded, retail is also the origin
+        if (!$isCallForward) {
+            $this->channelInfo->setChannelOrigin($caller);
         }
 
         // Some feedback for asterisk cli
