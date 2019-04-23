@@ -105,6 +105,12 @@ abstract class ResidentialDeviceAbstract
     protected $maxCalls = 1;
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Passthrough = 'no';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -152,7 +158,8 @@ abstract class ResidentialDeviceAbstract
         $updateCallerid,
         $directConnectivity,
         $ddiIn,
-        $maxCalls
+        $maxCalls,
+        $t38Passthrough
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -166,6 +173,7 @@ abstract class ResidentialDeviceAbstract
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
         $this->setMaxCalls($maxCalls);
+        $this->setT38Passthrough($t38Passthrough);
     }
 
     abstract public function getId();
@@ -248,7 +256,8 @@ abstract class ResidentialDeviceAbstract
             $dto->getUpdateCallerid(),
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
-            $dto->getMaxCalls()
+            $dto->getMaxCalls(),
+            $dto->getT38Passthrough()
         );
 
         $self
@@ -297,6 +306,7 @@ abstract class ResidentialDeviceAbstract
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
             ->setMaxCalls($dto->getMaxCalls())
+            ->setT38Passthrough($dto->getT38Passthrough())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -333,6 +343,7 @@ abstract class ResidentialDeviceAbstract
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
             ->setMaxCalls(self::getMaxCalls())
+            ->setT38Passthrough(self::getT38Passthrough())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -363,6 +374,7 @@ abstract class ResidentialDeviceAbstract
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
             'maxCalls' => self::getMaxCalls(),
+            't38Passthrough' => self::getT38Passthrough(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
@@ -831,6 +843,36 @@ abstract class ResidentialDeviceAbstract
     public function getMaxCalls()
     {
         return $this->maxCalls;
+    }
+
+    /**
+     * Set t38Passthrough
+     *
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    protected function setT38Passthrough($t38Passthrough)
+    {
+        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Passthrough, [
+            ResidentialDeviceInterface::T38PASSTHROUGH_YES,
+            ResidentialDeviceInterface::T38PASSTHROUGH_NO
+        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
     }
 
     /**

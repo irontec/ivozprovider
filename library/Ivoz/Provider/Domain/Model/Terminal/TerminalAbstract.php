@@ -59,6 +59,12 @@ abstract class TerminalAbstract
     protected $lastProvisionDate;
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Passthrough = 'no';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -83,12 +89,14 @@ abstract class TerminalAbstract
         $disallow,
         $allowAudio,
         $directMediaMethod,
-        $password
+        $password,
+        $t38Passthrough
     ) {
         $this->setDisallow($disallow);
         $this->setAllowAudio($allowAudio);
         $this->setDirectMediaMethod($directMediaMethod);
         $this->setPassword($password);
+        $this->setT38Passthrough($t38Passthrough);
     }
 
     abstract public function getId();
@@ -163,7 +171,8 @@ abstract class TerminalAbstract
             $dto->getDisallow(),
             $dto->getAllowAudio(),
             $dto->getDirectMediaMethod(),
-            $dto->getPassword()
+            $dto->getPassword(),
+            $dto->getT38Passthrough()
         );
 
         $self
@@ -201,6 +210,7 @@ abstract class TerminalAbstract
             ->setPassword($dto->getPassword())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
+            ->setT38Passthrough($dto->getT38Passthrough())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
@@ -226,6 +236,7 @@ abstract class TerminalAbstract
             ->setPassword(self::getPassword())
             ->setMac(self::getMac())
             ->setLastProvisionDate(self::getLastProvisionDate())
+            ->setT38Passthrough(self::getT38Passthrough())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::entityToDto(self::getTerminalModel(), $depth));
@@ -245,6 +256,7 @@ abstract class TerminalAbstract
             'password' => self::getPassword(),
             'mac' => self::getMac(),
             'lastProvisionDate' => self::getLastProvisionDate(),
+            't38Passthrough' => self::getT38Passthrough(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
@@ -477,6 +489,36 @@ abstract class TerminalAbstract
     public function getLastProvisionDate()
     {
         return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
+    }
+
+    /**
+     * Set t38Passthrough
+     *
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    protected function setT38Passthrough($t38Passthrough)
+    {
+        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Passthrough, [
+            TerminalInterface::T38PASSTHROUGH_YES,
+            TerminalInterface::T38PASSTHROUGH_NO
+        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
     }
 
     /**

@@ -105,6 +105,33 @@ abstract class PsEndpointAbstract
     protected $trustIdInbound;
 
     /**
+     * column: t38_udptl
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Udptl = 'no';
+
+    /**
+     * column: t38_udptl_ec
+     * comment: enum:none|fec|redundancy
+     * @var string
+     */
+    protected $t38UdptlEc = 'none';
+
+    /**
+     * column: t38_udptl_maxdatagram
+     * @var integer
+     */
+    protected $t38UdptlMaxdatagram = 0;
+
+    /**
+     * column: t38_udptl_nat
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38UdptlNat = 'yes';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
      */
     protected $terminal;
@@ -135,13 +162,21 @@ abstract class PsEndpointAbstract
         $context,
         $disallow,
         $allow,
-        $oneHundredRel
+        $oneHundredRel,
+        $t38Udptl,
+        $t38UdptlEc,
+        $t38UdptlMaxdatagram,
+        $t38UdptlNat
     ) {
         $this->setSorceryId($sorceryId);
         $this->setContext($context);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
         $this->setOneHundredRel($oneHundredRel);
+        $this->setT38Udptl($t38Udptl);
+        $this->setT38UdptlEc($t38UdptlEc);
+        $this->setT38UdptlMaxdatagram($t38UdptlMaxdatagram);
+        $this->setT38UdptlNat($t38UdptlNat);
     }
 
     abstract public function getId();
@@ -217,7 +252,11 @@ abstract class PsEndpointAbstract
             $dto->getContext(),
             $dto->getDisallow(),
             $dto->getAllow(),
-            $dto->getOneHundredRel()
+            $dto->getOneHundredRel(),
+            $dto->getT38Udptl(),
+            $dto->getT38UdptlEc(),
+            $dto->getT38UdptlMaxdatagram(),
+            $dto->getT38UdptlNat()
         );
 
         $self
@@ -271,6 +310,10 @@ abstract class PsEndpointAbstract
             ->setOneHundredRel($dto->getOneHundredRel())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
+            ->setT38Udptl($dto->getT38Udptl())
+            ->setT38UdptlEc($dto->getT38UdptlEc())
+            ->setT38UdptlMaxdatagram($dto->getT38UdptlMaxdatagram())
+            ->setT38UdptlNat($dto->getT38UdptlNat())
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -305,6 +348,10 @@ abstract class PsEndpointAbstract
             ->setOneHundredRel(self::getOneHundredRel())
             ->setOutboundProxy(self::getOutboundProxy())
             ->setTrustIdInbound(self::getTrustIdInbound())
+            ->setT38Udptl(self::getT38Udptl())
+            ->setT38UdptlEc(self::getT38UdptlEc())
+            ->setT38UdptlMaxdatagram(self::getT38UdptlMaxdatagram())
+            ->setT38UdptlNat(self::getT38UdptlNat())
             ->setTerminal(\Ivoz\Provider\Domain\Model\Terminal\Terminal::entityToDto(self::getTerminal(), $depth))
             ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
@@ -333,6 +380,10 @@ abstract class PsEndpointAbstract
             '100rel' => self::getOneHundredRel(),
             'outbound_proxy' => self::getOutboundProxy(),
             'trust_id_inbound' => self::getTrustIdInbound(),
+            't38_udptl' => self::getT38Udptl(),
+            't38_udptl_ec' => self::getT38UdptlEc(),
+            't38_udptl_maxdatagram' => self::getT38UdptlMaxdatagram(),
+            't38_udptl_nat' => self::getT38UdptlNat(),
             'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
@@ -769,6 +820,125 @@ abstract class PsEndpointAbstract
     public function getTrustIdInbound()
     {
         return $this->trustIdInbound;
+    }
+
+    /**
+     * Set t38Udptl
+     *
+     * @param string $t38Udptl
+     *
+     * @return static
+     */
+    protected function setT38Udptl($t38Udptl)
+    {
+        Assertion::notNull($t38Udptl, 't38Udptl value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Udptl, [
+            PsEndpointInterface::T38UDPTL_YES,
+            PsEndpointInterface::T38UDPTL_NO
+        ], 't38Udptlvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Udptl = $t38Udptl;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Udptl
+     *
+     * @return string
+     */
+    public function getT38Udptl()
+    {
+        return $this->t38Udptl;
+    }
+
+    /**
+     * Set t38UdptlEc
+     *
+     * @param string $t38UdptlEc
+     *
+     * @return static
+     */
+    protected function setT38UdptlEc($t38UdptlEc)
+    {
+        Assertion::notNull($t38UdptlEc, 't38UdptlEc value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38UdptlEc, [
+            PsEndpointInterface::T38UDPTLEC_NONE,
+            PsEndpointInterface::T38UDPTLEC_FEC,
+            PsEndpointInterface::T38UDPTLEC_REDUNDANCY
+        ], 't38UdptlEcvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38UdptlEc = $t38UdptlEc;
+
+        return $this;
+    }
+
+    /**
+     * Get t38UdptlEc
+     *
+     * @return string
+     */
+    public function getT38UdptlEc()
+    {
+        return $this->t38UdptlEc;
+    }
+
+    /**
+     * Set t38UdptlMaxdatagram
+     *
+     * @param integer $t38UdptlMaxdatagram
+     *
+     * @return static
+     */
+    protected function setT38UdptlMaxdatagram($t38UdptlMaxdatagram)
+    {
+        Assertion::notNull($t38UdptlMaxdatagram, 't38UdptlMaxdatagram value "%s" is null, but non null value was expected.');
+        Assertion::integerish($t38UdptlMaxdatagram, 't38UdptlMaxdatagram value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($t38UdptlMaxdatagram, 0, 't38UdptlMaxdatagram provided "%s" is not greater or equal than "%s".');
+
+        $this->t38UdptlMaxdatagram = (int) $t38UdptlMaxdatagram;
+
+        return $this;
+    }
+
+    /**
+     * Get t38UdptlMaxdatagram
+     *
+     * @return integer
+     */
+    public function getT38UdptlMaxdatagram()
+    {
+        return $this->t38UdptlMaxdatagram;
+    }
+
+    /**
+     * Set t38UdptlNat
+     *
+     * @param string $t38UdptlNat
+     *
+     * @return static
+     */
+    protected function setT38UdptlNat($t38UdptlNat)
+    {
+        Assertion::notNull($t38UdptlNat, 't38UdptlNat value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38UdptlNat, [
+            PsEndpointInterface::T38UDPTLNAT_YES,
+            PsEndpointInterface::T38UDPTLNAT_NO
+        ], 't38UdptlNatvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38UdptlNat = $t38UdptlNat;
+
+        return $this;
+    }
+
+    /**
+     * Get t38UdptlNat
+     *
+     * @return string
+     */
+    public function getT38UdptlNat()
+    {
+        return $this->t38UdptlNat;
     }
 
     /**

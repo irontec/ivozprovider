@@ -91,6 +91,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $maxCalls = 1;
 
     /**
+     * @var string
+     */
+    private $t38Passthrough = 'no';
+
+    /**
      * @var integer
      */
     private $id;
@@ -174,6 +179,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
             'maxCalls' => 'maxCalls',
+            't38Passthrough' => 't38Passthrough',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -206,6 +212,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
             'maxCalls' => $this->getMaxCalls(),
+            't38Passthrough' => $this->getT38Passthrough(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -537,6 +544,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getMaxCalls()
     {
         return $this->maxCalls;
+    }
+
+    /**
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    public function setT38Passthrough($t38Passthrough = null)
+    {
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
     }
 
     /**

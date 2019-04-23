@@ -56,6 +56,11 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $ddiIn = 'yes';
 
     /**
+     * @var string
+     */
+    private $t38Passthrough = 'no';
+
+    /**
      * @var integer
      */
     private $id;
@@ -127,6 +132,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
+            't38Passthrough' => 't38Passthrough',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -151,6 +157,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
+            't38Passthrough' => $this->getT38Passthrough(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -341,6 +348,26 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getDdiIn()
     {
         return $this->ddiIn;
+    }
+
+    /**
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    public function setT38Passthrough($t38Passthrough = null)
+    {
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
     }
 
     /**

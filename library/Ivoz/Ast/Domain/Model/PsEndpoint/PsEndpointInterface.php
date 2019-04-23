@@ -11,6 +11,19 @@ interface PsEndpointInterface extends LoggableEntityInterface
     const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
 
+    const T38UDPTL_YES = 'yes';
+    const T38UDPTL_NO = 'no';
+
+
+    const T38UDPTLEC_NONE = 'none';
+    const T38UDPTLEC_FEC = 'fec';
+    const T38UDPTLEC_REDUNDANCY = 'redundancy';
+
+
+    const T38UDPTLNAT_YES = 'yes';
+    const T38UDPTLNAT_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -128,6 +141,34 @@ interface PsEndpointInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getTrustIdInbound();
+
+    /**
+     * Get t38Udptl
+     *
+     * @return string
+     */
+    public function getT38Udptl();
+
+    /**
+     * Get t38UdptlEc
+     *
+     * @return string
+     */
+    public function getT38UdptlEc();
+
+    /**
+     * Get t38UdptlMaxdatagram
+     *
+     * @return integer
+     */
+    public function getT38UdptlMaxdatagram();
+
+    /**
+     * Get t38UdptlNat
+     *
+     * @return string
+     */
+    public function getT38UdptlNat();
 
     /**
      * Set terminal
