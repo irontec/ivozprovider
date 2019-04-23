@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-28 09:55+0100\n"
+"POT-Creation-Date: 2019-04-23 17:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3116,87 +3116,95 @@ msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:44
 msgid ""
+"Fax specific routes will apply first for both faxes sent via virtual "
+"faxing (see :ref:`faxes`) or T.38 capable devices. If no fax specific "
+"route found, remaining routes will apply as for a normal voice call to "
+"that destination."
+msgstr ""
+
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:47
+msgid ""
 "Last two fields, priority and order, are key parameters to achieve two "
 "interesting features too: **load-balancing** and **failover-routes**."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:47
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:50
 msgid "Load balancing"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:49
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:52
 msgid ""
 "*Load-balancing* lets us distribute calls matching the same pattern using"
 " several valid outgoing routes."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:53
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:56
 msgid "Example 1"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:54
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:62
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:75
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:57
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:65
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:78
 msgid "Route A: priority 1, metric 1"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:55
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:58
 msgid "Route B: priority 1, metric 1"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:57
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:60
 msgid ""
 "Call matching these routes will use route A for %50 of the calls and "
 "route B for %50 of the calls."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:61
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:64
 msgid "Example 2"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:63
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:66
 msgid "Route B: priority 1, metric 2"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:65
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:68
 msgid ""
 "Call matching these routes will use route A for %33 of the calls and "
 "route B for %66 of the calls."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:69
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:72
 msgid "Failover routes"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:71
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:74
 msgid "Failover route lets us use another route whenever the main route fails."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:74
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:77
 msgid "Example"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:76
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:79
 msgid "Route B: priority 2, metric 1"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:78
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:81
 msgid ""
 "All calls matching these routes will try to use route A. In case the call"
 " fails, the call will be placed using route B."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:81
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:84
 msgid ""
 "Although given examples use two routes, more routes can be chained and "
 "failover and load-balancing strategies can be combined."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:85
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:88
 msgid "LCR routes"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:87
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:90
 msgid ""
 "LCR (*Least Cost Routing*) routes may select more than one carrier. "
 "Whenever a LCR rule is used, the platform will compute the call cost for "
@@ -3204,37 +3212,37 @@ msgid ""
 "increasing order."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:90
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:93
 msgid ""
 "Carriers that cannot compute cost for a given destination are silently "
 "ignored (they are not used)."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:93
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:96
 msgid "LCR and static rules combined"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:95
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:98
 msgid "Carrier election process can combine static and LCR rules:"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:97
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:100
 msgid ""
 "Static rules result in one carrier with the priority and the weight of "
 "the rule."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:99
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:102
 msgid ""
 "LCR rules result in *n* carriers, ordered by call cost, all of them with "
 "the priority and the weight of the rule."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:101
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:104
 msgid "Carriers are ordered using priority (ascending order)."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:103
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:106
 msgid ""
 "Carrier's weight is used for load-balancing between carriers with same "
 "priority."
@@ -3363,6 +3371,39 @@ msgid ""
 "moment."
 msgstr ""
 
+#: ../../administration_portal/brand/settings/client_portals.rst:5
+msgid "Client Portals"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/client_portals.rst:7
+msgid "This section allows configuration of client portals:"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/client_portals.rst:9
+msgid "**Client**: Administration portal for all client types"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/client_portals.rst:10
+msgid "**User**: Special portal for Virtual PBXs users"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/client_portals.rst:13
+#: ../../administration_portal/platform/portals.rst:10
+msgid "URLs MUST be HTTPS"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/client_portals.rst:14
+#: ../../administration_portal/platform/portals.rst:11
+msgid "URLs MUST not end with slash /"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/client_portals.rst:17
+msgid ""
+"Each URL can also configure a logo per URL, a theme and a phrase to use "
+"as the title of the portal allowing creation of corporate portals per "
+"client."
+msgstr ""
+
 #: ../../administration_portal/brand/settings/generic_match_lists.rst:5
 msgid "Generic Match Lists"
 msgstr ""
@@ -3448,23 +3489,23 @@ msgstr ""
 msgid "Deleting a service will delete this service for all existing clients."
 msgstr ""
 
-#: ../../administration_portal/brand/settings/index.rst:3
+#: ../../administration_portal/brand/settings/index.rst:4
 msgid "Settings"
 msgstr ""
 
-#: ../../administration_portal/brand/settings/index.rst:5
+#: ../../administration_portal/brand/settings/index.rst:6
 msgid "This group contains two kind of sections:"
 msgstr ""
 
-#: ../../administration_portal/brand/settings/index.rst:7
+#: ../../administration_portal/brand/settings/index.rst:8
 msgid "Brand global configuration"
 msgstr ""
 
-#: ../../administration_portal/brand/settings/index.rst:9
+#: ../../administration_portal/brand/settings/index.rst:10
 msgid "Brand defaults for new clients"
 msgstr ""
 
-#: ../../administration_portal/brand/settings/index.rst:11
+#: ../../administration_portal/brand/settings/index.rst:12
 msgid "These will be covered topics:"
 msgstr ""
 
@@ -3994,37 +4035,6 @@ msgid ""
 "For all these transformations `Regular Expressions "
 "<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_ knowledge "
 "is needed, unless automatic created rules work out of the box."
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:3
-msgid "Portals URLs"
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:5
-msgid "This section allows configuration of client portals:"
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:7
-msgid "**Client**: Administration portal for all client types"
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:8
-msgid "**User**: Special portal for Virtual PBXs users"
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:11
-msgid "URLs MUST be HTTPS"
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:12
-msgid "URLs MUST not end with slash /"
-msgstr ""
-
-#: ../../administration_portal/brand/settings/portal_urls.rst:15
-msgid ""
-"Each URL can also configure a logo per URL, a theme and a phrase to use "
-"as the title of the portal allowing creation of corporate portals per "
-"client."
 msgstr ""
 
 #: ../../administration_portal/brand/views/ddis.rst:3
@@ -4836,90 +4846,109 @@ msgstr ""
 msgid "Limits the number of concurrent received calls. Set 0 for unlimited calls."
 msgstr ""
 
+#: ../../administration_portal/client/residential/residential_devices.rst:83
+#: ../../administration_portal/client/retail/retail_accounts.rst:74
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:114
+#: ../../administration_portal/client/vpbx/terminals.rst:45
+msgid "Enable T.38 passthrough"
+msgstr ""
+
 #: ../../administration_portal/client/residential/residential_devices.rst:85
-#: ../../administration_portal/client/retail/retail_accounts.rst:82
+#: ../../administration_portal/client/retail/retail_accounts.rst:76
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:116
+#: ../../administration_portal/client/vpbx/terminals.rst:47
+msgid ""
+"If set to 'yes', this SIP endpoint must be a **T.38 capable fax "
+"sender/receiver**. IvozProvider application servers will act as T.38 "
+"gateways, routing calls through a T.38 capable carrier and bridging "
+"signalling and media from one to another. See :ref:`Firewall <firewall>` "
+"for port exposing concerns related to this kind of traffic."
+msgstr ""
+
+#: ../../administration_portal/client/residential/residential_devices.rst:91
+#: ../../administration_portal/client/retail/retail_accounts.rst:88
 msgid "Voicemail settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:87
+#: ../../administration_portal/client/residential/residential_devices.rst:93
 msgid ""
 "Every residential device has a voicemail that can be accessed using "
 "voicemail service code defined at brand level."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:90
-#: ../../administration_portal/client/retail/retail_accounts.rst:87
+#: ../../administration_portal/client/residential/residential_devices.rst:96
+#: ../../administration_portal/client/retail/retail_accounts.rst:93
 msgid "Call forwarding settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:92
+#: ../../administration_portal/client/residential/residential_devices.rst:98
 msgid ""
 "Apart from unconditional call forwarding to external number through "
 ":ref:`External call filters` applied to DDI, residential devices may have"
 " additional call forwarding settings that allow:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:95
+#: ../../administration_portal/client/residential/residential_devices.rst:101
 msgid "Forwarding to another external number."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:97
+#: ../../administration_portal/client/residential/residential_devices.rst:103
 msgid "Forwarding to voicemail associated to each residential device."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:99
+#: ../../administration_portal/client/residential/residential_devices.rst:105
 msgid ""
 "Supported forwarding types: unconditional, no-answer, non-registered, "
 "busy."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:101
+#: ../../administration_portal/client/residential/residential_devices.rst:107
 msgid ""
 ":ref:`External call filters` have precedence over residential devices "
 "call forwarding settings."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:105
+#: ../../administration_portal/client/residential/residential_devices.rst:111
 msgid "Asterisk as a residential device"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:107
+#: ../../administration_portal/client/residential/residential_devices.rst:113
 msgid ""
 "At the other end of a device can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:112
+#: ../../administration_portal/client/residential/residential_devices.rst:118
 msgid "Device register"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:114
-#: ../../administration_portal/client/retail/retail_accounts.rst:107
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:129
+#: ../../administration_portal/client/residential/residential_devices.rst:120
+#: ../../administration_portal/client/retail/retail_accounts.rst:113
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:135
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:117
-#: ../../administration_portal/client/retail/retail_accounts.rst:110
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:132
+#: ../../administration_portal/client/residential/residential_devices.rst:123
+#: ../../administration_portal/client/retail/retail_accounts.rst:116
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:138
 msgid "Configuration will be something like this:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:124
+#: ../../administration_portal/client/residential/residential_devices.rst:130
 msgid "Device peer"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:140
+#: ../../administration_portal/client/residential/residential_devices.rst:146
 msgid ""
 "*Residential devices* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:143
-#: ../../administration_portal/client/retail/retail_accounts.rst:136
+#: ../../administration_portal/client/residential/residential_devices.rst:149
+#: ../../administration_portal/client/retail/retail_accounts.rst:142
 msgid ""
 "As from username is used to identify the retail account, P-Asserted-"
 "Identity must be used to specify caller number."
@@ -5099,67 +5128,67 @@ msgid ""
 "account. If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:75
+#: ../../administration_portal/client/retail/retail_accounts.rst:81
 msgid ""
 "All retail accounts within a retail client will have the transcoding "
 "capabilities configured at client level."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:77
+#: ../../administration_portal/client/retail/retail_accounts.rst:83
 msgid ""
 "On retail account edit screen **id** field shows internal identification "
 "number assigned to the retail account. This id is transported to "
 "*Endpoint Id* field in *Billable Calls* section for CSV export."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:84
+#: ../../administration_portal/client/retail/retail_accounts.rst:90
 msgid "There is no voicemail service for retail clients."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:89
+#: ../../administration_portal/client/retail/retail_accounts.rst:95
 msgid ""
 "Each retail account can have a unique enabled call forward setting, "
 "pointing to an external number."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:91
+#: ../../administration_portal/client/retail/retail_accounts.rst:97
 msgid ""
 "This external called will be called whenever the retail account cannot be"
 " reached:"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:93
+#: ../../administration_portal/client/retail/retail_accounts.rst:99
 msgid ""
 "Direct connectivity accounts: when no answer is received from defined "
 "address."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:95
+#: ../../administration_portal/client/retail/retail_accounts.rst:101
 msgid ""
 "Accounts using SIP register: when no answer is received from last contact"
 " address or when no active register is found."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:98
+#: ../../administration_portal/client/retail/retail_accounts.rst:104
 msgid "Asterisk as a retail account"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:100
+#: ../../administration_portal/client/retail/retail_accounts.rst:106
 msgid ""
 "At the other end of a account can be any kind of SIP entity. This section"
 " takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:105
+#: ../../administration_portal/client/retail/retail_accounts.rst:111
 msgid "Account register"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:117
+#: ../../administration_portal/client/retail/retail_accounts.rst:123
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:133
+#: ../../administration_portal/client/retail/retail_accounts.rst:139
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
@@ -5868,79 +5897,79 @@ msgid ""
 " If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:115
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:121
 msgid ""
 "Calls to *friends* are considered internal. That means that ACLs won't be"
 " checked when calling a friend, no matter if the origin of the call is a "
 "user or another friend."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:120
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:126
 msgid "Asterisk as a friend"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:122
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:128
 msgid ""
 "At the other end of a friend can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:127
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:133
 msgid "register"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:139
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:145
 msgid "peer"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:155
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:161
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:158
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:164
 msgid ""
 "As from username is used to identify the friend, P-Asserted-Identity must"
 " be used to specify caller number."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:161
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:167
 msgid "Summary"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:163
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:169
 msgid ""
 "The key point is understanding that a *friend* has a direct relation with"
 " the extension-user-terminal trio:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:166
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:172
 msgid "Can place calls to all internal extensions and other friends."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:168
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:174
 msgid "Can place external calls that its ACL allows"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:170
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:176
 msgid "Display their configured outgoing DDI when calling to external entities"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:172
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:178
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:174
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:180
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be authenticated for security reasons)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:177
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:183
 msgid ""
 "Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
 "traffic from friends are identical to any other user terminal traffic in "
@@ -6985,13 +7014,13 @@ msgid ""
 " of the SIP device."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/terminals.rst:46
+#: ../../administration_portal/client/vpbx/terminals.rst:52
 msgid ""
 "For **most of devices** that doesn't require provisioning just filling "
 "**username** and **password** will be enough."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/terminals.rst:49
+#: ../../administration_portal/client/vpbx/terminals.rst:55
 msgid ""
 "Once the terminal has been created, most devices will only require the "
 "name, password and :ref:`Client SIP domain <domain_per_client>` in order "
@@ -7835,17 +7864,17 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/platform/brands.rst:67
-msgid "Brand URLs"
+msgid "Brand Portals"
 msgstr ""
 
 #: ../../administration_portal/platform/brands.rst:69
 msgid ""
-"**List of brand URLs** subsection allows managing URLs to access to the "
-"different web portals available for a given brand."
+"**List of brand portals** subsection allows managing URLs to access to "
+"the different web portals available for a given brand."
 msgstr ""
 
 #: ../../administration_portal/platform/brands.rst:71
-msgid "See :ref:`Portals URLs` for further reference."
+msgid "See :ref:`Client Portals` for further reference."
 msgstr ""
 
 #: ../../administration_portal/platform/brands.rst:73
@@ -8116,6 +8145,20 @@ msgid ""
 "Remaining fields are not required nor used anywhere, they just allow "
 "storing additional information of a given user (name, lastname and "
 "email)."
+msgstr ""
+
+#: ../../administration_portal/platform/portals.rst:5
+msgid "Platform Portals"
+msgstr ""
+
+#: ../../administration_portal/platform/portals.rst:7
+msgid ""
+"This section allows configuration of platform portals that will be used "
+"by :ref:`Main operators`."
+msgstr ""
+
+#: ../../administration_portal/platform/portals.rst:13
+msgid "Each URL can also configure a logo and a theme per URL."
 msgstr ""
 
 #: ../../administration_portal/platform/services.rst:7
@@ -8515,3 +8558,20 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
+
+#~ msgid "Portals URLs"
+#~ msgstr ""
+
+#~ msgid "Brand URLs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**List of brand URLs** subsection allows"
+#~ " managing URLs to access to the "
+#~ "different web portals available for a"
+#~ " given brand."
+#~ msgstr ""
+
+#~ msgid "See :ref:`Portals URLs` for further reference."
+#~ msgstr ""
+

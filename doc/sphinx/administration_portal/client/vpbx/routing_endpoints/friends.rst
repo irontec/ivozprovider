@@ -112,6 +112,12 @@ This are the configurable settings of *friends*:
         If set to 'Yes', use endpoint username in R-URI when calling this friend. If set to 'No', use called
         number instead.
 
+    Enable T.38 passthrough
+        If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
+        application servers will act as T.38 gateways, routing calls through a T.38 capable carrier and
+        bridging signalling and media from one to another. See :ref:`Firewall <firewall>` for port exposing concerns
+        related to this kind of traffic.
+
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call
           is a user or another friend.

@@ -41,6 +41,9 @@ These are the fields that define an outgoing routing rule:
 
 .. note:: In all this rule merging process, priority and metric determine the order.
 
+.. note:: Fax specific routes will apply first for both faxes sent via virtual faxing (see :ref:`faxes`) or T.38 capable devices. If no fax
+          specific route found, remaining routes will apply as for a normal voice call to that destination.
+
 Last two fields, priority and order, are key parameters to achieve two interesting features too: **load-balancing** and **failover-routes**.
 
 Load balancing
