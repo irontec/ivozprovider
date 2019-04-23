@@ -76,7 +76,15 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
             ->setDirectmediaMethod($entity->getDirectmediaMethod())
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
+            ->setT38Udptl($entity->getT38Passthrough())
             ->setDirectMediaMethod('invite');
+
+        // Disable direct media for T.38 capable devices
+        if ($entity->getT38Passthrough() === FriendInterface::T38PASSTHROUGH_YES) {
+            $endPointDto->setDirectMedia('no');
+        } else {
+            $endPointDto->setDirectMedia('yes');
+        }
 
         $this->entityPersister->persistDto($endPointDto, $endpoint, true);
     }
