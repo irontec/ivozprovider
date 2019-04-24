@@ -184,7 +184,7 @@ production:
           typeIcon: true
           distributeMethod: ${auth.isNotMainOperator}
           applicationServer: ${auth.isNotMainOperator}
-          mediaRelaySet: ${auth.isNotMainOperator}
+          mediaRelaySets: ${auth.isNotMainOperator}
           recordingsLimitMB: ${auth.brandFeatures.recordings.disabled}
           recordingsLimitEmail: ${auth.brandFeatures.recordings.disabled}
           recordingsDiskUsage: ${auth.brandFeatures.recordings.disabled}
