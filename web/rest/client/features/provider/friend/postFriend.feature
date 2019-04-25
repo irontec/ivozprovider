@@ -54,6 +54,7 @@ Feature: Create friends
           "fromDomain": "",
           "directConnectivity": "yes",
           "ddiIn": "yes",
+          "t38Passthrough": "no",
           "id": 2,
           "company": 1,
           "callAcl": null,
