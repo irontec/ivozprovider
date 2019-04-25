@@ -4,12 +4,10 @@ services:
     autoconfigure: true
     public: false
 
-  Ivoz\Core\Infrastructure\Service\JsonRpc\FakeClient: ~
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FakeCgrRpcClient: ~
 
-  Graze\GuzzleHttp\JsonRpc\Client:
-    factory: ['Graze\GuzzleHttp\JsonRpc\Client', 'factory']
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient:
+    factory: ['Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient', 'factory']
     arguments: ['trunks.ivozprovider.local:2080/jsonrpc']
     tags:
-      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Service\JsonRpc\FakeClient' }
-
-  Graze\GuzzleHttp\JsonRpc\ClientInterface: '@Graze\GuzzleHttp\JsonRpc\Client'
+    - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FakeCgrRpcClient' }

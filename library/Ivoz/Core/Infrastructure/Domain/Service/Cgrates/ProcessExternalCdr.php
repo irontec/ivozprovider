@@ -7,7 +7,6 @@ use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Zend\EventManager\Exception\DomainException;
 
