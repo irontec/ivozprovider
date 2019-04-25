@@ -6,6 +6,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDto;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
@@ -156,8 +157,10 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     private function getDirectConnectivityStatus($model)
     {
         // No Dynamic Status
-        if ($model->getDirectConnectivity() === 'yes') {
+        if ($model->getDirectConnectivity() === FriendInterface::DIRECTCONNECTIVITY_YES) {
             return '<span class="ui-silk inline ui-silk-arrow-right" title="Direct connectivity"></span>';
+        } elseif ($model->getDirectConnectivity() === FriendInterface::DIRECTCONNECTIVITY_INTERVPBX) {
+            return '<span class="ui-silk inline ui-silk-arrow-undo" title="Inter company connectivity"></span>';
         }
         return "";
     }

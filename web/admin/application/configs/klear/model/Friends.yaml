@@ -232,22 +232,84 @@ production:
       type: text
       maxLength: 190
     directConnectivity:
-      title: _('Direct connectivity')
+      title: _('Connectivity mode')
       type: select
       defaultValue: yes
       source:
         data: inline
         values:
           'yes':
-            title: _('Yes')
+            title: _('Direct')
             visualFilter:
-              show: ["ip", "port", "transport", "auth_needed"]
-              hide: []
+              hide:
+                - interCompany
+              show:
+                - name
+                - domain
+                - password
+                - ip
+                - port
+                - transport
+                - authNeeded
+                - ddiIn
+                - allow
+                - fromDomain
+                - language
+                - transformationRuleSet
+                - callACL
           'no':
-            title: _('No')
+            title: _('Register')
             visualFilter:
-              hide: ["ip", "port", "transport", "auth_needed"]
-              show: ["password"]
+              hide:
+                - ip
+                - port
+                - transport
+                - authNeeded
+                - interCompany
+              show:
+                - name
+                - password
+                - ddiIn
+                - allow
+                - fromDomain
+                - language
+                - transformationRuleSet
+                - callACL
+          'intervpbx':
+            title: _('Inter vPBX')
+            visualFilter:
+              hide:
+                - name
+                - ip
+                - port
+                - transport
+                - authNeeded
+                - password
+                - ddiIn
+                - allow
+                - fromDomain
+                - language
+                - transformationRuleSet
+                - callACL
+                - t38Passthrough
+              show:
+                - interCompany
+    interCompany:
+      title: ngettext('Target client', 'Target clients', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterClass: IvozProvider_Klear_Filter_FriendInterCompany
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+
     ddiIn:
       title: _('DDI In')
       type: select
