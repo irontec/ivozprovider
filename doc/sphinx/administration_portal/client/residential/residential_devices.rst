@@ -124,24 +124,26 @@ Configuration will be something like this:
 
 .. code-block:: none
 
-    register => device-name:device-password@ivozprovider-brand.sip-domain.com
+    register => residentialDeviceName:residentialDevicePassword@ivozprovider-brand.sip-domain.com
 
 Device peer
 ------------
 
 .. code-block:: none
 
-    [name-peer]
+    [residentialDeviceName]
     type=peer
     host=ivozprovider-brand.sip-domain.com
     context=XXXXXX
     disallow=all
     allow=alaw
-    defaultuser=device-name
-    secret=device-password
+    defaultuser=residentialDeviceName
+    secret=residentialDevicePassword
+    fromuser=residentialDeviceName
     fromdomain=ivozprovider-brand.sip-domain.com
     insecure=port,invite
     sendrpid=pai
+    directmedia=no
 
 .. warning:: *Residential devices* MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.
