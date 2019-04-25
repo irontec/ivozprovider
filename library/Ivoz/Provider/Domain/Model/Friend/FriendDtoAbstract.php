@@ -91,6 +91,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $ddiIn = 'yes';
 
     /**
+     * @var string
+     */
+    private $t38Passthrough = 'no';
+
+    /**
      * @var integer
      */
     private $id;
@@ -169,6 +174,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
+            't38Passthrough' => 't38Passthrough',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -201,6 +207,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
+            't38Passthrough' => $this->getT38Passthrough(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -531,6 +538,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getDdiIn()
     {
         return $this->ddiIn;
+    }
+
+    /**
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    public function setT38Passthrough($t38Passthrough = null)
+    {
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
     }
 
     /**

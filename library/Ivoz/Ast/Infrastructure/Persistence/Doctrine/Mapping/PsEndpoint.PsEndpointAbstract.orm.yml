@@ -130,6 +130,40 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       options:
         fixed: false
       column: trust_id_inbound
+    t38Udptl:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+        default: no
+      column: t38_udptl
+    t38UdptlEc:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:none|fec|redundancy]'
+        default: none
+      column: t38_udptl_ec
+    t38UdptlMaxdatagram:
+      type: integer
+      nullable: false
+      options:
+        default: 0
+        unsigned: true
+      column: t38_udptl_maxdatagram
+    t38UdptlNat:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+        default: yes
+      column: t38_udptl_nat
   manyToOne:
     terminal:
       targetEntity: \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface

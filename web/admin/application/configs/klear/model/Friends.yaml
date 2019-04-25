@@ -293,6 +293,15 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RegisterStatus
         method: getFriendStatus
+    t38Passthrough:
+      title: _('Enable T.38 passthrough')
+      type: select
+      defaultValue: no
+      source:
+        data: inline
+        values:
+          'yes': _('Yes')
+          'no': _('No')
 staging:
   _extends: production
 testing:

@@ -81,6 +81,12 @@ These are the configurable settings of *Residential devices*:
     Max Calls
         Limits the number of concurrent received calls. Set 0 for unlimited calls.
 
+    Enable T.38 passthrough
+        If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
+        application servers will act as T.38 gateways, routing calls through a T.38 capable carrier and
+        bridging signalling and media from one to another. See :ref:`Firewall <firewall>` for port exposing concerns
+        related to this kind of traffic.
+
 Voicemail settings
 ==================
 

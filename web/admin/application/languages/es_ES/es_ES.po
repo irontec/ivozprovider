@@ -773,6 +773,9 @@ msgstr "Emular Cliente Retail %s"
 msgid "Emulate Wholesale Client %s"
 msgstr "Emular Cliente Wholesale %s"
 
+msgid "Enable T.38 passthrough"
+msgstr "Habilitar pasarela T.38"
+
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "

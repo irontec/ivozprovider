@@ -277,6 +277,15 @@ production:
         icon: help
         text: _("Limits the number of concurrent received calls. Set 0 for unlimited calls.")
         label: _("Need help?")
+    t38Passthrough:
+      title: _('Enable T.38 passthrough')
+      type: select
+      defaultValue: no
+      source:
+        data: inline
+        values:
+          'yes': _('Yes')
+          'no': _('No')
 staging:
   _extends: production
 testing:

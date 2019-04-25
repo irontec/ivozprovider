@@ -52,6 +52,7 @@ Feature: Create residential devices
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "maxCalls": 1,
+          "t38Passthrough": "no",
           "id": 2,
           "company": 1,
           "outgoingDdi": null,

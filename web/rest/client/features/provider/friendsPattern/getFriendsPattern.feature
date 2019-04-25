@@ -52,6 +52,7 @@ Feature: Retrieve friends patterns
               "fromDomain": "",
               "directConnectivity": "yes",
               "ddiIn": "yes",
+              "t38Passthrough": "no",
               "id": 1,
               "company": 1,
               "callAcl": null,

@@ -124,6 +124,15 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
         default: 1
         unsigned: true
       column: maxCalls
+    t38Passthrough:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+        default: 'no'
+      column: t38Passthrough
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface

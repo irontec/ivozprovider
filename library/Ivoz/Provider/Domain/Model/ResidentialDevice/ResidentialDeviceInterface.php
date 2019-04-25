@@ -33,6 +33,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     const DDIIN_NO = 'no';
 
 
+    const T38PASSTHROUGH_YES = 'yes';
+    const T38PASSTHROUGH_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -221,6 +225,13 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getMaxCalls();
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough();
 
     /**
      * Set brand

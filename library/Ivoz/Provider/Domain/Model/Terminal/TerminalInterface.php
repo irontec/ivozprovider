@@ -13,6 +13,10 @@ interface TerminalInterface extends LoggableEntityInterface
     const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
 
+    const T38PASSTHROUGH_YES = 'yes';
+    const T38PASSTHROUGH_NO = 'no';
+
+
     /**
      * @return array
      */
@@ -109,6 +113,13 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return \DateTime | null
      */
     public function getLastProvisionDate();
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough();
 
     /**
      * Set company

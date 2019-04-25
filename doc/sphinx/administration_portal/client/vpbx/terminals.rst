@@ -43,6 +43,12 @@ fields that must be filled.
         address <https://wikipedia.org/wiki/MAC_Address>`_ of the network 
         adapter of the SIP device.
 
+    Enable T.38 passthrough
+        If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
+        application servers will act as T.38 gateways, routing calls through a T.38 capable carrier and
+        bridging signalling and media from one to another. See :ref:`Firewall <firewall>` for port exposing concerns
+        related to this kind of traffic.
+
 .. note:: For **most of devices** that doesn't require provisioning just
    filling **username** and **password** will be enough.
 

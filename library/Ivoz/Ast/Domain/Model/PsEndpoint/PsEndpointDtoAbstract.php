@@ -91,6 +91,26 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     private $trustIdInbound;
 
     /**
+     * @var string
+     */
+    private $t38Udptl = 'no';
+
+    /**
+     * @var string
+     */
+    private $t38UdptlEc = 'none';
+
+    /**
+     * @var integer
+     */
+    private $t38UdptlMaxdatagram = 0;
+
+    /**
+     * @var string
+     */
+    private $t38UdptlNat = 'yes';
+
+    /**
      * @var integer
      */
     private $id;
@@ -149,6 +169,10 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'oneHundredRel' => 'oneHundredRel',
             'outboundProxy' => 'outboundProxy',
             'trustIdInbound' => 'trustIdInbound',
+            't38Udptl' => 't38Udptl',
+            't38UdptlEc' => 't38UdptlEc',
+            't38UdptlMaxdatagram' => 't38UdptlMaxdatagram',
+            't38UdptlNat' => 't38UdptlNat',
             'id' => 'id',
             'terminalId' => 'terminal',
             'friendId' => 'friend',
@@ -179,6 +203,10 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'oneHundredRel' => $this->getOneHundredRel(),
             'outboundProxy' => $this->getOutboundProxy(),
             'trustIdInbound' => $this->getTrustIdInbound(),
+            't38Udptl' => $this->getT38Udptl(),
+            't38UdptlEc' => $this->getT38UdptlEc(),
+            't38UdptlMaxdatagram' => $this->getT38UdptlMaxdatagram(),
+            't38UdptlNat' => $this->getT38UdptlNat(),
             'id' => $this->getId(),
             'terminal' => $this->getTerminal(),
             'friend' => $this->getFriend(),
@@ -505,6 +533,86 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     public function getTrustIdInbound()
     {
         return $this->trustIdInbound;
+    }
+
+    /**
+     * @param string $t38Udptl
+     *
+     * @return static
+     */
+    public function setT38Udptl($t38Udptl = null)
+    {
+        $this->t38Udptl = $t38Udptl;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Udptl()
+    {
+        return $this->t38Udptl;
+    }
+
+    /**
+     * @param string $t38UdptlEc
+     *
+     * @return static
+     */
+    public function setT38UdptlEc($t38UdptlEc = null)
+    {
+        $this->t38UdptlEc = $t38UdptlEc;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38UdptlEc()
+    {
+        return $this->t38UdptlEc;
+    }
+
+    /**
+     * @param integer $t38UdptlMaxdatagram
+     *
+     * @return static
+     */
+    public function setT38UdptlMaxdatagram($t38UdptlMaxdatagram = null)
+    {
+        $this->t38UdptlMaxdatagram = $t38UdptlMaxdatagram;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getT38UdptlMaxdatagram()
+    {
+        return $this->t38UdptlMaxdatagram;
+    }
+
+    /**
+     * @param string $t38UdptlNat
+     *
+     * @return static
+     */
+    public function setT38UdptlNat($t38UdptlNat = null)
+    {
+        $this->t38UdptlNat = $t38UdptlNat;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38UdptlNat()
+    {
+        return $this->t38UdptlNat;
     }
 
     /**

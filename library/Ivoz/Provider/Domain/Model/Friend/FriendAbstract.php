@@ -105,6 +105,12 @@ abstract class FriendAbstract
     protected $ddiIn = 'yes';
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Passthrough = 'no';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -152,7 +158,8 @@ abstract class FriendAbstract
         $calleridUpdateHeader,
         $updateCallerid,
         $directConnectivity,
-        $ddiIn
+        $ddiIn,
+        $t38Passthrough
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -166,6 +173,7 @@ abstract class FriendAbstract
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
+        $this->setT38Passthrough($t38Passthrough);
     }
 
     abstract public function getId();
@@ -248,7 +256,8 @@ abstract class FriendAbstract
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
             $dto->getDirectConnectivity(),
-            $dto->getDdiIn()
+            $dto->getDdiIn(),
+            $dto->getT38Passthrough()
         );
 
         $self
@@ -297,6 +306,7 @@ abstract class FriendAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
+            ->setT38Passthrough($dto->getT38Passthrough())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -333,6 +343,7 @@ abstract class FriendAbstract
             ->setFromDomain(self::getFromDomain())
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
+            ->setT38Passthrough(self::getT38Passthrough())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -363,6 +374,7 @@ abstract class FriendAbstract
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
+            't38Passthrough' => self::getT38Passthrough(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -830,6 +842,36 @@ abstract class FriendAbstract
     public function getDdiIn()
     {
         return $this->ddiIn;
+    }
+
+    /**
+     * Set t38Passthrough
+     *
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    protected function setT38Passthrough($t38Passthrough)
+    {
+        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Passthrough, [
+            FriendInterface::T38PASSTHROUGH_YES,
+            FriendInterface::T38PASSTHROUGH_NO
+        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
     }
 
     /**
