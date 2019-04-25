@@ -140,14 +140,16 @@ class TrunksClient implements TrunksClientInterface
 
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $response */
         $response = $this->rpcClient->send($request);
-        $stringResponse = $response->getBody()->__toString();
+        $stringResponse = (string) $response->getBody();
         $objectResponse = json_decode($stringResponse);
 
-        if (isset($objectResponse->error) && $objectResponse->error) {
+        if ($response->getRpcErrorCode()) {
             $errorMsg = sprintf(
-                'Trunks API response error:  %s',
-                $objectResponse->error
+                'Trunks API response error: %s',
+                $response->getRpcErrorMessage()
             );
+
+            $this->logger->error($errorMsg);
             throw new \RuntimeException($errorMsg);
         }
 
