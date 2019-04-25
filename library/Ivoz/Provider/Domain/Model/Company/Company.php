@@ -117,7 +117,7 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * @param string $exten
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension($exten)
     {

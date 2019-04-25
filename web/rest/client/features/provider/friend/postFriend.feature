@@ -59,7 +59,8 @@ Feature: Create friends
           "company": 1,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": null
       }
     """
 
@@ -92,6 +93,7 @@ Feature: Create friends
           "company": "~",
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null
+          "language": null,
+          "interCompany": null
       }
     """

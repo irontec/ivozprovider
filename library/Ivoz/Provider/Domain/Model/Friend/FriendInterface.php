@@ -27,6 +27,7 @@ interface FriendInterface extends LoggableEntityInterface
 
     const DIRECTCONNECTIVITY_YES = 'yes';
     const DIRECTCONNECTIVITY_NO = 'no';
+    const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
 
 
     const DDIIN_YES = 'yes';
@@ -44,26 +45,34 @@ interface FriendInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * {@inheritDoc}
-     * @see FriendAbstract::setName
+     * @return bool
      */
-    public function setName($name);
+    public function isInterPbxConnectivity();
+
+    /**
+     * @param string $number
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     */
+    public function getInterCompanyExtension($number);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setIp
+     * @deprecated this method will be protected
      */
     public function setIp($ip = null);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPort
+     * @deprecated this method will be protected
      */
     public function setPort($port = null);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPassword
+     * @deprecated this method will be protected
      */
     public function setPassword($password = null);
 
@@ -308,6 +317,22 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
+
+    /**
+     * Set interCompany
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany
+     *
+     * @return static
+     */
+    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null);
+
+    /**
+     * Get interCompany
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     */
+    public function getInterCompany();
 
     /**
      * Add psEndpoint

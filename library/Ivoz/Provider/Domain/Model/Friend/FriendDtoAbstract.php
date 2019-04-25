@@ -131,6 +131,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $language;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     */
+    private $interCompany;
+
+    /**
      * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
      */
     private $psEndpoints = null;
@@ -181,7 +186,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'transformationRuleSetId' => 'transformationRuleSet',
             'callAclId' => 'callAcl',
             'outgoingDdiId' => 'outgoingDdi',
-            'languageId' => 'language'
+            'languageId' => 'language',
+            'interCompanyId' => 'interCompany'
         ];
     }
 
@@ -215,6 +221,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'callAcl' => $this->getCallAcl(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
+            'interCompany' => $this->getInterCompany(),
             'psEndpoints' => $this->getPsEndpoints(),
             'patterns' => $this->getPatterns()
         ];
@@ -850,6 +857,52 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $interCompany
+     *
+     * @return static
+     */
+    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $interCompany = null)
+    {
+        $this->interCompany = $interCompany;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     */
+    public function getInterCompany()
+    {
+        return $this->interCompany;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setInterCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
+
+        return $this->setInterCompany($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getInterCompanyId()
+    {
+        if ($dto = $this->getInterCompany()) {
             return $dto->getId();
         }
 

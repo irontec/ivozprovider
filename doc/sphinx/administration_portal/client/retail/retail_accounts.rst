@@ -117,24 +117,26 @@ Configuration will be something like this:
 
 .. code-block:: none
 
-    register => account-name:account-password@ivozprovider-brand.sip-domain.com
+    register => retailAccountName:retailAccountPassword@ivozprovider-brand.sip-domain.com
 
 Account peer
 ------------
 
 .. code-block:: none
 
-    [name-peer]
+    [retailAccountName]
     type=peer
     host=ivozprovider-brand.sip-domain.com
     context=XXXXXX
     disallow=all
     allow=alaw
-    defaultuser=account-name
-    secret=account-password
+    defaultuser=retailAccountName
+    secret=retailAccountPassword
+    fromuser=retailAccountName
     fromdomain=ivozprovider-brand.sip-domain.com
     insecure=port,invite
     sendrpid=pai
+    directmedia=no
 
 .. warning:: *Retail accounts* MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.

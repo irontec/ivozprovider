@@ -42,7 +42,7 @@ interface CompanyInterface extends LoggableEntityInterface
 
     /**
      * @param string $exten
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension($exten);
 

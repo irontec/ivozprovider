@@ -518,6 +518,9 @@ msgstr "Connection Info"
 msgid "Connection fee"
 msgstr "Connection fee"
 
+msgid "Connectivity mode"
+msgstr "Connectivity mode"
+
 msgid "Contact Settings"
 msgstr "Contact Settings"
 
@@ -649,6 +652,9 @@ msgstr "Determines the order current priority members will be called"
 
 msgid "Determines the order users will be called"
 msgstr "Determines the order users will be called"
+
+msgid "Direct"
+msgstr "Direct"
 
 msgid "Direct connectivity"
 msgstr "Direct connectivity"
@@ -1216,6 +1222,9 @@ msgid ""
 msgstr ""
 "Instead of getting the caller from PAI/RPID headers, this clid will be used "
 "(and will be adapted using carrier's numeric transformations)."
+
+msgid "Inter vPBX"
+msgstr "Inter vPBX"
 
 msgid "Internal"
 msgstr "Internal"
@@ -2022,6 +2031,9 @@ msgstr "Referee"
 msgid "Referrer"
 msgstr "Referrer"
 
+msgid "Register"
+msgstr "Register"
+
 msgid "Registrar Server URI"
 msgstr "Registrar Server URI"
 
@@ -2313,6 +2325,11 @@ msgstr "Tag"
 
 msgid "Target"
 msgstr "Target"
+
+msgid "Target client"
+msgid_plural "Target clients"
+msgstr[0] "Target client"
+msgstr[1] "Target clients"
 
 msgid "Target type"
 msgstr "Target type"
