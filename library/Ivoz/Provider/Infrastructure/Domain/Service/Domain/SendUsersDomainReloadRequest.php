@@ -2,29 +2,31 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\Domain;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequestInterface;
+use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Service\Domain\DomainLifecycleEventHandlerInterface;
 
 class SendUsersDomainReloadRequest implements DomainLifecycleEventHandlerInterface
 {
-    protected $usersDomainReload;
+    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+
+    protected $usersClient;
 
     public function __construct(
-        XmlRpcUsersRequestInterface $usersDomainReload
+        UsersClientInterface $usersClient
     ) {
-        $this->usersDomainReload = $usersDomainReload;
+        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
     public function execute(DomainInterface $entity)
     {
-        $this->usersDomainReload->send();
+        $this->usersClient->reloadDomain();
     }
 }

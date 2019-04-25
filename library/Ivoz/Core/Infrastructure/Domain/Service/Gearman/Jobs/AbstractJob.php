@@ -6,6 +6,14 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 abstract class AbstractJob
 {
+    const INMEDIATE_METHOD = 'WorkerXmlrpc~immediate';
+    const DELAYED_METHOD = 'WorkerXmlrpc~delayed';
+
+    const METHODS = [
+        self::INMEDIATE_METHOD,
+        self::DELAYED_METHOD,
+    ];
+
     /**
      * @var array
      */

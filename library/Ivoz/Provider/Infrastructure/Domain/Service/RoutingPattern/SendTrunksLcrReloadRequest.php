@@ -2,29 +2,31 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\RoutingPattern;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHandlerInterface;
 
 class SendTrunksLcrReloadRequest implements RoutingPatternLifecycleEventHandlerInterface
 {
-    protected $trunksLcrReload;
+    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+
+    protected $trunksClient;
 
     public function __construct(
-        XmlRpcTrunksRequestInterface $trunksLcrReload
+        TrunksClientInterface $trunksClient
     ) {
-        $this->trunksLcrReload = $trunksLcrReload;
+        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
     public function execute(RoutingPatternInterface $entity)
     {
-        $this->trunksLcrReload->send();
+        $this->trunksClient->reloadLcr();
     }
 }

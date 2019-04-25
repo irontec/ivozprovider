@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Service\JsonRpc;
+namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\RequestInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\Response;
 use Graze\GuzzleHttp\JsonRpc\Message\Request;
 
-class FakeClient implements ClientInterface
+class FakeCgrRpcClient implements ClientInterface
 {
     public function notification($method, array $params = null)
     {
@@ -15,23 +15,11 @@ class FakeClient implements ClientInterface
 
     public function request($id, $method, array $params = null)
     {
-        $params =
-        $params['id'] = $id;
-
-        $body = [
-            "jsonrpc" => "2.0",
-            "method" => "ApierV2.SetAccount",
-            'params' => [
-                'id' => $id,
-                'params' => [$params]
-            ]
-        ];
-
         return new Request(
             'POST',
             '/uri',
             [],
-            json_encode($body)
+            '[]'
         );
     }
 
