@@ -525,6 +525,9 @@ msgstr "Configuración de conexión"
 msgid "Connection fee"
 msgstr "Coste de conexión"
 
+msgid "Connectivity mode"
+msgstr "Modo de conexión"
+
 msgid "Contact Settings"
 msgstr "Configuraciones de Contacto"
 
@@ -660,6 +663,9 @@ msgstr "Determina el order en que los miembros de la prioridad serán llamados"
 
 msgid "Determines the order users will be called"
 msgstr "Determina el order en el que sonarán los usuarios"
+
+msgid "Direct"
+msgstr "Directa"
 
 msgid "Direct connectivity"
 msgstr "Conectividad Directa"
@@ -1232,6 +1238,9 @@ msgstr ""
 "En lugar de obtener el origen de las cabeceras PAI/RPID, se forzará este "
 "origen (y se adaptará utilizando las transformaciones numéricas del "
 "operador)."
+
+msgid "Inter vPBX"
+msgstr "Inter vPBX"
 
 msgid "Internal"
 msgstr "Interna"
@@ -2049,6 +2058,9 @@ msgstr "Referee"
 msgid "Referrer"
 msgstr "Referrer"
 
+msgid "Register"
+msgstr "Registro"
+
 msgid "Registrar Server URI"
 msgstr "URI Servidor de registro"
 
@@ -2342,6 +2354,11 @@ msgstr "Tag"
 
 msgid "Target"
 msgstr "Destino"
+
+msgid "Target client"
+msgid_plural "Target clients"
+msgstr[0] "Cliente destino"
+msgstr[1] "Clientes destino"
 
 msgid "Target type"
 msgstr "Tipo de ruta"
