@@ -9,6 +9,8 @@ use Psr\Log\LoggerInterface;
 
 class Remove implements CommonLifecycleEventHandlerInterface
 {
+    const EVENT_POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
+
     /**
      * @var LoggerInterface
      */
@@ -21,8 +23,16 @@ class Remove implements CommonLifecycleEventHandlerInterface
     }
 
     /**
-     * @return void
+     *
+     * @return array
      */
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_REMOVE => self::EVENT_POST_REMOVE_PRIORITY
+        ];
+    }
+
     public function handle(EntityInterface $entity)
     {
         if (!$entity instanceof FileContainerInterface) {

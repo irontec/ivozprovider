@@ -2,6 +2,8 @@
 
 namespace Tests\Provider\ApplicationServer;
 
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer;
@@ -22,6 +24,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
     protected function setUp()
     {
         $this->_setUp(...func_get_args());
+
         $this->mockInfraestructureServices(
             'provider.lifecycle.application_server.on_commit',
             [

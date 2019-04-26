@@ -8,6 +8,8 @@ use Doctrine\DBAL\Driver\PDOException;
 
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {
+    const ON_ERROR_PRIORITY = self::PRIORITY_NORMAL;
+
     /*
      * Mysql error code list:
      * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
@@ -15,8 +17,11 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
     const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
     const UNIQUE_PREFIX_CONSTRAINT_NAME = 'prefix';
 
-    public function __construct()
+    public static function getSubscribedEvents()
     {
+        return [
+            self::EVENT_ON_ERROR => self::ON_ERROR_PRIORITY,
+        ];
     }
 
     public function handle(\Exception $exception)

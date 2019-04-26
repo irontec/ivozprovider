@@ -9,6 +9,7 @@ interface LifecycleEventHandlerInterface
     const EVENT_PRE_REMOVE = 'pre_remove';
     const EVENT_POST_REMOVE = 'post_remove';
     const EVENT_ON_COMMIT = 'on_commit';
+    const EVENT_ON_ERROR = 'error_handler';
 
     const PRIORITY_LOW = 300;
     const PRIORITY_NORMAL = 200;
@@ -19,7 +20,8 @@ interface LifecycleEventHandlerInterface
         self::EVENT_POST_PERSIST,
         self::EVENT_PRE_REMOVE,
         self::EVENT_POST_REMOVE,
-        self::EVENT_ON_COMMIT
+        self::EVENT_ON_COMMIT,
+        self::EVENT_ON_ERROR,
     ];
 
     /**
