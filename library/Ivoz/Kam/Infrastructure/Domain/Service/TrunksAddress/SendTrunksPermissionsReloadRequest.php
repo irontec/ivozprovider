@@ -2,20 +2,20 @@
 
 namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksAddress;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
 use Ivoz\Kam\Domain\Service\TrunksAddress\TrunksAddressLifecycleEventHandlerInterface;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 
 class SendTrunksPermissionsReloadRequest implements TrunksAddressLifecycleEventHandlerInterface
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
-    protected $trunksPermissionsReload;
+    protected $trunksClient;
 
     public function __construct(
-        XmlRpcTrunksRequestInterface $trunksPermissionsReload
+        TrunksClientInterface $trunksClient
     ) {
-        $this->trunksPermissionsReload = $trunksPermissionsReload;
+        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
@@ -27,6 +27,6 @@ class SendTrunksPermissionsReloadRequest implements TrunksAddressLifecycleEventH
 
     public function execute(TrunksAddressInterface $entity)
     {
-        $this->trunksPermissionsReload->send();
+        $this->trunksClient->reloadAddressPermissions();
     }
 }

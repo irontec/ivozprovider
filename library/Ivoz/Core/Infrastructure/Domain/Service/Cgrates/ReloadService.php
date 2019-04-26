@@ -3,16 +3,10 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
-use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class ReloadService extends AbstractApiBasedService
 {
-    /**
-     * ReloadService constructor.
-     *
-     * @param ClientInterface $jsonRpcClient
-     */
-    public function __construct(ClientInterface $jsonRpcClient)
+    public function __construct(CgrRpcClient $jsonRpcClient)
     {
         parent::__construct(
             $jsonRpcClient

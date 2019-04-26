@@ -17,7 +17,13 @@ services:
   Ivoz\Kam\Domain\Service\:
     resource: '/opt/irontec/ivozprovider/library/Ivoz/Kam/Domain/Service/*/*'
     tags: [{ name: 'domain.service'}]
+  Ivoz\Kam\Infrastructure\Domain\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Kam/Infrastructure/Domain/Service/*/*'
+    tags: [{ name: 'domain.service'}]
 
   Ivoz\Provider\Domain\Service\:
     resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Domain/Service/*/*'
+    tags: [{ name: 'domain.service'}]
+  Ivoz\Provider\Infrastructure\Domain\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Infrastructure/Domain/Service/*/*'
     tags: [{ name: 'domain.service'}]

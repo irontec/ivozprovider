@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Service\JsonRpc;
+namespace Ivoz\Kam\Infrastructure\Kamailio;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\RequestInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\Response;
 use Graze\GuzzleHttp\JsonRpc\Message\Request;
 
-class FakeClient implements ClientInterface
+class FakeRpcClient extends RpcClient
 {
     public function notification($method, array $params = null)
     {
