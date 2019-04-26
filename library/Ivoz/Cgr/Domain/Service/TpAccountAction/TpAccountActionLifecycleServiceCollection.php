@@ -15,8 +15,8 @@ class TpAccountActionLifecycleServiceCollection implements LifecycleServiceColle
     /**
      * @return void
      */
-    protected function addService(TpAccountActionLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpAccountActionLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

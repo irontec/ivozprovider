@@ -15,8 +15,8 @@ class BrandLifecycleServiceCollection implements LifecycleServiceCollectionInter
     /**
      * @return void
      */
-    protected function addService(BrandLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, BrandLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

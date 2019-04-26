@@ -15,8 +15,8 @@ class CompanyRelCodecLifecycleServiceCollection implements LifecycleServiceColle
     /**
      * @return void
      */
-    protected function addService(CompanyRelCodecLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CompanyRelCodecLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

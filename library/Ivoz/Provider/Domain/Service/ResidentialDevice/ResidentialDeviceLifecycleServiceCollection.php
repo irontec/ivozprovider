@@ -15,8 +15,8 @@ class ResidentialDeviceLifecycleServiceCollection implements LifecycleServiceCol
     /**
      * @return void
      */
-    protected function addService(ResidentialDeviceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, ResidentialDeviceLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

@@ -15,8 +15,8 @@ class OutgoingRoutingLifecycleServiceCollection implements LifecycleServiceColle
     /**
      * @return void
      */
-    protected function addService(OutgoingRoutingLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, OutgoingRoutingLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

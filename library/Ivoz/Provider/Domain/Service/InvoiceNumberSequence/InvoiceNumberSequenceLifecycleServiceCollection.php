@@ -15,8 +15,8 @@ class InvoiceNumberSequenceLifecycleServiceCollection implements LifecycleServic
     /**
      * @return void
      */
-    protected function addService(InvoiceNumberSequenceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, InvoiceNumberSequenceLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

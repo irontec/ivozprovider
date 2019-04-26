@@ -15,8 +15,8 @@ class DdiProviderAddressLifecycleServiceCollection implements LifecycleServiceCo
     /**
      * @return void
      */
-    protected function addService(DdiProviderAddressLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, DdiProviderAddressLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

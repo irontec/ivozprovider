@@ -15,8 +15,8 @@ class ExternalCallFilterRelScheduleLifecycleServiceCollection implements Lifecyc
     /**
      * @return void
      */
-    protected function addService(ExternalCallFilterRelScheduleLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, ExternalCallFilterRelScheduleLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

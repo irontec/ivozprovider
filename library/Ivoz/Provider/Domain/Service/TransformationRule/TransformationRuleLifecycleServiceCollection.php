@@ -15,8 +15,8 @@ class TransformationRuleLifecycleServiceCollection implements LifecycleServiceCo
     /**
      * @return void
      */
-    protected function addService(TransformationRuleLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TransformationRuleLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

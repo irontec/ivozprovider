@@ -15,8 +15,8 @@ class ExtensionLifecycleServiceCollection implements LifecycleServiceCollectionI
     /**
      * @return void
      */
-    protected function addService(ExtensionLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, ExtensionLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

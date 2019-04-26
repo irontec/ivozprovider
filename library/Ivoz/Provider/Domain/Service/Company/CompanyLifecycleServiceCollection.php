@@ -15,8 +15,8 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
     /**
      * @return void
      */
-    protected function addService(CompanyLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CompanyLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

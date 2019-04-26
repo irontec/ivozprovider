@@ -15,8 +15,8 @@ class HolidayDateLifecycleServiceCollection implements LifecycleServiceCollectio
     /**
      * @return void
      */
-    protected function addService(HolidayDateLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, HolidayDateLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

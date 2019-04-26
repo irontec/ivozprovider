@@ -15,8 +15,8 @@ class RoutingPatternGroupLifecycleServiceCollection implements LifecycleServiceC
     /**
      * @return void
      */
-    protected function addService(RoutingPatternGroupLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, RoutingPatternGroupLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

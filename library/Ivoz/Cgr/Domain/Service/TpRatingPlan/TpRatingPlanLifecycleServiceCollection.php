@@ -15,8 +15,8 @@ class TpRatingPlanLifecycleServiceCollection implements LifecycleServiceCollecti
     /**
      * @return void
      */
-    protected function addService(TpRatingPlanLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpRatingPlanLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

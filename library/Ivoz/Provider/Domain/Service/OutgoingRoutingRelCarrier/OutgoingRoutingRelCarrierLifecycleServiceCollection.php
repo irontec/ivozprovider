@@ -15,8 +15,8 @@ class OutgoingRoutingRelCarrierLifecycleServiceCollection implements LifecycleSe
     /**
      * @return void
      */
-    protected function addService(OutgoingRoutingRelCarrierLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, OutgoingRoutingRelCarrierLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

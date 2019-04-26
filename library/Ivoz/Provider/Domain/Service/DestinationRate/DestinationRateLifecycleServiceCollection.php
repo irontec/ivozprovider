@@ -15,8 +15,8 @@ class DestinationRateLifecycleServiceCollection implements LifecycleServiceColle
     /**
      * @return void
      */
-    protected function addService(DestinationRateLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, DestinationRateLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

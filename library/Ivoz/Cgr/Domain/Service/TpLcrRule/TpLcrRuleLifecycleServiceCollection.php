@@ -15,8 +15,8 @@ class TpLcrRuleLifecycleServiceCollection implements LifecycleServiceCollectionI
     /**
      * @return void
      */
-    protected function addService(TpLcrRuleLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpLcrRuleLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

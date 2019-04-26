@@ -15,8 +15,8 @@ class FixedCostsRelInvoiceLifecycleServiceCollection implements LifecycleService
     /**
      * @return void
      */
-    protected function addService(FixedCostsRelInvoiceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, FixedCostsRelInvoiceLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

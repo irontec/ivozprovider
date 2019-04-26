@@ -15,8 +15,8 @@ class PickUpRelUserLifecycleServiceCollection implements LifecycleServiceCollect
     /**
      * @return void
      */
-    protected function addService(PickUpRelUserLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, PickUpRelUserLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

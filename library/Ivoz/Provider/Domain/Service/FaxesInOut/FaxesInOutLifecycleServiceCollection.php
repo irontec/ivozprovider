@@ -15,8 +15,8 @@ class FaxesInOutLifecycleServiceCollection implements LifecycleServiceCollection
     /**
      * @return void
      */
-    protected function addService(FaxesInOutLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, FaxesInOutLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

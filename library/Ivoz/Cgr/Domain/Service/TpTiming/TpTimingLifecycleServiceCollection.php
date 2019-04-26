@@ -15,8 +15,8 @@ class TpTimingLifecycleServiceCollection implements LifecycleServiceCollectionIn
     /**
      * @return void
      */
-    protected function addService(TpTimingLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpTimingLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }
