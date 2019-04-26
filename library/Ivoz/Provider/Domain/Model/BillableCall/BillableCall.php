@@ -27,4 +27,9 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
     {
         return $this->id;
     }
+
+    public function isOutboundCall(): bool
+    {
+        return $this->getDirection() === self::DIRECTION_OUTBOUND;
+    }
 }

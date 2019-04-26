@@ -22,7 +22,8 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
             ->setUnit('week')
             ->setFrequency(1)
             ->setEmail('mikel+test-report@irontec.com')
-            ->setCompanyId(1);
+            ->setCompanyId(1)
+            ->setCallDirection(null);
 
         return $callCsvSchedulerDto;
     }
@@ -32,7 +33,7 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
      */
     protected function addCallCsvScheduler()
     {
-        $callCsvSchedulerDto =$this->createDto();
+        $callCsvSchedulerDto = $this->createDto();
 
         /** @var CallCsvScheduler $callCsvScheduler */
         $callCsvScheduler = $this->entityTools

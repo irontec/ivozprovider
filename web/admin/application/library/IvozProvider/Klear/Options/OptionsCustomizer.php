@@ -1,5 +1,7 @@
 <?php
 
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+
 class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model_Interfaces_ParentOptionCustomizer
 {
     /**
@@ -111,6 +113,11 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "balanceNotificationList_screen":
             case "balanceMovementsList_screen":
                 $show = $this->_parentModel->getCalculateCost();
+                break;
+            case "tarificateCall_dialog":
+                $direction = $this->_parentModel->getDirection();
+                $isOutboundCall = $direction === BillableCallInterface::DIRECTION_OUTBOUND;
+                $show = $isOutboundCall;
                 break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());

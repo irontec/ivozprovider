@@ -47,6 +47,10 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             case 'BillableCallsBrandList':
                 $criteria['_properties'][] = 'company';
                 break;
+            case 'InvoicesList':
+                $invoiceId = $this->_request->getParam('parentId');
+                $criteria['invoice'] = $invoiceId;
+                break;
             default:
                 $criteria['_properties'] = CsvExporter::CLIENT_PROPERTIES;
         }

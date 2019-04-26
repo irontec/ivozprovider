@@ -174,7 +174,7 @@ msgid "Area code"
 msgstr "Código de Area"
 
 msgid "As address"
-msgstr "Direccion Servidor de Aplicación"
+msgstr "Dirección Servidor de Aplicación"
 
 msgid "As iden"
 msgstr "Identificador Servidor de Aplicación"
@@ -238,11 +238,6 @@ msgstr "Configuración Básica"
 
 msgid "Basic Information"
 msgstr "Información Básica"
-
-msgid "Billable call"
-msgid_plural "Billable calls"
-msgstr[0] "Llamada facturable"
-msgstr[1] "Llamadas facturables"
 
 msgid "Billing"
 msgstr "Tarificación"
@@ -363,6 +358,9 @@ msgstr "ID de llamada"
 
 msgid "Call destination"
 msgstr "Destino llamada"
+
+msgid "Call direction"
+msgstr "Dirección de llamada"
 
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
@@ -671,7 +669,7 @@ msgid "Direct connectivity"
 msgstr "Conectividad Directa"
 
 msgid "Direction"
-msgstr "Direccion"
+msgstr "Dirección"
 
 msgid "Disabled"
 msgstr "Deshabilitado"
@@ -871,6 +869,11 @@ msgstr "Externa"
 
 msgid "External Filter destination"
 msgstr "Destino llamada filtro"
+
+msgid "External call"
+msgid_plural "External calls"
+msgstr[0] "Llamada externa"
+msgstr[1] "Llamadas externas"
 
 msgid "External call filter"
 msgid_plural "External call filters"
@@ -1201,6 +1204,9 @@ msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
 "tarificación externa."
+
+msgid "Inbound calls"
+msgstr "Llamadas entrantes"
 
 msgid "Inbound configuration"
 msgstr "Configuración Entrante"
@@ -1762,6 +1768,9 @@ msgstr "Proxy saliente"
 
 msgid "Outbound Proxy IP value is not valid."
 msgstr "El valor de Proxy saliente no es válido."
+
+msgid "Outbound calls"
+msgstr "Llamadas salientes"
 
 msgid "Outbound configuration"
 msgstr "Configuración Saliente"

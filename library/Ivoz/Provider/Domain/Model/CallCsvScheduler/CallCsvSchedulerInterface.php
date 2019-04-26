@@ -12,6 +12,10 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     const UNIT_MONTH = 'month';
 
 
+    const CALLDIRECTION_INBOUND = 'inbound';
+    const CALLDIRECTION_OUTBOUND = 'outbound';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -48,6 +52,13 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return integer
      */
     public function getFrequency();
+
+    /**
+     * Get callDirection
+     *
+     * @return string | null
+     */
+    public function getCallDirection();
 
     /**
      * Get email

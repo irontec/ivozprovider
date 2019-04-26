@@ -29,8 +29,10 @@ production:
         order: &callCsvSchedulers_orderLink
           id: true
           name: true
+          company: true
           frequency: true
           unit: true
+          callDirection: true
           email: true
           lastExecution: true
           nextExecution: true
@@ -67,6 +69,7 @@ production:
           callCsvNotificationTemplate: true
         order:
           name: 1
+          callDirection: 1
           email: 1
           callCsvNotificationTemplate: 1
           frequency: 1
@@ -79,6 +82,7 @@ production:
           colsPerRow: 2
           fields:
             name: 1
+            callDirection: 1
             company: 1
             email: 1
             callCsvNotificationTemplate: 1

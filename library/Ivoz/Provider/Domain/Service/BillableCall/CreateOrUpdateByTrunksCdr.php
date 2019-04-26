@@ -72,6 +72,8 @@ class CreateOrUpdateByTrunksCdr
                 $trunksCdrDto->getCallid()
             )->setCaller(
                 $caller
+            )->setDirection(
+                $trunksCdrDto->getDirection()
             );
 
         $isNew = is_null($billableCall);

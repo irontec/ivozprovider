@@ -6,11 +6,17 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface BillableCallInterface extends LoggableEntityInterface
 {
+    const DIRECTION_INBOUND = 'inbound';
+    const DIRECTION_OUTBOUND = 'outbound';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
      */
     public function getChangeSet();
+
+    public function isOutboundCall();
 
     /**
      * Get callid
@@ -102,6 +108,13 @@ interface BillableCallInterface extends LoggableEntityInterface
      * @return integer | null
      */
     public function getEndpointId();
+
+    /**
+     * Get direction
+     *
+     * @return string | null
+     */
+    public function getDirection();
 
     /**
      * Set brand

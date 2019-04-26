@@ -72,7 +72,8 @@ Ivoz\Provider\Domain\Model\Language\Language:
     get: ~
   attributes:
     access_control: '"ROLE_USER" in roles'
-Ivoz\Provider\Domain\Model\Language\Name:
+Ivoz\Provider\Domain\Model\Language\Name: ~
+Ivoz\Provider\Domain\Model\Invoice\Invoice: ~
 Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'

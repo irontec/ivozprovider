@@ -79,6 +79,12 @@ abstract class BillableCallAbstract
     protected $endpointId;
 
     /**
+     * comment: enum:inbound|outbound
+     * @var string | null
+     */
+    protected $direction = 'outbound';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -209,6 +215,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
+            ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -248,6 +255,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
+            ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -282,6 +290,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName(self::getRatingPlanName())
             ->setEndpointType(self::getEndpointType())
             ->setEndpointId(self::getEndpointId())
+            ->setDirection(self::getDirection())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
@@ -310,6 +319,7 @@ abstract class BillableCallAbstract
             'ratingPlanName' => self::getRatingPlanName(),
             'endpointType' => self::getEndpointType(),
             'endpointId' => self::getEndpointId(),
+            'direction' => self::getDirection(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
@@ -691,6 +701,37 @@ abstract class BillableCallAbstract
     public function getEndpointId()
     {
         return $this->endpointId;
+    }
+
+    /**
+     * Set direction
+     *
+     * @param string $direction
+     *
+     * @return static
+     */
+    protected function setDirection($direction = null)
+    {
+        if (!is_null($direction)) {
+            Assertion::choice($direction, [
+                BillableCallInterface::DIRECTION_INBOUND,
+                BillableCallInterface::DIRECTION_OUTBOUND
+            ], 'directionvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    /**
+     * Get direction
+     *
+     * @return string | null
+     */
+    public function getDirection()
+    {
+        return $this->direction;
     }
 
     /**

@@ -8,6 +8,17 @@ production:
       required: true
       maxLength: 40
       default: true
+    callDirection:
+      title: _('Call direction')
+      type: select
+      required: false
+      defaultValue: 'outbound'
+      source:
+        data: inline
+        values:
+          'outbound': _('Outbound calls')
+          'inbound': _('Inbound calls')
+          '__NULL__': _('Both')
     frequency:
       title: _('Frequency')
       type: number

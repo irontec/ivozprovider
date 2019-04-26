@@ -28,6 +28,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
+    private $callDirection = 'outbound';
+
+    /**
+     * @var string
+     */
     private $email;
 
     /**
@@ -86,6 +91,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'name' => 'name',
             'unit' => 'unit',
             'frequency' => 'frequency',
+            'callDirection' => 'callDirection',
             'email' => 'email',
             'lastExecution' => 'lastExecution',
             'lastExecutionError' => 'lastExecutionError',
@@ -106,6 +112,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'name' => $this->getName(),
             'unit' => $this->getUnit(),
             'frequency' => $this->getFrequency(),
+            'callDirection' => $this->getCallDirection(),
             'email' => $this->getEmail(),
             'lastExecution' => $this->getLastExecution(),
             'lastExecutionError' => $this->getLastExecutionError(),
@@ -175,6 +182,26 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function getFrequency()
     {
         return $this->frequency;
+    }
+
+    /**
+     * @param string $callDirection
+     *
+     * @return static
+     */
+    public function setCallDirection($callDirection = null)
+    {
+        $this->callDirection = $callDirection;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCallDirection()
+    {
+        return $this->callDirection;
     }
 
     /**
