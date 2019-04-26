@@ -9,7 +9,6 @@ production:
   screens: &platformPortal_screensLink
     platformPortalList_screen: &platformPortalList_screenLink
       controller: list
-      rawCondition: "WebPortal.brand IS NULL"
       forcedValues:
         urlType: god
       pagination:
