@@ -26,7 +26,10 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
     protected function sanitizeValues()
     {
         $isGodUrlType = $this->getUrlType() === self::URLTYPE_GOD;
-        if (!$isGodUrlType && !$this->getBrand()) {
+
+        if ($isGodUrlType) {
+            $this->setBrand(null);
+        } elseif (!$this->getBrand()) {
             $errorMsg = sprintf(
                 'Brand is required in %s urls',
                 $this->getUrlType()
