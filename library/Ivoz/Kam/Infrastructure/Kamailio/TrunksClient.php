@@ -65,6 +65,13 @@ class TrunksClient implements TrunksClientInterface
         );
     }
 
+    public function reloadRtpengine()
+    {
+        return $this->germanClient->send(
+            self::RTPENGINE_RELOAD_ACTION
+        );
+    }
+
     /**
      * @param int $companyId
      * @return int
