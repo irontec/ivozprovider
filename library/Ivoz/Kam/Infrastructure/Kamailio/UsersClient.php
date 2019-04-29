@@ -53,4 +53,11 @@ class UsersClient implements UsersClientInterface
             self::DIALPLAN_RELOAD_ACTION
         );
     }
+
+    public function reloadRtpengine()
+    {
+        return $this->germanClient->send(
+            self::RTPENGINE_RELOAD_ACTION
+        );
+    }
 }

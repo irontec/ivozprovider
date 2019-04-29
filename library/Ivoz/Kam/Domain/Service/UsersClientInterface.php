@@ -9,13 +9,15 @@ interface UsersClientInterface
     const PERMISSIONS_TRUSTED_RELOAD_ACTION = 'permissions.trustedReload';
     const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
     const DIALPLAN_RELOAD_ACTION = 'dialplan.reload';
+    const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
 
     const USERS_ACTIONS = [
         self::DISPATCHER_RELOAD_ACTION,
         self::DOMAIN_RELOAD_ACTION,
         self::PERMISSIONS_TRUSTED_RELOAD_ACTION,
         self::PERMISSIONS_ADDRESS_RELOAD_ACTION,
-        self::DIALPLAN_RELOAD_ACTION
+        self::DIALPLAN_RELOAD_ACTION,
+        self::RTPENGINE_RELOAD_ACTION
     ];
 
     public function reloadDispatcher();
@@ -27,4 +29,6 @@ interface UsersClientInterface
     public function reloadAddressPermissions();
 
     public function reloadDialplan();
+
+    public function reloadRtpengine();
 }

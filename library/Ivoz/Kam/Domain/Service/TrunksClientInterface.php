@@ -11,6 +11,7 @@ interface TrunksClientInterface
     const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
     const UAC_REG_RELOAD_ACTION = 'uac.reg_reload';
     const DLG_PROFILE_GET_SIZE = 'dlg.profile_get_size';
+    const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
 
     const TRUNKS_ACTIONS = [
         self::DIALPLAN_RELOAD_ACTION,
@@ -19,7 +20,8 @@ interface TrunksClientInterface
         self::PERMISSIONS_TRUSTED_RELOAD_ACTION,
         self::PERMISSIONS_ADDRESS_RELOAD_ACTION,
         self::UAC_REG_RELOAD_ACTION,
-        self::DLG_PROFILE_GET_SIZE
+        self::DLG_PROFILE_GET_SIZE,
+        self::RTPENGINE_RELOAD_ACTION
     ];
 
     /**
@@ -50,4 +52,6 @@ interface TrunksClientInterface
     public function reloadAddressPermissions();
 
     public function reloadUacReg();
+
+    public function reloadRtpengine();
 }
