@@ -119,3 +119,12 @@ get_my_call_history:
     _api_resource_class: 'Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr'
     _api_collection_operation_name: 'get_my_call_history'
     _api_receive: false
+
+get_my_active_calls:
+  path: '/my/active_calls'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ActiveCallsAction
+    _api_resource_class: 'Model\ActiveCalls'
+    _api_item_operation_name: 'get_my_active_calls'
+    _api_receive: false
