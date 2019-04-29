@@ -2,6 +2,8 @@
 namespace Agi\Action;
 
 use Agi\Agents\AgentInterface;
+use Agi\Agents\ResidentialAgent;
+use Agi\Agents\UserAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -273,7 +275,28 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteVoicemail(AgentInterface $routeVoicemail = null, bool $playBanner = false)
+    public function setRouteVoicemailUser(UserInterface $user = null, bool $playBanner = false)
+    {
+        if (!$user) {
+            $this->routeVoiceMail = null;
+            return $this;
+        }
+
+        return $this->setRouteVoicemail(new UserAgent($this->agi, $user), $playBanner);
+    }
+
+    public function setRouteVoicemailResidential(ResidentialDeviceInterface $residentialDevice = null, bool $playBanner = false)
+    {
+        if (!$residentialDevice) {
+            $this->routeVoiceMail = null;
+            return $this;
+        }
+
+        return $this->setRouteVoicemail(new ResidentialAgent($this->agi, $residentialDevice), $playBanner);
+    }
+
+
+    private function setRouteVoicemail(AgentInterface $routeVoicemail = null, bool $playBanner = false)
     {
         $this->routeVoiceMail = $routeVoicemail;
         $this->routeVoicemailBanner = $playBanner;

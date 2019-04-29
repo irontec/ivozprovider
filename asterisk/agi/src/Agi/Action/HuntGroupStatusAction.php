@@ -91,7 +91,7 @@ class HuntGroupStatusAction
             $this->routerAction
                 ->setRouteType($huntGroup->getNoAnswerTargetType())
                 ->setRouteExtension($huntGroup->getNoAnswerExtension())
-                ->setRouteVoicemail($huntGroup->getNoAnswerVoiceMailUser())
+                ->setRouteVoicemailUser($huntGroup->getNoAnswerVoiceMailUser())
                 ->setRouteExternal($huntGroup->getNoAnswerNumberValueE164())
                 ->route();
 
