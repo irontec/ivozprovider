@@ -1,3 +1,35 @@
+Mon, 29 Apr 2019 16:42:45 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.10.0 released
+
+    * Proxies
+        - External rejected calls due to brand or client max limit will now be answered with 486 Busy
+        - Replaced XMLRPC server module with JSONRPC module
+
+    * API
+        - Added new endpoints to get current active calls counters
+        - Brand and Client API logins are now validated using URL domain
+
+    * Web
+        - Billable calls list is now known as External calls list and it also displays incoming calls
+        - Carrier ASR and ACD fields have been removed
+        - Brand URLs are now known as Web Portals and have different filtering for each level
+
+    * vPBX
+        - Fixed a bug in ExternalCallFilters Schedule timezones
+        - vPBX can now place internal calls between them using Inter vPBX Friends
+        - VoiceMail now plays unavailable locution if recorded using internal configuration menu
+        - Added support for T.38 passthrough for Terminals and Friends
+
+    * Residential
+        - Added support for T.38 passthrough for Residential Devices
+
+    * Retail
+        - Added support for T.38 passthrough for Retail Accounts
+
+    * Invoices
+        - Fixed automatic invoice number assignment through invoice scheduler
+
 Thu, 14 Mar 2019 12:32:55 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.9.3 released
@@ -14,7 +46,7 @@ Thu, 14 Mar 2019 12:32:55 +0100 IvozProvider Team <vozip+ivozprovider@irontec.co
     * API
         - Added Routing, Destination and Rating endpoints to brand API
 
-    * vPBx
+    * vPBX
         - Fixed a bug with PickupGroups not being properly updated
 
     * Packaging
