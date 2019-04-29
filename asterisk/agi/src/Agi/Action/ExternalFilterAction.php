@@ -118,7 +118,7 @@ class ExternalFilterAction
                 ->setRouteType($this->holidayDate->getRouteType())
                 ->setRouteExtension($this->holidayDate->getExtension())
                 ->setRouteExternal($this->holidayDate->getNumberValueE164())
-                ->setRouteVoicemail($this->holidayDate->getVoiceMailUser())
+                ->setRouteVoicemailUser($this->holidayDate->getVoiceMailUser())
                 ->route();
         } else {
             // Route to using filter
@@ -126,7 +126,7 @@ class ExternalFilterAction
                 ->setRouteType($filter->getHolidayTargetType())
                 ->setRouteExtension($filter->getHolidayExtension())
                 ->setRouteExternal($filter->getHolidayNumberValueE164())
-                ->setRouteVoicemail($filter->getHolidayVoiceMailUser())
+                ->setRouteVoicemailUser($filter->getHolidayVoiceMailUser())
                 ->route();
         }
     }
@@ -159,7 +159,7 @@ class ExternalFilterAction
             ->setRouteType($filter->getOutOfScheduleTargetType())
             ->setRouteExtension($filter->getOutOfScheduleExtension())
             ->setRouteExternal($filter->getOutOfScheduleNumberValueE164())
-            ->setRouteVoicemail($filter->getOutOfScheduleVoiceMailUser())
+            ->setRouteVoicemailUser($filter->getOutOfScheduleVoiceMailUser())
             ->route();
     }
 }

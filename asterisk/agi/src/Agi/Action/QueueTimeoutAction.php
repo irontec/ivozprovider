@@ -65,7 +65,7 @@ class QueueTimeoutAction
         $this->routerAction
             ->setRouteType($queue->getTimeoutTargetType())
             ->setRouteExtension($queue->getTimeoutExtension())
-            ->setRouteVoicemail($queue->getTimeoutVoiceMailUser())
+            ->setRouteVoicemailUser($queue->getTimeoutVoiceMailUser())
             ->setRouteExternal($queue->getTimeoutNumberValueE164())
             ->route();
     }

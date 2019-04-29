@@ -77,9 +77,6 @@ class CallForwardAction
         $forwarder = $this->cfw->getUser();
         if ($forwarder) {
             $caller = new UserAgent($this->agi, $forwarder);
-
-            // Set the owner of target voicemail
-            $voicemailUser = new UserAgent($this->agi, $this->cfw->getVoiceMailUser());
         } else {
             $forwarder = $this->cfw->getResidentialDevice();
 
@@ -90,9 +87,6 @@ class CallForwardAction
             }
 
             $caller = new ResidentialAgent($this->agi, $forwarder);
-
-            // Set the owner of target voicemail
-            $voicemailUser = $caller;
         }
 
         // Set the new caller
@@ -131,11 +125,20 @@ class CallForwardAction
         // Set as diversion number the user extension
         $this->agi->setRedirecting('from-num', $caller->getExtensionNumber());
 
+        // Set voicemail destination
+        $isUserCallForward = $this->cfw->getUser() !== null;
+        if ($isUserCallForward) {
+            $this->routerAction
+                ->setRouteVoicemailUser($this->cfw->getVoiceMailUser(), true);
+        } else {
+            $this->routerAction
+                ->setRouteVoicemailResidential($this->cfw->getResidentialDevice(), true);
+        }
+
         // Route based on configured type
         $this->routerAction
             ->setRouteType($this->cfw->getTargetType())
             ->setRouteExtension($this->cfw->getExtension())
-            ->setRouteVoicemail($voicemailUser, true)
             ->setRouteExternal($this->cfw->getNumberValueE164())
             ->route();
     }

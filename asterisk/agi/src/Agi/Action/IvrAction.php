@@ -108,7 +108,7 @@ class IvrAction
                 $this->routerAction
                     ->setRouteType($entry->getRouteType())
                     ->setRouteExtension($entry->getExtension())
-                    ->setRouteVoicemail($entry->getVoiceMailUser())
+                    ->setRouteVoicemailUser($entry->getVoiceMailUser())
                     ->setRouteExternal($entry->getNumberValueE164())
                     ->setRouteConditional($entry->getConditionalRoute())
                     ->route();
@@ -170,7 +170,7 @@ class IvrAction
         $this->routerAction
             ->setRouteType($this->ivr->getNoInputRouteType())
             ->setRouteExtension($this->ivr->getNoInputExtension())
-            ->setRouteVoicemail($this->ivr->getNoInputVoiceMailUser())
+            ->setRouteVoicemailUser($this->ivr->getNoInputVoiceMailUser())
             ->setRouteExternal($this->ivr->getNoInputNumberValueE164())
             ->route();
     }
@@ -189,7 +189,7 @@ class IvrAction
         $this->routerAction
             ->setRouteType($this->ivr->getErrorRouteType())
             ->setRouteExtension($this->ivr->getErrorExtension())
-            ->setRouteVoicemail($this->ivr->getErrorVoiceMailUser())
+            ->setRouteVoicemailUser($this->ivr->getErrorVoiceMailUser())
             ->setRouteExternal($this->ivr->getErrorNumberValueE164())
             ->route();
     }
