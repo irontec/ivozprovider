@@ -2,7 +2,7 @@
 scenarios:
   - name: call from alice to huntgroup ring all
     type: simple
-    timeout: 20
+    timeout: 30
     sessions:
       - alice:
           - wait: 5
