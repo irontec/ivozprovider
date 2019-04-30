@@ -12,6 +12,13 @@ class DdiProviderAddressLifecycleServiceCollection implements LifecycleServiceCo
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Kam\Domain\Service\TrunksAddress\UpdateByDdiProviderAddress::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

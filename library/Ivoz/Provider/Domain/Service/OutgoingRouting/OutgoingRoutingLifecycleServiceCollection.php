@@ -12,6 +12,21 @@ class OutgoingRoutingLifecycleServiceCollection implements LifecycleServiceColle
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpLcrRule\CreatedByOutgoingRouting::class => 200,
+            \Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting::class => 200,
+            \Ivoz\Kam\Domain\Service\TrunksLcrRule\RemoveByOutgoingRouting::class => 210,
+            \Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\UpdateByOutgoingRouting::class => 210,
+            \Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\RemoveByOutgoingRouting::class => 220,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\SendTrunksLcrReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

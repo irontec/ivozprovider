@@ -12,6 +12,21 @@ class PickUpRelUserLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\PickUpRelUser\AvoidUpdates::class => 100,
+        ],
+        "post_persist" =>
+        [
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByPickUpRelUser::class => 10,
+        ],
+        "post_remove" =>
+        [
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByPickUpRelUser::class => 10,
+        ],
+    ];
+
     /**
      * @return void
      */

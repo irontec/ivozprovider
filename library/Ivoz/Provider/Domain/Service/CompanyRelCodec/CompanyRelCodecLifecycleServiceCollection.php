@@ -12,6 +12,13 @@ class CompanyRelCodecLifecycleServiceCollection implements LifecycleServiceColle
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\CompanyRelCodec\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */

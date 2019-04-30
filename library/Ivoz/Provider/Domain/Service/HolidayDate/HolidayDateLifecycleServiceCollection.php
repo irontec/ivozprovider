@@ -12,6 +12,13 @@ class HolidayDateLifecycleServiceCollection implements LifecycleServiceCollectio
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\HolidayDate\CheckEventDateCollision::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

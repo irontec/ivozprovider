@@ -12,6 +12,13 @@ class RoutingPatternGroupLifecycleServiceCollection implements LifecycleServiceC
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\SendTrunksLcrReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

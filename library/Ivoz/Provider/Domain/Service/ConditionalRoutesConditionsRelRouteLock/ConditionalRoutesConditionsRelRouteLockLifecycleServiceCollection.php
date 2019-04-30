@@ -12,6 +12,13 @@ class ConditionalRoutesConditionsRelRouteLockLifecycleServiceCollection implemen
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelRouteLock\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */

@@ -12,6 +12,20 @@ class RatingPlanLifecycleServiceCollection implements LifecycleServiceCollection
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpRatingPlan\UpdateByRatingPlan::class => 200,
+            \Ivoz\Cgr\Domain\Service\TpTiming\CreatedByRatingPlan::class => 200,
+            \Ivoz\Cgr\Domain\Service\TpTiming\DeletedByRatingPlan::class => 200,
+            \Ivoz\Provider\Domain\Service\RatingPlan\CheckValidCurrency::class => 200,
+        ],
+        "error_handler" =>
+        [
+            \Ivoz\Provider\Domain\Service\RatingPlan\PersistErrorHandler::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

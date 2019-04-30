@@ -14,6 +14,18 @@ class ApplicationServerLifecycleServiceCollection implements LifecycleServiceCol
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer::class => 10,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest::class => 100,
+            \Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest::class => 300,
+        ],
+    ];
+
     /**
      * @return void
      */

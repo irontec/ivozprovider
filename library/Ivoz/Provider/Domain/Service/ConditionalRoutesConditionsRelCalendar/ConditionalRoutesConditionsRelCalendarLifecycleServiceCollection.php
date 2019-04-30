@@ -12,6 +12,13 @@ class ConditionalRoutesConditionsRelCalendarLifecycleServiceCollection implement
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelCalendar\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */

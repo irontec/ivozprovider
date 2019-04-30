@@ -12,6 +12,13 @@ class FeaturesRelCompanyLifecycleServiceCollection implements LifecycleServiceCo
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\FeaturesRelCompany\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */

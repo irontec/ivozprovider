@@ -12,6 +12,13 @@ class FeaturesRelBrandLifecycleServiceCollection implements LifecycleServiceColl
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\FeaturesRelBrand\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */

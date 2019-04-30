@@ -12,6 +12,13 @@ class FixedCostsRelInvoiceSchedulerLifecycleServiceCollection implements Lifecyc
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\FixedCostsRelInvoiceScheduler\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */

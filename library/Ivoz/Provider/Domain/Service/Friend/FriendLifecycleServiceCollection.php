@@ -12,6 +12,21 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\Friend\CheckUniqueness::class => 200,
+        ],
+        "post_persist" =>
+        [
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByFriend::class => 10,
+        ],
+        "error_handler" =>
+        [
+            \Ivoz\Provider\Domain\Service\Friend\PersistErrorHandler::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

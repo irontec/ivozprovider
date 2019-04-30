@@ -12,6 +12,19 @@ class InvoiceLifecycleServiceCollection implements LifecycleServiceCollectionInt
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\Invoice\CheckValidity::class => 100,
+            \Ivoz\Provider\Domain\Service\Invoice\SetInvoiceNumber::class => 300,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\Invoice\SendGenerateOrder::class => 10,
+            \Ivoz\Provider\Domain\Service\Invoice\EmailSender::class => 300,
+        ],
+    ];
+
     /**
      * @return void
      */

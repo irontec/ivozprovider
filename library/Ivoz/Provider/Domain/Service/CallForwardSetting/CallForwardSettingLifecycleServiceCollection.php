@@ -12,6 +12,13 @@ class CallForwardSettingLifecycleServiceCollection implements LifecycleServiceCo
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::class => 10,
+        ],
+    ];
+
     /**
      * @return void
      */

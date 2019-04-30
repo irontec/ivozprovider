@@ -12,6 +12,17 @@ class RoutingTagLifecycleServiceCollection implements LifecycleServiceCollection
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingTag::class => 200,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\RoutingTag\SendTrunksLcrReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

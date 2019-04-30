@@ -12,6 +12,18 @@ class ResidentialDeviceLifecycleServiceCollection implements LifecycleServiceCol
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\ResidentialDevice\CheckUniqueness::class => 200,
+        ],
+        "post_persist" =>
+        [
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByResidentialDevice::class => 10,
+            \Ivoz\Ast\Domain\Service\Voicemail\UpdateByResidentialDevice::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

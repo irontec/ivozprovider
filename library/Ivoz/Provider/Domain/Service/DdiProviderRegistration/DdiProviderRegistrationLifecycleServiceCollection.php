@@ -12,6 +12,13 @@ class DdiProviderRegistrationLifecycleServiceCollection implements LifecycleServ
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Kam\Domain\Service\TrunksUacreg\CreatedByDdiProviderRegistration::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

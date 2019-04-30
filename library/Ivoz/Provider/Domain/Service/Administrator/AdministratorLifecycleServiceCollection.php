@@ -12,6 +12,13 @@ class AdministratorLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\Administrator\CheckUniqueness::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

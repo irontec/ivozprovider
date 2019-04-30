@@ -12,6 +12,13 @@ class ProxyUserLifecycleServiceCollection implements LifecycleServiceCollectionI
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\ProxyUser\DeleteProtection::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */

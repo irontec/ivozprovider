@@ -12,6 +12,14 @@ class TransformationRuleLifecycleServiceCollection implements LifecycleServiceCo
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest::class => 100,
+            \Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendTrunksDialplanReloadRequest::class => 300,
+        ],
+    ];
+
     /**
      * @return void
      */

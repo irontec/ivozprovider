@@ -12,6 +12,13 @@ class ConditionalRoutesConditionsRelMatchlistLifecycleServiceCollection implemen
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelMatchlist\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */
