@@ -185,7 +185,7 @@ pipeline {
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/scheme/bin/test-orm'
+                        sh '/opt/irontec/ivozprovider/schema/bin/test-orm'
                     }
                     post {
                         success { publishSuccess() }
@@ -201,7 +201,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
-                        sh '/opt/irontec/ivozprovider/scheme/bin/test-generators'
+                        sh '/opt/irontec/ivozprovider/schema/bin/test-generators'
                     }
                     post {
                         success { publishSuccess() }
@@ -209,7 +209,7 @@ pipeline {
                         always  { cleanWs() }
                     }
                 }
-                stage ('scheme') {
+                stage ('schema') {
                     steps {
                         script {
                             docker.image('mysql:5.7').withRun('-e "MYSQL_ROOT_PASSWORD=changeme"') { c ->
@@ -221,7 +221,7 @@ pipeline {
                                       .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                     sh 'cd library/CoreBundle/Resources/config/ && mv parameters.yml.dist parameters.yml'
                                     sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
-                                    sh '/opt/irontec/ivozprovider/scheme/bin/test-scheme'
+                                    sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                 }
                             }
                         }

@@ -7,7 +7,7 @@ APP_PATHS+=(/opt/irontec/ivozprovider/library)
 APP_PATHS+=(/opt/irontec/ivozprovider/asterisk/agi)
 APP_PATHS+=(/opt/irontec/ivozprovider/microservices/recordings)
 APP_PATHS+=(/opt/irontec/ivozprovider/microservices/workers)
-APP_PATHS+=(/opt/irontec/ivozprovider/scheme)
+APP_PATHS+=(/opt/irontec/ivozprovider/schema)
 APP_PATHS+=(/opt/irontec/ivozprovider/web/rest/platform)
 
 

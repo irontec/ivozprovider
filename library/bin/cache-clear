@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     php bin/console cache:clear -e prod
     php bin/console cache:clear -e dev --no-warmup
 popd
