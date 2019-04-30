@@ -9,7 +9,7 @@ if [ `whoami` != 'jenkins' ]; then
     exit 1
 fi
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     # Create database and load initial data
     bin/console doctrine:database:drop --force || true
     bin/console doctrine:database:create -vv

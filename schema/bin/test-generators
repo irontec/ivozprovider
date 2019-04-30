@@ -3,7 +3,7 @@
 # Stop on first non-zero exit code
 set -e
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     # Regenerate all library files
     bin/run-generators -s Provider Ast Kam Cgr
 

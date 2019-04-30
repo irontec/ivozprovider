@@ -2,7 +2,7 @@
 
 set -e
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     ./bin/create-test-db
 
     # Run tests
