@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class TerminalAbstract
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
-
     /**
      * @var string | null
      */
@@ -63,17 +59,23 @@ abstract class TerminalAbstract
     protected $lastProvisionDate;
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Passthrough = 'no';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
+     * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
      */
     protected $terminalModel;
 
@@ -87,12 +89,14 @@ abstract class TerminalAbstract
         $disallow,
         $allowAudio,
         $directMediaMethod,
-        $password
+        $password,
+        $t38Passthrough
     ) {
         $this->setDisallow($disallow);
         $this->setAllowAudio($allowAudio);
         $this->setDirectMediaMethod($directMediaMethod);
         $this->setPassword($password);
+        $this->setT38Passthrough($t38Passthrough);
     }
 
     abstract public function getId();
@@ -125,7 +129,7 @@ abstract class TerminalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TerminalInterface|null $entity
      * @param int $depth
      * @return TerminalDto|null
      */
@@ -145,29 +149,30 @@ abstract class TerminalAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TerminalDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalDto
-         */
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
         $self = new static(
             $dto->getDisallow(),
             $dto->getAllowAudio(),
             $dto->getDirectMediaMethod(),
-            $dto->getPassword()
+            $dto->getPassword(),
+            $dto->getT38Passthrough()
         );
 
         $self
@@ -180,7 +185,6 @@ abstract class TerminalAbstract
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -188,16 +192,13 @@ abstract class TerminalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalDto
-         */
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
         $this
@@ -209,13 +210,13 @@ abstract class TerminalAbstract
             ->setPassword($dto->getPassword())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
+            ->setT38Passthrough($dto->getT38Passthrough())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -235,6 +236,7 @@ abstract class TerminalAbstract
             ->setPassword(self::getPassword())
             ->setMac(self::getMac())
             ->setLastProvisionDate(self::getLastProvisionDate())
+            ->setT38Passthrough(self::getT38Passthrough())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::entityToDto(self::getTerminalModel(), $depth));
@@ -254,6 +256,7 @@ abstract class TerminalAbstract
             'password' => self::getPassword(),
             'mac' => self::getMac(),
             'lastProvisionDate' => self::getLastProvisionDate(),
+            't38Passthrough' => self::getT38Passthrough(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
@@ -266,7 +269,7 @@ abstract class TerminalAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -294,7 +297,7 @@ abstract class TerminalAbstract
      *
      * @param string $disallow
      *
-     * @return self
+     * @return static
      */
     protected function setDisallow($disallow)
     {
@@ -321,7 +324,7 @@ abstract class TerminalAbstract
      *
      * @param string $allowAudio
      *
-     * @return self
+     * @return static
      */
     protected function setAllowAudio($allowAudio)
     {
@@ -348,7 +351,7 @@ abstract class TerminalAbstract
      *
      * @param string $allowVideo
      *
-     * @return self
+     * @return static
      */
     protected function setAllowVideo($allowVideo = null)
     {
@@ -376,15 +379,15 @@ abstract class TerminalAbstract
      *
      * @param string $directMediaMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMediaMethod($directMediaMethod)
     {
         Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, [
-            self::DIRECTMEDIAMETHOD_UPDATE,
-            self::DIRECTMEDIAMETHOD_INVITE,
-            self::DIRECTMEDIAMETHOD_REINVITE
+            TerminalInterface::DIRECTMEDIAMETHOD_UPDATE,
+            TerminalInterface::DIRECTMEDIAMETHOD_INVITE,
+            TerminalInterface::DIRECTMEDIAMETHOD_REINVITE
         ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->directMediaMethod = $directMediaMethod;
@@ -407,7 +410,7 @@ abstract class TerminalAbstract
      *
      * @param string $password
      *
-     * @return self
+     * @return static
      */
     protected function setPassword($password)
     {
@@ -434,7 +437,7 @@ abstract class TerminalAbstract
      *
      * @param string $mac
      *
-     * @return self
+     * @return static
      */
     protected function setMac($mac = null)
     {
@@ -462,7 +465,7 @@ abstract class TerminalAbstract
      *
      * @param \DateTime $lastProvisionDate
      *
-     * @return self
+     * @return static
      */
     protected function setLastProvisionDate($lastProvisionDate = null)
     {
@@ -489,11 +492,41 @@ abstract class TerminalAbstract
     }
 
     /**
+     * Set t38Passthrough
+     *
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    protected function setT38Passthrough($t38Passthrough)
+    {
+        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Passthrough, [
+            TerminalInterface::T38PASSTHROUGH_YES,
+            TerminalInterface::T38PASSTHROUGH_NO
+        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
+    }
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -517,7 +550,7 @@ abstract class TerminalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -541,7 +574,7 @@ abstract class TerminalAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel
      *
-     * @return self
+     * @return static
      */
     public function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null)
     {
@@ -553,7 +586,7 @@ abstract class TerminalAbstract
     /**
      * Get terminalModel
      *
-     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
+     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
      */
     public function getTerminalModel()
     {

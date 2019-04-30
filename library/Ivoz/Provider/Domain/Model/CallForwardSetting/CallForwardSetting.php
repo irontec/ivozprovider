@@ -51,7 +51,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * {@inheritDoc}
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function setNumberValue($numberValue = null)
     {
@@ -63,11 +63,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
     public function toArrayPortal()
     {
-        /**
-         * @var CallAcl $this
-         */
-        $response = array();
-
+        $response = [];
         $response['id'] = $this->getId();
         $response['userId'] = $this->getUser()->getId();
 

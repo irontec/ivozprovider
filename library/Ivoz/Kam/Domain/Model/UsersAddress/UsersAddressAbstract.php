@@ -93,7 +93,7 @@ abstract class UsersAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersAddressInterface|null $entity
      * @param int $depth
      * @return UsersAddressDto|null
      */
@@ -113,22 +113,22 @@ abstract class UsersAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersAddressDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersAddressDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersAddressDto
-         */
         Assertion::isInstanceOf($dto, UsersAddressDto::class);
 
         $self = new static(
@@ -144,7 +144,6 @@ abstract class UsersAddressAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -152,16 +151,13 @@ abstract class UsersAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersAddressDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersAddressDto
-         */
         Assertion::isInstanceOf($dto, UsersAddressDto::class);
 
         $this
@@ -175,7 +171,6 @@ abstract class UsersAddressAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -218,7 +213,7 @@ abstract class UsersAddressAbstract
      *
      * @param string $sourceAddress
      *
-     * @return self
+     * @return static
      */
     protected function setSourceAddress($sourceAddress)
     {
@@ -245,7 +240,7 @@ abstract class UsersAddressAbstract
      *
      * @param string $ipAddr
      *
-     * @return self
+     * @return static
      */
     protected function setIpAddr($ipAddr = null)
     {
@@ -273,7 +268,7 @@ abstract class UsersAddressAbstract
      *
      * @param integer $mask
      *
-     * @return self
+     * @return static
      */
     protected function setMask($mask)
     {
@@ -300,7 +295,7 @@ abstract class UsersAddressAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port)
     {
@@ -327,7 +322,7 @@ abstract class UsersAddressAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -355,7 +350,7 @@ abstract class UsersAddressAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -383,7 +378,7 @@ abstract class UsersAddressAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

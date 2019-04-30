@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,22 +18,22 @@ trait ConditionalRoutesConditionTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relMatchlists;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relSchedules;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relCalendars;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relRouteLocks;
 
@@ -51,20 +50,20 @@ trait ConditionalRoutesConditionTrait
         $this->relRouteLocks = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelMatchlists())) {
             $self->replaceRelMatchlists(
@@ -97,6 +96,7 @@ trait ConditionalRoutesConditionTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -107,17 +107,14 @@ trait ConditionalRoutesConditionTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelMatchlists())) {
             $this->replaceRelMatchlists(
@@ -147,6 +144,8 @@ trait ConditionalRoutesConditionTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -176,7 +175,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist)
     {
@@ -198,10 +197,10 @@ trait ConditionalRoutesConditionTrait
     /**
      * Replace relMatchlists
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $relMatchlists
-     * @return self
+     * @param ArrayCollection $relMatchlists of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface
+     * @return static
      */
-    public function replaceRelMatchlists(Collection $relMatchlists)
+    public function replaceRelMatchlists(ArrayCollection $relMatchlists)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -231,7 +230,7 @@ trait ConditionalRoutesConditionTrait
 
     /**
      * Get relMatchlists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[]
      */
     public function getRelMatchlists(Criteria $criteria = null)
@@ -248,7 +247,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule)
     {
@@ -270,10 +269,10 @@ trait ConditionalRoutesConditionTrait
     /**
      * Replace relSchedules
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $relSchedules
-     * @return self
+     * @param ArrayCollection $relSchedules of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface
+     * @return static
      */
-    public function replaceRelSchedules(Collection $relSchedules)
+    public function replaceRelSchedules(ArrayCollection $relSchedules)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -303,7 +302,7 @@ trait ConditionalRoutesConditionTrait
 
     /**
      * Get relSchedules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[]
      */
     public function getRelSchedules(Criteria $criteria = null)
@@ -320,7 +319,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar)
     {
@@ -342,10 +341,10 @@ trait ConditionalRoutesConditionTrait
     /**
      * Replace relCalendars
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $relCalendars
-     * @return self
+     * @param ArrayCollection $relCalendars of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface
+     * @return static
      */
-    public function replaceRelCalendars(Collection $relCalendars)
+    public function replaceRelCalendars(ArrayCollection $relCalendars)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -375,7 +374,7 @@ trait ConditionalRoutesConditionTrait
 
     /**
      * Get relCalendars
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[]
      */
     public function getRelCalendars(Criteria $criteria = null)
@@ -392,7 +391,7 @@ trait ConditionalRoutesConditionTrait
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
      *
-     * @return ConditionalRoutesConditionTrait
+     * @return static
      */
     public function addRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock)
     {
@@ -414,10 +413,10 @@ trait ConditionalRoutesConditionTrait
     /**
      * Replace relRouteLocks
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[] $relRouteLocks
-     * @return self
+     * @param ArrayCollection $relRouteLocks of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface
+     * @return static
      */
-    public function replaceRelRouteLocks(Collection $relRouteLocks)
+    public function replaceRelRouteLocks(ArrayCollection $relRouteLocks)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -447,7 +446,7 @@ trait ConditionalRoutesConditionTrait
 
     /**
      * Get relRouteLocks
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[]
      */
     public function getRelRouteLocks(Criteria $criteria = null)

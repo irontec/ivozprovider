@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface NotificationTemplateContentInterface extends LoggableEntityInterface
 {
+    const BODYTYPE_TEXTPLAIN = 'text/plain';
+    const BODYTYPE_TEXTHTML = 'text/html';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -52,7 +56,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null);
 
@@ -68,14 +72,14 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
 }

@@ -122,7 +122,7 @@ abstract class TpDestinationRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpDestinationRateInterface|null $entity
      * @param int $depth
      * @return TpDestinationRateDto|null
      */
@@ -142,22 +142,22 @@ abstract class TpDestinationRateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpDestinationRateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDestinationRateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDestinationRateDto
-         */
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $self = new static(
@@ -176,7 +176,6 @@ abstract class TpDestinationRateAbstract
             ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -184,16 +183,13 @@ abstract class TpDestinationRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDestinationRateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDestinationRateDto
-         */
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $this
@@ -210,7 +206,6 @@ abstract class TpDestinationRateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -259,7 +254,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -286,7 +281,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -314,7 +309,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param string $destinationsTag
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationsTag($destinationsTag = null)
     {
@@ -342,7 +337,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param string $ratesTag
      *
-     * @return self
+     * @return static
      */
     protected function setRatesTag($ratesTag = null)
     {
@@ -370,7 +365,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param string $roundingMethod
      *
-     * @return self
+     * @return static
      */
     protected function setRoundingMethod($roundingMethod)
     {
@@ -397,7 +392,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param integer $roundingDecimals
      *
-     * @return self
+     * @return static
      */
     protected function setRoundingDecimals($roundingDecimals)
     {
@@ -424,7 +419,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param float $maxCost
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCost($maxCost)
     {
@@ -451,7 +446,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param string $maxCostStrategy
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCostStrategy($maxCostStrategy)
     {
@@ -478,7 +473,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -508,7 +503,7 @@ abstract class TpDestinationRateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
     {

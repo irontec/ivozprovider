@@ -16,7 +16,7 @@ These are the required fields of each entry:
         Password for login process.
 
     Timezone
-        Used for showing dates in Billable Calls and similar sections.
+        Used for showing dates in External Calls and similar sections.
 
 
 Remaining fields are not required nor used anywhere, they just allow storing additional information of a given user

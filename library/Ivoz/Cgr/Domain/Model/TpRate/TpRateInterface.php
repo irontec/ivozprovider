@@ -83,7 +83,7 @@ interface TpRateInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
 

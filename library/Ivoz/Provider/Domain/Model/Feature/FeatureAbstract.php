@@ -65,7 +65,7 @@ abstract class FeatureAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FeatureInterface|null $entity
      * @param int $depth
      * @return FeatureDto|null
      */
@@ -85,22 +85,22 @@ abstract class FeatureAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FeatureDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FeatureDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FeatureDto
-         */
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
         $name = new Name(
@@ -113,7 +113,6 @@ abstract class FeatureAbstract
             $name
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -121,16 +120,13 @@ abstract class FeatureAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FeatureDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FeatureDto
-         */
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
         $name = new Name(
@@ -144,7 +140,6 @@ abstract class FeatureAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -179,7 +174,7 @@ abstract class FeatureAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -206,7 +201,7 @@ abstract class FeatureAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Feature\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {

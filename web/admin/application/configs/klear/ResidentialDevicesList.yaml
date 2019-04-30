@@ -42,6 +42,8 @@ production:
           status: true
           ddiIn: true
           maxCalls: true
+          t38Passthrough: true
+          outgoingDdi: true
         order:
           name: true
           domain: true
@@ -87,6 +89,14 @@ production:
           disallow: true
           status: true
           statusIcon: true
+          t38Passthrough: true
+          language: true
+          outgoingDdi: true
+          allow: true
+          transformationRuleSet: true
+          fromDomain: true
+          ddiIn: true
+          maxCalls: true
         order: &residentialDevices_orderLink
           name: true
           description: true
@@ -103,6 +113,8 @@ production:
           fromDomain: true
           ddiIn: true
           status: true
+          maxCalls: true
+          t38Passthrough: true
       fixedPositions: &residentialDevices_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -135,8 +147,8 @@ production:
             allow: 3
             fromDomain: 3
             ddiIn: 3
+            t38Passthrough: 3
             maxCalls: 3
-
     residentialDevicesEdit_screen: &residentialDevicesEdit_screenLink
       <<: *ResidentialDevices
       controller: edit

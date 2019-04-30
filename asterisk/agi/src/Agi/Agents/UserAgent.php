@@ -3,6 +3,7 @@
 namespace Agi\Agents;
 
 use Agi\Wrapper;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
@@ -95,10 +96,27 @@ class UserAgent implements AgentInterface
     }
 
     /**
+     * @return bool
+     */
+    public function getVoicemailEnabled()
+    {
+        return $this->user->getVoicemailEnabled();
+    }
+
+    /**
      * Return user voicemail identifier
+     * @return string
      */
     public function getVoiceMail()
     {
         return $this->user->getVoiceMail();
+    }
+
+    /**
+     * @return LocutionInterface|null
+     */
+    public function getVoiceMailLocution()
+    {
+        return $this->user->getVoicemailLocution();
     }
 }

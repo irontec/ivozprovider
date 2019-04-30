@@ -7,6 +7,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const TYPE_IN = 'In';
+    const TYPE_OUT = 'Out';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -81,7 +85,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      *
      * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
      *
-     * @return self
+     * @return static
      */
     public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax);
 
@@ -97,14 +101,14 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
      *
-     * @return self
+     * @return static
      */
     public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null);
 
     /**
      * Get dstCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getDstCountry();
 
@@ -113,7 +117,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      *
      * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file
      *
-     * @return self
+     * @return static
      */
     public function setFile(\Ivoz\Provider\Domain\Model\FaxesInOut\File $file);
 
@@ -125,25 +129,25 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function getFile();
 
     /**
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

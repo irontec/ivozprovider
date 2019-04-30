@@ -12,12 +12,15 @@ production:
       controller: list
       pagination:
         items: 25
+      order:
+        field:
+          - Friend.priority asc
       <<: *Friends
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Friend', 'Friends', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/en/administration_portal/client/vpbx/routing_endpoints/friends.html"
+        href: "/doc/en/administration_portal/client/vpbx/routing_endpoints/friends/index.html"
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -40,6 +43,9 @@ production:
           updateCallerid: true
           callACL: true
           ddiIn: true
+          t38Passthrough: true
+          outgoingDdi: true
+          interCompany: true
         order:
           name: true
           domain: true
@@ -76,6 +82,8 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
+        readOnly:
+          interCompany: ${auth.isCompanyOperator}
         blacklist: &friends_blacklistLink
           domain: true
           directMediaMethod: true
@@ -85,12 +93,20 @@ production:
           disallow: true
           status: true
           statusIcon: true
+          t38Passthrough: true
+          language: true
+          transformationRuleSet: true
+          callACL: true
+          outgoingDdi: true
+          allow: true
+          fromDomain: true
+          ddiIn: true
         order: &friends_orderLink
+          directConnectivity: true
           name: true
           description: true
           priority: true
           password: true
-          directConnectivity: true
           transport: true
           ip: true
           port: true
@@ -102,17 +118,20 @@ production:
           fromDomain: true
           ddiIn: true
           status: true
+          t38Passthrough: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            name: 4
-            description: 6
-            priority: 2
-            password: 5
-            directConnectivity: 3
-            __empty1: 4
+            directConnectivity: 8
+            priority: 4
+            description: 10
+            __empty1: 2
+            name: 6
+            password: 6
+            interCompany: 10
+            __empty1: 2
             transport: 4
             ip: 5
             port: 3
@@ -130,11 +149,12 @@ production:
             outgoingDdi: 5
         group3:
           label: _("Advanced Configuration")
-          colsPerRow: 6
+          colsPerRow: 4
           fields:
             allow: 2
             fromDomain: 2
             ddiIn: 2
+            t38Passthrough: 2
       shortcutOption: N
 
     friendsEdit_screen: &friendsEdit_screenLink
@@ -151,6 +171,8 @@ production:
       fields:
         order:
           <<: *friends_orderLink
+        readOnly:
+          interCompany: ${auth.isCompanyOperator}
         blacklist:
           domain: true
           directMediaMethod: true

@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface CallAclRelMatchListInterface extends LoggableEntityInterface
 {
+    const POLICY_ALLOW = 'allow';
+    const POLICY_DENY = 'deny';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -31,7 +35,7 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
      *
-     * @return self
+     * @return static
      */
     public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null);
 
@@ -47,7 +51,7 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return self
+     * @return static
      */
     public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
 

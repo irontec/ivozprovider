@@ -34,7 +34,7 @@ abstract class FaxAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $outgoingDdi;
 
@@ -80,7 +80,7 @@ abstract class FaxAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FaxInterface|null $entity
      * @param int $depth
      * @return FaxDto|null
      */
@@ -100,22 +100,22 @@ abstract class FaxAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FaxDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxDto
-         */
         Assertion::isInstanceOf($dto, FaxDto::class);
 
         $self = new static(
@@ -129,7 +129,6 @@ abstract class FaxAbstract
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -137,16 +136,13 @@ abstract class FaxAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxDto
-         */
         Assertion::isInstanceOf($dto, FaxDto::class);
 
         $this
@@ -158,7 +154,6 @@ abstract class FaxAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -197,7 +192,7 @@ abstract class FaxAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -224,7 +219,7 @@ abstract class FaxAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email = null)
     {
@@ -252,7 +247,7 @@ abstract class FaxAbstract
      *
      * @param boolean $sendByEmail
      *
-     * @return self
+     * @return static
      */
     protected function setSendByEmail($sendByEmail)
     {
@@ -279,7 +274,7 @@ abstract class FaxAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -303,7 +298,7 @@ abstract class FaxAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
@@ -315,7 +310,7 @@ abstract class FaxAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi()
     {

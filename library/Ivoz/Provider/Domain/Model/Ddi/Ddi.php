@@ -75,7 +75,7 @@ class Ddi extends DdiAbstract implements DdiInterface
     }
 
     /**
-     * @return string Domain
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain()
     {
@@ -130,6 +130,9 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDdie164()
     {
         return

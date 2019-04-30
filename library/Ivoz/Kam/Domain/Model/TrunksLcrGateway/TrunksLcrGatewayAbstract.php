@@ -77,7 +77,7 @@ abstract class TrunksLcrGatewayAbstract
     protected $defunct;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
      */
     protected $carrierServer;
 
@@ -123,7 +123,7 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksLcrGatewayInterface|null $entity
      * @param int $depth
      * @return TrunksLcrGatewayDto|null
      */
@@ -143,22 +143,22 @@ abstract class TrunksLcrGatewayAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksLcrGatewayDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksLcrGatewayDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksLcrGatewayDto
-         */
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
         $self = new static(
@@ -180,7 +180,6 @@ abstract class TrunksLcrGatewayAbstract
             ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -188,16 +187,13 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksLcrGatewayDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksLcrGatewayDto
-         */
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
         $this
@@ -217,7 +213,6 @@ abstract class TrunksLcrGatewayAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -272,7 +267,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param integer $lcrId
      *
-     * @return self
+     * @return static
      */
     protected function setLcrId($lcrId)
     {
@@ -300,7 +295,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param string $gwName
      *
-     * @return self
+     * @return static
      */
     protected function setGwName($gwName)
     {
@@ -327,7 +322,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {
@@ -355,7 +350,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param string $hostname
      *
-     * @return self
+     * @return static
      */
     protected function setHostname($hostname = null)
     {
@@ -383,7 +378,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port = null)
     {
@@ -415,7 +410,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param string $params
      *
-     * @return self
+     * @return static
      */
     protected function setParams($params = null)
     {
@@ -443,7 +438,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param integer $uriScheme
      *
-     * @return self
+     * @return static
      */
     protected function setUriScheme($uriScheme = null)
     {
@@ -475,7 +470,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param integer $transport
      *
-     * @return self
+     * @return static
      */
     protected function setTransport($transport = null)
     {
@@ -507,7 +502,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param boolean $strip
      *
-     * @return self
+     * @return static
      */
     protected function setStrip($strip = null)
     {
@@ -535,7 +530,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix = null)
     {
@@ -563,7 +558,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -591,7 +586,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param integer $defunct
      *
-     * @return self
+     * @return static
      */
     protected function setDefunct($defunct = null)
     {
@@ -623,7 +618,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer
      *
-     * @return self
+     * @return static
      */
     public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer = null)
     {

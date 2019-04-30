@@ -17,7 +17,7 @@
           "total": 10,
           "taxRate": 21,
           "totalWithTax": 12.1,
-          "status": null,
+          "status": "created",
           "statusMsg": null,
           "invoiceTemplate": 1,
           "brand": 1,
@@ -34,10 +34,10 @@
           "number": "2",
           "inDate": "2019-01-01 01:00:00",
           "outDate": "2019-01-31 23:59:59",
-          "total": null,
+          "total": 10,
           "taxRate": 21,
-          "totalWithTax": null,
-          "status": null,
+          "totalWithTax": 12.1,
+          "status": "created",
           "statusMsg": null,
           "id": 2,
           "pdf": {
@@ -49,7 +49,7 @@
           "brand": 1,
           "company": 1,
           "numberSequence": null
-      }
+      } 
     """
 
   Scenario: Retrieve created invoice
@@ -65,10 +65,10 @@
           "number": "2",
           "inDate": "2019-01-01 01:00:00",
           "outDate": "2019-01-31 23:59:59",
-          "total": null,
+          "total": 10,
           "taxRate": 21,
-          "totalWithTax": null,
-          "status": null,
+          "totalWithTax": 12.1,
+          "status": "created",
           "statusMsg": null,
           "id": 2,
           "pdf": {
@@ -76,7 +76,15 @@
               "mimeType": null,
               "baseName": null
           },
-          "invoiceTemplate": "~",
+          "invoiceTemplate": {
+              "name": "Default",
+              "description": "Something",
+              "template": "Template",
+              "templateHeader": "Template header",
+              "templateFooter": "Template footer",
+              "id": 1,
+              "brand": 1
+          },
           "brand": "~",
           "company": "~",
           "numberSequence": null

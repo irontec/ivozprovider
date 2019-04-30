@@ -61,7 +61,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     /**
      * Check if the given number matches External Filter black list
      * @param string $origin in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function isBlackListed($origin)
     {
@@ -86,7 +86,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     /**
      * Check if the given number matches External Filter white list
      * @param string $origin in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function isWhitelisted($origin)
     {
@@ -105,7 +105,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     }
 
     /**
-     * @return Null | HolidayDateInterface
+     * @return null | \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
      */
     public function getHolidayDateForToday()
     {
@@ -164,7 +164,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         }
 
         $scheduleMatched = false;
-        $time = new \DateTime('now');
+        $time = new \DateTime('now', new \DateTimeZone('UTC'));
 
         /**
          * @var ExternalCallFilterRelSchedule $externalCallFilterRelSchedule
@@ -172,13 +172,13 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         foreach ($externalCallFilterRelSchedules as $externalCallFilterRelSchedule) {
             $schedule = $externalCallFilterRelSchedule->getSchedule();
             $company = $schedule->getCompany();
-            $timezones = $company->getDefaultTimezone();
+            $timezone = $company->getDefaultTimezone();
 
             $scheduleMatched = $schedule
                 ->checkIsOnTimeRange(
                     $time->format('l'),
                     $time,
-                    new \DateTimeZone($timezone = $timezones->getTz())
+                    new \DateTimeZone($timezone->getTz())
                 );
 
             if ($scheduleMatched) {

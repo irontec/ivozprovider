@@ -16,7 +16,7 @@ Feature: Update conference rooms
           "pinCode": null,
           "maxMembers": 1,
           "id": 1,
-          "company": 2
+          "company": 1
       }
     """
     Then the response status code should be 200

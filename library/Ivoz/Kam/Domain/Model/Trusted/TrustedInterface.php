@@ -68,7 +68,7 @@ interface TrustedInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 

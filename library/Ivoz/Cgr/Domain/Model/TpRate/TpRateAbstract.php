@@ -118,7 +118,7 @@ abstract class TpRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpRateInterface|null $entity
      * @param int $depth
      * @return TpRateDto|null
      */
@@ -138,22 +138,22 @@ abstract class TpRateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpRateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpRateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpRateDto
-         */
         Assertion::isInstanceOf($dto, TpRateDto::class);
 
         $self = new static(
@@ -171,7 +171,6 @@ abstract class TpRateAbstract
             ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -179,16 +178,13 @@ abstract class TpRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpRateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpRateDto
-         */
         Assertion::isInstanceOf($dto, TpRateDto::class);
 
         $this
@@ -204,7 +200,6 @@ abstract class TpRateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -251,7 +246,7 @@ abstract class TpRateAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -278,7 +273,7 @@ abstract class TpRateAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -306,7 +301,7 @@ abstract class TpRateAbstract
      *
      * @param float $connectFee
      *
-     * @return self
+     * @return static
      */
     protected function setConnectFee($connectFee)
     {
@@ -333,7 +328,7 @@ abstract class TpRateAbstract
      *
      * @param float $rateCost
      *
-     * @return self
+     * @return static
      */
     protected function setRateCost($rateCost)
     {
@@ -360,7 +355,7 @@ abstract class TpRateAbstract
      *
      * @param string $rateUnit
      *
-     * @return self
+     * @return static
      */
     protected function setRateUnit($rateUnit)
     {
@@ -387,7 +382,7 @@ abstract class TpRateAbstract
      *
      * @param string $rateIncrement
      *
-     * @return self
+     * @return static
      */
     protected function setRateIncrement($rateIncrement)
     {
@@ -414,7 +409,7 @@ abstract class TpRateAbstract
      *
      * @param string $groupIntervalStart
      *
-     * @return self
+     * @return static
      */
     protected function setGroupIntervalStart($groupIntervalStart)
     {
@@ -441,7 +436,7 @@ abstract class TpRateAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -471,7 +466,7 @@ abstract class TpRateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
     {

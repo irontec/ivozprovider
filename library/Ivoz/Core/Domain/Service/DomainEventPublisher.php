@@ -41,7 +41,6 @@ class DomainEventPublisher
         $this->logger->debug(
             'A domain event was published: ' . get_class($aDomainEvent)
         );
-        $isStoppable = ($aDomainEvent instanceof StoppableDomainEventInterface);
 
         foreach ($this->subscribers as $subscriber) {
             if ($subscriber->isSubscribedTo($aDomainEvent)) {
@@ -50,7 +49,12 @@ class DomainEventPublisher
                 );
                 $subscriber->handle($aDomainEvent);
 
-                if ($isStoppable && $aDomainEvent->isPropagationStopped()) {
+                if (!$aDomainEvent instanceof StoppableDomainEventInterface) {
+                    continue;
+                }
+
+                /** @var StoppableDomainEventInterface $aDomainEvent */
+                if ($aDomainEvent->isPropagationStopped()) {
                     break;
                 }
             }

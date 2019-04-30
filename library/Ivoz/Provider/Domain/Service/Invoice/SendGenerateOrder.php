@@ -8,9 +8,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
 {
-    /**
-     * @var Invoicer
-     */
     protected $invoicer;
 
     public function __construct(
@@ -28,7 +25,7 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
 
     public function execute(InvoiceInterface $invoice)
     {
-        $pendingStatus = $invoice->getStatus() === Invoice::STATUS_WAITING;
+        $pendingStatus = $invoice->getStatus() === InvoiceInterface::STATUS_WAITING;
         $statusHasChanged = $invoice->hasChanged('status');
 
         if ($pendingStatus && $statusHasChanged) {

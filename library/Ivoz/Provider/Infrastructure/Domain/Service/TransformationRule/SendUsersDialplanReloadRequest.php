@@ -2,29 +2,31 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequestInterface;
+use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleEventHandlerInterface;
 
 class SendUsersDialplanReloadRequest implements TransformationRuleLifecycleEventHandlerInterface
 {
-    protected $usersDialplanReload;
+    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
+
+    protected $usersClient;
 
     public function __construct(
-        XmlRpcUsersRequestInterface $usersDialplanReload
+        UsersClientInterface $usersClient
     ) {
-        $this->usersDialplanReload = $usersDialplanReload;
+        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
     public function execute(TransformationRuleInterface $entity)
     {
-        $this->usersDialplanReload->send();
+        $this->usersClient->reloadDialplan();
     }
 }

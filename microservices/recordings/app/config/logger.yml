@@ -1,0 +1,10 @@
+monolog:
+  channels: ['recordings']
+  handlers:
+    app_syslog:
+      ident: recording
+      type: syslog
+      bubble: false
+      level: info
+      priority: 5
+      channels: recordings

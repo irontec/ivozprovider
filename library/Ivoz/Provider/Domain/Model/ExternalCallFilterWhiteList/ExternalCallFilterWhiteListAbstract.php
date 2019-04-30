@@ -63,7 +63,7 @@ abstract class ExternalCallFilterWhiteListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ExternalCallFilterWhiteListInterface|null $entity
      * @param int $depth
      * @return ExternalCallFilterWhiteListDto|null
      */
@@ -83,22 +83,22 @@ abstract class ExternalCallFilterWhiteListAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ExternalCallFilterWhiteListDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterWhiteListDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterWhiteListDto
-         */
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class ExternalCallFilterWhiteListAbstract
             ->setMatchlist($fkTransformer->transform($dto->getMatchlist()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class ExternalCallFilterWhiteListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ExternalCallFilterWhiteListDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ExternalCallFilterWhiteListDto
-         */
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class ExternalCallFilterWhiteListAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class ExternalCallFilterWhiteListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
      *
-     * @return self
+     * @return static
      */
     public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null)
     {
@@ -191,7 +186,7 @@ abstract class ExternalCallFilterWhiteListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist
      *
-     * @return self
+     * @return static
      */
     public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
     {

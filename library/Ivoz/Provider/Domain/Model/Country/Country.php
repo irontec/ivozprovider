@@ -27,14 +27,4 @@ class Country extends CountryAbstract implements CountryInterface
     {
         return $this->id;
     }
-
-    /**
-     * Check if a country uses Area code
-     *
-     * return true if the country has area code in its e164 pattern
-     */
-    public function hasAreaCode()
-    {
-        return strpos($this->getE164Pattern(), 'ac') !== false;
-    }
 }

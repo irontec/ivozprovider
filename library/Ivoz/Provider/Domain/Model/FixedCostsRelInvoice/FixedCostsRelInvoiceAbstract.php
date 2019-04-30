@@ -68,7 +68,7 @@ abstract class FixedCostsRelInvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FixedCostsRelInvoiceInterface|null $entity
      * @param int $depth
      * @return FixedCostsRelInvoiceDto|null
      */
@@ -88,22 +88,22 @@ abstract class FixedCostsRelInvoiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FixedCostsRelInvoiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostsRelInvoiceDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostsRelInvoiceDto
-         */
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
 
         $self = new static();
@@ -114,7 +114,6 @@ abstract class FixedCostsRelInvoiceAbstract
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -122,16 +121,13 @@ abstract class FixedCostsRelInvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostsRelInvoiceDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostsRelInvoiceDto
-         */
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
 
         $this
@@ -141,7 +137,6 @@ abstract class FixedCostsRelInvoiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -176,7 +171,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @param integer $quantity
      *
-     * @return self
+     * @return static
      */
     protected function setQuantity($quantity = null)
     {
@@ -208,7 +203,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
      *
-     * @return self
+     * @return static
      */
     public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
     {
@@ -232,7 +227,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
     {

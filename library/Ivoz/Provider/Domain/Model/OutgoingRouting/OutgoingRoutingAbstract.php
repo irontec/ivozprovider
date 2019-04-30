@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingRoutingAbstract
 {
-    const ROUTINGMODE_STATIC = 'static';
-    const ROUTINGMODE_LCR = 'lcr';
-
     /**
      * @var string | null
      */
@@ -63,7 +60,7 @@ abstract class OutgoingRoutingAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
@@ -83,7 +80,7 @@ abstract class OutgoingRoutingAbstract
     protected $routingTag;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $clidCountry;
 
@@ -129,7 +126,7 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingRoutingInterface|null $entity
      * @param int $depth
      * @return OutgoingRoutingDto|null
      */
@@ -149,22 +146,22 @@ abstract class OutgoingRoutingAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingRoutingDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingDto
-         */
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
 
         $self = new static(
@@ -187,7 +184,6 @@ abstract class OutgoingRoutingAbstract
             ->setClidCountry($fkTransformer->transform($dto->getClidCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -195,16 +191,13 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingDto
-         */
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
 
         $this
@@ -225,7 +218,6 @@ abstract class OutgoingRoutingAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -282,13 +274,10 @@ abstract class OutgoingRoutingAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type = null)
     {
-        if (!is_null($type)) {
-        }
-
         $this->type = $type;
 
         return $this;
@@ -309,7 +298,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -337,7 +326,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param integer $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight)
     {
@@ -365,15 +354,15 @@ abstract class OutgoingRoutingAbstract
      *
      * @param string $routingMode
      *
-     * @return self
+     * @return static
      */
     protected function setRoutingMode($routingMode = null)
     {
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routingMode, [
-                self::ROUTINGMODE_STATIC,
-                self::ROUTINGMODE_LCR
+                OutgoingRoutingInterface::ROUTINGMODE_STATIC,
+                OutgoingRoutingInterface::ROUTINGMODE_LCR
             ], 'routingModevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -397,7 +386,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix = null)
     {
@@ -425,7 +414,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param boolean $forceClid
      *
-     * @return self
+     * @return static
      */
     protected function setForceClid($forceClid = null)
     {
@@ -453,7 +442,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param string $clid
      *
-     * @return self
+     * @return static
      */
     protected function setClid($clid = null)
     {
@@ -481,7 +470,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -505,7 +494,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -529,7 +518,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -553,7 +542,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null)
     {
@@ -577,7 +566,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup = null)
     {
@@ -601,7 +590,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
      *
-     * @return self
+     * @return static
      */
     public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
     {
@@ -625,7 +614,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
      *
-     * @return self
+     * @return static
      */
     public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null)
     {
@@ -637,7 +626,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get clidCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getClidCountry()
     {

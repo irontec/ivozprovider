@@ -88,7 +88,7 @@ abstract class ServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ServiceInterface|null $entity
      * @param int $depth
      * @return ServiceDto|null
      */
@@ -108,22 +108,22 @@ abstract class ServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ServiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ServiceDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ServiceDto
-         */
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
         $name = new Name(
@@ -144,7 +144,6 @@ abstract class ServiceAbstract
             $description
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -152,16 +151,13 @@ abstract class ServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ServiceDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ServiceDto
-         */
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
         $name = new Name(
@@ -183,7 +179,6 @@ abstract class ServiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -226,7 +221,7 @@ abstract class ServiceAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -253,7 +248,7 @@ abstract class ServiceAbstract
      *
      * @param string $defaultCode
      *
-     * @return self
+     * @return static
      */
     protected function setDefaultCode($defaultCode)
     {
@@ -280,7 +275,7 @@ abstract class ServiceAbstract
      *
      * @param boolean $extraArgs
      *
-     * @return self
+     * @return static
      */
     protected function setExtraArgs($extraArgs)
     {
@@ -307,7 +302,7 @@ abstract class ServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Service\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -330,7 +325,7 @@ abstract class ServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Service\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(Description $description)
     {

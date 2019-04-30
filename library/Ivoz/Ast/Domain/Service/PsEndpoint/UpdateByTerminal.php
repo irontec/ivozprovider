@@ -39,7 +39,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     }
 
     /**
-     * @param Friend $terminal
+     * @param TerminalInterface $terminal
      */
     public function execute(TerminalInterface $terminal)
     {
@@ -70,7 +70,15 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             ->setDisallow($terminal->getDisallow())
             ->setAllow($terminal->getAllow())
             ->setDirectmediaMethod($terminal->getDirectmediaMethod())
+            ->setT38Udptl($terminal->getT38Passthrough())
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr');
+
+        // Disable direct media for T.38 capable devices
+        if ($terminal->getT38Passthrough() === TerminalInterface::T38PASSTHROUGH_YES) {
+            $endpointDto->setDirectMedia('no');
+        } else {
+            $endpointDto->setDirectMedia('yes');
+        }
 
         $endpoint = $this
             ->entityTools

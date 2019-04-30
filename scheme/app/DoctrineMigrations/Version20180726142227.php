@@ -43,6 +43,7 @@ class Version20180726142227 extends AbstractMigration
         // Remove old residual data
         $this->addSql('ALTER TABLE tp_rating_plans DROP FOREIGN KEY FK_4CC2BCAB4EB67480');
         $this->addSql('DELETE FROM DestinationRates WHERE destinationRateGroupId NOT IN (SELECT id FROM DestinationRateGroups)');
+        $this->addSql('DELETE FROM DestinationRates WHERE destinationId NOT IN (SELECT id FROM Destinations)');
         $this->addSql('DELETE FROM tp_rates');
         $this->addSql('DELETE FROM tp_destination_rates');
         $this->addSql('DELETE FROM tp_destinations');
@@ -77,7 +78,7 @@ class Version20180726142227 extends AbstractMigration
         $this->addSql('INSERT INTO tp_rates (tag, connect_fee, rate, rate_increment, group_interval_start, destinationRateId) SELECT CONCAT("b", DRG.brandId, "rt", DR.id), DR.connectFee, DR.rate, DR.rateIncrement, DR.groupIntervalStart, DR.id FROM DestinationRates DR INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId');
 
         // Generate tp_destination_rates from DestinationRates
-        $this->addSql('INSERT INTO tp_destination_rates (tag, destinations_tag, rates_tag, destinationRateId) SELECT CONCAT("b", DRG.brandId, "dr", DRG.id), CONCAT("b", DRG.brandId, "dst", DR.id), CONCAT("b", DRG.brandId, "rt", DR.id), DR.id FROM DestinationRates DR INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId');
+        $this->addSql('INSERT INTO tp_destination_rates (tag, destinations_tag, rates_tag, destinationRateId) SELECT CONCAT("b", DRG.brandId, "dr", DRG.id), CONCAT("b", DRG.brandId, "dst", DR.destinationId), CONCAT("b", DRG.brandId, "rt", DR.id), DR.id FROM DestinationRates DR INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId');
 
         // Remove unused fields from kam_trunks_cdrs
         $this->addSql('ALTER TABLE kam_trunks_cdrs DROP FOREIGN KEY FK_92E58EB64EB67480');

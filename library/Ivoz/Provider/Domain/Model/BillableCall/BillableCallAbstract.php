@@ -79,6 +79,12 @@ abstract class BillableCallAbstract
     protected $endpointId;
 
     /**
+     * comment: enum:inbound|outbound
+     * @var string | null
+     */
+    protected $direction = 'outbound';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -89,27 +95,27 @@ abstract class BillableCallAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     protected $destination;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     protected $invoice;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     protected $trunksCdr;
 
@@ -154,7 +160,7 @@ abstract class BillableCallAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BillableCallInterface|null $entity
      * @param int $depth
      * @return BillableCallDto|null
      */
@@ -174,22 +180,22 @@ abstract class BillableCallAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BillableCallDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BillableCallDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BillableCallDto
-         */
         Assertion::isInstanceOf($dto, BillableCallDto::class);
 
         $self = new static(
@@ -209,6 +215,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
+            ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -218,7 +225,6 @@ abstract class BillableCallAbstract
             ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -226,16 +232,13 @@ abstract class BillableCallAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BillableCallDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BillableCallDto
-         */
         Assertion::isInstanceOf($dto, BillableCallDto::class);
 
         $this
@@ -252,6 +255,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
+            ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -262,7 +266,6 @@ abstract class BillableCallAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -287,6 +290,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName(self::getRatingPlanName())
             ->setEndpointType(self::getEndpointType())
             ->setEndpointId(self::getEndpointId())
+            ->setDirection(self::getDirection())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
@@ -315,6 +319,7 @@ abstract class BillableCallAbstract
             'ratingPlanName' => self::getRatingPlanName(),
             'endpointType' => self::getEndpointType(),
             'endpointId' => self::getEndpointId(),
+            'direction' => self::getDirection(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
@@ -331,7 +336,7 @@ abstract class BillableCallAbstract
      *
      * @param string $callid
      *
-     * @return self
+     * @return static
      */
     protected function setCallid($callid = null)
     {
@@ -359,7 +364,7 @@ abstract class BillableCallAbstract
      *
      * @param \DateTime $startTime
      *
-     * @return self
+     * @return static
      */
     protected function setStartTime($startTime = null)
     {
@@ -390,7 +395,7 @@ abstract class BillableCallAbstract
      *
      * @param float $duration
      *
-     * @return self
+     * @return static
      */
     protected function setDuration($duration)
     {
@@ -417,7 +422,7 @@ abstract class BillableCallAbstract
      *
      * @param string $caller
      *
-     * @return self
+     * @return static
      */
     protected function setCaller($caller = null)
     {
@@ -445,7 +450,7 @@ abstract class BillableCallAbstract
      *
      * @param string $callee
      *
-     * @return self
+     * @return static
      */
     protected function setCallee($callee = null)
     {
@@ -473,7 +478,7 @@ abstract class BillableCallAbstract
      *
      * @param float $cost
      *
-     * @return self
+     * @return static
      */
     protected function setCost($cost = null)
     {
@@ -504,7 +509,7 @@ abstract class BillableCallAbstract
      *
      * @param float $price
      *
-     * @return self
+     * @return static
      */
     protected function setPrice($price = null)
     {
@@ -535,13 +540,10 @@ abstract class BillableCallAbstract
      *
      * @param array $priceDetails
      *
-     * @return self
+     * @return static
      */
     protected function setPriceDetails($priceDetails = null)
     {
-        if (!is_null($priceDetails)) {
-        }
-
         $this->priceDetails = $priceDetails;
 
         return $this;
@@ -562,7 +564,7 @@ abstract class BillableCallAbstract
      *
      * @param string $carrierName
      *
-     * @return self
+     * @return static
      */
     protected function setCarrierName($carrierName = null)
     {
@@ -590,7 +592,7 @@ abstract class BillableCallAbstract
      *
      * @param string $destinationName
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationName($destinationName = null)
     {
@@ -618,7 +620,7 @@ abstract class BillableCallAbstract
      *
      * @param string $ratingPlanName
      *
-     * @return self
+     * @return static
      */
     protected function setRatingPlanName($ratingPlanName = null)
     {
@@ -646,7 +648,7 @@ abstract class BillableCallAbstract
      *
      * @param string $endpointType
      *
-     * @return self
+     * @return static
      */
     protected function setEndpointType($endpointType = null)
     {
@@ -674,7 +676,7 @@ abstract class BillableCallAbstract
      *
      * @param integer $endpointId
      *
-     * @return self
+     * @return static
      */
     protected function setEndpointId($endpointId = null)
     {
@@ -702,11 +704,42 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * Set direction
+     *
+     * @param string $direction
+     *
+     * @return static
+     */
+    protected function setDirection($direction = null)
+    {
+        if (!is_null($direction)) {
+            Assertion::choice($direction, [
+                BillableCallInterface::DIRECTION_INBOUND,
+                BillableCallInterface::DIRECTION_OUTBOUND
+            ], 'directionvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    /**
+     * Get direction
+     *
+     * @return string | null
+     */
+    public function getDirection()
+    {
+        return $this->direction;
+    }
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -730,7 +763,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -754,7 +787,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -778,7 +811,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
-     * @return self
+     * @return static
      */
     public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
     {
@@ -802,7 +835,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
     {
@@ -826,7 +859,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
     {
@@ -850,7 +883,7 @@ abstract class BillableCallAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr
      *
-     * @return self
+     * @return static
      */
     public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null)
     {

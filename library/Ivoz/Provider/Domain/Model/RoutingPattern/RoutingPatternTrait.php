@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,17 +18,17 @@ trait RoutingPatternTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $outgoingRoutings;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relPatternGroups;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $lcrRules;
 
@@ -45,20 +44,20 @@ trait RoutingPatternTrait
         $this->lcrRules = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
@@ -83,6 +82,7 @@ trait RoutingPatternTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -93,17 +93,14 @@ trait RoutingPatternTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
@@ -126,6 +123,8 @@ trait RoutingPatternTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -155,7 +154,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -177,10 +176,10 @@ trait RoutingPatternTrait
     /**
      * Replace outgoingRoutings
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return static
      */
-    public function replaceOutgoingRoutings(Collection $outgoingRoutings)
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -210,7 +209,7 @@ trait RoutingPatternTrait
 
     /**
      * Get outgoingRoutings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(Criteria $criteria = null)
@@ -227,7 +226,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup)
     {
@@ -249,10 +248,10 @@ trait RoutingPatternTrait
     /**
      * Replace relPatternGroups
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
-     * @return self
+     * @param ArrayCollection $relPatternGroups of Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     * @return static
      */
-    public function replaceRelPatternGroups(Collection $relPatternGroups)
+    public function replaceRelPatternGroups(ArrayCollection $relPatternGroups)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -282,7 +281,7 @@ trait RoutingPatternTrait
 
     /**
      * Get relPatternGroups
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
      */
     public function getRelPatternGroups(Criteria $criteria = null)
@@ -299,7 +298,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
-     * @return RoutingPatternTrait
+     * @return static
      */
     public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
@@ -321,10 +320,10 @@ trait RoutingPatternTrait
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
-     * @return self
+     * @param ArrayCollection $lcrRules of Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
+     * @return static
      */
-    public function replaceLcrRules(Collection $lcrRules)
+    public function replaceLcrRules(ArrayCollection $lcrRules)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -354,7 +353,7 @@ trait RoutingPatternTrait
 
     /**
      * Get lcrRules
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(Criteria $criteria = null)

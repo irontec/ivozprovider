@@ -63,7 +63,7 @@ abstract class CompanyRelCodecAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CompanyRelCodecInterface|null $entity
      * @param int $depth
      * @return CompanyRelCodecDto|null
      */
@@ -83,22 +83,22 @@ abstract class CompanyRelCodecAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CompanyRelCodecDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyRelCodecDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyRelCodecDto
-         */
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class CompanyRelCodecAbstract
             ->setCodec($fkTransformer->transform($dto->getCodec()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class CompanyRelCodecAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyRelCodecDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyRelCodecDto
-         */
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class CompanyRelCodecAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class CompanyRelCodecAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -191,7 +186,7 @@ abstract class CompanyRelCodecAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Codec\CodecInterface $codec
      *
-     * @return self
+     * @return static
      */
     public function setCodec(\Ivoz\Provider\Domain\Model\Codec\CodecInterface $codec)
     {

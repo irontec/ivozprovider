@@ -36,9 +36,10 @@ class RoutingPatternLifeCycleTest extends KernelTestCase
      */
     protected function addRoutingPattern()
     {
+        $dto = $this->getRoutingPatternDto();
         return $this
             ->entityTools
-            ->persistDto($this->getRoutingPatternDto(), null, true);
+            ->persistDto($dto, null, true);
     }
 
     protected function updateRoutingPattern()

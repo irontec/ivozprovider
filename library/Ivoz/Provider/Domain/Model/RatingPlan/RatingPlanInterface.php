@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface RatingPlanInterface extends EntityInterface
 {
+    const TIMINGTYPE_ALWAYS = 'always';
+    const TIMINGTYPE_CUSTOM = 'custom';
+
+
     /**
      * Transform Weekdays booleans to a string for TpTimings
      *
@@ -102,7 +106,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
 
@@ -118,7 +122,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup);
 
@@ -134,7 +138,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
      *
-     * @return self
+     * @return static
      */
     public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null);
 
@@ -150,7 +154,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
      *
-     * @return self
+     * @return static
      */
     public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null);
 

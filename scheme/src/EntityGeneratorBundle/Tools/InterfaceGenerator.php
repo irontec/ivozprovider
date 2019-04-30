@@ -90,7 +90,7 @@ class InterfaceGenerator extends EntityGenerator
         );
 
         $code = str_replace($placeHolders, $replacements, static::$classTemplate);
-        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
+        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'ArrayCollection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
         $classTrait = $metadata->name . 'Trait';
@@ -129,7 +129,8 @@ class InterfaceGenerator extends EntityGenerator
         );
 
         if ($useCollections) {
-            $response[] = 'use Doctrine\\Common\Collections\\Collection;';
+            $response[] = 'use Doctrine\Common\Collections\Criteria;';
+            $response[] = 'use Doctrine\\Common\Collections\\ArrayCollection;';
         }
 
         return "\n". implode("\n", $response) ."\n";
@@ -235,7 +236,7 @@ class InterfaceGenerator extends EntityGenerator
         }
 
         $stubMethods = $this->generateEntityStubMethods ? $this->generateEntityStubMethods($metadata) : null;
-        $code = array();
+        $code = $this->generateEntityFieldMappingProperties($metadata);
 
         if ($stubMethods) {
             $code[] = $stubMethods;
@@ -244,6 +245,58 @@ class InterfaceGenerator extends EntityGenerator
         return implode("\n", $code);
     }
 
+    /**
+     * @param ClassMetadataInfo $metadata
+     *
+     * @return string
+     */
+    protected function generateEntityFieldMappingProperties(ClassMetadataInfo $metadata)
+    {
+        $constants = [];
+
+        foreach ($metadata->fieldMappings as $fieldMapping) {
+            $comment = isset($fieldMapping['options']['comment'])
+                ? $fieldMapping['options']['comment']
+                : '';
+
+            if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
+                $acceptedValues = explode('|', $matches['fieldValues']);
+                $choices = $this->getEnumConstants($fieldMapping['fieldName'], $acceptedValues);
+                foreach ($acceptedValues as $key => $acceptedValue) {
+                    $choice = $choices[$key];
+                    $constants[] =
+                        $this->spaces
+                        . 'const '
+                        . $choice
+                        . " = '${acceptedValue}';";
+                }
+
+                $constants[] = "\n";
+            }
+        }
+
+        return $constants;
+    }
+
+
+    private function getEnumConstants($fieldName, $acceptedValues, $prefix = '')
+    {
+
+        $choices = [];
+        foreach ($acceptedValues as $acceptedValue) {
+            $choice =
+                $prefix
+                . strtoupper($fieldName)
+                . '_'
+                . strtoupper(
+                    preg_replace('/[^A-Z0-9]/i', '', $acceptedValue)
+                );
+
+            $choices[] = $choice;
+        }
+
+        return $choices;
+    }
 
     /**
      * {@inheritDoc}

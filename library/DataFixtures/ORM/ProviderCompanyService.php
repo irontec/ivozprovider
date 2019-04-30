@@ -55,47 +55,36 @@ class ProviderCompanyService extends Fixture implements DependentFixtureInterfac
 
         $item4 = $this->createEntityInstance(CompanyService::class);
         (function () {
-            $this->setCode("00");
+            $this->setCode("94");
         })->call($item4);
 
-        $item4->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item4->setService($this->getReference('_reference_ProviderService4'));
-        $this->addReference('_reference_ProviderCompanyService4', $item4);
+        $item4->setCompany($this->getReference('_reference_ProviderCompany2'));
+        $item4->setService($this->getReference('_reference_ProviderService1'));
+        $this->addReference('_reference_ProviderCompanyService5', $item4);
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
         $item5 = $this->createEntityInstance(CompanyService::class);
         (function () {
-            $this->setCode("94");
+            $this->setCode("95");
         })->call($item5);
 
         $item5->setCompany($this->getReference('_reference_ProviderCompany2'));
-        $item5->setService($this->getReference('_reference_ProviderService1'));
-        $this->addReference('_reference_ProviderCompanyService5', $item5);
+        $item5->setService($this->getReference('_reference_ProviderService2'));
+        $this->addReference('_reference_ProviderCompanyService6', $item5);
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
         $item6 = $this->createEntityInstance(CompanyService::class);
         (function () {
-            $this->setCode("95");
+            $this->setCode("93");
         })->call($item6);
 
         $item6->setCompany($this->getReference('_reference_ProviderCompany2'));
-        $item6->setService($this->getReference('_reference_ProviderService2'));
-        $this->addReference('_reference_ProviderCompanyService6', $item6);
+        $item6->setService($this->getReference('_reference_ProviderService3'));
+        $this->addReference('_reference_ProviderCompanyService7', $item6);
         $this->sanitizeEntityValues($item6);
         $manager->persist($item6);
-
-        $item7 = $this->createEntityInstance(CompanyService::class);
-        (function () {
-            $this->setCode("93");
-        })->call($item7);
-
-        $item7->setCompany($this->getReference('_reference_ProviderCompany2'));
-        $item7->setService($this->getReference('_reference_ProviderService3'));
-        $this->addReference('_reference_ProviderCompanyService7', $item7);
-        $this->sanitizeEntityValues($item7);
-        $manager->persist($item7);
 
         $manager->flush();
     }

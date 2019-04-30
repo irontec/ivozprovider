@@ -22,7 +22,7 @@ class DomainDoctrineRepository extends ServiceEntityRepository implements Domain
     }
 
     /**
-     * @param $domain
+     * @param string $domain
      * @return DomainInterface | null
      */
     public function findOneByDomain($domain)

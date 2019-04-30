@@ -11,6 +11,9 @@ production:
       controller: list
       pagination:
         items: 25
+      order:
+        field:
+          - DDI.DDIE164 asc
       <<: *Ddis
       title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
       class: ui-silk-lightning-go

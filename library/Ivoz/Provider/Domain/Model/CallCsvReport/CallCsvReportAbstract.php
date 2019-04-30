@@ -39,17 +39,17 @@ abstract class CallCsvReportAbstract
     protected $csv;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface
+     * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
      */
     protected $callCsvScheduler;
 
@@ -103,7 +103,7 @@ abstract class CallCsvReportAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CallCsvReportInterface|null $entity
      * @param int $depth
      * @return CallCsvReportDto|null
      */
@@ -123,22 +123,22 @@ abstract class CallCsvReportAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CallCsvReportDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallCsvReportDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallCsvReportDto
-         */
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
 
         $csv = new Csv(
@@ -161,7 +161,6 @@ abstract class CallCsvReportAbstract
             ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -169,16 +168,13 @@ abstract class CallCsvReportAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallCsvReportDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallCsvReportDto
-         */
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
 
         $csv = new Csv(
@@ -199,7 +195,6 @@ abstract class CallCsvReportAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -248,7 +243,7 @@ abstract class CallCsvReportAbstract
      *
      * @param string $sentTo
      *
-     * @return self
+     * @return static
      */
     protected function setSentTo($sentTo)
     {
@@ -275,7 +270,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \DateTime $inDate
      *
-     * @return self
+     * @return static
      */
     protected function setInDate($inDate)
     {
@@ -305,7 +300,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \DateTime $outDate
      *
-     * @return self
+     * @return static
      */
     protected function setOutDate($outDate)
     {
@@ -335,7 +330,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn)
     {
@@ -365,7 +360,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -389,7 +384,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -413,7 +408,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null)
     {
@@ -437,7 +432,7 @@ abstract class CallCsvReportAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv
      *
-     * @return self
+     * @return static
      */
     public function setCsv(Csv $csv)
     {

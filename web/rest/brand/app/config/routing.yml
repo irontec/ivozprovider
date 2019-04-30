@@ -11,11 +11,20 @@ api_admin_login:
 api_user_login:
   path: user_login
 
+post_auth_token_exchange:
+  path: '/token/exchange'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Auth\TokenExchangeAction
+    _api_resource_class: 'Model\Token'
+    _api_item_operation_name: 'post_auth_token_exchange'
+    _api_receive: false
+
 ###############################
 ## Refresh JWT Token
 ###############################
 gesdinet_jwt_refresh_token:
-  path:     /api/token/refresh
+  path: '/token/refresh'
   defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
 
 ###############################
@@ -28,4 +37,13 @@ get_my_rating_plan_prices:
     _controller: Controller\My\RatingPlanPricesAction
     _api_resource_class: 'Model\RatingPlanPrices'
     _api_collection_operation_name: 'get_my_rating_plan_prices'
+    _api_receive: false
+
+get_my_active_calls:
+  path: '/my/active_calls'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ActiveCallsAction
+    _api_resource_class: 'Model\ActiveCalls'
+    _api_item_operation_name: 'get_my_active_calls'
     _api_receive: false

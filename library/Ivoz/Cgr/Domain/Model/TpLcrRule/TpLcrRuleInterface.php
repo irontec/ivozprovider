@@ -108,7 +108,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
 

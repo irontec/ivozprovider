@@ -1,1 +1,1 @@
-../vpbx/rating_profiles.rst
+.. incldue:: ../vpbx/rating_profiles.rst

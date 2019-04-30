@@ -96,6 +96,7 @@ trait DbIntegrationTestHelperTrait
             (new RequestId)->toString(),
             end($classSegments),
             'setUp',
+            [],
             []
         );
 

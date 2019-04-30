@@ -4,10 +4,16 @@ namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
+    const UNIT_WEEK = 'week';
+    const UNIT_MONTH = 'month';
+    const UNIT_YEAR = 'year';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -90,14 +96,14 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null);
 
     /**
      * Get invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate();
 
@@ -106,7 +112,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -122,7 +128,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -138,7 +144,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null);
 
@@ -154,7 +160,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $relFixedCost
      *
-     * @return InvoiceSchedulerTrait
+     * @return static
      */
     public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $relFixedCost);
 
@@ -168,14 +174,14 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Replace relFixedCosts
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts
-     * @return self
+     * @param ArrayCollection $relFixedCosts of Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface
+     * @return static
      */
-    public function replaceRelFixedCosts(Collection $relFixedCosts);
+    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts);
 
     /**
      * Get relFixedCosts
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[]
      */
     public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);

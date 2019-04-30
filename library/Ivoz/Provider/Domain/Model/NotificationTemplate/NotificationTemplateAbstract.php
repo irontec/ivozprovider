@@ -13,13 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class NotificationTemplateAbstract
 {
-    const TYPE_VOICEMAIL = 'voicemail';
-    const TYPE_FAX = 'fax';
-    const TYPE_LIMIT = 'limit';
-    const TYPE_LOWBALANCE = 'lowbalance';
-    const TYPE_INVOICE = 'invoice';
-    const TYPE_CALLCSV = 'callCsv';
-
     /**
      * @var string
      */
@@ -32,7 +25,7 @@ abstract class NotificationTemplateAbstract
     protected $type;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
@@ -78,7 +71,7 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param NotificationTemplateInterface|null $entity
      * @param int $depth
      * @return NotificationTemplateDto|null
      */
@@ -98,22 +91,22 @@ abstract class NotificationTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var NotificationTemplateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param NotificationTemplateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto NotificationTemplateDto
-         */
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
         $self = new static(
@@ -125,7 +118,6 @@ abstract class NotificationTemplateAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -133,16 +125,13 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param NotificationTemplateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto NotificationTemplateDto
-         */
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
         $this
@@ -152,7 +141,6 @@ abstract class NotificationTemplateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -187,7 +175,7 @@ abstract class NotificationTemplateAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -214,19 +202,19 @@ abstract class NotificationTemplateAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
-            self::TYPE_VOICEMAIL,
-            self::TYPE_FAX,
-            self::TYPE_LIMIT,
-            self::TYPE_LOWBALANCE,
-            self::TYPE_INVOICE,
-            self::TYPE_CALLCSV
+            NotificationTemplateInterface::TYPE_VOICEMAIL,
+            NotificationTemplateInterface::TYPE_FAX,
+            NotificationTemplateInterface::TYPE_LIMIT,
+            NotificationTemplateInterface::TYPE_LOWBALANCE,
+            NotificationTemplateInterface::TYPE_INVOICE,
+            NotificationTemplateInterface::TYPE_CALLCSV
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -249,7 +237,7 @@ abstract class NotificationTemplateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {

@@ -195,7 +195,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -209,7 +209,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {
@@ -241,7 +241,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -255,7 +255,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTransformationRuleSetId()
     {

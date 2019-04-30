@@ -124,7 +124,7 @@ abstract class DdiProviderRegistrationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DdiProviderRegistrationInterface|null $entity
      * @param int $depth
      * @return DdiProviderRegistrationDto|null
      */
@@ -144,22 +144,22 @@ abstract class DdiProviderRegistrationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DdiProviderRegistrationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiProviderRegistrationDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiProviderRegistrationDto
-         */
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
 
         $self = new static(
@@ -178,7 +178,6 @@ abstract class DdiProviderRegistrationAbstract
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -186,16 +185,13 @@ abstract class DdiProviderRegistrationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiProviderRegistrationDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiProviderRegistrationDto
-         */
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
 
         $this
@@ -212,7 +208,6 @@ abstract class DdiProviderRegistrationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -261,7 +256,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -288,7 +283,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain)
     {
@@ -315,7 +310,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $realm
      *
-     * @return self
+     * @return static
      */
     protected function setRealm($realm)
     {
@@ -342,7 +337,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $authUsername
      *
-     * @return self
+     * @return static
      */
     protected function setAuthUsername($authUsername)
     {
@@ -369,7 +364,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $authPassword
      *
-     * @return self
+     * @return static
      */
     protected function setAuthPassword($authPassword)
     {
@@ -396,7 +391,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $authProxy
      *
-     * @return self
+     * @return static
      */
     protected function setAuthProxy($authProxy)
     {
@@ -423,7 +418,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {
@@ -450,7 +445,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param boolean $multiDdi
      *
-     * @return self
+     * @return static
      */
     protected function setMultiDdi($multiDdi = null)
     {
@@ -478,7 +473,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param string $contactUsername
      *
-     * @return self
+     * @return static
      */
     protected function setContactUsername($contactUsername)
     {
@@ -505,7 +500,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg
      *
-     * @return self
+     * @return static
      */
     public function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg = null)
     {
@@ -529,7 +524,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
-     * @return self
+     * @return static
      */
     public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
     {

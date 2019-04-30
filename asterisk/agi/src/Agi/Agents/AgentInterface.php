@@ -2,6 +2,7 @@
 namespace Agi\Agents;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
 
 interface AgentInterface
@@ -63,4 +64,14 @@ interface AgentInterface
      * @return string
      */
     public function getVoiceMail();
+
+    /**
+     * @return bool
+     */
+    public function getVoicemailEnabled();
+
+    /**
+     * @return LocutionInterface | null
+     */
+    public function getVoiceMailLocution();
 }

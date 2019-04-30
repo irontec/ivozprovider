@@ -24,18 +24,7 @@ class RatesImporter extends AbstractJob
     );
 
     /**
-     * Invoicer constructor.
-     *
-     * @param Manager $manager
-     * @param array $settings
-     */
-    public function __construct(Manager $manager, array $settings)
-    {
-        return parent::__construct($manager, $settings);
-    }
-
-    /**
-     * @param $params
+     * @param array $params
      * @return $this
      */
     public function setParams($params)

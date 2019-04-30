@@ -71,7 +71,7 @@ class ResidentialAgent implements AgentInterface
             }
         }
 
-        if (!isset($ddi)) {
+        if (empty($ddi) && isset($companyDDIs)) {
             // Allow diversion from any company DDI
             $callerIdNum = $this->agi->getRedirecting('from-num');
 
@@ -110,7 +110,16 @@ class ResidentialAgent implements AgentInterface
     }
 
     /**
+     * Residential devices have always voicemail enabled
+     */
+    public function getVoicemailEnabled()
+    {
+        return true;
+    }
+
+    /**
      * Return residential voicemail identifier
+     * @return string
      */
     public function getVoiceMail()
     {

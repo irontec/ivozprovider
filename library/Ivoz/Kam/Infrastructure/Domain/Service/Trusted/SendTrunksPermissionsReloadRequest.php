@@ -2,29 +2,31 @@
 
 namespace Ivoz\Kam\Infrastructure\Domain\Service\Trusted;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Kam\Domain\Model\Trusted\TrustedInterface;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleEventHandlerInterface;
 
 class SendTrunksPermissionsReloadRequest implements TrustedLifecycleEventHandlerInterface
 {
-    protected $trunksPermissionsReload;
+    const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
+
+    protected $trunksClient;
 
     public function __construct(
-        XmlRpcTrunksRequestInterface $trunksPermissionsReload
+        TrunksClientInterface $trunksClient
     ) {
-        $this->trunksPermissionsReload = $trunksPermissionsReload;
+        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 20
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
     public function execute(TrustedInterface $trusted)
     {
-        $this->trunksPermissionsReload->send();
+        $this->trunksClient->reloadTrustedPermissions();
     }
 }

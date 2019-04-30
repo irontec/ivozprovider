@@ -76,7 +76,7 @@ abstract class RouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RouteLockInterface|null $entity
      * @param int $depth
      * @return RouteLockDto|null
      */
@@ -96,22 +96,22 @@ abstract class RouteLockAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RouteLockDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RouteLockDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RouteLockDto
-         */
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
         $self = new static(
@@ -124,7 +124,6 @@ abstract class RouteLockAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -132,16 +131,13 @@ abstract class RouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RouteLockDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RouteLockDto
-         */
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
         $this
@@ -152,7 +148,6 @@ abstract class RouteLockAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -189,7 +184,7 @@ abstract class RouteLockAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -216,7 +211,7 @@ abstract class RouteLockAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -243,7 +238,7 @@ abstract class RouteLockAbstract
      *
      * @param boolean $open
      *
-     * @return self
+     * @return static
      */
     protected function setOpen($open)
     {
@@ -270,7 +265,7 @@ abstract class RouteLockAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

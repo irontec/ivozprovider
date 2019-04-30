@@ -63,12 +63,12 @@ abstract class TpAccountActionAbstract
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
@@ -126,7 +126,7 @@ abstract class TpAccountActionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpAccountActionInterface|null $entity
      * @param int $depth
      * @return TpAccountActionDto|null
      */
@@ -146,22 +146,22 @@ abstract class TpAccountActionAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpAccountActionDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpAccountActionDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpAccountActionDto
-         */
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
         $self = new static(
@@ -181,7 +181,6 @@ abstract class TpAccountActionAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -189,16 +188,13 @@ abstract class TpAccountActionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpAccountActionDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpAccountActionDto
-         */
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
         $this
@@ -216,7 +212,6 @@ abstract class TpAccountActionAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -267,7 +262,7 @@ abstract class TpAccountActionAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -294,7 +289,7 @@ abstract class TpAccountActionAbstract
      *
      * @param string $loadid
      *
-     * @return self
+     * @return static
      */
     protected function setLoadid($loadid)
     {
@@ -321,7 +316,7 @@ abstract class TpAccountActionAbstract
      *
      * @param string $tenant
      *
-     * @return self
+     * @return static
      */
     protected function setTenant($tenant)
     {
@@ -348,7 +343,7 @@ abstract class TpAccountActionAbstract
      *
      * @param string $account
      *
-     * @return self
+     * @return static
      */
     protected function setAccount($account)
     {
@@ -375,7 +370,7 @@ abstract class TpAccountActionAbstract
      *
      * @param string $actionPlanTag
      *
-     * @return self
+     * @return static
      */
     protected function setActionPlanTag($actionPlanTag = null)
     {
@@ -403,7 +398,7 @@ abstract class TpAccountActionAbstract
      *
      * @param string $actionTriggersTag
      *
-     * @return self
+     * @return static
      */
     protected function setActionTriggersTag($actionTriggersTag = null)
     {
@@ -431,7 +426,7 @@ abstract class TpAccountActionAbstract
      *
      * @param boolean $allowNegative
      *
-     * @return self
+     * @return static
      */
     protected function setAllowNegative($allowNegative)
     {
@@ -458,7 +453,7 @@ abstract class TpAccountActionAbstract
      *
      * @param boolean $disabled
      *
-     * @return self
+     * @return static
      */
     protected function setDisabled($disabled)
     {
@@ -485,7 +480,7 @@ abstract class TpAccountActionAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -515,7 +510,7 @@ abstract class TpAccountActionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -539,7 +534,7 @@ abstract class TpAccountActionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {

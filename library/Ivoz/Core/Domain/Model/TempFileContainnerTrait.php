@@ -12,8 +12,8 @@ trait TempFileContainnerTrait
     protected $tmpFiles = [];
 
     /**
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, TempFile $file)
     {
@@ -21,7 +21,7 @@ trait TempFileContainnerTrait
     }
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(TempFile $file)
@@ -35,7 +35,7 @@ trait TempFileContainnerTrait
     }
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles()
     {
@@ -44,7 +44,7 @@ trait TempFileContainnerTrait
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName)
     {

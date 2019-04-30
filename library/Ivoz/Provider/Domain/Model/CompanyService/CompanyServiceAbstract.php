@@ -69,7 +69,7 @@ abstract class CompanyServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CompanyServiceInterface|null $entity
      * @param int $depth
      * @return CompanyServiceDto|null
      */
@@ -89,22 +89,22 @@ abstract class CompanyServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CompanyServiceDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyServiceDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyServiceDto
-         */
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
         $self = new static(
@@ -116,7 +116,6 @@ abstract class CompanyServiceAbstract
             ->setService($fkTransformer->transform($dto->getService()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -124,16 +123,13 @@ abstract class CompanyServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyServiceDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyServiceDto
-         */
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
         $this
@@ -143,7 +139,6 @@ abstract class CompanyServiceAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -178,7 +173,7 @@ abstract class CompanyServiceAbstract
      *
      * @param string $code
      *
-     * @return self
+     * @return static
      */
     protected function setCode($code)
     {
@@ -205,7 +200,7 @@ abstract class CompanyServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -229,7 +224,7 @@ abstract class CompanyServiceAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Service\ServiceInterface $service
      *
-     * @return self
+     * @return static
      */
     public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
     {

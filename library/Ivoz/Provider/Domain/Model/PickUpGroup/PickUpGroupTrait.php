@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait PickUpGroupTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relUsers;
 
@@ -33,20 +32,20 @@ trait PickUpGroupTrait
         $this->relUsers = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PickUpGroupDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PickUpGroupDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelUsers())) {
             $self->replaceRelUsers(
@@ -55,6 +54,7 @@ trait PickUpGroupTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -65,17 +65,14 @@ trait PickUpGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PickUpGroupDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PickUpGroupDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelUsers())) {
             $this->replaceRelUsers(
@@ -84,6 +81,8 @@ trait PickUpGroupTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -113,7 +112,7 @@ trait PickUpGroupTrait
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser
      *
-     * @return PickUpGroupTrait
+     * @return static
      */
     public function addRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser)
     {
@@ -135,10 +134,10 @@ trait PickUpGroupTrait
     /**
      * Replace relUsers
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[] $relUsers
-     * @return self
+     * @param ArrayCollection $relUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+     * @return static
      */
-    public function replaceRelUsers(Collection $relUsers)
+    public function replaceRelUsers(ArrayCollection $relUsers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,7 +167,7 @@ trait PickUpGroupTrait
 
     /**
      * Get relUsers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getRelUsers(Criteria $criteria = null)

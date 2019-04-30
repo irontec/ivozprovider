@@ -9,6 +9,10 @@ services:
 
   Ivoz\Core\Infrastructure\Domain\Service\Gearman\FakeManager: ~
 
+  ###############################################
+  ## Jobs
+  ###############################################
+
   Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates:
     arguments:
       $settings: '%gearmand%'
@@ -33,9 +37,27 @@ services:
       $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
       $settings: '%gearmand%'
 
-  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc::Delayed:
-    class: Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc
+  ###############################################
+  ## Client
+  ###############################################
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\FakeXmlRpcTrunksRequest: ~
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequest:
     arguments:
-      $method: 'WorkerXmlrpc~delayed'
-      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
-      $settings: '%gearmand%'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\FakeXmlRpcTrunksRequest' }
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequestInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequest'
+
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\FakeXmlRpcUsersRequest: ~
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcUsersRequest:
+    arguments:
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
+    tags:
+    - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\FakeXmlRpcUsersRequest' }
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcUsersRequestInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcUsersRequest'

@@ -59,8 +59,10 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
     }
 
     /**
+     * @param CarrierInterface $entity
+     * @return string
+     * @throws \InvalidArgumentException
      * @see AbstractBalanceService::getTenant
-     * @inheritdoc
      */
     protected function getTenant(EntityInterface $entity)
     {

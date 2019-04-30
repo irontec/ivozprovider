@@ -7,6 +7,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface RecordingInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const TYPE_ONDEMAND = 'ondemand';
+    const TYPE_DDI = 'ddi';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -72,7 +76,7 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -88,7 +92,7 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile
      *
-     * @return self
+     * @return static
      */
     public function setRecordedFile(\Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile);
 
@@ -100,25 +104,25 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     public function getRecordedFile();
 
     /**
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

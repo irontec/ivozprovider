@@ -81,7 +81,7 @@ abstract class ConferenceRoomAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConferenceRoomInterface|null $entity
      * @param int $depth
      * @return ConferenceRoomDto|null
      */
@@ -101,22 +101,22 @@ abstract class ConferenceRoomAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConferenceRoomDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConferenceRoomDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConferenceRoomDto
-         */
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
         $self = new static(
@@ -130,7 +130,6 @@ abstract class ConferenceRoomAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -138,16 +137,13 @@ abstract class ConferenceRoomAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConferenceRoomDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConferenceRoomDto
-         */
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
         $this
@@ -159,7 +155,6 @@ abstract class ConferenceRoomAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -198,7 +193,7 @@ abstract class ConferenceRoomAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -225,7 +220,7 @@ abstract class ConferenceRoomAbstract
      *
      * @param boolean $pinProtected
      *
-     * @return self
+     * @return static
      */
     protected function setPinProtected($pinProtected)
     {
@@ -252,7 +247,7 @@ abstract class ConferenceRoomAbstract
      *
      * @param string $pinCode
      *
-     * @return self
+     * @return static
      */
     protected function setPinCode($pinCode = null)
     {
@@ -280,7 +275,7 @@ abstract class ConferenceRoomAbstract
      *
      * @param integer $maxMembers
      *
-     * @return self
+     * @return static
      */
     protected function setMaxMembers($maxMembers)
     {
@@ -308,7 +303,7 @@ abstract class ConferenceRoomAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

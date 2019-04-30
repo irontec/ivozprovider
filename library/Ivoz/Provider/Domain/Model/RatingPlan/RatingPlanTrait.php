@@ -34,22 +34,23 @@ trait RatingPlanTrait
         parent::__construct(...func_get_args());
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -60,18 +61,17 @@ trait RatingPlanTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
+
+        $this->sanitizeValues();
 
         return $this;
     }
@@ -102,7 +102,7 @@ trait RatingPlanTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
      *
-     * @return self
+     * @return static
      */
     public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null)
     {
@@ -126,7 +126,7 @@ trait RatingPlanTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
      *
-     * @return self
+     * @return static
      */
     public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null)
     {

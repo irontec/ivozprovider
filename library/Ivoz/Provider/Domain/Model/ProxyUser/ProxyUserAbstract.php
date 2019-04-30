@@ -63,7 +63,7 @@ abstract class ProxyUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ProxyUserInterface|null $entity
      * @param int $depth
      * @return ProxyUserDto|null
      */
@@ -83,22 +83,22 @@ abstract class ProxyUserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ProxyUserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ProxyUserDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ProxyUserDto
-         */
         Assertion::isInstanceOf($dto, ProxyUserDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class ProxyUserAbstract
             ->setIp($dto->getIp())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class ProxyUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ProxyUserDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ProxyUserDto
-         */
         Assertion::isInstanceOf($dto, ProxyUserDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class ProxyUserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class ProxyUserAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {
@@ -195,7 +190,7 @@ abstract class ProxyUserAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {

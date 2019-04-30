@@ -12,8 +12,8 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 class UserAssembler implements CustomEntityAssemblerInterface
 {
     /**
-     * @param DataTransferObjectInterface|UserDto $dto
-     * @param EntityInterface|UserInterface $entity
+     * @param UserDto $dto
+     * @param UserInterface $entity
      * @throws \Exception
      */
     public function fromDto(

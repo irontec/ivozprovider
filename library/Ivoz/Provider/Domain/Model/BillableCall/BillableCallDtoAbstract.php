@@ -76,6 +76,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $endpointId;
 
     /**
+     * @var string
+     */
+    private $direction = 'outbound';
+
+    /**
      * @var integer
      */
     private $id;
@@ -146,6 +151,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'ratingPlanName' => 'ratingPlanName',
             'endpointType' => 'endpointType',
             'endpointId' => 'endpointId',
+            'direction' => 'direction',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -176,6 +182,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'ratingPlanName' => $this->getRatingPlanName(),
             'endpointType' => $this->getEndpointType(),
             'endpointId' => $this->getEndpointId(),
+            'direction' => $this->getDirection(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -448,6 +455,26 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $direction
+     *
+     * @return static
+     */
+    public function setDirection($direction = null)
+    {
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDirection()
+    {
+        return $this->direction;
+    }
+
+    /**
      * @param integer $id
      *
      * @return static
@@ -488,7 +515,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -502,7 +529,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {
@@ -534,7 +561,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -548,7 +575,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -580,7 +607,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -594,7 +621,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCarrierId()
     {
@@ -626,7 +653,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -640,7 +667,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDestinationId()
     {
@@ -672,7 +699,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -686,7 +713,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getRatingPlanGroupId()
     {
@@ -718,7 +745,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -732,7 +759,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getInvoiceId()
     {
@@ -764,7 +791,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -778,7 +805,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTrunksCdrId()
     {

@@ -85,8 +85,8 @@ trait ChangelogTrait
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
+     * @param string $dbFieldName
+     * @return bool
      * @throws \Exception
      */
     public function hasChanged($dbFieldName)
@@ -100,7 +100,7 @@ trait ChangelogTrait
     }
 
     /**
-     * @param $dbFieldName
+     * @param string $dbFieldName
      * @return mixed
      * @throws \Exception
      */
@@ -121,10 +121,19 @@ trait ChangelogTrait
         $changes = [];
         $currentValues = $this->__toArray();
         foreach ($currentValues as $key => $value) {
-            if ($this->_initialValues[$key] === $currentValues[$key]) {
+            $isDateTime =
+                $value instanceof \DateTimeInterface
+                || $this->_initialValues[$key] instanceof \DateTimeInterface;
+
+            $strictCompare = !$isDateTime;
+
+            $notChanged = $strictCompare
+                ? $this->_initialValues[$key] === $currentValues[$key]
+                : $this->_initialValues[$key] == $currentValues[$key];
+
+            if ($notChanged) {
                 continue;
             }
-
             $value = $currentValues[$key];
             if ($value instanceof \DateTime) {
                 $value = $value->format('Y-m-d H:i:s');

@@ -113,7 +113,7 @@ abstract class QueueAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param QueueInterface|null $entity
      * @param int $depth
      * @return QueueDto|null
      */
@@ -133,22 +133,22 @@ abstract class QueueAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var QueueDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param QueueDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto QueueDto
-         */
         Assertion::isInstanceOf($dto, QueueDto::class);
 
         $self = new static(
@@ -168,7 +168,6 @@ abstract class QueueAbstract
             ->setQueue($fkTransformer->transform($dto->getQueue()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -176,16 +175,13 @@ abstract class QueueAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param QueueDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto QueueDto
-         */
         Assertion::isInstanceOf($dto, QueueDto::class);
 
         $this
@@ -203,7 +199,6 @@ abstract class QueueAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -254,7 +249,7 @@ abstract class QueueAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -281,7 +276,7 @@ abstract class QueueAbstract
      *
      * @param string $periodicAnnounce
      *
-     * @return self
+     * @return static
      */
     protected function setPeriodicAnnounce($periodicAnnounce = null)
     {
@@ -309,7 +304,7 @@ abstract class QueueAbstract
      *
      * @param integer $periodicAnnounceFrequency
      *
-     * @return self
+     * @return static
      */
     protected function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
     {
@@ -340,7 +335,7 @@ abstract class QueueAbstract
      *
      * @param integer $timeout
      *
-     * @return self
+     * @return static
      */
     protected function setTimeout($timeout = null)
     {
@@ -371,7 +366,7 @@ abstract class QueueAbstract
      *
      * @param string $autopause
      *
-     * @return self
+     * @return static
      */
     protected function setAutopause($autopause)
     {
@@ -397,7 +392,7 @@ abstract class QueueAbstract
      *
      * @param string $ringinuse
      *
-     * @return self
+     * @return static
      */
     protected function setRinginuse($ringinuse)
     {
@@ -423,7 +418,7 @@ abstract class QueueAbstract
      *
      * @param integer $wrapuptime
      *
-     * @return self
+     * @return static
      */
     protected function setWrapuptime($wrapuptime = null)
     {
@@ -454,7 +449,7 @@ abstract class QueueAbstract
      *
      * @param integer $maxlen
      *
-     * @return self
+     * @return static
      */
     protected function setMaxlen($maxlen = null)
     {
@@ -485,13 +480,10 @@ abstract class QueueAbstract
      *
      * @param string $strategy
      *
-     * @return self
+     * @return static
      */
     protected function setStrategy($strategy = null)
     {
-        if (!is_null($strategy)) {
-        }
-
         $this->strategy = $strategy;
 
         return $this;
@@ -512,7 +504,7 @@ abstract class QueueAbstract
      *
      * @param integer $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight = null)
     {
@@ -543,7 +535,7 @@ abstract class QueueAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
      *
-     * @return self
+     * @return static
      */
     public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
     {

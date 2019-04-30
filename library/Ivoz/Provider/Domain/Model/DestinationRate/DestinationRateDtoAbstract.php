@@ -224,7 +224,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -238,7 +238,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTpRateId()
     {
@@ -270,7 +270,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -284,7 +284,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTpDestinationRateId()
     {
@@ -316,7 +316,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -330,7 +330,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDestinationRateGroupId()
     {
@@ -362,7 +362,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -376,7 +376,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDestinationId()
     {

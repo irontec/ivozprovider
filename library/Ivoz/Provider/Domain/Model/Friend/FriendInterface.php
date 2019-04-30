@@ -3,10 +3,41 @@
 namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface FriendInterface extends LoggableEntityInterface
 {
+    const TRANSPORT_UDP = 'udp';
+    const TRANSPORT_TCP = 'tcp';
+    const TRANSPORT_TLS = 'tls';
+
+
+    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+
+
+    const CALLERIDUPDATEHEADER_PAI = 'pai';
+    const CALLERIDUPDATEHEADER_RPID = 'rpid';
+
+
+    const UPDATECALLERID_YES = 'yes';
+    const UPDATECALLERID_NO = 'no';
+
+
+    const DIRECTCONNECTIVITY_YES = 'yes';
+    const DIRECTCONNECTIVITY_NO = 'no';
+    const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
+
+
+    const DDIIN_YES = 'yes';
+    const DDIIN_NO = 'no';
+
+
+    const T38PASSTHROUGH_YES = 'yes';
+    const T38PASSTHROUGH_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -14,26 +45,34 @@ interface FriendInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * {@inheritDoc}
-     * @see FriendAbstract::setName
+     * @return bool
      */
-    public function setName($name);
+    public function isInterPbxConnectivity();
+
+    /**
+     * @param string $number
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     */
+    public function getInterCompanyExtension($number);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setIp
+     * @deprecated this method will be protected
      */
     public function setIp($ip = null);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPort
+     * @deprecated this method will be protected
      */
     public function setPort($port = null);
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPassword
+     * @deprecated this method will be protected
      */
     public function setPassword($password = null);
 
@@ -48,7 +87,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getSorcery();
 
     /**
-     * @param $exten
+     * @param string $exten
      * @return bool
      */
     public function checkExtension($exten);
@@ -184,11 +223,18 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDdiIn();
 
     /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough();
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -204,7 +250,7 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
 
@@ -220,14 +266,14 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
 
@@ -236,14 +282,14 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
      *
-     * @return self
+     * @return static
      */
     public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null);
 
     /**
      * Get callAcl
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     public function getCallAcl();
 
@@ -252,7 +298,7 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
 
@@ -261,23 +307,39 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
+
+    /**
+     * Set interCompany
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany
+     *
+     * @return static
+     */
+    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null);
+
+    /**
+     * Get interCompany
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     */
+    public function getInterCompany();
 
     /**
      * Add psEndpoint
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return FriendTrait
+     * @return static
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
 
@@ -291,14 +353,14 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Replace psEndpoints
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
-     * @return self
+     * @param ArrayCollection $psEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @return static
      */
-    public function replacePsEndpoints(Collection $psEndpoints);
+    public function replacePsEndpoints(ArrayCollection $psEndpoints);
 
     /**
      * Get psEndpoints
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -308,7 +370,7 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface $pattern
      *
-     * @return FriendTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface $pattern);
 
@@ -322,14 +384,14 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[] $patterns
-     * @return self
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface
+     * @return static
      */
-    public function replacePatterns(Collection $patterns);
+    public function replacePatterns(ArrayCollection $patterns);
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);

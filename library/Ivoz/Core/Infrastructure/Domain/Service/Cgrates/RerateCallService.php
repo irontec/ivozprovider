@@ -4,7 +4,6 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
-use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Psr\Log\LoggerInterface;
 
@@ -31,7 +30,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     protected $logger;
 
     public function __construct(
-        ClientInterface $jsonRpcClient,
+        CgrRpcClient $jsonRpcClient,
         BillableCallRepository $billableCallRepository,
         TrunksCdrRepository $trunksCdrRepository,
         ProcessExternalCdr $processExternalCdr,
@@ -42,7 +41,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
         $this->processExternalCdr = $processExternalCdr;
         $this->logger = $logger;
 
-        return parent::__construct(
+        parent::__construct(
             $jsonRpcClient
         );
     }

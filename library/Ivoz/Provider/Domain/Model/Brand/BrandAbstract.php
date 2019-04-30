@@ -50,12 +50,12 @@ abstract class BrandAbstract
     protected $invoice;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     protected $language;
 
@@ -65,7 +65,7 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     protected $currency;
 
@@ -117,7 +117,7 @@ abstract class BrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param BrandInterface|null $entity
      * @param int $depth
      * @return BrandDto|null
      */
@@ -137,22 +137,22 @@ abstract class BrandAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var BrandDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BrandDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BrandDto
-         */
         Assertion::isInstanceOf($dto, BrandDto::class);
 
         $logo = new Logo(
@@ -188,7 +188,6 @@ abstract class BrandAbstract
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -196,16 +195,13 @@ abstract class BrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param BrandDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto BrandDto
-         */
         Assertion::isInstanceOf($dto, BrandDto::class);
 
         $logo = new Logo(
@@ -239,7 +235,6 @@ abstract class BrandAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -306,7 +301,7 @@ abstract class BrandAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -333,7 +328,7 @@ abstract class BrandAbstract
      *
      * @param string $domainUsers
      *
-     * @return self
+     * @return static
      */
     protected function setDomainUsers($domainUsers = null)
     {
@@ -361,7 +356,7 @@ abstract class BrandAbstract
      *
      * @param integer $recordingsLimitMB
      *
-     * @return self
+     * @return static
      */
     protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
@@ -392,7 +387,7 @@ abstract class BrandAbstract
      *
      * @param string $recordingsLimitEmail
      *
-     * @return self
+     * @return static
      */
     protected function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
@@ -420,7 +415,7 @@ abstract class BrandAbstract
      *
      * @param integer $maxCalls
      *
-     * @return self
+     * @return static
      */
     protected function setMaxCalls($maxCalls)
     {
@@ -448,7 +443,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -472,7 +467,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
@@ -484,7 +479,7 @@ abstract class BrandAbstract
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage()
     {
@@ -496,7 +491,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
      *
-     * @return self
+     * @return static
      */
     public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone)
     {
@@ -520,7 +515,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -532,7 +527,7 @@ abstract class BrandAbstract
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency()
     {
@@ -544,7 +539,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
      *
-     * @return self
+     * @return static
      */
     public function setLogo(Logo $logo)
     {
@@ -567,7 +562,7 @@ abstract class BrandAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(Invoice $invoice)
     {

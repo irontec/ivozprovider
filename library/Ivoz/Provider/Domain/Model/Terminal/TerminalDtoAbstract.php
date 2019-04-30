@@ -51,6 +51,11 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $lastProvisionDate;
 
     /**
+     * @var string
+     */
+    private $t38Passthrough = 'no';
+
+    /**
      * @var integer
      */
     private $id;
@@ -106,6 +111,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'password' => 'password',
             'mac' => 'mac',
             'lastProvisionDate' => 'lastProvisionDate',
+            't38Passthrough' => 't38Passthrough',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -127,6 +133,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'password' => $this->getPassword(),
             'mac' => $this->getMac(),
             'lastProvisionDate' => $this->getLastProvisionDate(),
+            't38Passthrough' => $this->getT38Passthrough(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -297,6 +304,26 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    public function setT38Passthrough($t38Passthrough = null)
+    {
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
+    }
+
+    /**
      * @param integer $id
      *
      * @return static
@@ -337,7 +364,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -351,7 +378,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -383,7 +410,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -397,7 +424,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDomainId()
     {
@@ -429,7 +456,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -443,7 +470,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTerminalModelId()
     {

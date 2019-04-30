@@ -129,7 +129,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -143,7 +143,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFixedCostId()
     {
@@ -175,7 +175,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -189,7 +189,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getInvoiceId()
     {

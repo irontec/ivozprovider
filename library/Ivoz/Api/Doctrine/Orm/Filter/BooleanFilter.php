@@ -27,7 +27,12 @@ class BooleanFilter extends BaseBooleanFilter
         ResourceMetadataFactoryInterface $resourceMetadataFactory
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        return parent::__construct(...func_get_args());
+        parent::__construct(
+            $managerRegistry,
+            $requestStack,
+            $logger,
+            $properties
+        );
     }
 
     /**

@@ -9,24 +9,14 @@ use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry;
 
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var CountryRepository
-     */
     protected $countryRepository;
-
-    /**
-     * @var UpdateByRoutingPattern
-     */
     protected $routingPatternGroupByRoutingPatternAndCountry;
 
     public function __construct(
@@ -71,6 +61,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setPrefix((string) $country->getCountryCode())
                 ->setBrandId($entity->getId());
 
+            /** @var RoutingPatternInterface $routingPattern */
             $routingPattern = $this->entityTools->persistDto(
                 $routingPatternDto,
                 null,

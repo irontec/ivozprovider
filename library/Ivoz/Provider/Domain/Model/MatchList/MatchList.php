@@ -34,7 +34,7 @@ class MatchList extends MatchListAbstract implements MatchListInterface
      * Check if the given number matches the list rules
      *
      * @param string $number in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function numberMatches($number)
     {

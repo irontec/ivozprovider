@@ -482,7 +482,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -496,7 +496,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -528,7 +528,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -542,7 +542,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getPeriodicAnnounceLocutionId()
     {
@@ -574,7 +574,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -588,7 +588,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTimeoutLocutionId()
     {
@@ -620,7 +620,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -634,7 +634,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTimeoutExtensionId()
     {
@@ -666,7 +666,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -680,7 +680,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTimeoutVoiceMailUserId()
     {
@@ -712,7 +712,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -726,7 +726,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFullLocutionId()
     {
@@ -758,7 +758,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -772,7 +772,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFullExtensionId()
     {
@@ -804,7 +804,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -818,7 +818,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFullVoiceMailUserId()
     {
@@ -850,7 +850,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -864,7 +864,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTimeoutNumberCountryId()
     {
@@ -896,7 +896,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -910,7 +910,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFullNumberCountryId()
     {

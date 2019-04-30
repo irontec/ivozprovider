@@ -76,7 +76,7 @@ abstract class CountryAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CountryInterface|null $entity
      * @param int $depth
      * @return CountryDto|null
      */
@@ -96,22 +96,22 @@ abstract class CountryAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CountryDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CountryDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CountryDto
-         */
         Assertion::isInstanceOf($dto, CountryDto::class);
 
         $name = new Name(
@@ -134,7 +134,6 @@ abstract class CountryAbstract
             ->setCountryCode($dto->getCountryCode())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -142,16 +141,13 @@ abstract class CountryAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CountryDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CountryDto
-         */
         Assertion::isInstanceOf($dto, CountryDto::class);
 
         $name = new Name(
@@ -172,7 +168,6 @@ abstract class CountryAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -213,7 +208,7 @@ abstract class CountryAbstract
      *
      * @param string $code
      *
-     * @return self
+     * @return static
      */
     protected function setCode($code)
     {
@@ -240,7 +235,7 @@ abstract class CountryAbstract
      *
      * @param string $countryCode
      *
-     * @return self
+     * @return static
      */
     protected function setCountryCode($countryCode = null)
     {
@@ -268,7 +263,7 @@ abstract class CountryAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -291,7 +286,7 @@ abstract class CountryAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
      *
-     * @return self
+     * @return static
      */
     public function setZone(Zone $zone)
     {

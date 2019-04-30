@@ -3,10 +3,15 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 {
+    const DEFAULTACTION_KEEP = 'keep';
+    const DEFAULTACTION_FORCE = 'force';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -15,13 +20,14 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 
     /**
      * Return forced Ddi for this rule
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getForcedDdi();
 
     /**
      * Check final outgoing Ddi presentation for given destination
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $originalDdi
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null $e164destination
      */
     public function getOutgoingDdi($originalDdi, $e164destination);
 
@@ -44,7 +50,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -60,7 +66,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
      *
-     * @return self
+     * @return static
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null);
 
@@ -69,7 +75,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface $pattern
      *
-     * @return OutgoingDdiRuleTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface $pattern);
 
@@ -83,14 +89,14 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[] $patterns
-     * @return self
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface
+     * @return static
      */
-    public function replacePatterns(Collection $patterns);
+    public function replacePatterns(ArrayCollection $patterns);
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);

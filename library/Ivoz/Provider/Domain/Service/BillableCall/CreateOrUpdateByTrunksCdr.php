@@ -27,7 +27,7 @@ class CreateOrUpdateByTrunksCdr
      * @param TrunksCdrInterface $trunksCdr
      * @param BillableCallInterface $billableCall
      *
-     * @return BillableCall
+     * @return BillableCallInterface
      */
     public function execute(
         TrunksCdrInterface $trunksCdr,
@@ -72,6 +72,8 @@ class CreateOrUpdateByTrunksCdr
                 $trunksCdrDto->getCallid()
             )->setCaller(
                 $caller
+            )->setDirection(
+                $trunksCdrDto->getDirection()
             );
 
         $isNew = is_null($billableCall);
@@ -96,6 +98,7 @@ class CreateOrUpdateByTrunksCdr
                 ->setEndpointId($trunksCdrDto->getRetailAccountId());
         }
 
+        /** @var BillableCallInterface $billableCall */
         $billableCall = $this->entityTools->persistDto(
             $billableCallDto,
             $billableCall,

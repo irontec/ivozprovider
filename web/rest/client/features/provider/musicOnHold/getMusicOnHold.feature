@@ -17,11 +17,6 @@ Feature: Retrieve music on holds
           {
               "name": "Something good",
               "status": null,
-              "id": 1
-          },
-          {
-              "name": "Something good",
-              "status": null,
               "id": 2
           }
       ]
@@ -30,7 +25,7 @@ Feature: Retrieve music on holds
   Scenario: Retrieve certain music on hold json
     Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "music_on_holds/1"
+    And I send a "GET" request to "music_on_holds/2"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -39,7 +34,7 @@ Feature: Retrieve music on holds
       {
           "name": "Something good",
           "status": null,
-          "id": 1,
+          "id": 2,
           "originalFile": {
               "fileSize": null,
               "mimeType": null,
@@ -50,6 +45,6 @@ Feature: Retrieve music on holds
               "mimeType": null,
               "baseName": null
           },
-          "company": null
+          "company": "~"
       }
     """

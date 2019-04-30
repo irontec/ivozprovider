@@ -3,10 +3,15 @@
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface CallAclInterface extends LoggableEntityInterface
 {
+    const DEFAULTPOLICY_ALLOW = 'allow';
+    const DEFAULTPOLICY_DENY = 'deny';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -14,7 +19,7 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param $dst
+     * @param string $dst
      * @return bool
      */
     public function dstIsCallable($dst);
@@ -38,7 +43,7 @@ interface CallAclInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -54,7 +59,7 @@ interface CallAclInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList
      *
-     * @return CallAclTrait
+     * @return static
      */
     public function addRelMatchList(\Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList);
 
@@ -68,14 +73,14 @@ interface CallAclInterface extends LoggableEntityInterface
     /**
      * Replace relMatchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[] $relMatchLists
-     * @return self
+     * @param ArrayCollection $relMatchLists of Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface
+     * @return static
      */
-    public function replaceRelMatchLists(Collection $relMatchLists);
+    public function replaceRelMatchLists(ArrayCollection $relMatchLists);
 
     /**
      * Get relMatchLists
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[]
      */
     public function getRelMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);

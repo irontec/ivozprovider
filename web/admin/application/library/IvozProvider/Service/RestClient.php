@@ -37,9 +37,10 @@ class RestClient
 
     public static function getAdminToken(
         string $username,
-        string $password
+        string $password,
+        string $type = 'platform'
     ) {
-        $apiUrl = self::getBaseUrl() . self::LOGIN_ENDPOINT;
+        $apiUrl = self::getBaseUrl($type) . self::LOGIN_ENDPOINT;
 
         $options = self::getBaseRequestOptions('POST');
         $options[CURLOPT_HTTPHEADER] = [
@@ -87,7 +88,10 @@ class RestClient
 
     protected static function getBaseUrl($api = 'platform')
     {
-        return 'https://127.0.0.1/api/'
+        return
+            'https://'
+            . $_SERVER['SERVER_NAME']
+            . '/api/'
             . $api
             . '/'
             . basename($_SERVER['SCRIPT_FILENAME']);
@@ -124,7 +128,7 @@ class RestClient
                 $options
             );
         } catch (\Exception $e) {
-            throw new \DomainException('Unable to get Billable Calls', 0, $e);
+            throw new \DomainException('Unable to get External Calls', 0, $e);
         }
     }
 

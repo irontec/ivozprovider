@@ -8,14 +8,14 @@ use Doctrine\Common\Collections\Selectable;
 interface VoicemailRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $id
+     * @param int $id
      * @return VoicemailInterface
      */
     public function findOneByUserId($id);
 
     /**
-     * @param $mailbox
-     * @param $context
+     * @param string $mailbox
+     * @param string $context
      * @return VoicemailInterface
      */
     public function findByMailboxAndContext($mailbox, $context);

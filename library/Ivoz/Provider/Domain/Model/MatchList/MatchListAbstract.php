@@ -19,12 +19,12 @@ abstract class MatchListAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -69,7 +69,7 @@ abstract class MatchListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param MatchListInterface|null $entity
      * @param int $depth
      * @return MatchListDto|null
      */
@@ -89,22 +89,22 @@ abstract class MatchListAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var MatchListDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MatchListDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MatchListDto
-         */
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
         $self = new static(
@@ -116,7 +116,6 @@ abstract class MatchListAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -124,16 +123,13 @@ abstract class MatchListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MatchListDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MatchListDto
-         */
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
         $this
@@ -143,7 +139,6 @@ abstract class MatchListAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -178,7 +173,7 @@ abstract class MatchListAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -205,7 +200,7 @@ abstract class MatchListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -229,7 +224,7 @@ abstract class MatchListAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {

@@ -6,6 +6,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\Event\CommandWasExecuted;
 
 class MicroKernel extends Kernel
 {
@@ -43,9 +46,34 @@ class MicroKernel extends Kernel
 
     public function processRtpRecordingAction()
     {
-        $encoder = $this->container->get('Recording\\Encoder');
+        $this->registerCommand();
+
+        $encoder = $this->container->get(Recording\Encoder::class);
         $encoder->processAction();
         return new JsonResponse("Done!");
+    }
+
+    private function registerCommand()
+    {
+        /** @var DomainEventPublisher $eventPublisher */
+        $eventPublisher = $this->container->get(
+            DomainEventPublisher::class
+        );
+
+        /** @var RequestId $requestId */
+        $requestId = $this->container->get(
+            RequestId::class
+        );
+
+        $event = new CommandWasExecuted(
+            $requestId->toString(),
+            'Recordings',
+            'processRtpRecording',
+            [],
+            []
+        );
+
+        $eventPublisher->publish($event);
     }
 
     // optional, to use the standard Symfony cache directory

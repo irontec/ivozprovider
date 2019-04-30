@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class NotificationTemplateContentAbstract
 {
-    const BODYTYPE_TEXTPLAIN = 'text/plain';
-    const BODYTYPE_TEXTHTML = 'text/html';
-
     /**
      * @var string | null
      */
@@ -48,7 +45,7 @@ abstract class NotificationTemplateContentAbstract
     protected $notificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     protected $language;
 
@@ -95,7 +92,7 @@ abstract class NotificationTemplateContentAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param NotificationTemplateContentInterface|null $entity
      * @param int $depth
      * @return NotificationTemplateContentDto|null
      */
@@ -115,22 +112,22 @@ abstract class NotificationTemplateContentAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var NotificationTemplateContentDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param NotificationTemplateContentDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto NotificationTemplateContentDto
-         */
         Assertion::isInstanceOf($dto, NotificationTemplateContentDto::class);
 
         $self = new static(
@@ -146,7 +143,6 @@ abstract class NotificationTemplateContentAbstract
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -154,16 +150,13 @@ abstract class NotificationTemplateContentAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param NotificationTemplateContentDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto NotificationTemplateContentDto
-         */
         Assertion::isInstanceOf($dto, NotificationTemplateContentDto::class);
 
         $this
@@ -177,7 +170,6 @@ abstract class NotificationTemplateContentAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -220,7 +212,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $fromName
      *
-     * @return self
+     * @return static
      */
     protected function setFromName($fromName = null)
     {
@@ -248,7 +240,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $fromAddress
      *
-     * @return self
+     * @return static
      */
     protected function setFromAddress($fromAddress = null)
     {
@@ -276,7 +268,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $subject
      *
-     * @return self
+     * @return static
      */
     protected function setSubject($subject)
     {
@@ -303,7 +295,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $body
      *
-     * @return self
+     * @return static
      */
     protected function setBody($body)
     {
@@ -330,15 +322,15 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param string $bodyType
      *
-     * @return self
+     * @return static
      */
     protected function setBodyType($bodyType)
     {
         Assertion::notNull($bodyType, 'bodyType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($bodyType, 25, 'bodyType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($bodyType, [
-            self::BODYTYPE_TEXTPLAIN,
-            self::BODYTYPE_TEXTHTML
+            NotificationTemplateContentInterface::BODYTYPE_TEXTPLAIN,
+            NotificationTemplateContentInterface::BODYTYPE_TEXTHTML
         ], 'bodyTypevalue "%s" is not an element of the valid values: %s');
 
         $this->bodyType = $bodyType;
@@ -361,7 +353,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
     {
@@ -385,7 +377,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
@@ -397,7 +389,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage()
     {

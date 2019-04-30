@@ -13,11 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class TransformationRuleAbstract
 {
-    const TYPE_CALLERIN = 'callerin';
-    const TYPE_CALLEEIN = 'calleein';
-    const TYPE_CALLEROUT = 'callerout';
-    const TYPE_CALLEEOUT = 'calleeout';
-
     /**
      * comment: enum:callerin|calleein|callerout|calleeout
      * @var string
@@ -45,7 +40,7 @@ abstract class TransformationRuleAbstract
     protected $replaceExpr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
@@ -91,7 +86,7 @@ abstract class TransformationRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TransformationRuleInterface|null $entity
      * @param int $depth
      * @return TransformationRuleDto|null
      */
@@ -111,22 +106,22 @@ abstract class TransformationRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TransformationRuleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TransformationRuleDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TransformationRuleDto
-         */
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
 
         $self = new static(
@@ -141,7 +136,6 @@ abstract class TransformationRuleAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -149,16 +143,13 @@ abstract class TransformationRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TransformationRuleDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TransformationRuleDto
-         */
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
 
         $this
@@ -171,7 +162,6 @@ abstract class TransformationRuleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -212,17 +202,17 @@ abstract class TransformationRuleAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
         Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
-            self::TYPE_CALLERIN,
-            self::TYPE_CALLEEIN,
-            self::TYPE_CALLEROUT,
-            self::TYPE_CALLEEOUT
+            TransformationRuleInterface::TYPE_CALLERIN,
+            TransformationRuleInterface::TYPE_CALLEEIN,
+            TransformationRuleInterface::TYPE_CALLEROUT,
+            TransformationRuleInterface::TYPE_CALLEEOUT
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -245,7 +235,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -272,7 +262,7 @@ abstract class TransformationRuleAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority = null)
     {
@@ -304,7 +294,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $matchExpr
      *
-     * @return self
+     * @return static
      */
     protected function setMatchExpr($matchExpr = null)
     {
@@ -332,7 +322,7 @@ abstract class TransformationRuleAbstract
      *
      * @param string $replaceExpr
      *
-     * @return self
+     * @return static
      */
     protected function setReplaceExpr($replaceExpr = null)
     {
@@ -360,7 +350,7 @@ abstract class TransformationRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {

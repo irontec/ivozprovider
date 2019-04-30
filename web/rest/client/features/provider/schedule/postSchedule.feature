@@ -21,7 +21,7 @@ Feature: Create schedules
           "friday": true,
           "saturday": false,
           "sunday": false,
-          "company": 2
+          "company": 1
       }
     """
     Then the response status code should be 201
@@ -41,7 +41,7 @@ Feature: Create schedules
           "saturday": false,
           "sunday": false,
           "id": 3,
-          "company": 2
+          "company": 1
       }
     """
 

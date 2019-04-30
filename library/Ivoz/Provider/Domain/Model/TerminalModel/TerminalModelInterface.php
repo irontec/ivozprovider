@@ -81,7 +81,7 @@ interface TerminalModelInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer
      *
-     * @return self
+     * @return static
      */
     public function setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer);
 

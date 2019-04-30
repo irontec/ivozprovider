@@ -31,7 +31,7 @@ class CreateEntityFromDTO
     }
 
     /**
-     * @param $entityName
+     * @param string $entityName
      * @param DataTransferObjectInterface $dto
      * @return EntityInterface
      */

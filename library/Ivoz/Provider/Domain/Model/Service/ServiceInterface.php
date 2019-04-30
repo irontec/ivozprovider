@@ -43,7 +43,7 @@ interface ServiceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Service\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\Service\Name $name);
 
@@ -59,7 +59,7 @@ interface ServiceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Service\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(\Ivoz\Provider\Domain\Model\Service\Description $description);
 

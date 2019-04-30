@@ -5,6 +5,7 @@ scenarios:
     timeout: 30
     sessions:
       - alice:
+          - wait: 5
           - call:
               dest: 701             # Hunt group extension
               credentials:
@@ -12,6 +13,7 @@ scenarios:
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
       - bob:
+          - wait: 1
           - register:
               <<: *bob_cred
           - waitfor: INCOMING
@@ -23,12 +25,14 @@ scenarios:
           - hangup:
           - waitfor: DISCONNCTD
       - charlie:
+          - wait: 2
           - register:
               <<: *charlie_cred
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD
       - dave:
+          - wait: 3
           - register:
               <<: *dave_cred
           - waitfor: INCOMING

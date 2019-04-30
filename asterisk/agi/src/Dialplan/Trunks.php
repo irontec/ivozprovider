@@ -56,7 +56,7 @@ class Trunks extends RouteHandlerAbstract
     /**
      * Incomming from from external numbers
      *
-     * @throws \Assert\AssertionFailedException
+     * @throws \InvalidArgumentException
      */
     public function process()
     {

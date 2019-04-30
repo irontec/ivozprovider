@@ -70,7 +70,7 @@ abstract class RoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RoutingTagInterface|null $entity
      * @param int $depth
      * @return RoutingTagDto|null
      */
@@ -90,22 +90,22 @@ abstract class RoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RoutingTagDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingTagDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingTagDto
-         */
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
         $self = new static(
@@ -117,7 +117,6 @@ abstract class RoutingTagAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -125,16 +124,13 @@ abstract class RoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingTagDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingTagDto
-         */
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
         $this
@@ -144,7 +140,6 @@ abstract class RoutingTagAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -179,7 +174,7 @@ abstract class RoutingTagAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -206,7 +201,7 @@ abstract class RoutingTagAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag)
     {
@@ -233,7 +228,7 @@ abstract class RoutingTagAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

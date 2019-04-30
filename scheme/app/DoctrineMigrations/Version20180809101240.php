@@ -60,6 +60,7 @@ class Version20180809101240 extends AbstractMigration
                           FROM kam_trunks_cdrs
                             WHERE direction = "outbound"');
 
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE BillableCalls ADD CONSTRAINT FK_E6F2DA359CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE BillableCalls ADD CONSTRAINT FK_E6F2DA352480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE BillableCalls ADD CONSTRAINT FK_E6F2DA356709B1C FOREIGN KEY (carrierId) REFERENCES Carriers (id) ON DELETE SET NULL');
@@ -69,8 +70,16 @@ class Version20180809101240 extends AbstractMigration
         $this->addSql('ALTER TABLE BillableCalls ADD CONSTRAINT FK_E6F2DA353B9439A5 FOREIGN KEY (trunksCdrId) REFERENCES kam_trunks_cdrs (id) ON DELETE SET NULL');
 
         $this->addSql('ALTER TABLE kam_trunks_cdrs ADD metered TINYINT(1) DEFAULT \'0\'');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
+
         // Mark all CDR entries as metered
-        $this->addSql('UPDATE kam_trunks_cdrs SET metered = 1  WHERE direction=\'outbound\'');
+        $step = 500000;
+        $rows = $this->connection->query("SELECT 1 FROM kam_trunks_cdrs WHERE direction='outbound'")->rowCount();
+        while ($rows > 0) {
+            $limit = ($rows > $step) ? $step : $rows;
+            $this->addSql("UPDATE kam_trunks_cdrs SET metered = 1 WHERE direction='outbound' AND metered != 1 LIMIT $limit");
+            $rows -= $limit;
+        }
     }
 
     /**

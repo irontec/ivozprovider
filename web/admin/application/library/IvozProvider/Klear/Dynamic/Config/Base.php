@@ -1,9 +1,10 @@
 <?php
 namespace IvozProvider\Klear\Dynamic\Config;
 
+use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDTO;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 use IvozProvider\Klear\Auth\User;
 
 abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
@@ -15,7 +16,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
     protected $_brand;
 
     /**
-     * @var  BrandUrlDTO
+     * @var  WebPortalDTO
      */
     protected $_brandURL;
 
@@ -27,7 +28,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 
     protected $_title = '';
     protected $_subTitle = '';
-    protected $_year = '2018';
+    protected $_year = '2019';
     protected $_logo = "images/palmera90.png";
 
     protected $_sessionName = 'BrandOperatorSession';
@@ -53,7 +54,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
         return $this;
     }
 
-    public function setBrandUrl(BrandUrlDTO $brandURL)
+    public function setWebPortal(WebPortalDTO $brandURL)
     {
         $this->_brandURL = $brandURL;
         return $this;
@@ -69,8 +70,10 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
     {
         $this->_siteConfig = $siteConfig;
         if (\Zend_Auth::getInstance()) {
+            /** @var \IvozProvider\Klear\Auth\User $identity */
             $identity = \Zend_Auth::getInstance()->getIdentity();
             if ($identity) {
+                DataGateway::$user = (string) $identity;
                 $this->_user = $identity;
                 $this->_user->postLogin();
             }

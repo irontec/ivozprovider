@@ -84,7 +84,7 @@ abstract class TpLcrRuleAbstract
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     protected $outgoingRouting;
 
@@ -148,7 +148,7 @@ abstract class TpLcrRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpLcrRuleInterface|null $entity
      * @param int $depth
      * @return TpLcrRuleDto|null
      */
@@ -168,22 +168,22 @@ abstract class TpLcrRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpLcrRuleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpLcrRuleDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpLcrRuleDto
-         */
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
         $self = new static(
@@ -206,7 +206,6 @@ abstract class TpLcrRuleAbstract
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -214,16 +213,13 @@ abstract class TpLcrRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpLcrRuleDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpLcrRuleDto
-         */
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
         $this
@@ -244,7 +240,6 @@ abstract class TpLcrRuleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -301,7 +296,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -328,7 +323,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $direction
      *
-     * @return self
+     * @return static
      */
     protected function setDirection($direction)
     {
@@ -355,7 +350,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $tenant
      *
-     * @return self
+     * @return static
      */
     protected function setTenant($tenant)
     {
@@ -382,7 +377,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $category
      *
-     * @return self
+     * @return static
      */
     protected function setCategory($category)
     {
@@ -409,7 +404,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $account
      *
-     * @return self
+     * @return static
      */
     protected function setAccount($account)
     {
@@ -436,7 +431,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $subject
      *
-     * @return self
+     * @return static
      */
     protected function setSubject($subject = null)
     {
@@ -464,7 +459,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $destinationTag
      *
-     * @return self
+     * @return static
      */
     protected function setDestinationTag($destinationTag = null)
     {
@@ -492,7 +487,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $rpCategory
      *
-     * @return self
+     * @return static
      */
     protected function setRpCategory($rpCategory)
     {
@@ -519,7 +514,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $strategy
      *
-     * @return self
+     * @return static
      */
     protected function setStrategy($strategy)
     {
@@ -546,7 +541,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param string $strategyParams
      *
-     * @return self
+     * @return static
      */
     protected function setStrategyParams($strategyParams = null)
     {
@@ -574,7 +569,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param \DateTime $activationTime
      *
-     * @return self
+     * @return static
      */
     protected function setActivationTime($activationTime)
     {
@@ -604,7 +599,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param float $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight)
     {
@@ -631,7 +626,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -661,7 +656,7 @@ abstract class TpLcrRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {

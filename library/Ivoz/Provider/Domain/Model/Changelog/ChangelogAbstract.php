@@ -91,7 +91,7 @@ abstract class ChangelogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ChangelogInterface|null $entity
      * @param int $depth
      * @return ChangelogDto|null
      */
@@ -111,22 +111,22 @@ abstract class ChangelogAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ChangelogDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ChangelogDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ChangelogDto
-         */
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
         $self = new static(
@@ -141,7 +141,6 @@ abstract class ChangelogAbstract
             ->setCommand($fkTransformer->transform($dto->getCommand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -149,16 +148,13 @@ abstract class ChangelogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ChangelogDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ChangelogDto
-         */
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
         $this
@@ -171,7 +167,6 @@ abstract class ChangelogAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -212,7 +207,7 @@ abstract class ChangelogAbstract
      *
      * @param string $entity
      *
-     * @return self
+     * @return static
      */
     protected function setEntity($entity)
     {
@@ -239,7 +234,7 @@ abstract class ChangelogAbstract
      *
      * @param string $entityId
      *
-     * @return self
+     * @return static
      */
     protected function setEntityId($entityId)
     {
@@ -266,13 +261,10 @@ abstract class ChangelogAbstract
      *
      * @param array $data
      *
-     * @return self
+     * @return static
      */
     protected function setData($data = null)
     {
-        if (!is_null($data)) {
-        }
-
         $this->data = $data;
 
         return $this;
@@ -293,7 +285,7 @@ abstract class ChangelogAbstract
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn)
     {
@@ -323,7 +315,7 @@ abstract class ChangelogAbstract
      *
      * @param integer $microtime
      *
-     * @return self
+     * @return static
      */
     protected function setMicrotime($microtime)
     {
@@ -350,7 +342,7 @@ abstract class ChangelogAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command
      *
-     * @return self
+     * @return static
      */
     public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command)
     {

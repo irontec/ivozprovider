@@ -7,6 +7,7 @@ use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\JsonLd\Serializer\JsonLdContextTrait;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
 use Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer as JsonEntityNormalizer;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
@@ -45,7 +46,7 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
         $this->iriConverter = $iriConverter;
         $this->contextBuilder = $contextBuilder;
 
-        return parent::__construct(
+        parent::__construct(
             $resourceMetadataFactory,
             $resourceClassResolver,
             $contextBuilder,
@@ -59,10 +60,10 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
     /**
      * @param DataTransferObjectInterface $dto
      * @param array $context
-     * @param $isSubresource
-     * @param $depth
-     * @param $resourceClass
-     * @param $resourceMetadata
+     * @param bool $isSubresource
+     * @param int $depth
+     * @param string $resourceClass
+     * @param ResourceMetadata $resourceMetadata
      * @return array
      */
     protected function normalizeDto(

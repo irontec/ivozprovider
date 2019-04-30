@@ -23,7 +23,7 @@ Feature: Update locutions
               "mimeType": null,
               "baseName": null
           },
-          "company": 2
+          "company": 1
       }
     """
     Then the response status code should be 200

@@ -10,7 +10,7 @@ class DateTimeHelper
      * @param \DateTimeZone|null $initialTimeZone
      * @return string
      */
-    public function stringToUtc(
+    public static function stringToUtc(
         string $value,
         string $format = 'Y-m-d H:i:s',
         \DateTimeZone $initialTimeZone = null
@@ -56,10 +56,10 @@ class DateTimeHelper
     }
 
     /**
-     * @param \Datetime $dateTime
-     * @return \Datetime
+     * @param \DateTime $dateTime
+     * @return \DateTime
      */
-    public static function ensureUTC(\Datetime $dateTime)
+    public static function ensureUTC(\DateTime $dateTime)
     {
         $timeZoneName = $dateTime
             ->getTimezone()

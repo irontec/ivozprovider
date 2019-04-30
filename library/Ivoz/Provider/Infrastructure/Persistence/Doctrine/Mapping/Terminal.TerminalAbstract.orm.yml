@@ -66,6 +66,15 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
       type: datetime
       nullable: true
       column: lastProvisionDate
+    t38Passthrough:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+        default: 'no'
+      column: t38Passthrough
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface

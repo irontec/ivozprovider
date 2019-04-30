@@ -46,7 +46,7 @@ class BrandServiceDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return BrandServiceInterface[]
      */
     public function findByBrandId($id)

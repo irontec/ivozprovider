@@ -15,6 +15,11 @@ use Symfony\Component\Process\Process;
 class Encoder
 {
     /**
+     * Recordings below this size in bytes will be skipped
+     */
+    const RECORDING_SIZE_MIN = 512;
+
+    /**
      * @var TrunksCdrRepository
      */
     protected $trunksCdrRepository;
@@ -88,7 +93,7 @@ class Encoder
                 }
 
                 // Delete empty files
-                if (filesize($filenameabs) === 0) {
+                if (filesize($filenameabs) < self::RECORDING_SIZE_MIN) {
                     $stats['deleted']++;
                     $this->logger->info(sprintf("[Recordings] Deleting empty file %s\n", $filename));
                     unlink($this->rawRecordingsDir . $filename);

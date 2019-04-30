@@ -104,7 +104,7 @@ abstract class UsersWatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersWatcherInterface|null $entity
      * @param int $depth
      * @return UsersWatcherDto|null
      */
@@ -124,22 +124,22 @@ abstract class UsersWatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersWatcherDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersWatcherDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersWatcherDto
-         */
         Assertion::isInstanceOf($dto, UsersWatcherDto::class);
 
         $self = new static(
@@ -155,7 +155,6 @@ abstract class UsersWatcherAbstract
             ->setReason($dto->getReason())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -163,16 +162,13 @@ abstract class UsersWatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersWatcherDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersWatcherDto
-         */
         Assertion::isInstanceOf($dto, UsersWatcherDto::class);
 
         $this
@@ -186,7 +182,6 @@ abstract class UsersWatcherAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -229,7 +224,7 @@ abstract class UsersWatcherAbstract
      *
      * @param string $presentityUri
      *
-     * @return self
+     * @return static
      */
     protected function setPresentityUri($presentityUri)
     {
@@ -256,7 +251,7 @@ abstract class UsersWatcherAbstract
      *
      * @param string $watcherUsername
      *
-     * @return self
+     * @return static
      */
     protected function setWatcherUsername($watcherUsername)
     {
@@ -283,7 +278,7 @@ abstract class UsersWatcherAbstract
      *
      * @param string $watcherDomain
      *
-     * @return self
+     * @return static
      */
     protected function setWatcherDomain($watcherDomain)
     {
@@ -310,7 +305,7 @@ abstract class UsersWatcherAbstract
      *
      * @param string $event
      *
-     * @return self
+     * @return static
      */
     protected function setEvent($event)
     {
@@ -337,7 +332,7 @@ abstract class UsersWatcherAbstract
      *
      * @param integer $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status)
     {
@@ -364,7 +359,7 @@ abstract class UsersWatcherAbstract
      *
      * @param string $reason
      *
-     * @return self
+     * @return static
      */
     protected function setReason($reason = null)
     {
@@ -392,7 +387,7 @@ abstract class UsersWatcherAbstract
      *
      * @param integer $insertedTime
      *
-     * @return self
+     * @return static
      */
     protected function setInsertedTime($insertedTime)
     {

@@ -74,11 +74,11 @@ class TimezoneSelectorDecorator implements NormalizerInterface
         return $paths;
     }
 
-    private function hasDateTimeProperties($path)
+    private function hasDateTimeProperties(\ArrayObject $path)
     {
         $responseDefinition = $this->getResponseDefinition($path);
         if (!$responseDefinition) {
-            return;
+            return false;
         }
 
         foreach ($responseDefinition['properties'] as $property) {
@@ -97,10 +97,9 @@ class TimezoneSelectorDecorator implements NormalizerInterface
 
 
     /**
-     * @param $path
      * @return array | null
      */
-    private function getResponseDefinition($path)
+    private function getResponseDefinition(\ArrayObject $path)
     {
         $successCode = null;
         foreach ($path['responses'] as $code => $value) {
@@ -111,7 +110,7 @@ class TimezoneSelectorDecorator implements NormalizerInterface
         }
 
         if (!$successCode) {
-            return;
+            return null;
         }
 
         $successReponse = $path['responses'][$successCode]['schema'];
@@ -121,7 +120,7 @@ class TimezoneSelectorDecorator implements NormalizerInterface
             : $successReponse['items']['$ref'];
 
         if (!$ref) {
-            return;
+            return null;
         }
 
         $responseModelName = substr(
@@ -131,7 +130,7 @@ class TimezoneSelectorDecorator implements NormalizerInterface
 
         $responseDefinition = $this->definitions[$responseModelName];
         if (!$responseDefinition) {
-            return;
+            return null;
         }
 
         return $responseDefinition->getArrayCopy();

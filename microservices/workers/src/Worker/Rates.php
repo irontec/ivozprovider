@@ -15,6 +15,9 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 /**
  * @Gearman\Work(
@@ -26,47 +29,27 @@ use Symfony\Component\Serializer\Serializer;
  */
 class Rates
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    use RegisterCommandTrait;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    private $eventPublisher;
+    private $requestId;
+    private $em;
+    private $entityTools;
+    private $logger;
+    private $destinationRateGroupRepository;
+    private $reloadService;
 
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
-    /**
-     * @var DestinationRateGroupRepository
-     */
-    protected $destinationRateGroupRepository;
-
-    /**
-     * @var ReloadService
-     */
-    protected $reloadService;
-
-    /**
-     * Rates constructor.
-     *
-     * @param EntityManagerInterface $em
-     * @param DestinationRateGroupRepository $destinationRateGroupRepository
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param ReloadService $reloadService
-     */
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         EntityManagerInterface $em,
         DestinationRateGroupRepository $destinationRateGroupRepository,
         EntityTools $entityTools,
         Logger $logger,
         ReloadService $reloadService
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->em = $em;
         $this->destinationRateGroupRepository = $destinationRateGroupRepository;
         $this->entityTools = $entityTools;
@@ -88,6 +71,7 @@ class Rates
     {
         // Thanks Gearmand, you've done your job
         $serializedJob->sendComplete("DONE");
+        $this->registerCommand('Worker', 'rates');
 
         $job = igbinary_unserialize($serializedJob->workload());
         $params = $job->getParams();
@@ -263,8 +247,6 @@ class Rates
                           WHERE DRG.id = $destinationRateGroupId";
             $this->em->getConnection()->executeQuery($tpDestinationRatesInsert);
 
-            $this->em->getConnection()->commit();
-
             $destinationRateGroupDto->setStatus('imported');
             $this
                 ->entityTools
@@ -274,8 +256,7 @@ class Rates
                     true
                 );
 
-            $this->reloadService->execute($brand->getCgrTenant());
-            $this->logger->debug('Importer finished successfuly');
+            $this->em->getConnection()->commit();
         } catch (\Exception $exception) {
             $this->logger->error('Importer error. Rollback');
             $this->em->getConnection()->rollback();
@@ -292,6 +273,13 @@ class Rates
             $this->em->close();
 
             throw $exception;
+        }
+
+        try {
+            $this->reloadService->execute($brand->getCgrTenant());
+            $this->logger->debug('Importer finished successfuly');
+        } catch (\Exception $e) {
+            $this->logger->error('Service reload failed');
         }
 
         return true;

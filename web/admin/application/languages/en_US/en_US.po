@@ -234,11 +234,6 @@ msgstr "Basic Info"
 msgid "Basic Information"
 msgstr "Basic Information"
 
-msgid "Billable call"
-msgid_plural "Billable calls"
-msgstr[0] "Billable call"
-msgstr[1] "Billable calls"
-
 msgid "Billing"
 msgstr "Billing"
 
@@ -276,10 +271,10 @@ msgstr[1] "Brands"
 msgid "Brand Configuration"
 msgstr "Brand Configuration"
 
-msgid "Brand URL"
-msgid_plural "Brand URLs"
-msgstr[0] "Brand URL"
-msgstr[1] "Brand URLs"
+msgid "Brand Portal"
+msgid_plural "Brand Portals"
+msgstr[0] "Brand portal"
+msgstr[1] "Brand portals"
 
 msgid "Brand is not set"
 msgstr "Brand is not set"
@@ -356,6 +351,9 @@ msgstr "Call ID"
 
 msgid "Call destination"
 msgstr "Call destination"
+
+msgid "Call direction"
+msgstr "Call direction"
 
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
@@ -453,6 +451,11 @@ msgstr[1] "Clients"
 msgid "Client Configuration"
 msgstr "Client Configuration"
 
+msgid "Client Portal"
+msgid_plural "Client Portals"
+msgstr[0] "Client portal"
+msgstr[1] "Clients portals"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Client admin"
@@ -476,10 +479,10 @@ msgstr "Code"
 msgid "Code used for internationals calls, usually 00."
 msgstr "Code used for internationals calls, usually 00."
 
-msgid "Company URL"
-msgid_plural "Company URLs"
-msgstr[0] "Company URL"
-msgstr[1] "Company URLs"
+msgid "Company Portal"
+msgid_plural "Company Portals"
+msgstr[0] "Company portal"
+msgstr[1] "Company portals"
 
 msgid "Company service"
 msgid_plural "Company services"
@@ -512,6 +515,9 @@ msgstr "Connection Info"
 
 msgid "Connection fee"
 msgstr "Connection fee"
+
+msgid "Connectivity mode"
+msgstr "Connectivity mode"
 
 msgid "Contact Settings"
 msgstr "Contact Settings"
@@ -645,6 +651,9 @@ msgstr "Determines the order current priority members will be called"
 msgid "Determines the order users will be called"
 msgstr "Determines the order users will be called"
 
+msgid "Direct"
+msgstr "Direct"
+
 msgid "Direct connectivity"
 msgstr "Direct connectivity"
 
@@ -695,6 +704,12 @@ msgstr "Download"
 
 msgid "Download file"
 msgstr "Download file"
+
+msgid "Duplicated prefix"
+msgstr "Duplicated prefix"
+
+msgid "Duplicated priority"
+msgstr "Duplicated priority"
 
 msgid "Duration"
 msgstr "Duration"
@@ -750,6 +765,9 @@ msgstr "Emulate Retail Client %s"
 #, python-format
 msgid "Emulate Wholesale Client %s"
 msgstr "Emulate Wholesale Client %s"
+
+msgid "Enable T.38 passthrough"
+msgstr "Enable T.38 passthrough"
 
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
@@ -839,6 +857,11 @@ msgstr "External"
 
 msgid "External Filter destination"
 msgstr "External Filter destination"
+
+msgid "External call"
+msgid_plural "External calls"
+msgstr[0] "External call"
+msgstr[1] "External calls"
 
 msgid "External call filter"
 msgid_plural "External call filters"
@@ -1167,6 +1190,9 @@ msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 
+msgid "Inbound calls"
+msgstr "Inbound calls"
+
 msgid "Inbound configuration"
 msgstr "Inbound configuration"
 
@@ -1202,6 +1228,9 @@ msgid ""
 msgstr ""
 "Instead of getting the caller from PAI/RPID headers, this clid will be used "
 "(and will be adapted using carrier's numeric transformations)."
+
+msgid "Inter vPBX"
+msgstr "Inter vPBX"
 
 msgid "Internal"
 msgstr "Internal"
@@ -1715,6 +1744,9 @@ msgstr "Outbound Proxy"
 msgid "Outbound Proxy IP value is not valid."
 msgstr "Outbound Proxy IP value is not valid."
 
+msgid "Outbound calls"
+msgstr "Outbound calls"
+
 msgid "Outbound configuration"
 msgstr "Outbound configuration"
 
@@ -1822,6 +1854,11 @@ msgstr "Pin code"
 msgid "Pin protected"
 msgstr "Pin protected"
 
+msgid "Platform Portal"
+msgid_plural "Platform Portals"
+msgstr[0] "Platform portal"
+msgstr[1] "Platform portals"
+
 msgid "Platform data"
 msgstr "Platform data"
 
@@ -1845,11 +1882,6 @@ msgstr "Policy"
 
 msgid "Port"
 msgstr "Port"
-
-msgid "Portal URL"
-msgid_plural "Portal URLs"
-msgstr[0] "Portal URL"
-msgstr[1] "Portal URLs"
 
 msgid "Postal address"
 msgstr "Postal address"
@@ -2007,6 +2039,9 @@ msgstr "Referee"
 
 msgid "Referrer"
 msgstr "Referrer"
+
+msgid "Register"
+msgstr "Register"
 
 msgid "Registrar Server URI"
 msgstr "Registrar Server URI"
@@ -2299,6 +2334,11 @@ msgstr "Tag"
 
 msgid "Target"
 msgstr "Target"
+
+msgid "Target client"
+msgid_plural "Target clients"
+msgstr[0] "Target client"
+msgstr[1] "Target clients"
 
 msgid "Target type"
 msgstr "Target type"

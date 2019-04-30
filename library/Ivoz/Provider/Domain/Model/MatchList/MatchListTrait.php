@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\MatchList;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait MatchListTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $patterns;
 
@@ -33,20 +32,20 @@ trait MatchListTrait
         $this->patterns = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MatchListDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MatchListDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPatterns())) {
             $self->replacePatterns(
@@ -55,6 +54,7 @@ trait MatchListTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -65,17 +65,14 @@ trait MatchListTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MatchListDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MatchListDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPatterns())) {
             $this->replacePatterns(
@@ -84,6 +81,8 @@ trait MatchListTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -113,7 +112,7 @@ trait MatchListTrait
      *
      * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern
      *
-     * @return MatchListTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern)
     {
@@ -135,10 +134,10 @@ trait MatchListTrait
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[] $patterns
-     * @return self
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface
+     * @return static
      */
-    public function replacePatterns(Collection $patterns)
+    public function replacePatterns(ArrayCollection $patterns)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,7 +167,7 @@ trait MatchListTrait
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
      */
     public function getPatterns(Criteria $criteria = null)

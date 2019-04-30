@@ -32,12 +32,13 @@ Scenario: I create friends
 Scenario: I can save Friends
   Given I can see at least one row
    When I click on "Friends" first elements edit button
+    And I fill out the form with "company/friends/edit" data fixture
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "Friends" list
 
-Scenario: I can click on delete user button
+Scenario: I can click on delete friend button
   Given I can see at least one row
    When I select element at position "1"
     And I click on "Friends" delete button in the footer

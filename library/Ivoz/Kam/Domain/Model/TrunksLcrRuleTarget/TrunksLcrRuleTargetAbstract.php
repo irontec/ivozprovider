@@ -87,7 +87,7 @@ abstract class TrunksLcrRuleTargetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksLcrRuleTargetInterface|null $entity
      * @param int $depth
      * @return TrunksLcrRuleTargetDto|null
      */
@@ -107,22 +107,22 @@ abstract class TrunksLcrRuleTargetAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksLcrRuleTargetDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksLcrRuleTargetDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksLcrRuleTargetDto
-         */
         Assertion::isInstanceOf($dto, TrunksLcrRuleTargetDto::class);
 
         $self = new static(
@@ -137,7 +137,6 @@ abstract class TrunksLcrRuleTargetAbstract
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -145,16 +144,13 @@ abstract class TrunksLcrRuleTargetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksLcrRuleTargetDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksLcrRuleTargetDto
-         */
         Assertion::isInstanceOf($dto, TrunksLcrRuleTargetDto::class);
 
         $this
@@ -167,7 +163,6 @@ abstract class TrunksLcrRuleTargetAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -208,7 +203,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @param integer $lcrId
      *
-     * @return self
+     * @return static
      */
     protected function setLcrId($lcrId)
     {
@@ -236,7 +231,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -264,7 +259,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @param integer $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight)
     {
@@ -292,7 +287,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule
      *
-     * @return self
+     * @return static
      */
     public function setRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule)
     {
@@ -316,7 +311,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw
      *
-     * @return self
+     * @return static
      */
     public function setGw(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw)
     {
@@ -340,7 +335,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {

@@ -14,6 +14,7 @@ class BillableCallDto extends BillableCallDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'startTime' => 'startTime',
+                'direction' => 'direction',
                 'duration' => 'duration',
                 'caller' => 'caller',
                 'callee' => 'callee',

@@ -109,8 +109,8 @@ class ChannelInfo
     }
 
     /**
-     * @param $datatype
-     * @return AgentInterface
+     * @param string $datatype
+     * @return AgentInterface | null
      */
     public function getChannelData($datatype)
     {

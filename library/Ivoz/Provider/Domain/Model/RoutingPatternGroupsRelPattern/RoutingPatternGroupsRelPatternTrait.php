@@ -24,22 +24,23 @@ trait RoutingPatternGroupsRelPatternTrait
         parent::__construct(...func_get_args());
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternGroupsRelPatternDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternGroupsRelPatternDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -50,18 +51,17 @@ trait RoutingPatternGroupsRelPatternTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternGroupsRelPatternDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternGroupsRelPatternDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
+
+        $this->sanitizeValues();
 
         return $this;
     }

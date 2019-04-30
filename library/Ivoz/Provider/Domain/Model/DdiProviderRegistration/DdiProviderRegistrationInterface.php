@@ -80,7 +80,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg
      *
-     * @return self
+     * @return static
      */
     public function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg = null);
 
@@ -96,7 +96,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
-     * @return self
+     * @return static
      */
     public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null);
 

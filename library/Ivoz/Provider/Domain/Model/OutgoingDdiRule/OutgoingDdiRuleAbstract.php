@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingDdiRuleAbstract
 {
-    const DEFAULTACTION_KEEP = 'keep';
-    const DEFAULTACTION_FORCE = 'force';
-
     /**
      * @var string
      */
@@ -33,7 +30,7 @@ abstract class OutgoingDdiRuleAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $forcedDdi;
 
@@ -79,7 +76,7 @@ abstract class OutgoingDdiRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingDdiRuleInterface|null $entity
      * @param int $depth
      * @return OutgoingDdiRuleDto|null
      */
@@ -99,22 +96,22 @@ abstract class OutgoingDdiRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingDdiRuleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingDdiRuleDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingDdiRuleDto
-         */
         Assertion::isInstanceOf($dto, OutgoingDdiRuleDto::class);
 
         $self = new static(
@@ -127,7 +124,6 @@ abstract class OutgoingDdiRuleAbstract
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -135,16 +131,13 @@ abstract class OutgoingDdiRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingDdiRuleDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingDdiRuleDto
-         */
         Assertion::isInstanceOf($dto, OutgoingDdiRuleDto::class);
 
         $this
@@ -155,7 +148,6 @@ abstract class OutgoingDdiRuleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -192,7 +184,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -219,15 +211,15 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param string $defaultAction
      *
-     * @return self
+     * @return static
      */
     protected function setDefaultAction($defaultAction)
     {
         Assertion::notNull($defaultAction, 'defaultAction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($defaultAction, 10, 'defaultAction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($defaultAction, [
-            self::DEFAULTACTION_KEEP,
-            self::DEFAULTACTION_FORCE
+            OutgoingDdiRuleInterface::DEFAULTACTION_KEEP,
+            OutgoingDdiRuleInterface::DEFAULTACTION_FORCE
         ], 'defaultActionvalue "%s" is not an element of the valid values: %s');
 
         $this->defaultAction = $defaultAction;
@@ -250,7 +242,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -274,7 +266,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
      *
-     * @return self
+     * @return static
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
     {
@@ -286,7 +278,7 @@ abstract class OutgoingDdiRuleAbstract
     /**
      * Get forcedDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getForcedDdi()
     {

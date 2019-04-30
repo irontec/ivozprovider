@@ -38,7 +38,16 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
             $ignoredFields
         );
 
-        if (count($changedFields) > 0) {
+        $isNew = $this->isNew();
+        $onGoing = in_array(
+            $this->getInitialValue('status'),
+            [
+                InvoiceInterface::STATUS_WAITING,
+                InvoiceInterface::STATUS_PROCESSING,
+            ]
+        );
+
+        if (!$isNew && !$onGoing && count($changedFields) > 0) {
             $this->reset();
         }
     }

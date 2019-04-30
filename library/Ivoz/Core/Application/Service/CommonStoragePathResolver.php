@@ -60,10 +60,9 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
 
     /**
      * @param EntityInterface $entity
-     * @param string | null $fileBaseName
-     * @return string
+     * @return null | string
      */
-    public function getFilePath(EntityInterface $entity)/* @todo : ?string */
+    public function getFilePath(EntityInterface $entity)
     {
         $id = $entity->getId();
         if (!$id) {
@@ -89,13 +88,13 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
 
     /**
      * @param int $id
-     * @return null|string
+     * @return string
      * @throws \Exception
      */
     protected function buildDirectoryTreeById(int $id): string
     {
         if ($this->storeInBaseFolder) {
-            return null;
+            return '';
         }
 
         if (!is_numeric($id)) {
@@ -117,7 +116,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
 
     /**
      * @param string $storagePath
-     * @return bool|string
+     * @return string
      */
     protected function sanitizePath(string $storagePath): string
     {

@@ -107,7 +107,7 @@ class ResidentialStatusAction
     }
 
     /**
-     * @param $type
+     * @param string $type
      * @return bool
      */
     private function processCallForward($type)

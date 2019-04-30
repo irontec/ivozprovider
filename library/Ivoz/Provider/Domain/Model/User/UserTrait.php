@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,17 +18,17 @@ trait UserTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $pickUpRelUsers;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $queueMembers;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $callForwardSettings;
 
@@ -45,20 +44,20 @@ trait UserTrait
         $this->callForwardSettings = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UserDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UserDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPickUpRelUsers())) {
             $self->replacePickUpRelUsers(
@@ -83,6 +82,7 @@ trait UserTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -93,17 +93,14 @@ trait UserTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UserDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UserDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPickUpRelUsers())) {
             $this->replacePickUpRelUsers(
@@ -126,6 +123,8 @@ trait UserTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -155,7 +154,7 @@ trait UserTrait
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser
      *
-     * @return UserTrait
+     * @return static
      */
     public function addPickUpRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser)
     {
@@ -177,10 +176,10 @@ trait UserTrait
     /**
      * Replace pickUpRelUsers
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[] $pickUpRelUsers
-     * @return self
+     * @param ArrayCollection $pickUpRelUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+     * @return static
      */
-    public function replacePickUpRelUsers(Collection $pickUpRelUsers)
+    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -210,7 +209,7 @@ trait UserTrait
 
     /**
      * Get pickUpRelUsers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getPickUpRelUsers(Criteria $criteria = null)
@@ -227,7 +226,7 @@ trait UserTrait
      *
      * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember
      *
-     * @return UserTrait
+     * @return static
      */
     public function addQueueMember(\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember)
     {
@@ -249,10 +248,10 @@ trait UserTrait
     /**
      * Replace queueMembers
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[] $queueMembers
-     * @return self
+     * @param ArrayCollection $queueMembers of Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
+     * @return static
      */
-    public function replaceQueueMembers(Collection $queueMembers)
+    public function replaceQueueMembers(ArrayCollection $queueMembers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -282,7 +281,7 @@ trait UserTrait
 
     /**
      * Get queueMembers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
      */
     public function getQueueMembers(Criteria $criteria = null)
@@ -299,7 +298,7 @@ trait UserTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
      *
-     * @return UserTrait
+     * @return static
      */
     public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
     {
@@ -321,10 +320,10 @@ trait UserTrait
     /**
      * Replace callForwardSettings
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
-     * @return self
+     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+     * @return static
      */
-    public function replaceCallForwardSettings(Collection $callForwardSettings)
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -354,7 +353,7 @@ trait UserTrait
 
     /**
      * Get callForwardSettings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(Criteria $criteria = null)

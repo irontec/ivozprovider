@@ -13,7 +13,8 @@ interface MixerInterface
     public function supportsFormat($format = null);
 
     /**
-     * @param \resource[] $segments
+     * @param array $segments of resources
+     *
      * @return string | Response
      */
     public function mix(array $segments);

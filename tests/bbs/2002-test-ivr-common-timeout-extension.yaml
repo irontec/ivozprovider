@@ -5,6 +5,7 @@ scenarios:
     timeout: 30
     sessions:
       - alice:
+          - wait: 3
           - call:
               dest: 600             # IVR common extension
               credentials:
@@ -13,6 +14,7 @@ scenarios:
           - dtmf: 1005            # Press Charlie Extension
           - waitfor: DISCONNCTD
       - eve:
+          - wait
           - register:
               <<: *eve_cred
           - waitfor: INCOMING

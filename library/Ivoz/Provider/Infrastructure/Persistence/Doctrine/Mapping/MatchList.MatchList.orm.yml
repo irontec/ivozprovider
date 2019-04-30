@@ -1,4 +1,5 @@
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\MatchListDoctrineRepository
   type: entity
   changeTrackingPolicy: DEFERRED_EXPLICIT
   table: MatchLists

@@ -1,12 +1,10 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
-/**
- * OutgoingRouting
- */
 class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRoutingInterface
 {
     use OutgoingRoutingTrait;
@@ -82,7 +80,8 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     }
 
     /**
-     * @return RoutingPatternInterface[]
+     * @todo awkward return type
+     * @return array of \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface or null
      */
     public function getRoutingPatterns()
     {
@@ -125,7 +124,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     }
 
     /**
-     * @param RoutingPatternInterface $pattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern
      * @return bool
      */
     public function hasRoutingPattern(RoutingPatternInterface $pattern)

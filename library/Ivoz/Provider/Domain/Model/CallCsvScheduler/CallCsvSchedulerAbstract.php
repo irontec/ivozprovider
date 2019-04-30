@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class CallCsvSchedulerAbstract
 {
-    const UNIT_DAY = 'day';
-    const UNIT_WEEK = 'week';
-    const UNIT_MONTH = 'month';
-
     /**
      * @var string
      */
@@ -32,6 +28,12 @@ abstract class CallCsvSchedulerAbstract
      * @var integer
      */
     protected $frequency;
+
+    /**
+     * comment: enum:inbound|outbound
+     * @var string | null
+     */
+    protected $callDirection = 'outbound';
 
     /**
      * @var string
@@ -54,17 +56,17 @@ abstract class CallCsvSchedulerAbstract
     protected $nextExecution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     protected $callCsvNotificationTemplate;
 
@@ -112,7 +114,7 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CallCsvSchedulerInterface|null $entity
      * @param int $depth
      * @return CallCsvSchedulerDto|null
      */
@@ -132,22 +134,22 @@ abstract class CallCsvSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CallCsvSchedulerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallCsvSchedulerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallCsvSchedulerDto
-         */
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
 
         $self = new static(
@@ -158,6 +160,7 @@ abstract class CallCsvSchedulerAbstract
         );
 
         $self
+            ->setCallDirection($dto->getCallDirection())
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
@@ -166,7 +169,6 @@ abstract class CallCsvSchedulerAbstract
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -174,22 +176,20 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CallCsvSchedulerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CallCsvSchedulerDto
-         */
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
 
         $this
             ->setName($dto->getName())
             ->setUnit($dto->getUnit())
             ->setFrequency($dto->getFrequency())
+            ->setCallDirection($dto->getCallDirection())
             ->setEmail($dto->getEmail())
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
@@ -200,7 +200,6 @@ abstract class CallCsvSchedulerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -215,6 +214,7 @@ abstract class CallCsvSchedulerAbstract
             ->setName(self::getName())
             ->setUnit(self::getUnit())
             ->setFrequency(self::getFrequency())
+            ->setCallDirection(self::getCallDirection())
             ->setEmail(self::getEmail())
             ->setLastExecution(self::getLastExecution())
             ->setLastExecutionError(self::getLastExecutionError())
@@ -233,6 +233,7 @@ abstract class CallCsvSchedulerAbstract
             'name' => self::getName(),
             'unit' => self::getUnit(),
             'frequency' => self::getFrequency(),
+            'callDirection' => self::getCallDirection(),
             'email' => self::getEmail(),
             'lastExecution' => self::getLastExecution(),
             'lastExecutionError' => self::getLastExecutionError(),
@@ -249,7 +250,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -276,16 +277,16 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $unit
      *
-     * @return self
+     * @return static
      */
     protected function setUnit($unit)
     {
         Assertion::notNull($unit, 'unit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($unit, [
-            self::UNIT_DAY,
-            self::UNIT_WEEK,
-            self::UNIT_MONTH
+            CallCsvSchedulerInterface::UNIT_DAY,
+            CallCsvSchedulerInterface::UNIT_WEEK,
+            CallCsvSchedulerInterface::UNIT_MONTH
         ], 'unitvalue "%s" is not an element of the valid values: %s');
 
         $this->unit = $unit;
@@ -308,7 +309,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param integer $frequency
      *
-     * @return self
+     * @return static
      */
     protected function setFrequency($frequency)
     {
@@ -332,11 +333,42 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * Set callDirection
+     *
+     * @param string $callDirection
+     *
+     * @return static
+     */
+    protected function setCallDirection($callDirection = null)
+    {
+        if (!is_null($callDirection)) {
+            Assertion::choice($callDirection, [
+                CallCsvSchedulerInterface::CALLDIRECTION_INBOUND,
+                CallCsvSchedulerInterface::CALLDIRECTION_OUTBOUND
+            ], 'callDirectionvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->callDirection = $callDirection;
+
+        return $this;
+    }
+
+    /**
+     * Get callDirection
+     *
+     * @return string | null
+     */
+    public function getCallDirection()
+    {
+        return $this->callDirection;
+    }
+
+    /**
      * Set email
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email)
     {
@@ -363,7 +395,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \DateTime $lastExecution
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecution($lastExecution = null)
     {
@@ -394,7 +426,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param string $lastExecutionError
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecutionError($lastExecutionError = null)
     {
@@ -422,7 +454,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \DateTime $nextExecution
      *
-     * @return self
+     * @return static
      */
     protected function setNextExecution($nextExecution = null)
     {
@@ -453,7 +485,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -477,7 +509,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -501,7 +533,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
     {

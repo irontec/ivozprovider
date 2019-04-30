@@ -64,7 +64,7 @@ abstract class MediaRelaySetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param MediaRelaySetInterface|null $entity
      * @param int $depth
      * @return MediaRelaySetDto|null
      */
@@ -84,22 +84,22 @@ abstract class MediaRelaySetAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var MediaRelaySetDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MediaRelaySetDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MediaRelaySetDto
-         */
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
         $self = new static(
@@ -110,7 +110,6 @@ abstract class MediaRelaySetAbstract
             ->setDescription($dto->getDescription())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -118,16 +117,13 @@ abstract class MediaRelaySetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MediaRelaySetDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MediaRelaySetDto
-         */
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
         $this
@@ -136,7 +132,6 @@ abstract class MediaRelaySetAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -169,7 +164,7 @@ abstract class MediaRelaySetAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -196,7 +191,7 @@ abstract class MediaRelaySetAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {

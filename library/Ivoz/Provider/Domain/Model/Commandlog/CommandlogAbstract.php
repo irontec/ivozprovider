@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CommandlogAbstract
 {
     /**
-     * @var guid
+     * @var string
      */
     protected $requestId;
 
@@ -32,6 +32,11 @@ abstract class CommandlogAbstract
      * @var array | null
      */
     protected $arguments;
+
+    /**
+     * @var array | null
+     */
+    protected $agent;
 
     /**
      * @var \DateTime
@@ -91,7 +96,7 @@ abstract class CommandlogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CommandlogInterface|null $entity
      * @param int $depth
      * @return CommandlogDto|null
      */
@@ -111,22 +116,22 @@ abstract class CommandlogAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CommandlogDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CommandlogDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CommandlogDto
-         */
         Assertion::isInstanceOf($dto, CommandlogDto::class);
 
         $self = new static(
@@ -139,9 +144,9 @@ abstract class CommandlogAbstract
         $self
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
+            ->setAgent($dto->getAgent())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -149,16 +154,13 @@ abstract class CommandlogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CommandlogDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CommandlogDto
-         */
         Assertion::isInstanceOf($dto, CommandlogDto::class);
 
         $this
@@ -166,12 +168,12 @@ abstract class CommandlogAbstract
             ->setClass($dto->getClass())
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
+            ->setAgent($dto->getAgent())
             ->setCreatedOn($dto->getCreatedOn())
             ->setMicrotime($dto->getMicrotime());
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -187,6 +189,7 @@ abstract class CommandlogAbstract
             ->setClass(self::getClass())
             ->setMethod(self::getMethod())
             ->setArguments(self::getArguments())
+            ->setAgent(self::getAgent())
             ->setCreatedOn(self::getCreatedOn())
             ->setMicrotime(self::getMicrotime());
     }
@@ -201,6 +204,7 @@ abstract class CommandlogAbstract
             'class' => self::getClass(),
             'method' => self::getMethod(),
             'arguments' => self::getArguments(),
+            'agent' => self::getAgent(),
             'createdOn' => self::getCreatedOn(),
             'microtime' => self::getMicrotime()
         ];
@@ -210,9 +214,9 @@ abstract class CommandlogAbstract
     /**
      * Set requestId
      *
-     * @param guid $requestId
+     * @param string $requestId
      *
-     * @return self
+     * @return static
      */
     protected function setRequestId($requestId)
     {
@@ -226,7 +230,7 @@ abstract class CommandlogAbstract
     /**
      * Get requestId
      *
-     * @return guid
+     * @return string
      */
     public function getRequestId()
     {
@@ -238,7 +242,7 @@ abstract class CommandlogAbstract
      *
      * @param string $class
      *
-     * @return self
+     * @return static
      */
     protected function setClass($class)
     {
@@ -265,7 +269,7 @@ abstract class CommandlogAbstract
      *
      * @param string $method
      *
-     * @return self
+     * @return static
      */
     protected function setMethod($method = null)
     {
@@ -293,13 +297,10 @@ abstract class CommandlogAbstract
      *
      * @param array $arguments
      *
-     * @return self
+     * @return static
      */
     protected function setArguments($arguments = null)
     {
-        if (!is_null($arguments)) {
-        }
-
         $this->arguments = $arguments;
 
         return $this;
@@ -316,11 +317,35 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * Set agent
+     *
+     * @param array $agent
+     *
+     * @return static
+     */
+    protected function setAgent($agent = null)
+    {
+        $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Get agent
+     *
+     * @return array | null
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
+    /**
      * Set createdOn
      *
      * @param \DateTime $createdOn
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedOn($createdOn)
     {
@@ -350,7 +375,7 @@ abstract class CommandlogAbstract
      *
      * @param integer $microtime
      *
-     * @return self
+     * @return static
      */
     protected function setMicrotime($microtime)
     {

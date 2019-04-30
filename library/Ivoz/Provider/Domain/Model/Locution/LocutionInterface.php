@@ -7,6 +7,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface LocutionInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const STATUS_PENDING = 'pending';
+    const STATUS_ENCODING = 'encoding';
+    const STATUS_READY = 'ready';
+    const STATUS_ERROR = 'error';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -21,8 +27,8 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
     /**
      * Add TempFile and set status to pending
      *
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
@@ -45,7 +51,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -61,7 +67,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile
      *
-     * @return self
+     * @return static
      */
     public function setEncodedFile(\Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile);
 
@@ -77,7 +83,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile
      *
-     * @return self
+     * @return static
      */
     public function setOriginalFile(\Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile);
 
@@ -89,19 +95,19 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
     public function getOriginalFile();
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

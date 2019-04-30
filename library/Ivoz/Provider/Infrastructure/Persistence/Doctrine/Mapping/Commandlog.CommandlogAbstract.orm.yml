@@ -25,6 +25,9 @@ Ivoz\Provider\Domain\Model\Commandlog\CommandlogAbstract:
     arguments:
       type: json_array
       nullable: true
+    agent:
+      type: json_array
+      nullable: true
     createdOn:
       type: datetime
       nullable: false

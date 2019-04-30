@@ -13,7 +13,7 @@ Feature: Update calendars
       {
           "name": "updatedCalendar",
           "id": 1,
-          "company": 2
+          "company": 1
       }
     """
     Then the response status code should be 200

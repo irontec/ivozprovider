@@ -63,7 +63,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingRoutingRelCarrierInterface|null $entity
      * @param int $depth
      * @return OutgoingRoutingRelCarrierDto|null
      */
@@ -83,22 +83,22 @@ abstract class OutgoingRoutingRelCarrierAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingRoutingRelCarrierDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingRelCarrierDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingRelCarrierDto
-         */
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingRelCarrierDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingRelCarrierDto
-         */
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {
@@ -191,7 +186,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {

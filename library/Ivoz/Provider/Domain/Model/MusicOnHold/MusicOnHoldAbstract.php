@@ -13,11 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class MusicOnHoldAbstract
 {
-    const STATUS_PENDING = 'pending';
-    const STATUS_ENCODING = 'encoding';
-    const STATUS_READY = 'ready';
-    const STATUS_ERROR = 'error';
-
     /**
      * @var string
      */
@@ -40,12 +35,12 @@ abstract class MusicOnHoldAbstract
     protected $encodedFile;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -95,7 +90,7 @@ abstract class MusicOnHoldAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param MusicOnHoldInterface|null $entity
      * @param int $depth
      * @return MusicOnHoldDto|null
      */
@@ -115,22 +110,22 @@ abstract class MusicOnHoldAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var MusicOnHoldDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MusicOnHoldDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MusicOnHoldDto
-         */
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
@@ -157,7 +152,6 @@ abstract class MusicOnHoldAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -165,16 +159,13 @@ abstract class MusicOnHoldAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param MusicOnHoldDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto MusicOnHoldDto
-         */
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
@@ -199,7 +190,6 @@ abstract class MusicOnHoldAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -248,7 +238,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -275,17 +265,17 @@ abstract class MusicOnHoldAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($status, [
-                self::STATUS_PENDING,
-                self::STATUS_ENCODING,
-                self::STATUS_READY,
-                self::STATUS_ERROR
+                MusicOnHoldInterface::STATUS_PENDING,
+                MusicOnHoldInterface::STATUS_ENCODING,
+                MusicOnHoldInterface::STATUS_READY,
+                MusicOnHoldInterface::STATUS_ERROR
             ], 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
@@ -309,7 +299,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -333,7 +323,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -357,7 +347,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
      *
-     * @return self
+     * @return static
      */
     public function setOriginalFile(OriginalFile $originalFile)
     {
@@ -380,7 +370,7 @@ abstract class MusicOnHoldAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
      *
-     * @return self
+     * @return static
      */
     public function setEncodedFile(EncodedFile $encodedFile)
     {

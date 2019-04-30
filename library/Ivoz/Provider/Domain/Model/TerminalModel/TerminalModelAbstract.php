@@ -96,7 +96,7 @@ abstract class TerminalModelAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TerminalModelInterface|null $entity
      * @param int $depth
      * @return TerminalModelDto|null
      */
@@ -116,22 +116,22 @@ abstract class TerminalModelAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TerminalModelDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalModelDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalModelDto
-         */
         Assertion::isInstanceOf($dto, TerminalModelDto::class);
 
         $self = new static(
@@ -148,7 +148,6 @@ abstract class TerminalModelAbstract
             ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -156,16 +155,13 @@ abstract class TerminalModelAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalModelDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalModelDto
-         */
         Assertion::isInstanceOf($dto, TerminalModelDto::class);
 
         $this
@@ -180,7 +176,6 @@ abstract class TerminalModelAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -225,7 +220,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -252,7 +247,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -279,7 +274,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -306,7 +301,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $genericTemplate
      *
-     * @return self
+     * @return static
      */
     protected function setGenericTemplate($genericTemplate = null)
     {
@@ -334,7 +329,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $specificTemplate
      *
-     * @return self
+     * @return static
      */
     protected function setSpecificTemplate($specificTemplate = null)
     {
@@ -362,7 +357,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $genericUrlPattern
      *
-     * @return self
+     * @return static
      */
     protected function setGenericUrlPattern($genericUrlPattern = null)
     {
@@ -390,7 +385,7 @@ abstract class TerminalModelAbstract
      *
      * @param string $specificUrlPattern
      *
-     * @return self
+     * @return static
      */
     protected function setSpecificUrlPattern($specificUrlPattern = null)
     {
@@ -418,7 +413,7 @@ abstract class TerminalModelAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer
      *
-     * @return self
+     * @return static
      */
     public function setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer)
     {

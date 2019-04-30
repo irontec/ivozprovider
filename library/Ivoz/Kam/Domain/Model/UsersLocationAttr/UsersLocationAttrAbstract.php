@@ -101,7 +101,7 @@ abstract class UsersLocationAttrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersLocationAttrInterface|null $entity
      * @param int $depth
      * @return UsersLocationAttrDto|null
      */
@@ -121,22 +121,22 @@ abstract class UsersLocationAttrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersLocationAttrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersLocationAttrDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersLocationAttrDto
-         */
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
 
         $self = new static(
@@ -152,7 +152,6 @@ abstract class UsersLocationAttrAbstract
             ->setDomain($dto->getDomain())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -160,16 +159,13 @@ abstract class UsersLocationAttrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersLocationAttrDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersLocationAttrDto
-         */
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
 
         $this
@@ -183,7 +179,6 @@ abstract class UsersLocationAttrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -226,7 +221,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $ruid
      *
-     * @return self
+     * @return static
      */
     protected function setRuid($ruid)
     {
@@ -253,7 +248,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -280,7 +275,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain = null)
     {
@@ -308,7 +303,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $aname
      *
-     * @return self
+     * @return static
      */
     protected function setAname($aname)
     {
@@ -335,7 +330,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param integer $atype
      *
-     * @return self
+     * @return static
      */
     protected function setAtype($atype)
     {
@@ -362,7 +357,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param string $avalue
      *
-     * @return self
+     * @return static
      */
     protected function setAvalue($avalue)
     {
@@ -389,7 +384,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @param \DateTime $lastModified
      *
-     * @return self
+     * @return static
      */
     protected function setLastModified($lastModified)
     {

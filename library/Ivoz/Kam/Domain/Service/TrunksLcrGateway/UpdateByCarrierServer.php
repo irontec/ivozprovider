@@ -3,6 +3,7 @@
 namespace Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
@@ -33,6 +34,7 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     {
         $lcrGateway = $carrierServer->getLcrGateway();
 
+        /** @var TrunksLcrGatewayDto $lcrGatewayDto */
         $lcrGatewayDto = is_null($lcrGateway)
             ? TrunksLcrGateway::createDto()
             : $lcrGateway->toDto();

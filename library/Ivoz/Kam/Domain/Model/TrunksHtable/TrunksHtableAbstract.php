@@ -92,7 +92,7 @@ abstract class TrunksHtableAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksHtableInterface|null $entity
      * @param int $depth
      * @return TrunksHtableDto|null
      */
@@ -112,22 +112,22 @@ abstract class TrunksHtableAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksHtableDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksHtableDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksHtableDto
-         */
         Assertion::isInstanceOf($dto, TrunksHtableDto::class);
 
         $self = new static(
@@ -138,7 +138,6 @@ abstract class TrunksHtableAbstract
             $dto->getExpires()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -146,16 +145,13 @@ abstract class TrunksHtableAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksHtableDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksHtableDto
-         */
         Assertion::isInstanceOf($dto, TrunksHtableDto::class);
 
         $this
@@ -167,7 +163,6 @@ abstract class TrunksHtableAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -206,7 +201,7 @@ abstract class TrunksHtableAbstract
      *
      * @param string $keyName
      *
-     * @return self
+     * @return static
      */
     protected function setKeyName($keyName)
     {
@@ -233,7 +228,7 @@ abstract class TrunksHtableAbstract
      *
      * @param integer $keyType
      *
-     * @return self
+     * @return static
      */
     protected function setKeyType($keyType)
     {
@@ -260,7 +255,7 @@ abstract class TrunksHtableAbstract
      *
      * @param integer $valueType
      *
-     * @return self
+     * @return static
      */
     protected function setValueType($valueType)
     {
@@ -287,7 +282,7 @@ abstract class TrunksHtableAbstract
      *
      * @param string $keyValue
      *
-     * @return self
+     * @return static
      */
     protected function setKeyValue($keyValue)
     {
@@ -314,7 +309,7 @@ abstract class TrunksHtableAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {

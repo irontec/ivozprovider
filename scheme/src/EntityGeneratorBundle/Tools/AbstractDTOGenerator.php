@@ -16,6 +16,7 @@ use Doctrine\DBAL\Types\Type;
 class AbstractDTOGenerator extends EntityGenerator
 {
     protected $typeAlias = array(
+        'guid'              => 'string',
         Type::DATETIMETZ    => '\DateTime',
         Type::DATETIME      => '\DateTime',
         Type::DATE          => '\DateTime',
@@ -87,7 +88,7 @@ public function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
      */
     protected static $setIdMethodTemplate =
     '/**
- * @param integer $id | null
+ * @param mixed | null $id
  *
  * @return static
  */
@@ -117,7 +118,7 @@ public function <methodName>()
      */
     protected static $getIdMethodTemplate =
     '/**
- * @return integer | null
+ * @return mixed | null
  */
 public function <methodName>Id()
 {

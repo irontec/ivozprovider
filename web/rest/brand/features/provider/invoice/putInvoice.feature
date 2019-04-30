@@ -14,9 +14,9 @@ Feature: Update invoice
           "number": "1",
           "inDate": "2018-01-02 00:00:00",
           "outDate": "2018-01-31 23:59:59",
-          "total": null,
-          "totalWithTax": null,
-          "status": null,
+          "total": 10.0,
+          "totalWithTax": 12.1,
+          "status": "created",
           "invoiceTemplate": 1,
           "company": 1
       }
@@ -30,10 +30,10 @@ Feature: Update invoice
           "number": "1",
           "inDate": "2018-01-02 00:00:00",
           "outDate": "2018-01-31 23:59:59",
-          "total": null,
+          "total": 10,
           "taxRate": 21,
-          "totalWithTax": null,
-          "status": null,
+          "totalWithTax": 12.1,
+          "status": "created",
           "statusMsg": null,
           "id": 1,
           "pdf": {

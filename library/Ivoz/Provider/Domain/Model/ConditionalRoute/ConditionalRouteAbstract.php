@@ -13,16 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class ConditionalRouteAbstract
 {
-    const ROUTETYPE_USER = 'user';
-    const ROUTETYPE_NUMBER = 'number';
-    const ROUTETYPE_IVR = 'ivr';
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
-    const ROUTETYPE_FRIEND = 'friend';
-    const ROUTETYPE_QUEUE = 'queue';
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
-    const ROUTETYPE_EXTENSION = 'extension';
-
     /**
      * @var string
      */
@@ -50,47 +40,47 @@ abstract class ConditionalRouteAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     protected $ivr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     protected $huntGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $voicemailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
      */
     protected $queue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     protected $locution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+     * @var \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
      */
     protected $conferenceRoom;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $numberCountry;
 
@@ -135,7 +125,7 @@ abstract class ConditionalRouteAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRouteInterface|null $entity
      * @param int $depth
      * @return ConditionalRouteDto|null
      */
@@ -155,22 +145,22 @@ abstract class ConditionalRouteAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRouteDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRouteDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRouteDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
         $self = new static(
@@ -193,7 +183,6 @@ abstract class ConditionalRouteAbstract
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -201,16 +190,13 @@ abstract class ConditionalRouteAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRouteDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRouteDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
         $this
@@ -231,7 +217,6 @@ abstract class ConditionalRouteAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -288,7 +273,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -315,22 +300,22 @@ abstract class ConditionalRouteAbstract
      *
      * @param string $routetype
      *
-     * @return self
+     * @return static
      */
     protected function setRoutetype($routetype = null)
     {
         if (!is_null($routetype)) {
             Assertion::maxLength($routetype, 25, 'routetype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routetype, [
-                self::ROUTETYPE_USER,
-                self::ROUTETYPE_NUMBER,
-                self::ROUTETYPE_IVR,
-                self::ROUTETYPE_HUNTGROUP,
-                self::ROUTETYPE_VOICEMAIL,
-                self::ROUTETYPE_FRIEND,
-                self::ROUTETYPE_QUEUE,
-                self::ROUTETYPE_CONFERENCEROOM,
-                self::ROUTETYPE_EXTENSION
+                ConditionalRouteInterface::ROUTETYPE_USER,
+                ConditionalRouteInterface::ROUTETYPE_NUMBER,
+                ConditionalRouteInterface::ROUTETYPE_IVR,
+                ConditionalRouteInterface::ROUTETYPE_HUNTGROUP,
+                ConditionalRouteInterface::ROUTETYPE_VOICEMAIL,
+                ConditionalRouteInterface::ROUTETYPE_FRIEND,
+                ConditionalRouteInterface::ROUTETYPE_QUEUE,
+                ConditionalRouteInterface::ROUTETYPE_CONFERENCEROOM,
+                ConditionalRouteInterface::ROUTETYPE_EXTENSION
             ], 'routetypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -354,7 +339,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param string $numbervalue
      *
-     * @return self
+     * @return static
      */
     protected function setNumbervalue($numbervalue = null)
     {
@@ -382,7 +367,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param string $friendvalue
      *
-     * @return self
+     * @return static
      */
     protected function setFriendvalue($friendvalue = null)
     {
@@ -410,7 +395,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -434,7 +419,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
      *
-     * @return self
+     * @return static
      */
     public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
@@ -446,7 +431,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr()
     {
@@ -458,7 +443,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
      *
-     * @return self
+     * @return static
      */
     public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
     {
@@ -470,7 +455,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup()
     {
@@ -482,7 +467,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser
      *
-     * @return self
+     * @return static
      */
     public function setVoicemailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser = null)
     {
@@ -494,7 +479,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get voicemailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoicemailUser()
     {
@@ -506,7 +491,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
@@ -518,7 +503,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser()
     {
@@ -530,7 +515,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
      *
-     * @return self
+     * @return static
      */
     public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
     {
@@ -542,7 +527,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
      */
     public function getQueue()
     {
@@ -554,7 +539,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
      *
-     * @return self
+     * @return static
      */
     public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
     {
@@ -566,7 +551,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get locution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getLocution()
     {
@@ -578,7 +563,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
      *
-     * @return self
+     * @return static
      */
     public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
     {
@@ -590,7 +575,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get conferenceRoom
      *
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
      */
     public function getConferenceRoom()
     {
@@ -602,7 +587,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return self
+     * @return static
      */
     public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
     {
@@ -614,7 +599,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension()
     {
@@ -626,7 +611,7 @@ abstract class ConditionalRouteAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {
@@ -638,7 +623,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry()
     {

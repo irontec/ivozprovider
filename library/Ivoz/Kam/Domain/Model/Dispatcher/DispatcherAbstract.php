@@ -100,7 +100,7 @@ abstract class DispatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DispatcherInterface|null $entity
      * @param int $depth
      * @return DispatcherDto|null
      */
@@ -120,22 +120,22 @@ abstract class DispatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DispatcherDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DispatcherDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DispatcherDto
-         */
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
         $self = new static(
@@ -151,7 +151,6 @@ abstract class DispatcherAbstract
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -159,16 +158,13 @@ abstract class DispatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DispatcherDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DispatcherDto
-         */
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
         $this
@@ -182,7 +178,6 @@ abstract class DispatcherAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -225,7 +220,7 @@ abstract class DispatcherAbstract
      *
      * @param integer $setid
      *
-     * @return self
+     * @return static
      */
     protected function setSetid($setid)
     {
@@ -252,7 +247,7 @@ abstract class DispatcherAbstract
      *
      * @param string $destination
      *
-     * @return self
+     * @return static
      */
     protected function setDestination($destination)
     {
@@ -279,7 +274,7 @@ abstract class DispatcherAbstract
      *
      * @param integer $flags
      *
-     * @return self
+     * @return static
      */
     protected function setFlags($flags)
     {
@@ -306,7 +301,7 @@ abstract class DispatcherAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -333,7 +328,7 @@ abstract class DispatcherAbstract
      *
      * @param string $attrs
      *
-     * @return self
+     * @return static
      */
     protected function setAttrs($attrs)
     {
@@ -360,7 +355,7 @@ abstract class DispatcherAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -387,7 +382,7 @@ abstract class DispatcherAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer
      *
-     * @return self
+     * @return static
      */
     public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer)
     {

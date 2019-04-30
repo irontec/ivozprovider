@@ -1,7 +1,7 @@
 parameters:
   soft_delete:
     Ivoz\Provider\Domain\Model\Brand\Brand:
-      - Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl
+      - Ivoz\Provider\Domain\Model\WebPortal\WebPortal
       - Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
       - Ivoz\Provider\Domain\Model\Invoice\Invoice
       - Ivoz\Provider\Domain\Model\Company\Company

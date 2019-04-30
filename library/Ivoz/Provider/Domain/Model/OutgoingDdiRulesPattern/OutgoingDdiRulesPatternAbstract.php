@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class OutgoingDdiRulesPatternAbstract
 {
-    const ACTION_KEEP = 'keep';
-    const ACTION_FORCE = 'force';
-
     /**
      * comment: enum:keep|force
      * @var string
@@ -38,7 +35,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $matchList;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $forcedDdi;
 
@@ -84,7 +81,7 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param OutgoingDdiRulesPatternInterface|null $entity
      * @param int $depth
      * @return OutgoingDdiRulesPatternDto|null
      */
@@ -104,22 +101,22 @@ abstract class OutgoingDdiRulesPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var OutgoingDdiRulesPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingDdiRulesPatternDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingDdiRulesPatternDto
-         */
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
         $self = new static(
@@ -133,7 +130,6 @@ abstract class OutgoingDdiRulesPatternAbstract
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -141,16 +137,13 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingDdiRulesPatternDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingDdiRulesPatternDto
-         */
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
         $this
@@ -162,7 +155,6 @@ abstract class OutgoingDdiRulesPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -201,15 +193,15 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param string $action
      *
-     * @return self
+     * @return static
      */
     protected function setAction($action)
     {
         Assertion::notNull($action, 'action value "%s" is null, but non null value was expected.');
         Assertion::maxLength($action, 10, 'action value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($action, [
-            self::ACTION_KEEP,
-            self::ACTION_FORCE
+            OutgoingDdiRulesPatternInterface::ACTION_KEEP,
+            OutgoingDdiRulesPatternInterface::ACTION_FORCE
         ], 'actionvalue "%s" is not an element of the valid values: %s');
 
         $this->action = $action;
@@ -232,7 +224,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -259,7 +251,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
     {
@@ -283,7 +275,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return self
+     * @return static
      */
     public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
@@ -307,7 +299,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
      *
-     * @return self
+     * @return static
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
     {
@@ -319,7 +311,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Get forcedDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getForcedDdi()
     {

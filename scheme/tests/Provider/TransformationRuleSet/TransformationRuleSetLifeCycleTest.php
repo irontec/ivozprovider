@@ -30,9 +30,10 @@ class TransformationRuleSetLifeCycleTest extends KernelTestCase
 
     protected function addTransformationRuleSet()
     {
+        $dto = $this->getTransformationRuleSetDto();
         return $this
             ->entityTools
-            ->persistDto($this->getTransformationRuleSetDto(), null, true);
+            ->persistDto($dto, null, true);
     }
 
     protected function updateTransformationRuleSet()

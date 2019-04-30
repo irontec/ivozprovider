@@ -8,6 +8,9 @@ use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Ivoz\Provider\Domain\Service\Company\SyncBalances;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances as SyncCarrierBalances;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\Event\CommandWasExecuted;
 
 class MicroKernel extends Kernel
 {
@@ -45,6 +48,8 @@ class MicroKernel extends Kernel
 
     public function sync()
     {
+        $this->registerCommand();
+
         /** @var SyncBalances $syncBalancesService */
         $syncBalancesService = $this->container->get(SyncBalances::class);
         $syncBalancesService->updateAll();
@@ -54,6 +59,29 @@ class MicroKernel extends Kernel
         $syncCarrierBalancesService->updateAll();
 
         return new Response("Company and carrier balances updated successfully!\n");
+    }
+
+    private function registerCommand()
+    {
+        /** @var DomainEventPublisher $eventPublisher */
+        $eventPublisher = $this->container->get(
+            DomainEventPublisher::class
+        );
+
+        /** @var RequestId $requestId */
+        $requestId = $this->container->get(
+            RequestId::class
+        );
+
+        $event = new CommandWasExecuted(
+            $requestId->toString(),
+            'Balances',
+            'sync',
+            [],
+            []
+        );
+
+        $eventPublisher->publish($event);
     }
 
     // optional, to use the standard Symfony cache directory

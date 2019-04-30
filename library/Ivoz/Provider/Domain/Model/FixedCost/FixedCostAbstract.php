@@ -74,7 +74,7 @@ abstract class FixedCostAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FixedCostInterface|null $entity
      * @param int $depth
      * @return FixedCostDto|null
      */
@@ -94,22 +94,22 @@ abstract class FixedCostAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FixedCostDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostDto
-         */
         Assertion::isInstanceOf($dto, FixedCostDto::class);
 
         $self = new static(
@@ -122,7 +122,6 @@ abstract class FixedCostAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -130,16 +129,13 @@ abstract class FixedCostAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostDto
-         */
         Assertion::isInstanceOf($dto, FixedCostDto::class);
 
         $this
@@ -150,7 +146,6 @@ abstract class FixedCostAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -187,7 +182,7 @@ abstract class FixedCostAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -214,13 +209,10 @@ abstract class FixedCostAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
-        if (!is_null($description)) {
-        }
-
         $this->description = $description;
 
         return $this;
@@ -241,7 +233,7 @@ abstract class FixedCostAbstract
      *
      * @param float $cost
      *
-     * @return self
+     * @return static
      */
     protected function setCost($cost = null)
     {
@@ -272,7 +264,7 @@ abstract class FixedCostAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

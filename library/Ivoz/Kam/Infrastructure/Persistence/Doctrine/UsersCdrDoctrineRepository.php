@@ -22,7 +22,7 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
     }
 
     /**
-     * @param mixed $userId
+     * @param int $userId
      * @return int
      */
     public function countByUserId($userId) :int
@@ -37,7 +37,7 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
     }
 
     /**
-     * @param $callid
+     * @param string $callid
      * @return UsersCdrInterface[]
      */
     public function findByCallid($callid)
@@ -51,7 +51,7 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
     }
 
     /**
-     * @param $callid
+     * @param string $callid
      * @return UsersCdrInterface | null
      */
     public function findOneByCallid($callid)

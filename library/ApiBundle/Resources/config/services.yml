@@ -14,11 +14,17 @@ services:
       - '@lexik_jwt_authentication.jwt_manager'
       - '@event_dispatcher'
 
-  Ivoz\Provider\Infrastructure\Api\Jwt\TokenAuthenticator:
+  Ivoz\Provider\Infrastructure\Api\Jwt\AdminTokenAuthenticator:
     arguments:
       - '@lexik_jwt_authentication.jwt_manager'
       - '@event_dispatcher'
       - '@lexik_jwt_authentication.extractor.chain_extractor'
+
+  Ivoz\Provider\Infrastructure\Api\Jwt\UserTokenAuthenticator:
+    arguments:
+    - '@lexik_jwt_authentication.jwt_manager'
+    - '@event_dispatcher'
+    - '@lexik_jwt_authentication.extractor.chain_extractor'
 
   ################################################
   ## Dependencies
@@ -58,7 +64,6 @@ services:
     arguments:
       $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
       $requestId: '@Ivoz\Core\Application\RequestId'
-      $jwtTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 33 }
 

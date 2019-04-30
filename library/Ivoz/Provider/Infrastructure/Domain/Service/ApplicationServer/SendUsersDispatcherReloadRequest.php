@@ -2,29 +2,31 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequestInterface;
+use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleEventHandlerInterface;
 
 class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEventHandlerInterface
 {
-    protected $usersDispatcherReload;
+    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
+
+    protected $usersGearmanClient;
 
     public function __construct(
-        XmlRpcUsersRequestInterface $usersDispatcherReload
+        UsersClientInterface $usersGearmanClient
     ) {
-        $this->usersDispatcherReload = $usersDispatcherReload;
+        $this->usersGearmanClient = $usersGearmanClient;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
     public function execute(ApplicationServerInterface $entity)
     {
-        $this->usersDispatcherReload->send();
+        $this->usersGearmanClient->reloadDispatcher();
     }
 }

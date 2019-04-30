@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class FaxesInOutAbstract
 {
-    const TYPE_IN = 'In';
-    const TYPE_OUT = 'Out';
-
     /**
      * @var \DateTime
      */
@@ -58,7 +55,7 @@ abstract class FaxesInOutAbstract
     protected $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $dstCountry;
 
@@ -104,7 +101,7 @@ abstract class FaxesInOutAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FaxesInOutInterface|null $entity
      * @param int $depth
      * @return FaxesInOutDto|null
      */
@@ -124,22 +121,22 @@ abstract class FaxesInOutAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FaxesInOutDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxesInOutDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxesInOutDto
-         */
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
@@ -163,7 +160,6 @@ abstract class FaxesInOutAbstract
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -171,16 +167,13 @@ abstract class FaxesInOutAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FaxesInOutDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FaxesInOutDto
-         */
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
@@ -202,7 +195,6 @@ abstract class FaxesInOutAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -253,7 +245,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \DateTime $calldate
      *
-     * @return self
+     * @return static
      */
     protected function setCalldate($calldate)
     {
@@ -283,7 +275,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $src
      *
-     * @return self
+     * @return static
      */
     protected function setSrc($src = null)
     {
@@ -311,7 +303,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $dst
      *
-     * @return self
+     * @return static
      */
     protected function setDst($dst = null)
     {
@@ -339,15 +331,15 @@ abstract class FaxesInOutAbstract
      *
      * @param string $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type = null)
     {
         if (!is_null($type)) {
             Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($type, [
-                self::TYPE_IN,
-                self::TYPE_OUT
+                FaxesInOutInterface::TYPE_IN,
+                FaxesInOutInterface::TYPE_OUT
             ], 'typevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -371,7 +363,7 @@ abstract class FaxesInOutAbstract
      *
      * @param string $pages
      *
-     * @return self
+     * @return static
      */
     protected function setPages($pages = null)
     {
@@ -399,13 +391,10 @@ abstract class FaxesInOutAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
-        if (!is_null($status)) {
-        }
-
         $this->status = $status;
 
         return $this;
@@ -426,7 +415,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
      *
-     * @return self
+     * @return static
      */
     public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax)
     {
@@ -450,7 +439,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
      *
-     * @return self
+     * @return static
      */
     public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null)
     {
@@ -462,7 +451,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get dstCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getDstCountry()
     {
@@ -474,7 +463,7 @@ abstract class FaxesInOutAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file
      *
-     * @return self
+     * @return static
      */
     public function setFile(File $file)
     {

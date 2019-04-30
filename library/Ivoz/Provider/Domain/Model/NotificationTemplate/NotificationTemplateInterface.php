@@ -3,10 +3,19 @@
 namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface NotificationTemplateInterface extends LoggableEntityInterface
 {
+    const TYPE_VOICEMAIL = 'voicemail';
+    const TYPE_FAX = 'fax';
+    const TYPE_LIMIT = 'limit';
+    const TYPE_LOWBALANCE = 'lowbalance';
+    const TYPE_INVOICE = 'invoice';
+    const TYPE_CALLCSV = 'callCsv';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -16,7 +25,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     /**
      * Get contents by language
      *
-     * @param LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
      */
     public function getContentsByLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language);
@@ -40,7 +49,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -56,7 +65,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface $content
      *
-     * @return NotificationTemplateTrait
+     * @return static
      */
     public function addContent(\Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface $content);
 
@@ -70,14 +79,14 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     /**
      * Replace contents
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[] $contents
-     * @return self
+     * @param ArrayCollection $contents of Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
+     * @return static
      */
-    public function replaceContents(Collection $contents);
+    public function replaceContents(ArrayCollection $contents);
 
     /**
      * Get contents
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[]
      */
     public function getContents(\Doctrine\Common\Collections\Criteria $criteria = null);

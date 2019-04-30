@@ -25,6 +25,15 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
       nullable: false
       options:
         unsigned: true
+    callDirection:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:inbound|outbound]'
+        default: 'outbound'
+      column: callDirection
     email:
       type: string
       nullable: false

@@ -105,7 +105,7 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -121,7 +121,7 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -137,14 +137,14 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -153,14 +153,14 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return self
+     * @return static
      */
     public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null);
 
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
      */
     public function getFriend();
 
@@ -169,14 +169,14 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return self
+     * @return static
      */
     public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
 
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 
@@ -185,14 +185,14 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
      *
-     * @return self
+     * @return static
      */
     public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
 }

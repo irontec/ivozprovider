@@ -163,7 +163,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -177,7 +177,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutgoingDdiRuleId()
     {
@@ -209,7 +209,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -223,7 +223,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getMatchListId()
     {
@@ -255,7 +255,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -269,7 +269,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getForcedDdiId()
     {

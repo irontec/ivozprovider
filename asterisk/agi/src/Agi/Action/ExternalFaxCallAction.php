@@ -5,7 +5,7 @@ namespace Agi\Action;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 
 /**
@@ -95,7 +95,7 @@ class ExternalFaxCallAction
             $this->agi->decline();
 
 
-            /** @var FaxesInOutDTO $faxOutDto */
+            /** @var FaxesInOutDto $faxOutDto */
             $faxOutDto = $this->entityTools->entityToDto($faxOut);
             $faxOutDto->setStatus('error');
             $this->entityTools->persistDto($faxOutDto, $faxOut);

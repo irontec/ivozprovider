@@ -200,7 +200,7 @@ abstract class UsersLocationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersLocationInterface|null $entity
      * @param int $depth
      * @return UsersLocationDto|null
      */
@@ -220,22 +220,22 @@ abstract class UsersLocationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersLocationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersLocationDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersLocationDto
-         */
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
 
         $self = new static(
@@ -266,7 +266,6 @@ abstract class UsersLocationAbstract
             ->setInstance($dto->getInstance())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -274,16 +273,13 @@ abstract class UsersLocationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersLocationDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersLocationDto
-         */
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
 
         $this
@@ -312,7 +308,6 @@ abstract class UsersLocationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -385,7 +380,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $ruid
      *
-     * @return self
+     * @return static
      */
     protected function setRuid($ruid)
     {
@@ -412,7 +407,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -439,7 +434,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain = null)
     {
@@ -467,7 +462,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $contact
      *
-     * @return self
+     * @return static
      */
     protected function setContact($contact)
     {
@@ -494,7 +489,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $received
      *
-     * @return self
+     * @return static
      */
     protected function setReceived($received = null)
     {
@@ -522,7 +517,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $path
      *
-     * @return self
+     * @return static
      */
     protected function setPath($path = null)
     {
@@ -550,7 +545,7 @@ abstract class UsersLocationAbstract
      *
      * @param \DateTime $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {
@@ -580,7 +575,7 @@ abstract class UsersLocationAbstract
      *
      * @param float $q
      *
-     * @return self
+     * @return static
      */
     protected function setQ($q)
     {
@@ -607,7 +602,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $callid
      *
-     * @return self
+     * @return static
      */
     protected function setCallid($callid)
     {
@@ -634,7 +629,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $cseq
      *
-     * @return self
+     * @return static
      */
     protected function setCseq($cseq)
     {
@@ -661,7 +656,7 @@ abstract class UsersLocationAbstract
      *
      * @param \DateTime $lastModified
      *
-     * @return self
+     * @return static
      */
     protected function setLastModified($lastModified)
     {
@@ -691,7 +686,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $flags
      *
-     * @return self
+     * @return static
      */
     protected function setFlags($flags)
     {
@@ -718,7 +713,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $cflags
      *
-     * @return self
+     * @return static
      */
     protected function setCflags($cflags)
     {
@@ -745,7 +740,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $userAgent
      *
-     * @return self
+     * @return static
      */
     protected function setUserAgent($userAgent)
     {
@@ -772,7 +767,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $socket
      *
-     * @return self
+     * @return static
      */
     protected function setSocket($socket = null)
     {
@@ -800,7 +795,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $methods
      *
-     * @return self
+     * @return static
      */
     protected function setMethods($methods = null)
     {
@@ -831,7 +826,7 @@ abstract class UsersLocationAbstract
      *
      * @param string $instance
      *
-     * @return self
+     * @return static
      */
     protected function setInstance($instance = null)
     {
@@ -859,7 +854,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $regId
      *
-     * @return self
+     * @return static
      */
     protected function setRegId($regId)
     {
@@ -886,7 +881,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $serverId
      *
-     * @return self
+     * @return static
      */
     protected function setServerId($serverId)
     {
@@ -913,7 +908,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $connectionId
      *
-     * @return self
+     * @return static
      */
     protected function setConnectionId($connectionId)
     {
@@ -940,7 +935,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $keepalive
      *
-     * @return self
+     * @return static
      */
     protected function setKeepalive($keepalive)
     {
@@ -967,7 +962,7 @@ abstract class UsersLocationAbstract
      *
      * @param integer $partition
      *
-     * @return self
+     * @return static
      */
     protected function setPartition($partition)
     {

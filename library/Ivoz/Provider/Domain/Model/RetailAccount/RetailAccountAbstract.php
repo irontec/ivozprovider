@@ -13,18 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class RetailAccountAbstract
 {
-    const TRANSPORT_UDP = 'udp';
-    const TRANSPORT_TCP = 'tcp';
-    const TRANSPORT_TLS = 'tls';
-
-
-    const DIRECTCONNECTIVITY_YES = 'yes';
-    const DIRECTCONNECTIVITY_NO = 'no';
-
-
-    const DDIIN_YES = 'yes';
-    const DDIIN_NO = 'no';
-
     /**
      * @var string
      */
@@ -74,12 +62,18 @@ abstract class RetailAccountAbstract
     protected $ddiIn = 'yes';
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Passthrough = 'no';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     protected $domain;
 
@@ -89,12 +83,12 @@ abstract class RetailAccountAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $outgoingDdi;
 
@@ -109,13 +103,15 @@ abstract class RetailAccountAbstract
         $description,
         $transport,
         $directConnectivity,
-        $ddiIn
+        $ddiIn,
+        $t38Passthrough
     ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setTransport($transport);
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
+        $this->setT38Passthrough($t38Passthrough);
     }
 
     abstract public function getId();
@@ -148,7 +144,7 @@ abstract class RetailAccountAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RetailAccountInterface|null $entity
      * @param int $depth
      * @return RetailAccountDto|null
      */
@@ -168,22 +164,22 @@ abstract class RetailAccountAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RetailAccountDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RetailAccountDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RetailAccountDto
-         */
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
         $self = new static(
@@ -191,7 +187,8 @@ abstract class RetailAccountAbstract
             $dto->getDescription(),
             $dto->getTransport(),
             $dto->getDirectConnectivity(),
-            $dto->getDdiIn()
+            $dto->getDdiIn(),
+            $dto->getT38Passthrough()
         );
 
         $self
@@ -206,7 +203,6 @@ abstract class RetailAccountAbstract
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -214,16 +210,13 @@ abstract class RetailAccountAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RetailAccountDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RetailAccountDto
-         */
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
         $this
@@ -236,6 +229,7 @@ abstract class RetailAccountAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
+            ->setT38Passthrough($dto->getT38Passthrough())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -244,7 +238,6 @@ abstract class RetailAccountAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -265,6 +258,7 @@ abstract class RetailAccountAbstract
             ->setFromDomain(self::getFromDomain())
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
+            ->setT38Passthrough(self::getT38Passthrough())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -287,6 +281,7 @@ abstract class RetailAccountAbstract
             'fromDomain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
+            't38Passthrough' => self::getT38Passthrough(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
@@ -301,7 +296,7 @@ abstract class RetailAccountAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -328,7 +323,7 @@ abstract class RetailAccountAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -355,16 +350,16 @@ abstract class RetailAccountAbstract
      *
      * @param string $transport
      *
-     * @return self
+     * @return static
      */
     protected function setTransport($transport)
     {
         Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
         Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($transport, [
-            self::TRANSPORT_UDP,
-            self::TRANSPORT_TCP,
-            self::TRANSPORT_TLS
+            RetailAccountInterface::TRANSPORT_UDP,
+            RetailAccountInterface::TRANSPORT_TCP,
+            RetailAccountInterface::TRANSPORT_TLS
         ], 'transportvalue "%s" is not an element of the valid values: %s');
 
         $this->transport = $transport;
@@ -387,7 +382,7 @@ abstract class RetailAccountAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {
@@ -415,7 +410,7 @@ abstract class RetailAccountAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port = null)
     {
@@ -447,7 +442,7 @@ abstract class RetailAccountAbstract
      *
      * @param string $password
      *
-     * @return self
+     * @return static
      */
     protected function setPassword($password = null)
     {
@@ -475,7 +470,7 @@ abstract class RetailAccountAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain = null)
     {
@@ -503,14 +498,14 @@ abstract class RetailAccountAbstract
      *
      * @param string $directConnectivity
      *
-     * @return self
+     * @return static
      */
     protected function setDirectConnectivity($directConnectivity)
     {
         Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
         Assertion::choice($directConnectivity, [
-            self::DIRECTCONNECTIVITY_YES,
-            self::DIRECTCONNECTIVITY_NO
+            RetailAccountInterface::DIRECTCONNECTIVITY_YES,
+            RetailAccountInterface::DIRECTCONNECTIVITY_NO
         ], 'directConnectivityvalue "%s" is not an element of the valid values: %s');
 
         $this->directConnectivity = $directConnectivity;
@@ -533,14 +528,14 @@ abstract class RetailAccountAbstract
      *
      * @param string $ddiIn
      *
-     * @return self
+     * @return static
      */
     protected function setDdiIn($ddiIn)
     {
         Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
         Assertion::choice($ddiIn, [
-            self::DDIIN_YES,
-            self::DDIIN_NO
+            RetailAccountInterface::DDIIN_YES,
+            RetailAccountInterface::DDIIN_NO
         ], 'ddiInvalue "%s" is not an element of the valid values: %s');
 
         $this->ddiIn = $ddiIn;
@@ -559,11 +554,41 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * Set t38Passthrough
+     *
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    protected function setT38Passthrough($t38Passthrough)
+    {
+        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Passthrough, [
+            RetailAccountInterface::T38PASSTHROUGH_YES,
+            RetailAccountInterface::T38PASSTHROUGH_NO
+        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
+    }
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -587,7 +612,7 @@ abstract class RetailAccountAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
@@ -611,7 +636,7 @@ abstract class RetailAccountAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -635,7 +660,7 @@ abstract class RetailAccountAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -647,7 +672,7 @@ abstract class RetailAccountAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet()
     {
@@ -659,7 +684,7 @@ abstract class RetailAccountAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
@@ -671,7 +696,7 @@ abstract class RetailAccountAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi()
     {

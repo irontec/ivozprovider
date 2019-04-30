@@ -1,3 +1,4 @@
+
 ########
 Invoices
 ########
@@ -50,8 +51,9 @@ subsection, that allows adding several positive concepts to the invoice:
         How many of this must be included
 
 The last step is pressing **Generate invoice** suboption to create the final PDF. Afterwards, we can see which calls have been
-included in a particular invoice with **List of Billable Calls** option or download the PDF file.
+included in a particular invoice with **List of External Calls** option or download the PDF file.
 
+.. warning:: Only outbound external calls are included into invoices
 .. tip:: **Status** column shows if the PDF generation task is waiting for async worker (*waiting*), in process (*processing*),
          ended with errors (*failed*) or ended successfully (*created*). On blank, *Generate invoice* needs to be pressed.
 
@@ -104,7 +106,7 @@ press **Generate invoice** again.
 Generate invoice for rerated calls
 ----------------------------------
 
-If rating of any call included in an invoice is wrong, :ref:`Billable Calls` section allows rerating it, as long as the
+If rating of any call included in an invoice is wrong, :ref:`External Calls` section allows rerating it, as long as the
 invoice that includes the call is previously deleted.
 
 Once deleted and rerated, a new row can be added in *Invoices* section to include rerated calls.

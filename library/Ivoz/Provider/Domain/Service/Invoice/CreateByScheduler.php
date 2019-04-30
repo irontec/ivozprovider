@@ -112,18 +112,21 @@ class CreateByScheduler
                 $scheduler->getId()
             );
 
-        return $this->entityTools->persistDto(
+        /** @var InvoiceInterface $invoice */
+        $invoice = $this->entityTools->persistDto(
             $invoiceDto,
             null,
             true
         );
+
+        return $invoice;
     }
 
     /**
      * @param InvoiceSchedulerInterface $scheduler
-     * @param $invoice
+     * @param InvoiceInterface $invoice
      */
-    private function setFixedCosts(InvoiceSchedulerInterface $scheduler, $invoice)
+    private function setFixedCosts(InvoiceSchedulerInterface $scheduler, InvoiceInterface $invoice)
     {
         /** @var FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts */
         $relFixedCosts = $scheduler->getRelFixedCosts();
@@ -142,12 +145,13 @@ class CreateByScheduler
      */
     private function updateLastExecutionDate(InvoiceSchedulerInterface $scheduler)
     {
+        /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
         $invoiceSchedulerDto = $this
             ->entityTools
             ->entityToDto($scheduler);
 
         $invoiceSchedulerDto
-            ->setLastExecution(new \DateTime())
+            ->setLastExecution(new \DateTime(null, new \DateTimeZone('UTC')))
             ->setLastExecutionError('');
 
         $this->entityTools->persistDto(
@@ -159,7 +163,7 @@ class CreateByScheduler
 
     /**
      * @param InvoiceSchedulerInterface $scheduler
-     * @param $error
+     * @param string $error
      */
     private function setExecutionError(InvoiceSchedulerInterface $scheduler, string $error)
     {

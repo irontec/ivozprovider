@@ -4,9 +4,9 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NoResultException;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -24,11 +24,11 @@ class TpRatingPlanDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @param string $tag
-     * @return RatingPlanInterface | null
+     * @return TpRatingPlanInterface | null
      */
     public function findOneByTag(string $tag)
     {
-        /** @var RatingPlanInterface $response */
+        /** @var TpRatingPlanInterface | null $response */
         $response = $this->findOneBy([
             'tag' => $tag
         ]);

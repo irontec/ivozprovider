@@ -76,7 +76,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * Return MatchLists associated with this condition
      *
-     * @return MatchListInterface[]
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[]
      */
     public function getMatchLists()
     {
@@ -92,7 +92,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * Return Schedules associated with this condition
      *
-     * @return ScheduleInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface[]
      */
     public function getSchedules()
     {
@@ -108,7 +108,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * Return Calendars associated with this condition
      *
-     * @return CalendarInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface[]
      */
     public function getCalendars()
     {
@@ -124,7 +124,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * Return Route Locks associated with this condition
      *
-     * @return RouteLockInterface[]
+     * @return \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface[]
      */
     public function getRouteLocks()
     {
@@ -140,7 +140,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * Checks if this condition mathes the given origin
      *
-     * @param $number Number in E.164 format
+     * @param string $number in E.164 format
      * @return bool true if condition matches
      */
     public function matchesOrigin($number)

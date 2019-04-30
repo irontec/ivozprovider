@@ -149,7 +149,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -163,7 +163,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getFriendId()
     {

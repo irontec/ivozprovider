@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Selectable;
 interface RoutingPatternGroupRepository extends ObjectRepository, Selectable
 {
     /**
-     * @param $brandId
+     * @param int $brandId
      * @param string $name
      * @return RoutingPatternGroupInterface
      */

@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface MatchListInterface extends LoggableEntityInterface
 {
@@ -17,7 +18,7 @@ interface MatchListInterface extends LoggableEntityInterface
      * Check if the given number matches the list rules
      *
      * @param string $number in E164 form
-     * @return true if number matches, false otherwise
+     * @return bool true if number matches, false otherwise
      */
     public function numberMatches($number);
 
@@ -33,7 +34,7 @@ interface MatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -49,7 +50,7 @@ interface MatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -65,7 +66,7 @@ interface MatchListInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern
      *
-     * @return MatchListTrait
+     * @return static
      */
     public function addPattern(\Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern);
 
@@ -79,14 +80,14 @@ interface MatchListInterface extends LoggableEntityInterface
     /**
      * Replace patterns
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[] $patterns
-     * @return self
+     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface
+     * @return static
      */
-    public function replacePatterns(Collection $patterns);
+    public function replacePatterns(ArrayCollection $patterns);
 
     /**
      * Get patterns
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);

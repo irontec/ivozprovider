@@ -63,7 +63,7 @@ abstract class PickUpRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param PickUpRelUserInterface|null $entity
      * @param int $depth
      * @return PickUpRelUserDto|null
      */
@@ -83,22 +83,22 @@ abstract class PickUpRelUserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var PickUpRelUserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PickUpRelUserDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PickUpRelUserDto
-         */
         Assertion::isInstanceOf($dto, PickUpRelUserDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class PickUpRelUserAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class PickUpRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PickUpRelUserDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PickUpRelUserDto
-         */
         Assertion::isInstanceOf($dto, PickUpRelUserDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class PickUpRelUserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class PickUpRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup
      *
-     * @return self
+     * @return static
      */
     public function setPickUpGroup(\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup = null)
     {
@@ -191,7 +186,7 @@ abstract class PickUpRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {

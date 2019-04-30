@@ -6,10 +6,5 @@
   "directConnectivity": "yes",
   "transport": "udp",
   "ip": "127.0.0.1",
-  "port": "5060",
-  "allow": "alaw",
-  "fromDomain": "",
-  "language": "__NULL__",
-  "callACL": "__NULL__",
-  "outgoingDDI": "__NULL__"
+  "port": "5060"
 }

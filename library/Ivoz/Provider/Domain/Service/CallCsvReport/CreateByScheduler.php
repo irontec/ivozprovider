@@ -122,7 +122,7 @@ class CreateByScheduler
 
         $callCsvSchedulerDto
             ->setLastExecution(
-                new \DateTime()
+                new \DateTime(null, new \DateTimeZone('UTC'))
             )
             ->setLastExecutionError('');
 
@@ -135,7 +135,7 @@ class CreateByScheduler
 
     /**
      * @param CallCsvSchedulerInterface $scheduler
-     * @param $error
+     * @param string $error
      */
     private function setExecutionError(CallCsvSchedulerInterface $scheduler, string $error)
     {

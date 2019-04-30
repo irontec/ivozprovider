@@ -29,24 +29,10 @@ class DoctrineEventSubscriber implements EventSubscriber
 {
     const UnaccesibleChangeset = 'Unaccesible changeset';
 
-    /**
-     * @var EntityManagerInterface
-     */
     protected $em;
-
-    /**
-     * @var ContainerInterface
-     */
     protected $serviceContainer;
-
-    /**
-     * @var DomainEventPublisher
-     */
     protected $eventPublisher;
-
-    /**
-     * @var bool
-     */
+    protected $commandPersister;
     protected $forcedEntityChangeLog;
 
     /**
@@ -58,11 +44,13 @@ class DoctrineEventSubscriber implements EventSubscriber
         ContainerInterface $serviceContainer,
         EntityManagerInterface $em,
         DomainEventPublisher $eventPublisher,
+        CommandPersister $commandPersister,
         bool $forcedEntityChangeLog = false
     ) {
         $this->serviceContainer = $serviceContainer;
         $this->em = $em;
         $this->eventPublisher = $eventPublisher;
+        $this->commandPersister = $commandPersister;
         $this->forcedEntityChangeLog = $forcedEntityChangeLog;
     }
 
@@ -79,9 +67,9 @@ class DoctrineEventSubscriber implements EventSubscriber
             Events::postRemove,
 
             Events::onFlush,
-
             Events::postLoad,
 
+            CustomEvents::preCommit,
             CustomEvents::onCommit,
             CustomEvents::onError
         ];
@@ -157,6 +145,13 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
+    public function preCommit()
+    {
+        $this
+            ->commandPersister
+            ->persistEvents();
+    }
+
     public function onCommit(OnCommitEventArgs $args)
     {
         foreach ($this->flushedEntities as $entity) {
@@ -193,7 +188,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
 
         $this->triggerDomainEvents($eventName, $args, $isNew);
-        $this->runSharedServices($eventName, $args, $isNew);
+        $this->runSharedServices($eventName, $args);
         $this->runEntityServices($eventName, $args, $isNew);
     }
 
@@ -250,7 +245,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
-    private function runSharedServices($eventName, LifecycleEventArgs $args, bool $isNew)
+    private function runSharedServices($eventName, LifecycleEventArgs $args)
     {
         $serviceName = 'lifecycle.' . $eventName . '.common';
 
@@ -264,7 +259,7 @@ class DoctrineEventSubscriber implements EventSubscriber
          * @var CommonLifecycleServiceCollection $service
          */
         $service = $this->serviceContainer->get($serviceName);
-        $service->execute($entity, $isNew);
+        $service->execute($entity);
     }
 
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)

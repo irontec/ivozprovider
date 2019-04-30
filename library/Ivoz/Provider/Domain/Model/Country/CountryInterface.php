@@ -13,13 +13,6 @@ interface CountryInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Check if a country uses Area code
-     *
-     * return true if the country has area code in its e164 pattern
-     */
-    public function hasAreaCode();
-
-    /**
      * Get code
      *
      * @return string
@@ -38,7 +31,7 @@ interface CountryInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\Country\Name $name);
 
@@ -54,7 +47,7 @@ interface CountryInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
      *
-     * @return self
+     * @return static
      */
     public function setZone(\Ivoz\Provider\Domain\Model\Country\Zone $zone);
 

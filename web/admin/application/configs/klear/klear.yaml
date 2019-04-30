@@ -4,7 +4,7 @@ production:
     sitename: "Main administration portal"
     sitesubname: "Main website"
     logo: images/irontec.png
-    year: 2017
+    year: 2019
     lang: en
     langs:
       es:
@@ -81,10 +81,14 @@ production:
           title: ngettext('SIP Domain', 'SIP Domains', 0)
           class: ui-silk-link
           description: _("List of %s", ngettext('Domain', 'Domains', 0))
+        PlatformPortalsList:
+          title: ngettext('Platform Portal', 'Platform Portals', 0)
+          class: ui-silk-world-link
+          description: _("List of %s", ngettext('Platform Portal', 'Platform Portals', 0))
         BillableCallsList:
-          title: ngettext('Billable call', 'Billable calls', 0)
-          class: ui-silk-application-view-list-money
-          description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+          title: ngettext('External call', 'External calls', 0)
+          description: _("List of %s", ngettext('External call', 'External calls', 0))
+          class: ui-silk-application-view-list-world
         Infrastructure:
           title: _("Infrastructure")
           class: ui-silk-sitemap-color
@@ -218,9 +222,9 @@ production:
           class: ui-silk-application-view-list-telephone
           submenus:
             BillableCallsBrandList:
-              title: ngettext('Billable call', 'Billable calls', 0)
-              class: ui-silk-application-view-list-money
-              description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+              title: ngettext('External call', 'External calls', 0)
+              description: _("List of %s", ngettext('External call', 'External calls', 0))
+              class: ui-silk-application-view-list-world
             CallCsvSchedulersBrandList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 1)
               class: ui-silk-application-view-list-schedule
@@ -229,10 +233,10 @@ production:
           title: _("Settings")
           class: ui-silk-wrench
           submenus:
-            CompanyURLsList:
-              title: ngettext('Portal URL', 'Portal URLs', 0)
+            ClientPortalsList:
+              title: ngettext('Client Portal', 'Client Portals', 0)
               class: ui-silk-world-link
-              description: _("List of %s", ngettext('Portal URL', 'Portal URLs', 0))
+              description: _("List of %s", ngettext('Client Portal', 'Client Portals', 0))
             TransformationRuleSetsList:
               title: ngettext('Numeric transformation', 'Numeric transformations', 0)
               class: ui-silk-application-side-expand
@@ -439,9 +443,9 @@ production:
               description: _("List of %s", ngettext('Call', 'Calls', 0))
               showOnlyIf: ${auth.companyNotWholesale}
             BillableCallsClientList:
-              title: ngettext('Billable call', 'Billable calls', 0)
-              class: ui-silk-application-view-list-money
-              description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+              title: ngettext('External call', 'External calls', 0)
+              description: _("List of %s", ngettext('External call', 'External calls', 0))
+              class: ui-silk-application-view-list-world
             CallCsvSchedulersList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule

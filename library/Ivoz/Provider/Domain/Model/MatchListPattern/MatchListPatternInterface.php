@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface MatchListPatternInterface extends LoggableEntityInterface
 {
+    const TYPE_NUMBER = 'number';
+    const TYPE_REGEXP = 'regexp';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -14,7 +18,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
 
     /**
      * Get Number value in E.164 format
-     * @param $prefix string
+     * @return string
      */
     public function getNumberE164();
 
@@ -51,7 +55,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
-     * @return self
+     * @return static
      */
     public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null);
 
@@ -67,14 +71,14 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
 
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
 }

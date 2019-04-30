@@ -75,7 +75,15 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
             ->setDirectmediaMethod('invite')
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
+            ->setT38Udptl($entity->getT38Passthrough())
             ->setDirectMediaMethod('invite');
+
+        // Disable direct media for T.38 capable devices
+        if ($entity->getT38Passthrough() === RetailAccountInterface::T38PASSTHROUGH_YES) {
+            $endpointDto->setDirectMedia('no');
+        } else {
+            $endpointDto->setDirectMedia('yes');
+        }
 
         $this->entityTools->persistDto($endpointDto, $endpoint);
     }

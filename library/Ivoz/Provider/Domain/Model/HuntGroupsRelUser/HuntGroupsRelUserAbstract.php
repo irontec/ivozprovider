@@ -73,7 +73,7 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param HuntGroupsRelUserInterface|null $entity
      * @param int $depth
      * @return HuntGroupsRelUserDto|null
      */
@@ -93,22 +93,22 @@ abstract class HuntGroupsRelUserAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var HuntGroupsRelUserDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param HuntGroupsRelUserDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto HuntGroupsRelUserDto
-         */
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
 
         $self = new static();
@@ -120,7 +120,6 @@ abstract class HuntGroupsRelUserAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -128,16 +127,13 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param HuntGroupsRelUserDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto HuntGroupsRelUserDto
-         */
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
 
         $this
@@ -148,7 +144,6 @@ abstract class HuntGroupsRelUserAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -185,7 +180,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param integer $timeoutTime
      *
-     * @return self
+     * @return static
      */
     protected function setTimeoutTime($timeoutTime = null)
     {
@@ -216,7 +211,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority = null)
     {
@@ -247,7 +242,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
      *
-     * @return self
+     * @return static
      */
     public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
     {
@@ -271,7 +266,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
     {

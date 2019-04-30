@@ -393,7 +393,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -407,7 +407,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -439,7 +439,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -453,7 +453,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getWelcomeLocutionId()
     {
@@ -485,7 +485,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -499,7 +499,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoInputLocutionId()
     {
@@ -531,7 +531,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -545,7 +545,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getErrorLocutionId()
     {
@@ -577,7 +577,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -591,7 +591,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getSuccessLocutionId()
     {
@@ -623,7 +623,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -637,7 +637,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoInputExtensionId()
     {
@@ -669,7 +669,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -683,7 +683,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getErrorExtensionId()
     {
@@ -715,7 +715,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -729,7 +729,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoInputVoiceMailUserId()
     {
@@ -761,7 +761,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -775,7 +775,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getErrorVoiceMailUserId()
     {
@@ -807,7 +807,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -821,7 +821,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNoInputNumberCountryId()
     {
@@ -853,7 +853,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -867,7 +867,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getErrorNumberCountryId()
     {

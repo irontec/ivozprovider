@@ -3,10 +3,40 @@
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface ResidentialDeviceInterface extends LoggableEntityInterface
 {
+    const TRANSPORT_UDP = 'udp';
+    const TRANSPORT_TCP = 'tcp';
+    const TRANSPORT_TLS = 'tls';
+
+
+    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+
+
+    const CALLERIDUPDATEHEADER_PAI = 'pai';
+    const CALLERIDUPDATEHEADER_RPID = 'rpid';
+
+
+    const UPDATECALLERID_YES = 'yes';
+    const UPDATECALLERID_NO = 'no';
+
+
+    const DIRECTCONNECTIVITY_YES = 'yes';
+    const DIRECTCONNECTIVITY_NO = 'no';
+
+
+    const DDIIN_YES = 'yes';
+    const DDIIN_NO = 'no';
+
+
+    const T38PASSTHROUGH_YES = 'yes';
+    const T38PASSTHROUGH_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -40,12 +70,18 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function getSorcery();
 
+    /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
     public function getAstPsEndpoint();
-
-    public function getLanguageCode();
 
     /**
      * @return string
+     */
+    public function getLanguageCode();
+
+    /**
+     * @return string | null
      */
     public function getOutgoingDdiNumber();
 
@@ -59,7 +95,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * Get Ddi associated with this residential device
      *
-     * @return DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getDdi($ddieE164);
 
@@ -191,11 +227,18 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getMaxCalls();
 
     /**
+     * Get t38Passthrough
+     *
+     * @return string
+     */
+    public function getT38Passthrough();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -211,7 +254,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
      *
-     * @return self
+     * @return static
      */
     public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
 
@@ -227,7 +270,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -243,14 +286,14 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
 
@@ -259,7 +302,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
 
@@ -268,14 +311,14 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
 
@@ -284,7 +327,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return ResidentialDeviceTrait
+     * @return static
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
 
@@ -298,14 +341,14 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * Replace psEndpoints
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[] $psEndpoints
-     * @return self
+     * @param ArrayCollection $psEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @return static
      */
-    public function replacePsEndpoints(Collection $psEndpoints);
+    public function replacePsEndpoints(ArrayCollection $psEndpoints);
 
     /**
      * Get psEndpoints
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -315,7 +358,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return ResidentialDeviceTrait
+     * @return static
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi);
 
@@ -329,14 +372,14 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * Replace ddis
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
-     * @return self
+     * @param ArrayCollection $ddis of Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return static
      */
-    public function replaceDdis(Collection $ddis);
+    public function replaceDdis(ArrayCollection $ddis);
 
     /**
      * Get ddis
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -346,7 +389,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
      *
-     * @return ResidentialDeviceTrait
+     * @return static
      */
     public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
 
@@ -360,14 +403,14 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * Replace callForwardSettings
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
-     * @return self
+     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+     * @return static
      */
-    public function replaceCallForwardSettings(Collection $callForwardSettings);
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings);
 
     /**
      * Get callForwardSettings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);

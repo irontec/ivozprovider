@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,57 +18,57 @@ trait CompanyTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $extensions;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $ddis;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $friends;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $companyServices;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $terminals;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $ratingProfiles;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $musicsOnHold;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $recordings;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relFeatures;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relCodecs;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $relRoutingTags;
 
@@ -93,20 +92,20 @@ trait CompanyTrait
         $this->relRoutingTags = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getExtensions())) {
             $self->replaceExtensions(
@@ -195,6 +194,7 @@ trait CompanyTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -205,17 +205,14 @@ trait CompanyTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getExtensions())) {
             $this->replaceExtensions(
@@ -294,6 +291,8 @@ trait CompanyTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -323,7 +322,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension)
     {
@@ -345,10 +344,10 @@ trait CompanyTrait
     /**
      * Replace extensions
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[] $extensions
-     * @return self
+     * @param ArrayCollection $extensions of Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return static
      */
-    public function replaceExtensions(Collection $extensions)
+    public function replaceExtensions(ArrayCollection $extensions)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -378,7 +377,7 @@ trait CompanyTrait
 
     /**
      * Get extensions
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[]
      */
     public function getExtensions(Criteria $criteria = null)
@@ -395,7 +394,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
     {
@@ -417,10 +416,10 @@ trait CompanyTrait
     /**
      * Replace ddis
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[] $ddis
-     * @return self
+     * @param ArrayCollection $ddis of Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return static
      */
-    public function replaceDdis(Collection $ddis)
+    public function replaceDdis(ArrayCollection $ddis)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -450,7 +449,7 @@ trait CompanyTrait
 
     /**
      * Get ddis
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(Criteria $criteria = null)
@@ -467,7 +466,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend)
     {
@@ -489,10 +488,10 @@ trait CompanyTrait
     /**
      * Replace friends
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface[] $friends
-     * @return self
+     * @param ArrayCollection $friends of Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @return static
      */
-    public function replaceFriends(Collection $friends)
+    public function replaceFriends(ArrayCollection $friends)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -522,7 +521,7 @@ trait CompanyTrait
 
     /**
      * Get friends
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(Criteria $criteria = null)
@@ -539,7 +538,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addCompanyService(\Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService)
     {
@@ -561,10 +560,10 @@ trait CompanyTrait
     /**
      * Replace companyServices
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[] $companyServices
-     * @return self
+     * @param ArrayCollection $companyServices of Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface
+     * @return static
      */
-    public function replaceCompanyServices(Collection $companyServices)
+    public function replaceCompanyServices(ArrayCollection $companyServices)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -594,7 +593,7 @@ trait CompanyTrait
 
     /**
      * Get companyServices
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[]
      */
     public function getCompanyServices(Criteria $criteria = null)
@@ -611,7 +610,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal)
     {
@@ -633,10 +632,10 @@ trait CompanyTrait
     /**
      * Replace terminals
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[] $terminals
-     * @return self
+     * @param ArrayCollection $terminals of Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @return static
      */
-    public function replaceTerminals(Collection $terminals)
+    public function replaceTerminals(ArrayCollection $terminals)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -666,7 +665,7 @@ trait CompanyTrait
 
     /**
      * Get terminals
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(Criteria $criteria = null)
@@ -683,7 +682,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
@@ -705,10 +704,10 @@ trait CompanyTrait
     /**
      * Replace ratingProfiles
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
-     * @return self
+     * @param ArrayCollection $ratingProfiles of Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @return static
      */
-    public function replaceRatingProfiles(Collection $ratingProfiles)
+    public function replaceRatingProfiles(ArrayCollection $ratingProfiles)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -738,7 +737,7 @@ trait CompanyTrait
 
     /**
      * Get ratingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
      */
     public function getRatingProfiles(Criteria $criteria = null)
@@ -755,7 +754,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold)
     {
@@ -777,10 +776,10 @@ trait CompanyTrait
     /**
      * Replace musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
-     * @return self
+     * @param ArrayCollection $musicsOnHold of Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
+     * @return static
      */
-    public function replaceMusicsOnHold(Collection $musicsOnHold)
+    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -810,7 +809,7 @@ trait CompanyTrait
 
     /**
      * Get musicsOnHold
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(Criteria $criteria = null)
@@ -827,7 +826,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRecording(\Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording)
     {
@@ -849,10 +848,10 @@ trait CompanyTrait
     /**
      * Replace recordings
      *
-     * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[] $recordings
-     * @return self
+     * @param ArrayCollection $recordings of Ivoz\Provider\Domain\Model\Recording\RecordingInterface
+     * @return static
      */
-    public function replaceRecordings(Collection $recordings)
+    public function replaceRecordings(ArrayCollection $recordings)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -882,7 +881,7 @@ trait CompanyTrait
 
     /**
      * Get recordings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[]
      */
     public function getRecordings(Criteria $criteria = null)
@@ -899,7 +898,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature)
     {
@@ -921,10 +920,10 @@ trait CompanyTrait
     /**
      * Replace relFeatures
      *
-     * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[] $relFeatures
-     * @return self
+     * @param ArrayCollection $relFeatures of Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface
+     * @return static
      */
-    public function replaceRelFeatures(Collection $relFeatures)
+    public function replaceRelFeatures(ArrayCollection $relFeatures)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -954,7 +953,7 @@ trait CompanyTrait
 
     /**
      * Get relFeatures
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[]
      */
     public function getRelFeatures(Criteria $criteria = null)
@@ -971,7 +970,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec)
     {
@@ -993,10 +992,10 @@ trait CompanyTrait
     /**
      * Replace relCodecs
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
-     * @return self
+     * @param ArrayCollection $relCodecs of Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface
+     * @return static
      */
-    public function replaceRelCodecs(Collection $relCodecs)
+    public function replaceRelCodecs(ArrayCollection $relCodecs)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -1026,7 +1025,7 @@ trait CompanyTrait
 
     /**
      * Get relCodecs
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
      */
     public function getRelCodecs(Criteria $criteria = null)
@@ -1043,7 +1042,7 @@ trait CompanyTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
      *
-     * @return CompanyTrait
+     * @return static
      */
     public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag)
     {
@@ -1065,10 +1064,10 @@ trait CompanyTrait
     /**
      * Replace relRoutingTags
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
-     * @return self
+     * @param ArrayCollection $relRoutingTags of Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
+     * @return static
      */
-    public function replaceRelRoutingTags(Collection $relRoutingTags)
+    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -1098,7 +1097,7 @@ trait CompanyTrait
 
     /**
      * Get relRoutingTags
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelRoutingTags(Criteria $criteria = null)

@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,27 +18,27 @@ trait CarrierTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $outgoingRoutings;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $outgoingRoutingsRelCarriers;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $servers;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $ratingProfiles;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $tpCdrStats;
 
@@ -57,20 +56,20 @@ trait CarrierTrait
         $this->tpCdrStats = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CarrierDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CarrierDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
             $self->replaceOutgoingRoutings(
@@ -111,6 +110,7 @@ trait CarrierTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -121,17 +121,14 @@ trait CarrierTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CarrierDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CarrierDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
@@ -168,6 +165,8 @@ trait CarrierTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -197,7 +196,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -219,10 +218,10 @@ trait CarrierTrait
     /**
      * Replace outgoingRoutings
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
-     * @return self
+     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return static
      */
-    public function replaceOutgoingRoutings(Collection $outgoingRoutings)
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -252,7 +251,7 @@ trait CarrierTrait
 
     /**
      * Get outgoingRoutings
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(Criteria $criteria = null)
@@ -269,7 +268,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier)
     {
@@ -291,10 +290,10 @@ trait CarrierTrait
     /**
      * Replace outgoingRoutingsRelCarriers
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
-     * @return self
+     * @param ArrayCollection $outgoingRoutingsRelCarriers of Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @return static
      */
-    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers)
+    public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -324,7 +323,7 @@ trait CarrierTrait
 
     /**
      * Get outgoingRoutingsRelCarriers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
      */
     public function getOutgoingRoutingsRelCarriers(Criteria $criteria = null)
@@ -341,7 +340,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server)
     {
@@ -363,10 +362,10 @@ trait CarrierTrait
     /**
      * Replace servers
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[] $servers
-     * @return self
+     * @param ArrayCollection $servers of Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @return static
      */
-    public function replaceServers(Collection $servers)
+    public function replaceServers(ArrayCollection $servers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -396,7 +395,7 @@ trait CarrierTrait
 
     /**
      * Get servers
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[]
      */
     public function getServers(Criteria $criteria = null)
@@ -413,7 +412,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
@@ -435,10 +434,10 @@ trait CarrierTrait
     /**
      * Replace ratingProfiles
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
-     * @return self
+     * @param ArrayCollection $ratingProfiles of Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @return static
      */
-    public function replaceRatingProfiles(Collection $ratingProfiles)
+    public function replaceRatingProfiles(ArrayCollection $ratingProfiles)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -468,7 +467,7 @@ trait CarrierTrait
 
     /**
      * Get ratingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
      */
     public function getRatingProfiles(Criteria $criteria = null)
@@ -485,7 +484,7 @@ trait CarrierTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
      *
-     * @return CarrierTrait
+     * @return static
      */
     public function addTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat)
     {
@@ -507,10 +506,10 @@ trait CarrierTrait
     /**
      * Replace tpCdrStats
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[] $tpCdrStats
-     * @return self
+     * @param ArrayCollection $tpCdrStats of Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface
+     * @return static
      */
-    public function replaceTpCdrStats(Collection $tpCdrStats)
+    public function replaceTpCdrStats(ArrayCollection $tpCdrStats)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -540,7 +539,7 @@ trait CarrierTrait
 
     /**
      * Get tpCdrStats
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
      */
     public function getTpCdrStats(Criteria $criteria = null)

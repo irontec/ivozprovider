@@ -93,7 +93,7 @@ abstract class RtpengineAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RtpengineInterface|null $entity
      * @param int $depth
      * @return RtpengineDto|null
      */
@@ -113,22 +113,22 @@ abstract class RtpengineAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RtpengineDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RtpengineDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RtpengineDto
-         */
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
         $self = new static(
@@ -144,7 +144,6 @@ abstract class RtpengineAbstract
             ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -152,16 +151,13 @@ abstract class RtpengineAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RtpengineDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RtpengineDto
-         */
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
         $this
@@ -175,7 +171,6 @@ abstract class RtpengineAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -218,7 +213,7 @@ abstract class RtpengineAbstract
      *
      * @param integer $setid
      *
-     * @return self
+     * @return static
      */
     protected function setSetid($setid)
     {
@@ -245,7 +240,7 @@ abstract class RtpengineAbstract
      *
      * @param string $url
      *
-     * @return self
+     * @return static
      */
     protected function setUrl($url)
     {
@@ -272,7 +267,7 @@ abstract class RtpengineAbstract
      *
      * @param integer $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight)
     {
@@ -300,7 +295,7 @@ abstract class RtpengineAbstract
      *
      * @param boolean $disabled
      *
-     * @return self
+     * @return static
      */
     protected function setDisabled($disabled)
     {
@@ -327,7 +322,7 @@ abstract class RtpengineAbstract
      *
      * @param \DateTime $stamp
      *
-     * @return self
+     * @return static
      */
     protected function setStamp($stamp)
     {
@@ -357,7 +352,7 @@ abstract class RtpengineAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -385,7 +380,7 @@ abstract class RtpengineAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet
      *
-     * @return self
+     * @return static
      */
     public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null)
     {

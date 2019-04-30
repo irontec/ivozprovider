@@ -75,7 +75,7 @@ abstract class DestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DestinationInterface|null $entity
      * @param int $depth
      * @return DestinationDto|null
      */
@@ -95,22 +95,22 @@ abstract class DestinationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DestinationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationDto
-         */
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
         $name = new Name(
@@ -127,7 +127,6 @@ abstract class DestinationAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -135,16 +134,13 @@ abstract class DestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationDto
-         */
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
         $name = new Name(
@@ -159,7 +155,6 @@ abstract class DestinationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -196,7 +191,7 @@ abstract class DestinationAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix)
     {
@@ -223,7 +218,7 @@ abstract class DestinationAbstract
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
      *
-     * @return self
+     * @return static
      */
     public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
     {
@@ -247,7 +242,7 @@ abstract class DestinationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -271,7 +266,7 @@ abstract class DestinationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {

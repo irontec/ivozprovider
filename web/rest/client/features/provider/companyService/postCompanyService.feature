@@ -12,7 +12,7 @@ Feature: Create company services
     """
       {
           "code": "92",
-          "company": 2,
+          "company": 1,
           "service": 4
       }
     """
@@ -23,8 +23,8 @@ Feature: Create company services
     """
       {
           "code": "92",
-          "id": 8,
-          "company": 2,
+          "id": 7,
+          "company": 1,
           "service": 4
       }
     """
@@ -32,7 +32,7 @@ Feature: Create company services
   Scenario: Retrieve created company service
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "company_services/8"
+      And I send a "GET" request to "company_services/7"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -40,7 +40,7 @@ Feature: Create company services
     """
       {
           "code": "92",
-          "id": 8,
+          "id": 7,
           "company": "~",
           "service": {
               "iden": "RecordLocution",

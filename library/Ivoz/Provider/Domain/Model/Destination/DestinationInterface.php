@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface DestinationInterface extends LoggableEntityInterface
 {
@@ -37,7 +38,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
      *
-     * @return self
+     * @return static
      */
     public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
 
@@ -53,7 +54,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -69,7 +70,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\Destination\Name $name);
 
@@ -85,7 +86,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
-     * @return DestinationTrait
+     * @return static
      */
     public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
 
@@ -99,14 +100,14 @@ interface DestinationInterface extends LoggableEntityInterface
     /**
      * Replace destinationRates
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[] $destinationRates
-     * @return self
+     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+     * @return static
      */
-    public function replaceDestinationRates(Collection $destinationRates);
+    public function replaceDestinationRates(ArrayCollection $destinationRates);
 
     /**
      * Get destinationRates
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
      */
     public function getDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);

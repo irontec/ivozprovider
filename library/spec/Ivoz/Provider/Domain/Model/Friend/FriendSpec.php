@@ -14,12 +14,17 @@ class FriendSpec extends ObjectBehavior
 {
     use HelperTrait;
 
+    /**
+     * @var FriendDto
+     */
+    protected $dto;
+
     function let(
         CompanyInterface $company,
         DomainInterface $domain
     ) {
 
-        $dto = new FriendDto();
+        $this->dto = $dto = new FriendDto();
         $dto->setName('Name')
             ->setDescription('Desc')
             ->setTransport('udp')
@@ -60,24 +65,34 @@ class FriendSpec extends ObjectBehavior
 
     function it_throws_exception_on_invalid_name()
     {
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setName', ['My Friend']);
+        $dto = clone $this->dto;
+        $dto->setName('My Friend');
 
         $this
             ->shouldThrow('\Exception')
-            ->during('setName', ['$dollar']);
+            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+
+        $dto->setName('$dollar');
 
         $this
             ->shouldThrow('\Exception')
-            ->during('setName', ['#something']);
+            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+
+        $dto->setName('#something');
+
+        $this
+            ->shouldThrow('\Exception')
+            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
     }
 
     function it_accepts_valid_names()
     {
+        $dto = clone $this->dto;
+        $dto->setName('MyFriend');
+
         $this
             ->shouldNotThrow('\Exception')
-            ->during('setName', ['MyFriend']);
+            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
     }
 
     function it_throws_exception_on_invalid_ip()

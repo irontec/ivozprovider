@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface RatingPlanGroupInterface extends LoggableEntityInterface
 {
@@ -35,7 +36,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -51,14 +52,14 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency();
 
@@ -67,7 +68,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(\Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name);
 
@@ -83,7 +84,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(\Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description);
 
@@ -99,7 +100,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
-     * @return RatingPlanGroupTrait
+     * @return static
      */
     public function addRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
 
@@ -113,14 +114,14 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     /**
      * Replace ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[] $ratingPlan
-     * @return self
+     * @param ArrayCollection $ratingPlan of Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return static
      */
-    public function replaceRatingPlan(Collection $ratingPlan);
+    public function replaceRatingPlan(ArrayCollection $ratingPlan);
 
     /**
      * Get ratingPlan
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[]
      */
     public function getRatingPlan(\Doctrine\Common\Collections\Criteria $criteria = null);

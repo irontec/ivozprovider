@@ -139,7 +139,7 @@ abstract class CarrierServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CarrierServerInterface|null $entity
      * @param int $depth
      * @return CarrierServerDto|null
      */
@@ -159,22 +159,22 @@ abstract class CarrierServerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CarrierServerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CarrierServerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CarrierServerDto
-         */
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $self = new static(
@@ -199,7 +199,6 @@ abstract class CarrierServerAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -207,16 +206,13 @@ abstract class CarrierServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CarrierServerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CarrierServerDto
-         */
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $this
@@ -239,7 +235,6 @@ abstract class CarrierServerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -300,7 +295,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {
@@ -328,7 +323,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $hostname
      *
-     * @return self
+     * @return static
      */
     protected function setHostname($hostname = null)
     {
@@ -356,7 +351,7 @@ abstract class CarrierServerAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port = null)
     {
@@ -388,7 +383,7 @@ abstract class CarrierServerAbstract
      *
      * @param integer $uriScheme
      *
-     * @return self
+     * @return static
      */
     protected function setUriScheme($uriScheme = null)
     {
@@ -420,7 +415,7 @@ abstract class CarrierServerAbstract
      *
      * @param integer $transport
      *
-     * @return self
+     * @return static
      */
     protected function setTransport($transport = null)
     {
@@ -452,7 +447,7 @@ abstract class CarrierServerAbstract
      *
      * @param boolean $sendPAI
      *
-     * @return self
+     * @return static
      */
     protected function setSendPAI($sendPAI = null)
     {
@@ -480,7 +475,7 @@ abstract class CarrierServerAbstract
      *
      * @param boolean $sendRPID
      *
-     * @return self
+     * @return static
      */
     protected function setSendRPID($sendRPID = null)
     {
@@ -508,7 +503,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $authNeeded
      *
-     * @return self
+     * @return static
      */
     protected function setAuthNeeded($authNeeded)
     {
@@ -534,7 +529,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $authUser
      *
-     * @return self
+     * @return static
      */
     protected function setAuthUser($authUser = null)
     {
@@ -562,7 +557,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $authPassword
      *
-     * @return self
+     * @return static
      */
     protected function setAuthPassword($authPassword = null)
     {
@@ -590,7 +585,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $sipProxy
      *
-     * @return self
+     * @return static
      */
     protected function setSipProxy($sipProxy = null)
     {
@@ -618,7 +613,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $outboundProxy
      *
-     * @return self
+     * @return static
      */
     protected function setOutboundProxy($outboundProxy = null)
     {
@@ -646,7 +641,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $fromUser
      *
-     * @return self
+     * @return static
      */
     protected function setFromUser($fromUser = null)
     {
@@ -674,7 +669,7 @@ abstract class CarrierServerAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain = null)
     {
@@ -702,7 +697,7 @@ abstract class CarrierServerAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
      *
-     * @return self
+     * @return static
      */
     public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null)
     {
@@ -726,7 +721,7 @@ abstract class CarrierServerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -750,7 +745,7 @@ abstract class CarrierServerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

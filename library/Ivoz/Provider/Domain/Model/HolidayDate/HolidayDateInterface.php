@@ -6,6 +6,11 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface HolidayDateInterface extends LoggableEntityInterface
 {
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_EXTENSION = 'extension';
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -81,7 +86,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
      *
-     * @return self
+     * @return static
      */
     public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar = null);
 
@@ -97,14 +102,14 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
      *
-     * @return self
+     * @return static
      */
     public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null);
 
     /**
      * Get locution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getLocution();
 
@@ -113,14 +118,14 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return self
+     * @return static
      */
     public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null);
 
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension();
 
@@ -129,7 +134,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null);
 
@@ -145,14 +150,14 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
      *
-     * @return self
+     * @return static
      */
     public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
 
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
 

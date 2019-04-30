@@ -5,6 +5,7 @@ namespace Ivoz\Api\Swagger\Metadata\Property\Factory;
 use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Symfony\Component\PropertyInfo\Type;
 
 class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
@@ -51,10 +52,11 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
         }
 
         try {
+            /** @var ClassMetadata $metadata */
             $metadata = $this->classMetadataFactory->getMetadataFor($resourceClass);
             $fldMetadata = $metadata->getFieldMapping($property);
             $ormType = $fldMetadata['type'];
-        } catch (\exception $exception) {
+        } catch (\Exception $exception) {
             return $propertyMetadata;
         }
 
@@ -96,7 +98,7 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
 
     /**
      * @param PropertyMetadata $propertyMetadata
-     * @param $attibutes
+     * @param array $attibutes
      * @return PropertyMetadata
      */
     private function appendAttributes(PropertyMetadata $propertyMetadata, $attibutes)
@@ -112,10 +114,10 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
     }
 
     /**
-     * @param $builtinType
-     * @param $ormType
-     * @param $propertyMetadata
-     * @param $fldMetadata
+     * @param string $builtinType
+     * @param string $ormType
+     * @param PropertyMetadata$propertyMetadata
+     * @param array $fldMetadata
      * @return PropertyMetadata
      */
     private function setPropertyFormat($builtinType, $ormType, $propertyMetadata, $fldMetadata): PropertyMetadata

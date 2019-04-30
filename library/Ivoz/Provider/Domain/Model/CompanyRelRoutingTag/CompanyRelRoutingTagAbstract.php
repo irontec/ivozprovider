@@ -63,7 +63,7 @@ abstract class CompanyRelRoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CompanyRelRoutingTagInterface|null $entity
      * @param int $depth
      * @return CompanyRelRoutingTagDto|null
      */
@@ -83,22 +83,22 @@ abstract class CompanyRelRoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CompanyRelRoutingTagDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyRelRoutingTagDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyRelRoutingTagDto
-         */
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class CompanyRelRoutingTagAbstract
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class CompanyRelRoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CompanyRelRoutingTagDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CompanyRelRoutingTagDto
-         */
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class CompanyRelRoutingTagAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class CompanyRelRoutingTagAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -191,7 +186,7 @@ abstract class CompanyRelRoutingTagAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
      *
-     * @return self
+     * @return static
      */
     public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
     {

@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Domain\Service\ApiClientInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
@@ -13,15 +14,17 @@ class CsvExporter
     const CLIENT_PROPERTIES = [
         'callid',
         'startTime',
+        'direction',
         'caller',
         'callee',
         'duration',
-        'price'
+        'price',
     ];
 
     const BRAND_PROPERTIES = [
         'callid',
         'startTime',
+        'direction',
         'caller',
         'callee',
         'duration',
@@ -48,13 +51,15 @@ class CsvExporter
      * @param \DateTime $outDate
      * @param CompanyInterface|null $company
      * @param BrandInterface|null $brand
+     * @param string | null $direction
      * @return string
      */
     public function execute(
         \DateTime $inDate,
         \DateTime $outDate,
         CompanyInterface $company = null,
-        BrandInterface $brand = null
+        BrandInterface $brand = null,
+        $direction = BillableCallInterface::DIRECTION_OUTBOUND
     ) {
         $timezone = 'UTC';
         if ($company) {
@@ -72,6 +77,10 @@ class CsvExporter
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
             "_pagination" => 'false'
         ];
+
+        if (!empty($direction)) {
+            $criteria['direction'] = $direction;
+        }
 
         if ($company) {
             $criteria['company'] = $company->getId();

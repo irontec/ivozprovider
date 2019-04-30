@@ -4,6 +4,7 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -51,6 +52,7 @@ class PostCallForwardSettingsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
+        /** @var UserInterface $user */
         $user = $token->getUser();
         $request = $this->requestStack->getCurrentRequest();
 

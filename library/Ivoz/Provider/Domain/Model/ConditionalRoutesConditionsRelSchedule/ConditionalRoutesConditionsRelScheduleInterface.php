@@ -17,7 +17,7 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null);
 
@@ -33,7 +33,7 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
      *
      * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
      *
-     * @return self
+     * @return static
      */
     public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule);
 

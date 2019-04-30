@@ -121,7 +121,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $services = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto[] | null
+     * @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto[] | null
      */
     private $urls = null;
 
@@ -565,7 +565,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -579,7 +579,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDomainId()
     {
@@ -611,7 +611,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -625,7 +625,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getLanguageId()
     {
@@ -657,7 +657,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -671,7 +671,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDefaultTimezoneId()
     {
@@ -703,7 +703,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -717,7 +717,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCurrencyId()
     {

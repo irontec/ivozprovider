@@ -10,9 +10,9 @@ class PortalController extends Zend_Controller_Action
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = Zend_Registry::get('data_gateway');
         $brand = $dataGateway->findOneBy(
-            \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl::class,
+            \Ivoz\Provider\Domain\Model\WebPortal\WebPortal::class,
             [
-                'BrandUrl.url = :url',
+                'WebPortal.url = :url',
                 [':url' => $serverUrl]
             ]
         );

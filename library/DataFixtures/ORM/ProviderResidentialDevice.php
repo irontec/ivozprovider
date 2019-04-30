@@ -39,7 +39,7 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
             $this->getReference('_reference_ProviderBrand1')
         );
         $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany3')
+            $this->getReference('_reference_ProviderCompany1')
         );
         $this->addReference('_reference_ProviderResidentialDevice1', $item1);
         $this->sanitizeEntityValues($item1);

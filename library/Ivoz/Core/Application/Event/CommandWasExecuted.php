@@ -32,6 +32,11 @@ class CommandWasExecuted implements CommandEventInterface
     protected $arguments;
 
     /**
+     * @var array
+     */
+    protected $agent;
+
+    /**
      * @var \DateTime
      */
     protected $occurredOn;
@@ -45,12 +50,14 @@ class CommandWasExecuted implements CommandEventInterface
         string $requestId,
         string $service,
         string $method,
-        array $arguments
+        array $arguments,
+        array $agent
     ) {
         $this->requestId = $requestId;
         $this->service = $service;
         $this->method = $method;
         $this->arguments = $arguments;
+        $this->agent = $agent;
 
         $this->id = Uuid::uuid4()->toString();
         $this->occurredOn = new \DateTime(
@@ -86,9 +93,14 @@ class CommandWasExecuted implements CommandEventInterface
         return $this->arguments;
     }
 
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
     public function getOccurredOn()
     {
-        return $this->occurredOn;
+        return clone $this->occurredOn;
     }
 
     public function getMicrotime()

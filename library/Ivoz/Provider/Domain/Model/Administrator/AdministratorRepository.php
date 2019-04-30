@@ -12,4 +12,10 @@ interface AdministratorRepository extends ObjectRepository, Selectable
      * @throws \RuntimeException
      */
     public function getInnerGlobalAdmin();
+
+    /**
+     * @param string $username
+     * @return null| AdministratorInterface
+     */
+    public function findPlatformAdminByUsername(string $username);
 }

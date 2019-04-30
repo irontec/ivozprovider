@@ -34,7 +34,7 @@ abstract class DdiProviderAbstract
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
@@ -80,7 +80,7 @@ abstract class DdiProviderAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DdiProviderInterface|null $entity
      * @param int $depth
      * @return DdiProviderDto|null
      */
@@ -100,22 +100,22 @@ abstract class DdiProviderAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DdiProviderDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiProviderDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiProviderDto
-         */
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
         $self = new static(
@@ -129,7 +129,6 @@ abstract class DdiProviderAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -137,16 +136,13 @@ abstract class DdiProviderAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiProviderDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiProviderDto
-         */
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
         $this
@@ -158,7 +154,6 @@ abstract class DdiProviderAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -197,7 +192,7 @@ abstract class DdiProviderAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
@@ -224,7 +219,7 @@ abstract class DdiProviderAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -251,7 +246,7 @@ abstract class DdiProviderAbstract
      *
      * @param boolean $externallyRated
      *
-     * @return self
+     * @return static
      */
     protected function setExternallyRated($externallyRated = null)
     {
@@ -279,7 +274,7 @@ abstract class DdiProviderAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -303,7 +298,7 @@ abstract class DdiProviderAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
@@ -315,7 +310,7 @@ abstract class DdiProviderAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet()
     {

@@ -247,7 +247,7 @@ interface VoicemailInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 
@@ -263,7 +263,7 @@ interface VoicemailInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return self
+     * @return static
      */
     public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
 

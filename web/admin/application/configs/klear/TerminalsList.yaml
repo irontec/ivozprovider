@@ -28,6 +28,9 @@ production:
           lastProvisionDate: true
           disallow: true
           status: true
+          t38Passthrough: true
+          allowAudio: true
+          allowVideo: true
         options:
           title: _("Options")
           screens:
@@ -71,6 +74,7 @@ production:
           allowAudio: true
           allowVideo: true
           directMediaMethod: true
+          t38Passthrough: true
           terminalModel: true
           mac: true
           lastProvisionDate: true
@@ -78,8 +82,12 @@ production:
           disallow: true
           lastProvisionDate: true
           domain: true
+          t38Passthrough: true
           statusIcon: true
           status: true
+          allowAudio: true
+          allowVideo: true
+          directMediaMethod: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
           label: _("Login Info")
@@ -90,11 +98,12 @@ production:
             password: 5
         group1:
           label: _("Connection Info")
-          colsPerRow: 12
+          colsPerRow: 8
           fields:
             allowAudio: 4
             allowVideo: 4
             directMediaMethod: 4
+            t38Passthrough: 4
         group2:
           label: _("Provisioning Info")
           colsPerRow: 12
@@ -130,6 +139,7 @@ production:
           terminalModel: true
           mac: true
           lastProvisionDate: true
+          t38Passthrough: true
       fixedPositions:
         <<: *TerminalsFixedPositions_link
   dialogs: &terminals_dialogsLink

@@ -52,7 +52,7 @@ abstract class TrustedAbstract
     protected $priority = 0;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -97,7 +97,7 @@ abstract class TrustedAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrustedInterface|null $entity
      * @param int $depth
      * @return TrustedDto|null
      */
@@ -117,22 +117,22 @@ abstract class TrustedAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrustedDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrustedDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrustedDto
-         */
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $self = new static(
@@ -149,7 +149,6 @@ abstract class TrustedAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -157,16 +156,13 @@ abstract class TrustedAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrustedDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrustedDto
-         */
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $this
@@ -181,7 +177,6 @@ abstract class TrustedAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -226,7 +221,7 @@ abstract class TrustedAbstract
      *
      * @param string $srcIp
      *
-     * @return self
+     * @return static
      */
     protected function setSrcIp($srcIp = null)
     {
@@ -254,7 +249,7 @@ abstract class TrustedAbstract
      *
      * @param string $proto
      *
-     * @return self
+     * @return static
      */
     protected function setProto($proto = null)
     {
@@ -282,7 +277,7 @@ abstract class TrustedAbstract
      *
      * @param string $fromPattern
      *
-     * @return self
+     * @return static
      */
     protected function setFromPattern($fromPattern = null)
     {
@@ -310,7 +305,7 @@ abstract class TrustedAbstract
      *
      * @param string $ruriPattern
      *
-     * @return self
+     * @return static
      */
     protected function setRuriPattern($ruriPattern = null)
     {
@@ -338,7 +333,7 @@ abstract class TrustedAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -366,7 +361,7 @@ abstract class TrustedAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -394,7 +389,7 @@ abstract class TrustedAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {
@@ -421,7 +416,7 @@ abstract class TrustedAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {

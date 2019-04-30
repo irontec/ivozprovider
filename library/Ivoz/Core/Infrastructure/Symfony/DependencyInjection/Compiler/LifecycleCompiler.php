@@ -199,7 +199,7 @@ class LifecycleCompiler implements CompilerPassInterface
          * @var Definition $a
          * @var Definition $b
          */
-        uasort($services, function ($a, $b) use ($tag) {
+        uasort($services, function ($a, $b) {
             return $a[0]['priority'] > $b[0]['priority'];
         });
 

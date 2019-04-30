@@ -28,7 +28,7 @@ class OrderFilter extends BaseOrderFilter
         ResourceMetadataFactoryInterface $resourceMetadataFactory
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        return parent::__construct($managerRegistry, $requestStack, $orderParameterName, $logger, $properties);
+        parent::__construct($managerRegistry, $requestStack, $orderParameterName, $logger, $properties);
     }
 
     /**

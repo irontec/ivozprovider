@@ -29,7 +29,7 @@ abstract class TimezoneAbstract
     protected $label;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $country;
 
@@ -75,7 +75,7 @@ abstract class TimezoneAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TimezoneInterface|null $entity
      * @param int $depth
      * @return TimezoneDto|null
      */
@@ -95,22 +95,22 @@ abstract class TimezoneAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TimezoneDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TimezoneDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TimezoneDto
-         */
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
         $label = new Label(
@@ -128,7 +128,6 @@ abstract class TimezoneAbstract
             ->setCountry($fkTransformer->transform($dto->getCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -136,16 +135,13 @@ abstract class TimezoneAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TimezoneDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TimezoneDto
-         */
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
         $label = new Label(
@@ -161,7 +157,6 @@ abstract class TimezoneAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -200,7 +195,7 @@ abstract class TimezoneAbstract
      *
      * @param string $tz
      *
-     * @return self
+     * @return static
      */
     protected function setTz($tz)
     {
@@ -227,7 +222,7 @@ abstract class TimezoneAbstract
      *
      * @param string $comment
      *
-     * @return self
+     * @return static
      */
     protected function setComment($comment = null)
     {
@@ -255,7 +250,7 @@ abstract class TimezoneAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
-     * @return self
+     * @return static
      */
     public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
@@ -267,7 +262,7 @@ abstract class TimezoneAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry()
     {
@@ -279,7 +274,7 @@ abstract class TimezoneAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
      *
-     * @return self
+     * @return static
      */
     public function setLabel(Label $label)
     {

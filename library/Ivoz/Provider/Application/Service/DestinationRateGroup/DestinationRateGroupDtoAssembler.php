@@ -5,8 +5,9 @@ namespace Ivoz\Provider\Application\Service\DestinationRateGroup;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 
 class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
@@ -28,16 +29,16 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
     }
 
     /**
-     * @param EntityInterface $entity
+     * @param DestinationRateGroupInterface $entity
      * @param integer $depth
-     * @return BrandUrlDTO
+     * @return DestinationRateGroupDto
      * @throws \Exception
      */
     public function toDto(EntityInterface $entity, $depth = 0)
     {
         Assertion::isInstanceOf($entity, DestinationRateGroupInterface::class);
 
-        /** @var BrandUrlDTO $dto */
+        /** @var DestinationRateGroupDto $dto */
         $dto = $entity->toDto($depth);
         $id = $entity->getId();
 

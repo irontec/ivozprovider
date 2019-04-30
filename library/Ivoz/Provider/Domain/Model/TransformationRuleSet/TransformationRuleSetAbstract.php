@@ -49,12 +49,12 @@ abstract class TransformationRuleSetAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $country;
 
@@ -99,7 +99,7 @@ abstract class TransformationRuleSetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TransformationRuleSetInterface|null $entity
      * @param int $depth
      * @return TransformationRuleSetDto|null
      */
@@ -119,22 +119,22 @@ abstract class TransformationRuleSetAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TransformationRuleSetDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TransformationRuleSetDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TransformationRuleSetDto
-         */
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
         $name = new Name(
@@ -157,7 +157,6 @@ abstract class TransformationRuleSetAbstract
             ->setCountry($fkTransformer->transform($dto->getCountry()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -165,16 +164,13 @@ abstract class TransformationRuleSetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TransformationRuleSetDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TransformationRuleSetDto
-         */
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
         $name = new Name(
@@ -195,7 +191,6 @@ abstract class TransformationRuleSetAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -244,7 +239,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -272,7 +267,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param string $internationalCode
      *
-     * @return self
+     * @return static
      */
     protected function setInternationalCode($internationalCode = null)
     {
@@ -300,7 +295,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param string $trunkPrefix
      *
-     * @return self
+     * @return static
      */
     protected function setTrunkPrefix($trunkPrefix = null)
     {
@@ -328,7 +323,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param string $areaCode
      *
-     * @return self
+     * @return static
      */
     protected function setAreaCode($areaCode = null)
     {
@@ -356,7 +351,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param integer $nationalLen
      *
-     * @return self
+     * @return static
      */
     protected function setNationalLen($nationalLen = null)
     {
@@ -388,7 +383,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param boolean $generateRules
      *
-     * @return self
+     * @return static
      */
     protected function setGenerateRules($generateRules = null)
     {
@@ -416,7 +411,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -440,7 +435,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
-     * @return self
+     * @return static
      */
     public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
@@ -464,7 +459,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {

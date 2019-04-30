@@ -109,7 +109,7 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -125,7 +125,7 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -141,14 +141,14 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
@@ -157,14 +157,14 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
      *
-     * @return self
+     * @return static
      */
     public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
 }

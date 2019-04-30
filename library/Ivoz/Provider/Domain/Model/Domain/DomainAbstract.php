@@ -70,7 +70,7 @@ abstract class DomainAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DomainInterface|null $entity
      * @param int $depth
      * @return DomainDto|null
      */
@@ -90,22 +90,22 @@ abstract class DomainAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DomainDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DomainDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DomainDto
-         */
         Assertion::isInstanceOf($dto, DomainDto::class);
 
         $self = new static(
@@ -117,7 +117,6 @@ abstract class DomainAbstract
             ->setDescription($dto->getDescription())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -125,16 +124,13 @@ abstract class DomainAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DomainDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DomainDto
-         */
         Assertion::isInstanceOf($dto, DomainDto::class);
 
         $this
@@ -144,7 +140,6 @@ abstract class DomainAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -179,7 +174,7 @@ abstract class DomainAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain)
     {
@@ -206,7 +201,7 @@ abstract class DomainAbstract
      *
      * @param string $pointsTo
      *
-     * @return self
+     * @return static
      */
     protected function setPointsTo($pointsTo)
     {
@@ -232,7 +227,7 @@ abstract class DomainAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {

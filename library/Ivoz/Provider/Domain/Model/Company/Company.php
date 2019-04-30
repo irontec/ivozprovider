@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\Recording\Recording;
 
 /**
@@ -86,7 +87,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             $this->setOnDemandRecordCode('');
         }
 
-        if ($this->getType() == Company::RETAIL) {
+        if ($this->getType() == self::TYPE_RETAIL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()
@@ -94,7 +95,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             }
         }
 
-        if ($this->getType() == Company::RESIDENTIAL) {
+        if ($this->getType() == self::TYPE_RESIDENTIAL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()
@@ -116,13 +117,10 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * @param string $exten
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension($exten)
     {
-        /**
-         * @var Company $this
-         */
         $criteria = Criteria::create();
         $criteria->where(
             Criteria::expr()->eq('number', $exten)
@@ -133,14 +131,11 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * @param $ddieE164
+     * @param string $ddieE164
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
      */
     public function getDdi($ddieE164)
     {
-        /**
-         * @var Company $this
-         */
         $criteria = Criteria::create();
         $criteria->where(
             Criteria::expr()->eq('ddie164', $ddieE164)
@@ -153,9 +148,6 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     public function getFriend($exten)
     {
-        /**
-         * @var Company $this
-         */
         $criteria = Criteria::create();
         $criteria->orderBy(['priority' => Criteria::ASC]);
         $friends = $this->getFriends($criteria);
@@ -171,11 +163,12 @@ class Company extends CompanyAbstract implements CompanyInterface
         return null;
     }
 
+    /**
+     * @param string $exten
+     * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface|null
+     */
     public function getService($exten)
     {
-        /**
-         * @var Company $this
-         */
         $code = substr($exten, 1);
 
         // Get company services
@@ -208,11 +201,12 @@ class Company extends CompanyAbstract implements CompanyInterface
         return null;
     }
 
+    /**
+     * @param string $name
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface|mixed
+     */
     public function getTerminal($name)
     {
-        /**
-         * @var Company $this
-         */
         $criteria = Criteria::create();
         $criteria->where(
             Criteria::expr()->eq('name', $name)
@@ -222,11 +216,11 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($terminals);
     }
 
+    /**
+     * @return string
+     */
     public function getLanguageCode()
     {
-        /**
-         * @var Company $this
-         */
         $language = $this->getLanguage();
         if (! $language) {
             return $this->getBrand()->getLanguageCode();
@@ -264,6 +258,7 @@ class Company extends CompanyAbstract implements CompanyInterface
      * If no specific company music on hold is found, brand music will be used.
      * If no specific brand music  on hold is found, dafault music will be sued.
      *
+     * @return string
      */
     public function getMusicClass()
     {
@@ -301,11 +296,11 @@ class Company extends CompanyAbstract implements CompanyInterface
         return parent::setDomainUsers($domainUsers);
     }
 
+    /**
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     */
     public function getOutgoingRoutings()
     {
-        /**
-         * @var Company $this
-         */
         $outgoingRoutings = $this->getBrand()->getOutgoingRoutings();
         $applicableOutgoingRoutings = array();
 
@@ -323,6 +318,7 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * Get the size in bytes used by the recordings on this company
+     * @return int|null
      */
     public function getRecordingsDiskUsage()
     {
@@ -343,6 +339,7 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * Get the size in bytes for disk usage limit on this company
+     * @return float|int
      */
     public function getRecordingsLimit()
     {
@@ -355,7 +352,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * Check if a Company has a given Feature by id
      *
-     * @param $featureId
+     * @param int $featureId
      * @return bool
      */
     public function hasFeature($featureId)
@@ -370,6 +367,7 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * Get On demand recording code DTMFs
+     * @return string
      */
     public function getOnDemandRecordDTMFs()
     {
@@ -380,7 +378,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * @return FeatureInterface[]
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface[]
      */
     public function getFeatures()
     {

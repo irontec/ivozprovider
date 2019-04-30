@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# cgrates-reload
+#
+# Author: IvozProvider <vozip+ivozprovider@irontec.com>
+# Date: 2019/04/04
+#
+###############################################################################
+#
+# Reload Cgrates configuration for all brands
+#
+###############################################################################
+
+# Get mysql password form debconf
+MYSQL_PWD=`echo get ivozprovider/mysql_password | debconf-communicate | cut -f2 -d" "`
+export $MYSQL_PWD
+
+# Get Brand Ids
+BRANDS=`mysql -h data.ivozprovider.local -uroot -BN ivozprovider -e "SELECT id FROM Brands"`
+
+# Reload all brands
+for BRAND in $BRANDS; do
+    # Reload billing information for this brand
+    echo -e "\e[1;32m* \e[1;31mReloading billing information for brand ${BRAND} ...\e[0m"
+    /usr/bin/cgr-loader -from_stordb -validate -verbose -tpid b${BRAND}
+done

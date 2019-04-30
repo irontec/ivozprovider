@@ -4,18 +4,6 @@ services:
     autoconfigure: true
     public: false
 
-  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::User:
-    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
-    arguments:
-      $identifierField: 'email'
-      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
-
-  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator:
-    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
-    arguments:
-      $identifierField: 'username'
-      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
-
   ivoz.api_platform.http.client:
     class: GuzzleHttp\Client
     arguments:

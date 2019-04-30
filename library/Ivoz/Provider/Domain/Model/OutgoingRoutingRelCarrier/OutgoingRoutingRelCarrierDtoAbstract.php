@@ -108,7 +108,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -122,7 +122,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutgoingRoutingId()
     {
@@ -154,7 +154,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -168,7 +168,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCarrierId()
     {

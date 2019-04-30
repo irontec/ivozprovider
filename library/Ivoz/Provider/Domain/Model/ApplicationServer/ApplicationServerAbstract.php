@@ -64,7 +64,7 @@ abstract class ApplicationServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ApplicationServerInterface|null $entity
      * @param int $depth
      * @return ApplicationServerDto|null
      */
@@ -84,22 +84,22 @@ abstract class ApplicationServerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ApplicationServerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ApplicationServerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ApplicationServerDto
-         */
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
         $self = new static(
@@ -110,7 +110,6 @@ abstract class ApplicationServerAbstract
             ->setName($dto->getName())
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -118,16 +117,13 @@ abstract class ApplicationServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ApplicationServerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ApplicationServerDto
-         */
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
         $this
@@ -136,7 +132,6 @@ abstract class ApplicationServerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -169,7 +164,7 @@ abstract class ApplicationServerAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip)
     {
@@ -196,7 +191,7 @@ abstract class ApplicationServerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name = null)
     {

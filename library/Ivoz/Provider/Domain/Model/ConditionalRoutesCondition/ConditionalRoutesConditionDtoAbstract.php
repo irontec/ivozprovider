@@ -290,7 +290,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -304,7 +304,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getConditionalRouteId()
     {
@@ -336,7 +336,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -350,7 +350,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getIvrId()
     {
@@ -382,7 +382,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -396,7 +396,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getHuntGroupId()
     {
@@ -428,7 +428,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -442,7 +442,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getVoicemailUserId()
     {
@@ -474,7 +474,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -488,7 +488,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getUserId()
     {
@@ -520,7 +520,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -534,7 +534,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getQueueId()
     {
@@ -566,7 +566,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -580,7 +580,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getLocutionId()
     {
@@ -612,7 +612,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -626,7 +626,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getConferenceRoomId()
     {
@@ -658,7 +658,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -672,7 +672,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getExtensionId()
     {
@@ -704,7 +704,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -718,7 +718,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNumberCountryId()
     {

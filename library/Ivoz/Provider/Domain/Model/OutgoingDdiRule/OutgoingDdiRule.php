@@ -62,7 +62,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
 
     /**
      * Return forced Ddi for this rule
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getForcedDdi()
     {
@@ -78,15 +78,16 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
 
     /**
      * Check final outgoing Ddi presentation for given destination
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $originalDdi
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null $e164destination
      */
     public function getOutgoingDdi($originalDdi, $e164destination)
     {
         // Default Rule action
-        if ($this->getDefaultAction() == 'keep') {
-            $finalDdi = $originalDdi;
-        } elseif ($this->getDefaultAction() == 'force') {
+        if ($this->getDefaultAction() == OutgoingDdiRule::DEFAULTACTION_FORCE) {
             $finalDdi = $this->getForcedDdi();
+        } else {
+            $finalDdi = $originalDdi;
         }
 
         // Check rule patterns

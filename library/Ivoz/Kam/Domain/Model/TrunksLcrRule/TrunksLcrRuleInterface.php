@@ -15,7 +15,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     /**
      * Return LcrRule FromUri string based on OutgoingRouting configuration
      *
-     * @param OutgoingRoutingInterface $outgoingRouting
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      * @return string
      */
     public static function getFromUriForOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
@@ -74,7 +74,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null);
 
@@ -90,7 +90,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null);
 
@@ -106,7 +106,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
 

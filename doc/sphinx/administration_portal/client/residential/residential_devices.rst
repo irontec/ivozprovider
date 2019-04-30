@@ -81,6 +81,12 @@ These are the configurable settings of *Residential devices*:
     Max Calls
         Limits the number of concurrent received calls. Set 0 for unlimited calls.
 
+    Enable T.38 passthrough
+        If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
+        application servers will act as T.38 gateways, routing calls through a T.38 capable carrier and
+        bridging signalling and media from one to another. See :ref:`Firewall <firewall>` for port exposing concerns
+        related to this kind of traffic.
+
 Voicemail settings
 ==================
 
@@ -118,24 +124,26 @@ Configuration will be something like this:
 
 .. code-block:: none
 
-    register => device-name:device-password@ivozprovider-brand.sip-domain.com
+    register => residentialDeviceName:residentialDevicePassword@ivozprovider-brand.sip-domain.com
 
 Device peer
 ------------
 
 .. code-block:: none
 
-    [name-peer]
+    [residentialDeviceName]
     type=peer
     host=ivozprovider-brand.sip-domain.com
     context=XXXXXX
     disallow=all
     allow=alaw
-    defaultuser=device-name
-    secret=device-password
+    defaultuser=residentialDeviceName
+    secret=residentialDevicePassword
+    fromuser=residentialDeviceName
     fromdomain=ivozprovider-brand.sip-domain.com
     insecure=port,invite
     sendrpid=pai
+    directmedia=no
 
 .. warning:: *Residential devices* MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.

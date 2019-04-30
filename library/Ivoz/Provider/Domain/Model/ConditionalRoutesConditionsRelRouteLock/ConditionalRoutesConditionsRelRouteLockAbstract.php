@@ -63,7 +63,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRoutesConditionsRelRouteLockInterface|null $entity
      * @param int $depth
      * @return ConditionalRoutesConditionsRelRouteLockDto|null
      */
@@ -83,22 +83,22 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRoutesConditionsRelRouteLockDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelRouteLockDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelRouteLockDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             ->setRouteLock($fkTransformer->transform($dto->getRouteLock()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelRouteLockDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelRouteLockDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
     {
@@ -191,7 +186,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock
      *
-     * @return self
+     * @return static
      */
     public function setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock)
     {

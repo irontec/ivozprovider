@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
 {
@@ -18,7 +19,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return self
+     * @return static
      */
     public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
 
@@ -34,7 +35,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
@@ -50,7 +51,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
      *
-     * @return OutgoingRoutingRelCarrierTrait
+     * @return static
      */
     public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
 
@@ -64,14 +65,14 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     /**
      * Replace tpRatingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
-     * @return self
+     * @param ArrayCollection $tpRatingProfiles of Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+     * @return static
      */
-    public function replaceTpRatingProfiles(Collection $tpRatingProfiles);
+    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles);
 
     /**
      * Get tpRatingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
     public function getTpRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);

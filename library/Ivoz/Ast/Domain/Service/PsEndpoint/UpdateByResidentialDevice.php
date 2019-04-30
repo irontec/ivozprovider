@@ -2,6 +2,7 @@
 
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
@@ -25,6 +26,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         EntityPersisterInterface $entityPersister,
         PsEndpointRepository $psEndpointRepository
     ) {
+        //@todo use entityTools instead
         $this->entityPersister = $entityPersister;
         $this->psEndpointRepository = $psEndpointRepository;
     }
@@ -56,6 +58,8 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
+            // @todo use entityTools here
+            /** @var PsEndpointDto $endpointDto */
             $endpointDto  = $endpoint->toDto();
         }
 
@@ -75,7 +79,15 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setDirectmediaMethod($entity->getDirectmediaMethod())
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
+            ->setT38Udptl($entity->getT38Passthrough())
             ->setDirectMediaMethod('invite');
+
+        // Disable direct media for T.38 capable devices
+        if ($entity->getT38Passthrough() === ResidentialDeviceInterface::T38PASSTHROUGH_YES) {
+            $endpointDto->setDirectMedia('no');
+        } else {
+            $endpointDto->setDirectMedia('yes');
+        }
 
         $this->entityPersister->persistDto($endpointDto, $endpoint);
     }

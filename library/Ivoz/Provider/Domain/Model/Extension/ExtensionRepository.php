@@ -9,7 +9,7 @@ interface ExtensionRepository extends ObjectRepository, Selectable
 {
 
     /**
-     * @param $id
+     * @param int $id
      * @return ExtensionInterface | null
      */
     public function findByCompanyId($id);

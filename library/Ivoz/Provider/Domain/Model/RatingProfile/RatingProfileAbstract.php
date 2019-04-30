@@ -19,12 +19,12 @@ abstract class RatingProfileAbstract
     protected $activationTime;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
@@ -34,7 +34,7 @@ abstract class RatingProfileAbstract
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     protected $routingTag;
 
@@ -79,7 +79,7 @@ abstract class RatingProfileAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RatingProfileInterface|null $entity
      * @param int $depth
      * @return RatingProfileDto|null
      */
@@ -99,22 +99,22 @@ abstract class RatingProfileAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RatingProfileDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingProfileDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingProfileDto
-         */
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $self = new static(
@@ -128,7 +128,6 @@ abstract class RatingProfileAbstract
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -136,16 +135,13 @@ abstract class RatingProfileAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingProfileDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingProfileDto
-         */
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $this
@@ -157,7 +153,6 @@ abstract class RatingProfileAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -196,7 +191,7 @@ abstract class RatingProfileAbstract
      *
      * @param \DateTime $activationTime
      *
-     * @return self
+     * @return static
      */
     protected function setActivationTime($activationTime)
     {
@@ -226,7 +221,7 @@ abstract class RatingProfileAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -250,7 +245,7 @@ abstract class RatingProfileAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -274,7 +269,7 @@ abstract class RatingProfileAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
     {
@@ -298,7 +293,7 @@ abstract class RatingProfileAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
      *
-     * @return self
+     * @return static
      */
     public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
     {

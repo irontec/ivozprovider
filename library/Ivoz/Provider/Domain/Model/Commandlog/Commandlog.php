@@ -12,7 +12,7 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
+     * @return string
      */
     public function getId()
     {
@@ -20,8 +20,8 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
     }
 
     /**
-     * @param CommandEventInterface $event
-     * @return Commandlog
+     * @param \Ivoz\Core\Application\Event\CommandEventInterface $event
+     * @return self
      */
     public static function fromEvent(CommandEventInterface $event)
     {
@@ -33,6 +33,9 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
         );
 
         $entity->id = $event->getId();
+        $entity->setAgent(
+            $event->getAgent()
+        );
         $entity->setMethod(
             $event->getMethod()
         );

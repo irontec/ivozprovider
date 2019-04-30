@@ -3,7 +3,6 @@
 @company04
 @company04-1
 
-
 Feature: Friends patterns admin page
   As a main operator
   I want to be able to access friends admin page

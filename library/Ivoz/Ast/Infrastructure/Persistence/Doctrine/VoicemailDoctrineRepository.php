@@ -22,7 +22,7 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return VoicemailInterface
      */
     public function findOneByUserId($id)
@@ -36,8 +36,8 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
     }
 
     /**
-     * @param $mailbox
-     * @param $context
+     * @param string $mailbox
+     * @param string $context
      * @return VoicemailInterface
      */
     public function findByMailboxAndContext($mailbox, $context)

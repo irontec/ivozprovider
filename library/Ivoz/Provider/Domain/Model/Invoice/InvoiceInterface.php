@@ -4,10 +4,17 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterface
 {
+    const STATUS_WAITING = 'waiting';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_CREATED = 'created';
+    const STATUS_ERROR = 'error';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -87,14 +94,14 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null);
 
     /**
      * Get invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate();
 
@@ -103,7 +110,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -119,7 +126,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -135,14 +142,14 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null);
 
     /**
      * Get numberSequence
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     public function getNumberSequence();
 
@@ -151,14 +158,14 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
      *
-     * @return self
+     * @return static
      */
     public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null);
 
     /**
      * Get scheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getScheduler();
 
@@ -167,7 +174,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
      *
-     * @return self
+     * @return static
      */
     public function setPdf(\Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf);
 
@@ -183,7 +190,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost
      *
-     * @return InvoiceTrait
+     * @return static
      */
     public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost);
 
@@ -197,38 +204,38 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Replace relFixedCosts
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[] $relFixedCosts
-     * @return self
+     * @param ArrayCollection $relFixedCosts of Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface
+     * @return static
      */
-    public function replaceRelFixedCosts(Collection $relFixedCosts);
+    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts);
 
     /**
      * Get relFixedCosts
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[]
      */
     public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

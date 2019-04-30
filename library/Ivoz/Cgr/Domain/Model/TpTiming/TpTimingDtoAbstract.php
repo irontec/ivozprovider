@@ -311,7 +311,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -325,7 +325,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getRatingPlanId()
     {

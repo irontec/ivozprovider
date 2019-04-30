@@ -16,6 +16,7 @@ use Doctrine\DBAL\Types\Type;
 class AbstractEntityGenerator extends ParentGenerator
 {
     protected $typeAlias = array(
+        'guid'              => 'string',
         Type::DATETIMETZ    => '\DateTime',
         Type::DATETIME      => '\DateTime',
         Type::DATE          => '\DateTime',
@@ -93,7 +94,7 @@ public static function createDto($id = null)
 
 /**
  * @internal use EntityTools instead
- * @param EntityInterface|null $entity
+ * @param <entityClass>Interface|null $entity
  * @param int $depth
  * @return <dtoClass>|null
  */
@@ -113,27 +114,26 @@ public static function entityToDto(EntityInterface $entity = null, $depth = 0)
         return static::createDto($entity->getId());
     }
 
-    return $entity->toDto($depth-1);
+    /** @var <dtoClass> $dto */
+    $dto = $entity->toDto($depth-1);
+
+    return $dto;
 }
 
 /**
  * Factory method
  * @internal use EntityTools instead
- * @param DataTransferObjectInterface $dto
+ * @param <dtoClass> $dto
  * @return self
  */
 public static function fromDto(
     DataTransferObjectInterface $dto,
     \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
 ) {
-    /**
-     * @var $dto <dtoClass>
-     */
     Assertion::isInstanceOf($dto, <dtoClass>::class);
 <voContructor>
     $self = new static(<requiredFieldsGetters>);
 <fromDTO>
-    $self->sanitizeValues();
     $self->initChangelog();
 
     return $self;
@@ -141,21 +141,17 @@ public static function fromDto(
 
 /**
  * @internal use EntityTools instead
- * @param DataTransferObjectInterface $dto
+ * @param <dtoClass> $dto
  * @return self
  */
 public function updateFromDto(
     DataTransferObjectInterface $dto,
     \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
 ) {
-    /**
-     * @var $dto <dtoClass>
-     */
     Assertion::isInstanceOf($dto, <dtoClass>::class);
 <voContructor>
     <updateFromDTO>
 
-    $this->sanitizeValues();
     return $this;
 }
 
@@ -185,7 +181,7 @@ protected function __toArray()
  *
  * @param <variableType> $<variableName>
  *
- * @return self
+ * @return static
  */
 <visibility> function <methodName>(<methodTypeHint>$<variableName><variableDefault>)
 {
@@ -456,7 +452,6 @@ public function <methodName>(<criteriaArgument>)
      */
     protected function generateEntityFieldMappingProperties(ClassMetadataInfo $metadata)
     {
-        $constants = [];
         $lines = array();
 
         foreach ($metadata->fieldMappings as $fieldMapping) {
@@ -470,25 +465,6 @@ public function <methodName>(<criteriaArgument>)
                 continue;
             }
 
-            $comment = isset($fieldMapping['options']['comment'])
-                    ? $fieldMapping['options']['comment']
-                    : '';
-
-            if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
-                $acceptedValues = explode('|', $matches['fieldValues']);
-                $choices = $this->getEnumConstants($fieldMapping['fieldName'], $acceptedValues);
-                foreach ($acceptedValues as $key => $acceptedValue) {
-                    $choice = $choices[$key];
-                    $constants[] =
-                        $this->spaces
-                        . 'const '
-                        . $choice
-                        . " = '${acceptedValue}';";
-                }
-
-                $constants[] = "\n";
-            }
-
             $lines[] = $this->generateFieldMappingPropertyDocBlock($fieldMapping, $metadata);
             $classAttr = $this->spaces . $this->fieldVisibility . ' $' . $fieldMapping['fieldName'];
 
@@ -499,9 +475,7 @@ public function <methodName>(<criteriaArgument>)
             $lines[] = $classAttr . ";\n";
         }
 
-        return
-            implode("\n", $constants)
-            . implode("\n", $lines);
+        return implode("\n", $lines);
     }
 
 
@@ -1185,7 +1159,47 @@ public function <methodName>(<criteriaArgument>)
         return implode("\n", $lines);
     }
 
+
     /**
+     * @param array             $associationMapping
+     * @param ClassMetadataInfo $metadata
+     *
+     * @return string
+     */
+    protected function generateAssociationMappingPropertyDocBlock(array $associationMapping, ClassMetadataInfo $metadata)
+    {
+        $lines = array();
+        $lines[] = $this->spaces . '/**';
+
+        if ($associationMapping['type'] & ClassMetadataInfo::TO_MANY) {
+            $lines[] = $this->spaces . ' * @var \Doctrine\Common\Collections\Collection';
+        } else {
+            $line =
+                $this->spaces
+                . ' * @var \\'
+                . ltrim($associationMapping['targetEntity'], '\\');
+
+            $column = $associationMapping['joinColumns'][0] ?? null;
+            $isNullableFk =
+                isset($column)
+                && (
+                    (isset($column['nullable']) && $column['nullable'])
+                    || (isset($column['onDelete']) && $column['onDelete'] === 'set null')
+                );
+
+            if ($isNullableFk) {
+                $line .= ' | null';
+            }
+
+            $lines[] = $line;
+        }
+
+        $lines[] = $this->spaces . ' */';
+
+        return implode("\n", $lines);
+    }
+
+        /**
      * @param ClassMetadataInfo $metadata
      *
      * @return string
@@ -1261,8 +1275,10 @@ public function <methodName>(<criteriaArgument>)
             $isNullableFk =
                 isset($currentAsoc->joinColumns)
                 && isset($currentAsoc->joinColumns[0])
-                && isset($currentAsoc->joinColumns[0]['nullable'])
-                && $currentAsoc->joinColumns[0]['nullable'];
+                && (
+                    (isset($currentAsoc->joinColumns[0]['nullable']) && $currentAsoc->joinColumns[0]['nullable'])
+                    || (isset($currentAsoc->joinColumns[0]['onDelete']) && $currentAsoc->joinColumns[0]['onDelete'] === 'set null')
+                );
         }
 
         if (is_null($defaultValue) && ($isNullable || $isNullableFk)) {
@@ -1296,8 +1312,10 @@ public function <methodName>(<criteriaArgument>)
             $isNullableFk =
                 isset($currentAsoc->joinColumns)
                 && isset($currentAsoc->joinColumns[0])
-                && isset($currentAsoc->joinColumns[0]['nullable'])
-                && $currentAsoc->joinColumns[0]['nullable'];
+                && (
+                    (isset($currentAsoc->joinColumns[0]['nullable']) && $currentAsoc->joinColumns[0]['nullable'])
+                    || (isset($currentAsoc->joinColumns[0]['onDelete']) && $currentAsoc->joinColumns[0]['onDelete'] === 'set null')
+                );
         }
 
         $assertions = [];
@@ -1402,7 +1420,16 @@ public function <methodName>(<criteriaArgument>)
 
             if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
                 $acceptedValues = explode('|', $matches['fieldValues']);
-                $choices = $this->getEnumConstants($currentField->fieldName, $acceptedValues, 'self::');
+                $entityFqdn = substr(
+                    $metadata->name,
+                    0,
+                    strlen('Abstract') * -1
+                );
+
+                $entityFqdnSegments = explode('\\', $entityFqdn);
+                $interface = end($entityFqdnSegments) . 'Interface';
+
+                $choices = $this->getEnumConstants($currentField->fieldName, $acceptedValues, $interface . '::');
 
                 $glue = "\n" . $this->spaces;
                 $assertions[] = AssertionGenerator::choice(
@@ -1412,7 +1439,9 @@ public function <methodName>(<criteriaArgument>)
                 );
             }
 
-            if ($isNullable) {
+            if ($isNullable && count($assertions) === 1) {
+                $assertions = [];
+            } elseif ($isNullable) {
                 $assertions[] = '}';
             }
         }

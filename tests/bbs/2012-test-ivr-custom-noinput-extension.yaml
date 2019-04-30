@@ -5,6 +5,7 @@ scenarios:
     timeout: 30
     sessions:
       - alice:
+          - wait: 3
           - call:
               dest: 601             # IVR custom extension
               credentials:

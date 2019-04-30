@@ -13,8 +13,8 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param InvoiceInterface $invoice
-     * @param FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler
+     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
+     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
      * @return static
      */
     public static function fromFixedCostsRelInvoiceScheduler(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice, \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
@@ -31,7 +31,7 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
      *
-     * @return self
+     * @return static
      */
     public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost);
 
@@ -47,7 +47,7 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
      *
-     * @return self
+     * @return static
      */
     public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
 

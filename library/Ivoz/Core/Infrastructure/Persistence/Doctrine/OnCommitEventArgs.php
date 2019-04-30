@@ -7,9 +7,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class OnCommitEventArgs extends EventArgs
 {
-    /**
-     * @var \Doctrine\ORM\EntityManager
-     */
     private $em;
 
     /**

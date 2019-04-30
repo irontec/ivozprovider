@@ -25,6 +25,10 @@ production:
       title: _('Destination')
       type: text
       maxLength: 100
+    direction:
+      title: _('Direction')
+      type: text
+      maxLength: 255
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select

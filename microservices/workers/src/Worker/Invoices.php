@@ -12,6 +12,9 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 /**
  * @Gearman\Work(
@@ -23,46 +26,27 @@ use Psr\Log\LoggerInterface;
  */
 class Invoices
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    use RegisterCommandTrait;
 
-    /**
-     * @var InvoiceRepository
-     */
-    protected $invoiceRepository;
+    private $eventPublisher;
+    private $requestId;
+    private $entityTools;
+    private $invoiceRepository;
+    private $billableCallRepository;
+    private $generator;
+    private $logger;
 
-    /**
-     * @var BillableCallRepository
-     */
-    protected $billableCallRepository;
-
-    /**
-     * @var Generator
-     */
-    protected $generator;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * Invoices constructor.
-     * @param EntityTools $entityTools
-     * @param InvoiceRepository $invoiceRepository
-     * @param BillableCallRepository $billableCallRepository
-     * @param Generator $generator
-     * @param LoggerInterface $logger
-     */
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         EntityTools $entityTools,
         InvoiceRepository $invoiceRepository,
         BillableCallRepository $billableCallRepository,
         Generator $generator,
         LoggerInterface $logger
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->entityTools = $entityTools;
         $this->invoiceRepository = $invoiceRepository;
         $this->billableCallRepository = $billableCallRepository;
@@ -77,14 +61,18 @@ class Invoices
      * )
      *
      * @param GearmanJob $serializedJob Serialized object with job parameters
-     * @return bool
+     * @return bool | null
      */
     public function create(GearmanJob $serializedJob)
     {
         // Thanks Gearmand, you've done your job
-        $job = igbinary_unserialize($serializedJob->workload());
+        $serializedJob->sendComplete("DONE");
 
+        $job = igbinary_unserialize($serializedJob->workload());
         $id = $job->getId();
+
+        $this->registerCommand('Worker', 'invoices', ['id' => $id]);
+
         $this->logger->info("[INVOICER] ID = " . $id);
 
         $this->billableCallRepository->resetInvoiceId($id);
@@ -93,12 +81,12 @@ class Invoices
         $invoice = $this->invoiceRepository->find($id);
         if (!$invoice) {
             $this->logger->error("Invoice #${id} was not found!");
-            return;
+            return null;
         }
 
         /** @var InvoiceDto $invoiceDto */
         $invoiceDto = $this->entityTools->entityToDto($invoice);
-        $invoiceDto->setStatus("processing");
+        $invoiceDto->setStatus(InvoiceInterface::STATUS_PROCESSING);
         $this->entityTools->persistDto($invoiceDto, $invoice, true);
 
         $this->logger->info("[INVOICER] Status = processing");
@@ -120,7 +108,7 @@ class Invoices
                 ->setPdfMimeType('application/pdf; charset=binary')
                 ->setTotal($totals["totalPrice"])
                 ->setTotalWithTax($totals["totalWithTaxes"])
-                ->setStatus("created");
+                ->setStatus(InvoiceInterface::STATUS_CREATED);
 
             $this->entityTools->persistDto($invoiceDto, $invoice);
             $this->logger->info("[INVOICER] Status = created");
@@ -128,7 +116,7 @@ class Invoices
             $this->logger->info("[INVOICER] Status = error");
             $this->logger->info("[INVOICER] Error was: ".$e->getMessage());
 
-            $invoiceDto->setStatus("error");
+            $invoiceDto->setStatus(InvoiceInterface::STATUS_ERROR);
             $invoiceDto->setStatusMsg(
                 $e->getMessage()
             );

@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## error_handler
+  ##################################
+  Ivoz\Provider\Domain\Service\Friend\PersistErrorHandler:
+    tags:
+      - { name: provider.lifecycle.friend.error_handler, priority: 10 }
+    arguments: ~

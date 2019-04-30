@@ -30,7 +30,7 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
 
     /**
      * Get Number value in E.164 format
-     * @param $prefix string
+     * @return string
      */
     public function getNumberE164()
     {

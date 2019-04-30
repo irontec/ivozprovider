@@ -111,7 +111,7 @@ abstract class UsersXcapAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersXcapInterface|null $entity
      * @param int $depth
      * @return UsersXcapDto|null
      */
@@ -131,22 +131,22 @@ abstract class UsersXcapAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersXcapDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersXcapDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersXcapDto
-         */
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
         $self = new static(
@@ -160,7 +160,6 @@ abstract class UsersXcapAbstract
             $dto->getPort()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -168,16 +167,13 @@ abstract class UsersXcapAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersXcapDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersXcapDto
-         */
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
         $this
@@ -192,7 +188,6 @@ abstract class UsersXcapAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -237,7 +232,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -264,7 +259,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain)
     {
@@ -291,7 +286,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $doc
      *
-     * @return self
+     * @return static
      */
     protected function setDoc($doc)
     {
@@ -317,7 +312,7 @@ abstract class UsersXcapAbstract
      *
      * @param integer $docType
      *
-     * @return self
+     * @return static
      */
     protected function setDocType($docType)
     {
@@ -344,7 +339,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $etag
      *
-     * @return self
+     * @return static
      */
     protected function setEtag($etag)
     {
@@ -371,7 +366,7 @@ abstract class UsersXcapAbstract
      *
      * @param integer $source
      *
-     * @return self
+     * @return static
      */
     protected function setSource($source)
     {
@@ -398,7 +393,7 @@ abstract class UsersXcapAbstract
      *
      * @param string $docUri
      *
-     * @return self
+     * @return static
      */
     protected function setDocUri($docUri)
     {
@@ -425,7 +420,7 @@ abstract class UsersXcapAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port)
     {

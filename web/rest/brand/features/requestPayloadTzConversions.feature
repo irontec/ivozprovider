@@ -27,13 +27,13 @@ Feature: Input timezone convertion
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be equal to:
     """
-      {
+       {
           "number": "2",
           "inDate": "2018-12-31 18:00:00",
           "outDate": "2019-01-01 17:59:59",
-          "total": null,
+          "total": 10,
           "taxRate": 21,
-          "totalWithTax": null,
+          "totalWithTax": 12.1,
           "status": null,
           "statusMsg": null,
           "id": 2,
@@ -50,7 +50,7 @@ Feature: Input timezone convertion
     """
 
   Scenario: Retrieve created item using user time zone (Madrid)
-    Given I add Authorization header for "utcAdmin"
+    Given I add Authorization header for "utcBrandAdmin"
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoices/2"
     And the JSON should be like:
@@ -59,9 +59,9 @@ Feature: Input timezone convertion
           "number": "2",
           "inDate": "2018-12-31 23:00:00",
           "outDate": "2019-01-01 22:59:59",
-          "total": null,
+          "total": 10,
           "taxRate": 21,
-          "totalWithTax": null,
+          "totalWithTax": 12.1,
           "status": null,
           "statusMsg": null,
           "id": 2,

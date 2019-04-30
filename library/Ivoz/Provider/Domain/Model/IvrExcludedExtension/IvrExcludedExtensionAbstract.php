@@ -63,7 +63,7 @@ abstract class IvrExcludedExtensionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param IvrExcludedExtensionInterface|null $entity
      * @param int $depth
      * @return IvrExcludedExtensionDto|null
      */
@@ -83,22 +83,22 @@ abstract class IvrExcludedExtensionAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var IvrExcludedExtensionDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrExcludedExtensionDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrExcludedExtensionDto
-         */
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class IvrExcludedExtensionAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class IvrExcludedExtensionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param IvrExcludedExtensionDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto IvrExcludedExtensionDto
-         */
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class IvrExcludedExtensionAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class IvrExcludedExtensionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
      *
-     * @return self
+     * @return static
      */
     public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
@@ -191,7 +186,7 @@ abstract class IvrExcludedExtensionAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
      *
-     * @return self
+     * @return static
      */
     public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension)
     {

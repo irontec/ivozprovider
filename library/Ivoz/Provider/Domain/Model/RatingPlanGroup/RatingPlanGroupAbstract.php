@@ -29,7 +29,7 @@ abstract class RatingPlanGroupAbstract
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     protected $currency;
 
@@ -75,7 +75,7 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RatingPlanGroupInterface|null $entity
      * @param int $depth
      * @return RatingPlanGroupDto|null
      */
@@ -95,22 +95,22 @@ abstract class RatingPlanGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RatingPlanGroupDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanGroupDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanGroupDto
-         */
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
         $name = new Name(
@@ -133,7 +133,6 @@ abstract class RatingPlanGroupAbstract
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -141,16 +140,13 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanGroupDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanGroupDto
-         */
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
         $name = new Name(
@@ -171,7 +167,6 @@ abstract class RatingPlanGroupAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -212,7 +207,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -236,7 +231,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -248,7 +243,7 @@ abstract class RatingPlanGroupAbstract
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency()
     {
@@ -260,7 +255,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -283,7 +278,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(Description $description)
     {

@@ -30,7 +30,6 @@ class JsonContext extends BaseContext implements Context, SnippetAcceptingContex
      * context constructor through behat.yml.
      */
     public function __construct(
-        \AppKernel $kernel,
         Request $request,
         HttpCallResultPool $httpCallResultPool
     ) {

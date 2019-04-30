@@ -317,7 +317,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -331,7 +331,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -363,7 +363,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -377,7 +377,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getWelcomeLocutionId()
     {
@@ -409,7 +409,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -423,7 +423,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getHolidayLocutionId()
     {
@@ -455,7 +455,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -469,7 +469,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutOfScheduleLocutionId()
     {
@@ -501,7 +501,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -515,7 +515,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getHolidayExtensionId()
     {
@@ -547,7 +547,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -561,7 +561,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutOfScheduleExtensionId()
     {
@@ -593,7 +593,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -607,7 +607,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getHolidayVoiceMailUserId()
     {
@@ -639,7 +639,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -653,7 +653,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutOfScheduleVoiceMailUserId()
     {
@@ -685,7 +685,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -699,7 +699,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getHolidayNumberCountryId()
     {
@@ -731,7 +731,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -745,7 +745,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutOfScheduleNumberCountryId()
     {

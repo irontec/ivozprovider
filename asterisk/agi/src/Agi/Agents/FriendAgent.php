@@ -3,6 +3,7 @@
 namespace Agi\Agents;
 
 use Agi\Wrapper;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 
 class FriendAgent implements AgentInterface
@@ -54,6 +55,9 @@ class FriendAgent implements AgentInterface
         // Allow identification from any company DDI
         $callerIdNum = $this->agi->getCallerIdNum();
 
+        /** @var DdiInterface $ddi */
+        $ddi = null;
+
         // Check presented number against company DDIs
         $companyDDIs = $this->friend->getCompany()->getDDIs();
         foreach ($companyDDIs as $companyDDI) {
@@ -64,7 +68,7 @@ class FriendAgent implements AgentInterface
             }
         }
 
-        if (!isset($ddi)) {
+        if (!$ddi) {
             // Allow diversion from any company DDI
             $callerIdNum = $this->agi->getRedirecting('from-num');
 
@@ -78,7 +82,7 @@ class FriendAgent implements AgentInterface
         }
 
         // Use fallback outgoing DDI
-        if (!isset($ddi)) {
+        if (!$ddi) {
             $ddi = $this->friend->getOutgoingDDI();
             if ($ddi) {
                 $this->agi->notice(

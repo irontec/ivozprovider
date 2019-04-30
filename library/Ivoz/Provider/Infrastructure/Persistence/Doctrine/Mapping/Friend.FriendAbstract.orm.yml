@@ -121,10 +121,10 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
     directConnectivity:
       type: string
       nullable: false
-      length: null
+      length: 20
       options:
         fixed: false
-        comment: '[enum:yes|no]'
+        comment: '[enum:yes|no|intervpbx]'
         default: 'yes'
       column: directConnectivity
     ddiIn:
@@ -136,6 +136,15 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
         comment: '[enum:yes|no]'
         default: 'yes'
       column: ddiIn
+    t38Passthrough:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+        default: 'no'
+      column: t38Passthrough
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -204,4 +213,16 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
         languageId:
           referencedColumnName: id
           onDelete: set null
+      orphanRemoval: false
+    interCompany:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        interCompanyId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: cascade
       orphanRemoval: false

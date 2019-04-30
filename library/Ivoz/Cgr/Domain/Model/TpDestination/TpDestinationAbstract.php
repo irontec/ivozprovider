@@ -82,7 +82,7 @@ abstract class TpDestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TpDestinationInterface|null $entity
      * @param int $depth
      * @return TpDestinationDto|null
      */
@@ -102,22 +102,22 @@ abstract class TpDestinationAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TpDestinationDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDestinationDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDestinationDto
-         */
         Assertion::isInstanceOf($dto, TpDestinationDto::class);
 
         $self = new static(
@@ -131,7 +131,6 @@ abstract class TpDestinationAbstract
             ->setDestination($fkTransformer->transform($dto->getDestination()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -139,16 +138,13 @@ abstract class TpDestinationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TpDestinationDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TpDestinationDto
-         */
         Assertion::isInstanceOf($dto, TpDestinationDto::class);
 
         $this
@@ -160,7 +156,6 @@ abstract class TpDestinationAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -199,7 +194,7 @@ abstract class TpDestinationAbstract
      *
      * @param string $tpid
      *
-     * @return self
+     * @return static
      */
     protected function setTpid($tpid)
     {
@@ -226,7 +221,7 @@ abstract class TpDestinationAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -254,7 +249,7 @@ abstract class TpDestinationAbstract
      *
      * @param string $prefix
      *
-     * @return self
+     * @return static
      */
     protected function setPrefix($prefix)
     {
@@ -281,7 +276,7 @@ abstract class TpDestinationAbstract
      *
      * @param \DateTime $createdAt
      *
-     * @return self
+     * @return static
      */
     protected function setCreatedAt($createdAt)
     {
@@ -311,7 +306,7 @@ abstract class TpDestinationAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
-     * @return self
+     * @return static
      */
     public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination)
     {

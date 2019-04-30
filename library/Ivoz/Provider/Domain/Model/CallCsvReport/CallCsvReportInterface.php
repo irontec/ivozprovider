@@ -56,7 +56,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -72,7 +72,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
@@ -88,7 +88,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler
      *
-     * @return self
+     * @return static
      */
     public function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null);
 
@@ -104,7 +104,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv
      *
-     * @return self
+     * @return static
      */
     public function setCsv(\Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv);
 
@@ -116,25 +116,25 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getCsv();
 
     /**
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @param TempFile $file
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      * @throws \Exception
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
-     * @return TempFile[]
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
      */
     public function getTempFiles();
 
     /**
      * @var string $fldName
-     * @return null | TempFile
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
 }

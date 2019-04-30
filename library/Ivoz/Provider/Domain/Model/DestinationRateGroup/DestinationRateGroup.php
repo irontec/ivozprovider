@@ -49,8 +49,8 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * Add TempFile and set status to pending
      *
-     * @param $fldName
-     * @param TempFile $file
+     * @param string $fldName
+     * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
     public function addTmpFile($fldName, TempFile $file)
     {

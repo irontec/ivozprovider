@@ -14,7 +14,7 @@ production:
       <<: *billableCallsList_screenLink
       info:
         <<: *documentationLink
-        href: "/doc/en/administration_portal/brand/calls/billable_calls.html"
+        href: "/doc/en/administration_portal/brand/calls/external_calls.html"
       forcedValues:
         <<: *forcedBrand
       fields:

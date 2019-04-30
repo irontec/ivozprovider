@@ -96,12 +96,12 @@ abstract class TrunksCdrAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     protected $retailAccount;
 
@@ -153,7 +153,7 @@ abstract class TrunksCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksCdrInterface|null $entity
      * @param int $depth
      * @return TrunksCdrDto|null
      */
@@ -173,22 +173,22 @@ abstract class TrunksCdrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksCdrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksCdrDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksCdrDto
-         */
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
         $self = new static(
@@ -215,7 +215,6 @@ abstract class TrunksCdrAbstract
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -223,16 +222,13 @@ abstract class TrunksCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksCdrDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksCdrDto
-         */
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
         $this
@@ -257,7 +253,6 @@ abstract class TrunksCdrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -322,7 +317,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \DateTime $startTime
      *
-     * @return self
+     * @return static
      */
     protected function setStartTime($startTime)
     {
@@ -352,7 +347,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \DateTime $endTime
      *
-     * @return self
+     * @return static
      */
     protected function setEndTime($endTime)
     {
@@ -382,7 +377,7 @@ abstract class TrunksCdrAbstract
      *
      * @param float $duration
      *
-     * @return self
+     * @return static
      */
     protected function setDuration($duration)
     {
@@ -409,7 +404,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $caller
      *
-     * @return self
+     * @return static
      */
     protected function setCaller($caller = null)
     {
@@ -437,7 +432,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $callee
      *
-     * @return self
+     * @return static
      */
     protected function setCallee($callee = null)
     {
@@ -465,7 +460,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $callid
      *
-     * @return self
+     * @return static
      */
     protected function setCallid($callid = null)
     {
@@ -493,7 +488,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $callidHash
      *
-     * @return self
+     * @return static
      */
     protected function setCallidHash($callidHash = null)
     {
@@ -521,7 +516,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $xcallid
      *
-     * @return self
+     * @return static
      */
     protected function setXcallid($xcallid = null)
     {
@@ -549,7 +544,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $diversion
      *
-     * @return self
+     * @return static
      */
     protected function setDiversion($diversion = null)
     {
@@ -577,7 +572,7 @@ abstract class TrunksCdrAbstract
      *
      * @param boolean $bounced
      *
-     * @return self
+     * @return static
      */
     protected function setBounced($bounced = null)
     {
@@ -605,7 +600,7 @@ abstract class TrunksCdrAbstract
      *
      * @param boolean $parsed
      *
-     * @return self
+     * @return static
      */
     protected function setParsed($parsed = null)
     {
@@ -633,7 +628,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \DateTime $parserScheduledAt
      *
-     * @return self
+     * @return static
      */
     protected function setParserScheduledAt($parserScheduledAt)
     {
@@ -663,13 +658,10 @@ abstract class TrunksCdrAbstract
      *
      * @param string $direction
      *
-     * @return self
+     * @return static
      */
     protected function setDirection($direction = null)
     {
-        if (!is_null($direction)) {
-        }
-
         $this->direction = $direction;
 
         return $this;
@@ -690,7 +682,7 @@ abstract class TrunksCdrAbstract
      *
      * @param string $cgrid
      *
-     * @return self
+     * @return static
      */
     protected function setCgrid($cgrid = null)
     {
@@ -718,7 +710,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
@@ -742,7 +734,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
@@ -766,7 +758,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
-     * @return self
+     * @return static
      */
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
@@ -778,7 +770,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -790,7 +782,7 @@ abstract class TrunksCdrAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
      *
-     * @return self
+     * @return static
      */
     public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
     {
@@ -802,7 +794,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount()
     {

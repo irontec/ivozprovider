@@ -211,7 +211,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -225,7 +225,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getIvrId()
     {
@@ -257,7 +257,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -271,7 +271,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getWelcomeLocutionId()
     {
@@ -303,7 +303,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -317,7 +317,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getExtensionId()
     {
@@ -349,7 +349,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -363,7 +363,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getVoiceMailUserId()
     {
@@ -395,7 +395,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -409,7 +409,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getConditionalRouteId()
     {
@@ -441,7 +441,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -455,7 +455,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getNumberCountryId()
     {

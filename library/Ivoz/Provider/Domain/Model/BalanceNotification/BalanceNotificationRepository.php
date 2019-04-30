@@ -11,16 +11,16 @@ interface BalanceNotificationRepository extends ObjectRepository, Selectable
 {
     /**
      * @param CompanyInterface $company
-     * @param $prevValue
-     * @param $currentValue
+     * @param float $prevValue
+     * @param float $currentValue
      * @return BalanceNotificationInterface[]
      */
     public function findBrokenThresholdsByCompany(CompanyInterface $company, $prevValue, $currentValue);
 
     /**
      * @param CarrierInterface $carrier
-     * @param $prevValue
-     * @param $currentValue
+     * @param float $prevValue
+     * @param float $currentValue
      * @return BalanceNotificationInterface[]
      */
     public function findBrokenThresholdsByCarrier(CarrierInterface $carrier, $prevValue, $currentValue);

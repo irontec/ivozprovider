@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class PsEndpointAbstract
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
-
     /**
      * column: sorcery_id
      * @var string
@@ -109,6 +105,33 @@ abstract class PsEndpointAbstract
     protected $trustIdInbound;
 
     /**
+     * column: t38_udptl
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38Udptl = 'no';
+
+    /**
+     * column: t38_udptl_ec
+     * comment: enum:none|fec|redundancy
+     * @var string
+     */
+    protected $t38UdptlEc = 'none';
+
+    /**
+     * column: t38_udptl_maxdatagram
+     * @var integer
+     */
+    protected $t38UdptlMaxdatagram = 0;
+
+    /**
+     * column: t38_udptl_nat
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $t38UdptlNat = 'yes';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
      */
     protected $terminal;
@@ -139,13 +162,21 @@ abstract class PsEndpointAbstract
         $context,
         $disallow,
         $allow,
-        $oneHundredRel
+        $oneHundredRel,
+        $t38Udptl,
+        $t38UdptlEc,
+        $t38UdptlMaxdatagram,
+        $t38UdptlNat
     ) {
         $this->setSorceryId($sorceryId);
         $this->setContext($context);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
         $this->setOneHundredRel($oneHundredRel);
+        $this->setT38Udptl($t38Udptl);
+        $this->setT38UdptlEc($t38UdptlEc);
+        $this->setT38UdptlMaxdatagram($t38UdptlMaxdatagram);
+        $this->setT38UdptlNat($t38UdptlNat);
     }
 
     abstract public function getId();
@@ -178,7 +209,7 @@ abstract class PsEndpointAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param PsEndpointInterface|null $entity
      * @param int $depth
      * @return PsEndpointDto|null
      */
@@ -198,22 +229,22 @@ abstract class PsEndpointAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var PsEndpointDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PsEndpointDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PsEndpointDto
-         */
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
         $self = new static(
@@ -221,7 +252,11 @@ abstract class PsEndpointAbstract
             $dto->getContext(),
             $dto->getDisallow(),
             $dto->getAllow(),
-            $dto->getOneHundredRel()
+            $dto->getOneHundredRel(),
+            $dto->getT38Udptl(),
+            $dto->getT38UdptlEc(),
+            $dto->getT38UdptlMaxdatagram(),
+            $dto->getT38UdptlNat()
         );
 
         $self
@@ -242,7 +277,6 @@ abstract class PsEndpointAbstract
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -250,16 +284,13 @@ abstract class PsEndpointAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param PsEndpointDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto PsEndpointDto
-         */
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
         $this
@@ -279,6 +310,10 @@ abstract class PsEndpointAbstract
             ->setOneHundredRel($dto->getOneHundredRel())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
+            ->setT38Udptl($dto->getT38Udptl())
+            ->setT38UdptlEc($dto->getT38UdptlEc())
+            ->setT38UdptlMaxdatagram($dto->getT38UdptlMaxdatagram())
+            ->setT38UdptlNat($dto->getT38UdptlNat())
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -286,7 +321,6 @@ abstract class PsEndpointAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -314,6 +348,10 @@ abstract class PsEndpointAbstract
             ->setOneHundredRel(self::getOneHundredRel())
             ->setOutboundProxy(self::getOutboundProxy())
             ->setTrustIdInbound(self::getTrustIdInbound())
+            ->setT38Udptl(self::getT38Udptl())
+            ->setT38UdptlEc(self::getT38UdptlEc())
+            ->setT38UdptlMaxdatagram(self::getT38UdptlMaxdatagram())
+            ->setT38UdptlNat(self::getT38UdptlNat())
             ->setTerminal(\Ivoz\Provider\Domain\Model\Terminal\Terminal::entityToDto(self::getTerminal(), $depth))
             ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
@@ -342,6 +380,10 @@ abstract class PsEndpointAbstract
             '100rel' => self::getOneHundredRel(),
             'outbound_proxy' => self::getOutboundProxy(),
             'trust_id_inbound' => self::getTrustIdInbound(),
+            't38_udptl' => self::getT38Udptl(),
+            't38_udptl_ec' => self::getT38UdptlEc(),
+            't38_udptl_maxdatagram' => self::getT38UdptlMaxdatagram(),
+            't38_udptl_nat' => self::getT38UdptlNat(),
             'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
@@ -355,7 +397,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $sorceryId
      *
-     * @return self
+     * @return static
      */
     protected function setSorceryId($sorceryId)
     {
@@ -382,7 +424,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $fromDomain
      *
-     * @return self
+     * @return static
      */
     protected function setFromDomain($fromDomain = null)
     {
@@ -410,7 +452,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $aors
      *
-     * @return self
+     * @return static
      */
     protected function setAors($aors = null)
     {
@@ -438,7 +480,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $callerid
      *
-     * @return self
+     * @return static
      */
     protected function setCallerid($callerid = null)
     {
@@ -466,7 +508,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $context
      *
-     * @return self
+     * @return static
      */
     protected function setContext($context)
     {
@@ -493,7 +535,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $disallow
      *
-     * @return self
+     * @return static
      */
     protected function setDisallow($disallow)
     {
@@ -520,7 +562,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $allow
      *
-     * @return self
+     * @return static
      */
     protected function setAllow($allow)
     {
@@ -547,13 +589,10 @@ abstract class PsEndpointAbstract
      *
      * @param string $directMedia
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMedia($directMedia = null)
     {
-        if (!is_null($directMedia)) {
-        }
-
         $this->directMedia = $directMedia;
 
         return $this;
@@ -574,15 +613,15 @@ abstract class PsEndpointAbstract
      *
      * @param string $directMediaMethod
      *
-     * @return self
+     * @return static
      */
     protected function setDirectMediaMethod($directMediaMethod = null)
     {
         if (!is_null($directMediaMethod)) {
             Assertion::choice($directMediaMethod, [
-                self::DIRECTMEDIAMETHOD_UPDATE,
-                self::DIRECTMEDIAMETHOD_INVITE,
-                self::DIRECTMEDIAMETHOD_REINVITE
+                PsEndpointInterface::DIRECTMEDIAMETHOD_UPDATE,
+                PsEndpointInterface::DIRECTMEDIAMETHOD_INVITE,
+                PsEndpointInterface::DIRECTMEDIAMETHOD_REINVITE
             ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
         }
 
@@ -606,7 +645,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $mailboxes
      *
-     * @return self
+     * @return static
      */
     protected function setMailboxes($mailboxes = null)
     {
@@ -634,7 +673,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $namedPickupGroup
      *
-     * @return self
+     * @return static
      */
     protected function setNamedPickupGroup($namedPickupGroup = null)
     {
@@ -662,13 +701,10 @@ abstract class PsEndpointAbstract
      *
      * @param string $sendDiversion
      *
-     * @return self
+     * @return static
      */
     protected function setSendDiversion($sendDiversion = null)
     {
-        if (!is_null($sendDiversion)) {
-        }
-
         $this->sendDiversion = $sendDiversion;
 
         return $this;
@@ -689,13 +725,10 @@ abstract class PsEndpointAbstract
      *
      * @param string $sendPai
      *
-     * @return self
+     * @return static
      */
     protected function setSendPai($sendPai = null)
     {
-        if (!is_null($sendPai)) {
-        }
-
         $this->sendPai = $sendPai;
 
         return $this;
@@ -716,7 +749,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $oneHundredRel
      *
-     * @return self
+     * @return static
      */
     protected function setOneHundredRel($oneHundredRel)
     {
@@ -742,7 +775,7 @@ abstract class PsEndpointAbstract
      *
      * @param string $outboundProxy
      *
-     * @return self
+     * @return static
      */
     protected function setOutboundProxy($outboundProxy = null)
     {
@@ -770,13 +803,10 @@ abstract class PsEndpointAbstract
      *
      * @param string $trustIdInbound
      *
-     * @return self
+     * @return static
      */
     protected function setTrustIdInbound($trustIdInbound = null)
     {
-        if (!is_null($trustIdInbound)) {
-        }
-
         $this->trustIdInbound = $trustIdInbound;
 
         return $this;
@@ -793,11 +823,130 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * Set t38Udptl
+     *
+     * @param string $t38Udptl
+     *
+     * @return static
+     */
+    protected function setT38Udptl($t38Udptl)
+    {
+        Assertion::notNull($t38Udptl, 't38Udptl value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38Udptl, [
+            PsEndpointInterface::T38UDPTL_YES,
+            PsEndpointInterface::T38UDPTL_NO
+        ], 't38Udptlvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38Udptl = $t38Udptl;
+
+        return $this;
+    }
+
+    /**
+     * Get t38Udptl
+     *
+     * @return string
+     */
+    public function getT38Udptl()
+    {
+        return $this->t38Udptl;
+    }
+
+    /**
+     * Set t38UdptlEc
+     *
+     * @param string $t38UdptlEc
+     *
+     * @return static
+     */
+    protected function setT38UdptlEc($t38UdptlEc)
+    {
+        Assertion::notNull($t38UdptlEc, 't38UdptlEc value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38UdptlEc, [
+            PsEndpointInterface::T38UDPTLEC_NONE,
+            PsEndpointInterface::T38UDPTLEC_FEC,
+            PsEndpointInterface::T38UDPTLEC_REDUNDANCY
+        ], 't38UdptlEcvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38UdptlEc = $t38UdptlEc;
+
+        return $this;
+    }
+
+    /**
+     * Get t38UdptlEc
+     *
+     * @return string
+     */
+    public function getT38UdptlEc()
+    {
+        return $this->t38UdptlEc;
+    }
+
+    /**
+     * Set t38UdptlMaxdatagram
+     *
+     * @param integer $t38UdptlMaxdatagram
+     *
+     * @return static
+     */
+    protected function setT38UdptlMaxdatagram($t38UdptlMaxdatagram)
+    {
+        Assertion::notNull($t38UdptlMaxdatagram, 't38UdptlMaxdatagram value "%s" is null, but non null value was expected.');
+        Assertion::integerish($t38UdptlMaxdatagram, 't38UdptlMaxdatagram value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($t38UdptlMaxdatagram, 0, 't38UdptlMaxdatagram provided "%s" is not greater or equal than "%s".');
+
+        $this->t38UdptlMaxdatagram = (int) $t38UdptlMaxdatagram;
+
+        return $this;
+    }
+
+    /**
+     * Get t38UdptlMaxdatagram
+     *
+     * @return integer
+     */
+    public function getT38UdptlMaxdatagram()
+    {
+        return $this->t38UdptlMaxdatagram;
+    }
+
+    /**
+     * Set t38UdptlNat
+     *
+     * @param string $t38UdptlNat
+     *
+     * @return static
+     */
+    protected function setT38UdptlNat($t38UdptlNat)
+    {
+        Assertion::notNull($t38UdptlNat, 't38UdptlNat value "%s" is null, but non null value was expected.');
+        Assertion::choice($t38UdptlNat, [
+            PsEndpointInterface::T38UDPTLNAT_YES,
+            PsEndpointInterface::T38UDPTLNAT_NO
+        ], 't38UdptlNatvalue "%s" is not an element of the valid values: %s');
+
+        $this->t38UdptlNat = $t38UdptlNat;
+
+        return $this;
+    }
+
+    /**
+     * Get t38UdptlNat
+     *
+     * @return string
+     */
+    public function getT38UdptlNat()
+    {
+        return $this->t38UdptlNat;
+    }
+
+    /**
      * Set terminal
      *
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
      *
-     * @return self
+     * @return static
      */
     public function setTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal = null)
     {
@@ -821,7 +970,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return self
+     * @return static
      */
     public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
     {
@@ -845,7 +994,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return self
+     * @return static
      */
     public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
     {
@@ -869,7 +1018,7 @@ abstract class PsEndpointAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
      *
-     * @return self
+     * @return static
      */
     public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
     {

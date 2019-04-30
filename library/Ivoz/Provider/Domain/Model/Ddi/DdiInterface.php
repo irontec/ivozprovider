@@ -6,6 +6,24 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface DdiInterface extends LoggableEntityInterface
 {
+    const RECORDCALLS_NONE = 'none';
+    const RECORDCALLS_ALL = 'all';
+    const RECORDCALLS_INBOUND = 'inbound';
+    const RECORDCALLS_OUTBOUND = 'outbound';
+
+
+    const ROUTETYPE_USER = 'user';
+    const ROUTETYPE_IVR = 'ivr';
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    const ROUTETYPE_FAX = 'fax';
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    const ROUTETYPE_FRIEND = 'friend';
+    const ROUTETYPE_QUEUE = 'queue';
+    const ROUTETYPE_CONDITIONAL = 'conditional';
+    const ROUTETYPE_RESIDENTIAL = 'residential';
+    const ROUTETYPE_RETAIL = 'retail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -18,7 +36,7 @@ interface DdiInterface extends LoggableEntityInterface
     public function setDdi($ddi);
 
     /**
-     * @return string Domain
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
 
@@ -26,6 +44,9 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function setRouteType($routeType = null);
 
+    /**
+     * @return string
+     */
     public function getDdie164();
 
     /**
@@ -75,7 +96,7 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
@@ -91,7 +112,7 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -107,14 +128,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
      *
-     * @return self
+     * @return static
      */
     public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null);
 
     /**
      * Get conferenceRoom
      *
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
      */
     public function getConferenceRoom();
 
@@ -123,14 +144,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      *
-     * @return self
+     * @return static
      */
     public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
 
@@ -139,14 +160,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
      *
-     * @return self
+     * @return static
      */
     public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null);
 
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
      */
     public function getQueue();
 
@@ -155,14 +176,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter
      *
-     * @return self
+     * @return static
      */
     public function setExternalCallFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter = null);
 
     /**
      * Get externalCallFilter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getExternalCallFilter();
 
@@ -171,14 +192,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
 
@@ -187,14 +208,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
      *
-     * @return self
+     * @return static
      */
     public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null);
 
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr();
 
@@ -203,14 +224,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
      *
-     * @return self
+     * @return static
      */
     public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null);
 
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup();
 
@@ -219,14 +240,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
      *
-     * @return self
+     * @return static
      */
     public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax = null);
 
     /**
      * Get fax
      *
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
      */
     public function getFax();
 
@@ -235,14 +256,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
-     * @return self
+     * @return static
      */
     public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null);
 
     /**
      * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     public function getDdiProvider();
 
@@ -251,7 +272,7 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
-     * @return self
+     * @return static
      */
     public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country);
 
@@ -267,14 +288,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
-     * @return self
+     * @return static
      */
     public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
 
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 
@@ -283,14 +304,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
      *
-     * @return self
+     * @return static
      */
     public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null);
 
     /**
      * Get conditionalRoute
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface | null
      */
     public function getConditionalRoute();
 
@@ -299,14 +320,14 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
      *
-     * @return self
+     * @return static
      */
     public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
 

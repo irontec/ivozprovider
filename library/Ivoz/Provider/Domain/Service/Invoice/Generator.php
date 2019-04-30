@@ -212,7 +212,8 @@ class Generator
             ['company', 'eq', $company->getId()],
             ['carrier', 'isNotNull'],
             ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
-            ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)]
+            ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)],
+            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
         ];
         $this->logger->debug('Where: ' . print_r($conditions, true));
 

@@ -117,7 +117,7 @@ abstract class UsersPresentityAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param UsersPresentityInterface|null $entity
      * @param int $depth
      * @return UsersPresentityDto|null
      */
@@ -137,22 +137,22 @@ abstract class UsersPresentityAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var UsersPresentityDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersPresentityDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersPresentityDto
-         */
         Assertion::isInstanceOf($dto, UsersPresentityDto::class);
 
         $self = new static(
@@ -167,7 +167,6 @@ abstract class UsersPresentityAbstract
             $dto->getPriority()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -175,16 +174,13 @@ abstract class UsersPresentityAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param UsersPresentityDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto UsersPresentityDto
-         */
         Assertion::isInstanceOf($dto, UsersPresentityDto::class);
 
         $this
@@ -200,7 +196,6 @@ abstract class UsersPresentityAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -247,7 +242,7 @@ abstract class UsersPresentityAbstract
      *
      * @param string $username
      *
-     * @return self
+     * @return static
      */
     protected function setUsername($username)
     {
@@ -274,7 +269,7 @@ abstract class UsersPresentityAbstract
      *
      * @param string $domain
      *
-     * @return self
+     * @return static
      */
     protected function setDomain($domain)
     {
@@ -301,7 +296,7 @@ abstract class UsersPresentityAbstract
      *
      * @param string $event
      *
-     * @return self
+     * @return static
      */
     protected function setEvent($event)
     {
@@ -328,7 +323,7 @@ abstract class UsersPresentityAbstract
      *
      * @param string $etag
      *
-     * @return self
+     * @return static
      */
     protected function setEtag($etag)
     {
@@ -355,7 +350,7 @@ abstract class UsersPresentityAbstract
      *
      * @param integer $expires
      *
-     * @return self
+     * @return static
      */
     protected function setExpires($expires)
     {
@@ -382,7 +377,7 @@ abstract class UsersPresentityAbstract
      *
      * @param integer $receivedTime
      *
-     * @return self
+     * @return static
      */
     protected function setReceivedTime($receivedTime)
     {
@@ -409,7 +404,7 @@ abstract class UsersPresentityAbstract
      *
      * @param string $body
      *
-     * @return self
+     * @return static
      */
     protected function setBody($body)
     {
@@ -435,7 +430,7 @@ abstract class UsersPresentityAbstract
      *
      * @param string $sender
      *
-     * @return self
+     * @return static
      */
     protected function setSender($sender)
     {
@@ -462,7 +457,7 @@ abstract class UsersPresentityAbstract
      *
      * @param integer $priority
      *
-     * @return self
+     * @return static
      */
     protected function setPriority($priority)
     {

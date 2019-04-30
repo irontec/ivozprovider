@@ -3,7 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface DdiProviderInterface extends LoggableEntityInterface
 {
@@ -39,7 +40,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
@@ -55,14 +56,14 @@ interface DdiProviderInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
-     * @return self
+     * @return static
      */
     public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
 
@@ -71,7 +72,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
      *
-     * @return DdiProviderTrait
+     * @return static
      */
     public function addDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration);
 
@@ -85,14 +86,14 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Replace ddiProviderRegistrations
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[] $ddiProviderRegistrations
-     * @return self
+     * @param ArrayCollection $ddiProviderRegistrations of Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     * @return static
      */
-    public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations);
+    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations);
 
     /**
      * Get ddiProviderRegistrations
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[]
      */
     public function getDdiProviderRegistrations(\Doctrine\Common\Collections\Criteria $criteria = null);
@@ -102,7 +103,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
      *
-     * @return DdiProviderTrait
+     * @return static
      */
     public function addDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress);
 
@@ -116,14 +117,14 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Replace ddiProviderAddresses
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[] $ddiProviderAddresses
-     * @return self
+     * @param ArrayCollection $ddiProviderAddresses of Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     * @return static
      */
-    public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses);
+    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses);
 
     /**
      * Get ddiProviderAddresses
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[]
      */
     public function getDdiProviderAddresses(\Doctrine\Common\Collections\Criteria $criteria = null);

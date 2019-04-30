@@ -68,7 +68,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FixedCostsRelInvoiceSchedulerInterface|null $entity
      * @param int $depth
      * @return FixedCostsRelInvoiceSchedulerDto|null
      */
@@ -88,22 +88,22 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FixedCostsRelInvoiceSchedulerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostsRelInvoiceSchedulerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostsRelInvoiceSchedulerDto
-         */
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $self = new static();
@@ -114,7 +114,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -122,16 +121,13 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FixedCostsRelInvoiceSchedulerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FixedCostsRelInvoiceSchedulerDto
-         */
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $this
@@ -141,7 +137,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -176,7 +171,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      *
      * @param integer $quantity
      *
-     * @return self
+     * @return static
      */
     protected function setQuantity($quantity = null)
     {
@@ -208,7 +203,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
      *
-     * @return self
+     * @return static
      */
     public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
     {
@@ -232,7 +227,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler = null)
     {

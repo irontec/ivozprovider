@@ -11,7 +11,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var guid
+     * @var string
      */
     private $requestId;
 
@@ -31,6 +31,11 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $arguments;
 
     /**
+     * @var array
+     */
+    private $agent;
+
+    /**
      * @var \DateTime
      */
     private $createdOn;
@@ -41,7 +46,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $microtime;
 
     /**
-     * @var guid
+     * @var string
      */
     private $id;
 
@@ -67,6 +72,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
             'class' => 'class',
             'method' => 'method',
             'arguments' => 'arguments',
+            'agent' => 'agent',
             'createdOn' => 'createdOn',
             'microtime' => 'microtime',
             'id' => 'id'
@@ -83,6 +89,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
             'class' => $this->getClass(),
             'method' => $this->getMethod(),
             'arguments' => $this->getArguments(),
+            'agent' => $this->getAgent(),
             'createdOn' => $this->getCreatedOn(),
             'microtime' => $this->getMicrotime(),
             'id' => $this->getId()
@@ -90,7 +97,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param guid $requestId
+     * @param string $requestId
      *
      * @return static
      */
@@ -102,7 +109,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return guid
+     * @return string
      */
     public function getRequestId()
     {
@@ -170,6 +177,26 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param array $agent
+     *
+     * @return static
+     */
+    public function setAgent($agent = null)
+    {
+        $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
+    /**
      * @param \DateTime $createdOn
      *
      * @return static
@@ -210,7 +237,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param guid $id
+     * @param string $id
      *
      * @return static
      */
@@ -222,7 +249,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return guid
+     * @return string
      */
     public function getId()
     {

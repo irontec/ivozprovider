@@ -29,9 +29,10 @@ class RoutingTagLifeCycleTest extends KernelTestCase
 
     protected function addRoutingTag()
     {
+        $dto = $this->getRoutingTagDto();
         return $this
             ->entityTools
-            ->persistDto($this->getRoutingTagDto(), null, true);
+            ->persistDto($dto, null, true);
     }
 
     protected function updateRoutingTag()

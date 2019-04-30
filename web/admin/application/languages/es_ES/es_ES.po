@@ -174,7 +174,7 @@ msgid "Area code"
 msgstr "Código de Area"
 
 msgid "As address"
-msgstr "Direccion Servidor de Aplicación"
+msgstr "Dirección Servidor de Aplicación"
 
 msgid "As iden"
 msgstr "Identificador Servidor de Aplicación"
@@ -239,11 +239,6 @@ msgstr "Configuración Básica"
 msgid "Basic Information"
 msgstr "Información Básica"
 
-msgid "Billable call"
-msgid_plural "Billable calls"
-msgstr[0] "Llamada facturable"
-msgstr[1] "Llamadas facturables"
-
 msgid "Billing"
 msgstr "Tarificación"
 
@@ -281,10 +276,10 @@ msgstr[1] "Marcas"
 msgid "Brand Configuration"
 msgstr "Configuración de Marca"
 
-msgid "Brand URL"
-msgid_plural "Brand URLs"
-msgstr[0] "Portal"
-msgstr[1] "Portales"
+msgid "Brand Portal"
+msgid_plural "Brand Portals"
+msgstr[0] "Portal de Marca"
+msgstr[1] "Portales de Marca"
 
 msgid "Brand is not set"
 msgstr "Marca no seleccionada"
@@ -363,6 +358,9 @@ msgstr "ID de llamada"
 
 msgid "Call destination"
 msgstr "Destino llamada"
+
+msgid "Call direction"
+msgstr "Dirección de llamada"
 
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
@@ -460,6 +458,11 @@ msgstr[1] "Clientes"
 msgid "Client Configuration"
 msgstr "Configuración de Cliente"
 
+msgid "Client Portal"
+msgid_plural "Client Portals"
+msgstr[0] "Portal de cliente"
+msgstr[1] "Portales de clientes"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Administrador de cliente"
@@ -483,10 +486,10 @@ msgstr "Código"
 msgid "Code used for internationals calls, usually 00."
 msgstr "Código para llamadas internacionales, típicamente 00."
 
-msgid "Company URL"
-msgid_plural "Company URLs"
-msgstr[0] "URL Empresa"
-msgstr[1] "URLs Empresa"
+msgid "Company Portal"
+msgid_plural "Company Portals"
+msgstr[0] "Portal de empresa"
+msgstr[1] "Portales de empresa"
 
 msgid "Company service"
 msgid_plural "Company services"
@@ -519,6 +522,9 @@ msgstr "Configuración de conexión"
 
 msgid "Connection fee"
 msgstr "Coste de conexión"
+
+msgid "Connectivity mode"
+msgstr "Modo de conexión"
 
 msgid "Contact Settings"
 msgstr "Configuraciones de Contacto"
@@ -656,11 +662,14 @@ msgstr "Determina el order en que los miembros de la prioridad serán llamados"
 msgid "Determines the order users will be called"
 msgstr "Determina el order en el que sonarán los usuarios"
 
+msgid "Direct"
+msgstr "Directa"
+
 msgid "Direct connectivity"
 msgstr "Conectividad Directa"
 
 msgid "Direction"
-msgstr "Direccion"
+msgstr "Dirección"
 
 msgid "Disabled"
 msgstr "Deshabilitado"
@@ -706,6 +715,12 @@ msgstr "Descargar"
 
 msgid "Download file"
 msgstr "Descargar fichero"
+
+msgid "Duplicated prefix"
+msgstr "Prefijo duplicado"
+
+msgid "Duplicated priority"
+msgstr "Prioridad duplicada"
 
 msgid "Duration"
 msgstr "Duración"
@@ -761,6 +776,9 @@ msgstr "Emular Cliente Retail %s"
 #, python-format
 msgid "Emulate Wholesale Client %s"
 msgstr "Emular Cliente Wholesale %s"
+
+msgid "Enable T.38 passthrough"
+msgstr "Habilitar pasarela T.38"
 
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
@@ -851,6 +869,11 @@ msgstr "Externa"
 
 msgid "External Filter destination"
 msgstr "Destino llamada filtro"
+
+msgid "External call"
+msgid_plural "External calls"
+msgstr[0] "Llamada externa"
+msgstr[1] "Llamadas externas"
 
 msgid "External call filter"
 msgid_plural "External call filters"
@@ -1182,6 +1205,9 @@ msgstr ""
 "Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
 "tarificación externa."
 
+msgid "Inbound calls"
+msgstr "Llamadas entrantes"
+
 msgid "Inbound configuration"
 msgstr "Configuración Entrante"
 
@@ -1218,6 +1244,9 @@ msgstr ""
 "En lugar de obtener el origen de las cabeceras PAI/RPID, se forzará este "
 "origen (y se adaptará utilizando las transformaciones numéricas del "
 "operador)."
+
+msgid "Inter vPBX"
+msgstr "Inter vPBX"
 
 msgid "Internal"
 msgstr "Interna"
@@ -1740,6 +1769,9 @@ msgstr "Proxy saliente"
 msgid "Outbound Proxy IP value is not valid."
 msgstr "El valor de Proxy saliente no es válido."
 
+msgid "Outbound calls"
+msgstr "Llamadas salientes"
+
 msgid "Outbound configuration"
 msgstr "Configuración Saliente"
 
@@ -1849,6 +1881,11 @@ msgstr "Contraseña"
 msgid "Pin protected"
 msgstr "Con contraseña"
 
+msgid "Platform Portal"
+msgid_plural "Platform Portals"
+msgstr[0] "Portal de plataforma"
+msgstr[1] "Portales de plataforma"
+
 msgid "Platform data"
 msgstr "Información de plataforma"
 
@@ -1872,11 +1909,6 @@ msgstr "Acción"
 
 msgid "Port"
 msgstr "Puerto"
-
-msgid "Portal URL"
-msgid_plural "Portal URLs"
-msgstr[0] "URL Portal"
-msgstr[1] "URL Portales"
 
 msgid "Postal address"
 msgstr "Dirección postal"
@@ -2034,6 +2066,9 @@ msgstr "Referee"
 
 msgid "Referrer"
 msgstr "Referrer"
+
+msgid "Register"
+msgstr "Registro"
 
 msgid "Registrar Server URI"
 msgstr "URI Servidor de registro"
@@ -2328,6 +2363,11 @@ msgstr "Tag"
 
 msgid "Target"
 msgstr "Destino"
+
+msgid "Target client"
+msgid_plural "Target clients"
+msgstr[0] "Cliente destino"
+msgstr[1] "Clientes destino"
 
 msgid "Target type"
 msgstr "Tipo de ruta"

@@ -9,19 +9,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EntityAssembler
 {
-    /**
-     * @var ContainerInterface
-     */
     protected $serviceContainer;
-
-    /**
-     * @var array
-     */
-    protected $customAssemblers;
-
-    /**
-     * @var ForeignKeyTransformerInterface
-     */
+    protected $customAssemblers = [];
     private $fkTransformer;
 
     public function __construct(
@@ -30,7 +19,6 @@ class EntityAssembler
     ) {
         $this->fkTransformer = $fkTransformer;
         $this->serviceContainer = $serviceContainer;
-        $this->customAssemblers = [];
     }
 
     /**
@@ -104,7 +92,7 @@ class EntityAssembler
 
     /**
      * @param DataTransferObjectInterface $dto
-     * @return null | DtoAssemblerInterface
+     * @return \Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface | null
      */
     private function create(DataTransferObjectInterface $dto)
     {
@@ -119,6 +107,10 @@ class EntityAssembler
             ->get($serviceClassName);
     }
 
+    /**
+     * @param DataTransferObjectInterface $dto
+     * @return string
+     */
     private function getServiceNameByDto(DataTransferObjectInterface $dto)
     {
         $entityClass = get_class($dto);

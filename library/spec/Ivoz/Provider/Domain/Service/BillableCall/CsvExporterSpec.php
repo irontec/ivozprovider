@@ -207,12 +207,14 @@ class CsvExporterSpec extends ObjectBehavior
         \DateTime $inDate,
         \DateTime $outDate,
         CompanyInterface $company = null,
-        BrandInterface $brand = null
+        BrandInterface $brand = null,
+        $direction = 'outbound'
     ) {
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
             "_pagination" => 'false',
+            'direction' => $direction
         ];
 
         if ($company) {

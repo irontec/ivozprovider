@@ -6,21 +6,15 @@ use Graze\GuzzleHttp\JsonRpc\Client;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient;
 
 class BillingService implements BillingServiceInterface
 {
-    /**
-     * @var Client
-     */
     protected $client;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
 
     public function __construct(
-        Client $client,
+        CgrRpcClient $client,
         EntityTools $entityTools
     ) {
         $this->client = $client;
@@ -97,7 +91,7 @@ class BillingService implements BillingServiceInterface
     }
 
     /**
-     * @param $payload
+     * @param array $payload
      * @throws \DomainException
      * @return SimulatedCall
      */

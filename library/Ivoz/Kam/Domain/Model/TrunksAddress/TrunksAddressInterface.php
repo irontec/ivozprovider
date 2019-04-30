@@ -52,7 +52,7 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
      *
-     * @return self
+     * @return static
      */
     public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress);
 

@@ -63,7 +63,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RoutingPatternGroupsRelPatternInterface|null $entity
      * @param int $depth
      * @return RoutingPatternGroupsRelPatternDto|null
      */
@@ -83,22 +83,22 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RoutingPatternGroupsRelPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternGroupsRelPatternDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternGroupsRelPatternDto
-         */
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             ->setRoutingPatternGroup($fkTransformer->transform($dto->getRoutingPatternGroup()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RoutingPatternGroupsRelPatternDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RoutingPatternGroupsRelPatternDto
-         */
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null)
     {
@@ -191,7 +186,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
      *
-     * @return self
+     * @return static
      */
     public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup = null)
     {

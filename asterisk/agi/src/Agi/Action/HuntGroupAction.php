@@ -11,12 +11,12 @@ class HuntGroupAction
 {
     /**
      * Available Hunt Group strategies
+     * @deprecated
      */
-    const RingAll       = 'ringAll';
-    const Linear        = 'linear';
-    const RoundRobin    = 'roundRobin';
-    const Random        = 'random';
-
+    const RingAll       = HuntGroupInterface::STRATEGY_RINGALL;
+    const Linear        = HuntGroupInterface::STRATEGY_LINEAR;
+    const RoundRobin    = HuntGroupInterface::STRATEGY_ROUNDROBIN;
+    const Random        = HuntGroupInterface::STRATEGY_RANDOM;
     /**
      * @var Wrapper
      */

@@ -5,6 +5,7 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
@@ -41,6 +42,11 @@ class SimulatedCall
      * @var RatingPlanGroupDto
      */
     protected $ratingPlanGroupDto;
+
+    /**
+     * @var TpRatingPlanDto
+     */
+    protected $tpRatingPlanDto;
 
     /**
      * @var string

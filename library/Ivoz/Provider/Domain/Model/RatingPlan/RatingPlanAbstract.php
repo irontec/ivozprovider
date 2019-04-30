@@ -13,9 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class RatingPlanAbstract
 {
-    const TIMINGTYPE_ALWAYS = 'always';
-    const TIMINGTYPE_CUSTOM = 'custom';
-
     /**
      * @var float
      */
@@ -121,7 +118,7 @@ abstract class RatingPlanAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param RatingPlanInterface|null $entity
      * @param int $depth
      * @return RatingPlanDto|null
      */
@@ -141,22 +138,22 @@ abstract class RatingPlanAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var RatingPlanDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanDto
-         */
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
         $self = new static(
@@ -177,7 +174,6 @@ abstract class RatingPlanAbstract
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -185,16 +181,13 @@ abstract class RatingPlanAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanDto
-         */
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
         $this
@@ -213,7 +206,6 @@ abstract class RatingPlanAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -266,7 +258,7 @@ abstract class RatingPlanAbstract
      *
      * @param float $weight
      *
-     * @return self
+     * @return static
      */
     protected function setWeight($weight)
     {
@@ -293,15 +285,15 @@ abstract class RatingPlanAbstract
      *
      * @param string $timingType
      *
-     * @return self
+     * @return static
      */
     protected function setTimingType($timingType = null)
     {
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($timingType, [
-                self::TIMINGTYPE_ALWAYS,
-                self::TIMINGTYPE_CUSTOM
+                RatingPlanInterface::TIMINGTYPE_ALWAYS,
+                RatingPlanInterface::TIMINGTYPE_CUSTOM
             ], 'timingTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -325,7 +317,7 @@ abstract class RatingPlanAbstract
      *
      * @param \DateTime $timeIn
      *
-     * @return self
+     * @return static
      */
     protected function setTimeIn($timeIn)
     {
@@ -351,7 +343,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $monday
      *
-     * @return self
+     * @return static
      */
     protected function setMonday($monday = null)
     {
@@ -379,7 +371,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $tuesday
      *
-     * @return self
+     * @return static
      */
     protected function setTuesday($tuesday = null)
     {
@@ -407,7 +399,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $wednesday
      *
-     * @return self
+     * @return static
      */
     protected function setWednesday($wednesday = null)
     {
@@ -435,7 +427,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $thursday
      *
-     * @return self
+     * @return static
      */
     protected function setThursday($thursday = null)
     {
@@ -463,7 +455,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $friday
      *
-     * @return self
+     * @return static
      */
     protected function setFriday($friday = null)
     {
@@ -491,7 +483,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $saturday
      *
-     * @return self
+     * @return static
      */
     protected function setSaturday($saturday = null)
     {
@@ -519,7 +511,7 @@ abstract class RatingPlanAbstract
      *
      * @param boolean $sunday
      *
-     * @return self
+     * @return static
      */
     protected function setSunday($sunday = null)
     {
@@ -547,7 +539,7 @@ abstract class RatingPlanAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
-     * @return self
+     * @return static
      */
     public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
     {
@@ -571,7 +563,7 @@ abstract class RatingPlanAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
      *
-     * @return self
+     * @return static
      */
     public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
     {

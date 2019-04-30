@@ -5,18 +5,16 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 use Graze\GuzzleHttp\JsonRpc\Client;
 use GuzzleHttp\Exception\RequestException;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient;
 
 abstract class AbstractBalanceService
 {
     const TENANT_PREFIX = 'b';
 
-    /**
-     * @var Client
-     */
     protected $client;
 
     public function __construct(
-        Client $client
+        CgrRpcClient $client
     ) {
         $this->client = $client;
     }
@@ -64,8 +62,8 @@ abstract class AbstractBalanceService
     }
 
     /**
-     * @param $brandId
-     * @param array $ids
+     * @param string $tenant
+     * @param array $accountIds
      * @return array|mixed
      */
     protected function getAccountsBalances(string $tenant, array $accountIds)

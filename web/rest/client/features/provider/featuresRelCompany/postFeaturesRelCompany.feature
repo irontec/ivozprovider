@@ -11,8 +11,8 @@ Feature: Create features rel companies
       And I send a "POST" request to "/features_rel_companies" with body:
     """
       {
-          "company": 2,
-          "feature": 1
+          "company": 1,
+          "feature": 9
       }
     """
     Then the response status code should be 201
@@ -24,8 +24,8 @@ Feature: Create features rel companies
           "id": 6,
           "company": "~",
           "feature": {
-              "iden": "queues",
-              "id": 1,
+              "iden": "retail",
+              "id": 9,
               "name": {
                   "en": "en",
                   "es": "es"
@@ -47,8 +47,8 @@ Feature: Create features rel companies
           "id": 6,
           "company": "~",
           "feature": {
-              "iden": "queues",
-              "id": 1,
+              "iden": "retail",
+              "id": 9,
               "name": {
                   "en": "en",
                   "es": "es"

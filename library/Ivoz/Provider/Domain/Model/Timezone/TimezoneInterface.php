@@ -31,14 +31,14 @@ interface TimezoneInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
-     * @return self
+     * @return static
      */
     public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
 
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
 
@@ -47,7 +47,7 @@ interface TimezoneInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
      *
-     * @return self
+     * @return static
      */
     public function setLabel(\Ivoz\Provider\Domain\Model\Timezone\Label $label);
 

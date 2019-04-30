@@ -453,7 +453,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -467,7 +467,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDdiProviderRegistrationId()
     {
@@ -499,7 +499,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -513,7 +513,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {

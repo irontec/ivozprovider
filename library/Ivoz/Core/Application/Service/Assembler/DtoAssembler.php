@@ -68,8 +68,11 @@ class DtoAssembler
             return null;
         }
 
-        return $this
+        /** @var CustomDtoAssemblerInterface $service */
+        $service = $this
             ->serviceContainer
             ->get($serviceClassName);
+
+        return $service;
     }
 }

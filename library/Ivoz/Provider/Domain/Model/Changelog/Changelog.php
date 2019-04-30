@@ -13,8 +13,8 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
     use ChangelogTrait;
 
     /**
-     * @param EntityEventInterface $event
-     * @return Changelog
+     * @param \Ivoz\Core\Domain\Event\EntityEventInterface $event
+     * @return self
      */
     public static function fromEvent(EntityEventInterface $event)
     {
@@ -36,7 +36,7 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
+     * @return string
      */
     public function getId()
     {

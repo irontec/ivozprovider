@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class InvoiceSchedulerAbstract
 {
-    const UNIT_WEEK = 'week';
-    const UNIT_MONTH = 'month';
-    const UNIT_YEAR = 'year';
-
     /**
      * @var string
      */
@@ -59,7 +55,7 @@ abstract class InvoiceSchedulerAbstract
     protected $taxRate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     protected $invoiceTemplate;
 
@@ -74,7 +70,7 @@ abstract class InvoiceSchedulerAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     protected $numberSequence;
 
@@ -122,7 +118,7 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param InvoiceSchedulerInterface|null $entity
      * @param int $depth
      * @return InvoiceSchedulerDto|null
      */
@@ -142,22 +138,22 @@ abstract class InvoiceSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var InvoiceSchedulerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceSchedulerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceSchedulerDto
-         */
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
 
         $self = new static(
@@ -178,7 +174,6 @@ abstract class InvoiceSchedulerAbstract
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -186,16 +181,13 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceSchedulerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceSchedulerDto
-         */
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
 
         $this
@@ -214,7 +206,6 @@ abstract class InvoiceSchedulerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -267,7 +258,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -294,16 +285,16 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $unit
      *
-     * @return self
+     * @return static
      */
     protected function setUnit($unit)
     {
         Assertion::notNull($unit, 'unit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($unit, [
-            self::UNIT_WEEK,
-            self::UNIT_MONTH,
-            self::UNIT_YEAR
+            InvoiceSchedulerInterface::UNIT_WEEK,
+            InvoiceSchedulerInterface::UNIT_MONTH,
+            InvoiceSchedulerInterface::UNIT_YEAR
         ], 'unitvalue "%s" is not an element of the valid values: %s');
 
         $this->unit = $unit;
@@ -326,7 +317,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param integer $frequency
      *
-     * @return self
+     * @return static
      */
     protected function setFrequency($frequency)
     {
@@ -354,7 +345,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $email
      *
-     * @return self
+     * @return static
      */
     protected function setEmail($email)
     {
@@ -381,7 +372,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \DateTime $lastExecution
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecution($lastExecution = null)
     {
@@ -412,7 +403,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param string $lastExecutionError
      *
-     * @return self
+     * @return static
      */
     protected function setLastExecutionError($lastExecutionError = null)
     {
@@ -440,7 +431,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \DateTime $nextExecution
      *
-     * @return self
+     * @return static
      */
     protected function setNextExecution($nextExecution = null)
     {
@@ -471,7 +462,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param float $taxRate
      *
-     * @return self
+     * @return static
      */
     protected function setTaxRate($taxRate = null)
     {
@@ -502,7 +493,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
      *
-     * @return self
+     * @return static
      */
     public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
     {
@@ -514,7 +505,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Get invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate()
     {
@@ -526,7 +517,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -550,7 +541,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
@@ -574,7 +565,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
      *
-     * @return self
+     * @return static
      */
     public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
     {

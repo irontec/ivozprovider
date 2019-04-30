@@ -64,7 +64,7 @@ abstract class CalendarAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param CalendarInterface|null $entity
      * @param int $depth
      * @return CalendarDto|null
      */
@@ -84,22 +84,22 @@ abstract class CalendarAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var CalendarDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CalendarDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CalendarDto
-         */
         Assertion::isInstanceOf($dto, CalendarDto::class);
 
         $self = new static(
@@ -110,7 +110,6 @@ abstract class CalendarAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -118,16 +117,13 @@ abstract class CalendarAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CalendarDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CalendarDto
-         */
         Assertion::isInstanceOf($dto, CalendarDto::class);
 
         $this
@@ -136,7 +132,6 @@ abstract class CalendarAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -169,7 +164,7 @@ abstract class CalendarAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -196,7 +191,7 @@ abstract class CalendarAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

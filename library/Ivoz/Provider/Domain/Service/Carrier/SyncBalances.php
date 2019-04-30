@@ -4,30 +4,17 @@ namespace Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Psr\Log\LoggerInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 
 class SyncBalances
 {
-    /**
-     * @var EntityPersisterInterface
-     */
     protected $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
-
-    /**
-     * @var CarrierBalanceServiceInterface
-     */
     protected $client;
 
-    /**
-     * @var CarrierRepository
-     */
     protected $carrierRepository;
 
     public function __construct(
@@ -53,7 +40,7 @@ class SyncBalances
     }
 
     /**
-     * @param $brandId
+     * @param int $brandId
      * @param array $carrierIds
      * @return bool
      */
@@ -78,6 +65,9 @@ class SyncBalances
         }
     }
 
+    /**
+     * @param array $carriersBalance
+     */
     private function persistBalances(array $carriersBalance)
     {
         foreach ($carriersBalance as $carrierId => $balance) {

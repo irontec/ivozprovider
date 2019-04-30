@@ -91,6 +91,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $ddiIn = 'yes';
 
     /**
+     * @var string
+     */
+    private $t38Passthrough = 'no';
+
+    /**
      * @var integer
      */
     private $id;
@@ -124,6 +129,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     private $language;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     */
+    private $interCompany;
 
     /**
      * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
@@ -169,13 +179,15 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
+            't38Passthrough' => 't38Passthrough',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
             'transformationRuleSetId' => 'transformationRuleSet',
             'callAclId' => 'callAcl',
             'outgoingDdiId' => 'outgoingDdi',
-            'languageId' => 'language'
+            'languageId' => 'language',
+            'interCompanyId' => 'interCompany'
         ];
     }
 
@@ -201,6 +213,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
+            't38Passthrough' => $this->getT38Passthrough(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -208,6 +221,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'callAcl' => $this->getCallAcl(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
+            'interCompany' => $this->getInterCompany(),
             'psEndpoints' => $this->getPsEndpoints(),
             'patterns' => $this->getPatterns()
         ];
@@ -534,6 +548,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    public function setT38Passthrough($t38Passthrough = null)
+    {
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
+    }
+
+    /**
      * @param integer $id
      *
      * @return static
@@ -574,7 +608,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -588,7 +622,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -620,7 +654,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -634,7 +668,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDomainId()
     {
@@ -666,7 +700,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -680,7 +714,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTransformationRuleSetId()
     {
@@ -712,7 +746,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -726,7 +760,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCallAclId()
     {
@@ -758,7 +792,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -772,7 +806,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutgoingDdiId()
     {
@@ -804,7 +838,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -818,11 +852,57 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $interCompany
+     *
+     * @return static
+     */
+    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $interCompany = null)
+    {
+        $this->interCompany = $interCompany;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     */
+    public function getInterCompany()
+    {
+        return $this->interCompany;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setInterCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
+
+        return $this->setInterCompany($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getInterCompanyId()
+    {
+        if ($dto = $this->getInterCompany()) {
             return $dto->getId();
         }
 

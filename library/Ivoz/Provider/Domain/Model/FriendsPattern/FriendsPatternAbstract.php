@@ -70,7 +70,7 @@ abstract class FriendsPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param FriendsPatternInterface|null $entity
      * @param int $depth
      * @return FriendsPatternDto|null
      */
@@ -90,22 +90,22 @@ abstract class FriendsPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var FriendsPatternDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FriendsPatternDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FriendsPatternDto
-         */
         Assertion::isInstanceOf($dto, FriendsPatternDto::class);
 
         $self = new static(
@@ -117,7 +117,6 @@ abstract class FriendsPatternAbstract
             ->setFriend($fkTransformer->transform($dto->getFriend()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -125,16 +124,13 @@ abstract class FriendsPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param FriendsPatternDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto FriendsPatternDto
-         */
         Assertion::isInstanceOf($dto, FriendsPatternDto::class);
 
         $this
@@ -144,7 +140,6 @@ abstract class FriendsPatternAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -179,7 +174,7 @@ abstract class FriendsPatternAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -206,7 +201,7 @@ abstract class FriendsPatternAbstract
      *
      * @param string $regExp
      *
-     * @return self
+     * @return static
      */
     protected function setRegExp($regExp)
     {
@@ -233,7 +228,7 @@ abstract class FriendsPatternAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
      *
-     * @return self
+     * @return static
      */
     public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
     {

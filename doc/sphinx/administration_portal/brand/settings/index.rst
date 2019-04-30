@@ -1,3 +1,4 @@
+
 ********
 Settings
 ********
@@ -14,7 +15,7 @@ These will be covered topics:
     :maxdepth: 1
     :titlesonly:
 
-    portal_urls
+    client_portals
     numeric_transformations
     notification_templates
     generic_music_on_hold

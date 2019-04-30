@@ -6,6 +6,16 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface QueueInterface extends LoggableEntityInterface
 {
+    const TIMEOUTTARGETTYPE_NUMBER = 'number';
+    const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
+    const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
+    const FULLTARGETTYPE_NUMBER = 'number';
+    const FULLTARGETTYPE_EXTENSION = 'extension';
+    const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -136,7 +146,7 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
@@ -152,14 +162,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution
      *
-     * @return self
+     * @return static
      */
     public function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null);
 
     /**
      * Get periodicAnnounceLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getPeriodicAnnounceLocution();
 
@@ -168,14 +178,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null);
 
     /**
      * Get timeoutLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getTimeoutLocution();
 
@@ -184,14 +194,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null);
 
     /**
      * Get timeoutExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getTimeoutExtension();
 
@@ -200,14 +210,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null);
 
     /**
      * Get timeoutVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getTimeoutVoiceMailUser();
 
@@ -216,14 +226,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution
      *
-     * @return self
+     * @return static
      */
     public function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null);
 
     /**
      * Get fullLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getFullLocution();
 
@@ -232,14 +242,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension
      *
-     * @return self
+     * @return static
      */
     public function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null);
 
     /**
      * Get fullExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getFullExtension();
 
@@ -248,14 +258,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser
      *
-     * @return self
+     * @return static
      */
     public function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null);
 
     /**
      * Get fullVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getFullVoiceMailUser();
 
@@ -264,14 +274,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null);
 
     /**
      * Get timeoutNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getTimeoutNumberCountry();
 
@@ -280,14 +290,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
      *
-     * @return self
+     * @return static
      */
     public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null);
 
     /**
      * Get fullNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getFullNumberCountry();
 

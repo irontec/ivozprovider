@@ -89,7 +89,7 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksDomainAttrInterface|null $entity
      * @param int $depth
      * @return TrunksDomainAttrDto|null
      */
@@ -109,22 +109,22 @@ abstract class TrunksDomainAttrAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksDomainAttrDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksDomainAttrDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksDomainAttrDto
-         */
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
 
         $self = new static(
@@ -135,7 +135,6 @@ abstract class TrunksDomainAttrAbstract
             $dto->getLastModified()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -143,16 +142,13 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksDomainAttrDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksDomainAttrDto
-         */
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
 
         $this
@@ -164,7 +160,6 @@ abstract class TrunksDomainAttrAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -203,7 +198,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param string $did
      *
-     * @return self
+     * @return static
      */
     protected function setDid($did)
     {
@@ -230,7 +225,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -257,7 +252,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param integer $type
      *
-     * @return self
+     * @return static
      */
     protected function setType($type)
     {
@@ -285,7 +280,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param string $value
      *
-     * @return self
+     * @return static
      */
     protected function setValue($value)
     {
@@ -312,7 +307,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @param \DateTime $lastModified
      *
-     * @return self
+     * @return static
      */
     protected function setLastModified($lastModified)
     {

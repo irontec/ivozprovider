@@ -63,7 +63,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ConditionalRoutesConditionsRelScheduleInterface|null $entity
      * @param int $depth
      * @return ConditionalRoutesConditionsRelScheduleDto|null
      */
@@ -83,22 +83,22 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ConditionalRoutesConditionsRelScheduleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelScheduleDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelScheduleDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
         $self = new static();
@@ -108,7 +108,6 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             ->setSchedule($fkTransformer->transform($dto->getSchedule()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -116,16 +115,13 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ConditionalRoutesConditionsRelScheduleDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ConditionalRoutesConditionsRelScheduleDto
-         */
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
         $this
@@ -134,7 +130,6 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -167,7 +162,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
      *
-     * @return self
+     * @return static
      */
     public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
     {
@@ -191,7 +186,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
      *
-     * @return self
+     * @return static
      */
     public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
     {

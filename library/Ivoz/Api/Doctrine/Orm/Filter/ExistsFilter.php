@@ -27,7 +27,7 @@ class ExistsFilter extends BaseExistsFilter
         ResourceMetadataFactoryInterface $resourceMetadataFactory
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        return parent::__construct($managerRegistry, $requestStack, $logger, $properties);
+        parent::__construct($managerRegistry, $requestStack, $logger, $properties);
     }
 
     /**

@@ -91,6 +91,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $maxCalls = 1;
 
     /**
+     * @var string
+     */
+    private $t38Passthrough = 'no';
+
+    /**
      * @var integer
      */
     private $id;
@@ -174,6 +179,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
             'maxCalls' => 'maxCalls',
+            't38Passthrough' => 't38Passthrough',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -206,6 +212,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
             'maxCalls' => $this->getMaxCalls(),
+            't38Passthrough' => $this->getT38Passthrough(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -540,6 +547,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
+     * @param string $t38Passthrough
+     *
+     * @return static
+     */
+    public function setT38Passthrough($t38Passthrough = null)
+    {
+        $this->t38Passthrough = $t38Passthrough;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getT38Passthrough()
+    {
+        return $this->t38Passthrough;
+    }
+
+    /**
      * @param integer $id
      *
      * @return static
@@ -580,7 +607,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -594,7 +621,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getBrandId()
     {
@@ -626,7 +653,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -640,7 +667,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getDomainId()
     {
@@ -672,7 +699,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -686,7 +713,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getCompanyId()
     {
@@ -718,7 +745,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -732,7 +759,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getTransformationRuleSetId()
     {
@@ -764,7 +791,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -778,7 +805,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getOutgoingDdiId()
     {
@@ -810,7 +837,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id | null
+     * @param mixed | null $id
      *
      * @return static
      */
@@ -824,7 +851,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return mixed | null
      */
     public function getLanguageId()
     {

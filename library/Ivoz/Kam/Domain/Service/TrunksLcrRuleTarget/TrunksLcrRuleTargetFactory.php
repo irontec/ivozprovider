@@ -19,33 +19,15 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
  */
 class TrunksLcrRuleTargetFactory
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var TrunksLcrRuleRepository
-     */
     protected $trunksLcrRuleTargetRepository;
-
-    /**
-     * @var TrunksLcrGatewayRepository
-     */
     protected $trunksLcrGatewayRepository;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
         TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
         TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
         EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
         $this->trunksLcrRuleTargetRepository = $trunksLcrRuleTargetRepository;
         $this->trunksLcrGatewayRepository = $trunksLcrGatewayRepository;
         $this->entityTools = $entityTools;
@@ -61,7 +43,7 @@ class TrunksLcrRuleTargetFactory
         $lcrGateways = array();
 
         switch ($outgoingRouting->getRoutingMode()) {
-            case OutgoingRouting::MODE_STATIC:
+            case OutgoingRoutingInterface::ROUTINGMODE_STATIC:
                 $carrier = $outgoingRouting->getCarrier();
                 if (empty($carrier)) {
                     throw new \DomainException('Carrier not found');
@@ -75,7 +57,7 @@ class TrunksLcrRuleTargetFactory
                 }
                 break;
 
-            case OutgoingRouting::MODE_LCR:
+            case OutgoingRoutingInterface::ROUTINGMODE_LCR:
                 // Lcr Rules use special dummy gateway
                 $lcrGateways[] = $this->trunksLcrGatewayRepository->findDummyGateway();
                 break;
@@ -107,7 +89,7 @@ class TrunksLcrRuleTargetFactory
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time
-                $lcrRuleTargets[] = $this->entityPersister->persistDto(
+                $lcrRuleTargets[] = $this->entityTools->persistDto(
                     $lcrRuleTargetDto,
                     $lcrRuleTarget,
                     true

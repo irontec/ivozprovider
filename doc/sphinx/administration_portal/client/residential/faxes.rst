@@ -1,1 +1,1 @@
-../vpbx/faxes.rst
+.. include:: ../vpbx/faxes.rst

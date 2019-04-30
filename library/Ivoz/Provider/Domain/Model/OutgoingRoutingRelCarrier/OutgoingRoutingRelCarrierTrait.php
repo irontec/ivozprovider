@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait OutgoingRoutingRelCarrierTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $tpRatingProfiles;
 
@@ -33,20 +32,20 @@ trait OutgoingRoutingRelCarrierTrait
         $this->tpRatingProfiles = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingRelCarrierDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingRelCarrierDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRatingProfiles())) {
             $self->replaceTpRatingProfiles(
@@ -55,6 +54,7 @@ trait OutgoingRoutingRelCarrierTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -65,17 +65,14 @@ trait OutgoingRoutingRelCarrierTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param OutgoingRoutingRelCarrierDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto OutgoingRoutingRelCarrierDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRatingProfiles())) {
             $this->replaceTpRatingProfiles(
@@ -84,6 +81,8 @@ trait OutgoingRoutingRelCarrierTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -113,7 +112,7 @@ trait OutgoingRoutingRelCarrierTrait
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
      *
-     * @return OutgoingRoutingRelCarrierTrait
+     * @return static
      */
     public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile)
     {
@@ -135,10 +134,10 @@ trait OutgoingRoutingRelCarrierTrait
     /**
      * Replace tpRatingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
-     * @return self
+     * @param ArrayCollection $tpRatingProfiles of Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+     * @return static
      */
-    public function replaceTpRatingProfiles(Collection $tpRatingProfiles)
+    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,7 +167,7 @@ trait OutgoingRoutingRelCarrierTrait
 
     /**
      * Get tpRatingProfiles
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
     public function getTpRatingProfiles(Criteria $criteria = null)

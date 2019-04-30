@@ -87,7 +87,7 @@ abstract class TrunksAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TrunksAddressInterface|null $entity
      * @param int $depth
      * @return TrunksAddressDto|null
      */
@@ -107,22 +107,22 @@ abstract class TrunksAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TrunksAddressDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksAddressDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksAddressDto
-         */
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
         $self = new static(
@@ -137,7 +137,6 @@ abstract class TrunksAddressAbstract
             ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -145,16 +144,13 @@ abstract class TrunksAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TrunksAddressDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TrunksAddressDto
-         */
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
         $this
@@ -167,7 +163,6 @@ abstract class TrunksAddressAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -208,7 +203,7 @@ abstract class TrunksAddressAbstract
      *
      * @param integer $grp
      *
-     * @return self
+     * @return static
      */
     protected function setGrp($grp)
     {
@@ -236,7 +231,7 @@ abstract class TrunksAddressAbstract
      *
      * @param string $ipAddr
      *
-     * @return self
+     * @return static
      */
     protected function setIpAddr($ipAddr = null)
     {
@@ -264,7 +259,7 @@ abstract class TrunksAddressAbstract
      *
      * @param integer $mask
      *
-     * @return self
+     * @return static
      */
     protected function setMask($mask)
     {
@@ -291,7 +286,7 @@ abstract class TrunksAddressAbstract
      *
      * @param integer $port
      *
-     * @return self
+     * @return static
      */
     protected function setPort($port)
     {
@@ -318,7 +313,7 @@ abstract class TrunksAddressAbstract
      *
      * @param string $tag
      *
-     * @return self
+     * @return static
      */
     protected function setTag($tag = null)
     {
@@ -346,7 +341,7 @@ abstract class TrunksAddressAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
      *
-     * @return self
+     * @return static
      */
     public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress)
     {

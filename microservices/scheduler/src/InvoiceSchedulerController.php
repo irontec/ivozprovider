@@ -3,29 +3,34 @@
 use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\Invoice\CreateByScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerRepository;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Application\RegisterCommandTrait;
 
 class InvoiceSchedulerController
 {
-    /**
-     * @var CreateByScheduler
-     */
-    private $invoiceCreator;
+    use RegisterCommandTrait;
 
-    /**
-     * @var InvoiceSchedulerRepository
-     */
+    private $invoiceCreator;
     private $invoiceSchedulerRepository;
+    private $eventPublisher;
+    private $requestId;
 
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         CreateByScheduler $invoiceCreator,
         InvoiceSchedulerRepository $invoiceSchedulerRepository
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->invoiceCreator = $invoiceCreator;
         $this->invoiceSchedulerRepository = $invoiceSchedulerRepository;
     }
 
     public function indexAction()
     {
+        $this->registerCommand('Scheduler', 'invoiceScheduler');
         $invoiceSchedulers = $this->invoiceSchedulerRepository->getPendingSchedulers();
         try {
             foreach ($invoiceSchedulers as $invoiceScheduler) {

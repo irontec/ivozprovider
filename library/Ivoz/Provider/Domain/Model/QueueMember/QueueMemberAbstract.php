@@ -68,7 +68,7 @@ abstract class QueueMemberAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param QueueMemberInterface|null $entity
      * @param int $depth
      * @return QueueMemberDto|null
      */
@@ -88,22 +88,22 @@ abstract class QueueMemberAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var QueueMemberDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param QueueMemberDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto QueueMemberDto
-         */
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
         $self = new static();
@@ -114,7 +114,6 @@ abstract class QueueMemberAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -122,16 +121,13 @@ abstract class QueueMemberAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param QueueMemberDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto QueueMemberDto
-         */
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
         $this
@@ -141,7 +137,6 @@ abstract class QueueMemberAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -176,7 +171,7 @@ abstract class QueueMemberAbstract
      *
      * @param integer $penalty
      *
-     * @return self
+     * @return static
      */
     protected function setPenalty($penalty = null)
     {
@@ -207,7 +202,7 @@ abstract class QueueMemberAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
      *
-     * @return self
+     * @return static
      */
     public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
     {
@@ -231,7 +226,7 @@ abstract class QueueMemberAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
      *
-     * @return self
+     * @return static
      */
     public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {

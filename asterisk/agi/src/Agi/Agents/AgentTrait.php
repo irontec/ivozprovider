@@ -56,7 +56,20 @@ trait AgentTrait
         return null;
     }
 
+    /**
+     * @return string | null
+     */
     public function getVoiceMail()
+    {
+        return null;
+    }
+
+    public function getVoicemailEnabled()
+    {
+        return false;
+    }
+
+    public function getVoiceMailLocution()
     {
         return null;
     }

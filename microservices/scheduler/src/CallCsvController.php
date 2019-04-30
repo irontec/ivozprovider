@@ -3,23 +3,27 @@
 use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\CallCsvReport\CreateByScheduler;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Application\RequestId;
 
 class CallCsvController
 {
-    /**
-     * @var CreateByScheduler
-     */
-    private $callCsvReport;
+    use RegisterCommandTrait;
 
-    /**
-     * @var CallCsvSchedulerRepository
-     */
+    private $eventPublisher;
+    private $requestId;
+    private $callCsvReport;
     private $callCsvSchedulerRepository;
 
     public function __construct(
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId,
         CreateByScheduler $callCsvReportCreator,
         CallCsvSchedulerRepository $callCsvSchedulerRepository
     ) {
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId;
         $this->callCsvReport = $callCsvReportCreator;
         $this->callCsvSchedulerRepository = $callCsvSchedulerRepository;
     }
@@ -27,6 +31,7 @@ class CallCsvController
     public function indexAction()
     {
         $errors = [];
+        $this->registerCommand('Scheduler', 'callCsv');
         $callCsvSchedulers = $this->callCsvSchedulerRepository->getPendingSchedulers();
 
         foreach ($callCsvSchedulers as $callCsvScheduler) {

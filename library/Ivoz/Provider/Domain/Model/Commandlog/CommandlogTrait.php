@@ -11,7 +11,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 trait CommandlogTrait
 {
     /**
-     * @var guid
+     * @var string
      */
     protected $id;
 
@@ -24,22 +24,23 @@ trait CommandlogTrait
         parent::__construct(...func_get_args());
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CommandlogDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CommandlogDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -50,18 +51,17 @@ trait CommandlogTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param CommandlogDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto CommandlogDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
+
+        $this->sanitizeValues();
 
         return $this;
     }

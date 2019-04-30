@@ -111,7 +111,7 @@ abstract class ScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param ScheduleInterface|null $entity
      * @param int $depth
      * @return ScheduleDto|null
      */
@@ -131,22 +131,22 @@ abstract class ScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var ScheduleDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ScheduleDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ScheduleDto
-         */
         Assertion::isInstanceOf($dto, ScheduleDto::class);
 
         $self = new static(
@@ -166,7 +166,6 @@ abstract class ScheduleAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -174,16 +173,13 @@ abstract class ScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param ScheduleDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto ScheduleDto
-         */
         Assertion::isInstanceOf($dto, ScheduleDto::class);
 
         $this
@@ -201,7 +197,6 @@ abstract class ScheduleAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -252,7 +247,7 @@ abstract class ScheduleAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -279,7 +274,7 @@ abstract class ScheduleAbstract
      *
      * @param \DateTime $timeIn
      *
-     * @return self
+     * @return static
      */
     protected function setTimeIn($timeIn)
     {
@@ -305,7 +300,7 @@ abstract class ScheduleAbstract
      *
      * @param \DateTime $timeout
      *
-     * @return self
+     * @return static
      */
     protected function setTimeout($timeout)
     {
@@ -331,7 +326,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $monday
      *
-     * @return self
+     * @return static
      */
     protected function setMonday($monday = null)
     {
@@ -359,7 +354,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $tuesday
      *
-     * @return self
+     * @return static
      */
     protected function setTuesday($tuesday = null)
     {
@@ -387,7 +382,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $wednesday
      *
-     * @return self
+     * @return static
      */
     protected function setWednesday($wednesday = null)
     {
@@ -415,7 +410,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $thursday
      *
-     * @return self
+     * @return static
      */
     protected function setThursday($thursday = null)
     {
@@ -443,7 +438,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $friday
      *
-     * @return self
+     * @return static
      */
     protected function setFriday($friday = null)
     {
@@ -471,7 +466,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $saturday
      *
-     * @return self
+     * @return static
      */
     protected function setSaturday($saturday = null)
     {
@@ -499,7 +494,7 @@ abstract class ScheduleAbstract
      *
      * @param boolean $sunday
      *
-     * @return self
+     * @return static
      */
     protected function setSunday($sunday = null)
     {
@@ -527,7 +522,7 @@ abstract class ScheduleAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
-     * @return self
+     * @return static
      */
     public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {

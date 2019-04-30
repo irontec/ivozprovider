@@ -19,7 +19,9 @@ class YamlExtractor extends AbstractExtractor
      */
     public function __construct(array $paths)
     {
-        $this->paths = $this->getResourcesToWatch($paths);
+        parent::__construct(
+            $this->getResourcesToWatch($paths)
+        );
     }
 
     private function getResourcesToWatch($paths): array

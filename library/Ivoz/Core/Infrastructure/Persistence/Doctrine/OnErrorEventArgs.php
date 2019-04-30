@@ -4,8 +4,9 @@ namespace Ivoz\Core\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Doctrine\Common\EventArgs;
 
-class OnErrorEventArgs extends OnCommitEventArgs
+class OnErrorEventArgs extends EventArgs
 {
     /**
      * @var EntityInterface
@@ -17,11 +18,6 @@ class OnErrorEventArgs extends OnCommitEventArgs
      */
     protected $exception;
 
-    /**
-     * Constructor.
-     *
-     * @param EntityManagerInterface $em
-     */
     public function __construct(
         EntityInterface $entity,
         \Exception $exception

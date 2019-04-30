@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +18,7 @@ trait RatingPlanGroupTrait
     protected $id;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $ratingPlan;
 
@@ -33,20 +32,20 @@ trait RatingPlanGroupTrait
         $this->ratingPlan = new ArrayCollection();
     }
 
+    abstract protected function sanitizeValues();
+
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanGroupDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanGroupDto
-         */
+        /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getRatingPlan())) {
             $self->replaceRatingPlan(
@@ -55,6 +54,7 @@ trait RatingPlanGroupTrait
                 )
             );
         }
+        $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -65,17 +65,14 @@ trait RatingPlanGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param RatingPlanGroupDto $dto
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
-     * @return self
+     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto RatingPlanGroupDto
-         */
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRatingPlan())) {
             $this->replaceRatingPlan(
@@ -84,6 +81,8 @@ trait RatingPlanGroupTrait
                 )
             );
         }
+        $this->sanitizeValues();
+
         return $this;
     }
 
@@ -113,7 +112,7 @@ trait RatingPlanGroupTrait
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
-     * @return RatingPlanGroupTrait
+     * @return static
      */
     public function addRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
     {
@@ -135,10 +134,10 @@ trait RatingPlanGroupTrait
     /**
      * Replace ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[] $ratingPlan
-     * @return self
+     * @param ArrayCollection $ratingPlan of Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return static
      */
-    public function replaceRatingPlan(Collection $ratingPlan)
+    public function replaceRatingPlan(ArrayCollection $ratingPlan)
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,7 +167,7 @@ trait RatingPlanGroupTrait
 
     /**
      * Get ratingPlan
-     *
+     * @param Criteria | null $criteria
      * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[]
      */
     public function getRatingPlan(Criteria $criteria = null)

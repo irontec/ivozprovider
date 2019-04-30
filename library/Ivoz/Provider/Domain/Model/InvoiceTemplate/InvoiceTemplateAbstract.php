@@ -85,7 +85,7 @@ abstract class InvoiceTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param InvoiceTemplateInterface|null $entity
      * @param int $depth
      * @return InvoiceTemplateDto|null
      */
@@ -105,22 +105,22 @@ abstract class InvoiceTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var InvoiceTemplateDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceTemplateDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceTemplateDto
-         */
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
         $self = new static(
@@ -135,7 +135,6 @@ abstract class InvoiceTemplateAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -143,16 +142,13 @@ abstract class InvoiceTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param InvoiceTemplateDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto InvoiceTemplateDto
-         */
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
         $this
@@ -165,7 +161,6 @@ abstract class InvoiceTemplateAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -206,7 +201,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -233,7 +228,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -261,7 +256,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @param string $template
      *
-     * @return self
+     * @return static
      */
     protected function setTemplate($template)
     {
@@ -288,7 +283,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @param string $templateHeader
      *
-     * @return self
+     * @return static
      */
     protected function setTemplateHeader($templateHeader = null)
     {
@@ -316,7 +311,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @param string $templateFooter
      *
-     * @return self
+     * @return static
      */
     protected function setTemplateFooter($templateFooter = null)
     {
@@ -344,7 +339,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {

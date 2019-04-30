@@ -13,11 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class DestinationRateGroupAbstract
 {
-    const STATUS_WAITING = 'waiting';
-    const STATUS_INPROGRESS = 'inProgress';
-    const STATUS_IMPORTED = 'imported';
-    const STATUS_ERROR = 'error';
-
     /**
      * comment: enum:waiting|inProgress|imported|error
      * @var string | null
@@ -45,7 +40,7 @@ abstract class DestinationRateGroupAbstract
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     protected $currency;
 
@@ -95,7 +90,7 @@ abstract class DestinationRateGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DestinationRateGroupInterface|null $entity
      * @param int $depth
      * @return DestinationRateGroupDto|null
      */
@@ -115,22 +110,22 @@ abstract class DestinationRateGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DestinationRateGroupDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationRateGroupDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationRateGroupDto
-         */
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
 
         $name = new Name(
@@ -162,7 +157,6 @@ abstract class DestinationRateGroupAbstract
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -170,16 +164,13 @@ abstract class DestinationRateGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DestinationRateGroupDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DestinationRateGroupDto
-         */
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
 
         $name = new Name(
@@ -209,7 +200,6 @@ abstract class DestinationRateGroupAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -260,17 +250,17 @@ abstract class DestinationRateGroupAbstract
      *
      * @param string $status
      *
-     * @return self
+     * @return static
      */
     protected function setStatus($status = null)
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($status, [
-                self::STATUS_WAITING,
-                self::STATUS_INPROGRESS,
-                self::STATUS_IMPORTED,
-                self::STATUS_ERROR
+                DestinationRateGroupInterface::STATUS_WAITING,
+                DestinationRateGroupInterface::STATUS_INPROGRESS,
+                DestinationRateGroupInterface::STATUS_IMPORTED,
+                DestinationRateGroupInterface::STATUS_ERROR
             ], 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
@@ -294,7 +284,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
      *
-     * @return self
+     * @return static
      */
     public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
@@ -318,7 +308,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
-     * @return self
+     * @return static
      */
     public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
@@ -330,7 +320,7 @@ abstract class DestinationRateGroupAbstract
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency()
     {
@@ -342,7 +332,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name
      *
-     * @return self
+     * @return static
      */
     public function setName(Name $name)
     {
@@ -365,7 +355,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description
      *
-     * @return self
+     * @return static
      */
     public function setDescription(Description $description)
     {
@@ -388,7 +378,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file
      *
-     * @return self
+     * @return static
      */
     public function setFile(File $file)
     {

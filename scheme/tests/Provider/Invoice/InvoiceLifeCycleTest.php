@@ -39,9 +39,10 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
 
     protected function addInvoice()
     {
+        $dto = $this->getInvoicePdo();
         return $this
             ->entityTools
-            ->persistDto($this->getInvoicePdo(), null, true);
+            ->persistDto($dto, null, true);
     }
 
     protected function updateInvoice()

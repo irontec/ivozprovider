@@ -73,7 +73,7 @@ abstract class DdiProviderAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param DdiProviderAddressInterface|null $entity
      * @param int $depth
      * @return DdiProviderAddressDto|null
      */
@@ -93,22 +93,22 @@ abstract class DdiProviderAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var DdiProviderAddressDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiProviderAddressDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiProviderAddressDto
-         */
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
 
         $self = new static();
@@ -119,7 +119,6 @@ abstract class DdiProviderAddressAbstract
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -127,16 +126,13 @@ abstract class DdiProviderAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param DdiProviderAddressDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto DdiProviderAddressDto
-         */
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
 
         $this
@@ -146,7 +142,6 @@ abstract class DdiProviderAddressAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -181,7 +176,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @param string $ip
      *
-     * @return self
+     * @return static
      */
     protected function setIp($ip = null)
     {
@@ -209,7 +204,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description = null)
     {
@@ -237,7 +232,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress
      *
-     * @return self
+     * @return static
      */
     public function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress = null)
     {
@@ -261,7 +256,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
-     * @return self
+     * @return static
      */
     public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
     {

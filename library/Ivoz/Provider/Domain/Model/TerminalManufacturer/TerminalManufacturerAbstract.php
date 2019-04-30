@@ -71,7 +71,7 @@ abstract class TerminalManufacturerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param EntityInterface|null $entity
+     * @param TerminalManufacturerInterface|null $entity
      * @param int $depth
      * @return TerminalManufacturerDto|null
      */
@@ -91,22 +91,22 @@ abstract class TerminalManufacturerAbstract
             return static::createDto($entity->getId());
         }
 
-        return $entity->toDto($depth-1);
+        /** @var TerminalManufacturerDto $dto */
+        $dto = $entity->toDto($depth-1);
+
+        return $dto;
     }
 
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalManufacturerDto $dto
      * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalManufacturerDto
-         */
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
         $self = new static(
@@ -115,7 +115,6 @@ abstract class TerminalManufacturerAbstract
             $dto->getDescription()
         );
 
-        $self->sanitizeValues();
         $self->initChangelog();
 
         return $self;
@@ -123,16 +122,13 @@ abstract class TerminalManufacturerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param DataTransferObjectInterface $dto
+     * @param TerminalManufacturerDto $dto
      * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        /**
-         * @var $dto TerminalManufacturerDto
-         */
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
         $this
@@ -142,7 +138,6 @@ abstract class TerminalManufacturerAbstract
 
 
 
-        $this->sanitizeValues();
         return $this;
     }
 
@@ -177,7 +172,7 @@ abstract class TerminalManufacturerAbstract
      *
      * @param string $iden
      *
-     * @return self
+     * @return static
      */
     protected function setIden($iden)
     {
@@ -204,7 +199,7 @@ abstract class TerminalManufacturerAbstract
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     protected function setName($name)
     {
@@ -231,7 +226,7 @@ abstract class TerminalManufacturerAbstract
      *
      * @param string $description
      *
-     * @return self
+     * @return static
      */
     protected function setDescription($description)
     {
