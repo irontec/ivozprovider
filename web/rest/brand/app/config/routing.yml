@@ -24,7 +24,7 @@ post_auth_token_exchange:
 ## Refresh JWT Token
 ###############################
 gesdinet_jwt_refresh_token:
-  path:     /api/token/refresh
+  path: '/token/refresh'
   defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
 
 ###############################
