@@ -11,7 +11,7 @@ export SYMFONY_ENV=prod
 #######################################################################################################################
 #######################################################################################################################
 
-function scheme_initialize()
+function schema_initialize()
 {
     # On first run, create an static resolution
     getent hosts data.ivozprovider.local &>/dev/null
@@ -26,7 +26,7 @@ function scheme_initialize()
     db_stop
 
     # During first time, create database and import initial dump
-    cd /opt/irontec/ivozprovider/scheme
+    cd /opt/irontec/ivozprovider/schema
     bin/console doctrine:database:create
     if [ $? -eq 0 ]; then
         bin/console doctrine:database:import initial.sql
@@ -47,10 +47,10 @@ function mysql_upgrade()
     mysql_upgrade --user=root --password="$RET" --force
 }
 
-function scheme_migrations()
+function schema_migrations()
 {
     # Always migrate database
-    cd /opt/irontec/ivozprovider/scheme
+    cd /opt/irontec/ivozprovider/schema
     bin/console cache:clear --no-warmup -q -n
     bin/console doctrine:migrations:status
     bin/console doctrine:migrations:migrate --no-interaction --quiet
@@ -59,7 +59,7 @@ function scheme_migrations()
 #######################################################################################################################
 #######################################################################################################################
 if [ -z "$2" ]; then
-    scheme_initialize
+    schema_initialize
 else
     # Upgrade MySQL if installed version is prior to artemis release
     /usr/bin/dpkg --compare-versions $2 lt 2.0~0
@@ -68,6 +68,6 @@ else
     fi
 fi
 
-scheme_migrations
+schema_migrations
 
 :

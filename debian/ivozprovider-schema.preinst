@@ -3,8 +3,8 @@
 #DEBHELPER#
 
 # This is a temporal migration script to automatize changes implemented in #633
-if [ -d /opt/irontec/ivozprovider/scheme/ ]; then
-    pushd /opt/irontec/ivozprovider/scheme/
+if [ -d /opt/irontec/ivozprovider/schema/ ]; then
+    pushd /opt/irontec/ivozprovider/schema/
         # Remove existing old cache
         rm -fr var/cache
         # Remove existing vendor (will be replaced with new package contents)

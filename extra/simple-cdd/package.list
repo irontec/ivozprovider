@@ -29,7 +29,7 @@ ivozprovider-profile-portal
 ivozprovider-profile-proxy
 ivozprovider-recordings
 ivozprovider-rtpengine:#ARCH#
-ivozprovider-scheme
+ivozprovider-schema
 ivozprovider-web-admin
 ivozprovider-web-rest
 ivozprovider-web-user
