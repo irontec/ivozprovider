@@ -20,7 +20,7 @@ recommended to test them before migration. Install a Standalone version of Artem
 and replace database contents with an Oasis dump. Then, apply all migrations with:
 
 ```
-cd /opt/irontec/ivozprovider/scheme
+cd /opt/irontec/ivozprovider/schema
 bin/console doctrine:migrations:migrate -n
 ```
 

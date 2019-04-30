@@ -1,6 +1,6 @@
 # Gestión de migraciones de base de datos
 
-La aplicación de gestión de deltas de base de datos se encuentra alojada en el directorio ivozprovider/scheme.
+La aplicación de gestión de deltas de base de datos se encuentra alojada en el directorio ivozprovider/schema.
 Se trata de una aplicación completa symfony, requiere por tanto que sus dependencia sean resultas vía composer,
 `composer install`, para su correcto funcionamiento.
 
@@ -52,8 +52,8 @@ entidad en cuestión. las modificaciones realizadas sobre este fichero (id apart
 ## Generar un nuevo delta
 Una vez realizadas la modificaciones oportunas, ejecute el siguiente comando para crear el delta de base de datos:
 
-    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/scheme$ bin/console doctrine:migrations:diff
-    Generated new migration class to "/opt/irontec/ivozprovider/scheme/app/DoctrineMigrations/Version20171009074016.php" from schema differences.
+    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/schema$ bin/console doctrine:migrations:diff
+    Generated new migration class to "/opt/irontec/ivozprovider/schema/app/DoctrineMigrations/Version20171009074016.php" from schema differences.
 
 Una vez generado, es perfectamente posible realizar modificaciones manuales sobre él.
 
@@ -70,7 +70,7 @@ Una vez generado, es perfectamente posible realizar modificaciones manuales sobr
         >> Version Table Name:                          migration_versions
         >> Version Column Name:                       version
         >> Migrations Namespace:                      Application\Migrations
-        >> Migrations Directory:                          /opt/irontec/ivozprovider/scheme/app/DoctrineMigrations
+        >> Migrations Directory:                          /opt/irontec/ivozprovider/schema/app/DoctrineMigrations
         >> Previous Version:                               2017-09-14 11:00:36 (20170914110036)
         >> Current Version:                                2017-09-18 16:04:22 (20170918160422)
         >> Next Version:                                     2017-10-09 07:40:16 (20171009074016)
