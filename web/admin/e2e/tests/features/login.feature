@@ -1,6 +1,5 @@
 @login
 @company
-@retry
 
 Feature: Login
   As an admin user I want to login

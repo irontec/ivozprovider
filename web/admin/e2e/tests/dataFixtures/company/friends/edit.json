@@ -1,0 +1,8 @@
+{
+  "port": "5060",
+  "allow": "alaw",
+  "fromDomain": "",
+  "language": "__NULL__",
+  "callACL": "__NULL__",
+  "outgoingDdi": "__NULL__"
+}

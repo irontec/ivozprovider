@@ -1,9 +1,6 @@
 {
   "name": "testTerminal",
   "password": "fLgQYa6-56",
-  "allowAudio": "alaw",
-  "allowVideo": "__NULL__",
-  "directMediaMethod": "invite",
   "terminalModel": "1",
   "mac": "0011223344aa"
 }
