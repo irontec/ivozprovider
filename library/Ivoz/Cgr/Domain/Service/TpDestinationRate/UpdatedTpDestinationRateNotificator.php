@@ -11,6 +11,8 @@ class UpdatedTpDestinationRateNotificator extends CgratesReloadNotificator imple
      * Reload CGRates Configuration
      *
      * @param TpDestinationRateInterface $tpDestinationRate
+     *
+     * @return void
      */
     public function execute(TpDestinationRateInterface $tpDestinationRate)
     {

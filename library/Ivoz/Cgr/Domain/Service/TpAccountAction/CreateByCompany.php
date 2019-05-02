@@ -31,6 +31,9 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CompanyInterface $company)
     {
         $isNew = $company->isNew();

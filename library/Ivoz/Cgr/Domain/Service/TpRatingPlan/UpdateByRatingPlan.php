@@ -31,6 +31,9 @@ class UpdateByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(RatingPlanInterface $ratingPlan)
     {
         $tpRatingPlan = $ratingPlan->getTpRatingPlan();

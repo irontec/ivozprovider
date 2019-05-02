@@ -11,6 +11,8 @@ class UpdatedTpRatingPlanNotificator extends CgratesReloadNotificator implements
      * Reload CGRates Configuration
      *
      * @param TpRatingPlanInterface $tpRatingPlan
+     *
+     * @return void
      */
     public function execute(TpRatingPlanInterface $tpRatingPlan)
     {

@@ -12,6 +12,9 @@ class TpLcrRuleLifecycleServiceCollection implements LifecycleServiceCollectionI
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(TpLcrRuleLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

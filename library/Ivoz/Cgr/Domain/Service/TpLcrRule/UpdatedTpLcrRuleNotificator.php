@@ -11,6 +11,8 @@ class UpdatedTpLcrRuleNotificator extends CgratesReloadNotificator implements Tp
      * Reload CGRates Configuration
      *
      * @param TpLcrRuleInterface $tpLcrRule
+     *
+     * @return void
      */
     public function execute(TpLcrRuleInterface $tpLcrRule)
     {
