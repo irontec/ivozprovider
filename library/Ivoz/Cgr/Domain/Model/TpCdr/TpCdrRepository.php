@@ -16,13 +16,13 @@ interface TpCdrRepository extends ObjectRepository, Selectable
 
     /**
      * @param string $cgrid
-     * @return int
+     * @return TpCdrInterface | null
      */
     public function getDefaultRunByCgrid(string $cgrid);
 
     /**
      * @param string $cgrid
-     * @return int
+     * @return TpCdrInterface | null
      */
     public function getCarrierRunByCgrid(string $cgrid);
 }

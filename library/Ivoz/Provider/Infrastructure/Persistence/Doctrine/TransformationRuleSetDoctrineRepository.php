@@ -19,30 +19,4 @@ class TransformationRuleSetDoctrineRepository extends ServiceEntityRepository im
     {
         parent::__construct($registry, TransformationRuleSet::class);
     }
-
-    /**
-     * @param array $criteria
-     * @return mixed
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     *
-     * * @deprecated dead code
-     */
-    public function countByCriteria(array $criteria)
-    {
-        $alias = 'TransformationRuleSet';
-        $qb = $this->createQueryBuilder($alias);
-        $qb->select('count('. $alias .')');
-
-        foreach ($criteria as $field => $value) {
-            $normalizedField = $alias . '.' . $field;
-            $qb->andWhere(
-                $qb->expr()->eq($normalizedField, $value)
-            );
-        }
-
-        return $qb
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
 }

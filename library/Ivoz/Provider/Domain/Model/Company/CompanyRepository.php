@@ -15,7 +15,9 @@ interface CompanyRepository extends ObjectRepository, Selectable
     public function findByBrandId($id);
 
     /**
-     * @return array
+     * Used by brand API access controls
+     * @inheritdoc
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getSupervisedCompanyIdsByAdmin
      */
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin);
 

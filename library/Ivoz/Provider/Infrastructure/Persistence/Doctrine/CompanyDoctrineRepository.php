@@ -34,9 +34,9 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     }
 
     /**
+     * Used by brand API access controls
      * @inheritdoc
      * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getSupervisedCompanyIdsByAdmin
-     * @deprecated dead code
      */
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin)
     {
@@ -65,7 +65,6 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     /**
      * @inheritdoc
      * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getPrepaidCompanies
-     * @deprecated dead code
      */
     public function getPrepaidCompanies()
     {
