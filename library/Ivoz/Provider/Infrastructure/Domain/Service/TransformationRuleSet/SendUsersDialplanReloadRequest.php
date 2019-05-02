@@ -25,6 +25,9 @@ class SendUsersDialplanReloadRequest implements TransformationRuleSetLifecycleEv
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(TransformationRuleSetInterface $transformationRuleSet)
     {
         $this->usersClient->reloadDialplan();

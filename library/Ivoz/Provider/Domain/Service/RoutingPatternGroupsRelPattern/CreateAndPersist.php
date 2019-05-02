@@ -24,6 +24,9 @@ class CreateAndPersist
         $this->entityPersister = $entityPersister;
     }
 
+    /**
+     * @return void
+     */
     public function execute(RoutingPatternInterface $routingPattern, RoutingPatternGroupInterface $patternGroup)
     {
         /**

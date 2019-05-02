@@ -25,6 +25,9 @@ class SendTrunksLcrReloadRequest implements RoutingTagLifecycleEventHandlerInter
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(RoutingTagInterface $routingTag)
     {
         $this->trunksClient->reloadLcr();

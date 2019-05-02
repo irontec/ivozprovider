@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements FixedCostsRelIn
 
     /**
      * @param FixedCostsRelInvoiceSchedulerInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(FixedCostsRelInvoiceSchedulerInterface $entity)
     {

@@ -12,6 +12,9 @@ class CompanyRelRoutingTagLifecycleServiceCollection implements LifecycleService
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CompanyRelRoutingTagLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

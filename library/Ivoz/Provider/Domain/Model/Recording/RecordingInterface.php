@@ -106,12 +106,17 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 

@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements PickUpRelUserLi
 
     /**
      * @param PickUpRelUserInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(PickUpRelUserInterface $entity)
     {

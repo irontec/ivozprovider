@@ -12,6 +12,9 @@ class TransformationRuleSetLifecycleServiceCollection implements LifecycleServic
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(TransformationRuleSetLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

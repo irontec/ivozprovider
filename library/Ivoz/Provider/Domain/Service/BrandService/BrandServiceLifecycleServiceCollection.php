@@ -12,6 +12,9 @@ class BrandServiceLifecycleServiceCollection implements LifecycleServiceCollecti
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(BrandServiceLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

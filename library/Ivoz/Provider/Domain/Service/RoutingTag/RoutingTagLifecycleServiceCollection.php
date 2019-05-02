@@ -12,6 +12,9 @@ class RoutingTagLifecycleServiceCollection implements LifecycleServiceCollection
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(RoutingTagLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

@@ -22,6 +22,8 @@ class CheckValidity implements InvoiceNumberSequenceLifecycleEventHandlerInterfa
 
     /**
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(InvoiceNumberSequenceInterface $entity)
     {

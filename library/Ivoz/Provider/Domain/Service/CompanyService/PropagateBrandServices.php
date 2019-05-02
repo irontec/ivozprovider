@@ -41,6 +41,8 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
 
     /**
      * @param CompanyInterface $company
+     *
+     * @return void
      */
     public function execute(CompanyInterface $company)
     {

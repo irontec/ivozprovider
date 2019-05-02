@@ -42,6 +42,8 @@ class CheckUniqueness implements RetailAccountLifecycleEventHandlerInterface
      * Check username and domain is unique in the whole platform
      *
      * @param RetailAccountInterface $retailAccount
+     *
+     * @return void
      */
     public function execute(RetailAccountInterface $retailAccount)
     {

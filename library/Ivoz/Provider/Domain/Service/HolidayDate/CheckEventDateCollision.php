@@ -34,6 +34,9 @@ class CheckEventDateCollision implements HolidayDateLifecycleEventHandlerInterfa
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(HolidayDateInterface $holidayDate)
     {
         $calendarHolidays = $this->holidayDateRepository

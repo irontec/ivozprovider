@@ -117,7 +117,10 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 

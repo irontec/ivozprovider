@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements RoutingPatternG
 
     /**
      * @param RoutingPatternGroupsRelPatternInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(RoutingPatternGroupsRelPatternInterface $entity)
     {

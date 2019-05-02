@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements OutgoingRouting
 
     /**
      * @param OutgoingRoutingRelCarrierInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(OutgoingRoutingRelCarrierInterface $entity)
     {

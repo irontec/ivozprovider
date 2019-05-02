@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements HuntGroupsRelUs
 
     /**
      * @param HuntGroupsRelUserInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(HuntGroupsRelUserInterface $entity)
     {

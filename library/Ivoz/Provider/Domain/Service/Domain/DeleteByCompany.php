@@ -36,6 +36,9 @@ class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CompanyInterface $company)
     {
         $domain = $company->getDomain();

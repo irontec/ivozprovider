@@ -32,6 +32,9 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(TerminalModelInterface $entity)
     {
         $genericMustChange = $entity->hasChanged('genericTemplate');
@@ -63,6 +66,9 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         }
     }
 
+    /**
+     * @return void
+     */
     protected function createFolder($route)
     {
         $folderExists = $this->fs->exists($route);
@@ -75,6 +81,9 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         umask($old);
     }
 
+    /**
+     * @return void
+     */
     protected function saveFiles($file, $route, $template)
     {
         $fileRoute = $route . DIRECTORY_SEPARATOR .$file;

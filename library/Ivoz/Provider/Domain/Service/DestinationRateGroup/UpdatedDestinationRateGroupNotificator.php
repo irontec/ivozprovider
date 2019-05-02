@@ -11,6 +11,8 @@ class UpdatedDestinationRateGroupNotificator extends CgratesReloadNotificator im
      * Reload CGRates Configuration
      *
      * @param DestinationRateGroupInterface $destinationRateGroup
+     *
+     * @return void
      */
     public function execute(DestinationRateGroupInterface $destinationRateGroup)
     {

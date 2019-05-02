@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ConditionalRout
 
     /**
      * @param ConditionalRoutesConditionsRelCalendarInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(ConditionalRoutesConditionsRelCalendarInterface $entity)
     {

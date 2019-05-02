@@ -12,6 +12,9 @@ class QueueLifecycleServiceCollection implements LifecycleServiceCollectionInter
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(QueueLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

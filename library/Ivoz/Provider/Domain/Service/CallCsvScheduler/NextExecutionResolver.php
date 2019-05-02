@@ -33,6 +33,9 @@ class NextExecutionResolver implements CallCsvSchedulerLifecycleEventHandlerInte
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CallCsvSchedulerInterface $scheduler)
     {
         $nextExecution = $scheduler->getNextExecution();

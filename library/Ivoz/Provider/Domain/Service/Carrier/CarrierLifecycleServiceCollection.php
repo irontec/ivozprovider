@@ -12,6 +12,9 @@ class CarrierLifecycleServiceCollection implements LifecycleServiceCollectionInt
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CarrierLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

@@ -42,6 +42,9 @@ class SyncBalances
         $this->companyRepository = $companyRepository;
     }
 
+    /**
+     * @return void
+     */
     public function updateAll()
     {
         $this->logger->info('Companies balances are about to be synced');
@@ -98,6 +101,9 @@ class SyncBalances
         return $response;
     }
 
+    /**
+     * @return void
+     */
     private function persistBalances(array $companiesBalance)
     {
         foreach ($companiesBalance as $companyId => $balance) {

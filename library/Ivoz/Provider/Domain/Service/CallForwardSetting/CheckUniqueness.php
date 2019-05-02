@@ -40,6 +40,8 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
     /**
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(CallForwardSettingInterface $entity)
     {

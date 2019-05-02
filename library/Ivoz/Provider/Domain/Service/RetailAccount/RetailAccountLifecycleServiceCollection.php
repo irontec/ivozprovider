@@ -12,6 +12,9 @@ class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(RetailAccountLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

@@ -23,6 +23,9 @@ class GenerateOutRules
         $this->entityPersister = $entityPersister;
     }
 
+    /**
+     * @return void
+     */
     public function execute(TransformationRuleSetInterface $entity, $type)
     {
         // Get RuleSet data

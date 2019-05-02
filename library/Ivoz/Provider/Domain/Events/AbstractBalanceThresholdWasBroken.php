@@ -61,11 +61,14 @@ abstract class AbstractBalanceThresholdWasBroken implements DomainEventInterface
 
     /**
      * @param int $balanceNotificationId
+     *
      * @throws \Exception
+     *
+     * @return self
      */
     protected function setBalanceNotificationId(
         $balanceNotificationId
-    ) {
+    ): self {
         if (empty($balanceNotificationId)) {
             throw new \Exception('Balance notification id cannot be empty');
         }

@@ -22,6 +22,9 @@ class HolidayDateDoctrineRepository extends ServiceEntityRepository implements H
         parent::__construct($registry, HolidayDate::class);
     }
 
+    /**
+     * @return array
+     */
     public function findMatchingDateSiblings(
         HolidayDateInterface $holidayDate
     ) {

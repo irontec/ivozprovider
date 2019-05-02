@@ -42,6 +42,8 @@ class CheckUniqueness implements TerminalLifecycleEventHandlerInterface
      * Check username and domain is unique in the whole platform
      *
      * @param TerminalInterface $terminal
+     *
+     * @return void
      */
     public function execute(TerminalInterface $terminal)
     {

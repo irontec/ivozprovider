@@ -14,7 +14,10 @@ class UserAssembler implements CustomEntityAssemblerInterface
     /**
      * @param UserDto $dto
      * @param UserInterface $entity
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function fromDto(
         DataTransferObjectInterface $dto,

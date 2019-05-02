@@ -44,6 +44,9 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CompanyInterface $company)
     {
         $name = $company->getDomainUsers();

@@ -35,6 +35,8 @@ class CreateByScheduler
 
     /**
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(InvoiceSchedulerInterface $scheduler)
     {
@@ -127,6 +129,8 @@ class CreateByScheduler
     /**
      * @param InvoiceSchedulerInterface $scheduler
      * @param InvoiceInterface $invoice
+     *
+     * @return void
      */
     private function setFixedCosts(InvoiceSchedulerInterface $scheduler, InvoiceInterface $invoice)
     {
@@ -166,6 +170,8 @@ class CreateByScheduler
     /**
      * @param InvoiceSchedulerInterface $scheduler
      * @param string $error
+     *
+     * @return void
      */
     private function setExecutionError(InvoiceSchedulerInterface $scheduler, string $error)
     {

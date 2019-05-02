@@ -13,6 +13,9 @@ class DomainLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(DomainLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

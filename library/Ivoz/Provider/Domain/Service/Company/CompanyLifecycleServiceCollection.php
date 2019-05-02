@@ -12,6 +12,9 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CompanyLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

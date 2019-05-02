@@ -96,7 +96,10 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 

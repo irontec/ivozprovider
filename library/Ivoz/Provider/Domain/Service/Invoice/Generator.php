@@ -76,7 +76,7 @@ class Generator
         $this->vendorDir = $vendorDir;
     }
 
-    public function setInvoiceId($id)
+    public function setInvoiceId($id): self
     {
         $this->invoiceId = $id;
         return $this;
@@ -98,7 +98,7 @@ class Generator
         return $this->_createInvoice();
     }
 
-    protected function _createInvoice()
+    protected function _createInvoice(): string
     {
         /** @var InvoiceInterface $invoice */
         $invoice = $this->invoiceRepository->find($this->invoiceId);
@@ -177,7 +177,10 @@ class Generator
         return $content;
     }
 
-    protected function _getCallData(InvoiceInterface $invoice)
+    /**
+     * @return array
+     */
+    protected function _getCallData(InvoiceInterface $invoice): array
     {
         $brand = $invoice->getBrand();
         $company = $invoice->getCompany();
@@ -407,7 +410,7 @@ class Generator
         );
     }
 
-    protected function _timeFormat($seconds)
+    protected function _timeFormat($seconds): string
     {
         $hours = floor($seconds / 3600);
         $mins = floor($seconds / 60 % 60);
@@ -417,6 +420,8 @@ class Generator
 
     /**
      * @param InvoiceInterface $invoice
+     *
+     * @return void
      */
     protected function setFixedCosts(InvoiceInterface $invoice)
     {

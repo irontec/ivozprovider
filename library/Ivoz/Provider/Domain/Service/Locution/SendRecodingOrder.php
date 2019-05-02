@@ -30,6 +30,9 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(LocutionInterface $entity)
     {
         $pendingStatus = $entity->getStatus() === 'pending';

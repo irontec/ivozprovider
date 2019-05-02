@@ -32,7 +32,10 @@ class CreateByScheduler
 
     /**
      * @param CallCsvSchedulerInterface $scheduler
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(CallCsvSchedulerInterface $scheduler)
     {
@@ -138,6 +141,8 @@ class CreateByScheduler
     /**
      * @param CallCsvSchedulerInterface $scheduler
      * @param string $error
+     *
+     * @return void
      */
     private function setExecutionError(CallCsvSchedulerInterface $scheduler, string $error)
     {

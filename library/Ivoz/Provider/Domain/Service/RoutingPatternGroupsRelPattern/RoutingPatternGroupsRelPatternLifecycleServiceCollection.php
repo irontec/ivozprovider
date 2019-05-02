@@ -12,6 +12,9 @@ class RoutingPatternGroupsRelPatternLifecycleServiceCollection implements Lifecy
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

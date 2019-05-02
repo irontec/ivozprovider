@@ -25,6 +25,9 @@ class CheckUniqueness implements AdministratorLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(AdministratorInterface $admin)
     {
         $administrator = $this
