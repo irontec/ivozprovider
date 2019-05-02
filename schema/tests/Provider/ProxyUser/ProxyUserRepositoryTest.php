@@ -26,4 +26,22 @@ class ProxyUserRepositoryTest extends KernelTestCase
             $repository
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_finds_main_address_proxy()
+    {
+        /** @var ProxyUserRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(ProxyUser::class);
+
+        $mainProxy = $repository->getProxyMainAddress();
+
+        $this->assertInstanceOf(
+            ProxyUser::class,
+            $mainProxy
+        );
+    }
 }

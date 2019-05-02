@@ -45,4 +45,25 @@ class VoicemailRepositoryTest extends KernelTestCase
             $result
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_finds_one_by_mailbox_and_context()
+    {
+        /** @var VoicemailRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Voicemail::class);
+
+        $result = $repository->findByMailboxAndContext(
+            'user1',
+            'company1'
+        );
+
+        $this->assertInstanceOf(
+            VoicemailInterface::class,
+            $result
+        );
+    }
 }
