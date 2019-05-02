@@ -37,7 +37,10 @@ class CreatedByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerIn
 
     /**
      * Create a new TpLcrRule when a Destination is created
+     *
      * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return void
      */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {

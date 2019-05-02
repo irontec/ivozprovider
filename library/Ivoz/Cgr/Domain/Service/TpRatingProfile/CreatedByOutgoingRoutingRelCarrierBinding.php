@@ -37,6 +37,9 @@ class CreatedByOutgoingRoutingRelCarrierBinding implements OutgoingRoutingRelCar
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier)
     {
         $this->createByOutgoingRoutingRelCarrier->execute($outgoingRoutingRelCarrier);

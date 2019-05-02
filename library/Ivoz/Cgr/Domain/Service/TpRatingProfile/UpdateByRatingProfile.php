@@ -31,6 +31,9 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(RatingProfileInterface $ratingProfile)
     {
         $tpRatingProfile = $ratingProfile->getCgrRatingProfile();

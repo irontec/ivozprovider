@@ -31,6 +31,8 @@ class CreatedByOutgoingRoutingRelCarrier
      * Create a new TpRatingProfile for each TpRatingProfile of the Carrier
      *
      * @param OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier
+     *
+     * @return void
      */
     public function execute(OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier)
     {

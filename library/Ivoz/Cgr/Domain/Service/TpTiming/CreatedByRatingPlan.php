@@ -36,6 +36,9 @@ class CreatedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(RatingPlanInterface $ratingPlan)
     {
         // Always timings don't have timing entity related

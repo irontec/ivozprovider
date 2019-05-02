@@ -11,6 +11,8 @@ class UpdatedTpRatingProfileNotificator extends CgratesReloadNotificator impleme
      * Reload CGRates Configuration
      *
      * @param TpRatingProfileInterface $tpRatingProfile
+     *
+     * @return void
      */
     public function execute(TpRatingProfileInterface $tpRatingProfile)
     {

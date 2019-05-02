@@ -11,6 +11,8 @@ class UpdatedTpDestinationNotificator extends CgratesReloadNotificator implement
      * Reload CGRates Configuration
      *
      * @param TpDestinationInterface $tpDestination
+     *
+     * @return void
      */
     public function execute(TpDestinationInterface $tpDestination)
     {
