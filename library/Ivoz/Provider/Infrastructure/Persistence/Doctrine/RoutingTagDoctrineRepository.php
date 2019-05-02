@@ -20,23 +20,4 @@ class RoutingTagDoctrineRepository extends ServiceEntityRepository implements Ro
     {
         parent::__construct($registry, RoutingTag::class);
     }
-
-    /**
-     * @param int $companyId
-     * @return RoutingTagInterface[]
-     * @deprecated dead code
-     */
-    public function findByCompanyId(int $companyId)
-    {
-        $qb = $this->createQueryBuilder('self');
-        $query = $qb
-            ->select('self')
-            ->innerJoin('self.relCompanies', 'companyRelRoutingTag')
-            ->where(
-                $qb->expr()->eq('companyRelRoutingTag.company', $companyId)
-            )
-            ->getQuery();
-
-        return $query->getResult();
-    }
 }

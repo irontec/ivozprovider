@@ -164,7 +164,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
 
         if (count($ids) !== count($trunkCdrIds)) {
-            throw new \DomainException('Some id were not found');
+            throw new \RuntimeException('Some id were not found');
         }
 
         return $trunkCdrIds;
