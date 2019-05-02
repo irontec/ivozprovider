@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ExternalCallFil
 
     /**
      * @param ExternalCallFilterRelScheduleInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(ExternalCallFilterRelScheduleInterface $entity)
     {

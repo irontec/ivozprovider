@@ -36,6 +36,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(BrandInterface $entity)
     {
         if (!$entity->hasChanged('domain_users')) {

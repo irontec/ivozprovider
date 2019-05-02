@@ -12,6 +12,9 @@ class ConditionalRoutesConditionsRelMatchlistLifecycleServiceCollection implemen
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(ConditionalRoutesConditionsRelMatchlistLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

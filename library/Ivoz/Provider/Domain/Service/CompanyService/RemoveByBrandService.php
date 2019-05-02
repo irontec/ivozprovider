@@ -49,6 +49,9 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(BrandServiceInterface $entity)
     {
         /**

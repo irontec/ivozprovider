@@ -44,7 +44,10 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
 
     /**
      * @param CarrierInterface $carrier
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(CarrierInterface $carrier)
     {

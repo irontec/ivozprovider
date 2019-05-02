@@ -12,6 +12,9 @@ class AdministratorLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(AdministratorLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

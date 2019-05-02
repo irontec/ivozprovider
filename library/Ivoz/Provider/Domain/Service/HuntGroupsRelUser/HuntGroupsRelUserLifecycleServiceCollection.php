@@ -12,6 +12,9 @@ class HuntGroupsRelUserLifecycleServiceCollection implements LifecycleServiceCol
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(HuntGroupsRelUserLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

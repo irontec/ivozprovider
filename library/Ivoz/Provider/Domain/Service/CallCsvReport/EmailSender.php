@@ -55,6 +55,11 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @param CallCsvReportInterface $callCsvReport
+     * @return void
+     * @throws \DomainException
+     */
     public function execute(CallCsvReportInterface $callCsvReport)
     {
         $isNew = $callCsvReport->isNew();
@@ -69,7 +74,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 
         $targetEmail = $callCsvReport->getSentTo();
         if (!$targetEmail) {
-            return false;
+            return;
         }
 
         $notificationTemplateContent = $this

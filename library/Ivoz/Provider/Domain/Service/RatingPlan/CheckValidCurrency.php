@@ -24,6 +24,8 @@ class CheckValidCurrency implements RatingPlanLifecycleEventHandlerInterface
 
     /**
      * @param RatingPlanInterface $ratingPlan
+     *
+     * @return void
      */
     public function execute(RatingPlanInterface $ratingPlan)
     {

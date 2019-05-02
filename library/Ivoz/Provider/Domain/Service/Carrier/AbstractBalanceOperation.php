@@ -107,7 +107,7 @@ abstract class AbstractBalanceOperation
         return $success;
     }
 
-    public function getLastError()
+    public function getLastError(): string
     {
         return $this->lastError;
     }

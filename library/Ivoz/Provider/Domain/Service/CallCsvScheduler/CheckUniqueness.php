@@ -28,6 +28,8 @@ class CheckUniqueness implements CallCsvSchedulerLifecycleEventHandlerInterface
 
     /**
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(CallCsvSchedulerInterface $callCsvScheduler)
     {

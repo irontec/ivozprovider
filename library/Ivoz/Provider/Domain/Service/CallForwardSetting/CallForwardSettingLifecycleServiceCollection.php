@@ -12,6 +12,9 @@ class CallForwardSettingLifecycleServiceCollection implements LifecycleServiceCo
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CallForwardSettingLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

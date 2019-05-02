@@ -34,6 +34,9 @@ class DeleteByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(BrandInterface $entity)
     {
         $domain = $entity->getDomain();

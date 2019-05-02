@@ -21,6 +21,8 @@ class DeleteProtection implements ProxyUserLifecycleEventHandlerInterface
 
     /**
      * @param ProxyUserInterface $proxyUser
+     *
+     * @return void
      */
     public function execute(ProxyUserInterface $proxyUser)
     {

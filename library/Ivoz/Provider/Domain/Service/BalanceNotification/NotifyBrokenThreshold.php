@@ -75,6 +75,9 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         return false;
     }
 
+    /**
+     * @return void
+     */
     private function sendNotification(AbstractBalanceThresholdWasBroken $event)
     {
         /** @var BalanceNotificationInterface $balanceNotification */
@@ -128,7 +131,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         );
     }
 
-    private function parseNotificationContent(string $content, string $name, float $currentBalance)
+    private function parseNotificationContent(string $content, string $name, float $currentBalance): string
     {
         $substitution = array(
             '${BALANCE_NAME}' => $name,

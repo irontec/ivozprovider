@@ -12,6 +12,9 @@ class RatingProfileLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(RatingProfileLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

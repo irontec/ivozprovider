@@ -125,6 +125,8 @@ trait RoutableTrait
 
     /**
      * {@inheritDoc}
+     *
+     * @return void
      */
     protected function sanitizeRouteValues(string $prefix = "")
     {

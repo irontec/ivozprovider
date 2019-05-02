@@ -12,6 +12,9 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(FriendLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

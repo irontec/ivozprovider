@@ -22,6 +22,9 @@ class IvrDoctrineRepository extends ServiceEntityRepository implements IvrReposi
         parent::__construct($registry, Ivr::class);
     }
 
+    /**
+     * @return array
+     */
     public function findByExtension(ExtensionInterface $extension)
     {
         $qb = $this->createQueryBuilder('self');
@@ -39,6 +42,9 @@ class IvrDoctrineRepository extends ServiceEntityRepository implements IvrReposi
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @return array
+     */
     public function findByUser(UserInterface $user)
     {
         $qb = $this->createQueryBuilder('self');

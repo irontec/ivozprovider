@@ -43,6 +43,8 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
 
     /**
      * @param UserInterface $user
+     *
+     * @return void
      */
     public function execute(UserInterface $user)
     {

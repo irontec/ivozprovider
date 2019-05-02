@@ -23,6 +23,9 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(InvoiceInterface $invoice)
     {
         $pendingStatus = $invoice->getStatus() === InvoiceInterface::STATUS_WAITING;

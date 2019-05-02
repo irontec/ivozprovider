@@ -33,6 +33,9 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(InvoiceSchedulerInterface $scheduler)
     {
         $nextExecution = $scheduler->getNextExecution();

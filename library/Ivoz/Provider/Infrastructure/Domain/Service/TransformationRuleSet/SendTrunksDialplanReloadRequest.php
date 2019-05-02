@@ -25,6 +25,9 @@ class SendTrunksDialplanReloadRequest implements TransformationRuleSetLifecycleE
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(TransformationRuleSetInterface $transformationRuleSet)
     {
         $this->trunksClient->reloadDialplan();

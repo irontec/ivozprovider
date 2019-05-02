@@ -21,6 +21,8 @@ class DeleteProtection implements ProxyTrunkLifecycleEventHandlerInterface
 
     /**
      * @param ProxyTrunkInterface $proxyTrunk
+     *
+     * @return void
      */
     public function execute(ProxyTrunkInterface $proxyTrunk)
     {

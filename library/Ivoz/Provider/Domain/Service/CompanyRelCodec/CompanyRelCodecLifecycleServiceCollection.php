@@ -12,6 +12,9 @@ class CompanyRelCodecLifecycleServiceCollection implements LifecycleServiceColle
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CompanyRelCodecLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

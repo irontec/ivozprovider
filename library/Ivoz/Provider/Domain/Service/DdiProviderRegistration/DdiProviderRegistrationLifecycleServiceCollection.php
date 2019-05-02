@@ -12,6 +12,9 @@ class DdiProviderRegistrationLifecycleServiceCollection implements LifecycleServ
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(DdiProviderRegistrationLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CompanyRelCodec
 
     /**
      * @param CompanyRelCodecInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(CompanyRelCodecInterface $entity)
     {

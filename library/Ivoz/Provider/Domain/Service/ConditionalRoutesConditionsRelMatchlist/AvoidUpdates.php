@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ConditionalRout
 
     /**
      * @param ConditionalRoutesConditionsRelMatchlistInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(ConditionalRoutesConditionsRelMatchlistInterface $entity)
     {

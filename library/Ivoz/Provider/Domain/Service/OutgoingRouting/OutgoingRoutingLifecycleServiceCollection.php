@@ -12,6 +12,9 @@ class OutgoingRoutingLifecycleServiceCollection implements LifecycleServiceColle
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(OutgoingRoutingLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
