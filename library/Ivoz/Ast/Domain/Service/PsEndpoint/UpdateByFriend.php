@@ -39,6 +39,8 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
 
     /**
      * @param Friend $entity
+     *
+     * @return void
      */
     public function execute(FriendInterface $entity)
     {

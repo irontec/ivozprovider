@@ -28,6 +28,9 @@ class UpdateByPickUpRelUser implements PickUpRelUserLifecycleEventHandlerInterfa
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(PickUpRelUserInterface $pickUpRelUser)
     {
         $user = $pickUpRelUser->getUser();
