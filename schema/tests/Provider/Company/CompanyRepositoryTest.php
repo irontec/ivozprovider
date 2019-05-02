@@ -2,6 +2,8 @@
 
 namespace Tests\Provider\Company;
 
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
@@ -38,16 +40,39 @@ class CompanyRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(Company::class);
 
-        $brands = $repository->findByBrandId(1);
+        $companies = $repository->findByBrandId(1);
 
         $this->assertInternalType(
             'array',
-            $brands
+            $companies
         );
 
         $this->assertInstanceOf(
             CompanyInterface::class,
-            $brands[0]
+            $companies[0]
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function it_finds_prepaid_companies()
+    {
+        /** @var CompanyRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Company::class);
+
+        $companies = $repository->getPrepaidCompanies();
+
+        $this->assertInternalType(
+            'array',
+            $companies
+        );
+
+        $this->assertInstanceOf(
+            CompanyInterface::class,
+            $companies[0]
         );
     }
 }

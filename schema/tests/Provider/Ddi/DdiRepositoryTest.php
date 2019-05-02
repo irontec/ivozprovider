@@ -26,4 +26,22 @@ class DdiRepositoryTest extends KernelTestCase
             $repository
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_finds_one_by_ddi_e164()
+    {
+        /** @var DdiRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Ddi::class);
+
+        $ddi = $repository->findOneByDdiE164('+34123');
+
+        $this->assertInstanceOf(
+            Ddi::class,
+            $ddi
+        );
+    }
 }

@@ -12,6 +12,26 @@ class BillableCallRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
+
+    /**
+     * @test
+     */
+    public function it_finds_one_by_trunksCdrId()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCalls */
+        $retarificable = $billableCallRepository
+            ->findOneByTrunksCdrId(1);
+
+        $this->assertInstanceOf(
+            BillableCall::class,
+            $retarificable
+        );
+    }
+
     /**
      * @test
      * @see BillableCallRepository::areRetarificable
@@ -64,7 +84,7 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $cgrids = $billableCallRepository
-            ->findRerateableCgridsInGroup([]);
+            ->findRerateableCgridsInGroup([1]);
 
         $this->assertInternalType(
             'array',
@@ -83,13 +103,29 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $cgrids = $billableCallRepository
-            ->idsToTrunkCdrId([]);
+            ->idsToTrunkCdrId([1]);
 
         $this->assertInternalType(
             'array',
             $cgrids
         );
     }
+
+    /**
+     * @test
+     * @expectedException \RuntimeException
+     */
+    public function it_throws_exception_if_trunkCdrIds_are_missing()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCalls */
+        $cgrids = $billableCallRepository
+            ->idsToTrunkCdrId([99999]);
+    }
+
 
     /**
      * @test
