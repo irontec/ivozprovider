@@ -8,7 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $fileList = [
     '/opt/irontec/ivozprovider/library/spec/coverage/coverage.php',
-    '/opt/irontec/ivozprovider/scheme/tests/coverage/coverage.php',
+    '/opt/irontec/ivozprovider/schema/tests/coverage/coverage.php',
     '/opt/irontec/ivozprovider/web/rest/platform/features/coverage/coverage.php',
     '/opt/irontec/ivozprovider/web/rest/brand/features/coverage/coverage.php',
     '/opt/irontec/ivozprovider/web/rest/client/features/coverage/coverage.php',

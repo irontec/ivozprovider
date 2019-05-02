@@ -5,7 +5,7 @@ pushd /opt/irontec/ivozprovider
 
     ./library/bin/test-phpspec
 
-    ./scheme/bin/test-orm
+    ./schema/bin/test-orm
 
     ./library/bin/test-api
 popd

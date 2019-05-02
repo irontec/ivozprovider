@@ -27,7 +27,7 @@ done
 
 shift $(expr $OPTIND - 1 )
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     while test $# -gt 0; do
         bin/console provider:clear:interfaces ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
         bin/console provider:generate:entities:abstract ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/

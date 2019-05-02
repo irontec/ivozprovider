@@ -17,7 +17,7 @@ ones in the git log history.
     - kamtrunks: Changes in proxys working with trunks
     - kamusers: Changes in proxys working with users
     - agis: Changes that affect logic of PBX
-    - scheme: Changes that only affect database tables structures
+    - schema: Changes that only affect database tables structures
     - core: Changes in data entities (almost everything under libray dir)
     - i18n: Internalization or translation changes
     - pkg: Changes related to debian package system

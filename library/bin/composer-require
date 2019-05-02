@@ -24,7 +24,7 @@ pushd /opt/irontec/ivozprovider/microservices/scheduler
     composer require $*
 popd
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     composer require $*
 popd
 
