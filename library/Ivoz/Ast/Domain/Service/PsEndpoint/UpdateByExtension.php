@@ -36,6 +36,8 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 
     /**
      * @param ExtensionInterface $extension
+     *
+     * @return void
      */
     public function execute(ExtensionInterface $extension)
     {

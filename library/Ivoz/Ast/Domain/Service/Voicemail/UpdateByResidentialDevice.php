@@ -38,6 +38,9 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(ResidentialDeviceInterface $residentialDevice)
     {
         /** @var Voicemail $voicemail */

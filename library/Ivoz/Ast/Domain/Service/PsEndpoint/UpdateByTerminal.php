@@ -40,6 +40,8 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
 
     /**
      * @param TerminalInterface $terminal
+     *
+     * @return void
      */
     public function execute(TerminalInterface $terminal)
     {
