@@ -21,6 +21,9 @@ class DomainServiceCompiler implements CompilerPassInterface
      */
     protected $container;
 
+    /**
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         $this->container = $container;
@@ -45,6 +48,9 @@ class DomainServiceCompiler implements CompilerPassInterface
         }
     }
 
+    /**
+     * @return void
+     */
     protected function configureLifecycleService($fqdn, $subscribedEvents)
     {
         $service = $this->container->getDefinition($fqdn);
@@ -62,6 +68,9 @@ class DomainServiceCompiler implements CompilerPassInterface
         }
     }
 
+    /**
+     * @return void
+     */
     protected function configureLifecycleCollectionService($fqdn)
     {
         $service = $this->container->getDefinition($fqdn);
@@ -72,6 +81,9 @@ class DomainServiceCompiler implements CompilerPassInterface
         $this->container->setAlias($tag, $fqdn);
     }
 
+    /**
+     * @return void
+     */
     protected function configureDomainEventSubscribers($fqdn)
     {
         $service = $this->container->getDefinition($fqdn);
@@ -79,7 +91,12 @@ class DomainServiceCompiler implements CompilerPassInterface
         $service->setPublic(true);
     }
 
-    protected function getLifecycleEventHandlerServices()
+    /**
+     * @return array
+     *
+     * @psalm-return array<int, array-key>
+     */
+    protected function getLifecycleEventHandlerServices(): array
     {
         $domainServices = $this->container->findTaggedServiceIds('domain.service');
         $services = array_filter(
@@ -98,7 +115,12 @@ class DomainServiceCompiler implements CompilerPassInterface
         return array_keys($services);
     }
 
-    protected function getLifecycleServiceCollections()
+    /**
+     * @return array
+     *
+     * @psalm-return array<int, array-key>
+     */
+    protected function getLifecycleServiceCollections(): array
     {
         $domainServices = $this->container->findTaggedServiceIds('domain.service');
         $services = array_filter(
@@ -117,7 +139,12 @@ class DomainServiceCompiler implements CompilerPassInterface
         return array_keys($services);
     }
 
-    protected function getDomainEventSubscribers()
+    /**
+     * @return array
+     *
+     * @psalm-return array<int, array-key>
+     */
+    protected function getDomainEventSubscribers(): array
     {
         $domainServices = $this->container->findTaggedServiceIds('domain.service');
         $services = array_filter(
@@ -138,6 +165,8 @@ class DomainServiceCompiler implements CompilerPassInterface
 
     /**
      * @param Definition[] $services
+     *
+     * @return void
      */
     protected function setRepositoryAliases(array $services)
     {

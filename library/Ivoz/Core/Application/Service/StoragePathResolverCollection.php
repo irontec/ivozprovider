@@ -12,6 +12,8 @@ class StoragePathResolverCollection
     /**
      * @param string $objName
      * @param StoragePathResolverInterface $storagePathResolver
+     *
+     * @return void
      */
     public function addPathResolver(string $objName, StoragePathResolverInterface $storagePathResolver)
     {

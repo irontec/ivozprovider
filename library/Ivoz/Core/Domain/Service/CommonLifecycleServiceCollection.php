@@ -8,6 +8,9 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     public function setServices(array $services)
     {
         foreach ($services as $service) {
@@ -15,6 +18,9 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
         }
     }
 
+    /**
+     * @return void
+     */
     protected function addService(CommonLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

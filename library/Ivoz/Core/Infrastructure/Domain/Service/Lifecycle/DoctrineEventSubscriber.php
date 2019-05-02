@@ -75,6 +75,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         ];
     }
 
+    /**
+     * @return void
+     */
     public function postLoad(LifecycleEventArgs $args)
     {
         $object = $args->getObject();
@@ -83,36 +86,57 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @return void
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
         $this->run('pre_persist', $args, true);
     }
 
+    /**
+     * @return void
+     */
     public function postPersist(LifecycleEventArgs $args)
     {
         $this->run('post_persist', $args, true);
     }
 
+    /**
+     * @return void
+     */
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $this->run('pre_persist', $args);
     }
 
+    /**
+     * @return void
+     */
     public function postUpdate(LifecycleEventArgs $args)
     {
         $this->run('post_persist', $args);
     }
 
+    /**
+     * @return void
+     */
     public function preRemove(LifecycleEventArgs $args)
     {
         $this->run('pre_remove', $args);
     }
 
+    /**
+     * @return void
+     */
     public function postRemove(LifecycleEventArgs $args)
     {
         $this->run('post_remove', $args);
     }
 
+    /**
+     * @return void
+     */
     public function onFlush(OnFlushEventArgs $eventArgs)
     {
         $em = $eventArgs->getEntityManager();
@@ -145,6 +169,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @return void
+     */
     public function preCommit()
     {
         $this
@@ -152,6 +179,9 @@ class DoctrineEventSubscriber implements EventSubscriber
             ->persistEvents();
     }
 
+    /**
+     * @return void
+     */
     public function onCommit(OnCommitEventArgs $args)
     {
         foreach ($this->flushedEntities as $entity) {
@@ -172,6 +202,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->flushedEntities = [];
     }
 
+    /**
+     * @return void
+     */
     public function onError(OnErrorEventArgs $args)
     {
         $this->handleError(
@@ -180,6 +213,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         );
     }
 
+    /**
+     * @return void
+     */
     private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
         $entity = $args->getObject();
@@ -192,6 +228,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->runEntityServices($eventName, $args, $isNew);
     }
 
+    /**
+     * @return void
+     */
     private function triggerDomainEvents($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
@@ -245,6 +284,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @return void
+     */
     private function runSharedServices($eventName, LifecycleEventArgs $args)
     {
         $serviceName = 'lifecycle.' . $eventName . '.common';
@@ -262,6 +304,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         $service->execute($entity);
     }
 
+    /**
+     * @return void
+     */
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
@@ -287,6 +332,9 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @return void
+     */
     private function handleError(EntityInterface $entity, \Exception $exception)
     {
         $errorHandlerName = LifecycleServiceHelper::getServiceNameByEntity($entity, 'error_handler');

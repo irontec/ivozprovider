@@ -104,7 +104,11 @@ abstract class AbstractBalanceService
         return $payload;
     }
 
-    private function sendRequest($method, $payload)
+    /**
+     * @return array
+     * @psalm-return array{success:bool, error:mixed}
+     */
+    private function sendRequest($method, $payload): array
     {
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
         $request = $this->client
@@ -125,7 +129,12 @@ abstract class AbstractBalanceService
         ];
     }
 
-    private function getBalancePayload(EntityInterface $entity, $amount)
+    /**
+     * @return array
+     *
+     * @psalm-return array{Tenant:string, Account:string, BalanceUuid:null, BalanceId:string, BalanceType:string, Directions:null, Value:mixed, ExpiryTime:null, RatingSubject:null, Categories:null, DestinationIds:null, TimingIds:null, Weight:null, SharedGroups:null, Overwrite:false, Blocker:null, Disabled:null}
+     */
+    private function getBalancePayload(EntityInterface $entity, $amount): array
     {
         return [
             'Tenant' => $this->getTenant($entity),

@@ -10,6 +10,9 @@ class Manager
     private static $_stdLogger = null;
     private static $_options = null;
 
+    /**
+     * @return void
+     */
     public static function setOptions($options)
     {
         self::$_options = $options;

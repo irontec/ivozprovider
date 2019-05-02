@@ -4,6 +4,9 @@ namespace Ivoz\Core\Infrastructure\Persistence\Filesystem;
 
 class TempFileHelper
 {
+    /**
+     * @return resource|false
+     */
     public function createWithContent($content)
     {
         $tmpfile = tmpfile();

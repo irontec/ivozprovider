@@ -29,24 +29,24 @@ class Recoder extends AbstractJob
         'entityName'
     );
 
-    public function setId($id)
+    public function setId($id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    public function setEntityName($entityName)
+    public function setEntityName($entityName): self
     {
         $this->entityName = $entityName;
         return $this;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getEntityName()
+    public function getEntityName(): string
     {
         return $this->entityName;
     }

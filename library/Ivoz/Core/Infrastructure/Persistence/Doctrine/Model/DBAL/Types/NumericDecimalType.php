@@ -9,6 +9,8 @@ class NumericDecimalType extends DecimalType
 {
     /**
      * {@inheritdoc}
+     *
+     * @return null|float
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
