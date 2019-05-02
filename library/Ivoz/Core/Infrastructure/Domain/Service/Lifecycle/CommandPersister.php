@@ -42,6 +42,9 @@ class CommandPersister
         $this->logger = $logger;
     }
 
+    /**
+     * @return void
+     */
     public function persistEvents()
     {
         $commandNum = $this

@@ -21,6 +21,9 @@ class LifecycleCompiler implements CompilerPassInterface
      */
     protected $container;
 
+    /**
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         $this->container = $container;
@@ -49,6 +52,9 @@ class LifecycleCompiler implements CompilerPassInterface
         }
     }
 
+    /**
+     * @return void
+     */
     protected function buildService(array $serviceCollection, $collectionClassName = null)
     {
         foreach ($serviceCollection as $tag => $services) {
@@ -93,6 +99,9 @@ class LifecycleCompiler implements CompilerPassInterface
         }
     }
 
+    /**
+     * @return string|null
+     */
     protected function getLifeCycleCollectionClass($serviceTag)
     {
         $tagSegments = explode('.', $serviceTag);
@@ -104,7 +113,10 @@ class LifecycleCompiler implements CompilerPassInterface
         return $definition->getClass();
     }
 
-    protected function getLifecycleServices()
+    /**
+     * @return array
+     */
+    protected function getLifecycleServices(): array
     {
         $services = [];
         $servicesDefinitions = $this->container->getDefinitions();
@@ -141,7 +153,10 @@ class LifecycleCompiler implements CompilerPassInterface
         return $services;
     }
 
-    protected function getErrorHandlerServices()
+    /**
+     * @return array
+     */
+    protected function getErrorHandlerServices(): array
     {
         $services = [];
         $servicesDefinitions = $this->container->getDefinitions();
@@ -174,7 +189,12 @@ class LifecycleCompiler implements CompilerPassInterface
         return $services;
     }
 
-    protected function getDomainEventSubscriberServices()
+    /**
+     * @return Definition[]
+     *
+     * @psalm-return array<int, Definition>
+     */
+    protected function getDomainEventSubscriberServices(): array
     {
         $services = [];
         $servicesDefinitions = $this->container->getDefinitions();
@@ -191,7 +211,12 @@ class LifecycleCompiler implements CompilerPassInterface
         return $services;
     }
 
-    protected function getServicesByTag($tag)
+    /**
+     * @return array-key[]
+     *
+     * @psalm-return array<int, array-key>
+     */
+    protected function getServicesByTag($tag): array
     {
         $services = $this->container->findTaggedServiceIds($tag);
 

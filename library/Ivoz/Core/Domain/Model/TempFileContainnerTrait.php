@@ -14,6 +14,8 @@ trait TempFileContainnerTrait
     /**
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile($fldName, TempFile $file)
     {
@@ -22,7 +24,10 @@ trait TempFileContainnerTrait
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function removeTmpFile(TempFile $file)
     {

@@ -14,6 +14,9 @@ trait DomainEventTrait
      */
     protected $microtime;
 
+    /**
+     * @return void
+     */
     protected function setEventTimestamp()
     {
         $this->occurredOn = new \DateTimeImmutable(
@@ -24,11 +27,17 @@ trait DomainEventTrait
         $this->microtime = intval((microtime(true) - time()) * 10000);
     }
 
+    /**
+     * @return \DateTimeImmutable
+     */
     public function getOccurredOn()
     {
         return clone $this->occurredOn;
     }
 
+    /**
+     * @return int
+     */
     public function getMicrotime()
     {
         return $this->microtime;

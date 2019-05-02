@@ -277,7 +277,10 @@ class DataGateway
     /**
      * @param string $entityName
      * @param DataTransferObjectInterface $dto
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function update(string $entityName, DataTransferObjectInterface $dto)
     {
@@ -300,7 +303,10 @@ class DataGateway
     /**
      * @param string $entityName
      * @param array $ids
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function remove(string $entityName, array $ids)
     {
@@ -340,6 +346,9 @@ class DataGateway
             );
     }
 
+    /**
+     * @return void
+     */
     private function triggerEvent(string $class, string $method, array $arguments)
     {
         foreach ($arguments as $key => $value) {
@@ -366,7 +375,10 @@ class DataGateway
         $this->eventPublisher->publish($event);
     }
 
-    private function dtoToArray(DataTransferObjectInterface $dto)
+    /**
+     * @return array
+     */
+    private function dtoToArray(DataTransferObjectInterface $dto): array
     {
         $result = $dto->toArray(true);
 
@@ -374,7 +386,10 @@ class DataGateway
             ->walkArray($result);
     }
 
-    private function walkArray(array $data)
+    /**
+     * @return array
+     */
+    private function walkArray(array $data): array
     {
         foreach ($data as $key => $value) {
             if (is_array($value)) {

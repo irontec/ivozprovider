@@ -9,13 +9,13 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 
 class LifecycleServiceHelper
 {
-    public static function getServiceNameByEntity(EntityInterface $entity, $event)
+    public static function getServiceNameByEntity(EntityInterface $entity, $event): string
     {
         $entityClass = EntityClassHelper::getEntityClass($entity);
         return self::getServiceNameByEntityFqdn($entityClass, $event);
     }
 
-    public static function getServiceNameByEntityFqdn(string $entityClass, $event)
+    public static function getServiceNameByEntityFqdn(string $entityClass, $event): string
     {
         $classSegments = explode('\\', $entityClass);
 
@@ -27,7 +27,7 @@ class LifecycleServiceHelper
         return strtolower($serviceName);
     }
 
-    public static function getServiceTagByServiceFqdn(string $serviceClass, $event)
+    public static function getServiceTagByServiceFqdn(string $serviceClass, $event): string
     {
         $serviceInterfaces = class_implements($serviceClass);
         $targetInterface = null;
@@ -56,7 +56,7 @@ class LifecycleServiceHelper
         );
     }
 
-    public static function getServiceCollectionTag(string $serviceClass)
+    public static function getServiceCollectionTag(string $serviceClass): string
     {
         $serviceInterfaces = class_implements($serviceClass);
         $targetInterface = null;

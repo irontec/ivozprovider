@@ -32,6 +32,9 @@ class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
         $this->logger = $logger;
     }
 
+    /**
+     * @return void
+     */
     public function handle(EntityInterface $entity)
     {
         if (!$entity instanceof FileContainerInterface) {

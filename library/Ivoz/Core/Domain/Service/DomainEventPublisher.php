@@ -26,6 +26,9 @@ class DomainEventPublisher
         $this->subscribers = [];
     }
 
+    /**
+     * @return void
+     */
     public function subscribe(DomainEventSubscriberInterface $subscriber)
     {
         $objectId = spl_object_hash($subscriber);
@@ -34,7 +37,10 @@ class DomainEventPublisher
 
     /**
      * @param DomainEventInterface | StoppableDomainEventInterface $aDomainEvent
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function publish(DomainEventInterface $aDomainEvent)
     {

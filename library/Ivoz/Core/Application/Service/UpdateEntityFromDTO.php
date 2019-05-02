@@ -23,6 +23,9 @@ class UpdateEntityFromDTO
         $this->entityAssembler = $entityAssembler;
     }
 
+    /**
+     * @return void
+     */
     public function execute(EntityInterface $entity, DataTransferObjectInterface $dto)
     {
         //Ensure that we don't propagate applied changes

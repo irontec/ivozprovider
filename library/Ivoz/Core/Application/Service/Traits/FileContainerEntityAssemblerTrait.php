@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Core\Application\Service\StoragePathResolverInterface;
 
 trait FileContainerEntityAssemblerTrait
 {
@@ -15,7 +16,7 @@ trait FileContainerEntityAssemblerTrait
      */
     protected $storagePathResolver;
 
-    protected function getPathResolver($objName, $originalFileName = null)
+    protected function getPathResolver($objName, $originalFileName = null): StoragePathResolverInterface
     {
         $pathResolver = $this
             ->storagePathResolver
@@ -28,6 +29,9 @@ trait FileContainerEntityAssemblerTrait
         return $pathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function handleEntityFiles(
         FileContainerInterface $entity,
         DataTransferObjectInterface $dto,
@@ -109,7 +113,10 @@ trait FileContainerEntityAssemblerTrait
      * @param EntityInterface $entity
      * @param string $fldName
      * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+     *
      * @throws \InvalidArgumentException
+     *
+     * @return void
      */
     protected function handleFile(
         DataTransferObjectInterface $dto,
@@ -159,7 +166,10 @@ trait FileContainerEntityAssemblerTrait
     /**
      * @param DataTransferObjectInterface $dto
      * @param string $fieldName
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     protected function updateDtoMetadata(
         DataTransferObjectInterface $dto,

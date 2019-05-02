@@ -33,6 +33,9 @@ abstract class AbstractXmlRpcRequest
         $this->enabled = $enabled;
     }
 
+    /**
+     * @return void
+     */
     public function send(string $rpcMethod)
     {
         if (!$this->enabled) {

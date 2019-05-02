@@ -23,6 +23,9 @@ trait LifecycleServiceCollectionTrait
         $this->logger = $logger;
     }
 
+    /**
+     * @return void
+     */
     public function setServices(array $services)
     {
         foreach ($services as $service) {

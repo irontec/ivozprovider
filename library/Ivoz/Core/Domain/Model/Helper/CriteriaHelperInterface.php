@@ -35,7 +35,7 @@ interface CriteriaHelperInterface
     /**
      * @param string $operator
      * @param Criteria $baseCriteria
-     * @param Criteria[] ...$criteriasToAppend
+     * @param Criteria ...$criteriasToAppend
      * @return Criteria
      */
     public static function append(string $operator, Criteria $baseCriteria, Criteria ...$criteriasToAppend): Criteria;

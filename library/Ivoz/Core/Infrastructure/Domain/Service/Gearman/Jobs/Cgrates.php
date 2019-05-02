@@ -25,17 +25,20 @@ class Cgrates extends AbstractJob
         'tpid',
     );
 
-    public function setTpid($tpid)
+    public function setTpid($tpid): self
     {
         $this->tpid = $tpid;
         return $this;
     }
 
-    public function getTpid()
+    public function getTpid(): int
     {
         return $this->tpid;
     }
 
+    /**
+     * @return void
+     */
     public function send()
     {
         if (self::$alreadySent) {

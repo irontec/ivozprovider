@@ -232,7 +232,7 @@ class CriteriaHelper implements CriteriaHelperInterface
         ];
     }
 
-    private static function operatorMap(string $operator)
+    private static function operatorMap(string $operator): string
     {
         $values = [
             '=' => 'eq',
@@ -259,7 +259,7 @@ class CriteriaHelper implements CriteriaHelperInterface
     /**
      * @param string $operator
      * @param Criteria $baseCriteria
-     * @param Criteria[] ...$criteriasToAppend
+     * @param Criteria ...$criteriasToAppend
      * @return Criteria
      */
     public static function append(string $operator, Criteria $baseCriteria, Criteria ...$criteriasToAppend): Criteria

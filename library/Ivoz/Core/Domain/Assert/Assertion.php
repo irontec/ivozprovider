@@ -8,7 +8,10 @@ class Assertion extends BaseAssertion
 {
     const INVALID_REGEX_FORMAT = 501;
 
-    public static function regexFormat($pattern, $message = null, $propertyPath = null)
+    /**
+     * @return true
+     */
+    public static function regexFormat($pattern, $message = null, $propertyPath = null): bool
     {
         static::string($pattern, $message, $propertyPath);
 
