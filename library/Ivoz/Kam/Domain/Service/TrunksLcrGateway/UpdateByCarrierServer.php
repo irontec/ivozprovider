@@ -30,6 +30,9 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CarrierServerInterface $carrierServer)
     {
         $lcrGateway = $carrierServer->getLcrGateway();

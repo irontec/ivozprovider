@@ -40,6 +40,9 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(ApplicationServerInterface $entity)
     {
         /**

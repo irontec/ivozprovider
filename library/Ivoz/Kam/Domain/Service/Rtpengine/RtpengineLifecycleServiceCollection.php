@@ -12,6 +12,9 @@ class RtpengineLifecycleServiceCollection implements LifecycleServiceCollectionI
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(RtpengineLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

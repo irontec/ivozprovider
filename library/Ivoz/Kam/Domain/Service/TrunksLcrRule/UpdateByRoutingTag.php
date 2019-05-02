@@ -43,7 +43,10 @@ class UpdateByRoutingTag implements RoutingTagLifecycleEventHandlerInterface
 
     /**
      * @param RoutingTagInterface $routingTag
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(RoutingTagInterface $routingTag)
     {

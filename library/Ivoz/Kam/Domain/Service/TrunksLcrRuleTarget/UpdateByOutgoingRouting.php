@@ -37,6 +37,9 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {
         $this->trunksLcrRuleTargetFactory->execute(

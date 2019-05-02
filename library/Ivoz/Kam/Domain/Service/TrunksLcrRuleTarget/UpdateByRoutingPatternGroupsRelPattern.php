@@ -37,6 +37,9 @@ class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelP
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(
         RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
     ) {

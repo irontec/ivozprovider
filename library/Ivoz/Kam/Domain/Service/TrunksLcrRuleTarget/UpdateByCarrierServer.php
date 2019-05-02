@@ -40,6 +40,8 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
 
     /**
      * @param CarrierServerInterface $carrierServer
+     *
+     * @return void
      */
     public function execute(CarrierServerInterface $carrierServer)
     {
