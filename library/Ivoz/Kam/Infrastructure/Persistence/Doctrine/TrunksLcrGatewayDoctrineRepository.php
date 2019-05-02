@@ -22,6 +22,9 @@ class TrunksLcrGatewayDoctrineRepository extends ServiceEntityRepository impleme
         parent::__construct($registry, TrunksLcrGateway::class);
     }
 
+    /**
+     * @return object|null
+     */
     public function findDummyGateway()
     {
         return $this

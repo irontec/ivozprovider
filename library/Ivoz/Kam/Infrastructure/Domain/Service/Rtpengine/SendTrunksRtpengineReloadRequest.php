@@ -25,6 +25,9 @@ class SendTrunksRtpengineReloadRequest implements RtpengineLifecycleEventHandler
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(RtpengineInterface $entity)
     {
         $this->trunksClient->reloadRtpengine();

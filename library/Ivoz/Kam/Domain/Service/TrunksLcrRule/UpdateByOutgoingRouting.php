@@ -49,7 +49,10 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
 
     /**
      * @param OutgoingRoutingInterface $outgoingRouting
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {

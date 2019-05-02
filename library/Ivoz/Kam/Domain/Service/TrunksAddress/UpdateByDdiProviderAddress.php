@@ -33,6 +33,9 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(DdiProviderAddressInterface $ddiProviderAddress)
     {
         $trunksAddress = $ddiProviderAddress->getTrunksAddress();

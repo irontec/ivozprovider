@@ -33,6 +33,9 @@ class TrunksLcrRuleTargetFactory
         $this->entityTools = $entityTools;
     }
 
+    /**
+     * @return void
+     */
     public function execute(
         OutgoingRoutingInterface $outgoingRouting
     ) {

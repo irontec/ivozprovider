@@ -9,6 +9,9 @@ class TrunksAddressLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(TrunksAddressLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
