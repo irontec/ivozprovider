@@ -383,6 +383,9 @@ class RouterAction
             case RouterAction::Service:
                 $this->routeService();
                 break;
+            default:
+                $this->agi->error("No configured route type");
+                break;
         }
     }
 
