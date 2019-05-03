@@ -12,6 +12,17 @@
 #
 ###############################################################################
 
+# Remove every redis key except accounts info
+if [ "$1" == "--flushall" ]; then
+    SENTINEL_MASTER=`redis-cli -p 26379 sentinel get-master-addr-by-name mymaster | head -n 1`
+    echo -e "\e[1;32m* \e[1;97mDetected Redis Sentinel Master: $SENTINEL_MASTER\n\e[0m"
+    echo -e "\e[1;31mThis operation cannot be undone, proceed?\n\e[0m"
+    read -p "Press enter to continue"
+
+    echo -e "\e[1;32m* \e[1;31mFlushing every key except 'acc_*' ...\e[0m"
+    redis-cli -h $SENTINEL_MASTER -n 10 keys \* | egrep -v "^acc_" | xargs redis-cli -h $SENTINEL_MASTER -n 10 del
+fi
+
 # Get mysql password form debconf
 MYSQL_PWD=`echo get ivozprovider/mysql_password | debconf-communicate | cut -f2 -d" "`
 export $MYSQL_PWD
@@ -23,5 +34,5 @@ BRANDS=`mysql -h data.ivozprovider.local -uroot -BN ivozprovider -e "SELECT id F
 for BRAND in $BRANDS; do
     # Reload billing information for this brand
     echo -e "\e[1;32m* \e[1;31mReloading billing information for brand ${BRAND} ...\e[0m"
-    /usr/bin/cgr-loader -from_stordb -validate -verbose -tpid b${BRAND}
+    /usr/bin/cgr-loader -from_stordb -validate -cleanup -redis_sentinel mymaster -datadb_port 26379 -tpid b${BRAND}
 done
