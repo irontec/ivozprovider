@@ -78,7 +78,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
                     return [[$invoice], $invoiceDto];
                 },
                 'updateEntityByDto' => function () use ($invoice, $invoiceDto) {
-                    return [[$invoice, $invoiceDto], null];
+                    return [[$invoice, $invoiceDto], $invoice];
                 }
             ]
         );

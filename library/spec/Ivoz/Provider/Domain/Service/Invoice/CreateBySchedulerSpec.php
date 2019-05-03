@@ -406,7 +406,7 @@ class CreateBySchedulerSpec extends ObjectBehavior
                 Argument::type(InvoiceSchedulerInterface::class),
                 Argument::type(InvoiceSchedulerDto::class)
             )
-            ->willReturn(null);
+            ->willReturn($scheduler->getWrappedObject());
 
         $this
             ->entityTools
