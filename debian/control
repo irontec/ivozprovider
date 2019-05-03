@@ -115,6 +115,7 @@ Priority: optional
 Depends: ivozprovider-profile-common (=${binary:Version}),
         sngrep,
         mysql-client,
+        redis-tools,
         netcat-openbsd,
         ssl-cert,
         ivozprovider-kamailio,
