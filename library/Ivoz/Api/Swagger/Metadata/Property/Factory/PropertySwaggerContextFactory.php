@@ -54,11 +54,29 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
         try {
             /** @var ClassMetadata $metadata */
             $metadata = $this->classMetadataFactory->getMetadataFor($resourceClass);
-            $fldMetadata = $metadata->getFieldMapping($property);
-            $ormType = $fldMetadata['type'];
         } catch (\Exception $exception) {
             return $propertyMetadata;
         }
+
+        if ($metadata->hasAssociation($property)) {
+            $association = $metadata->getAssociationMapping($property);
+            $column = $association['joinColumns'][0] ?? [];
+            $isNullableFk =
+                (isset($column['nullable']) && $column['nullable'])
+                || (isset($column['onDelete']) && $column['onDelete'] === 'set null');
+
+            return $propertyMetadata->withRequired(!$isNullableFk);
+        }
+
+        try {
+            $fldMetadata = $metadata->getFieldMapping($property);
+        } catch (\Exception $e) {
+            return $propertyMetadata;
+        }
+
+        $ormType = $fldMetadata['type'];
+        $nullable = $metadata->isNullable($property);
+        $propertyMetadata = $propertyMetadata->withRequired(!$nullable);
 
         $hasDefaultValue = isset($fldMetadata['options']) && isset($fldMetadata['options']['default']);
         if ($hasDefaultValue) {
