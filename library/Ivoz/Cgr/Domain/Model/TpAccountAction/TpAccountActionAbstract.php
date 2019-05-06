@@ -49,12 +49,12 @@ abstract class TpAccountActionAbstract
      * column: allow_negative
      * @var boolean
      */
-    protected $allowNegative = 0;
+    protected $allowNegative = false;
 
     /**
      * @var boolean
      */
-    protected $disabled = 0;
+    protected $disabled = false;
 
     /**
      * column: created_at
@@ -433,7 +433,7 @@ abstract class TpAccountActionAbstract
         Assertion::notNull($allowNegative, 'allowNegative value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowNegative), 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
 
-        $this->allowNegative = $allowNegative;
+        $this->allowNegative = (bool) $allowNegative;
 
         return $this;
     }
@@ -460,7 +460,7 @@ abstract class TpAccountActionAbstract
         Assertion::notNull($disabled, 'disabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
 
-        $this->disabled = $disabled;
+        $this->disabled = (bool) $disabled;
 
         return $this;
     }

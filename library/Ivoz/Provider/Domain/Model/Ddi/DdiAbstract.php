@@ -43,7 +43,7 @@ abstract class DdiAbstract
     /**
      * @var boolean
      */
-    protected $billInboundCalls = '0';
+    protected $billInboundCalls = false;
 
     /**
      * @var string | null
@@ -511,7 +511,7 @@ abstract class DdiAbstract
         Assertion::notNull($billInboundCalls, 'billInboundCalls value "%s" is null, but non null value was expected.');
         Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
 
-        $this->billInboundCalls = $billInboundCalls;
+        $this->billInboundCalls = (bool) $billInboundCalls;
 
         return $this;
     }

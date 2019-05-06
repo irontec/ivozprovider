@@ -26,7 +26,7 @@ abstract class DdiProviderAbstract
     /**
      * @var boolean | null
      */
-    protected $externallyRated = '0';
+    protected $externallyRated = false;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface

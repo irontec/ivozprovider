@@ -38,7 +38,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @var boolean
      */
-    private $generateRules = 0;
+    private $generateRules = false;
 
     /**
      * @var integer

@@ -55,7 +55,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     protected $entityUpdater;
 
     /**
-     * @var bool
+     * @var EntityInterface | null
      */
     protected $rootEntity;
 

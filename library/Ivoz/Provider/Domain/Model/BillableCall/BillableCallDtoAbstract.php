@@ -16,7 +16,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $callid;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $startTime;
 

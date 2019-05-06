@@ -21,7 +21,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     private $threshold = 0;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastSent;
 

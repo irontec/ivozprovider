@@ -26,7 +26,7 @@ abstract class RouteLockAbstract
     /**
      * @var boolean
      */
-    protected $open = '0';
+    protected $open = false;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -245,7 +245,7 @@ abstract class RouteLockAbstract
         Assertion::notNull($open, 'open value "%s" is null, but non null value was expected.');
         Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
 
-        $this->open = $open;
+        $this->open = (bool) $open;
 
         return $this;
     }

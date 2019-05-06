@@ -44,7 +44,7 @@ abstract class CallForwardSettingAbstract
     /**
      * @var boolean
      */
-    protected $enabled = '1';
+    protected $enabled = true;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
@@ -425,7 +425,7 @@ abstract class CallForwardSettingAbstract
         Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');
 
-        $this->enabled = $enabled;
+        $this->enabled = (bool) $enabled;
 
         return $this;
     }

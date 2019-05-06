@@ -46,7 +46,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     private $groupIntervalStart = '0s';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

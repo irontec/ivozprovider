@@ -32,7 +32,7 @@ abstract class AdministratorAbstract
     /**
      * @var boolean
      */
-    protected $active = '1';
+    protected $active = true;
 
     /**
      * @var string | null
@@ -319,7 +319,7 @@ abstract class AdministratorAbstract
         Assertion::notNull($active, 'active value "%s" is null, but non null value was expected.');
         Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
 
-        $this->active = $active;
+        $this->active = (bool) $active;
 
         return $this;
     }

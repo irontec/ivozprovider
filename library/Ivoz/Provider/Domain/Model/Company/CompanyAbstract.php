@@ -75,7 +75,7 @@ abstract class CompanyAbstract
     /**
      * @var boolean | null
      */
-    protected $ipfilter = '1';
+    protected $ipfilter = true;
 
     /**
      * @var integer | null
@@ -116,7 +116,7 @@ abstract class CompanyAbstract
     /**
      * @var boolean | null
      */
-    protected $showInvoices = '0';
+    protected $showInvoices = false;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null

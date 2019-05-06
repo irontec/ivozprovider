@@ -26,7 +26,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     private $data;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn;
 

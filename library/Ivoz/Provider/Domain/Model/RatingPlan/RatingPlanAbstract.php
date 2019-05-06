@@ -34,37 +34,37 @@ abstract class RatingPlanAbstract
     /**
      * @var boolean | null
      */
-    protected $monday = '1';
+    protected $monday = true;
 
     /**
      * @var boolean | null
      */
-    protected $tuesday = '1';
+    protected $tuesday = true;
 
     /**
      * @var boolean | null
      */
-    protected $wednesday = '1';
+    protected $wednesday = true;
 
     /**
      * @var boolean | null
      */
-    protected $thursday = '1';
+    protected $thursday = true;
 
     /**
      * @var boolean | null
      */
-    protected $friday = '1';
+    protected $friday = true;
 
     /**
      * @var boolean | null
      */
-    protected $saturday = '1';
+    protected $saturday = true;
 
     /**
      * @var boolean | null
      */
-    protected $sunday = '1';
+    protected $sunday = true;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface

@@ -16,7 +16,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     private $callid;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $calldate = 'CURRENT_TIMESTAMP';
 

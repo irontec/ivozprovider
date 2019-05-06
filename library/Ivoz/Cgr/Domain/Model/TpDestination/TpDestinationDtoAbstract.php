@@ -26,7 +26,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     private $prefix;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

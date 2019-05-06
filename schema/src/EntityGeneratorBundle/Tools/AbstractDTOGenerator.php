@@ -220,7 +220,12 @@ public function <methodName>Id()
         $lines = array();
         $lines[] = $this->spaces . '/**';
 
-        if (isset($field->columnName)) {
+        if (isset($field->columnName) && $this->isDateType($fieldMapping['type'])) {
+            $lines[] = $this->spaces
+                . ' * @var '
+                . $this->getType($fieldMapping['type'])
+                . ' | string' ;
+        } elseif (isset($field->columnName)) {
             $lines[] = $this->spaces
                 . ' * @var '
                 . $this->getType($fieldMapping['type']);
@@ -237,6 +242,14 @@ public function <methodName>Id()
         $lines[] = $this->spaces . ' */';
 
         return implode("\n", $lines);
+    }
+
+    protected function isDateType(string $type)
+    {
+        return in_array(
+            $type,
+            ['datetime', 'time', 'date', ]
+        );
     }
 
     /**
@@ -683,9 +696,25 @@ public function <methodName>Id()
                 $fieldName = $this->getEmbeddedVarName($segments);
             }
 
+            $defaultValue = '';
+            $isBoolean = $fieldMapping['type'] === 'boolean' ?? false;
+            $hasDefaultValue = isset($fieldMapping['options']['default']);
+            if ($hasDefaultValue && $isBoolean) {
+                $defaultValue = ' = ' . var_export(
+                    boolval($fieldMapping['options']['default']),
+                    true
+                );
+            } elseif ($hasDefaultValue) {
+                $defaultValue = ' = ' . var_export($fieldMapping['options']['default'], true);
+            }
+
             $lines[] = $this->generateFieldMappingPropertyDocBlock($fieldMapping, $metadata);
-            $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $fieldName
-                . (isset($fieldMapping['options']['default']) ? ' = ' . var_export($fieldMapping['options']['default'], true) : null) . ";\n";
+            $lines[] =
+                $this->spaces
+                . $this->fieldVisibility
+                . ' $' . $fieldName
+                . $defaultValue
+                . ";\n";
         }
 
         return implode("\n", $lines);

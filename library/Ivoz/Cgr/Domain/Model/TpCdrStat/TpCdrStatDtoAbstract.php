@@ -141,7 +141,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     private $actionTriggers = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

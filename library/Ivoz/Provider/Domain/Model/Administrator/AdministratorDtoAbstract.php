@@ -28,7 +28,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $active = '1';
+    private $active = true;
 
     /**
      * @var string

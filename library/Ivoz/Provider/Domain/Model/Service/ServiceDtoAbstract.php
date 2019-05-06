@@ -23,7 +23,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $extraArgs = '0';
+    private $extraArgs = false;
 
     /**
      * @var integer

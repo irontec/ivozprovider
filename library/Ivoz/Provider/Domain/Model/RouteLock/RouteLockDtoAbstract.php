@@ -23,7 +23,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $open = '0';
+    private $open = false;
 
     /**
      * @var integer

@@ -61,7 +61,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $strategyParams = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
@@ -71,7 +71,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $weight = 10;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

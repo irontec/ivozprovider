@@ -38,7 +38,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @var boolean
      */
-    private $enabled = '1';
+    private $enabled = true;
 
     /**
      * @var integer

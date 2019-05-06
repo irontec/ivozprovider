@@ -136,7 +136,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $costField = '*default';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

@@ -23,7 +23,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $externallyRated = '0';
+    private $externallyRated = false;
 
     /**
      * @var float
@@ -33,7 +33,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $calculateCost = '0';
+    private $calculateCost = false;
 
     /**
      * @var integer

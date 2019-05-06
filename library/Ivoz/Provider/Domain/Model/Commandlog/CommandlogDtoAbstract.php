@@ -36,7 +36,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $agent;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn;
 

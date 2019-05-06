@@ -43,15 +43,15 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $allowNegative = 0;
+    private $allowNegative = false;
 
     /**
      * @var boolean
      */
-    private $disabled = 0;
+    private $disabled = false;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 

@@ -28,7 +28,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $allowExtensions = '0';
+    private $allowExtensions = false;
 
     /**
      * @var string

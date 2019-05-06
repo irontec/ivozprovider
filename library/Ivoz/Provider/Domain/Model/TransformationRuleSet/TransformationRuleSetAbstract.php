@@ -41,7 +41,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * @var boolean | null
      */
-    protected $generateRules = 0;
+    protected $generateRules = false;
 
     /**
      * @var Name
