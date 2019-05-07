@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
@@ -70,10 +71,11 @@ class CreateByScheduler
         $outDate->setTime(0, 0, 0);
         $outDate->modify('1 second ago');
 
-        $inDate = clone $outDate;
-        $inDate->sub(
+        $inDate = DateTimeHelper::sub(
+            $outDate,
             $scheduler->getInterval()
-        )->modify('+1 second');
+        );
+        $inDate->modify('+1 second');
 
         // Back to UTC
         $outDate->setTimezone(new \DateTimeZone('UTC'));

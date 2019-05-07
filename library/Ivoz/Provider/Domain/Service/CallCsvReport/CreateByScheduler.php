@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
@@ -66,10 +67,11 @@ class CreateByScheduler
         $outDate->setTime(0, 0, 0);
         $outDate->modify('1 second ago');
 
-        $inDate = clone $outDate;
-        $inDate->sub(
+        $inDate = DateTimeHelper::sub(
+            $outDate,
             $scheduler->getInterval()
-        )->modify('+1 second');
+        );
+        $inDate->modify('+1 second');
 
         // Back to UTC
         $utc = new \DateTimeZone('UTC');
