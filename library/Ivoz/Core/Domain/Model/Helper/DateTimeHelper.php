@@ -75,6 +75,86 @@ class DateTimeHelper
     }
 
     /**
+     * Adds an interval to a datetime and fixes month add related issues
+     * @see https://stackoverflow.com/questions/3602405/php-datetimemodify-adding-and-subtracting-months
+     * @param \DateTime $dateTime
+     * @param \DateInterval $interval
+     * @return \DateTime
+     */
+    public static function add(\DateTime $dateTime, \DateInterval $interval) :\DateTime
+    {
+        $response = clone $dateTime;
+        $response->add($interval);
+
+        $monthOperation = !$interval->d && $interval->m;
+        if (!$monthOperation || !self::islastDayOfMonth($dateTime)) {
+            return $response;
+        }
+
+        $initialMonth = (int) $dateTime->format('m');
+        $resultMonth = (int) $response->format('m');
+
+        $diff = $resultMonth - $initialMonth;
+        if ($diff < 0) {
+            $diff = 12 + $diff;
+        }
+
+        if ($diff > $interval->m) {
+            $response->modify('last day of previous month');
+        } else {
+            $response->modify('last day of this month');
+        }
+
+        return $response;
+    }
+
+    /**
+     * Subtracts an interval to a datetime and fixes month sub related issues
+     * @see https://stackoverflow.com/questions/3602405/php-datetimemodify-adding-and-subtracting-months
+     * @param \DateTime $dateTime
+     * @param \DateInterval $interval
+     * @return \DateTime
+     */
+    public static function sub(\DateTime $dateTime, \DateInterval $interval) :\DateTime
+    {
+        $response = clone $dateTime;
+        $response->sub($interval);
+
+        $monthOperation = !$interval->d && $interval->m;
+        if (!$monthOperation || !self::islastDayOfMonth($dateTime)) {
+            return $response;
+        }
+
+        $initialMonth = (int) $dateTime->format('m');
+        $resultMonth = (int) $response->format('m');
+
+        $diff = $initialMonth - $resultMonth;
+        if ($diff < 0) {
+            $diff = 12 + $diff;
+        }
+
+        if ($diff < $interval->m) {
+            $response->modify('last day of previous month');
+        } else {
+            $response->modify('last day of this month');
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param \DateTime $dateTime
+     * @return bool
+     */
+    public static function islastDayOfMonth(\DateTime $dateTime): bool
+    {
+        $clonedDateTime = clone $dateTime;
+        $clonedDateTime->modify('last day of this month');
+
+        return $clonedDateTime == $dateTime;
+    }
+
+    /**
      * @param string $value with chinese/mysql format
      */
     protected static function createFromString(string $value)
