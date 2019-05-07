@@ -70,12 +70,14 @@ class VoiceMailAction
 
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail
-            $vmopts = "u";
+            $vmopts = "";
             if ($this->playBanner) {
                 if ($voicemail->getVoiceMailLocution()) {
                     $this->agi->verbose("Playing custom user Voicemail Locution.");
                     $this->agi->playbackLocution($voicemail->getVoiceMailLocution());
                     $vmopts .= "s";     // Skip welcome message
+                } else {
+                    $vmopts .= "u";
                 }
             } else {
                 $vmopts .= "s";         // Skip welcome message
