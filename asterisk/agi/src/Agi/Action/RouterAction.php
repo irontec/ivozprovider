@@ -465,7 +465,7 @@ class RouterAction
 
         $this->friendCallAction
             ->setFriend($friend)
-            ->setDestination($this->routeFriend)
+            ->setDestination($this->routeFriendDestination)
             ->process();
     }
 
