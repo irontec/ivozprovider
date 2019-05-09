@@ -89,10 +89,10 @@ class ResidentialAgent implements AgentInterface
             $ddi = $this->residential->getOutgoingDDI();
             if ($ddi) {
                 $this->agi->notice(
-                    "Using fallback DDI %s for friend %s because %s does not match any DDI.",
+                    "Using fallback DDI %s for Residential %s because %s does not match any DDI.",
                     $ddi,
                     $this->residential,
-                    $callerIdNum
+                    $this->agi->getCallerIdNum()
                 );
             }
         }
