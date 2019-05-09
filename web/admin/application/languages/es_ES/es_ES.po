@@ -909,8 +909,8 @@ msgstr "DDI de salida alternativo"
 
 msgid "Fax"
 msgid_plural "Faxes"
-msgstr[0] "Fax Virtual"
-msgstr[1] "Faxes Virtuales"
+msgstr[0] "Fax"
+msgstr[1] "Faxes"
 
 msgid "Fax Notification"
 msgid_plural "Fax Notifications"
