@@ -66,13 +66,15 @@ final class RegisterCommandListener
             ? $token->getUser()
             : null;
 
+        if (!$user instanceof EntityInterface) {
+            $user = null;
+        }
+
         $this->triggerEvent(
             $params,
             $body,
             $user
         );
-
-        return;
     }
 
     private function triggerEvent(
