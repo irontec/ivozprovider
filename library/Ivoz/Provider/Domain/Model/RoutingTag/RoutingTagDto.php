@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
 class RoutingTagDto extends RoutingTagDtoAbstract
 {
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [

@@ -9,7 +9,7 @@ class CompanyDto extends CompanyDtoAbstract
      * @codeCoverageIgnore
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE)
+    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $rol = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
