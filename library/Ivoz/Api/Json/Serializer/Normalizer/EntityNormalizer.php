@@ -11,6 +11,7 @@ use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
@@ -20,35 +21,13 @@ class EntityNormalizer implements NormalizerInterface
 {
     const FORMAT = 'json';
 
-    /**
-     * @var ResourceClassResolverInterface
-     */
     protected $resourceClassResolver;
-
-    /**
-     * @var ResourceMetadataFactoryInterface
-     */
     private $resourceMetadataFactory;
-
-    /**
-     * @var ContextBuilderInterface
-     */
     private $contextBuilder;
-
-    /**
-     * @var DtoAssembler
-     */
     private $dtoAssembler;
-
-    /**
-     * @var DateTimeNormalizerInterface
-     */
     private $dateTimeNormalizer;
-
-    /**
-     * @var PropertyNameCollectionFactory
-     */
     protected $propertyNameCollectionFactory;
+    protected $tokenStorage;
 
     public function __construct(
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
@@ -56,7 +35,8 @@ class EntityNormalizer implements NormalizerInterface
         ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
         DateTimeNormalizerInterface $dateTimeNormalizer,
-        PropertyNameCollectionFactory $propertyNameCollectionFactory
+        PropertyNameCollectionFactory $propertyNameCollectionFactory,
+        TokenStorage $tokenStorage
     ) {
         $this->resourceClassResolver = $resourceClassResolver;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
@@ -64,6 +44,7 @@ class EntityNormalizer implements NormalizerInterface
         $this->dtoAssembler = $dtoAssembler;
         $this->dateTimeNormalizer = $dateTimeNormalizer;
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -175,8 +156,16 @@ class EntityNormalizer implements NormalizerInterface
         }
         $forcedAttributes = $context['attributes'] ?? [];
 
+        $token = $this->tokenStorage->getToken();
+        $roles = $token
+            ? $token->getRoles()
+            : [];
+        $role = !empty($roles)
+            ? $roles[0]->getRole()
+            : null;
+
         $rawData = $this->filterProperties(
-            $dto->normalize($normalizationContext),
+            $dto->normalize($normalizationContext, $role),
             $resourceClass,
             $forcedAttributes
         );
@@ -226,7 +215,9 @@ class EntityNormalizer implements NormalizerInterface
     private function filterProperties(array $data, string $resourceClass, $requestedAttributes)
     {
         $mappedProperties = [];
-        $propertyNameCollection = $this->propertyNameCollectionFactory->create($resourceClass);
+        $propertyNameCollection = $this->propertyNameCollectionFactory->create(
+            $resourceClass
+        );
         foreach ($propertyNameCollection as $property) {
             $mappedProperties[] = $property;
         }

@@ -233,6 +233,7 @@ services:
     arguments:
       $propertyMetadataFactory: '@Ivoz\Api\Doctrine\Orm\Metadata\Property\DoctrineOrmPropertyMetadataFactory'
       $resourceNameCollectionFactory: '@api_platform.metadata.resource.name_collection_factory'
+      $defaultRole: '%api_default_role%'
 
   Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataLinkFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'

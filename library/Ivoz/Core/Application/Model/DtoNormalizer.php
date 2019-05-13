@@ -17,10 +17,10 @@ trait DtoNormalizer
     /**
      * @inheritdoc
      */
-    public function normalize(string $context)
+    public function normalize(string $context, string $role = '')
     {
         $response = $this->toArray(true);
-        $contextProperties = $this->getPropertyMap($context);
+        $contextProperties = $this->getPropertyMap($context, $role);
 
         $response = array_filter(
             $response,
@@ -42,9 +42,10 @@ trait DtoNormalizer
     /**
      * @inheritdoc
      */
-    public function denormalize(array $data, string $context)
+    public function denormalize(array $data, string $context, string $role = '')
     {
-        $contextProperties = $this->getPropertyMap($context);
+        $contextProperties = $this->getPropertyMap($context, $role);
+
         unset($contextProperties['id']);
 
         $methods = [];

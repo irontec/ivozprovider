@@ -232,7 +232,8 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
             $options = [
                 'serializer_groups' => [
                     DataTransferObjectInterface::CONTEXT_SIMPLE
-                ]
+                ],
+                'skipRoles' => true
             ];
             foreach ($this->propertyNameCollectionFactory->create($entity, $options) as $property) {
                 $propertyMetadata = $this->propertyMetadataFactory->create(
@@ -353,7 +354,7 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         $contextGroup = $context['groups'][0];
 
         $targetPropertyOptions = [
-            'serializer_groups' => [$contextGroup]
+            'serializer_groups' => [$contextGroup],
         ];
         $targetProperties = $this
             ->propertyNameCollectionFactory
