@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Domain;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
@@ -12,25 +12,20 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
  */
 class DeleteByBrand implements BrandLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    const POST_REMOVE_PRIORITY = 10;
 
-    /**
-     * DeleteByBrand constructor.
-     * @param EntityManagerInterface $em
-     */
+    protected $entityTools;
+
     public function __construct(
-        EntityManagerInterface $em
+        EntityTools $entityTools
     ) {
-        $this->em = $em;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_REMOVE => 10
+            self::EVENT_POST_REMOVE => self::POST_REMOVE_PRIORITY
         ];
     }
 
@@ -43,7 +38,7 @@ class DeleteByBrand implements BrandLifecycleEventHandlerInterface
         $brand->setDomain(null);
 
         if ($domain) {
-            $this->em->remove($domain);
+            $this->entityTools->remove($domain);
         }
     }
 }
