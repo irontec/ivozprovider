@@ -38,9 +38,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(BrandInterface $entity)
+    public function execute(BrandInterface $brand)
     {
-        $isNew = $entity->isNew();
+        $isNew = $brand->isNew();
         if (!$isNew) {
             return;
         }
@@ -55,10 +55,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
             $brandServiceDto
                 ->setServiceId($service->getId())
                 ->setCode($service->getDefaultCode())
-                ->setBrandId($entity->getId());
+                ->setBrandId($brand->getId());
 
             $brandService = $this->entityTools->persistDto($brandServiceDto);
-            $entity->addService($brandService);
+            $brand->addService($brandService);
         }
     }
 }

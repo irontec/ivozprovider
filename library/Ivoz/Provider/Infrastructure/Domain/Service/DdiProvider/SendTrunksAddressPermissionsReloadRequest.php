@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Infrastructure\Domain\Service\DdiProvider;
 
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
-use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\DdiProvider\DdiProviderLifecycleEventHandlerInterface;
 
 class SendTrunksAddressPermissionsReloadRequest implements DdiProviderLifecycleEventHandlerInterface

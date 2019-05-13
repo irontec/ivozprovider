@@ -39,18 +39,18 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(BrandInterface $entity)
+    public function execute(BrandInterface $brand)
     {
-        if (!$entity->hasChanged('domain_users')) {
+        if (!$brand->hasChanged('domain_users')) {
             return;
         }
 
-        $domainUsers = $entity->getDomainUsers();
+        $domainUsers = $brand->getDomainUsers();
 
         /**
          * @var DomainInterface $domain
          */
-        $domain = $entity->getDomain();
+        $domain = $brand->getDomain();
 
         // Empty domain field, delete any related domain
         if (!$domainUsers && $domain) {
@@ -71,15 +71,15 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
          */
         $domainDto
             ->setDomain($domainUsers)
-            ->setDescription($entity->getName() . " proxyusers domain");
+            ->setDescription($brand->getName() . " proxyusers domain");
 
         $domain = $this
             ->entityTools
             ->persistDto($domainDto, $domain, true);
 
-        $entity->setDomain($domain);
+        $brand->setDomain($domain);
 
         $this->entityTools
-            ->persist($entity);
+            ->persist($brand);
     }
 }
