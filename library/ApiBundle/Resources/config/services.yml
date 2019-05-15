@@ -9,6 +9,10 @@ services:
     autoconfigure: true
     public: false
 
+  lexik_jwt_authentication.jwt_manager.public:
+    alias: lexik_jwt_authentication.jwt_manager
+    public: true
+
   Ivoz\Provider\Infrastructure\Api\Jwt\UserAuthenticationSuccessHandler:
     arguments:
       - '@lexik_jwt_authentication.jwt_manager'

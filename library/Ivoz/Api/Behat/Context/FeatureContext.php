@@ -28,6 +28,9 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
      */
     protected $request;
 
+    /**
+     * @var JWTTokenManagerInterface
+     */
     protected $jwtTokenManager;
     protected $administratorRepository;
 
@@ -45,9 +48,7 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
         $this->cacheDir = $kernel->getCacheDir();
         $this->fs = new Filesystem();
         $this->request = $request;
-        $this->jwtTokenManager = $kernel->getContainer()->get(
-            JWTTokenManagerInterface::class
-        );
+        $this->jwtTokenManager = $kernel->getContainer()->get('lexik_jwt_authentication.jwt_manager.public');
         $this->administratorRepository = $kernel->getContainer()->get(
             AdministratorRepository::class
         );
