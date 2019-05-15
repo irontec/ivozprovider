@@ -24,7 +24,6 @@ Feature: Manage brands
           "country": "",
           "registryData": ""
         },
-        "domain": 1,
         "language": 1,
         "defaultTimezone": 145
       }
@@ -37,8 +36,6 @@ Feature: Manage brands
       {
           "name": "api_brand_modified",
           "domainUsers": "sip-api.irontec.com",
-          "recordingsLimitMB": 0,
-          "recordingsLimitEmail": "",
           "maxCalls": 0,
           "id": 2,
           "logo": {
@@ -54,12 +51,6 @@ Feature: Manage brands
               "province": "",
               "country": "",
               "registryData": ""
-          },
-          "domain": {
-              "domain": "sip-api.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "api_brand_modified proxyusers domain",
-              "id": 1
           },
           "language": {
               "iden": "es",

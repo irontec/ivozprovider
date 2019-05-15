@@ -15,8 +15,7 @@ Feature: Create invoice templates
           "description": "Description",
           "template": "body",
           "templateHeader": "header",
-          "templateFooter": "footer",
-          "brand": 1
+          "templateFooter": "footer"
       }
     """
     Then the response status code should be 201

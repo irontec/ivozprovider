@@ -14,8 +14,7 @@ Feature: Create fixed costs
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
-          "id": 1,
-          "brand": 1
+          "id": 1
       }
     """
     Then the response status code should be 201

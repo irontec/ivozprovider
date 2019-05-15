@@ -43,10 +43,6 @@ Feature: Retrieve brandService
           "id": 1,
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -62,7 +58,6 @@ Feature: Retrieve brandService
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
               "defaultTimezone": 145,
               "currency": 2

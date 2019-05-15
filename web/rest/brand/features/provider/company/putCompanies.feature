@@ -36,7 +36,6 @@ Feature: Update company
           "mediaRelaySets": 1,
           "defaultTimezone": 1,
           "brand": 1,
-          "domain": 3,
           "applicationServer": null,
           "country": 68,
           "transformationRuleSet": 1,
@@ -56,7 +55,6 @@ Feature: Update company
           "name": "DemoCompanyUpdated",
           "domainUsers": "127.0.0.1",
           "nif": "12345678B",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "Company Address",
           "postalCode": "54321",
@@ -67,10 +65,8 @@ Feature: Update company
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
-          "balance": 0,
+          "balance": 1.2,
           "showInvoices": false,
           "id": 1,
           "language": {
@@ -92,12 +88,6 @@ Feature: Update company
               "country": 1
           },
           "brand": "~",
-          "domain": {
-              "domain": "127.0.0.1",
-              "pointsTo": "proxyusers",
-              "description": "DemoCompanyUpdated proxyusers domain",
-              "id": 3
-          },
           "country": {
               "code": "ES",
               "countryCode": "+34",
@@ -127,6 +117,7 @@ Feature: Update company
               "brand": 1,
               "country": 68
           },
+          "outgoingDdi": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",

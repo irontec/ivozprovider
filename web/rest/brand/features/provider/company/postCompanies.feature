@@ -32,7 +32,6 @@ Feature: Create companies
         "mediaRelaySets": 1,
         "defaultTimezone": 1,
         "brand": 1,
-        "domain": 1,
         "applicationServer": 1,
         "country": 1,
         "transformationRuleSet": 1,
@@ -52,7 +51,6 @@ Feature: Create companies
           "name": "API company",
           "domainUsers": "api.irontec.com",
           "nif": "",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "",
           "postalCode": "",
@@ -63,8 +61,6 @@ Feature: Create companies
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": 0,
-          "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
@@ -72,10 +68,10 @@ Feature: Create companies
           "language": 1,
           "defaultTimezone": 1,
           "brand": 1,
-          "domain": 1,
           "country": 1,
           "currency": null,
           "transformationRuleSet": 1,
+          "outgoingDdi": 1,
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
@@ -97,7 +93,6 @@ Feature: Create companies
           "name": "API company",
           "domainUsers": "api.irontec.com",
           "nif": "",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "",
           "postalCode": "",
@@ -108,8 +103,6 @@ Feature: Create companies
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": 0,
-          "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
@@ -134,10 +127,6 @@ Feature: Create companies
           },
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -153,16 +142,9 @@ Feature: Create companies
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
               "defaultTimezone": 145,
               "currency": 2
-          },
-          "domain": {
-              "domain": "api.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "API company proxyusers domain",
-              "id": 1
           },
           "country": {
               "code": "AD",
@@ -191,6 +173,14 @@ Feature: Create companies
                   "es": "es"
               },
               "brand": 1,
+              "country": 68
+          },
+          "outgoingDdi": {
+              "ddi": "123",
+              "id": 1,
+              "company": 1,
+              "brand": 1,
+              "ddiProvider": 1,
               "country": 68
           },
           "voicemailNotificationTemplate": {

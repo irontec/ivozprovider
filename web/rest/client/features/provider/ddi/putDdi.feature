@@ -12,14 +12,12 @@ Feature: Update Ddis
     """
       {
           "ddi": "1234",
-          "ddie164": "+341234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
           "billInboundCalls": false,
           "friendValue": "",
           "company": 1,
-          "brand": 1,
           "conferenceRoom": null,
           "language": null,
           "queue": null,
@@ -41,11 +39,9 @@ Feature: Update Ddis
     """
       {
           "ddi": "1234",
-          "ddie164": "+341234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "billInboundCalls": false,
           "friendValue": "",
           "id": 1,
           "company": "~",
@@ -71,6 +67,7 @@ Feature: Update Ddis
               }
           },
           "residentialDevice": null,
-          "conditionalRoute": null
+          "conditionalRoute": null,
+          "retailAccount": null
       }
     """

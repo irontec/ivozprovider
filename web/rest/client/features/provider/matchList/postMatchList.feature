@@ -11,8 +11,7 @@ Feature: Create match lists
       And I send a "POST" request to "/match_lists" with body:
     """
       {
-          "name": "newMatchlist",
-          "company": 1
+          "name": "newMatchlist"
       }
     """
     Then the response status code should be 201
@@ -44,22 +43,8 @@ Feature: Create match lists
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "distributeMethod": "hash",
-              "maxCalls": 0,
-              "postalAddress": "Company Address",
-              "postalCode": "54321",
-              "town": "Company Town",
-              "province": "Company Province",
-              "countryName": "Company Country",
-              "ipfilter": false,
-              "onDemandRecord": 0,
               "onDemandRecordCode": "",
-              "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "billingMethod": "prepaid",
               "balance": 1.2,
-              "showInvoices": false,
               "id": 1,
               "language": 1,
               "defaultTimezone": 145,

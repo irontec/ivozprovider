@@ -27,8 +27,6 @@ Feature: Update brand services
           "brand": {
               "name": "Irontec_e2e",
               "domainUsers": "sip.irontec.com",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
               "maxCalls": 0,
               "id": 2,
               "logo": {
@@ -45,7 +43,6 @@ Feature: Update brand services
                   "country": "",
                   "registryData": ""
               },
-              "domain": 4,
               "language": 1,
               "defaultTimezone": 145
           },

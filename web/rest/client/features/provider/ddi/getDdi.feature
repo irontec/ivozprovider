@@ -16,7 +16,6 @@ Feature: Retrieve Ddis
       [
           {
               "ddi": "123",
-              "ddie164": "+34123",
               "routeType": null,
               "id": 1
           }
@@ -34,11 +33,9 @@ Feature: Retrieve Ddis
     """
       {
           "ddi": "123",
-          "ddie164": "+34123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "billInboundCalls": false,
           "friendValue": "",
           "id": 1,
           "company": "~",
@@ -64,6 +61,7 @@ Feature: Retrieve Ddis
               }
           },
           "residentialDevice": null,
-          "conditionalRoute": null
+          "conditionalRoute": null,
+          "retailAccount": null
       }
     """

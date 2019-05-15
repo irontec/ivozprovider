@@ -19,7 +19,6 @@ Feature: Create terminals
           "password": "ZGthe7E2+5",
           "mac": "",
           "lastProvisionDate": "1970-03-04 11:12:13",
-          "company": 1,
           "terminalModel": 1
       }
     """

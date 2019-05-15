@@ -25,13 +25,13 @@ Feature: Manage brands
           "invoice": {
               "nif": "",
               "postalAddress": "",
-              "postalCode": "",
+              "postalCode": "48960",
               "town": "",
               "province": "",
               "country": "",
               "registryData": ""
           },
-          "domain": 6,
+          "domain": 1,
           "language": 1,
           "defaultTimezone": 145
       }
@@ -41,12 +41,8 @@ Feature: Manage brands
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-      {
+       {
           "name": "UpdatedDemoBrand",
-          "domainUsers": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
-          "maxCalls": 1,
           "id": 1,
           "logo": {
               "fileSize": null,
@@ -56,17 +52,11 @@ Feature: Manage brands
           "invoice": {
               "nif": "",
               "postalAddress": "",
-              "postalCode": "",
+              "postalCode": "48960",
               "town": "",
               "province": "",
               "country": "",
               "registryData": ""
-          },
-          "domain": {
-              "domain": "retail.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "Irontec Test Company retail domain",
-              "id": 6
           },
           "language": {
               "iden": "es",
@@ -92,7 +82,7 @@ Feature: Manage brands
               "id": 2,
               "name": {
                   "en": "Dollar",
-                  "es": "D\u00f3llar"
+                  "es": "Dóllar"
               }
           }
       }

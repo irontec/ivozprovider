@@ -11,7 +11,6 @@ Feature: Create features rel companies
       And I send a "POST" request to "/features_rel_companies" with body:
     """
       {
-          "company": 1,
           "feature": 9
       }
     """
