@@ -98,8 +98,31 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
             isNull: ~
 
 Ivoz\Provider\Domain\Model\Company\Company:
-  itemOperations: []
-  collectionOperations: []
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
+    domainUsers:
+      attributes:
+        swagger_context:
+          readOnly: true
+    nif:
+      attributes:
+        swagger_context:
+          readOnly: true
+    onDemandRecordCode:
+      attributes:
+        swagger_context:
+          readOnly: true
+    balance:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
