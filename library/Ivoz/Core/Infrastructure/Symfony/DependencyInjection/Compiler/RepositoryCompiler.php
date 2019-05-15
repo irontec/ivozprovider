@@ -35,10 +35,12 @@ class RepositoryCompiler implements CompilerPassInterface
                 $fqdn
             );
 
-            $this->container->setAlias(
+            $alias = $this->container->setAlias(
                 $repositoryInterface,
                 $fqdn
             );
+
+            $alias->setPublic(true);
         }
     }
 }

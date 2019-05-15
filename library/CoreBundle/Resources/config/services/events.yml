@@ -13,6 +13,7 @@ services:
   # DomainEventPublisher calls are autocompleted on cache regenerations (Compiler fase)
   Ivoz\Core\Domain\Service\DomainEventPublisher:
      shared: true
+     public: true
      calls:
       - [subscribe, ['@Ivoz\Core\Application\Service\CommandEventSubscriber']]
       - [subscribe, ['@Ivoz\Core\Domain\Service\EntityEventSubscriber']]
