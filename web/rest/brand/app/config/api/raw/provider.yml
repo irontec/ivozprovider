@@ -175,6 +175,9 @@ Ivoz\Provider\Domain\Model\Feature\Feature:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 
 Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
+  itemOperations:
+    get: ~
+    delete: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -183,6 +186,9 @@ Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  itemOperations:
+    get: ~
+    delete: ~
   collectionOperations:
     get:
       depth: 1
@@ -192,8 +198,8 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        brand:
-          eq: "user.getBrand().getId()"
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
   attributes:

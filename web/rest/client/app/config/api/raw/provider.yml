@@ -245,6 +245,9 @@ Ivoz\Provider\Domain\Model\Feature\Feature:
   itemOperations: []
   collectionOperations: []
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  itemOperations:
+    get: ~
+    delete: ~
   collectionOperations:
     get:
       depth: 1
