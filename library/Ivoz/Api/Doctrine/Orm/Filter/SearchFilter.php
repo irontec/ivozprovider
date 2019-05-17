@@ -100,9 +100,13 @@ class SearchFilter extends BaseSearchFilter
 
     protected function stringToUtc($value)
     {
+        $format = strlen(trim($value)) < strlen('Y-m-d H:i:s')
+            ? 'Y-m-d'
+            : 'Y-m-d H:i:s';
+
         return DateTimeHelper::stringToUtc(
             $value,
-            'Y-m-d H:i:s',
+            $format,
             $this->getTimezone()
         );
     }
