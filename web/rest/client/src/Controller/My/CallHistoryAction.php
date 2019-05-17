@@ -5,12 +5,14 @@ namespace Controller\My;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryResultCollectionExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
+use ApiPlatform\Core\Util\RequestParser;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
@@ -26,14 +28,18 @@ class CallHistoryAction
 
     protected $collectionExtensions;
 
+    protected $request;
+
     public function __construct(
         TokenStorage $tokenStorage,
         UsersCdrRepository $usersCdrRepository,
-        CollectionExtensionList $collectionExtensions
+        CollectionExtensionList $collectionExtensions,
+        RequestStack $requestStack
     ) {
         $this->tokenStorage = $tokenStorage;
         $this->usersCdrRepository = $usersCdrRepository;
         $this->collectionExtensions = $collectionExtensions;
+        $this->request = $requestStack->getCurrentRequest();
     }
 
     public function __invoke()
@@ -103,13 +109,18 @@ class CallHistoryAction
      */
     protected function applyCollectionExtensions(QueryBuilder $qb, string $entityClass, string $operationName)
     {
+        $context = [];
+        $queryString = RequestParser::getQueryString($this->request);
+        $context['filters'] = $queryString ? RequestParser::parseRequestParams($queryString) : null;
+
         $queryNameGenerator = new QueryNameGenerator();
         foreach ($this->collectionExtensions->get() as $extension) {
             $extension->applyToCollection(
                 $qb,
                 $queryNameGenerator,
                 $entityClass,
-                $operationName
+                $operationName,
+                $context
             );
 
             $returnResults =
