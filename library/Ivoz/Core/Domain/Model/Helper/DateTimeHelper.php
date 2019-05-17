@@ -21,6 +21,10 @@ class DateTimeHelper
             $initialTimeZone
         );
 
+        if (!$dateTime) {
+            throw new \RuntimeException($value . ' is not a valid datetime');
+        }
+
         $utcDateTime = self::ensureUTC($dateTime);
 
         return $utcDateTime->format($format);
