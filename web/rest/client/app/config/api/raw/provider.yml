@@ -3,6 +3,7 @@
 ########################################
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   attributes:
+    pagination_client_enabled: true
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -144,6 +145,7 @@ Ivoz\Provider\Domain\Model\Country\Country:
   collectionOperations:
     get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
@@ -513,6 +515,7 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
   collectionOperations:
     get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\User\User:
   attributes:

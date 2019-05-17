@@ -103,7 +103,8 @@ Ivoz\Provider\Domain\Model\Country\Country:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    pagination_client_enabled: true
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
 
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations:
@@ -372,7 +373,8 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    pagination_client_enabled: true
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
 
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   attributes:

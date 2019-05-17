@@ -72,13 +72,14 @@ Model\CallStats:
 ## Custom kam endpoints
 ########################################
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_COMPANY_USER" in roles'
   collectionOperations:
     get_my_call_history:
-      access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/call_history'
       route_name: 'get_my_call_history'
-      parameters: []
       swagger_context:
         produces:
           - 'application/json'
@@ -86,8 +87,6 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
           - 'text/csv'
         tags:
           - My
-  attributes:
-    pagination_client_enabled: true
 
 ########################################
 ## Custom provider endpoints
@@ -106,7 +105,6 @@ Ivoz\Provider\Domain\Model\User\User:
       operation_normalization_context: 'myProfile'
       normalization_context:
         groups: ['myProfile']
-      parameters: []
       swagger_context:
         produces:
           - 'application/json'
@@ -126,7 +124,6 @@ Ivoz\Provider\Domain\Model\User\User:
         groups: ['updateMyProfile']
       normalization_context:
         groups: ['myProfile']
-      parameters: []
       swagger_context:
         tags:
           - My
@@ -145,7 +142,6 @@ Ivoz\Provider\Domain\Model\User\User:
       method: 'GET'
       path: '/my/company_assistants'
       route_name: 'get_my_company_assistants'
-      parameters: []
       swagger_context:
         produces:
           - 'application/json'
@@ -158,7 +154,6 @@ Ivoz\Provider\Domain\Model\User\User:
       method: 'GET'
       path: '/my/company_voicemails'
       route_name: 'get_my_company_voicemails'
-      parameters: []
       swagger_context:
         produces:
           - 'application/json'
@@ -177,7 +172,6 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       method: 'POST'
       path: '/my/call_forward_settings'
       route_name: 'post_my_call_forward_settings'
-      parameters: []
       swagger_context:
         consumes: ["application/ld+json"]
         produces:
@@ -200,17 +194,16 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       method: 'GET'
       path: '/my/call_forward_settings'
       route_name: 'get_my_call_forward_settings'
-      parameters: []
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
       swagger_context:
+        parameters: []
         produces:
           - 'application/json'
           - 'application/ld+json'
         tags:
           - My
-        parameters: []
 
 Ivoz\Provider\Domain\Model\Country\Country:
   itemOperations:
@@ -222,7 +215,6 @@ Ivoz\Provider\Domain\Model\Country\Country:
       operation_normalization_context: 'detailed'
       normalization_context:
         groups: ['detailed']
-      parameters: []
       swagger_context:
         produces:
         - 'application/json'
@@ -242,7 +234,6 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       route_name: 'get_my_company_extensions'
       normalization_context:
         - collection
-      parameters: []
       swagger_context:
         produces:
           - 'application/json'

@@ -51,7 +51,8 @@ Ivoz\Provider\Domain\Model\Country\Country:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    pagination_client_enabled: true
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations:
     get: ~
@@ -116,4 +117,5 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
   collectionOperations:
     get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '"ROLE_USER" in roles'
