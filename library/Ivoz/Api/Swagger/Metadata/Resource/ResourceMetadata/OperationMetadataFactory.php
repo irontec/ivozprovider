@@ -58,6 +58,32 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                 );
             }
 
+            $paginationToggle = $resourceMetadata->getAttribute('pagination_client_enabled', false);
+            $collectionOperations = $resourceMetadata->getCollectionOperations();
+            foreach ($collectionOperations as $name => &$operation) {
+                $showPaginationParam =
+                    $paginationToggle
+                    || $resourceMetadata->getCollectionOperationAttribute($name, 'pagination_client_enabled');
+
+                if (!$showPaginationParam) {
+                    continue;
+                }
+
+                if (strtoupper($operation['method']) !== 'GET') {
+                    continue;
+                }
+
+                $operation['swagger_context']['pagination_parameters'] = [
+                    [
+                        'name' => '_pagination',
+                        'in' => 'query',
+                        'required' => false,
+                        'type' => 'boolean'
+                    ]
+                ];
+            }
+            $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
+
             return $resourceMetadata;
         }
 
@@ -81,7 +107,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         $collectionOperations = $resourceMetadata->getCollectionOperations();
 
         if (!empty($itemOperations) && isset($itemOperations['put'])) {
-            if (!isset($itemOperations['put']['swagger_context']['_parameters'])) {
+            if (!isset($itemOperations['put']['swagger_context']['upload_parameters'])) {
                 $itemOperations['put']['swagger_context']['upload_parameters'] = [];
             }
             foreach ($fileObjects as $fileObject) {
@@ -97,7 +123,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         }
 
         if (!empty($collectionOperations) && isset($collectionOperations['post'])) {
-            if (!isset($collectionOperations['post']['swagger_context']['_parameters'])) {
+            if (!isset($collectionOperations['post']['swagger_context']['upload_parameters'])) {
                 $collectionOperations['post']['swagger_context']['upload_parameters'] = [];
             }
             foreach ($fileObjects as $fileObject) {

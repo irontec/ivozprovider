@@ -305,7 +305,7 @@ services:
       $clientEnabled: '%api_platform.collection.pagination.client_enabled%'
       $enabledParameterName: '%api_platform.collection.pagination.enabled_parameter_name%'
     tags:
-      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 7 }
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
 
   Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList:
     calls:

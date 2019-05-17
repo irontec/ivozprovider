@@ -69,13 +69,6 @@ class SearchFilterDecorator implements NormalizerInterface
                 $path['get']['parameters'],
                 $responseModel['properties']
             );
-
-            $path['get']['parameters'][]  = [
-                'name' => '_pagination',
-                'in' => 'query',
-                'required' => false,
-                'type' => 'boolean'
-            ];
         }
 
         return $paths;
@@ -101,6 +94,18 @@ class SearchFilterDecorator implements NormalizerInterface
 
     private function appendPropertiesIntoParameters(array $parameters, array $properties, $prefix = '')
     {
+        $propertyParameters = array_filter(
+            $parameters,
+            function (array $item) {
+                $name = $item['name'] ?? '';
+                return $name[0] !== '_';
+            }
+        );
+
+        if (empty($propertyParameters)) {
+            return $parameters;
+        }
+
         foreach ($properties as $name => $values) {
             if ($name === 'id') {
                 continue;

@@ -34,36 +34,63 @@ class CustomParameterDecorator implements NormalizerInterface
 
         foreach ($response['paths'] as $paths) {
             foreach ($paths as $key => $path) {
-                $pathArray = $path->getArrayCopy();
-                if (!array_key_exists('upload_parameters', $pathArray)) {
-                    continue;
-                }
-
-                array_push(
-                    $pathArray['parameters'],
-                    ...$pathArray['upload_parameters']
+                $pathArray = $this->setUploadParams(
+                    $path->getArrayCopy()
                 );
-                unset($pathArray['upload_parameters']);
-                $pathArray['consumes'][] = 'multipart/form-data';
-                foreach ($pathArray['parameters'] as $key => $parameter) {
-                    if ($parameter['in'] === 'body') {
-                        $parameter['in'] = 'formData';
-                    }
 
-                    if (isset($parameter['schema'])) {
-                        // Complex types are not supported with formData parameters yet
-                        // @see https://github.com/swagger-api/swagger-editor/issues/1156
-                        unset($parameter['schema']);
-                        $parameter['type'] = 'string';
-                    }
-
-                    $pathArray['parameters'][$key] = $parameter;
-                }
+                $pathArray = $this->setPaginationParams(
+                    $pathArray
+                );
 
                 $path->exchangeArray($pathArray);
             }
         }
 
         return $response;
+    }
+
+    private function setUploadParams(array $pathArray): array
+    {
+        if (!array_key_exists('upload_parameters', $pathArray)) {
+            return $pathArray;
+        }
+
+        array_push(
+            $pathArray['parameters'],
+            ...$pathArray['upload_parameters']
+        );
+        unset($pathArray['upload_parameters']);
+        $pathArray['consumes'][] = 'multipart/form-data';
+        foreach ($pathArray['parameters'] as $key => $parameter) {
+            if ($parameter['in'] === 'body') {
+                $parameter['in'] = 'formData';
+            }
+
+            if (isset($parameter['schema'])) {
+                // Complex types are not supported with formData parameters yet
+                // @see https://github.com/swagger-api/swagger-editor/issues/1156
+                unset($parameter['schema']);
+                $parameter['type'] = 'string';
+            }
+
+            $pathArray['parameters'][$key] = $parameter;
+        }
+
+        return $pathArray;
+    }
+
+    private function setPaginationParams(array $pathArray): array
+    {
+        if (!array_key_exists('pagination_parameters', $pathArray)) {
+            return $pathArray;
+        }
+
+        array_push(
+            $pathArray['parameters'],
+            ...$pathArray['pagination_parameters']
+        );
+        unset($pathArray['pagination_parameters']);
+
+        return $pathArray;
     }
 }
