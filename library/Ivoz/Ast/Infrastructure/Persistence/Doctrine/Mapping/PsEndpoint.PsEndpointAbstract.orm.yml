@@ -146,13 +146,13 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       options:
         fixed: false
         comment: '[enum:none|fec|redundancy]'
-        default: none
+        default: redundancy
       column: t38_udptl_ec
     t38UdptlMaxdatagram:
       type: integer
       nullable: false
       options:
-        default: 0
+        default: 1440
         unsigned: true
       column: t38_udptl_maxdatagram
     t38UdptlNat:
@@ -162,7 +162,7 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       options:
         fixed: false
         comment: '[enum:yes|no]'
-        default: yes
+        default: no
       column: t38_udptl_nat
   manyToOne:
     terminal:
