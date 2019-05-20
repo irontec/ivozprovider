@@ -66,8 +66,8 @@ Feature: Retrieve IVRs
               "balance": 1.2,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -121,7 +121,7 @@ Feature: Retrieve IVRs
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
@@ -131,7 +131,7 @@ Feature: Retrieve IVRs
               "language": null,
               "terminal": 1,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
@@ -139,7 +139,7 @@ Feature: Retrieve IVRs
           "noInputNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

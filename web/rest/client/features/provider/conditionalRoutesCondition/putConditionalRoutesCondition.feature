@@ -74,7 +74,7 @@ Feature: Update conditional routes conditions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "huntGroup": null,

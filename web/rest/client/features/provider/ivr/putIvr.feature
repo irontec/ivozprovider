@@ -29,8 +29,8 @@ Feature: Update IVRs
           "errorExtension": null,
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
-          "noInputNumberCountry": 1,
-          "errorNumberCountry": 1
+          "noInputNumberCountry": 68,
+          "errorNumberCountry": 68
       }
     """
     Then the response status code should be 200
@@ -68,10 +68,11 @@ Feature: Update IVRs
               "recordingsLimitEmail": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
+              "showInvoices": false,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -86,7 +87,7 @@ Feature: Update IVRs
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -104,7 +105,7 @@ Feature: Update IVRs
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -116,7 +117,7 @@ Feature: Update IVRs
           "noInputNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -129,7 +130,7 @@ Feature: Update IVRs
           "errorNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

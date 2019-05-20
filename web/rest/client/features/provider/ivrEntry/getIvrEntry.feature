@@ -55,7 +55,7 @@ Feature: Retrieve ivr entries
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "welcomeLocution": {
@@ -69,7 +69,7 @@ Feature: Retrieve ivr entries
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -80,7 +80,7 @@ Feature: Retrieve ivr entries
           "numberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

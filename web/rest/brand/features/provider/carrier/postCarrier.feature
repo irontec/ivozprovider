@@ -65,7 +65,7 @@ Feature: Create carriers
                   "es": "es"
               },
               "brand": null,
-              "country": 1
+              "country": 68
           }
       }
     """

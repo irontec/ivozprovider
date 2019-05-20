@@ -62,8 +62,8 @@ Feature: Create match lists
               "showInvoices": false,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           }

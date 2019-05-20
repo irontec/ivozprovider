@@ -38,7 +38,7 @@ Feature: Update company
           "brand": 1,
           "domain": 3,
           "applicationServer": null,
-          "country": 1,
+          "country": 68,
           "transformationRuleSet": 1,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
@@ -82,12 +82,12 @@ Feature: Update company
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
+              "tz": "Europe/Andorra",
+              "comment": "",
               "id": 1,
               "label": {
-                  "en": "en",
-                  "es": "es"
+                  "en": "",
+                  "es": ""
               },
               "country": 1
           },
@@ -101,7 +101,7 @@ Feature: Update company
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -111,6 +111,7 @@ Feature: Update company
                   "es": "Europa"
               }
           },
+          "currency": null,
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -124,7 +125,7 @@ Feature: Update company
                   "es": "es"
               },
               "brand": null,
-              "country": 1
+              "country": 68
           },
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",

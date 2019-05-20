@@ -22,4 +22,29 @@ class FeatureContext extends BaseFeatureContext
     {
         $this->exchangeAuthorizationHeader('test_brand_admin', 'test_company_admin');
     }
+
+    /**
+     * @Given I add User Authorization header
+     */
+    public function setUserAuthorizationHeader()
+    {
+        return $this->setAuthorizationHeader('alice@democompany.com', 'user_login');
+    }
+
+    /**
+     * @BeforeScenario @userApiContext
+     */
+    public function setUserApiContext(\Behat\Behat\Hook\Scope\BeforeScenarioScope $scope)
+    {
+        $environment = $scope->getEnvironment();
+
+        foreach ($environment->getContexts() as $context) {
+            if ($context instanceof \Behat\MinkExtension\Context\RawMinkContext) {
+                $context->setMinkParameter(
+                    'base_url',
+                    'https://users-ivozprovider.irontec.com'
+                );
+            }
+        }
+    }
 }

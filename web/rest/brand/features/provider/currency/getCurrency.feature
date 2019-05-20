@@ -16,7 +16,7 @@ Feature: Retrieve currencies
       [
           {
               "iden": "EUR",
-              "symbol": "\u20ac",
+              "symbol": "€",
               "id": 1,
               "name": {
                   "en": "Euro",
@@ -29,12 +29,12 @@ Feature: Retrieve currencies
               "id": 2,
               "name": {
                   "en": "Dollar",
-                  "es": "D\u00f3llar"
+                  "es": "Dóllar"
               }
           },
           {
               "iden": "GBP",
-              "symbol": "\u00a3",
+              "symbol": "£",
               "id": 3,
               "name": {
                   "en": "Pound",
@@ -55,7 +55,7 @@ Feature: Retrieve currencies
     """
       {
           "iden": "EUR",
-          "symbol": "\u20ac",
+          "symbol": "€",
           "id": 1,
           "name": {
               "en": "Euro",

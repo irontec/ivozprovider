@@ -20,7 +20,7 @@ Feature: Create administrators
           "id": 1,
           "brand": null,
           "company": null,
-          "timezone": 1
+          "timezone": 145
       }
     """
     Then the response status code should be 201
@@ -38,7 +38,7 @@ Feature: Create administrators
           "id": 7,
           "brand": null,
           "company": null,
-          "timezone": 1
+          "timezone": 145
       }
     """
 
@@ -64,12 +64,12 @@ Feature: Create administrators
           "timezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           }
       }
     """

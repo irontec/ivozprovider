@@ -41,7 +41,7 @@ Feature: Create Ddis
     """
       {
           "ddi": "1234",
-          "ddie164": "+341234",
+          "ddie164": "+3761234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": "user",
@@ -75,7 +75,7 @@ Feature: Create Ddis
     """
       {
           "ddi": "1234",
-          "ddie164": "+341234",
+          "ddie164": "+3761234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": "user",
@@ -100,7 +100,7 @@ Feature: Create Ddis
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
@@ -110,7 +110,7 @@ Feature: Create Ddis
               "language": null,
               "terminal": 1,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
@@ -119,16 +119,16 @@ Feature: Create Ddis
           "huntGroup": null,
           "fax": null,
           "country": {
-              "code": "ES",
-              "countryCode": "+34",
+              "code": "AD",
+              "countryCode": "+376",
               "id": 1,
               "name": {
-                  "en": "Spain",
-                  "es": "España"
+                  "en": "Andorra",
+                  "es": "Andorra"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Andorra"
               }
           },
           "residentialDevice": null,

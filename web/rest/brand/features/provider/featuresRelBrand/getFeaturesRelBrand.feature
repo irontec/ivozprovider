@@ -72,7 +72,7 @@ Feature: Retrieve features rel brand
               },
               "domain": 6,
               "language": 1,
-              "defaultTimezone": 1,
+              "defaultTimezone": 145,
               "currency": 2
           },
           "feature": {

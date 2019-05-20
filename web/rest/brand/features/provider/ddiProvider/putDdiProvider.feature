@@ -41,7 +41,7 @@ Feature: Update ddi providers
                 "es": "es"
             },
             "brand": 1,
-            "country": 1
+            "country": 68
         }
       }
     """

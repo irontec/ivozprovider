@@ -26,3 +26,12 @@ Feature: Authorization checking
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/billable_calls?_page=2"
      Then the header "X-Next-Page" should be equal to "/billable_calls?_page=3"
+
+  Scenario: Pagination can be disabled on some resources
+    Given I add Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "billable_calls?_pagination=false"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON node "root" should have 100 elements

@@ -19,7 +19,7 @@ Feature: Update administrators
           "lastname": "a lastname",
           "brand": null,
           "company": null,
-          "timezone": 2
+          "timezone": 158
       }
     """
     Then the response status code should be 200
@@ -39,13 +39,13 @@ Feature: Update administrators
           "company": null,
           "timezone": {
               "tz": "Europe/London",
-              "comment": null,
-              "id": 2,
+              "comment": "",
+              "id": 158,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 2
+              "country": 180
           }
       }
     """

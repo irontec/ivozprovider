@@ -44,7 +44,7 @@ Feature: Update transformation rules
                   "es": "es"
               },
               "brand": 1,
-              "country": 1
+              "country": 68
           }
       }
     """

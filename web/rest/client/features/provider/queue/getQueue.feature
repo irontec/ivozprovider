@@ -31,7 +31,7 @@ Feature: Retrieve queues
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be like:
     """
-      {
+       {
           "name": "testQueue",
           "maxWaitTime": 20,
           "timeoutTargetType": "number",
@@ -65,10 +65,11 @@ Feature: Retrieve queues
               "recordingsLimitEmail": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
+              "showInvoices": false,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -83,7 +84,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -99,7 +100,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -117,7 +118,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -127,7 +128,7 @@ Feature: Retrieve queues
           "timeoutNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -140,7 +141,7 @@ Feature: Retrieve queues
           "fullNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

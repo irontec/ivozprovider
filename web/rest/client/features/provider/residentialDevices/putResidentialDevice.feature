@@ -70,7 +70,7 @@ Feature: Update residential devices
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "country": 1,
+              "country": 68,
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null

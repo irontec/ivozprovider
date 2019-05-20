@@ -16,7 +16,7 @@ Feature: Create match list patterns
           "regexp": null,
           "numbervalue": "946002051",
           "matchList": 2,
-          "numberCountry": 2
+          "numberCountry": 77
       }
     """
     Then the response status code should be 201
@@ -31,7 +31,7 @@ Feature: Create match list patterns
           "numbervalue": "946002051",
           "id": 2,
           "matchList": 2,
-          "numberCountry": 2
+          "numberCountry": 77
       }
     """
 
@@ -58,7 +58,7 @@ Feature: Create match list patterns
           "numberCountry": {
               "code": "GB",
               "countryCode": "+44",
-              "id": 2,
+              "id": 77,
               "name": {
                   "en": "United Kingdom",
                   "es": "Reino Unido"
