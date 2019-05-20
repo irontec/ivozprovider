@@ -31,8 +31,8 @@ use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 
 class BrandLifeCycleTest extends KernelTestCase
 {
-    const COUNTRY_NUM = 3;
-    const ZONE_NUM = 2;
+    const COUNTRY_NUM = 249;
+    const ZONE_NUM = 7;
 
     use DbIntegrationTestHelperTrait;
 
