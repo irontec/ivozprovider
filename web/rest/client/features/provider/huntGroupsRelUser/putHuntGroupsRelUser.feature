@@ -55,7 +55,7 @@ Feature: Update hunt groups rel users
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
@@ -65,7 +65,7 @@ Feature: Update hunt groups rel users
               "language": null,
               "terminal": 1,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null

@@ -61,6 +61,7 @@ Feature: Retrieve companies
           "recordingsLimitEmail": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
+          "showInvoices": false,
           "id": 1,
           "language": {
               "iden": "es",
@@ -73,12 +74,12 @@ Feature: Retrieve companies
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           },
           "brand": {
               "name": "DemoBrand",
@@ -103,7 +104,8 @@ Feature: Retrieve companies
               },
               "domain": 6,
               "language": 1,
-              "defaultTimezone": 1
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "domain": {
               "domain": "127.0.0.1",
@@ -114,7 +116,7 @@ Feature: Retrieve companies
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -124,6 +126,7 @@ Feature: Retrieve companies
                   "es": "Europa"
               }
           },
+          "currency": null,
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -137,7 +140,7 @@ Feature: Retrieve companies
                   "es": "es"
               },
               "brand": null,
-              "country": 1
+              "country": 68
           },
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",

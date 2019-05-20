@@ -23,7 +23,7 @@ Feature: Update transformation rule sets
               "es": "nombre actualizado"
           },
           "brand": 1,
-          "country": 1
+          "country": 68
       }
     """
     Then the response status code should be 200
@@ -47,7 +47,7 @@ Feature: Update transformation rule sets
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

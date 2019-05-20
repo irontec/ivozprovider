@@ -45,7 +45,7 @@ Feature: Update outgoing ddi rules
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "country": 1,
+              "country": 68,
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null

@@ -24,8 +24,8 @@ Feature: Create external call filters
           "outOfScheduleExtension": null,
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
-          "holidayNumberCountry": 2,
-          "outOfScheduleNumberCountry": 2
+          "holidayNumberCountry": 77,
+          "outOfScheduleNumberCountry": 77
       }
     """
     Then the response status code should be 201
@@ -48,8 +48,8 @@ Feature: Create external call filters
           "outOfScheduleExtension": null,
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
-          "holidayNumberCountry": 2,
-          "outOfScheduleNumberCountry": 2
+          "holidayNumberCountry": 77,
+          "outOfScheduleNumberCountry": 77
       }
     """
 
@@ -80,7 +80,7 @@ Feature: Create external call filters
           "holidayNumberCountry": {
               "code": "GB",
               "countryCode": "+44",
-              "id": 2,
+              "id": 77,
               "name": {
                   "en": "United Kingdom",
                   "es": "Reino Unido"
@@ -93,7 +93,7 @@ Feature: Create external call filters
           "outOfScheduleNumberCountry": {
               "code": "GB",
               "countryCode": "+44",
-              "id": 2,
+              "id": 77,
               "name": {
                   "en": "United Kingdom",
                   "es": "Reino Unido"

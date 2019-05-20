@@ -34,6 +34,7 @@ Feature: Retrieve ddi providers
       {
           "description": "DDIProviderDescription",
           "name": "DDIProviderName",
+          "externallyRated": false,
           "id": 1,
           "brand": "~",
           "transformationRuleSet": {
@@ -49,7 +50,7 @@ Feature: Retrieve ddi providers
                   "es": "es"
               },
               "brand": null,
-              "country": 1
+              "country": 68
           }
       }
     """

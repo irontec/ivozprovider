@@ -29,7 +29,7 @@ Feature: Update Ddis
           "huntGroup": null,
           "fax": null,
           "ddiProvider": 1,
-          "country": 1,
+          "country": 68,
           "residentialDevice": null,
           "conditionalRoute": null
       }
@@ -60,7 +60,7 @@ Feature: Update Ddis
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

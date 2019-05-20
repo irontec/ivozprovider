@@ -33,7 +33,7 @@ Feature: Manage brands
           },
           "domain": 6,
           "language": 1,
-          "defaultTimezone": 1
+          "defaultTimezone": 145
       }
     """
     Then the response status code should be 200
@@ -79,12 +79,12 @@ Feature: Manage brands
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           },
           "currency": {
               "iden": "USD",

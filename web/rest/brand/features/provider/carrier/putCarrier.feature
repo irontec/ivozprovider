@@ -44,7 +44,7 @@ Feature: Update carriers
                   "es": "es"
               },
               "brand": 1,
-              "country": 1
+              "country": 68
           }
       }
     """

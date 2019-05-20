@@ -65,7 +65,7 @@ Feature: Update web portals
               },
               "domain": 4,
               "language": 1,
-              "defaultTimezone": 1
+              "defaultTimezone": 145
           }
       }
     """

@@ -112,6 +112,7 @@ Feature: Create companies
           "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
+          "showInvoices": false,
           "id": 5,
           "language": {
               "iden": "es",
@@ -122,12 +123,12 @@ Feature: Create companies
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
+              "tz": "Europe/Andorra",
+              "comment": "",
               "id": 1,
               "label": {
-                  "en": "en",
-                  "es": "es"
+                  "en": "",
+                  "es": ""
               },
               "country": 1
           },
@@ -154,7 +155,8 @@ Feature: Create companies
               },
               "domain": 6,
               "language": 1,
-              "defaultTimezone": 1
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "domain": {
               "domain": "api.irontec.com",
@@ -163,18 +165,19 @@ Feature: Create companies
               "id": 1
           },
           "country": {
-              "code": "ES",
-              "countryCode": "+34",
+              "code": "AD",
+              "countryCode": "+376",
               "id": 1,
               "name": {
-                  "en": "Spain",
-                  "es": "España"
+                  "en": "Andorra",
+                  "es": "Andorra"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Andorra"
               }
           },
+          "currency": null,
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -188,7 +191,7 @@ Feature: Create companies
                   "es": "es"
               },
               "brand": null,
-              "country": 1
+              "country": 68
           },
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",

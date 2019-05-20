@@ -49,7 +49,7 @@ Feature: Update call forward settings
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
@@ -59,7 +59,7 @@ Feature: Update call forward settings
               "language": null,
               "terminal": 1,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
@@ -67,16 +67,16 @@ Feature: Update call forward settings
           "extension": null,
           "voiceMailUser": null,
           "numberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
+              "code": "AD",
+              "countryCode": "+376",
               "id": 1,
               "name": {
-                  "en": "Spain",
-                  "es": "España"
+                  "en": "Andorra",
+                  "es": "Andorra"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Andorra"
               }
           },
           "residentialDevice": null,

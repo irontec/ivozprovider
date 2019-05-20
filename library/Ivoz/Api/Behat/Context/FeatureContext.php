@@ -65,10 +65,11 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
     /**
      * @Given I add Authorization header
      */
-    public function setAuthorizationHeader($username = 'admin')
+    public function setAuthorizationHeader($username = 'admin', string $endpoint = 'admin_login')
     {
         $token = $this->sendLoginRequest(
-            $username
+            $username,
+            $endpoint
         );
 
         $this->request->setHttpHeader('Authorization', 'Bearer ' . $token);
@@ -140,13 +141,17 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
      * @return string | null
      * @throws \Exception
      */
-    private function sendLoginRequest($username)
+    private function sendLoginRequest($username, string $endpoint)
     {
+        $userFld = $endpoint === 'admin_login'
+            ? 'username'
+            : 'email';
+
         $response = $this->request->send(
             'POST',
-            $this->locatePath('admin_login'),
+            $this->locatePath($endpoint),
             [
-                'username' => $username,
+                $userFld => $username,
                 'password' => 'changeme'
             ]
         );

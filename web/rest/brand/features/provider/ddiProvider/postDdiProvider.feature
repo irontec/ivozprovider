@@ -59,7 +59,7 @@ Feature: Create ddi providers
                   "es": "es"
               },
               "brand": null,
-              "country": 1
+              "country": 68
           }
       }
     """

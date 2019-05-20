@@ -81,12 +81,12 @@ Feature: Retrieve administrators
           "timezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           }
       }
     """

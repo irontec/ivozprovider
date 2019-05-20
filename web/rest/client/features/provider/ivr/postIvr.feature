@@ -101,10 +101,11 @@ Feature: Create IVRs
               "recordingsLimitEmail": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
+              "showInvoices": false,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -147,29 +148,29 @@ Feature: Create IVRs
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
           "noInputNumberCountry": {
-              "code": "GB",
-              "countryCode": "+44",
+              "code": "AE",
+              "countryCode": "+971",
               "id": 2,
               "name": {
-                  "en": "United Kingdom",
-                  "es": "Reino Unido"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa"
-              }
-          },
-          "errorNumberCountry": {
-              "code": "JP",
-              "countryCode": "+81",
-              "id": 3,
-              "name": {
-                  "en": "Japan",
-                  "es": "Japón"
+                  "en": "United Arab Emirates",
+                  "es": "Emiratos Árabes Unidos"
               },
               "zone": {
                   "en": "Asia",
-                  "es": "Asia"
+                  "es": "Emiratos Árabes Unidos"
+              }
+          },
+          "errorNumberCountry": {
+              "code": "AF",
+              "countryCode": "+93",
+              "id": 3,
+              "name": {
+                  "en": "Afghanistan",
+                  "es": "Afganistán"
+              },
+              "zone": {
+                  "en": "Asia",
+                  "es": "Afganistán"
               }
           }
       }

@@ -42,7 +42,7 @@ Feature: Create IVR excluded extensions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "extension": {
@@ -93,7 +93,7 @@ Feature: Create IVR excluded extensions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "extension": {

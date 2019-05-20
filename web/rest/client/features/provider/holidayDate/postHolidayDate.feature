@@ -68,7 +68,7 @@ Feature: Create holiday dates
               "id": 1,
               "encodedFile": {
                   "fileSize": 1,
-                  "mimeType": "audio\/x-wav; charset=binary",
+                  "mimeType": "audio/x-wav; charset=binary",
                   "baseName": "locution.wav"
               },
               "originalFile": {

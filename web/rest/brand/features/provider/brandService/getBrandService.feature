@@ -64,7 +64,8 @@ Feature: Retrieve brandService
               },
               "domain": 6,
               "language": 1,
-              "defaultTimezone": 1
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "service": {
               "iden": "DirectPickUp",
