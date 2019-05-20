@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-23 17:09+0200\n"
+"POT-Creation-Date: 2019-05-20 17:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -639,38 +639,6 @@ msgid ""
 msgstr ""
 "Recomendamos utilizar el **módulo geoIP de iptables** para rechazar "
 "conexiones de países en los que no tengamos clientes."
-
-#: ../../security_and_maintenance/security/firewall.rst:43
-msgid "T.38 passthrough mode"
-msgstr "Modo pasarela T.38"
-
-#: ../../security_and_maintenance/security/firewall.rst:45
-msgid ""
-"vPBX terminals/friends, residential devices and retail accounts can be "
-"configured with T.38 passthrough enabled. In this kind of setup, T.38 "
-"capable devices will exchange T.38 RTP traffic directly to Application "
-"Servers."
-msgstr ""
-"Los terminales/friends de clientes vPBX, dispositivos residenciales y "
-"cuentas retail se pueden configurar con el modo pasarela T.38 activado. "
-"En este tipo de escenarios los dispositivos T.38 intercambiarán tráfico "
-"RTP T.38 directamente con los servidores de aplicación."
-
-#: ../../security_and_maintenance/security/firewall.rst:48
-msgid "This means that when this mode is needed:"
-msgstr "Esto significa que con este modo activado:"
-
-#: ../../security_and_maintenance/security/firewall.rst:50
-msgid ""
-"Application Server must have an exposed IP address (usually public IP "
-"address)."
-msgstr ""
-"Los servidores de aplicación tienen que estar expuestos (es decir, requerirán "
-"una IP pública)."
-
-#: ../../security_and_maintenance/security/firewall.rst:52
-msgid "Firewall will need to expose those IP addresses' 4000-4999 UDP port range."
-msgstr "El cortafuegos tendrá que exponer el rango 4000-4999 UDP de dichas IPs."
 
 #: ../../security_and_maintenance/security/index.rst:3
 msgid "Security"

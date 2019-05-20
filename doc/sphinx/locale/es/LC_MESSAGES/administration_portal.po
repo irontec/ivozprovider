@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-09 17:12+0200\n"
+"POT-Creation-Date: 2019-05-20 17:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4411,96 +4411,94 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/terminals.rst:47
 msgid ""
 "If set to 'yes', this SIP endpoint must be a **T.38 capable fax "
-"sender/receiver**. IvozProvider application servers will act as T.38 "
-"gateways, routing calls through a T.38 capable carrier and bridging "
-"signalling and media from one to another. See :ref:`Firewall <firewall>` "
-"for port exposing concerns related to this kind of traffic."
+"sender/receiver**. IvozProvider will act as a T.38 gateway, bridging fax-"
+"calls of a T.38 capable carrier and a T.38 capable device."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:91
-#: ../../administration_portal/client/retail/retail_accounts.rst:88
+#: ../../administration_portal/client/residential/residential_devices.rst:89
+#: ../../administration_portal/client/retail/retail_accounts.rst:86
 msgid "Voicemail settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:93
+#: ../../administration_portal/client/residential/residential_devices.rst:91
 msgid ""
 "Every residential device has a voicemail that can be accessed using "
 "voicemail service code defined at brand level."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:96
-#: ../../administration_portal/client/retail/retail_accounts.rst:93
+#: ../../administration_portal/client/residential/residential_devices.rst:94
+#: ../../administration_portal/client/retail/retail_accounts.rst:91
 msgid "Call forwarding settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:98
+#: ../../administration_portal/client/residential/residential_devices.rst:96
 msgid ""
 "Apart from unconditional call forwarding to external number through "
 ":ref:`External call filters` applied to DDI, residential devices may have"
 " additional call forwarding settings that allow:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:101
+#: ../../administration_portal/client/residential/residential_devices.rst:99
 msgid "Forwarding to another external number."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:103
+#: ../../administration_portal/client/residential/residential_devices.rst:101
 msgid "Forwarding to voicemail associated to each residential device."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:105
+#: ../../administration_portal/client/residential/residential_devices.rst:103
 msgid ""
 "Supported forwarding types: unconditional, no-answer, non-registered, "
 "busy."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:107
+#: ../../administration_portal/client/residential/residential_devices.rst:105
 msgid ""
 ":ref:`External call filters` have precedence over residential devices "
 "call forwarding settings."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:111
+#: ../../administration_portal/client/residential/residential_devices.rst:109
 msgid "Asterisk as a residential device"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:113
+#: ../../administration_portal/client/residential/residential_devices.rst:111
 msgid ""
 "At the other end of a device can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:118
+#: ../../administration_portal/client/residential/residential_devices.rst:116
 msgid "Device register"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:120
-#: ../../administration_portal/client/retail/retail_accounts.rst:113
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:120
+#: ../../administration_portal/client/residential/residential_devices.rst:118
+#: ../../administration_portal/client/retail/retail_accounts.rst:111
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:118
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:123
-#: ../../administration_portal/client/retail/retail_accounts.rst:116
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:123
+#: ../../administration_portal/client/residential/residential_devices.rst:121
+#: ../../administration_portal/client/retail/retail_accounts.rst:114
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:121
 msgid "Configuration will be something like this:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:130
+#: ../../administration_portal/client/residential/residential_devices.rst:128
 msgid "Device peer"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:148
+#: ../../administration_portal/client/residential/residential_devices.rst:146
 msgid ""
 "*Residential devices* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:151
-#: ../../administration_portal/client/retail/retail_accounts.rst:144
+#: ../../administration_portal/client/residential/residential_devices.rst:149
+#: ../../administration_portal/client/retail/retail_accounts.rst:142
 msgid ""
 "As from username is used to identify the retail account, P-Asserted-"
 "Identity must be used to specify caller number."
@@ -4700,67 +4698,67 @@ msgid ""
 "account. If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:81
+#: ../../administration_portal/client/retail/retail_accounts.rst:79
 msgid ""
 "All retail accounts within a retail client will have the transcoding "
 "capabilities configured at client level."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:83
+#: ../../administration_portal/client/retail/retail_accounts.rst:81
 msgid ""
 "On retail account edit screen **id** field shows internal identification "
 "number assigned to the retail account. This id is transported to "
 "*Endpoint Id* field in *External Calls* section for CSV export."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:90
+#: ../../administration_portal/client/retail/retail_accounts.rst:88
 msgid "There is no voicemail service for retail clients."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:95
+#: ../../administration_portal/client/retail/retail_accounts.rst:93
 msgid ""
 "Each retail account can have a unique enabled call forward setting, "
 "pointing to an external number."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:97
+#: ../../administration_portal/client/retail/retail_accounts.rst:95
 msgid ""
 "This external called will be called whenever the retail account cannot be"
 " reached:"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:99
+#: ../../administration_portal/client/retail/retail_accounts.rst:97
 msgid ""
 "Direct connectivity accounts: when no answer is received from defined "
 "address."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:101
+#: ../../administration_portal/client/retail/retail_accounts.rst:99
 msgid ""
 "Accounts using SIP register: when no answer is received from last contact"
 " address or when no active register is found."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:104
+#: ../../administration_portal/client/retail/retail_accounts.rst:102
 msgid "Asterisk as a retail account"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:106
+#: ../../administration_portal/client/retail/retail_accounts.rst:104
 msgid ""
 "At the other end of a account can be any kind of SIP entity. This section"
 " takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:111
+#: ../../administration_portal/client/retail/retail_accounts.rst:109
 msgid "Account register"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:123
+#: ../../administration_portal/client/retail/retail_accounts.rst:121
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:141
+#: ../../administration_portal/client/retail/retail_accounts.rst:139
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
@@ -5445,7 +5443,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:63
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:107
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:105
 msgid ""
 "Calls to *friends* are considered internal. That means that ACLs won't be"
 " checked when calling a friend, no matter if the origin of the call is a "
@@ -5623,72 +5621,72 @@ msgid ""
 " If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:112
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:110
 msgid "Asterisk as a remote friend"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:114
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:112
 msgid ""
 "At the other end of a friend can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:119
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:117
 msgid "register"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:130
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:128
 msgid "peer"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:147
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:145
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:150
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:148
 msgid ""
 "As from username is used to identify the friend, P-Asserted-Identity must"
 " be used to specify caller number."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:153
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:151
 msgid "Summary of remote friends"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:155
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:153
 msgid ""
 "The key point is understanding that a *remote friend* has a direct "
 "relation with the extension-user-terminal trio:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:158
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:156
 msgid "Can place calls to all internal extensions and other friends."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:160
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:158
 msgid "Can place external calls that its ACL allows"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:162
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:160
 msgid "Display their configured outgoing DDI when calling to external entities"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:164
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:162
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:166
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:164
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be authenticated for security reasons)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:169
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:167
 msgid ""
 "Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
 "traffic from friends are identical to any other user terminal traffic in "
@@ -6733,13 +6731,13 @@ msgid ""
 " of the SIP device."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/terminals.rst:52
+#: ../../administration_portal/client/vpbx/terminals.rst:50
 msgid ""
 "For **most of devices** that doesn't require provisioning just filling "
 "**username** and **password** will be enough."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/terminals.rst:55
+#: ../../administration_portal/client/vpbx/terminals.rst:53
 msgid ""
 "Once the terminal has been created, most devices will only require the "
 "name, password and :ref:`Client SIP domain <domain_per_client>` in order "
@@ -8277,87 +8275,4 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
-
-#~ msgid ""
-#~ "Once a call that implies cost is"
-#~ " hung up and is parsed by an"
-#~ " asynchronous process, it is listed "
-#~ "in :ref:`billable_calls`."
-#~ msgstr ""
-
-#~ msgid "Billable calls"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Billable calls** section only lists "
-#~ "**calls that imply cost for clients**,"
-#~ " usually external outgoing calls."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "An asynchronous process parses each "
-#~ "billable call and adds it to this"
-#~ " list a few minutes after call "
-#~ "hangup."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "At **brand level**, there is an "
-#~ "additional available operation: **Rerate "
-#~ "call**. This option allows calling "
-#~ "rating engine again for a call or"
-#~ " a bunch of calls."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "This section is identical to "
-#~ ":ref:`Invoice schedulers` except to the "
-#~ "fields that do not apply to CSVs"
-#~ " (Invoice number sequence, Tax rate...)"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Apart from the fields above, everything"
-#~ " described in :ref:`Invoice schedulers` "
-#~ "applies here:"
-#~ msgstr ""
-
-#~ msgid "Frequency/Unit configuration."
-#~ msgstr ""
-
-#~ msgid "Email send."
-#~ msgstr ""
-
-#~ msgid "View generated CSVs in **List of Call CSV reports**."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The last step is pressing **Generate "
-#~ "invoice** suboption to create the final"
-#~ " PDF. Afterwards, we can see which"
-#~ " calls have been included in a "
-#~ "particular invoice with **List of "
-#~ "Billable Calls** option or download the"
-#~ " PDF file."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "If rating of any call included in"
-#~ " an invoice is wrong, :ref:`Billable "
-#~ "Calls` section allows rerating it, as"
-#~ " long as the invoice that includes"
-#~ " the call is previously deleted."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "On retail account edit screen **id** "
-#~ "field shows internal identification number "
-#~ "assigned to the retail account. This "
-#~ "id is transported to *Endpoint Id* "
-#~ "field in *Billable Calls* section for"
-#~ " CSV export."
-#~ msgstr ""
-
-#~ msgid "Used for showing dates in Billable Calls and similar sections."
-#~ msgstr ""
 
