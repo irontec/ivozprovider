@@ -116,20 +116,20 @@ abstract class PsEndpointAbstract
      * comment: enum:none|fec|redundancy
      * @var string
      */
-    protected $t38UdptlEc = 'none';
+    protected $t38UdptlEc = 'redundancy';
 
     /**
      * column: t38_udptl_maxdatagram
      * @var integer
      */
-    protected $t38UdptlMaxdatagram = 0;
+    protected $t38UdptlMaxdatagram = 1440;
 
     /**
      * column: t38_udptl_nat
      * comment: enum:yes|no
      * @var string
      */
-    protected $t38UdptlNat = 'yes';
+    protected $t38UdptlNat = 'no';
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface

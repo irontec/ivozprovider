@@ -98,17 +98,17 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $t38UdptlEc = 'none';
+    private $t38UdptlEc = 'redundancy';
 
     /**
      * @var integer
      */
-    private $t38UdptlMaxdatagram = 0;
+    private $t38UdptlMaxdatagram = 1440;
 
     /**
      * @var string
      */
-    private $t38UdptlNat = 'yes';
+    private $t38UdptlNat = 'no';
 
     /**
      * @var integer
