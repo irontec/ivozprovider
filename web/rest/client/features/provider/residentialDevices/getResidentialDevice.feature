@@ -39,7 +39,7 @@ Feature: Retrieve residential devices
           "ip": null,
           "port": null,
           "authNeeded": "yes",
-          "password": "****",
+          "password": null,
           "disallow": "all",
           "allow": "alaw",
           "directMediaMethod": "invite",

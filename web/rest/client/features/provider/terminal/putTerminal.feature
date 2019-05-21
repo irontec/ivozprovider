@@ -34,7 +34,7 @@ Feature: Update terminals
           "allowAudio": "alaw",
           "allowVideo": null,
           "directMediaMethod": "invite",
-          "password": "****",
+          "password": "ZGthe7E2+1",
           "mac": "aabbccddeeff",
           "lastProvisionDate": "1970-01-01 10:10:10",
           "id": 1,
