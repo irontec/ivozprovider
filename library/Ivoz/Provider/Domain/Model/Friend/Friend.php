@@ -211,6 +211,9 @@ class Friend extends FriendAbstract implements FriendInterface
         return $callAcl->dstIsCallable($exten);
     }
 
+    /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
     public function getAstPsEndpoint()
     {
         $astPsEnpoints = $this->getPsEndpoints(

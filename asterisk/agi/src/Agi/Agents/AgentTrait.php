@@ -73,4 +73,14 @@ trait AgentTrait
     {
         return null;
     }
+
+    /**
+     * @brief Determine if agent's endpoint has T.38 Passthrough enabled
+     *
+     * @return boolean
+     */
+    public function isT38PassthroughEnabled()
+    {
+        return false;
+    }
 }

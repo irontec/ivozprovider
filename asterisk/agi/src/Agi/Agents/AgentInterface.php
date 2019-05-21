@@ -74,4 +74,11 @@ interface AgentInterface
      * @return LocutionInterface | null
      */
     public function getVoiceMailLocution();
+
+    /**
+     * @brief Determine if Agent's endpoint has T.38 Passthrough enabled
+     *
+     * @return boolean
+     */
+    public function isT38PassthroughEnabled();
 }

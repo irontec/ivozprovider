@@ -5,6 +5,7 @@ namespace Agi\Agents;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class UserAgent implements AgentInterface
@@ -118,5 +119,18 @@ class UserAgent implements AgentInterface
     public function getVoiceMailLocution()
     {
         return $this->user->getVoicemailLocution();
+    }
+
+    /**
+     * @brief Determine if agent's endpoint has T.38 Passthrough enabled
+     *
+     * @return boolean
+     */
+    public function isT38PassthroughEnabled()
+    {
+        $terminal = $this->user->getTerminal();
+        $psEndpoint = $terminal->getAstPsEndpoint();
+
+        return $psEndpoint->getT38Udptl() == TerminalInterface::T38PASSTHROUGH_YES;
     }
 }

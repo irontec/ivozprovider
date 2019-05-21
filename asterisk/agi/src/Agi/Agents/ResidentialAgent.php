@@ -125,4 +125,16 @@ class ResidentialAgent implements AgentInterface
     {
         return $this->residential->getVoiceMail();
     }
+
+    /**
+     * @brief Determine if agent's endpoint has T.38 Passthrough enabled
+     *
+     * @return boolean
+     */
+    public function isT38PassthroughEnabled()
+    {
+        $psEndpoint = $this->residential->getAstPsEndpoint();
+
+        return $psEndpoint->getT38Udptl() == ResidentialDeviceInterface::T38PASSTHROUGH_YES;
+    }
 }

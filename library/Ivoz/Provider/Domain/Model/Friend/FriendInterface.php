@@ -98,6 +98,9 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isAllowedToCall($exten);
 
+    /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
     public function getAstPsEndpoint();
 
     public function getLanguageCode();
