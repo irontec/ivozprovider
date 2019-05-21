@@ -47,7 +47,7 @@ class UserDto extends UserDtoAbstract
         if (!$hideSensitiveData) {
             return $response;
         }
-        $response['pass'] = '****';
+        $response['pass'] = '*****';
 
         return $response;
     }
@@ -96,19 +96,6 @@ class UserDto extends UserDtoAbstract
         }
 
         return parent::getPropertyMap(...func_get_args());
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function normalize(string $context)
-    {
-        $response = parent::normalize(...func_get_args());
-        if (isset($response['pass'])) {
-            $response['pass'] = '*****';
-        }
-
-        return $response;
     }
 
     /**

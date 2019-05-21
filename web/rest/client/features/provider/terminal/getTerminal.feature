@@ -50,7 +50,7 @@ Feature: Retrieve terminals
           "allowAudio": "alaw",
           "allowVideo": null,
           "directMediaMethod": "invite",
-          "password": "****",
+          "password": "AUfVkn498_",
           "mac": "",
           "lastProvisionDate": null,
           "id": 1,

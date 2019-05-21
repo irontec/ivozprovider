@@ -4,17 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 {
-    public function toArray($hideSensitiveData = false)
-    {
-        $response = parent::toArray($hideSensitiveData);
-        if (!$hideSensitiveData) {
-            return $response;
-        }
-        $response['password'] = '****';
-
-        return $response;
-    }
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

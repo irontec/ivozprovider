@@ -42,7 +42,7 @@ Feature: Retrieve friends patterns
               "ip": "",
               "port": 5060,
               "authNeeded": "yes",
-              "password": "****",
+              "password": "SDG3qd2j6+",
               "priority": 1,
               "disallow": "all",
               "allow": "alaw",

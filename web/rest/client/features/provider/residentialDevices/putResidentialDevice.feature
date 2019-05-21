@@ -42,7 +42,7 @@ Feature: Update residential devices
           "ip": null,
           "port": null,
           "authNeeded": "yes",
-          "password": "****",
+          "password": "ZGthe7E2+4",
           "disallow": "all",
           "allow": "alaw",
           "directMediaMethod": "invite",

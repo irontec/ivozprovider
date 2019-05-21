@@ -45,7 +45,7 @@ Feature: Update friends
           "ip": "",
           "port": 5061,
           "authNeeded": "yes",
-          "password": "****",
+          "password": "ZEF7t5n+b4",
           "priority": 1,
           "disallow": "all",
           "allow": "alaw",

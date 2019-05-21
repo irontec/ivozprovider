@@ -20,15 +20,4 @@ class FriendDto extends FriendDtoAbstract
 
         return parent::getPropertyMap(...func_get_args());
     }
-
-    public function toArray($hideSensitiveData = false)
-    {
-        $response = parent::toArray($hideSensitiveData);
-        if (!$hideSensitiveData) {
-            return $response;
-        }
-        $response['password'] = '****';
-
-        return $response;
-    }
 }
