@@ -59,6 +59,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
             $this->active
         ));
     }
+
     public function unserialize($serialized)
     {
         list (
@@ -80,7 +81,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
         if ($canAccessUserweb) {
             // Avoid username/pass/active incoherences
             if (!$this->getPass()) {
-                $this->setPass("1234");
+                throw new \DomainException('Active users must have a password');
             }
         } else {
             $this->setActive(0);
@@ -116,10 +117,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
 
         if ($this->getEmail()) {
             $this->setActive(1);
-            /**
-             * @todo should we move this to the frontend?
-             */
-            $this->setPass("1234");
         }
     }
 
@@ -130,6 +127,10 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         if ($pass === $this->getPass()) {
             return $this;
+        }
+
+        if (empty($pass)) {
+            return parent::setPass(null);
         }
 
         $newToken = md5(md5($pass));
