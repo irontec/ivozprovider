@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "166b912fc5cc2036e28160b7e4948f2f",
+    "content-hash": "632f33501900929ff922157453632762",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1303,23 +1303,24 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "0.4.0.0",
+            "version": "0.6.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/gesdinet/jwt-refresh-token-bundle",
-                "reference": "95292f16e25b06a8d5a5e70c0dc38b2214df8849",
+                "reference": "9b9a9f8cf5fdc48dacb012929dc01cdf05b6badf",
                 "shasum": null
             },
             "require": {
-                "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": "^2.4.8",
                 "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "~3.3|~4.0",
-                "symfony/validator": "~3.3|~4.0"
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/framework-bundle": "~3.4|~4.0",
+                "symfony/validator": "~3.4|~4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "doctrine/doctrine-bundle": "~1.4",
+                "doctrine/mongodb-odm-bundle": "^3.4",
+                "doctrine/orm": "^2.4.8",
+                "phpspec/phpspec": "^3.0|^4.0"
             },
             "type": "symfony-bundle",
             "extra": {

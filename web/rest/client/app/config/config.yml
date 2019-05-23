@@ -11,6 +11,9 @@ parameters:
   #https://symfony.com/doc/current/console/request_context.html
   router.request_context.base_url: /api/client
 
+gesdinet_jwt_refresh_token:
+  user_provider: 'Service\UserProvider::Administrator'
+
 framework:
   secret: '%secret%'
   router:

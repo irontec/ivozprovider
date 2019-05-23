@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "37466a3e79d8f40b79bf51f5176b6c15",
+    "content-hash": "5a0d5f4cf55e8f02ae453aa0435cc23d",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1292,28 +1292,29 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v0.4.0",
+            "version": "v0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gesdinet/JWTRefreshTokenBundle.git",
-                "reference": "95292f16e25b06a8d5a5e70c0dc38b2214df8849"
+                "reference": "9b9a9f8cf5fdc48dacb012929dc01cdf05b6badf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gesdinet/JWTRefreshTokenBundle/zipball/95292f16e25b06a8d5a5e70c0dc38b2214df8849",
-                "reference": "95292f16e25b06a8d5a5e70c0dc38b2214df8849",
+                "url": "https://api.github.com/repos/gesdinet/JWTRefreshTokenBundle/zipball/9b9a9f8cf5fdc48dacb012929dc01cdf05b6badf",
+                "reference": "9b9a9f8cf5fdc48dacb012929dc01cdf05b6badf",
                 "shasum": ""
             },
             "require": {
-                "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": "^2.4.8",
                 "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "~3.3|~4.0",
-                "symfony/validator": "~3.3|~4.0"
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/framework-bundle": "~3.4|~4.0",
+                "symfony/validator": "~3.4|~4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "doctrine/doctrine-bundle": "~1.4",
+                "doctrine/mongodb-odm-bundle": "^3.4",
+                "doctrine/orm": "^2.4.8",
+                "phpspec/phpspec": "^3.0|^4.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1340,7 +1341,7 @@
             "keywords": [
                 "jwt refresh token bundle symfony json web"
             ],
-            "time": "2018-04-26T07:17:06+00:00"
+            "time": "2019-04-04T10:06:48+00:00"
         },
         {
             "name": "graze/guzzle-jsonrpc",
@@ -6876,6 +6877,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-08-03T14:08:16+00:00"
         },
         {
