@@ -163,6 +163,15 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
   attributes:
     access_control: 'FALSE'
 
+Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      brand:
+        eq: "user.getBrand().getId()"
+      company:
+        in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -463,6 +472,26 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
               carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
           - carrier:
               isNull: ~
+
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getbrand"
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+
+Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getbrand"
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
   attributes:
