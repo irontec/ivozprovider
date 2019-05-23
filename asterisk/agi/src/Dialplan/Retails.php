@@ -101,11 +101,6 @@ class Retails extends RouteHandlerAbstract
             $this->channelInfo->setChannelOrigin($caller);
         }
 
-        // Set variable for later usage
-        if ($isFax) {
-            $this->agi->setVariable("_T38PASSTHROUGH", "yes");
-        }
-
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $retailAccount, $exten);
 

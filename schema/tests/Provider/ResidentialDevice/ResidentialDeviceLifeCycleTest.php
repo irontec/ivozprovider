@@ -171,9 +171,9 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
                 'outbound_proxy' => 'sip:users.ivozprovider.local^3Blr',
                 'trust_id_inbound' => 'yes',
                 't38_udptl' => 'no',
-                't38_udptl_ec' => 'none',
-                't38_udptl_maxdatagram' => 0,
-                't38_udptl_nat' => 'yes',
+                't38_udptl_ec' => 'redundancy',
+                't38_udptl_maxdatagram' => 1440,
+                't38_udptl_nat' => 'no',
                 'residentialDeviceId' => 2,
                 'id' => 6
             ]

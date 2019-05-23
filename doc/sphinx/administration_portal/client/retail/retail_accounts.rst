@@ -74,9 +74,7 @@ These are the configurable settings of *Retail accounts*:
 
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
-        application servers will act as T.38 gateways, routing calls through a T.38 capable carrier and
-        bridging signalling and media from one to another. See :ref:`Firewall <firewall>` for port exposing concerns
-        related to this kind of traffic.
+        will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
 
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 
