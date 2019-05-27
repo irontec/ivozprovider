@@ -75,7 +75,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
         $conditions = [
             ['self.id', 'in', $pks],
-            ['self.invoice', 'in', $pks],
+            ['self.invoice', 'isNull'],
+            ['trunksCdr.cgrid', 'isNull'],
             ['self.direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['carrier.externallyRated', 'eq', 0],
