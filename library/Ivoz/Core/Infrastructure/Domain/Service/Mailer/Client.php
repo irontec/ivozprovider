@@ -27,6 +27,12 @@ class Client implements MailerClientInterface
      */
     public function send(Message $message)
     {
+        $transport = $this->mailer->getTransport();
+        if (!$transport->ping()) {
+            $transport->stop();
+            $transport->start();
+        }
+
         $this->mailer
             ->send(
                 $message->toSwiftMessage()
