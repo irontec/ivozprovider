@@ -9,6 +9,7 @@ use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigratedSubscriberInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
@@ -21,34 +22,22 @@ use Psr\Log\LoggerInterface;
 
 class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
 {
-    /**
-     * @var TpCdrRepository
-     */
     protected $tpCdrRepository;
-
-    /**
-     * @var UpdateDtoByDefaultRunTpCdr
-     */
     protected $updateDtoByDefaultRunTpCdr;
-
-    /**
-     * @var EntityTools
-     */
+    protected $processExternalCdr;
     protected $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
 
     public function __construct(
         TpCdrRepository $tpCdrRepository,
         UpdateDtoByDefaultRunTpCdr $updateDtoByDefaultRunTpCdr,
+        ProcessExternalCdr $processExternalCdr,
         EntityTools $entityTools,
         LoggerInterface $logger
     ) {
         $this->tpCdrRepository = $tpCdrRepository;
         $this->updateDtoByDefaultRunTpCdr = $updateDtoByDefaultRunTpCdr;
+        $this->processExternalCdr = $processExternalCdr;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
     }
@@ -113,6 +102,17 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
         BillableCallInterface $billableCall
     ) {
         $cgrid = $trunksCdr->getCgrid();
+        if (!$cgrid) {
+            try {
+                $processed = $this->processExternalCdr->execute($trunksCdr);
+                if ($processed) {
+                    $cgrid = $trunksCdr->getCgrid();
+                }
+            } catch (\Exception $e) {
+                $this->logger->error($e->getMessage());
+            }
+        }
+
         if (!$cgrid) {
             $this->logger->info('Cgrid was not found. Skipping');
             return;
