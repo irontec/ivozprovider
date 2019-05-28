@@ -53,6 +53,11 @@ class ProcessExternalCdr
      */
     public function execute(TrunksCdrInterface $trunksCdr)
     {
+        $isNotOutbound = !$trunksCdr->isOutboundCall();
+        if ($isNotOutbound) {
+            return false;
+        }
+
         $carrier = $trunksCdr->getCarrier();
         if ($carrier && $carrier->getExternallyRated()) {
             return false;
@@ -81,9 +86,13 @@ class ProcessExternalCdr
         ];
 
         if ($carrier) {
+            $reqType = $carrier->getCalculateCost()
+                ? '*postpaid'
+                : '*rated';
+
             $payload['ExtraFields'] = [
                 'carrierId' => 'cr' . $carrier->getId(),
-                'carrierReqtype' => '*postpaid'
+                'carrierReqtype' => $reqType
             ];
         }
 
