@@ -34,15 +34,16 @@ services:
   ## Dependencies
   ################################################
   Symfony\Component\Finder\Finder: ~
+
+  Ivoz\Api\Core\Security\AccessControlEvaluator:
+    arguments:
+      $entityManager: '@doctrine.orm.entity_manager'
+
   Ivoz\Api\Core\Security\DataAccessControlParser:
+    synthetic: true
     arguments:
       $requestStack: '@request_stack'
       $tokenStorage: '@security.token_storage'
-      $entityManager: '@doctrine.orm.entity_manager'
-      $companyRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")'
-      $userRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
 
   ################################################
   ## Listeners

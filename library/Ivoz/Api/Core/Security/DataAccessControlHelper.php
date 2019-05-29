@@ -56,6 +56,14 @@ class DataAccessControlHelper
                 continue;
             }
 
+            if (count($comparison) === 1) {
+                $expressions[] = self::toString(
+                    current($comparison),
+                    key($comparison)
+                );
+                continue;
+            }
+
             list($field, $operator) = $comparison;
             $value = $comparison[2] ?? null;
 

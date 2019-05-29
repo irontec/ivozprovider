@@ -6,7 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Util\RequestAttributesExtractor;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -31,50 +31,28 @@ class DataAccessControlParser
         self::WRITE_ACCESS_CONTROL_ATTRIBUTE
     ];
 
-    /**
-     * @var RequestStack
-     */
     protected $requestStack;
-
-    /**
-     * @var TokenStorage
-     */
     protected $tokenStorage;
-
-    /**
-     * @var ResourceMetadataFactoryInterface
-     */
     protected $resourceMetadataFactory;
+    protected $accessControlEvaluator;
 
-    /**
-     * @var EntityManager
-     */
-    protected $em;
-
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
-    /**
-     * @var CompanyRepository
-     */
-    protected $companyRepository;
+    protected $repositories = [];
 
     public function __construct(
         RequestStack $requestStack,
         TokenStorage $tokenStorage,
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
-        EntityManager $entityManager,
-        UserRepository $userRepository,
-        CompanyRepository $companyRepository
+        AccessControlEvaluator $accessControlEvaluator
     ) {
         $this->requestStack = $requestStack;
         $this->tokenStorage = $tokenStorage;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->em = $entityManager;
-        $this->userRepository = $userRepository;
-        $this->companyRepository = $companyRepository;
+        $this->accessControlEvaluator = $accessControlEvaluator;
+    }
+
+    public function addRepository(string $name, ObjectRepository $repository)
+    {
+        $this->repositories[$name] = $repository;
     }
 
     /**
@@ -134,15 +112,37 @@ class DataAccessControlParser
             );
         }
 
-        if (key($response) === self::INHERITANCE_KEY) {
-            return $this->getInheritedAccessControl($response, $role, $mode);
+        $response = $this->recursiveInheritanceParser($response, $role, $mode);
+
+        if (isset($response[$role])) {
+            return $response[$role];
         }
 
-        if (!isset($response[$role])) {
-            return [];
+        return $response;
+    }
+
+    protected function recursiveInheritanceParser(array $response, $role, $mode): array
+    {
+        $response = $response[$role] ?? $response;
+        foreach ($response as $key => $value) {
+            if (!is_array($value)) {
+                continue;
+            }
+
+            if ($key === self::INHERITANCE_KEY) {
+                unset($response[$key]);
+                $inheritedValues = $this->getInheritedAccessControl(
+                    $value,
+                    $role,
+                    self::READ_ACCESS_CONTROL_ATTRIBUTE
+                );
+                $response += $inheritedValues;
+            } else {
+                $response[$key] = $this->recursiveInheritanceParser($value, $role, $mode);
+            }
         }
 
-        return $response[$role];
+        return $response;
     }
 
     /**
@@ -152,7 +152,7 @@ class DataAccessControlParser
     protected function getInheritedAccessControl(array $response, string $role, string $mode): array
     {
         $inheritedAccessControl = [];
-        foreach ($response['inherited'] as $field => $resource) {
+        foreach ($response as $field => $resource) {
             $dataAccessControl = $this->getResourceDataAccessControl($resource, $role, $mode);
             if (empty($dataAccessControl)) {
                 continue;
@@ -160,26 +160,13 @@ class DataAccessControlParser
 
             $parsedDataAccessControl = $this->parseDataAccessControl($dataAccessControl);
             $criteria = $this->dataAccessControlToCriteria($parsedDataAccessControl);
-            $inheritedAccessControl[$field]['in'] = $this->getEntityIdsByCriteria($resource, $criteria);
+            $inheritedAccessControl[$field]['in'] = $this->accessControlEvaluator->getForeginKeysByCriteria(
+                $resource,
+                $criteria
+            );
         }
 
         return $inheritedAccessControl;
-    }
-
-    protected function getEntityIdsByCriteria(string $fqcn, Criteria $criteria)
-    {
-        $entityRepository = $this->em->getRepository($fqcn);
-        $qb = $entityRepository->createQueryBuilder('self');
-
-        $qb
-            ->select('self.id')
-            ->addCriteria($criteria);
-
-        $result = $qb
-            ->getQuery()
-            ->getScalarResult();
-
-        return array_column($result, 'id');
     }
 
     /**
@@ -235,6 +222,13 @@ class DataAccessControlParser
     {
         $arrayCriteria = [];
         foreach ($accessControl as $key => $value) {
+            $isConditionWrapper = CriteriaHelper::isWrappedCondition($value);
+
+            if ($isConditionWrapper) {
+                $key = key($value);
+                $value = current($value);
+            }
+
             if (in_array($key, ['and', 'or'], true)) {
                 $subCriteria = [];
                 foreach ($value as $v) {
@@ -242,7 +236,7 @@ class DataAccessControlParser
                     $subCriteria[] = current($parsedValue);
                 }
 
-                $arrayCriteria[$key] =  $subCriteria;
+                $arrayCriteria[] =  [$key => $subCriteria];
                 continue;
             }
 
@@ -297,12 +291,12 @@ class DataAccessControlParser
      */
     protected function evaluateExpression(string $expression)
     {
-        $expressionLanguage = new ExpressionLanguage();
-
-        return $expressionLanguage->evaluate(
-            $expression,
-            $this->getVariables()
-        );
+        return
+            $this
+                ->accessControlEvaluator->evaluate(
+                    $expression,
+                    $this->getVariables()
+                );
     }
 
     /**
@@ -312,11 +306,12 @@ class DataAccessControlParser
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        return [
+        $variables = $this->repositories + [
             'user' => $this->getUserOrThrowException(),
             'object' => $request->attributes->get('data'),
-            'userRepository' => $this->userRepository,
-            'companyRepository' => $this->companyRepository
+
         ];
+
+        return $variables;
     }
 }
