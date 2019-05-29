@@ -14,8 +14,6 @@ production:
       order:
         field:
           - BillableCall.startTime
-          - BillableCall.brand
-          - BillableCall.company
         type: desc
       pagination:
         items: 25
