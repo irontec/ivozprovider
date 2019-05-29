@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e857cdf22854763733968d26b293c566",
+    "content-hash": "bc3eb4173ad6d843c02e13df5d9dd715",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1145,6 +1145,66 @@
                 "psr",
                 "psr-13",
                 "rest"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "graze/guzzle-jsonrpc",
+            "version": "3.2.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/graze/guzzle-jsonrpc",
+                "reference": "c4513b7659534792b906723158a8388f54275a61",
+                "shasum": null
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "guzzlehttp/promises": "^1.0",
+                "php": ">=5.5",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "adlawson/timezone": "~1.0",
+                "fabpot/php-cs-fixer": "~0.5",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "Graze\\GuzzleHttp\\JsonRpc\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Graze\\GuzzleHttp\\JsonRpc\\Test\\": "test/src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graze tech team",
+                    "homepage": "https://github.com/graze/guzzle-jsonrpc/graphs/contributors"
+                }
+            ],
+            "description": "JSON-RPC 2.0 client for Guzzle",
+            "homepage": "https://github.com/graze/guzzle-jsonrpc",
+            "keywords": [
+                "guzzle",
+                "guzzlehttp",
+                "http",
+                "json",
+                "json-rpc",
+                "jsonrpc",
+                "ring",
+                "rpc"
             ],
             "transport-options": {
                 "symlink": true
