@@ -6,6 +6,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TrunksCdrInterface extends EntityInterface
 {
+    public function isOutboundCall();
+
     /**
      * Get startTime
      *

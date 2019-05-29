@@ -11,3 +11,6 @@ services:
     arguments: ['trunks.ivozprovider.local:2080/jsonrpc']
     tags:
     - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FakeCgrRpcClient' }
+
+  Graze\GuzzleHttp\JsonRpc\ClientInterface:
+    alias: 'Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient'

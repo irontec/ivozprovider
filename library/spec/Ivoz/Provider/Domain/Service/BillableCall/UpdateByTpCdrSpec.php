@@ -24,6 +24,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\Name;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
 
@@ -86,6 +87,11 @@ class UpdateByTpCdrSpec extends ObjectBehavior
     protected $carrierRunTpCdr;
 
     /**
+     * @var ProcessExternalCdr
+     */
+    protected $processExternalCdr;
+
+    /**
      * @var TrunksCdrWasMigrated
      */
     protected $event;
@@ -104,10 +110,14 @@ class UpdateByTpCdrSpec extends ObjectBehavior
         $this->logger = $this->getTestDouble(
             LoggerInterface::class
         );
+        $this->processExternalCdr = $this->getTestDouble(
+            ProcessExternalCdr::class
+        );
 
         $this->beConstructedWith(
             $this->tpCdrRepository,
             $this->updateDtoByDefaultRunTpCdr,
+            $this->processExternalCdr,
             $this->entityTools,
             $this->logger
         );

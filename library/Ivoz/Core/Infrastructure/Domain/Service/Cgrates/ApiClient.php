@@ -2,12 +2,14 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
+use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+
 class ApiClient
 {
     protected $jsonRpcClient;
 
     public function __construct(
-        CgrRpcClient $jsonRpcClient
+        ClientInterface $jsonRpcClient
     ) {
         $this->jsonRpcClient = $jsonRpcClient;
     }

@@ -97,6 +97,11 @@ class ProcessExternalCdrSpec extends ObjectBehavior
         CarrierInterface $carrier
     ) {
         $trunksCdr
+            ->isOutboundCall()
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $trunksCdr
             ->getCarrier()
             ->willReturn($carrier)
             ->shouldBeCalled();
@@ -223,6 +228,11 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ->getExternallyRated()
             ->willReturn(false);
 
+
+        $carrier
+            ->getCalculateCost()
+            ->willReturn(true);
+
         $carrier
             ->getId()
             ->willReturn(2);
@@ -291,7 +301,8 @@ class ProcessExternalCdrSpec extends ObjectBehavior
                 'getCallid' => '',
                 'getCallee' => '',
                 'getDuration' => '',
-                'getStartTime' => $startTime
+                'getStartTime' => $startTime,
+                'isOutboundCall' => true
             ],
             false
         );
