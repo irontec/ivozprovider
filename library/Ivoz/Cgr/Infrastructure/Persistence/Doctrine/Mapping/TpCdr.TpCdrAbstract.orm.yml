@@ -6,6 +6,13 @@ Ivoz\Cgr\Domain\Model\TpCdr\TpCdrAbstract:
         - cgrid
         - run_id
         - origin_id
+  indexes:
+    tpCdr_originId_idx:
+      columns:
+        - origin_id
+    tpCdr_cgrid_idx:
+      columns:
+        - cgrid
   fields:
     cgrid:
       type: string
