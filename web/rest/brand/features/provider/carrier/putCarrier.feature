@@ -15,7 +15,7 @@ Feature: Update carriers
           "name": "Artemis-Updated",
           "externallyRated": true,
           "brand": 1,
-          "transformationRuleSet": 2
+          "transformationRuleSet": 1
       }
     """
     Then the response status code should be 200
@@ -32,13 +32,13 @@ Feature: Update carriers
           "id": 1,
           "brand": "~",
           "transformationRuleSet": {
-              "description": "",
+              "description": "Generic transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
               "generateRules": false,
-              "id": 2,
+              "id": 1,
               "name": {
                   "en": "en",
                   "es": "es"

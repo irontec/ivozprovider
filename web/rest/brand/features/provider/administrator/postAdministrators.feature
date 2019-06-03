@@ -19,7 +19,7 @@ Feature: Create administrators
           "lastname": "test",
           "id": 1,
           "brand": 1,
-          "company": null,
+          "company": 1,
           "timezone": 145
       }
     """
@@ -37,7 +37,7 @@ Feature: Create administrators
           "lastname": "test",
           "id": 7,
           "brand": 1,
-          "company": null,
+          "company": 1,
           "timezone": 145
       }
     """
@@ -60,7 +60,7 @@ Feature: Create administrators
           "lastname": "test",
           "id": 7,
           "brand": "~",
-          "company": null,
+          "company": "~",
           "timezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",

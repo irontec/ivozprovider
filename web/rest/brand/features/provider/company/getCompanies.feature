@@ -139,7 +139,7 @@ Feature: Retrieve companies
                   "en": "en",
                   "es": "es"
               },
-              "brand": null,
+              "brand": 1,
               "country": 68
           },
           "voicemailNotificationTemplate": {
