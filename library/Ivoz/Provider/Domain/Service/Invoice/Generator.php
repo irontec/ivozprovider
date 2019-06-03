@@ -227,7 +227,7 @@ class Generator
 
         $callGenerator = $this->billableCallRepository->getGeneratorByConditions(
             $conditions,
-            50,
+            5000,
             ['self.startTime', 'ASC']
         );
 
