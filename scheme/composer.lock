@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "06c52258a4420fb4e92115dc71ea7069",
+    "content-hash": "a97f61d47387eb16f7ce051ea86441a1",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1099,6 +1099,66 @@
             "description": "Implements a refresh token system over Json Web Tokens in Symfony",
             "keywords": [
                 "jwt refresh token bundle symfony json web"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "graze/guzzle-jsonrpc",
+            "version": "3.2.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/graze/guzzle-jsonrpc",
+                "reference": "c4513b7659534792b906723158a8388f54275a61",
+                "shasum": null
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "guzzlehttp/promises": "^1.0",
+                "php": ">=5.5",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "adlawson/timezone": "~1.0",
+                "fabpot/php-cs-fixer": "~0.5",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "Graze\\GuzzleHttp\\JsonRpc\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Graze\\GuzzleHttp\\JsonRpc\\Test\\": "test/src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graze tech team",
+                    "homepage": "https://github.com/graze/guzzle-jsonrpc/graphs/contributors"
+                }
+            ],
+            "description": "JSON-RPC 2.0 client for Guzzle",
+            "homepage": "https://github.com/graze/guzzle-jsonrpc",
+            "keywords": [
+                "guzzle",
+                "guzzlehttp",
+                "http",
+                "json",
+                "json-rpc",
+                "jsonrpc",
+                "ring",
+                "rpc"
             ],
             "transport-options": {
                 "symlink": true
@@ -3381,66 +3441,6 @@
             }
         },
         {
-            "name": "graze/guzzle-jsonrpc",
-            "version": "3.2.1.0",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/graze/guzzle-jsonrpc",
-                "reference": "c4513b7659534792b906723158a8388f54275a61",
-                "shasum": null
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "guzzlehttp/promises": "^1.0",
-                "php": ">=5.5",
-                "psr/http-message": "^1.0"
-            },
-            "require-dev": {
-                "adlawson/timezone": "~1.0",
-                "fabpot/php-cs-fixer": "~0.5",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.3"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
-                "psr-4": {
-                    "Graze\\GuzzleHttp\\JsonRpc\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Graze\\GuzzleHttp\\JsonRpc\\Test\\": "test/src"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graze tech team",
-                    "homepage": "https://github.com/graze/guzzle-jsonrpc/graphs/contributors"
-                }
-            ],
-            "description": "JSON-RPC 2.0 client for Guzzle",
-            "homepage": "https://github.com/graze/guzzle-jsonrpc",
-            "keywords": [
-                "guzzle",
-                "guzzlehttp",
-                "http",
-                "json",
-                "json-rpc",
-                "jsonrpc",
-                "ring",
-                "rpc"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "myclabs/deep-copy",
             "version": "1.7.0.0",
             "dist": {
@@ -4851,7 +4851,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "3.4.18.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/phpunit-bridge",
