@@ -62,6 +62,7 @@
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
         "gesdinet/jwt-refresh-token-bundle": "^0.4.0",
+        "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "lexik/jwt-authentication-bundle": "^2.5",
@@ -74,8 +75,7 @@
         "beberlei/assert": "2.9.*",
         "docteurklein/test-double-bundle": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "graze/guzzle-jsonrpc": "3.2.*",
-        "phpunit/phpunit": "^5.3",
+        "phpunit/phpunit": "^6.0",
         "sensio/generator-bundle": "^3.0",
         "squizlabs/php_codesniffer": "3.*",
         "symfony/phpunit-bridge": "^3.0"
