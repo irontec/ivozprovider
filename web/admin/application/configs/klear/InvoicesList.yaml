@@ -11,6 +11,10 @@ production:
   screens: &invoices_screensLink
     invoicesList_screen: &invoicesList_screenLink
       controller: list
+      order:
+        field:
+          - Invoice.inDate
+        type: desc
       pagination:
         items: 25
       <<: *Invoices
