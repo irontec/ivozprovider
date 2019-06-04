@@ -183,6 +183,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     public function remove(EntityInterface $entity)
     {
+        $alreadyRemoved = $entity->hasBeenDeleted();
+        if ($alreadyRemoved) {
+            return;
+        }
+
         $transaction = function () use ($entity) {
 
             $dependantEntities = $this->getDependantEntities($entity);
