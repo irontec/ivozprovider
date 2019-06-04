@@ -37,7 +37,7 @@ production:
       type: file
       source:
         data: fso
-        size_limit: 20M
+        size_limit: 30M
         options:
           hiddenName: false
           download:

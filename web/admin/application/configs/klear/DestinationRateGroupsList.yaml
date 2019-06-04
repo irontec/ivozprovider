@@ -132,7 +132,7 @@ production:
       controller: import-destination-rates-custom-file
       action: import
       class:  ui-silk-page-white-get
-      freeUploadCommand: importDestinationRateGroupsFreeUpload_command
+      freeUploadCommand: destinationRateGroupsFileUpload_command
       delimiter: ","
       enclosure: '"'
       escape: "\\"
@@ -153,7 +153,7 @@ production:
       <<: *DestinationRateGroups
       controller: File
       action: upload
-      mainColumn: File
+      mainColumn: file
     importDestinationRateGroupsFreeUpload_command:
       <<: *DestinationRateGroups
       controller: File

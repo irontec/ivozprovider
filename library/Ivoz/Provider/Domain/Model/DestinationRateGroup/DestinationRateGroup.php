@@ -42,7 +42,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     public function getFileObjects()
     {
         return [
-            'File'
+            'file'
         ];
     }
 
@@ -54,7 +54,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      */
     public function addTmpFile($fldName, TempFile $file)
     {
-        if ($fldName == 'File') {
+        if ($fldName == 'file') {
             $this->setStatus('waiting');
         }
         $this->_addTmpFile($fldName, $file);

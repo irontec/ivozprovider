@@ -28,7 +28,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
     public function getFileObjects()
     {
         return [
-            'File'
+            'file'
         ];
     }
 
