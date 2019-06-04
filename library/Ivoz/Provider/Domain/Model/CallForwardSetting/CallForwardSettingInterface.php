@@ -68,7 +68,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Get targetType
      *
-     * @return string
+     * @return string | null
      */
     public function getTargetType();
 
