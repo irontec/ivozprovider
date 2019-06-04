@@ -6,6 +6,19 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternAbstra
         - outgoingDdiRuleId
         - priority
   fields:
+    type:
+      type: string
+      nullable: false
+      length: 20
+      options:
+        fixed: false
+        comment: '[enum:prefix|destination]'
+    prefix:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
     action:
       type: string
       nullable: false
@@ -41,7 +54,7 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternAbstra
       joinColumns:
         matchListId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
     forcedDdi:
