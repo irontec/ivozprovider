@@ -14,6 +14,17 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class OutgoingDdiRulesPatternAbstract
 {
     /**
+     * comment: enum:prefix|destination
+     * @var string
+     */
+    protected $type;
+
+    /**
+     * @var string | null
+     */
+    protected $prefix;
+
+    /**
      * comment: enum:keep|force
      * @var string
      */
@@ -30,7 +41,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $outgoingDdiRule;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     protected $matchList;
 
@@ -45,8 +56,9 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Constructor
      */
-    protected function __construct($action, $priority)
+    protected function __construct($type, $action, $priority)
     {
+        $this->setType($type);
         $this->setAction($action);
         $this->setPriority($priority);
     }
@@ -120,11 +132,13 @@ abstract class OutgoingDdiRulesPatternAbstract
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
         $self = new static(
+            $dto->getType(),
             $dto->getAction(),
             $dto->getPriority()
         );
 
         $self
+            ->setPrefix($dto->getPrefix())
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()))
@@ -147,6 +161,8 @@ abstract class OutgoingDdiRulesPatternAbstract
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
         $this
+            ->setType($dto->getType())
+            ->setPrefix($dto->getPrefix())
             ->setAction($dto->getAction())
             ->setPriority($dto->getPriority())
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
@@ -166,6 +182,8 @@ abstract class OutgoingDdiRulesPatternAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
+            ->setType(self::getType())
+            ->setPrefix(self::getPrefix())
             ->setAction(self::getAction())
             ->setPriority(self::getPriority())
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
@@ -179,6 +197,8 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected function __toArray()
     {
         return [
+            'type' => self::getType(),
+            'prefix' => self::getPrefix(),
             'action' => self::getAction(),
             'priority' => self::getPriority(),
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
@@ -187,6 +207,65 @@ abstract class OutgoingDdiRulesPatternAbstract
         ];
     }
     // @codeCoverageIgnoreStart
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return static
+     */
+    protected function setType($type)
+    {
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($type, [
+            OutgoingDdiRulesPatternInterface::TYPE_PREFIX,
+            OutgoingDdiRulesPatternInterface::TYPE_DESTINATION
+        ], 'typevalue "%s" is not an element of the valid values: %s');
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return static
+     */
+    protected function setPrefix($prefix = null)
+    {
+        if (!is_null($prefix)) {
+            Assertion::maxLength($prefix, 10, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return string | null
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
 
     /**
      * Set action
@@ -277,7 +356,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
+    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null)
     {
         $this->matchList = $matchList;
 
@@ -287,7 +366,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     public function getMatchList()
     {
