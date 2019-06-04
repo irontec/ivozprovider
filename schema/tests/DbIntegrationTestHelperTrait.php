@@ -248,4 +248,55 @@ trait DbIntegrationTestHelperTrait
             )
         );
     }
+
+    /**
+     * @param string $event
+     * @param string[] $services
+     * @param int | null $expectedCallNumber
+     * @return $this
+     * @throws \ReflectionException
+     */
+    protected function mockInfraestructureServices(string $event, array $services, int $expectedCallNumber = null)
+    {
+        $kernel = self::$kernel;
+        $serviceContainer = $kernel->getContainer();
+
+        $mocks = [];
+        foreach ($services as $service) {
+            $mock = $this
+                ->getMockBuilder($service)
+                ->disableOriginalConstructor()
+                ->getMock();
+
+
+            $callNumMatcher = $expectedCallNumber
+                ? $this->exactly($expectedCallNumber)
+                : $this->any();
+
+            $mock
+                ->expects($callNumMatcher)
+                ->method('execute');
+
+            $mocks[] = $mock;
+        }
+
+        $lifecycleService = $serviceContainer->get(
+            $event
+        );
+        $onCommitServiceRef = new \ReflectionClass($lifecycleService);
+        $serviceProperty = $onCommitServiceRef->getProperty('services');
+        $serviceProperty->setAccessible(true);
+
+        $serviceProperty->setValue(
+            $lifecycleService,
+            $mocks
+        );
+        $serviceProperty->setAccessible(false);
+        $serviceContainer->set(
+            $event,
+            $lifecycleService
+        );
+
+        return $this;
+    }
 }

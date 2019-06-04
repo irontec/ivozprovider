@@ -2,7 +2,6 @@
 
 namespace Ivoz\Kam\Infrastructure\Domain\Service\Trusted;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequestInterface;
 use Ivoz\Kam\Domain\Model\Trusted\TrustedInterface;
 use Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\UsersClientInterface;

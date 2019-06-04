@@ -9,7 +9,7 @@ class Cgrates extends AbstractJob
     private static $alreadySent = false;
 
     /**
-     * @var integer
+     * @var string
      */
     protected $tpid;
 
@@ -31,7 +31,7 @@ class Cgrates extends AbstractJob
         return $this;
     }
 
-    public function getTpid(): int
+    public function getTpid(): string
     {
         return $this->tpid;
     }

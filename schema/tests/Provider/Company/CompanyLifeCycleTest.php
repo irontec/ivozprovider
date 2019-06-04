@@ -8,6 +8,10 @@ use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendTrunksTrustedPermissionsReloadRequest;
+use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
+use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
+use Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
@@ -159,6 +163,68 @@ class CompanyLifeCycleTest extends KernelTestCase
             Company::class,
             Domain::class,
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_user_address_permissions_reload_on_delete()
+    {
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.company.on_commit',
+            [
+                SendUsersAddressPermissionsReloadRequest::class
+            ],
+            1
+        );
+
+        $repository = $this->em->getRepository(Company::class);
+        $company = $repository->findOneBy([
+            'name' => 'DemoCompany'
+        ]);
+        $this->entityTools->remove(
+            $company
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_trusted_reload_on_wholesale_companies_delete()
+    {
+        $trustedReloadServices = [
+            SendUsersTrustedPermissionsReloadRequest::class
+        ];
+
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.company.on_commit',
+            $trustedReloadServices,
+            1
+        );
+
+        $repository = $this->em->getRepository(Company::class);
+        $company = $repository->findOneBy([
+            'type' => 'wholesale'
+        ]);
+        $this->entityTools->remove(
+            $company
+        );
+
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.company.on_commit',
+            [
+                SendUsersTrustedPermissionsReloadRequest::class
+            ],
+            0
+        );
+
+        $repository = $this->em->getRepository(Company::class);
+        $company = $repository->findOneBy([
+            'type' => 'retail'
+        ]);
+        $this->entityTools->remove(
+            $company
+        );
     }
 
     //////////////////////////////////////////////////

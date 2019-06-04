@@ -22,56 +22,13 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
     protected function setUp()
     {
         $this->_setUp(...func_get_args());
-        $this->mockInfraestructureServices();
-    }
-
-    protected function mockInfraestructureServices($expectedCallNumber = null)
-    {
-        $kernel = self::$kernel;
-        $serviceContainer = $kernel->getContainer();
-
-        $sendUsersDispatcherReloadRequest = $this
-            ->getMockBuilder(SendUsersDispatcherReloadRequest::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $expectedUsersCallMatcher = $expectedCallNumber
-            ? $this->exactly($expectedCallNumber)
-            : $this->any();
-
-        $sendUsersDispatcherReloadRequest
-            ->expects($expectedUsersCallMatcher)
-            ->method('execute');
-
-        $sendTrunksDispatcherReloadRequest = $this
-            ->getMockBuilder(SendTrunksDispatcherReloadRequest::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $expectedTrunksCallMatcher = $expectedCallNumber
-            ? $this->exactly($expectedCallNumber)
-            : $this->any();
-
-        $sendTrunksDispatcherReloadRequest
-            ->expects($expectedTrunksCallMatcher)
-            ->method('execute');
-
-        $onCommitService = $serviceContainer->get('provider.lifecycle.application_server.on_commit');
-        $onCommitServiceRef = new \ReflectionClass($onCommitService);
-        $serviceProperty = $onCommitServiceRef->getProperty('services');
-        $serviceProperty->setAccessible(true);
-
-        $serviceProperty->setValue(
-            $onCommitService,
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.application_server.on_commit',
             [
-                $sendUsersDispatcherReloadRequest,
-                $sendTrunksDispatcherReloadRequest
+                SendUsersDispatcherReloadRequest::class,
+                SendTrunksDispatcherReloadRequest::class
             ]
         );
-        $serviceProperty->setAccessible(false);
-        $serviceContainer->set('provider.lifecycle.application_server.on_commit', $onCommitService);
-
-        return $this;
     }
 
     /**
@@ -252,7 +209,14 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
      */
     public function creating_applicationServer_fires_dispatcherReloadRequest()
     {
-        $this->mockInfraestructureServices(2);
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.application_server.on_commit',
+            [
+                SendUsersDispatcherReloadRequest::class,
+                SendTrunksDispatcherReloadRequest::class
+            ],
+            2
+        );
 
         $as = $this->addApplicationServer();
         (function () {
@@ -278,7 +242,14 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
      */
     public function updating_applicationServer_fires_dispatcherReloadRequest()
     {
-        $this->mockInfraestructureServices(1);
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.application_server.on_commit',
+            [
+                SendUsersDispatcherReloadRequest::class,
+                SendTrunksDispatcherReloadRequest::class
+            ],
+            1
+        );
 
         $applicationServerRepository = $this->em->getRepository(ApplicationServer::class);
         /** @var ApplicationServer $as */
@@ -296,7 +267,14 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
      */
     public function deleting_applicationServer_fires_dispatcherReloadRequest()
     {
-        $this->mockInfraestructureServices(1);
+        $this->mockInfraestructureServices(
+            'provider.lifecycle.application_server.on_commit',
+            [
+                SendUsersDispatcherReloadRequest::class,
+                SendTrunksDispatcherReloadRequest::class
+            ],
+            1
+        );
 
         $applicationServerRepository = $this->em->getRepository(ApplicationServer::class);
         $as = $applicationServerRepository->find(1);
