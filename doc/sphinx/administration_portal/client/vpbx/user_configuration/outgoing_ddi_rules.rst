@@ -9,10 +9,14 @@ to external numbers. This includes: Users, Friends, Faxes, Retail Accounts, and
 so on..
 
 But there are some cases when a single outgoing DDI is not enough, and the
-presented DDI depends on the called number. To archive this dynamic outgoing DDI
-selection you can use Outgoing DDI rules.
+presented DDI depends on the called number or a given prefix. To archive this
+dynamic outgoing DDI selection you can use Outgoing DDI rules.
 
-Before creating a new rule, it would be required to first group the destination
+
+Outgoing DDI based on destination
+---------------------------------
+
+For destination based rules, you would require first group the destination
 numbers in :ref:`match_lists`.
 
 For this example, we will create a match list of corporate mobiles with all
@@ -39,5 +43,21 @@ presentation number. We can do this in the **Client's edit screen** or the
 In this case, the User will present 777777777 DDI when calling corporate mobiles
 and 666666666 when calling the rest of the external numbers.
 
-.. attention:: Current implementation of Outgoing DDI rules won't work for
-    diverted calls (out of schedule, holidays or user's call forward settings).
+Outgoing DDI based on prefix
+----------------------------
+
+Outgoing DDI Rules can be also used to change the default Outgoing DDI based on
+a call prefix.
+
+.. rubric:: Create a new Outgoing DDI Rule
+
+The main creation screen defines the action that will take place when no rule
+matches the dialed destination, we will keep original DDI if no prefix is used.
+
+.. rubric:: Assign a prefix pattern
+
+Now we add a new rule that with prefix (let's say 111) and action to force
+the DDI to 666666666.
+
+In this case, the User will present 666666666 DDI when calling any destination
+with 111 prefix and 777777777 when not using any prefix.
