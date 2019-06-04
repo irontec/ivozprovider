@@ -255,7 +255,7 @@ production:
     ddiProvider:
       title: ngettext('DDI Provider', 'DDI Providers', 1)
       type: select
-      required: true
+      required: false
       source:
         data: mapper
         config:
@@ -267,6 +267,13 @@ production:
             template: '%name%'
           order:
             DdiProvider.description: asc
+        'null': _("Unassigned")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("This assignment has no functional purpose, it is just for DDI Provider <-> DDI navigation in some brand level sections.")
+        label: _("Need help?")
     country:
       title: _('Country')
       type: select

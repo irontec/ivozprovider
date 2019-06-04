@@ -2478,6 +2478,13 @@ msgstr ""
 "company DDIs"
 
 msgid ""
+"This assignment has no functional purpose, it is just for DDI Provider <-> "
+"DDI navigation in some brand level sections."
+msgstr ""
+"This assignment has no functional purpose, it is just for DDI Provider <-> "
+"DDI navigation in some brand level sections."
+
+msgid ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 msgstr ""
