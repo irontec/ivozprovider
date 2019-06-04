@@ -16,6 +16,30 @@ production:
           order:
             OutgoingDdiRule.name: asc
       default: true
+    type:
+      title: _('Type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'prefix':
+            title: _("Prefix")
+            visualFilter:
+              show: [ prefix ]
+              hide: [ matchList ]
+          'destination':
+            title: _("Destination")
+            visualFilter:
+              show: [ matchList ]
+              hide: [ prefix ]
+    prefix:
+      title: _('Prefix')
+      type: text
+      trim: both
+      pattern: "^[1-9].*$"
+      required: true
+      default: true
     matchList:
       title: _('Match List')
       type: select
@@ -31,6 +55,7 @@ production:
             template: '%name%'
           order:
             MatchList.name: asc
+        'null': _("Unassigned")
     action:
       title: _('Action')
       type: select
@@ -75,6 +100,12 @@ production:
       defaultValue: 1
       source:
         control: Spinner
+    rule:
+      title: _('Rule')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRule
+        method: getPatternRule
 staging:
   _extends: production
 testing:

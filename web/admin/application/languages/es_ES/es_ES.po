@@ -2204,6 +2204,9 @@ msgstr[1] "Patrones de destino"
 msgid "Routing tools"
 msgstr "Herramientas de encaminamiento"
 
+msgid "Rule"
+msgstr "Regla"
+
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
 msgstr ""
