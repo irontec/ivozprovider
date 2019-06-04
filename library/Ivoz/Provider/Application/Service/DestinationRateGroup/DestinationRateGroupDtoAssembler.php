@@ -49,7 +49,7 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
         if ($entity->getFile()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
-                ->getPathResolver('File');
+                ->getPathResolver('file');
 
             $pathResolver
                 ->setOriginalFileName(

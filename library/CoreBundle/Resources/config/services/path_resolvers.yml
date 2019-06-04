@@ -146,7 +146,7 @@ services:
   Service\StoragePathResolverCollection::DestinationRateGroup:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
-      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::DestinationRateGroupFile']]
+      - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::DestinationRateGroupFile']]
      public: true
 
   Service\CommonStoragePathResolver::DestinationRateGroupFile:
