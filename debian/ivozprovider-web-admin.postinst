@@ -15,8 +15,8 @@ chown www-data.www-data /opt/irontec/ivozprovider/web/admin/public/invoice-templ
 # Enable php environment variables
 /bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' 		/etc/php/7.0/cli/php.ini
 /bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' 		/etc/php/7.0/apache2/php.ini
-/bin/sed -i 's/upload_max_filesize = [0-9]\+M/upload_max_filesize = 20M/g' 	/etc/php/7.0/apache2/php.ini
-/bin/sed -i 's/post_max_size = [0-9]\+M/post_max_size = 20M/g' 				/etc/php/7.0/apache2/php.ini
+/bin/sed -i 's/upload_max_filesize = [0-9]\+M/upload_max_filesize = 30M/g' 	/etc/php/7.0/apache2/php.ini
+/bin/sed -i 's/post_max_size = [0-9]\+M/post_max_size = 30M/g' 				/etc/php/7.0/apache2/php.ini
 /bin/sed -i 's/; max_input_vars = 1000/max_input_vars = 10000/g' 			/etc/php/7.0/apache2/php.ini
 
 # Setup portal language
