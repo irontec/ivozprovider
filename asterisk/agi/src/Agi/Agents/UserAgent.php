@@ -60,9 +60,13 @@ class UserAgent implements AgentInterface
         // If user has OutgoingDDI rules, check if we have to override current DDI
         $outgoingDDIRule = $this->user->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
-            $this->agi->verbose("Checking %s for destination %s", $outgoingDDIRule, $destination);
+            // Get calling Prefix if header is present
+            $prefix = $this->agi->getSIPHeader('X-Info-Prefix');
+
+            $this->agi->verbose("Checking %s for destination %s and prefix %s", $outgoingDDIRule, $destination, $prefix);
+
             // Check if outgoing DDI rule matches for given destination
-            $ddiRule = $outgoingDDIRule->getOutgoingDDI($ddi, $destination);
+            $ddiRule = $outgoingDDIRule->getOutgoingDDI($ddi, $destination, $prefix);
             if ($ddiRule) {
                 $this->agi->notice("Rule %s changed presented DDI to %s", $outgoingDDIRule, $ddiRule);
                 $ddi = $ddiRule;
