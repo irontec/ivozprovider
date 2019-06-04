@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 17:12+0200\n"
+"POT-Creation-Date: 2019-06-04 09:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2379,7 +2379,7 @@ msgid "Externally rated"
 msgstr ""
 
 #: ../../administration_portal/brand/providers/carriers.rst:27
-#: ../../administration_portal/client/vpbx/ddis.rst:33
+#: ../../administration_portal/client/vpbx/ddis.rst:32
 msgid ""
 "This setting requires the external tarification module and allows "
 "tarification on special numbers. This module is not standard so don't "
@@ -4791,94 +4791,94 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/ddis.rst:16
 msgid ""
 "The :ref:`DDI Provider <DDI Providers>` that provides this number. This "
-"relation allow the platform to apply the required :ref:`transformations` "
-"in order to determine its standard form."
+"relation has no functional purpose, it is just for DDI Provider <-> DDI "
+"navigation in some brand level sections."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:19
+#: ../../administration_portal/client/vpbx/ddis.rst:18
 msgid "External Call Filter"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:21
+#: ../../administration_portal/client/vpbx/ddis.rst:20
 msgid ""
 "Allows configuration based on Calendars and Schedulers as shown in "
 ":ref:`External Call Filters`. Leave empty if you don't need to apply any "
 "kind of filter."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:24
+#: ../../administration_portal/client/vpbx/ddis.rst:23
 #: ../../administration_portal/client/vpbx/extensions.rst:16
 msgid "Route"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:26
+#: ../../administration_portal/client/vpbx/ddis.rst:25
 msgid ""
 "A DDI can have different :ref:`treatments <routing_logics>`. For our "
 "current goal, set route to user and select *Alice*."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:28
+#: ../../administration_portal/client/vpbx/ddis.rst:27
 msgid "Record calls"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:30
+#: ../../administration_portal/client/vpbx/ddis.rst:29
 msgid "Can be used to record external calls (see :ref:`call_recordings`)."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:31
+#: ../../administration_portal/client/vpbx/ddis.rst:30
 msgid "Tarificate incoming calls"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:39
+#: ../../administration_portal/client/vpbx/ddis.rst:38
 msgid "DDI external filters"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:41
+#: ../../administration_portal/client/vpbx/ddis.rst:40
 msgid ""
 "We can assign a **external call filter** configured in :ref:`External "
 "Call Filters`."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:48
+#: ../../administration_portal/client/vpbx/ddis.rst:47
 msgid "DDI routes"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:50
+#: ../../administration_portal/client/vpbx/ddis.rst:49
 msgid ""
 "Once the call has passed all the checks in the filter (schedules and "
 "calendars) and after the welcome locution has been played (if there is "
 "any configured), we can route the call to the following processes:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:54
+#: ../../administration_portal/client/vpbx/ddis.rst:53
 msgid ":ref:`users`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:55
+#: ../../administration_portal/client/vpbx/ddis.rst:54
 msgid ":ref:`huntgroups`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:56
+#: ../../administration_portal/client/vpbx/ddis.rst:55
 msgid ":ref:`ivrs`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:57
+#: ../../administration_portal/client/vpbx/ddis.rst:56
 msgid ":ref:`conference_rooms`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:58
+#: ../../administration_portal/client/vpbx/ddis.rst:57
 msgid ":ref:`conditional_routes`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:59
+#: ../../administration_portal/client/vpbx/ddis.rst:58
 msgid ":ref:`queues`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:60
+#: ../../administration_portal/client/vpbx/ddis.rst:59
 msgid ":ref:`friends`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:64
+#: ../../administration_portal/client/vpbx/ddis.rst:63
 msgid ""
 "We can also route the DDI to a :ref:`Virtual Fax <faxing_system>`, but "
 "this is something we will explain in the following block."
@@ -8275,4 +8275,3 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
-
