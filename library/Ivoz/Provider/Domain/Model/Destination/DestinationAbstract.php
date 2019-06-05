@@ -115,7 +115,8 @@ abstract class DestinationAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $self = new static(
@@ -145,7 +146,8 @@ abstract class DestinationAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $this
@@ -169,6 +171,7 @@ abstract class DestinationAbstract
             ->setPrefix(self::getPrefix())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
+            ->setNameCa(self::getName()->getCa())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
@@ -181,6 +184,7 @@ abstract class DestinationAbstract
             'prefix' => self::getPrefix(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
+            'nameCa' => self::getName()->getCa(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }

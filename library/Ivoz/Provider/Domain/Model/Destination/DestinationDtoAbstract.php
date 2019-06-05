@@ -31,6 +31,11 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     private $nameEs;
 
     /**
+     * @var string
+     */
+    private $nameCa;
+
+    /**
      * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
      */
     private $tpDestination;
@@ -65,7 +70,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return [
             'prefix' => 'prefix',
             'id' => 'id',
-            'name' => ['en','es'],
+            'name' => ['en','es','ca'],
             'tpDestinationId' => 'tpDestination',
             'brandId' => 'brand'
         ];
@@ -81,7 +86,8 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
+                'es' => $this->getNameEs(),
+                'ca' => $this->getNameCa()
             ],
             'tpDestination' => $this->getTpDestination(),
             'brand' => $this->getBrand(),
@@ -167,6 +173,26 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     public function getNameEs()
     {
         return $this->nameEs;
+    }
+
+    /**
+     * @param string $nameCa
+     *
+     * @return static
+     */
+    public function setNameCa($nameCa = null)
+    {
+        $this->nameCa = $nameCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCa()
+    {
+        return $this->nameCa;
     }
 
     /**

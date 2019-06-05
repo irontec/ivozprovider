@@ -139,7 +139,8 @@ abstract class TransformationRuleSetAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $self = new static(
@@ -175,7 +176,8 @@ abstract class TransformationRuleSetAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $this
@@ -210,6 +212,7 @@ abstract class TransformationRuleSetAbstract
             ->setGenerateRules(self::getGenerateRules())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
+            ->setNameCa(self::getName()->getCa())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
     }
@@ -228,6 +231,7 @@ abstract class TransformationRuleSetAbstract
             'generateRules' => self::getGenerateRules(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
+            'nameCa' => self::getName()->getCa(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];

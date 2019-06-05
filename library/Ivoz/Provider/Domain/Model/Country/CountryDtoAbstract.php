@@ -38,12 +38,22 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $nameCa;
+
+    /**
+     * @var string
+     */
     private $zoneEn = '';
 
     /**
      * @var string
      */
     private $zoneEs = '';
+
+    /**
+     * @var string
+     */
+    private $zoneCa = '';
 
 
     use DtoNormalizer;
@@ -66,8 +76,8 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
             'code' => 'code',
             'countryCode' => 'countryCode',
             'id' => 'id',
-            'name' => ['en','es'],
-            'zone' => ['en','es']
+            'name' => ['en','es','ca'],
+            'zone' => ['en','es','ca']
         ];
     }
 
@@ -82,11 +92,13 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
+                'es' => $this->getNameEs(),
+                'ca' => $this->getNameCa()
             ],
             'zone' => [
                 'en' => $this->getZoneEn(),
-                'es' => $this->getZoneEs()
+                'es' => $this->getZoneEs(),
+                'ca' => $this->getZoneCa()
             ]
         ];
     }
@@ -192,6 +204,26 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $nameCa
+     *
+     * @return static
+     */
+    public function setNameCa($nameCa = null)
+    {
+        $this->nameCa = $nameCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCa()
+    {
+        return $this->nameCa;
+    }
+
+    /**
      * @param string $zoneEn
      *
      * @return static
@@ -229,5 +261,25 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     public function getZoneEs()
     {
         return $this->zoneEs;
+    }
+
+    /**
+     * @param string $zoneCa
+     *
+     * @return static
+     */
+    public function setZoneCa($zoneCa = null)
+    {
+        $this->zoneCa = $zoneCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZoneCa()
+    {
+        return $this->zoneCa;
     }
 }
