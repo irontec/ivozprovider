@@ -492,6 +492,14 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
         brand:
           eq: "user.getBrand().getId()"
 
+Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+
 Ivoz\Provider\Domain\Model\Service\Service:
   itemOperations:
     get: ~
