@@ -30,6 +30,13 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 
     protected function sanitizeValues()
     {
+
+        if ($this->getType() == OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
+            $this->setMatchList(null);
+        } elseif ($this->getType() == OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
+            $this->setPrefix(null);
+        }
+
         $nullableFields = [
             'force' => 'forcedDdi',
         ];
