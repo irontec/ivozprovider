@@ -11,6 +11,7 @@ Feature: Create outgoing ddi rules patterns
       And I send a "POST" request to "/outgoing_ddi_rules_patterns" with body:
     """
       {
+          "type": "destination",
           "action": "force",
           "priority": 2,
           "outgoingDdiRule": 1,
@@ -24,6 +25,8 @@ Feature: Create outgoing ddi rules patterns
      And the JSON should be like:
     """
       {
+          "type": "destination",
+          "prefix": null,
           "action": "force",
           "priority": 2,
           "id": 2,
@@ -53,6 +56,8 @@ Feature: Create outgoing ddi rules patterns
       And the JSON should be like:
     """
       {
+          "type": "destination",
+          "prefix": null,
           "action": "force",
           "priority": 2,
           "id": 2,

@@ -27,6 +27,7 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
     ) {
         $this->dto = $dto = new OutgoingDdiRulesPatternDto();
 
+        $dto->setType('destination');
         $dto->setAction('force');
         $dto->setPriority(1);
 

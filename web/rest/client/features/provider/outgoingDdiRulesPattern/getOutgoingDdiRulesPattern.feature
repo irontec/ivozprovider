@@ -15,6 +15,8 @@ Feature: Retrieve outgoing ddi rules patterns
     """
       [
           {
+              "type": "destination",
+              "prefix": null,
               "action": "keep",
               "priority": 1,
               "id": 1,
@@ -45,6 +47,8 @@ Feature: Retrieve outgoing ddi rules patterns
     And the JSON should be equal to:
     """
        {
+          "type": "destination",
+          "prefix": null,
           "action": "keep",
           "priority": 1,
           "id": 1,

@@ -79,9 +79,11 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
     /**
      * Check final outgoing Ddi presentation for given destination
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $originalDdi
+     * @param string $e164destination
+     * @param string $prefix
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null $e164destination
      */
-    public function getOutgoingDdi($originalDdi, $e164destination)
+    public function getOutgoingDdi($originalDdi, $e164destination, $prefix = "")
     {
         // Default Rule action
         if ($this->getDefaultAction() == OutgoingDdiRule::DEFAULTACTION_FORCE) {
@@ -96,18 +98,29 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         ]);
         $rulePatterns = $this->getPatterns($criteria);
 
-        /**
-         * @var OutgoingDdiRulesPatternInterface $rulePattern
-         */
         foreach ($rulePatterns as $rulePattern) {
-            $list = $rulePattern->getMatchList();
-            // If rule pattern matches, apply action and leave
-            if ($list->numberMatches($e164destination)) {
-                if ($rulePattern->getAction() == 'force') {
-                    $finalDdi = $rulePattern->getForcedDdi();
+            if ($rulePattern->getType() == OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
+                // skip pattern if doesn't match the prefix
+                if ($rulePattern->getPrefix() != $prefix) {
+                    continue;
                 }
-                break;
+            } elseif ($rulePattern->getType() == OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
+                $list = $rulePattern->getMatchList();
+                // skip pattern if doesn't match pattern
+                if ($list->numberMatches($e164destination)) {
+                    continue;
+                }
+            } else {
+                // Invalid pattern type, this must be a bug!
+                continue;
             }
+
+            // If we reached here, pattern matched: apply action
+            if ($rulePattern->getAction() == OutgoingDdiRulesPatternInterface::ACTION_FORCE) {
+                $finalDdi = $rulePattern->getForcedDdi();
+            }
+
+            break;
         }
 
         return $finalDdi;

@@ -23,6 +23,7 @@ class ProviderOutgoingDdiRulesPattern extends Fixture implements DependentFixtur
         /** @var OutgoingDdiRulesPattern $item1 */
         $item1 = $this->createEntityInstance(OutgoingDdiRulesPattern::class);
         (function () {
+            $this->setType('destination');
             $this->setAction('keep');
             $this->setPriority(1);
         })->call($item1);

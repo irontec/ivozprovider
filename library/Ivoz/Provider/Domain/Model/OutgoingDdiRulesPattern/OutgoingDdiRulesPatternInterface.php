@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 {
+    const TYPE_PREFIX = 'prefix';
+    const TYPE_DESTINATION = 'destination';
+
+
     const ACTION_KEEP = 'keep';
     const ACTION_FORCE = 'force';
 
@@ -21,6 +25,20 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getForcedDdi();
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType();
+
+    /**
+     * Get prefix
+     *
+     * @return string | null
+     */
+    public function getPrefix();
 
     /**
      * Get action
@@ -59,12 +77,12 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
+    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null);
 
     /**
      * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     public function getMatchList();
 
