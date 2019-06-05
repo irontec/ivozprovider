@@ -69,6 +69,7 @@ Feature: Update queue members
               "callAcl": null,
               "bossAssistant": 1,
               "bossAssistantWhiteList": null,
+              "transformationRuleSet": 1,
               "language": null,
               "terminal": 2,
               "extension": null,

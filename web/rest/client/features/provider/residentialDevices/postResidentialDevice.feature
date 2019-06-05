@@ -55,6 +55,7 @@ Feature: Create residential devices
           "t38Passthrough": "no",
           "id": 2,
           "company": 1,
+          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }
@@ -86,6 +87,7 @@ Feature: Create residential devices
           "directConnectivity": "yes",
           "id": 2,
           "company": "~",
+          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }

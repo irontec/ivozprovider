@@ -64,6 +64,7 @@ Feature: Create match lists
               "language": 1,
               "defaultTimezone": 145,
               "country": 68,
+              "transformationRuleSet": 1,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           }
