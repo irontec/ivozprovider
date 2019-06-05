@@ -19,4 +19,23 @@ class MatchListDoctrineRepository extends ServiceEntityRepository implements Mat
     {
         parent::__construct($registry, MatchList::class);
     }
+
+    public function getIdsByCompanyId(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column(
+            $result,
+            'id'
+        );
+    }
 }

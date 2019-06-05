@@ -19,4 +19,27 @@ class TransformationRuleSetDoctrineRepository extends ServiceEntityRepository im
     {
         parent::__construct($registry, TransformationRuleSet::class);
     }
+
+    /**
+     * @param int $brandId
+     * @return array
+     */
+    public function getIdsByBrandId(int $brandId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq('self.brand', $brandId)
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column(
+            $result,
+            'id'
+        );
+    }
 }
