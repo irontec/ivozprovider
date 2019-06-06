@@ -19,14 +19,16 @@ Feature: Retrieve rating profile
               "id": 1,
               "company": 1,
               "carrier": 1,
-              "ratingPlanGroup": 1
+              "ratingPlanGroup": 1,
+              "routingTag": null
           },
           {
               "activationTime": "2018-02-02 21:20:20",
               "id": 2,
               "company": 1,
               "carrier": null,
-              "ratingPlanGroup": 2
+              "ratingPlanGroup": 2,
+              "routingTag": 1
           }
       ]
     """

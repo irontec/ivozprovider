@@ -27,7 +27,7 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
         id:
           neq: "0"
     write_access_control:
-      ROLE_BRAND_ADMIN:
+      ROLE_SUPER_ADMIN:
         raw: "id > 0 or id === null"
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:

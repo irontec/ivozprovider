@@ -7,4 +7,5 @@ use Doctrine\Common\Collections\Selectable;
 
 interface TransformationRuleSetRepository extends ObjectRepository, Selectable
 {
+    public function getIdsByBrandId(int $brandId): array;
 }

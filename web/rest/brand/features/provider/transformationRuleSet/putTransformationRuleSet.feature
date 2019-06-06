@@ -8,7 +8,7 @@ Feature: Update transformation rule sets
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/transformation_rule_sets/2" with body:
+      And I send a "PUT" request to "/transformation_rule_sets/1" with body:
     """
       {
           "description": "Desc",
@@ -38,7 +38,7 @@ Feature: Update transformation rule sets
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 2,
+          "id": 1,
           "name": {
               "en": "updated name",
               "es": "nombre actualizado"

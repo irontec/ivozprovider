@@ -8,7 +8,7 @@ Feature: Update transformation rules
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/transformation_rules/5" with body:
+      And I send a "PUT" request to "/transformation_rules/4" with body:
     """
       {
           "type": "callerin",
@@ -16,7 +16,7 @@ Feature: Update transformation rules
           "priority": 5,
           "matchExpr": "^([0-9]+)$",
           "replaceExpr": "+34\u0001",
-          "transformationRuleSet": 2
+          "transformationRuleSet": 1
       }
     """
     Then the response status code should be 200
@@ -30,15 +30,15 @@ Feature: Update transformation rules
           "priority": 5,
           "matchExpr": "^([0-9]+)$",
           "replaceExpr": "+34\u0001",
-          "id": 5,
+          "id": 4,
           "transformationRuleSet": {
-              "description": "",
+              "description": "Generic transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
               "generateRules": false,
-              "id": 2,
+              "id": 1,
               "name": {
                   "en": "en",
                   "es": "es"

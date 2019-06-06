@@ -55,6 +55,23 @@ class CriteriaHelper implements CriteriaHelperInterface
     }
 
     /**
+     * @param mixed $condition
+     * @return bool
+     */
+    public static function isWrappedCondition($condition): bool
+    {
+        /**
+         * True for ['or' => [...]] conditions
+         */
+        $isConditionWrapper =
+            is_array($condition)
+            && count($condition) === 1
+            && in_array(key($condition), self::VALID_COMPOSITION_KEYS, true);
+
+        return $isConditionWrapper;
+    }
+
+    /**
      * @param array $conditions
      * @return Expression[]
      */
@@ -66,13 +83,7 @@ class CriteriaHelper implements CriteriaHelperInterface
                 throw new \RuntimeException("Raw (string) conditions cannot be converted into expressions");
             }
 
-            /**
-             * Unwrap ['or' => [...]] conditions
-             */
-            $isConditionWrapper =
-                is_array($comparison)
-                && count($comparison) === 1
-                && in_array(key($comparison), self::VALID_COMPOSITION_KEYS);
+            $isConditionWrapper = self::isWrappedCondition($comparison);
 
             if ($isConditionWrapper) {
                 $response = self::arrayToExpressions($comparison);
@@ -120,8 +131,13 @@ class CriteriaHelper implements CriteriaHelperInterface
         if ($operator === 'isNull') {
             return $expr->isNull($field);
         }
+
         if ($operator === 'isNotNull') {
             return new Comparison($field, Comparison::NEQ, new Value(null));
+        }
+
+        if (strtoupper($operator) === Comparison::IN && is_scalar($value)) {
+            $value = [$value];
         }
 
         return $expr->{$operator}($field, $value);
@@ -241,12 +257,12 @@ class CriteriaHelper implements CriteriaHelperInterface
             '<=' => 'LTE',
             '>' => 'GT',
             '>=' => 'GTE',
-            'IN' => 'IN',
-            'NIN' => 'NIN',
-            'CONTAINS' => 'CONTAINS',
-            'MEMBER_OF' => 'MEMBER_OF',
-            'STARTS_WITH' => 'STARTS_WITH',
-            'ENDS_WITH' => 'ENDS_WITH'
+            'in' => 'IN',
+            'nin' => 'NIN',
+            'constains' => 'CONTAINS',
+            'member_of' => 'MEMBER_OF',
+            'starts_with' => 'STARTS_WITH',
+            'ends_with' => 'ENDS_WITH'
         ];
 
         return $values[strtolower($operator)];

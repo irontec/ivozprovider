@@ -15,25 +15,11 @@ Feature: Retrieve administrators
     """
       [
           {
-              "email": "nightwatch@irontec.com",
-              "active": true,
-              "name": "night",
-              "lastname": "watch",
-              "id": 2
-          },
-          {
               "email": "test@irontec.com",
               "active": true,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
               "id": 4
-          },
-          {
-              "email": "utc@irontec.com",
-              "active": true,
-              "name": "Brand Admin in UTC timezone",
-              "lastname": "Lastname",
-              "id": 6
           }
       ]
     """
@@ -41,22 +27,22 @@ Feature: Retrieve administrators
   Scenario: Retrieve certain administrator json
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "administrators/2"
+      And I send a "GET" request to "administrators/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
     """
       {
-          "username": "test_brand_admin",
+          "username": "test_company_admin",
           "pass": "****",
-          "email": "nightwatch@irontec.com",
+          "email": "test@irontec.com",
           "active": true,
-          "name": "night",
-          "lastname": "watch",
-          "id": 2,
+          "name": "Admin Name",
+          "lastname": "Admin Lastname",
+          "id": 4,
           "brand": "~",
-          "company": null,
+          "company": "~",
           "timezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",

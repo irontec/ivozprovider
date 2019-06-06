@@ -9,4 +9,4 @@ Feature: Manage features rel brands
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/features_rel_brands/1"
-     Then the response status code should be 204
+     Then the response status code should be 405

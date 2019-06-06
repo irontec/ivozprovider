@@ -6,25 +6,13 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        id:
-          neq: 0
-        or:
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-          - company:
-              isNull: ~
-        brand:
-          eq: "user.getBrand().getId()"
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
     write_access_control:
       ROLE_BRAND_ADMIN:
         raw: "id > 0 or id === null"
-        or:
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-          - company:
-              isNull: ~
-        brand:
-          eq: "user.getBrand().getId()"
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   itemOperations:
@@ -43,6 +31,9 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Brand\Brand:
   collectionOperations: []
@@ -60,8 +51,28 @@ Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        or:
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+          - inherited:
+              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - or:
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+          - company:
+              isNull: ~
+        - or:
+          - inherited:
+              notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - notificationTemplate:
+              isNull: ~
+        - or:
+          - inherited:
+              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+          - carrier:
+              isNull: ~
 
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
   attributes:
@@ -86,6 +97,33 @@ Ivoz\Provider\Domain\Model\Company\Company:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+            - brand:
+                eq: "user.getBrand().getId()"
+            - inherited:
+                transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - or:
+          - inherited:
+              voicemailNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - voicemailNotificationTemplate:
+              isNull: ~
+        - or:
+          - inherited:
+              callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - callCsvNotificationTemplate:
+              isNull: ~
+        - or:
+          - inherited:
+              invoiceNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - invoiceNotificationTemplate:
+              isNull: ~
+        - or:
+          - inherited:
+              faxNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - faxNotificationTemplate:
+              isNull: ~
 
 Ivoz\Provider\Domain\Model\Currency\Currency:
   itemOperations:
@@ -94,6 +132,8 @@ Ivoz\Provider\Domain\Model\Currency\Currency:
     get: ~
   attributes:
     access_control: '"ROLE_USER" in roles'
+    write_access_control:
+      raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
@@ -105,14 +145,14 @@ Ivoz\Provider\Domain\Model\Country\Country:
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    write_access_control:
+      raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Domain\Domain:
-  itemOperations:
-    get: ~
-  collectionOperations:
-    get: ~
+  itemOperations: []
+  collectionOperations: []
   attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    access_control: 'FALSE'
 
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
   attributes:
@@ -121,6 +161,13 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - inherited:
+              transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
   attributes:
@@ -132,9 +179,9 @@ Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
 Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress:
     attributes:
       access_control: '"ROLE_BRAND_ADMIN" in roles'
-    read_access_control:
-      inherited:
-        ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
+      read_access_control:
+        inherited:
+          ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
 
 Ivoz\Provider\Domain\Model\Destination\Name:
 Ivoz\Provider\Domain\Model\Destination\Destination:
@@ -177,13 +224,17 @@ Ivoz\Provider\Domain\Model\Feature\Feature:
 Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
   itemOperations:
     get: ~
-    delete: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
   itemOperations:
@@ -209,7 +260,6 @@ Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
         brand:
           eq: "user.getBrand().getId()"
 
-
 Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
   itemOperations:
     get: ~
@@ -229,15 +279,32 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
     read_access_control:
       inherited:
         fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
-
+    write_access_control:
+      inherited:
+        fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
+        invoice: 'Ivoz\Provider\Domain\Model\Invoice\Invoice'
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        brand:
+          eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+            - brand:
+                eq: "user.getBrand().getId()"
+            - company:
+                in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+            - inherited:
+                invoiceTemplate: 'Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate'
+        - or:
+            - inherited:
+                numberSequence: 'Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence'
+            - numberSequence:
+                isNull: ~
 
 Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
   attributes:
@@ -286,6 +353,13 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+            - brand:
+                eq: "user.getBrand().getId()"
+            - inherited:
+                transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
   attributes:
@@ -294,6 +368,12 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+        inherited:
+          carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   attributes:
@@ -302,6 +382,31 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+            - brand:
+                eq: "user.getBrand().getId()"
+        - or:
+            - inherited:
+                carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+            - carrier:
+                isNull: ~
+        - or:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+          - company:
+              isNull: ~
+        - or:
+          - inherited:
+              routingPattern: 'Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern'
+          - routingPattern:
+              isNull: ~
+        - or:
+          - inherited:
+              routingPatternGroup: 'Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup'
+          - routingPatternGroup:
+              isNull: ~
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Name:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Description:
@@ -329,8 +434,26 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        - or:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+          - inherited:
+              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+          - inherited:
+              ratingPlanGroup: 'Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup'
+        - or:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+          - company:
+              isNull: ~
+        - or:
+          - inherited:
+              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+          - carrier:
+              isNull: ~
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
   attributes:
@@ -354,10 +477,22 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRe
     read_access_control:
       inherited:
         routingPatternGroup: 'Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup'
+    write_access_control:
+      inherited:
+        routingPatternGroup: 'Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup'
+        routingPattern: 'Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern'
 
 Ivoz\Provider\Domain\Model\RoutingPattern\Name:
 Ivoz\Provider\Domain\Model\RoutingPattern\Description:
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+
+Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -387,6 +522,13 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
+        - or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - brand:
+              isNull: ~
+    write_access_control:
+      ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
 
@@ -396,3 +538,6 @@ Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
     read_access_control:
       inherited:
         transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+    write_access_control:
+      transformationRuleSet:
+        in: "transformationRuleSetRepository.getIdsByBrandId(user.getBrand().getId())"

@@ -8,6 +8,9 @@ pushd /opt/irontec/ivozprovider/web/rest/client
     # Prepare dataset
     bin/prepare-test-db
 
-    # Run tests
+    # Access control tests
+    SYMFONY_PHPUNIT_VERSION=6.5.14 vendor/bin/simple-phpunit
+
+    # Integration tests
     vendor/bin/behat -f progress -o std -f junit -o results
 popd

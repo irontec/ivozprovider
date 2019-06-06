@@ -27,7 +27,8 @@
           "id": 3,
           "company": 1,
           "carrier": null,
-          "ratingPlanGroup": 1
+          "ratingPlanGroup": 1,
+          "routingTag": null
       }
     """
 
@@ -45,6 +46,7 @@
           "id": 3,
           "company": "~",
           "carrier": null,
-          "ratingPlanGroup": "~"
+          "ratingPlanGroup": "~",
+          "routingTag": null
       }
     """

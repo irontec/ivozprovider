@@ -14,7 +14,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="Ivoz Provider database integration test suite">
+        <testsuite name="Ivoz Provider API access control test suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

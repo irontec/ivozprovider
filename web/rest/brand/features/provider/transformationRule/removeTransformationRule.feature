@@ -8,7 +8,7 @@ Feature: Manage transformation rules
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/transformation_rules/5"
+      And I send a "DELETE" request to "/transformation_rules/4"
      Then the response status code should be 204
 
   @createSchema
@@ -16,5 +16,5 @@ Feature: Manage transformation rules
     Given I add Brand Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/transformation_rules/1"
+    And I send a "DELETE" request to "/transformation_rules/5"
     Then the response status code should be 404
