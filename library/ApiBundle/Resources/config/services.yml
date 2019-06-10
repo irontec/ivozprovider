@@ -188,6 +188,12 @@ services:
   ################################################
   ## Resources
   ################################################
+  Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FileOperationMetadataFactory:
+    decorates: "api_platform.metadata.resource.metadata_factory"
+    decoration_priority: 3
+    arguments:
+      $decorated: '@Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FileOperationMetadataFactory.inner'
+
   Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FilterMetadataFactory:
     decorates: "api_platform.metadata.resource.metadata_factory"
     decoration_priority: 2
@@ -318,3 +324,10 @@ services:
         - [ addExtension, ['@api_platform.doctrine.orm.query_extension.filter'] ]
         - [ addExtension, ['@api_platform.doctrine.orm.query_extension.pagination'] ]
         - [ addExtension, ['@api_platform.doctrine.orm.query_extension.order'] ]
+
+  ################################################
+  ## Controllers
+  ################################################
+  Ivoz\Api\Symfony\Controller\:
+    resource: '../../../Ivoz/Api/Symfony/Controller/*'
+    tags: ['controller.service_arguments']

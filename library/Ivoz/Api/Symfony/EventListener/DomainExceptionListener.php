@@ -39,7 +39,8 @@ class DomainExceptionListener
         $exceptionClass = get_class($exception);
         $publicExceptions = [
             \DomainException::class,
-            InvalidArgumentException::class
+            InvalidArgumentException::class,
+            \RuntimeException::class
         ];
 
         if (!in_array($exceptionClass, $publicExceptions)) {
@@ -48,11 +49,14 @@ class DomainExceptionListener
 
         $format = ErrorFormatGuesser::guessErrorFormat($event->getRequest(), $this->errorFormats);
         $event->setException($exception);
+        $responseCode = $exception->getCode() > 0
+            ? $exception->getCode()
+            : Response::HTTP_BAD_REQUEST;
 
         $body = $this->serializer->serialize($exception, $format['key']);
         $event->setResponse(new Response(
             $body,
-            Response::HTTP_BAD_REQUEST,
+            $responseCode,
             [
                 'Content-Type' => sprintf('%s; charset=utf-8', $format['value'][0]),
                 'X-Content-Type-Options' => 'nosniff',
