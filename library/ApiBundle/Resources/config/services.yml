@@ -57,6 +57,10 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.request, priority: 7 }
 
+  Ivoz\Api\Symfony\EventListener\MultipartRequestListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, priority: 8 }
+
   Ivoz\Api\Symfony\EventListener\DomainExceptionListener:
     arguments:
       $serializer: '@api_platform.serializer'
