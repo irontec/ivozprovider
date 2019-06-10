@@ -6,25 +6,25 @@ Feature: Create locutions
   @createSchema
   Scenario: Create a locution
     Given I add Company Authorization header
-     When I add "Content-Type" header equal to "application/json"
+     When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/locutions" with body:
+      And I send a "POST" multipart request to "/locutions" with body:
     """
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="brand"
+
       {
           "name": "newLocution",
           "status": null,
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
           "company": 1
       }
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="originalFile"; filename="uploadable"
+Content-Type: text/plain
+
+This is file content
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+
     """
     Then the response status code should be 201
      And the response should be in JSON
@@ -33,7 +33,7 @@ Feature: Create locutions
     """
       {
           "name": "newLocution",
-          "status": null,
+          "status": "pending",
           "id": 2,
           "encodedFile": {
               "fileSize": null,
@@ -41,9 +41,9 @@ Feature: Create locutions
               "baseName": null
           },
           "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+              "fileSize": 20,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "uploadable"
           },
           "company": 1
       }
@@ -60,7 +60,7 @@ Feature: Create locutions
     """
       {
           "name": "newLocution",
-          "status": null,
+          "status": "pending",
           "id": 2,
           "encodedFile": {
               "fileSize": null,
@@ -68,9 +68,9 @@ Feature: Create locutions
               "baseName": null
           },
           "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+              "fileSize": 20,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "uploadable"
           },
           "company": "~"
       }
