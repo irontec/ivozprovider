@@ -4,6 +4,7 @@ namespace Ivoz\Api\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\MinkExtension\Context\MinkAwareContext;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Symfony\Component\Filesystem\Filesystem;
@@ -73,6 +74,27 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
         );
 
         $this->request->setHttpHeader('Authorization', 'Bearer ' . $token);
+    }
+
+    /**
+     * @When I send a :method multipart request to :url with body:
+     */
+    public function iSendAMultipartRequestTo($method, $url, PyStringNode $body = null, $files = [])
+    {
+        if ($body !== null) {
+            $body = implode(
+                "\r\n",
+                $body->getStrings()
+            );
+        }
+
+        return $this->request->send(
+            $method,
+            $this->locatePath($url),
+            [],
+            $files,
+            $body
+        );
     }
 
     /**
