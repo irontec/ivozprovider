@@ -20,7 +20,10 @@ class WebPortalDto extends WebPortalDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+        $response['logoPath'] = 'logoPath';
+
+        return $response;
     }
 
     public function getFileObjects()
