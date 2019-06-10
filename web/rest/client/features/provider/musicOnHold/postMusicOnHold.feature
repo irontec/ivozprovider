@@ -6,25 +6,24 @@ Feature: Create music on holds
   @createSchema
   Scenario: Create a music on hold
     Given I add Company Authorization header
-     When I add "Content-Type" header equal to "application/json"
+     When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/music_on_holds" with body:
+      And I send a "POST" multipart request to "/music_on_holds" with body:
     """
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="brand"
+
       {
           "name": "Something new",
-          "status": null,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
           "company": 1
       }
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="originalFile"; filename="uploadable"
+Content-Type: text/plain
+
+This is file content
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+
     """
     Then the response status code should be 201
      And the response should be in JSON
@@ -33,12 +32,12 @@ Feature: Create music on holds
     """
       {
           "name": "Something new",
-          "status": null,
+          "status": "pending",
           "id": 3,
           "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+              "fileSize": 20,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "uploadable"
           },
           "encodedFile": {
               "fileSize": null,
@@ -60,12 +59,12 @@ Feature: Create music on holds
     """
       {
           "name": "Something new",
-          "status": null,
+          "status": "pending",
           "id": 3,
           "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+              "fileSize": 20,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "uploadable"
           },
           "encodedFile": {
               "fileSize": null,
