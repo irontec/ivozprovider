@@ -29,11 +29,9 @@ Feature: Update outgoing ddi rules
           "company": "~",
           "forcedDdi": {
               "ddi": "123",
-              "ddie164": "+34123",
               "recordCalls": "none",
               "displayName": "",
               "routeType": null,
-              "billInboundCalls": false,
               "friendValue": "",
               "id": 1,
               "company": 1,

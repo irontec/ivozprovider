@@ -15,8 +15,7 @@
           "name": {
               "en": "Germany",
               "es": "Alemania"
-          },
-          "brand": 1
+          }
       }
     """
     Then the response status code should be 201

@@ -9,4 +9,4 @@ Feature: Manage Ddis
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/ddis/1"
-     Then the response status code should be 204
+     Then the response status code should be 405

@@ -4,17 +4,9 @@ Feature: Manage brands
   I need to be able to delete them through the API.
 
   @createSchema
-  Scenario: Remove a brand
-    Given I add Brand Authorization header
-     When I add "Content-Type" header equal to "application/json"
-      And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/brands/1"
-     Then the response status code should be 204
-
-  @createSchema
-  Scenario: Cannot remove unmanaged brands
+  Scenario: Cannot remove brands
     Given I add Brand Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/brands/2"
-    Then the response status code should be 404
+    And I send a "DELETE" request to "/brands/1"
+    Then the response status code should be 405

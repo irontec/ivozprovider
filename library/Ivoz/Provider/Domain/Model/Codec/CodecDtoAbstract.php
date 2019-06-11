@@ -41,7 +41,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

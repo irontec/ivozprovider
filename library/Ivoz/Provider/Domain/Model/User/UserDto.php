@@ -56,7 +56,7 @@ class UserDto extends UserDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -101,7 +101,7 @@ class UserDto extends UserDtoAbstract
     /**
      * @inheritdoc
      */
-    public function denormalize(array $data, string $context)
+    public function denormalize(array $data, string $context, string $role = '')
     {
         if (isset($data['oldPass'])) {
             $this->setOldPass($data['oldPass']);

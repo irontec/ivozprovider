@@ -37,8 +37,6 @@ Feature: Manage brands
       {
           "name": "DemoBrand",
           "domainUsers": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
           "maxCalls": 0,
           "id": 1,
           "logo": {
@@ -54,12 +52,6 @@ Feature: Manage brands
               "province": "",
               "country": "",
               "registryData": ""
-          },
-          "domain": {
-              "domain": "retail.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "Irontec Test Company retail domain",
-              "id": 6
           },
           "language": {
               "iden": "es",

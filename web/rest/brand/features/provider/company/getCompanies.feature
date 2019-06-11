@@ -46,7 +46,6 @@ Feature: Retrieve companies
           "name": "DemoCompany",
           "domainUsers": "127.0.0.1",
           "nif": "12345678A",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "Company Address",
           "postalCode": "54321",
@@ -57,8 +56,6 @@ Feature: Retrieve companies
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
           "showInvoices": false,
@@ -72,7 +69,7 @@ Feature: Retrieve companies
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
+              "tz": "Europe\/Madrid",
               "comment": "mainland",
               "id": 145,
               "label": {
@@ -83,10 +80,6 @@ Feature: Retrieve companies
           },
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -102,16 +95,9 @@ Feature: Retrieve companies
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
               "defaultTimezone": 145,
               "currency": 2
-          },
-          "domain": {
-              "domain": "127.0.0.1",
-              "pointsTo": "proxyusers",
-              "description": "DemoCompany proxyusers domain",
-              "id": 3
           },
           "country": {
               "code": "ES",
@@ -119,7 +105,7 @@ Feature: Retrieve companies
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "Espa\u00f1a"
               },
               "zone": {
                   "en": "Europe",
@@ -142,6 +128,7 @@ Feature: Retrieve companies
               "brand": 1,
               "country": 68
           },
+          "outgoingDdi": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",

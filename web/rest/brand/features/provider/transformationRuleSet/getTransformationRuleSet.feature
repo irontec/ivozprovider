@@ -48,10 +48,6 @@ Feature: Retrieve transformation rule sets
           },
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -67,7 +63,6 @@ Feature: Retrieve transformation rule sets
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
               "defaultTimezone": 145,
               "currency": 2

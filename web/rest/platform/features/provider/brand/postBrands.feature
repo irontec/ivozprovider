@@ -13,8 +13,6 @@ Feature: Manage brands
       {
         "name": "api_brand",
         "domainUsers": "sip-api.irontec.com",
-        "recordingsLimitMB": 10,
-        "recordingsLimitEmail": "mikel@irontec.com",
         "invoice": {
           "nif": "123",
           "postalAddress": "",
@@ -35,8 +33,6 @@ Feature: Manage brands
       {
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
-          "recordingsLimitMB": 10,
-          "recordingsLimitEmail": "mikel@irontec.com",
           "maxCalls": 0,
           "id": 3,
           "logo": {
@@ -53,7 +49,6 @@ Feature: Manage brands
               "country": "Spain",
               "registryData": "registryData"
           },
-          "domain": 7,
           "language": null,
           "defaultTimezone": 145
       }
@@ -71,8 +66,6 @@ Feature: Manage brands
       {
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
-          "recordingsLimitMB": 10,
-          "recordingsLimitEmail": "mikel@irontec.com",
           "maxCalls": 0,
           "id": 3,
           "logo": {
@@ -88,12 +81,6 @@ Feature: Manage brands
               "province": "Bizkaia",
               "country": "Spain",
               "registryData": "registryData"
-          },
-          "domain": {
-              "domain": "sip-api.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "api_brand proxyusers domain",
-              "id": 7
           },
           "language": null,
           "defaultTimezone": {

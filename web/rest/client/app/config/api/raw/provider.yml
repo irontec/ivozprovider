@@ -98,8 +98,31 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
             isNull: ~
 
 Ivoz\Provider\Domain\Model\Company\Company:
-  itemOperations: []
-  collectionOperations: []
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
+    domainUsers:
+      attributes:
+        swagger_context:
+          readOnly: true
+    nif:
+      attributes:
+        swagger_context:
+          readOnly: true
+    onDemandRecordCode:
+      attributes:
+        swagger_context:
+          readOnly: true
+    balance:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -318,6 +341,11 @@ Ivoz\Provider\Domain\Model\Country\Country:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -378,6 +406,15 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
               externalCallFilter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
           - externalCallFilter:
               isNull: ~
+  properties:
+    ddi:
+      attributes:
+        swagger_context:
+          readOnly: true
+    country:
+      attributes:
+        swagger_context:
+          readOnly: true
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
   attributes:

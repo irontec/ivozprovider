@@ -12,7 +12,6 @@ Feature: Create brand servers
     """
       {
           "code": "11",
-          "brand": 1,
           "service": 4
       }
     """

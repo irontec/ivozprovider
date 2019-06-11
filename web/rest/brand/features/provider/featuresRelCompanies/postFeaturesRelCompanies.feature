@@ -28,7 +28,6 @@
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "distributeMethod": "hash",
               "maxCalls": 0,
               "postalAddress": "Company Address",
               "postalCode": "54321",
@@ -39,8 +38,6 @@
               "onDemandRecord": 0,
               "onDemandRecordCode": "",
               "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
               "showInvoices": false,
@@ -48,10 +45,10 @@
               "language": 1,
               "defaultTimezone": 145,
               "brand": 1,
-              "domain": 3,
               "country": 68,
               "currency": null,
               "transformationRuleSet": 1,
+              "outgoingDdi": null,
               "voicemailNotificationTemplate": 1,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
@@ -71,20 +68,19 @@
   Scenario: Retrieve created features rel companies
     Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "features_rel_companies/2"
+    And I send a "GET" request to "features_rel_companies/6"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be like:
     """
        {
-          "id": 2,
+          "id": 6,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "distributeMethod": "hash",
               "maxCalls": 0,
               "postalAddress": "Company Address",
               "postalCode": "54321",
@@ -95,8 +91,6 @@
               "onDemandRecord": 0,
               "onDemandRecordCode": "",
               "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
               "showInvoices": false,
@@ -104,18 +98,18 @@
               "language": 1,
               "defaultTimezone": 145,
               "brand": 1,
-              "domain": 3,
               "country": 68,
               "currency": null,
               "transformationRuleSet": 1,
+              "outgoingDdi": null,
               "voicemailNotificationTemplate": 1,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
               "callCsvNotificationTemplate": null
           },
           "feature": {
-              "iden": "recordings",
-              "id": 2,
+              "iden": "progress",
+              "id": 8,
               "name": {
                   "en": "en",
                   "es": "es"

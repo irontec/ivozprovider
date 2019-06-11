@@ -12,8 +12,7 @@ Feature: Create routing pattern groups
     """
       {
           "name": "Usansolocity",
-          "description": "Usansolocity",
-          "brand": 1
+          "description": "Usansolocity"
       }
     """
     Then the response status code should be 201

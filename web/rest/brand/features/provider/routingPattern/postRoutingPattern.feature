@@ -20,8 +20,7 @@ Feature: Create routing patterns
           "description": {
               "en": "desc en",
               "es": "desc es"
-          },
-          "brand": 1
+          }
       }
     """
     Then the response status code should be 201

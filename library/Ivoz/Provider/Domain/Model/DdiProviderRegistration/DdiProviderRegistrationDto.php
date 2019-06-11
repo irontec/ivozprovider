@@ -8,7 +8,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         $response =  parent::getPropertyMap(...func_get_args());
 

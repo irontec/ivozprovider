@@ -21,8 +21,7 @@ Feature: Create web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "brand": 1
+          }
       }
     """
     Then the response status code should be 201

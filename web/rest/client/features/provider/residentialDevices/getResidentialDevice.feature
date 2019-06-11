@@ -17,7 +17,6 @@ Feature: Retrieve residential devices
           {
               "name": "retail",
               "transport": "udp",
-              "authNeeded": "yes",
               "id": 1
           }
       ]
@@ -35,18 +34,6 @@ Feature: Retrieve residential devices
       {
           "name": "retail",
           "description": "",
-          "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": null,
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
           "id": 1,
           "company": "~",
           "outgoingDdi": null,
