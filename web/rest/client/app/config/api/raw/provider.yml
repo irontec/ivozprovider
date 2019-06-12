@@ -51,6 +51,56 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
         callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
         matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
 
+Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
+  properties:
+    lastExecution:
+      attributes:
+        swagger_context:
+          readOnly: true
+    lastExecutionError:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - company:
+              eq: "user.getCompany().getId()"
+        - or:
+          - inherited:
+              callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - callCsvNotificationTemplate:
+              isNull: ~
+
+Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inherited:
+            callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
+        - callCsvScheduler:
+            isNull: ~
+
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
@@ -874,6 +924,19 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
+Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        - or:
+          - brand:
+              eq: "user.getCompany().getBrand().getId()"
+          - brand:
+              isNull: ~
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
