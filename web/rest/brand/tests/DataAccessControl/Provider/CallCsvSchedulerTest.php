@@ -3,16 +3,16 @@
 namespace Tests\DataAccessControl\Provider;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
-use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class BalanceNotificationTest extends KernelTestCase
+class CallCsvSchedulerTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
     protected function getResourceClass()
     {
-        return BalanceNotification::class;
+        return CallCsvScheduler::class;
     }
 
     protected function getAdminCriteria(): array
@@ -35,18 +35,9 @@ class BalanceNotificationTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'or' => [
-                        [
-                            'company',
-                            'in',
-                            'companyRepository.getSupervisedCompanyIdsByAdmin(user)'
-                        ],
-                        [
-                            'carrier',
-                            'in',
-                            'CarrierRepository([["brand","eq","user.getBrand().getId()"]])'
-                        ]
-                    ]
+                    'brand',
+                    'eq',
+                    'user.getBrand().getId()'
                 ]
             ]
         );
@@ -67,11 +58,11 @@ class BalanceNotificationTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'or' => [
+                    'and' => [
                         [
-                            'company',
-                            'in',
-                            'companyRepository.getSupervisedCompanyIdsByAdmin(user)'
+                            'brand',
+                            'eq',
+                            'user.getBrand().getId()'
                         ],
                         [
                             'company',
@@ -83,26 +74,12 @@ class BalanceNotificationTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'notificationTemplate',
+                            'callCsvNotificationTemplate',
                             'in',
                             'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
                         ],
                         [
-                            'notificationTemplate',
-                            'isNull',
-                            null
-                        ]
-                    ]
-                ],
-                [
-                    'or' => [
-                        [
-                            'carrier',
-                            'in',
-                            'CarrierRepository([["brand","eq","user.getBrand().getId()"]])'
-                        ],
-                        [
-                            'carrier',
+                            'callCsvNotificationTemplate',
                             'isNull',
                             null
                         ]
