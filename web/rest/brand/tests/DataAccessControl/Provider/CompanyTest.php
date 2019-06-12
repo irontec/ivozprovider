@@ -72,7 +72,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'voicemailNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                            'NotificationTemplateRepository({"or":[["brand","eq","user.getCompany().getBrand().getId()"],["brand","eq",null]]})'
                         ],
                         [
                             'voicemailNotificationTemplate',
@@ -86,7 +86,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'callCsvNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                            'NotificationTemplateRepository({"or":[["brand","eq","user.getCompany().getBrand().getId()"],["brand","eq",null]]})'
                         ],
                         [
                             'callCsvNotificationTemplate',
@@ -100,7 +100,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'invoiceNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                            'NotificationTemplateRepository({"or":[["brand","eq","user.getCompany().getBrand().getId()"],["brand","eq",null]]})'
                         ],
                         [
                             'invoiceNotificationTemplate',
@@ -114,7 +114,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'faxNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                            'NotificationTemplateRepository({"or":[["brand","eq","user.getCompany().getBrand().getId()"],["brand","eq",null]]})'
                         ],
                         [
                             'faxNotificationTemplate',

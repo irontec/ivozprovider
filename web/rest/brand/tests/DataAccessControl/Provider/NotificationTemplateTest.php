@@ -35,9 +35,18 @@ class NotificationTemplateTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'brand',
-                    'eq',
-                    'user.getBrand().getId()'
+                    'or' => [
+                        [
+                            'brand',
+                            'eq',
+                            'user.getCompany().getBrand().getId()'
+                        ],
+                        [
+                            'brand',
+                            'isNull',
+                            null
+                        ]
+                    ]
                 ]
             ]
         );
@@ -58,9 +67,18 @@ class NotificationTemplateTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'brand',
-                    'eq',
-                    'user.getBrand().getId()'
+                    'or' => [
+                        [
+                            'brand',
+                            'eq',
+                            'user.getCompany().getBrand().getId()'
+                        ],
+                        [
+                            'brand',
+                            'isNull',
+                            null
+                        ]
+                    ]
                 ]
             ]
         );
