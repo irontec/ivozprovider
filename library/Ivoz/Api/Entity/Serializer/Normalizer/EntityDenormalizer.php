@@ -12,6 +12,7 @@ use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyNameCollection;
@@ -30,6 +31,7 @@ class EntityDenormalizer implements DenormalizerInterface
     private $propertyNameCollectionFactory;
     private $dataAccessControlParser;
     protected $tokenStorage;
+    private $requestStack;
 
     public function __construct(
         CreateEntityFromDTO $createEntityFromDTO,
@@ -40,7 +42,8 @@ class EntityDenormalizer implements DenormalizerInterface
         DateTimeNormalizerInterface $dateTimeNormalizer,
         PropertyNameCollectionFactory $propertyNameCollectionFactory,
         DataAccessControlParser $dataAccessControlParser,
-        TokenStorage $tokenStorage
+        TokenStorage $tokenStorage,
+        RequestStack $requestStack
     ) {
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->updateEntityFromDTO = $updateEntityFromDTO;
@@ -51,6 +54,7 @@ class EntityDenormalizer implements DenormalizerInterface
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
         $this->dataAccessControlParser = $dataAccessControlParser;
         $this->tokenStorage = $tokenStorage;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -69,6 +73,17 @@ class EntityDenormalizer implements DenormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         $data = $this->denormalizeDateTimes($data, $class);
+
+        $files = $this->requestStack->getCurrentRequest()->files;
+        foreach ($files->all() as $name => $file) {
+            $name = lcfirst($name);
+            $data[$name] = [
+                'fileSize' => $file->getClientSize(),
+                'mimeType' => $file->getClientMimeType(),
+                'baseName' => $file->getClientOriginalName(),
+            ];
+            $data[$name . 'Path'] = $file->getPathname();
+        }
 
         $context['operation_type'] = $context['operation_normalization_context'] ?? DataTransferObjectInterface::CONTEXT_SIMPLE;
         $entity = array_key_exists('object_to_populate', $context)

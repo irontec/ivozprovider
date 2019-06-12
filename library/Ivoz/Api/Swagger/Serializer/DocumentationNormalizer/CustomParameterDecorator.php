@@ -60,7 +60,7 @@ class CustomParameterDecorator implements NormalizerInterface
             ...$pathArray['upload_parameters']
         );
         unset($pathArray['upload_parameters']);
-        $pathArray['consumes'][] = 'multipart/form-data';
+        array_unshift($pathArray['consumes'], 'multipart/form-data');
         foreach ($pathArray['parameters'] as $key => $parameter) {
             if ($parameter['in'] === 'body') {
                 $parameter['in'] = 'formData';

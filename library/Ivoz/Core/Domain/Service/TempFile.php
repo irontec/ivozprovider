@@ -70,7 +70,8 @@ class TempFile
         chmod($targetPath, 0777);
 
         unlink($this->tmpPath);
-        if ($this->previousFilePath && ($targetPath != $this->previousFilePath)) {
+        $previousFilePathExists = file_exists($this->previousFilePath);
+        if ($previousFilePathExists && ($targetPath != $this->previousFilePath)) {
             unlink($this->previousFilePath);
         }
     }

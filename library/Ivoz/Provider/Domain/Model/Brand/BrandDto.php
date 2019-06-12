@@ -54,6 +54,7 @@ class BrandDto extends BrandDtoAbstract
             $response = self::filterFieldsForBrandAdmin($response);
         }
 
+        $response['logoPath'] = 'logoPath';
         unset($response['recordingsLimitMB']);
         unset($response['recordingsLimitEmail']);
         unset($response['domainId']);

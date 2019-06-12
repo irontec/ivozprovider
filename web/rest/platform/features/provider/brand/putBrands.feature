@@ -72,3 +72,67 @@ Feature: Manage brands
           }
       }
     """
+
+  @createSchema
+  Scenario: Update brand logo
+   Given I add Authorization header
+    When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
+     And I add "Accept" header equal to "application/json"
+     And I send a "PUT" multipart request to "/brands/2" with body:
+    """
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="brand"
+
+      {}
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="Logo"; filename="uploadable"
+Content-Type: text/plain
+
+This is file content
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+
+    """
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the JSON should be like:
+    """
+      {
+          "name": "Irontec_e2e",
+          "domainUsers": "sip.irontec.com",
+          "maxCalls": 0,
+          "id": 2,
+          "logo": {
+              "fileSize": 20,
+              "mimeType": "text\/plain; charset=us-ascii",
+              "baseName": "uploadable"
+          },
+          "invoice": {
+              "nif": "",
+              "postalAddress": "",
+              "postalCode": "",
+              "town": "",
+              "province": "",
+              "country": "",
+              "registryData": ""
+          },
+          "language": {
+              "iden": "es",
+              "id": 1,
+              "name": {
+                  "en": "es",
+                  "es": "es"
+              }
+          },
+          "defaultTimezone": {
+              "tz": "Europe\/Madrid",
+              "comment": "mainland",
+              "id": 145,
+              "label": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "country": 68
+          }
+      }
+    """
