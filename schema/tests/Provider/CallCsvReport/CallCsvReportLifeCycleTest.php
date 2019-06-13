@@ -54,13 +54,12 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
         $callCsvReport = $this->em
             ->getRepository(CallCsvReport::class);
         $fixtureCallCsvReports = $callCsvReport->findAll();
-        $this->assertCount(0, $fixtureCallCsvReports);
 
         $this
             ->addCallCsvReport();
 
         $brands = $callCsvReport->findAll();
-        $this->assertCount(1, $brands);
+        $this->assertCount(count($fixtureCallCsvReports) + 1, $brands);
     }
 
     /**
@@ -89,7 +88,7 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
                 'csvMimeType' => 'inode/x-empty; charset=binary',
                 'csvBaseName' => 'DemoCompany-20180101-20181231.csv',
                 'companyId' => 1,
-                'id' => 1
+                'id' => 3
             ]
         );
     }

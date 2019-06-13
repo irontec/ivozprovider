@@ -3,21 +3,21 @@
 namespace Tests\DataAccessControl\Provider;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class NotificationTemplateTest extends KernelTestCase
+class CallCsvReportTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
     protected function getResourceClass()
     {
-        return NotificationTemplate::class;
+        return CallCsvReport::class;
     }
 
     protected function getAdminCriteria(): array
     {
-        return ['username' => 'test_brand_admin'];
+        return ['username' => 'test_company_admin'];
     }
 
     /**
@@ -35,18 +35,9 @@ class NotificationTemplateTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'or' => [
-                        [
-                            'brand',
-                            'eq',
-                            'user.getBrand().getId()'
-                        ],
-                        [
-                            'brand',
-                            'isNull',
-                            null
-                        ]
-                    ]
+                    'company',
+                    'eq',
+                    'user.getCompany().getId()'
                 ]
             ]
         );
@@ -67,14 +58,23 @@ class NotificationTemplateTest extends KernelTestCase
             $accessControl,
             [
                 [
+                    'and' => [
+                        [
+                            'company',
+                            'eq',
+                            'user.getCompany().getId()'
+                        ],
+                    ]
+                ],
+                [
                     'or' => [
                         [
-                            'brand',
-                            'eq',
-                            'user.getBrand().getId()'
+                            'callCsvScheduler',
+                            'in',
+                            'CallCsvSchedulerRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'brand',
+                            'callCsvScheduler',
                             'isNull',
                             null
                         ]

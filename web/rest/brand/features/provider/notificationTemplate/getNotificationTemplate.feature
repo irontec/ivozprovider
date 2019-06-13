@@ -18,6 +18,11 @@ Feature: Retrieve notification templates
               "name": "Voicemail notification",
               "type": "voicemail",
               "id": 1
+          },
+          {
+              "name": "CallCsv notification",
+              "type": "callCsv",
+              "id": 2
           }
       ]
     """

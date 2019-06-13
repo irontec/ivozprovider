@@ -37,7 +37,7 @@ class NotificationTemplateContentTest extends KernelTestCase
                 [
                     'notificationTemplate',
                     'in',
-                    'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                    'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
                 ]
             ]
         );
@@ -60,7 +60,7 @@ class NotificationTemplateContentTest extends KernelTestCase
                 [
                     'notificationTemplate',
                     'in',
-                    'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                    'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
                 ]
             ]
         );
