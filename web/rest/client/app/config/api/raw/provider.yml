@@ -1202,6 +1202,25 @@ Ivoz\Provider\Domain\Model\Service\Service:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
 
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'terminals/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'terminals/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:

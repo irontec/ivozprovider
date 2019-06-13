@@ -118,3 +118,8 @@ services:
   Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupDtoAssembler:
       arguments:
         $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
+
+  ##########################################
+  ## Terminal
+  ##########################################
+  Ivoz\Provider\Application\Service\Terminal\TerminalDtoAssembler: ~

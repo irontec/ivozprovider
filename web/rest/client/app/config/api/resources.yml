@@ -75,6 +75,7 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_COMPANY_USER" in roles'
+  itemOperations: []
   collectionOperations:
     get_my_call_history:
       method: 'GET'
