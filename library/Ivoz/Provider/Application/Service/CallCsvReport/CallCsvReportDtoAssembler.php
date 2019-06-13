@@ -27,7 +27,7 @@ class CallCsvReportDtoAssembler implements CustomDtoAssemblerInterface
      * @param integer $depth
      * @return CallCsvReportDTO
      */
-    public function toDto(EntityInterface $entity, $depth = 0)
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
     {
         /** @var CallCsvReportInterface $entity */
         Assertion::isInstanceOf($entity, CallCsvReportInterface::class);

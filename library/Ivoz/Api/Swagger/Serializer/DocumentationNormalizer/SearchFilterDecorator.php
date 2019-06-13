@@ -3,6 +3,7 @@
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\PropertyInfo\Type;
 
 class SearchFilterDecorator implements NormalizerInterface
 {
@@ -129,7 +130,12 @@ class SearchFilterDecorator implements NormalizerInterface
                 continue;
             }
 
-            if (!isset($values['type']) || is_null($values['type'])) {
+            $skip =
+                !isset($values['type'])
+                || is_null($values['type'])
+                || $values['type'] === Type::BUILTIN_TYPE_ARRAY;
+
+            if ($skip) {
                 continue;
             }
 

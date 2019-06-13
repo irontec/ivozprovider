@@ -3,9 +3,7 @@
 namespace Ivoz\Api\Entity\Serializer\Normalizer;
 
 use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use Doctrine\DBAL\Types\Type as DBALType;
 
@@ -13,22 +11,16 @@ class DateTimeNormalizer implements DateTimeNormalizerInterface
 {
     private $classMetadataFactory;
     private $propertyMetadataFactory;
-    private $requestStack;
+    private $requestDateTimeResolver;
 
-    /**
-     * DateTimeNormalizer constructor.
-     * @param ClassMetadataFactory $classMetadataFactory
-     * @param PropertyMetadataFactoryInterface $propertyMetadataFactory
-     * @param RequestStack $requestStack
-     */
     public function __construct(
         ClassMetadataFactory $classMetadataFactory,
         PropertyMetadataFactoryInterface $propertyMetadataFactory,
-        RequestStack $requestStack
+        RequestDateTimeResolver $requestDateTimeResolver
     ) {
         $this->classMetadataFactory = $classMetadataFactory;
         $this->propertyMetadataFactory = $propertyMetadataFactory;
-        $this->requestStack = $requestStack;
+        $this->requestDateTimeResolver = $requestDateTimeResolver;
     }
 
     /**
@@ -47,7 +39,9 @@ class DateTimeNormalizer implements DateTimeNormalizerInterface
             : false;
 
         if ($hasTimeZone) {
-            $value->setTimezone($this->getTimezone());
+            $value->setTimezone(
+                $this->requestDateTimeResolver->getTimezone()
+            );
         }
 
         return $value->format(
@@ -74,7 +68,7 @@ class DateTimeNormalizer implements DateTimeNormalizerInterface
         if ($hasTimeZone) {
             $value = new \DateTime(
                 $value,
-                $this->getTimezone()
+                $this->requestDateTimeResolver->getTimezone()
             );
 
             $value->setTimezone($utcTimeZone);
@@ -97,31 +91,6 @@ class DateTimeNormalizer implements DateTimeNormalizerInterface
         }
 
         return $fieldType->getClassName();
-    }
-
-    /**
-     * @return \DateTimeZone
-     */
-    private function getTimezone()
-    {
-        $reqTimezone = $this->getRequestTimeZone();
-        if ($reqTimezone) {
-            return $reqTimezone;
-        }
-
-        return new \DateTimeZone('UTC');
-    }
-
-    private function getRequestTimeZone()
-    {
-        $request = $this->requestStack->getCurrentRequest();
-
-        $timezone = $request->query->get('_timezone', null);
-        if (!$timezone) {
-            return;
-        }
-
-        return new \DateTimeZone($timezone);
     }
 
     protected function getFieldType($class, $field)

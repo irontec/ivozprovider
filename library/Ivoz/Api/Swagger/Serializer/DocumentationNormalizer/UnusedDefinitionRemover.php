@@ -83,7 +83,40 @@ class UnusedDefinitionRemover implements NormalizerInterface
             }
         }
 
-        return $definitions;
+        return $this->findNestedDefinitions(
+            $definitions,
+            $object['definitions']
+        );
+    }
+
+
+    private function findNestedDefinitions(array $usedDefinitions, \ArrayObject $definitions): array
+    {
+        $response = [];
+        foreach ($usedDefinitions as $definitionName) {
+            $response[] = $definitionName;
+
+            $definitionSpec = $definitions[$definitionName];
+            foreach ($definitionSpec['properties'] as $name => $propertySpec) {
+                $ref = $propertySpec['$ref'] ?? $propertySpec['items']['$ref'] ?? null;
+                if (!$ref) {
+                    continue;
+                }
+
+                $ref = $this->cleanRef($ref);
+                if (in_array($ref, $usedDefinitions, true)) {
+                    continue;
+                }
+
+                if (in_array($ref, $response, true)) {
+                    continue;
+                }
+
+                $response[] = $ref;
+            }
+        }
+
+        return $response;
     }
 
     private function getResponseRef($responseSpec)

@@ -9,7 +9,7 @@ class RoutingTagDto extends RoutingTagDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'TagName' => 'TagName'
+                'name' => 'name'
             ];
         }
 

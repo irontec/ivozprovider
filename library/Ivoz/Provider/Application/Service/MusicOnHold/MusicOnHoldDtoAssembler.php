@@ -28,7 +28,7 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
      * @param integer $depth
      * @return MusicOnHoldDto
      */
-    public function toDto(EntityInterface $entity, $depth = 0)
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
     {
         Assertion::isInstanceOf($entity, MusicOnHoldInterface::class);
 

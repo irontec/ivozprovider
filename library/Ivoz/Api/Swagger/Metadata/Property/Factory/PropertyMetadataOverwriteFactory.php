@@ -59,8 +59,23 @@ class PropertyMetadataOverwriteFactory implements PropertyMetadataFactoryInterfa
             return $propertyMetadata;
         }
 
+        $isCollection = $annotation->type === Type::BUILTIN_TYPE_ARRAY;
+
+        $collectionValueType = $isCollection && $annotation->class
+            ? new Type(Type::BUILTIN_TYPE_OBJECT, true, $annotation->class)
+            : null;
+
+        $type = new Type(
+            $annotation->type,
+            !$annotation->required,
+            $annotation->class,
+            $isCollection,
+            null,
+            $collectionValueType
+        );
+
+        $propertyMetadata = $propertyMetadata->withType($type);
         $propertyMetadata = $propertyMetadata->withDescription($annotation->description);
-        $propertyMetadata = $propertyMetadata->withType(new Type($annotation->type));
         $propertyMetadata = $propertyMetadata->withRequired($annotation->required);
         $propertyMetadata = $propertyMetadata->withWritable($annotation->writable);
 

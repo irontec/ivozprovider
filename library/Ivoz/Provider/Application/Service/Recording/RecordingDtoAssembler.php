@@ -27,7 +27,7 @@ class RecordingDtoAssembler implements CustomDtoAssemblerInterface
      * @param integer $depth
      * @return RecordingDTO
      */
-    public function toDto(EntityInterface $entity, $depth = 0)
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
     {
         Assertion::isInstanceOf($entity, RecordingInterface::class);
 

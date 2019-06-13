@@ -12,5 +12,5 @@ interface CustomDtoAssemblerInterface
      * @param integer $depth
      * @return DataTransferObjectInterface
      */
-    public function toDto(EntityInterface $entity, $depth = 0);
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null);
 }

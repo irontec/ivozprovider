@@ -21,6 +21,11 @@ final class AttributeDefinition
     public $type;
 
     /**
+     * @var string
+     */
+    public $class;
+
+    /**
      * @var boolean
      */
     public $required = false;
