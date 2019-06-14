@@ -131,6 +131,11 @@ services:
   Ivoz\Provider\Application\Service\ResidentialDevice\ResidentialDeviceDtoAssembler: ~
 
   ##########################################
+  ## RetailAccount
+  ##########################################
+  Ivoz\Provider\Application\Service\RetailAccount\RetailAccountDtoAssembler: ~
+
+  ##########################################
   ## Terminal
   ##########################################
   Ivoz\Provider\Application\Service\Terminal\TerminalDtoAssembler: ~
