@@ -57,6 +57,12 @@ services:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
 
+
+  ##########################################
+  ## Terminal
+  ##########################################
+  Ivoz\Provider\Application\Service\Friend\FriendDtoAssembler: ~
+
   ##########################################
   ## Locution
   ##########################################

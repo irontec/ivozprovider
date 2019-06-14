@@ -712,6 +712,25 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
         - transformationRuleSet:
             isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'friends/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'friends/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
 
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:

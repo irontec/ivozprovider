@@ -2,8 +2,72 @@
 
 namespace Ivoz\Provider\Domain\Model\Friend;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Kam\Domain\Model\UsersLocation\Status;
+
 class FriendDto extends FriendDtoAbstract
 {
+    const CONTEXT_STATUS = 'status';
+
+    /**
+     * @var Status[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     class="Ivoz\Kam\Domain\Model\UsersLocation\Status",
+     *     description="Registration status"
+     * )
+     */
+    protected $status = [];
+
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     description="Registration domain"
+     * )
+     */
+    protected $domainName;
+
+    public function addStatus(Status $status)
+    {
+        $this->status[] = $status;
+
+        return $this;
+    }
+
+    public function setDomainName(string $name)
+    {
+        $this->domainName = $name;
+    }
+
+
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['domainName'] = $this->domainName;
+        $response['status'] = $this->status;
+
+        return $response;
+    }
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(...func_get_args());
+
+        if (!isset($response['status'])) {
+            return $response;
+        }
+
+        /**
+         * @var int $key
+         * @var Status $status
+         */
+        foreach ($response['status'] as $key => $status) {
+            $response['status'][$key] = $status->toArray();
+        }
+
+        return $response;
+    }
 
     /**
      * @inheritdoc
@@ -11,6 +75,19 @@ class FriendDto extends FriendDtoAbstract
      */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
+        if ($context === self::CONTEXT_STATUS) {
+            return [
+                'id' => 'id',
+                'name' => 'name',
+                'domainName' => 'domainName',
+                'status' => [
+                    'contact',
+                    'expires',
+                    'userAgent'
+                ]
+            ];
+        }
+
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
