@@ -59,7 +59,7 @@ services:
 
 
   ##########################################
-  ## Terminal
+  ## Friend
   ##########################################
   Ivoz\Provider\Application\Service\Friend\FriendDtoAssembler: ~
 
@@ -124,6 +124,11 @@ services:
   Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupDtoAssembler:
       arguments:
         $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
+
+  ##########################################
+  ## ResidentialDevice
+  ##########################################
+  Ivoz\Provider\Application\Service\ResidentialDevice\ResidentialDeviceDtoAssembler: ~
 
   ##########################################
   ## Terminal

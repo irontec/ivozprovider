@@ -2,24 +2,102 @@
 
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Kam\Domain\Model\UsersLocation\Status;
+
 class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 {
+    const CONTEXT_STATUS = 'status';
+
+    /**
+     * @var Status[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     class="Ivoz\Kam\Domain\Model\UsersLocation\Status",
+     *     description="Registration status"
+     * )
+     */
+    protected $status = [];
+
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     description="Registration domain"
+     * )
+     */
+    protected $domainName;
+
+    public function addStatus(Status $status)
+    {
+        $this->status[] = $status;
+
+        return $this;
+    }
+
+    public function setDomainName(string $name)
+    {
+        $this->domainName = $name;
+    }
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(...func_get_args());
+
+        if (!isset($response['status'])) {
+            return $response;
+        }
+
+        /**
+         * @var int $key
+         * @var Status $status
+         */
+        foreach ($response['status'] as $key => $status) {
+            $response['status'][$key] = $status->toArray();
+        }
+
+        return $response;
+    }
+
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['domainName'] = $this->domainName;
+        $response['status'] = $this->status;
+
+        return $response;
+    }
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
-        if ($context === self::CONTEXT_COLLECTION) {
+        if ($context === self::CONTEXT_STATUS) {
             return [
+                'id' => 'id',
+                'name' => 'name',
+                'domainName' => 'domainName',
+                'status' => [
+                    'contact',
+                    'expires',
+                    'userAgent'
+                ]
+            ];
+        }
+
+        if ($context === self::CONTEXT_COLLECTION) {
+            $response = [
                 'id' => 'id',
                 'name' => 'name',
                 'transport' => 'transport',
                 'authNeeded' => 'authNeeded'
             ];
+        } else {
+            $response = parent::getPropertyMap(...func_get_args());
         }
 
-        $response = parent::getPropertyMap(...func_get_args());
         if (array_key_exists('domainId', $response)) {
             unset($response['domainId']);
         }
@@ -34,7 +112,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 
         return $response;
     }
-
 
     /**
      * @param array $response

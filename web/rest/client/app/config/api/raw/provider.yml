@@ -1173,6 +1173,25 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
         - transformationRuleSet:
             isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'residential_devices/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'residential_devices/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
