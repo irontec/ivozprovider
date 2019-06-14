@@ -1,13 +1,13 @@
-Feature: Retrieve retail accounts status
-  In order to manage retail accounts status
+Feature: Retrieve residential devices status
+  In order to manage residential devices status
   As an super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
-  Scenario: Retrieve the retail accounts status json list
+  Scenario: Retrieve the residential devices status json list
     Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "retail_accounts/status"
+    And I send a "GET" request to "residential_devices/status"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -29,10 +29,10 @@ Feature: Retrieve retail accounts status
       ]
     """
 
-  Scenario: Retrieve certain retail account status json
+  Scenario: Retrieve certain residential device status json
     Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "retail_accounts/1/status"
+    And I send a "GET" request to "residential_devices/1/status"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"

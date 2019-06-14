@@ -11,7 +11,7 @@ Feature: Update residential devices
       And I send a "PUT" request to "/residential_devices/1" with body:
     """
       {
-          "name": "updatedRetail",
+          "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
           "ip": null,
@@ -36,7 +36,7 @@ Feature: Update residential devices
      And the JSON should be like:
     """
       {
-          "name": "updatedRetail",
+          "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
           "id": 1,

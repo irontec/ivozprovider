@@ -24,7 +24,6 @@ Feature: Retrieve extensions
           },
           {
               "number": "12346",
-              "routeType": "number",
               "id": 3
           }
       ]

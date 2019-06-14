@@ -1,22 +1,22 @@
-Feature: Create residential devices
-  In order to manage residential devices
+Feature: Create retail accounts
+  In order to manage retail accounts
   As an super admin
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a residential device
+  Scenario: Create a retail account
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/residential_devices" with body:
+      And I send a "POST" request to "/retail_accounts" with body:
     """
-      {
-          "name": "newRetail",
+            {
+          "name": "testPostResidential",
           "description": "",
+          "transformationRuleSet": 1,
+          "outgoingDdi": 1,
           "transport": "udp",
-          "company": 1,
-          "outgoingDdi": null,
-          "language": null
+          "company": 1
       }
     """
     Then the response status code should be 201
@@ -25,35 +25,32 @@ Feature: Create residential devices
      And the JSON should be equal to:
     """
       {
-          "name": "newRetail",
+          "name": "testPostResidential",
           "description": "",
           "transport": "udp",
           "id": 2,
           "company": 1,
-          "transformationRuleSet": null,
-          "outgoingDdi": null,
-          "language": null
+          "transformationRuleSet": 1,
+          "outgoingDdi": 1
       }
     """
 
-  Scenario: Retrieve created residential device
+  Scenario: Retrieve created retail account
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "residential_devices/2"
+      And I send a "GET" request to "retail_accounts/2"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
     """
       {
-          "name": "newRetail",
+          "name": "testPostResidential",
           "description": "",
           "transport": "udp",
           "id": 2,
-          "company":
-          "~",
-          "transformationRuleSet": null,
-          "outgoingDdi": null,
-          "language": null
+          "company": "~",
+          "transformationRuleSet": "~",
+          "outgoingDdi": "~"
       }
     """

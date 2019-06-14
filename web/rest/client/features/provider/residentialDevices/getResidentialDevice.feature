@@ -15,7 +15,7 @@ Feature: Retrieve residential devices
     """
       [
           {
-              "name": "retail",
+              "name": "residentialDevice",
               "transport": "udp",
               "id": 1
           }
@@ -32,7 +32,7 @@ Feature: Retrieve residential devices
     And the JSON should be like:
     """
       {
-          "name": "retail",
+          "name": "residentialDevice",
           "description": "",
           "id": 1,
           "company": "~",

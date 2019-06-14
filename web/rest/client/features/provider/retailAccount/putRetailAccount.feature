@@ -1,33 +1,20 @@
-Feature: Update residential devices
-  In order to manage residential devices
+Feature: Update retail accounts
+  In order to manage retail accounts
   As an super admin
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update a residential device
+  Scenario: Update a retail account
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/residential_devices/1" with body:
+      And I send a "PUT" request to "/retail_accounts/1" with body:
     """
       {
-          "name": "updatedResidentialDevice",
-          "description": "",
-          "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": "ZGthe7E2+4",
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
-          "company": 1,
-          "outgoingDdi": 1,
-          "language": 1
+          "name": "updatedRetailAccount",
+          "description": "updated desc",
+          "transformationRuleSet": 1,
+          "outgoingDdi": 1
       }
     """
     Then the response status code should be 200
@@ -36,11 +23,39 @@ Feature: Update residential devices
      And the JSON should be like:
     """
       {
-          "name": "updatedResidentialDevice",
-          "description": "",
+          "name": "updatedRetailAccount",
+          "description": "updated desc",
           "transport": "udp",
           "id": 1,
-          "company": "~",
+          "company": {
+              "type": "vpbx",
+              "name": "DemoCompany",
+              "domainUsers": "127.0.0.1",
+              "nif": "12345678A",
+              "onDemandRecordCode": "",
+              "balance": 1.2,
+              "id": 1,
+              "language": 1,
+              "defaultTimezone": 145,
+              "country": 68,
+              "transformationRuleSet": 1,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null
+          },
+          "transformationRuleSet": {
+              "description": "Generic transformation for Spain",
+              "internationalCode": "00",
+              "trunkPrefix": "",
+              "areaCode": "",
+              "nationalLen": 9,
+              "generateRules": false,
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "country": 68
+          },
           "outgoingDdi": {
               "ddi": "123",
               "recordCalls": "none",
@@ -61,14 +76,6 @@ Feature: Update residential devices
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null
-          },
-          "language": {
-              "iden": "es",
-              "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es"
-              }
           }
       }
     """
