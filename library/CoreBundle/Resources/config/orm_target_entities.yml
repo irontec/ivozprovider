@@ -25,6 +25,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\WebPortal\WebPortal
       Ivoz\Provider\Domain\Model\Calendar\CalendarInterface:
         Ivoz\Provider\Domain\Model\Calendar\Calendar
+      Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface:
+        Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod
+      Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface:
+        Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
       Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface:
         Ivoz\Provider\Domain\Model\CallAcl\CallAcl
       Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface:
