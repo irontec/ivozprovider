@@ -39,6 +39,12 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
                 ->getBrand()
                 ->getDomain()
         );
+
+        if (!$this->getBrand()) {
+            $this->setBrand(
+                $this->getCompany()->getBrand()
+            );
+        }
     }
 
     /**

@@ -14,7 +14,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      * @AttributeDefinition(
      *     type="array",
      *     class="Ivoz\Kam\Domain\Model\UsersLocation\Status",
-     *     description="Terminal status"
+     *     description="Registration status"
      * )
      */
     protected $status = [];
@@ -23,7 +23,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      * @var string
      * @AttributeDefinition(
      *     type="string",
-     *     description="Terminal domain"
+     *     description="Registration domain"
      * )
      */
     protected $domainName;
@@ -87,7 +87,15 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             ];
         }
 
-        $response = parent::getPropertyMap($context);
+        if ($context === self::CONTEXT_COLLECTION) {
+            $response = [
+                'id' => 'id',
+                'name' => 'name',
+                'transport' => 'transport'
+            ];
+        } else {
+            $response = parent::getPropertyMap($context);
+        }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             return self::filterFieldsForBrandAdmin($response);
@@ -144,9 +152,11 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $allowedFields = [
             'name',
             'description',
+            'transport',
             'id',
             'transformationRuleSetId',
-            'outgoingDdiId'
+            'outgoingDdiId',
+            'companyId',
         ];
 
         $response = array_filter(
