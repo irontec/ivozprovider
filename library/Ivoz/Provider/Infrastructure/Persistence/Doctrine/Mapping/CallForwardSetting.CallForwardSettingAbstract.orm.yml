@@ -19,7 +19,7 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
       column: callForwardType
     targetType:
       type: string
-      nullable: false
+      nullable: true
       length: 25
       options:
         fixed: false

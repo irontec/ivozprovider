@@ -148,6 +148,13 @@ angular
                 break;
 
             default:
+                $scope.voiceMailUserShow = false;
+                $scope.numberValueShow = false;
+                $scope.extensionShow = false;
+
+                if ($scope.detour) {
+                    $scope.detour.targetType = null;
+                }
                 break;
         }
     });

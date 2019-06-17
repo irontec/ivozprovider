@@ -83,7 +83,7 @@ angular
     });
 
     $scope.$watch('detour.targetType', function(type) {
-        
+
         switch (type) {
             case 'extension':
                 $scope.detour.numberValue = '';
@@ -112,6 +112,13 @@ angular
                 
                 $scope.detour.voiceMailUser = null;
                 $scope.voiceMailUserShow = false;
+                break;
+
+            default:
+                $scope.voiceMailUserShow = false;
+                $scope.numberValueShow = false;
+                $scope.extensionShow = false;
+                $scope.detour.targetType = null;
                 break;
         }
     });
