@@ -39,6 +39,7 @@ Feature: Update residential devices
           "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
+          "password": "ZGthe7E2+4",
           "id": 1,
           "company": "~",
           "outgoingDdi": {

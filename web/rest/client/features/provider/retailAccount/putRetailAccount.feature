@@ -26,6 +26,7 @@ Feature: Update retail accounts
           "name": "updatedRetailAccount",
           "description": "updated desc",
           "transport": "udp",
+          "password": "9rv6G3TVc-",
           "id": 1,
           "company": {
               "type": "vpbx",
