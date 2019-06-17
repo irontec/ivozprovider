@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList;
@@ -46,9 +47,9 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     public function __toString()
     {
         return sprintf(
-            "%s [ddi%d]",
+            "%s [%s]",
             $this->getName(),
-            $this->getId()
+            parent::__toString()
         );
     }
 
@@ -116,7 +117,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
         $company = $this->getCompany();
         $timezone = $company->getDefaultTimezone();
-        $time = new \DateTime('now', new \DateTimeZone($timezone->getTz()));
+        $now = new \DateTime('now', new \DateTimeZone($timezone->getTz()));
 
         /**
          * @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar
@@ -133,7 +134,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 ->where(
                     $expressionBuilder->eq(
                         'eventDate',
-                        $time
+                        $now
                     )
                 );
 
@@ -141,13 +142,45 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
             foreach ($holidayDates as $holidayDate) {
                 $eventMatched = $holidayDate
                     ->checkEventOnTime(
-                        $time
+                        $now
                     );
 
                 if ($eventMatched) {
                     return $holidayDate;
                 }
             }
+        }
+
+        return null;
+    }
+
+    public function getCalendarPeriodForToday()
+    {
+        $externalCallFilterRelCalendars = $this->getCalendars();
+        if (empty($externalCallFilterRelCalendars)) {
+            return null;
+        }
+
+        $company = $this->getCompany();
+        $timezone = $company->getDefaultTimezone();
+        $now = new \DateTime('now', new \DateTimeZone($timezone->getTz()));
+
+        /** @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar */
+        foreach ($externalCallFilterRelCalendars as $externalCallFilterRelCalendar) {
+            $calendar = $externalCallFilterRelCalendar->getCalendar();
+
+            // Get calendar events for current day
+            $criteria = [
+                ['startDate', 'lt', $now],
+                ['endDate', 'gt', $now],
+            ];
+
+            $calendarPeriods = $calendar->getCalendarPeriods(
+                CriteriaHelper::fromArray($criteria)
+            );
+
+            // Return the first calendar period that matched
+            return array_shift($calendarPeriods);
         }
 
         return null;
@@ -164,7 +197,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         }
 
         $scheduleMatched = false;
-        $time = new \DateTime('now', new \DateTimeZone('UTC'));
+        $now = new \DateTime('now', new \DateTimeZone('UTC'));
 
         /**
          * @var ExternalCallFilterRelSchedule $externalCallFilterRelSchedule
@@ -176,8 +209,8 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
             $scheduleMatched = $schedule
                 ->checkIsOnTimeRange(
-                    $time->format('l'),
-                    $time,
+                    $now->format('l'),
+                    $now,
                     new \DateTimeZone($timezone->getTz())
                 );
 

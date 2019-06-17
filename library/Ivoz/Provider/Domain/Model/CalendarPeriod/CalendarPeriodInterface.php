@@ -26,6 +26,8 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
+    public function isOutOfSchedule();
+
     /**
      * Get startDate
      *
