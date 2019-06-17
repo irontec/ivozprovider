@@ -1,6 +1,6 @@
 Feature: Manage queues
   In order to manage queues
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

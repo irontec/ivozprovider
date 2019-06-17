@@ -1,6 +1,6 @@
 Feature: Retrieve countries
   In order to manage countries
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

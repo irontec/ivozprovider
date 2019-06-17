@@ -1,6 +1,6 @@
 Feature: Manage conditional routes conditions rel calendars
   In order to manage conditional routes conditions rel calendars
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

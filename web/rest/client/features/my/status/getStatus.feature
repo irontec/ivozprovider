@@ -1,6 +1,6 @@
 Feature: Retrieve status
   In order to manage status
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext

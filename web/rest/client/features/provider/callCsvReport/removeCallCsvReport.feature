@@ -1,6 +1,6 @@
 Feature: Remove call CSV reports
   In order to manage call CSV reports
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

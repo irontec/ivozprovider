@@ -1,6 +1,6 @@
 Feature: Manage music on holds
   In order to manage music on holds
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

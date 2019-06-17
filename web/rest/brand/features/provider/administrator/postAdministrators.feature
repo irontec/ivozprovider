@@ -1,6 +1,6 @@
 Feature: Create administrators
   In order to manage administrators
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema

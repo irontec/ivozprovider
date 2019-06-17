@@ -1,6 +1,6 @@
 Feature: Retrieve features rel companies
   In order to manage features rel companies
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

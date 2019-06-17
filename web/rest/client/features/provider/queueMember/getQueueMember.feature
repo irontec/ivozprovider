@@ -1,6 +1,6 @@
 Feature: Retrieve queue members
   In order to manage queue members
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

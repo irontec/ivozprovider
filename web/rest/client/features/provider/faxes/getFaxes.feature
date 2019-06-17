@@ -1,6 +1,6 @@
 Feature: Retrieve faxes
   In order to manage faxes
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

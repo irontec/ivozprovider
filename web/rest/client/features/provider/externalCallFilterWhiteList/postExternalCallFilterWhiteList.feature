@@ -1,6 +1,6 @@
 Feature: Create external call filter white lists
   In order to manage external call filter white lists
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

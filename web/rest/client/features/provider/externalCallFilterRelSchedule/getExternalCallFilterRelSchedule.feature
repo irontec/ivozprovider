@@ -1,6 +1,6 @@
 Feature: Retrieve external call filter rel schedules
   In order to manage external call filter rel schedules
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

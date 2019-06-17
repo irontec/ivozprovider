@@ -1,6 +1,6 @@
 Feature: Create match lists
   In order to manage match lists
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

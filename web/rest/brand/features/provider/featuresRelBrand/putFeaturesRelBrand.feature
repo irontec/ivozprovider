@@ -1,6 +1,6 @@
 Feature: Update features rel brands
   In order to manage features rel brands
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

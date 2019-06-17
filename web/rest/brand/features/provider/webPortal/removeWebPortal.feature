@@ -1,6 +1,6 @@
 Feature: Manage web portals
   In order to manage web portals
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

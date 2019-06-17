@@ -1,6 +1,6 @@
 Feature: Manage external call filter rel calendars
   In order to manage external call filter rel calendars
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

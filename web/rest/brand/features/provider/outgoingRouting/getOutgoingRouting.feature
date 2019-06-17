@@ -1,6 +1,6 @@
 Feature: Retrieve outgoing routings
   In order to manage outgoing routings
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

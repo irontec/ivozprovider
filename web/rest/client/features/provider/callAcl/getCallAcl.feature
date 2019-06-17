@@ -1,6 +1,6 @@
 Feature: Retrieve call acls
   In order to manage call acls
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

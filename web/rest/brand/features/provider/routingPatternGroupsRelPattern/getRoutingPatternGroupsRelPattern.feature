@@ -1,6 +1,6 @@
 Feature: Retrieve routing pattern groups rel patterns
   In order to manage routing pattern groups rel patterns
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

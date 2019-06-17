@@ -1,6 +1,6 @@
 Feature: Update friends
   In order to manage friends
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

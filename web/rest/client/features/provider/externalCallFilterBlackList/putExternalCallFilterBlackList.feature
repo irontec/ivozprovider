@@ -1,6 +1,6 @@
 Feature: Update external call filter black lists
   In order to manage external call filter black lists
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

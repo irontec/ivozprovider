@@ -1,6 +1,6 @@
 Feature: Create conditional routes conditions rel calendars
   In order to manage conditional routes conditions rel calendars
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

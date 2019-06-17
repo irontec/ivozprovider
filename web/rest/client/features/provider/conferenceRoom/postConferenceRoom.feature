@@ -1,6 +1,6 @@
 Feature: Create conference rooms
   In order to manage conference rooms
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Manage friends patterns
   In order to manage friends patterns
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

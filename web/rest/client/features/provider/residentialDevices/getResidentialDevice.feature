@@ -1,6 +1,6 @@
 Feature: Retrieve residential devices
   In order to manage residential devices
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

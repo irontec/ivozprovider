@@ -1,6 +1,6 @@
 Feature: Retrieve transformation rule sets
   In order to manage transformation rule sets
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

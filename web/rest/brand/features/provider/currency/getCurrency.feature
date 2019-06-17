@@ -1,6 +1,6 @@
 Feature: Retrieve currencies
   In order to manage currencies
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

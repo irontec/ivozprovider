@@ -1,6 +1,6 @@
 Feature: Update hunt groups rel users
   In order to manage hunt groups rel users
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

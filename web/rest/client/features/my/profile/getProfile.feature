@@ -1,6 +1,6 @@
 Feature: Retrieve profile
   In order to manage profile
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext

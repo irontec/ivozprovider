@@ -1,6 +1,6 @@
 Feature: Update fixed costs rel invoices
   In order to manage fixed costs rel invoices
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

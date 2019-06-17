@@ -1,6 +1,6 @@
 Feature: Retrieve transformation rules
   In order to manage transformation rules
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

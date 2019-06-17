@@ -1,6 +1,6 @@
 Feature: Retrieve retail accounts status
   In order to manage retail accounts status
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -15,12 +15,12 @@ Feature: Retrieve retail accounts status
     """
       [
           {
-              "name": "residentialDevice",
+              "name": "testRetailAccount",
               "id": 1,
               "domainName": "retail.irontec.com",
               "status": [
                   {
-                      "contact": "sip:yealinktest@10.10.1.108:5060",
+                      "contact": "sip:yealinktest@10.10.1.109:5060",
                       "expires": "2031-01-01 00:59:59",
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
@@ -39,12 +39,12 @@ Feature: Retrieve retail accounts status
     And the JSON should be like:
     """
       {
-          "name": "residentialDevice",
+          "name": "testRetailAccount",
           "id": 1,
           "domainName": "retail.irontec.com",
           "status": [
               {
-                  "contact": "sip:yealinktest@10.10.1.108:5060",
+                  "contact": "sip:yealinktest@10.10.1.109:5060",
                   "expires": "2031-01-01 00:59:59",
                   "userAgent": "Yealink SIP-T23G 44.80.0.130"
               }

@@ -1,6 +1,6 @@
 Feature: Update rating profile
   In order to manage rating profile
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

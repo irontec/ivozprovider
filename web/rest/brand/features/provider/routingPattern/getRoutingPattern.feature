@@ -1,6 +1,6 @@
 Feature: Retrieve routing patterns
   In order to manage routing patterns
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

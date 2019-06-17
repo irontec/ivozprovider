@@ -1,6 +1,6 @@
 Feature: Update residential devices
   In order to manage residential devices
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

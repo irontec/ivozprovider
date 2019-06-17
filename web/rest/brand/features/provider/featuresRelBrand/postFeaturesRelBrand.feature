@@ -1,6 +1,6 @@
   Feature: Create features rel brands
   In order to manage features rel brands
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema

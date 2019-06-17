@@ -1,6 +1,6 @@
 Feature: Manage hunt groups
   In order to manage hunt groups
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Manage call acl rel match lists
   In order to manage call acl rel match lists
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

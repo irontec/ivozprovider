@@ -1,6 +1,6 @@
 Feature: Update IVR entries
   In order to manage IVR entries
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

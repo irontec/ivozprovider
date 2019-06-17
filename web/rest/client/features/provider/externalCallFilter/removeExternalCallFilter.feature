@@ -1,6 +1,6 @@
 Feature: Manage external call filters
   In order to manage external call filters
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

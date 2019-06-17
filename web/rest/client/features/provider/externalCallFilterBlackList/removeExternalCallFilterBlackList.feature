@@ -1,6 +1,6 @@
 Feature: Manage external call filter black lists
   In order to manage external call filter black lists
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema
