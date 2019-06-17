@@ -45,6 +45,7 @@ class ProviderDomain extends Fixture
             $this->setDomain("127.0.0.1");
             $this->setDescription("DemoCompany proxyusers domain");
         })->call($item3);
+
         $this->addReference('_reference_ProviderDomain3', $item3);
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
