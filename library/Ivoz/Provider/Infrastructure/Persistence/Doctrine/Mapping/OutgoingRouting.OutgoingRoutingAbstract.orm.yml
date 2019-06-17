@@ -70,6 +70,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
         companyId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: true
       orphanRemoval: false
     carrier:
       targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
@@ -93,6 +94,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
         routingPatternId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: true
       orphanRemoval: false
     routingPatternGroup:
       targetEntity: \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
@@ -104,6 +106,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
         routingPatternGroupId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: true
       orphanRemoval: false
     routingTag:
       targetEntity: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
@@ -115,6 +118,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
         routingTagId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: true
       orphanRemoval: false
     clidCountry:
       targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
