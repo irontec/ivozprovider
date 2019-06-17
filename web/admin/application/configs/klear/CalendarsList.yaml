@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include HolidayDatesList.yaml
+#include CalendarPeriodsList.yaml
 
 production:
   main:
@@ -26,6 +27,7 @@ production:
           screens:
             calendarsEdit_screen: true
             holidayDatesList_screen: true
+            calendarPeriodsList_screen: true
           dialogs:
             calendarsDel_dialog: true
           default: calendarsEdit_screen
@@ -53,19 +55,32 @@ production:
       title: _("Edit %s %2s", ngettext('Calendar', 'Calendars', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
-    #HolidayDates
+
+    # HolidayDates
     <<: *holidayDates_screensLink
     holidayDatesList_screen:
       <<: *holidayDatesList_screenLink
       filterField: Calendar
       parentOptionCustomizer:
         - recordCount
-
     holidayDatesNew_screen:
       <<: *holidayDatesNew_screenLink
       filterField: Calendar
     holidayDatesEdit_screen:
       <<: *holidayDatesEdit_screenLink
+      
+    # Calendar Periods
+    <<: *calendarPeriods_screensLink
+    calendarPeriodsList_screen:
+      <<: *calendarPeriodsList_screenLink
+      filterField: Calendar
+      parentOptionCustomizer:
+        - recordCount
+    calendarPeriodsNew_screen:
+      <<: *calendarPeriodsNew_screenLink
+      filterField: Calendar
+    calendarPeriodsEdit_screen:
+      <<: *calendarPeriodsEdit_screenLink
 
   dialogs: &calendars_dialogsLink
     calendarsDel_dialog: &calendarsDel_dialogLink
@@ -79,8 +94,11 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    #HolidayDates
+    # HolidayDates
     <<: *holidayDates_dialogsLink
+    # CalendarPeriods
+    <<: *calendarPeriods_dialogsLink
+
   commands:
     <<: *holidayDates_commandsLink
 
