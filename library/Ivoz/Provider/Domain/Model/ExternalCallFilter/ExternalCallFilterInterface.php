@@ -43,6 +43,8 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      */
     public function getHolidayDateForToday();
 
+    public function getCalendarPeriodForToday();
+
     /**
      * @return bool scheduleMatched
      */

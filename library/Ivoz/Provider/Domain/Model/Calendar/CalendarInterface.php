@@ -75,4 +75,35 @@ interface CalendarInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
      */
     public function getHolidayDates(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add calendarPeriod
+     *
+     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     *
+     * @return static
+     */
+    public function addCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod);
+
+    /**
+     * Remove calendarPeriod
+     *
+     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     */
+    public function removeCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod);
+
+    /**
+     * Replace calendarPeriods
+     *
+     * @param ArrayCollection $calendarPeriods of Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @return static
+     */
+    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods);
+
+    /**
+     * Get calendarPeriods
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface[]
+     */
+    public function getCalendarPeriods(\Doctrine\Common\Collections\Criteria $criteria = null);
 }
