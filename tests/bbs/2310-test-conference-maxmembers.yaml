@@ -34,5 +34,6 @@ scenarios:
               credentials:
                 <<: *charlie_cred
           - waitfor: CONFIRMED
+          - wait: 2
+          - dtmf: "1234#"
           - waitfor: DISCONNCTD
-
