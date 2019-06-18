@@ -19,12 +19,12 @@ abstract class QueueMemberAbstract
     protected $penalty;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
+     * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface
      */
     protected $queue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     protected $user;
 
@@ -204,7 +204,7 @@ abstract class QueueMemberAbstract
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
+    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
     {
         $this->queue = $queue;
 
@@ -214,7 +214,7 @@ abstract class QueueMemberAbstract
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
      */
     public function getQueue()
     {
@@ -238,7 +238,7 @@ abstract class QueueMemberAbstract
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser()
     {
