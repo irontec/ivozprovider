@@ -3,17 +3,17 @@
 namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
-use Ivoz\Kam\Domain\Model\UsersLocation\Status;
+use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class FriendDto extends FriendDtoAbstract
 {
     const CONTEXT_STATUS = 'status';
 
     /**
-     * @var Status[]
+     * @var RegistrationStatus[]
      * @AttributeDefinition(
      *     type="array",
-     *     class="Ivoz\Kam\Domain\Model\UsersLocation\Status",
+     *     class="Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus",
      *     description="Registration status"
      * )
      */
@@ -28,7 +28,7 @@ class FriendDto extends FriendDtoAbstract
      */
     protected $domainName;
 
-    public function addStatus(Status $status)
+    public function addStatus(RegistrationStatus $status)
     {
         $this->status[] = $status;
 
@@ -60,7 +60,7 @@ class FriendDto extends FriendDtoAbstract
 
         /**
          * @var int $key
-         * @var Status $status
+         * @var RegistrationStatus $status
          */
         foreach ($response['status'] as $key => $status) {
             $response['status'][$key] = $status->toArray();

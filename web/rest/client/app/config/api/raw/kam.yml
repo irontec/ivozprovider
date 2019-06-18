@@ -1,6 +1,6 @@
 ########################################
 ## Raw
 ########################################
-Ivoz\Kam\Domain\Model\UsersLocation\Status:
+Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
   itemOperations: []
   collectionOperations: []

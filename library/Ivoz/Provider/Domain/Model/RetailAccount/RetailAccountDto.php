@@ -3,17 +3,17 @@
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
-use Ivoz\Kam\Domain\Model\UsersLocation\Status;
+use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class RetailAccountDto extends RetailAccountDtoAbstract
 {
     const CONTEXT_STATUS = 'status';
 
     /**
-     * @var Status[]
+     * @var RegistrationStatus[]
      * @AttributeDefinition(
      *     type="array",
-     *     class="Ivoz\Kam\Domain\Model\UsersLocation\Status",
+     *     class="Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus",
      *     description="Registration status"
      * )
      */
@@ -28,7 +28,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      */
     protected $domainName;
 
-    public function addStatus(Status $status)
+    public function addStatus(RegistrationStatus $status)
     {
         $this->status[] = $status;
 
@@ -50,7 +50,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
 
         /**
          * @var int $key
-         * @var Status $status
+         * @var RegistrationStatus $status
          */
         foreach ($response['status'] as $key => $status) {
             $response['status'][$key] = $status->toArray();

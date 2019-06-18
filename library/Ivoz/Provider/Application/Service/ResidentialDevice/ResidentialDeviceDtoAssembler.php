@@ -7,7 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
-use Ivoz\Kam\Domain\Model\UsersLocation\Status;
+use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Assert\Assertion;
@@ -59,7 +59,7 @@ class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
 
         foreach ($userLocations as $userLocation) {
             $dto->addStatus(
-                new Status(
+                new RegistrationStatus(
                     $userLocation,
                     $this->requestDateTimeResolver->getTimezone()
                 )

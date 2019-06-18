@@ -4,7 +4,7 @@ namespace Ivoz\Kam\Domain\Model\UsersLocation;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
-class Status
+class RegistrationStatus
 {
    /**
     * @var string
@@ -62,7 +62,7 @@ class Status
         return $this->contact;
     }
 
-    private function setContact(string $contact): Status
+    private function setContact(string $contact): self
     {
         $this->contact = $contact;
         return $this;
@@ -73,7 +73,7 @@ class Status
         return $this->expires;
     }
 
-    private function setExpires(string $expires): Status
+    private function setExpires(string $expires): self
     {
         $this->expires = $expires;
         return $this;
@@ -84,7 +84,7 @@ class Status
         return $this->userAgent;
     }
 
-    private function setUserAgent(string $userAgent): Status
+    private function setUserAgent(string $userAgent): self
     {
         $this->userAgent = $userAgent;
         return $this;
