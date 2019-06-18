@@ -141,7 +141,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoiceMailUser();
 

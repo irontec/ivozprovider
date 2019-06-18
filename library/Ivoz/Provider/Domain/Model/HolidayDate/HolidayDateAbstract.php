@@ -65,7 +65,7 @@ abstract class HolidayDateAbstract
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $voiceMailUser;
 
@@ -530,7 +530,7 @@ abstract class HolidayDateAbstract
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoiceMailUser()
     {

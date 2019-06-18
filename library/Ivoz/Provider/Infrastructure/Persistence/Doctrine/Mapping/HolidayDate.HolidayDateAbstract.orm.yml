@@ -86,6 +86,7 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
         voiceMailUserId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: true
       orphanRemoval: false
     numberCountry:
       targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface

@@ -121,7 +121,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -153,7 +153,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
      */
     public function getRoutingPattern();
 
@@ -169,7 +169,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get routingPatternGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
      */
     public function getRoutingPatternGroup();
 
@@ -185,7 +185,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     public function getRoutingTag();
 
