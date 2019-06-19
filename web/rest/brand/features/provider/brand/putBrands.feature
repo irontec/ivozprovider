@@ -1,6 +1,6 @@
 Feature: Manage brands
   In order to manage brands
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

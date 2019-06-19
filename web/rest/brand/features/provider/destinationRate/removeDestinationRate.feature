@@ -1,6 +1,6 @@
 Feature: Manage destination rate
   In order to manage destination rate
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Retrieve conference rooms
   In order to manage conference rooms
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Retrieve extensions
   In order to manage extensions
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -24,7 +24,6 @@ Feature: Retrieve extensions
           },
           {
               "number": "12346",
-              "routeType": "number",
               "id": 3
           }
       ]

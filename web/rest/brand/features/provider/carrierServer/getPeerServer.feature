@@ -1,6 +1,6 @@
 Feature: Retrieve carrier servers
   In order to manage carrier servers
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

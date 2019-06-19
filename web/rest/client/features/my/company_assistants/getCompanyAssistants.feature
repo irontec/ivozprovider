@@ -1,6 +1,6 @@
 Feature: Retrieve company assistants
   In order to manage company assistants
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext

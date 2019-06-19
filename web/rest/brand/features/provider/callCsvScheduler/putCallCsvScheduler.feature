@@ -1,6 +1,6 @@
 Feature: Update call CSV scheduler
   In order to manage call CSV scheduler
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

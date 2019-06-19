@@ -1,6 +1,6 @@
 Feature: Update locutions
   In order to manage locutions
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

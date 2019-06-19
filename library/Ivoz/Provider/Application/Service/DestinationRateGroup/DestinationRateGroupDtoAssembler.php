@@ -34,7 +34,7 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
      * @return DestinationRateGroupDto
      * @throws \Exception
      */
-    public function toDto(EntityInterface $entity, $depth = 0)
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
     {
         Assertion::isInstanceOf($entity, DestinationRateGroupInterface::class);
 

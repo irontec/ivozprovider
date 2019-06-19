@@ -712,6 +712,25 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
         - transformationRuleSet:
             isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'friends/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'friends/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
 
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
@@ -1154,6 +1173,25 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
         - transformationRuleSet:
             isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'residential_devices/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'residential_devices/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
@@ -1176,6 +1214,25 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
         - transformationRuleSet:
             isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'retail_accounts/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'retail_accounts/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
 
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
@@ -1202,6 +1259,25 @@ Ivoz\Provider\Domain\Model\Service\Service:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
 
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'terminals/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'terminals/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:

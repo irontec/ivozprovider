@@ -1,6 +1,6 @@
   Feature: Create rating profile
   In order to manage rating profile
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Retrieve invoice
   In order to manage invoice
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Update residential devices
   In order to manage residential devices
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -11,7 +11,7 @@ Feature: Update residential devices
       And I send a "PUT" request to "/residential_devices/1" with body:
     """
       {
-          "name": "updatedRetail",
+          "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
           "ip": null,
@@ -36,7 +36,7 @@ Feature: Update residential devices
      And the JSON should be like:
     """
       {
-          "name": "updatedRetail",
+          "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
           "id": 1,

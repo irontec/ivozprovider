@@ -1,6 +1,6 @@
 Feature: Manage call acls
   In order to manage call acls
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

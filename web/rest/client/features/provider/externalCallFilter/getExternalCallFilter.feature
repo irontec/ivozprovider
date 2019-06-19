@@ -1,6 +1,6 @@
 Feature: Retrieve external call filters
   In order to manage external call filters
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Update extensions
   In order to manage extensions
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

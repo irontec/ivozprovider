@@ -1,6 +1,6 @@
 Feature: Manage rating plan group
   In order to manage rating plan group
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

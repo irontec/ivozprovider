@@ -1,6 +1,6 @@
 Feature: Manage holiday dates
   In order to manage holiday dates
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

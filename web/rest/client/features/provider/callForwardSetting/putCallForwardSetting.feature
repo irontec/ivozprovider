@@ -1,6 +1,6 @@
 Feature: Update call forward settings
   In order to manage call forward settings
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

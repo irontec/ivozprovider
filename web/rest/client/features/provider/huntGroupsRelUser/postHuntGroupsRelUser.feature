@@ -1,6 +1,6 @@
 Feature: Create hunt groups rel users
   In order to manage hunt groups rel users
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

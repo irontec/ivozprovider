@@ -1,6 +1,6 @@
 Feature: Create external call filter rel schedules
   In order to manage external call filter rel schedules
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

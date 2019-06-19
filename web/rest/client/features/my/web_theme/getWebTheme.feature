@@ -1,6 +1,6 @@
 Feature: Retrieve web theme
   In order to manage web theme
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext

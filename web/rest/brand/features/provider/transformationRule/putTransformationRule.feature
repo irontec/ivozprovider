@@ -1,6 +1,6 @@
 Feature: Update transformation rules
   In order to manage transformation rules
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

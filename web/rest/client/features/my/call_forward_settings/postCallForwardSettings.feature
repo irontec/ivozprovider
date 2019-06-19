@@ -1,6 +1,6 @@
 Feature: Retrieve call forward settings
   In order to manage call forward settings
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext

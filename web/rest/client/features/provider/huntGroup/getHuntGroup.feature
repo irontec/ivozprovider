@@ -1,6 +1,6 @@
 Feature: Retrieve hunt groups
   In order to manage hunt groups
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

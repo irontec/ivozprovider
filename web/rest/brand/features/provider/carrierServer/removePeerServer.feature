@@ -1,6 +1,6 @@
 Feature: Manage carrier servers
   In order to manage carrier servers
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

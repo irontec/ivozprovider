@@ -1,6 +1,6 @@
 Feature: Manage routing patterns
   In order to manage routing patterns
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

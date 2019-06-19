@@ -1,6 +1,6 @@
 Feature: Retrieve notification template contents
   In order to manage notification template contents
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

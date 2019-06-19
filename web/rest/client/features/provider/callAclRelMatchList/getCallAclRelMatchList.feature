@@ -1,6 +1,6 @@
 Feature: Retrieve call acl rel match lists
   In order to manage call acl rel match lists
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

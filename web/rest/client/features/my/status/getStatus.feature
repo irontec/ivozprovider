@@ -1,6 +1,6 @@
 Feature: Retrieve status
   In order to manage status
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext
@@ -20,9 +20,9 @@ Feature: Retrieve status
           "language": "es",
           "voiceMail": "93",
           "gsQRCode": false,
-          "userAgent": null,
-          "ipRegistered": null,
-          "statusTerminal": null,
+          "userAgent": "Yealink SIP-T23G 44.80.0.130",
+          "ipRegistered": "sip:yealinktest@10.10.1.106:5060",
+          "statusTerminal": true,
           "terminalName": "alice",
           "terminalPassword": "AUfVkn498_",
           "extensionNumber": null

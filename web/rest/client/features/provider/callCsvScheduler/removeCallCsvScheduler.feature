@@ -1,6 +1,6 @@
 Feature: Remove call CSV scheduler
   In order to manage call CSV scheduler
-  As an super admin
+  As a client admin
   I need to be able to delete them through the API.
 
   @createSchema

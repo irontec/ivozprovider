@@ -1,6 +1,6 @@
 Feature: Retrieve routing tag
   In order to manage routing tag
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

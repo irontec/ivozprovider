@@ -1,6 +1,6 @@
 Feature: Retrieve company extensions
   In order to manage company extensions
-  As an super admin
+  As a user
   I need to be able to retrieve them through the API.
 
   @createSchema @userApiContext
@@ -24,7 +24,6 @@ Feature: Retrieve company extensions
           },
           {
               "number": "12346",
-              "routeType": "number",
               "id": 3
           }
       ]

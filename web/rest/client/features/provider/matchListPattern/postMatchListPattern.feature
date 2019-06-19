@@ -1,6 +1,6 @@
 Feature: Create match list patterns
   In order to manage match list patterns
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

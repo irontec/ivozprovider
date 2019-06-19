@@ -1,6 +1,6 @@
 Feature: Create carrier servers
   In order to manage carrier servers
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema

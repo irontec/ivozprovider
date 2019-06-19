@@ -1,6 +1,6 @@
 Feature: Update ddi providers
   In order to manage ddi providers
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

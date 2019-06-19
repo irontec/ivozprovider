@@ -1,6 +1,6 @@
 Feature: Update conference rooms
   In order to manage conference rooms
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema

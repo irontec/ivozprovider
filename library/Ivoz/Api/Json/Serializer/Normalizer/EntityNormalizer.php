@@ -115,7 +115,11 @@ class EntityNormalizer implements NormalizerInterface
             $propertyMap = $dtoClass::getPropertyMap($normalizationContext);
             $this->initializeRelationships($entity, array_values($propertyMap));
         }
-        $dto = $this->dtoAssembler->toDto($entity, $depth);
+        $dto = $this->dtoAssembler->toDto(
+            $entity,
+            $depth,
+            $context['operation_normalization_context'] ?? null
+        );
 
         return $this->normalizeDto(
             $dto,
@@ -167,7 +171,8 @@ class EntityNormalizer implements NormalizerInterface
         $rawData = $this->filterProperties(
             $dto->normalize($normalizationContext, $role),
             $resourceClass,
-            $forcedAttributes
+            $forcedAttributes,
+            ['serializer_groups' => [$normalizationContext]]
         );
 
         foreach ($rawData as $key => $value) {
@@ -212,11 +217,12 @@ class EntityNormalizer implements NormalizerInterface
         return $rawData;
     }
 
-    private function filterProperties(array $data, string $resourceClass, $requestedAttributes)
+    private function filterProperties(array $data, string $resourceClass, $requestedAttributes, $options)
     {
         $mappedProperties = [];
         $propertyNameCollection = $this->propertyNameCollectionFactory->create(
-            $resourceClass
+            $resourceClass,
+            $options
         );
         foreach ($propertyNameCollection as $property) {
             $mappedProperties[] = $property;

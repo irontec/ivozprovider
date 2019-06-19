@@ -1,6 +1,6 @@
 Feature: Update calendars
   In order to manage calendars
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
