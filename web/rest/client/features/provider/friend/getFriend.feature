@@ -1,6 +1,6 @@
 Feature: Retrieve friends
   In order to manage friends
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -37,17 +37,16 @@ Feature: Retrieve friends
           "ip": "",
           "port": 5060,
           "authNeeded": "yes",
-          "password": "****",
+          "password": "SDG3qd2j6+",
           "priority": 1,
-          "disallow": "all",
           "allow": "alaw",
-          "directMediaMethod": "update",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
           "fromDomain": "",
           "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
           "id": 1,
           "company": "~",
+          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null

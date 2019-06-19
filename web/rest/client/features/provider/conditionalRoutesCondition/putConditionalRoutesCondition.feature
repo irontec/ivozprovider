@@ -1,6 +1,6 @@
 Feature: Update conditional routes conditions
   In order to manage conditional routes conditions
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -74,7 +74,7 @@ Feature: Update conditional routes conditions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "huntGroup": null,

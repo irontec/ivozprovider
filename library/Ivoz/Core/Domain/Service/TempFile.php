@@ -34,11 +34,14 @@ class TempFile
         $this->previousFilePath = $previousFilePath;
     }
 
-    public function getTmpPath()
+    public function getTmpPath(): string
     {
         return $this->tmpPath;
     }
 
+    /**
+     * @return void
+     */
     public function commit(EntityInterface $entity)
     {
         if (!$entity->getId()) {
@@ -67,11 +70,15 @@ class TempFile
         chmod($targetPath, 0777);
 
         unlink($this->tmpPath);
-        if ($this->previousFilePath && ($targetPath != $this->previousFilePath)) {
+        $previousFilePathExists = file_exists($this->previousFilePath);
+        if ($previousFilePathExists && ($targetPath != $this->previousFilePath)) {
             unlink($this->previousFilePath);
         }
     }
 
+    /**
+     * @return void
+     */
     public function remove(EntityInterface $entity)
     {
         if ($entity->getId()) {
@@ -83,6 +90,9 @@ class TempFile
         }
     }
 
+    /**
+     * @return void
+     */
     private function ensureFolder(string $folder)
     {
         if (file_exists($folder)) {
@@ -92,6 +102,9 @@ class TempFile
         $this->buildDirectoryTree($folder);
     }
 
+    /**
+     * @return void
+     */
     private function buildDirectoryTree(string $targetDir)
     {
         $filePathParts = explode(DIRECTORY_SEPARATOR, $targetDir);

@@ -1,6 +1,6 @@
 Feature: Retrieve notification templates
   In order to manage notification templates
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -18,6 +18,11 @@ Feature: Retrieve notification templates
               "name": "Voicemail notification",
               "type": "voicemail",
               "id": 1
+          },
+          {
+              "name": "CallCsv notification",
+              "type": "callCsv",
+              "id": 2
           }
       ]
     """

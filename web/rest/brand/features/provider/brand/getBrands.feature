@@ -1,6 +1,6 @@
 Feature: Manage brands
   In order to manage brands
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -8,8 +8,18 @@ Feature: Manage brands
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "brands"
-     Then the response status code should be 404
-
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the JSON should be equal to:
+    """
+      [
+          {
+              "name": "DemoBrand",
+              "id": 1
+          }
+      ]
+    """
   Scenario: Retrieve certain brand json
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
@@ -19,12 +29,8 @@ Feature: Manage brands
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
     """
-      {
+       {
           "name": "DemoBrand",
-          "domainUsers": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
-          "maxCalls": 0,
           "id": 1,
           "logo": {
               "fileSize": null,
@@ -40,12 +46,6 @@ Feature: Manage brands
               "country": "",
               "registryData": ""
           },
-          "domain": {
-              "domain": "retail.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "Irontec Test Company retail domain",
-              "id": 6
-          },
           "language": {
               "iden": "es",
               "id": 1,
@@ -55,14 +55,14 @@ Feature: Manage brands
               }
           },
           "defaultTimezone": {
-              "tz": "Europe\/Madrid",
+              "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           },
           "currency": {
               "iden": "USD",
@@ -70,7 +70,7 @@ Feature: Manage brands
               "id": 2,
               "name": {
                   "en": "Dollar",
-                  "es": "D\u00f3llar"
+                  "es": "Dóllar"
               }
           }
       }

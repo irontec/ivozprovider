@@ -1,6 +1,6 @@
 Feature: Manage brands
   In order to manage brands
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -12,20 +12,8 @@ Feature: Manage brands
     """
       {
         "name": "api_brand",
-        "domainUsers": "sip-api.irontec.com",
-        "recordingsLimitMB": 10,
-        "recordingsLimitEmail": "mikel@irontec.com",
-        "invoice": {
-          "nif": "123",
-          "postalAddress": "",
-          "postalCode": "48971",
-          "town": "Bilbo",
-          "province": "Bizkaia",
-          "country": "Spain",
-          "registryData": "registryData"
-        },
         "defaultTimezone": 1
       }
     """
-    Then the response status code should be 404
+    Then the response status code should be 405
 

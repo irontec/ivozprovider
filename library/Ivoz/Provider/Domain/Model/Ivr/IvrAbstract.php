@@ -31,7 +31,7 @@ abstract class IvrAbstract
     /**
      * @var boolean
      */
-    protected $allowExtensions = '0';
+    protected $allowExtensions = false;
 
     /**
      * comment: enum:number|extension|voicemail
@@ -416,7 +416,7 @@ abstract class IvrAbstract
         Assertion::notNull($allowExtensions, 'allowExtensions value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowExtensions), 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
 
-        $this->allowExtensions = $allowExtensions;
+        $this->allowExtensions = (bool) $allowExtensions;
 
         return $this;
     }

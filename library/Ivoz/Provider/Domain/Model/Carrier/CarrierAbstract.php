@@ -26,7 +26,7 @@ abstract class CarrierAbstract
     /**
      * @var boolean | null
      */
-    protected $externallyRated = '0';
+    protected $externallyRated = false;
 
     /**
      * @var float | null
@@ -36,7 +36,7 @@ abstract class CarrierAbstract
     /**
      * @var boolean | null
      */
-    protected $calculateCost = '0';
+    protected $calculateCost = false;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface

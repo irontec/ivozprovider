@@ -25,6 +25,9 @@ class SendTrunksLcrReloadRequest implements OutgoingRoutingLifecycleEventHandler
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(OutgoingRoutingInterface $entity)
     {
         $this->trunksClient->reloadLcr();

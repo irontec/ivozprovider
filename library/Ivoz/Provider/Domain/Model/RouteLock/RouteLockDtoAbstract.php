@@ -23,7 +23,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $open = '0';
+    private $open = false;
 
     /**
      * @var integer
@@ -46,7 +46,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

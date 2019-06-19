@@ -22,7 +22,7 @@ class DdiSpec extends ObjectBehavior
     protected $dto;
 
     /**
-     * @var PeeringContractInterface
+     * @var DdiProviderInterface
      */
     protected $ddiProvider;
 

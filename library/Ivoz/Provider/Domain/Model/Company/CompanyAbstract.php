@@ -75,7 +75,7 @@ abstract class CompanyAbstract
     /**
      * @var boolean | null
      */
-    protected $ipfilter = '1';
+    protected $ipfilter = true;
 
     /**
      * @var integer | null
@@ -116,7 +116,7 @@ abstract class CompanyAbstract
     /**
      * @var boolean | null
      */
-    protected $showInvoices = '0';
+    protected $showInvoices = false;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
@@ -149,7 +149,7 @@ abstract class CompanyAbstract
     protected $applicationServer;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $country;
 
@@ -1218,7 +1218,7 @@ abstract class CompanyAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry()
     {

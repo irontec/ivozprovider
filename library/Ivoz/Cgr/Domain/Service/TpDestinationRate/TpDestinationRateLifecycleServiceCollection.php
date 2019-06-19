@@ -12,6 +12,9 @@ class TpDestinationRateLifecycleServiceCollection implements LifecycleServiceCol
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(TpDestinationRateLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

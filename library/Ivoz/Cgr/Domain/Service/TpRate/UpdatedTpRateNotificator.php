@@ -11,6 +11,8 @@ class UpdatedTpRateNotificator extends CgratesReloadNotificator implements TpRat
      * Reload CGRates Configuration
      *
      * @param TpRateInterface $tpRate
+     *
+     * @return void
      */
     public function execute(TpRateInterface $tpRate)
     {

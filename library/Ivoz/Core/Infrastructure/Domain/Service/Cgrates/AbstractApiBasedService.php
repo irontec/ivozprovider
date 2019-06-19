@@ -18,6 +18,8 @@ abstract class AbstractApiBasedService
     /**
      * @param string $method
      * @param array $payload
+     *
+     * @return void
      */
     protected function sendRequest($method, array $payload)
     {

@@ -26,7 +26,7 @@ abstract class ServiceAbstract
     /**
      * @var boolean
      */
-    protected $extraArgs = '0';
+    protected $extraArgs = false;
 
     /**
      * @var Name
@@ -282,7 +282,7 @@ abstract class ServiceAbstract
         Assertion::notNull($extraArgs, 'extraArgs value "%s" is null, but non null value was expected.');
         Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
 
-        $this->extraArgs = $extraArgs;
+        $this->extraArgs = (bool) $extraArgs;
 
         return $this;
     }

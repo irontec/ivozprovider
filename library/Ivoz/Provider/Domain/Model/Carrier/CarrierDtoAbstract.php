@@ -23,7 +23,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $externallyRated = '0';
+    private $externallyRated = false;
 
     /**
      * @var float
@@ -33,7 +33,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $calculateCost = '0';
+    private $calculateCost = false;
 
     /**
      * @var integer
@@ -91,7 +91,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

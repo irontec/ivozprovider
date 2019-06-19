@@ -25,8 +25,15 @@ class SendTrunksLcrReloadRequest implements RoutingPatternLifecycleEventHandlerI
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(RoutingPatternInterface $entity)
     {
+        if ($entity->isNew()) {
+            return;
+        }
+
         $this->trunksClient->reloadLcr();
     }
 }

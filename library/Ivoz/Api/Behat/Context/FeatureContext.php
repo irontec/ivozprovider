@@ -4,10 +4,13 @@ namespace Ivoz\Api\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\MinkExtension\Context\MinkAwareContext;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Symfony\Component\Filesystem\Filesystem;
 use Behatch\HttpCall\Request;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 
 /**
  * Defines application features from the specific context.
@@ -27,17 +30,29 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
     protected $request;
 
     /**
+     * @var JWTTokenManagerInterface
+     */
+    protected $jwtTokenManager;
+    protected $administratorRepository;
+
+    /**
      * Initializes context.
      *
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
-    public function __construct(\AppKernel $kernel, Request $request)
-    {
+    public function __construct(
+        \AppKernel $kernel,
+        Request $request
+    ) {
         $this->cacheDir = $kernel->getCacheDir();
         $this->fs = new Filesystem();
         $this->request = $request;
+        $this->jwtTokenManager = $kernel->getContainer()->get('lexik_jwt_authentication.jwt_manager.public');
+        $this->administratorRepository = $kernel->getContainer()->get(
+            AdministratorRepository::class
+        );
     }
 
     /**
@@ -51,24 +66,74 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
     /**
      * @Given I add Authorization header
      */
-    public function setAuthorizationHeader($username = 'admin')
+    public function setAuthorizationHeader($username = 'admin', string $endpoint = 'admin_login')
     {
+        $token = $this->sendLoginRequest(
+            $username,
+            $endpoint
+        );
+
+        $this->request->setHttpHeader('Authorization', 'Bearer ' . $token);
+    }
+
+    /**
+     * @When I send a :method multipart request to :url with body:
+     */
+    public function iSendAMultipartRequestTo($method, $url, PyStringNode $body = null, $files = [])
+    {
+        if ($body !== null) {
+            $body = implode(
+                "\r\n",
+                $body->getStrings()
+            );
+        }
+
+        return $this->request->send(
+            $method,
+            $this->locatePath($url),
+            [],
+            $files,
+            $body
+        );
+    }
+
+    /**
+     * @param string $baseUsername
+     * @param string $username
+     */
+    protected function exchangeAuthorizationHeader(string $baseUsername, string $username)
+    {
+        $baseAdmin = $this->administratorRepository->findOneBy([
+            'username' => $baseUsername
+        ]);
+        $token = $this->jwtTokenManager->create(
+            $baseAdmin
+        );
+
+        $this->request->setHttpHeader(
+            'accept',
+            'application/json'
+        );
+
         $response = $this->request->send(
             'POST',
-            $this->locatePath('admin_login'),
+            $this->locatePath('/token/exchange'),
             [
-                'username' => $username,
-                'password' => 'changeme'
+                'token' => $token,
+                'username' => $username
             ]
         );
 
-        $data = json_decode($response->getContent());
+        $data = json_decode(
+            $response->getContent()
+        );
+        $token = $data->token ?? null;
 
         if (!$data) {
-            throw new \Exception('Could not retrieve a token');
+            throw new \Exception('Could not exchange a token');
         }
 
-        $this->request->setHttpHeader('Authorization', 'Bearer ' . ($data->token ?? null));
+        $this->request->setHttpHeader('Authorization', 'Bearer ' . $token);
     }
 
     /**
@@ -91,5 +156,34 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
         $this->fs->remove(
             $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite'
         );
+    }
+
+    /**
+     * @param $username
+     * @return string | null
+     * @throws \Exception
+     */
+    private function sendLoginRequest($username, string $endpoint)
+    {
+        $userFld = $endpoint === 'admin_login'
+            ? 'username'
+            : 'email';
+
+        $response = $this->request->send(
+            'POST',
+            $this->locatePath($endpoint),
+            [
+                $userFld => $username,
+                'password' => 'changeme'
+            ]
+        );
+
+        $data = json_decode($response->getContent());
+
+        if (!$data) {
+            throw new \Exception('Could not retrieve a token');
+        }
+
+        return $data->token ?? null;
     }
 }

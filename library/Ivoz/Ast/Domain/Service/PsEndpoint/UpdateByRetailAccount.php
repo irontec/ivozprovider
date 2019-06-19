@@ -38,6 +38,8 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
 
     /**
      * @param RetailAccountInterface $entity
+     *
+     * @return void
      */
     public function execute(RetailAccountInterface $entity)
     {

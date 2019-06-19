@@ -38,7 +38,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $forceClid = '0';
+    private $forceClid = false;
 
     /**
      * @var string
@@ -116,7 +116,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

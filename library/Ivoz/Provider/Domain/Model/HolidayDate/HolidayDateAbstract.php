@@ -26,7 +26,7 @@ abstract class HolidayDateAbstract
     /**
      * @var boolean
      */
-    protected $wholeDayEvent = '1';
+    protected $wholeDayEvent = true;
 
     /**
      * @var \DateTime | null
@@ -65,7 +65,7 @@ abstract class HolidayDateAbstract
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $voiceMailUser;
 
@@ -317,7 +317,7 @@ abstract class HolidayDateAbstract
         Assertion::notNull($wholeDayEvent, 'wholeDayEvent value "%s" is null, but non null value was expected.');
         Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
 
-        $this->wholeDayEvent = $wholeDayEvent;
+        $this->wholeDayEvent = (bool) $wholeDayEvent;
 
         return $this;
     }
@@ -530,7 +530,7 @@ abstract class HolidayDateAbstract
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoiceMailUser()
     {

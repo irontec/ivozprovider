@@ -1,6 +1,6 @@
 Feature: Create carriers
   In order to manage carriers
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -64,8 +64,8 @@ Feature: Create carriers
                   "en": "en",
                   "es": "es"
               },
-              "brand": null,
-              "country": 1
+              "brand": 1,
+              "country": 68
           }
       }
     """

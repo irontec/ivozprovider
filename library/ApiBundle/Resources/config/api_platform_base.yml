@@ -2,7 +2,7 @@ api_platform:
 
     title: 'Ivoz Provider'
     description: 'Rest API'
-    version: '2.9.1'
+    version: 2.11.0
 
     # Specify a name converter to use.
 #    name_converter: ~
@@ -143,11 +143,13 @@ api_platform:
         jsonld:
             mime_types: ['application/ld+json']
         csv:
-          mime_types: ['text/csv']
+            mime_types: ['text/csv']
         xml:
-          mime_types: ['application/xml', 'text/xml']
+            mime_types: ['application/xml', 'text/xml']
         html:
             mime_types: ['text/html']
+        binary:
+            mime_types: ['application/octet-stream']
 
     # The list of enabled error formats. The first one will be the default.
     error_formats:

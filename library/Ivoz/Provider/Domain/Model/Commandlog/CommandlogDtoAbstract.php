@@ -36,7 +36,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $agent;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn;
 
@@ -61,7 +61,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

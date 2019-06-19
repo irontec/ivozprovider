@@ -27,13 +27,14 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
             $this->setName('testRetailAccount');
             $this->setTransport('udp');
             $this->setDirectConnectivity('yes');
+            $this->setPassword('9rv6G3TVc-');
         })->call($item1);
 
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
         $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany3')
+            $this->getReference('_reference_ProviderCompany1')
         );
         $this->addReference('_reference_ProviderRetailAccount1', $item1);
         $this->sanitizeEntityValues($item1);

@@ -17,6 +17,7 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMemberAbstract:
         queueId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: false
       orphanRemoval: false
     user:
       targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
@@ -28,4 +29,5 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMemberAbstract:
         userId:
           referencedColumnName: id
           onDelete: cascade
+          nullable: false
       orphanRemoval: false

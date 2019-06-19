@@ -44,7 +44,10 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(InvoiceInterface $invoice)
     {
@@ -82,6 +85,8 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      * @param \DateTimeZone $invoiceTz
      * @param \DateTime $inDate
      * @param \DateTime $outDate
+     *
+     * @return void
      */
     private function assertNoFutureDates($invoiceTz, $inDate, $outDate)
     {
@@ -95,9 +100,12 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     /**
      * @param InvoiceInterface $invoice
      * @param \DateTime $utcOutDate
+     *
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
+     *
+     * @return void
      */
     private function assertNoUnmeteredCalls(InvoiceInterface $invoice, $utcOutDate)
     {
@@ -116,9 +124,12 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      * @param InvoiceInterface $invoice
      * @param \DateTime $utcOutDate
      * @param \DateTimeZone $utcTz
+     *
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
+     *
+     * @return void
      */
     private function assertNoUnbilledCallsAfterOutDate(InvoiceInterface $invoice, $utcOutDate, $utcTz)
     {
@@ -155,6 +166,8 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      * @param InvoiceInterface $invoice
      * @param \DateTime $utcInDate
      * @param \DateTime $utcOutDate
+     *
+     * @return void
      */
     private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
     {

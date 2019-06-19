@@ -38,6 +38,9 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(InvoiceInterface $invoice)
     {
         if (!$invoice->hasChanged('status')) {

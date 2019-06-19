@@ -7,6 +7,12 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
     billableCall_endpointId_idx:
       columns:
         - endpointId
+    billableCall_startTime_idx:
+      columns:
+      - startTime
+    billableCall_direction_idx:
+      columns:
+      - direction
   fields:
     callid:
       type: string

@@ -3,7 +3,6 @@
 namespace Agi\Agents;
 
 use Agi\Wrapper;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 
 class RetailAgent implements AgentInterface
@@ -108,5 +107,17 @@ class RetailAgent implements AgentInterface
     public function isAllowedToCall($destination)
     {
         return true;
+    }
+
+    /**
+     * @brief Determine if agent's endpoint has T.38 Passthrough enabled
+     *
+     * @return boolean
+     */
+    public function isT38PassthroughEnabled()
+    {
+        $psEndpoint = $this->retailAccount->getAstPsEndpoint();
+
+        return $psEndpoint->getT38Udptl() == RetailAccountInterface::T38PASSTHROUGH_YES;
     }
 }

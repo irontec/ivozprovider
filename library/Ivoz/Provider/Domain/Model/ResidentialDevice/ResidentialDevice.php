@@ -18,12 +18,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['password'])) {
-            $changeSet['password'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**

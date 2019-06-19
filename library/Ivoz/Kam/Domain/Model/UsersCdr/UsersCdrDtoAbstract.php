@@ -11,12 +11,12 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $endTime = '2000-01-01 00:00:00';
 
@@ -116,7 +116,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

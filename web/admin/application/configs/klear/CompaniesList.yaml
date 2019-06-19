@@ -305,6 +305,9 @@ production:
     <<: *ratingProfiles_screensLink
     ratingProfilesList_screen:
       <<: *ratingProfilesList_screenLink
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/billing/rating_plans.html#assigning-rating-plans-to-clients"
       filterField: company
       forcedValues:
         "self::routingTag": null

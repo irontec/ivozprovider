@@ -12,6 +12,9 @@ class TrunksUacregLifecycleServiceCollection implements LifecycleServiceCollecti
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(TrunksUacregLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

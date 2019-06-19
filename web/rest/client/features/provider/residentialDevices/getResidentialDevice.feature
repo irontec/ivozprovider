@@ -1,6 +1,6 @@
 Feature: Retrieve residential devices
   In order to manage residential devices
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -15,9 +15,8 @@ Feature: Retrieve residential devices
     """
       [
           {
-              "name": "retail",
+              "name": "residentialDevice",
               "transport": "udp",
-              "authNeeded": "yes",
               "id": 1
           }
       ]
@@ -33,22 +32,13 @@ Feature: Retrieve residential devices
     And the JSON should be like:
     """
       {
-          "name": "retail",
+          "name": "residentialDevice",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": "****",
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
+          "password": "+rA778LidL",
           "id": 1,
           "company": "~",
+          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }

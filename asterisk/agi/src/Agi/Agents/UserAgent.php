@@ -5,6 +5,7 @@ namespace Agi\Agents;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class UserAgent implements AgentInterface
@@ -59,9 +60,13 @@ class UserAgent implements AgentInterface
         // If user has OutgoingDDI rules, check if we have to override current DDI
         $outgoingDDIRule = $this->user->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
-            $this->agi->verbose("Checking %s for destination %s", $outgoingDDIRule, $destination);
+            // Get calling Prefix if header is present
+            $prefix = $this->agi->getSIPHeader('X-Info-Prefix');
+
+            $this->agi->verbose("Checking %s for destination %s and prefix %s", $outgoingDDIRule, $destination, $prefix);
+
             // Check if outgoing DDI rule matches for given destination
-            $ddiRule = $outgoingDDIRule->getOutgoingDDI($ddi, $destination);
+            $ddiRule = $outgoingDDIRule->getOutgoingDDI($ddi, $destination, $prefix);
             if ($ddiRule) {
                 $this->agi->notice("Rule %s changed presented DDI to %s", $outgoingDDIRule, $ddiRule);
                 $ddi = $ddiRule;
@@ -118,5 +123,18 @@ class UserAgent implements AgentInterface
     public function getVoiceMailLocution()
     {
         return $this->user->getVoicemailLocution();
+    }
+
+    /**
+     * @brief Determine if agent's endpoint has T.38 Passthrough enabled
+     *
+     * @return boolean
+     */
+    public function isT38PassthroughEnabled()
+    {
+        $terminal = $this->user->getTerminal();
+        $psEndpoint = $terminal->getAstPsEndpoint();
+
+        return $psEndpoint->getT38Udptl() == TerminalInterface::T38PASSTHROUGH_YES;
     }
 }

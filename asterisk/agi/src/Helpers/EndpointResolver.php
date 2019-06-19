@@ -184,8 +184,6 @@ class EndpointResolver
             sprintf('No endpoint found for "%s".', $endpointName)
         );
 
-        file_put_contents('/tmp/farsa', var_export($endpoint, true));
-
         /** @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount */
         $retailAccount = $endpoint->getRetailAccount();
 

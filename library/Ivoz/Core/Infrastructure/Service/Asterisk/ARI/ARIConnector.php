@@ -93,7 +93,10 @@ class ARIConnector
      * a Fax file to external number configured in the faxfile Destination.
      *
      * @param FaxesInOutInterface $faxFile
+     *
      * @throws \Exception if no Application Server is available
+     *
+     * @return void
      */
     public function sendFaxfileRequest(FaxesInOutInterface $faxFile)
     {

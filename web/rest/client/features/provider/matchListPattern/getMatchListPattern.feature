@@ -1,6 +1,6 @@
 Feature: Retrieve match list patterns
   In order to manage match list patterns
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -47,7 +47,7 @@ Feature: Retrieve match list patterns
           "numberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

@@ -113,7 +113,10 @@ class TimezoneSelectorDecorator implements NormalizerInterface
             return null;
         }
 
-        $successReponse = $path['responses'][$successCode]['schema'];
+        $successReponse = $path['responses'][$successCode]['schema'] ?? null;
+        if (!$successReponse) {
+            return null;
+        }
 
         $ref = isset($successReponse['$ref'])
             ? $successReponse['$ref']

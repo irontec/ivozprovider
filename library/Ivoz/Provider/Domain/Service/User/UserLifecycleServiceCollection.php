@@ -12,6 +12,9 @@ class UserLifecycleServiceCollection implements LifecycleServiceCollectionInterf
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(UserLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

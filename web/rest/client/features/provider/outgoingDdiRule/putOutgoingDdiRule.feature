@@ -1,6 +1,6 @@
 Feature: Update outgoing ddi rules
   In order to manage outgoing ddi rules
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -29,11 +29,9 @@ Feature: Update outgoing ddi rules
           "company": "~",
           "forcedDdi": {
               "ddi": "123",
-              "ddie164": "+34123",
               "recordCalls": "none",
               "displayName": "",
               "routeType": null,
-              "billInboundCalls": false,
               "friendValue": "",
               "id": 1,
               "company": 1,
@@ -45,7 +43,7 @@ Feature: Update outgoing ddi rules
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "country": 1,
+              "country": 68,
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null

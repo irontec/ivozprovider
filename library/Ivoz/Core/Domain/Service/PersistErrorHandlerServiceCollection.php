@@ -9,6 +9,9 @@ class PersistErrorHandlerServiceCollection
      */
     protected $services = [];
 
+    /**
+     * @return void
+     */
     public function setServices(array $services)
     {
         foreach ($services as $service) {
@@ -16,11 +19,17 @@ class PersistErrorHandlerServiceCollection
         }
     }
 
+    /**
+     * @return void
+     */
     protected function addService(PersistErrorHandlerInterface $service)
     {
         $this->services[] = $service;
     }
 
+    /**
+     * @return void
+     */
     public function execute(\Exception $exception)
     {
         foreach ($this->services as $service) {

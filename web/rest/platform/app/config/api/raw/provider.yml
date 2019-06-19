@@ -27,7 +27,7 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
         id:
           neq: "0"
     write_access_control:
-      ROLE_BRAND_ADMIN:
+      ROLE_SUPER_ADMIN:
         raw: "id > 0 or id === null"
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:
@@ -51,7 +51,8 @@ Ivoz\Provider\Domain\Model\Country\Country:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    pagination_client_enabled: true
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations:
     get: ~
@@ -116,4 +117,5 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
   collectionOperations:
     get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '"ROLE_USER" in roles'

@@ -39,9 +39,9 @@ class Ddi extends DdiAbstract implements DdiInterface
     public function __toString()
     {
         return sprintf(
-            "%s [ddi%d]",
+            "%s [%s]",
             $this->getDdie164(),
-            $this->getId()
+            parent::__toString()
         );
     }
 

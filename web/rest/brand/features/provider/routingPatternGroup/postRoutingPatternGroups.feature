@@ -1,6 +1,6 @@
 Feature: Create routing pattern groups
   In order to manage routing pattern groups
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -12,8 +12,7 @@ Feature: Create routing pattern groups
     """
       {
           "name": "Usansolocity",
-          "description": "Usansolocity",
-          "brand": 1
+          "description": "Usansolocity"
       }
     """
     Then the response status code should be 201

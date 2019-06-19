@@ -1,6 +1,6 @@
 Feature: Retrieve queues
   In order to manage queues
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -31,7 +31,7 @@ Feature: Retrieve queues
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be like:
     """
-      {
+       {
           "name": "testQueue",
           "maxWaitTime": 20,
           "timeoutTargetType": "number",
@@ -50,25 +50,13 @@ Feature: Retrieve queues
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "distributeMethod": "hash",
-              "maxCalls": 0,
-              "postalAddress": "Company Address",
-              "postalCode": "54321",
-              "town": "Company Town",
-              "province": "Company Province",
-              "countryName": "Company Country",
-              "ipfilter": false,
-              "onDemandRecord": 0,
               "onDemandRecordCode": "",
-              "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "billingMethod": "prepaid",
               "balance": 1.2,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
+              "transformationRuleSet": 1,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -83,7 +71,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -99,7 +87,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -117,7 +105,7 @@ Feature: Retrieve queues
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -127,7 +115,7 @@ Feature: Retrieve queues
           "timeoutNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -140,7 +128,7 @@ Feature: Retrieve queues
           "fullNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

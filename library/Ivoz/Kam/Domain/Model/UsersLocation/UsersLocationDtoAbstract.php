@@ -41,7 +41,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $path;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $expires = '2030-05-28 21:32:15';
 
@@ -61,7 +61,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $cseq = 1;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastModified = '1900-01-01 00:00:01';
 
@@ -136,7 +136,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

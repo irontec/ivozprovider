@@ -1,6 +1,6 @@
 Feature: Create fixed costs
   In order to manage fixed costs
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -14,8 +14,7 @@ Feature: Create fixed costs
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
-          "id": 1,
-          "brand": 1
+          "id": 1
       }
     """
     Then the response status code should be 201

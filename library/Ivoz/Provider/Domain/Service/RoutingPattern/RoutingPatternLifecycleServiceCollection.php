@@ -12,6 +12,9 @@ class RoutingPatternLifecycleServiceCollection implements LifecycleServiceCollec
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(RoutingPatternLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

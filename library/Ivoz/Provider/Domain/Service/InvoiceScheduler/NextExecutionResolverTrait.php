@@ -17,8 +17,11 @@ trait NextExecutionResolverTrait
 
     /**
      * @see http://php.net/manual/es/datetime.formats.relative.php
+     *
      * @param InvoiceSchedulerInterface $scheduler
      * @param TimezoneInterface $timeZone
+     *
+     * @return void
      */
     protected function setFallbackNextExecution(SchedulerInterface $scheduler, TimezoneInterface $timeZone)
     {
@@ -60,6 +63,8 @@ trait NextExecutionResolverTrait
 
     /**
      * @param InvoiceSchedulerInterface $scheduler
+     *
+     * @return void
      */
     protected function updateNextExecution(SchedulerInterface $scheduler)
     {
@@ -94,6 +99,8 @@ trait NextExecutionResolverTrait
     /**
      * @param InvoiceSchedulerInterface $scheduler
      * @param \DateTime $nextExecution
+     *
+     * @return void
      */
     protected function setNextExecution(SchedulerInterface $scheduler, \DateTime $nextExecution)
     {

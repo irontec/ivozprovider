@@ -61,7 +61,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $cdrStatQueueIds;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -91,7 +91,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

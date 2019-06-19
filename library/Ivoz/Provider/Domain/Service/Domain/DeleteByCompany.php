@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Domain;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
@@ -13,36 +13,34 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
  */
 class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    const POST_REMOVE_PRIORITY = 10;
 
-    /**
-     * DeleteByCompany constructor.
-     * @param EntityManagerInterface $em
-     */
+    protected $entityTools;
+
     public function __construct(
-        EntityManagerInterface $em
+        EntityTools $entityTools
     ) {
-        $this->em = $em;
+        $this->entityTools = $entityTools;
     }
-
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_REMOVE => 10
+            self::EVENT_POST_REMOVE => self::POST_REMOVE_PRIORITY
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CompanyInterface $company)
     {
         $domain = $company->getDomain();
-
-        if ($domain && $company->getType() === Company::VPBX) {
-            $this->em->remove($domain);
-            $company->setDomain(null);
+        if (!$domain) {
+            return;
         }
+
+        $company->setDomain(null);
+        $this->entityTools->remove($domain);
     }
 }

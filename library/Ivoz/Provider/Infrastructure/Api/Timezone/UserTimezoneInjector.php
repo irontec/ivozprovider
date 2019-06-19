@@ -28,6 +28,9 @@ class UserTimezoneInjector
         $this->tzParamName = $tzParamName;
     }
 
+    /**
+     * @return void
+     */
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
@@ -39,6 +42,9 @@ class UserTimezoneInjector
         $this->injectUserTimezoneInRequest($request);
     }
 
+    /**
+     * @return void
+     */
     public function injectUserTimezoneInRequest(Request $request)
     {
         $timezoneStr = $this->getUserDateTimeZone();

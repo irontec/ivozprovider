@@ -1,6 +1,6 @@
 Feature: Retrieve companies
   In order to manage company
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -46,7 +46,6 @@ Feature: Retrieve companies
           "name": "DemoCompany",
           "domainUsers": "127.0.0.1",
           "nif": "12345678A",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "Company Address",
           "postalCode": "54321",
@@ -57,10 +56,9 @@ Feature: Retrieve companies
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
+          "showInvoices": false,
           "id": 1,
           "language": {
               "iden": "es",
@@ -71,21 +69,17 @@ Feature: Retrieve companies
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
+              "tz": "Europe\/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           },
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -101,29 +95,24 @@ Feature: Retrieve companies
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
-              "defaultTimezone": 1
-          },
-          "domain": {
-              "domain": "127.0.0.1",
-              "pointsTo": "proxyusers",
-              "description": "DemoCompany proxyusers domain",
-              "id": 3
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "Espa\u00f1a"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa"
               }
           },
+          "currency": null,
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -136,9 +125,10 @@ Feature: Retrieve companies
                   "en": "en",
                   "es": "es"
               },
-              "brand": null,
-              "country": 1
+              "brand": 1,
+              "country": 68
           },
+          "outgoingDdi": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",

@@ -43,6 +43,8 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
      * Create a new TpDestinationRate when a DestinationRate is created
      *
      * @param DestinationRateInterface $destinationRate
+     *
+     * @return void
      */
     public function execute(DestinationRateInterface $destinationRate)
     {

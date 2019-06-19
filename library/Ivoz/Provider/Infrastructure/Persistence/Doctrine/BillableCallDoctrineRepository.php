@@ -75,7 +75,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
         $conditions = [
             ['self.id', 'in', $pks],
-            ['self.invoice', 'in', $pks],
+            ['self.invoice', 'isNull'],
+            ['trunksCdr.cgrid', 'isNull'],
             ['self.direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['carrier.externallyRated', 'eq', 0],
@@ -164,7 +165,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
 
         if (count($ids) !== count($trunkCdrIds)) {
-            throw new \DomainException('Some id were not found');
+            throw new \RuntimeException('Some id were not found');
         }
 
         return $trunkCdrIds;

@@ -1,6 +1,6 @@
 Feature: Create ddi providers
   In order to manage ddi providers
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -58,8 +58,8 @@ Feature: Create ddi providers
                   "en": "en",
                   "es": "es"
               },
-              "brand": null,
-              "country": 1
+              "brand": 1,
+              "country": 68
           }
       }
     """

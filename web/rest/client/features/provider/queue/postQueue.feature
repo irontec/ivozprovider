@@ -1,6 +1,6 @@
 Feature: Create queues
   In order to manage queues
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -31,8 +31,8 @@ Feature: Create queues
           "fullLocution": 1,
           "fullExtension": null,
           "fullVoiceMailUser": null,
-          "timeoutNumberCountry": 1,
-          "fullNumberCountry": 1
+          "timeoutNumberCountry": 68,
+          "fullNumberCountry": 68
       }
     """
     Then the response status code should be 201
@@ -62,8 +62,8 @@ Feature: Create queues
           "fullLocution": 1,
           "fullExtension": null,
           "fullVoiceMailUser": null,
-          "timeoutNumberCountry": 1,
-          "fullNumberCountry": 1
+          "timeoutNumberCountry": 68,
+          "fullNumberCountry": 68
       }
     """
 
@@ -146,7 +146,7 @@ Feature: Create queues
           "timeoutNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -159,7 +159,7 @@ Feature: Create queues
           "fullNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

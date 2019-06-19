@@ -33,17 +33,17 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $doNotDisturb = 0;
+    private $doNotDisturb = false;
 
     /**
      * @var boolean
      */
-    private $isBoss = 0;
+    private $isBoss = false;
 
     /**
      * @var boolean
      */
-    private $active = '0';
+    private $active = false;
 
     /**
      * @var integer
@@ -58,17 +58,17 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $voicemailEnabled = '1';
+    private $voicemailEnabled = true;
 
     /**
      * @var boolean
      */
-    private $voicemailSendMail = '0';
+    private $voicemailSendMail = false;
 
     /**
      * @var boolean
      */
-    private $voicemailAttachSound = '1';
+    private $voicemailAttachSound = true;
 
     /**
      * @var string
@@ -78,7 +78,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $gsQRCode = '0';
+    private $gsQRCode = false;
 
     /**
      * @var integer
@@ -171,7 +171,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

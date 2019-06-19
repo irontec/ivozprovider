@@ -21,8 +21,10 @@ class NextValGenerator
 
     /**
      * @throws \DomainException
+     *
+     * @return string
      */
-    public function execute(InvoiceNumberSequenceInterface $invoiceNumberGenerator)
+    public function execute(InvoiceNumberSequenceInterface $invoiceNumberGenerator): string
     {
         $this->entityTools->lock(
             $invoiceNumberGenerator,

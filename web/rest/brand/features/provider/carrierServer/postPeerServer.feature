@@ -1,6 +1,6 @@
 Feature: Create carrier servers
   In order to manage carrier servers
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -25,8 +25,7 @@ Feature: Create carrier servers
           "outboundProxy": null,
           "fromUser": "",
           "fromDomain": "",
-          "carrier": 1,
-          "brand": 1
+          "carrier": 1
       }
     """
     Then the response status code should be 201

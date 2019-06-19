@@ -36,6 +36,8 @@ class CheckUniqueness implements FriendLifecycleEventHandlerInterface
      * Check username and domain is unique in the whole platform
      *
      * @param FriendInterface $friend
+     *
+     * @return void
      */
     public function execute(FriendInterface $friend)
     {

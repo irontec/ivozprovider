@@ -21,7 +21,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     private $threshold = 0;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $lastSent;
 
@@ -56,7 +56,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

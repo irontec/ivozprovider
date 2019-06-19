@@ -20,7 +20,7 @@
           </td>
           <td data-th="{{'callTypeFilter' | translate}}">{{detour.callTypeFilter | translate}}</td>
           <td data-th="{{'callForwardType' | translate}}">{{detour.callForwardType | translate}}</td>
-          <td data-th="{{'targetType' | translate}}">{{detour.targetType | translate}}</td>
+          <td data-th="{{'targetType' | translate}}">{{(detour.targetType || 'Unassigned')| translate}}</td>
           <td data-th="{{'destiny' | translate}}">{{detourTarget(detour)}}</td>
           
           <td data-th="{{'options' | translate}}">

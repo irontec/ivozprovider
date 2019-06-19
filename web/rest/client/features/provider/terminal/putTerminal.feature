@@ -1,6 +1,6 @@
 Feature: Update terminals
   In order to manage terminals
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -34,7 +34,7 @@ Feature: Update terminals
           "allowAudio": "alaw",
           "allowVideo": null,
           "directMediaMethod": "invite",
-          "password": "****",
+          "password": "ZGthe7E2+1",
           "mac": "aabbccddeeff",
           "lastProvisionDate": "1970-01-01 10:10:10",
           "id": 1,

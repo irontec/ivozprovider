@@ -13,6 +13,9 @@ class RepositoryCompiler implements CompilerPassInterface
      */
     protected $container;
 
+    /**
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         $this->container = $container;
@@ -24,6 +27,8 @@ class RepositoryCompiler implements CompilerPassInterface
 
     /**
      * @param Definition[] $services
+     *
+     * @return void
      */
     protected function setRepositoryAliases(array $services)
     {
@@ -35,10 +40,12 @@ class RepositoryCompiler implements CompilerPassInterface
                 $fqdn
             );
 
-            $this->container->setAlias(
+            $alias = $this->container->setAlias(
                 $repositoryInterface,
                 $fqdn
             );
+
+            $alias->setPublic(true);
         }
     }
 }

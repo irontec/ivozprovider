@@ -37,6 +37,9 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(IvozQueueInterface $entity)
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();

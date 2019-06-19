@@ -140,6 +140,35 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
+
+        $item5 = $this->createEntityInstance(Company::class);
+        (function () {
+            $this->setName("Wholesale Company");
+            $this->setType("wholesale");
+            $this->setDomainUsers("wholesale.irontec.com");
+            $this->setNif("12345689-Z");
+            $this->setMaxCalls(0);
+            $this->setPostalAddress("");
+            $this->setPostalCode("");
+            $this->setTown("");
+            $this->setProvince("");
+            $this->setCountryName("");
+            $this->setIpfilter(true);
+            $this->setOnDemandRecord(0);
+            $this->setOnDemandRecordCode("");
+        })->call($item5);
+
+        $item5->setLanguage($this->getReference('_reference_ProviderLanguage1'));
+        $item5->setMediaRelaySets($this->getReference('_reference_ProviderMediaRelaySet'));
+        $item5->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $item5->setBrand($this->getReference('_reference_ProviderBrand2'));
+        $item5->setCountry($this->getReference('_reference_ProviderCountry70'));
+        $item5->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $item5->setVoicemailNotificationTemplate($this->getReference('_reference_ProviderNotificationTemplate1'));
+        $this->addReference('_reference_ProviderCompany5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
+
         $manager->flush();
     }
 

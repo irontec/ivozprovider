@@ -11,12 +11,12 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $endTime = '2000-01-01 00:00:00';
 
@@ -63,10 +63,10 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $parsed = '0';
+    private $parsed = false;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
@@ -116,7 +116,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

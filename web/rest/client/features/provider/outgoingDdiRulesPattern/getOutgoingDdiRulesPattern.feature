@@ -1,6 +1,6 @@
 Feature: Retrieve outgoing ddi rules patterns
   In order to manage outgoing ddi rules patterns
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -15,6 +15,8 @@ Feature: Retrieve outgoing ddi rules patterns
     """
       [
           {
+              "type": "destination",
+              "prefix": null,
               "action": "keep",
               "priority": 1,
               "id": 1,
@@ -45,6 +47,8 @@ Feature: Retrieve outgoing ddi rules patterns
     And the JSON should be equal to:
     """
        {
+          "type": "destination",
+          "prefix": null,
           "action": "keep",
           "priority": 1,
           "id": 1,

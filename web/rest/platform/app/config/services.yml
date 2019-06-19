@@ -21,6 +21,8 @@ services:
       $decoratedNormalizer:
         '@Service\AuthEndpointDecorator.inner'
 
+  Ivoz\Api\Core\Security\DataAccessControlParser: ~
+
   #######################################
   ## Controllers
   #######################################

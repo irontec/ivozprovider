@@ -11,6 +11,8 @@ class UpdatedTpTimingNotificator extends CgratesReloadNotificator implements TpT
      * Reload CGRates Configuration
      *
      * @param TpTimingInterface $tpTiming
+     *
+     * @return void
      */
     public function execute(TpTimingInterface $tpTiming)
     {

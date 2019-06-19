@@ -38,6 +38,8 @@ class ForceExternallyRated implements CarrierLifecycleEventHandlerInterface
      * Enables externally rated on carrier when Brand has no Billing feature enabled
      *
      * @param CarrierInterface $carrier
+     *
+     * @return void
      */
     public function execute(CarrierInterface $carrier)
     {

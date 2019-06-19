@@ -1,3 +1,40 @@
+Wed, 19 Jun 2019 10:26:26 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.11.0 released
+
+    * Billing
+        - Added command line script to reload Brand configurations
+        - Enabled automatic offline billing in cdr mixer
+
+    * Proxies
+        - Fixed a bug that removed P-Asserted-Identity display name
+        - Fixed a bug that prevented external transferred calls
+        - Carriers are now marked inactive only on requests timeout
+
+    * Retail
+        - Fixed a bug that prevented bounced calls from Retail accounts
+
+    * vPBX
+        - Allow outgoing DDI selection using prefixes in Outgoing DDI Rules
+        - Fixed locutions for Route Locks services
+        - Prevent default voicemail unavailable locution if user has one defined
+        - Calendars can no override External call filters Schedules
+        - Call Forwards Settings route is no longer mandatory
+
+    * API
+        - Added support for upload and download of file objects
+        - Added endpoints to get endpoints registration status
+        - Endpoint passwords are now visible in plain text
+        - Reviewed API access controls based on logged user role
+        - Reviewed entity fields access based on api level
+
+    * Other
+        - Fixed a bug while sending multiple email notifications
+        - Rename scheme to schema in all scripts an directories
+
+    See specific API changelog for detailed information on changes for each level
+
+
 Mon, 29 Apr 2019 16:42:45 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.10.0 released

@@ -50,13 +50,32 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
 
             $reflectionClass = new \ReflectionClass($resourceClass);
             $resourceInstance = $reflectionClass->newInstanceWithoutConstructor();
-            if ($resourceInstance instanceof FileContainerInterface) {
-                $fileObjects = $resourceInstance->getFileObjects();
-                $resourceMetadata = $this->allowFileUpload(
-                    $resourceMetadata,
-                    $fileObjects
-                );
+
+            $paginationToggle = $resourceMetadata->getAttribute('pagination_client_enabled', false);
+            $collectionOperations = $resourceMetadata->getCollectionOperations();
+            foreach ($collectionOperations as $name => &$operation) {
+                $showPaginationParam =
+                    $paginationToggle
+                    || $resourceMetadata->getCollectionOperationAttribute($name, 'pagination_client_enabled');
+
+                if (!$showPaginationParam) {
+                    continue;
+                }
+
+                if (strtoupper($operation['method']) !== 'GET') {
+                    continue;
+                }
+
+                $operation['swagger_context']['pagination_parameters'] = [
+                    [
+                        'name' => '_pagination',
+                        'in' => 'query',
+                        'required' => false,
+                        'type' => 'boolean'
+                    ]
+                ];
             }
+            $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
 
             return $resourceMetadata;
         }
@@ -73,46 +92,6 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         }
 
         throw new ResourceClassNotFoundException($resourceClass);
-    }
-
-    private function allowFileUpload(ResourceMetadata $resourceMetadata, array $fileObjects)
-    {
-        $itemOperations = $resourceMetadata->getItemOperations();
-        $collectionOperations = $resourceMetadata->getCollectionOperations();
-
-        if (!empty($itemOperations) && isset($itemOperations['put'])) {
-            if (!isset($itemOperations['put']['swagger_context']['_parameters'])) {
-                $itemOperations['put']['swagger_context']['upload_parameters'] = [];
-            }
-            foreach ($fileObjects as $fileObject) {
-                $itemOperations['put']['swagger_context']['upload_parameters'][] = [
-                    'name' => $fileObject,
-                    'in' => 'formData',
-                    'type' => 'file',
-                    'required' => false
-                ];
-            }
-
-            $resourceMetadata = $resourceMetadata->withItemOperations($itemOperations);
-        }
-
-        if (!empty($collectionOperations) && isset($collectionOperations['post'])) {
-            if (!isset($collectionOperations['post']['swagger_context']['_parameters'])) {
-                $collectionOperations['post']['swagger_context']['upload_parameters'] = [];
-            }
-            foreach ($fileObjects as $fileObject) {
-                $collectionOperations['post']['swagger_context']['upload_parameters'][] = [
-                    'name' => $fileObject,
-                    'in' => 'formData',
-                    'type' => 'file',
-                    'required' => false
-                ];
-            }
-
-            $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
-        }
-
-        return $resourceMetadata;
     }
 
     /**

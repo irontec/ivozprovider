@@ -21,9 +21,12 @@ production:
       fields: &outgoingDDIRulesPatterns_fieldsLink
         blacklist:
           forcedDdi: true
+          matchList: true
+          prefix: true
         order:
           priority: true
-          matchList: true
+          type: true
+          rule: true
           action: true
           forcedDDI: true
         options:
@@ -51,12 +54,15 @@ production:
       fields:
         blacklist:
           forcedDDI: true
+          rule: true
       fixedPositions: &outgoingDDIRulesPatternsPositions_link
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            matchList: 9
+            type: 3
+            prefix: 6
+            matchList: 6
             priority: 3
         group1:
           label: _("Action Configuration")
@@ -75,6 +81,7 @@ production:
       fields:
         blacklist:
           forcedDDI: true
+          rule: true
       fixedPositions:
         <<: *outgoingDDIRulesPatternsPositions_link
 

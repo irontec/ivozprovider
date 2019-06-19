@@ -4,12 +4,14 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
 class MusicOnHoldDto extends MusicOnHoldDtoAbstract
 {
+    private $originalFilePath;
+    private $encodedFilePath;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -19,11 +21,12 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+        $response['originalFilePath'] = 'originalFilePath';
+
+        return $response;
     }
 
-    private $originalFilePath;
-    private $encodedFilePath;
 
     /**
      * @return self

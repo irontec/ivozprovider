@@ -1,6 +1,6 @@
 Feature: Manage fixed costs
   In order to manage fixed costs
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

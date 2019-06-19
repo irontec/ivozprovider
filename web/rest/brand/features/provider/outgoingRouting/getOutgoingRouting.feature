@@ -1,6 +1,6 @@
 Feature: Retrieve outgoing routings
   In order to manage outgoing routings
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -20,7 +20,8 @@ Feature: Retrieve outgoing routings
               "weight": 1,
               "routingMode": "static",
               "id": 1,
-              "company": 1
+              "company": 1,
+              "routingTag": 1
           },
           {
               "type": "pattern",
@@ -28,7 +29,8 @@ Feature: Retrieve outgoing routings
               "weight": 6,
               "routingMode": "static",
               "id": 2,
-              "company": null
+              "company": null,
+              "routingTag": 1
           }
       ]
     """
@@ -68,6 +70,12 @@ Feature: Retrieve outgoing routings
               "brand": 1
           },
           "routingPatternGroup": null,
+          "routingTag": {
+              "name": "TagName",
+              "tag": "aTag",
+              "id": 1,
+              "brand": 1
+          },
           "clidCountry": null
       }
     """

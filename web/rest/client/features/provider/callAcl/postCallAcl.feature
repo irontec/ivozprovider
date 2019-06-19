@@ -1,6 +1,6 @@
 Feature: Create call acls
   In order to manage call acls
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Update Ddis
   In order to manage Ddis
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -12,14 +12,12 @@ Feature: Update Ddis
     """
       {
           "ddi": "1234",
-          "ddie164": "+341234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
           "billInboundCalls": false,
           "friendValue": "",
           "company": 1,
-          "brand": 1,
           "conferenceRoom": null,
           "language": null,
           "queue": null,
@@ -29,7 +27,7 @@ Feature: Update Ddis
           "huntGroup": null,
           "fax": null,
           "ddiProvider": 1,
-          "country": 1,
+          "country": 68,
           "residentialDevice": null,
           "conditionalRoute": null
       }
@@ -41,11 +39,9 @@ Feature: Update Ddis
     """
       {
           "ddi": "1234",
-          "ddie164": "+341234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "billInboundCalls": false,
           "friendValue": "",
           "id": 1,
           "company": "~",
@@ -60,7 +56,7 @@ Feature: Update Ddis
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -71,6 +67,7 @@ Feature: Update Ddis
               }
           },
           "residentialDevice": null,
-          "conditionalRoute": null
+          "conditionalRoute": null,
+          "retailAccount": null
       }
     """

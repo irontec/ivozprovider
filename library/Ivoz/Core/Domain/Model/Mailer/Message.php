@@ -159,6 +159,9 @@ class Message
         return $this;
     }
 
+    /**
+     * @return void
+     */
     public function setAttachment($file, $filename, $mimetype)
     {
         $this->attachment = \Swift_Attachment::fromPath($file, $mimetype);

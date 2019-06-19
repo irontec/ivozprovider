@@ -68,11 +68,16 @@ production:
     targetType:
       title: _('Target type')
       type: select
-      required: true
+      required: false
       source:
         data: inline
         filterClass: IvozProvider_Klear_Filter_TargetTypes
         values:
+          '__null__':
+            title: _('Unassigned')
+            visualFilter:
+              show: [ ]
+              hide: [ extension, voiceMailUser, numberCountry, numberValue ]
           'number':
             title: _('Number')
             visualFilter:

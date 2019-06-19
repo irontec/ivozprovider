@@ -1,6 +1,6 @@
 Feature: Retrieve ddi providers
   In order to manage ddi providers
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -34,6 +34,7 @@ Feature: Retrieve ddi providers
       {
           "description": "DDIProviderDescription",
           "name": "DDIProviderName",
+          "externallyRated": false,
           "id": 1,
           "brand": "~",
           "transformationRuleSet": {
@@ -48,8 +49,8 @@ Feature: Retrieve ddi providers
                   "en": "en",
                   "es": "es"
               },
-              "brand": null,
-              "country": 1
+              "brand": 1,
+              "country": 68
           }
       }
     """

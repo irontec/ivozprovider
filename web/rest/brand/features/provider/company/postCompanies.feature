@@ -1,6 +1,6 @@
 Feature: Create companies
   In order to manage companies
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -32,7 +32,6 @@ Feature: Create companies
         "mediaRelaySets": 1,
         "defaultTimezone": 1,
         "brand": 1,
-        "domain": 1,
         "applicationServer": 1,
         "country": 1,
         "transformationRuleSet": 1,
@@ -52,7 +51,6 @@ Feature: Create companies
           "name": "API company",
           "domainUsers": "api.irontec.com",
           "nif": "",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "",
           "postalCode": "",
@@ -63,19 +61,17 @@ Feature: Create companies
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": 0,
-          "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
-          "id": 5,
+          "id": 6,
           "language": 1,
           "defaultTimezone": 1,
           "brand": 1,
-          "domain": 1,
           "country": 1,
           "currency": null,
           "transformationRuleSet": 1,
+          "outgoingDdi": 1,
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
@@ -86,7 +82,7 @@ Feature: Create companies
   Scenario: Retrieve created company
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "companies/5"
+      And I send a "GET" request to "companies/6"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -97,7 +93,6 @@ Feature: Create companies
           "name": "API company",
           "domainUsers": "api.irontec.com",
           "nif": "",
-          "distributeMethod": "hash",
           "maxCalls": 0,
           "postalAddress": "",
           "postalCode": "",
@@ -108,11 +103,10 @@ Feature: Create companies
           "onDemandRecord": 0,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
-          "recordingsLimitMB": 0,
-          "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
-          "id": 5,
+          "showInvoices": false,
+          "id": 6,
           "language": {
               "iden": "es",
               "id": 1,
@@ -122,21 +116,17 @@ Feature: Create companies
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
+              "tz": "Europe/Andorra",
+              "comment": "",
               "id": 1,
               "label": {
-                  "en": "en",
-                  "es": "es"
+                  "en": "",
+                  "es": ""
               },
               "country": 1
           },
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -152,29 +142,24 @@ Feature: Create companies
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
-              "defaultTimezone": 1
-          },
-          "domain": {
-              "domain": "api.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "API company proxyusers domain",
-              "id": 1
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "country": {
-              "code": "ES",
-              "countryCode": "+34",
+              "code": "AD",
+              "countryCode": "+376",
               "id": 1,
               "name": {
-                  "en": "Spain",
-                  "es": "España"
+                  "en": "Andorra",
+                  "es": "Andorra"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Andorra"
               }
           },
+          "currency": null,
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -187,8 +172,16 @@ Feature: Create companies
                   "en": "en",
                   "es": "es"
               },
-              "brand": null,
-              "country": 1
+              "brand": 1,
+              "country": 68
+          },
+          "outgoingDdi": {
+              "ddi": "123",
+              "id": 1,
+              "company": 1,
+              "brand": 1,
+              "ddiProvider": 1,
+              "country": 68
           },
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",

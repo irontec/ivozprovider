@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+pushd /opt/irontec/ivozprovider/schema
+    ./bin/create-test-db
+
+    # Run tests
+    SYMFONY_PHPUNIT_VERSION=6.5.14 vendor/bin/simple-phpunit $*
+popd

@@ -1,6 +1,6 @@
 Feature: Retrieve fixed costs
   In order to manage fixed costs
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema

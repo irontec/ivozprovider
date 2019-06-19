@@ -51,7 +51,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * @var boolean | null
      */
-    protected $multiDdi = '0';
+    protected $multiDdi = false;
 
     /**
      * @var string

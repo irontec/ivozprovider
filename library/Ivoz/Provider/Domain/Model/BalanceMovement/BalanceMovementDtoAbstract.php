@@ -21,7 +21,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     private $balance = 0;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn = 'CURRENT_TIMESTAMP';
 
@@ -51,7 +51,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

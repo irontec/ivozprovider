@@ -62,6 +62,9 @@ class MigrateFromTrunksCdr
         $this->logger = $logger;
     }
 
+    /**
+     * @return void
+     */
     public function execute()
     {
         /**
@@ -91,6 +94,9 @@ class MigrateFromTrunksCdr
         $this->logger->info('BillableCall migration service has migrated ' . $cdrCount . ' successfully');
     }
 
+    /**
+     * @return void
+     */
     private function migrateToBillableCall(TrunksCdrInterface $trunksCdr)
     {
         /**

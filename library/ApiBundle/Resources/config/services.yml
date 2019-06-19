@@ -9,6 +9,10 @@ services:
     autoconfigure: true
     public: false
 
+  lexik_jwt_authentication.jwt_manager.public:
+    alias: lexik_jwt_authentication.jwt_manager
+    public: true
+
   Ivoz\Provider\Infrastructure\Api\Jwt\UserAuthenticationSuccessHandler:
     arguments:
       - '@lexik_jwt_authentication.jwt_manager'
@@ -30,15 +34,16 @@ services:
   ## Dependencies
   ################################################
   Symfony\Component\Finder\Finder: ~
+
+  Ivoz\Api\Core\Security\AccessControlEvaluator:
+    arguments:
+      $entityManager: '@doctrine.orm.entity_manager'
+
   Ivoz\Api\Core\Security\DataAccessControlParser:
+    synthetic: true
     arguments:
       $requestStack: '@request_stack'
       $tokenStorage: '@security.token_storage'
-      $entityManager: '@doctrine.orm.entity_manager'
-      $companyRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")'
-      $userRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
 
   ################################################
   ## Listeners
@@ -51,6 +56,10 @@ services:
       $resourceAccessCheckerOrExpressionLanguage: '@api_platform.security.resource_access_checker'
     tags:
       - { name: kernel.event_listener, event: kernel.request, priority: 7 }
+
+  Ivoz\Api\Symfony\EventListener\MultipartRequestListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, priority: 8 }
 
   Ivoz\Api\Symfony\EventListener\DomainExceptionListener:
     arguments:
@@ -179,6 +188,12 @@ services:
   ################################################
   ## Resources
   ################################################
+  Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FileOperationMetadataFactory:
+    decorates: "api_platform.metadata.resource.metadata_factory"
+    decoration_priority: 3
+    arguments:
+      $decorated: '@Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FileOperationMetadataFactory.inner'
+
   Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FilterMetadataFactory:
     decorates: "api_platform.metadata.resource.metadata_factory"
     decoration_priority: 2
@@ -228,6 +243,7 @@ services:
     arguments:
       $propertyMetadataFactory: '@Ivoz\Api\Doctrine\Orm\Metadata\Property\DoctrineOrmPropertyMetadataFactory'
       $resourceNameCollectionFactory: '@api_platform.metadata.resource.name_collection_factory'
+      $defaultRole: '%api_default_role%'
 
   Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataLinkFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'
@@ -301,10 +317,17 @@ services:
       $clientEnabled: '%api_platform.collection.pagination.client_enabled%'
       $enabledParameterName: '%api_platform.collection.pagination.enabled_parameter_name%'
     tags:
-      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 7 }
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
 
   Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList:
     calls:
         - [ addExtension, ['@api_platform.doctrine.orm.query_extension.filter'] ]
         - [ addExtension, ['@api_platform.doctrine.orm.query_extension.pagination'] ]
         - [ addExtension, ['@api_platform.doctrine.orm.query_extension.order'] ]
+
+  ################################################
+  ## Controllers
+  ################################################
+  Ivoz\Api\Symfony\Controller\:
+    resource: '../../../Ivoz/Api/Symfony/Controller/*'
+    tags: ['controller.service_arguments']

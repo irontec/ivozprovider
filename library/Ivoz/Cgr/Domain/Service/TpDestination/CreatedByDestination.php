@@ -38,6 +38,8 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
      * Create a new TpDestination when a Destination is created
      *
      * @param DestinationInterface $destination
+     *
+     * @return void
      */
     public function execute(DestinationInterface $destination)
     {

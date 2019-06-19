@@ -28,7 +28,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $active = '1';
+    private $active = true;
 
     /**
      * @var string
@@ -71,7 +71,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

@@ -13,6 +13,16 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @var string
      */
+    private $type;
+
+    /**
+     * @var string
+     */
+    private $prefix;
+
+    /**
+     * @var string
+     */
     private $action;
 
     /**
@@ -51,13 +61,15 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
         }
 
         return [
+            'type' => 'type',
+            'prefix' => 'prefix',
             'action' => 'action',
             'priority' => 'priority',
             'id' => 'id',
@@ -73,6 +85,8 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     public function toArray($hideSensitiveData = false)
     {
         return [
+            'type' => $this->getType(),
+            'prefix' => $this->getPrefix(),
             'action' => $this->getAction(),
             'priority' => $this->getPriority(),
             'id' => $this->getId(),
@@ -80,6 +94,46 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
             'matchList' => $this->getMatchList(),
             'forcedDdi' => $this->getForcedDdi()
         ];
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType($type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $prefix
+     *
+     * @return static
+     */
+    public function setPrefix($prefix = null)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
     }
 
     /**

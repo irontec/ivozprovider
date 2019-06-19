@@ -1,6 +1,6 @@
 Feature: Update external call filters
   In order to manage external call filters
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -25,8 +25,8 @@ Feature: Update external call filters
           "outOfScheduleExtension": null,
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
-          "holidayNumberCountry": 1,
-          "outOfScheduleNumberCountry": 1
+          "holidayNumberCountry": 68,
+          "outOfScheduleNumberCountry": 68
       }
     """
     Then the response status code should be 200
@@ -52,7 +52,7 @@ Feature: Update external call filters
           "holidayNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -65,7 +65,7 @@ Feature: Update external call filters
           "outOfScheduleNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

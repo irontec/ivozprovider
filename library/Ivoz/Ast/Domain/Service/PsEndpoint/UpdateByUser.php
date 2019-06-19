@@ -27,6 +27,9 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(UserInterface $user)
     {
         $endpoint = $user->getEndpoint();

@@ -1,6 +1,6 @@
 Feature: Update friends
   In order to manage friends
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -45,17 +45,16 @@ Feature: Update friends
           "ip": "",
           "port": 5061,
           "authNeeded": "yes",
-          "password": "****",
+          "password": "ZEF7t5n+b4",
           "priority": 1,
-          "disallow": "all",
           "allow": "alaw",
-          "directMediaMethod": "update",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
           "fromDomain": "",
           "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
           "id": 1,
           "company": "~",
+          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null

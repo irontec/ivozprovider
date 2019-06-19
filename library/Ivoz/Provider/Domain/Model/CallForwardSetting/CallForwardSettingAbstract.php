@@ -27,7 +27,7 @@ abstract class CallForwardSettingAbstract
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string
+     * @var string | null
      */
     protected $targetType;
 
@@ -44,7 +44,7 @@ abstract class CallForwardSettingAbstract
     /**
      * @var boolean
      */
-    protected $enabled = '1';
+    protected $enabled = true;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
@@ -52,12 +52,12 @@ abstract class CallForwardSettingAbstract
     protected $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $voiceMailUser;
 
@@ -85,13 +85,11 @@ abstract class CallForwardSettingAbstract
     protected function __construct(
         $callTypeFilter,
         $callForwardType,
-        $targetType,
         $noAnswerTimeout,
         $enabled
     ) {
         $this->setCallTypeFilter($callTypeFilter);
         $this->setCallForwardType($callForwardType);
-        $this->setTargetType($targetType);
         $this->setNoAnswerTimeout($noAnswerTimeout);
         $this->setEnabled($enabled);
     }
@@ -167,12 +165,12 @@ abstract class CallForwardSettingAbstract
         $self = new static(
             $dto->getCallTypeFilter(),
             $dto->getCallForwardType(),
-            $dto->getTargetType(),
             $dto->getNoAnswerTimeout(),
             $dto->getEnabled()
         );
 
         $self
+            ->setTargetType($dto->getTargetType())
             ->setNumberValue($dto->getNumberValue())
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
@@ -333,15 +331,16 @@ abstract class CallForwardSettingAbstract
      *
      * @return static
      */
-    protected function setTargetType($targetType)
+    protected function setTargetType($targetType = null)
     {
-        Assertion::notNull($targetType, 'targetType value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($targetType, [
-            CallForwardSettingInterface::TARGETTYPE_NUMBER,
-            CallForwardSettingInterface::TARGETTYPE_EXTENSION,
-            CallForwardSettingInterface::TARGETTYPE_VOICEMAIL
-        ], 'targetTypevalue "%s" is not an element of the valid values: %s');
+        if (!is_null($targetType)) {
+            Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($targetType, [
+                CallForwardSettingInterface::TARGETTYPE_NUMBER,
+                CallForwardSettingInterface::TARGETTYPE_EXTENSION,
+                CallForwardSettingInterface::TARGETTYPE_VOICEMAIL
+            ], 'targetTypevalue "%s" is not an element of the valid values: %s');
+        }
 
         $this->targetType = $targetType;
 
@@ -351,7 +350,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Get targetType
      *
-     * @return string
+     * @return string | null
      */
     public function getTargetType()
     {
@@ -425,7 +424,7 @@ abstract class CallForwardSettingAbstract
         Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');
 
-        $this->enabled = $enabled;
+        $this->enabled = (bool) $enabled;
 
         return $this;
     }
@@ -481,7 +480,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension()
     {
@@ -505,7 +504,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoiceMailUser()
     {

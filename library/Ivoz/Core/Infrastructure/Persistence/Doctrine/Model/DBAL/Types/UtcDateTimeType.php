@@ -21,6 +21,9 @@ class UtcDateTimeType extends DateTimeType
         return parent::convertToDatabaseValue($value, $platform);
     }
 
+    /**
+     * @return null|\DateTime
+     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (null === $value || $value instanceof \DateTime) {

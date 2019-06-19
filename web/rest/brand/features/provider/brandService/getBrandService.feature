@@ -1,6 +1,6 @@
 Feature: Retrieve brandService
   In order to manage brand services
-  As an super admin
+  As a brand admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -43,10 +43,6 @@ Feature: Retrieve brandService
           "id": 1,
           "brand": {
               "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -62,9 +58,9 @@ Feature: Retrieve brandService
                   "country": "",
                   "registryData": ""
               },
-              "domain": 6,
               "language": 1,
-              "defaultTimezone": 1
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "service": {
               "iden": "DirectPickUp",

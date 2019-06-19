@@ -25,6 +25,9 @@ class SendTrunksLcrReloadRequest implements CarrierServerLifecycleEventHandlerIn
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CarrierServerInterface $carrierServer)
     {
         $this->trunksClient->reloadLcr();

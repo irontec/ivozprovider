@@ -1,6 +1,6 @@
 Feature: Update ddi providers
   In order to manage ddi providers
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -14,7 +14,7 @@ Feature: Update ddi providers
           "description": "UpdateDDIProviderDescription",
           "name": "UpdateDDIProviderName",
           "brand": 1,
-          "transformationRuleSet": 2
+          "transformationRuleSet": 1
       }
     """
     Then the response status code should be 200
@@ -29,19 +29,19 @@ Feature: Update ddi providers
         "id": 1,
         "brand": "~",
         "transformationRuleSet": {
-            "description": "",
+            "description": "Generic transformation for Spain",
             "internationalCode": "00",
             "trunkPrefix": "",
             "areaCode": "",
             "nationalLen": 9,
             "generateRules": false,
-            "id": 2,
+            "id": 1,
             "name": {
                 "en": "en",
                 "es": "es"
             },
             "brand": 1,
-            "country": 1
+            "country": 68
         }
       }
     """

@@ -1,6 +1,6 @@
 Feature: Update residential devices
   In order to manage residential devices
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -11,7 +11,7 @@ Feature: Update residential devices
       And I send a "PUT" request to "/residential_devices/1" with body:
     """
       {
-          "name": "updatedRetail",
+          "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
           "ip": null,
@@ -36,29 +36,17 @@ Feature: Update residential devices
      And the JSON should be like:
     """
       {
-          "name": "updatedRetail",
+          "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": "****",
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
+          "password": "ZGthe7E2+4",
           "id": 1,
           "company": "~",
           "outgoingDdi": {
               "ddi": "123",
-              "ddie164": "+34123",
               "recordCalls": "none",
               "displayName": "",
               "routeType": null,
-              "billInboundCalls": false,
               "friendValue": "",
               "id": 1,
               "company": 1,
@@ -70,7 +58,7 @@ Feature: Update residential devices
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "country": 1,
+              "country": 68,
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null

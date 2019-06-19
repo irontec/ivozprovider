@@ -29,6 +29,9 @@ class SyncBalances
         $this->carrierRepository = $carrierRepository;
     }
 
+    /**
+     * @return void
+     */
     public function updateAll()
     {
         $this->logger->info('Companies balances are about to be synced');
@@ -67,6 +70,8 @@ class SyncBalances
 
     /**
      * @param array $carriersBalance
+     *
+     * @return void
      */
     private function persistBalances(array $carriersBalance)
     {

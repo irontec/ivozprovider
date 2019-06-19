@@ -36,7 +36,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
 
     /**
      * @param string $cgrid
-     * @return int | null
+     * @return TpCdrInterface | null
      */
     public function getDefaultRunByCgrid(string $cgrid)
     {
@@ -59,10 +59,9 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
         return null;
     }
 
-
     /**
      * @param string $cgrid
-     * @return int
+     * @return TpCdrInterface | null
      */
     public function getCarrierRunByCgrid(string $cgrid)
     {
@@ -82,5 +81,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
                 ->getSingleResult();
         } catch (NoResultException $error) {
         }
+
+        return null;
     }
 }

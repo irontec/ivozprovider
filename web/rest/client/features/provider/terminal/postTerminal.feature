@@ -1,6 +1,6 @@
 Feature: Create terminals
   In order to manage terminals
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -19,7 +19,6 @@ Feature: Create terminals
           "password": "ZGthe7E2+5",
           "mac": "",
           "lastProvisionDate": "1970-03-04 11:12:13",
-          "company": 1,
           "terminalModel": 1
       }
     """
@@ -34,7 +33,7 @@ Feature: Create terminals
           "allowAudio": "alaw",
           "allowVideo": null,
           "directMediaMethod": "invite",
-          "password": "****",
+          "password": "ZGthe7E2+5",
           "mac": "",
           "lastProvisionDate": "1970-03-04 11:12:13",
           "t38Passthrough": "no",
@@ -59,7 +58,7 @@ Feature: Create terminals
           "allowAudio": "alaw",
           "allowVideo": null,
           "directMediaMethod": "invite",
-          "password": "****",
+          "password": "ZGthe7E2+5",
           "mac": "",
           "lastProvisionDate": "1970-03-04 11:12:13",
           "id": 4,

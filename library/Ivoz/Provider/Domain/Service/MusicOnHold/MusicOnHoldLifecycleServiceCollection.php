@@ -12,6 +12,9 @@ class MusicOnHoldLifecycleServiceCollection implements LifecycleServiceCollectio
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(MusicOnHoldLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

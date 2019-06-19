@@ -1,6 +1,6 @@
 Feature: Create pick up rel users
   In order to manage pick up rel users
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -40,17 +40,18 @@ Feature: Create pick up rel users
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "10fd9fbe1c6861fb0a14a57e78f871c5",
               "gsQRCode": false,
               "id": 2,
               "company": 1,
               "callAcl": null,
               "bossAssistant": 1,
               "bossAssistantWhiteList": null,
+              "transformationRuleSet": 1,
               "language": null,
               "terminal": 2,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
@@ -87,17 +88,18 @@ Feature: Create pick up rel users
                 "voicemailEnabled": true,
                 "voicemailSendMail": true,
                 "voicemailAttachSound": true,
-                "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+                "tokenKey": "10fd9fbe1c6861fb0a14a57e78f871c5",
                 "gsQRCode": false,
                 "id": 2,
                 "company": 1,
                 "callAcl": null,
                 "bossAssistant": 1,
                 "bossAssistantWhiteList": null,
+                "transformationRuleSet": 1,
                 "language": null,
                 "terminal": 2,
                 "extension": null,
-                "timezone": 1,
+                "timezone": 145,
                 "outgoingDdi": null,
                 "outgoingDdiRule": null,
                 "voicemailLocution": null

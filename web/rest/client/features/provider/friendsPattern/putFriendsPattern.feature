@@ -1,6 +1,6 @@
 Feature: Update friends patterns
   In order to manage friends patterns
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -33,19 +33,16 @@ Feature: Update friends patterns
               "ip": "",
               "port": 5060,
               "authNeeded": "yes",
-              "password": "****",
+              "password": "SDG3qd2j6+",
               "priority": 1,
-              "disallow": "all",
               "allow": "alaw",
-              "directMediaMethod": "update",
-              "calleridUpdateHeader": "pai",
-              "updateCallerid": "yes",
               "fromDomain": "",
               "directConnectivity": "yes",
               "ddiIn": "yes",
               "t38Passthrough": "no",
               "id": 1,
               "company": 1,
+              "transformationRuleSet": null,
               "callAcl": null,
               "outgoingDdi": null,
               "language": null

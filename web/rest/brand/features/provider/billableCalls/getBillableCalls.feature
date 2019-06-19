@@ -22,7 +22,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -38,7 +37,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -54,7 +52,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -70,7 +67,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -86,7 +82,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -102,7 +97,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -118,7 +112,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -134,7 +127,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -150,7 +142,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -166,7 +157,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -182,7 +172,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -198,7 +187,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -214,7 +202,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -230,7 +217,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -246,7 +232,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -262,7 +247,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -278,7 +262,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -294,7 +277,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -310,7 +292,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -326,7 +307,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -342,7 +322,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -358,7 +337,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -374,7 +352,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -390,7 +367,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -406,7 +382,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -422,7 +397,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -438,7 +412,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -454,7 +427,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -470,7 +442,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -486,7 +457,6 @@ Feature: Retrieve billable calls
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
-              "brand": 1,
               "company": 1,
               "carrier": null,
               "invoice": null
@@ -511,16 +481,16 @@ Feature: Retrieve billable calls
           "callee": "+34633656565",
           "cost": null,
           "price": null,
-          "priceDetails": [],
           "carrierName": null,
           "destinationName": null,
           "ratingPlanName": null,
           "endpointType": null,
           "endpointId": null,
+          "direction": "outbound",
           "id": 1,
-          "brand": "~",
           "company": "~",
           "carrier": null,
+          "destination": null,
           "ratingPlanGroup": null,
           "invoice": null
       }

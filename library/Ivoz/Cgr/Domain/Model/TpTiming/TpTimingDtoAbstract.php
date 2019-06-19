@@ -46,7 +46,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     private $time = '00:00:00';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -71,7 +71,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

@@ -28,6 +28,9 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
     usersCdr_residentialDeviceId:
       columns:
         - residentialDeviceId
+    usersCdr_direction:
+      columns:
+        - direction
   fields:
     startTime:
       type: datetime

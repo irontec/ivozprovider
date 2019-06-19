@@ -28,7 +28,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $allowExtensions = '0';
+    private $allowExtensions = false;
 
     /**
      * @var string
@@ -131,7 +131,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

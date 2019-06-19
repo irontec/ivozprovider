@@ -45,8 +45,6 @@ Feature: Update web portals
           "brand": {
               "name": "Irontec_e2e",
               "domainUsers": "sip.irontec.com",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
               "maxCalls": 0,
               "id": 2,
               "logo": {
@@ -63,9 +61,45 @@ Feature: Update web portals
                   "country": "",
                   "registryData": ""
               },
-              "domain": 4,
               "language": 1,
-              "defaultTimezone": 1
+              "defaultTimezone": 145
+          }
+      }
+    """
+
+  @createSchema
+  Scenario: Update a web portal logo
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" multipart request to "/web_portals/2" with body:
+    """
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="brand"
+
+      {
+        "name": "Updated Portal"
+      }
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="Logo"; filename="uploadable"
+Content-Type: text/plain
+
+This is updated file content
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+
+    """
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the JSON should be like:
+    """
+      {
+          "name": "Updated Portal",
+          "logo": {
+              "fileSize": 28,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "uploadable"
           }
       }
     """

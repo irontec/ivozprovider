@@ -114,6 +114,11 @@ class ExternalNumberAction
             $this->agi->setVariable("_RECORD", "yes");
         }
 
+        // Determine if this call has T.38 passthrough enabled
+        if ($caller->isT38PassthroughEnabled()) {
+            $this->agi->setVariable("_T38PASSTHROUGH", "yes");
+        }
+
         // Dial Options
         $options = "";
 

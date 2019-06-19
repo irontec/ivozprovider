@@ -21,7 +21,7 @@ abstract class ConferenceRoomAbstract
     /**
      * @var boolean
      */
-    protected $pinProtected = 0;
+    protected $pinProtected = false;
 
     /**
      * @var string | null
@@ -227,7 +227,7 @@ abstract class ConferenceRoomAbstract
         Assertion::notNull($pinProtected, 'pinProtected value "%s" is null, but non null value was expected.');
         Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
 
-        $this->pinProtected = $pinProtected;
+        $this->pinProtected = (bool) $pinProtected;
 
         return $this;
     }

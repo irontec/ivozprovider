@@ -1,6 +1,6 @@
 Feature: Create IVR entries
   In order to manage IVR entries
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -75,7 +75,7 @@ Feature: Create IVR entries
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "welcomeLocution": {

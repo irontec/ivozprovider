@@ -1,6 +1,6 @@
 Feature: Create administrators
   In order to manage administrators
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -19,8 +19,8 @@ Feature: Create administrators
           "lastname": "test",
           "id": 1,
           "brand": 1,
-          "company": null,
-          "timezone": 1
+          "company": 1,
+          "timezone": 145
       }
     """
     Then the response status code should be 201
@@ -37,8 +37,8 @@ Feature: Create administrators
           "lastname": "test",
           "id": 7,
           "brand": 1,
-          "company": null,
-          "timezone": 1
+          "company": 1,
+          "timezone": 145
       }
     """
 
@@ -60,16 +60,16 @@ Feature: Create administrators
           "lastname": "test",
           "id": 7,
           "brand": "~",
-          "company": null,
+          "company": "~",
           "timezone": {
-              "tz": "Europe\/Madrid",
+              "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           }
       }
     """
@@ -112,7 +112,6 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "id": 1,
-          "brand": 1,
           "company": 99,
           "timezone": 1
       }

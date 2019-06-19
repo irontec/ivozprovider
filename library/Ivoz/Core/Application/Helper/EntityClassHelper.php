@@ -8,6 +8,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 class EntityClassHelper
 {
+    /**
+     * @return string|false
+     */
     public static function getEntityClass(EntityInterface $entity)
     {
         $class = get_class($entity);
@@ -21,6 +24,9 @@ class EntityClassHelper
         );
     }
 
+    /**
+     * @return string|false
+     */
     public static function getEntityClassByDto(DataTransferObjectInterface $dto)
     {
         $class = get_class($dto);

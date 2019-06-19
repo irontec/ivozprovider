@@ -1,6 +1,6 @@
 Feature: Retrieve ivr excluded extensions
   In order to manage ivr excluded extensions
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -35,7 +35,7 @@ Feature: Retrieve ivr excluded extensions
                   "errorExtension": null,
                   "noInputVoiceMailUser": null,
                   "errorVoiceMailUser": 1,
-                  "noInputNumberCountry": 1,
+                  "noInputNumberCountry": 68,
                   "errorNumberCountry": null
               },
               "extension": {
@@ -87,7 +87,7 @@ Feature: Retrieve ivr excluded extensions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "extension": {

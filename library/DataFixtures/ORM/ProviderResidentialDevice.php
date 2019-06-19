@@ -24,9 +24,10 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
         /** @var ResidentialDevice $item1 */
         $item1 = $this->createEntityInstance(ResidentialDevice::class);
         (function () {
-            $this->setName('retail');
+            $this->setName('residentialDevice');
             $this->setTransport('udp');
             $this->setAuthNeeded('yes');
+            $this->setPassword('+rA778LidL');
             $this->setDisallow('all');
             $this->setAllow('alaw');
             $this->setDirectMediaMethod('invite');

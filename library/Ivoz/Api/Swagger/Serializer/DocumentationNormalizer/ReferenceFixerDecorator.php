@@ -97,8 +97,8 @@ class ReferenceFixerDecorator implements NormalizerInterface
             return null;
         }
 
-        if ($context !== DataTransferObjectInterface::CONTEXT_DETAILED) {
-            return null;
+        if (!in_array($context, DataTransferObjectInterface::CONTEXT_TYPES, true)) {
+            return $property;
         }
 
         $property['items'] = $this->setContext($property['items'], $context);

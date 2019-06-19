@@ -1,6 +1,6 @@
 Feature: Update invoice
   In order to manage invoice
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

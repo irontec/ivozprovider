@@ -16,17 +16,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     private $sentTo = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $inDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $outDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdOn;
 
@@ -76,7 +76,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

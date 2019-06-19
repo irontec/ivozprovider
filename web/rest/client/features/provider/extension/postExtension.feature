@@ -1,6 +1,6 @@
 Feature: Create extensions
   In order to manage extensions
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -22,7 +22,7 @@ Feature: Create extensions
           "user": 1,
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": 1
+          "numberCountry": null
       }
     """
     Then the response status code should be 201
@@ -79,7 +79,7 @@ Feature: Create extensions
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
@@ -89,7 +89,7 @@ Feature: Create extensions
               "language": null,
               "terminal": 1,
               "extension": 4,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
@@ -97,5 +97,5 @@ Feature: Create extensions
           "queue": null,
           "conditionalRoute": null,
           "numberCountry": null
-      }
+      } 
     """

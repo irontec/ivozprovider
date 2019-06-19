@@ -37,7 +37,10 @@ abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterfac
 
     /**
      * Set CGRateS safety key in redis for reloading
+     *
      * @param string $tpid
+     *
+     * @return void
      */
     protected function reload(string $tpid)
     {

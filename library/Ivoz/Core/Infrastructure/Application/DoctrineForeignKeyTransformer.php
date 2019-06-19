@@ -52,7 +52,12 @@ class DoctrineForeignKeyTransformer implements ForeignKeyTransformerInterface
             );
         }
 
-        $entity = $entityClass::fromDto($element, $this);
+        $entity = call_user_func(
+            [$entityClass, 'fromDto'],
+            $element,
+            $this
+        );
+
         if ($persist) {
             $this->em->persist($entity);
         }

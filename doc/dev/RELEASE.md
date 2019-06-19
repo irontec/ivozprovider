@@ -38,6 +38,8 @@ Update the strings presented by both kamailios:
     # sed -i 's/\(user_agent_header="User-Agent: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/trunks/config/kamailio.cfg
     # sed -i 's/\(user_agent_header="User-Agent: Irontec IvozProvider\) .*/\1 v2.2"/' kamailio/users/config/kamailio.cfg
 
+## Update API version
+    # sed -i 's/\(.*version:\).*/\1 2.11.0/' ./library/ApiBundle/Resources/config/api_platform_base.yml
 
 ## Update project README.md and ChangeLog
 

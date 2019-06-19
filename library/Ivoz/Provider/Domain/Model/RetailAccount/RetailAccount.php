@@ -39,6 +39,12 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
                 ->getBrand()
                 ->getDomain()
         );
+
+        if (!$this->getBrand()) {
+            $this->setBrand(
+                $this->getCompany()->getBrand()
+            );
+        }
     }
 
     /**
@@ -83,6 +89,19 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
 
         return parent::setPort($port);
     }
+
+    /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
+    public function getAstPsEndpoint()
+    {
+        $astPsEnpoints = $this->getPsEndpoints(
+            Criteria::create()->setMaxResults(1)
+        );
+
+        return current($astPsEnpoints);
+    }
+
 
     /**
      * @return string

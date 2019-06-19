@@ -23,6 +23,8 @@ class FaxesInOutAssembler implements CustomEntityAssemblerInterface
     /**
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface $entity
+     *
+     * @return void
      */
     public function fromDto(
         DataTransferObjectInterface $dto,

@@ -1,6 +1,6 @@
 Feature: Create IVRs
   In order to manage IVRs
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -86,25 +86,13 @@ Feature: Create IVRs
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "distributeMethod": "hash",
-              "maxCalls": 0,
-              "postalAddress": "Company Address",
-              "postalCode": "54321",
-              "town": "Company Town",
-              "province": "Company Province",
-              "countryName": "Company Country",
-              "ipfilter": false,
-              "onDemandRecord": 0,
               "onDemandRecordCode": "",
-              "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "billingMethod": "prepaid",
               "balance": 1.2,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
+              "transformationRuleSet": 1,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -147,29 +135,29 @@ Feature: Create IVRs
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
           "noInputNumberCountry": {
-              "code": "GB",
-              "countryCode": "+44",
+              "code": "AE",
+              "countryCode": "+971",
               "id": 2,
               "name": {
-                  "en": "United Kingdom",
-                  "es": "Reino Unido"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa"
-              }
-          },
-          "errorNumberCountry": {
-              "code": "JP",
-              "countryCode": "+81",
-              "id": 3,
-              "name": {
-                  "en": "Japan",
-                  "es": "Japón"
+                  "en": "United Arab Emirates",
+                  "es": "Emiratos Árabes Unidos"
               },
               "zone": {
                   "en": "Asia",
-                  "es": "Asia"
+                  "es": "Emiratos Árabes Unidos"
+              }
+          },
+          "errorNumberCountry": {
+              "code": "AF",
+              "countryCode": "+93",
+              "id": 3,
+              "name": {
+                  "en": "Afghanistan",
+                  "es": "Afganistán"
+              },
+              "zone": {
+                  "en": "Asia",
+                  "es": "Afganistán"
               }
           }
       }

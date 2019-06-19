@@ -68,7 +68,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $ipfilter = '1';
+    private $ipfilter = true;
 
     /**
      * @var integer
@@ -108,7 +108,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
-    private $showInvoices = '0';
+    private $showInvoices = false;
 
     /**
      * @var integer
@@ -256,7 +256,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

@@ -25,6 +25,9 @@ class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEven
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(ApplicationServerInterface $entity)
     {
         $this->usersGearmanClient->reloadDispatcher();

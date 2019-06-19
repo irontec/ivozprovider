@@ -51,7 +51,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $maxCostStrategy = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -76,7 +76,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

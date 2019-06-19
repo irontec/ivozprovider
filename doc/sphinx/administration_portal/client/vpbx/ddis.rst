@@ -13,9 +13,8 @@ DDIs
         The number, without country code.
 
     DDI Provider
-        The :ref:`DDI Provider <DDI Providers>` that provides this number. This relation allow
-        the platform to apply the required :ref:`transformations` in
-        order to determine its standard form.
+        The :ref:`DDI Provider <DDI Providers>` that provides this number. This relation has no functional purpose, it
+        is just for DDI Provider <-> DDI navigation in some brand level sections.
 
     External Call Filter
         Allows configuration based on Calendars and Schedulers as shown in

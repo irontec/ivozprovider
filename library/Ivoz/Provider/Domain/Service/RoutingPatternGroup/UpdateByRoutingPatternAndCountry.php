@@ -40,6 +40,9 @@ class UpdateByRoutingPatternAndCountry
         $this->createAndPersistRoutingPatternGroupsRelPattern = $createAndPersistRoutingPatternGroupsRelPattern;
     }
 
+    /**
+     * @return void
+     */
     public function execute(RoutingPatternInterface $entity, CountryInterface $country)
     {
 

@@ -27,7 +27,7 @@ class InvoiceDtoAssembler implements CustomDtoAssemblerInterface
      * @param integer $depth
      * @return InvoiceDTO
      */
-    public function toDto(EntityInterface $entity, $depth = 0)
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
     {
         Assertion::isInstanceOf($entity, InvoiceInterface::class);
 

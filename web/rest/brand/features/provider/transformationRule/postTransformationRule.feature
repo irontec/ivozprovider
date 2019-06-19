@@ -1,6 +1,6 @@
 Feature: Create transformation rules
   In order to manage transformation rules
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -16,7 +16,7 @@ Feature: Create transformation rules
           "priority": 10,
           "matchExpr": "^\\+34([0-9]+)$",
           "replaceExpr": "\u0001",
-          "transformationRuleSet": 2
+          "transformationRuleSet": 1
       }
     """
     Then the response status code should be 201
@@ -31,7 +31,7 @@ Feature: Create transformation rules
           "matchExpr": "^\\+34([0-9]+)$",
           "replaceExpr": "\u0001",
           "id": 9,
-          "transformationRuleSet": 2
+          "transformationRuleSet": 1
       }
     """
 
@@ -52,19 +52,19 @@ Feature: Create transformation rules
           "replaceExpr": "\u0001",
           "id": 9,
           "transformationRuleSet": {
-              "description": "",
+              "description": "Generic transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
               "generateRules": false,
-              "id": 2,
+              "id": 1,
               "name": {
                   "en": "en",
                   "es": "es"
               },
               "brand": 1,
-              "country": 1
+              "country": 68
           }
       }
     """
@@ -82,7 +82,7 @@ Feature: Create transformation rules
           "priority": 10,
           "matchExpr": "^\\+34([0-9]+)$",
           "replaceExpr": "\u0001",
-          "transformationRuleSet": 1
+          "transformationRuleSet": 2
       }
     """
     Then the response status code should be 403

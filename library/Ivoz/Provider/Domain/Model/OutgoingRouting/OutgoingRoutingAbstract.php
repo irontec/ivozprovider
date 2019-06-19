@@ -42,7 +42,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * @var boolean | null
      */
-    protected $forceClid = '0';
+    protected $forceClid = false;
 
     /**
      * @var string | null
@@ -55,7 +55,7 @@ abstract class OutgoingRoutingAbstract
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -65,17 +65,17 @@ abstract class OutgoingRoutingAbstract
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
      */
     protected $routingPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
      */
     protected $routingPatternGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     protected $routingTag;
 
@@ -506,7 +506,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -554,7 +554,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
      */
     public function getRoutingPattern()
     {
@@ -578,7 +578,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get routingPatternGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
      */
     public function getRoutingPatternGroup()
     {
@@ -602,7 +602,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     public function getRoutingTag()
     {

@@ -1,6 +1,6 @@
 Feature: Remove brand services
   In order to manage brand services
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

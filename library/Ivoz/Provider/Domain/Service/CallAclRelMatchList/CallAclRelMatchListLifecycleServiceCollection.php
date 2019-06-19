@@ -12,6 +12,9 @@ class CallAclRelMatchListLifecycleServiceCollection implements LifecycleServiceC
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CallAclRelMatchListLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

@@ -66,7 +66,7 @@ Section: admin
 Priority: optional
 Pre-Depends: bind9, mysql-server
 Depends: ivozprovider-profile-common (=${binary:Version}),
-    ivozprovider-scheme (=${binary:Version}),
+    ivozprovider-schema (=${binary:Version}),
     ivozprovider-balances (=${binary:Version}),
     libstring-crc32-perl,
     libgearman-client-perl,
@@ -96,6 +96,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     php7.0-curl,
     php-yaml,
     php7.0-gd,
+    php-zip,
     ivozprovider-web-admin (=${binary:Version}),
     ivozprovider-web-user (=${binary:Version}),
     gearman-job-server,
@@ -180,11 +181,12 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
 
-Package: ivozprovider-scheme
+Package: ivozprovider-schema
 Architecture: all
 Section: database
 Priority: optional
 Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.0-mysql, php7.0-xml, mysql-server
+Conflicts: ivozprovider-scheme
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .

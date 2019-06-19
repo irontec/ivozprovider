@@ -1,6 +1,6 @@
 Feature: Update extensions
   In order to manage extensions
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -37,7 +37,21 @@ Feature: Update extensions
           "numberValue": null,
           "friendValue": null,
           "id": 1,
-          "company": "~",
+          "company": {
+              "type": "vpbx",
+              "name": "DemoCompany",
+              "domainUsers": "127.0.0.1",
+              "nif": "12345678A",
+              "onDemandRecordCode": "",
+              "balance": 1.2,
+              "id": 1,
+              "language": 1,
+              "defaultTimezone": 145,
+              "country": 68,
+              "transformationRuleSet": 1,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null
+          },
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,
@@ -54,17 +68,18 @@ Feature: Update extensions
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
+              "transformationRuleSet": 1,
               "language": null,
               "terminal": 1,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null

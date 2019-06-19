@@ -1,6 +1,6 @@
   Feature: Create rating profile
   In order to manage rating profile
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -27,7 +27,8 @@
           "id": 3,
           "company": 1,
           "carrier": null,
-          "ratingPlanGroup": 1
+          "ratingPlanGroup": 1,
+          "routingTag": null
       }
     """
 
@@ -45,6 +46,7 @@
           "id": 3,
           "company": "~",
           "carrier": null,
-          "ratingPlanGroup": "~"
+          "ratingPlanGroup": "~",
+          "routingTag": null
       }
     """

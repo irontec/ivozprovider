@@ -31,37 +31,37 @@ abstract class ScheduleAbstract
     /**
      * @var boolean | null
      */
-    protected $monday = '0';
+    protected $monday = false;
 
     /**
      * @var boolean | null
      */
-    protected $tuesday = '0';
+    protected $tuesday = false;
 
     /**
      * @var boolean | null
      */
-    protected $wednesday = '0';
+    protected $wednesday = false;
 
     /**
      * @var boolean | null
      */
-    protected $thursday = '0';
+    protected $thursday = false;
 
     /**
      * @var boolean | null
      */
-    protected $friday = '0';
+    protected $friday = false;
 
     /**
      * @var boolean | null
      */
-    protected $saturday = '0';
+    protected $saturday = false;
 
     /**
      * @var boolean | null
      */
-    protected $sunday = '0';
+    protected $sunday = false;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface

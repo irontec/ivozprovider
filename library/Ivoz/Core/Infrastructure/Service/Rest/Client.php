@@ -122,7 +122,12 @@ class Client implements ApiClientInterface
         }
     }
 
-    private function appendAuthHeaders(array $options)
+    /**
+     * @return array
+     *
+     * @psalm-return array{"headers":empty, headers:array{Authorization:string}}
+     */
+    private function appendAuthHeaders(array $options): array
     {
         if (!array_key_exists('headers', $options)) {
             $options['headers'] = [];

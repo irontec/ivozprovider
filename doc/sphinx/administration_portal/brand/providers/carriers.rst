@@ -35,6 +35,11 @@ This are the fields that define a carrier:
         Chosen currency will be used in cost calculation, balance movements and
         remaining money operations of this carrier.
 
+.. note:: If "Calculate cost" is enabled, a balance is attached to each carrier. Whenever a carrier
+          is used to place a call, this balance will be decreased using carrier's active rating profile.
+
+.. important:: Opposed to clients' balances, carriers' (negative/zero) balances won't disable the carrier.
+
 Carrier Servers
 ***************
 

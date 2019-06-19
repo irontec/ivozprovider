@@ -37,8 +37,6 @@ Feature: Manage brands
       {
           "name": "DemoBrand",
           "domainUsers": "",
-          "recordingsLimitMB": null,
-          "recordingsLimitEmail": "",
           "maxCalls": 0,
           "id": 1,
           "logo": {
@@ -55,12 +53,6 @@ Feature: Manage brands
               "country": "",
               "registryData": ""
           },
-          "domain": {
-              "domain": "retail.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "Irontec Test Company retail domain",
-              "id": 6
-          },
           "language": {
               "iden": "es",
               "id": 1,
@@ -72,12 +64,12 @@ Feature: Manage brands
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           }
       }
     """

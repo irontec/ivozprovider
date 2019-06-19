@@ -49,6 +49,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function setPort($port = null);
 
     /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
+    public function getAstPsEndpoint();
+
+    /**
      * @return string
      */
     public function getSorcery();

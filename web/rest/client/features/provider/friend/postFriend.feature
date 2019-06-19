@@ -1,6 +1,6 @@
 Feature: Create friends
   In order to manage friends
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -15,18 +15,18 @@ Feature: Create friends
           "description": "something",
           "transport": "tls",
           "ip": "129.1.2.3",
-          "port": "5060",
+          "port": 5060,
           "authNeeded": "yes",
           "password": "ZEF7t5n+b4",
           "priority": 2,
-          "disallow": "all",
           "allow": "alaw",
-          "directMediaMethod": "update",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
           "fromDomain": "",
           "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
+          "id": 2,
           "company": 1,
+          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null
@@ -44,23 +44,19 @@ Feature: Create friends
           "ip": "129.1.2.3",
           "port": 5060,
           "authNeeded": "yes",
-          "password": "****",
+          "password": "ZEF7t5n+b4",
           "priority": 2,
-          "disallow": "all",
           "allow": "alaw",
-          "directMediaMethod": "update",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
           "fromDomain": "",
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 2,
           "company": 1,
+          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null,
-          "interCompany": null
+          "language": null
       }
     """
 
@@ -80,20 +76,18 @@ Feature: Create friends
           "ip": "129.1.2.3",
           "port": 5060,
           "authNeeded": "yes",
-          "password": "****",
+          "password": "ZEF7t5n+b4",
           "priority": 2,
-          "disallow": "all",
           "allow": "alaw",
-          "directMediaMethod": "update",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
           "fromDomain": "",
           "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "t38Passthrough": "no",
           "id": 2,
           "company": "~",
+          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
-          "language": null,
-          "interCompany": null
+          "language": null
       }
     """

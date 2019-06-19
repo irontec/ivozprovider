@@ -1,6 +1,6 @@
 Feature: Create transformation rule sets
   In order to manage transformation rule sets
-  As an super admin
+  As a brand admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -21,7 +21,7 @@ Feature: Create transformation rule sets
               "en": "usansolocity",
               "es": "usansolo"
           },
-          "country": 2,
+          "country": 77,
           "brand": 1
       }
     """
@@ -43,7 +43,7 @@ Feature: Create transformation rule sets
               "es": "usansolo"
           },
           "brand": 1,
-          "country": 2
+          "country": 77
       }
     """
 
@@ -72,7 +72,7 @@ Feature: Create transformation rule sets
           "country": {
               "code": "GB",
               "countryCode": "+44",
-              "id": 2,
+              "id": 77,
               "name": {
                   "en": "United Kingdom",
                   "es": "Reino Unido"

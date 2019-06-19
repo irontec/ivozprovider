@@ -27,7 +27,7 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
      * @param integer $depth
      * @return BrandDTO
      */
-    public function toDto(EntityInterface $entity, $depth = 0)
+    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
     {
         Assertion::isInstanceOf($entity, BrandInterface::class);
 

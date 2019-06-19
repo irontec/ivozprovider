@@ -38,7 +38,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @var boolean
      */
-    private $generateRules = 0;
+    private $generateRules = false;
 
     /**
      * @var integer
@@ -81,7 +81,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

@@ -63,7 +63,7 @@ EOF
 
     # Regenerate all aplications cache
     echo "Removing applications cache..."
-    rm -fr /opt/irontec/ivozprovider/scheme/var/cache/prod
+    rm -fr /opt/irontec/ivozprovider/schema/var/cache/prod
     rm -fr /opt/irontec/ivozprovider/aterisk/agi/var/cache/prod
     rm -fr /opt/irontec/ivozprovider/web/rest/platform/var/cache/prod
     rm -fr /opt/irontec/ivozprovider/microservices/balances/var/cache/prod

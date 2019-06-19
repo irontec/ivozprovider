@@ -71,12 +71,12 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $destination;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $setupTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $answerTime;
 
@@ -111,17 +111,17 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $extraInfo;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $updatedAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $deletedAt;
 
@@ -141,7 +141,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

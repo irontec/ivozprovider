@@ -310,6 +310,11 @@ msgid_plural "Calendars"
 msgstr[0] "Calendario"
 msgstr[1] "Calendarios"
 
+msgid "Calendar Period"
+msgid_plural "Calendar Periods"
+msgstr[0] "Evento de Horario"
+msgstr[1] "Eventos de Horario"
+
 msgid "Call"
 msgid_plural "Calls"
 msgstr[0] "Llamada"
@@ -800,6 +805,9 @@ msgstr ""
 msgid "Enabled"
 msgstr "Activado"
 
+msgid "End date"
+msgstr "Fecha fin"
+
 msgid "End time"
 msgstr "Fecha fin"
 
@@ -909,8 +917,8 @@ msgstr "DDI de salida alternativo"
 
 msgid "Fax"
 msgid_plural "Faxes"
-msgstr[0] "Fax Virtual"
-msgstr[1] "Faxes Virtuales"
+msgstr[0] "Fax"
+msgstr[1] "Faxes"
 
 msgid "Fax Notification"
 msgid_plural "Fax Notifications"
@@ -950,6 +958,12 @@ msgstr "Fichero parcialmente importado"
 
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
+
+msgid "Filter's Out of schedule Locution"
+msgstr "Usar locucion Fuera Horario del filtro"
+
+msgid "Filter's Out of schedule Routing"
+msgstr "Usar enrutado Fuera Horario del filtro"
 
 msgid "Filtering info"
 msgstr "Información de filtrado"
@@ -2204,6 +2218,9 @@ msgstr[1] "Patrones de destino"
 msgid "Routing tools"
 msgstr "Herramientas de encaminamiento"
 
+msgid "Rule"
+msgstr "Regla"
+
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
 msgstr ""
@@ -2330,6 +2347,9 @@ msgstr "Plantilla específica"
 
 msgid "Specific URL Pattern"
 msgstr "Patrón de URL específica"
+
+msgid "Start date"
+msgstr "Fecha de inicio"
 
 msgid "Start time"
 msgstr "Tiempo de inicio"
@@ -2505,6 +2525,14 @@ msgid ""
 msgstr ""
 "Este DDI se empleará si el mostrado por el friend no coincide con ninguno de "
 "la compañía."
+
+msgid ""
+"This assignment has no functional purpose, it is just for DDI Provider <-> "
+"DDI navigation in some brand level sections."
+msgstr ""
+"Esta asociación no tiene implicaciones funcionales, es únicamente para poder "
+"navegar cómodamente entre DDIs y proveedores de DDIs en algunas secciones de "
+"marca."
 
 msgid ""
 "This importer expects values to be within quotation marks and separated by "

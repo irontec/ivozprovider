@@ -1,6 +1,6 @@
 Feature: Retrieve terminals
   In order to manage terminals
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -50,7 +50,7 @@ Feature: Retrieve terminals
           "allowAudio": "alaw",
           "allowVideo": null,
           "directMediaMethod": "invite",
-          "password": "****",
+          "password": "AUfVkn498_",
           "mac": "",
           "lastProvisionDate": null,
           "id": 1,

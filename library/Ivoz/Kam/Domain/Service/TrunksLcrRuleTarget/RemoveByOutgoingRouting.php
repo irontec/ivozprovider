@@ -56,6 +56,8 @@ class RemoveByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
      * @see TrunksLcrRuleTargetDoctrineRepository::findOrphanLcrRules()
      *
      * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return void
      */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {

@@ -55,31 +55,49 @@ class EntityWasCreated implements EntityEventInterface
         $this->microtime = intval((microtime(true) - time()) * 10000);
     }
 
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getEntityClass()
     {
         return $this->entityClass;
     }
 
+    /**
+     * @return int
+     */
     public function getEntityId()
     {
         return $this->entityId;
     }
 
+    /**
+     * @return array
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getOccurredOn()
     {
         return clone $this->occurredOn;
     }
 
+    /**
+     * @return int
+     */
     public function getMicrotime()
     {
         return $this->microtime;

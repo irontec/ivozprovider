@@ -1,6 +1,6 @@
 Feature: Retrieve Ddis
   In order to manage Ddis
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -16,7 +16,6 @@ Feature: Retrieve Ddis
       [
           {
               "ddi": "123",
-              "ddie164": "+34123",
               "routeType": null,
               "id": 1
           }
@@ -34,11 +33,9 @@ Feature: Retrieve Ddis
     """
       {
           "ddi": "123",
-          "ddie164": "+34123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "billInboundCalls": false,
           "friendValue": "",
           "id": 1,
           "company": "~",
@@ -53,7 +50,7 @@ Feature: Retrieve Ddis
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -64,6 +61,7 @@ Feature: Retrieve Ddis
               }
           },
           "residentialDevice": null,
-          "conditionalRoute": null
+          "conditionalRoute": null,
+          "retailAccount": null
       }
     """

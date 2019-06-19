@@ -1,6 +1,6 @@
 Feature: Retrieve conditional routes
   In order to manage conditional routes
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema

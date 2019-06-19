@@ -31,6 +31,9 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(DomainInterface $entity)
     {
         /** @var FriendInterface[] $friends */
@@ -64,6 +67,9 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
         $this->entityPersister->dispatchQueued();
     }
 
+    /**
+     * @return void
+     */
     private function updateEndpoint(PsEndpointInterface $endpoint, $fromdomain)
     {
         /** @var PsEndpointDto $endpointDto */

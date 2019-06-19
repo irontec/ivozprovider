@@ -40,6 +40,8 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
 
     /**
      * @throws \Exception
+     *
+     * @return void
      */
     public function execute(FaxesInOutInterface $entity)
     {

@@ -21,6 +21,10 @@ class DateTimeHelper
             $initialTimeZone
         );
 
+        if (!$dateTime) {
+            throw new \RuntimeException($value . ' is not a valid datetime');
+        }
+
         $utcDateTime = self::ensureUTC($dateTime);
 
         return $utcDateTime->format($format);
@@ -29,6 +33,8 @@ class DateTimeHelper
     /**
      * @param mixed $value
      * @param mixed $defaultValue
+     *
+     * @return null|false|\DateTime
      */
     public static function createOrFix($value = null, $defaultValue = null)
     {
@@ -156,6 +162,8 @@ class DateTimeHelper
 
     /**
      * @param string $value with chinese/mysql format
+     *
+     * @return false|\DateTime
      */
     protected static function createFromString(string $value)
     {
@@ -184,7 +192,7 @@ class DateTimeHelper
         );
     }
 
-    protected static function getCurrentUtcDateTime()
+    protected static function getCurrentUtcDateTime(): \DateTime
     {
         $dateTime = new \DateTime(
             null,

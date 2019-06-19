@@ -11,7 +11,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
@@ -56,7 +56,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

@@ -1,5 +1,10 @@
 Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    trunksCdr_callid_direction:
+      columns:
+        - callid
+        - direction
   indexes:
     trunksCdr_start_time_idx:
       columns:

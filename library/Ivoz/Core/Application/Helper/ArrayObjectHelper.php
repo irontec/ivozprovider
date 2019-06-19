@@ -4,7 +4,7 @@ namespace Ivoz\Core\Application\Helper;
 
 class ArrayObjectHelper
 {
-    public static function parseResurively(\ArrayObject $object)
+    public static function parseResurively(\ArrayObject $object): array
     {
         $response = [];
         foreach ($object as $key => $value) {

@@ -1,6 +1,6 @@
 Feature: Create call forward setting
   In order to manage call forward settings
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -19,7 +19,7 @@ Feature: Create call forward setting
         "user": 2,
         "extension": null,
         "voiceMailUser": null,
-        "numberCountry": 1,
+        "numberCountry": 68,
         "enabled": true
       }
     """
@@ -39,7 +39,7 @@ Feature: Create call forward setting
           "user": 2,
           "extension": null,
           "voiceMailUser": null,
-          "numberCountry": 1,
+          "numberCountry": 68,
           "residentialDevice": null,
           "retailAccount": null
       }
@@ -68,7 +68,7 @@ Feature: Create call forward setting
           "numberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

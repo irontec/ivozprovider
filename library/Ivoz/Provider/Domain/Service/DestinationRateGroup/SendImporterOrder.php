@@ -42,6 +42,8 @@ class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInte
 
     /**
      * @param DestinationRateGroupInterface $entity
+     *
+     * @return void
      */
     public function execute(DestinationRateGroupInterface $entity)
     {

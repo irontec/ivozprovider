@@ -55,7 +55,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     protected $entityUpdater;
 
     /**
-     * @var bool
+     * @var EntityInterface | null
      */
     protected $rootEntity;
 
@@ -183,6 +183,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     public function remove(EntityInterface $entity)
     {
+        $alreadyRemoved = $entity->hasBeenDeleted();
+        if ($alreadyRemoved) {
+            return;
+        }
+
         $transaction = function () use ($entity) {
 
             $dependantEntities = $this->getDependantEntities($entity);
@@ -236,6 +241,9 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->em->flush();
     }
 
+    /**
+     * @return void
+     */
     private function transactional(EntityInterface $entity, callable $transaction)
     {
         try {
@@ -249,6 +257,9 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
     }
 
+    /**
+     * @return void
+     */
     private function runTransactional(EntityInterface $entity, callable $transaction)
     {
         if ($this->rootEntity instanceof EntityInterface) {
@@ -291,7 +302,10 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->rootEntity = null;
     }
 
-    private function getDependantEntities(EntityInterface $entity)
+    /**
+     * @return array
+     */
+    private function getDependantEntities(EntityInterface $entity): array
     {
         $dependantEntities = [];
         $entityClass = EntityClassHelper::getEntityClass($entity);

@@ -1,6 +1,6 @@
 Feature: Retrieve callForwardSetting
   In order to manage call forward setting
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -68,7 +68,7 @@ Feature: Retrieve callForwardSetting
           "numberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

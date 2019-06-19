@@ -6,7 +6,7 @@ mapeo a base de datos a partir de ahora). Consulté la sección migrations antes
 
 Estos son los comandos disponibles actualmente:
 
-    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/scheme$ bin/console | grep provider
+    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/schema$ bin/console | grep provider
     provider:clear:interfaces               [clear:provider:interfaces] Generates empty entity interfaces from your mapping information
     provider:generate:dtos                  [generate:provider:dtos] Generates DTOs from your mapping information
     provider:generate:entities              [generate:provider:entities] Generates entity from your mapping information
@@ -27,7 +27,7 @@ manualmente.
 Para evitar errores, existe un pequeño script de shell que ejecuta los distintos generados en un orden concreto
 que busca minimizar errores:
 
-    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/scheme$ bin/run-generators Ast Kam Cgr Provider
+    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/schema$ bin/run-generators Ast Kam Cgr Provider
 
 Este script requiere al menos un argumento.
 

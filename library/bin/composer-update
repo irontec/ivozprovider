@@ -24,7 +24,7 @@ pushd /opt/irontec/ivozprovider/microservices/scheduler
     rm -fr composer.lock vendor
 popd
 
-pushd /opt/irontec/ivozprovider/scheme
+pushd /opt/irontec/ivozprovider/schema
     rm -fr composer.lock vendor
 popd
 

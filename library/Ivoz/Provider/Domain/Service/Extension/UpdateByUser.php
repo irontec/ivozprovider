@@ -35,6 +35,9 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(UserInterface $user)
     {
         $extension = $user->getExtension();

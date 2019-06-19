@@ -19,30 +19,4 @@ class TransformationRuleDoctrineRepository extends ServiceEntityRepository imple
     {
         parent::__construct($registry, TransformationRule::class);
     }
-
-    /**
-     * @param array $criteria
-     * @return mixed
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     *
-     * @deprecated dead code
-     */
-    public function countByCriteria(array $criteria)
-    {
-        $alias = 'TransformationRules';
-        $qb = $this->createQueryBuilder($alias);
-        $qb->select('count('. $alias .')');
-
-        foreach ($criteria as $field => $value) {
-            $normalizedField = $alias . '.' . $field;
-            $qb->andWhere(
-                $qb->expr()->eq($normalizedField, $value)
-            );
-        }
-
-        return $qb
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
 }

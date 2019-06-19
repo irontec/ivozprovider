@@ -13,8 +13,6 @@ Feature: Manage brands
       {
         "name": "api_brand",
         "domainUsers": "sip-api.irontec.com",
-        "recordingsLimitMB": 10,
-        "recordingsLimitEmail": "mikel@irontec.com",
         "invoice": {
           "nif": "123",
           "postalAddress": "",
@@ -24,7 +22,7 @@ Feature: Manage brands
           "country": "Spain",
           "registryData": "registryData"
         },
-        "defaultTimezone": 1
+        "defaultTimezone": 145
       }
     """
     Then the response status code should be 201
@@ -35,8 +33,6 @@ Feature: Manage brands
       {
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
-          "recordingsLimitMB": 10,
-          "recordingsLimitEmail": "mikel@irontec.com",
           "maxCalls": 0,
           "id": 3,
           "logo": {
@@ -53,9 +49,8 @@ Feature: Manage brands
               "country": "Spain",
               "registryData": "registryData"
           },
-          "domain": 7,
           "language": null,
-          "defaultTimezone": 1
+          "defaultTimezone": 145
       }
     """
 
@@ -71,8 +66,6 @@ Feature: Manage brands
       {
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
-          "recordingsLimitMB": 10,
-          "recordingsLimitEmail": "mikel@irontec.com",
           "maxCalls": 0,
           "id": 3,
           "logo": {
@@ -89,22 +82,79 @@ Feature: Manage brands
               "country": "Spain",
               "registryData": "registryData"
           },
-          "domain": {
-              "domain": "sip-api.irontec.com",
-              "pointsTo": "proxyusers",
-              "description": "api_brand proxyusers domain",
-              "id": 7
-          },
           "language": null,
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
-              "id": 1,
+              "id": 145,
               "label": {
                   "en": "en",
                   "es": "es"
               },
-              "country": 1
+              "country": 68
           }
+      }
+    """
+
+  @createSchema
+  Scenario: Create a brand with logo
+    Given I add Authorization header
+    When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" multipart request to "/brands" with body:
+    """
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="brand"
+
+      {
+        "name": "api_brand",
+        "domainUsers": "sip-api.irontec.com",
+        "recordingsLimitMB": 10,
+        "recordingsLimitEmail": "mikel@irontec.com",
+        "invoice": {
+          "nif": "123",
+          "postalAddress": "",
+          "postalCode": "48971",
+          "town": "Bilbo",
+          "province": "Bizkaia",
+          "country": "Spain",
+          "registryData": "registryData"
+        },
+        "defaultTimezone": 145
+      }
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="Logo"; filename="uploadable"
+Content-Type: text/plain
+
+This is file content
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the JSON should be equal to:
+    """
+      {
+          "name": "api_brand",
+          "domainUsers": "sip-api.irontec.com",
+          "maxCalls": 0,
+          "id": 3,
+          "logo": {
+              "fileSize": 20,
+              "mimeType": "text\/plain; charset=us-ascii",
+              "baseName": "uploadable"
+          },
+          "invoice": {
+              "nif": "123",
+              "postalAddress": "",
+              "postalCode": "48971",
+              "town": "Bilbo",
+              "province": "Bizkaia",
+              "country": "Spain",
+              "registryData": "registryData"
+          },
+          "language": null,
+          "defaultTimezone": 145
       }
     """

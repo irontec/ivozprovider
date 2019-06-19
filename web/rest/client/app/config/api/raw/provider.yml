@@ -2,12 +2,21 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -15,6 +24,7 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -22,6 +32,7 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
   collectionOperations:
     post: ~
@@ -35,7 +46,61 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
     read_access_control:
       inherited:
         callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+    write_access_control:
+      inherited:
+        callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
         matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+
+Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
+  properties:
+    lastExecution:
+      attributes:
+        swagger_context:
+          readOnly: true
+    lastExecutionError:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - company:
+              eq: "user.getCompany().getId()"
+        - or:
+          - inherited:
+              callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+          - callCsvNotificationTemplate:
+              isNull: ~
+
+Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - company:
+              eq: "user.getCompany().getId()"
+        - or:
+          - inherited:
+              callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
+          - callCsvScheduler:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
@@ -44,17 +109,92 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         user:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
+        - or:
+          - inherited:
+              user: 'Ivoz\Provider\Domain\Model\User\User'
+          - inherited:
+              residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+          - inherited:
+              retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+    write_access_control:
+      ROLE_COMPANY_USER:
         user:
-          in: "userRepository.getSupervisedUserIdsByAdmin(user)"
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+      - or:
+        - inherited:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+        - user:
+            isNull: ~
+      - or:
+        - inherited:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+        - residentialDevice:
+            isNull: ~
+      - or:
+        - inherited:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+        - retailAccount:
+            isNull: ~
+      - or:
+        - inherited:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+        - extension:
+            isNull: ~
+      - or:
+        - inherited:
+            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+        - voiceMailUser:
+            isNull: ~
+
 Ivoz\Provider\Domain\Model\Company\Company:
-  itemOperations: []
-  collectionOperations: []
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
+    domainUsers:
+      attributes:
+        swagger_context:
+          readOnly: true
+    nif:
+      attributes:
+        swagger_context:
+          readOnly: true
+    onDemandRecordCode:
+      attributes:
+        swagger_context:
+          readOnly: true
+    balance:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
+        id:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+            - id:
+                eq: "user.getCompany().getId()"
+        - or:
+            - inherited:
+                outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+            - outgoingDdi:
+                isNull: ~
+        - or:
+          - inherited:
+              outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+          - outgoingDdiRule:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -62,19 +202,101 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - extension:
+              isNull: ~
+        - or:
+          - inherited:
+              huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+          - huntGroup:
+              isNull: ~
+        - or:
+          - inherited:
+              user: 'Ivoz\Provider\Domain\Model\User\User'
+          - user:
+              isNull: ~
+        - or:
+          - inherited:
+              queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+          - queue:
+              isNull: ~
+        - or:
+          - inherited:
+              locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - locution:
+              isNull: ~
+        - or:
+          - inherited:
+              conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+          - conferenceRoom:
+              isNull: ~
+        - or:
+          - inherited:
+              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+          - ivr:
+              isNull: ~
+        - or:
+          - inherited:
+              voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - voicemailUser:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       inherited:
         conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+    write_access_control:
+      - and:
+        - inherited:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inherited:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+        - extension:
+            isNull: ~
+      - or:
+        - inherited:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+        - huntGroup:
+            isNull: ~
+      - or:
+        - inherited:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+        - user:
+            isNull: ~
+      - or:
+        - inherited:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+        - queue:
+            isNull: ~
+      - or:
+        - inherited:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+        - locution:
+            isNull: ~
+      - or:
+        - inherited:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+        - conferenceRoom:
+            isNull: ~
+
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
   collectionOperations:
     get:
@@ -89,6 +311,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
     read_access_control:
       inherited:
         matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    write_access_control:
+      inherited:
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
   collectionOperations:
     get:
@@ -102,7 +329,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRou
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       inherited:
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    write_access_control:
+      inherited:
         condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
   collectionOperations:
     get:
@@ -117,6 +349,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
     read_access_control:
       inherited:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    write_access_control:
+      inherited:
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock:
   collectionOperations:
     get:
@@ -129,6 +366,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
     read_access_control:
       inherited:
         routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
+    write_access_control:
+      inherited:
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+        routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
+
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -136,6 +378,7 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
 Ivoz\Provider\Domain\Model\Country\Country:
@@ -144,28 +387,175 @@ Ivoz\Provider\Domain\Model\Country\Country:
   collectionOperations:
     get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
+      inherited:
+        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              user: 'Ivoz\Provider\Domain\Model\User\User'
+          - user:
+              isNull: ~
+        - or:
+          - inherited:
+              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+          - ivr:
+              isNull: ~
+        - or:
+          - inherited:
+              huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+          - huntGroup:
+              isNull: ~
+        - or:
+          - inherited:
+              fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+          - fax:
+              isNull: ~
+        - or:
+          - inherited:
+              conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+          - conferenceRoom:
+              isNull: ~
+        - or:
+          - inherited:
+              queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+          - queue:
+              isNull: ~
+        - or:
+          - inherited:
+              retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+          - retailAccount:
+              isNull: ~
+        - or:
+          - inherited:
+              residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+          - residentialDevice:
+              isNull: ~
+        - or:
+          - inherited:
+              conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+          - conditionalRoute:
+              isNull: ~
+        - or:
+          - inherited:
+              externalCallFilter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+          - externalCallFilter:
+              isNull: ~
+  properties:
+    ddi:
+      attributes:
+        swagger_context:
+          readOnly: true
+    country:
+      attributes:
+        swagger_context:
+          readOnly: true
+
 Ivoz\Provider\Domain\Model\Extension\Extension:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+          - huntGroup:
+              isNull: ~
+        - or:
+          - inherited:
+              user: 'Ivoz\Provider\Domain\Model\User\User'
+          - user:
+              isNull: ~
+        - or:
+          - inherited:
+              queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+          - queue:
+              isNull: ~
+        - or:
+          - inherited:
+              conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+          - conditionalRoute:
+              isNull: ~
+        - or:
+          - inherited:
+              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+          - ivr:
+              isNull: ~
+        - or:
+          - inherited:
+              conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+          - conferenceRoom:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
+      inherited:
+        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - welcomeLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              outOfScheduleLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - outOfScheduleLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              holidayExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - holidayExtension:
+              isNull: ~
+        - or:
+          - inherited:
+              outOfScheduleExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - outOfScheduleExtension:
+              isNull: ~
+        - or:
+          - inherited:
+              holidayVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - holidayVoiceMailUser:
+              isNull: ~
+        - or:
+          - inherited:
+              outOfScheduleVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - outOfScheduleVoiceMailUser:
+              isNull: ~
+        - or:
+          - inherited:
+              holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - holidayLocution:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
   collectionOperations:
     get:
@@ -180,6 +570,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackLi
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
   collectionOperations:
     get:
@@ -194,6 +589,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCa
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
   collectionOperations:
     get:
@@ -208,6 +608,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSc
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+
 Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
   collectionOperations:
     get:
@@ -222,6 +627,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteLi
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+
 Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   itemOperations:
     get: ~
@@ -232,6 +642,7 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
     read_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+
 Ivoz\Provider\Domain\Model\Fax\Fax:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -239,14 +650,26 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+            - inherited:
+                company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+            - inherited:
+                outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+            - outgoingDdi:
+                isNull: ~
+
 Ivoz\Provider\Domain\Model\Feature\Feature:
   itemOperations: []
   collectionOperations: []
+
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  itemOperations:
+    get: ~
   collectionOperations:
     get:
-      depth: 1
-    post:
       depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -254,6 +677,10 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Friend\Friend:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -261,25 +688,111 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inherited:
+            interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - interCompany:
+            isNull: ~
+      - or:
+        - inherited:
+            callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+        - callAcl:
+            isNull: ~
+      - or:
+        - inherited:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+        - outgoingDdi:
+            isNull: ~
+      - or:
+        - inherited:
+            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - transformationRuleSet:
+            isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'friends/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'friends/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
+
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       inherited:
         friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       inherited:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+        - or:
+          - inherited:
+              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - extension:
+              isNull: ~
+        - or:
+          - inherited:
+              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - voiceMailUser:
+              isNull: ~
+        - or:
+          - inherited:
+              locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - locution:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
+      inherited:
+        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              noAnswerLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - noAnswerLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              noAnswerExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - noAnswerExtension:
+              isNull: ~
+        - or:
+          - inherited:
+              noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - noAnswerVoiceMailUser:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
   collectionOperations:
     get:
@@ -294,26 +807,109 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
     read_access_control:
       inherited:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+    write_access_control:
+      inherited:
+        user: 'Ivoz\Provider\Domain\Model\User\User'
+        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  itemOperations: []
+  collectionOperations: []
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       inherited:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+        - or:
+          - inherited:
+              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - extension:
+              isNull: ~
+        - or:
+          - inherited:
+              welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - welcomeLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+          - conditionalRoute:
+              isNull: ~
+        - or:
+          - inherited:
+              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - voiceMailUser:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
+        inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              errorExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - errorExtension:
+              isNull: ~
+        - or:
+          - inherited:
+              errorLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - errorLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - welcomeLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              noInputLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - noInputLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              successLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - successLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              noInputVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - noInputVoiceMailUser:
+              isNull: ~
+        - or:
+          - inherited:
+              errorVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - errorVoiceMailUser:
+              isNull: ~
+        - or:
+          - inherited:
+              noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - noInputExtension:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
   collectionOperations:
     get:
@@ -328,6 +924,11 @@ Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
     read_access_control:
       inherited:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+    write_access_control:
+      inherited:
+        ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+        extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+
 Ivoz\Provider\Domain\Model\Language\Language:
   itemOperations:
     get: ~
@@ -336,6 +937,7 @@ Ivoz\Provider\Domain\Model\Language\Language:
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Language\Name:
+
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -343,6 +945,20 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
+Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        - or:
+          - brand:
+              eq: "user.getCompany().getBrand().getId()"
+          - brand:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -357,26 +973,25 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       inherited:
         matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    write_access_control:
+      matchList:
+        in: 'matchListRepository.getIdsByCompanyId(user.getCompany().getId())'
+
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        or:
-          - brand:
-              isNull: ~
-          - company:
-              eq: "user.getCompany().getId()"
-    write_access_control:
-      ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -384,6 +999,16 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+          - inherited:
+              forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+          - forcedDdi:
+              isNull: ~
+
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   collectionOperations:
     get:
@@ -398,6 +1023,20 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
     read_access_control:
       inherited:
         outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+    write_access_control:
+      - and:
+          - inherited:
+              outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+      - or:
+        - inherited:
+            matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+        - matchList:
+            isNull: ~
+      - or:
+          - inherited:
+              forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+          - forcedDdi:
+              isNull: ~
 
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   attributes:
@@ -406,6 +1045,7 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
   collectionOperations:
     get:
@@ -420,6 +1060,11 @@ Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
     read_access_control:
       inherited:
         pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
+    write_access_control:
+      inherited:
+        user: 'Ivoz\Provider\Domain\Model\User\User'
+        pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
+
 Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
   collectionOperations:
     get:
@@ -434,16 +1079,69 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
     read_access_control:
       inherited:
         queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+    write_access_control:
+      inherited:
+        user: 'Ivoz\Provider\Domain\Model\User\User'
+        queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+
 Ivoz\Provider\Domain\Model\Queue\Queue:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+            - inherited:
+                company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              periodicAnnounceLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - periodicAnnounceLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              timeoutLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - timeoutLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              timeoutExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - timeoutExtension:
+              isNull: ~
+        - or:
+          - inherited:
+              timeoutVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - timeoutVoiceMailUser:
+              isNull: ~
+        - or:
+          - inherited:
+              fullLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - fullLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              fullExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - fullExtension:
+              isNull: ~
+        - or:
+          - inherited:
+              fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+          - fullVoiceMailUser:
+              isNull: ~
+
+Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
-  attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Recording\Recording:
   itemOperations:
     get: ~
@@ -455,6 +1153,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -462,6 +1161,40 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inherited:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+        - outgoingDdi:
+            isNull: ~
+      - or:
+        - inherited:
+            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - transformationRuleSet:
+            isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'residential_devices/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'residential_devices/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
+
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -469,6 +1202,40 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+          - inherited:
+              outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+          - outgoingDdi:
+              isNull: ~
+      - or:
+        - inherited:
+            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+        - transformationRuleSet:
+            isNull: ~
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'retail_accounts/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'retail_accounts/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
+
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -476,9 +1243,7 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
-  attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -486,6 +1251,7 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\Service\Service:
   itemOperations:
     get: ~
@@ -493,13 +1259,34 @@ Ivoz\Provider\Domain\Model\Service\Service:
     get: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'terminals/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'terminals/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   itemOperations:
     get: ~
@@ -507,13 +1294,43 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
     get: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
     get: ~
   collectionOperations:
     get: ~
   attributes:
+    pagination_client_enabled: true
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+      ROLE_COMPANY_USER:
+        raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
+  access_control: '"ROLE_COMPANY_ADMIN" in roles'
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        - or:
+          - brand:
+              eq: "user.getCompany().getBrand().getId()"
+          - brand:
+              isNull: ~
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\User\User:
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
@@ -524,3 +1341,51 @@ Ivoz\Provider\Domain\Model\User\User:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_USER:
+        id:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - or:
+          - inherited:
+              callACL: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+          - callACL:
+              isNull: ~
+        - or:
+          - inherited:
+              bossAssistant: 'Ivoz\Provider\Domain\Model\User\User'
+          - bossAssistant:
+              isNull: ~
+        - or:
+          - inherited:
+              outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+          - outgoingDdiRule:
+              isNull: ~
+        - or:
+          - inherited:
+              voicemailLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+          - voicemailLocution:
+              isNull: ~
+        - or:
+          - inherited:
+              bossAssistantWhiteList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+          - bossAssistantWhiteList:
+              isNull: ~
+        - or:
+          - inherited:
+              terminal: 'Ivoz\Provider\Domain\Model\Terminal\Terminal'
+          - terminal:
+              isNull: ~
+        - or:
+          - inherited:
+              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+          - extension:
+              isNull: ~
+        - or:
+          - inherited:
+              outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+          - outgoingDdi:
+              isNull: ~

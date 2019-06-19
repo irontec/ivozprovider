@@ -1,6 +1,6 @@
 Feature: Update IVRs
   In order to manage IVRs
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -29,8 +29,8 @@ Feature: Update IVRs
           "errorExtension": null,
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
-          "noInputNumberCountry": 1,
-          "errorNumberCountry": 1
+          "noInputNumberCountry": 68,
+          "errorNumberCountry": 68
       }
     """
     Then the response status code should be 200
@@ -53,25 +53,13 @@ Feature: Update IVRs
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "distributeMethod": "hash",
-              "maxCalls": 0,
-              "postalAddress": "Company Address",
-              "postalCode": "54321",
-              "town": "Company Town",
-              "province": "Company Province",
-              "countryName": "Company Country",
-              "ipfilter": false,
-              "onDemandRecord": 0,
               "onDemandRecordCode": "",
-              "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "billingMethod": "prepaid",
               "balance": 1.2,
               "id": 1,
               "language": 1,
-              "defaultTimezone": 1,
-              "country": 1,
+              "defaultTimezone": 145,
+              "country": 68,
+              "transformationRuleSet": 1,
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
@@ -86,7 +74,7 @@ Feature: Update IVRs
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -104,7 +92,7 @@ Feature: Update IVRs
               },
               "originalFile": {
                   "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
+                  "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
               },
               "company": 1
@@ -116,7 +104,7 @@ Feature: Update IVRs
           "noInputNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"
@@ -129,7 +117,7 @@ Feature: Update IVRs
           "errorNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

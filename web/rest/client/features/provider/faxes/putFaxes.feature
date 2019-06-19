@@ -1,6 +1,6 @@
 Feature: Update faxes
   In order to manage faxes
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -31,11 +31,9 @@ Feature: Update faxes
           "company": "~",
           "outgoingDdi": {
               "ddi": "123",
-              "ddie164": "+34123",
               "recordCalls": "none",
               "displayName": "",
               "routeType": null,
-              "billInboundCalls": false,
               "friendValue": "",
               "id": 1,
               "company": 1,
@@ -47,7 +45,7 @@ Feature: Update faxes
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "country": 1,
+              "country": 68,
               "residentialDevice": null,
               "conditionalRoute": null,
               "retailAccount": null

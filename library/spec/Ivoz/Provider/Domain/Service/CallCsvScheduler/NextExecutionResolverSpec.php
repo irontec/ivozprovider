@@ -106,7 +106,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
                 $scheduler,
                 $schedulerDto
             )
-            ->willReturn(null);
+            ->willReturn($scheduler);
     }
 
 
@@ -143,6 +143,6 @@ class NextExecutionResolverSpec extends ObjectBehavior
                 $scheduler,
                 $schedulerDto
             )
-            ->willReturn(null);
+            ->willReturn($scheduler);
     }
 }

@@ -1,6 +1,6 @@
 Feature: Create IVR excluded extensions
   In order to manage IVR excluded extensions
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -42,7 +42,7 @@ Feature: Create IVR excluded extensions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "extension": {
@@ -93,7 +93,7 @@ Feature: Create IVR excluded extensions
               "errorExtension": null,
               "noInputVoiceMailUser": null,
               "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 1,
+              "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
           "extension": {

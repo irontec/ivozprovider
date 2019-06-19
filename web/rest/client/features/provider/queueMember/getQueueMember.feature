@@ -1,6 +1,6 @@
 Feature: Retrieve queue members
   In order to manage queue members
-  As an super admin
+  As a client admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -39,8 +39,8 @@ Feature: Retrieve queue members
                   "fullLocution": 1,
                   "fullExtension": null,
                   "fullVoiceMailUser": null,
-                  "timeoutNumberCountry": 1,
-                  "fullNumberCountry": 1
+                  "timeoutNumberCountry": 68,
+                  "fullNumberCountry": 68
               },
               "user": {
                   "name": "Alice",
@@ -55,17 +55,18 @@ Feature: Retrieve queue members
                   "voicemailEnabled": true,
                   "voicemailSendMail": true,
                   "voicemailAttachSound": true,
-                  "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+                  "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
                   "gsQRCode": false,
                   "id": 1,
                   "company": 1,
                   "callAcl": null,
                   "bossAssistant": null,
                   "bossAssistantWhiteList": null,
+                  "transformationRuleSet": 1,
                   "language": null,
                   "terminal": 1,
                   "extension": null,
-                  "timezone": 1,
+                  "timezone": 145,
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
                   "voicemailLocution": null
@@ -108,8 +109,8 @@ Feature: Retrieve queue members
               "fullLocution": 1,
               "fullExtension": null,
               "fullVoiceMailUser": null,
-              "timeoutNumberCountry": 1,
-              "fullNumberCountry": 1
+              "timeoutNumberCountry": 68,
+              "fullNumberCountry": 68
           },
           "user": {
               "name": "Alice",
@@ -124,17 +125,18 @@ Feature: Retrieve queue members
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
+              "transformationRuleSet": 1,
               "language": null,
               "terminal": 1,
               "extension": null,
-              "timezone": 1,
+              "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null

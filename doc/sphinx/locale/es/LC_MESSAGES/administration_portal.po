@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-25 16:46+0200\n"
+"POT-Creation-Date: 2019-06-19 10:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,6 +32,7 @@ msgstr ""
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:12
 #: ../../administration_portal/brand/billing/rating_plans.rst:17
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:21
 #: ../../administration_portal/brand/clients/residential.rst:30
 #: ../../administration_portal/brand/clients/retail.rst:57
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:11
@@ -44,7 +45,6 @@ msgstr ""
 #: ../../administration_portal/brand/settings/notification_templates.rst:33
 #: ../../administration_portal/brand/settings/numeric_transformations.rst:93
 #: ../../administration_portal/client/residential/external_call_filters.rst:16
-#: ../../administration_portal/client/residential/faxes.rst:24
 #: ../../administration_portal/client/residential/residential_devices.rst:43
 #: ../../administration_portal/client/retail/retail_accounts.rst:43
 #: ../../administration_portal/client/vpbx/faxes.rst:24
@@ -53,7 +53,7 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/routing_endpoints/hunt_groups.rst:13
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:21
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:26
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:16
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:17
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:21
 #: ../../administration_portal/client/vpbx/terminals.rst:15
@@ -117,12 +117,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:31
-#: ../../administration_portal/brand/calls/billable_calls.rst:47
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:47
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:47
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:47
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:47
-#: ../../administration_portal/platform/billable_calls.rst:47
+#: ../../administration_portal/platform/external_calls.rst:47
 msgid "Destination"
 msgstr ""
 
@@ -366,7 +361,7 @@ msgstr ""
 #: ../../administration_portal/brand/billing/index.rst:15
 msgid ""
 "Once a call that implies cost is hung up and is parsed by an asynchronous"
-" process, it is listed in :ref:`billable_calls`."
+" process, it is listed in :ref:`external_calls`."
 msgstr ""
 
 #: ../../administration_portal/brand/billing/index.rst:19
@@ -670,479 +665,32 @@ msgid ""
 "This way, we can be sure that the configuration is ok."
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:5
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:5
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:5
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:5
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:5
-#: ../../administration_portal/platform/billable_calls.rst:5
-msgid "Billable calls"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:7
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:7
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:7
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:7
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:7
-#: ../../administration_portal/platform/billable_calls.rst:7
-msgid ""
-"**Billable calls** section only lists **calls that imply cost for "
-"clients**, usually external outgoing calls."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:9
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:9
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:9
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:9
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:9
-#: ../../administration_portal/platform/billable_calls.rst:9
-msgid "This section is shown at different levels:"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:11
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:11
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:11
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:11
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:11
-#: ../../administration_portal/platform/billable_calls.rst:11
-msgid "Main level (god level)"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:13
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:13
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:13
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:13
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:13
-#: ../../administration_portal/platform/billable_calls.rst:13
-msgid "Brand level (filtered for emulated/logged brand)."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:15
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:15
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:15
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:15
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:15
-#: ../../administration_portal/platform/billable_calls.rst:15
-msgid "Client level (filtered for emulated/logged client)."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:17
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:17
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:17
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:17
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:17
-#: ../../administration_portal/platform/billable_calls.rst:17
-msgid "Each entry shows this information:"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:20
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:20
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:20
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:20
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:20
-#: ../../administration_portal/platform/billable_calls.rst:20
-msgid "Start time"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:22
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:22
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:22
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:22
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:22
-#: ../../administration_portal/platform/billable_calls.rst:22
-msgid "Date and time of the call establishment."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:23
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:23
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:23
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:23
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:23
-#: ../../administration_portal/platform/billable_calls.rst:23
-#: ../../administration_portal/platform/currencies.rst:11
-msgid "Brand"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:25
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:25
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:25
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:25
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:25
-#: ../../administration_portal/platform/billable_calls.rst:25
-msgid "Only visible for *god*, shows the brand of each call."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:26
-#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:13
-#: ../../administration_portal/brand/invoicing/invoices.rst:24
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:12
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:26
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:26
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:26
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:26
-#: ../../administration_portal/platform/billable_calls.rst:26
-#: ../../administration_portal/platform/currencies.rst:14
-msgid "Client"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:28
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:28
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:28
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:28
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:28
-#: ../../administration_portal/platform/billable_calls.rst:28
-msgid "Visible for *god* and *brand operator*, shows the client of each call."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:29
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:29
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:29
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:29
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:29
-#: ../../administration_portal/platform/billable_calls.rst:29
-msgid "Caller"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:31
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:31
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:31
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:31
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:31
-#: ../../administration_portal/platform/billable_calls.rst:31
-msgid "DDI presented for the outgoing call."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:32
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:32
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:32
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:32
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:32
-#: ../../administration_portal/platform/billable_calls.rst:32
-msgid "Callee"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:34
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:34
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:34
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:34
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:34
-#: ../../administration_portal/platform/billable_calls.rst:34
-msgid "External number dialed."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:35
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:35
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:35
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:35
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:35
-#: ../../administration_portal/platform/billable_calls.rst:35
-msgid "Duration"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:37
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:37
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:37
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:37
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:37
-#: ../../administration_portal/platform/billable_calls.rst:37
-msgid "Shows how long the call lasted."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:38
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:38
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:38
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:38
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:38
-#: ../../administration_portal/platform/billable_calls.rst:38
-msgid "Price"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:40
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:40
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:40
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:40
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:40
-#: ../../administration_portal/platform/billable_calls.rst:40
-msgid "The money amount for the client."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:41
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:41
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:41
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:41
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:41
-#: ../../administration_portal/platform/billable_calls.rst:41
-msgid "Cost"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:43
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:43
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:43
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:43
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:43
-#: ../../administration_portal/platform/billable_calls.rst:43
-msgid ""
-"The money amount for the brand (the money that the carrier will bill for "
-"the call)."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:44
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:44
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:44
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:44
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:44
-#: ../../administration_portal/platform/billable_calls.rst:44
-msgid "Rating Plan"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:46
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:46
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:46
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:46
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:46
-#: ../../administration_portal/platform/billable_calls.rst:46
-msgid "Rating plan used to set price for the call."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:49
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:49
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:49
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:49
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:49
-#: ../../administration_portal/platform/billable_calls.rst:49
-msgid "Destination that matched the call for billing."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:50
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:50
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:50
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:50
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:50
-#: ../../administration_portal/platform/billable_calls.rst:50
-#: ../../administration_portal/platform/currencies.rst:18
-msgid "Carrier"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:52
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:52
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:52
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:52
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:52
-#: ../../administration_portal/platform/billable_calls.rst:52
-msgid "Shows which :ref:`Carrier <carriers>` was used for each call."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:54
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:54
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:54
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:54
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:54
-#: ../../administration_portal/platform/billable_calls.rst:54
-msgid "Invoice"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:56
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:56
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:56
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:56
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:56
-#: ../../administration_portal/platform/billable_calls.rst:56
-msgid "Shows if a call is already included in any :ref:`Invoice <invoices>`."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:57
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:57
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:57
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:57
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:57
-#: ../../administration_portal/platform/billable_calls.rst:57
-msgid "Call ID"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:59
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:59
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:59
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:59
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:59
-#: ../../administration_portal/platform/billable_calls.rst:59
-msgid "Shows the call ID of the call for troubleshooting and CSV export."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:60
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:60
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:60
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:60
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:60
-#: ../../administration_portal/platform/billable_calls.rst:60
-msgid "Endpoint Type"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:62
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:62
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:62
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:62
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:62
-#: ../../administration_portal/platform/billable_calls.rst:62
-msgid ""
-"For retail client calls, shows \"RetailAccount\". Empty for remaining "
-"client types."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:63
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:63
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:63
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:63
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:63
-#: ../../administration_portal/platform/billable_calls.rst:63
-msgid "Endpoint Id"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:65
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:65
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:65
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:65
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:65
-#: ../../administration_portal/platform/billable_calls.rst:65
-msgid ""
-"For retail client calls, shows the retail account's id of the call. Empty"
-" for remaining client types."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:68
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:68
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:68
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:68
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:68
-#: ../../administration_portal/platform/billable_calls.rst:68
-msgid ""
-"An asynchronous process parses each billable call and adds it to this "
-"list a few minutes after call hangup."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:71
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:71
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:71
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:71
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:71
-#: ../../administration_portal/platform/billable_calls.rst:71
-msgid "Call rerating"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:73
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:73
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:73
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:73
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:73
-#: ../../administration_portal/platform/billable_calls.rst:73
-msgid ""
-"At **brand level**, there is an additional available operation: **Rerate "
-"call**. This option allows calling rating engine again for a call or a "
-"bunch of calls."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:76
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:76
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:76
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:76
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:76
-#: ../../administration_portal/platform/billable_calls.rst:76
-msgid "Notes about this rerating process:"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:78
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:78
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:78
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:78
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:78
-#: ../../administration_portal/platform/billable_calls.rst:78
-msgid ""
-"If a call is in an invoice, it cannot be rerated. Invoice must be deleted"
-" first."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:80
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:80
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:80
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:80
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:80
-#: ../../administration_portal/platform/billable_calls.rst:80
-msgid ""
-"Call will be rerated with the *Start time* of the call (no with current "
-"active rating plans, but with active rating plans on the moment of the "
-"call)."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:83
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:83
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:83
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:83
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:83
-#: ../../administration_portal/platform/billable_calls.rst:83
-msgid ""
-"Both *Price* and *Cost* will be recalculated. This may imply updating "
-"*rating plan* and *destination* too."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/billable_calls.rst:85
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:85
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:85
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:85
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:85
-#: ../../administration_portal/platform/billable_calls.rst:85
-msgid ""
-"When a call is rerated, cost and price are emptied until the next "
-"iteration of the asynchronous task."
-msgstr ""
-
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:3
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:3
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:3
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:3
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:3
 msgid "Call CSV schedulers"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:5
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:5
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:5
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:5
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:5
 msgid ""
 "This section allows programming the automatic periodical creation of CSV "
 "reports to:"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:7
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:7
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:7
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:7
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:7
 msgid "Clients (no matter type)."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:9
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:9
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:9
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:9
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:9
 msgid "Brand operators."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:11
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:11
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:11
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:11
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:11
 msgid ""
-"This section is identical to :ref:`Invoice schedulers` except to the "
-"fields that do not apply to CSVs (Invoice number sequence, Tax rate...)"
+"This section is almost identical to :ref:`Invoice schedulers` except to "
+"the fields that do not apply to CSVs (Invoice number sequence, Tax "
+"rate...)"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:14
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:14
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:14
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:14
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:14
 msgid ""
 "Brand operators can schedule a CSV containing calls of all its clients. "
 "In this kind of schedules, a notification template can be chosen. In "
@@ -1151,245 +699,382 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:18
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:18
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:18
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:18
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:18
-msgid ""
-"Apart from the fields above, everything described in :ref:`Invoice "
-"schedulers` applies here:"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:20
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:20
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:20
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:20
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:20
-msgid "Frequency/Unit configuration."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:21
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:21
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:21
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:21
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:21
-msgid "Email send."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:22
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:22
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:22
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:22
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:22
-msgid "View generated CSVs in **List of Call CSV reports**."
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:7
+msgid "When adding a new definition, these fields are shown:"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:23
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:23
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:23
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:23
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:23
-msgid "Next execution date."
+msgid "Name of the scheduled Call CSV"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:24
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:24
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:24
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:24
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:24
-msgid "Last execution date and result (success/error)."
+msgid "Call direction:"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:26
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:26
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:26
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:26
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:26
-msgid "Brand operator can generate CSV containing calls of all clients."
+msgid "Which kind of calls should be included: Inbound, outbound or both."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:27
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:13
+#: ../../administration_portal/brand/invoicing/invoices.rst:25
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:12
+#: ../../administration_portal/platform/currencies.rst:14
+#: ../../administration_portal/platform/external_calls.rst:26
+msgid "Client"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:29
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:29
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:29
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:29
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:29
-msgid "CSV fields"
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:15
+msgid "Which client calls should be included"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:31
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:31
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:31
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:31
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:31
-msgid "These are the fields of the generated CSV files:"
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:30
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:16
+#: ../../administration_portal/client/vpbx/faxes.rst:27
+#: ../../administration_portal/client/vpbx/users.rst:25
+msgid "Email"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:34
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:34
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:34
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:34
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:34
-msgid "callid"
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:32
+msgid "Send generated Call CSV via email. Empty if no automatic mail is wanted."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:33
+msgid "Notification template:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:35
+msgid "Used on email notifications"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:36
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:36
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:36
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:36
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:36
-msgid "Call-ID of the SIP dialog"
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:19
+msgid "Frequency/Unit"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:37
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:37
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:37
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:37
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:37
-msgid "startTime"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:39
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:39
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:39
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:39
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:39
-msgid "Time and date of the call establishment"
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:38
+#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:21
+msgid ""
+"Defines the frequency (once a month, every 7 days, etc.) of the "
+"programmed task"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:40
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:40
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:40
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:40
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:40
-msgid "duration"
+msgid "Once created, some new fields and subsections are accesible:"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:42
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:42
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:42
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:42
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:42
-msgid "Call duration in seconds"
+msgid "Next execution date."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:43
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:43
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:43
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:43
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:43
-msgid "caller"
+msgid "Last execution date and result (success/error)."
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:45
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:45
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:45
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:45
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:45
-msgid "Caller number in E.164 format (with '+')"
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:44
+msgid "Generated CSVs in **List of Call CSV reports**."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:46
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:46
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:46
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:46
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:46
-msgid "callee"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:48
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:48
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:48
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:48
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:48
-msgid "Callee number in E.164 format (with '+')"
+msgid "Brand operator can generate CSV containing calls of all clients."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:49
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:49
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:49
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:49
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:49
-msgid "price"
+msgid "CSV fields"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:51
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:51
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:51
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:51
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:51
-msgid "Calculated price for the given call"
+msgid "These are the fields of the generated CSV files:"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:53
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:53
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:53
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:53
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:53
-msgid "In Brand CSVs, these additional fields will be included too:"
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:54
+msgid "callid"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:56
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:56
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:56
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:56
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:56
-msgid "endpointType"
+msgid "Call-ID of the SIP dialog"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:58
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:58
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:58
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:58
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:58
-msgid "'RetailAccount' for retail clients, empty for remaining types."
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:57
+msgid "startTime"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:59
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:59
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:59
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:59
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:59
-msgid "endpointId"
+msgid "Time and date of the call establishment"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:61
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:61
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:61
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:61
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:61
-msgid "Retail Account ID for retail clients, empty for remaining types."
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:60
+msgid "duration"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:62
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:62
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:62
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:62
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:62
-msgid "cost"
+msgid "Call duration in seconds"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:64
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:64
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:64
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:64
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:64
-msgid "Calculated cost for the given call"
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:63
+msgid "caller"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:65
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:65
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:65
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:65
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:65
+msgid "Caller number in E.164 format (with '+')"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:66
+msgid "callee"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:68
+msgid "Callee number in E.164 format (with '+')"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:69
+msgid "price"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:71
+msgid "Calculated price for the given call"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:72
+msgid "direction"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:74
+msgid "call direction"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:76
+msgid "In Brand CSVs, these additional fields will be included too:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:79
+msgid "endpointType"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:81
+msgid "'RetailAccount' for retail clients, empty for remaining types."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:82
+msgid "endpointId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:84
+msgid "Retail Account ID for retail clients, empty for remaining types."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:85
+msgid "cost"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:87
+msgid "Calculated cost for the given call"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:88
 msgid "companyId"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:67
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:67
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:67
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:67
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:67
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:90
 msgid "Client ID"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:5
+msgid "External calls"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:7
+msgid ""
+"**External calls** section lists **both inbound and outbound external "
+"calls**."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:9
+msgid "This section is shown at different levels:"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:11
+msgid "Main level (god level)"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:13
+msgid "Brand level (filtered for emulated/logged brand)."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:15
+msgid "Client level (filtered for emulated/logged client)."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:17
+msgid "Each entry shows this information:"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:20
+msgid "Start time"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:22
+msgid "Date and time of the call establishment."
+msgstr ""
+
+#: ../../administration_portal/platform/currencies.rst:11
+#: ../../administration_portal/platform/external_calls.rst:23
+msgid "Brand"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:25
+msgid "Only visible for *god*, shows the brand of each call."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:28
+msgid "Visible for *god* and *brand operator*, shows the client of each call."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:29
+msgid "Caller"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:31
+msgid "DDI presented for the outgoing call."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:32
+msgid "Callee"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:34
+msgid "External number dialed."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:35
+msgid "Duration"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:37
+msgid "Shows how long the call lasted."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:38
+msgid "Price"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:40
+msgid "The money amount for the client."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:41
+msgid "Cost"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:43
+msgid ""
+"The money amount for the brand (the money that the carrier will bill for "
+"the call)."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:44
+msgid "Rating Plan"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:46
+msgid "Rating plan used to set price for the call."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:49
+msgid "Destination that matched the call for billing."
+msgstr ""
+
+#: ../../administration_portal/platform/currencies.rst:18
+#: ../../administration_portal/platform/external_calls.rst:50
+msgid "Carrier"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:52
+msgid "Shows which :ref:`Carrier <carriers>` was used for each call."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:54
+msgid "Invoice"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:56
+msgid "Shows if a call is already included in any :ref:`Invoice <invoices>`."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:57
+msgid "Call ID"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:59
+msgid "Shows the call ID of the call for troubleshooting and CSV export."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:60
+msgid "Endpoint Type"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:62
+msgid ""
+"For retail client calls, shows \"RetailAccount\". Empty for remaining "
+"client types."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:63
+msgid "Endpoint Id"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:65
+msgid ""
+"For retail client calls, shows the retail account's id of the call. Empty"
+" for remaining client types."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:68
+msgid ""
+"An asynchronous process parses each external call and adds it to this "
+"list a few minutes after call hangup. Billing related fields, such as "
+"cost and price, will be empty for external incoming calls."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:71
+msgid "Call rerating"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:73
+msgid ""
+"At **brand level**, there is an additional available operation for "
+"outbound calls: **Rerate call**. This option allows calling rating engine"
+" again for a call or a bunch of calls."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:75
+msgid "Notes about this rerating process:"
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:77
+msgid ""
+"If a call is in an invoice, it cannot be rerated. Invoice must be deleted"
+" first."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:79
+msgid ""
+"Call will be rerated with the *Start time* of the call (no with current "
+"active rating plans, but with active rating plans on the moment of the "
+"call)."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:82
+msgid ""
+"Both *Price* and *Cost* will be recalculated. This may imply updating "
+"*rating plan* and *destination* too."
+msgstr ""
+
+#: ../../administration_portal/platform/external_calls.rst:84
+msgid ""
+"When a call is rerated, cost and price are emptied until the next "
+"iteration of the asynchronous task."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/index.rst:3
@@ -2252,41 +1937,16 @@ msgid ""
 "invoices."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:7
-msgid "When adding a new definition, these fields are shown:"
-msgstr ""
-
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:12
 msgid "Name of the scheduled invoice"
-msgstr ""
-
-#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:15
-msgid "Which client calls should be included"
-msgstr ""
-
-#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:16
-#: ../../administration_portal/client/residential/faxes.rst:27
-#: ../../administration_portal/client/vpbx/faxes.rst:27
-#: ../../administration_portal/client/vpbx/users.rst:25
-msgid "Email"
 msgstr ""
 
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:18
 msgid "Send generated invoices via email. Empty if no automatic mail is wanted."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:19
-msgid "Frequency/Unit"
-msgstr ""
-
-#: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:21
-msgid ""
-"Defines the frequency (once a month, every 7 days, etc.) of the "
-"programmed task"
-msgstr ""
-
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:22
-#: ../../administration_portal/brand/invoicing/invoices.rst:18
+#: ../../administration_portal/brand/invoicing/invoices.rst:19
 msgid "Invoice number sequence"
 msgstr ""
 
@@ -2297,24 +1957,24 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:25
-#: ../../administration_portal/brand/invoicing/invoices.rst:33
+#: ../../administration_portal/brand/invoicing/invoices.rst:34
 msgid "Call discount"
 msgstr ""
 
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:27
-#: ../../administration_portal/brand/invoicing/invoices.rst:35
+#: ../../administration_portal/brand/invoicing/invoices.rst:36
 msgid ""
 "Percentage to discount calls, prior to tax rate calculation. No effect on"
 " fixed concepts."
 msgstr ""
 
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:28
-#: ../../administration_portal/brand/invoicing/invoices.rst:36
+#: ../../administration_portal/brand/invoicing/invoices.rst:37
 msgid "Tax rate"
 msgstr ""
 
 #: ../../administration_portal/brand/invoicing/invoice_schedulers.rst:30
-#: ../../administration_portal/brand/invoicing/invoices.rst:38
+#: ../../administration_portal/brand/invoicing/invoices.rst:39
 msgid "Taxes to add to the final cost (e.g. VAT)"
 msgstr ""
 
@@ -2459,100 +2119,104 @@ msgstr ""
 msgid "Use *Template testing* option to see a demo invoice for each template."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:3
+#: ../../administration_portal/brand/invoicing/invoices.rst:4
 msgid "Invoices"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:5
+#: ../../administration_portal/brand/invoicing/invoices.rst:6
 msgid ""
 "**Invoices** section lets **brand operator** generate invoices to issue "
 "to its clients and lists all invoices of all clients, no matter if they "
 "were generated automatically or manually."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:8
+#: ../../administration_portal/brand/invoicing/invoices.rst:9
 msgid ""
 "Brand administrators can also enable view mode on this section to their "
 "clients. Check Client's Invoice data configuration section for more "
 "information."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:13
+#: ../../administration_portal/brand/invoicing/invoices.rst:14
 msgid "Generating a new invoice"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:15
+#: ../../administration_portal/brand/invoicing/invoices.rst:16
 msgid "These are the fields shown when *Add Invoice* options is used:"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:20
+#: ../../administration_portal/brand/invoicing/invoices.rst:21
 msgid "Use next number of a predefined sequence or use custom number"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:21
+#: ../../administration_portal/brand/invoicing/invoices.rst:22
 #: ../../administration_portal/client/residential/external_call_filters.rst:19
 #: ../../administration_portal/client/vpbx/extensions.rst:11
 msgid "Number"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:23
+#: ../../administration_portal/brand/invoicing/invoices.rst:24
 msgid ""
 "Only shown if no sequence number is used, lets brand operator to "
 "introduce a custom number"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:26
+#: ../../administration_portal/brand/invoicing/invoices.rst:27
 msgid "The client whose calls will be invoiced"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:27
+#: ../../administration_portal/brand/invoicing/invoices.rst:28
 msgid "Template"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:29
+#: ../../administration_portal/brand/invoicing/invoices.rst:30
 msgid "Invoice template that will be used to generate the PDF invoice file"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:30
+#: ../../administration_portal/brand/invoicing/invoices.rst:31
 msgid "In/Out date"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:32
+#: ../../administration_portal/brand/invoicing/invoices.rst:33
 msgid "The time period of the calls that will be invoiced"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:41
+#: ../../administration_portal/brand/invoicing/invoices.rst:42
 msgid ""
 "Once saved, some :ref:`fixed costs` can be added before generating the "
 "final invoice. This is achieved with **Fixed costs** subsection, that "
 "allows adding several positive concepts to the invoice:"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:45
+#: ../../administration_portal/brand/invoicing/invoices.rst:46
 msgid "Fixed cost"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:47
+#: ../../administration_portal/brand/invoicing/invoices.rst:48
 msgid "Choose a predefined cost"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:48
+#: ../../administration_portal/brand/invoicing/invoices.rst:49
 msgid "Quantity"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:50
+#: ../../administration_portal/brand/invoicing/invoices.rst:51
 msgid "How many of this must be included"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:52
+#: ../../administration_portal/brand/invoicing/invoices.rst:53
 msgid ""
 "The last step is pressing **Generate invoice** suboption to create the "
 "final PDF. Afterwards, we can see which calls have been included in a "
-"particular invoice with **List of Billable Calls** option or download the"
+"particular invoice with **List of External Calls** option or download the"
 " PDF file."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:55
+#: ../../administration_portal/brand/invoicing/invoices.rst:56
+msgid "Only outbound external calls are included into invoices"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:57
 msgid ""
 "**Status** column shows if the PDF generation task is waiting for async "
 "worker (*waiting*), in process (*processing*), ended with errors "
@@ -2560,113 +2224,113 @@ msgid ""
 "invoice* needs to be pressed."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:59
+#: ../../administration_portal/brand/invoicing/invoices.rst:61
 msgid "Rules"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:61
+#: ../../administration_portal/brand/invoicing/invoices.rst:63
 msgid "Invoice subsystem enforces several rules before generating a new invoice:"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:63
+#: ../../administration_portal/brand/invoicing/invoices.rst:65
 msgid ""
 "**Proper date interval**: *out date* must be bigger (after) than *in "
 "date*."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:65
+#: ../../administration_portal/brand/invoicing/invoices.rst:67
 msgid ""
 "**Out date must be previous than today**: Future dates or today's calls "
 "cannot be invoiced."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:67
+#: ../../administration_portal/brand/invoicing/invoices.rst:69
 msgid ""
 "**One call, one invoice:** All calls in time interval cannot be included "
 "in any other invoice."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:69
+#: ../../administration_portal/brand/invoicing/invoices.rst:71
 msgid "**All calls in interval must be billed**."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:71
+#: ../../administration_portal/brand/invoicing/invoices.rst:73
 msgid ""
 "If any of these rules is not fulfilled, the invoice won't be created and "
 "the system will warn."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:74
+#: ../../administration_portal/brand/invoicing/invoices.rst:76
 msgid "Timezones"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:76
+#: ../../administration_portal/brand/invoicing/invoices.rst:78
 msgid ""
 "*In date* and *Out date* will be interpreted using brand timezone. On the"
 " other hand, call times in invoices are converted to client timezone, "
 "leading to situations like this:"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:79
+#: ../../administration_portal/brand/invoicing/invoices.rst:81
 msgid "*In date*: 01/10/2018 00:00:00"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:81
+#: ../../administration_portal/brand/invoicing/invoices.rst:83
 msgid "*Out date*: 31/10/2018 23:59:59"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:83
+#: ../../administration_portal/brand/invoicing/invoices.rst:85
 msgid "Brand timezone: UTC + 1"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:85
+#: ../../administration_portal/brand/invoicing/invoices.rst:87
 msgid "Client timezone: UTC - 1"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:87
+#: ../../administration_portal/brand/invoicing/invoices.rst:89
 msgid "Time interval in brand timezone: 01/10/2018 00:00 - 31/10/2018 23:59:59"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:89
+#: ../../administration_portal/brand/invoicing/invoices.rst:91
 msgid "Time interval in client timezone: 30/09/2018 22:00 - 31/10/2018 21:59:59"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:92
+#: ../../administration_portal/brand/invoicing/invoices.rst:94
 msgid ""
 "Invoice generated for the client will have calls from 30nd of september "
 "at 22:00 to 31st of october at 21:59:59, which may seem awkward to the "
 "client."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:97
+#: ../../administration_portal/brand/invoicing/invoices.rst:99
 msgid "Regenerating an existing invoice"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:99
+#: ../../administration_portal/brand/invoicing/invoices.rst:101
 msgid ""
 "Brand operator can edit any invoice parameter (as long as rules above are"
 " fulfilled), add/remove fixed concepts, etc. and press **Generate "
 "invoice** again."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:102
+#: ../../administration_portal/brand/invoicing/invoices.rst:104
 msgid ""
 "Whenever a change is made, *Status* column will change to blank to show "
 "that *Generate invoice* must be pressed."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:105
+#: ../../administration_portal/brand/invoicing/invoices.rst:107
 msgid "Generate invoice for rerated calls"
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:107
+#: ../../administration_portal/brand/invoicing/invoices.rst:109
 msgid ""
-"If rating of any call included in an invoice is wrong, :ref:`Billable "
+"If rating of any call included in an invoice is wrong, :ref:`External "
 "Calls` section allows rerating it, as long as the invoice that includes "
 "the call is previously deleted."
 msgstr ""
 
-#: ../../administration_portal/brand/invoicing/invoices.rst:110
+#: ../../administration_portal/brand/invoicing/invoices.rst:112
 msgid ""
 "Once deleted and rerated, a new row can be added in *Invoices* section to"
 " include rerated calls."
@@ -2715,7 +2379,7 @@ msgid "Externally rated"
 msgstr ""
 
 #: ../../administration_portal/brand/providers/carriers.rst:27
-#: ../../administration_portal/client/vpbx/ddis.rst:33
+#: ../../administration_portal/client/vpbx/ddis.rst:32
 msgid ""
 "This setting requires the external tarification module and allows "
 "tarification on special numbers. This module is not standard so don't "
@@ -2739,32 +2403,45 @@ msgid ""
 "remaining money operations of this carrier."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:39
-msgid "Carrier Servers"
+#: ../../administration_portal/brand/providers/carriers.rst:38
+msgid ""
+"If \"Calculate cost\" is enabled, a balance is attached to each carrier. "
+"Whenever a carrier is used to place a call, this balance will be "
+"decreased using carrier's active rating profile."
 msgstr ""
 
 #: ../../administration_portal/brand/providers/carriers.rst:41
+msgid ""
+"Opposed to clients' balances, carriers' (negative/zero) balances won't "
+"disable the carrier."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:44
+msgid "Carrier Servers"
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:46
 msgid ""
 "A **Carrier Server** is a SIP server associated to an IP Provider. "
 "Carrier servers are used for placing outgoing calls by using "
 ":ref:`Outgoing routings`."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:45
+#: ../../administration_portal/brand/providers/carriers.rst:50
 msgid "SIP Proxy"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:47
+#: ../../administration_portal/brand/providers/carriers.rst:52
 msgid ""
 "IP address (or DNS registry) of the Carrier Server. You can also specify "
 "a port if it's different from 5060."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:49
+#: ../../administration_portal/brand/providers/carriers.rst:54
 msgid "Outbound Proxy"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:51
+#: ../../administration_portal/brand/providers/carriers.rst:56
 msgid ""
 "Usually this is left empty. It can be filled with the IP address of the "
 "**SIP Proxy** domain (to avoid DNS resolution, but keeping the domain in "
@@ -2773,56 +2450,56 @@ msgid ""
 "of this field."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:56
+#: ../../administration_portal/brand/providers/carriers.rst:61
 msgid "URI Scheme"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:58
+#: ../../administration_portal/brand/providers/carriers.rst:63
 msgid "Supported schemes are sip and sips. Use 'sip' in case of doubt."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:59
+#: ../../administration_portal/brand/providers/carriers.rst:64
 msgid "Transport"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:61
+#: ../../administration_portal/brand/providers/carriers.rst:66
 msgid "Supported transport protocols. Use 'udp' in case of doubt."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:62
+#: ../../administration_portal/brand/providers/carriers.rst:67
 msgid "Requires Authentication"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:64
+#: ../../administration_portal/brand/providers/carriers.rst:69
 msgid ""
 "Some Carriers validate our platform by IP, others require each session "
 "that we want to establish. For this last case, this section allows to "
 "configure user and password for this authentication."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:67
+#: ../../administration_portal/brand/providers/carriers.rst:72
 msgid "Call Origin Header"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:69
+#: ../../administration_portal/brand/providers/carriers.rst:74
 msgid ""
 "Some Providers get origin from SIP From header. Others use the From "
 "header for accounting and need extra headers to identify the origin. In "
 "case of doubt leave **PAI** checked."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:72
+#: ../../administration_portal/brand/providers/carriers.rst:77
 msgid "From header customization"
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:74
+#: ../../administration_portal/brand/providers/carriers.rst:79
 msgid ""
 "For those providers that show origin in other headers (PAI/RPID), it is "
 "possible that request that From User have the account code being used and"
 " from domain their SIP domain. In case of doubt, leave empty."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:78
+#: ../../administration_portal/brand/providers/carriers.rst:83
 msgid ""
 "There are many fields to establish *peering* with multiple kind of "
 "carriers, but usually with the name and SIP Proxy will be enough (for "
@@ -2830,7 +2507,7 @@ msgid ""
 "that won't)."
 msgstr ""
 
-#: ../../administration_portal/brand/providers/carriers.rst:83
+#: ../../administration_portal/brand/providers/carriers.rst:88
 msgid ""
 "In case of defining multiple Carrier Servers for a single Carrier, "
 "IvozProvider will balance and failover using all of them. Like with "
@@ -4137,14 +3814,10 @@ msgid ""
 " one."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:5
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:5
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:5
 msgid "Call recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:7
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:7
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:7
 msgid ""
 "Beware that local legislation may enforce to announce that the call is "
@@ -4153,56 +3826,40 @@ msgid ""
 "recording enabled."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:12
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:12
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:12
 msgid "IvozProvider supports two different ways of recording calls:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:14
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:14
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:14
 msgid ""
 "**Automatic recordings** for the incoming/outgoing calls that use a "
 ":ref:`External DDI <ddis>`."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:17
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:17
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:17
 msgid "**On demand recordings** requested by a user during a call."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:21
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:21
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:21
 msgid "Automatic DDI recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:23
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:23
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:23
 msgid ""
 "In this type of recording, **the whole conversation will be recorded**: "
 "from the start until it finishes."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:26
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:26
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:26
 msgid "Two different scenarios:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:28
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:28
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:28
 msgid ""
 "**Incoming calls to a DDI**: The call will continue until the external "
 "dialer hangups (no matter whom is talking to)."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:31
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:31
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:31
 msgid ""
 "**Outgoing calls using a DDI** as :ref:`Outgoing DDI <ddis>`: the "
@@ -4210,8 +3867,6 @@ msgid ""
 "conversation."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:35
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:35
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:35
 msgid ""
 "Take into account that the call will be recorded while the external "
@@ -4219,58 +3874,40 @@ msgid ""
 " users of the platform."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:40
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:40
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:40
 msgid "Record all the calls of a DDI"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:41
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:41
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:41
 msgid ""
 "To enable this feature, edit the DDI and configure the field under the "
 "section recording data:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:45
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:45
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:45
 msgid "There are 4 available options:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:47
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:47
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:47
 msgid "Disable recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:48
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:48
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:48
 msgid "Enable incoming recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:49
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:49
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:49
 msgid "Enable outgoing recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:50
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:50
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:50
 msgid "Enable all call recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:54
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:54
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:54
 msgid "On demand recordings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:56
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:56
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:56
 msgid ""
 "The *on-demand* recordings must be enabled by the *brand administrator* "
@@ -4278,30 +3915,22 @@ msgid ""
 "screen:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:60
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:60
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:60
 msgid ""
 "Contrary to the :ref:`Services <services>` mentioned in the previous "
 "section, the on demand record are activated within a conversation."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:63
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:63
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:63
 msgid ""
 "Contrary to automatic ones, on demand recording can be stopped using the "
 "same process that started them."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:67
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:67
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:67
 msgid "Activated using the *Record* key"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:69
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:69
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:69
 msgid ""
 "Some terminals (for example, *Yealink*) support sending a `SIP INFO "
@@ -4313,30 +3942,22 @@ msgid ""
 "demand recording."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:75
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:75
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:75
 msgid ""
 "For this recording requests, the configured code doesn't matter but the "
 "client still must have on demand records enabled."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:78
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:78
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:78
 msgid ""
 "To start or stop this kind of recordings, just press the Record key in "
 "the terminal and the system will handle the sent message."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:82
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:82
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:82
 msgid "Activated using *DTMF* codes"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:84
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:84
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:84
 msgid ""
 "The more traditional approach for this feature is to press a combination "
@@ -4348,8 +3969,6 @@ msgid ""
 "<https://tools.ietf.org/html/rfc4733>`_)."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:91
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:91
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:91
 msgid ""
 "IvozProvider supports this kind of on demand record activation but with "
@@ -4358,56 +3977,40 @@ msgid ""
 " media between the final endpoints."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:96
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:96
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:96
 msgid ""
 "Enabling this record mode highly affects the performance of the platform."
 " Use at your own risk."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:101
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:101
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:101
 msgid "Recordings list"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:103
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:103
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:103
 msgid ""
 "The *client administrator* can access to all the recordings in the "
 "section **Client configuration** > **Recordings**:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:107
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:107
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:107
 msgid "Recordings can be heard from the *web* or downloaded in MP3 format:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_recordings.rst:110
-#: ../../administration_portal/client/retail/calls/call_recordings.rst:110
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:110
 msgid ""
 "If the recording has been started on demand, it will also include the "
 "user that requested it:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_registry.rst:5
-#: ../../administration_portal/client/retail/calls/call_registry.rst:5
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:5
 msgid "Call registry"
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_registry.rst:7
-#: ../../administration_portal/client/retail/calls/call_registry.rst:7
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:7
 msgid "Lists all the calls of the client, even those that do not imply cost."
 msgstr ""
 
-#: ../../administration_portal/client/residential/calls/call_registry.rst:10
-#: ../../administration_portal/client/retail/calls/call_registry.rst:10
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:10
 msgid ""
 "`CSV <https://es.wikipedia.org/wiki/CSV>`_ export makes possible to "
@@ -4490,29 +4093,24 @@ msgid ""
 " adding the forwarding info in a SIP *Diversion* header."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:5
 #: ../../administration_portal/client/vpbx/faxes.rst:5
 msgid "Faxes"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:7
 #: ../../administration_portal/client/vpbx/faxes.rst:7
 msgid ""
 "IvozProvider includes a simple but efficient *virtual faxing* solution "
 "that allows:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:9
 #: ../../administration_portal/client/vpbx/faxes.rst:9
 msgid "Sending PDF files via Fax."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:11
 #: ../../administration_portal/client/vpbx/faxes.rst:11
 msgid "Receiving faxes through email or check them through the web portal."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:13
 #: ../../administration_portal/client/vpbx/faxes.rst:13
 msgid ""
 "IvozProvider uses `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ for "
@@ -4520,91 +4118,76 @@ msgid ""
 "contracts* that have support for it."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:19
 #: ../../administration_portal/client/vpbx/faxes.rst:19
 msgid "Creating a virtual fax"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:21
 #: ../../administration_portal/client/vpbx/faxes.rst:21
 msgid "These are the fields that turn up when we create a new fax:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:26
 #: ../../administration_portal/client/vpbx/faxes.rst:26
 msgid "Used by remaining section to reference a fax"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:29
 #: ../../administration_portal/client/vpbx/faxes.rst:29
 msgid ""
 "Email address when we want to receive incoming faxes (if we check 'Send "
 "by email')"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:31
 #: ../../administration_portal/client/vpbx/faxes.rst:31
 msgid "Outbound DDI"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:33
 #: ../../administration_portal/client/vpbx/faxes.rst:33
 msgid "DDI used as source number for outgoing faxes"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:35
 #: ../../administration_portal/client/vpbx/faxes.rst:35
 msgid ""
 "To receive faxes in this DDI, we need to point it to our new fax in the "
 "section **DDIs**."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:38
 #: ../../administration_portal/client/vpbx/faxes.rst:38
 msgid ""
 "Brand Operator can choose one or more :ref:`Outgoing Routings` for "
 "sending faxes."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:40
 #: ../../administration_portal/client/vpbx/faxes.rst:40
 msgid ""
 "*load-balancing* y *failover* logics described in :ref:`Outgoing "
 "Routings` apply to faxes too."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:43
 #: ../../administration_portal/client/vpbx/faxes.rst:43
 msgid ""
 "If no fax-specific route is defined, faxes will be routed using standard "
 "call routes."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:48
 #: ../../administration_portal/client/vpbx/faxes.rst:48
 msgid "Sending a fax"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:50
 #: ../../administration_portal/client/vpbx/faxes.rst:50
 msgid ""
 "Sending a fax is an easy task that is done through **List of outgoing "
 "faxfiles** subsection."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:52
 #: ../../administration_portal/client/vpbx/faxes.rst:52
 msgid ""
 "First, we upload de PDF file and set the destination. When we save the "
 "entry, the list shows the fax and its status."
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:56
 #: ../../administration_portal/client/vpbx/faxes.rst:56
 msgid "Incoming faxes display"
 msgstr ""
 
-#: ../../administration_portal/client/residential/faxes.rst:58
 #: ../../administration_portal/client/vpbx/faxes.rst:58
 msgid ""
 "Apart from being received by mail, faxes can be watched and downloaded "
@@ -4643,41 +4226,6 @@ msgstr ""
 msgid ""
 "Check :ref:`Differences between retail and residential clients` to "
 "understand the difference between these two client types."
-msgstr ""
-
-#: ../../administration_portal/client/residential/rating_profiles.rst:3
-#: ../../administration_portal/client/retail/rating_profiles.rst:3
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:3
-#: ../../administration_portal/client/wholesale/rating_profiles.rst:3
-msgid "Rating profiles"
-msgstr ""
-
-#: ../../administration_portal/client/residential/rating_profiles.rst:5
-#: ../../administration_portal/client/retail/rating_profiles.rst:5
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:5
-#: ../../administration_portal/client/wholesale/rating_profiles.rst:5
-msgid "This section allows the client to:"
-msgstr ""
-
-#: ../../administration_portal/client/residential/rating_profiles.rst:7
-#: ../../administration_portal/client/retail/rating_profiles.rst:7
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:7
-#: ../../administration_portal/client/wholesale/rating_profiles.rst:7
-msgid "See the list of rating plans and their activation time."
-msgstr ""
-
-#: ../../administration_portal/client/residential/rating_profiles.rst:9
-#: ../../administration_portal/client/retail/rating_profiles.rst:9
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:9
-#: ../../administration_portal/client/wholesale/rating_profiles.rst:9
-msgid "Download a CSV with each rating plan."
-msgstr ""
-
-#: ../../administration_portal/client/residential/rating_profiles.rst:11
-#: ../../administration_portal/client/retail/rating_profiles.rst:11
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:11
-#: ../../administration_portal/client/wholesale/rating_profiles.rst:11
-msgid "Simulate a call and guess the cost of a given call."
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:7
@@ -4863,96 +4411,94 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/terminals.rst:47
 msgid ""
 "If set to 'yes', this SIP endpoint must be a **T.38 capable fax "
-"sender/receiver**. IvozProvider application servers will act as T.38 "
-"gateways, routing calls through a T.38 capable carrier and bridging "
-"signalling and media from one to another. See :ref:`Firewall <firewall>` "
-"for port exposing concerns related to this kind of traffic."
+"sender/receiver**. IvozProvider will act as a T.38 gateway, bridging fax-"
+"calls of a T.38 capable carrier and a T.38 capable device."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:91
-#: ../../administration_portal/client/retail/retail_accounts.rst:88
+#: ../../administration_portal/client/residential/residential_devices.rst:89
+#: ../../administration_portal/client/retail/retail_accounts.rst:86
 msgid "Voicemail settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:93
+#: ../../administration_portal/client/residential/residential_devices.rst:91
 msgid ""
 "Every residential device has a voicemail that can be accessed using "
 "voicemail service code defined at brand level."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:96
-#: ../../administration_portal/client/retail/retail_accounts.rst:93
+#: ../../administration_portal/client/residential/residential_devices.rst:94
+#: ../../administration_portal/client/retail/retail_accounts.rst:91
 msgid "Call forwarding settings"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:98
+#: ../../administration_portal/client/residential/residential_devices.rst:96
 msgid ""
 "Apart from unconditional call forwarding to external number through "
 ":ref:`External call filters` applied to DDI, residential devices may have"
 " additional call forwarding settings that allow:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:101
+#: ../../administration_portal/client/residential/residential_devices.rst:99
 msgid "Forwarding to another external number."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:103
+#: ../../administration_portal/client/residential/residential_devices.rst:101
 msgid "Forwarding to voicemail associated to each residential device."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:105
+#: ../../administration_portal/client/residential/residential_devices.rst:103
 msgid ""
 "Supported forwarding types: unconditional, no-answer, non-registered, "
 "busy."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:107
+#: ../../administration_portal/client/residential/residential_devices.rst:105
 msgid ""
 ":ref:`External call filters` have precedence over residential devices "
 "call forwarding settings."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:111
+#: ../../administration_portal/client/residential/residential_devices.rst:109
 msgid "Asterisk as a residential device"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:113
+#: ../../administration_portal/client/residential/residential_devices.rst:111
 msgid ""
 "At the other end of a device can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:118
+#: ../../administration_portal/client/residential/residential_devices.rst:116
 msgid "Device register"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:120
-#: ../../administration_portal/client/retail/retail_accounts.rst:113
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:120
+#: ../../administration_portal/client/residential/residential_devices.rst:118
+#: ../../administration_portal/client/retail/retail_accounts.rst:111
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:118
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:123
-#: ../../administration_portal/client/retail/retail_accounts.rst:116
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:123
+#: ../../administration_portal/client/residential/residential_devices.rst:121
+#: ../../administration_portal/client/retail/retail_accounts.rst:114
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:121
 msgid "Configuration will be something like this:"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:130
+#: ../../administration_portal/client/residential/residential_devices.rst:128
 msgid "Device peer"
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:148
+#: ../../administration_portal/client/residential/residential_devices.rst:146
 msgid ""
 "*Residential devices* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/residential/residential_devices.rst:151
-#: ../../administration_portal/client/retail/retail_accounts.rst:144
+#: ../../administration_portal/client/residential/residential_devices.rst:149
+#: ../../administration_portal/client/retail/retail_accounts.rst:142
 msgid ""
 "As from username is used to identify the retail account, P-Asserted-"
 "Identity must be used to specify caller number."
@@ -5027,6 +4573,26 @@ msgstr ""
 msgid ""
 "The goal of this section will be describe each of the configuration "
 "settings associated with Retail clients included in IvozProvider:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:3
+msgid "Rating profiles"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:5
+msgid "This section allows the client to:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:7
+msgid "See the list of rating plans and their activation time."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:9
+msgid "Download a CSV with each rating plan."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:11
+msgid "Simulate a call and guess the cost of a given call."
 msgstr ""
 
 #: ../../administration_portal/client/retail/retail_accounts.rst:5
@@ -5132,67 +4698,67 @@ msgid ""
 "account. If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:81
+#: ../../administration_portal/client/retail/retail_accounts.rst:79
 msgid ""
 "All retail accounts within a retail client will have the transcoding "
 "capabilities configured at client level."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:83
+#: ../../administration_portal/client/retail/retail_accounts.rst:81
 msgid ""
 "On retail account edit screen **id** field shows internal identification "
 "number assigned to the retail account. This id is transported to "
-"*Endpoint Id* field in *Billable Calls* section for CSV export."
+"*Endpoint Id* field in *External Calls* section for CSV export."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:90
+#: ../../administration_portal/client/retail/retail_accounts.rst:88
 msgid "There is no voicemail service for retail clients."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:95
+#: ../../administration_portal/client/retail/retail_accounts.rst:93
 msgid ""
 "Each retail account can have a unique enabled call forward setting, "
 "pointing to an external number."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:97
+#: ../../administration_portal/client/retail/retail_accounts.rst:95
 msgid ""
 "This external called will be called whenever the retail account cannot be"
 " reached:"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:99
+#: ../../administration_portal/client/retail/retail_accounts.rst:97
 msgid ""
 "Direct connectivity accounts: when no answer is received from defined "
 "address."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:101
+#: ../../administration_portal/client/retail/retail_accounts.rst:99
 msgid ""
 "Accounts using SIP register: when no answer is received from last contact"
 " address or when no active register is found."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:104
+#: ../../administration_portal/client/retail/retail_accounts.rst:102
 msgid "Asterisk as a retail account"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:106
+#: ../../administration_portal/client/retail/retail_accounts.rst:104
 msgid ""
 "At the other end of a account can be any kind of SIP entity. This section"
 " takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:111
+#: ../../administration_portal/client/retail/retail_accounts.rst:109
 msgid "Account register"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:123
+#: ../../administration_portal/client/retail/retail_accounts.rst:121
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:141
+#: ../../administration_portal/client/retail/retail_accounts.rst:139
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
@@ -5225,94 +4791,94 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/ddis.rst:16
 msgid ""
 "The :ref:`DDI Provider <DDI Providers>` that provides this number. This "
-"relation allow the platform to apply the required :ref:`transformations` "
-"in order to determine its standard form."
+"relation has no functional purpose, it is just for DDI Provider <-> DDI "
+"navigation in some brand level sections."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:19
+#: ../../administration_portal/client/vpbx/ddis.rst:18
 msgid "External Call Filter"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:21
+#: ../../administration_portal/client/vpbx/ddis.rst:20
 msgid ""
 "Allows configuration based on Calendars and Schedulers as shown in "
 ":ref:`External Call Filters`. Leave empty if you don't need to apply any "
 "kind of filter."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:24
+#: ../../administration_portal/client/vpbx/ddis.rst:23
 #: ../../administration_portal/client/vpbx/extensions.rst:16
 msgid "Route"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:26
+#: ../../administration_portal/client/vpbx/ddis.rst:25
 msgid ""
 "A DDI can have different :ref:`treatments <routing_logics>`. For our "
 "current goal, set route to user and select *Alice*."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:28
+#: ../../administration_portal/client/vpbx/ddis.rst:27
 msgid "Record calls"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:30
+#: ../../administration_portal/client/vpbx/ddis.rst:29
 msgid "Can be used to record external calls (see :ref:`call_recordings`)."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:31
+#: ../../administration_portal/client/vpbx/ddis.rst:30
 msgid "Tarificate incoming calls"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:39
+#: ../../administration_portal/client/vpbx/ddis.rst:38
 msgid "DDI external filters"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:41
+#: ../../administration_portal/client/vpbx/ddis.rst:40
 msgid ""
 "We can assign a **external call filter** configured in :ref:`External "
 "Call Filters`."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:48
+#: ../../administration_portal/client/vpbx/ddis.rst:47
 msgid "DDI routes"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:50
+#: ../../administration_portal/client/vpbx/ddis.rst:49
 msgid ""
 "Once the call has passed all the checks in the filter (schedules and "
 "calendars) and after the welcome locution has been played (if there is "
 "any configured), we can route the call to the following processes:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:54
+#: ../../administration_portal/client/vpbx/ddis.rst:53
 msgid ":ref:`users`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:55
+#: ../../administration_portal/client/vpbx/ddis.rst:54
 msgid ":ref:`huntgroups`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:56
+#: ../../administration_portal/client/vpbx/ddis.rst:55
 msgid ":ref:`ivrs`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:57
+#: ../../administration_portal/client/vpbx/ddis.rst:56
 msgid ":ref:`conference_rooms`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:58
+#: ../../administration_portal/client/vpbx/ddis.rst:57
 msgid ":ref:`conditional_routes`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:59
+#: ../../administration_portal/client/vpbx/ddis.rst:58
 msgid ":ref:`queues`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:60
+#: ../../administration_portal/client/vpbx/ddis.rst:59
 msgid ":ref:`friends`"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/ddis.rst:64
+#: ../../administration_portal/client/vpbx/ddis.rst:63
 msgid ""
 "We can also route the DDI to a :ref:`Virtual Fax <faxing_system>`, but "
 "this is something we will explain in the following block."
@@ -5877,7 +5443,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/internal_friends.rst:63
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:107
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:105
 msgid ""
 "Calls to *friends* are considered internal. That means that ACLs won't be"
 " checked when calling a friend, no matter if the origin of the call is a "
@@ -6055,72 +5621,72 @@ msgid ""
 " If set to 'No', use called number instead."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:112
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:110
 msgid "Asterisk as a remote friend"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:114
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:112
 msgid ""
 "At the other end of a friend can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:119
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:117
 msgid "register"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:130
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:128
 msgid "peer"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:147
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:145
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:150
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:148
 msgid ""
 "As from username is used to identify the friend, P-Asserted-Identity must"
 " be used to specify caller number."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:153
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:151
 msgid "Summary of remote friends"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:155
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:153
 msgid ""
 "The key point is understanding that a *remote friend* has a direct "
 "relation with the extension-user-terminal trio:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:158
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:156
 msgid "Can place calls to all internal extensions and other friends."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:160
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:158
 msgid "Can place external calls that its ACL allows"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:162
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:160
 msgid "Display their configured outgoing DDI when calling to external entities"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:164
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:162
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:166
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:164
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be authenticated for security reasons)"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:169
+#: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:167
 msgid ""
 "Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
 "traffic from friends are identical to any other user terminal traffic in "
@@ -6673,8 +6239,8 @@ msgid ""
 "schedules, multiples calendars can be combined."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:8
-msgid "Let's imagine three calendars with the following configuration:"
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:9
+msgid "Calendar Holidays"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:11
@@ -6683,75 +6249,127 @@ msgid ""
 "what days will be holidays using the buttons in its row:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:15
-msgid ""
-"From this moment on, the calendar has the 1st of January of 2016 as "
-"holiday date with the locution \"Happy New Year\"."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:18
 msgid "Unique name to identify this holiday date"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:64
 msgid "Locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
 msgid "Override default External call filter holiday locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
 msgid "Event Date"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
 msgid "Day of the calendar to be marked as holiday"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
 msgid "Whole day event"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
 msgid "Enable this to create an event that lasts all the day"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
 msgid "Time In/Time out"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
 msgid ""
 "For not whole day events, specify the time interval the event will be "
 "active"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:34
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
 msgid "Routing options"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:36
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
 msgid "Override default External call filter holiday routing"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:38
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:35
 msgid ""
 "Calendars logic is opposite to Schedulers: If a day is not defined as "
 "holiday in any of the calendars, it will considered a normal day and no "
 "filtering will be applied."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:39
 msgid ""
 "Holidays without special locutions will apply the external call filter "
 "holiday locution."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:45
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
 msgid ""
 "Holidays without special routing will apply the external call filter "
 "holiday routing."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:47
+msgid "Calendar Periods"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:49
+msgid ""
+"Calendars can also be used to override some time periods with a different"
+" schedule. This can be handy if vPBX has a summer schedule or other types"
+" of schedule based events."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:52
+msgid ""
+"Calendar periods can define a custom Scheduler and override External Call"
+" filters configurations:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:55
+msgid "Start Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:57
+msgid "Since when the schedules will override the filters configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:58
+msgid "End Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:60
+msgid "Last day of the period (included)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:61
+#: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:59
+#: ../../administration_portal/client/vpbx/routing_tools/schedules.rst:3
+msgid "Schedules"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:63
+msgid "Schedules that will be used in the defined period"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:66
+msgid ""
+"In case of Out of schedule, this locution that will be played. Leave "
+"empty to use External call filter's locution."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:68
+msgid "Route options"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:70
+msgid "Override default external call filter Out of schedule options"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:7
@@ -6852,11 +6470,6 @@ msgstr ""
 msgid ""
 "One or more calendars can be associated with the filter. The combination "
 "of all the calendars will be applied."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:59
-#: ../../administration_portal/client/vpbx/routing_tools/schedules.rst:3
-msgid "Schedules"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:61
@@ -7165,13 +6778,13 @@ msgid ""
 " of the SIP device."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/terminals.rst:52
+#: ../../administration_portal/client/vpbx/terminals.rst:50
 msgid ""
 "For **most of devices** that doesn't require provisioning just filling "
 "**username** and **password** will be enough."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/terminals.rst:55
+#: ../../administration_portal/client/vpbx/terminals.rst:53
 msgid ""
 "Once the terminal has been created, most devices will only require the "
 "name, password and :ref:`Client SIP domain <domain_per_client>` in order "
@@ -7313,17 +6926,22 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:11
 msgid ""
 "But there are some cases when a single outgoing DDI is not enough, and "
-"the presented DDI depends on the called number. To archive this dynamic "
-"outgoing DDI selection you can use Outgoing DDI rules."
+"the presented DDI depends on the called number or a given prefix. To "
+"archive this dynamic outgoing DDI selection you can use Outgoing DDI "
+"rules."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:15
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:17
+msgid "Outgoing DDI based on destination"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:19
 msgid ""
-"Before creating a new rule, it would be required to first group the "
+"For destination based rules, you would require first group the "
 "destination numbers in :ref:`match_lists`."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:18
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:22
 msgid ""
 "For this example, we will create a match list of corporate mobiles with "
 "all the mobile numbers of our client workers. When we call to those "
@@ -7332,48 +6950,76 @@ msgid ""
 "outgoing DDI."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:24
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:28
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:53
 msgid "Create a new Outgoing DDI Rule"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:25
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:29
 msgid ""
 "The main creation screen defines the action that will take place when no "
 "rule matches the dialed destination, so we define to force the main "
 "client DDI here."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:29
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:33
 msgid "Assign rule lists actions"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:30
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:34
 msgid ""
 "Now we add a new rule that will match our mobiles to make the user's "
 "outgoing DDI be kept untouched."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:34
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:38
 msgid "Assign rule to callers"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:35
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:39
 msgid ""
 "At last, we have to configure who will use this rule to dynamically "
 "change it's presentation number. We can do this in the **Client's edit "
 "screen** or the **Users's edit screen**."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:39
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:43
 msgid ""
 "In this case, the User will present 777777777 DDI when calling corporate "
 "mobiles and 666666666 when calling the rest of the external numbers."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:42
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:47
+msgid "Outgoing DDI based on prefix"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:49
 msgid ""
-"Current implementation of Outgoing DDI rules won't work for diverted "
-"calls (out of schedule, holidays or user's call forward settings)."
+"Outgoing DDI Rules can be also used to change the default Outgoing DDI "
+"based on a call prefix."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:54
+msgid ""
+"The main creation screen defines the action that will take place when no "
+"rule matches the dialed destination, we will keep original DDI if no "
+"prefix is used."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:58
+msgid "Assign a prefix pattern"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:59
+msgid ""
+"Now we add a new rule that with prefix (let's say 111) and action to "
+"force the DDI to 666666666."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:62
+msgid ""
+"In this case, the User will present 666666666 DDI when calling any "
+"destination with 111 prefix and 777777777 when not using any prefix."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/pick_up_groups.rst:5
@@ -8288,7 +7934,7 @@ msgid "Password for login process."
 msgstr ""
 
 #: ../../administration_portal/platform/main_operators.rst:19
-msgid "Used for showing dates in Billable Calls and similar sections."
+msgid "Used for showing dates in External Calls and similar sections."
 msgstr ""
 
 #: ../../administration_portal/platform/main_operators.rst:22

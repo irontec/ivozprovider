@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CompanyRelRouti
 
     /**
      * @param CompanyRelRoutingTagInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(CompanyRelRoutingTagInterface $entity)
     {

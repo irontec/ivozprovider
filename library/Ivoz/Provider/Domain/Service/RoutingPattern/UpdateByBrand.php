@@ -36,9 +36,12 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(BrandInterface $entity)
+    /**
+     * @return void
+     */
+    public function execute(BrandInterface $brand)
     {
-        $isNew = $entity->isNew();
+        $isNew = $brand->isNew();
         if (!$isNew) {
             return;
         }
@@ -59,7 +62,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setDescriptionEs('')
                 ->setDescriptionEn('')
                 ->setPrefix((string) $country->getCountryCode())
-                ->setBrandId($entity->getId());
+                ->setBrandId($brand->getId());
 
             /** @var RoutingPatternInterface $routingPattern */
             $routingPattern = $this->entityTools->persistDto(

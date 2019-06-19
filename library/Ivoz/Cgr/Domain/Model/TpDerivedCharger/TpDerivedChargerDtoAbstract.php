@@ -136,7 +136,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $costField = '*default';
 
     /**
-     * @var \DateTime
+     * @var \DateTime | string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -161,7 +161,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '')
+    public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];

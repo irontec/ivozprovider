@@ -1,6 +1,6 @@
 Feature: Manage invoice
   In order to manage invoice
-  As an super admin
+  As a brand admin
   I need to be able to delete them through the API.
 
   @createSchema

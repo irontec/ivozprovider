@@ -9,6 +9,9 @@ class UsersAddressLifecycleServiceCollection implements LifecycleServiceCollecti
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(UsersAddressLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

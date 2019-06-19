@@ -48,6 +48,8 @@ abstract class AbstractJob
 
     /**
      * @param string $methodName
+     *
+     * @return void
      */
     public function setMethod($methodName)
     {
@@ -64,6 +66,8 @@ abstract class AbstractJob
 
     /**
      * Send Gearman Job request to server
+     *
+     * @return void
      */
     public function send()
     {

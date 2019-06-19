@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements FeaturesRelBran
 
     /**
      * @param FeaturesRelBrandInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(FeaturesRelBrandInterface $entity)
     {

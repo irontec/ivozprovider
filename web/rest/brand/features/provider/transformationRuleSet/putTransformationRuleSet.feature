@@ -1,6 +1,6 @@
 Feature: Update transformation rule sets
   In order to manage transformation rule sets
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -8,7 +8,7 @@ Feature: Update transformation rule sets
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/transformation_rule_sets/2" with body:
+      And I send a "PUT" request to "/transformation_rule_sets/1" with body:
     """
       {
           "description": "Desc",
@@ -23,7 +23,7 @@ Feature: Update transformation rule sets
               "es": "nombre actualizado"
           },
           "brand": 1,
-          "country": 1
+          "country": 68
       }
     """
     Then the response status code should be 200
@@ -38,7 +38,7 @@ Feature: Update transformation rule sets
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 2,
+          "id": 1,
           "name": {
               "en": "updated name",
               "es": "nombre actualizado"
@@ -47,7 +47,7 @@ Feature: Update transformation rule sets
           "country": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

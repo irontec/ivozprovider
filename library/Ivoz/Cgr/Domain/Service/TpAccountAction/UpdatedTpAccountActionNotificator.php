@@ -11,6 +11,8 @@ class UpdatedTpAccountActionNotificator extends CgratesReloadNotificator impleme
      * Reload CGRates Configuration
      *
      * @param TpAccountActionInterface $tpAccountAction
+     *
+     * @return void
      */
     public function execute(TpAccountActionInterface $tpAccountAction)
     {

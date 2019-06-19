@@ -9,7 +9,7 @@ class Cgrates extends AbstractJob
     private static $alreadySent = false;
 
     /**
-     * @var integer
+     * @var string
      */
     protected $tpid;
 
@@ -25,17 +25,20 @@ class Cgrates extends AbstractJob
         'tpid',
     );
 
-    public function setTpid($tpid)
+    public function setTpid($tpid): self
     {
         $this->tpid = $tpid;
         return $this;
     }
 
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
 
+    /**
+     * @return void
+     */
     public function send()
     {
         if (self::$alreadySent) {

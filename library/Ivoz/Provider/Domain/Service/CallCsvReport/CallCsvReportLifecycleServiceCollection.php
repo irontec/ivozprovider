@@ -12,6 +12,9 @@ class CallCsvReportLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(CallCsvReportLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

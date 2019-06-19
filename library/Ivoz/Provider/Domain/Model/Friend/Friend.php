@@ -20,12 +20,7 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['password'])) {
-            $changeSet['password'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**
@@ -216,6 +211,9 @@ class Friend extends FriendAbstract implements FriendInterface
         return $callAcl->dstIsCallable($exten);
     }
 
+    /**
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
+     */
     public function getAstPsEndpoint()
     {
         $astPsEnpoints = $this->getPsEndpoints(

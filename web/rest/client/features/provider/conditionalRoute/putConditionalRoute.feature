@@ -1,6 +1,6 @@
 Feature: Update conditional routes
   In order to manage conditional routes
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -25,7 +25,7 @@ Feature: Update conditional routes
           "locution": null,
           "conferenceRoom": null,
           "extension": null,
-          "numberCountry": 1
+          "numberCountry": 68
       }
     """
     Then the response status code should be 200
@@ -51,7 +51,7 @@ Feature: Update conditional routes
           "numberCountry": {
               "code": "ES",
               "countryCode": "+34",
-              "id": 1,
+              "id": 68,
               "name": {
                   "en": "Spain",
                   "es": "España"

@@ -13,6 +13,9 @@ class ReloadService extends AbstractApiBasedService
         );
     }
 
+    /**
+     * @return void
+     */
     public function execute(string $tpid)
     {
         $payload = [

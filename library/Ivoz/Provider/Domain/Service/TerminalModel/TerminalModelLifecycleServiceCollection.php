@@ -12,6 +12,9 @@ class TerminalModelLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    /**
+     * @return void
+     */
     protected function addService(TerminalModelLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;

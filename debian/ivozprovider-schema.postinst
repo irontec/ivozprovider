@@ -1,0 +1,73 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+# Set current environment
+export SYMFONY_ENV=prod
+
+#######################################################################################################################
+#######################################################################################################################
+
+function schema_initialize()
+{
+    # On first run, create an static resolution
+    getent hosts data.ivozprovider.local &>/dev/null
+    [ $? -ne 0 ] && echo "127.0.0.1 data.ivozprovider.local" >> /etc/hosts
+
+    # Ensure MySQL is running
+    /etc/init.d/mysql start
+
+    # Load Timezones
+    db_get ivozprovider/mysql_password                     || true
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$RET" mysql
+    db_stop
+
+    # During first time, create database and import initial dump
+    cd /opt/irontec/ivozprovider/schema
+    bin/console doctrine:database:create
+    if [ $? -eq 0 ]; then
+        bin/console doctrine:database:import initial.sql
+    fi
+}
+
+function mysql_upgrade()
+{
+    # Ensure MySQL is running
+    /etc/init.d/mysql start
+
+    # Load Timezones
+    db_get ivozprovider/mysql_password                     || true
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$RET" mysql
+    db_stop
+
+    # Upgrade mysql internal tables
+    mysql_upgrade --user=root --password="$RET" --force
+}
+
+function schema_migrations()
+{
+    # Always migrate database
+    cd /opt/irontec/ivozprovider/schema
+    bin/console cache:clear --no-warmup -q -n
+    bin/console doctrine:migrations:status
+    bin/console doctrine:migrations:migrate --no-interaction --quiet
+}
+
+#######################################################################################################################
+#######################################################################################################################
+if [ -z "$2" ]; then
+    schema_initialize
+else
+    # Upgrade MySQL if installed version is prior to artemis release
+    /usr/bin/dpkg --compare-versions $2 lt 2.0~0
+    if [ $? -eq 0 ]; then
+        mysql_upgrade
+    fi
+fi
+
+schema_migrations
+
+:

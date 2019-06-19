@@ -144,7 +144,7 @@ class EntityTools
     public function updateEntityByDto(
         EntityInterface $entity,
         DataTransferObjectInterface $dto
-    ) {
+    ): EntityInterface {
         $this->entityUpdater->execute(
             $entity,
             $dto
@@ -153,6 +153,9 @@ class EntityTools
         return $entity;
     }
 
+    /**
+     * @return void
+     */
     public function dispatchQueuedOperations()
     {
         $this

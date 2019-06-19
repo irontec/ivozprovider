@@ -1,6 +1,6 @@
 Feature: Create residential devices
   In order to manage residential devices
-  As an super admin
+  As a client admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -14,18 +14,8 @@ Feature: Create residential devices
           "name": "newRetail",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": "ZGthe7E2+4",
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
           "company": 1,
+          "password": "qR9Y65pxJ+",
           "outgoingDdi": null,
           "language": null
       }
@@ -39,22 +29,10 @@ Feature: Create residential devices
           "name": "newRetail",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": "****",
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
-          "ddiIn": "yes",
-          "maxCalls": 1,
-          "t38Passthrough": "no",
+          "password": "qR9Y65pxJ+",
           "id": 2,
           "company": 1,
+          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }
@@ -73,19 +51,11 @@ Feature: Create residential devices
           "name": "newRetail",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
-          "password": "****",
-          "disallow": "all",
-          "allow": "alaw",
-          "directMediaMethod": "invite",
-          "calleridUpdateHeader": "pai",
-          "updateCallerid": "yes",
-          "fromDomain": null,
-          "directConnectivity": "yes",
+          "password": "qR9Y65pxJ+",
           "id": 2,
-          "company": "~",
+          "company":
+          "~",
+          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }

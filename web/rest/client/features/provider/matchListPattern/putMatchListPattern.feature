@@ -1,6 +1,6 @@
 Feature: Update match list patterns
   In order to manage match list patterns
-  As an super admin
+  As a client admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -16,7 +16,7 @@ Feature: Update match list patterns
           "regexp": null,
           "numbervalue": "946002052",
           "matchList": 2,
-          "numberCountry": 2
+          "numberCountry": 77
       }
     """
     Then the response status code should be 200
@@ -38,7 +38,7 @@ Feature: Update match list patterns
           "numberCountry": {
               "code": "GB",
               "countryCode": "+44",
-              "id": 2,
+              "id": 77,
               "name": {
                   "en": "United Kingdom",
                   "es": "Reino Unido"

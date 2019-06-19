@@ -19,7 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements FeaturesRelComp
 
     /**
      * @param FeaturesRelCompanyInterface $entity
+     *
      * @throws \DomainException
+     *
+     * @return void
      */
     public function execute(FeaturesRelCompanyInterface $entity)
     {

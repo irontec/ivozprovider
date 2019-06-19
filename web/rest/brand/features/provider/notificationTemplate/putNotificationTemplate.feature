@@ -1,6 +1,6 @@
 Feature: Update notification templates
   In order to manage notification templates
-  As an super admin
+  As a brand admin
   I need to be able to update them through the API.
 
   @createSchema

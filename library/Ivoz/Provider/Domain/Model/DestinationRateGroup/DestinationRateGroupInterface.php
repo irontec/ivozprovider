@@ -169,7 +169,10 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
