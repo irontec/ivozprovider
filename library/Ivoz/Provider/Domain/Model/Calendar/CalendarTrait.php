@@ -22,6 +22,11 @@ trait CalendarTrait
      */
     protected $holidayDates;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $calendarPeriods;
+
 
     /**
      * Constructor
@@ -30,6 +35,7 @@ trait CalendarTrait
     {
         parent::__construct(...func_get_args());
         $this->holidayDates = new ArrayCollection();
+        $this->calendarPeriods = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues();
@@ -51,6 +57,14 @@ trait CalendarTrait
             $self->replaceHolidayDates(
                 $fkTransformer->transformCollection(
                     $dto->getHolidayDates()
+                )
+            );
+        }
+
+        if (!is_null($dto->getCalendarPeriods())) {
+            $self->replaceCalendarPeriods(
+                $fkTransformer->transformCollection(
+                    $dto->getCalendarPeriods()
                 )
             );
         }
@@ -78,6 +92,13 @@ trait CalendarTrait
             $this->replaceHolidayDates(
                 $fkTransformer->transformCollection(
                     $dto->getHolidayDates()
+                )
+            );
+        }
+        if (!is_null($dto->getCalendarPeriods())) {
+            $this->replaceCalendarPeriods(
+                $fkTransformer->transformCollection(
+                    $dto->getCalendarPeriods()
                 )
             );
         }
@@ -177,5 +198,77 @@ trait CalendarTrait
         }
 
         return $this->holidayDates->toArray();
+    }
+
+    /**
+     * Add calendarPeriod
+     *
+     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     *
+     * @return static
+     */
+    public function addCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod)
+    {
+        $this->calendarPeriods->add($calendarPeriod);
+
+        return $this;
+    }
+
+    /**
+     * Remove calendarPeriod
+     *
+     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     */
+    public function removeCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod)
+    {
+        $this->calendarPeriods->removeElement($calendarPeriod);
+    }
+
+    /**
+     * Replace calendarPeriods
+     *
+     * @param ArrayCollection $calendarPeriods of Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @return static
+     */
+    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($calendarPeriods as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCalendar($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->calendarPeriods as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->calendarPeriods->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->calendarPeriods->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addCalendarPeriod($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get calendarPeriods
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface[]
+     */
+    public function getCalendarPeriods(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->calendarPeriods->matching($criteria)->toArray();
+        }
+
+        return $this->calendarPeriods->toArray();
     }
 }

@@ -35,6 +35,10 @@ mappers:
         modelFile: Calendars,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Calendar\\Calendar'
     }
+  - &CalendarPeriods {
+        modelFile: CalendarPeriods,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CalendarPeriods\\CalendarPeriods'
+    }
   - &CallACL {
         modelFile: CallAcl,
         entity: 'Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl'

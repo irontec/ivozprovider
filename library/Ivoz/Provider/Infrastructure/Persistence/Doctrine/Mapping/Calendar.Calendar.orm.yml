@@ -16,3 +16,6 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
     holidayDates:
       targetEntity: Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
       mappedBy: calendar
+    calendarPeriods:
+      targetEntity: Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+      mappedBy: calendar

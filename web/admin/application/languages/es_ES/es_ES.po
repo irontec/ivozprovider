@@ -310,6 +310,11 @@ msgid_plural "Calendars"
 msgstr[0] "Calendario"
 msgstr[1] "Calendarios"
 
+msgid "Calendar Period"
+msgid_plural "Calendar Periods"
+msgstr[0] "Evento de Horario"
+msgstr[1] "Eventos de Horario"
+
 msgid "Call"
 msgid_plural "Calls"
 msgstr[0] "Llamada"
@@ -800,6 +805,9 @@ msgstr ""
 msgid "Enabled"
 msgstr "Activado"
 
+msgid "End date"
+msgstr "Fecha fin"
+
 msgid "End time"
 msgstr "Fecha fin"
 
@@ -950,6 +958,12 @@ msgstr "Fichero parcialmente importado"
 
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
+
+msgid "Filter's Out of schedule Locution"
+msgstr "Usar locucion Fuera Horario del filtro"
+
+msgid "Filter's Out of schedule Routing"
+msgstr "Usar enrutado Fuera Horario del filtro"
 
 msgid "Filtering info"
 msgstr "Información de filtrado"
@@ -2333,6 +2347,9 @@ msgstr "Plantilla específica"
 
 msgid "Specific URL Pattern"
 msgstr "Patrón de URL específica"
+
+msgid "Start date"
+msgstr "Fecha de inicio"
 
 msgid "Start time"
 msgstr "Tiempo de inicio"
