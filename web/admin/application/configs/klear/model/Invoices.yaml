@@ -41,7 +41,7 @@ production:
         settings:
           disabled: 'false'
           dateFormate: 'dd-mm-yy'
-#          timeFormat: '00:00:00'
+          isDateTime: true
     outDate:
       title: _('Out date')
       type: picker
@@ -51,7 +51,7 @@ production:
         settings:
           disabled: 'false'
           dateFormate: 'dd-mm-yy'
-#          timeFormat: '23:59:59'
+          isDateTime: true
     total:
       title: _('Total')
       type: ghost
