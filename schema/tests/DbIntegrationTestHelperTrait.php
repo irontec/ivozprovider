@@ -256,44 +256,49 @@ trait DbIntegrationTestHelperTrait
      * @return $this
      * @throws \ReflectionException
      */
-    protected function mockInfraestructureServices(string $event, array $services, int $expectedCallNumber = null)
+    protected function mockInfraestructureServices(string $collection, array $services, int $expectedCallNumber = null)
     {
         $kernel = self::$kernel;
         $serviceContainer = $kernel->getContainer();
 
         $mocks = [];
-        foreach ($services as $service) {
-            $mock = $this
-                ->getMockBuilder($service)
-                ->disableOriginalConstructor()
-                ->getMock();
+        foreach ($services as $event => $eventServices) {
+            foreach ($eventServices as $service) {
+                $mock = $this
+                    ->getMockBuilder($service)
+                    ->disableOriginalConstructor()
+                    ->getMock();
 
+                $callNumMatcher = $expectedCallNumber
+                    ? $this->exactly($expectedCallNumber)
+                    : $this->any();
 
-            $callNumMatcher = $expectedCallNumber
-                ? $this->exactly($expectedCallNumber)
-                : $this->any();
+                $mock
+                    ->expects($callNumMatcher)
+                    ->method('execute');
 
-            $mock
-                ->expects($callNumMatcher)
-                ->method('execute');
-
-            $mocks[] = $mock;
+                if (!isset($mocks[$event])) {
+                    $mocks[$event] = [];
+                }
+                $mocks[$event][] = $mock;
+            }
         }
 
         $lifecycleService = $serviceContainer->get(
-            $event
+            $collection
         );
         $onCommitServiceRef = new \ReflectionClass($lifecycleService);
         $serviceProperty = $onCommitServiceRef->getProperty('services');
         $serviceProperty->setAccessible(true);
 
+        $mockedServices = $mocks + $serviceProperty->getValue($lifecycleService);
         $serviceProperty->setValue(
             $lifecycleService,
-            $mocks
+            $mockedServices
         );
         $serviceProperty->setAccessible(false);
         $serviceContainer->set(
-            $event,
+            $collection,
             $lifecycleService
         );
 

@@ -34,11 +34,11 @@ class DdiProviderLifeCycleTest extends KernelTestCase
     public function it_triggers_trunks_address_permissions_reload_on_delete()
     {
         $trustedReloadServices = [
-            SendTrunksAddressPermissionsReloadRequest::class
+            'on_commit' => [SendTrunksAddressPermissionsReloadRequest::class]
         ];
 
         $this->mockInfraestructureServices(
-            'provider.lifecycle.ddi_provider.on_commit',
+            'provider.lifecycle.ddi_provider.service_collection',
             $trustedReloadServices,
             1
         );
