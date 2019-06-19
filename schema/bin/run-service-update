@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/schema
+    bin/console provider:update:service_collections -e test
+popd
