@@ -34,8 +34,11 @@ Feature: Retrieve residential devices
       {
           "name": "residentialDevice",
           "description": "",
+          "transport": "udp",
+          "password": "+rA778LidL",
           "id": 1,
           "company": "~",
+          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }

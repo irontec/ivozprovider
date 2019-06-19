@@ -167,6 +167,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'outgoingDdiId',
             'languageId',
             'transport',
+            'password',
         ];
 
         $response = array_filter(

@@ -10,12 +10,13 @@ Feature: Create retail accounts
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/retail_accounts" with body:
     """
-            {
+      {
           "name": "testPostResidential",
           "description": "",
           "transformationRuleSet": 1,
           "outgoingDdi": 1,
           "transport": "udp",
+          "password": "ky7rVWX99_",
           "company": 1
       }
     """
@@ -28,6 +29,7 @@ Feature: Create retail accounts
           "name": "testPostResidential",
           "description": "",
           "transport": "udp",
+          "password": "ky7rVWX99_",
           "id": 2,
           "company": 1,
           "transformationRuleSet": 1,
@@ -48,6 +50,7 @@ Feature: Create retail accounts
           "name": "testPostResidential",
           "description": "",
           "transport": "udp",
+          "password": "ky7rVWX99_",
           "id": 2,
           "company": "~",
           "transformationRuleSet": "~",

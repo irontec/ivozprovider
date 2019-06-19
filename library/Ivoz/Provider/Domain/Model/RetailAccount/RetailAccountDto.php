@@ -157,6 +157,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'transformationRuleSetId',
             'outgoingDdiId',
             'companyId',
+            'password',
         ];
 
         $response = array_filter(
