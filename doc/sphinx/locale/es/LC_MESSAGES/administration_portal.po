@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 17:13+0200\n"
+"POT-Creation-Date: 2019-06-19 10:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/routing_endpoints/hunt_groups.rst:13
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:21
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:26
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:16
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:17
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:21
 #: ../../administration_portal/client/vpbx/terminals.rst:15
@@ -6239,8 +6239,8 @@ msgid ""
 "schedules, multiples calendars can be combined."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:8
-msgid "Let's imagine three calendars with the following configuration:"
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:9
+msgid "Calendar Holidays"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:11
@@ -6249,75 +6249,127 @@ msgid ""
 "what days will be holidays using the buttons in its row:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:15
-msgid ""
-"From this moment on, the calendar has the 1st of January of 2016 as "
-"holiday date with the locution \"Happy New Year\"."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:18
 msgid "Unique name to identify this holiday date"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:64
 msgid "Locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
 msgid "Override default External call filter holiday locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
 msgid "Event Date"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
 msgid "Day of the calendar to be marked as holiday"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
 msgid "Whole day event"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
 msgid "Enable this to create an event that lasts all the day"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
 msgid "Time In/Time out"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
 msgid ""
 "For not whole day events, specify the time interval the event will be "
 "active"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:34
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
 msgid "Routing options"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:36
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
 msgid "Override default External call filter holiday routing"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:38
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:35
 msgid ""
 "Calendars logic is opposite to Schedulers: If a day is not defined as "
 "holiday in any of the calendars, it will considered a normal day and no "
 "filtering will be applied."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:39
 msgid ""
 "Holidays without special locutions will apply the external call filter "
 "holiday locution."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:45
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
 msgid ""
 "Holidays without special routing will apply the external call filter "
 "holiday routing."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:47
+msgid "Calendar Periods"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:49
+msgid ""
+"Calendars can also be used to override some time periods with a different"
+" schedule. This can be handy if vPBX has a summer schedule or other types"
+" of schedule based events."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:52
+msgid ""
+"Calendar periods can define a custom Scheduler and override External Call"
+" filters configurations:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:55
+msgid "Start Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:57
+msgid "Since when the schedules will override the filters configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:58
+msgid "End Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:60
+msgid "Last day of the period (included)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:61
+#: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:59
+#: ../../administration_portal/client/vpbx/routing_tools/schedules.rst:3
+msgid "Schedules"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:63
+msgid "Schedules that will be used in the defined period"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:66
+msgid ""
+"In case of Out of schedule, this locution that will be played. Leave "
+"empty to use External call filter's locution."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:68
+msgid "Route options"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:70
+msgid "Override default external call filter Out of schedule options"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:7
@@ -6418,11 +6470,6 @@ msgstr ""
 msgid ""
 "One or more calendars can be associated with the filter. The combination "
 "of all the calendars will be applied."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:59
-#: ../../administration_portal/client/vpbx/routing_tools/schedules.rst:3
-msgid "Schedules"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:61
