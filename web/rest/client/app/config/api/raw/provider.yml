@@ -813,6 +813,8 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  itemOperations: []
+  collectionOperations: []
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:

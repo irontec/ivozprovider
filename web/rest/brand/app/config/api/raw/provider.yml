@@ -118,7 +118,6 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
 Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
   itemOperations:
     get: ~
-    put: ~
   collectionOperations:
     get: ~
   attributes:
