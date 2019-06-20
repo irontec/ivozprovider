@@ -14,30 +14,19 @@ class DestinationRateGroupAssembler implements CustomEntityAssemblerInterface
 {
     use FileContainerEntityAssemblerTrait;
 
-    /**
-     * DestinationRateGroupAssembler constructor.
-     *
-     * @param StoragePathResolverCollection $storagePathResolver
-     */
     public function __construct(
         StoragePathResolverCollection $storagePathResolver
     ) {
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $destinationRateGroupDto,
+        EntityInterface $destinationRateGroup,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, DestinationRateGroupInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($destinationRateGroup, DestinationRateGroupInterface::class);
+        $destinationRateGroup->updateFromDto($destinationRateGroupDto, $fkTransformer);
+        $this->handleEntityFiles($destinationRateGroup, $destinationRateGroupDto, $fkTransformer);
     }
 }
