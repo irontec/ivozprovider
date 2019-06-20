@@ -35,7 +35,5 @@ class PersistErrorHandlerServiceCollection
         foreach ($this->services as $service) {
             $service->handle($exception);
         }
-
-        throw $exception;
     }
 }
