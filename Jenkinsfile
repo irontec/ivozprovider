@@ -70,8 +70,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-app-console'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('phpstan') {
@@ -86,8 +86,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpstan'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                         always  { cleanWs() }
                     }
                 }
@@ -103,8 +103,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-codestyle --branch'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('i18n') {
@@ -119,8 +119,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-i18n'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('phpspec') {
@@ -135,8 +135,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpspec'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('api-platform') {
@@ -152,8 +152,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('api-brand') {
@@ -169,8 +169,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('api-client') {
@@ -186,8 +186,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('orm') {
@@ -202,8 +202,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/schema/bin/test-orm'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
                 stage ('generators') {
@@ -218,8 +218,8 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/schema/bin/test-generators'
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                         always  { cleanWs() }
                     }
                 }
@@ -241,8 +241,8 @@ pipeline {
                         }
                     }
                     post {
-                        success { publishSuccess() }
-                        failure { publishFailure() }
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
                     }
                 }
             }
@@ -253,9 +253,9 @@ pipeline {
     // Pipeline post-actions
     // ------------------------------------------------------------------------
     post {
-        cleanup {
-            cleanWs()
-        }
+        failure { notifyFailureSlack() }
+        fixed { notifyFixedSlack() }
+        cleanup { cleanWs()}
     }
 }
 
@@ -263,7 +263,7 @@ pipeline {
 // Helper Functions
 // -----------------------------------------------------------------------------
 
-void publishSuccess() {
+void notifySuccessGithub() {
     githubNotify([
         context: "ivozprovider-testing-${STAGE_NAME}",
         description: "Finished",
@@ -271,10 +271,30 @@ void publishSuccess() {
     ])
 }
 
-void publishFailure() {
+void notifyFailureGithub() {
     githubNotify([
         context: "ivozprovider-testing-${STAGE_NAME}",
         description: "Finished",
         status: "FAILURE"
     ])
+}
+
+void notifyFailureSlack() {
+    if (env.GIT_BRANCH == 'artemis' || env.GIT_BRANCH == 'bleeding') {
+        slackSend([
+            channel: "#ivozprovider",
+            color: "#FF0000",
+            message: ":red_circle: Branch ${env.GIT_BRANCH} tests failed :red_circle: - (<${env.BUILD_URL}|Open>)"
+        ])
+    }
+}
+
+void notifyFixedSlack() {
+    if (env.GIT_BRANCH == 'artemis' || env.GIT_BRANCH == 'bleeding') {
+        slackSend([
+            channel: "#ivozprovider",
+            color: "#008000",
+            message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"
+        ])
+    }
 }
