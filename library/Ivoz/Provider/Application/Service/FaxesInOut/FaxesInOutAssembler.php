@@ -20,19 +20,13 @@ class FaxesInOutAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $faxesInOutDto,
+        EntityInterface $faxesInOut,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, FaxesInOutInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($faxesInOut, FaxesInOutInterface::class);
+        $faxesInOut->updateFromDto($faxesInOutDto, $fkTransformer);
+        $this->handleEntityFiles($faxesInOut, $faxesInOutDto, $fkTransformer);
     }
 }

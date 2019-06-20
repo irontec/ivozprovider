@@ -20,19 +20,13 @@ class BrandAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $brandDto,
+        EntityInterface $brand,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, BrandInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($brand, BrandInterface::class);
+        $brand->updateFromDto($brandDto, $fkTransformer);
+        $this->handleEntityFiles($brand, $brandDto, $fkTransformer);
     }
 }

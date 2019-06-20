@@ -20,19 +20,13 @@ class InvoiceAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $invoiceDto,
+        EntityInterface $invoice,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, InvoiceInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($invoice, InvoiceInterface::class);
+        $invoice->updateFromDto($invoiceDto, $fkTransformer);
+        $this->handleEntityFiles($invoice, $invoiceDto, $fkTransformer);
     }
 }

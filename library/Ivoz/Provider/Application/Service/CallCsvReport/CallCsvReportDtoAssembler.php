@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\CallCsvReport;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
@@ -11,9 +12,6 @@ use Assert\Assertion;
 
 class CallCsvReportDtoAssembler implements CustomDtoAssemblerInterface
 {
-    /**
-     * @var StoragePathResolverCollection
-     */
     protected $storagePathResolver;
 
     public function __construct(
@@ -23,30 +21,28 @@ class CallCsvReportDtoAssembler implements CustomDtoAssemblerInterface
     }
 
     /**
-     * @param CallCsvReportInterface $entity
-     * @param integer $depth
-     * @return CallCsvReportDTO
+     * @param CallCsvReportInterface $callCsvReport
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $callCsvReport, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
-        /** @var CallCsvReportInterface $entity */
-        Assertion::isInstanceOf($entity, CallCsvReportInterface::class);
+        Assertion::isInstanceOf($callCsvReport, CallCsvReportInterface::class);
 
         /** @var CallCsvReportDTO $dto */
-        $dto = $entity->toDto($depth);
-        $id = $entity->getId();
+        $dto = $callCsvReport->toDto($depth);
+        $id = $callCsvReport->getId();
 
         if (!$id) {
             return $dto;
         }
 
-        if (!is_null($entity->getCsv()->getFileSize())) {
+        if (!is_null($callCsvReport->getCsv()->getFileSize())) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('Csv');
 
             $dto->setCsvPath(
-                $pathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($callCsvReport)
             );
         }
 

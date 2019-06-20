@@ -12,26 +12,24 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 class UserAssembler implements CustomEntityAssemblerInterface
 {
     /**
-     * @param UserDto $dto
-     * @param UserInterface $entity
-     *
+     * @param UserDto $userDto
+     * @param UserInterface $user
      * @throws \Exception
-     *
-     * @return void
      */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $userDto,
+        EntityInterface $user,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, UserInterface::class);
+        Assertion::isInstanceOf($user, UserInterface::class);
 
-        $oldPass = $dto->getOldPass();
-        if ($oldPass && !password_verify($oldPass, $entity->getPass())) {
+        /** @var UserDto $userDto */
+        $oldPass = $userDto->getOldPass();
+        if ($oldPass && !password_verify($oldPass, $user->getPass())) {
             throw new \DomainException('Invalid password');
         }
         // There is not oldPass validation in klear, so, we can't do any further validation
 
-        $entity->updateFromDto($dto, $fkTransformer);
+        $user->updateFromDto($userDto, $fkTransformer);
     }
 }

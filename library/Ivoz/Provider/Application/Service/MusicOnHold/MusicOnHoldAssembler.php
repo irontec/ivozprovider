@@ -20,19 +20,13 @@ class MusicOnHoldAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $musicOnHoldDto,
+        EntityInterface $musicOnHold,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, MusicOnHoldInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($musicOnHold, MusicOnHoldInterface::class);
+        $musicOnHold->updateFromDto($musicOnHoldDto, $fkTransformer);
+        $this->handleEntityFiles($musicOnHold, $musicOnHoldDto, $fkTransformer);
     }
 }

@@ -20,19 +20,13 @@ class WebPortalAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $webPortalDto,
+        EntityInterface $webPortal,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, WebPortalInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($webPortal, WebPortalInterface::class);
+        $webPortal->updateFromDto($webPortalDto, $fkTransformer);
+        $this->handleEntityFiles($webPortal, $webPortalDto, $fkTransformer);
     }
 }
