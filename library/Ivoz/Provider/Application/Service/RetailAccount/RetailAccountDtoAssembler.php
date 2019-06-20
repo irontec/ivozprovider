@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Application\Service\RetailAccount;
 
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
@@ -27,10 +28,9 @@ class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param RetailAccountInterface $retailAccount
-     * @param integer $depth
-     * @return RetailAccountDto
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $retailAccount, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $retailAccount, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
         Assertion::isInstanceOf($retailAccount, RetailAccountInterface::class);
 

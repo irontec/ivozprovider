@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\MusicOnHold;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -12,9 +13,6 @@ use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
 {
-    /**
-     * @var StoragePathResolverCollection
-     */
     protected $storagePathResolver;
 
     public function __construct(
@@ -24,47 +22,46 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
     }
 
     /**
-     * @param MusicOnHoldInterface $entity
-     * @param integer $depth
-     * @return MusicOnHoldDto
+     * @param MusicOnHoldInterface $musicOnHold
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $musicOnHold, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
-        Assertion::isInstanceOf($entity, MusicOnHoldInterface::class);
+        Assertion::isInstanceOf($musicOnHold, MusicOnHoldInterface::class);
 
         /** @var MusicOnHoldDto $dto */
-        $dto = $entity->toDto($depth);
-        $id = $entity->getId();
+        $dto = $musicOnHold->toDto($depth);
+        $id = $musicOnHold->getId();
 
         if (!$id) {
             return $dto;
         }
 
         /* OriginalFile */
-        if ($entity->getOriginalFile()->getFileSize()) {
+        if ($musicOnHold->getOriginalFile()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('OriginalFile');
 
             $pathResolver->setOriginalFileName(
-                $entity->getOriginalFile()->getBaseName()
+                $musicOnHold->getOriginalFile()->getBaseName()
             );
             $dto->setOriginalFilePath(
-                $pathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($musicOnHold)
             );
         }
 
         /* EncodedFile */
-        if ($entity->getEncodedFile()->getFileSize()) {
+        if ($musicOnHold->getEncodedFile()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('EncodedFile');
 
             $pathResolver->setOriginalFileName(
-                $entity->getEncodedFile()->getBaseName()
+                $musicOnHold->getEncodedFile()->getBaseName()
             );
             $dto->setEncodedFilePath(
-                $pathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($musicOnHold)
             );
         }
 

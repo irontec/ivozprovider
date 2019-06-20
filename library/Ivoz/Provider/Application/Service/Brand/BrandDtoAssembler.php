@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\Brand;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
@@ -11,9 +12,6 @@ use Assert\Assertion;
 
 class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
-    /**
-     * @var StoragePathResolverCollection
-     */
     protected $storagePathResolver;
 
     public function __construct(
@@ -24,14 +22,13 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param BrandInterface $entity
-     * @param integer $depth
-     * @return BrandDTO
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $entity, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
         Assertion::isInstanceOf($entity, BrandInterface::class);
 
-        /** @var BrandDTO $dto */
+        /** @var BrandDto $dto */
         $dto = $entity->toDto($depth);
         $id = $entity->getId();
 
