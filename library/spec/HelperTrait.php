@@ -61,6 +61,14 @@ trait HelperTrait
         return $collaborator;
     }
 
+    protected function getInstance(string $fqdn)
+    {
+        $reflection = new \ReflectionClass($fqdn);
+
+        return $reflection
+            ->newInstanceWithoutConstructor();
+    }
+
     public function letGo()
     {
         foreach ($this->collaborators as $collaborator) {
