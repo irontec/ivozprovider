@@ -1351,8 +1351,8 @@ Ivoz\Provider\Domain\Model\User\User:
               company: 'Ivoz\Provider\Domain\Model\Company\Company'
         - or:
           - inherited:
-              callACL: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
-          - callACL:
+              callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+          - callAcl:
               isNull: ~
         - or:
           - inherited:

@@ -69,12 +69,12 @@ class UserTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'callACL',
+                            'callAcl',
                             'in',
                             'CallAclRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'callACL',
+                            'callAcl',
                             'isNull',
                             null
                         ]
