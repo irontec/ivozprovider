@@ -26,6 +26,13 @@ pipeline {
         // Prepare stage
         // --------------------------------------------------------------------
         stage('Prepare') {
+            when {
+                anyOf {
+                    expression { env.CHANGE_ID && pullRequest.labels.contains('ci-no-tests') == false }
+                    branch "bleeding"
+                    branch "artemis"
+                }
+            }
             agent {
                 docker {
                     image 'ironartemis/ivozprovider-testing-base'
@@ -43,6 +50,13 @@ pipeline {
         // Testing stage
         // --------------------------------------------------------------------
         stage('Testing') {
+            when {
+                anyOf {
+                    expression { env.CHANGE_ID && pullRequest.labels.contains('ci-no-tests') == false }
+                    branch "bleeding"
+                    branch "artemis"
+                }
+            }
             parallel {
                 stage ('app-console') {
                     agent {
