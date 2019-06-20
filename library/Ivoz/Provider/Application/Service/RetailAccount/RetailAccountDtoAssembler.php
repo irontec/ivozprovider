@@ -37,7 +37,7 @@ class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
         /** @var RetailAccountDto $dto */
         $dto = $retailAccount->toDto($depth);
 
-        if (RetailAccountDto::CONTEXT_STATUS !== 'status') {
+        if (RetailAccountDto::CONTEXT_STATUS !== $context) {
             return $dto;
         }
 

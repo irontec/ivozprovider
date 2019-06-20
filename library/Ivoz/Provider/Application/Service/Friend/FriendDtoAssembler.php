@@ -37,7 +37,7 @@ class FriendDtoAssembler implements CustomDtoAssemblerInterface
         /** @var FriendDto $dto */
         $dto = $friend->toDto($depth);
 
-        if (FriendDto::CONTEXT_STATUS !== 'status') {
+        if (FriendDto::CONTEXT_STATUS !== $context) {
             return $dto;
         }
 

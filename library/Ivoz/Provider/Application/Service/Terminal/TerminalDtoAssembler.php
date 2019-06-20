@@ -37,7 +37,7 @@ class TerminalDtoAssembler implements CustomDtoAssemblerInterface
         /** @var TerminalDto $dto */
         $dto = $terminal->toDto($depth);
 
-        if (TerminalDto::CONTEXT_STATUS !== 'status') {
+        if (TerminalDto::CONTEXT_STATUS !== $context) {
             return $dto;
         }
 

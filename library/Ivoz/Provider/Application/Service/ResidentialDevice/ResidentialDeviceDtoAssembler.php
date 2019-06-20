@@ -37,7 +37,7 @@ class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
         /** @var ResidentialDeviceDto $dto */
         $dto = $residentialDevice->toDto($depth);
 
-        if (ResidentialDeviceDto::CONTEXT_STATUS !== 'status') {
+        if (ResidentialDeviceDto::CONTEXT_STATUS !== $context) {
             return $dto;
         }
 
