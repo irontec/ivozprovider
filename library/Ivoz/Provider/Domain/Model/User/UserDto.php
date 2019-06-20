@@ -95,7 +95,12 @@ class UserDto extends UserDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+        if ($role !== 'ROLE_COMPANY_ADMIN') {
+            $response['oldPass'] = 'oldPass';
+        }
+
+        return $response;
     }
 
     /**
@@ -103,10 +108,12 @@ class UserDto extends UserDtoAbstract
      */
     public function denormalize(array $data, string $context, string $role = '')
     {
-        if (isset($data['oldPass'])) {
-            $this->setOldPass($data['oldPass']);
-        } else {
-            unset($data['pass']);
+        if ($role !== 'ROLE_COMPANY_ADMIN') {
+            if (isset($data['oldPass'])) {
+                $this->setOldPass($data['oldPass']);
+            } else {
+                unset($data['pass']);
+            }
         }
 
         return parent::denormalize($data, $context);
