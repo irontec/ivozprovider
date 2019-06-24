@@ -1669,6 +1669,9 @@ msgstr "None"
 msgid "Not Registered"
 msgstr "Not Registered"
 
+msgid "Notice that edition/creation tabs will be closed."
+msgstr "Notice that edition/creation tabs will be closed."
+
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 
@@ -2256,8 +2259,8 @@ msgstr "Select file to import"
 msgid "Select the brand you want to emulate."
 msgstr "Select the brand you want to emulate."
 
-msgid "Select the company you want to emulate"
-msgstr "Select the company you want to emulate"
+msgid "Select the client you want to emulate"
+msgstr "Select the client you want to emulate"
 
 msgid "Selected weight is already in use"
 msgstr "Selected weight is already in use"
@@ -2857,8 +2860,8 @@ msgstr ""
 msgid "You can't create a pricing plan that starts in de past"
 msgstr "You can't create a pricing plan that starts in de past"
 
-msgid "You have to emulate a brand to be able to emulate a company"
-msgstr "You have to emulate a brand to be able to emulate a company"
+msgid "You have to emulate a brand to be able to emulate a client"
+msgstr "You have to emulate a brand to be able to emulate a client"
 
 msgid "allow"
 msgstr "allow"

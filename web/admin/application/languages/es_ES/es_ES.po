@@ -1693,6 +1693,9 @@ msgstr "Ninguna"
 msgid "Not Registered"
 msgstr "No registrado"
 
+msgid "Notice that edition/creation tabs will be closed."
+msgstr "Las pestañas de edición/creación serán cerradas."
+
 msgid "Notification Threshold"
 msgstr "Límite de notificación"
 
@@ -2285,8 +2288,8 @@ msgstr "Seleccione fichero a importar"
 msgid "Select the brand you want to emulate."
 msgstr "Seleccione la marca que desea emular."
 
-msgid "Select the company you want to emulate"
-msgstr "Seleccione la empresa que desea emular"
+msgid "Select the client you want to emulate"
+msgstr "Seleccione el cliente que desea emular"
 
 msgid "Selected weight is already in use"
 msgstr "El peso seleccionado ya está en uso"
@@ -2895,8 +2898,8 @@ msgstr ""
 msgid "You can't create a pricing plan that starts in de past"
 msgstr "No es posible crear un Plan de precios en el pasado"
 
-msgid "You have to emulate a brand to be able to emulate a company"
-msgstr "Debe emular una marca antes de emular una compañía"
+msgid "You have to emulate a brand to be able to emulate a client"
+msgstr "Debe emular una marca antes de emular un cliente"
 
 msgid "allow"
 msgstr "permitir"
