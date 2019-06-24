@@ -45,7 +45,13 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $dataGateway = \Zend_Registry::get('data_gateway');
         if ($type == 'brand') {
             if ($this->_user->canSeeMain) {
-                $html .= '<p>' . $this->view->translate('Select the brand you want to emulate.') . '</p></div>';
+                $html .=
+                    '<p>'
+                    . $this->view->translate('Select the brand you want to emulate.')
+                    . '</p>'
+                    . '<br/><span class="ui-silk inline ui-silk-error"></span><p>'
+                    . $this->view->translate('Notice that edition/creation tabs will be closed.')
+                    . '</p></div>';
                 $title = $this->view->translate('Select Brand');
 
                 $options = $dataGateway->findBy(
@@ -63,9 +69,15 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         } elseif ($type == 'company') {
             if ($this->_user->canSeeBrand) {
                 if (is_null($this->_user->brandId)) {
-                    $html .= '<p>' . $this->view->translate('You have to emulate a brand to be able to emulate a company') . '</p></div>';
+                    $html .= '<p>' . $this->view->translate('You have to emulate a brand to be able to emulate a client') . '</p></div>';
                 } else {
-                    $html .= '<p>' . $this->view->translate('Select the company you want to emulate') . '</p></div>';
+                    $html .=
+                        '<p>'
+                        . $this->view->translate('Select the client you want to emulate')
+                        . '</p>'
+                        . '<span class="ui-icon ui-icon-circle-close"></span><p>'
+                        . $this->view->translate('Notice that edition/creation tabs will be closed.')
+                        . '</p></div>';
                     $options = $dataGateway->findBy(
                         Company::class,
                         ['Company.brand = ' . $this->_user->brandId],
@@ -197,7 +209,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         throw new Zend_Exception($this->view->translate('Access denied'), Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
     }
 
-
     public function emulateAction()
     {
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
@@ -234,7 +245,11 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
     protected function _getEmulateDefaultData($type, $model)
     {
         $title = $this->view->translate('Emulate %s', $type);
-        $message = $this->view->translate('Are you sure that you want to emulate the %s "%2s"?', $type, $model->getName());
+        $message = $this->view->translate(
+            'Are you sure that you want to emulate the %s "%2s"?',
+            $type,
+            $model->getName()
+        );
 
         $data = array(
                 "title" => $title,
