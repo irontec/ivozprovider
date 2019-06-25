@@ -3,6 +3,7 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
@@ -20,9 +21,14 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 {
     use GetGeneratorByConditionsTrait;
 
-    public function __construct(RegistryInterface $registry)
-    {
+    protected $queryRunner;
+
+    public function __construct(
+        RegistryInterface $registry,
+        DoctrineQueryRunner $queryRunner
+    ) {
         parent::__construct($registry, TrunksCdr::class);
+        $this->queryRunner = $queryRunner;
     }
 
     /**
@@ -110,6 +116,11 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ->setParameter(':parserScheduledAt', $now->format('Y-m-d H:i:s'))
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
+
+        $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
 
         return $qb->getQuery()->execute();
     }
