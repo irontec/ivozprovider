@@ -36,6 +36,7 @@ class DataAccessControlParser
     protected $resourceMetadataFactory;
     protected $accessControlEvaluator;
 
+    protected $expressionCache = [];
     protected $repositories = [];
 
     public function __construct(
@@ -66,6 +67,7 @@ class DataAccessControlParser
             throw new \DomainException('Unable to resolve request attributes');
         }
 
+        $this->resetCache();
         $resourceDataAccessControl = $this->getResourceDataAccessControl(
             $attributes['resource_class'],
             $role,
@@ -119,6 +121,11 @@ class DataAccessControlParser
         }
 
         return $response;
+    }
+
+    protected function resetCache()
+    {
+        $this->expressionCache = [];
     }
 
     protected function recursiveInheritanceParser(array $response, $role, $mode): array
@@ -278,7 +285,7 @@ class DataAccessControlParser
             }
 
             $response[$key] = is_scalar($value)
-                ? $this->evaluateExpression($value)
+                ? $this->evaluateAndCacheExpression($value)
                 : $this->parseDataAccessControl($value);
         }
 
@@ -289,14 +296,23 @@ class DataAccessControlParser
      * @param string $expression
      * @return mixed
      */
-    protected function evaluateExpression(string $expression)
+    protected function evaluateAndCacheExpression(string $expression)
     {
-        return
-            $this
-                ->accessControlEvaluator->evaluate(
+        $alreadyCached = array_key_exists(
+            $expression,
+            $this->expressionCache
+        );
+
+        if (!$alreadyCached) {
+            $this->expressionCache[$expression] = $this
+                ->accessControlEvaluator
+                ->evaluate(
                     $expression,
                     $this->getVariables()
                 );
+        }
+
+        return $this->expressionCache[$expression];
     }
 
     /**
