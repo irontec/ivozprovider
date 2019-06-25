@@ -27,8 +27,14 @@ production:
       maxLength: 100
     direction:
       title: _('Direction')
-      type: text
-      maxLength: 255
+      type: select
+      source:
+        data: inline
+        values:
+          'inbound':
+            title: _('Inbound')
+          'outbound':
+            title: _('Outbound')
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select
