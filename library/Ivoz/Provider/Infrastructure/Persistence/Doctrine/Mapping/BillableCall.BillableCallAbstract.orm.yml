@@ -13,6 +13,9 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
     billableCall_direction_idx:
       columns:
       - direction
+    billableCall_callid_idx:
+      columns:
+      - callid
   fields:
     callid:
       type: string
