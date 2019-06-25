@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
@@ -20,9 +21,14 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 {
     use GetGeneratorByConditionsTrait;
 
-    public function __construct(RegistryInterface $registry)
-    {
+    protected $queryRunner;
+
+    public function __construct(
+        RegistryInterface $registry,
+        DoctrineQueryRunner $queryRunner
+    ) {
         parent::__construct($registry, BillableCall::class);
+        $this->queryRunner = $queryRunner;
     }
 
     /**
@@ -190,7 +196,10 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
 
-        $qb->getQuery()->execute();
+        $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
     }
 
     /**
@@ -207,7 +216,10 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->where('self.invoice = :invoiceId')
             ->setParameter(':invoiceId', $invoiceId);
 
-        $qb->getQuery()->execute();
+        $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
     }
 
     /**
@@ -225,7 +237,10 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
                 CriteriaHelper::fromArray($conditions)
             );
 
-        $qb->getQuery()->execute();
+        $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
     }
 
     /**
