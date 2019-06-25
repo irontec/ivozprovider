@@ -110,6 +110,15 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $result = $repository
             ->resetParsed([1,2,3]);
 
+        $billableCallChanges = $this->getChangelogByClass(
+            TrunksCdr::class
+        );
+
+        $this->assertCount(
+            1,
+            $billableCallChanges
+        );
+
         $this->assertNotEmpty($result);
     }
 }

@@ -12,7 +12,6 @@ class BillableCallRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-
     /**
      * @test
      */
@@ -126,7 +125,6 @@ class BillableCallRepositoryTest extends KernelTestCase
             ->idsToTrunkCdrId([99999]);
     }
 
-
     /**
      * @test
      */
@@ -139,6 +137,15 @@ class BillableCallRepositoryTest extends KernelTestCase
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
             ->resetPricingData([1]);
+
+        $billableCallChanges = $this->getChangelogByClass(
+            BillableCall::class
+        );
+
+        $this->assertCount(
+            1,
+            $billableCallChanges
+        );
 
         $this->assertInternalType(
             'null',
@@ -158,6 +165,15 @@ class BillableCallRepositoryTest extends KernelTestCase
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
             ->resetInvoiceId(1);
+
+        $billableCallChanges = $this->getChangelogByClass(
+            BillableCall::class
+        );
+
+        $this->assertCount(
+            1,
+            $billableCallChanges
+        );
 
         $this->assertInternalType(
             'null',
@@ -182,6 +198,15 @@ class BillableCallRepositoryTest extends KernelTestCase
                 ],
                 1
             );
+
+        $billableCallChanges = $this->getChangelogByClass(
+            BillableCall::class
+        );
+
+        $this->assertCount(
+            1,
+            $billableCallChanges
+        );
 
         $this->assertInternalType(
             'null',
