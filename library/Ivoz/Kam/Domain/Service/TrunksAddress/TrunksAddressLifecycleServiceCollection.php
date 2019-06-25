@@ -9,11 +9,18 @@ class TrunksAddressLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Kam\Infrastructure\Domain\Service\TrunksAddress\SendTrunksPermissionsReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(TrunksAddressLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TrunksAddressLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

@@ -11,27 +11,36 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
     /**
      * @return void
      */
-    public function setServices(array $services)
+    public function setServices(string $event, array $services)
     {
+        $this->services[$event] = [];
+        $isErrorHandler = ($event ===  LifecycleEventHandlerInterface::EVENT_ON_ERROR);
+
         foreach ($services as $service) {
-            $this->addService($service);
+            if ($isErrorHandler) {
+                $this->addErrorhandler($service);
+
+                continue;
+            }
+
+            $this->addService($event, $service);
         }
     }
 
     /**
      * @return void
      */
-    protected function addService(CommonLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CommonLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 
     /**
      * @param EntityInterface $entity
      */
-    public function execute(EntityInterface $entity)
+    public function execute(string $event, EntityInterface $entity)
     {
-        foreach ($this->services as $service) {
+        foreach ($this->services[$event] as $service) {
             $service->handle($entity);
         }
     }

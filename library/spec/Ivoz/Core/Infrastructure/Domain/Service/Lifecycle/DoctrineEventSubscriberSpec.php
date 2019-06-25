@@ -4,6 +4,7 @@ namespace spec\Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\CommandPersister;
 use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber;
+use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleServiceCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -14,6 +15,7 @@ use Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection;
 use \Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
 use \Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
 use \Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 
 class DoctrineEventSubscriberSpec extends ObjectBehavior
 {
@@ -51,15 +53,18 @@ class DoctrineEventSubscriberSpec extends ObjectBehavior
     {
         $errorEvent = $this->getErrorEvent();
 
-        $handlerServiceName =  'provider.lifecycle.company.error_handler';
+        $handlerServiceName =  'provider.lifecycle.company.service_collection';
         $handlerService = $this->getTestDouble(
             PersistErrorHandlerInterface::class
         );
-        /** @var PersistErrorHandlerServiceCollection $handlerCollection */
-        $handlerCollection = $this->getInstance(
-            PersistErrorHandlerServiceCollection::class
+        /** @var CompanyLifecycleServiceCollection $serviceCollection */
+        $serviceCollection = $this->getInstance(
+            CompanyLifecycleServiceCollection::class
         );
-        $handlerCollection->setServices([$handlerService->reveal()]);
+        $serviceCollection->setServices(
+            'error_handler',
+            [$handlerService->reveal()]
+        );
 
         $this->getterProphecy(
             $this->serviceContainer,
@@ -67,15 +72,15 @@ class DoctrineEventSubscriberSpec extends ObjectBehavior
                 'has' => function () use ($handlerServiceName) {
                     return [[$handlerServiceName], true];
                 },
-                'get' => function () use ($handlerServiceName, $handlerCollection) {
-                    return [[$handlerServiceName], $handlerCollection];
+                'get' => function () use ($handlerServiceName, $serviceCollection) {
+                    return [[$handlerServiceName], $serviceCollection];
                 }
             ]
         );
 
         $this
             ->serviceContainer
-            ->get('lifecycle.common.error_handler')
+            ->get(CommonLifecycleServiceCollection::class)
             ->shouldNotBeCalled();
 
         $handlerService
@@ -92,10 +97,17 @@ class DoctrineEventSubscriberSpec extends ObjectBehavior
     {
         $errorEvent = $this->getErrorEvent();
 
-        $handlerServiceName =  'provider.lifecycle.company.error_handler';
-        /** @var PersistErrorHandlerServiceCollection $handlerCollection */
-        $handlerCollection = $this->getInstance(
-            PersistErrorHandlerServiceCollection::class
+        $handlerServiceName =  'provider.lifecycle.company.service_collection';
+        $handlerService = $this->getTestDouble(
+            PersistErrorHandlerInterface::class
+        );
+        /** @var CompanyLifecycleServiceCollection $serviceCollection */
+        $serviceCollection = $this->getInstance(
+            CompanyLifecycleServiceCollection::class
+        );
+        $serviceCollection->setServices(
+            'error_handler',
+            [$handlerService->reveal()]
         );
 
         $this->getterProphecy(
@@ -104,29 +116,31 @@ class DoctrineEventSubscriberSpec extends ObjectBehavior
                 'has' => function () use ($handlerServiceName) {
                     return [[$handlerServiceName], true];
                 },
-                'get' => function () use ($handlerServiceName, $handlerCollection) {
-                    return [[$handlerServiceName], $handlerCollection];
+                'get' => function () use ($handlerServiceName, $serviceCollection) {
+                    return [[$handlerServiceName], $serviceCollection];
                 }
             ]
         );
 
-        $commonHandlerCollection = $this->getTestDouble(
-            PersistErrorHandlerServiceCollection::class,
-            false
+        /** @var CompanyLifecycleServiceCollection $commonServiceCollection */
+        $commonServiceCollection = $this->getTestDouble(
+            CompanyLifecycleServiceCollection::class
         );
-
-        $commonHandlerCollection
-            ->execute(Argument::any())
-            ->shouldBeCalled()
-            ->willThrow(new \RuntimeException('runtime exception'));
 
         $this
             ->serviceContainer
-            ->get('lifecycle.common.error_handler')
-            ->willReturn($commonHandlerCollection);
+            ->get(CommonLifecycleServiceCollection::class)
+            ->willReturn($commonServiceCollection)
+            ->shouldBeCalled();
+
+        $commonServiceCollection
+            ->handle(Argument::type(\Exception::class))
+            ->shouldBeCalled()
+            ->willThrow(new \RuntimeException('expected response'));
+
 
         $this
-            ->shouldThrow('\Exception')
+            ->shouldThrow('\RuntimeException')
             ->during('onError', [$errorEvent]);
     }
 

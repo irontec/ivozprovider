@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
-use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendTrunksTrustedPermissionsReloadRequest;
 use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
 use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
 use Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest;
@@ -171,10 +170,10 @@ class CompanyLifeCycleTest extends KernelTestCase
     public function it_triggers_user_address_permissions_reload_on_delete()
     {
         $this->mockInfraestructureServices(
-            'provider.lifecycle.company.on_commit',
-            [
+            'provider.lifecycle.company.service_collection',
+            ['on_commit' => [
                 SendUsersAddressPermissionsReloadRequest::class
-            ],
+            ]],
             1
         );
 
@@ -193,11 +192,11 @@ class CompanyLifeCycleTest extends KernelTestCase
     public function it_triggers_trusted_reload_on_wholesale_companies_delete()
     {
         $trustedReloadServices = [
-            SendUsersTrustedPermissionsReloadRequest::class
+            'on_commit' => [SendUsersTrustedPermissionsReloadRequest::class]
         ];
 
         $this->mockInfraestructureServices(
-            'provider.lifecycle.company.on_commit',
+            'provider.lifecycle.company.service_collection',
             $trustedReloadServices,
             1
         );
@@ -211,9 +210,9 @@ class CompanyLifeCycleTest extends KernelTestCase
         );
 
         $this->mockInfraestructureServices(
-            'provider.lifecycle.company.on_commit',
+            'provider.lifecycle.company.service_collection',
             [
-                SendUsersTrustedPermissionsReloadRequest::class
+                'on_commit' => [SendUsersTrustedPermissionsReloadRequest::class]
             ],
             0
         );

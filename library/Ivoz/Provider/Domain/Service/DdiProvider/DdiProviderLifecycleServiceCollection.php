@@ -12,8 +12,16 @@ class DdiProviderLifecycleServiceCollection implements LifecycleServiceCollectio
 {
     use LifecycleServiceCollectionTrait;
 
-    protected function addService(DdiProviderLifecycleEventHandlerInterface $service)
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\DdiProvider\SendTrunksAddressPermissionsReloadRequest::class => 200,
+        ],
+    ];
+
+
+    protected function addService(string $event, DdiProviderLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

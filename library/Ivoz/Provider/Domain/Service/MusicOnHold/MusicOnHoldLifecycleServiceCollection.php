@@ -12,11 +12,18 @@ class MusicOnHoldLifecycleServiceCollection implements LifecycleServiceCollectio
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(MusicOnHoldLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, MusicOnHoldLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

@@ -12,11 +12,18 @@ class FaxesInOutLifecycleServiceCollection implements LifecycleServiceCollection
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\FaxesInOut\SendFaxFile::class => 10,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(FaxesInOutLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, FaxesInOutLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

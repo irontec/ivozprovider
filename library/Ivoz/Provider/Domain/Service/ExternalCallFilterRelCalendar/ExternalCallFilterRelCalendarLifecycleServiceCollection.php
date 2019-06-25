@@ -12,11 +12,18 @@ class ExternalCallFilterRelCalendarLifecycleServiceCollection implements Lifecyc
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\ExternalCallFilterRelCalendar\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(ExternalCallFilterRelCalendarLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, ExternalCallFilterRelCalendarLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

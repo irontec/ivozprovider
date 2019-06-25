@@ -12,11 +12,22 @@ class DestinationLifecycleServiceCollection implements LifecycleServiceCollectio
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpDestination\CreatedByDestination::class => 200,
+        ],
+        "error_handler" =>
+        [
+            \Ivoz\Provider\Domain\Service\Destination\PersistErrorHandler::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(DestinationLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, DestinationLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

@@ -12,11 +12,19 @@ class CallCsvSchedulerLifecycleServiceCollection implements LifecycleServiceColl
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\CallCsvScheduler\CheckUniqueness::class => 200,
+            \Ivoz\Provider\Domain\Service\CallCsvScheduler\NextExecutionResolver::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(CallCsvSchedulerLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CallCsvSchedulerLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

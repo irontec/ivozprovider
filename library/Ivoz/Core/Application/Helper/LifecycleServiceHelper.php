@@ -4,18 +4,20 @@ namespace Ivoz\Core\Application\Helper;
 
 use Doctrine\Common\Inflector\Inflector;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
+use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 
 class LifecycleServiceHelper
 {
-    public static function getServiceNameByEntity(EntityInterface $entity, $event): string
+    public static function getServiceNameByEntity(EntityInterface $entity, string $event = 'service_collection'): string
     {
         $entityClass = EntityClassHelper::getEntityClass($entity);
         return self::getServiceNameByEntityFqdn($entityClass, $event);
     }
 
-    public static function getServiceNameByEntityFqdn(string $entityClass, $event): string
+    public static function getServiceNameByEntityFqdn(string $entityClass, string $event): string
     {
         $classSegments = explode('\\', $entityClass);
 
@@ -33,6 +35,14 @@ class LifecycleServiceHelper
         $targetInterface = null;
 
         foreach ($serviceInterfaces as $serviceInterface) {
+            $isCommonServiceInterface =
+                ($serviceInterface === CommonLifecycleEventHandlerInterface::class)
+                || ($serviceInterface === CommonPersistErrorHandlerInterface::class);
+
+            if ($isCommonServiceInterface) {
+                return 'lifecycle.common.' . $event;
+            }
+
             $isDomainServiceInterface = is_subclass_of(
                 $serviceInterface,
                 LifecycleEventHandlerInterface::class

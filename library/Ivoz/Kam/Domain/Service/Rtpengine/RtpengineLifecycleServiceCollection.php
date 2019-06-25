@@ -12,11 +12,19 @@ class RtpengineLifecycleServiceCollection implements LifecycleServiceCollectionI
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Kam\Infrastructure\Domain\Service\Rtpengine\SendTrunksRtpengineReloadRequest::class => 200,
+            \Ivoz\Kam\Infrastructure\Domain\Service\Rtpengine\SendUsersRtpengineReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(RtpengineLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, RtpengineLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

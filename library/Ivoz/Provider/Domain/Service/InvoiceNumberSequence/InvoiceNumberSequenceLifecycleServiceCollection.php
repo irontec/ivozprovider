@@ -12,11 +12,18 @@ class InvoiceNumberSequenceLifecycleServiceCollection implements LifecycleServic
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\InvoiceNumberSequence\CheckValidity::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(InvoiceNumberSequenceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, InvoiceNumberSequenceLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

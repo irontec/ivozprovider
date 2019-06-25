@@ -9,6 +9,6 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 fi
 
 
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
     bin/console debug:container "${1,,}.lifecycle.${2,,}.service_collection"
 popd

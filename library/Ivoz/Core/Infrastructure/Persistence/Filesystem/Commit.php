@@ -9,6 +9,8 @@ use Psr\Log\LoggerInterface;
 
 class Commit implements CommonLifecycleEventHandlerInterface
 {
+    const EVENT_POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+
     /**
      * @var LoggerInterface
      */
@@ -21,8 +23,16 @@ class Commit implements CommonLifecycleEventHandlerInterface
     }
 
     /**
-     * @return void
+     *
+     * @return array
      */
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => self::EVENT_POST_PERSIST_PRIORITY
+        ];
+    }
+
     public function handle(EntityInterface $entity)
     {
         if (!$entity instanceof FileContainerInterface) {

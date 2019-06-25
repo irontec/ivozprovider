@@ -12,11 +12,18 @@ class FixedCostsRelInvoiceLifecycleServiceCollection implements LifecycleService
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\FixedCostsRelInvoice\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(FixedCostsRelInvoiceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, FixedCostsRelInvoiceLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

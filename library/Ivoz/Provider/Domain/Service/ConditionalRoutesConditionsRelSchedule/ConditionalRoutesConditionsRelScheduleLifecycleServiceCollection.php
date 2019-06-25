@@ -12,11 +12,18 @@ class ConditionalRoutesConditionsRelScheduleLifecycleServiceCollection implement
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelSchedule\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

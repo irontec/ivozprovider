@@ -12,11 +12,18 @@ class TpAccountActionLifecycleServiceCollection implements LifecycleServiceColle
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpAccountAction\UpdatedTpAccountActionNotificator::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(TpAccountActionLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpAccountActionLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

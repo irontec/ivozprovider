@@ -12,6 +12,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
 {
+    const EVENT_PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
+
     const serviceCollectionPrefix = 'Service\\StoragePathResolverCollection::';
 
     /**
@@ -33,8 +35,16 @@ class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
     }
 
     /**
-     * @return void
+     *
+     * @return array
      */
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_REMOVE => self::EVENT_PRE_REMOVE_PRIORITY
+        ];
+    }
+
     public function handle(EntityInterface $entity)
     {
         if (!$entity instanceof FileContainerInterface) {
