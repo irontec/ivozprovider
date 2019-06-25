@@ -89,6 +89,10 @@ class CommandPersister
             ->entityEventSubscriber
             ->getEvents();
 
+        $this
+            ->entityEventSubscriber
+            ->clearEvents();
+
         foreach ($entityEvents as $event) {
             $changeLog = Changelog::fromEvent($event);
             $changeLog->setCommand($commandlog);
@@ -105,7 +109,6 @@ class CommandPersister
             );
         }
 
-        $this->entityEventSubscriber->clearEvents();
         $this->entityPersister->dispatchQueued();
     }
 
