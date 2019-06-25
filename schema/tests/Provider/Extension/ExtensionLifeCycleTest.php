@@ -270,7 +270,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            $changelogEntries[0]->getData(),
+            $changelogEntries[1]->getData(),
             [
                 'callerid' => 'Bob Bobson <104>',
                 'mailboxes' => 'user2@company1'
