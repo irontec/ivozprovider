@@ -1,6 +1,6 @@
 Feature: Retrieve proxy users
   In order to manage proxy users
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema

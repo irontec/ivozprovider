@@ -1,6 +1,6 @@
 Feature: Update services
   In order to manage services
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Create terminal models
   In order to manage terminal models
-  As an super admin
+  as a super admin
   I need to be able to create them through the API.
 
   @createSchema
