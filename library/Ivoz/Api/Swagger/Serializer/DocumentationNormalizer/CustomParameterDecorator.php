@@ -56,6 +56,8 @@ class CustomParameterDecorator implements NormalizerInterface
         }
 
         if (empty($pathArray['upload_parameters'])) {
+            unset($pathArray['upload_parameters']);
+
             return $pathArray;
         }
 
