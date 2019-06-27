@@ -102,6 +102,19 @@ class FileOperationMetadataFactory implements ResourceMetadataFactoryInterface
     {
         $itemOperations = $resourceMetadata->getItemOperations();
 
+        $getItemOperations = array_filter(
+            $itemOperations,
+            function (array $operation) {
+                $method = $operation['method'] ?? null;
+
+                return strtolower($method) === 'get';
+            }
+        );
+
+        if (empty($getItemOperations)) {
+            return $resourceMetadata;
+        }
+
         foreach ($fileObjects as $fileObject) {
             $entityPath = $this->pluralize(
                 $resourceMetadata->getShortName()
