@@ -36,22 +36,23 @@ class FileOperationMetadataFactory implements ResourceMetadataFactoryInterface
             return $resourceMetadata;
         }
 
-        $resourceClassSegments = explode('\\', $resourceClass);
-
         $reflectionClass = new \ReflectionClass($resourceClass);
         $resourceInstance = $reflectionClass->newInstanceWithoutConstructor();
         if (!($resourceInstance instanceof FileContainerInterface)) {
             return $resourceMetadata;
         }
 
-        $fileObjects = $resourceInstance->getFileObjects();
         $resourceMetadata = $this->allowFileUpload(
             $resourceMetadata,
-            $fileObjects
+            $resourceInstance->getFileObjects(
+                FileContainerInterface::UPDALOADABLE_FILE
+            )
         );
         $resourceMetadata = $this->allowFileDownload(
             $resourceMetadata,
-            $fileObjects
+            $resourceInstance->getFileObjects(
+                FileContainerInterface::DOWNLOADABLE_FILE
+            )
         );
 
         return $resourceMetadata;

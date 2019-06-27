@@ -55,6 +55,10 @@ class CustomParameterDecorator implements NormalizerInterface
             return $pathArray;
         }
 
+        if (empty($pathArray['upload_parameters'])) {
+            return $pathArray;
+        }
+
         array_push(
             $pathArray['parameters'],
             ...$pathArray['upload_parameters']
