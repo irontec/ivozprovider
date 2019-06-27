@@ -18,7 +18,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * @inheritdoc

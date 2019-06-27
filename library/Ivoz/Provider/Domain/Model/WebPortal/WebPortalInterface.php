@@ -22,7 +22,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * {@inheritDoc}

@@ -27,12 +27,22 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'OriginalFile',
-            'EncodedFile'
+        $fileObjects = [
+            'OriginalFile' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+                FileContainerInterface::UPDALOADABLE_FILE,
+            ],
+            'EncodedFile' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**
