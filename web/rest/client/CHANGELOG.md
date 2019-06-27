@@ -2,17 +2,25 @@
 
 ## 2.11.1
 * Endpoints:
-    - conditional_routes_conditions_rel_calendars:
-        - Removed method: PUT
-    - conditional_routes_conditions_rel_matchlists:
-        - Removed method: PUT
-    - conditional_routes_conditions_rel_route_locks:
-        - Removed method: PUT
-    - conditional_routes_conditions_rel_schedules:
-        - Removed method: PUT
-    - rating_profiles:
-        - Removed methods: POST, PUT and DELETE
-
+  - /conditional_routes_conditions_rel_calendars:
+    - Removed method: PUT
+  - /conditional_routes_conditions_rel_matchlists:
+    - Removed method: PUT
+  - /conditional_routes_conditions_rel_route_locks:
+    - Removed method: PUT
+  - /conditional_routes_conditions_rel_schedules:
+    - Removed method: PUT
+  - /rating_profiles:
+    - Removed methods: POST, PUT and DELETE
+  - /call_csv_reports:
+    - Removed param [PUT]: Csv
+    - Removed content-type [PUT]: multipart/form-data
+  - /invoices/{id}/pdf has being removed
+  - /locutions:
+    - removed param [POST and PUT]: EncodedFile
+  - /music_on_holds:
+    - removed param [POST and PUT]: EncodedFile
+    
 * Models:
   - BillableCall:
     - added attribute on collection model: id

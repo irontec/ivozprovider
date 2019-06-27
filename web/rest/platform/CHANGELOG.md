@@ -3,6 +3,7 @@
 ## 2.11.1
 * Endpoints:
     - /invoices and invoices/{id} have being removed
+    - /invoices/{id}\/pdf has being removed
 * Models:
   - BillableCall:
     - added attribute on collection model: id
