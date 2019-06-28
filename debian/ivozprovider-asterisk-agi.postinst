@@ -5,9 +5,6 @@
 # Set current environment
 export SYMFONY_ENV=prod
 
-# Enable php environment variables
-/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/7.0/cli/php.ini
-
 # Create project cache
 cd /opt/irontec/ivozprovider/asterisk/agi
 
