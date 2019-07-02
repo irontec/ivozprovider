@@ -13,7 +13,6 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     const UNMETERED_CALLS = 50001;
     const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
-    const UNBILLED_CALLS_AFTER_OUT_DATE = 50004;
     const SENSELESS_IN_OUT_DATE = 50005;
     const FORBIDDEN_FUTURE_DATES = 50006;
 
@@ -76,8 +75,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             throw new \DomainException('In-Out date error', self::SENSELESS_IN_OUT_DATE);
         }
 
-        $this->assertNoUnmeteredCalls($invoice, $utcOutDate);
-        $this->assertNoUnbilledCallsAfterOutDate($invoice, $utcOutDate, $utcTz);
+        $this->assertNoUnmeteredCalls($invoice, $utcInDate, $utcOutDate);
         $this->assertNoInvoiceInDateRange($invoice, $utcInDate, $utcOutDate);
     }
 
@@ -99,6 +97,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
+     * @param \DateTime $utcInDate
      * @param \DateTime $utcOutDate
      *
      * @throws \Doctrine\ORM\NoResultException
@@ -107,58 +106,17 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      *
      * @return void
      */
-    private function assertNoUnmeteredCalls(InvoiceInterface $invoice, $utcOutDate)
+    private function assertNoUnmeteredCalls(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
     {
-        $untarificattedCallNum = $this->billableCallRepository->countUntarificattedCallsBeforeDate(
+        $untarificattedCallNum = $this->billableCallRepository->countUntarificattedCallsInRange(
             $invoice->getCompany()->getId(),
             $invoice->getBrand()->getId(),
+            $utcInDate->format('Y-m-d H:i:s'),
             $utcOutDate->format('Y-m-d H:i:s')
         );
 
         if ($untarificattedCallNum > 0) {
             throw new \DomainException('Unmetered calls', self::UNMETERED_CALLS);
-        }
-    }
-
-    /**
-     * @param InvoiceInterface $invoice
-     * @param \DateTime $utcOutDate
-     * @param \DateTimeZone $utcTz
-     *
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     * @throws \Doctrine\ORM\Query\QueryException
-     *
-     * @return void
-     */
-    private function assertNoUnbilledCallsAfterOutDate(InvoiceInterface $invoice, $utcOutDate, $utcTz)
-    {
-        /**
-         * @var Invoice[] $invoices
-         */
-        $invoices = $this
-            ->invoiveRepository
-            ->getInvoices(
-                $invoice->getCompany()->getId(),
-                $invoice->getBrand()->getId(),
-                $utcOutDate->format('Y-m-d H:i:s'),
-                $invoice->getId()
-            );
-
-        if (!empty($invoices)) {
-            $firstInvoice = $invoices[0];
-            $nextInvoiceInDate = $firstInvoice->getInDate();
-
-            $calls = $this->billableCallRepository->countUntarificattedCallsInRange(
-                $firstInvoice->getCompany()->getId(),
-                $firstInvoice->getBrand()->getId(),
-                $utcOutDate->format('Y-m-d H:i:s'),
-                $nextInvoiceInDate->setTimezone($utcTz)->format('Y-m-d H:i:s')
-            );
-
-            if ($calls > 0) {
-                throw new \DomainException('Unbilled calls after out date', self::UNBILLED_CALLS_AFTER_OUT_DATE);
-            }
         }
     }
 
