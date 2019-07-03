@@ -12,11 +12,18 @@ class TpRatingPlanLifecycleServiceCollection implements LifecycleServiceCollecti
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpRatingPlan\UpdatedTpRatingPlanNotificator::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(TpRatingPlanLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpRatingPlanLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

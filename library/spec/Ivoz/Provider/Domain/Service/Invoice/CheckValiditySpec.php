@@ -122,54 +122,27 @@ class CheckValiditySpec extends ObjectBehavior
     {
         $this->prepareExecution();
 
+        $exception = new \DomainException(
+            'Unmetered calls',
+            CheckValidity::UNMETERED_CALLS
+        );
+
         $this
             ->billableCallRepository
-            ->countUntarificattedCallsBeforeDate(
+            ->countUntarificattedCallsInRange(
                 Argument::type('numeric'),
                 Argument::type('numeric'),
+                Argument::type('string'),
                 Argument::type('string')
-            )->willReturn(1);
+            )
+            ->shouldBeCalled()
+            ->willThrow($exception);
 
         $this
             ->shouldThrow(
                 new \DomainException(
                     'Unmetered calls',
                     CheckValidity::UNMETERED_CALLS
-                )
-            )
-            ->during('execute', [$this->invoice]);
-    }
-
-    function it_throws_exception_on_unbilled_calls_after_out_date(
-        InvoiceInterface $invoice
-    ) {
-        $this->prepareExecution();
-
-        $this
-            ->invoiveRepository
-            ->getInvoices(
-                Argument::type('numeric'),
-                Argument::type('numeric'),
-                Argument::type('string'),
-                Argument::type('numeric')
-            )->willReturn([$invoice]);
-
-        $invoice
-            ->getInDate()
-            ->willReturn(new \DateTime('1 year ago'));
-
-        $this->billableCallRepository->countUntarificattedCallsInRange(
-            Argument::type('numeric'),
-            Argument::type('numeric'),
-            Argument::type('string'),
-            Argument::type('string')
-        )->willReturn(1);
-
-        $this
-            ->shouldThrow(
-                new \DomainException(
-                    'Unbilled calls after out date',
-                    CheckValidity::UNBILLED_CALLS_AFTER_OUT_DATE
                 )
             )
             ->during('execute', [$this->invoice]);
@@ -238,10 +211,21 @@ class CheckValiditySpec extends ObjectBehavior
 
         $this
             ->billableCallRepository
-            ->countUntarificattedCallsBeforeDate(
+            ->countUntarificattedCallsInRange(
                 Argument::type('numeric'),
                 Argument::type('numeric'),
+                Argument::type('string'),
                 Argument::type('string')
+            )->willReturn(0);
+
+        $this
+            ->invoiveRepository
+            ->fetchInvoiceNumberInRange(
+                Argument::type('numeric'),
+                Argument::type('numeric'),
+                Argument::type('string'),
+                Argument::type('string'),
+                Argument::type('numeric')
             )->willReturn(0);
 
         $this

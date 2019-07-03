@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Application\Service\ResidentialDevice;
 
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
@@ -27,17 +28,16 @@ class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param ResidentialDeviceInterface $residentialDevice
-     * @param integer $depth
-     * @return ResidentialDeviceDto
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $residentialDevice, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $residentialDevice, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
         Assertion::isInstanceOf($residentialDevice, ResidentialDeviceInterface::class);
 
         /** @var ResidentialDeviceDto $dto */
         $dto = $residentialDevice->toDto($depth);
 
-        if (ResidentialDeviceDto::CONTEXT_STATUS !== 'status') {
+        if (ResidentialDeviceDto::CONTEXT_STATUS !== $context) {
             return $dto;
         }
 

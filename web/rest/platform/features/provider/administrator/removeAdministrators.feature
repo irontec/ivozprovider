@@ -1,6 +1,6 @@
 Feature: Manage administrators
   In order to manage administrators
-  As an super admin
+  as a super admin
   I need to be able to delete them through the API.
 
   @createSchema

@@ -1,6 +1,6 @@
 Feature: Retrieve features
   In order to manage features
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema

@@ -12,11 +12,18 @@ class TrunksUacregLifecycleServiceCollection implements LifecycleServiceCollecti
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(TrunksUacregLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TrunksUacregLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

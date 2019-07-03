@@ -17,27 +17,20 @@ services:
     tags:
       - { name: doctrine.event_subscriber }
 
-  Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection:
-    public: true
-  lifecycle.error.service_collection: '@Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection'
-
-  Ivoz\Core\Infrastructure\Persistence\Doctrine\Service\DuplicateEntryCommonErrorHandler:
-    tags: [{ name: lifecycle.common.error_handler, priority: 10 }]
-
   Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection:
     public: true
-  lifecycle.post_persist.service_collection: '@Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection'
-  lifecycle.pre_remove.service_collection: '@Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection'
-  lifecycle.post_remove.service_collection: '@Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection'
+  lifecycle.common.service_collection: '@Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection'
+
+  Ivoz\Core\Infrastructure\Persistence\Doctrine\Service\DuplicateEntryCommonErrorHandler:
+    tags: [{ name: 'domain.service'}]
 
   Ivoz\Core\Infrastructure\Persistence\Filesystem\Commit:
-    tags: [{ name: lifecycle.post_persist.common, priority: 10 }]
+    tags: [{ name: 'domain.service'}]
 
   Ivoz\Core\Infrastructure\Persistence\Filesystem\ScheduleForRemove:
     arguments:
       $serviceContainer: '@service_container'
-    tags: [{ name: lifecycle.pre_remove.common, priority: 10 }]
+    tags: [{ name: 'domain.service'}]
 
   Ivoz\Core\Infrastructure\Persistence\Filesystem\Remove:
-    tags: [{ name: lifecycle.post_remove.common, priority: 10 }]
-
+    tags: [{ name: 'domain.service'}]

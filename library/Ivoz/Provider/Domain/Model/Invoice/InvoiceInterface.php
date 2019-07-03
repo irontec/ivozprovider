@@ -24,7 +24,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * @return bool

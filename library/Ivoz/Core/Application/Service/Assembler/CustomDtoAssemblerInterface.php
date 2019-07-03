@@ -7,10 +7,5 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface CustomDtoAssemblerInterface
 {
-    /**
-     * @param EntityInterface $entity
-     * @param integer $depth
-     * @return DataTransferObjectInterface
-     */
-    public function toDto(EntityInterface $entity, $depth = 0, string $context = null);
+    public function toDto(EntityInterface $entity, int $depth = 0, string $context = null): DataTransferObjectInterface;
 }

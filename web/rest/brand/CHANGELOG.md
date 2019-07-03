@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.11.1
+* Endpoints:
+  - /invoices:
+    - Removed param [PUT]: pdf
+    - Removed content-type [PUT]: multipart/form-data
+* Models:
+  - BillableCall:
+    - added attribute on collection model: id
+  - FeaturesRelBrand:
+    - added attributes on collection model: brand and feature
+
 ## 2.11.0
 
 * Endpoints:

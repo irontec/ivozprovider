@@ -12,11 +12,20 @@ class RatingProfileLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\RatingProfile\CheckValidCurrency::class => 200,
+            \Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdateByRatingProfile::class => 200,
+            \Ivoz\Cgr\Domain\Service\TpRatingProfile\CreatedByCarrierRatingProfile::class => 201,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(RatingProfileLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, RatingProfileLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

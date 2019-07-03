@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Application\Service\Friend;
 
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
@@ -27,17 +28,16 @@ class FriendDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param FriendInterface $friend
-     * @param integer $depth
-     * @return FriendDto
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $friend, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $friend, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
         Assertion::isInstanceOf($friend, FriendInterface::class);
 
         /** @var FriendDto $dto */
         $dto = $friend->toDto($depth);
 
-        if (FriendDto::CONTEXT_STATUS !== 'status') {
+        if (FriendDto::CONTEXT_STATUS !== $context) {
             return $dto;
         }
 

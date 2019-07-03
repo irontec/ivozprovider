@@ -20,7 +20,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * Set calldate

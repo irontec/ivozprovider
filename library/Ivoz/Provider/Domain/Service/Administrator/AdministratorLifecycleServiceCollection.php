@@ -12,11 +12,18 @@ class AdministratorLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\Administrator\CheckUniqueness::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(AdministratorLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, AdministratorLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

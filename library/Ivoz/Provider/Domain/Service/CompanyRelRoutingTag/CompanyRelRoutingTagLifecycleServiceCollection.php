@@ -12,11 +12,18 @@ class CompanyRelRoutingTagLifecycleServiceCollection implements LifecycleService
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\CompanyRelRoutingTag\AvoidUpdates::class => 100,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(CompanyRelRoutingTagLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CompanyRelRoutingTagLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

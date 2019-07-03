@@ -1,6 +1,6 @@
 Feature: Retrieve applicationServers
   In order to manage application servers
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema

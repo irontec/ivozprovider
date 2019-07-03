@@ -1,1 +1,1 @@
-.. incldue:: ../vpbx/rating_profiles.rst
+.. include:: ../vpbx/rating_profiles.rst

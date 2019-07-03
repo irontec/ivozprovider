@@ -20,7 +20,7 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * Get callid

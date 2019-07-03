@@ -1,6 +1,6 @@
 Feature: Update proxy trunks
   In order to manage proxy trunks
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema

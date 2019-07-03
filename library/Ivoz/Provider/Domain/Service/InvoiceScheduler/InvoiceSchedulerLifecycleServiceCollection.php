@@ -12,11 +12,18 @@ class InvoiceSchedulerLifecycleServiceCollection implements LifecycleServiceColl
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\InvoiceScheduler\NextExecutionResolver::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(InvoiceSchedulerLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, InvoiceSchedulerLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

@@ -12,11 +12,18 @@ class TpLcrRuleLifecycleServiceCollection implements LifecycleServiceCollectionI
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "on_commit" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpLcrRule\UpdatedTpLcrRuleNotificator::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(TpLcrRuleLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, TpLcrRuleLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

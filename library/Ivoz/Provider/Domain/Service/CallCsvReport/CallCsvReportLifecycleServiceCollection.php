@@ -12,11 +12,22 @@ class CallCsvReportLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\CallCsvReport\CsvAttacher::class => 200,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\CallCsvReport\EmailSender::class => 300,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(CallCsvReportLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CallCsvReportLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

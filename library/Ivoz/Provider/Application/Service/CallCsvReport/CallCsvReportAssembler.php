@@ -20,19 +20,13 @@ class CallCsvReportAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-    /**
-     * @param DataTransferObjectInterface $dto
-     * @param EntityInterface $entity
-     *
-     * @return void
-     */
     public function fromDto(
-        DataTransferObjectInterface $dto,
-        EntityInterface $entity,
+        DataTransferObjectInterface $callCsvReportDto,
+        EntityInterface $callCsvReport,
         \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
     ) {
-        Assertion::isInstanceOf($entity, CallCsvReportInterface::class);
-        $entity->updateFromDto($dto, $fkTransformer);
-        $this->handleEntityFiles($entity, $dto, $fkTransformer);
+        Assertion::isInstanceOf($callCsvReport, CallCsvReportInterface::class);
+        $callCsvReport->updateFromDto($callCsvReportDto, $fkTransformer);
+        $this->handleEntityFiles($callCsvReport, $callCsvReportDto, $fkTransformer);
     }
 }

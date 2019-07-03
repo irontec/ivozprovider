@@ -25,11 +25,19 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'file'
+        $fileObjects = [
+            'file' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+                FileContainerInterface::UPDALOADABLE_FILE,
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

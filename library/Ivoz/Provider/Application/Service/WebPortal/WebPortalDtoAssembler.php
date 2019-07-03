@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\WebPortal;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
@@ -11,9 +12,6 @@ use Assert\Assertion;
 
 class WebPortalDtoAssembler implements CustomDtoAssemblerInterface
 {
-    /**
-     * @var StoragePathResolverCollection
-     */
     protected $storagePathResolver;
 
     public function __construct(
@@ -22,31 +20,29 @@ class WebPortalDtoAssembler implements CustomDtoAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-
     /**
-     * @param WebPortalInterface $entity
-     * @param integer $depth
-     * @return WebPortalDTO
+     * @param WebPortalInterface $webPortal
+     * @throws \Exception
      */
-    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $webPortal, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
-        Assertion::isInstanceOf($entity, WebPortalInterface::class);
+        Assertion::isInstanceOf($webPortal, WebPortalInterface::class);
 
         /** @var WebPortalDTO $dto */
-        $dto = $entity->toDto($depth);
-        $id = $entity->getId();
+        $dto = $webPortal->toDto($depth);
+        $id = $webPortal->getId();
 
         if (!$id) {
             return $dto;
         }
 
-        if ($entity->getLogo()->getFileSize()) {
+        if ($webPortal->getLogo()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('Logo');
 
             $dto->setLogoPath(
-                $pathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($webPortal)
             );
         }
 

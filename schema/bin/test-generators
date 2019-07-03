@@ -6,6 +6,7 @@ set -e
 pushd /opt/irontec/ivozprovider/schema
     # Regenerate all library files
     bin/run-generators -s Provider Ast Kam Cgr
+    bin/run-service-update
 
     # Check there is no pending files to be commited
     if [ -n "$(git status -s)" ]; then

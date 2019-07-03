@@ -3,19 +3,25 @@
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Service;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
+use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
+use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
 use Doctrine\DBAL\Driver\PDOException;
 
-class DuplicateEntryCommonErrorHandler implements PersistErrorHandlerInterface
+class DuplicateEntryCommonErrorHandler implements CommonPersistErrorHandlerInterface
 {
+    const ON_ERROR_PRIORITY = self::PRIORITY_LOW;
+
     /*
      * Mysql error code list:
      * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
      */
     const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
 
-    public function __construct()
+    public static function getSubscribedEvents()
     {
+        return [
+            self::EVENT_ON_ERROR => self::ON_ERROR_PRIORITY,
+        ];
     }
 
     public function handle(\Exception $exception)

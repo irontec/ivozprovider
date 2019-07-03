@@ -12,11 +12,22 @@ class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\RetailAccount\CheckUniqueness::class => 200,
+        ],
+        "post_persist" =>
+        [
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(RetailAccountLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, RetailAccountLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

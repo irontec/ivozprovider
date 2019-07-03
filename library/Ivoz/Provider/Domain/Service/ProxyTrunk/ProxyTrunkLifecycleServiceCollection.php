@@ -12,11 +12,18 @@ class ProxyTrunkLifecycleServiceCollection implements LifecycleServiceCollection
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_remove" =>
+        [
+            \Ivoz\Provider\Domain\Service\ProxyTrunk\DeleteProtection::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(ProxyTrunkLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, ProxyTrunkLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

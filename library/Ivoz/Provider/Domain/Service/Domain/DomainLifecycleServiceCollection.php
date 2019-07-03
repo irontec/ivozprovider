@@ -13,11 +13,22 @@ class DomainLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "post_persist" =>
+        [
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByDomain::class => 10,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(DomainLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, DomainLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

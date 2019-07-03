@@ -12,11 +12,28 @@ class CarrierLifecycleServiceCollection implements LifecycleServiceCollectionInt
 {
     use LifecycleServiceCollectionTrait;
 
+    public static $bindedBaseServices = [
+        "pre_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\Carrier\ForceExternallyRated::class => 200,
+        ],
+        "post_persist" =>
+        [
+            \Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCarrier::class => 200,
+            \Ivoz\Cgr\Domain\Service\TpCdrStat\CreateByCarrier::class => 200,
+        ],
+        "on_commit" =>
+        [
+            \Ivoz\Provider\Domain\Service\Carrier\SearchBrokenThresholds::class => 10,
+            \Ivoz\Provider\Infrastructure\Domain\Service\Carrier\SendTrunksLcrReloadRequest::class => 200,
+        ],
+    ];
+
     /**
      * @return void
      */
-    protected function addService(CarrierLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, CarrierLifecycleEventHandlerInterface $service)
     {
-        $this->services[] = $service;
+        $this->services[$event][] = $service;
     }
 }

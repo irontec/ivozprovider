@@ -1,6 +1,6 @@
 Feature: Update terminal models
   In order to manage terminal models
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema

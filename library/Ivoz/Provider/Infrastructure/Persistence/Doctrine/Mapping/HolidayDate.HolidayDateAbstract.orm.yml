@@ -85,7 +85,7 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
       joinColumns:
         voiceMailUserId:
           referencedColumnName: id
-          onDelete: cascade
+          onDelete: set null
           nullable: true
       orphanRemoval: false
     numberCountry:

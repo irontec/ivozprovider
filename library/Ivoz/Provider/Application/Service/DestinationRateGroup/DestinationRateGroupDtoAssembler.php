@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\DestinationRateGroup;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
@@ -12,16 +13,8 @@ use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterfac
 
 class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
 {
-    /**
-     * @var StoragePathResolverCollection
-     */
     protected $storagePathResolver;
 
-    /**
-     * DestinationRateGroupDtoAssembler constructor.
-     *
-     * @param StoragePathResolverCollection $storagePathResolver
-     */
     public function __construct(
         StoragePathResolverCollection $storagePathResolver
     ) {
@@ -29,35 +22,33 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
     }
 
     /**
-     * @param DestinationRateGroupInterface $entity
-     * @param integer $depth
-     * @return DestinationRateGroupDto
+     * @param DestinationRateGroupInterface $destinationRateGroup
      * @throws \Exception
      */
-    public function toDto(EntityInterface $entity, $depth = 0, string $context = null)
+    public function toDto(EntityInterface $destinationRateGroup, int $depth = 0, string $context = null): DataTransferObjectInterface
     {
-        Assertion::isInstanceOf($entity, DestinationRateGroupInterface::class);
+        Assertion::isInstanceOf($destinationRateGroup, DestinationRateGroupInterface::class);
 
         /** @var DestinationRateGroupDto $dto */
-        $dto = $entity->toDto($depth);
-        $id = $entity->getId();
+        $dto = $destinationRateGroup->toDto($depth);
+        $id = $destinationRateGroup->getId();
 
         if (!$id) {
             return $dto;
         }
 
-        if ($entity->getFile()->getFileSize()) {
+        if ($destinationRateGroup->getFile()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('file');
 
             $pathResolver
                 ->setOriginalFileName(
-                    $entity->getFile()->getBaseName()
+                    $destinationRateGroup->getFile()->getBaseName()
                 );
 
             $dto->setFilePath(
-                $pathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($destinationRateGroup)
             );
         }
 
