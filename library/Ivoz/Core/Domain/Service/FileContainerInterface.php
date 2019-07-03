@@ -6,6 +6,14 @@ use Ivoz\Core\Domain\Service\TempFile;
 
 interface FileContainerInterface
 {
+    const DOWNLOADABLE_FILE = 1;
+    const UPDALOADABLE_FILE = 2;
+
+    const FILE_OBJECT_FILTERS = [
+        self::DOWNLOADABLE_FILE,
+        self::UPDALOADABLE_FILE
+    ];
+
     /**
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
@@ -21,7 +29,7 @@ interface FileContainerInterface
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
 
     /**

@@ -59,4 +59,20 @@ trait TempFileContainnerTrait
 
         return null;
     }
+
+    protected function filterFileObjects(array $fileObjects, int $filter = null): array
+    {
+        if (is_null($filter)) {
+            return array_keys($fileObjects);
+        }
+
+        $filteredObjects = array_filter(
+            $fileObjects,
+            function (array $flags) use ($filter) {
+                return in_array($filter, $flags, true);
+            }
+        );
+
+        return array_keys($filteredObjects);
+    }
 }

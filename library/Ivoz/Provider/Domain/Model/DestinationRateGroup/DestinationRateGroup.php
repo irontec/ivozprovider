@@ -39,11 +39,19 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'file'
+        $fileObjects = [
+            'file' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+                FileContainerInterface::UPDALOADABLE_FILE,
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

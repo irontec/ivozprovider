@@ -94,11 +94,18 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'Pdf'
+        $fileObjects = [
+            'Pdf' => [
+                FileContainerInterface::DOWNLOADABLE_FILE
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

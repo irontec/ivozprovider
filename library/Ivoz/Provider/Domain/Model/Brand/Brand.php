@@ -28,11 +28,19 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'Logo'
+        $fileObjects = [
+            'Logo' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+                FileContainerInterface::UPDALOADABLE_FILE,
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

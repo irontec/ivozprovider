@@ -22,7 +22,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * @return string
