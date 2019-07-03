@@ -15,25 +15,39 @@ Feature: Retrieve features rel brand
     """
       [
           {
-              "id": 1
+              "id": 1,
+              "brand": 1,
+              "feature": 1
           },
           {
-              "id": 2
+              "id": 2,
+              "brand": 1,
+              "feature": 2
           },
           {
-              "id": 3
+              "id": 3,
+              "brand": 1,
+              "feature": 3
           },
           {
-              "id": 4
+              "id": 4,
+              "brand": 1,
+              "feature": 4
           },
           {
-              "id": 5
+              "id": 5,
+              "brand": 1,
+              "feature": 5
           },
           {
-              "id": 6
+              "id": 6,
+              "brand": 1,
+              "feature": 6
           },
           {
-              "id": 7
+              "id": 7,
+              "brand": 1,
+              "feature": 7
           }
       ]
     """

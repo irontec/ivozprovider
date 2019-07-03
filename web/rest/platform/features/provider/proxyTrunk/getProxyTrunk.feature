@@ -1,6 +1,6 @@
 Feature: Retrieve proxy trunks
   In order to manage proxy trunks
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema

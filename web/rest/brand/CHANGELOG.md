@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.11.1
+* Models:
+  - BillableCall:
+    - added attribute on collection model: id
+  - FeaturesRelBrand:
+    - added attributes on collection model: brand and feature
+
 ## 2.11.0
 
 * Endpoints:

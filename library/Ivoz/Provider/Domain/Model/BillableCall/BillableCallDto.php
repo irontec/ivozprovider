@@ -19,6 +19,7 @@ class BillableCallDto extends BillableCallDtoAbstract
                 'caller' => 'caller',
                 'callee' => 'callee',
                 'cost' => 'cost',
+                'id' => 'id',
                 'price' => 'price',
                 'callid' => 'callid',
                 'brandId' => 'brand',

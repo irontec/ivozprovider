@@ -298,6 +298,9 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
             isNull: ~
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
+  itemOperations:
+    get: ~
+    delete: ~
   collectionOperations:
     get:
       depth: 1
@@ -317,6 +320,9 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
         condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
+  itemOperations:
+    get: ~
+    delete: ~
   collectionOperations:
     get:
       depth: 1
@@ -336,6 +342,9 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRou
         schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
+  itemOperations:
+    get: ~
+    delete: ~
   collectionOperations:
     get:
       depth: 1
@@ -355,6 +364,9 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock:
+  itemOperations:
+    get: ~
+    delete: ~
   collectionOperations:
     get:
       operation_normalization_context: 'detailedCollection'
@@ -1132,6 +1144,10 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
               isNull: ~
 
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:

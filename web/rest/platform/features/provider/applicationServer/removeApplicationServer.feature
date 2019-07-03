@@ -1,6 +1,6 @@
 Feature: Remove application servers
   In order to manage application servers
-  As an super admin
+  as a super admin
   I need to be able to delete them through the API.
 
   @createSchema

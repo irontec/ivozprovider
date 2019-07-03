@@ -1,6 +1,6 @@
 Feature: Create features
   In order to manage features
-  As an super admin
+  as a super admin
   I need to be able to create them through the API.
 
   @createSchema

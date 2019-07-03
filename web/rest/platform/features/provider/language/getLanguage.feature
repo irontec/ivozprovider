@@ -1,6 +1,6 @@
 Feature: Retrieve languages
   In order to manage languages
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema

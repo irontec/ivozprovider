@@ -1,6 +1,6 @@
 Feature: Create media relay sets
   In order to manage media relay sets
-  As an super admin
+  as a super admin
   I need to be able to create them through the API.
 
   @createSchema
