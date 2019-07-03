@@ -1,3 +1,30 @@
+Wed, 03 Jul 2019 10:00:00 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.11.1 released
+
+    * Billing
+        - Fixed error message on rating plan weight collision
+        - Simplified invoice validity checks so that they match the rules described on the documentation
+
+    * Proxies
+        - Fixed Outgoing DDI Rule prefix logic
+
+    * vPBX
+        - Fixed a bug with 0 entry in IVRs
+
+    * Portals:
+        - Forced close of edit/add tabs when a brand/client is emulated preventing unexpected behaviours
+        - Fixed sort by destination on rates
+        - Improved foreign key based sorting performance on big tables
+        - Fixed holiday date importer
+
+    * API
+        - Fixed create user regression
+        - Added file upload restrictions
+
+        See specific API changelog for detailed information on changes for each level
+
+
 Wed, 19 Jun 2019 10:26:26 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.11.0 released
