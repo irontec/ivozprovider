@@ -17,6 +17,10 @@ class DdiProviderRegistrationLifecycleServiceCollection implements LifecycleServ
         [
             \Ivoz\Kam\Domain\Service\TrunksUacreg\CreatedByDdiProviderRegistration::class => 200,
         ],
+        "error_handler" =>
+        [
+            \Ivoz\Provider\Domain\Service\DdiProviderRegistration\PersistErrorHandler::class => 200,
+        ],
     ];
 
     /**
