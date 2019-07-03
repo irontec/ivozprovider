@@ -77,7 +77,7 @@ class IvrAction
         }
 
         // User hasn't pressed anything
-        if (empty($userPressed)) {
+        if ($userPressed === "") {
             $this->processNoInput();
             return;
         }
