@@ -99,6 +99,8 @@ production:
               - name${lang}
               - prefix
             template: "%name${lang}% (%prefix%)"
+          order:
+            Destination.name.${lang}: asc
       decorators:
         autocomplete:
           command: destinationsRatesautocomplete_command
