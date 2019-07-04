@@ -42,7 +42,10 @@ class PropertyMetadataOverwriteFactory implements PropertyMetadataFactoryInterfa
     {
         /** @var PropertyMetadata $propertyMetadata */
         $propertyMetadata = $this->decorated->create(...func_get_args());
-        $propertyMetadata = $propertyMetadata->withDescription('');
+        $attributes = $propertyMetadata->getAttribute('swagger_context', []);
+        $propertyMetadata = $propertyMetadata->withDescription(
+            $attributes['description'] ?? ''
+        );
 
         $reflectionProperty = $this->getReflectionProperty($resourceClass, $property);
         if (!$reflectionProperty) {
