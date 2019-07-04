@@ -22,7 +22,7 @@ class IvozProvider_Klear_Filter_QueueStrategies implements KlearMatrix_Model_Fie
     {
         $queueId = $routeDispatcher->getParam('pk', false);
 
-        if ($queueId) {
+        if ($queueId && is_scalar($queueId)) {
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
             $this->_queue = $dataGateway->find(Queue::class, $queueId);
