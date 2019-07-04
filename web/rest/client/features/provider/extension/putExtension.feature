@@ -68,7 +68,7 @@ Feature: Update extensions
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
+              "tokenKey": "",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
