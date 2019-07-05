@@ -6,11 +6,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
@@ -93,32 +96,79 @@ class RatingPlanPricesAction
         if ($page) {
             throw new \DomainException('_page querystring arguments is not supported here');
         }
+
         $itemsPerPage = $request->query->has('_itemsPerPage');
         if ($itemsPerPage) {
             throw new \DomainException('_itemsPerPage querystring arguments is not supported here');
         }
 
-        $ratingPlanGroupId = $request
-            ->query
-            ->get('id');
+        /** @var AdministratorInterface $admin */
+        $admin = $token->getUser();
+
+        /** @var RatingPlanGroup $ratingPlanGroup */
+        $ratingPlanGroup = $this->ratingPlanGroupRepository->find(
+            $request->query->get('id')
+        );
+
+        if (!$ratingPlanGroup) {
+            return new Response(
+                Response::$statusTexts[Response::HTTP_NOT_FOUND],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        if ($ratingPlanGroup->getBrand() !== $admin->getBrand()) {
+            return new Response(
+                Response::$statusTexts[Response::HTTP_FORBIDDEN],
+                Response::HTTP_FORBIDDEN
+            );
+        }
 
         $generator = $this
             ->ratingPlanGroupRepository
             ->getAllRatesByRatingPlanId(
-                $ratingPlanGroupId,
+                $ratingPlanGroup->getId(),
                 10000,
                 $queryModifier
             );
 
-        $payload = '';
-
+        set_time_limit(0);
+        $tmpfile = tmpfile();
+        fwrite(
+            $tmpfile,
+            '"rating plan", name, pefix, connection fee, cost'
+            .', "rate increment", "group interval start", "time in", days'
+            . "\n"
+        );
         foreach ($generator as $batch) {
             foreach ($batch as $item) {
-                $payload .= $this->array2csv($item) . "\n";
+                fwrite(
+                    $tmpfile,
+                    $this->array2csv($item) . "\n"
+                );
             }
         }
+        fseek($tmpfile, 0);
 
-        return new Response($payload);
+        $response = new StreamedResponse(function () use ($tmpfile) {
+            \stream_copy_to_stream($tmpfile, \fopen('php://output', 'wb'));
+        });
+
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_INLINE,
+            'prices.csv'
+        );
+
+        $response->headers->set(
+            'Content-Disposition',
+            $disposition
+        );
+        $response->headers->set(
+            'Content-Type',
+            'text/csv'
+        );
+
+        return $response;
     }
 
     /**
