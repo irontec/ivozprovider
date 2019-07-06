@@ -42,7 +42,6 @@ class QueueCallAction
     {
         // Local variables to improve readability
         $queueMember = $this->queueMember;
-
         if (is_null($queueMember)) {
             $this->agi->error("Queue is not properly defined. Check configuration.");
             return;
@@ -57,6 +56,12 @@ class QueueCallAction
         $endpoint = $user->getEndpoint();
         if (is_null($endpoint)) {
             $this->agi->error("User %s has no endpoint associated", $user);
+            return;
+        }
+        
+        $dnd = $user->getDoNotDisturb();
+        if ($dnd) {
+            $this->agi->verbose("User %s has DND enabled.", $user);
             return;
         }
 
