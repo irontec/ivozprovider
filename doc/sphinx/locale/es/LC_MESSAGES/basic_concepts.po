@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-11 16:24+0200\n"
+"POT-Creation-Date: 2019-07-09 10:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,8 +260,8 @@ msgid ""
 msgstr ""
 "Puedes descargar uno de los `CDs automáticos de instalación de "
 "IvozProvider <https://github.com/irontec/ivozprovider>`_ (generados "
-"mediante `simplecdd <https://wiki.debian.org/Simple-CDD>`_) en su versión "
-"estable o en una de las builds nocturnas:"
+"mediante `simplecdd <https://wiki.debian.org/Simple-CDD>`_) en su versión"
+" estable o en una de las builds nocturnas:"
 
 #: ../../basic_concepts/installation/cd_install.rst:10
 msgid "IMPORTANT: Automatic install CDs will format target machine disk!"
@@ -284,7 +284,6 @@ msgid ""
 msgstr ""
 "Si lo desea puede emplear la instalación gráfica del CD, pero los "
 "pantallazos a continuación se muestran con la instalación estándar."
-
 
 #: ../../basic_concepts/installation/cd_install.rst:20
 msgid "Choose installation language:"
@@ -335,9 +334,9 @@ msgid ""
 "use only one, KamTrunks will use different SIP ports to avoid collision."
 msgstr ""
 "Como se mencionó en :ref:`Requisitos mínimos` se requiere al menos una "
-"dirección IP pública para los proxies de Usuarios y Troncales. Recordar que en "
-"caso de utilizar una única dirección IP, los puertos SIP del proxy de "
-"salida se cambiarán para evitar la colisión entre ambos."
+"dirección IP pública para los proxies de Usuarios y Troncales. Recordar "
+"que en caso de utilizar una única dirección IP, los puertos SIP del proxy"
+" de salida se cambiarán para evitar la colisión entre ambos."
 
 #: ../../basic_concepts/installation/cd_install.rst:55
 msgid ""
@@ -360,8 +359,8 @@ msgid ""
 "If you don't configure MySQL password, default password will be used "
 "(changeme). You can still change it later."
 msgstr ""
-"Si no configura contraseña para el administrador de MySQL, se empleará la "
-"de por defecto (changeme). Puede cambiarla más adelante si lo desea."
+"Si no configura contraseña para el administrador de MySQL, se empleará la"
+" de por defecto (changeme). Puede cambiarla más adelante si lo desea."
 
 #: ../../basic_concepts/installation/cd_install.rst:68
 msgid "And default language for portals:"
@@ -373,14 +372,15 @@ msgid ""
 "In case any setting has been left without configuration a warning dialog "
 "will be displayed."
 msgstr ""
-"No es preciso configurar todas estas cosas durante la instalación. En caso "
-"de que algún dato esté sin configurar se mostará un diálogo de aviso:"
+"No es preciso configurar todas estas cosas durante la instalación. En "
+"caso de que algún dato esté sin configurar se mostará un diálogo de "
+"aviso:"
 
 #: ../../basic_concepts/installation/cd_install.rst:78
 msgid "At last, select where the GRUB boot loader will be installed."
 msgstr ""
-"Por último, seleccione el disco donde se instalará el cargador de arranque "
-"GRUB."
+"Por último, seleccione el disco donde se instalará el cargador de "
+"arranque GRUB."
 
 #: ../../basic_concepts/installation/cd_install.rst:82
 msgid "After the reboot, you are ready to access using the web portals!"
@@ -447,7 +447,8 @@ msgid ""
 "(called tayler)."
 msgstr ""
 "Actualmente se emplean dos repositorios diferentes tanto para la última "
-"release de IvozProvider (llamada artemis) como para la de Klear (llamada tayler)"
+"release de IvozProvider (llamada artemis) como para la de Klear (llamada "
+"tayler)"
 
 #: ../../basic_concepts/installation/debian_install.rst:31
 msgid "Optionally, we can add the repository key to check signed packages:"
@@ -462,8 +463,8 @@ msgid ""
 "Once the repositories are configured, it will be required to select the "
 "proper metapackage depending on the type of installation."
 msgstr ""
-"Una vez configurados los repositorios será preciso seleccionar el paquete "
-"acorde al perfil que queramos instalar:"
+"Una vez configurados los repositorios será preciso seleccionar el paquete"
+" acorde al perfil que queramos instalar:"
 
 #: ../../basic_concepts/installation/debian_install.rst:45
 msgid "For a :ref:`StandAlone install`:"
@@ -507,9 +508,10 @@ msgid ""
 "information."
 msgstr ""
 "Las instalaciones distribuidas requieren multiples configuraciones en "
-"funcion del rol que se haya instalado. Tenga en cuenta que este proceso de "
-"instalación no ha sido aún documentado. Para mas información vea la "
-"`petición de documentación <https://github.com/irontec/ivozprovider/issues/271>`_"
+"funcion del rol que se haya instalado. Tenga en cuenta que este proceso "
+"de instalación no ha sido aún documentado. Para mas información vea la "
+"`petición de documentación "
+"<https://github.com/irontec/ivozprovider/issues/271>`_"
 
 #: ../../basic_concepts/installation/debian_install.rst:67
 msgid "Finish the installation"
@@ -549,6 +551,12 @@ msgstr ""
 "Es posible cambiar cualquiera de estos valores una vez instalado "
 "IvozProvider volviendo a ejecutar:"
 
+#: ../../basic_concepts/installation/debian_install.rst:89
+msgid ""
+"You must reboot your machine after a package installation in order to "
+"start all required sevices."
+msgstr ""
+
 #: ../../basic_concepts/installation/extra_components.rst:3
 msgid "Extra components"
 msgstr "Componentes extra"
@@ -565,9 +573,9 @@ msgid ""
 "offering a not available codec."
 msgstr ""
 "El códec G.729 será ofrecido por defecto en las llamadas externas. Si no "
-"lo instala empleando las siguientes instrucciones, eliminelo de las configuraciones "
-"en el fichero pjsip.conf. En caso contrarios, los Servidores de Aplicación lo "
-"ofrecerán como códec disponble."
+"lo instala empleando las siguientes instrucciones, eliminelo de las "
+"configuraciones en el fichero pjsip.conf. En caso contrarios, los "
+"Servidores de Aplicación lo ofrecerán como códec disponble."
 
 #: ../../basic_concepts/installation/extra_components.rst:13
 msgid ""
@@ -576,9 +584,8 @@ msgid ""
 "active or withdrawn world patents."
 msgstr ""
 "En algunos paises, es posible que tenga que pagar derechos a los "
-"titulares de las patentes de G.729. No somos asesores legales al respecto "
-"de las patentes activas o retiradas."
-
+"titulares de las patentes de G.729. No somos asesores legales al respecto"
+" de las patentes activas o retiradas."
 
 #: ../../basic_concepts/installation/extra_components.rst:17
 msgid ""
@@ -632,8 +639,8 @@ msgid ""
 "IvozProvider software is designed to run distributed between multiple "
 "systems in what we call profiles:"
 msgstr ""
-"IvozProvider está diseñado para que la mayor parte del software trabaje de"
-" manera distribuida en lo que llamamos perfiles."
+"IvozProvider está diseñado para que la mayor parte del software trabaje "
+"de manera distribuida en lo que llamamos perfiles."
 
 #: ../../basic_concepts/installation/install_types.rst:12
 msgid "Each profile is in charge of performing one of the platform functions:"
@@ -648,7 +655,6 @@ msgstr "Base de Datos"
 #: ../../basic_concepts/installation/install_types.rst:15
 msgid "SIP Proxy"
 msgstr "Proxy SIP"
-
 
 #: ../../basic_concepts/installation/install_types.rst:16
 msgid "Application Server"
@@ -758,10 +764,10 @@ msgid ""
 "IP address. If so, **KamTrunks ports will be changed from 5060 (TCP/UDP) "
 "to 7060 (TCP/UDP) and from 5061 (TCP) to 7061 (TCP)**."
 msgstr ""
-"Es posible hacer que el proxy de usuarios y el proxy "
-"de salida utilicen la misma direción IP pública. En este caso, **se cambiarán "
-"los puertos del proxy de salida de 5060 (TCP/UDP) a 7060 (TCP/UDP) y de 5061 "
-"(TCP) a 7061 (TCP)**."
+"Es posible hacer que el proxy de usuarios y el proxy de salida utilicen "
+"la misma direción IP pública. En este caso, **se cambiarán los puertos "
+"del proxy de salida de 5060 (TCP/UDP) a 7060 (TCP/UDP) y de 5061 (TCP) a "
+"7061 (TCP)**."
 
 #: ../../basic_concepts/installation/requirements.rst:27
 msgid "If you're not using a :ref:`Automatic ISO CD image` you will also need:"
@@ -1260,8 +1266,8 @@ msgid ""
 "to the previous role. The general (God) administrator is in charge of "
 "providing an URL with credentials for its brand portal."
 msgstr ""
-"El operador de marca accede a un portal con menos secciones en comparación con "
-"el rol previo. El administrador global está a cargo de "
+"El operador de marca accede a un portal con menos secciones en "
+"comparación con el rol previo. El administrador global está a cargo de "
 "proveer una URL con credenciales para su portal de marca."
 
 #: ../../basic_concepts/operation_roles/brand.rst:5
@@ -1277,8 +1283,9 @@ msgid ""
 "Due to brand operators are also responsible of billing their clients and "
 "make sure the external calls are properly setup, it must also manage:"
 msgstr ""
-"Dado que los operadores de marca son también responsables de la facturación y "
-"de garantizar que las llamas externas están debidamente configuradas, debe gestionar:"
+"Dado que los operadores de marca son también responsables de la "
+"facturación y de garantizar que las llamas externas están debidamente "
+"configuradas, debe gestionar:"
 
 #: ../../basic_concepts/operation_roles/brand.rst:11
 msgid "Peering contracts with other IP providers for PSTN interconnection."
@@ -1293,8 +1300,8 @@ msgid ""
 "Pricing plans that will offer to their clients, that will determine how "
 "match they pay for each call."
 msgstr ""
-"Planes de precios que serán ofrecidos a sus clientes y que determinarán cuanto "
-"pagarán por cada llamada."
+"Planes de precios que serán ofrecidos a sus clientes y que determinarán "
+"cuanto pagarán por cada llamada."
 
 #: ../../basic_concepts/operation_roles/brand.rst:18
 msgid ""
@@ -1318,9 +1325,10 @@ msgid ""
 "global operator, but their importance is vital so the final users can use"
 " all the features includes in IvozProvider"
 msgstr ""
-"Como puede apreciarse, la tarea del operador de marca es muy distinta de la tarea del "
-"administrador global, pero su importancia es vital para que el usuario final pueda usar "
-"todas las funcionalidades incluidas en IvozProvider."
+"Como puede apreciarse, la tarea del operador de marca es muy distinta de "
+"la tarea del administrador global, pero su importancia es vital para que "
+"el usuario final pueda usar todas las funcionalidades incluidas en "
+"IvozProvider."
 
 #: ../../basic_concepts/operation_roles/brand.rst:30
 msgid ""
@@ -1328,17 +1336,17 @@ msgid ""
 "administrators and **configure the platform to route and rate their "
 "calls**."
 msgstr ""
-"**En resumen**, los operadores de marca **otorgan acceso** a sus administradores de "
-"**clientes** y **configuran la plataforma para enrutar y tarificar sus "
-"llamadas**."
+"**En resumen**, los operadores de marca **otorgan acceso** a sus "
+"administradores de **clientes** y **configuran la plataforma para enrutar"
+" y tarificar sus llamadas**."
 
 #: ../../basic_concepts/operation_roles/client.rst:1
 msgid ""
 "The client administrator has access to the portal supplied by the brand "
 "operator."
 msgstr ""
-"El administrador de cliente tiene acceso al portal facilitado por el administrador "
-"de marca."
+"El administrador de cliente tiene acceso al portal facilitado por el "
+"administrador de marca."
 
 #: ../../basic_concepts/operation_roles/client.rst:4
 msgid ""
@@ -1381,8 +1389,8 @@ msgid ""
 "Give access to the final users to their web portal, so they can configure"
 " their profile options:"
 msgstr ""
-"Dar acceso al usuario final a su portal web, de manera que pueda configurar "
-"las opciones de su perfil:"
+"Dar acceso al usuario final a su portal web, de manera que pueda "
+"configurar las opciones de su perfil:"
 
 #: ../../basic_concepts/operation_roles/client.rst:21
 #: ../../basic_concepts/operation_roles/user.rst:10
@@ -1408,7 +1416,6 @@ msgstr ""
 "En resumen, los administradores de cliente son los responsables de "
 "**configurar su sistema de telefonía a su gusto y de utilizar todas las "
 "funcionalidades que proveé IvozProvider**."
-
 
 #: ../../basic_concepts/operation_roles/god.rst:1
 msgid ""
@@ -1519,16 +1526,16 @@ msgid ""
 "The following images shows the different available levels and the "
 "relation between them:"
 msgstr ""
-"La siguiente imagen muestra los distintos niveles disponibles así como "
-"la relación entre ellos:"
+"La siguiente imagen muestra los distintos niveles disponibles así como la"
+" relación entre ellos:"
 
 #: ../../basic_concepts/operation_roles/index.rst:20
 msgid ""
 "This section will explain each of the available roles, describing their "
 "responsibilities and more important tasks."
 msgstr ""
-"Esta sección explica cada uno de los roles, describe sus responsabilidades "
-"y tareas principales."
+"Esta sección explica cada uno de los roles, describe sus "
+"responsabilidades y tareas principales."
 
 #: ../../basic_concepts/operation_roles/index.rst:25
 msgid "Global administrator role"
@@ -1564,7 +1571,9 @@ msgstr "Credenciales SIP utilizadas para registrar el terminal en IvozProvider"
 
 #: ../../basic_concepts/operation_roles/user.rst:8
 msgid "Through the user portal, it can browse their call registry and configure:"
-msgstr "A través del portal de usuario, se puede visualizar el histórico de llamas y configurar:"
+msgstr ""
+"A través del portal de usuario, se puede visualizar el histórico de "
+"llamas y configurar:"
 
 #: ../../basic_concepts/operation_roles/user.rst:13
 msgid "Displayed data when calling"
@@ -1589,8 +1598,9 @@ msgid ""
 "placed to an user, all the active devices will ring so the user can "
 "answer the call from any of them."
 msgstr ""
-"Las mismas credenciales SIP pueden ser utilizadas en múltiples dispositivos al mismo "
-"tiempo, generado un efecto de bifurcación paralela (*parallel-forking*): cuando se recibe "
-"una llamada, todos los dispositivos activos sonarán permitiendo al usuario "
-"responder desde cualquiera de ellos."
+"Las mismas credenciales SIP pueden ser utilizadas en múltiples "
+"dispositivos al mismo tiempo, generado un efecto de bifurcación paralela "
+"(*parallel-forking*): cuando se recibe una llamada, todos los "
+"dispositivos activos sonarán permitiendo al usuario responder desde "
+"cualquiera de ellos."
 
