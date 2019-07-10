@@ -107,7 +107,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
             } elseif ($rulePattern->getType() == OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
                 $list = $rulePattern->getMatchList();
                 // skip pattern if doesn't match pattern
-                if ($list->numberMatches($e164destination)) {
+                if (!$list->numberMatches($e164destination)) {
                     continue;
                 }
             } else {
