@@ -17,7 +17,7 @@ msgstr "%s emulato"
 
 #, python-format
 msgid "%s successfully deleted."
-mmsgstr "% s eliminato con successo."
+mmsgstr "%s eliminato con successo."
 
 msgid "'Out date' must be equal or greater than 'In date'."
 msgstr "'Data non valida' deve essere uguale o maggiore di 'In data'."
