@@ -171,8 +171,8 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
             // Get calendar events for current day
             $criteria = [
-                ['startDate', 'lt', $now],
-                ['endDate', 'gt', $now],
+                ['startDate', 'lte', $now],
+                ['endDate', 'gte', $now],
             ];
 
             $calendarPeriods = $calendar->getCalendarPeriods(
