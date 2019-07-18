@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller\My;
+namespace Controller\Provider;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
@@ -9,6 +9,7 @@ use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupRepository;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -107,7 +108,7 @@ class RatingPlanPricesAction
 
         /** @var RatingPlanGroup $ratingPlanGroup */
         $ratingPlanGroup = $this->ratingPlanGroupRepository->find(
-            $request->query->get('id')
+            $request->attributes->get('id')
         );
 
         if (!$ratingPlanGroup) {
@@ -136,7 +137,7 @@ class RatingPlanPricesAction
         $tmpfile = tmpfile();
         fwrite(
             $tmpfile,
-            '"rating plan", name, pefix, connection fee, cost'
+            '"rating plan", name, prefix, "connection fee", cost'
             .', "rate increment", "group interval start", "time in", days'
             . "\n"
         );
@@ -148,9 +149,9 @@ class RatingPlanPricesAction
                 );
             }
         }
-        fseek($tmpfile, 0);
 
         $response = new StreamedResponse(function () use ($tmpfile) {
+            fseek($tmpfile, 0);
             \stream_copy_to_stream($tmpfile, \fopen('php://output', 'wb'));
         });
 

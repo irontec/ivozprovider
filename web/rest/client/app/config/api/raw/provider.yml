@@ -1216,6 +1216,13 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
           - fullVoiceMailUser:
               isNull: ~
 
+Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+  attributes:
+    access_control: 'FALSE'
+    pagination_enabled: false
+  itemOperations: []
+  collectionOperations: []
+
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   itemOperations:
     get: ~

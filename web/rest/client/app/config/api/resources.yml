@@ -40,6 +40,29 @@ Model\WebTheme:
         parameters: []
   collectionOperations: {}
 
+
+Model\RatingPlanPrices:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    pagination_enabled: false
+  itemOperations: []
+  collectionOperations:
+    get_my_rating_plan_prices:
+      method: 'GET'
+      path: '/rating_plan_groups/{id}/prices'
+      route_name: 'get_my_rating_plan_prices'
+      swagger_context:
+        produces:
+        - 'text/csv'
+        tags:
+        - Provider
+        parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: 'Rating plan group Id'
+
 Model\UserStatus:
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
