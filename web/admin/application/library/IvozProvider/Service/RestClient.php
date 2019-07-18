@@ -6,21 +6,18 @@ class RestClient
 {
     const LOGIN_ENDPOINT = '/admin_login';
 
+    const EXCHANGE_ENDPOINT = '/token/exchange';
+
     const REFRESH_TOKEN_ENDPOINT = '/token/refresh';
 
     const BILLABLE_CALL_ENDPOINT = '/billable_calls';
 
-    const RATING_PLANS_ENDPOINT = '/my/rating_plan_prices';
+    const RATING_PLANS_ENDPOINT = '/rating_plan_groups/{id}/prices';
 
-    /**
-     * @var string
-     */
     protected $token;
-
-    /**
-     * @var string
-     */
     protected $refreshToken;
+
+    protected static $apiBaseUrl;
 
     /**
      * @var array
@@ -35,12 +32,17 @@ class RestClient
         $this->refreshToken = $refreshToken;
     }
 
+    public static function setBaseUrl(string $baseUrl)
+    {
+        self::$apiBaseUrl = $baseUrl;
+    }
+
     public static function getAdminToken(
         string $username,
         string $password,
         string $type = 'platform'
     ) {
-        $apiUrl = self::getBaseUrl($type) . self::LOGIN_ENDPOINT;
+        $apiUrl = self::getApiUrl(self::getBaseUrl(), $type) . self::LOGIN_ENDPOINT;
 
         $options = self::getBaseRequestOptions('POST');
         $options[CURLOPT_HTTPHEADER] = [
@@ -51,6 +53,44 @@ class RestClient
         $options[CURLOPT_POSTFIELDS] = http_build_query([
             'username' => $username,
             'password' => $password
+        ]);
+
+        try {
+            $response = self::sendRequest($apiUrl, $options);
+
+            if (is_null($response)) {
+                throw new \Exception('Empty response');
+            }
+
+            $jsonResponse = json_decode($response);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new \Exception('Invalid response format');
+            }
+
+            return $jsonResponse;
+        } catch (\Exception $e) {
+            throw new \DomainException('Unable to get API access token', 0, $e);
+        }
+    }
+
+    public static function exchangeAdminToken(
+        string $token,
+        string $username,
+        string $type = 'brand',
+        string $baseUrl = null
+    ) {
+        $baseUrl = $baseUrl ?? self::getBaseUrl();
+        $apiUrl = self::getApiUrl($baseUrl, $type) . self::EXCHANGE_ENDPOINT;
+
+        $options = self::getBaseRequestOptions('POST');
+        $options[CURLOPT_HTTPHEADER] = [
+            "Accept: application/json",
+            "Content-Type: application/x-www-form-urlencoded"
+        ];
+        $options[CURLOPT_POST] = 1;
+        $options[CURLOPT_POSTFIELDS] = http_build_query([
+            'token' => $token,
+            'username' => $username
         ]);
 
         try {
@@ -86,11 +126,17 @@ class RestClient
         return $response;
     }
 
-    protected static function getBaseUrl($api = 'platform')
+    protected static function getBaseUrl()
+    {
+        return self::$apiBaseUrl
+            ? self::$apiBaseUrl
+            : 'https://' . $_SERVER['SERVER_NAME'];
+    }
+
+    protected static function getApiUrl(string $baseUrl, $api = 'platform')
     {
         return
-            'https://'
-            . $_SERVER['SERVER_NAME']
+            $baseUrl
             . '/api/'
             . $api
             . '/'
@@ -113,7 +159,7 @@ class RestClient
     {
         $where['_pagination'] = "false";
         $apiEndpoint =
-            self::getBaseUrl($api)
+            self::getApiUrl(self::getBaseUrl(), $api)
             . self::BILLABLE_CALL_ENDPOINT
             . '?' . http_build_query($where);
 
@@ -132,13 +178,15 @@ class RestClient
         }
     }
 
-    public function getRatingPlans($ratingPlanId = 1)
+    public function getRatingPlanGroupPrices($ratingPlanGroupId = 1)
     {
-        $apiEndpoint =
-            self::getBaseUrl('brand')
-            . self::RATING_PLANS_ENDPOINT
-            . '?id=' . $ratingPlanId;
+        $endpoint = str_replace(
+            '{id}',
+            $ratingPlanGroupId,
+            self::RATING_PLANS_ENDPOINT
+        );
 
+        $apiUrl = self::getApiUrl(self::getBaseUrl(), 'client') . $endpoint;
         $options = self::getBaseRequestOptions();
         $options[CURLOPT_HTTPHEADER] = [
             "Accept: text/csv, text/json"
@@ -146,7 +194,7 @@ class RestClient
 
         try {
             return $this->request(
-                $apiEndpoint,
+                $apiUrl,
                 $options
             );
         } catch (\Exception $e) {
@@ -185,7 +233,15 @@ class RestClient
 
     private function refreshToken()
     {
-        $apiUrl = self::getBaseUrl() . self::REFRESH_TOKEN_ENDPOINT;
+        $this->token = self::getRefreshedToken(
+            $this->refreshToken
+        );
+    }
+
+    public static function getRefreshedToken(string $refreshToken, string $baseUrl = null, string $api = 'platform')
+    {
+        $baseUrl = $baseUrl ?? self::getBaseUrl();
+        $apiUrl = self::getApiUrl($baseUrl, $api) . self::REFRESH_TOKEN_ENDPOINT;
 
         $options = self::getBaseRequestOptions('POST');
         $options[CURLOPT_HTTPHEADER] = [
@@ -194,7 +250,7 @@ class RestClient
         ];
         $options[CURLOPT_POST] = 1;
         $options[CURLOPT_POSTFIELDS] = http_build_query([
-            'refresh_token' =>  $this->refreshToken
+            'refresh_token' =>  $refreshToken
         ]);
 
         try {
@@ -205,7 +261,7 @@ class RestClient
                 throw new \Exception('Invalid response format');
             }
 
-            $this->token = $jsonResponse->token;
+            return $jsonResponse->token;
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get API access token', 0, $e);
         }
