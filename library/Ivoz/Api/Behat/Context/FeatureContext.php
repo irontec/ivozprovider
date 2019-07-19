@@ -5,12 +5,14 @@ namespace Ivoz\Api\Behat\Context;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
+use Behat\Mink\Exception\ExpectationException;
 use Behat\MinkExtension\Context\MinkAwareContext;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Symfony\Component\Filesystem\Filesystem;
 use Behatch\HttpCall\Request;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Defines application features from the specific context.
@@ -95,6 +97,55 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
             $files,
             $body
         );
+    }
+
+    /**
+     * Checks, whether the response content is equal to given text
+     *
+     * @Then the streamed response should be equal to
+     */
+    public function theStreamedResponseShouldBeEqualTo(PyStringNode $expected)
+    {
+        $expected = str_replace('\\"', '"', $expected);
+        $actual = $this->getStreamedResponseContent();
+        $message = "the response was \n\"\"\"\n$actual\"\"\"";
+
+        $this->assert(
+            $expected == $actual,
+            $message ?: "The element '$actual' is not equal to '$expected'"
+        );
+    }
+
+    protected function getStreamedResponseContent()
+    {
+        $requestReflection = new \ReflectionClass($this->request);
+        $minkPropertyAccessor = $requestReflection->getProperty('mink');
+        $minkPropertyAccessor->setAccessible(true);
+
+        $mink = $minkPropertyAccessor->getValue($this->request);
+        $response = $mink->getSession()->getDriver()->getClient()->getResponse();
+
+        if (!$response instanceof StreamedResponse) {
+            throw new \Exception('StreamedResponse was expected');
+        }
+
+        $responseReflection = new \ReflectionClass($response);
+        $streamedPropertyAccessor = $responseReflection->getProperty('streamed');
+        $streamedPropertyAccessor->setAccessible(true);
+        $streamedPropertyAccessor->setValue($response, false);
+
+        ob_start();
+        $response->sendContent();
+        $responseContent = ob_get_clean();
+
+        return $responseContent;
+    }
+
+    protected function assert($test, $message)
+    {
+        if ($test === false) {
+            throw new ExpectationException($message, $this->getSession()->getDriver());
+        }
     }
 
     /**
