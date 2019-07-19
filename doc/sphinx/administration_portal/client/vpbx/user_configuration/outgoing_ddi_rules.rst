@@ -61,3 +61,5 @@ the DDI to 666666666.
 
 In this case, the User will present 666666666 DDI when calling any destination
 with 111 prefix and 777777777 when not using any prefix.
+
+.. important:: Prefix **must** have this format: from 1 to 3 digits ended by * symbol.

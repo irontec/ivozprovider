@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-09 10:19+0200\n"
+"POT-Creation-Date: 2019-06-04 10:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -550,12 +550,6 @@ msgid "It's possible to change any of this values anytime by running:"
 msgstr ""
 "Es posible cambiar cualquiera de estos valores una vez instalado "
 "IvozProvider volviendo a ejecutar:"
-
-#: ../../basic_concepts/installation/debian_install.rst:89
-msgid ""
-"You must reboot your machine after a package installation in order to "
-"start all required sevices."
-msgstr ""
 
 #: ../../basic_concepts/installation/extra_components.rst:3
 msgid "Extra components"
