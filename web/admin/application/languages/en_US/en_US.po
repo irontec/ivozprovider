@@ -997,6 +997,12 @@ msgstr[1] "Friend Patterns"
 msgid "Friend value"
 msgstr "Friend value"
 
+msgid "From 1 to 3 digits ended by # symbol"
+msgstr "From 1 to 3 digits ended by # symbol"
+
+msgid "From 1 to 3 digits ended by * symbol"
+msgstr "From 1 to 3 digits ended by * symbol"
+
 msgid "From address"
 msgstr "From address"
 
