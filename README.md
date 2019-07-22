@@ -75,6 +75,8 @@ Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.fre
 
 You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md).
 
+For environment or functional questions, use [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
+
 ## Commercial support
 
 Don't hesitate to [contact us](https://www.irontec.com/contacto) for support if you plan to create a multi instance installation or want any kind of help with your systems.
