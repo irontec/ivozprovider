@@ -62,7 +62,7 @@ Feature: Update queue members
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "10fd9fbe1c6861fb0a14a57e78f871c5",
+              "tokenKey": "",
               "gsQRCode": false,
               "id": 2,
               "company": 1,
