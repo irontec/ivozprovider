@@ -12,7 +12,7 @@ Feature: Update routing tags
     """
       {
           "name": "TagName",
-          "tag": "090",
+          "tag": "090#",
           "id": 1,
           "brand": 1
       }
@@ -24,7 +24,7 @@ Feature: Update routing tags
     """
       {
           "name": "TagName",
-          "tag": "090",
+          "tag": "090#",
           "id": 1,
           "brand": "~"
       }

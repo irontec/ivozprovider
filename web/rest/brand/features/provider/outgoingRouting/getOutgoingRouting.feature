@@ -72,7 +72,7 @@ Feature: Retrieve outgoing routings
           "routingPatternGroup": null,
           "routingTag": {
               "name": "TagName",
-              "tag": "aTag",
+              "tag": "123#",
               "id": 1,
               "brand": 1
           },

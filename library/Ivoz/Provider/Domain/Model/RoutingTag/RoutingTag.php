@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
+use Ivoz\Core\Domain\Assert\Assertion;
+
 /**
  * RoutingTag
  */
@@ -16,6 +18,16 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
     public function getChangeSet()
     {
         return parent::getChangeSet();
+    }
+
+    protected function setTag($tag)
+    {
+        Assertion::regex(
+            $tag,
+            '/^[0-9]{1,3}#$/'
+        );
+
+        return parent::setTag($tag);
     }
 
     /**
