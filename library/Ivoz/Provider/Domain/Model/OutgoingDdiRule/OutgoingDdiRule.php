@@ -118,6 +118,8 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
             // If we reached here, pattern matched: apply action
             if ($rulePattern->getAction() == OutgoingDdiRulesPatternInterface::ACTION_FORCE) {
                 $finalDdi = $rulePattern->getForcedDdi();
+            } else {
+                $finalDdi = $originalDdi;
             }
 
             break;
