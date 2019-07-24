@@ -34,11 +34,16 @@ class UnusedDefinitionRemover implements NormalizerInterface
         $response = $this->decoratedNormalizer->normalize(...func_get_args());
         $usedDefinitions = $this->getUsedDefinitions($response);
 
+        $unused = [];
         foreach ($response['definitions'] as $name => $spec) {
             if (in_array($name, $usedDefinitions, true)) {
                 continue;
             }
 
+            $unused[] = $name;
+        }
+
+        foreach ($unused as $name) {
             unset($response['definitions'][$name]);
         }
 

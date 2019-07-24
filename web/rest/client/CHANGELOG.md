@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.11.2
+* Endpoints:
+  - Added endpoints:
+    - /rating_plan_groups/{id}/prices
+  - /rating_profiles
+    - Added param [GET]: ratingPlanGroup
+
+* Models:
+    - RatingProfile:
+        - Added required attribute: ratingPlanGroup
+    - User:
+        - Marked tokenKey attribute as deprecated (will be removed in 2.12)   
+
 ## 2.11.1
 * Endpoints:
   - /conditional_routes_conditions_rel_calendars:
