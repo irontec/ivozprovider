@@ -76,7 +76,7 @@ class FriendDto extends FriendDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_STATUS) {
-            return [
+            $baseAttributes = [
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
@@ -86,6 +86,12 @@ class FriendDto extends FriendDtoAbstract
                     'userAgent'
                 ]
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $baseAttributes['companyId'] = 'company';
+            }
+
+            return $baseAttributes;
         }
 
         if ($context === self::CONTEXT_COLLECTION) {

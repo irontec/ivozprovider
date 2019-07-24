@@ -355,6 +355,26 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
         fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
         invoice: 'Ivoz\Provider\Domain\Model\Invoice\Invoice'
 
+Ivoz\Provider\Domain\Model\Friend\Friend:
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+  itemOperations: []
+  collectionOperations:
+    get_status_collection:
+      method: 'GET'
+      path: 'friends/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -532,22 +552,50 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    pagination_client_enabled: true
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'retail_accounts/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    pagination_client_enabled: true
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'residential_devices/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
   attributes:
@@ -601,6 +649,25 @@ Ivoz\Provider\Domain\Model\Service\Service:
     get: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+
+Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    pagination_client_enabled: true
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+  collectionOperations:
+    get_status_collection:
+      method: 'GET'
+      path: 'terminals/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
 
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
