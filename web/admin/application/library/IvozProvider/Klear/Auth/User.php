@@ -50,6 +50,25 @@ class User extends \Klear_Model_UserAdvanced
         $this->refreshToken = $refreshToken;
     }
 
+    public function isTokenExpired()
+    {
+        $decodedToken = base64_decode($this->token);
+        $success = preg_match(
+            '/"exp"\:([0-9]+),/',
+            $decodedToken,
+            $matches
+        );
+
+        if (!$success) {
+            return true;
+        }
+
+        $now = time();
+        $expires = (int) $matches[1] ?? 0;
+
+        return $expires <= $now;
+    }
+
     public function setUserName($username)
     {
         $this->_name = $username;
