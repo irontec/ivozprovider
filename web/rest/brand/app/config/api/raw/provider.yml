@@ -661,6 +661,7 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     write_access_control:
       ROLE_BRAND_ADMIN:
         raw: 'FALSE'
+  itemOperations: []
   collectionOperations:
     get_status_collection:
       method: 'GET'
