@@ -1,3 +1,28 @@
+Wed, 24 Jul 2019 10:11:24 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.11.2 released
+
+    * Proxies
+        - Reimplemented Outgoing DDI presentation using prefix
+        - Fixed a bug in LCR routes that caused Carrier deactivation
+        - Changed default parallel forking Q-value to 1.00
+
+    * vPBX
+        - Fixed a bug in Outgoing DDI presentation using match lists
+        - DND users are no longer disturbed by queue calls
+        - Calendar events now also trigger on start and end date
+
+    * Portals
+        - Fixed a bug in Calendar events Locutions and Schedules filters
+        - Fixed Rating plan CSV exporter for Brand and God administators
+        - Fixed a bug in Retail client call simulator
+        - Fixed a bug in Residential onDemandRecordCode display
+
+    * API
+        - Endpoint Registration status is now also available in brand API
+
+        See specific API changelog for detailed information on changes for each level
+
 Wed, 03 Jul 2019 10:00:00 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.11.1 released
