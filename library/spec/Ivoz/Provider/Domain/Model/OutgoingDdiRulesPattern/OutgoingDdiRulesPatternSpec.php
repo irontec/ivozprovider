@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -27,7 +28,9 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
     ) {
         $this->dto = $dto = new OutgoingDdiRulesPatternDto();
 
-        $dto->setType('destination');
+        $dto->setType(
+            OutgoingDdiRulesPatternInterface::TYPE_DESTINATION
+        );
         $dto->setAction('force');
         $dto->setPriority(1);
 
@@ -62,6 +65,53 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
         $this
             ->getForcedDdi()
             ->shouldBe($ddi);
+    }
+
+    function it_throws_exception_on_invalid_prefix_format()
+    {
+        $this
+            ->dto
+            ->setType(OutgoingDdiRulesPatternInterface::TYPE_PREFIX);
+
+        $validPrefixes = [
+            null, '1*', '12*', '123*'
+        ];
+
+        foreach ($validPrefixes as $validPrefix) {
+            $this
+                ->dto
+                ->setPrefix($validPrefix);
+
+            $response = $this->updateFromDto(
+                $this->dto,
+                new \spec\DtoToEntityFakeTransformer()
+            );
+
+            $this
+                ->getPrefix($validPrefix)
+                ->shouldReturn($validPrefix);
+        }
+
+        $invalidPrefixes = [
+            '123',
+            '1234*'
+        ];
+
+        foreach ($invalidPrefixes as $invalidPrefix) {
+            $this
+                ->dto
+                ->setPrefix($invalidPrefix);
+
+            $this
+                ->shouldThrow('\Exception')
+                ->during(
+                    'updateFromDto',
+                    [
+                        $this->dto,
+                        new \spec\DtoToEntityFakeTransformer()
+                    ]
+                );
+        }
     }
 
     function it_return_company_outgoing_ddi_when_no_forced_ddi(

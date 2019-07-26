@@ -1010,6 +1010,12 @@ msgstr[1] "Patrones de Friend"
 msgid "Friend value"
 msgstr "Número friend"
 
+msgid "From 1 to 3 digits ended by # symbol"
+msgstr "De 1 a 3 dígitos seguidos de *"
+
+msgid "From 1 to 3 digits ended by * symbol"
+msgstr "De 1 a 3 dígitos seguidos de #"
+
 msgid "From address"
 msgstr "Dirección origen"
 

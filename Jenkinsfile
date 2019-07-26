@@ -1,5 +1,3 @@
-
-
 pipeline {
 
     agent any
@@ -19,6 +17,14 @@ pipeline {
                 numToKeepStr: '10'
             )
         )
+    }
+
+    // ------------------------------------------------------------------------
+    // Environment configuration
+    // ------------------------------------------------------------------------
+    environment {
+        SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
+        SYMFONY_PHPUNIT_VERSION = "6.5.14"
     }
 
     stages {

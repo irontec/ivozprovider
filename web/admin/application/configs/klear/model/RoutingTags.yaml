@@ -10,8 +10,15 @@ production:
     tag:
       title: _('Tag')
       type: text
+      pattern: "^[0-9]{1,3}#$"
       required: true
       maxLength: 15
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("From 1 to 3 digits ended by # symbol")
+        label: _("Need help?")
     brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select

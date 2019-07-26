@@ -23,6 +23,8 @@ Routing tag definition only implies these two fields:
     Tag
         Prefix itself
 
+.. important:: Tag **must** have this format: from 1 to 3 digits ended by # symbol.
+
 Using routing tags
 ------------------
 

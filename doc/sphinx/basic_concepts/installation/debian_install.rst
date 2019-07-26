@@ -85,3 +85,6 @@ It's possible to change any of this values anytime by running:
 .. important:: Any of the public IP addresses configured during the
    installation will work to access the web portal. Default credentials are
    **admin / changeme**.
+
+.. important:: You must reboot your machine after a package installation in order to start
+   all required sevices.

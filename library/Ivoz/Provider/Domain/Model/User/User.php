@@ -133,8 +133,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
             return parent::setPass(null);
         }
 
-        $newToken = md5(md5($pass));
-        $this->setTokenKey($newToken);
         $salt = substr(md5(mt_rand(), false), 0, 22);
         $cryptPass = crypt(
             $pass,

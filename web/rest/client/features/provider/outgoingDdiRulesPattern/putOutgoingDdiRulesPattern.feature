@@ -13,10 +13,11 @@ Feature: Update outgoing ddi rules patterns
       {
           "action": "force",
           "priority": 10,
-          "id": 1,
           "outgoingDdiRule": 1,
           "matchList": 2,
-          "forcedDdi": 1
+          "forcedDdi": 1,
+          "type": "prefix",
+          "prefix": "12*"
       }
     """
     Then the response status code should be 200
@@ -25,6 +26,8 @@ Feature: Update outgoing ddi rules patterns
      And the JSON should be like:
     """
       {
+          "type": "prefix",
+          "prefix": "12*",
           "action": "force",
           "priority": 10,
           "id": 1,
@@ -35,11 +38,7 @@ Feature: Update outgoing ddi rules patterns
               "company": 1,
               "forcedDdi": null
           },
-          "matchList": {
-              "name": "testMatchlist2",
-              "id": 2,
-              "company": 1
-          },
+          "matchList": null,
           "forcedDdi": "~"
       }
     """

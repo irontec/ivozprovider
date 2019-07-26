@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.11.2
+* Endpoints:
+  - Added endpoints:
+    - /friends/status
+    - /residential_devices/status
+    - /retail_accounts/status
+    - /terminals/status
+  - Removed endpoints:
+    - /my/rating_plan_prices 
+  - /residential_devices
+    - Added param [GET]: _pagination
+  - /retail_accounts
+    - Added param [GET]: _pagination
+  - /users_cdrs
+    - Added param [GET]: friend
+* Models:
+    - UsersCdr:
+        - added attributes: friend  
+
 ## 2.11.1
 * Endpoints:
   - /invoices:

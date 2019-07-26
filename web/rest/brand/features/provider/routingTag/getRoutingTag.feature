@@ -32,7 +32,7 @@ Feature: Retrieve routing tag
     """
       {
           "name": "TagName",
-          "tag": "aTag",
+          "tag": "123#",
           "id": 1,
           "brand": {
               "name": "DemoBrand",

@@ -47,6 +47,7 @@ class UserDto extends UserDtoAbstract
         if (!$hideSensitiveData) {
             return $response;
         }
+        $response['tokenKey'] = '';
         $response['pass'] = '*****';
 
         return $response;

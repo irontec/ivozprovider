@@ -172,7 +172,7 @@ class RoutingPatternGroupsRelPatternLifeCycleTest extends KernelTestCase
             $changelog->getData(),
             [
                 'lcr_id' => 1,
-                'prefix' => 'aTag+35',
+                'prefix' => '123#+35',
                 'from_uri' => '^b1c1$',
                 'stopper' => 0,
                 'enabled' => 1,
