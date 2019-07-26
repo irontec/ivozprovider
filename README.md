@@ -38,8 +38,6 @@ And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
-![scaling](web/admin/public/images/horizontalscaling.png)
-
 #### Cloud Service
 IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
