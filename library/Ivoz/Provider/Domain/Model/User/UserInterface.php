@@ -221,13 +221,6 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailAttachSound();
 
     /**
-     * Get tokenKey
-     *
-     * @return string | null
-     */
-    public function getTokenKey();
-
-    /**
      * Get gsQRCode
      *
      * @return boolean
