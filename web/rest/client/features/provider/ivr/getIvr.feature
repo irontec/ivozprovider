@@ -109,7 +109,6 @@ Feature: Retrieve IVRs
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "",
               "gsQRCode": false,
               "id": 1,
               "company": 1,

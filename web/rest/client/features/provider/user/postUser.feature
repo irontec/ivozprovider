@@ -56,7 +56,6 @@ Feature: Create users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "",
           "gsQRCode": false,
           "id": 3,
           "company": 1,
@@ -96,7 +95,6 @@ Feature: Create users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "",
           "gsQRCode": false,
           "id": 3,
           "company": {
