@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersPua;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface UsersPuaInterface extends LoggableEntityInterface
+interface UsersPuaInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     /**
      * Get presUri
      *
