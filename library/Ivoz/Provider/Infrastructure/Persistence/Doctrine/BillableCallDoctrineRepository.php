@@ -228,13 +228,35 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      */
     public function setInvoiceId(array $conditions, int $invoiceId)
     {
+        // In order to reduce table lock times search target ids first
+        $finder = $this
+            ->createQueryBuilder('self')
+            ->select('self.id')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            )
+            ->getQuery();
+
+        $targetIds = array_map(
+            function (array $row) {
+                return $row['id'];
+            },
+            $finder->execute()
+        );
+
+        if (empty($targetIds)) {
+            return;
+        }
+
         $qb = $this
             ->createQueryBuilder('self')
             ->update($this->_entityName, 'self')
             ->set('self.invoice', ':invoiceId')
             ->setParameter(':invoiceId', $invoiceId)
             ->addCriteria(
-                CriteriaHelper::fromArray($conditions)
+                CriteriaHelper::fromArray([
+                    ['id', 'in', $targetIds],
+                ])
             );
 
         $this->queryRunner->execute(

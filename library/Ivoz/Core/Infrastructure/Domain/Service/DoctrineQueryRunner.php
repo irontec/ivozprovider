@@ -10,6 +10,7 @@ use Ivoz\Core\Domain\Event\EntityWasUpdated;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\CommandPersister;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
+use Psr\Log\LoggerInterface;
 
 class DoctrineQueryRunner
 {
@@ -18,15 +19,18 @@ class DoctrineQueryRunner
     protected $em;
     protected $eventPublisher;
     protected $commandPersister;
+    protected $logger;
 
     public function __construct(
         EntityManagerInterface $em,
         DomainEventPublisher $eventPublisher,
-        CommandPersister $commandPersister
+        CommandPersister $commandPersister,
+        LoggerInterface $logger
     ) {
         $this->em = $em;
         $this->eventPublisher = $eventPublisher;
         $this->commandPersister = $commandPersister;
+        $this->logger = $logger;
     }
 
     public function execute(string $entityName, Query $query)
@@ -85,6 +89,12 @@ class DoctrineQueryRunner
                 if (!$retries || !$lockIssues) {
                     throw $e;
                 }
+
+                $this->logger->warning(
+                    'Retrying transaction: ' . $e->getMessage()
+                );
+
+                sleep(2);
             }
         }
     }
