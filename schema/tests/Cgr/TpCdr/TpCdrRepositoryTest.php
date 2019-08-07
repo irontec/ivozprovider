@@ -15,6 +15,14 @@ class TpCdrRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_origin_id();
+        $this->it_finds_default_run_by_cgr_id();
+        $this->it_finds_carrier_run_by_cgr_id();
+    }
+
     public function its_instantiable()
     {
         /** @var TpCdrRepository $repository */
@@ -28,9 +36,6 @@ class TpCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_origin_id()
     {
         /** @var TpCdrRepository $repository */
@@ -43,9 +48,6 @@ class TpCdrRepositoryTest extends KernelTestCase
         $this->assertNull($result);
     }
 
-    /**
-     * @test
-     */
     public function it_finds_default_run_by_cgr_id()
     {
         /** @var TpCdrRepository $repository */
@@ -58,9 +60,6 @@ class TpCdrRepositoryTest extends KernelTestCase
         $this->assertNull($result);
     }
 
-    /**
-     * @test
-     */
     public function it_finds_carrier_run_by_cgr_id()
     {
         /** @var TpCdrRepository $repository */

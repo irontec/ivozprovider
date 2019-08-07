@@ -98,14 +98,16 @@ class RoutingPatternLifeCycleTest extends KernelTestCase
             count($fixtureRoutingPattern) + 1,
             $routingPatterns
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addRoutingPattern();
         $this->assetChangedEntities([
             RoutingPattern::class,
         ]);

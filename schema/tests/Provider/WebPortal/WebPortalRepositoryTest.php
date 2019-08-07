@@ -15,6 +15,13 @@ class WebPortalRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->its_finds_user_web_portal_by_server_name();
+        $this->its_gets_brand_id_by_url();
+    }
+
     public function its_instantiable()
     {
         /** @var WebPortalRepository $repository */
@@ -28,9 +35,6 @@ class WebPortalRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function its_finds_user_web_portal_by_server_name()
     {
         /** @var WebPortalRepository $repository */
@@ -48,9 +52,6 @@ class WebPortalRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function its_gets_brand_id_by_url()
     {
         /** @var WebPortalRepository $repository */

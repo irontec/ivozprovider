@@ -58,7 +58,6 @@ class TerminalModelLifeCycleTest extends KernelTestCase
             ->persistDto($terminalModelDto, $terminalModel, true);
     }
 
-
     protected function removeTerminalModel()
     {
         $terminalModelRepository = $this->em
@@ -88,14 +87,16 @@ class TerminalModelLifeCycleTest extends KernelTestCase
             count($fixtureTerminalModel) + 1,
             $terminalModels
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addTerminalModel();
         $this->assetChangedEntities([
             TerminalModel::class
         ]);

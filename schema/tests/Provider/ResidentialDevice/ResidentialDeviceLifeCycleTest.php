@@ -49,7 +49,6 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         return $residentialDevice;
     }
 
-
     protected function updateResidentialDevice()
     {
         $residentialDeviceRepository = $this->em
@@ -80,7 +79,6 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
             ->remove($residentialDevice);
     }
 
-
     /**
      * @test
      */
@@ -95,14 +93,17 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
 
         $brands = $residentialDevice->findAll();
         $this->assertCount(2, $brands);
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->it_updates_tp_rating_profile();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addResidentialDevice();
         $this->assetChangedEntities([
             ResidentialDevice::class,
             PsEndpoint::class,
@@ -110,42 +111,8 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function it_updates_tp_rating_profile()
     {
-        $this->updateResidentialDevice();
-        $this->assetChangedEntities([
-            ResidentialDevice::class,
-            Voicemail::class,
-            PsEndpoint::class
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeResidentialDevice();
-        $this->assetChangedEntities([
-            ResidentialDevice::class,
-        ]);
-    }
-
-    /////////////////////////////////////////
-    ///
-    /////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function it_updates_tp_rating_profile()
-    {
-        $this->addResidentialDevice();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             PsEndpoint::class
@@ -178,5 +145,29 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
                 'id' => 6
             ]
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateResidentialDevice();
+        $this->assetChangedEntities([
+            ResidentialDevice::class,
+            Voicemail::class,
+            PsEndpoint::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeResidentialDevice();
+        $this->assetChangedEntities([
+            ResidentialDevice::class,
+        ]);
     }
 }

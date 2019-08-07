@@ -17,6 +17,13 @@ class CompanyRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_brandId();
+        $this->it_finds_prepaid_companies();
+    }
+
     public function its_instantiable()
     {
         /** @var CompanyRepository $repository */
@@ -30,9 +37,6 @@ class CompanyRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_brandId()
     {
         /** @var CompanyRepository $repository */
@@ -53,9 +57,6 @@ class CompanyRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_prepaid_companies()
     {
         /** @var CompanyRepository $repository */

@@ -87,14 +87,16 @@ class RoutingPatternGroupLifeCycleTest extends KernelTestCase
 
         $brands = $routingPattern->findAll();
         $this->assertCount(count($fixtureRoutingPatternGroups) + 1, $brands);
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addRoutingPatternGroup();
         $this->assetChangedEntities([
             RoutingPatternGroup::class,
         ]);

@@ -15,6 +15,12 @@ class TpDestinationRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_tag();
+    }
+
     public function its_instantiable()
     {
         /** @var TpDestinationRepository $repository */
@@ -28,9 +34,6 @@ class TpDestinationRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_tag()
     {
         /** @var TpDestinationRepository $repository */

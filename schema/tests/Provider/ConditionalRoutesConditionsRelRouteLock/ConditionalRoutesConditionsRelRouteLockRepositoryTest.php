@@ -14,6 +14,11 @@ class ConditionalRoutesConditionsRelRouteLockRepositoryTest extends KernelTestCa
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+    }
+
     public function its_instantiable()
     {
         /** @var ConditionalRoutesConditionsRelRouteLockRepository $repository */

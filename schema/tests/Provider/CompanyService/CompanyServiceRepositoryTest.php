@@ -15,6 +15,12 @@ class CompanyServiceRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_company_services();
+    }
+
     public function its_instantiable()
     {
         /** @var CompanyServiceRepository $repository */

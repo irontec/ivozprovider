@@ -15,6 +15,17 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_finds_one_by_trunksCdrId();
+        $this->it_checks_retarificable_calls();
+        $this->it_finds_unrated_calls_in_group();
+        $this->it_finds_rerateable_cgrids_in_group();
+        $this->it_transforms_ids_to_trunkCdrId();
+        $this->it_counts_untarificatted_calls_before_date();
+        $this->it_counts_untarificatted_calls_in_range();
+    }
+
     public function it_finds_one_by_trunksCdrId()
     {
         /** @var BillableCallRepository $billableCallRepository */
@@ -32,7 +43,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @test
      * @see BillableCallRepository::areRetarificable
      */
     public function it_checks_retarificable_calls()
@@ -52,7 +62,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @test
      * @see BillableCallRepository::findUnratedInGroup
      */
     public function it_finds_unrated_calls_in_group()
@@ -72,7 +81,6 @@ class BillableCallRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @test
      * @see BillableCallRepository::findRerateableCgridsInGroup
      */
     public function it_finds_rerateable_cgrids_in_group()
@@ -91,9 +99,6 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_transforms_ids_to_trunkCdrId()
     {
         /** @var BillableCallRepository $billableCallRepository */
@@ -238,9 +243,6 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_counts_untarificatted_calls_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */

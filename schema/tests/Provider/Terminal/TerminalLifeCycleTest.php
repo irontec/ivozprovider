@@ -85,14 +85,16 @@ class TerminalLifeCycleTest extends KernelTestCase
             count($fixtureTerminal) + 1,
             $terminals
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addTerminal();
         $this->assetChangedEntities([
             Terminal::class,
             PsEndpoint::class,

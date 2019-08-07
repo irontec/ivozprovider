@@ -83,14 +83,16 @@ class LocutionLifeCycleTest extends KernelTestCase
 
         $brands = $locution->findAll();
         $this->assertCount(2, $brands);
+
+        ///////////////////////////
+        ///
+        ///////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addLocution();
         $this->assetChangedEntities([
             Locution::class
         ]);

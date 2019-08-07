@@ -89,55 +89,22 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
 
         $brands = $ddiProviderRegistration->findAll();
         $this->assertCount(count($fixtureDdiProviderRegistrations) + 1, $brands);
+
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_ddiProviderRegistration_has_trunksUacregs();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addDdiProviderRegistration();
         $this->assetChangedEntities([
             DdiProviderRegistration::class,
             TrunksUacreg::class,
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function added_ddiProviderRegistration_has_trunksUacregs()
     {
-        $this->updateDdiProviderRegistration();
-        $this->assetChangedEntities([
-            DdiProviderRegistration::class,
-            TrunksUacreg::class,
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeDdiProviderRegistration();
-        $this->assetChangedEntities([
-            DdiProviderRegistration::class
-        ]);
-    }
-
-    ////////////////////////////////////////////////
-    ///
-    ////////////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_ddiProviderRegistration_has_trunksUacregs()
-    {
-        $this->addDdiProviderRegistration();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TrunksUacreg::class
@@ -170,5 +137,28 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
             $expectedSubset,
             $diff
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateDdiProviderRegistration();
+        $this->assetChangedEntities([
+            DdiProviderRegistration::class,
+            TrunksUacreg::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeDdiProviderRegistration();
+        $this->assetChangedEntities([
+            DdiProviderRegistration::class
+        ]);
     }
 }

@@ -99,55 +99,25 @@ class QueueLifeCycleTest extends KernelTestCase
 
         $brands = $queue->findAll();
         $this->assertCount(2, $brands);
+
+        //////////////////////////////
+        ///
+        //////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->it_updates_ast_queue();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addQueue();
         $this->assetChangedEntities([
             Queue::class,
             AstQueue::class
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function it_updates_ast_queue()
     {
-        $this->updateQueue();
-        $this->assetChangedEntities([
-            Queue::class,
-            AstQueue::class
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeQueue();
-        $this->assetChangedEntities([
-            Queue::class,
-        ]);
-    }
-
-    /////////////////////////////////////
-    ///
-    /////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function it_updates_ps_endpoint()
-    {
-        $this->addQueue();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             AstQueue::class
@@ -173,5 +143,28 @@ class QueueLifeCycleTest extends KernelTestCase
                 'id' => 2
             ]
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateQueue();
+        $this->assetChangedEntities([
+            Queue::class,
+            AstQueue::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeQueue();
+        $this->assetChangedEntities([
+            Queue::class,
+        ]);
     }
 }

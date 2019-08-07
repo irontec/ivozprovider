@@ -87,56 +87,25 @@ class RatingProfileLifeCycleTest extends KernelTestCase
 
         $brands = $ratingProfile->findAll();
         $this->assertCount(3, $brands);
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->it_updates_tp_rating_profile();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addRatingProfile();
         $this->assetChangedEntities([
             RatingProfile::class,
             TpRatingProfile::class,
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function it_updates_tp_rating_profile()
     {
-        $this->updateRatingProfile();
-        $this->assetChangedEntities([
-            RatingProfile::class,
-            TpRatingProfile::class,
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeRatingProfile();
-        $this->assetChangedEntities([
-            TpRatingProfile::class,
-            RatingProfile::class,
-        ]);
-    }
-
-    ////////////////////////////////////////
-    ///
-    ////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function it_updates_tp_rating_profile()
-    {
-        $this->addRatingProfile();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TpRatingProfile::class
@@ -166,5 +135,29 @@ class RatingProfileLifeCycleTest extends KernelTestCase
             $expectedSubset,
             $excludedSubsetKeys
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateRatingProfile();
+        $this->assetChangedEntities([
+            RatingProfile::class,
+            TpRatingProfile::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeRatingProfile();
+        $this->assetChangedEntities([
+            TpRatingProfile::class,
+            RatingProfile::class,
+        ]);
     }
 }

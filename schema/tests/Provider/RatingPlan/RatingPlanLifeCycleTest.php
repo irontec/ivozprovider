@@ -90,14 +90,18 @@ class RatingPlanLifeCycleTest extends KernelTestCase
 
         $brands = $ratingPlan->findAll();
         $this->assertCount(count($fixtureRatingPlans) + 1, $brands);
+
+
+        //////////////////////////////
+        ///
+        //////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->it_creates_tp_rating_plan();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addRatingPlan();
         $this->assetChangedEntities([
             RatingPlan::class,
             TpRatingPlan::class,
@@ -105,13 +109,8 @@ class RatingPlanLifeCycleTest extends KernelTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_creates_tp_rating_plan()
+    protected function it_creates_tp_rating_plan()
     {
-        $this->addRatingPlan();
-
         $changelogEntries = $this->getChangelogByClass(
             TpRatingPlan::class
         );

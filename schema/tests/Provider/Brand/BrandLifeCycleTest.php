@@ -97,18 +97,19 @@ class BrandLifeCycleTest extends KernelTestCase
         $brandRepository = $this->em
             ->getRepository(Brand::class);
         $fixtureBrands = $brandRepository->findAll();
-        $this->addBrand();
+        $brand = $this->addBrand();
 
         $brands = $brandRepository->findAll();
         $this->assertCount(count($fixtureBrands) + 1, $brands);
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_brand_has_domain();
+        $this->new_brand_autogenerates_routingPatterns_by_country($brand);
+        $this->new_brand_autogenerates_routingPatternGroups_by_country_zone($brand);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addBrand();
         $this->assetChangedEntities([
             Brand::class,
             Domain::class,
@@ -118,6 +119,108 @@ class BrandLifeCycleTest extends KernelTestCase
             TpDerivedCharger::class,
             RoutingPatternGroupsRelPattern::class,
         ]);
+    }
+
+    protected function added_brand_has_domain()
+    {
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            Domain::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $this->assertEquals(
+            $changelog->getData(),
+            [
+                'domain' => 'DomainUsers',
+                'pointsTo' => 'proxyusers',
+                'description' => 'Name proxyusers domain',
+                'id' => 7
+            ]
+        );
+    }
+
+    protected function new_brand_autogenerates_routingPatterns_by_country(Brand $brand)
+    {
+        $countryRepository = $this->em->getRepository(Country::class);
+        /** @var Country[] $countries */
+        $countries = $countryRepository->findAll();
+        $this->assertCount(
+            self::COUNTRY_NUM,
+            $countries
+        );
+
+        $routingPatternRepository = $this->em->getRepository(RoutingPattern::class);
+        /** @var RoutingPattern[] $routingPatterns */
+        $routingPatterns = $routingPatternRepository
+            ->findBy(['brand' => $brand->getId()]);
+
+        $this->assertCount(
+            self::COUNTRY_NUM,
+            $routingPatterns
+        );
+
+        $routingPatternIds = [];
+        foreach ($routingPatterns as $routingPattern) {
+            $routingPatternIds[] = $routingPattern->getid();
+        }
+
+        $routingPatternGroupsRelPatternRepository = $this->em->getRepository(RoutingPatternGroupsRelPattern::class);
+        $routingPatternGroupsRelPatterns = $routingPatternGroupsRelPatternRepository->findAll();
+
+        $routingPatternGroupsRelPatterns = array_filter(
+            $routingPatternGroupsRelPatterns,
+            function ($item) use ($routingPatternIds) {
+                return in_array($item->getRoutingPattern()->getId(), $routingPatternIds);
+            }
+        );
+
+        $this->assertCount(
+            self::COUNTRY_NUM,
+            $routingPatternGroupsRelPatterns
+        );
+    }
+
+    protected function new_brand_autogenerates_routingPatternGroups_by_country_zone(Brand $brand)
+    {
+        $countryRepository = $this->em->getRepository(Country::class);
+        /** @var Country[] $countries */
+        $countries = $countryRepository->findAll();
+
+        $zones = [];
+        foreach ($countries as $country) {
+            $zones[] = $country->getZone()->getEn();
+        }
+        $zones = array_unique($zones);
+
+        $this->assertCount(
+            self::ZONE_NUM,
+            $zones
+        );
+
+        $routingPatternGroupRepository = $this->em->getRepository(RoutingPatternGroup::class);
+        $routingPatternGroups = $routingPatternGroupRepository
+            ->findBy(['brand' => $brand->getId()]);
+
+        $this->assertCount(
+            self::ZONE_NUM,
+            $routingPatternGroups
+        );
+    }
+
+    protected function new_brand_autogenerates_brandServices(Brand $brand)
+    {
+        $serviceRepository = $this->em->getRepository(Service::class);
+        $services = $serviceRepository->findAll();
+
+        $brandServices = $brand->getServices();
+
+        $this->assertCount(
+            count($services),
+            $brandServices
+        );
     }
 
     /**
@@ -161,32 +264,6 @@ class BrandLifeCycleTest extends KernelTestCase
     //
     //////////////////////////////////////////
 
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_brand_has_domain()
-    {
-        $this->addBrand();
-
-        /** @var Changelog[] $changelogEntries */
-        $changelogEntries = $this->getChangelogByClass(
-            Domain::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $changelog = $changelogEntries[0];
-
-        $this->assertEquals(
-            $changelog->getData(),
-            [
-                'domain' => 'DomainUsers',
-                'pointsTo' => 'proxyusers',
-                'description' => 'Name proxyusers domain',
-                'id' => 7
-            ]
-        );
-    }
 
     /**
      * @test
@@ -257,104 +334,6 @@ class BrandLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             $domainChangelog->getData(),
             null
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function new_brand_autogenerates_routingPatterns_by_country()
-    {
-        $brand = $this->addBrand();
-
-        $countryRepository = $this->em->getRepository(Country::class);
-        /** @var Country[] $countries */
-        $countries = $countryRepository->findAll();
-        $this->assertCount(
-            self::COUNTRY_NUM,
-            $countries
-        );
-
-        $routingPatternRepository = $this->em->getRepository(RoutingPattern::class);
-        /** @var RoutingPattern[] $routingPatterns */
-        $routingPatterns = $routingPatternRepository
-            ->findBy(['brand' => $brand->getId()]);
-
-        $this->assertCount(
-            self::COUNTRY_NUM,
-            $routingPatterns
-        );
-
-        $routingPatternIds = [];
-        foreach ($routingPatterns as $routingPattern) {
-            $routingPatternIds[] = $routingPattern->getid();
-        }
-
-        $routingPatternGroupsRelPatternRepository = $this->em->getRepository(RoutingPatternGroupsRelPattern::class);
-        $routingPatternGroupsRelPatterns = $routingPatternGroupsRelPatternRepository->findAll();
-
-        $routingPatternGroupsRelPatterns = array_filter(
-            $routingPatternGroupsRelPatterns,
-            function ($item) use ($routingPatternIds) {
-                return in_array($item->getRoutingPattern()->getId(), $routingPatternIds);
-            }
-        );
-
-        $this->assertCount(
-            self::COUNTRY_NUM,
-            $routingPatternGroupsRelPatterns
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function new_brand_autogenerates_routingPatternGroups_by_country_zone()
-    {
-        $brand = $this->addBrand();
-
-        $countryRepository = $this->em->getRepository(Country::class);
-        /** @var Country[] $countries */
-        $countries = $countryRepository->findAll();
-
-        $zones = [];
-        foreach ($countries as $country) {
-            $zones[] = $country->getZone()->getEn();
-        }
-        $zones = array_unique($zones);
-
-        $this->assertCount(
-            self::ZONE_NUM,
-            $zones
-        );
-
-        $routingPatternGroupRepository = $this->em->getRepository(RoutingPatternGroup::class);
-        $routingPatternGroups = $routingPatternGroupRepository
-            ->findBy(['brand' => $brand->getId()]);
-
-        $this->assertCount(
-            self::ZONE_NUM,
-            $routingPatternGroups
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function new_brand_autogenerates_brandServices()
-    {
-        $serviceRepository = $this->em->getRepository(Service::class);
-        $services = $serviceRepository->findAll();
-
-        $brand = $this->addBrand();
-        $brandServices = $brand->getServices();
-
-        $this->assertCount(
-            count($services),
-            $brandServices
         );
     }
 }

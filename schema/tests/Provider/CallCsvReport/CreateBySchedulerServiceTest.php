@@ -19,37 +19,13 @@ class CreateBySchedulerServiceTest extends KernelTestCase
      */
     public function it_creates_callCsvReports()
     {
-        $callCsvSchedulerRepository = $this->em
-            ->getRepository(CallCsvScheduler::class);
-
-        $fixtureCallCsvReport = $callCsvSchedulerRepository
-            ->find(1);
-
-        $service = $this
-            ->serviceContainer
-            ->get(
-                CreateByScheduler::class
-            );
-
-        $service
-            ->execute($fixtureCallCsvReport);
-
-        ///////////////////////
-
-        $changelogEntries = $this->getChangelogByClass(
-            CallCsvReport::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
+        $callCsvScheduler = $this->createScheduler('2018-12-10 08:00:00');
+        $this->date_ranges_are_lower_than_next_execution_day($callCsvScheduler);
+        $this->next_execution_is_properly_updated($callCsvScheduler);
     }
 
-    /**
-     * @test
-     */
-    public function date_ranges_are_lower_than_next_execution_day()
+    protected function date_ranges_are_lower_than_next_execution_day($callCsvScheduler)
     {
-        $callCsvScheduler = $this->createScheduler('2018-12-10 08:00:00');
-
         $service = $this
             ->serviceContainer
             ->get(
@@ -79,13 +55,8 @@ class CreateBySchedulerServiceTest extends KernelTestCase
     }
 
 
-    /**
-     * @test
-     */
-    public function next_execution_is_properly_updated()
+    protected function next_execution_is_properly_updated($callCsvScheduler)
     {
-        $callCsvScheduler = $this->createScheduler('2018-12-10 08:00:00');
-
         $service = $this
             ->serviceContainer
             ->get(
@@ -110,7 +81,6 @@ class CreateBySchedulerServiceTest extends KernelTestCase
             $diff
         );
     }
-
 
     private function createScheduler($nextExecution): CallCsvScheduler
     {

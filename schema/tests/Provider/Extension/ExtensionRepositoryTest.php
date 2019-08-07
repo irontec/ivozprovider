@@ -14,6 +14,12 @@ class ExtensionRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_one_by_company_id();
+    }
+
     public function its_instantiable()
     {
         /** @var ExtensionRepository $repository */
@@ -27,9 +33,6 @@ class ExtensionRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_company_id()
     {
         /** @var ExtensionRepository $repository */

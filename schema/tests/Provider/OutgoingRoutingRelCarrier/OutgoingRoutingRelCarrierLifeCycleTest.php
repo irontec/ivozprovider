@@ -89,14 +89,16 @@ class OutgoingRoutingRelCarrierLifeCycleTest extends KernelTestCase
 
         $brands = $outgoingRoutingRelCarrier->findAll();
         $this->assertCount(count($fixtureOutgoingRoutingRelCarriers) + 1, $brands);
+
+        //////////////////////////////
+        ///
+        //////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addOutgoingRoutingRelCarrier();
         $this->assetChangedEntities([
             OutgoingRoutingRelCarrier::class,
             TpRatingProfile::class,

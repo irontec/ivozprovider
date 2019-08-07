@@ -15,6 +15,14 @@ class UsersCdrRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_counts_by_userId();
+        $this->it_finds_by_callid();
+        $this->it_finds_one_by_callid();
+    }
+
     public function its_instantiable()
     {
         /** @var UsersCdrRepository $repository */
@@ -28,9 +36,6 @@ class UsersCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_counts_by_userId()
     {
         /** @var UsersCdrRepository $repository */
@@ -47,9 +52,6 @@ class UsersCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_callid()
     {
         /** @var UsersCdrRepository $repository */
@@ -71,9 +73,6 @@ class UsersCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_callid()
     {
         /** @var UsersCdrRepository $repository */

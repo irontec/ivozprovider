@@ -85,12 +85,15 @@ class RoutingTagLifeCycleTest extends KernelTestCase
             count($fixtureRoutingTag) + 1,
             $routingTags
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
         $this->addRoutingTag();
         $this->assetChangedEntities([
@@ -109,7 +112,6 @@ class RoutingTagLifeCycleTest extends KernelTestCase
             TrunksLcrRule::class
         ]);
     }
-
 
     /**
      * @test

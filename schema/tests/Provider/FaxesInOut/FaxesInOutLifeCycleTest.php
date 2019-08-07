@@ -77,13 +77,16 @@ class FaxesInOutLifeCycleTest extends KernelTestCase
             count($fixtureFaxesInOuts) + 1,
             $extensions
         );
+
+        /////////////////////////////////////////
+        ///
+        /////////////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addFaxesInOut();
         $this->assetChangedEntities([
             FaxesInOut::class
         ]);

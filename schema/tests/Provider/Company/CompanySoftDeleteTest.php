@@ -42,16 +42,21 @@ class CompanySoftDeleteTest extends KernelTestCase
 
         $companies = $companyRepository->findAll();
         $this->assertCount($count-1, $companies);
+
+        /////////////////////////////
+        ///
+        /////////////////////////////
+
+        $this->removes_company_locutions();
+        $this->removes_company_music_on_hold();
+        $this->removes_company_recording();
+        $this->removes_company_fax();
+        $this->removes_company_tp_account_acCompanySoftDeleteTesttion();
+        $this->removes_company_tp_rating_profile();
     }
 
-    /**
-     * @test
-     */
-    public function removes_company_locutions()
+    protected function removes_company_locutions()
     {
-
-        $this->removeCompany(1);
-
         $changelog = $this->getChangelogByClass(
             Locution::class
         );
@@ -64,13 +69,8 @@ class CompanySoftDeleteTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function removes_company_music_on_hold()
+    protected function removes_company_music_on_hold()
     {
-        $this->removeCompany(1);
-
         $changelog = $this->getChangelogByClass(
             MusicOnHold::class
         );
@@ -83,13 +83,8 @@ class CompanySoftDeleteTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function removes_company_recording()
+    protected function removes_company_recording()
     {
-        $this->removeCompany(1);
-
         $changelog = $this->getChangelogByClass(
             Recording::class
         );
@@ -102,13 +97,8 @@ class CompanySoftDeleteTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function removes_company_fax()
+    protected function removes_company_fax()
     {
-        $this->removeCompany(1);
-
         $changelog = $this->getChangelogByClass(
             Fax::class
         );
@@ -121,13 +111,8 @@ class CompanySoftDeleteTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function removes_company_tp_account_acCompanySoftDeleteTesttion()
+    protected function removes_company_tp_account_acCompanySoftDeleteTesttion()
     {
-        $this->removeCompany(1);
-
         $changelog = $this->getChangelogByClass(
             TpAccountAction::class
         );
@@ -140,13 +125,8 @@ class CompanySoftDeleteTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function removes_company_tp_rating_profile()
+    protected function removes_company_tp_rating_profile()
     {
-        $this->removeCompany(1);
-
         $changelog = $this->getChangelogByClass(
             TpRatingProfile::class
         );
