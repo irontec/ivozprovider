@@ -2,10 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpDestinationRate;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TpDestinationRateInterface extends EntityInterface
+interface TpDestinationRateInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Get tpid
      *
