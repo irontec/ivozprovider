@@ -65,10 +65,12 @@ class CreatedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
             ->setWeekDays($ratingPlan->getWeekDays())
             ->setTime($ratingPlan->getTimeIn()->format("H:i:s"));
 
-        $this->entityTools
+        $tpTiming = $this->entityTools
             ->persistDto(
                 $tpTimingDto,
                 $tpTiming
             );
+
+        $ratingPlan->setTpTiming($tpTiming);
     }
 }
