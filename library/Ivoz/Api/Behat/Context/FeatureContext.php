@@ -37,6 +37,8 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
     protected $jwtTokenManager;
     protected $administratorRepository;
 
+    protected static $tokenCache = [];
+
     /**
      * Initializes context.
      *
@@ -216,6 +218,11 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
      */
     private function sendLoginRequest($username, string $endpoint)
     {
+        $cacheKey = $endpoint . '/' . $username;
+        if (array_key_exists($cacheKey, self::$tokenCache)) {
+            return self::$tokenCache[$cacheKey];
+        }
+
         $userFld = $endpoint === 'admin_login'
             ? 'username'
             : 'email';
@@ -235,6 +242,8 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
             throw new \Exception('Could not retrieve a token');
         }
 
-        return $data->token ?? null;
+        self::$tokenCache[$cacheKey] = $data->token ?? null;
+
+        return self::$tokenCache[$cacheKey];
     }
 }
