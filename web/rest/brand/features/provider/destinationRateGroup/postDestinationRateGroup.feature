@@ -29,7 +29,7 @@
     """
       {
           "status": null,
-          "id": 2,
+          "id": 3,
           "name": {
               "en": "New DR",
               "es": "New DR"
@@ -52,7 +52,7 @@
   Scenario: Retrieve created destination rate group
     Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "destination_rate_groups/2"
+    And I send a "GET" request to "destination_rate_groups/3"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -60,7 +60,7 @@
     """
       {
           "status": null,
-          "id": 2,
+          "id": 3,
           "name": {
               "en": "New DR",
               "es": "New DR"

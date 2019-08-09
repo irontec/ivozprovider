@@ -29,6 +29,22 @@ Feature: Retrieve destination rate group
               },
               "brand": 1,
               "currency": null
+          },
+          {
+              "status": "inProgress",
+              "id": 2,
+              "name": {
+                  "en": "Fallback",
+                  "es": "Fallback"
+              },
+              "file": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null,
+                  "importerArguments": []
+              },
+              "brand": 1,
+              "currency": null
           }
       ]
     """
