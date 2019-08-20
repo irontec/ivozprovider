@@ -17,6 +17,7 @@ use Ivoz\Api\Doctrine\Orm\Filter\DateFilter;
 use Ivoz\Api\Doctrine\Orm\Filter\NumericFilter;
 use Ivoz\Api\Doctrine\Orm\Filter\BooleanFilter;
 use Ivoz\Api\Doctrine\Orm\Filter\RangeFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\ExistsFilter;
 
 class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -76,7 +77,8 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             BooleanFilter::SERVICE_NAME => [],
             NumericFilter::SERVICE_NAME => [],
             RangeFilter::SERVICE_NAME => [],
-            OrderFilter::SERVICE_NAME => []
+            OrderFilter::SERVICE_NAME => [],
+            ExistsFilter::SERVICE_NAME => [],
         ];
 
         $attributes = $this->getEntityAttributes($resourceClass);
@@ -94,7 +96,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                 case 'string':
                 case 'guid':
                 case 'text':
-                    $filters[SearchFilter::SERVICE_NAME][$attribute] = Filter\SearchFilter::STRATEGY_PARTIAL;
+                    $filters[SearchFilter::SERVICE_NAME][$attribute] = SearchFilter::STRATEGY_PARTIAL;
                     break;
                 case 'smallint':
                 case 'integer':
@@ -105,7 +107,13 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                     $filters[RangeFilter::SERVICE_NAME][$attribute] = null;
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
-                    $filters[SearchFilter::SERVICE_NAME][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;
+                    $filters[SearchFilter::SERVICE_NAME][$attribute] = SearchFilter::STRATEGY_EXACT;
+
+                    $isNullable = $this->isForeignKeyNullable($resourceClass, $attribute);
+                    if ($isNullable) {
+                        $filters[ExistsFilter::SERVICE_NAME][$attribute] = ExistsFilter::QUERY_PARAMETER_KEY;
+                    }
+
                     break;
                 case 'boolean':
                     $filters[BooleanFilter::SERVICE_NAME][$attribute] = null;
@@ -114,7 +122,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                 case 'datetime':
                 case 'datetimetz':
                 case 'time':
-                    $filters[SearchFilter::SERVICE_NAME][$attribute] = Filter\SearchFilter::STRATEGY_START;
+                    $filters[SearchFilter::SERVICE_NAME][$attribute] = SearchFilter::STRATEGY_START;
                     $filters[DateFilter::SERVICE_NAME][$attribute] = null;
                     break;
                 default:
@@ -125,6 +133,18 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         return array_filter($filters, function ($value) {
             return count($value) > 0;
         });
+    }
+
+    private function isForeignKeyNullable(string $resourceClass, string $attribute)
+    {
+        $metadata = $this->getAttributeMetadata($resourceClass, $attribute);
+        if (!$metadata) {
+            return false;
+        }
+
+        $nullable = $metadata['joinColumns'][0]['nullable'] ?? true;
+
+        return $nullable;
     }
 
     private function getFieldType(string $resourceClass, string $attribute)
