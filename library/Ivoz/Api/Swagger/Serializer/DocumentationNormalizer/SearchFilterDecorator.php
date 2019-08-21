@@ -147,6 +147,37 @@ class SearchFilterDecorator implements NormalizerInterface
             ];
         }
 
-        return $parameters;
+        uasort(
+            $parameters,
+            function (array $item1, array $item2) {
+                $str1 = $item1['name'] ?? '';
+                $str2 = $item2['name'] ?? '';
+
+                if ($str1[0] === '_' && $str2[0] !== '_') {
+                    return 1;
+                }
+
+                if ($str1[0] !== '_' && $str2[0] === '_') {
+                    return -1;
+                }
+
+                $isOrderAttribute1 = strpos($str1, '_order') === 0;
+                $isOrderAttribute2 = strpos($str2, '_order') === 0;
+
+                if (!$isOrderAttribute1 && $isOrderAttribute2) {
+                    return 1;
+                }
+
+                if ($isOrderAttribute1 && !$isOrderAttribute2) {
+                    return -1;
+                }
+
+                return strnatcmp($str1, $str2);
+            }
+        );
+
+        return array_values(
+            $parameters
+        );
     }
 }
