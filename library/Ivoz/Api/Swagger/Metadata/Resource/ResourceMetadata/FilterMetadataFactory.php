@@ -8,6 +8,7 @@ use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 
@@ -58,7 +59,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         }
 
         $attributes = $resourceMetadata->getAttributes();
-        $filters = $this->getEntityFilters($resourceClass);
+        $filters = $this->getEntityFilters($resourceClass, $resourceMetadata);
         if (!empty($filters)) {
             $attributes['filters'] = array_keys($filters);
             $attributes['filters'][] = 'ivoz.api.filter.property_filter';
@@ -69,7 +70,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         return $resourceMetadata;
     }
 
-    private function getEntityFilters(string $resourceClass)
+    private function getEntityFilters(string $resourceClass, ResourceMetadata $resourceMetadata)
     {
         $filters = [
             SearchFilter::SERVICE_NAME => [],
@@ -81,7 +82,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             ExistsFilter::SERVICE_NAME => [],
         ];
 
-        $attributes = $this->getEntityAttributes($resourceClass);
+        $attributes = $this->getEntityAttributes($resourceClass, $resourceMetadata);
         foreach ($attributes as $attribute) {
             $type = $this->getFieldType($resourceClass, $attribute);
             if (!is_null($type)) {
@@ -182,11 +183,54 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         return $items[$attribute];
     }
 
-    private function getEntityAttributes(string $resourceClass)
+    private function getEntityAttributes(string $resourceClass, ResourceMetadata $resourceMetadata): array
     {
-        return $this->propertyNameCollectionFactory->create(
+        $options = [
+            'expandSubResources' => true,
+            'context' => $this->getContext($resourceMetadata)
+        ];
+
+        $contextAttributes = $this->propertyNameCollectionFactory->create(
+            $resourceClass,
+            $options
+        );
+
+        $allAttributes = $this->propertyNameCollectionFactory->create(
             $resourceClass,
             ['expandSubResources' => true]
         );
+
+        $fkAttributes = array_filter(
+            iterator_to_array($allAttributes->getIterator()),
+            function ($attr) use ($resourceClass) {
+                $fldType = $this->getFieldType($resourceClass, $attr);
+
+                return $fldType === ClassMetadataInfo::MANY_TO_ONE;
+            }
+        );
+
+        return array_merge(
+            iterator_to_array($contextAttributes->getIterator()),
+            $fkAttributes
+        );
+    }
+
+    private function getContext(ResourceMetadata $resourceMetadata): string
+    {
+        $collectionOperations = $resourceMetadata->getCollectionOperations();
+
+        foreach ($collectionOperations as $collectionOperation) {
+            if ($collectionOperation['method'] !== 'GET') {
+                continue;
+            }
+
+            $normalizationContext = $collectionOperation['normalization_context']['groups'][0] ?? null;
+
+            if ($normalizationContext) {
+                return $normalizationContext;
+            }
+        }
+
+        return DataTransferObjectInterface::CONTEXT_COLLECTION;
     }
 }
