@@ -39,9 +39,15 @@ class OrderFilter extends BaseOrderFilter
         $metadata = $this->resourceMetadataFactory->create($resourceClass);
         $this->overrideProperties($metadata->getAttributes());
 
-        return $this->filterDescription(
+        $filters = $this->filterDescription(
             parent::getDescription($resourceClass)
         );
+
+        foreach ($filters as $name => $spec) {
+            $filters[$name]['swagger']['enum'] = ['ASC', 'DESC'];
+        }
+
+        return $filters;
     }
 
     /**
