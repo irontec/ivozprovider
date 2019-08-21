@@ -1280,7 +1280,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
       normalization_context:
         groups: ['status']
     put: ~
-    delete: ~
   collectionOperations:
     get: ~
     get_status_collection:
@@ -1289,7 +1288,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
       operation_normalization_context: 'status'
       normalization_context:
         groups: ['status']
-    post: ~
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
@@ -1321,7 +1319,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       normalization_context:
         groups: ['status']
     put: ~
-    delete: ~
   collectionOperations:
     get: ~
     get_status_collection:
@@ -1330,7 +1327,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       operation_normalization_context: 'status'
       normalization_context:
         groups: ['status']
-    post: ~
 
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
