@@ -71,11 +71,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $voicemailAttachSound = true;
 
     /**
-     * @var string
-     */
-    private $tokenKey;
-
-    /**
      * @var boolean
      */
     private $gsQRCode = false;
@@ -190,7 +185,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'voicemailEnabled' => 'voicemailEnabled',
             'voicemailSendMail' => 'voicemailSendMail',
             'voicemailAttachSound' => 'voicemailAttachSound',
-            'tokenKey' => 'tokenKey',
             'gsQRCode' => 'gsQRCode',
             'id' => 'id',
             'companyId' => 'company',
@@ -226,7 +220,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'voicemailEnabled' => $this->getVoicemailEnabled(),
             'voicemailSendMail' => $this->getVoicemailSendMail(),
             'voicemailAttachSound' => $this->getVoicemailAttachSound(),
-            'tokenKey' => $this->getTokenKey(),
             'gsQRCode' => $this->getGsQRCode(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
@@ -485,26 +478,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getVoicemailAttachSound()
     {
         return $this->voicemailAttachSound;
-    }
-
-    /**
-     * @param string $tokenKey
-     *
-     * @return static
-     */
-    public function setTokenKey($tokenKey = null)
-    {
-        $this->tokenKey = $tokenKey;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTokenKey()
-    {
-        return $this->tokenKey;
     }
 
     /**

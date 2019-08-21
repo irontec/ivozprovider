@@ -76,11 +76,6 @@ abstract class UserAbstract
     protected $voicemailAttachSound = true;
 
     /**
-     * @var string | null
-     */
-    protected $tokenKey;
-
-    /**
      * @var boolean
      */
     protected $gsQRCode = false;
@@ -262,7 +257,6 @@ abstract class UserAbstract
         $self
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
-            ->setTokenKey($dto->getTokenKey())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
@@ -306,7 +300,6 @@ abstract class UserAbstract
             ->setVoicemailEnabled($dto->getVoicemailEnabled())
             ->setVoicemailSendMail($dto->getVoicemailSendMail())
             ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
-            ->setTokenKey($dto->getTokenKey())
             ->setGsQRCode($dto->getGsQRCode())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
@@ -346,7 +339,6 @@ abstract class UserAbstract
             ->setVoicemailEnabled(self::getVoicemailEnabled())
             ->setVoicemailSendMail(self::getVoicemailSendMail())
             ->setVoicemailAttachSound(self::getVoicemailAttachSound())
-            ->setTokenKey(self::getTokenKey())
             ->setGsQRCode(self::getGsQRCode())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto(self::getCallAcl(), $depth))
@@ -380,7 +372,6 @@ abstract class UserAbstract
             'voicemailEnabled' => self::getVoicemailEnabled(),
             'voicemailSendMail' => self::getVoicemailSendMail(),
             'voicemailAttachSound' => self::getVoicemailAttachSound(),
-            'tokenKey' => self::getTokenKey(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
@@ -729,34 +720,6 @@ abstract class UserAbstract
     public function getVoicemailAttachSound()
     {
         return $this->voicemailAttachSound;
-    }
-
-    /**
-     * Set tokenKey
-     *
-     * @param string $tokenKey
-     *
-     * @return static
-     */
-    protected function setTokenKey($tokenKey = null)
-    {
-        if (!is_null($tokenKey)) {
-            Assertion::maxLength($tokenKey, 125, 'tokenKey value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->tokenKey = $tokenKey;
-
-        return $this;
-    }
-
-    /**
-     * Get tokenKey
-     *
-     * @return string | null
-     */
-    public function getTokenKey()
-    {
-        return $this->tokenKey;
     }
 
     /**

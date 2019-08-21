@@ -34,7 +34,6 @@ class UserLifeCycleTest extends KernelTestCase
             ->setVoicemailEnabled(true)
             ->setVoicemailSendMail(true)
             ->setVoicemailAttachSound(true)
-            ->setTokenKey('4c18027290f0c1ed517680bb4bcf2402')
             ->setGsQRCode(false)
             ->setCompanyId(1)
             ->setTransformationRuleSetId(1)
