@@ -74,7 +74,7 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
             ->setType(OutgoingDdiRulesPatternInterface::TYPE_PREFIX);
 
         $validPrefixes = [
-            null, '1*', '12*', '123*'
+            '1*', '12*', '123*'
         ];
 
         foreach ($validPrefixes as $validPrefix) {
@@ -93,6 +93,8 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
         }
 
         $invalidPrefixes = [
+            null,
+            '',
             '123',
             '1234*'
         ];
