@@ -61,8 +61,8 @@ class FaxTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -71,7 +71,7 @@ class FaxTest extends KernelTestCase
                         [
                             'outgoingDdi',
                             'in',
-                            'DdiRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'DdiRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'outgoingDdi',

@@ -231,13 +231,13 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        company:
+          eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
@@ -421,13 +421,13 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
-      inherited:
-        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      company:
+        eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             user: 'Ivoz\Provider\Domain\Model\User\User'
@@ -490,13 +490,13 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        company:
+          eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
@@ -520,13 +520,14 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
-      inherited:
-        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -646,8 +647,8 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
@@ -681,8 +682,8 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
           eq: "user.getCompany().getId()"
     write_access_control:
     - and:
-      - inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - company:
+          eq: "user.getCompany().getId()"
     - or:
       - inheritedOrNull:
           interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
@@ -747,13 +748,13 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
-      inherited:
-        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      company:
+        eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             noAnswerLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -825,13 +826,13 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        company:
+          eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             errorExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
@@ -948,8 +949,8 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
           eq: "user.getCompany().getId()"
     write_access_control:
     - and:
-      - inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - company:
+          eq: "user.getCompany().getId()"
     - or:
       - inheritedOrNull:
           forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
@@ -1029,13 +1030,13 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
-      inherited:
-        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      company:
+        eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             periodicAnnounceLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -1101,8 +1102,8 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
           eq: "user.getCompany().getId()"
     write_access_control:
     - and:
-      - inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - company:
+          eq: "user.getCompany().getId()"
     - or:
       - inheritedOrNull:
           outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
@@ -1136,8 +1137,8 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
           eq: "user.getCompany().getId()"
     write_access_control:
     - and:
-      - inherited:
-          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - company:
+          eq: "user.getCompany().getId()"
     - or:
       - inheritedOrNull:
           outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
@@ -1348,8 +1349,8 @@ Ivoz\Provider\Domain\Model\User\User:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
       - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - company:
+            eq: "user.getCompany().getId()"
       - or:
         - inheritedOrNull:
             callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'

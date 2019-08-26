@@ -37,7 +37,7 @@ class ExternalCallFilterRelCalendarTest extends KernelTestCase
                 [
                     'filter',
                     'in',
-                    'ExternalCallFilterRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'ExternalCallFilterRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -60,7 +60,7 @@ class ExternalCallFilterRelCalendarTest extends KernelTestCase
                 [
                     'filter',
                     'in',
-                    'ExternalCallFilterRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'ExternalCallFilterRepository([["company","eq","user.getCompany().getId()"]])'
                 ],
                 [
                     'calendar',

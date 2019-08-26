@@ -37,7 +37,7 @@ class QueueMemberTest extends KernelTestCase
                 [
                     'queue',
                     'in',
-                    'QueueRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'QueueRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -65,7 +65,7 @@ class QueueMemberTest extends KernelTestCase
                 [
                     'queue',
                     'in',
-                    'QueueRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'QueueRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );

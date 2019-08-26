@@ -37,7 +37,7 @@ class ConditionalRoutesConditionTest extends KernelTestCase
                 [
                     'conditionalRoute',
                     'in',
-                    'ConditionalRouteRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'ConditionalRouteRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -62,7 +62,7 @@ class ConditionalRoutesConditionTest extends KernelTestCase
                         [
                             'conditionalRoute',
                             'in',
-                            'ConditionalRouteRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ConditionalRouteRepository([["company","eq","user.getCompany().getId()"]])'
                         ]
                     ]
                 ],
@@ -71,7 +71,7 @@ class ConditionalRoutesConditionTest extends KernelTestCase
                         [
                             'extension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'extension',
@@ -85,7 +85,7 @@ class ConditionalRoutesConditionTest extends KernelTestCase
                         [
                             'huntGroup',
                             'in',
-                            'HuntGroupRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'huntGroup',
@@ -113,7 +113,7 @@ class ConditionalRoutesConditionTest extends KernelTestCase
                         [
                             'queue',
                             'in',
-                            'QueueRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'QueueRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'queue',
