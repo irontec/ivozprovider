@@ -24,7 +24,6 @@ Feature: Create users
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
           "gsQRCode": false,
-          "company": 1,
           "callAcl": 1,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,

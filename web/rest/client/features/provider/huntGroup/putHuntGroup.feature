@@ -17,7 +17,6 @@ Feature: Update hunt groups
           "ringAllTimeout": 10,
           "noAnswerTargetType": "voicemail",
           "noAnswerNumberValue": null,
-          "company": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": null,
           "noAnswerVoiceMailUser": 1,

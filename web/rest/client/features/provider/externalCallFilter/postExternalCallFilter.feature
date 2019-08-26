@@ -16,7 +16,6 @@ Feature: Create external call filters
           "holidayNumberValue": "946002021",
           "outOfScheduleTargetType": "number",
           "outOfScheduleNumberValue": "946002022",
-          "company": 1,
           "welcomeLocution": null,
           "holidayLocution": null,
           "outOfScheduleLocution": null,

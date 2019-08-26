@@ -18,7 +18,6 @@ Feature: Create hunt groups
           "noAnswerTargetType": "extension",
           "noAnswerNumberValue": null,
           "id": 1,
-          "company": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": 1,
           "noAnswerVoiceMailUser": null,

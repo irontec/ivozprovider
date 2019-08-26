@@ -11,8 +11,7 @@ Feature: Create calendars
       And I send a "POST" request to "calendars" with body:
     """
       {
-          "name": "testNewCalendar",
-          "company": 1
+          "name": "testNewCalendar"
       }
     """
     Then the response status code should be 201

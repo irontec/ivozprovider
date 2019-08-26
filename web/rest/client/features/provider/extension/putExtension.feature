@@ -16,7 +16,6 @@ Feature: Update extensions
           "numberValue": null,
           "friendValue": null,
           "id": 1,
-          "company": 1,
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,

@@ -22,8 +22,7 @@ Feature: Update locutions
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": 1
+          }
       }
     """
     Then the response status code should be 200

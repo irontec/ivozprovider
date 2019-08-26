@@ -13,8 +13,7 @@ Feature: Update route locks
             {
           "name": "Updated name",
           "description": "Updated description",
-          "open": false,
-          "company": 1
+          "open": false
       }
     """
     Then the response status code should be 200

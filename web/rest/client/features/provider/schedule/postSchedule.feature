@@ -20,8 +20,7 @@ Feature: Create schedules
           "thursday": true,
           "friday": true,
           "saturday": false,
-          "sunday": false,
-          "company": 1
+          "sunday": false
       }
     """
     Then the response status code should be 201

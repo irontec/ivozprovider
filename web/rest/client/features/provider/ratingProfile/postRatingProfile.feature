@@ -11,8 +11,7 @@ Feature: Create rating profiles
       And I send a "POST" request to "/rating_profiles" with body:
     """
       {
-          "activationTime": "2018-02-02 21:20:20",
-          "company": 1
+          "activationTime": "2018-02-02 21:20:20"
       }
     """
     Then the response status code should be 405

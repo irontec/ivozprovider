@@ -17,7 +17,6 @@ Feature: Update Ddis
           "routeType": null,
           "billInboundCalls": false,
           "friendValue": "",
-          "company": 1,
           "conferenceRoom": null,
           "language": null,
           "queue": null,
