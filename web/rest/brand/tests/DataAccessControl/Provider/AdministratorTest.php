@@ -54,6 +54,7 @@ class AdministratorTest extends KernelTestCase
             $accessControl,
             [
                 'id > 0 or id === null',
+                ['brand', 'eq', 'user.getBrand().getId()'],
                 ['company', 'in', 'companyRepository.getSupervisedCompanyIdsByAdmin(user)'],
             ]
         );

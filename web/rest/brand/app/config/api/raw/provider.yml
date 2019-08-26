@@ -11,6 +11,8 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
     write_access_control:
       ROLE_BRAND_ADMIN:
         raw: "id > 0 or id === null"
+        brand:
+          eq: "user.getBrand().getId()"
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
