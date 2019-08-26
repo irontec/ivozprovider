@@ -24,7 +24,6 @@ Feature: Create residential devices
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
-          "brand": 1,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,

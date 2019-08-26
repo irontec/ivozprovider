@@ -31,7 +31,6 @@ Feature: Create companies
         "language": 1,
         "mediaRelaySets": 1,
         "defaultTimezone": 1,
-        "brand": 1,
         "applicationServer": 1,
         "country": 1,
         "transformationRuleSet": 1,

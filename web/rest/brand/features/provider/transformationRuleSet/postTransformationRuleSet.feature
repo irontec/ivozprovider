@@ -21,8 +21,7 @@ Feature: Create transformation rule sets
               "en": "usansolocity",
               "es": "usansolo"
           },
-          "country": 77,
-          "brand": 1
+          "country": 77
       }
     """
     Then the response status code should be 201

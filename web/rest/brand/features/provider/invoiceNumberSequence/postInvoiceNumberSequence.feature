@@ -15,8 +15,7 @@
           "prefix": "test",
           "sequenceLength": 4,
           "increment": 1,
-          "version": 0,
-          "brand": "1"
+          "version": 0
       }
     """
     Then the response status code should be 201

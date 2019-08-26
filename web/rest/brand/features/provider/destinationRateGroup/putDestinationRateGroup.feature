@@ -27,7 +27,6 @@ Feature: Update destination rate group
               "baseName": null,
               "importerArguments": []
           },
-          "brand": 1,
           "currency": 2
       }
     """

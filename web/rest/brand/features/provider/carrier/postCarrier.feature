@@ -14,7 +14,6 @@ Feature: Create carriers
           "description": "Artemis-New",
           "name": "Artemis-New",
           "externallyRated": false,
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """

@@ -17,7 +17,6 @@ Feature: Create call CSV scheduler
           "callDirection": "outbound",
           "email": "something@domain.net",
           "nextExecution": "2018-12-02 09:00:00",
-          "brand": 1,
           "callCsvNotificationTemplate": 1
       }
     """

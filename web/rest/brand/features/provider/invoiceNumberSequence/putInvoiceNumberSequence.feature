@@ -17,8 +17,7 @@ Feature: Update invoice number sequences
           "increment": 1,
           "latestValue": "auto0001",
           "iteration": 1,
-          "version": 1,
-          "brand": "1"
+          "version": 1
       }
     """
     Then the response status code should be 200

@@ -13,8 +13,7 @@ Feature: Update routing tags
       {
           "name": "TagName",
           "tag": "090#",
-          "id": 1,
-          "brand": 1
+          "id": 1
       }
     """
     Then the response status code should be 200

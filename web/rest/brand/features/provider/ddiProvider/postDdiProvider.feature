@@ -13,7 +13,6 @@ Feature: Create ddi providers
       {
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """

@@ -19,8 +19,7 @@ Feature: Update routing patterns
           "description": {
               "en": "en",
               "es": "es"
-          },
-          "brand": 1
+          }
       }
     """
     Then the response status code should be 200

@@ -18,8 +18,7 @@
           "description": {
               "en": "New Rating plan",
               "es": "Nuevo Rating plan"
-          },
-          "brand": "1"
+          }
       }
     """
     Then the response status code should be 201

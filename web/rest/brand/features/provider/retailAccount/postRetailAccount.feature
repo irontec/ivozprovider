@@ -21,7 +21,6 @@ Feature: Create retail accounts
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
-          "brand": 1,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null
