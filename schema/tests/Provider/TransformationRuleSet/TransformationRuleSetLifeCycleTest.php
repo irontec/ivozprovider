@@ -23,6 +23,7 @@ class TransformationRuleSetLifeCycleTest extends KernelTestCase
             ->setGenerateRules(true)
             ->setNameEn('en')
             ->setNameEs('es')
+            ->setNameCa('ca')
             ->setCountryId(1);
 
         return $transformationRuleSetDto;
