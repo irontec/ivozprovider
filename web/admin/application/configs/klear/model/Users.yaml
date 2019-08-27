@@ -88,7 +88,7 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     terminal:
       title: _('Terminal')
       type: select
@@ -140,7 +140,7 @@ production:
             template: '%ddie164%'
           order:
             Ddi.ddie164: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     outgoingDdiRule:
       title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 1)
       type: select
@@ -155,7 +155,7 @@ production:
             template: '%name%'
           order:
             OutgoingDdiRule.name: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
       info:
         type: box
         position: left
@@ -344,7 +344,7 @@ production:
             template: '%name${lang}%'
           order:
             Language.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     externalIpCalls:
       title: _('Calls from non-granted IPs')
       type: select

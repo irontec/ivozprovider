@@ -494,9 +494,6 @@ msgid_plural "Company services"
 msgstr[0] "Company service"
 msgstr[1] "Company services"
 
-msgid "Company's default"
-msgstr "Company's default"
-
 msgid "Completed"
 msgstr "Completed"
 

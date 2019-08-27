@@ -262,7 +262,7 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     maxCalls:
       title: _('Max calls')
       type: number

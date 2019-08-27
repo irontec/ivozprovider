@@ -501,9 +501,6 @@ msgid_plural "Company services"
 msgstr[0] "Servicio"
 msgstr[1] "Servicios"
 
-msgid "Company's default"
-msgstr "Usar configuración empresa"
-
 msgid "Completed"
 msgstr "Completado"
 

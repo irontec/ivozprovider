@@ -302,7 +302,7 @@ production:
             template: '%name${lang}%'
           order:
             Language.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     queue:
       title: ngettext('Queue', 'Queues', 1)
       type: select

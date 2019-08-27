@@ -52,7 +52,7 @@ production:
             template: '%ddie164%'
           order:
             Ddi.ddie164: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     forcedDDI:
       title: _('Forced DDI')
       type: ghost
