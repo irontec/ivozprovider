@@ -15,7 +15,9 @@ class TransformationRuleSetSpec extends ObjectBehavior
         $dto = new TransformationRuleSetDto();
         $dto
             ->setNameEn('en')
-            ->setNameEs('es');
+            ->setNameEs('es')
+            ->setNameCa('ca');
+
 
         $this->beConstructedThrough(
             'fromDto',
