@@ -16,11 +16,13 @@ Feature: Update services
           "extraArgs": true,
           "name": {
               "en": "english",
-              "es": "ingles"
+              "es": "ingles",
+              "ca": "ingles"
           },
           "description": {
               "en": "descEn",
-              "es": "descEs"
+              "es": "descEs",
+              "ca": "descCa"
           }
       }
     """
@@ -36,11 +38,13 @@ Feature: Update services
           "id": 1,
           "name": {
               "en": "english",
-              "es": "ingles"
+              "es": "ingles",
+              "ca": "ingles"
           },
           "description": {
               "en": "descEn",
-              "es": "descEs"
+              "es": "descEs",
+              "ca": "descCa"
           }
       }
     """
