@@ -6,6 +6,12 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
   collectionOperations: []
 
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
+  properties:
+    company:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     pagination_client_enabled: true
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
