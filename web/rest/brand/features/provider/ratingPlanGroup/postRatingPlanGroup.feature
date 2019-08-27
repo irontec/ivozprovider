@@ -13,12 +13,15 @@
       {
           "name": {
               "en": "New",
-              "es": "Nuevo"
+              "es": "Nuevo",
+              "ca": "Nou"
           },
           "description": {
               "en": "New Rating plan",
-              "es": "Nuevo Rating plan"
-          }
+              "es": "Nuevo Rating plan",
+              "ca": "Nou Rating plan"
+          },
+          "brand": "1"
       }
     """
     Then the response status code should be 201
@@ -30,11 +33,13 @@
           "id": 3,
           "name": {
               "en": "New",
-              "es": "Nuevo"
+              "es": "Nuevo",
+              "ca": "Nou"
           },
           "description": {
               "en": "New Rating plan",
-              "es": "Nuevo Rating plan"
+              "es": "Nuevo Rating plan",
+              "ca": "Nou Rating plan"
           },
           "brand": 1,
           "currency": null
@@ -54,11 +59,13 @@
           "id": 2,
           "name": {
               "en": "Something more",
-              "es": "Algo m\u00e1s"
+              "es": "Algo m\u00e1s",
+              "ca": "Algo mes"
           },
           "description": {
-              "en": "",
-              "es": ""
+              "en": "en",
+              "es": "es",
+              "ca": "ca"
           },
           "brand": "~",
           "currency": null

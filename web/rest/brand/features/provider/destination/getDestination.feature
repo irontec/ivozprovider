@@ -19,7 +19,8 @@ Feature: Retrieve destination
               "id": 1,
               "name": {
                   "en": "Bilbao",
-                  "es": "Bilbao"
+                  "es": "Bilbao",
+                  "ca": "Bilbao"
               }
           },
           {
@@ -27,7 +28,8 @@ Feature: Retrieve destination
               "id": 2,
               "name": {
                   "en": "Usansolocity",
-                  "es": "Usansolocity"
+                  "es": "Usansolocity",
+                  "ca": "Usansolocity"
               }
           }
       ]
@@ -47,7 +49,8 @@ Feature: Retrieve destination
           "id": 1,
           "name": {
               "en": "Bilbao",
-              "es": "Bilbao"
+              "es": "Bilbao",
+              "ca": "Bilbao"
           },
           "brand": "~"
       }

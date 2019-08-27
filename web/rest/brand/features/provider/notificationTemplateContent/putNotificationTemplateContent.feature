@@ -40,7 +40,8 @@ Feature: Update notification template contents
               "id": 2,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "en",
+                  "ca": "en"
               }
           }
       }

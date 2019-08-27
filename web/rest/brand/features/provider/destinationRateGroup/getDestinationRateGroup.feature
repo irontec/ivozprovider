@@ -19,7 +19,8 @@ Feature: Retrieve destination rate group
               "id": 1,
               "name": {
                   "en": "Standard",
-                  "es": "Standard"
+                  "es": "Standard",
+                  "ca": "Standard"
               },
               "file": {
                   "fileSize": null,
@@ -35,7 +36,8 @@ Feature: Retrieve destination rate group
               "id": 2,
               "name": {
                   "en": "Fallback",
-                  "es": "Fallback"
+                  "es": "Fallback",
+                  "ca": "Fallback"
               },
               "file": {
                   "fileSize": null,
@@ -63,11 +65,13 @@ Feature: Retrieve destination rate group
           "id": 1,
           "name": {
               "en": "Standard",
-              "es": "Standard"
+              "es": "Standard",
+              "ca": "Standard"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": ""
           },
           "file": {
               "fileSize": null,

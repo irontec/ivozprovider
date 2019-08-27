@@ -60,11 +60,13 @@ Feature: Create ddis
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "Espa\u00f1a"
+                  "es": "Espa\u00f1a",
+                  "ca": "Espa\u00f1a"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

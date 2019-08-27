@@ -15,7 +15,8 @@ Feature: Update destination
           "id": 1,
           "name": {
               "en": "Bilbao Updated",
-              "es": "Bilbao Actualizado"
+              "es": "Bilbao Actualizado",
+              "ca": "Bilbao Actualizado"
           }
       }
     """
@@ -29,7 +30,8 @@ Feature: Update destination
           "id": 1,
           "name": {
               "en": "Bilbao Updated",
-              "es": "Bilbao Actualizado"
+              "es": "Bilbao Actualizado",
+              "ca": "Bilbao Actualizado"
           },
           "brand": "~"
       }

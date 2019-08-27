@@ -54,7 +54,8 @@ Feature: Retrieve notification template contents
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           }
       }

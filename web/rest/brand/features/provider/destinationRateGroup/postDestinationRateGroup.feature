@@ -13,11 +13,13 @@
       {
           "name": {
               "en": "New DR",
-              "es": "New DR"
+              "es": "New DR",
+              "ca": "New DR"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": ""
           },
           "currency": "1"
       }
@@ -32,11 +34,13 @@
           "id": 3,
           "name": {
               "en": "New DR",
-              "es": "New DR"
+              "es": "New DR",
+              "ca": "New DR"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": ""
           },
           "file": {
               "fileSize": null,
@@ -63,11 +67,13 @@
           "id": 3,
           "name": {
               "en": "New DR",
-              "es": "New DR"
+              "es": "New DR",
+              "ca": "New DR"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": ""
           },
           "file": {
               "fileSize": null,
@@ -82,7 +88,8 @@
               "id": 1,
               "name": {
                   "en": "Euro",
-                  "es": "Euro"
+                  "es": "Euro",
+                  "ca": "Euro"
               }
           }
       }
