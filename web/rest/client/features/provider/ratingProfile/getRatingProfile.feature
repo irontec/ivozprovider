@@ -60,11 +60,13 @@ Feature: Retrieve rating profiles
               "id": 1,
               "name": {
                   "en": "Something",
-                  "es": "Algo"
+                  "es": "Algo",
+                  "ca": "Algo mes"
               },
               "description": {
-                  "en": "",
-                  "es": ""
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca"
               }
           }
       }

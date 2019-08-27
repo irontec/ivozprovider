@@ -44,7 +44,8 @@ Feature: Retrieve companies
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           },
           "defaultTimezone": {
@@ -53,7 +54,8 @@ Feature: Retrieve companies
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },
@@ -63,11 +65,13 @@ Feature: Retrieve companies
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "transformationRuleSet": {
