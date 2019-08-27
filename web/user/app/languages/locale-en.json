@@ -21,7 +21,7 @@
     "deleteDetour": "Delete Edit call forward setting",
     "DoNotDisturb": "Do not disturb",
     "TimeZone": "Time zone",
-    "MaxCalls": "Simultaneous calls",
+    "CallWaiting": "Call waiting",
     "bossAssistant": "Assigned asistant",
     "exceptionBoosAssistantRegExp": "Asistant exception",
     "Index": "Index",
