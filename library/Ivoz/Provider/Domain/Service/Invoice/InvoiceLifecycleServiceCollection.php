@@ -15,6 +15,7 @@ class InvoiceLifecycleServiceCollection implements LifecycleServiceCollectionInt
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\Invoice\AutoRateCalls::class => 99,
             \Ivoz\Provider\Domain\Service\Invoice\CheckValidity::class => 100,
             \Ivoz\Provider\Domain\Service\Invoice\SetInvoiceNumber::class => 300,
         ],

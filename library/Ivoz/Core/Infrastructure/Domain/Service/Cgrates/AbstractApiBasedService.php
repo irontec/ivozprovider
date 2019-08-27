@@ -2,6 +2,8 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
+use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+
 /**
  * @deprecated Use ApiClient as a collaborator instead
  */
@@ -10,7 +12,7 @@ abstract class AbstractApiBasedService
     protected $jsonRpcClient;
 
     public function __construct(
-        CgrRpcClient $jsonRpcClient
+        ClientInterface $jsonRpcClient
     ) {
         $this->jsonRpcClient = $jsonRpcClient;
     }
