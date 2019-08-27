@@ -18,13 +18,13 @@ Feature: Retrieve billable calls
               "caller": "+34633646464",
               "callee": "+34633656565",
               "cost": null,
-              "price": null,
+              "price": 1,
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
               "id": 1,
               "company": 1,
-              "carrier": null,
+              "carrier": 1,
               "invoice": null
           },
           {
@@ -34,13 +34,13 @@ Feature: Retrieve billable calls
               "caller": "+34633646464",
               "callee": "+34633656565",
               "cost": null,
-              "price": null,
+              "price": 1,
               "endpointType": null,
               "endpointId": null,
               "direction": "outbound",
               "id": 2,
               "company": 1,
-              "carrier": null,
+              "carrier": 1,
               "invoice": null
           }
       ]
@@ -62,7 +62,7 @@ Feature: Retrieve billable calls
           "caller": "+34633646464",
           "callee": "+34633656565",
           "cost": null,
-          "price": null,
+          "price": 1,
           "carrierName": null,
           "destinationName": null,
           "ratingPlanName": null,
@@ -71,7 +71,7 @@ Feature: Retrieve billable calls
           "direction": "outbound",
           "id": 1,
           "company": "~",
-          "carrier": null,
+          "carrier": "~",
           "destination": null,
           "ratingPlanGroup": null,
           "invoice": null

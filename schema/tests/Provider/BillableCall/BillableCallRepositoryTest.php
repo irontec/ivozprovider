@@ -217,7 +217,7 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_counts_untarificatted_calls_before_date()
+    public function it_gets_untarificatted_call_ids_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -225,14 +225,15 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
-            ->countUntarificattedCallsBeforeDate(
+            ->getUntarificattedCallIdsInRange(
                 1,
                 1,
-                '2025-10-10 00:00:01'
+                '2019-01-01 00:00:01',
+                '2019-01-02 00:00:01'
             );
 
         $this->assertInternalType(
-            'int',
+            'array',
             $response
         );
     }

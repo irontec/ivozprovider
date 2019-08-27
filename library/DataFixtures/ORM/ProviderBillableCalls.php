@@ -38,10 +38,12 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                 $this->setCaller('+34633646464');
                 $this->setCallee('+34633656565');
                 $this->setDirection('outbound');
+                $this->setPrice(1);
             })->call($item);
 
             $item->setBrand($this->getReference('_reference_ProviderBrand1'));
             $item->setCompany($this->getReference('_reference_ProviderCompany1'));
+            $item->setCarrier($this->getReference('_reference_ProviderCarrier1'));
 
             if ($i === 0) {
                 $item->setTrunksCdr($this->getReference('_reference_KamTrunksCdr1'));
@@ -58,6 +60,7 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
     {
         return array(
             ProviderCompany::class,
+            ProviderCarrier::class,
             KamTrunksCdr::class
         );
     }
