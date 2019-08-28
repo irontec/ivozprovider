@@ -135,6 +135,17 @@ trait HelperTrait
         $this->setterProphecy($double, $values, $shouldBeCalled);
     }
 
+    protected function resetProphecies($double, string $method)
+    {
+        $reflection = new \ReflectionClass($double);
+        $property = $this->getProperty($reflection, 'methodProphecies');
+        $property->setAccessible(true);
+        $values = $property->getValue($double);
+        unset($values[$method]);
+        $property->setValue($double, $values);
+        $property->setAccessible(false);
+    }
+
     protected function hydrate($object, $values)
     {
         $reflection = new \ReflectionClass($object);
