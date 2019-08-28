@@ -36,8 +36,8 @@ class HuntGroupTest extends KernelTestCase
             [
                 [
                     'company',
-                    'in',
-                    'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                    'eq',
+                    'user.getCompany().getId()'
                 ]
             ]
         );
@@ -61,8 +61,8 @@ class HuntGroupTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -86,7 +86,7 @@ class HuntGroupTest extends KernelTestCase
                         [
                             'noAnswerExtension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'noAnswerExtension',

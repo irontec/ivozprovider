@@ -71,7 +71,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'outgoingDdi',
                             'in',
-                            'DdiRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'DdiRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'outgoingDdi',

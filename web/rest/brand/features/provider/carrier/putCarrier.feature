@@ -14,7 +14,6 @@ Feature: Update carriers
           "description": "Artemis-Updated",
           "name": "Artemis-Updated",
           "externallyRated": true,
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """

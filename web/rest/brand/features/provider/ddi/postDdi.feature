@@ -13,7 +13,6 @@ Feature: Create ddis
       {
           "ddi": "321",
           "company": 1,
-          "brand": 1,
           "ddiProvider": 1,
           "country": 68
       }

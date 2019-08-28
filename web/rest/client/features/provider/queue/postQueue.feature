@@ -23,7 +23,6 @@ Feature: Create queues
           "memberCallTimeout": 1,
           "strategy": "rrmemory",
           "weight": 2,
-          "company": 1,
           "periodicAnnounceLocution": 1,
           "timeoutLocution": 1,
           "timeoutExtension": null,

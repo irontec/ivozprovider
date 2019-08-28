@@ -11,8 +11,7 @@ Feature: Update rating profiles
       And I send a "PUT" request to "/rating_profiles/1" with body:
     """
       {
-          "activationTime": "2018-02-02 21:20:20",
-          "company": 1
+          "activationTime": "2018-02-02 21:20:20"
       }
     """
     Then the response status code should be 405

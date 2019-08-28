@@ -17,7 +17,6 @@ Feature: Update external call filters
           "outOfScheduleTargetType": "number",
           "outOfScheduleNumberValue": "946002022",
           "id": 1,
-          "company": 1,
           "welcomeLocution": null,
           "holidayLocution": null,
           "outOfScheduleLocution": null,

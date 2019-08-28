@@ -19,7 +19,6 @@ Feature: Update terminals
           "password": "ZGthe7E2+1",
           "mac": "aa-bb-cc-dd-ee-ff",
           "lastProvisionDate": "1970-01-01 10:10:10",
-          "company": 1,
           "terminalModel": 2
       }
     """

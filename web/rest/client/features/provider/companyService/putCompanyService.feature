@@ -12,7 +12,6 @@ Feature: Update company services
     """
       {
           "code": "92",
-          "company": 1,
           "service": 4
       }
     """

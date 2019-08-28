@@ -36,8 +36,8 @@ class ExtensionTest extends KernelTestCase
             [
                 [
                     'company',
-                    'in',
-                    'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                    'eq',
+                    'user.getCompany().getId()'
                 ]
             ]
         );
@@ -61,8 +61,8 @@ class ExtensionTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -71,7 +71,7 @@ class ExtensionTest extends KernelTestCase
                         [
                             'huntGroup',
                             'in',
-                            'HuntGroupRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'huntGroup',
@@ -99,7 +99,7 @@ class ExtensionTest extends KernelTestCase
                         [
                             'queue',
                             'in',
-                            'QueueRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'QueueRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'queue',
@@ -113,7 +113,7 @@ class ExtensionTest extends KernelTestCase
                         [
                             'conditionalRoute',
                             'in',
-                            'ConditionalRouteRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ConditionalRouteRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'conditionalRoute',
@@ -127,7 +127,7 @@ class ExtensionTest extends KernelTestCase
                         [
                             'ivr',
                             'in',
-                            'IvrRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'IvrRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'ivr',

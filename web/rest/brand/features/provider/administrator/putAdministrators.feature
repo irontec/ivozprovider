@@ -17,7 +17,6 @@ Feature: Update administrators
           "active": false,
           "name": "Updated admin name",
           "lastname": "a lastname",
-          "brand": 1,
           "company": 1,
           "timezone": 158
       }

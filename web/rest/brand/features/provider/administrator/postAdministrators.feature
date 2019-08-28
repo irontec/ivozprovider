@@ -18,7 +18,6 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "id": 1,
-          "brand": 1,
           "company": 1,
           "timezone": 145
       }

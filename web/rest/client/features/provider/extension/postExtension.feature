@@ -15,7 +15,6 @@ Feature: Create extensions
           "routeType": "user",
           "numberValue": null,
           "friendValue": null,
-          "company": 1,
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,

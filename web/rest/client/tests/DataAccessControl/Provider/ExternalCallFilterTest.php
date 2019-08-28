@@ -36,8 +36,9 @@ class ExternalCallFilterTest extends KernelTestCase
             [
                 [
                     'company',
-                    'in',
-                    'CompanyRepository([["id","eq","user.getCompany().getId()"]])']
+                    'eq',
+                    'user.getCompany().getId()'
+                ]
             ]
         );
     }
@@ -60,8 +61,8 @@ class ExternalCallFilterTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -98,7 +99,7 @@ class ExternalCallFilterTest extends KernelTestCase
                         [
                             'holidayExtension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'holidayExtension',
@@ -112,7 +113,7 @@ class ExternalCallFilterTest extends KernelTestCase
                         [
                             'outOfScheduleExtension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'outOfScheduleExtension',

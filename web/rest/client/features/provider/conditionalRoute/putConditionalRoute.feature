@@ -16,7 +16,6 @@ Feature: Update conditional routes
           "numbervalue": "946002021",
           "friendvalue": "",
           "id": 1,
-          "company": 1,
           "ivr": null,
           "huntGroup": null,
           "voicemailUser": null,

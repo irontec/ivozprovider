@@ -25,7 +25,6 @@ Feature: Update residential device
           "maxCalls": 1,
           "t38Passthrough": "no",
           "id": 1,
-          "brand": 1,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,

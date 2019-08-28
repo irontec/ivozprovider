@@ -37,7 +37,7 @@ class HuntGroupsRelUserTest extends KernelTestCase
                 [
                     'huntGroup',
                     'in',
-                    'HuntGroupRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -65,7 +65,7 @@ class HuntGroupsRelUserTest extends KernelTestCase
                 [
                     'huntGroup',
                     'in',
-                    'HuntGroupRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );

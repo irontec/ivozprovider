@@ -12,7 +12,6 @@ Feature: Update brand services
     """
       {
         "code": "95",
-        "brand": 1,
         "service": 2
       }
     """

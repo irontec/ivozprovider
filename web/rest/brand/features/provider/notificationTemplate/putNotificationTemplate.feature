@@ -12,8 +12,7 @@ Feature: Update notification templates
     """
       {
           "name": "New fax notification",
-          "type": "voicemail",
-          "brand": 1
+          "type": "voicemail"
       }
     """
     Then the response status code should be 200

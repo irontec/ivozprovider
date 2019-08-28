@@ -20,7 +20,6 @@
           "status": "created",
           "statusMsg": null,
           "invoiceTemplate": 1,
-          "brand": 1,
           "company": 1,
           "numberSequence": null
       }

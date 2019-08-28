@@ -20,7 +20,6 @@ Feature: Update rating plan group
               "en": "",
               "es": ""
           },
-          "brand": "1",
           "currency": null
       }
     """

@@ -3,6 +3,7 @@
 namespace Ivoz\Api\Entity\Serializer\Normalizer;
 
 use ApiPlatform\Core\Exception\InvalidArgumentException;
+use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -132,25 +133,10 @@ class EntityDenormalizer implements DenormalizerInterface
             ->get(DataAccessControlParser::WRITE_ACCESS_CONTROL_ATTRIBUTE);
 
         foreach ($accessControl as $key => $criteria) {
-            if (!is_array($criteria) || count($criteria) !== 3) {
-                continue;
-            }
-
-            list($fld, $operation, $value) = $criteria;
-
-            if (array_key_exists($fld, $input)) {
-                continue;
-            }
-
-            if (strtoupper($operation) !== 'EQ') {
-                continue;
-            }
-
-            if (!is_scalar($value)) {
-                continue;
-            }
-
-            $input[$fld] = $value;
+            $input = $this->injectEqualValuesIfNotPresent(
+                $input,
+                $criteria
+            );
         }
 
         $target = $entity ? $entity->__toString() : $class;
@@ -188,6 +174,50 @@ class EntityDenormalizer implements DenormalizerInterface
         );
 
         return $this->mapToEntity($class, $entity, $dto);
+    }
+
+
+    /**
+     * @param array $input
+     * @param mixed $criteria
+     */
+    private function injectEqualValuesIfNotPresent(array $input, $criteria): array
+    {
+        if (!is_array($criteria)) {
+            return $input;
+        }
+
+        foreach ($criteria as $key => $value) {
+            if (strtoupper($key) !== CompositeExpression::TYPE_AND) {
+                continue;
+            }
+
+            foreach ($criteria[$key] as $position => $rule) {
+                $input = $this->injectEqualValuesIfNotPresent($input, $rule);
+            }
+        }
+
+        if (count($criteria) !== 3) {
+            return $input;
+        }
+
+        list($fld, $operation, $value) = $criteria;
+
+        if (array_key_exists($fld, $input)) {
+            return $input;
+        }
+
+        if (strtoupper($operation) === 'ISNULL') {
+            $input[$fld] = null;
+            return $input;
+        }
+
+        if (strtoupper($operation) !== 'EQ' || !is_scalar($value)) {
+            return $input;
+        }
+
+        $input[$fld] = $value;
+        return $input;
     }
 
     /**

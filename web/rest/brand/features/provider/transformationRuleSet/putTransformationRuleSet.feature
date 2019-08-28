@@ -22,7 +22,6 @@ Feature: Update transformation rule sets
               "en": "updated name",
               "es": "nombre actualizado"
           },
-          "brand": 1,
           "country": 68
       }
     """

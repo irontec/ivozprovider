@@ -14,7 +14,6 @@ Feature: Create residential devices
           "name": "newRetail",
           "description": "",
           "transport": "udp",
-          "company": 1,
           "password": "qR9Y65pxJ+",
           "outgoingDdi": null,
           "language": null

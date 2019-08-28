@@ -14,7 +14,6 @@ Feature: Update ddi
           "ddi": "124",
           "id": 1,
           "company": 1,
-          "brand": 1,
           "ddiProvider": 1,
           "country": 68
       }

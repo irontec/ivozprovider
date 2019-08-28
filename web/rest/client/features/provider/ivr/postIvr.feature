@@ -20,7 +20,6 @@ Feature: Create IVRs
           "errorRouteType": "number",
           "errorNumberValue": "946002022",
           "id": 1,
-          "company": 1,
           "welcomeLocution": 1,
           "noInputLocution": null,
           "errorLocution": null,

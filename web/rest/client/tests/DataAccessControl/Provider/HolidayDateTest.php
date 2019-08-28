@@ -72,7 +72,7 @@ class HolidayDateTest extends KernelTestCase
                         [
                             'extension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'extension',

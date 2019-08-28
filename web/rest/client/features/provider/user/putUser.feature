@@ -24,7 +24,6 @@ Feature: Update users
           "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 1,
-          "company": 1,
           "callAcl": null,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,

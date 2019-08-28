@@ -11,8 +11,7 @@ Feature: Create pick up groups
       And I send a "POST" request to "/pick_up_groups" with body:
     """
       {
-          "name": "new pick up group",
-          "company": 1
+          "name": "new pick up group"
       }
     """
     Then the response status code should be 201

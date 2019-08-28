@@ -61,8 +61,8 @@ class UserTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -155,7 +155,7 @@ class UserTest extends KernelTestCase
                         [
                             'extension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'extension',
@@ -169,7 +169,7 @@ class UserTest extends KernelTestCase
                         [
                             'outgoingDdi',
                             'in',
-                            'DdiRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'DdiRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'outgoingDdi',

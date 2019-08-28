@@ -35,7 +35,6 @@ Feature: Update company
           "language": 1,
           "mediaRelaySets": 1,
           "defaultTimezone": 1,
-          "brand": 1,
           "applicationServer": null,
           "country": 68,
           "transformationRuleSet": 1,

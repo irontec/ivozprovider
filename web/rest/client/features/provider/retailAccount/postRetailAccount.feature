@@ -16,8 +16,7 @@ Feature: Create retail accounts
           "transformationRuleSet": 1,
           "outgoingDdi": 1,
           "transport": "udp",
-          "password": "ky7rVWX99_",
-          "company": 1
+          "password": "ky7rVWX99_"
       }
     """
     Then the response status code should be 405

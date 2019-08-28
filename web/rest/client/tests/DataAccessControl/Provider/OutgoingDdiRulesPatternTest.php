@@ -85,7 +85,7 @@ class OutgoingDdiRulesPatternTest extends KernelTestCase
                         [
                             'forcedDdi',
                             'in',
-                            'DdiRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'DdiRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'forcedDdi',

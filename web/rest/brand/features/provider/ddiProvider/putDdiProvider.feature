@@ -13,7 +13,6 @@ Feature: Update ddi providers
       {
           "description": "UpdateDDIProviderDescription",
           "name": "UpdateDDIProviderName",
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """

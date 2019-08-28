@@ -37,7 +37,7 @@ class IvrEntryTest extends KernelTestCase
                 [
                     'ivr',
                     'in',
-                    'IvrRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'IvrRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -62,7 +62,7 @@ class IvrEntryTest extends KernelTestCase
                         [
                             'ivr',
                             'in',
-                            'IvrRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'IvrRepository([["company","eq","user.getCompany().getId()"]])'
                         ]
                     ]
                 ],
@@ -72,7 +72,7 @@ class IvrEntryTest extends KernelTestCase
                         [
                             'extension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'extension',
@@ -100,7 +100,7 @@ class IvrEntryTest extends KernelTestCase
                         [
                             'conditionalRoute',
                             'in',
-                            'ConditionalRouteRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ConditionalRouteRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'conditionalRoute',

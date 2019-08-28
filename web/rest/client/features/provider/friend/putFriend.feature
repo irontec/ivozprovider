@@ -27,7 +27,6 @@ Feature: Update friends
           "fromDomain": "",
           "directConnectivity": "yes",
           "id": 1,
-          "company": 1,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null

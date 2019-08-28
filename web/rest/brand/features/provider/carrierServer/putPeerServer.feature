@@ -25,8 +25,7 @@ Feature: Update carrier servers
           "outboundProxy": null,
           "fromUser": "",
           "fromDomain": "",
-          "carrier": 1,
-          "brand": 1
+          "carrier": 1
       }
     """
     Then the response status code should be 200

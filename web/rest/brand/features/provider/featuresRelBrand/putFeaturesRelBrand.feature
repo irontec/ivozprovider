@@ -11,7 +11,6 @@ Feature: Update features rel brands
       And I send a "PUT" request to "/features_rel_brands/1" with body:
     """
       {
-          "brand": 1,
           "feature": 9
       }
     """
