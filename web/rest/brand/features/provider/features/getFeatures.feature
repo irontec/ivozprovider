@@ -68,7 +68,8 @@ Feature: Retrieve features
           "name": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           }
       }
     """

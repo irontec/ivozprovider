@@ -21,7 +21,8 @@ Feature: Update transformation rule sets
           "name": {
               "en": "updated name",
               "es": "nombre actualizado",
-              "ca": "nombre actualizado"
+              "ca": "nombre actualizado",
+              "it": "nome aggiornato"
           },
           "country": 68
       }
@@ -42,23 +43,10 @@ Feature: Update transformation rule sets
           "name": {
               "en": "updated name",
               "es": "nombre actualizado",
-              "ca": "nombre actualizado"
+              "ca": "nombre actualizado",
+              "it": "nome aggiornato"
           },
           "brand": "~",
-          "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          }
+          "country":"~"
       }
     """

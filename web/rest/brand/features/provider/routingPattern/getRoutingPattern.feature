@@ -20,7 +20,8 @@ Feature: Retrieve routing patterns
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -29,7 +30,8 @@ Feature: Retrieve routing patterns
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       ]
@@ -50,12 +52,14 @@ Feature: Retrieve routing patterns
           "name": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
           "brand": "~"
       }

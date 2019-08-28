@@ -15,7 +15,8 @@
           "name": {
               "en": "Germany",
               "es": "Alemania",
-              "ca": "Alemania"
+              "ca": "Alemania",
+              "it": "Germany"
           }
       }
     """
@@ -30,7 +31,8 @@
           "name": {
               "en": "Germany",
               "es": "Alemania",
-              "ca": "Alemania"
+              "ca": "Alemania",
+              "it": "Germany"
           },
           "brand": 1
       }
@@ -51,7 +53,8 @@
           "name": {
               "en": "Usansolocity",
               "es": "Usansolocity",
-              "ca": "Usansolocity"
+              "ca": "Usansolocity",
+              "it": "Usansolocity"
           },
           "brand": "~"
       }

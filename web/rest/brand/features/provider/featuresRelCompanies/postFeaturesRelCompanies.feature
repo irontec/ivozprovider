@@ -60,7 +60,8 @@
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }
@@ -114,7 +115,8 @@
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }
