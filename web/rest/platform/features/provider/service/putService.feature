@@ -17,12 +17,14 @@ Feature: Update services
           "name": {
               "en": "english",
               "es": "ingles",
-              "ca": "ingles"
+              "ca": "ingles",
+              "it": "italiano"
           },
           "description": {
               "en": "descEn",
               "es": "descEs",
-              "ca": "descCa"
+              "ca": "descCa",
+              "it": "descIt"
           }
       }
     """
@@ -39,12 +41,14 @@ Feature: Update services
           "name": {
               "en": "english",
               "es": "ingles",
-              "ca": "ingles"
+              "ca": "ingles",
+              "it": "italiano"
           },
           "description": {
               "en": "descEn",
               "es": "descEs",
-              "ca": "descCa"
+              "ca": "descCa",
+              "it": "descIt"
           }
       }
     """

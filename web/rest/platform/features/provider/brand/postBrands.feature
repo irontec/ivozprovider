@@ -90,7 +90,8 @@ Feature: Manage brands
               "label": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }

@@ -153,7 +153,8 @@ Feature: Retrieve timezones
           "label": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
           "country": {
               "code": "ES",
@@ -162,12 +163,14 @@ Feature: Retrieve timezones
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           }
       }
