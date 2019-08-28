@@ -69,14 +69,12 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
           eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - company:
-              eq: "user.getCompany().getId()"
-        - or:
-          - inherited:
-              callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - callCsvNotificationTemplate:
-              isNull: ~
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
 
 Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
   itemOperations:
@@ -92,14 +90,12 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
           eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - company:
-              eq: "user.getCompany().getId()"
-        - or:
-          - inherited:
-              callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
-          - callCsvScheduler:
-              isNull: ~
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   itemOperations:
@@ -150,43 +146,33 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         user:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
-        - or:
-          - inherited:
-              user: 'Ivoz\Provider\Domain\Model\User\User'
-          - inherited:
-              residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
-          - inherited:
-              retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+      - or:
+        - inherited:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+        - inherited:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+        - inherited:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
     write_access_control:
       ROLE_COMPANY_USER:
         user:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
       - or:
-        - inherited:
+        - inheritedOrNull:
             user: 'Ivoz\Provider\Domain\Model\User\User'
-        - user:
-            isNull: ~
       - or:
-        - inherited:
+        - inheritedOrNull:
             residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
-        - residentialDevice:
-            isNull: ~
       - or:
-        - inherited:
+        - inheritedOrNull:
             retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
-        - retailAccount:
-            isNull: ~
       - or:
-        - inherited:
+        - inheritedOrNull:
             extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-        - extension:
-            isNull: ~
       - or:
-        - inherited:
+        - inheritedOrNull:
             voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-        - voiceMailUser:
-            isNull: ~
 
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:
@@ -222,19 +208,15 @@ Ivoz\Provider\Domain\Model\Company\Company:
           eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-            - id:
-                eq: "user.getCompany().getId()"
-        - or:
-            - inherited:
-                outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-            - outgoingDdi:
-                isNull: ~
-        - or:
-          - inherited:
-              outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
-          - outgoingDdiRule:
-              isNull: ~
+      - and:
+        - id:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
 
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
   attributes:
@@ -253,49 +235,33 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
           company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - extension:
-              isNull: ~
-        - or:
-          - inherited:
-              huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
-          - huntGroup:
-              isNull: ~
-        - or:
-          - inherited:
-              user: 'Ivoz\Provider\Domain\Model\User\User'
-          - user:
-              isNull: ~
-        - or:
-          - inherited:
-              queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
-          - queue:
-              isNull: ~
-        - or:
-          - inherited:
-              locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - locution:
-              isNull: ~
-        - or:
-          - inherited:
-              conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
-          - conferenceRoom:
-              isNull: ~
-        - or:
-          - inherited:
-              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
-          - ivr:
-              isNull: ~
-        - or:
-          - inherited:
-              voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - voicemailUser:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+      - or:
+        - inheritedOrNull:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+      - or:
+        - inheritedOrNull:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
   attributes:
@@ -304,39 +270,27 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       inherited:
         conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
     write_access_control:
-      - and:
-        - inherited:
-            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
-      - or:
-        - inherited:
-            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-        - extension:
-            isNull: ~
-      - or:
-        - inherited:
-            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
-        - huntGroup:
-            isNull: ~
-      - or:
-        - inherited:
-            user: 'Ivoz\Provider\Domain\Model\User\User'
-        - user:
-            isNull: ~
-      - or:
-        - inherited:
-            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
-        - queue:
-            isNull: ~
-      - or:
-        - inherited:
-            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-        - locution:
-            isNull: ~
-      - or:
-        - inherited:
-            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
-        - conferenceRoom:
-            isNull: ~
+    - and:
+      - inherited:
+          conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+    - or:
+      - inheritedOrNull:
+          extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    - or:
+      - inheritedOrNull:
+          huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+    - or:
+      - inheritedOrNull:
+          user: 'Ivoz\Provider\Domain\Model\User\User'
+    - or:
+      - inheritedOrNull:
+          queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+    - or:
+      - inheritedOrNull:
+          locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    - or:
+      - inheritedOrNull:
+          conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
   itemOperations:
@@ -471,59 +425,39 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
         company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              user: 'Ivoz\Provider\Domain\Model\User\User'
-          - user:
-              isNull: ~
-        - or:
-          - inherited:
-              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
-          - ivr:
-              isNull: ~
-        - or:
-          - inherited:
-              huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
-          - huntGroup:
-              isNull: ~
-        - or:
-          - inherited:
-              fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
-          - fax:
-              isNull: ~
-        - or:
-          - inherited:
-              conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
-          - conferenceRoom:
-              isNull: ~
-        - or:
-          - inherited:
-              queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
-          - queue:
-              isNull: ~
-        - or:
-          - inherited:
-              retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
-          - retailAccount:
-              isNull: ~
-        - or:
-          - inherited:
-              residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
-          - residentialDevice:
-              isNull: ~
-        - or:
-          - inherited:
-              conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
-          - conditionalRoute:
-              isNull: ~
-        - or:
-          - inherited:
-              externalCallFilter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
-          - externalCallFilter:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+      - or:
+        - inheritedOrNull:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+      - or:
+        - inheritedOrNull:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+      - or:
+        - inheritedOrNull:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inheritedOrNull:
+            externalCallFilter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
   properties:
     ddi:
       attributes:
@@ -560,39 +494,27 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
           company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
-          - huntGroup:
-              isNull: ~
-        - or:
-          - inherited:
-              user: 'Ivoz\Provider\Domain\Model\User\User'
-          - user:
-              isNull: ~
-        - or:
-          - inherited:
-              queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
-          - queue:
-              isNull: ~
-        - or:
-          - inherited:
-              conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
-          - conditionalRoute:
-              isNull: ~
-        - or:
-          - inherited:
-              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
-          - ivr:
-              isNull: ~
-        - or:
-          - inherited:
-              conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
-          - conferenceRoom:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+      - or:
+        - inheritedOrNull:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inheritedOrNull:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
 
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   attributes:
@@ -602,44 +524,30 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
         company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - welcomeLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              outOfScheduleLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - outOfScheduleLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              holidayExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - holidayExtension:
-              isNull: ~
-        - or:
-          - inherited:
-              outOfScheduleExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - outOfScheduleExtension:
-              isNull: ~
-        - or:
-          - inherited:
-              holidayVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - holidayVoiceMailUser:
-              isNull: ~
-        - or:
-          - inherited:
-              outOfScheduleVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - outOfScheduleVoiceMailUser:
-              isNull: ~
-        - or:
-          - inherited:
-              holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - holidayLocution:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            outOfScheduleLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            holidayExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            outOfScheduleExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            holidayVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            outOfScheduleVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
 
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
   collectionOperations:
@@ -737,14 +645,12 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
           eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-            - inherited:
-                company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-            - inherited:
-                outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-            - outgoingDdi:
-                isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
 
 Ivoz\Provider\Domain\Model\Feature\Feature:
   itemOperations: []
@@ -774,29 +680,21 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
         company:
           eq: "user.getCompany().getId()"
     write_access_control:
-      - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-      - or:
-        - inherited:
-            interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - interCompany:
-            isNull: ~
-      - or:
-        - inherited:
-            callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
-        - callAcl:
-            isNull: ~
-      - or:
-        - inherited:
-            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-        - outgoingDdi:
-            isNull: ~
-      - or:
-        - inherited:
-            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
-        - transformationRuleSet:
-            isNull: ~
+    - and:
+      - inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    - or:
+      - inheritedOrNull:
+          interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
+    - or:
+      - inheritedOrNull:
+          callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+    - or:
+      - inheritedOrNull:
+          outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    - or:
+      - inheritedOrNull:
+          transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
   itemOperations:
     get: ~
     get_status_item:
@@ -832,24 +730,18 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
-        - or:
-          - inherited:
-              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - extension:
-              isNull: ~
-        - or:
-          - inherited:
-              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - voiceMailUser:
-              isNull: ~
-        - or:
-          - inherited:
-              locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - locution:
-              isNull: ~
+      - and:
+        - inherited:
+            calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
 
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
@@ -859,24 +751,18 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
         company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              noAnswerLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - noAnswerLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              noAnswerExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - noAnswerExtension:
-              isNull: ~
-        - or:
-          - inherited:
-              noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - noAnswerVoiceMailUser:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            noAnswerLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            noAnswerExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
   collectionOperations:
@@ -918,29 +804,21 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
-        - or:
-          - inherited:
-              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - extension:
-              isNull: ~
-        - or:
-          - inherited:
-              welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - welcomeLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
-          - conditionalRoute:
-              isNull: ~
-        - or:
-          - inherited:
-              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - voiceMailUser:
-              isNull: ~
+      - and:
+        - inherited:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inheritedOrNull:
+            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
   attributes:
@@ -951,49 +829,33 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
           company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              errorExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - errorExtension:
-              isNull: ~
-        - or:
-          - inherited:
-              errorLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - errorLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - welcomeLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              noInputLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - noInputLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              successLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - successLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              noInputVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - noInputVoiceMailUser:
-              isNull: ~
-        - or:
-          - inherited:
-              errorVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - errorVoiceMailUser:
-              isNull: ~
-        - or:
-          - inherited:
-              noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - noInputExtension:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            errorExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            errorLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            noInputLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            successLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            noInputVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            errorVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
 
 Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
   collectionOperations:
@@ -1038,11 +900,11 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        - or:
-          - brand:
-              eq: "user.getCompany().getBrand().getId()"
-          - brand:
-              isNull: ~
+      - or:
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+        - brand:
+            isNull: ~
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
@@ -1050,10 +912,10 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
     read_access_control:
       ROLE_COMPANY_ADMIN:
         or:
-          - brand:
-              eq: "user.getCompany().getBrand().getId()"
-          - company:
-              eq: "user.getCompany().getId()"
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+        - company:
+            eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1085,14 +947,12 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
         company:
           eq: "user.getCompany().getId()"
     write_access_control:
-      - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
-      - or:
-          - inherited:
-              forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-          - forcedDdi:
-              isNull: ~
+    - and:
+      - inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    - or:
+      - inheritedOrNull:
+          forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
 
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   collectionOperations:
@@ -1109,19 +969,15 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
       inherited:
         outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
     write_access_control:
-      - and:
-          - inherited:
-              outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
-      - or:
-        - inherited:
-            matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
-        - matchList:
-            isNull: ~
-      - or:
-          - inherited:
-              forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-          - forcedDdi:
-              isNull: ~
+    - and:
+      - inherited:
+          outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+    - or:
+      - inheritedOrNull:
+          matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    - or:
+      - inheritedOrNull:
+          forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
 
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   attributes:
@@ -1177,44 +1033,30 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
         company: 'Ivoz\Provider\Domain\Model\Company\Company'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        - and:
-            - inherited:
-                company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              periodicAnnounceLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - periodicAnnounceLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              timeoutLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - timeoutLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              timeoutExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - timeoutExtension:
-              isNull: ~
-        - or:
-          - inherited:
-              timeoutVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - timeoutVoiceMailUser:
-              isNull: ~
-        - or:
-          - inherited:
-              fullLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - fullLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              fullExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - fullExtension:
-              isNull: ~
-        - or:
-          - inherited:
-              fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
-          - fullVoiceMailUser:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            periodicAnnounceLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            timeoutLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            timeoutExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            timeoutVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            fullLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            fullExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
   attributes:
@@ -1258,19 +1100,15 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         company:
           eq: "user.getCompany().getId()"
     write_access_control:
-      - and:
-        - inherited:
-            company: 'Ivoz\Provider\Domain\Model\Company\Company'
-      - or:
-        - inherited:
-            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-        - outgoingDdi:
-            isNull: ~
-      - or:
-        - inherited:
-            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
-        - transformationRuleSet:
-            isNull: ~
+    - and:
+      - inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    - or:
+      - inheritedOrNull:
+          outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    - or:
+      - inheritedOrNull:
+          transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
   itemOperations:
     get: ~
     get_status_item:
@@ -1297,19 +1135,15 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
         company:
           eq: "user.getCompany().getId()"
     write_access_control:
-      - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-      - or:
-          - inherited:
-              outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-          - outgoingDdi:
-              isNull: ~
-      - or:
-        - inherited:
-            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
-        - transformationRuleSet:
-            isNull: ~
+    - and:
+      - inherited:
+          company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    - or:
+      - inheritedOrNull:
+          outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    - or:
+      - inheritedOrNull:
+          transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
   itemOperations:
     get: ~
     get_status_item:
@@ -1414,11 +1248,11 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        - or:
-          - brand:
-              eq: "user.getCompany().getBrand().getId()"
-          - brand:
-              isNull: ~
+      - or:
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+        - brand:
+            isNull: ~
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
@@ -1513,46 +1347,30 @@ Ivoz\Provider\Domain\Model\User\User:
         id:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
-        - and:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-        - or:
-          - inherited:
-              callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
-          - callAcl:
-              isNull: ~
-        - or:
-          - inherited:
-              bossAssistant: 'Ivoz\Provider\Domain\Model\User\User'
-          - bossAssistant:
-              isNull: ~
-        - or:
-          - inherited:
-              outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
-          - outgoingDdiRule:
-              isNull: ~
-        - or:
-          - inherited:
-              voicemailLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-          - voicemailLocution:
-              isNull: ~
-        - or:
-          - inherited:
-              bossAssistantWhiteList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
-          - bossAssistantWhiteList:
-              isNull: ~
-        - or:
-          - inherited:
-              terminal: 'Ivoz\Provider\Domain\Model\Terminal\Terminal'
-          - terminal:
-              isNull: ~
-        - or:
-          - inherited:
-              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
-          - extension:
-              isNull: ~
-        - or:
-          - inherited:
-              outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
-          - outgoingDdi:
-              isNull: ~
+      - and:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+      - or:
+        - inheritedOrNull:
+            bossAssistant: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+      - or:
+        - inheritedOrNull:
+            voicemailLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            bossAssistantWhiteList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+      - or:
+        - inheritedOrNull:
+            terminal: 'Ivoz\Provider\Domain\Model\Terminal\Terminal'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
