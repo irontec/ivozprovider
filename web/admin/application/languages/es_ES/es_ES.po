@@ -388,6 +388,9 @@ msgstr[1] "Registros de llamadas"
 msgid "Call type"
 msgstr "Tipo de llamada"
 
+msgid "Call waiting"
+msgstr "Llamada en espera"
+
 msgid "Calldate"
 msgstr "Fecha"
 
@@ -500,9 +503,6 @@ msgid "Company service"
 msgid_plural "Company services"
 msgstr[0] "Servicio"
 msgstr[1] "Servicios"
-
-msgid "Company's default"
-msgstr "Usar configuración empresa"
 
 msgid "Completed"
 msgstr "Completado"
@@ -1386,10 +1386,11 @@ msgstr ""
 "para ilimitado)."
 
 msgid ""
-"Limits the number of concurrent received calls. Set 0 for unlimited calls."
+"Limits received calls when already handling this number of calls. Set 0 for "
+"disabling."
 msgstr ""
-"Limita el número de llamadas concurrentes recibidas. Dejar a 0 para llamadas "
-"ilimitadas."
+"Limita la recepción de llamadas cuando se estén gestionando este número de "
+"llamadas. 0 para desactivar."
 
 msgid "Linear"
 msgstr "Secuencialmente"

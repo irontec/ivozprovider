@@ -182,7 +182,7 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     t38Passthrough:
       title: _('Enable T.38 passthrough')
       type: select

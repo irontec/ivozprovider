@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 10:06+0200\n"
+"POT-Creation-Date: 2019-08-27 12:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/routing_endpoints/hunt_groups.rst:13
 #: ../../administration_portal/client/vpbx/routing_endpoints/ivrs.rst:21
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:26
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:16
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:17
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:21
 #: ../../administration_portal/client/vpbx/terminals.rst:15
@@ -3018,33 +3018,37 @@ msgstr ""
 msgid "Prefix itself"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/routing_tags.rst:27
-msgid "Using routing tags"
+#: ../../administration_portal/brand/routing/routing_tags.rst:26
+msgid "Tag **must** have this format: from 1 to 3 digits ended by # symbol."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:29
-msgid "Once created, routing tags can be used in three different sections:"
+msgid "Using routing tags"
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:31
-msgid "In **client edit screen**, to allow a client to use a routing tag."
+msgid "Once created, routing tags can be used in three different sections:"
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:33
-msgid "Using a non enabled routing tag will cause the call to be declined."
+msgid "In **client edit screen**, to allow a client to use a routing tag."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:35
-msgid "In **Outgoing routings** to modify the way those calls are routed."
+msgid "Using a non enabled routing tag will cause the call to be declined."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:37
+msgid "In **Outgoing routings** to modify the way those calls are routed."
+msgstr ""
+
+#: ../../administration_portal/brand/routing/routing_tags.rst:39
 msgid ""
 "In **client - rating profiles association**, so that different routes "
 "imply different billing."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/routing_tags.rst:39
+#: ../../administration_portal/brand/routing/routing_tags.rst:41
 msgid ""
 "Route tags are only available to wholesale and retail clients at the "
 "moment."
@@ -4228,6 +4232,26 @@ msgid ""
 "understand the difference between these two client types."
 msgstr ""
 
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:3
+msgid "Rating profiles"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:5
+msgid "This section allows the client to:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:7
+msgid "See the list of rating plans and their activation time."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:9
+msgid "Download a CSV with each rating plan."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:11
+msgid "Simulate a call and guess the cost of a given call."
+msgstr ""
+
 #: ../../administration_portal/client/residential/residential_devices.rst:7
 msgid ""
 "Residential Devices are the main routable option in Residential clients. "
@@ -4390,12 +4414,14 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:80
 #: ../../administration_portal/client/vpbx/users.rst:89
-msgid "Max Calls"
+msgid "Call waiting"
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:82
 #: ../../administration_portal/client/vpbx/users.rst:91
-msgid "Limits the number of concurrent received calls. Set 0 for unlimited calls."
+msgid ""
+"Limits received calls when already handling this number of calls. Set 0 "
+"for disabling."
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:83
@@ -4573,26 +4599,6 @@ msgstr ""
 msgid ""
 "The goal of this section will be describe each of the configuration "
 "settings associated with Retail clients included in IvozProvider:"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:3
-msgid "Rating profiles"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:5
-msgid "This section allows the client to:"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:7
-msgid "See the list of rating plans and their activation time."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:9
-msgid "Download a CSV with each rating plan."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:11
-msgid "Simulate a call and guess the cost of a given call."
 msgstr ""
 
 #: ../../administration_portal/client/retail/retail_accounts.rst:5
@@ -6239,8 +6245,8 @@ msgid ""
 "schedules, multiples calendars can be combined."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:8
-msgid "Let's imagine three calendars with the following configuration:"
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:9
+msgid "Calendar Holidays"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:11
@@ -6249,75 +6255,127 @@ msgid ""
 "what days will be holidays using the buttons in its row:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:15
-msgid ""
-"From this moment on, the calendar has the 1st of January of 2016 as "
-"holiday date with the locution \"Happy New Year\"."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:18
 msgid "Unique name to identify this holiday date"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:19
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:64
 msgid "Locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:21
 msgid "Override default External call filter holiday locution"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:22
 msgid "Event Date"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:24
 msgid "Day of the calendar to be marked as holiday"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:25
 msgid "Whole day event"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:27
 msgid "Enable this to create an event that lasts all the day"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:28
 msgid "Time In/Time out"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:30
 msgid ""
 "For not whole day events, specify the time interval the event will be "
 "active"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:34
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:31
 msgid "Routing options"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:36
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:33
 msgid "Override default External call filter holiday routing"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:38
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:35
 msgid ""
 "Calendars logic is opposite to Schedulers: If a day is not defined as "
 "holiday in any of the calendars, it will considered a normal day and no "
 "filtering will be applied."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:39
 msgid ""
 "Holidays without special locutions will apply the external call filter "
 "holiday locution."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:45
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:42
 msgid ""
 "Holidays without special routing will apply the external call filter "
 "holiday routing."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:47
+msgid "Calendar Periods"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:49
+msgid ""
+"Calendars can also be used to override some time periods with a different"
+" schedule. This can be handy if vPBX has a summer schedule or other types"
+" of schedule based events."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:52
+msgid ""
+"Calendar periods can define a custom Scheduler and override External Call"
+" filters configurations:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:55
+msgid "Start Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:57
+msgid "Since when the schedules will override the filters configuration"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:58
+msgid "End Date"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:60
+msgid "Last day of the period (included)"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:61
+#: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:59
+#: ../../administration_portal/client/vpbx/routing_tools/schedules.rst:3
+msgid "Schedules"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:63
+msgid "Schedules that will be used in the defined period"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:66
+msgid ""
+"In case of Out of schedule, this locution that will be played. Leave "
+"empty to use External call filter's locution."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:68
+msgid "Route options"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:70
+msgid "Override default external call filter Out of schedule options"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:7
@@ -6418,11 +6476,6 @@ msgstr ""
 msgid ""
 "One or more calendars can be associated with the filter. The combination "
 "of all the calendars will be applied."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:59
-#: ../../administration_portal/client/vpbx/routing_tools/schedules.rst:3
-msgid "Schedules"
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:61
@@ -6879,17 +6932,22 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:11
 msgid ""
 "But there are some cases when a single outgoing DDI is not enough, and "
-"the presented DDI depends on the called number. To archive this dynamic "
-"outgoing DDI selection you can use Outgoing DDI rules."
+"the presented DDI depends on the called number or a given prefix. To "
+"archive this dynamic outgoing DDI selection you can use Outgoing DDI "
+"rules."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:15
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:17
+msgid "Outgoing DDI based on destination"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:19
 msgid ""
-"Before creating a new rule, it would be required to first group the "
+"For destination based rules, you would require first group the "
 "destination numbers in :ref:`match_lists`."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:18
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:22
 msgid ""
 "For this example, we will create a match list of corporate mobiles with "
 "all the mobile numbers of our client workers. When we call to those "
@@ -6898,48 +6956,80 @@ msgid ""
 "outgoing DDI."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:24
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:28
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:53
 msgid "Create a new Outgoing DDI Rule"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:25
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:29
 msgid ""
 "The main creation screen defines the action that will take place when no "
 "rule matches the dialed destination, so we define to force the main "
 "client DDI here."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:29
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:33
 msgid "Assign rule lists actions"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:30
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:34
 msgid ""
 "Now we add a new rule that will match our mobiles to make the user's "
 "outgoing DDI be kept untouched."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:34
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:38
 msgid "Assign rule to callers"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:35
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:39
 msgid ""
 "At last, we have to configure who will use this rule to dynamically "
 "change it's presentation number. We can do this in the **Client's edit "
 "screen** or the **Users's edit screen**."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:39
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:43
 msgid ""
 "In this case, the User will present 777777777 DDI when calling corporate "
 "mobiles and 666666666 when calling the rest of the external numbers."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:42
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:47
+msgid "Outgoing DDI based on prefix"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:49
 msgid ""
-"Current implementation of Outgoing DDI rules won't work for diverted "
-"calls (out of schedule, holidays or user's call forward settings)."
+"Outgoing DDI Rules can be also used to change the default Outgoing DDI "
+"based on a call prefix."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:54
+msgid ""
+"The main creation screen defines the action that will take place when no "
+"rule matches the dialed destination, we will keep original DDI if no "
+"prefix is used."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:58
+msgid "Assign a prefix pattern"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:59
+msgid ""
+"Now we add a new rule that with prefix (let's say 111) and action to "
+"force the DDI to 666666666."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:62
+msgid ""
+"In this case, the User will present 666666666 DDI when calling any "
+"destination with 111 prefix and 777777777 when not using any prefix."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:65
+msgid "Prefix **must** have this format: from 1 to 3 digits ended by * symbol."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/user_configuration/pick_up_groups.rst:5
@@ -8275,3 +8365,44 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
+
+#~ msgid "Max Calls"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Limits the number of concurrent received"
+#~ " calls. Set 0 for unlimited calls."
+#~ msgstr ""
+
+#~ msgid "Let's imagine three calendars with the following configuration:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "From this moment on, the calendar "
+#~ "has the 1st of January of 2016 "
+#~ "as holiday date with the locution "
+#~ "\"Happy New Year\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "But there are some cases when a"
+#~ " single outgoing DDI is not enough,"
+#~ " and the presented DDI depends on "
+#~ "the called number. To archive this "
+#~ "dynamic outgoing DDI selection you can"
+#~ " use Outgoing DDI rules."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before creating a new rule, it "
+#~ "would be required to first group "
+#~ "the destination numbers in :ref:`match_lists`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Current implementation of Outgoing DDI "
+#~ "rules won't work for diverted calls "
+#~ "(out of schedule, holidays or user's "
+#~ "call forward settings)."
+#~ msgstr ""
+
