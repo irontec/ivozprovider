@@ -23,113 +23,33 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var TrunksCdrRepository
-     */
-    protected $trunksCdrRepository;
-
-    /**
-     * @var BillableCallRepository
-     */
     protected $billableCallRepository;
-
-    /**
-     * @var CreateOrUpdateByTrunksCdr
-     */
     protected $createOrUpdateBillableCallByTrunksCdr;
-
-    /**
-     * @var DomainEventPublisher
-     */
     protected $domainEventPublisher;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
     public function let(
-        TrunksCdrRepository  $trunksCdrRepository,
         BillableCallRepository $billableCallRepository,
         CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
         EntityTools $entityTools,
-        DomainEventPublisher $domainEventPublisher,
-        LoggerInterface $logger
+        DomainEventPublisher $domainEventPublisher
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
         $this->billableCallRepository = $billableCallRepository;
         $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
         $this->domainEventPublisher = $domainEventPublisher;
         $this->entityTools = $entityTools;
-        $this->logger = $logger;
 
         $this->beConstructedWith(
-            $this->trunksCdrRepository,
             $this->billableCallRepository,
             $this->createOrUpdateBillableCallByTrunksCdr,
             $this->entityTools,
-            $this->domainEventPublisher,
-            $this->logger
+            $this->domainEventPublisher
         );
     }
 
     function it_is_initializable()
     {
         $this->shouldHaveType(MigrateFromTrunksCdr::class);
-    }
-
-    function it_logs_success_message()
-    {
-        $this->trunksCdrRepository
-            ->getUnparsedCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
-            ->willReturn([]);
-
-        $this
-            ->logger
-            ->info(
-                Argument::containingString('successfully')
-            )
-            ->shouldBeCalled();
-
-        $this->execute();
-    }
-
-    function it_logs_error_message_on_exceptions(
-        TrunksCdrInterface $trunksCdr,
-        BrandInterface $brand,
-        BillableCallInterface $billableCall,
-        BillableCallDto $billableCallDto,
-        TrunksCdrDto $trunksCdrDto
-    ) {
-        $exception = new \Exception('Some error');
-        $this->prepareExecution(
-            $trunksCdr,
-            $brand,
-            $billableCall,
-            $billableCallDto,
-            $trunksCdrDto
-        );
-
-        $this
-            ->entityTools
-            ->dispatchQueuedOperations()
-            ->willThrow($exception)
-            ->shouldBeCalled();
-
-        $this->fluentSetterProphecy(
-            $this->logger,
-            [
-                'info' => Argument::any(),
-                'error' => Argument::containingString($exception->getMessage()),
-            ]
-        );
-
-        $this->execute();
     }
 
     function it_queues_db_persist_operations(
@@ -164,12 +84,7 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this
-            ->entityTools
-            ->dispatchQueuedOperations()
-            ->shouldBeCalled();
-
-        $this->execute();
+        $this->execute($trunksCdr);
     }
 
     protected function prepareTrunksCdr(
@@ -196,11 +111,6 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
                 $trunksCdr,
                 $brand
             );
-
-        $this
-            ->trunksCdrRepository
-            ->getUnparsedCallsGeneratorWithoutOffset(MigrateFromTrunksCdr::BATCH_SIZE)
-            ->willReturn([[$trunksCdr]]);
 
         $this
             ->billableCallRepository
