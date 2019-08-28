@@ -31,7 +31,7 @@ Feature: Retrieve match list patterns
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+    And the JSON should be like:
     """
       {
           "description": "test desc",
@@ -44,20 +44,6 @@ Feature: Retrieve match list patterns
               "id": 1,
               "company": 1
           },
-          "numberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          }
+          "numberCountry": "~"
       }
     """

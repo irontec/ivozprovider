@@ -20,12 +20,14 @@ Feature: Retrieve company country
           "name": {
               "en": "Spain",
               "es": "España",
-              "ca": "España"
+              "ca": "España",
+              "it": "Spagna"
           },
           "zone": {
               "en": "Europe",
               "es": "Europa",
-              "ca": "Europa"
+              "ca": "Europa",
+              "it": "Europe"
           }
       }
     """

@@ -22,7 +22,7 @@ Feature: Update match list patterns
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
      {
           "description": "test desc updated",
@@ -35,20 +35,6 @@ Feature: Update match list patterns
               "id": 2,
               "company": 1
           },
-          "numberCountry": {
-              "code": "GB",
-              "countryCode": "+44",
-              "id": 77,
-              "name": {
-                  "en": "United Kingdom",
-                  "es": "Reino Unido",
-                  "ca": "Reino Unido"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          }
+          "numberCountry": "~"
       }
     """
