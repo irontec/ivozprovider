@@ -22,3 +22,10 @@ Ivoz\Provider\Domain\Model\DestinationRateGroup\Name:
       options:
         fixed: false
       column: name_ca
+    it:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+      column: name_it

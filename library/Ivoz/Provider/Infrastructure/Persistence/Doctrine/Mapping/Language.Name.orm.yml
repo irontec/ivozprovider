@@ -25,3 +25,11 @@ Ivoz\Provider\Domain\Model\Language\Name:
         fixed: false
         default: ''
       column: name_ca
+    it:
+      type: string
+      nullable: false
+      length: 100
+      options:
+        fixed: false
+        default: ''
+      column: name_it
