@@ -14,7 +14,12 @@ class BillableCallLifecycleServiceCollection implements LifecycleServiceCollecti
 {
     use LifecycleServiceCollectionTrait;
 
-    public static $bindedBaseServices = [];
+    public static $bindedBaseServices = [
+        "on_domain_event" =>
+        [
+            0 => \Ivoz\Provider\Domain\Service\BillableCall\UpdateByTpCdr::class,
+        ],
+    ];
 
     /**
      * @return void
