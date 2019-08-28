@@ -1,7 +1,7 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Response;
-use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr as BillableCallFromTrunksCdr;
+use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromUnparsedTrunksCdr as BillableCallFromTrunksCdr;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\RegisterCommandTrait;

@@ -54,6 +54,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             ->getCompany()
             ->getDefaultTimezone()
             ->getTz();
+
         $invoiceTz = new \DateTimeZone($tz);
         $utcTz = new \DateTimeZone('UTC');
 

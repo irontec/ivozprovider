@@ -63,12 +63,10 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @param int $companyId
      * @param int $brandId
      * @param string $startTime
-     * @return int|mixed
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     * @throws \Doctrine\ORM\Query\QueryException
+     * @param string $endTime
+     * @return array
      */
-    public function countUntarificattedCallsBeforeDate(int $companyId, int $brandId, string $startTime);
+    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array;
 
     /**
      * @param int $companyId
