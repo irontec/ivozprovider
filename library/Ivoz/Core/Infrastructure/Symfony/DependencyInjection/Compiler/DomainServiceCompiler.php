@@ -89,6 +89,10 @@ class DomainServiceCompiler implements CompilerPassInterface
     {
         $service = $this->container->getDefinition($fqdn);
         $service->addTag('domain.event.subscriber');
+
+        $serviceTagName = LifecycleServiceHelper::getServiceTagByServiceFqdn($fqdn, 'on_domain_event');
+        $service->addTag($serviceTagName);
+
         $service->setPublic(true);
     }
 

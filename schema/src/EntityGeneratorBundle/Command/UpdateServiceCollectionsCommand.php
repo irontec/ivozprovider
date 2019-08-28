@@ -2,6 +2,7 @@
 
 namespace EntityGeneratorBundle\Command;
 
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -106,6 +107,11 @@ class UpdateServiceCollectionsCommand extends ContainerAwareCommand
     {
         foreach ($services as $event => $values) {
             foreach ($values as $class => $value) {
+                if (is_numeric($class)) {
+                    $services[$event][$class] = '\\' . $services[$event][$class] . '::class';
+                    continue;
+                }
+
                 unset($services[$event][$class]);
                 $services[$event]['\\'. $class. '::class'] = $value;
             }
@@ -141,6 +147,11 @@ class UpdateServiceCollectionsCommand extends ContainerAwareCommand
         foreach ($services as $event => $eventServices) {
             $flattenServices[$event] = [];
             foreach ($eventServices as $eventService) {
+                if (!$eventService instanceof LifecycleEventHandlerInterface) {
+                    $flattenServices[$event][] = get_class($eventService);
+                    continue;
+                }
+
                 $subscribedEvents = $eventService->getSubscribedEvents();
                 $priority = $subscribedEvents[$event];
 

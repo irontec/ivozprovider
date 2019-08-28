@@ -8,6 +8,7 @@ use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 
 class LifecycleServiceHelper
 {
@@ -33,6 +34,23 @@ class LifecycleServiceHelper
     {
         $serviceInterfaces = class_implements($serviceClass);
         $targetInterface = null;
+
+
+
+        $isEventSubscriberInterface = is_subclass_of(
+            $serviceClass,
+            DomainEventSubscriberInterface::class
+        );
+
+        if ($isEventSubscriberInterface) {
+            $serviceNamespace = substr(
+                $serviceClass,
+                0,
+                strrpos($serviceClass, '\\')
+            );
+
+            return self::getServiceNameByEntityFqdn($serviceNamespace, $event);
+        }
 
         foreach ($serviceInterfaces as $serviceInterface) {
             $isCommonServiceInterface =
@@ -73,7 +91,8 @@ class LifecycleServiceHelper
 
         foreach ($serviceInterfaces as $serviceInterface) {
             $isServiceCollectionInterface = $serviceInterface === LifecycleServiceCollectionInterface::class;
-            if (!$isServiceCollectionInterface) {
+            $isDomainEventSubscriberInterface = $serviceInterface === DomainEventSubscriberInterface::class;
+            if (!$isServiceCollectionInterface && !$isDomainEventSubscriberInterface) {
                 continue;
             }
 
