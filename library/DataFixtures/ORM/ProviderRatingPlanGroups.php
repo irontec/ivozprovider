@@ -27,8 +27,8 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         /** @var RatingPlanGroup $item1 */
         $item1 = $this->createEntityInstance(RatingPlanGroup::class);
         (function () {
-            $this->setName(new Name('Something', 'Algo', 'Algo mes'));
-            $this->setDescription(new Description('en', 'es', 'ca'));
+            $this->setName(new Name('Something', 'Algo', 'Algo mes', 'Più'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
         })->call($item1);
 
         $item1->setBrand(
@@ -41,8 +41,8 @@ class ProviderRatingPlanGroups extends Fixture implements DependentFixtureInterf
         /** @var RatingPlanGroup $item2 */
         $item2 = $this->createEntityInstance(RatingPlanGroup::class);
         (function () {
-            $this->setName(new Name('Something more', 'Algo más', 'Algo mes'));
-            $this->setDescription(new Description('en', 'es', 'ca'));
+            $this->setName(new Name('Something more', 'Algo más', 'Algo mes', 'Più'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
         })->call($item2);
 
         $item2->setBrand(

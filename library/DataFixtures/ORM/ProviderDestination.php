@@ -26,7 +26,7 @@ class ProviderDestination extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(Destination::class);
         (function () {
             $this->setPrefix("+94600");
-            $this->setName(new Name('Bilbao', 'Bilbao', 'Bilbao'));
+            $this->setName(new Name('Bilbao', 'Bilbao', 'Bilbao', 'Bilbao'));
         })->call($item1);
 
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
@@ -40,7 +40,7 @@ class ProviderDestination extends Fixture implements DependentFixtureInterface
         $item2 = $this->createEntityInstance(Destination::class);
         (function () {
             $this->setPrefix("+94601");
-            $this->setName(new Name('Usansolocity', 'Usansolocity', 'Usansolocity'));
+            $this->setName(new Name('Usansolocity', 'Usansolocity', 'Usansolocity', 'Usansolocity'));
         })->call($item2);
 
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
