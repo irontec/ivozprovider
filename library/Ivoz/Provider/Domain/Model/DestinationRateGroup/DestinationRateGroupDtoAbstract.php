@@ -38,6 +38,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @var string
      */
+    private $nameIt;
+
+    /**
+     * @var string
+     */
     private $descriptionEn;
 
     /**
@@ -49,6 +54,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
      * @var string
      */
     private $descriptionCa;
+
+    /**
+     * @var string
+     */
+    private $descriptionIt;
 
     /**
      * @var integer
@@ -105,8 +115,8 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return [
             'status' => 'status',
             'id' => 'id',
-            'name' => ['en','es','ca'],
-            'description' => ['en','es','ca'],
+            'name' => ['en','es','ca','it'],
+            'description' => ['en','es','ca','it'],
             'file' => ['fileSize','mimeType','baseName','importerArguments'],
             'brandId' => 'brand',
             'currencyId' => 'currency'
@@ -124,12 +134,14 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
             'name' => [
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
-                'ca' => $this->getNameCa()
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
-                'ca' => $this->getDescriptionCa()
+                'ca' => $this->getDescriptionCa(),
+                'it' => $this->getDescriptionIt()
             ],
             'file' => [
                 'fileSize' => $this->getFileFileSize(),
@@ -244,6 +256,26 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
+    }
+
+    /**
      * @param string $descriptionEn
      *
      * @return static
@@ -301,6 +333,26 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     public function getDescriptionCa()
     {
         return $this->descriptionCa;
+    }
+
+    /**
+     * @param string $descriptionIt
+     *
+     * @return static
+     */
+    public function setDescriptionIt($descriptionIt = null)
+    {
+        $this->descriptionIt = $descriptionIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionIt()
+    {
+        return $this->descriptionIt;
     }
 
     /**

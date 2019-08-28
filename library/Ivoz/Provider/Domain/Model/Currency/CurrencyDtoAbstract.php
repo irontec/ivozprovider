@@ -40,6 +40,11 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
      */
     private $nameCa = '';
 
+    /**
+     * @var string
+     */
+    private $nameIt = '';
+
 
     use DtoNormalizer;
 
@@ -61,7 +66,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
             'iden' => 'iden',
             'symbol' => 'symbol',
             'id' => 'id',
-            'name' => ['en','es','ca']
+            'name' => ['en','es','ca','it']
         ];
     }
 
@@ -77,7 +82,8 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
             'name' => [
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
-                'ca' => $this->getNameCa()
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ]
         ];
     }
@@ -200,5 +206,25 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
     public function getNameCa()
     {
         return $this->nameCa;
+    }
+
+    /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
     }
 }

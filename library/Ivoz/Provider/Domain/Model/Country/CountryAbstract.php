@@ -117,13 +117,15 @@ abstract class CountryAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $zone = new Zone(
             $dto->getZoneEn(),
             $dto->getZoneEs(),
-            $dto->getZoneCa()
+            $dto->getZoneCa(),
+            $dto->getZoneIt()
         );
 
         $self = new static(
@@ -155,13 +157,15 @@ abstract class CountryAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $zone = new Zone(
             $dto->getZoneEn(),
             $dto->getZoneEs(),
-            $dto->getZoneCa()
+            $dto->getZoneCa(),
+            $dto->getZoneIt()
         );
 
         $this
@@ -188,9 +192,11 @@ abstract class CountryAbstract
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
+            ->setNameIt(self::getName()->getIt())
             ->setZoneEn(self::getZone()->getEn())
             ->setZoneEs(self::getZone()->getEs())
-            ->setZoneCa(self::getZone()->getCa());
+            ->setZoneCa(self::getZone()->getCa())
+            ->setZoneIt(self::getZone()->getIt());
     }
 
     /**
@@ -204,9 +210,11 @@ abstract class CountryAbstract
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
+            'nameIt' => self::getName()->getIt(),
             'zoneEn' => self::getZone()->getEn(),
             'zoneEs' => self::getZone()->getEs(),
-            'zoneCa' => self::getZone()->getCa()
+            'zoneCa' => self::getZone()->getCa(),
+            'zoneIt' => self::getZone()->getIt()
         ];
     }
     // @codeCoverageIgnoreStart

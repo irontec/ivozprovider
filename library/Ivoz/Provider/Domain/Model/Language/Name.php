@@ -29,15 +29,22 @@ class Name
      */
     protected $ca = '';
 
+    /**
+     * column: name_it
+     * @var string
+     */
+    protected $it = '';
+
 
     /**
      * Constructor
      */
-    public function __construct($en, $es, $ca)
+    public function __construct($en, $es, $ca, $it)
     {
         $this->setEn($en);
         $this->setEs($es);
         $this->setCa($ca);
+        $this->setIt($it);
     }
 
     // @codeCoverageIgnoreStart
@@ -121,6 +128,33 @@ class Name
     public function getCa()
     {
         return $this->ca;
+    }
+
+    /**
+     * Set it
+     *
+     * @param string $it
+     *
+     * @return static
+     */
+    protected function setIt($it)
+    {
+        Assertion::notNull($it, 'it value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($it, 100, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->it = $it;
+
+        return $this;
+    }
+
+    /**
+     * Get it
+     *
+     * @return string
+     */
+    public function getIt()
+    {
+        return $this->it;
     }
 
     // @codeCoverageIgnoreEnd

@@ -61,6 +61,11 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     private $nameCa;
 
     /**
+     * @var string
+     */
+    private $nameIt;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     private $brand;
@@ -100,7 +105,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'nationalLen' => 'nationalLen',
             'generateRules' => 'generateRules',
             'id' => 'id',
-            'name' => ['en','es','ca'],
+            'name' => ['en','es','ca','it'],
             'brandId' => 'brand',
             'countryId' => 'country'
         ];
@@ -122,7 +127,8 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'name' => [
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
-                'ca' => $this->getNameCa()
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ],
             'brand' => $this->getBrand(),
             'country' => $this->getCountry(),
@@ -328,6 +334,26 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     public function getNameCa()
     {
         return $this->nameCa;
+    }
+
+    /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
     }
 
     /**
