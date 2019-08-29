@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.12
+* Endpoints:
+    - Removed filter parameters not present on response models (except for foreign keys) 
+    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+
 ## 2.11.1
 * Endpoints:
     - /invoices and invoices/{id} have being removed
