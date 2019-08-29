@@ -17,10 +17,18 @@ interface CalendarInterface extends LoggableEntityInterface
     /**
      * Check if the given day is registered as Holiday
      *
-     * @param \DateTime $date
+     * @param \DateTime $datetime
      * @return bool
      */
-    public function isHolidayDate($date);
+    public function isHolidayDate(\DateTime $datetime);
+
+    /**
+     * Return the first HolidayDate matching the given date
+     *
+     * @param \DateTime $dateTime
+     * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface|null
+     */
+    public function getHolidayDate(\DateTime $dateTime);
 
     /**
      * Get name

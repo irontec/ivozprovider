@@ -119,35 +119,12 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         $timezone = $company->getDefaultTimezone();
         $now = new \DateTime('now', new \DateTimeZone($timezone->getTz()));
 
-        /**
-         * @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar
-         */
         foreach ($externalCallFilterRelCalendars as $externalCallFilterRelCalendar) {
-
-            /**
-             * @var Calendar $calendar
-             */
             $calendar = $externalCallFilterRelCalendar->getCalendar();
 
-            $expressionBuilder = Criteria::expr();
-            $holidayDateCriteria = Criteria::create()
-                ->where(
-                    $expressionBuilder->eq(
-                        'eventDate',
-                        $now
-                    )
-                );
-
-            $holidayDates = $calendar->getHolidayDates($holidayDateCriteria);
-            foreach ($holidayDates as $holidayDate) {
-                $eventMatched = $holidayDate
-                    ->checkEventOnTime(
-                        $now
-                    );
-
-                if ($eventMatched) {
-                    return $holidayDate;
-                }
+            $holidayDate = $calendar->getHolidayDate($now);
+            if ($holidayDate) {
+                return $holidayDate;
             }
         }
 
