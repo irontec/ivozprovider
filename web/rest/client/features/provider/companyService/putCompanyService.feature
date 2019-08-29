@@ -31,11 +31,13 @@ Feature: Update company services
               "id": 4,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               }
           }
       }

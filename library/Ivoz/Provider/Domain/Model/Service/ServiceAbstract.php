@@ -128,12 +128,14 @@ abstract class ServiceAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
+            $dto->getDescriptionEs(),
+            $dto->getDescriptionCa()
         );
 
         $self = new static(
@@ -162,12 +164,14 @@ abstract class ServiceAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
+            $dto->getDescriptionEs(),
+            $dto->getDescriptionCa()
         );
 
         $this
@@ -195,8 +199,10 @@ abstract class ServiceAbstract
             ->setExtraArgs(self::getExtraArgs())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
+            ->setNameCa(self::getName()->getCa())
             ->setDescriptionEn(self::getDescription()->getEn())
-            ->setDescriptionEs(self::getDescription()->getEs());
+            ->setDescriptionEs(self::getDescription()->getEs())
+            ->setDescriptionCa(self::getDescription()->getCa());
     }
 
     /**
@@ -210,8 +216,10 @@ abstract class ServiceAbstract
             'extraArgs' => self::getExtraArgs(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
+            'nameCa' => self::getName()->getCa(),
             'descriptionEn' => self::getDescription()->getEn(),
-            'descriptionEs' => self::getDescription()->getEs()
+            'descriptionEs' => self::getDescription()->getEs(),
+            'descriptionCa' => self::getDescription()->getCa()
         ];
     }
     // @codeCoverageIgnoreStart

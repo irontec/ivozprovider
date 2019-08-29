@@ -89,7 +89,8 @@ Feature: Manage brands
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           }

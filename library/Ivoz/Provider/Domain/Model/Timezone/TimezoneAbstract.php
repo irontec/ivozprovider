@@ -115,7 +115,8 @@ abstract class TimezoneAbstract
 
         $label = new Label(
             $dto->getLabelEn(),
-            $dto->getLabelEs()
+            $dto->getLabelEs(),
+            $dto->getLabelCa()
         );
 
         $self = new static(
@@ -146,7 +147,8 @@ abstract class TimezoneAbstract
 
         $label = new Label(
             $dto->getLabelEn(),
-            $dto->getLabelEs()
+            $dto->getLabelEs(),
+            $dto->getLabelCa()
         );
 
         $this
@@ -172,6 +174,7 @@ abstract class TimezoneAbstract
             ->setComment(self::getComment())
             ->setLabelEn(self::getLabel()->getEn())
             ->setLabelEs(self::getLabel()->getEs())
+            ->setLabelCa(self::getLabel()->getCa())
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
     }
 
@@ -185,6 +188,7 @@ abstract class TimezoneAbstract
             'comment' => self::getComment(),
             'labelEn' => self::getLabel()->getEn(),
             'labelEs' => self::getLabel()->getEs(),
+            'labelCa' => self::getLabel()->getCa(),
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }

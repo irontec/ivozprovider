@@ -22,8 +22,10 @@ class DestinationRateGroupLifeCycleTest extends KernelTestCase
             ->setStatus('waiting')
             ->setNameEs('nameEs')
             ->setNameEn('nameEn')
+            ->setNameCa('nameCa')
             ->setDescriptionEs('descriptionEs')
             ->setDescriptionEn('descriptionEn')
+            ->setDescriptionCa('descriptionCa')
             ->setBrandId(1);
 
         return $ddiProviderRegistrationDto;

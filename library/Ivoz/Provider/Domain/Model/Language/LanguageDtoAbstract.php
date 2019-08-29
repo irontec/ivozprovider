@@ -30,6 +30,11 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
      */
     private $nameEs = '';
 
+    /**
+     * @var string
+     */
+    private $nameCa = '';
+
 
     use DtoNormalizer;
 
@@ -50,7 +55,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return [
             'iden' => 'iden',
             'id' => 'id',
-            'name' => ['en','es']
+            'name' => ['en','es','ca']
         ];
     }
 
@@ -64,7 +69,8 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
+                'es' => $this->getNameEs(),
+                'ca' => $this->getNameCa()
             ]
         ];
     }
@@ -147,5 +153,25 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     public function getNameEs()
     {
         return $this->nameEs;
+    }
+
+    /**
+     * @param string $nameCa
+     *
+     * @return static
+     */
+    public function setNameCa($nameCa = null)
+    {
+        $this->nameCa = $nameCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCa()
+    {
+        return $this->nameCa;
     }
 }

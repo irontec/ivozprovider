@@ -72,11 +72,13 @@ Feature: Update call forward settings
               "id": 1,
               "name": {
                   "en": "Andorra",
-                  "es": "Andorra"
+                  "es": "Andorra",
+                  "ca": "Andorra"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Andorra"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "residentialDevice": null,

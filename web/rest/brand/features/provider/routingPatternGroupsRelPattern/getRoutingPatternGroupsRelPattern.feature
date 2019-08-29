@@ -21,11 +21,13 @@ Feature: Retrieve routing pattern groups rel patterns
                   "id": 1,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   },
                   "description": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   },
                   "brand": 1
               },
@@ -43,11 +45,13 @@ Feature: Retrieve routing pattern groups rel patterns
                   "id": 1,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   },
                   "description": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   },
                   "brand": 1
               },
@@ -77,11 +81,13 @@ Feature: Retrieve routing pattern groups rel patterns
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1
           },

@@ -115,12 +115,14 @@ abstract class RatingPlanGroupAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
+            $dto->getDescriptionEs(),
+            $dto->getDescriptionCa()
         );
 
         $self = new static(
@@ -151,12 +153,14 @@ abstract class RatingPlanGroupAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
+            $dto->getDescriptionEs(),
+            $dto->getDescriptionCa()
         );
 
         $this
@@ -180,8 +184,10 @@ abstract class RatingPlanGroupAbstract
         return self::createDto()
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
+            ->setNameCa(self::getName()->getCa())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
+            ->setDescriptionCa(self::getDescription()->getCa())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
     }
@@ -194,8 +200,10 @@ abstract class RatingPlanGroupAbstract
         return [
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
+            'nameCa' => self::getName()->getCa(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
+            'descriptionCa' => self::getDescription()->getCa(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];

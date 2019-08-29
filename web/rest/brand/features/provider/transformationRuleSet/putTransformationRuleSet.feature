@@ -20,7 +20,8 @@ Feature: Update transformation rule sets
           "id": 2,
           "name": {
               "en": "updated name",
-              "es": "nombre actualizado"
+              "es": "nombre actualizado",
+              "ca": "nombre actualizado"
           },
           "country": 68
       }
@@ -40,7 +41,8 @@ Feature: Update transformation rule sets
           "id": 1,
           "name": {
               "en": "updated name",
-              "es": "nombre actualizado"
+              "es": "nombre actualizado",
+              "ca": "nombre actualizado"
           },
           "brand": "~",
           "country": {
@@ -49,11 +51,13 @@ Feature: Update transformation rule sets
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

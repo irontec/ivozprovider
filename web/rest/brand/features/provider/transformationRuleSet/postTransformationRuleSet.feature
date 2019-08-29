@@ -19,7 +19,8 @@ Feature: Create transformation rule sets
           "generateRules": false,
           "name": {
               "en": "usansolocity",
-              "es": "usansolo"
+              "es": "usansolo",
+              "ca": "usansolo"
           },
           "country": 77
       }
@@ -39,7 +40,8 @@ Feature: Create transformation rule sets
           "id": 3,
           "name": {
               "en": "usansolocity",
-              "es": "usansolo"
+              "es": "usansolo",
+              "ca": "usansolo"
           },
           "brand": 1,
           "country": 77
@@ -65,7 +67,8 @@ Feature: Create transformation rule sets
           "id": 3,
           "name": {
               "en": "usansolocity",
-              "es": "usansolo"
+              "es": "usansolo",
+              "ca": "usansolo"
           },
           "brand": "~",
           "country": {
@@ -74,11 +77,13 @@ Feature: Create transformation rule sets
               "id": 77,
               "name": {
                   "en": "United Kingdom",
-                  "es": "Reino Unido"
+                  "es": "Reino Unido",
+                  "ca": "Reino Unido"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

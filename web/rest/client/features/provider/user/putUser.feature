@@ -71,7 +71,8 @@ Feature: Update users
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },
@@ -97,7 +98,8 @@ Feature: Update users
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },

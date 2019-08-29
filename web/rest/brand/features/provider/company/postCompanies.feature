@@ -111,7 +111,8 @@ Feature: Create companies
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           },
           "defaultTimezone": {
@@ -120,7 +121,8 @@ Feature: Create companies
               "id": 1,
               "label": {
                   "en": "",
-                  "es": ""
+                  "es": "",
+                  "ca": ""
               },
               "country": 1
           },
@@ -151,11 +153,13 @@ Feature: Create companies
               "id": 1,
               "name": {
                   "en": "Andorra",
-                  "es": "Andorra"
+                  "es": "Andorra",
+                  "ca": "Andorra"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Andorra"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "currency": null,
@@ -169,7 +173,8 @@ Feature: Create companies
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1,
               "country": 68

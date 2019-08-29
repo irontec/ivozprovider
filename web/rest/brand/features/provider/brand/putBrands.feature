@@ -63,7 +63,8 @@ Feature: Manage brands
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           },
           "defaultTimezone": {
@@ -72,7 +73,8 @@ Feature: Manage brands
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },
@@ -82,7 +84,8 @@ Feature: Manage brands
               "id": 2,
               "name": {
                   "en": "Dollar",
-                  "es": "Dóllar"
+                  "es": "Dóllar",
+                  "ca": "Dollar"
               }
           }
       }

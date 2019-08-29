@@ -14,12 +14,15 @@ Feature: Update routing patterns
           "prefix": "+349",
           "name": {
               "en": "englishName",
-              "es": "nombreEspañol"
+              "es": "nombreEspañol",
+              "ca": "nombreCatala"
           },
           "description": {
               "en": "en",
-              "es": "es"
-          }
+              "es": "es",
+              "ca": "ca"
+          },
+          "brand": 1
       }
     """
     Then the response status code should be 200
@@ -32,11 +35,13 @@ Feature: Update routing patterns
           "id": 1,
           "name": {
               "en": "englishName",
-              "es": "nombreEspañol"
+              "es": "nombreEspañol",
+              "ca": "nombreCatala"
           },
           "description": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca"
           },
           "brand": "~"
       }

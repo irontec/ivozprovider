@@ -67,7 +67,8 @@ Feature: Update residential devices
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           }
       }

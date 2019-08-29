@@ -73,7 +73,8 @@ Feature: Update company
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           },
           "defaultTimezone": {
@@ -82,7 +83,8 @@ Feature: Update company
               "id": 1,
               "label": {
                   "en": "",
-                  "es": ""
+                  "es": "",
+                  "ca": ""
               },
               "country": 1
           },
@@ -93,11 +95,13 @@ Feature: Update company
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "currency": null,
@@ -111,7 +115,8 @@ Feature: Update company
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1,
               "country": 68

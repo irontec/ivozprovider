@@ -42,6 +42,7 @@ my %extensions = (
 
 my @locales = (
     "es_ES",
+    "ca_ES",
     "en_US"
 );
 

@@ -43,7 +43,8 @@ Feature: Update administrators
               "id": 158,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 180
           }

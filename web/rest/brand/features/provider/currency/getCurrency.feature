@@ -20,7 +20,8 @@ Feature: Retrieve currencies
               "id": 1,
               "name": {
                   "en": "Euro",
-                  "es": "Euro"
+                  "es": "Euro",
+                  "ca": "Euro"
               }
           },
           {
@@ -29,7 +30,8 @@ Feature: Retrieve currencies
               "id": 2,
               "name": {
                   "en": "Dollar",
-                  "es": "Dóllar"
+                  "es": "Dóllar",
+                  "ca": "Dollar"
               }
           },
           {
@@ -38,7 +40,8 @@ Feature: Retrieve currencies
               "id": 3,
               "name": {
                   "en": "Pound",
-                  "es": "Libra"
+                  "es": "Libra",
+                  "ca": "Libra"
               }
           }
       ]
@@ -59,7 +62,8 @@ Feature: Retrieve currencies
           "id": 1,
           "name": {
               "en": "Euro",
-              "es": "Euro"
+              "es": "Euro",
+              "ca": "Euro"
           }
       }
     """

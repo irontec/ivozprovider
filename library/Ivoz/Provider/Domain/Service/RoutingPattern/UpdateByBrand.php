@@ -59,8 +59,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
             $routingPatternDto
                 ->setNameEs($country->getName()->getEs())
                 ->setNameEn($country->getName()->getEn())
+                ->setNameCa($country->getName()->getCa())
                 ->setDescriptionEs('')
                 ->setDescriptionEn('')
+                ->setDescriptionCa('')
                 ->setPrefix((string) $country->getCountryCode())
                 ->setBrandId($brand->getId());
 

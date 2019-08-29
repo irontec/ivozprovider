@@ -22,7 +22,8 @@ Feature: Retrieve features rel companies
                   "id": 1,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   }
               }
           },
@@ -34,7 +35,8 @@ Feature: Retrieve features rel companies
                   "id": 2,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   }
               }
           },
@@ -46,7 +48,8 @@ Feature: Retrieve features rel companies
                   "id": 3,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   }
               }
           },
@@ -58,7 +61,8 @@ Feature: Retrieve features rel companies
                   "id": 4,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   }
               }
           },
@@ -70,7 +74,8 @@ Feature: Retrieve features rel companies
                   "id": 5,
                   "name": {
                       "en": "en",
-                      "es": "es"
+                      "es": "es",
+                      "ca": "ca"
                   }
               }
           }
@@ -94,7 +99,8 @@ Feature: Retrieve features rel companies
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               }
           }
       }

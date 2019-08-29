@@ -44,7 +44,8 @@ Feature: Retrieve transformation rule sets
           "id": 1,
           "name": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca"
           },
           "country": {
               "code": "ES",
@@ -52,11 +53,13 @@ Feature: Retrieve transformation rule sets
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

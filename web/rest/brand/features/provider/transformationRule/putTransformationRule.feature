@@ -41,7 +41,8 @@ Feature: Update transformation rules
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1,
               "country": 68

@@ -61,11 +61,13 @@ Feature: Create match list patterns
               "id": 77,
               "name": {
                   "en": "United Kingdom",
-                  "es": "Reino Unido"
+                  "es": "Reino Unido",
+                  "ca": "Reino Unido"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

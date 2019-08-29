@@ -25,8 +25,8 @@ class ProviderRoutingPattern extends Fixture implements DependentFixtureInterfac
         $item1 = $this->createEntityInstance(RoutingPattern::class);
         (function () {
             $this->setPrefix("+34");
-            $this->setName(new Name('en', 'es'));
-            $this->setDescription(new Description('en', 'es'));
+            $this->setName(new Name('en', 'es', 'ca'));
+            $this->setDescription(new Description('en', 'es', 'ca'));
         })->call($item1);
 
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
@@ -37,8 +37,8 @@ class ProviderRoutingPattern extends Fixture implements DependentFixtureInterfac
         $item2 = $this->createEntityInstance(RoutingPattern::class);
         (function () {
             $this->setPrefix("+35");
-            $this->setName(new Name('en', 'es'));
-            $this->setDescription(new Description('en', 'es'));
+            $this->setName(new Name('en', 'es', 'ca'));
+            $this->setDescription(new Description('en', 'es', 'ca'));
         })->call($item2);
 
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));

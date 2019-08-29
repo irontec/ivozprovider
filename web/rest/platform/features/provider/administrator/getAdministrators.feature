@@ -84,7 +84,8 @@ Feature: Retrieve administrators
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           }

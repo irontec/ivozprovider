@@ -14,7 +14,8 @@ Feature: Update features
           "iden": "updatedQueues",
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre"
           }
       }
     """
@@ -28,7 +29,8 @@ Feature: Update features
           "id": 1,
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre"
           }
       }
     """

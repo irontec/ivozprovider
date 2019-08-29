@@ -36,6 +36,11 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     private $labelEs = '';
 
     /**
+     * @var string
+     */
+    private $labelCa = '';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     private $country;
@@ -61,7 +66,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
             'tz' => 'tz',
             'comment' => 'comment',
             'id' => 'id',
-            'label' => ['en','es'],
+            'label' => ['en','es','ca'],
             'countryId' => 'country'
         ];
     }
@@ -77,7 +82,8 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'label' => [
                 'en' => $this->getLabelEn(),
-                'es' => $this->getLabelEs()
+                'es' => $this->getLabelEs(),
+                'ca' => $this->getLabelCa()
             ],
             'country' => $this->getCountry()
         ];
@@ -181,6 +187,26 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     public function getLabelEs()
     {
         return $this->labelEs;
+    }
+
+    /**
+     * @param string $labelCa
+     *
+     * @return static
+     */
+    public function setLabelCa($labelCa = null)
+    {
+        $this->labelCa = $labelCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabelCa()
+    {
+        return $this->labelCa;
     }
 
     /**
