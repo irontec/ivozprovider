@@ -29,15 +29,22 @@ class Description
      */
     protected $ca;
 
+    /**
+     * column: description_it
+     * @var string | null
+     */
+    protected $it;
+
 
     /**
      * Constructor
      */
-    public function __construct($en, $es, $ca)
+    public function __construct($en, $es, $ca, $it)
     {
         $this->setEn($en);
         $this->setEs($es);
         $this->setCa($ca);
+        $this->setIt($it);
     }
 
     // @codeCoverageIgnoreStart
@@ -124,6 +131,34 @@ class Description
     public function getCa()
     {
         return $this->ca;
+    }
+
+    /**
+     * Set it
+     *
+     * @param string $it
+     *
+     * @return static
+     */
+    protected function setIt($it = null)
+    {
+        if (!is_null($it)) {
+            Assertion::maxLength($it, 55, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->it = $it;
+
+        return $this;
+    }
+
+    /**
+     * Get it
+     *
+     * @return string | null
+     */
+    public function getIt()
+    {
+        return $this->it;
     }
 
     // @codeCoverageIgnoreEnd

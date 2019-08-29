@@ -21,7 +21,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Andorra",
                   "es": "Andorra",
-                  "ca": "Andorra"
+                  "ca": "Andorra",
+                  "it": "Andorra"
               }
           },
           {
@@ -31,7 +32,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "United Arab Emirates",
                   "es": "Emiratos \u00c1rabes Unidos",
-                  "ca": "Emiratos \u00c1rabes Unidos"
+                  "ca": "Emiratos \u00c1rabes Unidos",
+                  "it": "United Arab Emirates"
               }
           },
           {
@@ -41,7 +43,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Afghanistan",
                   "es": "Afganist\u00e1n",
-                  "ca": "Afganist\u00e1n"
+                  "ca": "Afganist\u00e1n",
+                  "it": "Afghanistan"
               }
           },
           {
@@ -51,7 +54,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Antigua and Barbuda",
                   "es": "Antigua y Barbuda",
-                  "ca": "Antigua y Barbuda"
+                  "ca": "Antigua y Barbuda",
+                  "it": "Antigua and Barbuda"
               }
           },
           {
@@ -61,7 +65,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Anguilla",
                   "es": "Anguila",
-                  "ca": "Anguila"
+                  "ca": "Anguila",
+                  "it": "Anguilla"
               }
           },
           {
@@ -71,7 +76,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Albania",
                   "es": "Albania",
-                  "ca": "Albania"
+                  "ca": "Albania",
+                  "it": "Albania"
               }
           },
           {
@@ -81,7 +87,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Armenia",
                   "es": "Armenia",
-                  "ca": "Armenia"
+                  "ca": "Armenia",
+                  "it": "Armenia"
               }
           },
           {
@@ -91,7 +98,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Angola",
                   "es": "Angola",
-                  "ca": "Angola"
+                  "ca": "Angola",
+                  "it": "Angola"
               }
           },
           {
@@ -101,7 +109,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Antarctica",
                   "es": "Ant\u00e1rtida",
-                  "ca": "Ant\u00e1rtida"
+                  "ca": "Ant\u00e1rtida",
+                  "it": "Antarctica"
               }
           },
           {
@@ -111,7 +120,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Argentina",
                   "es": "Argentina",
-                  "ca": "Argentina"
+                  "ca": "Argentina",
+                  "it": "Argentina"
               }
           },
           {
@@ -121,7 +131,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "American Samoa",
                   "es": "Samoa Americana",
-                  "ca": "Samoa Americana"
+                  "ca": "Samoa Americana",
+                  "it": "American Samoa"
               }
           },
           {
@@ -131,7 +142,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Austria",
                   "es": "Austria",
-                  "ca": "Austria"
+                  "ca": "Austria",
+                  "it": "Austria"
               }
           },
           {
@@ -141,7 +153,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Australia",
                   "es": "Australia",
-                  "ca": "Australia"
+                  "ca": "Australia",
+                  "it": "Australia"
               }
           },
           {
@@ -151,7 +164,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Aruba",
                   "es": "Aruba",
-                  "ca": "Aruba"
+                  "ca": "Aruba",
+                  "it": "Aruba"
               }
           },
           {
@@ -161,7 +175,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "\u00c5land Islands",
                   "es": "Islas de \u00c5land",
-                  "ca": "Islas de \u00c5land"
+                  "ca": "Islas de \u00c5land",
+                  "it": "\u00c5land Islands"
               }
           },
           {
@@ -171,7 +186,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Azerbaijan",
                   "es": "Azerbay\u00e1n",
-                  "ca": "Azerbay\u00e1n"
+                  "ca": "Azerbay\u00e1n",
+                  "it": "Azerbaijan"
               }
           },
           {
@@ -181,7 +197,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bosnia and Herzegovina",
                   "es": "Bosnia y Herzegovina",
-                  "ca": "Bosnia y Herzegovina"
+                  "ca": "Bosnia y Herzegovina",
+                  "it": "Bosnia and Herzegovina"
               }
           },
           {
@@ -191,7 +208,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Barbados",
                   "es": "Barbados",
-                  "ca": "Barbados"
+                  "ca": "Barbados",
+                  "it": "Barbados"
               }
           },
           {
@@ -201,7 +219,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bangladesh",
                   "es": "Bangladesh",
-                  "ca": "Bangladesh"
+                  "ca": "Bangladesh",
+                  "it": "Bangladesh"
               }
           },
           {
@@ -211,7 +230,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Belgium",
                   "es": "B\u00e9lgica",
-                  "ca": "B\u00e9lgica"
+                  "ca": "B\u00e9lgica",
+                  "it": "Belgium"
               }
           },
           {
@@ -221,7 +241,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Burkina Faso",
                   "es": "Burkina Faso",
-                  "ca": "Burkina Faso"
+                  "ca": "Burkina Faso",
+                  "it": "Burkina Faso"
               }
           },
           {
@@ -231,7 +252,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bulgaria",
                   "es": "Bulgaria",
-                  "ca": "Bulgaria"
+                  "ca": "Bulgaria",
+                  "it": "Bulgaria"
               }
           },
           {
@@ -241,7 +263,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bahrain",
                   "es": "Bahrein",
-                  "ca": "Bahrein"
+                  "ca": "Bahrein",
+                  "it": "Bahrain"
               }
           },
           {
@@ -251,7 +274,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Burundi",
                   "es": "Burundi",
-                  "ca": "Burundi"
+                  "ca": "Burundi",
+                  "it": "Burundi"
               }
           },
           {
@@ -261,7 +285,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Benin",
                   "es": "Ben\u00edn",
-                  "ca": "Ben\u00edn"
+                  "ca": "Ben\u00edn",
+                  "it": "Benin"
               }
           },
           {
@@ -271,7 +296,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Saint Barth\u00e9lemy",
                   "es": "San Bartolom\u00e9",
-                  "ca": "San Bartolom\u00e9"
+                  "ca": "San Bartolom\u00e9",
+                  "it": "Saint Barth\u00e9lemy"
               }
           },
           {
@@ -281,7 +307,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bermuda Islands",
                   "es": "Islas Bermudas",
-                  "ca": "Islas Bermudas"
+                  "ca": "Islas Bermudas",
+                  "it": "Bermuda Islands"
               }
           },
           {
@@ -291,7 +318,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Brunei",
                   "es": "Brun\u00e9i",
-                  "ca": "Brun\u00e9i"
+                  "ca": "Brun\u00e9i",
+                  "it": "Brunei"
               }
           },
           {
@@ -301,7 +329,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bolivia",
                   "es": "Bolivia",
-                  "ca": "Bolivia"
+                  "ca": "Bolivia",
+                  "it": "Bolivia"
               }
           },
           {
@@ -311,7 +340,8 @@ Feature: Retrieve countries
               "name": {
                   "en": "Bonaire",
                   "es": "Bonaire",
-                  "ca": "Bonaire"
+                  "ca": "Bonaire",
+                  "it": "Bonaire"
               }
           }
       ]
@@ -333,12 +363,15 @@ Feature: Retrieve countries
           "name": {
               "en": "Andorra",
               "es": "Andorra",
-              "ca": "Andorra"
+              "ca": "Andorra",
+              "it": "Andorra"
+
           },
           "zone": {
               "en": "Europe",
               "es": "Europa",
-              "ca": "Europa"
+              "ca": "Europa",
+              "it": "Europe"
           }
       }
     """

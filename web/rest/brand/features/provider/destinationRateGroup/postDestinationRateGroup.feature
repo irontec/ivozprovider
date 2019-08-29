@@ -14,12 +14,14 @@
           "name": {
               "en": "New DR",
               "es": "New DR",
-              "ca": "New DR"
+              "ca": "New DR",
+              "it": "New DR"
           },
           "description": {
               "en": "",
               "es": "",
-              "ca": ""
+              "ca": "",
+              "it": ""
           },
           "currency": "1"
       }
@@ -35,12 +37,14 @@
           "name": {
               "en": "New DR",
               "es": "New DR",
-              "ca": "New DR"
+              "ca": "New DR",
+              "it": "New DR"
           },
           "description": {
               "en": "",
               "es": "",
-              "ca": ""
+              "ca": "",
+              "it": ""
           },
           "file": {
               "fileSize": null,
@@ -68,12 +72,14 @@
           "name": {
               "en": "New DR",
               "es": "New DR",
-              "ca": "New DR"
+              "ca": "New DR",
+              "it": "New DR"
           },
           "description": {
               "en": "",
               "es": "",
-              "ca": ""
+              "ca": "",
+              "it": ""
           },
           "file": {
               "fileSize": null,
@@ -82,15 +88,6 @@
               "importerArguments": []
           },
           "brand": "~",
-          "currency": {
-              "iden": "EUR",
-              "symbol": "\u20ac",
-              "id": 1,
-              "name": {
-                  "en": "Euro",
-                  "es": "Euro",
-                  "ca": "Euro"
-              }
-          }
+          "currency": "~"
       }
     """

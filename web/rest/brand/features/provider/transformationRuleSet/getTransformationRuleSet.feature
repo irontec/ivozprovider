@@ -45,43 +45,10 @@ Feature: Retrieve transformation rule sets
           "name": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
-          "brand": {
-              "name": "DemoBrand",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "currency": 2
-          },
-          "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          }
+          "brand": "~",
+          "country": "~"
       }
     """

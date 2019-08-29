@@ -15,7 +15,8 @@ Feature: Update features
           "name": {
               "en": "name",
               "es": "nombre",
-              "ca": "nombre"
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -30,7 +31,8 @@ Feature: Update features
           "name": {
               "en": "name",
               "es": "nombre",
-              "ca": "nombre"
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """

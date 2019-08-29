@@ -24,7 +24,7 @@ class ProviderCurrency extends Fixture
         (function () {
             $this->setIden("EUR");
             $this->setSymbol("€");
-            $this->setName(new Name('Euro', 'Euro', 'Euro'));
+            $this->setName(new Name('Euro', 'Euro', 'Euro', 'Euro'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderCurrency1', $item1);
@@ -35,7 +35,7 @@ class ProviderCurrency extends Fixture
         (function () {
             $this->setIden("USD");
             $this->setSymbol("$");
-            $this->setName(new Name('Dollar', 'Dóllar', 'Dollar'));
+            $this->setName(new Name('Dollar', 'Dóllar', 'Dollar', 'Dollar'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderCurrency2', $item2);
@@ -47,7 +47,7 @@ class ProviderCurrency extends Fixture
         (function () {
             $this->setIden("GBP");
             $this->setSymbol("£");
-            $this->setName(new Name('Pound', 'Libra', 'Libra'));
+            $this->setName(new Name('Pound', 'Libra', 'Libra', 'Pound'));
         })->call($item3);
 
         $this->addReference('_reference_ProviderCurrency3', $item3);

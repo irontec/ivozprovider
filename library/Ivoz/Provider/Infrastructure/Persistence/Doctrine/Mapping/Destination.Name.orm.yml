@@ -22,3 +22,10 @@ Ivoz\Provider\Domain\Model\Destination\Name:
       options:
         fixed: false
       column: name_ca
+    it:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: name_it

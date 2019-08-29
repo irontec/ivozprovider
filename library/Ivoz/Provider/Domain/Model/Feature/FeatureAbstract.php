@@ -106,7 +106,8 @@ abstract class FeatureAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $self = new static(
@@ -133,7 +134,8 @@ abstract class FeatureAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $this
@@ -156,7 +158,8 @@ abstract class FeatureAbstract
             ->setIden(self::getIden())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
-            ->setNameCa(self::getName()->getCa());
+            ->setNameCa(self::getName()->getCa())
+            ->setNameIt(self::getName()->getIt());
     }
 
     /**
@@ -168,7 +171,8 @@ abstract class FeatureAbstract
             'iden' => self::getIden(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
-            'nameCa' => self::getName()->getCa()
+            'nameCa' => self::getName()->getCa(),
+            'nameIt' => self::getName()->getIt()
         ];
     }
     // @codeCoverageIgnoreStart

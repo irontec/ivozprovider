@@ -25,3 +25,11 @@ Ivoz\Provider\Domain\Model\Country\Zone:
         fixed: false
         default: ''
       column: zone_ca
+    it:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+        default: ''
+      column: zone_it

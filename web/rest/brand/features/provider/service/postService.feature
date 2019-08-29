@@ -17,12 +17,14 @@ Feature: Create services
           "name": {
               "en": "en",
               "es": "en",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
               "es": "en",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           }
       }
     """

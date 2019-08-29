@@ -33,6 +33,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $nameIt;
+
+    /**
+     * @var string
+     */
     private $descriptionEn;
 
     /**
@@ -44,6 +49,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
      * @var string
      */
     private $descriptionCa;
+
+    /**
+     * @var string
+     */
+    private $descriptionIt;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
@@ -79,8 +89,8 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
 
         return [
             'id' => 'id',
-            'name' => ['en','es','ca'],
-            'description' => ['en','es','ca'],
+            'name' => ['en','es','ca','it'],
+            'description' => ['en','es','ca','it'],
             'brandId' => 'brand',
             'currencyId' => 'currency'
         ];
@@ -96,12 +106,14 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
             'name' => [
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
-                'ca' => $this->getNameCa()
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
-                'ca' => $this->getDescriptionCa()
+                'ca' => $this->getDescriptionCa(),
+                'it' => $this->getDescriptionIt()
             ],
             'brand' => $this->getBrand(),
             'currency' => $this->getCurrency(),
@@ -190,6 +202,26 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
+    }
+
+    /**
      * @param string $descriptionEn
      *
      * @return static
@@ -247,6 +279,26 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     public function getDescriptionCa()
     {
         return $this->descriptionCa;
+    }
+
+    /**
+     * @param string $descriptionIt
+     *
+     * @return static
+     */
+    public function setDescriptionIt($descriptionIt = null)
+    {
+        $this->descriptionIt = $descriptionIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionIt()
+    {
+        return $this->descriptionIt;
     }
 
     /**

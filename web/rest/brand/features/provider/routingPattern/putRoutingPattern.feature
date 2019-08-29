@@ -15,12 +15,14 @@ Feature: Update routing patterns
           "name": {
               "en": "englishName",
               "es": "nombreEspañol",
-              "ca": "nombreCatala"
+              "ca": "nombreCatala",
+              "it": "nomeItaliano"
           },
           "description": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
           "brand": 1
       }
@@ -36,12 +38,14 @@ Feature: Update routing patterns
           "name": {
               "en": "englishName",
               "es": "nombreEspañol",
-              "ca": "nombreCatala"
+              "ca": "nombreCatala",
+              "it": "nomeItaliano"
           },
           "description": {
               "en": "en",
               "es": "es",
-              "ca": "ca"
+              "ca": "ca",
+              "it": "it"
           },
           "brand": "~"
       }

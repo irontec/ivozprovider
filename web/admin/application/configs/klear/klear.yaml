@@ -19,6 +19,10 @@ production:
         title: Català
         language: ca
         locale: ca_ES
+      it:
+        title: Italiano
+        language: it
+        locale: it_IT
     jqueryUI:
       theme: redmond
     raw:

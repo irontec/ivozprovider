@@ -112,7 +112,8 @@ abstract class CurrencyAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $self = new static(
@@ -140,7 +141,8 @@ abstract class CurrencyAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $this
@@ -165,7 +167,8 @@ abstract class CurrencyAbstract
             ->setSymbol(self::getSymbol())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
-            ->setNameCa(self::getName()->getCa());
+            ->setNameCa(self::getName()->getCa())
+            ->setNameIt(self::getName()->getIt());
     }
 
     /**
@@ -178,7 +181,8 @@ abstract class CurrencyAbstract
             'symbol' => self::getSymbol(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
-            'nameCa' => self::getName()->getCa()
+            'nameCa' => self::getName()->getCa(),
+            'nameIt' => self::getName()->getIt()
         ];
     }
     // @codeCoverageIgnoreStart

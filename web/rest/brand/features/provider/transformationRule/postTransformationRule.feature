@@ -62,7 +62,8 @@ Feature: Create transformation rules
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "brand": 1,
               "country": 68

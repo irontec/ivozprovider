@@ -15,12 +15,14 @@ Feature: Update rating plan group
           "name": {
               "en": "Updated",
               "es": "Actualizado",
-              "ca": "Actualizado"
+              "ca": "Actualizado",
+              "it": "Aggiornato"
           },
           "description": {
               "en": "",
               "es": "",
-              "ca": ""
+              "ca": "",
+              "it": ""
           },
           "currency": null
       }
@@ -35,12 +37,14 @@ Feature: Update rating plan group
           "name": {
               "en": "Updated",
               "es": "Actualizado",
-              "ca": "Actualizado"
+              "ca": "Actualizado",
+              "it": "Aggiornato"
           },
           "description": {
               "en": "",
               "es": "",
-              "ca": ""
+              "ca": "",
+              "it": ""
           },
           "brand": "~",
           "currency": null

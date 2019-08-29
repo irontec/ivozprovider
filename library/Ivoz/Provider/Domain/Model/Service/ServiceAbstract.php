@@ -129,13 +129,15 @@ abstract class ServiceAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
             $dto->getDescriptionEs(),
-            $dto->getDescriptionCa()
+            $dto->getDescriptionCa(),
+            $dto->getDescriptionIt()
         );
 
         $self = new static(
@@ -165,13 +167,15 @@ abstract class ServiceAbstract
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
-            $dto->getNameCa()
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
             $dto->getDescriptionEs(),
-            $dto->getDescriptionCa()
+            $dto->getDescriptionCa(),
+            $dto->getDescriptionIt()
         );
 
         $this
@@ -200,9 +204,11 @@ abstract class ServiceAbstract
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
+            ->setNameIt(self::getName()->getIt())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
-            ->setDescriptionCa(self::getDescription()->getCa());
+            ->setDescriptionCa(self::getDescription()->getCa())
+            ->setDescriptionIt(self::getDescription()->getIt());
     }
 
     /**
@@ -217,9 +223,11 @@ abstract class ServiceAbstract
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
+            'nameIt' => self::getName()->getIt(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
-            'descriptionCa' => self::getDescription()->getCa()
+            'descriptionCa' => self::getDescription()->getCa(),
+            'descriptionIt' => self::getDescription()->getIt()
         ];
     }
     // @codeCoverageIgnoreStart

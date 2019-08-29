@@ -43,7 +43,8 @@ my %extensions = (
 my @locales = (
     "es_ES",
     "ca_ES",
-    "en_US"
+    "en_US",
+    "it_IT",
 );
 
 sub extract_strings

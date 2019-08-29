@@ -292,7 +292,8 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
                 'getName' => new \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name(
                     'RatingPlanGroupEn',
                     'RatingPlanGroupEs',
-                    'RatingPlanGroupCa'
+                    'RatingPlanGroupCa',
+                    'RatingPlanGroupIt'
                 ),
             ],
             false
@@ -321,7 +322,8 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
                 'getName' => new \Ivoz\Provider\Domain\Model\Destination\Name(
                     'DestinationEn',
                     'DestinationEs',
-                    'DestinationCa'
+                    'DestinationCa',
+                    'DestinationIt'
                 ),
             ],
             false

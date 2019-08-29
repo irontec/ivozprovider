@@ -25,6 +25,10 @@ Feature: Retrieve languages
           {
               "iden": "ca",
               "id": 3
+          },
+          {
+              "iden": "it",
+              "id": 4
           }
       ]
     """
@@ -44,7 +48,8 @@ Feature: Retrieve languages
           "name": {
               "en": "es",
               "es": "es",
-              "ca": "es"
+              "ca": "es",
+              "it": "es"
           }
       }
     """

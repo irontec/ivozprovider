@@ -15,7 +15,8 @@ Feature: Create features
           "name": {
               "en": "name",
               "es": "nombre",
-              "ca": "nombre"
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -30,7 +31,8 @@ Feature: Create features
           "name": {
               "en": "name",
               "es": "nombre",
-              "ca": "nombre"
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -50,7 +52,8 @@ Feature: Create features
           "name": {
               "en": "name",
               "es": "nombre",
-              "ca": "nombre"
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """

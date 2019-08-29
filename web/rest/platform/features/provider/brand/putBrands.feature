@@ -58,7 +58,8 @@ Feature: Manage brands
               "name": {
                   "en": "es",
                   "es": "es",
-                  "ca": "es"
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -68,7 +69,8 @@ Feature: Manage brands
               "label": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }
@@ -124,7 +126,8 @@ This is file content
               "name": {
                   "en": "es",
                   "es": "es",
-                  "ca": "es"
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -134,7 +137,8 @@ This is file content
               "label": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }

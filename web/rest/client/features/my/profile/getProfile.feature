@@ -11,7 +11,7 @@ Feature: Retrieve profile
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "name": "Alice",
@@ -22,16 +22,6 @@ Feature: Retrieve profile
           "maxCalls": 1,
           "id": 1,
           "bossAssistant": null,
-          "timezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
-              "id": 145,
-              "label": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "country": 68
-          }
+          "timezone": "~"
       }
     """

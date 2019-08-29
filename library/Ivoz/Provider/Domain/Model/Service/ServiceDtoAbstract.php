@@ -48,6 +48,11 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $nameIt = '';
+
+    /**
+     * @var string
+     */
     private $descriptionEn = '';
 
     /**
@@ -59,6 +64,11 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
      * @var string
      */
     private $descriptionCa = '';
+
+    /**
+     * @var string
+     */
+    private $descriptionIt = '';
 
 
     use DtoNormalizer;
@@ -82,8 +92,8 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
             'defaultCode' => 'defaultCode',
             'extraArgs' => 'extraArgs',
             'id' => 'id',
-            'name' => ['en','es','ca'],
-            'description' => ['en','es','ca']
+            'name' => ['en','es','ca','it'],
+            'description' => ['en','es','ca','it']
         ];
     }
 
@@ -100,12 +110,14 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
             'name' => [
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
-                'ca' => $this->getNameCa()
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
-                'ca' => $this->getDescriptionCa()
+                'ca' => $this->getDescriptionCa(),
+                'it' => $this->getDescriptionIt()
             ]
         ];
     }
@@ -251,6 +263,26 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
+    }
+
+    /**
      * @param string $descriptionEn
      *
      * @return static
@@ -308,5 +340,25 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     public function getDescriptionCa()
     {
         return $this->descriptionCa;
+    }
+
+    /**
+     * @param string $descriptionIt
+     *
+     * @return static
+     */
+    public function setDescriptionIt($descriptionIt = null)
+    {
+        $this->descriptionIt = $descriptionIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionIt()
+    {
+        return $this->descriptionIt;
     }
 }

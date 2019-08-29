@@ -66,7 +66,8 @@ Feature: Create features rel brands
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }
