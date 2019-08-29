@@ -88,6 +88,13 @@ production:
       source:
         control: Spinner
       required: true
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getDdiProviderStatusIcon
 staging:
   _extends: production
 testing:
