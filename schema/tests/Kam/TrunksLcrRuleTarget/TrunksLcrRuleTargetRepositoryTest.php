@@ -18,6 +18,13 @@ class TrunksLcrRuleTargetRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_ruleTargets();
+        $this->it_finds_orphan_lcr_rule_targets();
+    }
+
     public function its_instantiable()
     {
         /** @var TrunksLcrRuleTargetRepository $repository */
@@ -31,9 +38,6 @@ class TrunksLcrRuleTargetRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_ruleTargets()
     {
         /** @var TrunksLcrRuleTargetRepository $repository */
@@ -53,9 +57,6 @@ class TrunksLcrRuleTargetRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_orphan_lcr_rule_targets()
     {
         /** @var TrunksLcrRuleTargetRepository $repository */

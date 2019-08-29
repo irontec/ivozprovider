@@ -94,14 +94,18 @@ class CarrierServerLifeCycleTest extends KernelTestCase
 
         $brands = $carrierServer->findAll();
         $this->assertCount(count($fixtureCarrierServers) + 1, $brands);
+
+
+        //////////////////////////////////
+        ///
+        //////////////////////////////////
+        $this->added_carrierServer_triggers_lifecycle_services();
+        $this->added_carrierServer_has_trunksLcrGateway();
+        $this->added_carrierServer_has_trunksLcrRuleTarget();
     }
 
-    /**
-     * @test
-     */
-    public function added_carrierServer_triggers_lifecycle_services()
+    protected function added_carrierServer_triggers_lifecycle_services()
     {
-        $this->addCarrierServer();
         $this->assetChangedEntities(
             [
                 CarrierServer::class,
@@ -111,41 +115,8 @@ class CarrierServerLifeCycleTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function added_carrierServer_has_trunksLcrGateway()
     {
-        $this->updateCarrierServer();
-        $this->assetChangedEntities([
-            CarrierServer::class,
-            TrunksLcrGateway::class,
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeCarrierServer();
-        $this->assetChangedEntities([
-            CarrierServer::class
-        ]);
-    }
-
-    ////////////////////////////////////////////////////////
-    ///
-    ////////////////////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_carrierServer_has_trunksLcrGateway()
-    {
-        $this->addCarrierServer();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TrunksLcrGateway::class
@@ -172,14 +143,8 @@ class CarrierServerLifeCycleTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_carrierServer_has_trunksLcrRuleTarget()
+    protected function added_carrierServer_has_trunksLcrRuleTarget()
     {
-        $this->addCarrierServer();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TrunksLcrRuleTarget::class
@@ -203,5 +168,28 @@ class CarrierServerLifeCycleTest extends KernelTestCase
             $expectedSubset,
             $diff
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateCarrierServer();
+        $this->assetChangedEntities([
+            CarrierServer::class,
+            TrunksLcrGateway::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeCarrierServer();
+        $this->assetChangedEntities([
+            CarrierServer::class
+        ]);
     }
 }

@@ -87,12 +87,11 @@ class DestinationRateGroupLifeCycleTest extends KernelTestCase
 
         $brands = $ddiProviderRegistration->findAll();
         $this->assertCount(count($fixtureDestinationRateGroups) + 1, $brands);
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
         $this->addDestinationRateGroup();
         $this->assetChangedEntities([

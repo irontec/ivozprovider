@@ -14,6 +14,11 @@ class BalanceMovementRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+    }
+
     public function its_instantiable()
     {
         /** @var BalanceMovementRepository $repository */

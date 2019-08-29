@@ -17,6 +17,13 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_gets_company_ids_in_use();
+        $this->it_gets_pending_schedulers();
+        $this->it_tells_name_uniqueness();
+    }
+
     public function it_gets_company_ids_in_use()
     {
         /** @var CallCsvSchedulerRepository $callCsvSchedulerRepository */
@@ -33,9 +40,6 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_gets_pending_schedulers()
     {
         /** @var CallCsvSchedulerRepository $callCsvSchedulerRepository */
@@ -52,9 +56,6 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_tells_name_uniqueness()
     {
         /** @var CallCsvSchedulerRepository $callCsvSchedulerRepository */

@@ -15,6 +15,12 @@ class DispatcherRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_applicationServerId();
+    }
+
     public function its_instantiable()
     {
         /** @var DispatcherRepository $repository */
@@ -28,9 +34,6 @@ class DispatcherRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_applicationServerId()
     {
         /** @var DispatcherRepository $repository */

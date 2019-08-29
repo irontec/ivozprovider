@@ -106,14 +106,16 @@ class UserLifeCycleTest extends KernelTestCase
             count($fixtureUser) + 1,
             $users
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addUser();
         $this->assetChangedEntities([
             User::class,
             Voicemail::class,

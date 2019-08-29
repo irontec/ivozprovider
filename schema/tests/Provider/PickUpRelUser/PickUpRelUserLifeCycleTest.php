@@ -81,18 +81,39 @@ class PickUpRelUserLifeCycleTest extends KernelTestCase
 
         $brands = $pickUpRelUser->findAll();
         $this->assertCount(2, $brands);
+
+        //////////////////////////////
+        ///
+        //////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->it_updates_ps_endpoint();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addPickUpRelUser();
         $this->assetChangedEntities([
             PickUpRelUser::class,
             PsEndpoint::class
         ]);
+    }
+
+    protected function it_updates_ps_endpoint()
+    {
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            PsEndpoint::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $this->assertEquals(
+            $changelog->getData(),
+            [
+                'named_pickup_group' => '1,1'
+            ]
+        );
     }
 
     /**
@@ -114,33 +135,5 @@ class PickUpRelUserLifeCycleTest extends KernelTestCase
             PickUpRelUser::class,
             PsEndpoint::class
         ]);
-    }
-
-    ////////////////////////////////////////////////////////
-    ///
-    ////////////////////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function it_updates_ps_endpoint()
-    {
-        $this->addPickUpRelUser();
-
-        /** @var Changelog[] $changelogEntries */
-        $changelogEntries = $this->getChangelogByClass(
-            PsEndpoint::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $changelog = $changelogEntries[0];
-
-        $this->assertEquals(
-            $changelog->getData(),
-            [
-                'named_pickup_group' => '1,1'
-            ]
-        );
     }
 }

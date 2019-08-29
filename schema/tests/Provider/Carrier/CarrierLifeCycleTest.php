@@ -83,14 +83,18 @@ class CarrierLifeCycleTest extends KernelTestCase
 
         $brands = $carrier->findAll();
         $this->assertCount(count($fixtureCarriers) +1, $brands);
+
+        ////////////////
+        ///
+        ////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_carrier_has_tpCdrStats();
+        $this->added_carrier_has_tpAccountAction();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addCarrier();
         $this->assetChangedEntities(
             [
                 Carrier::class,
@@ -100,41 +104,8 @@ class CarrierLifeCycleTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function added_carrier_has_tpCdrStats()
     {
-        $this->updateCarrier();
-        $this->assetChangedEntities([
-            Carrier::class
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeCarrier();
-        $this->assetChangedEntities([
-            \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile::class, //orm soft delete
-            RatingProfile::class, //orm soft delete
-            Carrier::class
-        ]);
-    }
-
-    //////////////////////////////////////////
-    //
-    //////////////////////////////////////////
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_carrier_has_tpCdrStats()
-    {
-        $this->addCarrier();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TpCdrStat::class
@@ -174,14 +145,8 @@ class CarrierLifeCycleTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_carrier_has_tpAccountAction()
+    protected function added_carrier_has_tpAccountAction()
     {
-        $this->addCarrier();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TpAccountAction::class
@@ -219,5 +184,29 @@ class CarrierLifeCycleTest extends KernelTestCase
                 )
             )
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateCarrier();
+        $this->assetChangedEntities([
+            Carrier::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeCarrier();
+        $this->assetChangedEntities([
+            \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile::class, //orm soft delete
+            RatingProfile::class, //orm soft delete
+            Carrier::class
+        ]);
     }
 }

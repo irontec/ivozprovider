@@ -14,6 +14,13 @@ class AdministratorRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_gets_inner_global_admin();
+        $this->it_gets_platform_admin_by_username();
+        $this->it_returns_null_if_platform_admin_is_not_found();
+    }
+
     public function it_gets_inner_global_admin()
     {
         /** @var AdministratorDoctrineRepository $repository */

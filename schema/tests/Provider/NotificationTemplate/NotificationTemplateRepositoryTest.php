@@ -16,6 +16,14 @@ class NotificationTemplateRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->its_finds_generic_call_csv_template();
+        $this->its_finds_generic_invoice_template();
+        $this->its_finds_template_by_balance_notification();
+    }
+
     public function its_instantiable()
     {
         /** @var NotificationTemplateRepository $repository */
@@ -29,9 +37,6 @@ class NotificationTemplateRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function its_finds_generic_call_csv_template()
     {
         /** @var NotificationTemplateRepository $repository */
@@ -48,10 +53,6 @@ class NotificationTemplateRepositoryTest extends KernelTestCase
         );
     }
 
-
-    /**
-     * @test
-     */
     public function its_finds_generic_invoice_template()
     {
         /** @var NotificationTemplateRepository $repository */
@@ -68,9 +69,6 @@ class NotificationTemplateRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function its_finds_template_by_balance_notification()
     {
         /** @var NotificationTemplateRepository $notificationTemplateRepository */

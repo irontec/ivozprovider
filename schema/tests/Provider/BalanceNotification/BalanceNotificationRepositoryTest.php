@@ -19,6 +19,12 @@ class BalanceNotificationRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_finds_broken_thresholds_by_company();
+        $this->it_finds_broken_thresholds_by_carrier();
+    }
+
     public function it_finds_broken_thresholds_by_company()
     {
         /** @var CompanyRepository $repository */
@@ -48,9 +54,6 @@ class BalanceNotificationRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_broken_thresholds_by_carrier()
     {
         /** @var CarrierRepository $carrierRepository */

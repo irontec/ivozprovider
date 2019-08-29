@@ -72,14 +72,15 @@ class DomainLifeCycleTest extends KernelTestCase
 
         $companies = $domainRepository->findAll();
         $this->assertCount(count($fixtureDomains) + 1, $companies);
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addDomain();
         $this->assetChangedEntities([
             Domain::class
         ]);

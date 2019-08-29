@@ -15,6 +15,12 @@ class BrandServiceRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->its_finds_by_brandId();
+    }
+
     public function its_instantiable()
     {
         /** @var BrandServiceRepository $repository */
@@ -28,9 +34,6 @@ class BrandServiceRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function its_finds_by_brandId()
     {
         /** @var BrandServiceRepository $repository */
