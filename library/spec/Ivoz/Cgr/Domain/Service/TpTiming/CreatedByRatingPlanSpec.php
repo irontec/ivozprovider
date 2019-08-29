@@ -73,6 +73,13 @@ class CreatedByRatingPlanSpec extends ObjectBehavior
             false
         );
 
+        $this
+            ->ratingPlan
+            ->setTpTiming(
+                Argument::type(TpTimingInterface::class)
+            )
+            ->willReturn($this->ratingPlan);
+
         $this->getterProphecy(
             $this->ratingPlanGroup,
             [
@@ -124,6 +131,7 @@ class CreatedByRatingPlanSpec extends ObjectBehavior
                 Argument::type(TpTimingDto::class),
                 $this->tpTiming
             )
+            ->willReturn($this->tpTiming)
             ->shouldBeCalled();
 
         $this->execute($this->ratingPlan);

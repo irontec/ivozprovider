@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersPresentity;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface UsersPresentityInterface extends LoggableEntityInterface
+interface UsersPresentityInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     /**
      * Get username
      *

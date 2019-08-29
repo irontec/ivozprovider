@@ -5,6 +5,7 @@ namespace Tests\Provider\RatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
 use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
@@ -23,7 +24,7 @@ class RatingPlanLifeCycleTest extends KernelTestCase
         $ratingPlanDto
             ->setTimeIn(new \DateTime('2020-01-01 10:10:10'))
             ->setWeight(9)
-            ->setTimingType('custom')
+            ->setTimingType(RatingPlanInterface::TIMINGTYPE_CUSTOM)
             ->setRatingPlanGroupId(1)
             ->setDestinationRateGroupId(1);
 
@@ -44,19 +45,20 @@ class RatingPlanLifeCycleTest extends KernelTestCase
         return $ratingPlan;
     }
 
-    protected function updateRatingPlan()
+    protected function updateRatingPlan($id = 1)
     {
         $ratingPlanRepository = $this->em
             ->getRepository(RatingPlan::class);
 
-        $ratingPlan = $ratingPlanRepository->find(1);
+        $ratingPlan = $ratingPlanRepository->find($id);
 
         /** @var RatingPlanDto $ratingPlanDto */
         $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
 
         $ratingPlanDto
             ->setTimeIn(new \DateTime('2020-11-11 11:11:11'))
-            ->setTimingType('custom');
+            ->setTimingType(RatingPlanInterface::TIMINGTYPE_CUSTOM)
+            ->setDestinationRateGroupId(2);
 
         return $this
             ->entityTools
@@ -106,6 +108,37 @@ class RatingPlanLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
+    public function it_creates_tp_rating_plan()
+    {
+        $this->addRatingPlan();
+
+        $changelogEntries = $this->getChangelogByClass(
+            TpRatingPlan::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $this->assertSubset(
+            $changelog,
+            [
+                'tpid' => 'b1',
+                'tag' => 'b1rp1',
+                'destrates_tag' => 'b1dr1',
+                'timing_tag' => 'b1tm2',
+                'weight' => 9.0,
+                'ratingPlanId' => 2,
+                'id' => 1,
+            ],
+            [
+                'created_at'
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
     public function it_triggers_update_lifecycle_services()
     {
         $this->updateRatingPlan();
@@ -119,27 +152,15 @@ class RatingPlanLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_triggers_remove_lifecycle_services()
+    public function it_updates_tp_rating_plan()
     {
-        $this->removeRatingPlan();
-        $this->assetChangedEntities([
-            RatingPlan::class,
-        ]);
-    }
+        $rp = $this->addRatingPlan();
+        $this->resetChangelog();
 
-    ////////////////////////////////////////
-    ///
-    ////////////////////////////////////////
+        $this->updateRatingPlan(
+            $rp->getId()
+        );
 
-    /**
-     * @test
-     * @deprecated
-     */
-    public function it_updates_ps_endpoint()
-    {
-        $this->addRatingPlan();
-
-        /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TpRatingPlan::class
         );
@@ -149,7 +170,20 @@ class RatingPlanLifeCycleTest extends KernelTestCase
 
         $this->assertEquals(
             $changelog->getData(),
-            [DoctrineEventSubscriber::UnaccesibleChangeset]
+            [
+                'destrates_tag' => 'b1dr2',
+            ]
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeRatingPlan();
+        $this->assetChangedEntities([
+            RatingPlan::class,
+        ]);
     }
 }

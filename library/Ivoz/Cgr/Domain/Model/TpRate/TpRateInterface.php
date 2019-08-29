@@ -2,10 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TpRateInterface extends EntityInterface
+interface TpRateInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Validate RateIncrement has valid unit
      *

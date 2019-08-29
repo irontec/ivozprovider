@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface UsersLocationAttrInterface extends LoggableEntityInterface
+interface UsersLocationAttrInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     /**
      * Get ruid
      *

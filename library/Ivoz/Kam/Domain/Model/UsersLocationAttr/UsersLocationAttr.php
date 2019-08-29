@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
 /**
@@ -7,15 +8,6 @@ namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 class UsersLocationAttr extends UsersLocationAttrAbstract implements UsersLocationAttrInterface
 {
     use UsersLocationAttrTrait;
-
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet()
-    {
-        return parent::getChangeSet();
-    }
 
     /**
      * Get id

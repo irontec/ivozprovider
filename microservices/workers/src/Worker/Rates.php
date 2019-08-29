@@ -3,10 +3,16 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
+use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
 use Ivoz\Core\Application\Service\EntityTools;
 use GearmanJob;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
+use Ivoz\Core\Domain\Event\EntityWasCreated;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
+use Ivoz\Provider\Domain\Model\Destination\Destination;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
@@ -191,7 +197,20 @@ class Rates
             foreach ($destinationChunks as $destination) {
                 $destinationInsert = 'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, brandId) VALUES '
                         . implode(",", $destination);
-                $this->em->getConnection()->executeQuery($destinationInsert);
+
+                $affectedRows = $this->em->getConnection()->executeUpdate($destinationInsert);
+                if ($affectedRows > 0) {
+                    $this->eventPublisher->publish(
+                        new EntityWasCreated(
+                            Destination::class,
+                            0,
+                            [
+                                'query' => $destinationInsert,
+                                'arguments' => []
+                            ]
+                        )
+                    );
+                }
             }
 
             /**
@@ -200,7 +219,20 @@ class Rates
             $this->logger->debug('About to insert tp_destinations');
             $tpDestinationInsert = 'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)
                         SELECT CONCAT("b", brandId), CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
-            $this->em->getConnection()->executeQuery($tpDestinationInsert);
+
+            $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationInsert);
+            if ($affectedRows > 0) {
+                $this->eventPublisher->publish(
+                    new EntityWasCreated(
+                        TpDestination::class,
+                        0,
+                        [
+                            'query' => $tpDestinationInsert,
+                            'arguments' => []
+                        ]
+                    )
+                );
+            }
 
             /**
              *  Update DestinationRates with each CSV row
@@ -215,7 +247,20 @@ class Rates
                                 rate = VALUES(rate),
                                 connectFee = VALUES(connectFee),
                                 rateIncrement = VALUES(rateIncrement)';
-                $this->em->getConnection()->executeQuery($tpDestinationRateInsert);
+
+                $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationRateInsert);
+                if ($affectedRows > 0) {
+                    $this->eventPublisher->publish(
+                        new EntityWasCreated(
+                            DestinationRate::class,
+                            0,
+                            [
+                                'query' => $tpDestinationRateInsert,
+                                'arguments' => []
+                            ]
+                        )
+                    );
+                }
             }
 
             /**
@@ -233,7 +278,20 @@ class Rates
                             connect_fee = VALUES(connect_fee),
                             rate_increment = VALUES(rate_increment),
                             group_interval_start = VALUES(group_interval_start)";
-            $this->em->getConnection()->executeQuery($tpRatesInsert);
+
+            $affectedRows = $this->em->getConnection()->executeUpdate($tpRatesInsert);
+            if ($affectedRows > 0) {
+                $this->eventPublisher->publish(
+                    new EntityWasCreated(
+                        TpRate::class,
+                        0,
+                        [
+                            'query' => $tpRatesInsert,
+                            'arguments' => []
+                        ]
+                    )
+                );
+            }
 
             /**
              * Update tp_destination_rates with each DestinationRates row
@@ -245,7 +303,20 @@ class Rates
                           FROM DestinationRates DR
                           INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
                           WHERE DRG.id = $destinationRateGroupId";
-            $this->em->getConnection()->executeQuery($tpDestinationRatesInsert);
+
+            $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationRatesInsert);
+            if ($affectedRows > 0) {
+                $this->eventPublisher->publish(
+                    new EntityWasCreated(
+                        TpDestinationRate::class,
+                        0,
+                        [
+                            'query' => $tpDestinationRatesInsert,
+                            'arguments' => []
+                        ]
+                    )
+                );
+            }
 
             $destinationRateGroupDto->setStatus('imported');
             $this

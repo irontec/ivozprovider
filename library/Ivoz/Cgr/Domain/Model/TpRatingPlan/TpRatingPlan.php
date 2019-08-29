@@ -11,6 +11,11 @@ class TpRatingPlan extends TpRatingPlanAbstract implements TpRatingPlanInterface
 {
     use TpRatingPlanTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      * @codeCoverageIgnore

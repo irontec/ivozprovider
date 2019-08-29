@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksHtable;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface TrunksHtableInterface extends LoggableEntityInterface
+interface TrunksHtableInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     /**
      * Get keyName
      *
