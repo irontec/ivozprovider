@@ -22,7 +22,6 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->it_finds_unrated_calls_in_group();
         $this->it_finds_rerateable_cgrids_in_group();
         $this->it_transforms_ids_to_trunkCdrId();
-        $this->it_counts_untarificatted_calls_before_date();
         $this->it_counts_untarificatted_calls_in_range();
     }
 
