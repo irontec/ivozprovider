@@ -2,8 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
-use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 /**
  * Calendar
@@ -34,34 +33,37 @@ class Calendar extends CalendarAbstract implements CalendarInterface
     /**
      * Check if the given day is registered as Holiday
      *
-     * @param \DateTime $date
+     * @param \DateTime $datetime
      * @return bool
      */
-    public function isHolidayDate($date)
+    public function isHolidayDate(\DateTime $datetime)
     {
-        $filteredHolidayDates = array_filter(
-            $this->getHolidayDates(),
-            function (HolidayDateInterface $holidayDate) use ($date) {
+        return $this->getHolidayDate($datetime) !== null;
+    }
 
-                $eventDate = $holidayDate->getEventDate();
-                $date->setTimezone($eventDate->getTimezone());
-                $eventDateStr = $eventDate->format('Y-m-d');
+    /**
+     * Return the first HolidayDate matching the given date
+     *
+     * @param \DateTime $dateTime
+     * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface|null
+     */
+    public function getHolidayDate(\DateTime $dateTime)
+    {
+        // Find HolidayDates for the given date that apply the whole day
+        // or time is between the range of the event
+        $criteria = CriteriaHelper::fromArray([
+            ['eventDate', 'eq', $dateTime],
+            'or' => [
+                ['wholeDayEvent', 'eq', '1'],
+                'and' => [
+                    ['timeIn', 'lte', $dateTime],
+                    ['timeOut', 'gte', $dateTime]
+                ]
+            ]
+        ]);
 
-                return $eventDateStr === $date->format('Y-m-d');
-            }
-        );
+        $holidayDates = $this->getHolidayDates($criteria);
 
-        foreach ($filteredHolidayDates as $holidayDate) {
-            $eventMatched = $holidayDate
-                ->checkEventOnTime(
-                    $date
-                );
-
-            if ($eventMatched) {
-                return true;
-            }
-        }
-
-        return false;
+        return array_shift($holidayDates);
     }
 }

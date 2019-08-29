@@ -63,37 +63,4 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();
     }
-
-    /**
-     * Check if the given time matches this HolidayDate events
-     *
-     * @param \DateTime $time
-     * @return bool
-     */
-    public function checkEventOnTime(\DateTime $time)
-    {
-        if ($this->getWholeDayEvent()) {
-            return true;
-        }
-
-        // Check if time is between in and out
-        $timezone = $time->getTimezone();
-
-        $eventDateStr = $this->getEventDate()->format('Y-m-d');
-        $timeInStr = $this->getTimeIn()->format('H:i:s');
-        $timeIn = new \DateTime(
-            "$eventDateStr $timeInStr",
-            $timezone
-        );
-
-        $timeOutStr = $this->getTimeOut()->format('H:i:s');
-        $timeOut = new \DateTime(
-            "$eventDateStr $timeOutStr",
-            $timezone
-        );
-
-        $eventOnTime = ($time >= $timeIn && $time <= $timeOut);
-
-        return $eventOnTime;
-    }
 }
