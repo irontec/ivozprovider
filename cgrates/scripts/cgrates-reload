@@ -14,7 +14,7 @@
 
 # Remove every redis key except accounts info
 if [ "$1" == "--flushall" ]; then
-    SENTINEL_MASTER=`redis-cli -p 26379 sentinel get-master-addr-by-name mymaster | head -n 1`
+    SENTINEL_MASTER=`redis-cli -h data.ivozprovider.local -p 26379 sentinel get-master-addr-by-name mymaster | head -n 1`
     echo -e "\e[1;32m* \e[1;97mDetected Redis Sentinel Master: $SENTINEL_MASTER\n\e[0m"
     echo -e "\e[1;31mThis operation cannot be undone, proceed?\n\e[0m"
     read -p "Press enter to continue"
