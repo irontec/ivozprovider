@@ -11,6 +11,9 @@
     
 * Models:
     - Not nullable company attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
+    - Added Catalan and Italian to each multi language field group
+    - User:
+        - Removed tokenKey attribute
 
 ## 2.11.2
 * Endpoints:

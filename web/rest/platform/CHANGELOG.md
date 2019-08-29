@@ -5,6 +5,9 @@
     - Removed filter parameters not present on response models (except for foreign keys) 
     - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
 
+* Models:
+    -  Added Catalan and Italian to each multi language field group
+
 ## 2.11.1
 * Endpoints:
     - /invoices and invoices/{id} have being removed

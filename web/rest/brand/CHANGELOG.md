@@ -5,7 +5,8 @@
     - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
 * Models:
     - Not nullable brand attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
-    
+    - Added Catalan and Italian to each multi language field group
+
 ## 2.11.2
 * Endpoints:
   - Added endpoints:
