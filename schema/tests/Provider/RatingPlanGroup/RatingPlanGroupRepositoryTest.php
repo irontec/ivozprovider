@@ -14,6 +14,11 @@ class RatingPlanGroupRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_gets_all_rows_through_a_generator();
+    }
+
     public function it_gets_all_rows_through_a_generator()
     {
         /** @var RatingPlanGroupRepository $ratingPlanGroupRepository */

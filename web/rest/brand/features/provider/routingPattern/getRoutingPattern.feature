@@ -19,7 +19,9 @@ Feature: Retrieve routing patterns
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -27,7 +29,9 @@ Feature: Retrieve routing patterns
               "id": 2,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       ]
@@ -47,11 +51,15 @@ Feature: Retrieve routing patterns
           "id": 1,
           "name": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "brand": "~"
       }

@@ -3,6 +3,7 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
+use Psr\Log\LoggerInterface;
 
 abstract class AbstractJob
 {
@@ -30,6 +31,11 @@ abstract class AbstractJob
     protected $manager;
 
     /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * @var array
      */
     protected $settings;
@@ -40,9 +46,13 @@ abstract class AbstractJob
      * @param Manager $manager
      * @param array $settings
      */
-    public function __construct(Manager $manager, array $settings)
-    {
+    public function __construct(
+        Manager $manager,
+        LoggerInterface $logger,
+        array $settings
+    ) {
         $this->manager = $manager;
+        $this->logger = $logger;
         $this->settings = $settings;
     }
 
@@ -73,10 +83,24 @@ abstract class AbstractJob
     {
         $this->manager::setOptions($this->settings);
 
-        $gearmandClient = $this->manager::getClient();
-        $gearmandClient->doBackground(
-            $this->method,
-            igbinary_serialize($this)
-        );
+        try {
+            $gearmandClient = $this->manager::getClient();
+            $gearmandClient->doBackground(
+                $this->method,
+                igbinary_serialize($this)
+            );
+
+            if ($gearmandClient->returnCode() != GEARMAN_SUCCESS) {
+                throw new \Exception('Gearmand return code error');
+            }
+        } catch (\DomainException $e) {
+            $this->logger->error($e->getMessage());
+
+            throw new \Exception(
+                'Gearmand: Unable to add background job to the queue',
+                0,
+                $e
+            );
+        }
     }
 }

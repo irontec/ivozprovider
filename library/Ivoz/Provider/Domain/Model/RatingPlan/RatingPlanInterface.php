@@ -2,13 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface RatingPlanInterface extends EntityInterface
+interface RatingPlanInterface extends LoggableEntityInterface
 {
     const TIMINGTYPE_ALWAYS = 'always';
     const TIMINGTYPE_CUSTOM = 'custom';
 
+
+    public function getChangeSet();
 
     /**
      * Transform Weekdays booleans to a string for TpTimings

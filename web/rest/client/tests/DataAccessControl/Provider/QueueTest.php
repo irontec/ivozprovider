@@ -36,8 +36,8 @@ class QueueTest extends KernelTestCase
             [
                 [
                     'company',
-                    'in',
-                    'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                    'eq',
+                    'user.getCompany().getId()'
                 ]
             ]
         );
@@ -61,8 +61,8 @@ class QueueTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -99,7 +99,7 @@ class QueueTest extends KernelTestCase
                         [
                             'timeoutExtension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'timeoutExtension',
@@ -141,7 +141,7 @@ class QueueTest extends KernelTestCase
                         [
                             'fullExtension',
                             'in',
-                            'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'fullExtension',

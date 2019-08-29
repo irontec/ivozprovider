@@ -65,6 +65,20 @@ class TrunksClient implements TrunksClientInterface
         );
     }
 
+    public function getUacRegistrationInfo($luuid): array
+    {
+        $response = $this->sendRequest(
+            self::UAC_REG_INFO_ACTION,
+            ['l_uuid', $luuid]
+        );
+
+        if (!isset($response->result)) {
+            return [];
+        }
+
+        return (array) $response->result;
+    }
+
     public function reloadRtpengine()
     {
         return $this->germanClient->send(

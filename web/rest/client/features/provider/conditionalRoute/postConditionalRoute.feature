@@ -16,7 +16,6 @@ Feature: Create conditional routes
           "numbervalue": "",
           "friendvalue": "",
           "id": 1,
-          "company": 1,
           "ivr": null,
           "huntGroup": null,
           "voicemailUser": null,

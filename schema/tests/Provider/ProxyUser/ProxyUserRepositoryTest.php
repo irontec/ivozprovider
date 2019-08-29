@@ -14,6 +14,12 @@ class ProxyUserRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_main_address_proxy();
+    }
+
     public function its_instantiable()
     {
         /** @var ProxyUserRepository $repository */
@@ -27,9 +33,6 @@ class ProxyUserRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_main_address_proxy()
     {
         /** @var ProxyUserRepository $repository */

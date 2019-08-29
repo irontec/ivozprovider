@@ -12,8 +12,7 @@ Feature: Create call acls
     """
       {
           "name": "testNewACL",
-          "defaultPolicy": "allow",
-          "company": 1
+          "defaultPolicy": "allow"
       }
     """
     Then the response status code should be 201

@@ -17,7 +17,6 @@ Feature: Update external call filters
           "outOfScheduleTargetType": "number",
           "outOfScheduleNumberValue": "946002022",
           "id": 1,
-          "company": 1,
           "welcomeLocution": null,
           "holidayLocution": null,
           "outOfScheduleLocution": null,
@@ -55,11 +54,13 @@ Feature: Update external call filters
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "outOfScheduleNumberCountry": {
@@ -68,11 +69,13 @@ Feature: Update external call filters
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

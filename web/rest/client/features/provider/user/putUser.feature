@@ -22,10 +22,8 @@ Feature: Update users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
           "gsQRCode": false,
           "id": 1,
-          "company": 1,
           "callAcl": null,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
@@ -57,7 +55,6 @@ Feature: Update users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "",
           "gsQRCode": false,
           "id": 1,
           "company": "~",
@@ -74,7 +71,8 @@ Feature: Update users
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },
@@ -100,7 +98,8 @@ Feature: Update users
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },

@@ -1,4 +1,19 @@
 # Changelog
+## 2.12
+* Endpoints:
+    - Removed filter parameters not present on response models (except for foreign keys) 
+    - Added [exists] filter modificator (company[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+  - Removed endpoints:
+    - /residential_devices [POST]
+    - /residential_devices/{id} [DELETE]
+    - /retail_accounts [POST]
+    - /retail_accounts/{id} [DELETE]
+    
+* Models:
+    - Not nullable company attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
+    - Added Catalan and Italian to each multi language field group
+    - User:
+        - Removed tokenKey attribute
 
 ## 2.11.2
 * Endpoints:

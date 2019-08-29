@@ -12,7 +12,6 @@ Feature: Update brand services
     """
       {
         "code": "95",
-        "brand": 1,
         "service": 2
       }
     """
@@ -32,11 +31,13 @@ Feature: Update brand services
               "id": 2,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               }
           }
       }

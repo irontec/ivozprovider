@@ -59,7 +59,9 @@
               "id": 8,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }
@@ -112,7 +114,9 @@
               "id": 8,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }

@@ -91,19 +91,41 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
             count($fixtureOutgoingRoutings) + 1,
             $extensions
         );
+
+        //////////////////////////////
+        ///
+        //////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->new_outgoing_routing_creates_lcr_rules();
+        $this->new_outgoing_routing_creates_lcr_rule_targets();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addOutgoingRouting();
         $this->assetChangedEntities([
             OutgoingRouting::class,
             TrunksLcrRule::class,
             TrunksLcrRuleTarget::class,
         ]);
+    }
+
+    protected function new_outgoing_routing_creates_lcr_rules()
+    {
+        $lcrRules = $this->getChangelogByClass(
+            TrunksLcrRule::class
+        );
+
+        $this->assertGreaterThan(0, count($lcrRules));
+    }
+
+    protected function new_outgoing_routing_creates_lcr_rule_targets()
+    {
+        $lcrRuleTargets = $this->getChangelogByClass(
+            TrunksLcrRuleTarget::class
+        );
+
+        $this->assertGreaterThan(0, count($lcrRuleTargets));
     }
 
     /**
@@ -128,39 +150,5 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             OutgoingRouting::class,
         ]);
-    }
-
-    //////////////////////////////////////////////////////
-    ///
-    //////////////////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function new_outgoing_routing_creates_lcr_rules()
-    {
-        $this->addOutgoingRouting();
-
-        $lcrRules = $this->getChangelogByClass(
-            TrunksLcrRule::class
-        );
-
-        $this->assertGreaterThan(0, count($lcrRules));
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function new_outgoing_routing_creates_lcr_rule_targets()
-    {
-        $this->addOutgoingRouting();
-
-        $lcrRuleTargets = $this->getChangelogByClass(
-            TrunksLcrRuleTarget::class
-        );
-
-        $this->assertGreaterThan(0, count($lcrRuleTargets));
     }
 }

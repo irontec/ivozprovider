@@ -58,7 +58,9 @@ Feature: Manage brands
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -67,7 +69,9 @@ Feature: Manage brands
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }

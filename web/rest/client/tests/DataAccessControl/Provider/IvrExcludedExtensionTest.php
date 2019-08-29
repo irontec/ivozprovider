@@ -37,7 +37,7 @@ class IvrExcludedExtensionTest extends KernelTestCase
                 [
                     'ivr',
                     'in',
-                    'IvrRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'IvrRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -60,12 +60,12 @@ class IvrExcludedExtensionTest extends KernelTestCase
                 [
                     'ivr',
                     'in',
-                    'IvrRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'IvrRepository([["company","eq","user.getCompany().getId()"]])'
                 ],
                 [
                     'extension',
                     'in',
-                    'ExtensionRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'ExtensionRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );

@@ -11,8 +11,7 @@ Feature: Update match lists
       And I send a "PUT" request to "/match_lists/1" with body:
     """
       {
-          "name": "updatedMatchlist",
-          "company": 1
+          "name": "updatedMatchlist"
       }
     """
     Then the response status code should be 200

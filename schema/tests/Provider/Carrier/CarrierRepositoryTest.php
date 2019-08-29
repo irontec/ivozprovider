@@ -14,6 +14,11 @@ class CarrierRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_finds_carrier_ids_group_by_brand();
+    }
+
     public function it_finds_carrier_ids_group_by_brand()
     {
         /** @var CarrierDoctrineRepository $repository */

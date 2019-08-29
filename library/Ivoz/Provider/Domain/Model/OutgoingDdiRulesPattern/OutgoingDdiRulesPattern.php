@@ -59,7 +59,7 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
      */
     protected function setPrefix($prefix = null)
     {
-        if (!is_null($prefix)) {
+        if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
             Assertion::regex(
                 $prefix,
                 '/^[0-9]{1,3}[*]$/'

@@ -13,13 +13,16 @@
       {
           "name": {
               "en": "New DR",
-              "es": "New DR"
+              "es": "New DR",
+              "ca": "New DR",
+              "it": "New DR"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": "",
+              "it": ""
           },
-          "brand": "1",
           "currency": "1"
       }
     """
@@ -30,14 +33,18 @@
     """
       {
           "status": null,
-          "id": 2,
+          "id": 3,
           "name": {
               "en": "New DR",
-              "es": "New DR"
+              "es": "New DR",
+              "ca": "New DR",
+              "it": "New DR"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": "",
+              "it": ""
           },
           "file": {
               "fileSize": null,
@@ -53,7 +60,7 @@
   Scenario: Retrieve created destination rate group
     Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "destination_rate_groups/2"
+    And I send a "GET" request to "destination_rate_groups/3"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -61,14 +68,18 @@
     """
       {
           "status": null,
-          "id": 2,
+          "id": 3,
           "name": {
               "en": "New DR",
-              "es": "New DR"
+              "es": "New DR",
+              "ca": "New DR",
+              "it": "New DR"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": "",
+              "it": ""
           },
           "file": {
               "fileSize": null,
@@ -77,14 +88,6 @@
               "importerArguments": []
           },
           "brand": "~",
-          "currency": {
-              "iden": "EUR",
-              "symbol": "\u20ac",
-              "id": 1,
-              "name": {
-                  "en": "Euro",
-                  "es": "Euro"
-              }
-          }
+          "currency": "~"
       }
     """

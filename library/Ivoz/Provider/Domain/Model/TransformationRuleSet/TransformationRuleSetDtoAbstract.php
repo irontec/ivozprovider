@@ -56,6 +56,16 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     private $nameEs;
 
     /**
+     * @var string
+     */
+    private $nameCa;
+
+    /**
+     * @var string
+     */
+    private $nameIt;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     private $brand;
@@ -95,7 +105,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'nationalLen' => 'nationalLen',
             'generateRules' => 'generateRules',
             'id' => 'id',
-            'name' => ['en','es'],
+            'name' => ['en','es','ca','it'],
             'brandId' => 'brand',
             'countryId' => 'country'
         ];
@@ -116,7 +126,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
+                'es' => $this->getNameEs(),
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ],
             'brand' => $this->getBrand(),
             'country' => $this->getCountry(),
@@ -302,6 +314,46 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     public function getNameEs()
     {
         return $this->nameEs;
+    }
+
+    /**
+     * @param string $nameCa
+     *
+     * @return static
+     */
+    public function setNameCa($nameCa = null)
+    {
+        $this->nameCa = $nameCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCa()
+    {
+        return $this->nameCa;
+    }
+
+    /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
     }
 
     /**

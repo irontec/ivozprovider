@@ -71,11 +71,13 @@ Feature: Create call forward setting
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

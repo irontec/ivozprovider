@@ -57,11 +57,15 @@ Feature: Retrieve services
           "id": 1,
           "name": {
               "en": "en",
-              "es": "en"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
-              "es": "en"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           }
       }
     """

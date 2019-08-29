@@ -14,7 +14,6 @@ Feature: Update ddi
           "ddi": "124",
           "id": 1,
           "company": 1,
-          "brand": 1,
           "ddiProvider": 1,
           "country": 68
       }
@@ -43,11 +42,13 @@ Feature: Update ddi
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

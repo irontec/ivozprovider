@@ -24,7 +24,6 @@ Feature: Create users
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
           "gsQRCode": false,
-          "company": 1,
           "callAcl": 1,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
@@ -56,7 +55,6 @@ Feature: Create users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "",
           "gsQRCode": false,
           "id": 3,
           "company": 1,
@@ -96,7 +94,6 @@ Feature: Create users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "",
           "gsQRCode": false,
           "id": 3,
           "company": {
@@ -132,7 +129,8 @@ Feature: Create users
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },

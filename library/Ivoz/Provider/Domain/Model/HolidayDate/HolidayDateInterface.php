@@ -25,14 +25,6 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getNumberValueE164();
 
     /**
-     * Check if the given time matches this HolidayDate events
-     *
-     * @param \DateTime $time
-     * @return bool
-     */
-    public function checkEventOnTime(\DateTime $time);
-
-    /**
      * Get name
      *
      * @return string

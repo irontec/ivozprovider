@@ -37,7 +37,7 @@ class ExternalCallFilterBlackListTest extends KernelTestCase
                 [
                     'filter',
                     'in',
-                    'ExternalCallFilterRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'ExternalCallFilterRepository([["company","eq","user.getCompany().getId()"]])'
                 ]
             ]
         );
@@ -60,7 +60,7 @@ class ExternalCallFilterBlackListTest extends KernelTestCase
                 [
                     'filter',
                     'in',
-                    'ExternalCallFilterRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                    'ExternalCallFilterRepository([["company","eq","user.getCompany().getId()"]])'
                 ],
                 [
                     'matchlist',

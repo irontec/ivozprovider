@@ -86,21 +86,33 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        foreach ($pks as $pk) {
-            $invoice = $dataGateway->find(Invoice::class, $pk);
-            $invoice->setStatus("waiting");
-            $dataGateway->update(Invoice::class, $invoice);
-        }
+        try {
+            foreach ($pks as $pk) {
+                $invoice = $dataGateway->find(Invoice::class, $pk);
+                $invoice->setStatus("waiting");
+                $dataGateway->update(Invoice::class, $invoice);
+            }
 
-        if (count($pks) == 1) {
-            $title = $this->_helper->translate("Invoice(s) enqueued");
-            $message = $this->_helper->translate("Invoice has been enqueued. It will be generated as soon as posible.");
-        } else {
-            $n = count($pks);
-            $title = $this->_helper->translate("Invoice(s) enqueued") . ": " . $n;
-            $message = $this->_helper->translate("Invoices have been enqueued. They will be generated as soon as posible.");
+            if (count($pks) == 1) {
+                $title = $this->_helper->translate("Invoice(s) enqueued");
+                $message = $this->_helper->translate("Invoice has been enqueued. It will be generated as soon as posible.");
+            } else {
+                $n = count($pks);
+                $title = $this->_helper->translate("Invoice(s) enqueued") . ": " . $n;
+                $message = $this->_helper->translate("Invoices have been enqueued. They will be generated as soon as posible.");
+            }
+        } catch (\Exception $e) {
+            $phpSettings = $this->getInvokeArg('bootstrap')->getOption("phpSettings");
+            $displayErrors = $phpSettings["display_errors"] ?? false;
+            $showErrors = ($e instanceof \DomainException) || $displayErrors;
+            $title = $this->_helper->translate("Error");
+
+            $message = $showErrors
+                ? $e->getMessage()
+                : 'Undefined error';
+        } finally {
+            $closeButton = $this->_helper->translate("Close");
         }
-        $closeButton = $this->_helper->translate("Close");
 
         $data = array(
             'title' => $title,

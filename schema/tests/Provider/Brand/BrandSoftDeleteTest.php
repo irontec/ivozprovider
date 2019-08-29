@@ -39,15 +39,15 @@ class BrandSoftDeleteTest extends KernelTestCase
 
         $brands = $brandRepository->findAll();
         $this->assertCount(1, $brands);
+
+        $this->removes_brand_webPortals();
+        $this->removes_brand_musicsOnHold();
+        $this->removes_brand_invoices();
+        $this->removes_brand_companies();
     }
 
-    /**
-     * @test
-     */
-    public function removes_brand_webPortals()
+    protected function removes_brand_webPortals()
     {
-        $this->removeBrand(1);
-
         $changelog = $this->getChangelogByClass(
             WebPortal::class
         );
@@ -62,14 +62,8 @@ class BrandSoftDeleteTest extends KernelTestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function removes_brand_musicsOnHold()
+    protected function removes_brand_musicsOnHold()
     {
-
-        $this->removeBrand(1);
-
         $changelog = $this->getChangelogByClass(
             MusicOnHold::class
         );
@@ -84,13 +78,8 @@ class BrandSoftDeleteTest extends KernelTestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function removes_brand_invoices()
+    protected function removes_brand_invoices()
     {
-        $this->removeBrand(1);
-
         $changelog = $this->getChangelogByClass(
             Invoice::class
         );
@@ -103,13 +92,8 @@ class BrandSoftDeleteTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function removes_brand_companies()
+    protected function removes_brand_companies()
     {
-        $this->removeBrand(1);
-
         $changelog = $this->getChangelogByClass(
             Company::class
         );

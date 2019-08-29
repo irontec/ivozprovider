@@ -16,6 +16,12 @@ class CallForwardSettingRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_counts_by_userId();
+        $this->it_finds_by_user();
+    }
+
     public function it_counts_by_userId()
     {
         /** @var CallForwardSettingRepository $callForwardSettingRepository */
@@ -32,9 +38,6 @@ class CallForwardSettingRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_user()
     {
         /** @var CallForwardSettingRepository $callForwardSettingRepository */

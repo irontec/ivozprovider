@@ -14,6 +14,12 @@ class DdiRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_one_by_ddi_e164();
+    }
+
     public function its_instantiable()
     {
         /** @var DdiRepository $repository */
@@ -27,9 +33,6 @@ class DdiRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_ddi_e164()
     {
         /** @var DdiRepository $repository */

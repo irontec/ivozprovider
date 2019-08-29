@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
@@ -228,13 +229,35 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      */
     public function setInvoiceId(array $conditions, int $invoiceId)
     {
+        // In order to reduce table lock times search target ids first
+        $finder = $this
+            ->createQueryBuilder('self')
+            ->select('self.id')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            )
+            ->getQuery();
+
+        $targetIds = array_map(
+            function (array $row) {
+                return $row['id'];
+            },
+            $finder->execute()
+        );
+
+        if (empty($targetIds)) {
+            return;
+        }
+
         $qb = $this
             ->createQueryBuilder('self')
             ->update($this->_entityName, 'self')
             ->set('self.invoice', ':invoiceId')
             ->setParameter(':invoiceId', $invoiceId)
             ->addCriteria(
-                CriteriaHelper::fromArray($conditions)
+                CriteriaHelper::fromArray([
+                    ['id', 'in', $targetIds],
+                ])
             );
 
         $this->queryRunner->execute(
@@ -244,41 +267,17 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @inheritdoc
-     * @see BillableCallRepository::countUntarificattedCallsBeforeDate
+     * @param int $companyId
+     * @param int $brandId
+     * @param string $startTime
+     * @param string $endTime
+     * @return QueryBuilder
+     * @throws \Doctrine\ORM\Query\QueryException
      */
-    public function countUntarificattedCallsBeforeDate(int $companyId, int $brandId, string $startTime)
+    private function getUntarificattedCallQueryBuilder(int $companyId, int $brandId, string $startTime, string $endTime): QueryBuilder
     {
         $qb = $this->createQueryBuilder('self');
-        $conditions = [
-            ['company', 'eq', $companyId],
-            ['brand', 'eq', $brandId],
-            ['startTime', 'lt', $startTime],
-            ['carrier', 'neq', null],
-            ['carrier', 'neq', ''],
-            'or' => [
-                ['price', 'isNull'],
-                ['price', 'lt', 0],
-            ]
-        ];
 
-        $qb
-            ->select('count(self)')
-            ->addCriteria(
-                CriteriaHelper::fromArray($conditions)
-            );
-
-        return (int) $qb->getQuery()->getSingleScalarResult();
-    }
-
-    /**
-     * @inheritdoc
-     * @see BillableCallRepository::countUntarificattedCallsInRange
-     */
-    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime)
-    {
-        $qb = $this->createQueryBuilder('self');
-        
         $conditions = [
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
@@ -292,7 +291,6 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         ];
 
         $qb
-            ->select('count(self)')
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
             )->andWhere(
@@ -302,6 +300,40 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
                 )
             );
 
-        return (int) $qb->getQuery()->getSingleScalarResult();
+        return $qb;
+    }
+
+    /**
+     * @inheritdoc
+     * @see BillableCallRepository::getUntarificattedCallIdsInRange
+     */
+    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array
+    {
+        $qb = $this->getUntarificattedCallQueryBuilder(
+            ...func_get_args()
+        );
+        $qb->select('self.id');
+
+        $result = $qb->getQuery()->getResult();
+
+        return array_map(
+            function ($row) {
+                return $row['id'];
+            },
+            $result
+        );
+    }
+
+    /**
+     * @inheritdoc
+     * @see BillableCallRepository::countUntarificattedCallsInRange
+     */
+    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime): int
+    {
+        $results = $this->getUntarificattedCallIdsInRange(
+            ...func_get_args()
+        );
+
+        return count($results);
     }
 }

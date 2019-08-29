@@ -13,8 +13,7 @@ Feature: Create routing tags
       {
           "name": "Mine",
           "tag": "00#",
-          "id": 1,
-          "brand": 1
+          "id": 1
       }
     """
     Then the response status code should be 201

@@ -14,7 +14,9 @@ Feature: Create features
           "iden": "newFeature",
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -28,7 +30,9 @@ Feature: Create features
           "id": 10,
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -47,7 +51,9 @@ Feature: Create features
           "id": 10,
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """

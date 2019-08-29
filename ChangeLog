@@ -1,3 +1,27 @@
+Thu, 29 Aug 2019 15:35:24 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.12.0 released
+
+    * Proxies
+        - Fixed error when a carrier of LCR route cannot bill given destination
+        - Allow within country calls if billing engine is unreachable
+
+    * vPBX
+        - Fixed how holiday dates are matched
+
+    * Portals
+        - Added Italian language support (no .po or locutions yet)
+        - Added Catalan language (no .po or locutions yet)
+        - Add DDI Provider registration status
+
+    * Invoicing
+        - Try to rate automatically any unrated call included in scheduled invoices
+
+    * API
+        - Added exists filter for foreign keys
+
+        See specific API changelog for detailed information on changes for each level
+
 Wed, 24 Jul 2019 10:11:24 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.11.2 released

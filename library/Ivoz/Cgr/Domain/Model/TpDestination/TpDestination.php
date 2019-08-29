@@ -9,6 +9,11 @@ class TpDestination extends TpDestinationAbstract implements TpDestinationInterf
 {
     use TpDestinationTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      * @codeCoverageIgnore

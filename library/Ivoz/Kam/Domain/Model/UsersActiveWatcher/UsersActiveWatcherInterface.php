@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersActiveWatcher;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface UsersActiveWatcherInterface extends LoggableEntityInterface
+interface UsersActiveWatcherInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     /**
      * Get presentityUri
      *

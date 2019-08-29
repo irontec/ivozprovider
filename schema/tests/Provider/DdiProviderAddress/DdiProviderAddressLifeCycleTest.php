@@ -86,14 +86,17 @@ class DdiProviderAddressLifeCycleTest extends KernelTestCase
 
         $brands = $ddiProviderAddress->findAll();
         $this->assertCount(2, $brands);
+
+
+        ////////////////////////
+        ///
+        ////////////////////////
+        $this->added_ddiProviderAddress_triggers_lifecycle_services();
+        $this->added_ddiProviderAddress_has_trunksAddress();
     }
 
-    /**
-     * @test
-     */
-    public function added_ddiProviderAddress_triggers_lifecycle_services()
+    protected function added_ddiProviderAddress_triggers_lifecycle_services()
     {
-        $this->addDdiProviderAddress();
         $changedEntities = $this->getChangedEntities();
 
         $this->assertEquals(
@@ -102,6 +105,32 @@ class DdiProviderAddressLifeCycleTest extends KernelTestCase
                 DdiProviderAddress::class,
                 TrunksAddress::class,
             ]
+        );
+    }
+
+    protected function added_ddiProviderAddress_has_trunksAddress()
+    {
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            TrunksAddress::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $diff = $changelog->getData();
+        $expectedSubset = [
+            'grp' => 1,
+            'ip_addr' => '127.1.1.1',
+            'mask' => 32,
+            'ddiProviderAddressId' => 2,
+            'id' => 1,
+            'port' => 0
+        ];
+
+        $this->assertEquals(
+            $expectedSubset,
+            $diff
         );
     }
 
@@ -126,41 +155,5 @@ class DdiProviderAddressLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             DdiProviderAddress::class
         ]);
-    }
-
-    /////////////////////////////////////////
-    ///
-    /////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_ddiProviderAddress_has_trunksAddress()
-    {
-        $this->addDdiProviderAddress();
-
-        /** @var Changelog[] $changelogEntries */
-        $changelogEntries = $this->getChangelogByClass(
-            TrunksAddress::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $changelog = $changelogEntries[0];
-
-        $diff = $changelog->getData();
-        $expectedSubset = [
-            'grp' => 1,
-            'ip_addr' => '127.1.1.1',
-            'mask' => 32,
-            'ddiProviderAddressId' => 2,
-            'id' => 1,
-            'port' => 0
-        ];
-
-        $this->assertEquals(
-            $expectedSubset,
-            $diff
-        );
     }
 }

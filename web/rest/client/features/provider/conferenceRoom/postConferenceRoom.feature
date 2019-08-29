@@ -14,8 +14,7 @@ Feature: Create conference rooms
           "name": "newConferenceRoom",
           "pinProtected": true,
           "pinCode": "1234",
-          "maxMembers": 1,
-          "company": 1
+          "maxMembers": 1
       }
     """
     Then the response status code should be 201

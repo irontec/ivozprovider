@@ -24,6 +24,57 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         return $this->getLocationStatusIcon($model);
     }
 
+
+    /**
+     * Get Register Status for Users Terminals
+     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto $model
+     * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
+     */
+    public function getDdiProviderStatusIcon($model)
+    {
+        if (!$model->getId()) {
+            return '<span class="ui-silk inline ui-silk-error" title="No ddi provider registration assigned"></span>';
+        }
+
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto $kamTrunksUacreg */
+        $kamTrunksUacreg = $dataGateway->findOneBy(
+            \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg::class,
+            ["TrunksUacreg.ddiProviderRegistration = '". $model->getId() ."'"]
+        );
+
+        if (!$kamTrunksUacreg) {
+            return '<span class="ui-silk inline ui-silk-error" title="No ddi provider registration assigned"></span>';
+        }
+
+        $trunksClient = \Zend_Registry::get('container')->get(
+            \Ivoz\Kam\Domain\Service\TrunksClientInterface::class
+        );
+
+        $regInfo = $trunksClient->getUacRegistrationInfo(
+            $kamTrunksUacreg->getLUuid()
+        );
+
+        $status = $regInfo['flags'] ?? '';
+
+        $response = '';
+        if ($status === 20) {
+            $expires = new \DateTime('+' . $regInfo['diff_expires'] . ' seconds');
+            $response =
+                '<span class="ui-silk inline ui-silk-tick" title="Registered until ' .
+                $expires->format("Y-m-d H:i:s") . '"></span>';
+        } elseif (in_array($status, [24, 18], true)) {
+            $response = '<span class="ui-silk inline ui-silk-error" title="In progress"></span>';
+        } else {
+            $response = '<span class="ui-silk inline ui-silk-exclamation" title="Not registered (status '. $status .')"></span>';
+        }
+
+        return $response;
+    }
+
     /**
      * Get Register Status for Users Terminals
      * @param UserDto $model

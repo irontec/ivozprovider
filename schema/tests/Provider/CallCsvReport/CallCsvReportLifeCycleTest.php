@@ -60,15 +60,13 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
 
         $brands = $callCsvReport->findAll();
         $this->assertCount(count($fixtureCallCsvReports) + 1, $brands);
+
+
+        $this->added_callCsvReport_has_csv();
     }
 
-    /**
-     * @test
-     */
-    public function added_callCsvReport_has_csv()
+    protected function added_callCsvReport_has_csv()
     {
-        $this->addCallCsvReport();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             CallCsvReport::class

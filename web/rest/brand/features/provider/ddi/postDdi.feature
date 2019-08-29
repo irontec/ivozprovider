@@ -13,7 +13,6 @@ Feature: Create ddis
       {
           "ddi": "321",
           "company": 1,
-          "brand": 1,
           "ddiProvider": 1,
           "country": 68
       }
@@ -61,11 +60,13 @@ Feature: Create ddis
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "Espa\u00f1a"
+                  "es": "Espa\u00f1a",
+                  "ca": "Espa\u00f1a"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

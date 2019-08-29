@@ -89,7 +89,9 @@ Feature: Retrieve features rel brand
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }

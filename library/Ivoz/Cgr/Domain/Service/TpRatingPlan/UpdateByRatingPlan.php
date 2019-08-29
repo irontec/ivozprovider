@@ -45,7 +45,6 @@ class UpdateByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
             ? TpRatingPlan::createDto()
             : $this->entityTools->entityToDto($tpRatingPlan);
 
-
         // Update/Create TpRatingPorfile for this RatingPlan
         $tpRatingPlanDto
             ->setTpid($brand->getCgrTenant())
@@ -61,6 +60,11 @@ class UpdateByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
             false
         );
 
-        $ratingPlan->setTpRatingPlan($tpRatingPlan);
+        $ratingPlan
+            ->setTpRatingPlan($tpRatingPlan);
+
+        $this
+            ->entityTools
+            ->persist($ratingPlan, false);
     }
 }

@@ -20,7 +20,6 @@ Feature: Create IVRs
           "errorRouteType": "number",
           "errorNumberValue": "946002022",
           "id": 1,
-          "company": 1,
           "welcomeLocution": 1,
           "noInputLocution": null,
           "errorLocution": null,
@@ -140,11 +139,13 @@ Feature: Create IVRs
               "id": 2,
               "name": {
                   "en": "United Arab Emirates",
-                  "es": "Emiratos Árabes Unidos"
+                  "es": "Emiratos Árabes Unidos",
+                  "ca": "Emiratos Árabes Unidos"
               },
               "zone": {
                   "en": "Asia",
-                  "es": "Emiratos Árabes Unidos"
+                  "es": "Asia",
+                  "ca": "Asia"
               }
           },
           "errorNumberCountry": {
@@ -153,11 +154,13 @@ Feature: Create IVRs
               "id": 3,
               "name": {
                   "en": "Afghanistan",
-                  "es": "Afganistán"
+                  "es": "Afganistán",
+                  "ca": "Afganistán"
               },
               "zone": {
                   "en": "Asia",
-                  "es": "Afganistán"
+                  "es": "Asia",
+                  "ca": "Asia"
               }
           }
       }

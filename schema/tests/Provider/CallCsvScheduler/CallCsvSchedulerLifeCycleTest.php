@@ -90,54 +90,23 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
 
         $brands = $callCsvScheduler->findAll();
         $this->assertCount(count($fixtureCallCsvSchedulers) + 1, $brands);
+
+        ////////////////////////////
+        ///
+        ////////////////////////////
+        $this->it_triggers_lifecycle_services();
+        $this->added_callCsvScheduler_has_next_execution();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addCallCsvScheduler();
         $this->assetChangedEntities([
             CallCsvScheduler::class
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function added_callCsvScheduler_has_next_execution()
     {
-        $this->updateCallCsvScheduler();
-        $this->assetChangedEntities([
-            CallCsvScheduler::class
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeCallCsvScheduler();
-        $this->assetChangedEntities([
-            CallCsvScheduler::class
-        ]);
-    }
-
-    //////////////////////////////////////////
-    //
-    //////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_callCsvScheduler_has_next_execution()
-    {
-        $this->addCallCsvScheduler();
-
-        /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             CallCsvScheduler::class
         );
@@ -173,6 +142,32 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
 
         $this->assertNotEmpty($diff['nextExecution']);
     }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateCallCsvScheduler();
+        $this->assetChangedEntities([
+            CallCsvScheduler::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeCallCsvScheduler();
+        $this->assetChangedEntities([
+            CallCsvScheduler::class
+        ]);
+    }
+
+    //////////////////////////////////////////
+    //
+    //////////////////////////////////////////
 
     /**
      * @test

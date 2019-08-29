@@ -14,49 +14,9 @@ Feature: Create residential devices
           "name": "newRetail",
           "description": "",
           "transport": "udp",
-          "company": 1,
           "password": "qR9Y65pxJ+",
           "outgoingDdi": null,
           "language": null
       }
     """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
-      {
-          "name": "newRetail",
-          "description": "",
-          "transport": "udp",
-          "password": "qR9Y65pxJ+",
-          "id": 2,
-          "company": 1,
-          "transformationRuleSet": null,
-          "outgoingDdi": null,
-          "language": null
-      }
-    """
-
-  Scenario: Retrieve created residential device
-    Given I add Company Authorization header
-     When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "residential_devices/2"
-     Then the response status code should be 200
-      And the response should be in JSON
-      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
-    """
-      {
-          "name": "newRetail",
-          "description": "",
-          "transport": "udp",
-          "password": "qR9Y65pxJ+",
-          "id": 2,
-          "company":
-          "~",
-          "transformationRuleSet": null,
-          "outgoingDdi": null,
-          "language": null
-      }
-    """
+    Then the response status code should be 405

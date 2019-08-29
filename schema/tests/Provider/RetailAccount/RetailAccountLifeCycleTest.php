@@ -87,14 +87,16 @@ class RetailAccountLifeCycleTest extends KernelTestCase
 
         $brands = $retailAccount->findAll();
         $this->assertCount(count($fixtureRetailAccounts) + 1, $brands);
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addRetailAccount();
         $this->assetChangedEntities([
             RetailAccount::class,
             PsEndpoint::class

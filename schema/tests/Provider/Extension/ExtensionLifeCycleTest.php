@@ -70,21 +70,23 @@ class ExtensionLifeCycleTest extends KernelTestCase
             ->getRepository(Extension::class);
         $fixtureExtensions = $extensionRepository->findAll();
 
-        $this->addExtension();
+        $extension = $this->addExtension();
 
         $extensions = $extensionRepository->findAll();
         $this->assertCount(
             count($fixtureExtensions) + 1,
             $extensions
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+        $this->it_triggers_lifecycle_services();
+        $this->new_extension_userId_updates_users($extension);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addExtension();
         $this->assetChangedEntities([
             Extension::class,
             PsEndpoint::class,
@@ -92,44 +94,9 @@ class ExtensionLifeCycleTest extends KernelTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function new_extension_userId_updates_users(Extension $extension)
     {
-        $this->updateExtension();
-        $this->assetChangedEntities([
-            Extension::class,
-            PsEndpoint::class,
-            User::class,
-            Voicemail::class,
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeExtension();
-        $this->assetChangedEntities([
-            Extension::class,
-            Ivr::class,
-        ]);
-    }
-
-    /////////////////////////////////////////
-    ///
-    /////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function new_extension_userId_updates_users()
-    {
-        $extension = $this->addExtension();
-        $this->enableChangelog();
+        $this->resetChangelog();
 
         $userRepository = $this
             ->entityTools
@@ -176,6 +143,83 @@ class ExtensionLifeCycleTest extends KernelTestCase
             ]
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $extension = $this->updateExtension();
+        $this->assetChangedEntities([
+            Extension::class,
+            PsEndpoint::class,
+            User::class,
+            Voicemail::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function updating_user_screen_extension_updates_prev_user_psEndpoint()
+    {
+        $extension = $this->addExtension();
+        $this->resetChangelog();
+
+        $userRepository = $this->em
+            ->getRepository(User::class);
+
+        /** @var User $user */
+        $user = $userRepository->findOneBy([
+            'extension' => null
+        ]);
+        $this->assertNotNull($user);
+
+        /** @var ExtensionDto $extensionDto */
+        $extensionDto = $this
+            ->entityTools
+            ->entityToDto($extension);
+
+        $extensionDto->setUserId(2);
+
+        /** @var Extension $extension */
+        $this
+            ->entityTools
+            ->persistDto($extensionDto, $extension, true);
+
+        $changelogEntries = $this->getChangelogByClass(
+            PsEndpoint::class
+        );
+
+        $this->assertCount(
+            2,
+            $changelogEntries
+        );
+
+        $this->assertEquals(
+            $changelogEntries[1]->getData(),
+            [
+                'callerid' => 'Bob Bobson <104>',
+                'mailboxes' => 'user2@company1'
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeExtension();
+        $this->assetChangedEntities([
+            Extension::class,
+            Ivr::class,
+        ]);
+    }
+
+    /////////////////////////////////////////
+    ///
+    /////////////////////////////////////////
 
     /**
      * @test
@@ -228,53 +272,5 @@ class ExtensionLifeCycleTest extends KernelTestCase
                 ]
             );
         }
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function updating_user_screen_extension_updates_prev_user_psEndpoint()
-    {
-        $extension = $this->addExtension();
-        $this->enableChangelog();
-
-        $userRepository = $this->em
-            ->getRepository(User::class);
-
-        /** @var User $user */
-        $user = $userRepository->findOneBy([
-            'extension' => null
-        ]);
-        $this->assertNotNull($user);
-
-        /** @var ExtensionDto $extensionDto */
-        $extensionDto = $this
-            ->entityTools
-            ->entityToDto($extension);
-
-        $extensionDto->setUserId(2);
-
-        /** @var Extension $extension */
-        $this
-            ->entityTools
-            ->persistDto($extensionDto, $extension, true);
-
-        $changelogEntries = $this->getChangelogByClass(
-            PsEndpoint::class
-        );
-
-        $this->assertCount(
-            2,
-            $changelogEntries
-        );
-
-        $this->assertEquals(
-            $changelogEntries[1]->getData(),
-            [
-                'callerid' => 'Bob Bobson <104>',
-                'mailboxes' => 'user2@company1'
-            ]
-        );
     }
 }

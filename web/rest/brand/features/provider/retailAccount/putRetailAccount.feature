@@ -21,7 +21,6 @@ Feature: Update ddi
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
-          "brand": 1,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null

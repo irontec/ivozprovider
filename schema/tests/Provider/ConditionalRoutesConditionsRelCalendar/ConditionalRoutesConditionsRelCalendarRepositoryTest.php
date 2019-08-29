@@ -14,6 +14,11 @@ class ConditionalRoutesConditionsRelCalendarRepositoryTest extends KernelTestCas
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+    }
+
     public function its_instantiable()
     {
         /** @var ConditionalRoutesConditionsRelCalendarRepository $repository */

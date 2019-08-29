@@ -19,7 +19,27 @@ Feature: Retrieve destination rate group
               "id": 1,
               "name": {
                   "en": "Standard",
-                  "es": "Standard"
+                  "es": "Standard",
+                  "ca": "Standard",
+                  "it": "Standard"
+              },
+              "file": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null,
+                  "importerArguments": []
+              },
+              "brand": 1,
+              "currency": null
+          },
+          {
+              "status": "inProgress",
+              "id": 2,
+              "name": {
+                  "en": "Fallback",
+                  "es": "Fallback",
+                  "ca": "Fallback",
+                  "it": "Fallback"
               },
               "file": {
                   "fileSize": null,
@@ -47,11 +67,14 @@ Feature: Retrieve destination rate group
           "id": 1,
           "name": {
               "en": "Standard",
-              "es": "Standard"
+              "es": "Standard",
+              "ca": "Standard",
+              "it": "Standard"
           },
           "description": {
               "en": "",
-              "es": ""
+              "es": "",
+              "ca": ""
           },
           "file": {
               "fileSize": null,

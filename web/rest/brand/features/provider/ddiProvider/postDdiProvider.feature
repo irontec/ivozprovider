@@ -13,7 +13,6 @@ Feature: Create ddi providers
       {
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """
@@ -56,7 +55,8 @@ Feature: Create ddi providers
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1,
               "country": 68

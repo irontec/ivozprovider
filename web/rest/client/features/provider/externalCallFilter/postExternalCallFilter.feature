@@ -16,7 +16,6 @@ Feature: Create external call filters
           "holidayNumberValue": "946002021",
           "outOfScheduleTargetType": "number",
           "outOfScheduleNumberValue": "946002022",
-          "company": 1,
           "welcomeLocution": null,
           "holidayLocution": null,
           "outOfScheduleLocution": null,
@@ -83,11 +82,13 @@ Feature: Create external call filters
               "id": 77,
               "name": {
                   "en": "United Kingdom",
-                  "es": "Reino Unido"
+                  "es": "Reino Unido",
+                  "ca": "Reino Unido"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "outOfScheduleNumberCountry": {
@@ -96,11 +97,13 @@ Feature: Create external call filters
               "id": 77,
               "name": {
                   "en": "United Kingdom",
-                  "es": "Reino Unido"
+                  "es": "Reino Unido",
+                  "ca": "Reino Unido"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           }
       }

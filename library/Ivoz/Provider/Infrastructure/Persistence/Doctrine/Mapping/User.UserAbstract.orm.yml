@@ -92,13 +92,6 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
         default: '1'
         unsigned: true
       column: voicemailAttachSound
-    tokenKey:
-      type: string
-      nullable: true
-      length: 125
-      options:
-        fixed: false
-      column: tokenKey
     gsQRCode:
       type: boolean
       nullable: false

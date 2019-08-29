@@ -17,11 +17,15 @@ Feature: Update service
           "id": 1,
           "name": {
               "en": "en",
-              "es": "en"
+              "es": "en",
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
-              "es": "en"
+              "es": "en",
+              "ca": "ca",
+              "it": "it"
           }
       }
     """

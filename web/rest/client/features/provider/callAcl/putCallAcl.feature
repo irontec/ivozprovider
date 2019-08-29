@@ -12,8 +12,7 @@ Feature: Update call acls
     """
        {
           "name": "updatedACL",
-          "defaultPolicy": "deny",
-          "company": 1
+          "defaultPolicy": "deny"
       }
     """
     Then the response status code should be 200

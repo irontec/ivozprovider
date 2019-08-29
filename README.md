@@ -38,8 +38,6 @@ And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
-![scaling](web/admin/public/images/horizontalscaling.png)
-
 #### Cloud Service
 IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
@@ -53,7 +51,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |stable (oasis 1.7) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-i386.iso)|
-|testing (artemis 2.11.2) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.11~2.11.2-artemis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.11~2.11.2-artemis-i386.iso)|
+|testing (artemis 2.12.0) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.12~2.12.0-artemis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.12~2.12.0-artemis-i386.iso)|
 |experimental (bleeding 2.x) | |
 
 

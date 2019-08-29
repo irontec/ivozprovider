@@ -39,7 +39,7 @@ Feature: Manage brands
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
        {
           "name": "UpdatedDemoBrand",
@@ -58,33 +58,9 @@ Feature: Manage brands
               "country": "",
               "registryData": ""
           },
-          "language": {
-              "iden": "es",
-              "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es"
-              }
-          },
-          "defaultTimezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
-              "id": 145,
-              "label": {
-                  "en": "en",
-                  "es": "es"
-              },
-              "country": 68
-          },
-          "currency": {
-              "iden": "USD",
-              "symbol": "$",
-              "id": 2,
-              "name": {
-                  "en": "Dollar",
-                  "es": "Dóllar"
-              }
-          }
+          "language": "~",
+          "defaultTimezone": "~",
+          "currency": "~"
       }
     """
 

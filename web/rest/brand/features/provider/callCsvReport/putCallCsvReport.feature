@@ -13,8 +13,7 @@ Feature: Update call CSV reports
       {
           "inDate": "2019-06-01 02:00:00",
           "outDate": "2019-06-02 01:59:59",
-          "createdOn": "2019-06-03 07:59:59",
-          "brand": 1
+          "createdOn": "2019-06-03 07:59:59"
       }
     """
     Then the response status code should be 405

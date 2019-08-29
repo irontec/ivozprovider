@@ -78,8 +78,8 @@ These are the configurable settings of *Residential devices*:
         If set to 'Yes', use endpoint username in R-URI when calling this residential device. If set to 'No', use called
         number instead.
 
-    Max Calls
-        Limits the number of concurrent received calls. Set 0 for unlimited calls.
+    Call waiting
+        Limits received calls when already handling this number of calls. Set 0 for disabling.
 
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider

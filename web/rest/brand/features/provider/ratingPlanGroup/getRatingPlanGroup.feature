@@ -18,7 +18,9 @@ Feature: Retrieve rating plan group
               "id": 1,
               "name": {
                   "en": "Something",
-                  "es": "Algo"
+                  "es": "Algo",
+                  "ca": "Algo mes",
+                  "it": "Più"
               },
               "brand": 1,
               "currency": null
@@ -27,7 +29,9 @@ Feature: Retrieve rating plan group
               "id": 2,
               "name": {
                   "en": "Something more",
-                  "es": "Algo m\u00e1s"
+                  "es": "Algo m\u00e1s",
+                  "ca": "Algo mes",
+                  "it": "Più"
               },
               "brand": 1,
               "currency": null
@@ -48,11 +52,15 @@ Feature: Retrieve rating plan group
           "id": 1,
           "name": {
               "en": "Something",
-              "es": "Algo"
+              "es": "Algo",
+              "ca": "Algo mes",
+              "it": "Più"
           },
           "description": {
-              "en": "",
-              "es": ""
+              "en": "en",
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "brand": "~",
           "currency": null

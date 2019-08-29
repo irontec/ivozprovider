@@ -109,7 +109,6 @@ Feature: Retrieve IVRs
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
-              "tokenKey": "",
               "gsQRCode": false,
               "id": 1,
               "company": 1,
@@ -131,11 +130,13 @@ Feature: Retrieve IVRs
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "errorNumberCountry": null

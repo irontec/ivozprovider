@@ -12,9 +12,13 @@ class VoicemailRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @test
-     */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_userId();
+        $this->it_finds_one_by_mailbox_and_context();
+    }
+
     public function its_instantiable()
     {
         /** @var VoicemailRepository $repository */
@@ -28,9 +32,6 @@ class VoicemailRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_userId()
     {
         /** @var VoicemailRepository $repository */
@@ -46,9 +47,6 @@ class VoicemailRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_mailbox_and_context()
     {
         /** @var VoicemailRepository $repository */

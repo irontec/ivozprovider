@@ -19,10 +19,11 @@ Feature: Create transformation rule sets
           "generateRules": false,
           "name": {
               "en": "usansolocity",
-              "es": "usansolo"
+              "es": "usansolo",
+              "ca": "usansolo",
+              "it": "usansolo"
           },
-          "country": 77,
-          "brand": 1
+          "country": 77
       }
     """
     Then the response status code should be 201
@@ -40,7 +41,9 @@ Feature: Create transformation rule sets
           "id": 3,
           "name": {
               "en": "usansolocity",
-              "es": "usansolo"
+              "es": "usansolo",
+              "ca": "usansolo",
+              "it": "usansolo"
           },
           "brand": 1,
           "country": 77
@@ -66,21 +69,11 @@ Feature: Create transformation rule sets
           "id": 3,
           "name": {
               "en": "usansolocity",
-              "es": "usansolo"
+              "es": "usansolo",
+              "ca": "usansolo",
+              "it": "usansolo"
           },
           "brand": "~",
-          "country": {
-              "code": "GB",
-              "countryCode": "+44",
-              "id": 77,
-              "name": {
-                  "en": "United Kingdom",
-                  "es": "Reino Unido"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa"
-              }
-          }
+          "country": "~"
       }
     """

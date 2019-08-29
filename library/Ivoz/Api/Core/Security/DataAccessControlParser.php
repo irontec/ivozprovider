@@ -21,9 +21,14 @@ class DataAccessControlParser
     const RAW_CONDITION_KEY = 'raw';
 
     const INHERITANCE_KEY = 'inherited';
+    const INHERITANCE_OR_NULL_KEY = 'inheritedOrNull';
+
+    const INHERITANCE_TYPES = [
+        self::INHERITANCE_KEY,
+        self::INHERITANCE_OR_NULL_KEY
+    ];
 
     const READ_ACCESS_CONTROL_ATTRIBUTE = 'read_access_control';
-
     const WRITE_ACCESS_CONTROL_ATTRIBUTE = 'write_access_control';
 
     const ACCESS_CONTROL_TYPES = [
@@ -136,7 +141,7 @@ class DataAccessControlParser
                 continue;
             }
 
-            if ($key === self::INHERITANCE_KEY) {
+            if (in_array($key, self::INHERITANCE_TYPES, true)) {
                 unset($response[$key]);
                 $inheritedValues = $this->getInheritedAccessControl(
                     $value,
@@ -145,7 +150,14 @@ class DataAccessControlParser
                 );
                 $response += $inheritedValues;
             } else {
-                $response[$key] = $this->recursiveInheritanceParser($value, $role, $mode);
+                $appendNull = key($value) === self::INHERITANCE_OR_NULL_KEY;
+                $parsedInheritance = $this->recursiveInheritanceParser($value, $role, $mode);
+                $response[$key] = $parsedInheritance;
+
+                if ($appendNull) {
+                    $parsedInheritanceKey = key($parsedInheritance);
+                    $response[] = [$parsedInheritanceKey => ['isNull' => null]];
+                }
             }
         }
 

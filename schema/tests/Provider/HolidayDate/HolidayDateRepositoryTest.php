@@ -15,6 +15,12 @@ class HolidayDateRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_events_matching_date_by_holidayDate();
+    }
+
     public function its_instantiable()
     {
         /** @var HolidayDateRepository $repository */
@@ -28,9 +34,6 @@ class HolidayDateRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_events_matching_date_by_holidayDate()
     {
         /** @var HolidayDateRepository $holidayDateRepository */

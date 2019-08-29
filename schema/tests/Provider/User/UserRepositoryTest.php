@@ -15,6 +15,13 @@ class UserRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_finds_by_bossAssistantId();
+        $this->it_gets_user_assistant_candidates();
+        $this->it_gets_available_voicemails();
+    }
+
     public function it_finds_by_bossAssistantId()
     {
         /** @var UserRepository $repository */
@@ -36,9 +43,6 @@ class UserRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_gets_user_assistant_candidates()
     {
         /** @var UserRepository $userRepository */
@@ -61,9 +65,6 @@ class UserRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_gets_available_voicemails()
     {
         /** @var UserRepository $userRepository */

@@ -14,6 +14,11 @@ class FriendsPatternRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+    }
+
     public function its_instantiable()
     {
         /** @var FriendsPatternRepository $repository */

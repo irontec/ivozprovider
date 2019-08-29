@@ -2,10 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TpRatingPlanInterface extends EntityInterface
+interface TpRatingPlanInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Get tpid
      *

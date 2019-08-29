@@ -16,11 +16,15 @@ Feature: Create services
           "extraArgs": true,
           "name": {
               "en": "en",
-              "es": "en"
+              "es": "en",
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
-              "es": "en"
+              "es": "en",
+              "ca": "ca",
+              "it": "it"
           }
       }
     """

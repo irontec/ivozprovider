@@ -61,11 +61,13 @@ Feature: Retrieve outgoing routings
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1
           },
