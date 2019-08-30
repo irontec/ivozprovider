@@ -1,6 +1,10 @@
 ########################################
 ## Raw
 ########################################
+Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus:
+  itemOperations: []
+  collectionOperations: []
+
 Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
   itemOperations: []
   collectionOperations: []

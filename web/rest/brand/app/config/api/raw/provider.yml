@@ -256,6 +256,12 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
