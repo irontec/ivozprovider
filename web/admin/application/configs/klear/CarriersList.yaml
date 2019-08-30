@@ -30,12 +30,12 @@ production:
           screens:
             carriersEdit_screen: true
             carrierServersList_screen: true
-            ratingProfilesList_screen: true
-            balanceMovementsList_screen: true
-            balanceNotificationList_screen: true
+            ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
+            balanceMovementsList_screen: ${auth.brandFeatures.billing.enabled}
+            balanceNotificationList_screen: ${auth.brandFeatures.billing.enabled}
             billableCallsList_screen: true
           dialogs:
-            addToBalance_dialog: true
+            addToBalance_dialog: ${auth.brandFeatures.billing.enabled}
             carriersDel_dialog: true
           default: carriersEdit_screen
         order: &carrierOrder_Link
@@ -49,6 +49,7 @@ production:
           calculateCost: true
           currency: true
           billingMethod: true
+          balance: ${auth.brandFeatures.billing.disabled}
           acd: true
           asr: true
       options:
