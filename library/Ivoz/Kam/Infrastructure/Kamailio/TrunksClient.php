@@ -76,6 +76,26 @@ class TrunksClient implements TrunksClientInterface
             return [];
         }
 
+        /**
+         * Expected response format
+         * [
+         *   "l_uuid" => 913512345,
+         *   "l_username" => "unused",
+         *   "l_domain" => "unused",
+         *   "r_username" => "S201707071003224",
+         *   "r_domain" => "trunksip2.domain.es",
+         *   "realm" => "",
+         *   "auth_username" => S201700001003224,
+         *   "auth_password" => "rqf00006n02QZjy",
+         *   "auth_proxy" => "sip:trunksip2.domain.es",
+         *   "expires" => 3600,
+         *   "flags" => 20,
+         *   "diff_expires" => 938,
+         *   "timer_expires" => 1567071127,
+         *   "reg_init" => 1564434542,
+         *   "reg_delay" => 0
+         * ]
+         */
         return (array) $response->result;
     }
 

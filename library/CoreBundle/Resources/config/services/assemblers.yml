@@ -57,7 +57,6 @@ services:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
 
-
   ##########################################
   ## Friend
   ##########################################
@@ -139,3 +138,8 @@ services:
   ## Terminal
   ##########################################
   Ivoz\Provider\Application\Service\Terminal\TerminalDtoAssembler: ~
+
+  ##########################################
+  ## DdiProviderRegistration
+  ##########################################
+  Ivoz\Provider\Application\Service\DdiProviderRegistration\DdiProviderRegistrationDtoAssembler: ~
