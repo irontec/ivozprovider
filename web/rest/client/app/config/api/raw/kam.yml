@@ -4,6 +4,9 @@
 Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
   itemOperations: []
   collectionOperations: []
+  attributes:
+    normalization_context:
+      groups: ['']
 
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   properties:

@@ -8,6 +8,10 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus:
 Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
   itemOperations: []
   collectionOperations: []
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    normalization_context:
+      groups: ['']
 
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   properties:
