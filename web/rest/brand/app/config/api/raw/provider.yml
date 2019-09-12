@@ -707,6 +707,16 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withPatterns'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withPatterns'
   properties:
     brand:
       attributes:
@@ -715,6 +725,8 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    normalization_context:
+      groups: ['withPatterns']
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
