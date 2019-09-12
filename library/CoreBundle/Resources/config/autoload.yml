@@ -24,6 +24,10 @@ services:
   Ivoz\Provider\Domain\Service\:
     resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Domain/Service/*/*'
     tags: [{ name: 'domain.service'}]
+  Ivoz\Provider\Application\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Application/Service/*/*'
+    public: true
+    tags: [{ name: 'application.service'}]
   Ivoz\Provider\Infrastructure\Domain\Service\:
     resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Infrastructure/Domain/Service/*/*'
     tags: [{ name: 'domain.service'}]
