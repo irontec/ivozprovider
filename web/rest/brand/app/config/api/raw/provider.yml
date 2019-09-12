@@ -555,6 +555,16 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
           carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withCarriers'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withCarriers'
   properties:
     brand:
       attributes:
@@ -563,6 +573,8 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    normalization_context:
+      groups: ['withCarriers']
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
