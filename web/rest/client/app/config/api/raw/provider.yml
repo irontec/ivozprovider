@@ -1450,8 +1450,10 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
 
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
-    get: ~
-    put: ~
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withPickupGroups'
     delete: ~
     get_my_profile:
       access_control: '"ROLE_COMPANY_USER" in roles'
@@ -1493,7 +1495,8 @@ Ivoz\Provider\Domain\Model\User\User:
             $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
     get: ~
-    post: ~
+    post:
+      operation_normalization_context: 'withPickupGroups'
     get_my_company_assistants:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
