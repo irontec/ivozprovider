@@ -46,6 +46,18 @@ Feature: Retrieve external call filters
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
           "holidayNumberCountry": null,
-          "outOfScheduleNumberCountry": null
+          "outOfScheduleNumberCountry": null,
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            1
+          ],
+          "whiteListIds": [
+            1
+          ],
+          "blackListIds": [
+            1
+          ]
       }
     """

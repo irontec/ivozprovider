@@ -41,7 +41,10 @@ Feature: Update company
           "outgoingDdi": null,
           "outgoingDdiRule": null,
           "voicemailNotificationTemplate": 1,
-          "faxNotificationTemplate": null
+          "faxNotificationTemplate": null,
+          "featureIds": [
+              3
+          ]
       }
     """
     Then the response status code should be 200
@@ -71,21 +74,13 @@ Feature: Update company
           "language": {
               "iden": "es",
               "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es",
-                  "ca": "es"
-              }
+              "name": "~"
           },
           "defaultTimezone": {
               "tz": "Europe/Andorra",
               "comment": "",
               "id": 1,
-              "label": {
-                  "en": "",
-                  "es": "",
-                  "ca": ""
-              },
+              "label": "~",
               "country": 1
           },
           "brand": "~",
@@ -93,16 +88,8 @@ Feature: Update company
               "code": "ES",
               "countryCode": "+34",
               "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
+              "name": "~",
+              "zone": "~"
           },
           "currency": null,
           "transformationRuleSet": {
@@ -113,11 +100,7 @@ Feature: Update company
               "nationalLen": 9,
               "generateRules": false,
               "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
+              "name": "~",
               "brand": 1,
               "country": 68
           },
@@ -130,6 +113,9 @@ Feature: Update company
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "featureIds": [
+              3
+          ]
       }
     """

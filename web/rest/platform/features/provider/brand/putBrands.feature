@@ -25,7 +25,8 @@ Feature: Manage brands
           "registryData": ""
         },
         "language": 1,
-        "defaultTimezone": 145
+        "defaultTimezone": 145,
+        "features": [1]
       }
     """
     Then the response status code should be 200
@@ -73,7 +74,8 @@ Feature: Manage brands
                   "it": "it"
               },
               "country": 68
-          }
+          },
+          "features": [1]
       }
     """
 
@@ -141,6 +143,7 @@ This is file content
                   "it": "it"
               },
               "country": 68
-          }
+          },
+          "features": []
       }
     """

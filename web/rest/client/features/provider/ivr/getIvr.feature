@@ -139,6 +139,9 @@ Feature: Retrieve IVRs
                   "ca": "Europa"
               }
           },
-          "errorNumberCountry": null
+          "errorNumberCountry": null,
+          "excludedExtensionIds": [
+              1
+          ]
       }
     """

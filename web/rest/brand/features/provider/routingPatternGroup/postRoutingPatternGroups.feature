@@ -12,7 +12,10 @@ Feature: Create routing pattern groups
     """
       {
           "name": "Usansolocity",
-          "description": "Usansolocity"
+          "description": "Usansolocity",
+          "patternIds": [
+              2
+          ]
       }
     """
     Then the response status code should be 201
@@ -24,7 +27,10 @@ Feature: Create routing pattern groups
           "name": "Usansolocity",
           "description": "Usansolocity",
           "id": 3,
-          "brand": 1
+          "brand": 1,
+          "patternIds": [
+              2
+          ]
       }
     """
 
@@ -41,6 +47,9 @@ Feature: Create routing pattern groups
           "name": "Usansolocity",
           "description": "Usansolocity",
           "id": 3,
-          "brand": "~"
+          "brand": "~",
+          "patternIds": [
+              2
+          ]
       }
     """

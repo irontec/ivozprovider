@@ -78,6 +78,7 @@ Feature: Retrieve outgoing routings
               "id": 1,
               "brand": 1
           },
-          "clidCountry": null
+          "clidCountry": null,
+          "carrierIds": []
       }
     """

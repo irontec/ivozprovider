@@ -37,7 +37,8 @@ Feature: Create companies
         "outgoingDdi": 1,
         "outgoingDdiRule": 1,
         "voicemailNotificationTemplate": 1,
-        "faxNotificationTemplate": null
+        "faxNotificationTemplate": null,
+        "featureIds": [1]
       }
     """
     Then the response status code should be 201
@@ -74,7 +75,8 @@ Feature: Create companies
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "featureIds": [1]
       }
     """
 
@@ -109,21 +111,13 @@ Feature: Create companies
           "language": {
               "iden": "es",
               "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es",
-                  "ca": "es"
-              }
+              "name": "~"
           },
           "defaultTimezone": {
               "tz": "Europe/Andorra",
               "comment": "",
               "id": 1,
-              "label": {
-                  "en": "",
-                  "es": "",
-                  "ca": ""
-              },
+              "label": "~",
               "country": 1
           },
           "brand": {
@@ -151,16 +145,8 @@ Feature: Create companies
               "code": "AD",
               "countryCode": "+376",
               "id": 1,
-              "name": {
-                  "en": "Andorra",
-                  "es": "Andorra",
-                  "ca": "Andorra"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
+              "name": "~",
+              "zone": "~"
           },
           "currency": null,
           "transformationRuleSet": {
@@ -171,11 +157,7 @@ Feature: Create companies
               "nationalLen": 9,
               "generateRules": false,
               "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
+              "name": "~",
               "brand": 1,
               "country": 68
           },
@@ -195,6 +177,7 @@ Feature: Create companies
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "featureIds": [1]
       }
     """
