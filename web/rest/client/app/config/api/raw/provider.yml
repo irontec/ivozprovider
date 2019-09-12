@@ -904,6 +904,16 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
             voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withExcludedExtensions'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withExcludedExtensions'
   properties:
     company:
       attributes:
@@ -912,6 +922,8 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withExcludedExtensions']
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
