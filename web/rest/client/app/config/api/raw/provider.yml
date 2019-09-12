@@ -1105,6 +1105,16 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
           forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
 
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withUsers'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withUsers'
   properties:
     company:
       attributes:
@@ -1113,6 +1123,8 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withUsers']
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
