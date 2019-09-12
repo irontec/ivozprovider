@@ -155,8 +155,8 @@ production:
           colsPerRow: 3
           label: _("Geographic Configuration")
           fields:
-            defaultTimezone: 1
             country: 1
+            defaultTimezone: 1
             language: 1
             transformationRuleSet: 2
             currency: 1
