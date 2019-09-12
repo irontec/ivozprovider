@@ -15,8 +15,21 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
     pagination_client_enabled: true
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Brand\Brand:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withFeatures'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withFeatures'
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+    normalization_context:
+      groups: ['withFeatures']
+
 Ivoz\Provider\Domain\Model\Brand\Invoice:
 Ivoz\Provider\Domain\Model\Brand\Logo:
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
