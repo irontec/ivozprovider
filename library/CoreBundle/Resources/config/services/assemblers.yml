@@ -13,6 +13,11 @@ services:
       $serviceContainer: '@service_container'
 
   ##########################################
+  ## Company
+  ##########################################
+  Ivoz\Provider\Application\Service\Company\CompanyDtoAssembler: ~
+
+  ##########################################
   ## Brand
   ##########################################
   Ivoz\Provider\Application\Service\Brand\BrandAssembler:

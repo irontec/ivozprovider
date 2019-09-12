@@ -2,8 +2,42 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
+
 class CompanyDto extends CompanyDtoAbstract
 {
+    const CONTEXT_WITH_FEATURES = 'withFeatures';
+
+    const CONTEXTS_WITH_FEATURES = [
+        self::CONTEXT_WITH_FEATURES,
+        self::CONTEXT_DETAILED
+    ];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Active feature ids"
+     * )
+     */
+    protected $featureIds = [];
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(
+            $context,
+            $role
+        );
+
+        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+            $response['featureIds'] = $this->featureIds;
+        }
+
+        return $response;
+    }
+
     public function denormalize(array $data, string $context, string $role = '')
     {
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -15,6 +49,21 @@ class CompanyDto extends CompanyDtoAbstract
         }
 
         return parent::denormalize($data, $context, $role);
+    }
+
+    /**
+     * @param int[] $featureIds
+     */
+    public function setFeatureIds(array $featureIds)
+    {
+        $this->featureIds = $featureIds;
+        $relFeatures = [];
+        foreach ($featureIds as $id) {
+            $dto = new FeaturesRelCompanyDto();
+            $dto->setFeatureId($id);
+            $relFeatures[] = $dto;
+        }
+        $this->setRelFeatures($relFeatures);
     }
 
     private function filterCompanyReadOnlyFields(array $data): array
@@ -71,6 +120,10 @@ class CompanyDto extends CompanyDtoAbstract
             $response = parent::getPropertyMap($context);
         }
 
+        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+            $response['featureIds'] = 'featureIds';
+        }
+
         unset($response['domainId']);
         if ($role === 'ROLE_BRAND_ADMIN') {
             return self::filterFieldsForBrandAdmin($response);
@@ -119,7 +172,8 @@ class CompanyDto extends CompanyDtoAbstract
             'voicemailNotificationTemplateId',
             'faxNotificationTemplateId',
             'invoiceNotificationTemplateId',
-            'callCsvNotificationTemplateId'
+            'callCsvNotificationTemplateId',
+            'featureIds'
         ];
 
         $response = array_filter(
