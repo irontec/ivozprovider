@@ -299,8 +299,20 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
             voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withInverseRelationships'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withInverseRelationships'
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withInverseRelationships']
     read_access_control:
       inherited:
         conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
