@@ -581,6 +581,16 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
             conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
 
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withInverseRelationships'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withInverseRelationships'
   properties:
     company:
       attributes:
@@ -589,6 +599,8 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withInverseRelationships']
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
