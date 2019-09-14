@@ -104,7 +104,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _('Use <string>$this->terminalModel</strong> to access model data, <strong>$this->terminal</strong> to access terminal data, <strong>$this->user</strong> for the user and <strong>$this->company</strong> for the company.');
+        text: _('Use <strong>$this->terminalModel</strong> to access model data, <strong>$this->terminal</strong> to access terminal data, <strong>$this->user</strong> for the user and <strong>$this->company</strong> for the company.');
 staging:
   _extends: production
 testing:

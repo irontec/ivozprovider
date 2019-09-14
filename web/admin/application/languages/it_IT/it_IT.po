@@ -2694,7 +2694,7 @@ msgstr[0] "File caricato"
 msgstr[1] "File caricati"
 
 msgid ""
-"Use <string>$this->terminalModel</strong> to access model data, <strong>"
+"Use <strong>$this->terminalModel</strong> to access model data, <strong>"
 "$this->terminal</strong> to access terminal data, <strong>$this->user</"
 "strong> for the user and <strong>$this->company</strong> for the company."
 msgstr ""
