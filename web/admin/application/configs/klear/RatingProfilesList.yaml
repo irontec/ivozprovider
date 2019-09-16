@@ -83,6 +83,17 @@ production:
       action: test-company-plans
       class:  ui-silk-telephone
 
+    exportRatingPlansToCsv_dialog: &exportRatingPlansToCsv_dialogLink
+      <<: *RatingPlans
+      title: _("Export to CSV")
+      label: false
+      module: default
+      controller: klear-custom-download-rating-plan
+      action: export-to-csv-dialog
+      class:  ui-silk-bullet-disk
+      forcedValues:
+        company: ${auth.companyId}
+
   commands: &ratingProfiles_commandLink
     exportRatingPlansToCsv_command: &exportRatingPlansToCsv_commandLink
       <<: *RatingPlans
