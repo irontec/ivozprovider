@@ -721,6 +721,9 @@ msgstr "Descargar"
 msgid "Download file"
 msgstr "Descargar fichero"
 
+msgid "Downloading"
+msgstr "Descargando"
+
 msgid "Duplicated prefix"
 msgstr "Prefijo duplicado"
 
@@ -2550,6 +2553,9 @@ msgid ""
 msgstr ""
 "Este importador espera los valores entrecomillados y separados por punto y "
 "coma."
+
+msgid "This may take some minutes"
+msgstr "Esto podría tardar algunos minutos"
 
 msgid ""
 "This prefix will be added to the callee after carrier's numeric "

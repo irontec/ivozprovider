@@ -710,6 +710,9 @@ msgstr "Download"
 msgid "Download file"
 msgstr "Download file"
 
+msgid "Downloading"
+msgstr "Downloading"
+
 msgid "Duplicated prefix"
 msgstr "Duplicated prefix"
 
@@ -2521,6 +2524,9 @@ msgid ""
 msgstr ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
+
+msgid "This may take some minutes"
+msgstr "This may take some minutes"
 
 msgid ""
 "This prefix will be added to the callee after carrier's numeric "
