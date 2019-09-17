@@ -21,7 +21,7 @@ class RoutingTagLifeCycleTest extends KernelTestCase
         $routingTagDto = new RoutingTagDto();
         $routingTagDto
             ->setName('1')
-            ->setTag('2')
+            ->setTag('2#')
             ->setBrandId(1);
 
         return $routingTagDto;
@@ -48,7 +48,7 @@ class RoutingTagLifeCycleTest extends KernelTestCase
         $routingTag = $outgoingRouting->getRoutingTag();
         $routingTagDto = $this->entityTools->entityToDto($routingTag);
 
-        $routingTagDto->setTag('Something');
+        $routingTagDto->setTag('32#');
         $this->entityTools->persistDto(
             $routingTagDto,
             $routingTag,
@@ -85,12 +85,15 @@ class RoutingTagLifeCycleTest extends KernelTestCase
             count($fixtureRoutingTag) + 1,
             $routingTags
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
         $this->addRoutingTag();
         $this->assetChangedEntities([
@@ -109,7 +112,6 @@ class RoutingTagLifeCycleTest extends KernelTestCase
             TrunksLcrRule::class
         ]);
     }
-
 
     /**
      * @test

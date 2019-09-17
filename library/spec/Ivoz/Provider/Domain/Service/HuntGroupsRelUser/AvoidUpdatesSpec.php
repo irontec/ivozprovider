@@ -33,7 +33,7 @@ class AvoidUpdatesSpec extends ObjectBehavior
             ]);
 
         $message = 'Update operation is not allowed on HuntGroupsRelUser';
-        $exception = new \DomainException($message);
+        $exception = new \DomainException($message, 403);
 
         $this
             ->shouldThrow($exception)

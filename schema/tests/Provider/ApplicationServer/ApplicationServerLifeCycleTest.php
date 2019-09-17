@@ -94,18 +94,42 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
 
         $brands = $asRepository->findAll();
         $this->assertCount(count($fixtureApplicationServers) + 1, $brands);
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_applicationServer_has_kamDispatcher();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addApplicationServer();
         $this->assetChangedEntities([
             ApplicationServer::class,
             Dispatcher::class,
         ]);
+    }
+
+    protected function added_applicationServer_has_kamDispatcher()
+    {
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            Dispatcher::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $this->assertEquals(
+            $changelog->getData(),
+            [
+                'setid' => 1,
+                'destination' => 'sip:127.2.2.2:6060',
+                'flags' => 0,
+                'priority' => 0,
+                'attrs' => '',
+                'description' => 'test002',
+                'applicationServerId' => 3,
+                'id' => 3,
+            ]
+        );
     }
 
     /**
@@ -134,37 +158,6 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
     //////////////////////////////////////////
     //
     //////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_applicationServer_has_kamDispatcher()
-    {
-        $this->addApplicationServer();
-
-        /** @var Changelog[] $changelogEntries */
-        $changelogEntries = $this->getChangelogByClass(
-            Dispatcher::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $changelog = $changelogEntries[0];
-
-        $this->assertEquals(
-            $changelog->getData(),
-            [
-                'setid' => 1,
-                'destination' => 'sip:127.2.2.2:6060',
-                'flags' => 0,
-                'priority' => 0,
-                'attrs' => '',
-                'description' => 'test002',
-                'applicationServerId' => 3,
-                'id' => 3,
-            ]
-        );
-    }
 
     /**
      * @test

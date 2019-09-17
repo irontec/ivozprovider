@@ -14,6 +14,12 @@ class InvoiceSchedulerRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->it_finds_pending_schedulers();
+        $this->it_finds_company_ids_in_use();
+    }
+
     public function it_finds_pending_schedulers()
     {
         /** @var InvoiceSchedulerRepository $invoiceSchedulerRepository */
@@ -27,9 +33,6 @@ class InvoiceSchedulerRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_company_ids_in_use()
     {
         /** @var InvoiceSchedulerRepository $invoiceSchedulerRepository */

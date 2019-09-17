@@ -23,6 +23,8 @@ class TransformationRuleSetLifeCycleTest extends KernelTestCase
             ->setGenerateRules(true)
             ->setNameEn('en')
             ->setNameEs('es')
+            ->setNameCa('ca')
+            ->setNameIt('it')
             ->setCountryId(1);
 
         return $transformationRuleSetDto;
@@ -86,14 +88,16 @@ class TransformationRuleSetLifeCycleTest extends KernelTestCase
             count($fixtureTransformationRuleSet) + 1,
             $transformationRuleSets
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addTransformationRuleSet();
         $this->assetChangedEntities([
             TransformationRuleSet::class,
             TransformationRule::class,

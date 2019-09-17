@@ -1,4 +1,41 @@
 # Changelog
+## 2.12
+* Endpoints:
+    - Removed filter parameters not present on response models (except for foreign keys) 
+    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+* Models:
+    - Not nullable brand attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
+    - Added Catalan and Italian to each multi language field group
+
+## 2.11.2
+* Endpoints:
+  - Added endpoints:
+    - /friends/status
+    - /residential_devices/status
+    - /retail_accounts/status
+    - /terminals/status
+  - Removed endpoints:
+    - /my/rating_plan_prices 
+  - /residential_devices
+    - Added param [GET]: _pagination
+  - /retail_accounts
+    - Added param [GET]: _pagination
+  - /users_cdrs
+    - Added param [GET]: friend
+* Models:
+    - UsersCdr:
+        - added attributes: friend  
+
+## 2.11.1
+* Endpoints:
+  - /invoices:
+    - Removed param [PUT]: pdf
+    - Removed content-type [PUT]: multipart/form-data
+* Models:
+  - BillableCall:
+    - added attribute on collection model: id
+  - FeaturesRelBrand:
+    - added attributes on collection model: brand and feature
 
 ## 2.11.0
 

@@ -1,6 +1,6 @@
 Feature: Update services
   In order to manage services
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -16,11 +16,15 @@ Feature: Update services
           "extraArgs": true,
           "name": {
               "en": "english",
-              "es": "ingles"
+              "es": "ingles",
+              "ca": "ingles",
+              "it": "italiano"
           },
           "description": {
               "en": "descEn",
-              "es": "descEs"
+              "es": "descEs",
+              "ca": "descCa",
+              "it": "descIt"
           }
       }
     """
@@ -36,11 +40,15 @@ Feature: Update services
           "id": 1,
           "name": {
               "en": "english",
-              "es": "ingles"
+              "es": "ingles",
+              "ca": "ingles",
+              "it": "italiano"
           },
           "description": {
               "en": "descEn",
-              "es": "descEs"
+              "es": "descEs",
+              "ca": "descCa",
+              "it": "descIt"
           }
       }
     """

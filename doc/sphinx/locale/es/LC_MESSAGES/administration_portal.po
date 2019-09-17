@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 10:08+0200\n"
+"POT-Creation-Date: 2019-08-27 12:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3018,33 +3018,37 @@ msgstr ""
 msgid "Prefix itself"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/routing_tags.rst:27
-msgid "Using routing tags"
+#: ../../administration_portal/brand/routing/routing_tags.rst:26
+msgid "Tag **must** have this format: from 1 to 3 digits ended by # symbol."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:29
-msgid "Once created, routing tags can be used in three different sections:"
+msgid "Using routing tags"
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:31
-msgid "In **client edit screen**, to allow a client to use a routing tag."
+msgid "Once created, routing tags can be used in three different sections:"
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:33
-msgid "Using a non enabled routing tag will cause the call to be declined."
+msgid "In **client edit screen**, to allow a client to use a routing tag."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:35
-msgid "In **Outgoing routings** to modify the way those calls are routed."
+msgid "Using a non enabled routing tag will cause the call to be declined."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_tags.rst:37
+msgid "In **Outgoing routings** to modify the way those calls are routed."
+msgstr ""
+
+#: ../../administration_portal/brand/routing/routing_tags.rst:39
 msgid ""
 "In **client - rating profiles association**, so that different routes "
 "imply different billing."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/routing_tags.rst:39
+#: ../../administration_portal/brand/routing/routing_tags.rst:41
 msgid ""
 "Route tags are only available to wholesale and retail clients at the "
 "moment."
@@ -4228,6 +4232,26 @@ msgid ""
 "understand the difference between these two client types."
 msgstr ""
 
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:3
+msgid "Rating profiles"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:5
+msgid "This section allows the client to:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:7
+msgid "See the list of rating plans and their activation time."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:9
+msgid "Download a CSV with each rating plan."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/rating_profiles.rst:11
+msgid "Simulate a call and guess the cost of a given call."
+msgstr ""
+
 #: ../../administration_portal/client/residential/residential_devices.rst:7
 msgid ""
 "Residential Devices are the main routable option in Residential clients. "
@@ -4390,12 +4414,14 @@ msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:80
 #: ../../administration_portal/client/vpbx/users.rst:89
-msgid "Max Calls"
+msgid "Call waiting"
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:82
 #: ../../administration_portal/client/vpbx/users.rst:91
-msgid "Limits the number of concurrent received calls. Set 0 for unlimited calls."
+msgid ""
+"Limits received calls when already handling this number of calls. Set 0 "
+"for disabling."
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:83
@@ -4573,26 +4599,6 @@ msgstr ""
 msgid ""
 "The goal of this section will be describe each of the configuration "
 "settings associated with Retail clients included in IvozProvider:"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:3
-msgid "Rating profiles"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:5
-msgid "This section allows the client to:"
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:7
-msgid "See the list of rating plans and their activation time."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:9
-msgid "Download a CSV with each rating plan."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/rating_profiles.rst:11
-msgid "Simulate a call and guess the cost of a given call."
 msgstr ""
 
 #: ../../administration_portal/client/retail/retail_accounts.rst:5
@@ -7022,6 +7028,10 @@ msgid ""
 "destination with 111 prefix and 777777777 when not using any prefix."
 msgstr ""
 
+#: ../../administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.rst:65
+msgid "Prefix **must** have this format: from 1 to 3 digits ended by * symbol."
+msgstr ""
+
 #: ../../administration_portal/client/vpbx/user_configuration/pick_up_groups.rst:5
 msgid "Pick up groups"
 msgstr ""
@@ -8355,3 +8365,44 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
+
+#~ msgid "Max Calls"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Limits the number of concurrent received"
+#~ " calls. Set 0 for unlimited calls."
+#~ msgstr ""
+
+#~ msgid "Let's imagine three calendars with the following configuration:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "From this moment on, the calendar "
+#~ "has the 1st of January of 2016 "
+#~ "as holiday date with the locution "
+#~ "\"Happy New Year\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "But there are some cases when a"
+#~ " single outgoing DDI is not enough,"
+#~ " and the presented DDI depends on "
+#~ "the called number. To archive this "
+#~ "dynamic outgoing DDI selection you can"
+#~ " use Outgoing DDI rules."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before creating a new rule, it "
+#~ "would be required to first group "
+#~ "the destination numbers in :ref:`match_lists`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Current implementation of Outgoing DDI "
+#~ "rules won't work for diverted calls "
+#~ "(out of schedule, holidays or user's "
+#~ "call forward settings)."
+#~ msgstr ""
+

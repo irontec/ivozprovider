@@ -1,6 +1,6 @@
 Feature: Manage brands
   In order to manage brands
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -58,7 +58,9 @@ Feature: Manage brands
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -67,7 +69,9 @@ Feature: Manage brands
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }

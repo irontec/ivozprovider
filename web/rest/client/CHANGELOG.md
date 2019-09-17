@@ -1,4 +1,59 @@
 # Changelog
+## 2.12
+* Endpoints:
+    - Removed filter parameters not present on response models (except for foreign keys) 
+    - Added [exists] filter modificator (company[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+  - Removed endpoints:
+    - /residential_devices [POST]
+    - /residential_devices/{id} [DELETE]
+    - /retail_accounts [POST]
+    - /retail_accounts/{id} [DELETE]
+    
+* Models:
+    - Not nullable company attributes have been deprecated, will be removed in 2.13, as they can be resolved automatically. Value will be automatically set if the attribute is not found in the payload, otherwise, will maintain the user's value.
+    - Added Catalan and Italian to each multi language field group
+    - User:
+        - Removed tokenKey attribute
+
+## 2.11.2
+* Endpoints:
+  - Added endpoints:
+    - /rating_plan_groups/{id}/prices
+  - /rating_profiles
+    - Added param [GET]: ratingPlanGroup
+
+* Models:
+    - RatingProfile:
+        - Added required attribute: ratingPlanGroup
+    - User:
+        - Marked tokenKey attribute as deprecated (will be removed in 2.12)   
+
+## 2.11.1
+* Endpoints:
+  - /conditional_routes_conditions_rel_calendars:
+    - Removed method: PUT
+  - /conditional_routes_conditions_rel_matchlists:
+    - Removed method: PUT
+  - /conditional_routes_conditions_rel_route_locks:
+    - Removed method: PUT
+  - /conditional_routes_conditions_rel_schedules:
+    - Removed method: PUT
+  - /rating_profiles:
+    - Removed methods: POST, PUT and DELETE
+  - /call_csv_reports:
+    - Removed param [PUT]: Csv
+    - Removed content-type [PUT]: multipart/form-data
+  - /invoices/{id}/pdf has being removed
+  - /locutions:
+    - removed param [POST and PUT]: EncodedFile
+  - /music_on_holds:
+    - removed param [POST and PUT]: EncodedFile
+    
+* Models:
+  - BillableCall:
+    - added attribute on collection model: id
+  - RouteLock:
+    - added attributes on collection model: name and open
 
 ## 2.11.0
 

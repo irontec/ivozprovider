@@ -1,6 +1,6 @@
 Feature: Retrieve brandService
   In order to manage brand services
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -49,11 +49,15 @@ Feature: Retrieve brandService
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }

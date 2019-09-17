@@ -12,9 +12,12 @@ class QueueRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @test
-     */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_queueId();
+    }
+
     public function its_instantiable()
     {
         /** @var QueueRepository $repository */
@@ -28,9 +31,6 @@ class QueueRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_queueId()
     {
         /** @var QueueRepository $repository */

@@ -1,4 +1,4 @@
-Feature: Create brand servers
+Feature: Create call csv reports
   In order to manage call CSV reports
   As a brand admin
   I need to be able to create them through the API.
@@ -14,8 +14,7 @@ Feature: Create brand servers
           "sentTo": "",
           "inDate": "2019-06-01 02:00:00",
           "outDate": "2019-06-02 01:59:59",
-          "createdOn": "2019-06-03 07:59:59",
-          "brand": 1
+          "createdOn": "2019-06-03 07:59:59"
       }
     """
     Then the response status code should be 405

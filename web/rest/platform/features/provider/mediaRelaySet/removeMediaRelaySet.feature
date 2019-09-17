@@ -1,6 +1,6 @@
 Feature: Manage media relay sets
   In order to manage media relay sets
-  As an super admin
+  as a super admin
   I need to be able to delete them through the API.
 
   @createSchema

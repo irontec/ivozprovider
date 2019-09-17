@@ -87,8 +87,8 @@ Basic Configuration
         When this setting is enabled, the user won't receive any call but can 
         still place calls.
 
-    Max Calls
-        Limits the number of concurrent received calls. Set 0 for unlimited calls.
+    Call waiting
+        Limits received calls when already handling this number of calls. Set 0 for disabling.
 
     Calls from non-granted IPs:
         Enable calling from non-granted IP addresses for this user. 

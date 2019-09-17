@@ -15,11 +15,13 @@ Feature: Update destination rate group
           "id": 1,
           "name": {
               "en": "Updated Standard",
-              "es": "Standard Actualizado"
+              "es": "Standard Actualizado",
+              "ca": "Standard Actualizado"
           },
           "description": {
               "en": "New Description",
-              "es": "Descripción nueva"
+              "es": "Descripción nueva",
+              "ca": "Descripción nueva"
           },
           "file": {
               "fileSize": null,
@@ -27,7 +29,6 @@ Feature: Update destination rate group
               "baseName": null,
               "importerArguments": []
           },
-          "brand": 1,
           "currency": 2
       }
     """
@@ -41,11 +42,13 @@ Feature: Update destination rate group
           "id": 1,
           "name": {
               "en": "Updated Standard",
-              "es": "Standard Actualizado"
+              "es": "Standard Actualizado",
+              "ca": "Standard Actualizado"
           },
           "description": {
               "en": "New Description",
-              "es": "Descripci\u00f3n nueva"
+              "es": "Descripci\u00f3n nueva",
+              "ca": "Descripci\u00f3n nueva"
           },
           "file": {
               "fileSize": null,

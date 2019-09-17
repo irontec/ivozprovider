@@ -28,6 +28,22 @@ services:
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
     tags:  [ 'api_platform.filter' ]
 
+
+  ################################################
+  ## Date:
+  ## ?property[exists]=value
+  ################################################
+  ivoz.api.filter.exists:
+    parent: 'api_platform.doctrine.orm.date_filter'
+    class: Ivoz\Api\Doctrine\Orm\Filter\ExistsFilter
+    public: false
+    shared: false
+    arguments:
+      $properties: ~
+      $requestStack: '@request_stack'
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+    tags:  [ 'api_platform.filter' ]
+
   ################################################
   ## Boolean:
   ## ?property=[true|false|1|0]

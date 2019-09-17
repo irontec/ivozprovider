@@ -1,6 +1,6 @@
 Feature: Retrieve services
   In order to manage services
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -57,11 +57,15 @@ Feature: Retrieve services
           "id": 1,
           "name": {
               "en": "en",
-              "es": "en"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "description": {
               "en": "en",
-              "es": "en"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           }
       }
     """

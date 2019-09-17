@@ -17,7 +17,6 @@ Feature: Update Ddis
           "routeType": null,
           "billInboundCalls": false,
           "friendValue": "",
-          "company": 1,
           "conferenceRoom": null,
           "language": null,
           "queue": null,
@@ -59,11 +58,13 @@ Feature: Update Ddis
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "España",
+                  "ca": "España"
               },
               "zone": {
                   "en": "Europe",
-                  "es": "Europa"
+                  "es": "Europa",
+                  "ca": "Europa"
               }
           },
           "residentialDevice": null,

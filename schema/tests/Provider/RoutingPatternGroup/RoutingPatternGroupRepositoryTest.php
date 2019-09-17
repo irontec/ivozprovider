@@ -15,6 +15,12 @@ class RoutingPatternGroupRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->its_finds_brandId_and_name();
+    }
+
     public function its_instantiable()
     {
         /** @var RoutingPatternGroupRepository $repository */
@@ -28,9 +34,6 @@ class RoutingPatternGroupRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function its_finds_brandId_and_name()
     {
         /** @var RoutingPatternGroupRepository $repository */

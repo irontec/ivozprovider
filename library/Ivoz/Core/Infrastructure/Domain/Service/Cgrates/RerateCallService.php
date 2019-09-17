@@ -6,6 +6,7 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Psr\Log\LoggerInterface;
+use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class RerateCallService extends AbstractApiBasedService implements RerateCallServiceInterface
 {
@@ -30,7 +31,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     protected $logger;
 
     public function __construct(
-        CgrRpcClient $jsonRpcClient,
+        ClientInterface $jsonRpcClient,
         BillableCallRepository $billableCallRepository,
         TrunksCdrRepository $trunksCdrRepository,
         ProcessExternalCdr $processExternalCdr,

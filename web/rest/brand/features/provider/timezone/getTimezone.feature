@@ -144,7 +144,7 @@ Feature: Retrieve timezones
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+    And the JSON should be like:
     """
       {
           "tz": "Europe/Madrid",
@@ -152,21 +152,11 @@ Feature: Retrieve timezones
           "id": 145,
           "label": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
-          "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa"
-              }
-          }
+          "country": "~"
       }
     """
 

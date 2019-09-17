@@ -12,6 +12,7 @@ RUN apt-get install --assume-yes --force-yes \
         git \
         unzip \
         curl \
+        wget \
         sqlite3 \
         sphinx-intl \
         nodejs \
@@ -48,6 +49,11 @@ RUN npm install -g swagger-cli
 USER $UNAME
 RUN mkdir -p /opt/irontec
 RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+
+# Install phpunit 6.5.14
+RUN mkdir -p /opt/phpunit/
+RUN wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt/phpunit/phpunit.zip
+RUN unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
 
 # Get dependencies
 RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress

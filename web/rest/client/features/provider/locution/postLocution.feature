@@ -15,8 +15,7 @@ Content-Disposition: form-data; name="brand"
 
       {
           "name": "newLocution",
-          "status": null,
-          "company": 1
+          "status": null
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="originalFile"; filename="uploadable"

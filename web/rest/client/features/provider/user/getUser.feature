@@ -49,7 +49,6 @@ Feature: Retrieve users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
-          "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
           "gsQRCode": false,
           "id": 1,
           "company": "~",
@@ -66,7 +65,8 @@ Feature: Retrieve users
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "country": 68
           },

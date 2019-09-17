@@ -16,7 +16,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface

@@ -61,18 +61,20 @@ Feature: Retrieve outgoing routings
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1
           },
           "routingPatternGroup": null,
           "routingTag": {
               "name": "TagName",
-              "tag": "aTag",
+              "tag": "123#",
               "id": 1,
               "brand": 1
           },

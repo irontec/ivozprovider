@@ -30,7 +30,8 @@ abstract class AvoidEntityUpdatesAbstract
             $className = $fqdnSegments[$classNamePosition];
 
             throw new \DomainException(
-                'Update operation is not allowed on ' . $className
+                'Update operation is not allowed on ' . $className,
+                403
             );
         }
     }

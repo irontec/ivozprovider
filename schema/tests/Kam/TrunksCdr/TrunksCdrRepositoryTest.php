@@ -15,6 +15,15 @@ class TrunksCdrRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_callid();
+        $this->it_finds_one_by_callid();
+        $this->it_finds_unparsedCalls();
+        $this->it_resets_parsed_calls();
+    }
+
     public function its_instantiable()
     {
         /** @var TrunksCdrRepository $repository */
@@ -28,9 +37,6 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_callid()
     {
         /** @var TrunksCdrRepository $repository */
@@ -52,9 +58,6 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_callid()
     {
         /** @var TrunksCdrRepository $repository */
@@ -71,9 +74,6 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_unparsedCalls()
     {
         /** @var TrunksCdrRepository $repository */
@@ -97,9 +97,6 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         }
     }
 
-    /**
-     * @test
-     */
     public function it_resets_parsed_calls()
     {
         /** @var TrunksCdrRepository $repository */

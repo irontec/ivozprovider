@@ -1,6 +1,6 @@
 Feature: Create brand servers
   In order to manage brand services
-  As an super admin
+  as a super admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -49,11 +49,15 @@ Feature: Create brand servers
               "id": 4,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }

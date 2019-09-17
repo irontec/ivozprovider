@@ -48,11 +48,13 @@ Feature: Create brand servers
               "id": 4,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               }
           }
       }

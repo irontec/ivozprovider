@@ -2,6 +2,12 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -11,6 +17,8 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
     write_access_control:
       ROLE_BRAND_ADMIN:
         raw: "id > 0 or id === null"
+        brand:
+          eq: "user.getBrand().getId()"
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
@@ -21,9 +29,9 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
     get:
       swagger_context:
         produces:
-          - 'application/json'
-          - 'application/ld+json'
-          - 'text/csv'
+        - 'application/json'
+        - 'application/ld+json'
+        - 'text/csv'
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -56,29 +64,31 @@ Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
     read_access_control:
       ROLE_BRAND_ADMIN:
         or:
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-          - inherited:
-              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+        - company:
+            in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        - inherited:
+            carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - or:
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-          - company:
-              isNull: ~
-        - or:
-          - inherited:
-              notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - notificationTemplate:
-              isNull: ~
-        - or:
-          - inherited:
-              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
-          - carrier:
-              isNull: ~
+      - or:
+        - company:
+            in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        - company:
+            isNull: ~
+      - or:
+        - inheritedOrNull:
+            notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+      - or:
+        - inheritedOrNull:
+            carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -104,16 +114,14 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              isNull: ~
-        - or:
-          - inherited:
-              callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - callCsvNotificationTemplate:
-              isNull: ~
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - company:
+            isNull: ~
+      - or:
+        - inheritedOrNull:
+            callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
 
 Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
   itemOperations:
@@ -128,16 +136,14 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              isNull: ~
-        - or:
-          - inherited:
-              callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
-          - callCsvScheduler:
-              isNull: ~
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - company:
+            isNull: ~
+      - or:
+        - inheritedOrNull:
+            callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
 
 Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
   attributes:
@@ -153,6 +159,11 @@ Ivoz\Provider\Domain\Model\Company\Company:
       attributes:
         swagger_context:
           readOnly: true
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -161,31 +172,23 @@ Ivoz\Provider\Domain\Model\Company\Company:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-            - brand:
-                eq: "user.getBrand().getId()"
-            - inherited:
-                transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
-        - or:
-          - inherited:
-              voicemailNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - voicemailNotificationTemplate:
-              isNull: ~
-        - or:
-          - inherited:
-              callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - callCsvNotificationTemplate:
-              isNull: ~
-        - or:
-          - inherited:
-              invoiceNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - invoiceNotificationTemplate:
-              isNull: ~
-        - or:
-          - inherited:
-              faxNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
-          - faxNotificationTemplate:
-              isNull: ~
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - inherited:
+            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+      - or:
+        - inheritedOrNull:
+            voicemailNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+      - or:
+        - inheritedOrNull:
+            callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+      - or:
+        - inheritedOrNull:
+            invoiceNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+      - or:
+        - inheritedOrNull:
+            faxNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
 
 Ivoz\Provider\Domain\Model\Currency\Currency:
   itemOperations:
@@ -217,6 +220,12 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     access_control: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -226,6 +235,12 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
         in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -234,13 +249,19 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - inherited:
-              transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - inherited:
+            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -248,14 +269,20 @@ Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
         ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
 
 Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress:
-    attributes:
-      access_control: '"ROLE_BRAND_ADMIN" in roles'
-      read_access_control:
-        inherited:
-          ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
 
 Ivoz\Provider\Domain\Model\Destination\Name:
 Ivoz\Provider\Domain\Model\Destination\Destination:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -277,6 +304,12 @@ Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\Name:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\Description:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -297,6 +330,12 @@ Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
     get: ~
   collectionOperations:
     get: ~
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -324,6 +363,12 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -355,7 +400,33 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
         fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
         invoice: 'Ivoz\Provider\Domain\Model\Invoice\Invoice'
 
+Ivoz\Provider\Domain\Model\Friend\Friend:
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+  itemOperations: []
+  collectionOperations:
+    get_status_collection:
+      method: 'GET'
+      path: 'friends/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -364,20 +435,24 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-            - brand:
-                eq: "user.getBrand().getId()"
-            - company:
-                in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-            - inherited:
-                invoiceTemplate: 'Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate'
-        - or:
-            - inherited:
-                numberSequence: 'Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence'
-            - numberSequence:
-                isNull: ~
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - company:
+            in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+        - inherited:
+            invoiceTemplate: 'Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate'
+      - or:
+        - inheritedOrNull:
+            numberSequence: 'Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence'
 
 Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -386,6 +461,12 @@ Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -407,11 +488,11 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        - or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - brand:
-              isNull: ~
+      - or:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - brand:
+            isNull: ~
 
 Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent:
   attributes:
@@ -421,6 +502,12 @@ Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateConte
         notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
 
 Ivoz\Provider\Domain\Model\Carrier\Carrier:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -429,13 +516,19 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-            - brand:
-                eq: "user.getBrand().getId()"
-            - inherited:
-                transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - inherited:
+            transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -450,6 +543,12 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
           carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -458,33 +557,31 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-            - brand:
-                eq: "user.getBrand().getId()"
-        - or:
-            - inherited:
-                carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
-            - carrier:
-                isNull: ~
-        - or:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-          - company:
-              isNull: ~
-        - or:
-          - inherited:
-              routingPattern: 'Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern'
-          - routingPattern:
-              isNull: ~
-        - or:
-          - inherited:
-              routingPatternGroup: 'Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup'
-          - routingPatternGroup:
-              isNull: ~
+      - and:
+        - brand:
+            eq: "user.getBrand().getId()"
+      - or:
+        - inheritedOrNull:
+            carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+      - or:
+        - inheritedOrNull:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            routingPattern: 'Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern'
+      - or:
+        - inheritedOrNull:
+            routingPatternGroup: 'Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup'
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Name:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Description:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -508,48 +605,90 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        - or:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-          - inherited:
-              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+      - or:
+        - inherited:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+        - inherited:
+            carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
     write_access_control:
       ROLE_BRAND_ADMIN:
-        - and:
-          - inherited:
-              ratingPlanGroup: 'Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup'
-        - or:
-          - inherited:
-              company: 'Ivoz\Provider\Domain\Model\Company\Company'
-          - company:
-              isNull: ~
-        - or:
-          - inherited:
-              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
-          - carrier:
-              isNull: ~
+      - and:
+        - inherited:
+            ratingPlanGroup: 'Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup'
+      - or:
+        - inheritedOrNull:
+            company: 'Ivoz\Provider\Domain\Model\Company\Company'
+      - or:
+        - inheritedOrNull:
+            carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    pagination_client_enabled: true
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'retail_accounts/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    pagination_client_enabled: true
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    post: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'residential_devices/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -579,6 +718,12 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRe
 Ivoz\Provider\Domain\Model\RoutingPattern\Name:
 Ivoz\Provider\Domain\Model\RoutingPattern\Description:
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -587,6 +732,12 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -602,6 +753,26 @@ Ivoz\Provider\Domain\Model\Service\Service:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 
+Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    pagination_client_enabled: true
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+  itemOperations: []
+  collectionOperations:
+    get_status_collection:
+      method: 'GET'
+      path: 'terminals/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
     get: ~
@@ -616,11 +787,11 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        - or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - brand:
-              isNull: ~
+      - or:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - brand:
+            isNull: ~
     write_access_control:
       ROLE_BRAND_ADMIN:
         brand:

@@ -138,7 +138,7 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     outgoingDdi:
       title: _('Fallback Outgoing DDI')
       type: select
@@ -153,7 +153,7 @@ production:
             template: '%ddie164%'
           order:
             Ddi.ddie164: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
       info:
         type: box
         position: left
@@ -340,7 +340,7 @@ production:
             template: '%name${lang}%'
           order:
             Language.name.${lang}: asc
-        'null': _("Company's default")
+        'null': _("Client's default")
     statusIcon:
       title: _('Status')
       type: ghost

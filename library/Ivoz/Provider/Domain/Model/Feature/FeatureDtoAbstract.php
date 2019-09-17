@@ -30,6 +30,16 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
      */
     private $nameEs = '';
 
+    /**
+     * @var string
+     */
+    private $nameCa = '';
+
+    /**
+     * @var string
+     */
+    private $nameIt = '';
+
 
     use DtoNormalizer;
 
@@ -50,7 +60,7 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
         return [
             'iden' => 'iden',
             'id' => 'id',
-            'name' => ['en','es']
+            'name' => ['en','es','ca','it']
         ];
     }
 
@@ -64,7 +74,9 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
+                'es' => $this->getNameEs(),
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ]
         ];
     }
@@ -147,5 +159,45 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     public function getNameEs()
     {
         return $this->nameEs;
+    }
+
+    /**
+     * @param string $nameCa
+     *
+     * @return static
+     */
+    public function setNameCa($nameCa = null)
+    {
+        $this->nameCa = $nameCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCa()
+    {
+        return $this->nameCa;
+    }
+
+    /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
     }
 }

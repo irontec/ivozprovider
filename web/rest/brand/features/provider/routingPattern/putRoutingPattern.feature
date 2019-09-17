@@ -14,11 +14,15 @@ Feature: Update routing patterns
           "prefix": "+349",
           "name": {
               "en": "englishName",
-              "es": "nombreEspañol"
+              "es": "nombreEspañol",
+              "ca": "nombreCatala",
+              "it": "nomeItaliano"
           },
           "description": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "brand": 1
       }
@@ -33,11 +37,15 @@ Feature: Update routing patterns
           "id": 1,
           "name": {
               "en": "englishName",
-              "es": "nombreEspañol"
+              "es": "nombreEspañol",
+              "ca": "nombreCatala",
+              "it": "nomeItaliano"
           },
           "description": {
               "en": "en",
-              "es": "es"
+              "es": "es",
+              "ca": "ca",
+              "it": "it"
           },
           "brand": "~"
       }

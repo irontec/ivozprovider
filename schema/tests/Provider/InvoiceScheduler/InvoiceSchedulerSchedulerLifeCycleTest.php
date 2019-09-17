@@ -92,53 +92,24 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
 
         $brands = $invoiceScheduler->findAll();
         $this->assertCount(count($fixtureInvoiceSchedulers) + 1, $brands);
+
+        ///////////////////////////
+        ///
+        ///////////////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_invoiceScheduler_has_next_execution();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addInvoiceScheduler();
         $this->assetChangedEntities([
             InvoiceScheduler::class
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
+    protected function added_invoiceScheduler_has_next_execution()
     {
-        $this->updateInvoiceScheduler();
-        $this->assetChangedEntities([
-            InvoiceScheduler::class
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeInvoiceScheduler();
-        $this->assetChangedEntities([
-            InvoiceScheduler::class
-        ]);
-    }
-
-    /////////////////////////////////////////////////
-    ///
-    /////////////////////////////////////////////////
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_invoiceScheduler_has_next_execution()
-    {
-        $this->addInvoiceScheduler();
-
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             InvoiceScheduler::class
@@ -178,5 +149,27 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
         );
 
         $this->assertNotEmpty($diff['nextExecution']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateInvoiceScheduler();
+        $this->assetChangedEntities([
+            InvoiceScheduler::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeInvoiceScheduler();
+        $this->assetChangedEntities([
+            InvoiceScheduler::class
+        ]);
     }
 }

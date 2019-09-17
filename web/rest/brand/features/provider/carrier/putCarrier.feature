@@ -14,7 +14,6 @@ Feature: Update carriers
           "description": "Artemis-Updated",
           "name": "Artemis-Updated",
           "externallyRated": true,
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """
@@ -41,7 +40,8 @@ Feature: Update carriers
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca"
               },
               "brand": 1,
               "country": 68

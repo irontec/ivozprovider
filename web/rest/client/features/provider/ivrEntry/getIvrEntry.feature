@@ -29,7 +29,7 @@ Feature: Retrieve ivr entries
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+    And the JSON should be like:
     """
       {
           "entry": "test",
@@ -77,18 +77,6 @@ Feature: Retrieve ivr entries
           "extension": null,
           "voiceMailUser": null,
           "conditionalRoute": null,
-          "numberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa"
-              }
-          }
+          "numberCountry": "~"
       }
     """

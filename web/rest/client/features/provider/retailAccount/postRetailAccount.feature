@@ -16,44 +16,7 @@ Feature: Create retail accounts
           "transformationRuleSet": 1,
           "outgoingDdi": 1,
           "transport": "udp",
-          "password": "ky7rVWX99_",
-          "company": 1
+          "password": "ky7rVWX99_"
       }
     """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
-      {
-          "name": "testPostResidential",
-          "description": "",
-          "transport": "udp",
-          "password": "ky7rVWX99_",
-          "id": 2,
-          "company": 1,
-          "transformationRuleSet": 1,
-          "outgoingDdi": 1
-      }
-    """
-
-  Scenario: Retrieve created retail account
-    Given I add Company Authorization header
-     When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "retail_accounts/2"
-     Then the response status code should be 200
-      And the response should be in JSON
-      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
-    """
-      {
-          "name": "testPostResidential",
-          "description": "",
-          "transport": "udp",
-          "password": "ky7rVWX99_",
-          "id": 2,
-          "company": "~",
-          "transformationRuleSet": "~",
-          "outgoingDdi": "~"
-      }
-    """
+    Then the response status code should be 405

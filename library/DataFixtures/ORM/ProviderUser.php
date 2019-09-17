@@ -33,7 +33,6 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setVoicemailEnabled(true);
             $this->setVoicemailSendMail(true);
             $this->setVoicemailAttachSound(true);
-            $this->setTokenKey("4c18027290f0c1ed517680bb4bcf2402");
             $this->setGsQRCode(false);
         })->call($item1);
 
@@ -59,7 +58,6 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setVoicemailEnabled(true);
             $this->setVoicemailSendMail(true);
             $this->setVoicemailAttachSound(true);
-            $this->setTokenKey("10fd9fbe1c6861fb0a14a57e78f871c5");
             $this->setGsQRCode(false);
         })->call($item2);
 

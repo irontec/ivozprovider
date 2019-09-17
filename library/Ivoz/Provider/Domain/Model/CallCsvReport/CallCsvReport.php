@@ -35,11 +35,18 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'Csv'
+        $fileObjects = [
+            'Csv' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

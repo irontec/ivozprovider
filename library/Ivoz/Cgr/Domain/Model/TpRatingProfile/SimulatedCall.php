@@ -18,7 +18,9 @@ use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 class SimulatedCall
 {
     const ERROR_UNAUTHORIZED_DESTINATION = 1;
+    const ERROR_UNAUTHORIZED_DESTINATION_MSG = 'SERVER_ERROR: UNAUTHORIZED_DESTINATION';
     const ERROR_NO_RATING_PLAN = 2;
+    const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
     const FALLBACK_ERROR_MSG = 'There was a problem';
 
     protected $errorCode;
@@ -205,16 +207,20 @@ class SimulatedCall
         /** @var TpRatingPlan $tpRatingPlan */
         $tpRatingPlan = $tpRatingPlansRepository->findOneByTag($ratingPlanTag);
 
-        $instance->tpRatingPlanDto = $entityTools->entityToDto($tpRatingPlan);
+        if ($tpRatingPlan) {
+            $instance->tpRatingPlanDto = $entityTools->entityToDto($tpRatingPlan);
+        }
 
-        if ($errorMsg === 'SERVER_ERROR: UNAUTHORIZED_DESTINATION') {
+        if ($errorMsg === self::ERROR_UNAUTHORIZED_DESTINATION_MSG) {
             $instance->errorCode = self::ERROR_UNAUTHORIZED_DESTINATION;
+
             return $instance;
         }
 
-        $emptyDestinationRateMsg = 'NOT_FOUND:RatingPlanId:';
+        $emptyDestinationRateMsg = self::ERROR_NO_RATING_PLAN_MSG;
         if (substr($errorMsg, 0, strlen($emptyDestinationRateMsg)) === $emptyDestinationRateMsg) {
             $instance->errorCode = self::ERROR_NO_RATING_PLAN;
+
             return $instance;
         }
 

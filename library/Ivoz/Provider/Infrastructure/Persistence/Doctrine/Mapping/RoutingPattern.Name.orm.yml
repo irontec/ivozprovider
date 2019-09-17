@@ -15,3 +15,17 @@ Ivoz\Provider\Domain\Model\RoutingPattern\Name:
       options:
         fixed: false
       column: name_es
+    ca:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+      column: name_ca
+    it:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+      column: name_it

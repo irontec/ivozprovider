@@ -1,6 +1,6 @@
 Feature: Update media relay sets
   In order to manage media relay sets
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema

@@ -13,8 +13,7 @@ Feature: Update fixed costs
       {
           "name": "Monitoring upgraded",
           "description": "Something else",
-          "cost": 1.2,
-          "brand": 1
+          "cost": 1.2
       }
     """
     Then the response status code should be 200

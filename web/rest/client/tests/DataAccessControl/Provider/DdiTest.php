@@ -36,8 +36,9 @@ class DdiTest extends KernelTestCase
             [
                 [
                     'company',
-                    'in',
-                    'CompanyRepository([["id","eq","user.getCompany().getId()"]])']
+                    'eq',
+                    'user.getCompany().getId()'
+                ]
             ]
         );
     }
@@ -60,8 +61,8 @@ class DdiTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -84,7 +85,7 @@ class DdiTest extends KernelTestCase
                         [
                             'ivr',
                             'in',
-                            'IvrRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'IvrRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'ivr',
@@ -98,7 +99,7 @@ class DdiTest extends KernelTestCase
                         [
                             'huntGroup',
                             'in',
-                            'HuntGroupRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'huntGroup',
@@ -140,7 +141,7 @@ class DdiTest extends KernelTestCase
                         [
                             'queue',
                             'in',
-                            'QueueRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'QueueRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'queue',
@@ -182,7 +183,7 @@ class DdiTest extends KernelTestCase
                         [
                             'conditionalRoute',
                             'in',
-                            'ConditionalRouteRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ConditionalRouteRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'conditionalRoute',
@@ -196,7 +197,7 @@ class DdiTest extends KernelTestCase
                         [
                             'externalCallFilter',
                             'in',
-                            'ExternalCallFilterRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'ExternalCallFilterRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'externalCallFilter',

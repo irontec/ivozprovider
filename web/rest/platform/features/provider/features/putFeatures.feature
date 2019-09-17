@@ -1,6 +1,6 @@
 Feature: Update features
   In order to manage features
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -14,7 +14,9 @@ Feature: Update features
           "iden": "updatedQueues",
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -28,7 +30,9 @@ Feature: Update features
           "id": 1,
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """

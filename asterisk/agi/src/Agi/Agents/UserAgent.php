@@ -61,7 +61,7 @@ class UserAgent implements AgentInterface
         $outgoingDDIRule = $this->user->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
             // Get calling Prefix if header is present
-            $prefix = $this->agi->getSIPHeader('X-Info-Prefix');
+            $prefix = $this->agi->getSIPHeader('X-Info-DDI-Prefix');
 
             $this->agi->verbose("Checking %s for destination %s and prefix %s", $outgoingDDIRule, $destination, $prefix);
 

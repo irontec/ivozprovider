@@ -34,7 +34,6 @@ class UserLifeCycleTest extends KernelTestCase
             ->setVoicemailEnabled(true)
             ->setVoicemailSendMail(true)
             ->setVoicemailAttachSound(true)
-            ->setTokenKey('4c18027290f0c1ed517680bb4bcf2402')
             ->setGsQRCode(false)
             ->setCompanyId(1)
             ->setTransformationRuleSetId(1)
@@ -107,14 +106,16 @@ class UserLifeCycleTest extends KernelTestCase
             count($fixtureUser) + 1,
             $users
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addUser();
         $this->assetChangedEntities([
             User::class,
             Voicemail::class,

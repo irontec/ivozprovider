@@ -1,6 +1,6 @@
 Feature: Create features
   In order to manage features
-  As an super admin
+  as a super admin
   I need to be able to create them through the API.
 
   @createSchema
@@ -14,7 +14,9 @@ Feature: Create features
           "iden": "newFeature",
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -28,7 +30,9 @@ Feature: Create features
           "id": 10,
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """
@@ -47,7 +51,9 @@ Feature: Create features
           "id": 10,
           "name": {
               "en": "name",
-              "es": "nombre"
+              "es": "nombre",
+              "ca": "nombre",
+              "it": "nome"
           }
       }
     """

@@ -1,10 +1,27 @@
 # Changelog
 
+## 2.12
+* Endpoints:
+    - Removed filter parameters not present on response models (except for foreign keys) 
+    - Added [exists] filter modificator (brand[exists] for instance) on nullable foreign keys. This allows to filter by IS NULL / IS NOT NULL conditions 
+
+* Models:
+    -  Added Catalan and Italian to each multi language field group
+
+## 2.11.1
+* Endpoints:
+    - /invoices and invoices/{id} have being removed
+    - /invoices/{id}\/pdf has being removed
+* Models:
+  - BillableCall:
+    - added attribute on collection model: id
+  - FeaturesRelBrand:
+    - added attributes on collection model: brand and feature
+
 ## 2.11.0
 
 * Bugfixes:
     - Fixed roles on refreshed token
-
 * Endpoints:
     - /brands: 
       - Added file upload handler: POST and PUT

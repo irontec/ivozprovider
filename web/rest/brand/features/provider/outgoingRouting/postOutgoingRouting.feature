@@ -18,7 +18,6 @@ Feature: Create outgoing routings
           "prefix": null,
           "forceClid": false,
           "clid": null,
-          "brand": 1,
           "company": 2,
           "carrier": 1,
           "routingPattern": 1,

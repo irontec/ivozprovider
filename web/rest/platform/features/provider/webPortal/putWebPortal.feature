@@ -1,6 +1,6 @@
 Feature: Update web portals
   In order to manage web portals
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema

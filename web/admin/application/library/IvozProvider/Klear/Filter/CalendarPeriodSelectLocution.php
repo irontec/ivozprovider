@@ -26,7 +26,7 @@ class IvozProvider_Klear_Filter_CalendarPeriodSelectLocution implements KlearMat
 
         $dataGateway = \Zend_Registry::get('data_gateway');
         switch ($currentItemName) {
-            case "holidayDatesNew_screen":
+            case "calendarPeriodsNew_screen":
                 if ($parentId) {
 
                     /** @var CalendarDto $calendarDto */
@@ -37,7 +37,7 @@ class IvozProvider_Klear_Filter_CalendarPeriodSelectLocution implements KlearMat
                     $this->_condition[] = "self::company = '" . $calendarDto->getCompanyId() . "'";
                 }
                 break;
-            case "holidayDatesEdit_screen":
+            case "calendarPeriodsEdit_screen":
                 if ($pk) {
                     /** @var CalendarPeriodDto $holidayDateDto */
                     $holidayDateDto = $dataGateway->find(

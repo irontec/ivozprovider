@@ -22,8 +22,12 @@ class DestinationRateGroupLifeCycleTest extends KernelTestCase
             ->setStatus('waiting')
             ->setNameEs('nameEs')
             ->setNameEn('nameEn')
+            ->setNameCa('nameCa')
+            ->setNameIt('nameIt')
             ->setDescriptionEs('descriptionEs')
             ->setDescriptionEn('descriptionEn')
+            ->setDescriptionCa('descriptionCa')
+            ->setDescriptionIt('descriptionIt')
             ->setBrandId(1);
 
         return $ddiProviderRegistrationDto;
@@ -87,12 +91,11 @@ class DestinationRateGroupLifeCycleTest extends KernelTestCase
 
         $brands = $ddiProviderRegistration->findAll();
         $this->assertCount(count($fixtureDestinationRateGroups) + 1, $brands);
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
         $this->addDestinationRateGroup();
         $this->assetChangedEntities([

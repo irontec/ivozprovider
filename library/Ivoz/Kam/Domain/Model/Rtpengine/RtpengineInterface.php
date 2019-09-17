@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface RtpengineInterface extends LoggableEntityInterface
+interface RtpengineInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null);
 
     /**

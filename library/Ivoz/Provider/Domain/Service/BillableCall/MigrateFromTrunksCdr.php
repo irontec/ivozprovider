@@ -14,90 +14,27 @@ use Psr\Log\LoggerInterface;
 
 class MigrateFromTrunksCdr
 {
-    const BATCH_SIZE = 100;
-
-    /**
-     * @var TrunksCdrRepository
-     */
-    protected $trunksCdrRepository;
-
-    /**
-     * @var BillableCallRepository
-     */
     protected $billableCallRepository;
-
-    /**
-     * @var CreateOrUpdateByTrunksCdr
-     */
     protected $createOrUpdateBillableCallByTrunksCdr;
-
-    /**
-     * @var DomainEventPublisher
-     */
     protected $domainEventPublisher;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
     public function __construct(
-        TrunksCdrRepository  $trunksCdrRepository,
         BillableCallRepository $billableCallRepository,
         CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
         EntityTools $entityTools,
-        DomainEventPublisher $domainEventPublisher,
-        LoggerInterface $logger
+        DomainEventPublisher $domainEventPublisher
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
         $this->billableCallRepository = $billableCallRepository;
         $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
         $this->domainEventPublisher = $domainEventPublisher;
         $this->entityTools = $entityTools;
-        $this->logger = $logger;
     }
 
     /**
      * @return void
      */
-    public function execute()
-    {
-        /**
-         * @var \Generator
-         */
-        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(self::BATCH_SIZE);
-
-        $cdrCount = 0;
-        foreach ($trunksGenerator as $trunks) {
-            if (empty($trunks)) {
-                break;
-            }
-
-            foreach ($trunks as $trunkCdr) {
-                $this->migrateToBillableCall($trunkCdr);
-            }
-
-            try {
-                $this->entityTools->dispatchQueuedOperations();
-                $cdrCount += count($trunks);
-            } catch (\Exception $e) {
-                $this->logger->error('BillableCall migration service error:: ' . $e->getMessage());
-                // Keep going
-            }
-        }
-
-        $this->logger->info('BillableCall migration service has migrated ' . $cdrCount . ' successfully');
-    }
-
-    /**
-     * @return void
-     */
-    private function migrateToBillableCall(TrunksCdrInterface $trunksCdr)
+    public function execute(TrunksCdrInterface $trunksCdr, $dispatchImmediately = false)
     {
         /**
          * @var BillableCallInterface $billableCall
@@ -115,7 +52,7 @@ class MigrateFromTrunksCdr
 
         $this->entityTools->persist(
             $billableCall,
-            false
+            $dispatchImmediately
         );
 
         /**
@@ -128,7 +65,7 @@ class MigrateFromTrunksCdr
         $this->entityTools->persistDto(
             $trunksCdrDto,
             $trunksCdr,
-            false
+            $dispatchImmediately
         );
 
         $trunksCdrWasMigrated = new TrunksCdrWasMigrated(

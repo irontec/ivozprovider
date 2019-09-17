@@ -26,8 +26,8 @@ class ProviderService extends Fixture
             $this->setIden("DirectPickUp");
             $this->setDefaultCode("94");
             $this->setExtraArgs(true);
-            $this->setName(new Name('en', 'en'));
-            $this->setDescription(new Description('en', 'en'));
+            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderService1', $item1);
@@ -39,8 +39,8 @@ class ProviderService extends Fixture
             $this->setIden("GroupPickUp");
             $this->setDefaultCode("95");
             $this->setExtraArgs(false);
-            $this->setName(new Name('en', 'en'));
-            $this->setDescription(new Description('en', 'en'));
+            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderService2', $item2);
@@ -52,8 +52,8 @@ class ProviderService extends Fixture
             $this->setIden("Voicemail");
             $this->setDefaultCode("93");
             $this->setExtraArgs(true);
-            $this->setName(new Name('en', 'en'));
-            $this->setDescription(new Description('en', 'en'));
+            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
         })->call($item3);
 
         $this->addReference('_reference_ProviderService3', $item3);
@@ -65,8 +65,8 @@ class ProviderService extends Fixture
             $this->setIden("RecordLocution");
             $this->setDefaultCode("00");
             $this->setExtraArgs(true);
-            $this->setName(new Name('en', 'en'));
-            $this->setDescription(new Description('en', 'en'));
+            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
         })->call($item4);
 
         $this->addReference('_reference_ProviderService4', $item4);

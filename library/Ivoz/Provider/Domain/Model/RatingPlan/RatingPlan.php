@@ -31,6 +31,11 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
         return $this->id;
     }
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     protected function sanitizeValues()
     {
         if ($this->getTimingType() == self::TIMINGTYPE_ALWAYS) {

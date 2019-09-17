@@ -1,6 +1,6 @@
 Feature: Manage brands
   In order to manage brands
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -57,7 +57,9 @@ Feature: Manage brands
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -66,7 +68,9 @@ Feature: Manage brands
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }
@@ -121,7 +125,9 @@ This is file content
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -130,7 +136,9 @@ This is file content
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }

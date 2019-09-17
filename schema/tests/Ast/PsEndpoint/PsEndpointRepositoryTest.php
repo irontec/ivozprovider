@@ -12,9 +12,16 @@ class PsEndpointRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @test
-     */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_by_friendId();
+        $this->it_finds_one_by_residentialDeviceId();
+        $this->it_finds_one_by_retail_account_Id();
+        $this->it_finds_one_by_terminal_Id();
+        $this->it_finds_one_by_sorcery_Id();
+    }
+
     public function its_instantiable()
     {
         /** @var PsEndpointRepository $repository */
@@ -28,9 +35,6 @@ class PsEndpointRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_by_friendId()
     {
         /** @var PsEndpointRepository $repository */
@@ -46,9 +50,6 @@ class PsEndpointRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_residentialDeviceId()
     {
         /** @var PsEndpointRepository $repository */
@@ -64,9 +65,6 @@ class PsEndpointRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_retail_account_Id()
     {
         /** @var PsEndpointRepository $repository */
@@ -81,9 +79,6 @@ class PsEndpointRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_terminal_Id()
     {
         /** @var PsEndpointRepository $repository */
@@ -99,9 +94,6 @@ class PsEndpointRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_sorcery_Id()
     {
         /** @var PsEndpointRepository $repository */

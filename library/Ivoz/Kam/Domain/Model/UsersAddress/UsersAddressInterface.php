@@ -2,16 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface UsersAddressInterface extends LoggableEntityInterface
+interface UsersAddressInterface extends EntityInterface
 {
-    /**
-     * @codeCoverageIgnore
-     * @return array
-     */
-    public function getChangeSet();
-
     public function setIpAddr($ipAddr = null);
 
     public function setMask($mask = null);

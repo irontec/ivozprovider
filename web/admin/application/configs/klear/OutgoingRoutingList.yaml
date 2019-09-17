@@ -11,6 +11,10 @@ production:
       controller: list
       pagination:
         items: 25
+      order:
+        field:
+          - OutgoingRouting.priority asc
+          - OutgoingRouting.weight desc
       <<: *OutgoingRouting
       class: ui-silk-arrow-divide
       title: _("List of %s %2s", ngettext('Outgoing routing', 'Outgoing routings', 0), "[format| (%parent%)]")

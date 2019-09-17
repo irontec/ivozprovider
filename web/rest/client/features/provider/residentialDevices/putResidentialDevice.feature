@@ -25,7 +25,6 @@ Feature: Update residential devices
           "updateCallerid": "yes",
           "fromDomain": null,
           "directConnectivity": "yes",
-          "company": 1,
           "outgoingDdi": 1,
           "language": 1
       }
@@ -68,7 +67,8 @@ Feature: Update residential devices
               "id": 1,
               "name": {
                   "en": "es",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "es"
               }
           }
       }

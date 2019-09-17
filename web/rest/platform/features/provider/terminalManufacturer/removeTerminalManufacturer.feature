@@ -1,6 +1,6 @@
 Feature: Manage terminal manufacturers
   In order to manage terminal manufacturers
-  As an super admin
+  as a super admin
   I need to be able to delete them through the API.
 
   @createSchema

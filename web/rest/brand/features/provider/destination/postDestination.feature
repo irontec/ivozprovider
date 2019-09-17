@@ -14,7 +14,9 @@
           "prefix": "+49",
           "name": {
               "en": "Germany",
-              "es": "Alemania"
+              "es": "Alemania",
+              "ca": "Alemania",
+              "it": "Germany"
           }
       }
     """
@@ -28,7 +30,9 @@
           "id": 3,
           "name": {
               "en": "Germany",
-              "es": "Alemania"
+              "es": "Alemania",
+              "ca": "Alemania",
+              "it": "Germany"
           },
           "brand": 1
       }
@@ -48,7 +52,9 @@
           "id": 2,
           "name": {
               "en": "Usansolocity",
-              "es": "Usansolocity"
+              "es": "Usansolocity",
+              "ca": "Usansolocity",
+              "it": "Usansolocity"
           },
           "brand": "~"
       }

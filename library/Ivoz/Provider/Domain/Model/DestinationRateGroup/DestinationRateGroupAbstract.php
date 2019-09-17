@@ -130,12 +130,16 @@ abstract class DestinationRateGroupAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
+            $dto->getDescriptionEs(),
+            $dto->getDescriptionCa(),
+            $dto->getDescriptionIt()
         );
 
         $file = new File(
@@ -175,12 +179,16 @@ abstract class DestinationRateGroupAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $description = new Description(
             $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
+            $dto->getDescriptionEs(),
+            $dto->getDescriptionCa(),
+            $dto->getDescriptionIt()
         );
 
         $file = new File(
@@ -214,8 +222,12 @@ abstract class DestinationRateGroupAbstract
             ->setStatus(self::getStatus())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
+            ->setNameCa(self::getName()->getCa())
+            ->setNameIt(self::getName()->getIt())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
+            ->setDescriptionCa(self::getDescription()->getCa())
+            ->setDescriptionIt(self::getDescription()->getIt())
             ->setFileFileSize(self::getFile()->getFileSize())
             ->setFileMimeType(self::getFile()->getMimeType())
             ->setFileBaseName(self::getFile()->getBaseName())
@@ -233,8 +245,12 @@ abstract class DestinationRateGroupAbstract
             'status' => self::getStatus(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
+            'nameCa' => self::getName()->getCa(),
+            'nameIt' => self::getName()->getIt(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
+            'descriptionCa' => self::getDescription()->getCa(),
+            'descriptionIt' => self::getDescription()->getIt(),
             'fileFileSize' => self::getFile()->getFileSize(),
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),

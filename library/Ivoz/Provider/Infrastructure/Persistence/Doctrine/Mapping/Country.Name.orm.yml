@@ -15,3 +15,17 @@ Ivoz\Provider\Domain\Model\Country\Name:
       options:
         fixed: false
       column: name_es
+    ca:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: name_ca
+    it:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: name_it

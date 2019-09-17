@@ -25,11 +25,18 @@ class Recording extends RecordingAbstract implements FileContainerInterface, Rec
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'RecordedFile'
+        $fileObjects = [
+            'RecordedFile' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

@@ -1,6 +1,6 @@
 Feature: Update administrators
   In order to manage administrators
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -43,7 +43,9 @@ Feature: Update administrators
               "id": 158,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 180
           }

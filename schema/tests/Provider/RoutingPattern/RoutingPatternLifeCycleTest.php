@@ -24,8 +24,12 @@ class RoutingPatternLifeCycleTest extends KernelTestCase
             ->setPrefix('+321')
             ->setNameEn('en')
             ->setNameEs('es')
+            ->setNameCa('ca')
+            ->setNameIt('it')
             ->setDescriptionEn('en')
             ->setDescriptionEs('es')
+            ->setDescriptionCa('ca')
+            ->setDescriptionIt('it')
             ->setBrandId(1);
 
         return $routingPatternDto;
@@ -98,14 +102,16 @@ class RoutingPatternLifeCycleTest extends KernelTestCase
             count($fixtureRoutingPattern) + 1,
             $routingPatterns
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addRoutingPattern();
         $this->assetChangedEntities([
             RoutingPattern::class,
         ]);

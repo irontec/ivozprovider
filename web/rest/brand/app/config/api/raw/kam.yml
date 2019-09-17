@@ -1,6 +1,20 @@
 ########################################
 ## Raw
 ########################################
+Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus:
+  itemOperations: []
+  collectionOperations: []
+
+Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
+  itemOperations: []
+  collectionOperations: []
+
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
+  properties:
+    brand:
+      attributes:
+        swagger_context:
+          deprecated: true
+          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

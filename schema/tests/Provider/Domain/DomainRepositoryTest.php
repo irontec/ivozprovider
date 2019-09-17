@@ -14,6 +14,12 @@ class DomainRepositoryTest extends KernelTestCase
     /**
      * @test
      */
+    public function test_runner()
+    {
+        $this->its_instantiable();
+        $this->it_finds_one_by_domain();
+    }
+
     public function its_instantiable()
     {
         /** @var DomainRepository $repository */
@@ -27,9 +33,6 @@ class DomainRepositoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
     public function it_finds_one_by_domain()
     {
         /** @var DomainRepository $repository */

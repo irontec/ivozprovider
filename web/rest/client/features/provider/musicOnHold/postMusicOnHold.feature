@@ -14,8 +14,7 @@ Feature: Create music on holds
 Content-Disposition: form-data; name="brand"
 
       {
-          "name": "Something new",
-          "company": 1
+          "name": "Something new"
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="originalFile"; filename="uploadable"

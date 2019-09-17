@@ -105,7 +105,9 @@ abstract class LanguageAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $self = new static(
@@ -131,7 +133,9 @@ abstract class LanguageAbstract
 
         $name = new Name(
             $dto->getNameEn(),
-            $dto->getNameEs()
+            $dto->getNameEs(),
+            $dto->getNameCa(),
+            $dto->getNameIt()
         );
 
         $this
@@ -153,7 +157,9 @@ abstract class LanguageAbstract
         return self::createDto()
             ->setIden(self::getIden())
             ->setNameEn(self::getName()->getEn())
-            ->setNameEs(self::getName()->getEs());
+            ->setNameEs(self::getName()->getEs())
+            ->setNameCa(self::getName()->getCa())
+            ->setNameIt(self::getName()->getIt());
     }
 
     /**
@@ -164,7 +170,9 @@ abstract class LanguageAbstract
         return [
             'iden' => self::getIden(),
             'nameEn' => self::getName()->getEn(),
-            'nameEs' => self::getName()->getEs()
+            'nameEs' => self::getName()->getEs(),
+            'nameCa' => self::getName()->getCa(),
+            'nameIt' => self::getName()->getIt()
         ];
     }
     // @codeCoverageIgnoreStart

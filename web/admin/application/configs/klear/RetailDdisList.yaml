@@ -19,7 +19,6 @@ production:
         href: "/doc/en/administration_portal/client/retail/ddis.html"
       forcedValues:
         <<: *forcedCompany
-        routeType: 'retail'
       order:
           - Ddi.country: asc
           - Ddi.ddi: asc

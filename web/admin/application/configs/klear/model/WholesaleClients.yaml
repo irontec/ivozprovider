@@ -43,6 +43,8 @@ production:
             fields:
               - tz
             template: '%tz%'
+          extraDataAttributes:
+            country: countryId
           order:
             Timezone.tz: asc
     currency:
@@ -106,6 +108,8 @@ production:
       type: select
       defaultValue: 70
       required: true
+      attributes:
+        data-autofilter-select-by-data: "defaultTimezone:country"
       source:
         data: mapper
         config:

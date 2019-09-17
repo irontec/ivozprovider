@@ -61,8 +61,8 @@ class FriendTest extends KernelTestCase
                     'and' => [
                         [
                             'company',
-                            'in',
-                            'CompanyRepository([["id","eq","user.getCompany().getId()"]])'
+                            'eq',
+                            'user.getCompany().getId()'
                         ]
                     ]
                 ],
@@ -99,7 +99,7 @@ class FriendTest extends KernelTestCase
                         [
                             'outgoingDdi',
                             'in',
-                            'DdiRepository([["company","IN",["CompanyRepository([[\"id\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
+                            'DdiRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
                             'outgoingDdi',

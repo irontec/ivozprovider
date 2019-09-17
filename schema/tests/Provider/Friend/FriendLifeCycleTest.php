@@ -77,18 +77,34 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
             count($fixtureFriends) + 1,
             $extensions
         );
+
+        $this->it_triggers_lifecycle_services();
+        $this->new_friend_creates_psEndpoint();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addFriend();
         $this->assetChangedEntities([
             Friend::class,
             PsEndpoint::class,
         ]);
+    }
+
+    protected function new_friend_creates_psEndpoint()
+    {
+        $friendEntries = $this->getChangelogByClass(
+            Friend::class
+        );
+
+        $this->assertCount(
+            1,
+            $friendEntries
+        );
+
+        $this->assertArraySubset(
+            [ 'name' => 'ormTestFriend' ],
+            $friendEntries[0]->getData()
+        );
     }
 
     /**
@@ -117,28 +133,6 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
     ////////////////////////////////////////////
     ///
     ////////////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function new_friend_creates_psEndpoint()
-    {
-        $this->addFriend();
-
-        $friendEntries = $this->getChangelogByClass(
-            Friend::class
-        );
-
-        $this->assertCount(
-            1,
-            $friendEntries
-        );
-
-        $this->assertArraySubset(
-            [ 'name' => 'ormTestFriend' ],
-            $friendEntries[0]->getData()
-        );
-    }
 
     /**
      * @test

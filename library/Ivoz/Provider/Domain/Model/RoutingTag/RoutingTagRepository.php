@@ -2,9 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 
 interface RoutingTagRepository extends ObjectRepository, Selectable
 {
+    /**
+     * @param int $companyId
+     * @return RoutingTagInterface[]
+     * @see KlearCustomTarificatorController
+     */
+    public function findByCompanyId(int $companyId);
 }

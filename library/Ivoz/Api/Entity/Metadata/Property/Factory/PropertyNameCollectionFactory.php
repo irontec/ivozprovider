@@ -45,7 +45,7 @@ class PropertyNameCollectionFactory implements PropertyNameCollectionFactoryInte
      */
     public function create(string $resourceClass, array $options = []): PropertyNameCollection
     {
-        $context = '';
+        $context = $options['context'] ?? '';
         if (array_key_exists('serializer_groups', $options)) {
             $context = $options['serializer_groups'][0];
         }

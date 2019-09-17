@@ -75,7 +75,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
     public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null)
     {
         if ($context === self::CONTEXT_STATUS) {
-            return [
+            $baseAttributes = [
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
@@ -85,6 +85,12 @@ class RetailAccountDto extends RetailAccountDtoAbstract
                     'userAgent'
                 ]
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $baseAttributes['companyId'] = 'company';
+            }
+
+            return $baseAttributes;
         }
 
         if ($context === self::CONTEXT_COLLECTION) {

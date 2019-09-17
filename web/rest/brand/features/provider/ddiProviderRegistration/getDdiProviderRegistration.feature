@@ -15,7 +15,14 @@ Feature: Retrieve ddi provider registrations
     """
       [
           {
-              "id": 1
+              "username": "DDIRegistrationUsername",
+              "domain": "DDIRegistrationDomain",
+              "id": 1,
+              "status": {
+                  "registered": false,
+                  "inProgress": false,
+                  "expires": null
+              }
           }
       ]
     """

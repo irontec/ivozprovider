@@ -60,7 +60,7 @@ class ConditionalRoutesConditionsRelRouteLockTest extends KernelTestCase
                 [
                     'condition',
                     'in',
-                    'ConditionalRoutesConditionRepository([["conditionalRoute","IN",["ConditionalRouteRepository([[\"company\",\"IN\",[\"CompanyRepository([[\\\\\\"id\\\\\\",\\\\\\"eq\\\\\\",\\\\\\"user.getCompany().getId()\\\\\\"]])\"]]])"]]])'
+                    'ConditionalRoutesConditionRepository([["conditionalRoute","IN",["ConditionalRouteRepository([[\"company\",\"eq\",\"user.getCompany().getId()\"]])"]]])'
                 ],
                 [
                     'routeLock',

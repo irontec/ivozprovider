@@ -97,7 +97,15 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
             $definitionSegments = explode('-', $definition, 2);
             $resourceClassNames = array_filter($resourceNames, function ($class) use ($definitionSegments) {
                 $classSegments = explode('\\', $class);
-                return $definitionSegments[0] === end($classSegments);
+                $segmentMatch = $definitionSegments[0] === end($classSegments);
+
+                if (!$segmentMatch) {
+                    return false;
+                }
+
+                $metadata = $this->resourceMetadataFactory->create($class);
+
+                return $metadata->getShortName() === $definitionSegments[0];
             });
 
             if (empty($resourceClassNames)) {

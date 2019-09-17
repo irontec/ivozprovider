@@ -13,11 +13,15 @@
       {
           "name": {
               "en": "New",
-              "es": "Nuevo"
+              "es": "Nuevo",
+              "ca": "Nou",
+              "it": "Nouvo"
           },
           "description": {
               "en": "New Rating plan",
-              "es": "Nuevo Rating plan"
+              "es": "Nuevo Rating plan",
+              "ca": "Nou Rating plan",
+              "it": "Nouvo Rating plan"
           },
           "brand": "1"
       }
@@ -31,11 +35,15 @@
           "id": 3,
           "name": {
               "en": "New",
-              "es": "Nuevo"
+              "es": "Nuevo",
+              "ca": "Nou",
+              "it": "Nouvo"
           },
           "description": {
               "en": "New Rating plan",
-              "es": "Nuevo Rating plan"
+              "es": "Nuevo Rating plan",
+              "ca": "Nou Rating plan",
+              "it": "Nouvo Rating plan"
           },
           "brand": 1,
           "currency": null
@@ -55,11 +63,15 @@
           "id": 2,
           "name": {
               "en": "Something more",
-              "es": "Algo m\u00e1s"
+              "es": "Algo m\u00e1s",
+              "ca": "Algo mes",
+              "it": "Più"
           },
           "description": {
-              "en": "",
-              "es": ""
+              "en": "en",
+              "es": "es",
+              "es": "es",
+              "it": "it"
           },
           "brand": "~",
           "currency": null

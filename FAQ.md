@@ -1,19 +1,19 @@
 # Frequently Asked Questions
 
 ## Table of Contents
-* [What is IvozProvider?](#what-is-ivozprovider)
-* [Is IvozProvider free?](#is-ivozprovider-free)
-* [I would like to try, where should I start?](#i-would-like-to-try-where-should-i-start)
-* [What release should I use?](#what-release-should-i-use)
-* [Can I use IvozProvider without public IP address?](#can-i-use-ivozprovider-without-public-ip-address)
-* [I have trouble with my environment!](#i-have-a-trouble-with-my-environment)
-* [I have found a bug](#i-have-found-a-bug)
-* [I have a feature request](#i-have-a-feature-request)
-* [What language should I use while reporting?](#what-language-should-i-use-while-reporting)
-* [I have tested standalone, how can I install a distributed installation?](#i-have-tested-standalone-how-can-i-install-a-distributed-installation)
-* [This solution is not useful without this feature](#this-solution-is-not-useful-without-this-feature)
-* [I would like to contribute](#i-would-like-to-contribute)
-* [How can I setup a development environment of the project?](#how-can-i-setup-a-development-environment-of-the-project)
+1. [What is IvozProvider?](#what-is-ivozprovider)
+2. [Is IvozProvider free?](#is-ivozprovider-free)
+3. [I would like to try, where should I start?](#i-would-like-to-try-where-should-i-start)
+4. [What release should I use?](#what-release-should-i-use)
+5. [Can I use IvozProvider without public IP address?](#can-i-use-ivozprovider-without-public-ip-address)
+6. [I have trouble with my environment!](#i-have-a-trouble-with-my-environment)
+7. [I have found a bug](#i-have-found-a-bug)
+8. [I have a feature request](#i-have-a-feature-request)
+9. [What language should I use while reporting?](#what-language-should-i-use-while-reporting)
+10. [I have tested standalone, how can I install a distributed installation?](#i-have-tested-standalone-how-can-i-install-a-distributed-installation)
+11. [This solution is not useful without this feature](#this-solution-is-not-useful-without-this-feature)
+12. [I would like to contribute](#i-would-like-to-contribute)
+13. [How can I setup a development environment of the project?](#how-can-i-setup-a-development-environment-of-the-project)
 
 ### What is IvozProvider?
 
@@ -46,10 +46,10 @@ That address must be present in your network interfaces in order to bind service
 ### I have trouble with my environment!
 
 We don't provide any kind of free support for installations. If you have trouble, you can contact our sales department
-at comercial@irontec.com
+at comercial@irontec.com or ask in [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
 
-If by any chance you receive support in Github or #ivozprovider freenode IRC channel, it's most probably provided
-during developers spare time, so be thankful for the people giving part of their time.
+If by any chance you receive support in the group or #ivozprovider freenode IRC channel by any developer, it's most
+probably provided during spare time, so be thankful for the people giving part of their time.
 
 ### I have found a bug
 

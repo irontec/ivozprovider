@@ -12,9 +12,8 @@ Feature: Create routing tags
     """
       {
           "name": "Mine",
-          "tag": "00",
-          "id": 1,
-          "brand": 1
+          "tag": "00#",
+          "id": 1
       }
     """
     Then the response status code should be 201
@@ -24,7 +23,7 @@ Feature: Create routing tags
     """
       {
           "name": "Mine",
-          "tag": "00",
+          "tag": "00#",
           "id": 2,
           "brand": 1
       }
@@ -41,7 +40,7 @@ Feature: Create routing tags
     """
       {
           "name": "Mine",
-          "tag": "00",
+          "tag": "00#",
           "id": 2,
           "brand": "~"
       }

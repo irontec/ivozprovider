@@ -25,9 +25,10 @@ services:
   Ivoz\Kam\Infrastructure\Kamailio\TrunksClient:
     arguments:
       $rpcClient: '@Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Trunks'
-  Ivoz\Kam\Domain\Service\TrunksClientInterface\TrunksClientInterface:
-    '@Ivoz\Kam\Infrastructure\Kamailio\TrunksClient:'
+  Ivoz\Kam\Domain\Service\TrunksClientInterface:
+    alias: 'Ivoz\Kam\Infrastructure\Kamailio\TrunksClient'
+    public: true
 
   Ivoz\Kam\Infrastructure\Kamailio\UsersClient: ~
-  Ivoz\Kam\Domain\Service\TrunksClientInterface\UsersClientInterface:
-    '@Ivoz\Kam\Infrastructure\Kamailio\UsersClient'
+  Ivoz\Kam\Domain\Service\UsersClientInterface:
+    alias: 'Ivoz\Kam\Infrastructure\Kamailio\UsersClient'

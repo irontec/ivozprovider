@@ -41,11 +41,19 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
     /**
      * @return array
      */
-    public function getFileObjects()
+    public function getFileObjects(int $filter = null)
     {
-        return [
-            'Logo'
+        $fileObjects = [
+            'Logo' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+                FileContainerInterface::UPDALOADABLE_FILE
+            ]
         ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 
     /**

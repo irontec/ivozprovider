@@ -12,8 +12,7 @@ Feature: Update routing pattern groups
     """
       {
           "name": "Centreal Europe",
-          "description": "Description",
-          "brand": 1
+          "description": "Description"
       }
     """
     Then the response status code should be 200

@@ -3,6 +3,7 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
+use Psr\Log\LoggerInterface;
 
 class Xmlrpc extends AbstractJob
 {
@@ -35,12 +36,17 @@ class Xmlrpc extends AbstractJob
      *
      * @param string $method
      * @param Manager $manager
+     * @param LoggerInterface $logger
      * @param array $settings
      */
-    public function __construct($method = "WorkerXmlrpc~immediate", Manager $manager, array $settings)
-    {
+    public function __construct(
+        $method = "WorkerXmlrpc~immediate",
+        Manager $manager,
+        LoggerInterface $logger,
+        array $settings
+    ) {
         $this->method = $method;
-        parent::__construct($manager, $settings);
+        parent::__construct($manager, $logger, $settings);
     }
 
     /**

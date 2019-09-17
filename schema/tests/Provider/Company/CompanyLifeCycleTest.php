@@ -108,24 +108,67 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->getRepository(Company::class);
         $fixtureCompanies = $companyRepository->findAll();
 
-        $this->addCompany();
+        $company = $this->addCompany();
 
         $companies = $companyRepository->findAll();
         $this->assertCount(count($fixtureCompanies) + 1, $companies);
+
+        ///////////////////
+        ///
+        ///////////////////
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_company_has_a_domain($company);
+        $this->added_company_has_a_tpAccountAction($company);
+        $this->added_company_has_a_companyServices($company);
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addCompany();
         $this->assetChangedEntities([
             Domain::class,
             Company::class,
             TpAccountAction::class,
             CompanyService::class,
         ]);
+    }
+
+    protected function added_company_has_a_domain(Company $company)
+    {
+        $domain = $company->getDomain();
+
+        $this->assertInstanceOf(
+            Domain::class,
+            $domain
+        );
+    }
+
+    public function added_company_has_a_tpAccountAction(Company $company)
+    {
+        $tpAccountActionRepository = $this->em
+            ->getRepository(TpAccountAction::class);
+
+        $tpAccountAction = $tpAccountActionRepository->findOneBy([
+            'company' => $company->getId()
+        ]);
+
+        $this->assertInstanceOf(
+            TpAccountAction::class,
+            $tpAccountAction
+        );
+    }
+
+    public function added_company_has_a_companyServices(Company $company)
+    {
+        $companyServices = $company->getCompanyServices();
+
+        $brand = $company->getBrand();
+        $brandServices = $brand->getServices();
+
+        $this->assertEquals(
+            count($brandServices),
+            count($companyServices)
+        );
     }
 
     /**
@@ -140,6 +183,46 @@ class CompanyLifeCycleTest extends KernelTestCase
             PsEndpoint::class, // Domain lifecycle
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function updating_company_updates_domain()
+    {
+        $company = $this->addCompany();
+        $domain = $company->getDomain();
+
+        $this->assertEquals(
+            $company->getDomainUsers(),
+            $domain->getDomain()
+        );
+
+        $this->assertEquals(
+            $company->getName() . ' proxyusers domain',
+            $domain->getDescription()
+        );
+
+        $this->assertInstanceOf(
+            Domain::class,
+            $domain
+        );
+
+        $company
+            ->setName('UpdatedName')
+            ->setDomainUsers('UpdatedValue');
+        $this->entityTools->persist($company, true);
+
+        $this->assertEquals(
+            'UpdatedValue',
+            $domain->getDomain()
+        );
+
+        $this->assertEquals(
+            'UpdatedName proxyusers domain',
+            $domain->getDescription()
+        );
+    }
+
 
     /**
      * @test
@@ -266,99 +349,6 @@ class CompanyLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             0,
             $company->getMediaRelaySets()->getId()
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_company_has_a_domain()
-    {
-        $company = $this->addCompany();
-        $domain = $company->getDomain();
-
-        $this->assertInstanceOf(
-            Domain::class,
-            $domain
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function updating_company_updates_domain()
-    {
-        $company = $this->addCompany();
-        $domain = $company->getDomain();
-
-        $this->assertEquals(
-            $company->getDomainUsers(),
-            $domain->getDomain()
-        );
-
-        $this->assertEquals(
-            $company->getName() . ' proxyusers domain',
-            $domain->getDescription()
-        );
-
-        $this->assertInstanceOf(
-            Domain::class,
-            $domain
-        );
-
-        $company
-            ->setName('UpdatedName')
-            ->setDomainUsers('UpdatedValue');
-        $this->entityTools->persist($company, true);
-
-        $this->assertEquals(
-            'UpdatedValue',
-            $domain->getDomain()
-        );
-
-        $this->assertEquals(
-            'UpdatedName proxyusers domain',
-            $domain->getDescription()
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_company_has_a_tpAccountAction()
-    {
-        $company = $this->addCompany();
-        $tpAccountActionRepository = $this->em
-            ->getRepository(TpAccountAction::class);
-
-        $tpAccountAction = $tpAccountActionRepository->findOneBy([
-            'company' => $company->getId()
-        ]);
-
-        $this->assertInstanceOf(
-            TpAccountAction::class,
-            $tpAccountAction
-        );
-    }
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function added_company_has_a_companyServices()
-    {
-        $company = $this->addCompany();
-        $companyServices = $company->getCompanyServices();
-
-        $brand = $company->getBrand();
-        $brandServices = $brand->getServices();
-
-        $this->assertEquals(
-            count($brandServices),
-            count($companyServices)
         );
     }
 

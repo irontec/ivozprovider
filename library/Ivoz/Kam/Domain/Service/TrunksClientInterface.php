@@ -10,6 +10,7 @@ interface TrunksClientInterface
     const PERMISSIONS_TRUSTED_RELOAD_ACTION = 'permissions.trustedReload';
     const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
     const UAC_REG_RELOAD_ACTION = 'uac.reg_reload';
+    const UAC_REG_INFO_ACTION = 'uac.reg_info';
     const DLG_PROFILE_GET_SIZE = 'dlg.profile_get_size';
     const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
 
@@ -20,6 +21,7 @@ interface TrunksClientInterface
         self::PERMISSIONS_TRUSTED_RELOAD_ACTION,
         self::PERMISSIONS_ADDRESS_RELOAD_ACTION,
         self::UAC_REG_RELOAD_ACTION,
+        self::UAC_REG_INFO_ACTION,
         self::DLG_PROFILE_GET_SIZE,
         self::RTPENGINE_RELOAD_ACTION
     ];
@@ -52,6 +54,8 @@ interface TrunksClientInterface
     public function reloadAddressPermissions();
 
     public function reloadUacReg();
+
+    public function getUacRegistrationInfo($luuid): array;
 
     public function reloadRtpengine();
 }

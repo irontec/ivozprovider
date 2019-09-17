@@ -38,12 +38,32 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $nameCa;
+
+    /**
+     * @var string
+     */
+    private $nameIt;
+
+    /**
+     * @var string
+     */
     private $zoneEn = '';
 
     /**
      * @var string
      */
     private $zoneEs = '';
+
+    /**
+     * @var string
+     */
+    private $zoneCa = '';
+
+    /**
+     * @var string
+     */
+    private $zoneIt = '';
 
 
     use DtoNormalizer;
@@ -66,8 +86,8 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
             'code' => 'code',
             'countryCode' => 'countryCode',
             'id' => 'id',
-            'name' => ['en','es'],
-            'zone' => ['en','es']
+            'name' => ['en','es','ca','it'],
+            'zone' => ['en','es','ca','it']
         ];
     }
 
@@ -82,11 +102,15 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
+                'es' => $this->getNameEs(),
+                'ca' => $this->getNameCa(),
+                'it' => $this->getNameIt()
             ],
             'zone' => [
                 'en' => $this->getZoneEn(),
-                'es' => $this->getZoneEs()
+                'es' => $this->getZoneEs(),
+                'ca' => $this->getZoneCa(),
+                'it' => $this->getZoneIt()
             ]
         ];
     }
@@ -192,6 +216,46 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $nameCa
+     *
+     * @return static
+     */
+    public function setNameCa($nameCa = null)
+    {
+        $this->nameCa = $nameCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCa()
+    {
+        return $this->nameCa;
+    }
+
+    /**
+     * @param string $nameIt
+     *
+     * @return static
+     */
+    public function setNameIt($nameIt = null)
+    {
+        $this->nameIt = $nameIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameIt()
+    {
+        return $this->nameIt;
+    }
+
+    /**
      * @param string $zoneEn
      *
      * @return static
@@ -229,5 +293,45 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     public function getZoneEs()
     {
         return $this->zoneEs;
+    }
+
+    /**
+     * @param string $zoneCa
+     *
+     * @return static
+     */
+    public function setZoneCa($zoneCa = null)
+    {
+        $this->zoneCa = $zoneCa;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZoneCa()
+    {
+        return $this->zoneCa;
+    }
+
+    /**
+     * @param string $zoneIt
+     *
+     * @return static
+     */
+    public function setZoneIt($zoneIt = null)
+    {
+        $this->zoneIt = $zoneIt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZoneIt()
+    {
+        return $this->zoneIt;
     }
 }

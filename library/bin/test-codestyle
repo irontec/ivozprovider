@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 if [ "$1" == "--full" ]; then
     CHANGED_FILES="."
 elif [ "$1" == "--branch" ]; then

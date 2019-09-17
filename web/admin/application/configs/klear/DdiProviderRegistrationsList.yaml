@@ -52,6 +52,8 @@ production:
       title: _("Add %s", ngettext('DDI Provider Registration', 'DDI Provider Registrations', 1))
       shortcutOption: N
       fields: &ddiProviderRegistrationsFields_link
+        blacklist:
+          statusIcon: true
         order:
           username: true
           domain: true

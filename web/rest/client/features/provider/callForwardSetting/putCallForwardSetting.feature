@@ -26,7 +26,7 @@ Feature: Update call forward settings
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
       {
           "callTypeFilter": "internal",
@@ -36,50 +36,10 @@ Feature: Update call forward settings
           "noAnswerTimeout": 0,
           "enabled": true,
           "id": 1,
-          "user": {
-              "name": "Alice",
-              "lastname": "Allison",
-              "email": "alice@democompany.com",
-              "pass": "*****",
-              "doNotDisturb": false,
-              "isBoss": false,
-              "active": true,
-              "maxCalls": 1,
-              "externalIpCalls": "0",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
-              "tokenKey": "4c18027290f0c1ed517680bb4bcf2402",
-              "gsQRCode": false,
-              "id": 1,
-              "company": 1,
-              "callAcl": null,
-              "bossAssistant": null,
-              "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
-              "language": null,
-              "terminal": 1,
-              "extension": null,
-              "timezone": 145,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailLocution": null
-          },
+          "user": "~",
           "extension": null,
           "voiceMailUser": null,
-          "numberCountry": {
-              "code": "AD",
-              "countryCode": "+376",
-              "id": 1,
-              "name": {
-                  "en": "Andorra",
-                  "es": "Andorra"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Andorra"
-              }
-          },
+          "numberCountry": "~",
           "residentialDevice": null,
           "retailAccount": null
       }

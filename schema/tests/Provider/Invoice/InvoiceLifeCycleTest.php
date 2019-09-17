@@ -91,14 +91,16 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
             count($fixtureInvoices) + 1,
             $extensions
         );
+
+        ///////////////////////////
+        ///
+        ///////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addInvoice();
         $this->assetChangedEntities([
             Invoice::class
         ]);

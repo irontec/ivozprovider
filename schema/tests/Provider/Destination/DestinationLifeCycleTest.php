@@ -3,6 +3,7 @@
 namespace Tests\Provider\Destination;
 
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
+use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\Destination\Destination;
@@ -103,6 +104,36 @@ class DestinationLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
+    public function it_creates_tp_destination()
+    {
+        $this->addDestination();
+
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            TpDestination::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $changelog = $changelogEntries[0];
+
+        $this->assertSubset(
+            $changelog,
+            [
+                'tpid' => 'b1',
+                'tag' => 'b1dst3',
+                'prefix' => '+34',
+                'destinationId' => 3,
+                'id' => 1,
+            ],
+            [
+                'created_at'
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
     public function it_triggers_update_lifecycle_services()
     {
         $this->updateDestination();
@@ -121,6 +152,7 @@ class DestinationLifeCycleTest extends KernelTestCase
             Destination::class
         ]);
     }
+
 
     //////////////////////////////////////////
     ///

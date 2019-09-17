@@ -1,6 +1,6 @@
 Feature: Retrieve administrators
   In order to manage administrators
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -84,7 +84,9 @@ Feature: Retrieve administrators
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           }

@@ -22,7 +22,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
     /**
      * @return array
      */
-    public function getFileObjects();
+    public function getFileObjects(int $filter = null);
 
     /**
      * Add TempFile and set status to pending

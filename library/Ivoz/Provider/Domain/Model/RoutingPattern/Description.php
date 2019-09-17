@@ -23,14 +23,28 @@ class Description
      */
     protected $es;
 
+    /**
+     * column: description_ca
+     * @var string | null
+     */
+    protected $ca;
+
+    /**
+     * column: description_it
+     * @var string | null
+     */
+    protected $it;
+
 
     /**
      * Constructor
      */
-    public function __construct($en, $es)
+    public function __construct($en, $es, $ca, $it)
     {
         $this->setEn($en);
         $this->setEs($es);
+        $this->setCa($ca);
+        $this->setIt($it);
     }
 
     // @codeCoverageIgnoreStart
@@ -89,6 +103,62 @@ class Description
     public function getEs()
     {
         return $this->es;
+    }
+
+    /**
+     * Set ca
+     *
+     * @param string $ca
+     *
+     * @return static
+     */
+    protected function setCa($ca = null)
+    {
+        if (!is_null($ca)) {
+            Assertion::maxLength($ca, 55, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->ca = $ca;
+
+        return $this;
+    }
+
+    /**
+     * Get ca
+     *
+     * @return string | null
+     */
+    public function getCa()
+    {
+        return $this->ca;
+    }
+
+    /**
+     * Set it
+     *
+     * @param string $it
+     *
+     * @return static
+     */
+    protected function setIt($it = null)
+    {
+        if (!is_null($it)) {
+            Assertion::maxLength($it, 55, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->it = $it;
+
+        return $this;
+    }
+
+    /**
+     * Get it
+     *
+     * @return string | null
+     */
+    public function getIt()
+    {
+        return $this->it;
     }
 
     // @codeCoverageIgnoreEnd

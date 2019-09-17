@@ -1,6 +1,6 @@
 Feature: Retrieve languages
   In order to manage languages
-  As an super admin
+  as a super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
@@ -21,6 +21,14 @@ Feature: Retrieve languages
           {
               "iden": "en",
               "id": 2
+          },
+          {
+              "iden": "ca",
+              "id": 3
+          },
+          {
+              "iden": "it",
+              "id": 4
           }
       ]
     """
@@ -39,7 +47,9 @@ Feature: Retrieve languages
           "id": 1,
           "name": {
               "en": "es",
-              "es": "es"
+              "es": "es",
+              "ca": "es",
+              "it": "es"
           }
       }
     """

@@ -11,8 +11,7 @@ Feature: Update pick up groups
       And I send a "PUT" request to "/pick_up_groups/1" with body:
     """
       {
-          "name": "updated pick up group",
-          "company": 1
+          "name": "updated pick up group"
       }
     """
     Then the response status code should be 200

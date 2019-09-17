@@ -25,7 +25,6 @@ Feature: Create friends
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 2,
-          "company": 1,
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,

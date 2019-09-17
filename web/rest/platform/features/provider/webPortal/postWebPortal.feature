@@ -1,6 +1,6 @@
 Feature: Create web portals
   In order to manage web portals
-  As an super admin
+  as a super admin
   I need to be able to create them through the API.
 
   @createSchema

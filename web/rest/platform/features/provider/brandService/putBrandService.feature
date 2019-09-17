@@ -1,6 +1,6 @@
 Feature: Update brand services
   In order to manage brand services
-  As an super admin
+  as a super admin
   I need to be able to update them through the API.
 
   @createSchema
@@ -53,11 +53,15 @@ Feature: Update brand services
               "id": 2,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       }

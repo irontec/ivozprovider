@@ -91,14 +91,16 @@ class TransformationRuleLifeCycleTest extends KernelTestCase
             count($fixtureTransformationRule) + 1,
             $transformationRules
         );
+
+        /////////////////////////////////
+        ///
+        /////////////////////////////////
+
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addTransformationRule();
         $this->assetChangedEntities([
             TransformationRule::class
         ]);

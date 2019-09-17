@@ -49,11 +49,13 @@ Feature: Retrieve company services
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               },
               "description": {
                   "en": "en",
-                  "es": "en"
+                  "es": "es",
+                  "ca": "ca"
               }
           }
       }

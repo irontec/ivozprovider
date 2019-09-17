@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 
+use Ivoz\Core\Domain\Assert\Assertion;
+
 /**
  * OutgoingDdiRulesPattern
  */
@@ -48,6 +50,23 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
             $setter = 'set' . ucfirst($fieldName);
             $this->{$setter}(null);
         }
+    }
+
+    /**
+     * @param string| null $prefix
+     * @return static
+     * @throws \Exception
+     */
+    protected function setPrefix($prefix = null)
+    {
+        if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
+            Assertion::regex(
+                $prefix,
+                '/^[0-9]{1,3}[*]$/'
+            );
+        }
+
+        return parent::setPrefix($prefix);
     }
 
     /**

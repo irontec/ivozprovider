@@ -10,21 +10,27 @@ use Ivoz\Core\Domain\Event\EntityWasUpdated;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\CommandPersister;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
+use Psr\Log\LoggerInterface;
 
 class DoctrineQueryRunner
 {
+    const DEADLOCK_RETRIES = 3;
+
     protected $em;
     protected $eventPublisher;
     protected $commandPersister;
+    protected $logger;
 
     public function __construct(
         EntityManagerInterface $em,
         DomainEventPublisher $eventPublisher,
-        CommandPersister $commandPersister
+        CommandPersister $commandPersister,
+        LoggerInterface $logger
     ) {
         $this->em = $em;
         $this->eventPublisher = $eventPublisher;
         $this->commandPersister = $commandPersister;
+        $this->logger = $logger;
     }
 
     public function execute(string $entityName, Query $query)
@@ -56,17 +62,40 @@ class DoctrineQueryRunner
             return;
         }
 
-        $this->em->getConnection()->beginTransaction();
-        try {
-            $query->execute();
-            $this->eventPublisher->publish($event);
-            $this->commandPersister->persistEvents();
+        $retries = self::DEADLOCK_RETRIES;
+        while (0 < $retries--) {
+            $this->em->getConnection()->beginTransaction();
+            try {
+                $query->execute();
+                $this->eventPublisher->publish($event);
+                $this->commandPersister->persistEvents();
 
-            $this->em->getConnection()->commit();
-        } catch (\Exception $e) {
-            $this->em->getConnection()->rollBack();
+                $this->em->getConnection()->commit();
 
-            throw $e;
+                break;
+            } catch (\Exception $e) {
+
+                /**
+                 * Excepted issues:
+                 * SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction
+                 * SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction
+                 */
+                $this->em->getConnection()->rollBack();
+                $lockIssues = false !== strpos(
+                    $e->getMessage(),
+                    'try restarting transaction'
+                );
+
+                if (!$retries || !$lockIssues) {
+                    throw $e;
+                }
+
+                $this->logger->warning(
+                    'Retrying transaction: ' . $e->getMessage()
+                );
+
+                sleep(2);
+            }
         }
     }
 }

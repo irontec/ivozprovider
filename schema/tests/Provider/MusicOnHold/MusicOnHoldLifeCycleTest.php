@@ -83,14 +83,16 @@ class MusicOnHoldLifeCycleTest extends KernelTestCase
 
         $brands = $musicOnHold->findAll();
         $this->assertCount(3, $brands);
+
+
+        //////////////////////////////
+        ///
+        //////////////////////////////
+        $this->it_triggers_lifecycle_services();
     }
 
-    /**
-     * @test
-     */
-    public function it_triggers_lifecycle_services()
+    protected function it_triggers_lifecycle_services()
     {
-        $this->addMusicOnHold();
         $this->assetChangedEntities([
             MusicOnHold::class
         ]);

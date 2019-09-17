@@ -15,6 +15,14 @@ production:
         title: English
         language: en
         locale: en_US
+      ca:
+        title: Català
+        language: ca
+        locale: ca_ES
+      it:
+        title: Italiano
+        language: it
+        locale: it_IT
     jqueryUI:
       theme: redmond
     raw:
