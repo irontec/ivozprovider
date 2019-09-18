@@ -724,6 +724,9 @@ msgstr "Download"
 msgid "Download file"
 msgstr "Scarica il file"
 
+msgid "Downloading"
+msgstr "Downloading"
+
 msgid "Duplicated prefix"
 msgstr "Duplicated prefix"
 
@@ -2553,6 +2556,9 @@ msgid ""
 msgstr ""
 "Questo importatore si aspetta che i valori siano tra virgolette e separati "
 "dapunto e virgola."
+
+msgid "This may take some minutes"
+msgstr "This may take some minutes"
 
 msgid ""
 "This prefix will be added to the callee after carrier's numeric "
