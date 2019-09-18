@@ -25,7 +25,17 @@ Feature: Update external call filters
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
           "holidayNumberCountry": 68,
-          "outOfScheduleNumberCountry": 68
+          "outOfScheduleNumberCountry": 68,
+          "scheduleIds": [],
+          "calendarIds": [
+            1
+          ],
+          "whiteListIds": [
+            2
+          ],
+          "blackListIds": [
+            3
+          ]
       }
     """
     Then the response status code should be 200
@@ -77,6 +87,16 @@ Feature: Update external call filters
                   "es": "Europa",
                   "ca": "Europa"
               }
-          }
+          },
+          "scheduleIds": [],
+          "calendarIds": [
+            1
+          ],
+          "whiteListIds": [
+            2
+          ],
+          "blackListIds": [
+            3
+          ]
       }
     """

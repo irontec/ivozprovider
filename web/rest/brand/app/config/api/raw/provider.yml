@@ -154,6 +154,16 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\Company\Company:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withFeatures'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withFeatures'
   properties:
     balance:
       attributes:
@@ -166,6 +176,8 @@ Ivoz\Provider\Domain\Model\Company\Company:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    normalization_context:
+      groups: ['withFeatures']
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -543,6 +555,16 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
           carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withCarriers'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withCarriers'
   properties:
     brand:
       attributes:
@@ -551,6 +573,8 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    normalization_context:
+      groups: ['withCarriers']
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -683,6 +707,16 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withPatterns'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withPatterns'
   properties:
     brand:
       attributes:
@@ -691,6 +725,8 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    normalization_context:
+      groups: ['withPatterns']
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:

@@ -98,6 +98,7 @@ Feature: Retrieve users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null
+          "voicemailLocution": null,
+          "pickupGroupIds": []
       }
     """

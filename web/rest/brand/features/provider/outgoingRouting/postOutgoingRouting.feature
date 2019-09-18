@@ -14,7 +14,7 @@ Feature: Create outgoing routings
           "type": "pattern",
           "priority": 2,
           "weight": 1,
-          "routingMode": "static",
+          "routingMode": "lcr",
           "prefix": null,
           "forceClid": false,
           "clid": null,
@@ -22,7 +22,8 @@ Feature: Create outgoing routings
           "carrier": 1,
           "routingPattern": 1,
           "routingPatternGroup": null,
-          "clidCountry": null
+          "clidCountry": null,
+          "carrierIds": [1]
       }
     """
     Then the response status code should be 201
@@ -34,9 +35,10 @@ Feature: Create outgoing routings
           "type": "pattern",
           "priority": 2,
           "weight": 1,
-          "routingMode": "static",
+          "routingMode": "lcr",
           "id": 3,
-          "company": 2
+          "company": 2,
+          "carrierIds": [1]
       }
     """
 
@@ -53,16 +55,17 @@ Feature: Create outgoing routings
           "type": "pattern",
           "priority": 2,
           "weight": 1,
-          "routingMode": "static",
+          "routingMode": "lcr",
           "prefix": null,
           "forceClid": false,
           "clid": null,
           "id": 3,
           "brand": "~",
           "company": "~",
-          "carrier": "~",
+          "carrier": null,
           "routingPattern": "~",
           "routingPatternGroup": null,
-          "clidCountry": null
+          "clidCountry": null,
+          "carrierIds": [1]
       }
     """

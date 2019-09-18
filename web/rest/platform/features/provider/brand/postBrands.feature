@@ -50,7 +50,8 @@ Feature: Manage brands
               "registryData": "registryData"
           },
           "language": null,
-          "defaultTimezone": 145
+          "defaultTimezone": 145,
+          "features": []
       }
     """
 
@@ -94,7 +95,8 @@ Feature: Manage brands
                   "it": "it"
               },
               "country": 68
-          }
+          },
+          "features": []
       }
     """
 
@@ -122,7 +124,8 @@ Content-Disposition: form-data; name="brand"
           "country": "Spain",
           "registryData": "registryData"
         },
-        "defaultTimezone": 145
+        "defaultTimezone": 145,
+        "features": [1]
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="Logo"; filename="uploadable"
@@ -157,6 +160,7 @@ This is file content
               "registryData": "registryData"
           },
           "language": null,
-          "defaultTimezone": 145
+          "defaultTimezone": 145,
+          "features": [1]
       }
     """

@@ -299,8 +299,20 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
             voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withInverseRelationships'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withInverseRelationships'
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withInverseRelationships']
     read_access_control:
       inherited:
         conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
@@ -569,6 +581,16 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
             conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
 
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withInverseRelationships'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withInverseRelationships'
   properties:
     company:
       attributes:
@@ -577,6 +599,8 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withInverseRelationships']
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -904,6 +928,16 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
             voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
 
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withExcludedExtensions'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withExcludedExtensions'
   properties:
     company:
       attributes:
@@ -912,6 +946,8 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withExcludedExtensions']
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1093,6 +1129,16 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
           forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
 
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withUsers'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withUsers'
   properties:
     company:
       attributes:
@@ -1101,6 +1147,8 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
           description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    normalization_context:
+      groups: ['withUsers']
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1426,8 +1474,10 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
 
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
-    get: ~
-    put: ~
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withPickupGroups'
     delete: ~
     get_my_profile:
       access_control: '"ROLE_COMPANY_USER" in roles'
@@ -1469,7 +1519,8 @@ Ivoz\Provider\Domain\Model\User\User:
             $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
     get: ~
-    post: ~
+    post:
+      operation_normalization_context: 'withPickupGroups'
     get_my_company_assistants:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'

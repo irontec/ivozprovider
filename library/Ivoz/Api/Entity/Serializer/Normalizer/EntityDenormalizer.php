@@ -120,7 +120,8 @@ class EntityDenormalizer implements DenormalizerInterface
     private function denormalizeEntity(array $input, string $class, EntityInterface $entity = null, string $normalizationContext)
     {
         $propertyNameCollection = $this->propertyNameCollectionFactory->create(
-            $class
+            $class,
+            ['context' => $normalizationContext]
         );
 
         $input = $this->filterInputProperties(

@@ -74,6 +74,15 @@ Feature: Manage brands
                   "it": "it"
               },
               "country": 68
-          }
+          },
+          "features": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+          ]
       }
     """

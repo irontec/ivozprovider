@@ -29,7 +29,11 @@ Feature: Create IVRs
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
           "noInputNumberCountry": 2,
-          "errorNumberCountry": 3
+          "errorNumberCountry": 3,
+          "excludedExtensionIds": [
+              1,
+              2
+          ]
       }
     """
     Then the response status code should be 201
@@ -57,7 +61,11 @@ Feature: Create IVRs
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
           "noInputNumberCountry": 2,
-          "errorNumberCountry": 3
+          "errorNumberCountry": 3,
+          "excludedExtensionIds": [
+              1,
+              2
+          ]
       }
     """
 
@@ -162,6 +170,10 @@ Feature: Create IVRs
                   "es": "Asia",
                   "ca": "Asia"
               }
-          }
+          },
+          "excludedExtensionIds": [
+              1,
+              2
+          ]
       }
     """

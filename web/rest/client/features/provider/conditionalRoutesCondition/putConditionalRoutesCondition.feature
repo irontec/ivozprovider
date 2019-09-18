@@ -24,7 +24,19 @@ Feature: Update conditional routes conditions
           "locution": null,
           "conferenceRoom": null,
           "extension": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            2
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            2
+          ]
       }
     """
     Then the response status code should be 200
@@ -84,6 +96,18 @@ Feature: Update conditional routes conditions
           "locution": null,
           "conferenceRoom": null,
           "extension": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            2
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            2
+          ]
       }
     """
