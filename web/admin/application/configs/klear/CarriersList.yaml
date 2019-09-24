@@ -210,14 +210,12 @@ production:
         <<: *billableCalls_fieldsLink
         blacklist:
           <<: *billableCalls_blacklistLink
-          company: true
           brand: true
     billableCallsView_screen:
       <<: *billableCallsView_screenLink
       fields:
         <<: *billableCallsView_fieldsLink
         blacklist:
-          company: true
           brand: true
 
   dialogs: &carriers_dialogsLink
