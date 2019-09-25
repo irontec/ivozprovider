@@ -55,6 +55,7 @@ class MigrateFromUnparsedTrunksCdr
 
             try {
                 $this->entityTools->dispatchQueuedOperations();
+                $this->entityTools->clear();
                 $cdrCount += count($trunks);
             } catch (\Exception $e) {
                 $this->logger->error('BillableCall migration service error:: ' . $e->getMessage());

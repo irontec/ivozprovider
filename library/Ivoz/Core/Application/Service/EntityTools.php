@@ -184,4 +184,17 @@ class EntityTools
             ->entityPersister
             ->removeFromArray($entities);
     }
+
+    /**
+     * Clears the EntityManager. All entities that are currently managed
+     * by this EntityManager become detached.
+     *
+     * @param string|null $entityName if given, only entities of this type will get detached
+     *
+     * @return void
+     */
+    public function clear($entityName = null)
+    {
+        $this->em->clear($entityName);
+    }
 }
