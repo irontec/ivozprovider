@@ -3,64 +3,35 @@
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
+use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier;
 
 abstract class AbstractBalanceOperation
 {
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var Logger
-     */
     protected $logger;
-
-    /**
-     * @var CarrierBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CarrierRepository
-     */
     protected $carrierRepository;
-
-    /**
-     * @var SyncBalances
-     */
     protected $syncBalanceService;
-
-    /**
-     * @var string
-     */
     protected $lastError;
+    protected $createBalanceMovementByCarrier;
 
-    /**
-     * IncrementBalance constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param CarrierBalanceServiceInterface $client
-     * @param CarrierRepository $carrierRepository
-     * @param SyncBalances $syncBalanceService
-     */
     public function __construct(
         EntityTools $entityTools,
         Logger $logger,
         CarrierBalanceServiceInterface $client,
         CarrierRepository $carrierRepository,
-        SyncBalances $syncBalanceService
+        SyncBalances $syncBalanceService,
+        CreateByCarrier $createByCarrier
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
         $this->carrierRepository = $carrierRepository;
         $this->syncBalanceService = $syncBalanceService;
+        $this->createBalanceMovementByCarrier = $createByCarrier;
     }
 
     /**
@@ -95,13 +66,11 @@ abstract class AbstractBalanceOperation
             $balance = $this->client->getBalance($brandId, $carrier->getId());
 
             // Store this transaction in a BalanceMovement
-            $balanceMovementDto = BalanceMovement::createDto();
-            $balanceMovementDto
-                ->setCarrierId($carrier->getId())
-                ->setAmount($amount)
-                ->setBalance($balance);
-
-            $this->entityTools->persistDto($balanceMovementDto, null, true);
+            $this->createBalanceMovementByCarrier->execute(
+                $carrier,
+                $amount,
+                $balance
+            );
         }
 
         return $success;
