@@ -6,28 +6,28 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\UpdateLastExecutionDate;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\SetExecutionError;
 use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {
-    /**
-     * @var EntityTools
-     */
     private $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
+    protected $updateLastExecutionDate;
+    protected $setExecutionError;
 
     public function __construct(
         EntityTools $entityTools,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        UpdateLastExecutionDate $updateLastExecutionDate,
+        SetExecutionError $setExecutionError
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
+        $this->updateLastExecutionDate = $updateLastExecutionDate;
+        $this->setExecutionError = $setExecutionError;
     }
 
     /**
@@ -47,11 +47,17 @@ class CreateByScheduler
             $this->logger->error(
                 "Call CSV scheduler #${name} has failed: " . $error
             );
-            $this->setExecutionError($scheduler, $error);
+
+            $this->setExecutionError->execute(
+                $scheduler,
+                $error
+            );
 
             throw $e;
         } finally {
-            $this->updateLastExecutionDate($scheduler);
+            $this->updateLastExecutionDate->execute(
+                $scheduler
+            );
         }
     }
 
@@ -112,51 +118,5 @@ class CreateByScheduler
         );
 
         return $report;
-    }
-
-    /**
-     * @param CallCsvSchedulerInterface $scheduler
-     * @return void
-     */
-    private function updateLastExecutionDate(CallCsvSchedulerInterface $scheduler)
-    {
-        /** @var CallCsvSchedulerDto $callCsvSchedulerDto */
-        $callCsvSchedulerDto = $this
-            ->entityTools
-            ->entityToDto($scheduler);
-
-        $callCsvSchedulerDto
-            ->setLastExecution(
-                new \DateTime(null, new \DateTimeZone('UTC'))
-            )
-            ->setLastExecutionError('');
-
-        $this->entityTools->persistDto(
-            $callCsvSchedulerDto,
-            $scheduler,
-            true
-        );
-    }
-
-    /**
-     * @param CallCsvSchedulerInterface $scheduler
-     * @param string $error
-     *
-     * @return void
-     */
-    private function setExecutionError(CallCsvSchedulerInterface $scheduler, string $error)
-    {
-        /** @var CallCsvSchedulerDto $callCsvSchedulerDto */
-        $callCsvSchedulerDto = $this
-            ->entityTools
-            ->entityToDto($scheduler);
-
-        $callCsvSchedulerDto
-            ->setLastExecutionError($error);
-
-        $this->entityTools->updateEntityByDto(
-            $scheduler,
-            $callCsvSchedulerDto
-        );
     }
 }
