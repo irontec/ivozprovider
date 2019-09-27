@@ -35,18 +35,28 @@ class LifecycleServiceHelper
         $serviceInterfaces = class_implements($serviceClass);
         $targetInterface = null;
 
-
-
         $isEventSubscriberInterface = is_subclass_of(
             $serviceClass,
             DomainEventSubscriberInterface::class
         );
 
         if ($isEventSubscriberInterface) {
+            $taggableServiceName = str_replace(
+                [
+                    '\\Event\\',
+                    '\\Model\\'
+                ],
+                [
+                    '\\',
+                    '\\Service\\'
+                ],
+                $serviceClass
+            );
+
             $serviceNamespace = substr(
-                $serviceClass,
+                $taggableServiceName,
                 0,
-                strrpos($serviceClass, '\\')
+                strrpos($taggableServiceName, '\\')
             );
 
             return self::getServiceNameByEntityFqdn($serviceNamespace, $event);
