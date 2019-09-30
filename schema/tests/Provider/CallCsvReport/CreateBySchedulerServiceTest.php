@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Service\CallCsvReport\CreateByScheduler;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 
 class CreateBySchedulerServiceTest extends KernelTestCase
 {
@@ -20,12 +19,7 @@ class CreateBySchedulerServiceTest extends KernelTestCase
     public function it_creates_callCsvReports()
     {
         $callCsvScheduler = $this->createScheduler('2018-12-10 08:00:00');
-        $this->date_ranges_are_lower_than_next_execution_day($callCsvScheduler);
-        $this->next_execution_is_properly_updated($callCsvScheduler);
-    }
 
-    protected function date_ranges_are_lower_than_next_execution_day($callCsvScheduler)
-    {
         $service = $this
             ->serviceContainer
             ->get(
@@ -35,8 +29,12 @@ class CreateBySchedulerServiceTest extends KernelTestCase
         $service
             ->execute($callCsvScheduler);
 
-        ///////////////////////
+        $this->date_ranges_are_lower_than_next_execution_day($callCsvScheduler);
+        $this->next_execution_is_properly_updated($callCsvScheduler);
+    }
 
+    protected function date_ranges_are_lower_than_next_execution_day($callCsvScheduler)
+    {
         $changelogEntries = $this->getChangelogByClass(
             CallCsvReport::class
         );
@@ -57,15 +55,6 @@ class CreateBySchedulerServiceTest extends KernelTestCase
 
     protected function next_execution_is_properly_updated($callCsvScheduler)
     {
-        $service = $this
-            ->serviceContainer
-            ->get(
-                CreateByScheduler::class
-            );
-
-        $service
-            ->execute($callCsvScheduler);
-
         $changelogEntries = $this->getChangelogByClass(
             CallCsvScheduler::class
         );
