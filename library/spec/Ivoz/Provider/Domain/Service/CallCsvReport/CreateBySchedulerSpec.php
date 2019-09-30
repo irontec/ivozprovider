@@ -12,6 +12,8 @@ use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\UpdateLastExecutionDate;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\SetExecutionError;
 use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
 
@@ -19,26 +21,27 @@ class CreateBySchedulerSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     private $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
+    protected $updateLastExecutionDate;
+    protected $setExecutionError;
 
     public function let(
         EntityTools $entityTools,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        UpdateLastExecutionDate $updateLastExecutionDate,
+        SetExecutionError $setExecutionError
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
+        $this->updateLastExecutionDate = $updateLastExecutionDate;
+        $this->setExecutionError = $setExecutionError;
 
         $this->beConstructedWith(
             $this->entityTools,
-            $this->logger
+            $this->logger,
+            $this->updateLastExecutionDate,
+            $this->setExecutionError
         );
     }
 
@@ -67,15 +70,14 @@ class CreateBySchedulerSpec extends ObjectBehavior
         $this
             ->entityTools
             ->persistDto(
-                Argument::type(CallCsvSchedulerDto::class),
-                Argument::type(CallCsvSchedulerInterface::class),
+                Argument::type(CallCsvReportDto::class),
+                null,
                 true
             )
             ->shouldBeCalled();
 
         $this->execute($scheduler);
     }
-
 
     public function it_updates_scheduler_last_execution(
         CallCsvSchedulerInterface $scheduler,
@@ -92,11 +94,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
             $callCsvReport
         );
 
-        $schedulerDto
-            ->setLastExecution(
-                Argument::type(\DateTime::class)
-            )
-            ->shouldBeCalled();
+        $this->updateLastExecutionDate
+            ->execute(
+                $scheduler
+            )->shouldbeCalled();
 
         $this->execute($scheduler);
     }
@@ -116,11 +117,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
             $callCsvReport
         );
 
-        $schedulerDto
-            ->setLastExecution(
-                Argument::type(\DateTime::class)
-            )
-            ->shouldBeCalled();
+        $this->updateLastExecutionDate
+            ->execute(
+                $scheduler
+            )->shouldbeCalled();
 
         $scheduler
             ->getNextExecution()
@@ -185,7 +185,6 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->during('execute', [$scheduler]);
     }
 
-
     public function it_persists_errors(
         CallCsvSchedulerInterface $scheduler,
         CallCsvSchedulerDto $schedulerDto,
@@ -208,9 +207,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->willThrow(new \Exception($errorMsg))
             ->shouldBeCalled();
 
-        $schedulerDto
-            ->setLastExecutionError($errorMsg)
-            ->shouldBeCalled();
+        $this->setExecutionError->execute(
+            $scheduler,
+            $errorMsg
+        );
 
         $this
             ->shouldThrow(\Exception::class)
@@ -255,31 +255,5 @@ class CreateBySchedulerSpec extends ObjectBehavior
                 true
             )
             ->willReturn($callCsvReport);
-
-        $this
-            ->entityTools
-            ->entityToDto($scheduler)
-            ->willReturn($schedulerDto);
-
-        $schedulerDto
-            ->setLastExecution(Argument::type(\DateTime::class))
-            ->willReturn($schedulerDto);
-
-        $schedulerDto
-            ->setLastExecutionError(Argument::type('string'))
-            ->willReturn($schedulerDto);
-
-        $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(CallCsvSchedulerDto::class),
-                Argument::type(CallCsvSchedulerInterface::class),
-                true
-            )
-            ->willReturn(null);
-
-        $this
-            ->entityTools
-            ->entityToDto($scheduler);
     }
 }
