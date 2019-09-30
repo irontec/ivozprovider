@@ -32,6 +32,11 @@ class RestClient
         $this->refreshToken = $refreshToken;
     }
 
+    public function getToken()
+    {
+        return $this->token;
+    }
+
     public static function setBaseUrl(string $baseUrl)
     {
         self::$apiBaseUrl = $baseUrl;

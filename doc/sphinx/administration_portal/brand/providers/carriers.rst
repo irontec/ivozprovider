@@ -89,3 +89,11 @@ are used for placing outgoing calls by using :ref:`Outgoing routings`.
    Carrier, IvozProvider will balance and failover using all of them.
    Like with Application Servers, it will disable those who doesn't respond to
    our requests.
+
+List of external calls
+**********************
+
+You can see external calls placed through a given carrier using this option. You will see the same fields as in
+:ref:`External calls` but filtered for the chosen carrier.
+
+.. error:: It is compulsory to have **a valid brand URL** in order to use *Export to CSV* feature in this subsection.
