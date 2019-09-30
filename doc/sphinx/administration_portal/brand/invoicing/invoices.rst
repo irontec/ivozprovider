@@ -110,3 +110,10 @@ If rating of any call included in an invoice is wrong, :ref:`External Calls` sec
 invoice that includes the call is previously deleted.
 
 Once deleted and rerated, a new row can be added in *Invoices* section to include rerated calls.
+
+List of external calls
+======================
+
+You can see calls of a given invoice using this option. You will see the same fields as in :ref:`External calls`.
+
+.. error:: It is compulsory to have **a valid brand URL** in order to use *Export to CSV* feature in this subsection.

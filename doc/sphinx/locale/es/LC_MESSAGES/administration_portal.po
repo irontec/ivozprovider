@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-16 13:14+0200\n"
+"POT-Creation-Date: 2019-09-30 12:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2336,6 +2336,24 @@ msgid ""
 " include rerated calls."
 msgstr ""
 
+#: ../../administration_portal/brand/invoicing/invoices.rst:115
+#: ../../administration_portal/brand/providers/carriers.rst:94
+msgid "List of external calls"
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:117
+msgid ""
+"You can see calls of a given invoice using this option. You will see the "
+"same fields as in :ref:`External calls`."
+msgstr ""
+
+#: ../../administration_portal/brand/invoicing/invoices.rst:119
+#: ../../administration_portal/brand/providers/carriers.rst:99
+msgid ""
+"It is compulsory to have **a valid brand URL** in order to use *Export to"
+" CSV* feature in this subsection."
+msgstr ""
+
 #: ../../administration_portal/brand/providers/carriers.rst:5
 msgid "Carriers"
 msgstr ""
@@ -2513,6 +2531,13 @@ msgid ""
 "IvozProvider will balance and failover using all of them. Like with "
 "Application Servers, it will disable those who doesn't respond to our "
 "requests."
+msgstr ""
+
+#: ../../administration_portal/brand/providers/carriers.rst:96
+msgid ""
+"You can see external calls placed through a given carrier using this "
+"option. You will see the same fields as in :ref:`External calls` but "
+"filtered for the chosen carrier."
 msgstr ""
 
 #: ../../administration_portal/brand/providers/ddi_providers.rst:3
