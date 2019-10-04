@@ -12,8 +12,18 @@ class IvozProvider_Klear_Filter_OutgoingDDI implements KlearMatrix_Model_Field_S
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-        // Do not apply filtering in list view
+        // Do not apply company based filtering in list view
         if ($routeDispatcher->getControllerName() == "list") {
+            $auth = Zend_Auth::getInstance();
+            if (!$auth->hasIdentity()) {
+                throw new Klear_Exception_Default("No company/brand emulated");
+            }
+            $currentBrandId = $auth->getIdentity()->brandId;
+            $this->_condition = [
+                'self::brand = :pk',
+                ['pk' => $currentBrandId]
+            ];
+
             return;
         }
 
