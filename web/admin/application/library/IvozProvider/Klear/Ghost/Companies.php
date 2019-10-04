@@ -3,6 +3,8 @@
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
 
 class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_Abstract
@@ -65,6 +67,32 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
             return sprintf("%s %s", $amount, $currencySymbol);
         } catch (Exception $exception) {
             return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
+    }
+
+    /**
+     * @param CompanyDto $companyDto
+     * @return string
+     */
+    public function getDdiE164(CompanyDto $companyDto)
+    {
+        try {
+            if (!$companyDto->getOutgoingDdiId()) {
+                return Klear_Model_Gettext::gettextCheck('_("Unassigned")');
+            }
+
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            /** @var DdiDto $ddi */
+            $ddi = $dataGateway->find(
+                Ddi::class,
+                $companyDto->getOutgoingDdiId()
+            );
+
+            return $ddi->getDdie164();
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("error")');
         }
     }
 }
