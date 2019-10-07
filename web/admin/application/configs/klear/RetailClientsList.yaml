@@ -56,11 +56,12 @@ production:
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          outgoingDdi: true
         order:
           name: true
           nif: true
           billingMethod: true
-          outgoingDdi: true
+          outgoingDdiE164: true
           relRoutingTags: true
           relCodecs: true
       options:
@@ -101,6 +102,7 @@ production:
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          outgoingDdiE164: true
         order: &retailClientsOrder_Link
           id: true
           name: true
@@ -171,6 +173,7 @@ production:
           town: ${auth.brandFeatures.invoices.disabled}
           province: ${auth.brandFeatures.invoices.disabled}
           countryName: ${auth.brandFeatures.invoices.disabled}
+          outgoingDdiE164: true
         whitelist:
           id: ${auth.isMainOperator}
         order:

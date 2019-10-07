@@ -67,11 +67,12 @@ production:
           callCsvNotificationTemplate: true
           balance: true
           showInvoices: true
+          outgoingDdi: true
         order:
           name: true
           nif: true
           billingMethod: true
-          outgoingDdi: true
+          outgoingDdiE164: true
           relFeatures: true
       options:
         title: _("Options")
@@ -122,6 +123,7 @@ production:
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           showInvoices: true
+          outgoingDdiE164: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
@@ -192,6 +194,7 @@ production:
           countryName: ${auth.brandFeatures.invoices.disabled}
           outgoingDdiRule: true
           balance: true
+          outgoingDdiE164: true
         whitelist:
           id: ${auth.isMainOperator}
         order:
