@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 17:12+0200\n"
+"POT-Creation-Date: 2019-10-08 13:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -597,47 +597,59 @@ msgstr ""
 "funcionar correctamente:"
 
 #: ../../security_and_maintenance/security/firewall.rst:23
-msgid "**SIP signalling**:"
-msgstr "**Señalización SIP**:"
+msgid "**Client side SIP signalling**:"
+msgstr "**Señalización SIP de cliente**:"
 
 #: ../../security_and_maintenance/security/firewall.rst:25
+#: ../../security_and_maintenance/security/firewall.rst:35
 msgid "Port 5060 (TCP/UDP)"
 msgstr "Puerto 5060 (TCP/UDP)"
 
 #: ../../security_and_maintenance/security/firewall.rst:27
+#: ../../security_and_maintenance/security/firewall.rst:37
 msgid "Port 5061 (TCP)"
 msgstr "Puerto 5061 (TCP)"
 
 #: ../../security_and_maintenance/security/firewall.rst:29
-msgid ""
-"Port 7060 (TCP/UDP) y 7061 TCP (just in case both ProxyUsers and "
-"ProxyTrunks share IP)"
+msgid "Port 10080 (TCP) for Websocket connections (WS)."
 msgstr ""
-"Puerto 7060 (TCP/UDP) y 7061 TCP (si KamUsers y KamTrunks comparten un "
-"única IP pública)"
 
 #: ../../security_and_maintenance/security/firewall.rst:31
-msgid "**RTP audioflow**:"
-msgstr "**Tráfico RTP**:"
+msgid "Port 10081 (TCP) for Websocket secure connections (WSS)."
+msgstr ""
 
 #: ../../security_and_maintenance/security/firewall.rst:33
-msgid "Port range 13000-19000 UDP"
-msgstr "Rango de puertos 13000-19000 UDP"
-
-#: ../../security_and_maintenance/security/firewall.rst:35
-msgid "**Web portal and provisioning**:"
-msgstr "**Acceso a portales web y provisión de terminales**:"
-
-#: ../../security_and_maintenance/security/firewall.rst:37
-msgid "Ports TCP 443, 1443 y 2443"
-msgstr "Puertos TCP 443, 1443 y 2443"
+msgid "**Provider side SIP signalling**:"
+msgstr "**Señalización SIP de operador**:"
 
 #: ../../security_and_maintenance/security/firewall.rst:39
 msgid ""
-"We recommend using **iptables geoIP module** to drop connections from "
-"countries where we don't have any clients."
+"Port 7060 (TCP/UDP) y 7061 TCP in case both proxies share a unique IP "
+"address."
 msgstr ""
-"Recomendamos utilizar el **módulo geoIP de iptables** para rechazar "
+
+#: ../../security_and_maintenance/security/firewall.rst:41
+msgid "**RTP audioflow**:"
+msgstr "**Tráfico RTP**:"
+
+#: ../../security_and_maintenance/security/firewall.rst:43
+msgid "Port range 13000-19000 UDP"
+msgstr "Rango de puertos 13000-19000 UDP"
+
+#: ../../security_and_maintenance/security/firewall.rst:45
+msgid "**Web portal and provisioning**:"
+msgstr "**Acceso a portales web y provisión de terminales**:"
+
+#: ../../security_and_maintenance/security/firewall.rst:47
+msgid "Ports TCP 443, 1443 y 2443"
+msgstr "Puertos TCP 443, 1443 y 2443"
+
+#: ../../security_and_maintenance/security/firewall.rst:49
+msgid ""
+"We recommend using any **geoIP blocking** mechanism to drop connections "
+"from countries without clients."
+msgstr ""
+"Recomendamos utilizar algún mecanismo de **bloqueo geoIP** para rechazar "
 "conexiones de países en los que no tengamos clientes."
 
 #: ../../security_and_maintenance/security/index.rst:3

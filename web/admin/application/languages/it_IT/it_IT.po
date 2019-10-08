@@ -825,8 +825,10 @@ msgstr "Endpoint type"
 msgid "Ensure the preview below is right before you proceed"
 msgstr "Assicurati che l'anteprima sotto sia giusta prima di procedere"
 
-msgid "Enter number patterns in E.164 format."
-msgstr "Inserisci i pattern numerici nel formato E.164."
+msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
+msgstr ""
+"Inserisci i pattern numerici nel formato E.164 (il simbolo più deve essere "
+"salvato)."
 
 msgid "Entry"
 msgstr "Voce"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 12:20+0200\n"
+"POT-Creation-Date: 2019-10-09 11:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:17
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:21
 #: ../../administration_portal/client/vpbx/terminals.rst:15
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:45
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:47
 #: ../../administration_portal/client/vpbx/users.rst:18
 #: ../../administration_portal/platform/brands.rst:10
 msgid "Name"
@@ -305,6 +305,46 @@ msgid ""
 "Once the import process is over, we only have to include this destination"
 " rate into some rating plan and bind it to the clients we want following "
 "the procedure explained in :ref:`Rating plans`."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:124
+msgid "Re-importing a CSV file"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:126
+msgid ""
+"Once a CSV (first.csv) is imported into an empty destination-rates row, "
+"you can **import another CSV** (second.csv)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:128
+msgid "However, it is **important to understand what happens** when you do so:"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:130
+msgid "Prefixes in both CSV will get its rate **updated** with second's CSV one."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:132
+msgid "Prefixes existing only in the first CSV file will be **kept**."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:134
+msgid "Prefixes existing only in the second CSV file will be **added**."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:137
+msgid ""
+"Downloading CSV using *Imported file* option will always download **last "
+"imported CSV file** (no the combination of both as described above)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:140
+msgid ""
+"Note that if both *first.csv* and *second.csv* contain exactly the same "
+"prefixes, resulting destination-rate will be as we had only imported "
+"*second.csv*. And downloading *Imported file* will download *second.csv*,"
+" that is exactly the current state of destination-rate."
 msgstr ""
 
 #: ../../administration_portal/brand/billing/destinations.rst:3
@@ -2885,6 +2925,7 @@ msgid "Failover route lets us use another route whenever the main route fails."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:77
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:95
 msgid "Example"
 msgstr ""
 
@@ -4588,15 +4629,11 @@ msgid ""
 " from that account presenting that DDI as origin."
 msgstr ""
 
-#: ../../administration_portal/client/retail/ddis.rst:21
-msgid "No recording enable/disable feature: all calls will be recorded."
-msgstr ""
-
-#: ../../administration_portal/client/retail/ddis.rst:25
+#: ../../administration_portal/client/retail/ddis.rst:23
 msgid "Retail Recordings"
 msgstr ""
 
-#: ../../administration_portal/client/retail/ddis.rst:27
+#: ../../administration_portal/client/retail/ddis.rst:25
 msgid ""
 "If Retail Client has *Recordings* feature enabled, DDIs can also record "
 "incoming and/or outgoing calls."
@@ -5608,7 +5645,7 @@ msgid "Choose between \"Direct\" and \"Register\" for a remote friend."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends/remote_friends.rst:77
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:40
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:42
 #: ../../administration_portal/client/vpbx/users.rst:81
 msgid "Call ACL"
 msgstr ""
@@ -6406,6 +6443,92 @@ msgstr ""
 msgid "Override default external call filter Out of schedule options"
 msgstr ""
 
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:73
+msgid "Difference between non-whole day event and calendar period"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:75
+msgid ""
+"In order to understand the difference between these two features it is "
+"important to know the order of call filter logic:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:77
+msgid "**1. Is current day marked as holiday?**"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:79
+msgid ""
+"This is where non-whole day event applies, making the answer to the "
+"question above possitive during defined period."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:81
+msgid ""
+"Yes: apply holiday logic defined in the calendar event or in External "
+"Call Filter."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:83
+msgid "No: proceed to question 2."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:85
+msgid "**2. Is current time marked as out-of-schedule?**"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:87
+msgid ""
+"This is where calendar period applies, overriding schedules of External "
+"Call Filter with the one defined in calendar period."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:90
+msgid ""
+"Yes: apply out-of-schedule logic defined in the calendar period or in "
+"External Call Filter."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:92
+msgid "No: proceed with standard logic."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:96
+msgid "Configuration of a given day:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:98
+msgid "Non-whole day event: 8:00-15:00"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:100
+msgid "Calendar period: 13:00-17:00"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:102
+msgid "Cases:"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:104
+msgid "Call at 7:00: out of schedule due to calendar period."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:106
+msgid "Call at 9:00: holiday logic due to non-whole day event."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:108
+msgid "Call at 14:00: holiday logic due to non-whole day event."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:110
+msgid "Call at 16:00: normal logic."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:112
+msgid "Call at 18:00: out of schedule due to calendar period."
+msgstr ""
+
 #: ../../administration_portal/client/vpbx/routing_tools/external_call_filters.rst:7
 msgid ""
 "One of the most common task a client's administrator will do is to "
@@ -6580,6 +6703,14 @@ msgid ""
 "As shown in **List of Match List Patterns**, a match list can contain "
 "specific numbers or groups using `Regular Expressions "
 "<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_"
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/routing_tools/match_lists.rst:32
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:36
+msgid ""
+"**Regular expressions** of Match List patterns must be **in E.164** "
+"format and **plus symbol must be escaped** (e.g. ^\\\\+34 for all spanish"
+" numbers)."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:5
@@ -6885,55 +7016,51 @@ msgid ""
 " to section :ref:`match_lists`."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:36
-msgid "**Regular expressions of Match List patterns must be in E.164 format**."
-msgstr ""
-
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:42
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:44
 msgid "When a new **Call ACL** is created, these two fields turn up:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:47
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:49
 msgid "Used to reference this Call ACL."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:48
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:50
 msgid "Default policy"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:50
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:52
 msgid "If no rule matches, this ACL will deny the call or allow it?"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:52
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:54
 msgid "After creating the **Call ACL** we can edit it to add the required rules:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:54
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:56
 msgid "Rules to deny some specific destinations."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:56
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:58
 msgid "Rules to allow some specific destinations."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:58
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:60
 msgid "The **metric** determines the evaluation order of the rules."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:61
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:63
 msgid "Assign Call ACLs"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:63
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:65
 msgid "Created *Call ACLs* can be assigned to:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:65
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:67
 msgid "Friends through *Call ACL* parameter."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:67
+#: ../../administration_portal/client/vpbx/user_configuration/call_acls.rst:69
 msgid "Users through *Call ACL* parameter."
 msgstr ""
 
@@ -8393,16 +8520,4 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
-
-#~ msgid "Max Calls"
-#~ msgstr ""
-
-#~ msgid ""
-#~ msgstr ""
-
-#~ msgid "Let's imagine three calendars with the following configuration:"
-#~ msgstr ""
-
-#~ msgid "Download a CSV with each rating plan."
-#~ msgstr ""
 

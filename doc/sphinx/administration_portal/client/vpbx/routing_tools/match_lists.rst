@@ -28,3 +28,6 @@ different items that will group the numbers and patterns.
 
 As shown in **List of Match List Patterns**, a match list can contain specific numbers or groups using
 `Regular Expressions <http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_
+
+.. error:: **Regular expressions** of Match List patterns must be **in E.164** format and **plus symbol must be
+               escaped** (e.g. ^\\+34 for all spanish numbers).

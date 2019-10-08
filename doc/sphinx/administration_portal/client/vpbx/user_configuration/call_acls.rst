@@ -33,7 +33,9 @@ the call permission.
 For more information of how MatchLists patterns are created, please refer to section
 :ref:`match_lists`.
 
-.. attention:: **Regular expressions of Match List patterns must be in E.164 format**.
+.. error:: **Regular expressions** of Match List patterns must be **in E.164** format and **plus symbol must be
+               escaped** (e.g. ^\\+34 for all spanish numbers).
+
 
 ********
 Call ACL
