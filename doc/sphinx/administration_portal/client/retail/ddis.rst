@@ -18,8 +18,6 @@ Retail DDIs can only be routed to a :ref:`Retail Accounts <retail_accounts>`
 .. hint:: Routing a DDI through a Retail account will allow to place external calls
     from that account presenting that DDI as origin.
 
-.. note:: No recording enable/disable feature: all calls will be recorded.
-
 *****************
 Retail Recordings
 *****************
