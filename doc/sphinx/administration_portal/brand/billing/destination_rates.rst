@@ -118,3 +118,25 @@ downloading the imported file, changing some values and importing pricing back.
 Once the import process is over, we only have to include this destination rate into some
 rating plan and bind it to the clients we want following the procedure explained in
 :ref:`Rating plans`.
+
+***********************
+Re-importing a CSV file
+***********************
+
+Once a CSV (first.csv) is imported into an empty destination-rates row, you can **import another CSV** (second.csv).
+
+However, it is **important to understand what happens** when you do so:
+
+- Prefixes in both CSV will get its rate **updated** with second's CSV one.
+
+- Prefixes existing only in the first CSV file will be **kept**.
+
+- Prefixes existing only in the second CSV file will be **added**.
+
+
+.. error:: Downloading CSV using *Imported file* option will always download **last imported CSV file** (no the
+           combination of both as described above).
+
+Note that if both *first.csv* and *second.csv* contain exactly the same prefixes, resulting destination-rate will be as
+we had only imported *second.csv*. And downloading *Imported file* will download *second.csv*, that is exactly the current
+state of destination-rate.
