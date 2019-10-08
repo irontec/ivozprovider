@@ -74,7 +74,7 @@ Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerAbstract:
       length: 32
       options:
         fixed: false
-        default: 'carrierId'
+        default: ''
       column: run_filters
     reqTypeField:
       type: string
@@ -82,7 +82,7 @@ Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerAbstract:
       length: 64
       options:
         fixed: false
-        default: 'carrierReqtype'
+        default: '^*postpaid'
       column: req_type_field
     directionField:
       type: string
