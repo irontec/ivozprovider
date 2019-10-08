@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Service\TransformationRule;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
-use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Service\TransformationRuleSet\DisableGenerateRules;
 use Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleEventHandlerInterface;
 
 /**
@@ -14,29 +14,21 @@ use Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLife
  */
 class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var GenerateInRules
-     */
     protected $generateInRules;
-
-    /**
-     * @var GenerateOutRules
-     */
     protected $generateOutRules;
+    protected $disableGenerateRules;
 
     public function __construct(
         EntityTools $entityTools,
         GenerateInRules $generateInRules,
-        GenerateOutRules $generateOutRules
+        GenerateOutRules $generateOutRules,
+        DisableGenerateRules $disableGenerateRules
     ) {
         $this->entityTools = $entityTools;
         $this->generateInRules = $generateInRules;
         $this->generateOutRules = $generateOutRules;
+        $this->disableGenerateRules = $disableGenerateRules;
     }
 
     public static function getSubscribedEvents()
@@ -73,14 +65,8 @@ class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterfa
         $this->generateOutRules->execute($transformationRuleSet, 'callerout');
         $this->generateOutRules->execute($transformationRuleSet, 'calleeout');
 
-        // Mark rules as generated
-        /** @var TransformationRuleSetDto $transformationRuleSetDto */
-        $transformationRuleSetDto = $this->entityTools->entityToDto($transformationRuleSet);
-        $transformationRuleSetDto->setGenerateRules(false);
-        $this->entityTools->persistDto(
-            $transformationRuleSetDto,
-            $transformationRuleSet,
-            false
+        $this->disableGenerateRules->execute(
+            $transformationRuleSet
         );
 
         $this->entityTools->dispatchQueuedOperations();

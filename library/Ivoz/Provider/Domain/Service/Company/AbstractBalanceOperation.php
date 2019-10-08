@@ -3,63 +3,36 @@
 namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCompany;
 
 abstract class AbstractBalanceOperation
 {
-    /**
-     * @var EntityTools
-     */
+
     protected $entityTools;
-
-    /**
-     * @var Logger
-     */
     protected $logger;
-
-    /**
-     * @var CompanyBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CompanyRepository
-     */
     protected $companyRepository;
-
-    /**
-     * @var SyncBalances
-     */
     protected $syncBalanceService;
-
-    /**
-     * @var string
-     */
     protected $lastError;
+    protected $createBalanceMovementByCompany;
 
-    /**
-     * AbstractBalanceOperation constructor.
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param CompanyBalanceServiceInterface $client
-     * @param CompanyRepository $companyRepository
-     * @param SyncBalances $syncBalanceService
-     */
     public function __construct(
         EntityTools $entityTools,
         Logger $logger,
         CompanyBalanceServiceInterface $client,
         CompanyRepository $companyRepository,
-        SyncBalances $syncBalanceService
+        SyncBalances $syncBalanceService,
+        CreateByCompany $createByCompany
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
         $this->companyRepository = $companyRepository;
         $this->syncBalanceService = $syncBalanceService;
+        $this->createBalanceMovementByCompany = $createByCompany;
     }
 
     /**
@@ -94,14 +67,11 @@ abstract class AbstractBalanceOperation
             // Get current balance status
             $balance = $this->client->getBalance($brandId, $company->getId());
 
-            // Store this transaction in a BalanceMovement
-            $balanceMovementDto = BalanceMovement::createDto();
-            $balanceMovementDto
-                ->setCompanyId($company->getId())
-                ->setAmount($amount)
-                ->setBalance($balance);
-
-            $this->entityTools->persistDto($balanceMovementDto, null, true);
+            $this->createBalanceMovementByCompany->execute(
+                $company,
+                $amount,
+                $balance
+            );
         }
 
         return $success;

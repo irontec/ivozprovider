@@ -14,69 +14,44 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCompany;
 
 class DecrementBalanceSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
+    const BALANCE = 100.45;
+
     protected $entityTools;
-
-    /**
-     * @var Logger
-     */
     protected $logger;
-
-    /**
-     * @var CompanyBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CompanyRepository
-     */
     protected $companyRepository;
-
-    /**
-     * @var SyncBalances
-     */
     protected $syncBalanceService;
-
-    /**
-     * @var string
-     */
     protected $lastError;
+    protected $createBalanceMovementByCompany;
 
-    /**
-     * IncrementBalance constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param CompanyBalanceServiceInterface $client
-     * @param CompanyRepository $companyRepository
-     * @param SyncBalances $syncBalanceService
-     */
     public function let(
         EntityTools $entityTools,
         Logger $logger,
         CompanyBalanceServiceInterface $client,
         CompanyRepository $companyRepository,
-        SyncBalances $syncBalanceService
+        SyncBalances $syncBalanceService,
+        CreateByCompany $createByCompany
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
         $this->companyRepository = $companyRepository;
         $this->syncBalanceService = $syncBalanceService;
+        $this->createBalanceMovementByCompany = $createByCompany;
 
         $this->beConstructedWith(
             $this->entityTools,
             $this->logger,
             $this->client,
             $this->companyRepository,
-            $this->syncBalanceService
+            $this->syncBalanceService,
+            $this->createBalanceMovementByCompany
         );
     }
 
@@ -118,11 +93,11 @@ class DecrementBalanceSpec extends ObjectBehavior
         );
 
         $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(BalanceMovementDto::class),
-                null,
-                true
+            ->createBalanceMovementByCompany
+            ->execute(
+                $company,
+                -10.15,
+                self::BALANCE
             )
             ->shouldBeCalled();
 
@@ -174,6 +149,6 @@ class DecrementBalanceSpec extends ObjectBehavior
                 Argument::type('numeric'),
                 Argument::type('numeric')
             )
-            ->willReturn(100.45);
+            ->willReturn(self::BALANCE);
     }
 }

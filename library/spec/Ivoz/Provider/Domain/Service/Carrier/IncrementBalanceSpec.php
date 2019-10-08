@@ -3,13 +3,13 @@
 namespace spec\Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances;
+use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier;
 use Symfony\Bridge\Monolog\Logger;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -19,64 +19,38 @@ class IncrementBalanceSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var Logger
-     */
     protected $logger;
-
-    /**
-     * @var CarrierBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CarrierRepository
-     */
     protected $carrierRepository;
-
-    /**
-     * @var SyncBalances
-     */
     protected $syncBalanceService;
-
-    /**
-     * @var string
-     */
     protected $lastError;
+    protected $createBalanceMovementByCarrier;
 
-    /**
-     * IncrementBalance constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param CarrierBalanceServiceInterface $client
-     * @param CarrierRepository $carrierRepository
-     * @param SyncBalances $syncBalanceService
-     */
+    const BALANCE = 100.45;
+
     public function let(
         EntityTools $entityTools,
         Logger $logger,
         CarrierBalanceServiceInterface $client,
         CarrierRepository $carrierRepository,
-        SyncBalances $syncBalanceService
+        SyncBalances $syncBalanceService,
+        CreateByCarrier $createByCarrier
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
         $this->carrierRepository = $carrierRepository;
         $this->syncBalanceService = $syncBalanceService;
+        $this->createBalanceMovementByCarrier = $createByCarrier;
 
         $this->beConstructedWith(
             $this->entityTools,
             $this->logger,
             $this->client,
             $this->carrierRepository,
-            $this->syncBalanceService
+            $this->syncBalanceService,
+            $this->createBalanceMovementByCarrier
         );
     }
 
@@ -118,11 +92,11 @@ class IncrementBalanceSpec extends ObjectBehavior
         );
 
         $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(BalanceMovementDto::class),
-                null,
-                true
+            ->createBalanceMovementByCarrier
+            ->execute(
+                $carrier,
+                10.15,
+                self::BALANCE
             )
             ->shouldBeCalled();
 
@@ -174,6 +148,6 @@ class IncrementBalanceSpec extends ObjectBehavior
                 Argument::type('numeric'),
                 Argument::type('numeric')
             )
-            ->willReturn(100.45);
+            ->willReturn(self::BALANCE);
     }
 }

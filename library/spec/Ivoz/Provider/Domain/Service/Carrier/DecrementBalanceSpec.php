@@ -14,69 +14,42 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
+use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier;
 
 class DecrementBalanceSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var Logger
-     */
     protected $logger;
-
-    /**
-     * @var CarrierBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CarrierRepository
-     */
     protected $carrierRepository;
-
-    /**
-     * @var SyncBalances
-     */
     protected $syncBalanceService;
-
-    /**
-     * @var string
-     */
     protected $lastError;
+    protected $createBalanceMovementByCarrier;
 
-    /**
-     * IncrementBalance constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param CarrierBalanceServiceInterface $client
-     * @param CarrierRepository $carrierRepository
-     * @param SyncBalances $syncBalanceService
-     */
     public function let(
         EntityTools $entityTools,
         Logger $logger,
         CarrierBalanceServiceInterface $client,
         CarrierRepository $carrierRepository,
-        SyncBalances $syncBalanceService
+        SyncBalances $syncBalanceService,
+        CreateByCarrier $createByCarrier
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
         $this->carrierRepository = $carrierRepository;
         $this->syncBalanceService = $syncBalanceService;
+        $this->createBalanceMovementByCarrier = $createByCarrier;
 
         $this->beConstructedWith(
             $this->entityTools,
             $this->logger,
             $this->client,
             $this->carrierRepository,
-            $this->syncBalanceService
+            $this->syncBalanceService,
+            $createByCarrier
         );
     }
 
@@ -118,11 +91,11 @@ class DecrementBalanceSpec extends ObjectBehavior
         );
 
         $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(BalanceMovementDto::class),
-                null,
-                true
+            ->createBalanceMovementByCarrier
+            ->execute(
+                $carrier,
+                Argument::any(),
+                Argument::any()
             )
             ->shouldBeCalled();
 

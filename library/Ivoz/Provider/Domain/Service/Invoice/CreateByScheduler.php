@@ -4,33 +4,35 @@ namespace Ivoz\Provider\Domain\Service\Invoice;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
-use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice;
-use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
-use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Service\FixedCostsRelInvoice\CreateByScheduler as FixedCostsRelInvoiceByScheduler;
+use Ivoz\Provider\Domain\Service\InvoiceScheduler\SetExecutionError;
+use Ivoz\Provider\Domain\Service\InvoiceScheduler\UpdateLastExecutionDate;
 use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {
-    /**
-     * @var EntityTools
-     */
     private $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
+    protected $fixedCostsRelInvoiceByScheduler;
+    protected $updateLastExecutionDate;
+    protected $setExecutionError;
 
     public function __construct(
         EntityTools $entityTools,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
+        UpdateLastExecutionDate $updateLastExecutionDate,
+        SetExecutionError $setExecutionError
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
+        $this->fixedCostsRelInvoiceByScheduler = $fixedCostsRelInvoiceByScheduler;
+        $this->updateLastExecutionDate = $updateLastExecutionDate;
+        $this->setExecutionError = $setExecutionError;
     }
 
     /**
@@ -42,18 +44,24 @@ class CreateByScheduler
     {
         try {
             $invoice = $this->createInvoice($scheduler);
-            $this->setFixedCosts($scheduler, $invoice);
+            $this->fixedCostsRelInvoiceByScheduler->execute(
+                $scheduler,
+                $invoice
+            );
         } catch (\Exception $e) {
             $error = $e->getMessage();
             $name = $scheduler->getName();
             $this->logger->error(
                 "Invoice scheduler #${name} has failed: " . $error
             );
-            $this->setExecutionError($scheduler, $error);
+            $this->setExecutionError->execute(
+                $scheduler,
+                $error
+            );
 
             throw $e;
         } finally {
-            $this->updateLastExecutionDate($scheduler);
+            $this->updateLastExecutionDate->execute($scheduler);
         }
     }
 
@@ -124,68 +132,5 @@ class CreateByScheduler
         );
 
         return $invoice;
-    }
-
-    /**
-     * @param InvoiceSchedulerInterface $scheduler
-     * @param InvoiceInterface $invoice
-     *
-     * @return void
-     */
-    private function setFixedCosts(InvoiceSchedulerInterface $scheduler, InvoiceInterface $invoice)
-    {
-        /** @var FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts */
-        $relFixedCosts = $scheduler->getRelFixedCosts();
-        foreach ($relFixedCosts as $relFixedCost) {
-            $fixedCostRelInvoice = FixedCostsRelInvoice::fromFixedCostsRelInvoiceScheduler(
-                $invoice,
-                $relFixedCost
-            );
-            $this->entityTools->persist($fixedCostRelInvoice);
-        }
-    }
-
-    /**
-     * @param InvoiceSchedulerInterface $scheduler
-     * @return void
-     */
-    private function updateLastExecutionDate(InvoiceSchedulerInterface $scheduler)
-    {
-        /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
-        $invoiceSchedulerDto = $this
-            ->entityTools
-            ->entityToDto($scheduler);
-
-        $invoiceSchedulerDto
-            ->setLastExecution(new \DateTime(null, new \DateTimeZone('UTC')))
-            ->setLastExecutionError('');
-
-        $this->entityTools->persistDto(
-            $invoiceSchedulerDto,
-            $scheduler,
-            true
-        );
-    }
-
-    /**
-     * @param InvoiceSchedulerInterface $scheduler
-     * @param string $error
-     *
-     * @return void
-     */
-    private function setExecutionError(InvoiceSchedulerInterface $scheduler, string $error)
-    {
-        /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
-        $invoiceSchedulerDto = $this
-            ->entityTools
-            ->entityToDto($scheduler);
-
-        $invoiceSchedulerDto
-            ->setLastExecutionError($error);
-
-        $this->entityTools->updateEntityByDto(
-            $scheduler,
-            $invoiceSchedulerDto
-        );
     }
 }

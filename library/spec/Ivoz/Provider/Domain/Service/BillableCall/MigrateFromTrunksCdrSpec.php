@@ -7,14 +7,12 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
 use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Psr\Log\LoggerInterface;
+use Ivoz\Kam\Domain\Service\TrunksCdr\SetParsed;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -27,23 +25,27 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
     protected $createOrUpdateBillableCallByTrunksCdr;
     protected $domainEventPublisher;
     protected $entityTools;
+    protected $setParsed;
 
     public function let(
         BillableCallRepository $billableCallRepository,
         CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
         EntityTools $entityTools,
-        DomainEventPublisher $domainEventPublisher
+        DomainEventPublisher $domainEventPublisher,
+        SetParsed $setParsed
     ) {
         $this->billableCallRepository = $billableCallRepository;
         $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
         $this->domainEventPublisher = $domainEventPublisher;
         $this->entityTools = $entityTools;
+        $this->setParsed = $setParsed;
 
         $this->beConstructedWith(
             $this->billableCallRepository,
             $this->createOrUpdateBillableCallByTrunksCdr,
             $this->entityTools,
-            $this->domainEventPublisher
+            $this->domainEventPublisher,
+            $this->setParsed
         );
     }
 
@@ -76,9 +78,8 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(TrunksCdrDto::class),
+            ->setParsed
+            ->execute(
                 Argument::type(TrunksCdrInterface::class),
                 false
             )
@@ -126,13 +127,6 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
                 Argument::type(BillableCallInterface::class)
             )
             ->willReturn($billableCall);
-
-        $this
-            ->entityTools
-            ->entityToDto(
-                Argument::type(TrunksCdrInterface::class)
-            )
-            ->willReturn($trunksCdrDto);
 
         $this
             ->entityTools
