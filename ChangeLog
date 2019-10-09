@@ -1,3 +1,40 @@
+Wed, 09 Oct 2019 10:01:15 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.12.1 released
+
+    * Portals
+        - Added translated strings for Catalan language
+        - Filter timezone dropdowns based on selected Country
+        - Added missing country code field in Residential External call filters
+        - Carrier cost fields are no longer displayed when Billing feature is disabled
+        - Fix carrier External calls list CSV export
+        - Fix client rating profiles CSV export
+
+    * Billing
+        - Do not generate carrier CDR if calculate cost is disabled
+        - Avoid unreal error log messages
+
+    * Proxies
+        - Retail client calls are now recorded based on DDI record configuration
+
+    * Documentation
+        - Improved documentation for Holiday Dates and Calendar Periods
+        - Improved documentation for imported DestinationRates CSV files
+
+    * Packaging
+        - Added Catalan and Italian in default portal language menu
+        - Removed 32 bits package support
+
+    * API
+        - Exposed some inverse relationships on PUT and POST methods
+        - Added register status endpoint on ddi provider registrations
+
+    * Other
+        - Improve CDR mixer memory usage
+
+        See specific API changelog for detailed information on changes for each level
+
+
 Thu, 29 Aug 2019 15:35:24 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.12.0 released
