@@ -1,4 +1,24 @@
 # Changelog
+
+## 2.12.1
+* Models:
+    - ConditionalRoutesCondition:
+        - Added ConditionalRoutesCondition-withInverseRelationships model for [PUT] and [POST] operations which exposes matchListIds, scheduleIds, calendarIds and routeLockIds array properties
+        - Added matchListIds, scheduleIds, calendarIds and routeLockIds array properties to ConditionalRoutesCondition-detailed model 
+    - ExternalCallFilter:
+        - Added ExternalCallFilter-withInverseRelationships model for [PUT] and [POST] operations which exposes scheduleIds, calendarIds, whiteListIds and blackListIds array properties
+        - Added scheduleIds, calendarIds, whiteListIds and blackListIds array properties to ExternalCallFilter-detailed model 
+    - RegistrationStatus:
+        - Renamed to RegistrationStatus-status in order to avoid name collisions
+    - ExternalCallFilter:
+        - Added Ivr-withExcludedExtensions model for [PUT] and [POST] operations which exposes excludedExtensionIds array property
+        - Added excludedExtensionIds array property to Ivr-detailed model
+    - PickUpGroup:
+        - Added PickUpGroup-withUsers model for [PUT] and [POST] operations which exposes userIds array property
+        - Added userIds array property to PickUpGroup-detailed model
+    - User:
+        - Added pickupGroupIds array property to User-detailed model
+
 ## 2.12
 * Endpoints:
     - Removed filter parameters not present on response models (except for foreign keys) 

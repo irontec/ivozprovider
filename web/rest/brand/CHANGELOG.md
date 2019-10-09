@@ -1,4 +1,25 @@
 # Changelog
+
+## 2.12.1
+* Endpoints:
+    - /ddi_provider_registrations
+        - Added new filter attributes
+* Models:
+    - Company:
+        - Added Company-withFeatures model for [PUT] and [POST] operations which exposes featureIds array property
+        - Added featureIds array property to Company-detailed model 
+    - DdiProviderRegistration:
+        - Removed DdiProviderRegistration-detailed model
+        - Added DdiProviderRegistrationStatus and DdiProviderRegistration-detailedCollection models
+    - RegistrationStatus:
+        - Renamed to RegistrationStatus-status in order to avoid name collisions
+    - OutgoingRouting:
+        - Added carrierIds property to OutgoingRouting-detailed model
+        - Added OutgoingRouting-withCarriers model for [PUT] and [POST] operations which exposes carrierIds array property
+    - RoutingPatternGroup:
+        - Added patternIds property to RoutingPatternGroup-detailed model
+        - Added RoutingPatternGroup-withPatterns model for [PUT] and [POST] operations which exposes patternIds array property
+
 ## 2.12
 * Endpoints:
     - Removed filter parameters not present on response models (except for foreign keys) 
