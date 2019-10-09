@@ -70,9 +70,24 @@ production:
       forcedValues:
         outOfScheduleTargetType: number
         <<: *forcedCompany
+      defaultValues:
+        outOfScheduleNumberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           <<: *externalCallFiltersResidential_blacklistLink
+      fixedPositions: &externalCallFiltersResidential_fixedPositionsLink
+        group0:
+          label: _("Basic Info")
+          colsPerRow: 2
+          fields:
+            name: 1
+        group1:
+          label: _("Filtering info")
+          colsPerRow: 6
+          fields:
+            outOfScheduleNumberCountry: 2
+            outOfScheduleNumberValue: 2
+
     externalCallFiltersResidentialEdit_screen: &externalCallFiltersResidentialEdit_screenLink
       <<: *ExternalCallFiltersResidential
       controller: edit
@@ -84,6 +99,9 @@ production:
       fields:
         blacklist:
           <<: *externalCallFiltersResidential_blacklistLink
+      fixedPositions:
+        <<: *externalCallFiltersResidential_fixedPositionsLink
+
   dialogs: &externalCallFiltersResidential_dialogsLink
     externalCallFiltersResidentialDel_dialog: &externalCallFiltersResidentialDel_dialogLink
       <<: *ExternalCallFiltersResidential

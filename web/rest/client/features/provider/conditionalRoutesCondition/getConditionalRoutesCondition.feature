@@ -62,6 +62,18 @@ Feature: Retrieve conditional routes conditions
           "locution": null,
           "conferenceRoom": null,
           "extension": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "matchListIds": [
+            1
+          ],
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            1
+          ],
+          "routeLockIds": [
+            1
+          ]
       }
     """

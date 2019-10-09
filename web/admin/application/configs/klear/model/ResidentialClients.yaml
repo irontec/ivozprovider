@@ -45,6 +45,8 @@ production:
             fields:
               - tz
             template: '%tz%'
+          extraDataAttributes:
+            country: countryId
           order:
             Timezone.tz: asc
     currency:
@@ -145,6 +147,8 @@ production:
       type: select
       defaultValue: 70
       required: true
+      attributes:
+        data-autofilter-select-by-data: "defaultTimezone:country"
       source:
         data: mapper
         config:
@@ -193,6 +197,12 @@ production:
         icon: help
         text: _("Default outgoing DDI. This can be overriden in accounts's edit screen.")
         label: _("Need help?")
+    outgoingDdiE164:
+      title: _('Outgoing DDI')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getDdiE164
     language:
       title: _('Language')
       type: select

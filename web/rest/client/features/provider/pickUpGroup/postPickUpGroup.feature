@@ -11,7 +11,11 @@ Feature: Create pick up groups
       And I send a "POST" request to "/pick_up_groups" with body:
     """
       {
-          "name": "new pick up group"
+          "name": "new pick up group",
+          "userIds": [
+            1,
+            2
+          ]
       }
     """
     Then the response status code should be 201
@@ -22,7 +26,11 @@ Feature: Create pick up groups
       {
           "name": "new pick up group",
           "id": 2,
-          "company": 1
+          "company": 1,
+          "userIds": [
+            1,
+            2
+          ]
       }
     """
 
@@ -38,6 +46,10 @@ Feature: Create pick up groups
       {
           "name": "new pick up group",
           "id": 2,
-          "company": "~"
+          "company": "~",
+          "userIds": [
+            1,
+            2
+          ]
       }
     """

@@ -11,12 +11,14 @@ use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoic
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
-use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Service\Invoice\CreateByScheduler;
+use Ivoz\Provider\Domain\Service\FixedCostsRelInvoice\CreateByScheduler as FixedCostsRelInvoiceByScheduler;
+use Ivoz\Provider\Domain\Service\InvoiceScheduler\SetExecutionError;
+use Ivoz\Provider\Domain\Service\InvoiceScheduler\UpdateLastExecutionDate;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
@@ -26,26 +28,31 @@ class CreateBySchedulerSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     private $entityTools;
-
-    /**
-     * @var
-     */
-    private $logger;
+    protected $logger;
+    protected $fixedCostsRelInvoiceByScheduler;
+    protected $updateLastExecutionDate;
+    protected $setExecutionError;
 
     public function let(
         EntityTools $entityTools,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
+        UpdateLastExecutionDate $updateLastExecutionDate,
+        SetExecutionError $setExecutionError
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
+        $this->fixedCostsRelInvoiceByScheduler = $fixedCostsRelInvoiceByScheduler;
+        $this->updateLastExecutionDate = $updateLastExecutionDate;
+        $this->setExecutionError = $setExecutionError;
 
         $this->beConstructedWith(
-            $entityTools,
-            $logger
+            $this->entityTools,
+            $this->logger,
+            $this->fixedCostsRelInvoiceByScheduler,
+            $this->updateLastExecutionDate,
+            $this->setExecutionError
         );
     }
 
@@ -85,9 +92,13 @@ class CreateBySchedulerSpec extends ObjectBehavior
             'Some error'
         );
 
-        $schedulerDto
-            ->setLastExecutionError('Some error')
-            ->willReturn($schedulerDto);
+        $this
+            ->setExecutionError
+            ->execute(
+                $scheduler,
+                'Some error'
+            )
+            ->shouldBeCalled();
 
         $scheduler
             ->getName()
@@ -143,8 +154,12 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->willThrow($exception)
             ->shouldBeCalled();
 
-        $schedulerDto
-            ->setLastExecutionError('Some error')
+        $this
+            ->setExecutionError
+            ->execute(
+                $scheduler,
+                'Some error'
+            )
             ->shouldBeCalled();
 
         $this
@@ -177,26 +192,13 @@ class CreateBySchedulerSpec extends ObjectBehavior
             $invoiceNumberSequence
         );
 
-        $schedulerDto
-            ->setLastExecution(
-                Argument::type(\DateTime::class)
-            )
-            ->willReturn($schedulerDto)
-            ->shouldBeCalled();
-
-        $schedulerDto
-            ->setLastExecutionError('')
-            ->willReturn($schedulerDto)
-            ->shouldBeCalled();
-
         $this
-            ->entityTools
-            ->persistDto($schedulerDto, $scheduler, true)
-            ->shouldBeCalled();
+            ->updateLastExecutionDate
+            ->execute($scheduler)
+            ->shouldbeCalled();
 
         $this->execute($scheduler);
     }
-
 
     public function it_updates_scheduler_last_execution_even_if_a_exception_is_thrown(
         InvoiceSchedulerInterface $scheduler,
@@ -223,11 +225,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
             $invoiceNumberSequence
         );
 
-        $schedulerDto
-            ->setLastExecution(
-                Argument::type(\DateTime::class)
-            )
-            ->shouldBeCalled();
+        $this
+            ->updateLastExecutionDate
+            ->execute($scheduler)
+            ->shouldbeCalled();
 
         $scheduler
             ->getNextExecution()
@@ -303,11 +304,11 @@ class CreateBySchedulerSpec extends ObjectBehavior
         );
 
         $this
-            ->entityTools
-            ->persist(
-                Argument::type(FixedCostsRelInvoice::class)
-            )
-            ->shouldBeCalled();
+            ->fixedCostsRelInvoiceByScheduler
+            ->execute(
+                $scheduler,
+                $invoice
+            )->shouldBeCalled();
 
         $this->execute($scheduler);
     }

@@ -57,12 +57,6 @@ services:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
 
-
-  ##########################################
-  ## Friend
-  ##########################################
-  Ivoz\Provider\Application\Service\Friend\FriendDtoAssembler: ~
-
   ##########################################
   ## Locution
   ##########################################
@@ -109,12 +103,6 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'
 
   ##########################################
-  ## User
-  ##########################################
-  Ivoz\Provider\Application\Service\User\UserAssembler:
-    arguments: ~
-
-  ##########################################
   ## DestinationRateGroup
   ##########################################
   Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupAssembler:
@@ -122,20 +110,5 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
 
   Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupDtoAssembler:
-      arguments:
-        $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
-
-  ##########################################
-  ## ResidentialDevice
-  ##########################################
-  Ivoz\Provider\Application\Service\ResidentialDevice\ResidentialDeviceDtoAssembler: ~
-
-  ##########################################
-  ## RetailAccount
-  ##########################################
-  Ivoz\Provider\Application\Service\RetailAccount\RetailAccountDtoAssembler: ~
-
-  ##########################################
-  ## Terminal
-  ##########################################
-  Ivoz\Provider\Application\Service\Terminal\TerminalDtoAssembler: ~
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'

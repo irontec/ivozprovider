@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\Service;
+namespace spec\Ivoz\Provider\Domain\Service\BrandService;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
-use Ivoz\Provider\Domain\Service\Service\UpdateByBrand;
+use Ivoz\Provider\Domain\Service\BrandService\UpdateByBrand;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

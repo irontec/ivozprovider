@@ -26,7 +26,7 @@ trait DtoNormalizer
             $response,
             function ($value, $key) use ($contextProperties) {
 
-                $isEmbedded = is_array($value);
+                $isEmbedded = is_array($value) || is_object($value);
 
                 return
                     in_array($key, $contextProperties, true)

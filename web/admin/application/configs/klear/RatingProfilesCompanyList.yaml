@@ -21,8 +21,8 @@ production:
         <<: *ratingProfiles_fieldsLink
         options:
           title: _("Options")
-          commands:
-            exportRatingPlansToCsv_command: true
+          dialogs:
+            exportRatingPlansToCsv_dialog: true
       options:
         title: _("Options")
         dialogs:

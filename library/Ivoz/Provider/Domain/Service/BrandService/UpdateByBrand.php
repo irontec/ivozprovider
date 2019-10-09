@@ -1,5 +1,6 @@
 <?php
-namespace Ivoz\Provider\Domain\Service\Service;
+
+namespace Ivoz\Provider\Domain\Service\BrandService;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;

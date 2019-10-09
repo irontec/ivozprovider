@@ -19,9 +19,65 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
             throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
+        $this->_helper
+            ->ContextSwitch()
+            ->addActionContext('export-to-csv-dialog', 'json')
+            ->initContext('json');
+
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
     }
+
+    public function exportToCsvDialogAction()
+    {
+        parse_str(
+            $_SERVER['QUERY_STRING'],
+            $currentUrlParams
+        );
+
+        $targetUrlParams = array_merge(
+            $currentUrlParams,
+            [
+                'type' => 'command',
+                'command' => 'exportRatingPlansToCsv_command'
+            ]
+        );
+
+        $targetUrl =
+            $this->view->serverUrl()
+            . $this->view->url()
+            . '?'
+            . http_build_query($targetUrlParams);
+
+        $message =
+            "<a data-href='"
+            . $targetUrl
+            ."'>"
+            . $this->_helper->translate("This may take some minutes")
+            . "</a>";
+
+        $data = [
+            "title" => $this->_helper->translate("Downloading"),
+            'message'=> $message,
+            "options" => ['width'=>'300px'],
+            "buttons" => array(
+                $this->_helper->translate("Close") => [
+                    "recall" => false,
+                    "reloadParent" => false
+                ]
+            )
+        ];
+
+        $jsonResponse = new Klear_Model_DispatchResponse();
+        $jsonResponse->setModule('default');
+        $jsonResponse->setPlugin('customRemoteFileDownloader');
+        $jsonResponse->addJsFile("/../klearMatrix/js/plugins/jquery.klearmatrix.genericdialog.js");
+        $jsonResponse->addJsFile("/js/customRemoteFileDownloader.js");
+        $jsonResponse->setData($data);
+
+        return $jsonResponse->attachView($this->view);
+    }
+
 
     public function exportToCsvAction()
     {
@@ -43,7 +99,8 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
 
         if (!$ratingProfileDto) {
             throw new \DomainException(
-                'Rating profile not found'
+                'Rating profile not found',
+                404
             );
         }
 
@@ -52,61 +109,71 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
             $ratingProfileDto->getCompanyId()
         );
 
-        if ($user->isTokenExpired()) {
-            $this->renewToken(
-                $user,
-                $company
-            );
-        }
-
-        if ($user->isMainOperator) {
-            $adminToken = $this->getBrandAdminToken(
-                $company,
-                $user
-            );
-
-            $apiClient = $this->getAdminApiClient(
-                $company,
-                $adminToken->token
-            );
-        } elseif ($user->isBrandOperator) {
-            $apiClient = $this->getAdminApiClient(
-                $company,
-                $user->token
-            );
-        } else {
-            $apiClient = new RestClient(
-                $user->token,
-                $user->refreshToken
-            );
-        }
-
-        /** @var RatingPlanGroupDto $ratingPlanGroupDto */
-        $ratingPlanGroupDto = $dataGateway->find(
-            RatingPlanGroup::class,
-            $ratingProfileDto->getRatingPlanGroupId()
-        );
-
-        $now = new \DateTime();
-        $fileName =
-            $ratingPlanGroupDto->getNameEn()
-            . '_'
-            . $now->format('Ymd');
-
-        $billableCalls = $apiClient->getRatingPlanGroupPrices(
-            $ratingPlanGroupDto->getId()
-        );
 
         $response = $this->getResponse();
         $response->clearHeaders();
-        $response->setHeader('Content-Length', mb_strlen($billableCalls));
-        $response->setHeader('Content-Type', 'text/csv');
-        $response->setHeader('Content-disposition', 'attachment; filename='. $fileName .'.csv');
+
+        try {
+            if ($user->isTokenExpired()) {
+                $this->renewToken(
+                    $user,
+                    $company
+                );
+            }
+
+            if ($user->isMainOperator) {
+                $adminToken = $this->getBrandAdminToken(
+                    $company,
+                    $user
+                );
+
+                $apiClient = $this->getAdminApiClient(
+                    $company,
+                    $adminToken->token
+                );
+            } elseif ($user->isBrandOperator) {
+                $apiClient = $this->getAdminApiClient(
+                    $company,
+                    $user->token
+                );
+            } else {
+                $apiClient = new RestClient(
+                    $user->token,
+                    $user->refreshToken
+                );
+            }
+
+            /** @var RatingPlanGroupDto $ratingPlanGroupDto */
+            $ratingPlanGroupDto = $dataGateway->find(
+                RatingPlanGroup::class,
+                $ratingProfileDto->getRatingPlanGroupId()
+            );
+
+            $now = new \DateTime();
+            $fileName =
+                $ratingPlanGroupDto->getNameEn()
+                . '_'
+                . $now->format('Ymd');
+
+            $responseContent = $apiClient->getRatingPlanGroupPrices(
+                $ratingPlanGroupDto->getId()
+            );
+
+            $response->setHeader('Content-Length', mb_strlen($response));
+            $response->setHeader('Content-Type', 'text/csv');
+            $response->setHeader('Content-disposition', 'attachment; filename='. $fileName .'.csv');
+        } catch (\Exception $e) {
+            $response->setHttpResponseCode(
+                $e->getCode()
+            );
+
+            $responseContent = $e->getMessage();
+        }
 
         $response->sendHeaders();
         $response->clearHeaders();
 
-        echo $billableCalls;
+        echo $responseContent;
     }
 
     private function getAdminApiClient(CompanyDto $company, string $adminToken): RestClient
@@ -124,7 +191,8 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
 
         if (!$clientAdmin) {
             throw new \DomainException(
-                'Unable to find a suitable client admin'
+                'Unable to find a suitable client admin',
+                403
             );
         }
 

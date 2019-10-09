@@ -44,6 +44,7 @@ Feature: Update outgoing routings
           "carrier": "~",
           "routingPattern": "~",
           "routingPatternGroup": null,
-          "clidCountry": null
+          "clidCountry": null,
+          "carrierIds": []
       }
     """

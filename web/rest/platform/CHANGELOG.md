@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.12.1
+* Models:
+    - BillableCall:
+        - Added priceDetails array property to BillableCall-detailed model
+    - Brand:
+        - Added Brand-withFeatures model for [PUT] and [POST] operations which exposes features array property
+        - Added features array property to Brand-detailed model 
+
 ## 2.12
 * Endpoints:
     - Removed filter parameters not present on response models (except for foreign keys) 

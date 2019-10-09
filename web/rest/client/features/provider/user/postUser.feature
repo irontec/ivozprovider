@@ -34,7 +34,10 @@ Feature: Create users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null
+          "voicemailLocution": null,
+          "pickupGroupIds": [
+            1
+          ]
       }
     """
     Then the response status code should be 201
@@ -68,7 +71,10 @@ Feature: Create users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null
+          "voicemailLocution": null,
+          "pickupGroupIds": [
+            1
+          ]
       }
     """
 
@@ -162,6 +168,9 @@ Feature: Create users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null
+          "voicemailLocution": null,
+          "pickupGroupIds": [
+            1
+          ]
       }
     """

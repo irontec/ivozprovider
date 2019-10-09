@@ -5,12 +5,10 @@ namespace Ivoz\Provider\Domain\Service\BillableCall;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Kam\Domain\Service\TrunksCdr\SetParsed;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
-use Psr\Log\LoggerInterface;
 
 class MigrateFromTrunksCdr
 {
@@ -18,17 +16,20 @@ class MigrateFromTrunksCdr
     protected $createOrUpdateBillableCallByTrunksCdr;
     protected $domainEventPublisher;
     protected $entityTools;
+    protected $setParsed;
 
     public function __construct(
         BillableCallRepository $billableCallRepository,
         CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
         EntityTools $entityTools,
-        DomainEventPublisher $domainEventPublisher
+        DomainEventPublisher $domainEventPublisher,
+        SetParsed $setParsed
     ) {
         $this->billableCallRepository = $billableCallRepository;
         $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
         $this->domainEventPublisher = $domainEventPublisher;
         $this->entityTools = $entityTools;
+        $this->setParsed = $setParsed;
     }
 
     /**
@@ -55,15 +56,7 @@ class MigrateFromTrunksCdr
             $dispatchImmediately
         );
 
-        /**
-         * @var TrunksCdrDto $trunksCdrDto
-         */
-        $trunksCdrDto = $this->entityTools->entityToDto(
-            $trunksCdr
-        );
-        $trunksCdrDto->setParsed(true);
-        $this->entityTools->persistDto(
-            $trunksCdrDto,
+        $this->setParsed->execute(
             $trunksCdr,
             $dispatchImmediately
         );

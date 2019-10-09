@@ -63,13 +63,13 @@ abstract class TpDerivedChargerAbstract
      * column: run_filters
      * @var string
      */
-    protected $runFilters = 'carrierId';
+    protected $runFilters = '';
 
     /**
      * column: req_type_field
      * @var string
      */
-    protected $reqTypeField = 'carrierReqtype';
+    protected $reqTypeField = '^*postpaid';
 
     /**
      * column: direction_field

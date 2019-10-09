@@ -17,7 +17,7 @@ class BrandLifecycleServiceCollection implements LifecycleServiceCollectionInter
         [
             \Ivoz\Provider\Domain\Service\Domain\UpdateByBrand::class => 10,
             \Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand::class => 20,
-            \Ivoz\Provider\Domain\Service\Service\UpdateByBrand::class => 30,
+            \Ivoz\Provider\Domain\Service\BrandService\UpdateByBrand::class => 30,
             \Ivoz\Cgr\Domain\Service\TpDerivedCharger\CreatedByBrand::class => 200,
         ],
         "post_remove" =>

@@ -68,6 +68,12 @@ class PropertyMetadataOverwriteFactory implements PropertyMetadataFactoryInterfa
             ? new Type(Type::BUILTIN_TYPE_OBJECT, true, $annotation->class)
             : null;
 
+        if (!$collectionValueType && $annotation->collectionValueType) {
+            $collectionValueType = new Type(
+                $annotation->collectionValueType
+            );
+        }
+
         $type = new Type(
             $annotation->type,
             !$annotation->required,

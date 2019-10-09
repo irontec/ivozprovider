@@ -35,6 +35,21 @@ production:
             title: ngettext('Extension', 'Extensions', 1)
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
+    outOfScheduleNumberCountry:
+      title: ngettext('Country', 'Countries', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
     outOfScheduleNumberValue:
       title: _('External Filter destination')
       type: text

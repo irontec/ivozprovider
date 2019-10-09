@@ -3,19 +3,38 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class UserDto extends UserDtoAbstract
 {
     const CONTEXT_MY_PROFILE = 'myProfile';
     const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
+    const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
 
     const CONTEXT_TYPES = [
         self::CONTEXT_COLLECTION,
         self::CONTEXT_SIMPLE,
         self::CONTEXT_DETAILED,
         self::CONTEXT_MY_PROFILE,
-        self::CONTEXT_PUT_MY_PROFILE
+        self::CONTEXT_PUT_MY_PROFILE,
+        self::CONTEXT_WITH_PICKUP_GROUPS
     ];
+
+    const CONTEXTS_WITH_PICKUP_GROUPS = [
+        self::CONTEXT_WITH_PICKUP_GROUPS,
+        self::CONTEXT_DETAILED
+    ];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Pickup group ids"
+     * )
+     */
+    protected $pickupGroupIds = [];
 
     /**
      * @var string
@@ -100,6 +119,24 @@ class UserDto extends UserDtoAbstract
             $response['oldPass'] = 'oldPass';
         }
 
+        if (in_array($context, self::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
+            $response['pickupGroupIds'] = 'pickupGroupIds';
+        }
+
+        return $response;
+    }
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(
+            $context,
+            $role
+        );
+
+        if (in_array($context, self::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
+            $response['pickupGroupIds'] = $this->pickupGroupIds;
+        }
+
         return $response;
     }
 
@@ -117,5 +154,22 @@ class UserDto extends UserDtoAbstract
         }
 
         return parent::denormalize($data, $context);
+    }
+
+    /**
+     * @param int[] $pickupGroupIds
+     */
+    public function setPickupGroupIds(array $pickupGroupIds)
+    {
+        $this->pickupGroupIds = $pickupGroupIds;
+
+        $relPickupGroups = [];
+        foreach ($pickupGroupIds as $id) {
+            $dto = new PickUpRelUserDto();
+            $dto->setPickUpGroupId($id);
+            $relPickupGroups[] = $dto;
+        }
+
+        $this->setPickUpRelUsers($relPickupGroups);
     }
 }

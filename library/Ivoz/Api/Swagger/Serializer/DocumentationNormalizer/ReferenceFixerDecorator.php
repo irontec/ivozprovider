@@ -93,15 +93,16 @@ class ReferenceFixerDecorator implements NormalizerInterface
             return $this->setContext($property, $context);
         }
 
-        if (!array_key_exists('$ref', $property['items'])) {
+        $hasRefAttr = array_key_exists('$ref', $property['items']);
+        $hasTypeAttr = array_key_exists('type', $property['items']);
+
+        if (!$hasRefAttr && !$hasTypeAttr) {
             return null;
         }
 
-        if (!in_array($context, DataTransferObjectInterface::CONTEXT_TYPES, true)) {
-            return $property;
+        if ($hasRefAttr) {
+            $property['items'] = $this->setContext($property['items'], $context);
         }
-
-        $property['items'] = $this->setContext($property['items'], $context);
 
         return $property;
     }

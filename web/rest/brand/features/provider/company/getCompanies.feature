@@ -39,7 +39,7 @@ Feature: Retrieve companies
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
     """
       {
           "type": "vpbx",
@@ -66,7 +66,8 @@ Feature: Retrieve companies
               "name": {
                   "en": "es",
                   "es": "es",
-                  "ca": "es"
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -75,7 +76,9 @@ Feature: Retrieve companies
               "id": 145,
               "label": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           },
@@ -107,12 +110,14 @@ Feature: Retrieve companies
               "name": {
                   "en": "Spain",
                   "es": "Espa\u00f1a",
-                  "ca": "Espa\u00f1a"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           },
           "currency": null,
@@ -127,7 +132,8 @@ Feature: Retrieve companies
               "name": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "brand": 1,
               "country": 68
@@ -141,6 +147,13 @@ Feature: Retrieve companies
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "featureIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+          ]
       }
     """

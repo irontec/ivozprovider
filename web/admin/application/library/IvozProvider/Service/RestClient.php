@@ -203,7 +203,11 @@ class RestClient
                 $options
             );
         } catch (\Exception $e) {
-            throw new \DomainException('Unable to get Rating Plans', 0, $e);
+            throw new \DomainException(
+                'Unable to get Rating Plans',
+                $e->getCode(),
+                $e
+            );
         }
     }
 
@@ -231,6 +235,11 @@ class RestClient
 
             $this->refreshToken();
             return $this->request($apiEndpoint, $options, false);
+        } elseif (self::$lastRequestInfo['http_code'] >= 400) {
+            throw new \DomainException(
+                'There was an error',
+                self::$lastRequestInfo['http_code']
+            );
         }
 
         return $response;

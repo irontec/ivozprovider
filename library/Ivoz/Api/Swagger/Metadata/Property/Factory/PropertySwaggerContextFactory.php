@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Symfony\Component\PropertyInfo\Type;
 
 class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
@@ -60,6 +61,12 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
 
         if ($metadata->hasAssociation($property)) {
             $association = $metadata->getAssociationMapping($property);
+            $isOneToMany = ($association['type'] == ClassMetadataInfo::ONE_TO_MANY);
+
+            if ($isOneToMany) {
+                return $propertyMetadata;
+            }
+
             $column = $association['joinColumns'][0] ?? [];
             $isNullableFk =
                 (isset($column['nullable']) && $column['nullable'])

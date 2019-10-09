@@ -2,13 +2,14 @@
 
 namespace Ivoz\Provider\Application\Service\Brand;
 
+use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 
 class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
@@ -43,6 +44,21 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
 
             $dto->setLogoPath(
                 $pathResolver->getFilePath($entity)
+            );
+        }
+
+        if (in_array($context, BrandDto::CONTEXTS_WITH_FEATURES, true)) {
+            $featureIds = array_map(
+                function (FeaturesRelBrand $relFeature) {
+                    return $relFeature
+                        ->getFeature()
+                        ->getId();
+                },
+                $entity->getRelFeatures()
+            );
+
+            $dto->setFeatures(
+                $featureIds
             );
         }
 

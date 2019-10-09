@@ -29,7 +29,10 @@ Feature: Update IVRs
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
           "noInputNumberCountry": 68,
-          "errorNumberCountry": 68
+          "errorNumberCountry": 68,
+          "excludedExtensionIds": [
+              2
+          ]
       }
     """
     Then the response status code should be 200
@@ -129,6 +132,9 @@ Feature: Update IVRs
                   "es": "Europa",
                   "ca": "Europa"
               }
-          }
+          },
+          "excludedExtensionIds": [
+              2
+          ]
       }
     """

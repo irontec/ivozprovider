@@ -47,7 +47,7 @@ production:
         ￼type: box
         ￼position: left
         ￼icon: help
-        text: _("Enter number patterns in E.164 format.")
+        text: _("Enter number patterns in E.164 format (plus symbol must be escaped).")
         label: _("Need help?")
     numberCountry:
       title: _('Country')

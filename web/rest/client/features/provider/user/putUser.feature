@@ -34,7 +34,10 @@ Feature: Update users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null
+          "voicemailLocution": null,
+          "pickupGroupIds": [
+            1
+          ]
       }
     """
     Then the response status code should be 200
@@ -105,7 +108,10 @@ Feature: Update users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null
+          "voicemailLocution": null,
+          "pickupGroupIds": [
+            1
+          ]
       }
     """
 

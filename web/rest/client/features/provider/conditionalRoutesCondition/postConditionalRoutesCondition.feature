@@ -25,7 +25,19 @@ Feature: Create conditional routes conditions
           "locution": null,
           "conferenceRoom": null,
           "extension": 1,
-          "numberCountry": null
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            1
+          ]
       }
     """
     Then the response status code should be 201
@@ -48,7 +60,19 @@ Feature: Create conditional routes conditions
           "locution": null,
           "conferenceRoom": null,
           "extension": 1,
-          "numberCountry": null
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            1
+          ]
       }
     """
 
@@ -106,6 +130,18 @@ Feature: Create conditional routes conditions
               "conditionalRoute": null,
               "numberCountry": null
           },
-          "numberCountry": null
+          "numberCountry": null,
+          "matchListIds": [
+            2
+          ],
+          "scheduleIds": [
+            1
+          ],
+          "calendarIds": [
+            2
+          ],
+          "routeLockIds": [
+            1
+          ]
       }
     """

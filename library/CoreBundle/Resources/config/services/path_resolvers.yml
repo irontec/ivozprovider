@@ -105,12 +105,15 @@ services:
   ##########################################
   ## MusicOnHold
   ##########################################
+
   Service\StoragePathResolverCollection::MusicOnHold:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
       - [addPathResolver, ['OriginalFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile']]
       - [addPathResolver, ['EncodedFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile']]
      public: true
+
+  Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver: ~
 
   MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile:
     class: Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver

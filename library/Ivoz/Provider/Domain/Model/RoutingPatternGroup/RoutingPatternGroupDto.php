@@ -2,8 +2,28 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto;
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 {
+    const CONTEXT_WITH_PATTERNS = 'withPatterns';
+
+    const CONTEXTS_WITH_PATTERNS = [
+        self::CONTEXT_WITH_PATTERNS,
+        self::CONTEXT_DETAILED
+    ];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Binded routing patterns"
+     * )
+     */
+    protected $patternIds = [];
 
     /**
      * @inheritdoc
@@ -19,6 +39,43 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+
+        if (in_array($context, self::CONTEXTS_WITH_PATTERNS, true)) {
+            $response['patternIds'] = 'patternIds';
+        }
+
+        return $response;
+    }
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(
+            $context,
+            $role
+        );
+
+        if (in_array($context, self::CONTEXTS_WITH_PATTERNS, true)) {
+            $response['patternIds'] = $this->patternIds;
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param int[] $patternIds
+     */
+    public function setPatternIds(array $patternIds)
+    {
+        $this->patternIds = $patternIds;
+
+        $relPatterns = [];
+        foreach ($patternIds as $id) {
+            $dto = new RoutingPatternGroupsRelPatternDto();
+            $dto->setRoutingPatternId($id);
+            $relPatterns[] = $dto;
+        }
+
+        $this->setRelPatterns($relPatterns);
     }
 }

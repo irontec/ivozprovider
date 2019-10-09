@@ -91,6 +91,24 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
         $resourceNames = [];
         foreach ($object->getResourceNameCollection() as $resourceName) {
             $resourceNames[] = $resourceName;
+
+            $resourceMetadata = $this->resourceMetadataFactory->create($resourceName);
+
+            $resourceShortName = $resourceMetadata->getShortName();
+            $normalizationContexts = $resourceMetadata->getAttribute('normalization_context', []);
+            $normalizationGroups = $normalizationContexts['groups'] ?? [];
+
+            foreach ($normalizationGroups as $group) {
+                $definitionKey = empty($group)
+                    ? $resourceShortName
+                    : $resourceShortName . '-' . $group;
+
+                if (in_array($definitionKey, $pendingDefinitions, true)) {
+                    continue;
+                }
+
+                $pendingDefinitions[] = $definitionKey;
+            }
         }
 
         foreach ($pendingDefinitions as $definition) {

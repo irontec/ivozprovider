@@ -24,7 +24,19 @@ Feature: Create external call filters
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
           "holidayNumberCountry": 77,
-          "outOfScheduleNumberCountry": 77
+          "outOfScheduleNumberCountry": 77,
+          "scheduleIds": [
+            2
+          ],
+          "calendarIds": [
+            2
+          ],
+          "whiteListIds": [
+            2
+          ],
+          "blackListIds": [
+            2
+          ]
       }
     """
     Then the response status code should be 201
@@ -48,7 +60,19 @@ Feature: Create external call filters
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
           "holidayNumberCountry": 77,
-          "outOfScheduleNumberCountry": 77
+          "outOfScheduleNumberCountry": 77,
+          "scheduleIds": [
+            2
+          ],
+          "calendarIds": [
+            2
+          ],
+          "whiteListIds": [
+            2
+          ],
+          "blackListIds": [
+            2
+          ]
       }
     """
 
@@ -105,6 +129,18 @@ Feature: Create external call filters
                   "es": "Europa",
                   "ca": "Europa"
               }
-          }
+          },
+          "scheduleIds": [
+            2
+          ],
+          "calendarIds": [
+            2
+          ],
+          "whiteListIds": [
+            2
+          ],
+          "blackListIds": [
+            2
+          ]
       }
     """

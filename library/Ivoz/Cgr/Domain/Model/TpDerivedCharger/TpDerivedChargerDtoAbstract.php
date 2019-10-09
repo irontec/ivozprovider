@@ -58,12 +58,12 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $runFilters = 'carrierId';
+    private $runFilters = '';
 
     /**
      * @var string
      */
-    private $reqTypeField = 'carrierReqtype';
+    private $reqTypeField = '^*postpaid';
 
     /**
      * @var string

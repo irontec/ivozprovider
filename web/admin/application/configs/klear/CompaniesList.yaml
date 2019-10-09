@@ -69,11 +69,12 @@ production:
           balance: true
           country: true
           showInvoices: true
+          outgoingDdi: true
         order:
           name: true
           nif: true
           billingMethod: true
-          outgoingDdi: true
+          outgoingDdiE164: true
           domainUsers: true
           relFeatures: true
       options:
@@ -126,6 +127,7 @@ production:
           faxNotificationTemplate: true
           balance: true
           showInvoices: true
+          outgoingDdiE164: true
         order: &companiesOrder_Link
           id: true
           name: true
@@ -155,8 +157,8 @@ production:
           colsPerRow: 3
           label: _("Geographic Configuration")
           fields:
-            defaultTimezone: 1
             country: 1
+            defaultTimezone: 1
             language: 1
             transformationRuleSet: 2
             currency: 1
@@ -199,6 +201,7 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
+          outgoingDdiE164: true
           balance: true
         whitelist:
           id: ${auth.isMainOperator}

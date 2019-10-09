@@ -82,6 +82,10 @@ class OrphanAttributeFixerDecorator implements NormalizerInterface
                     continue;
                 }
 
+                if ($propertyType === 'array') {
+                    continue;
+                }
+
                 if ($propertyClass !== $propertyType) {
                     unset($entityDefinition['properties'][$propertyName]);
                 }

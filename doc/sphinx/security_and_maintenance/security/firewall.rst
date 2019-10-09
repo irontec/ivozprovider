@@ -20,13 +20,23 @@ Exposed ports/services
 
 These are the **ports IvozProvider needs to expose** to work properly:
 
-**SIP signalling**:
+**Client side SIP signalling**:
 
 - Port 5060 (TCP/UDP)
 
 - Port 5061 (TCP)
 
-- Port 7060 (TCP/UDP) y 7061 TCP (just in case both ProxyUsers and ProxyTrunks share IP)
+- Port 10080 (TCP) for Websocket connections (WS).
+
+- Port 10081 (TCP) for Websocket secure connections (WSS).
+
+**Provider side SIP signalling**:
+
+- Port 5060 (TCP/UDP)
+
+- Port 5061 (TCP)
+
+.. note:: Port 7060 (TCP/UDP) y 7061 TCP in case both proxies share a unique IP address.
 
 **RTP audioflow**:
 
@@ -36,5 +46,5 @@ These are the **ports IvozProvider needs to expose** to work properly:
 
 - Ports TCP 443, 1443 y 2443
 
-.. hint:: We recommend using **iptables geoIP module** to drop connections from
-          countries where we don't have any clients.
+.. hint:: We recommend using any **geoIP blocking** mechanism to drop connections from
+          countries without clients.

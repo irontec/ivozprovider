@@ -12,7 +12,11 @@ Feature: Update routing pattern groups
     """
       {
           "name": "Centreal Europe",
-          "description": "Description"
+          "description": "Description",
+          "patternIds": [
+              1,
+              2
+          ]
       }
     """
     Then the response status code should be 200
@@ -24,6 +28,10 @@ Feature: Update routing pattern groups
           "name": "Centreal Europe",
           "description": "Description",
           "id": 1,
-          "brand": "~"
+          "brand": "~",
+          "patternIds": [
+              1,
+              2
+          ]
       }
     """

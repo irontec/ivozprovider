@@ -2,9 +2,31 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\Feature\FeatureDto;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
+
 class BrandDto extends BrandDtoAbstract
 {
+    const CONTEXT_WITH_FEATURES = 'withFeatures';
+
+    const CONTEXTS_WITH_FEATURES = [
+        self::CONTEXT_WITH_FEATURES,
+        self::CONTEXT_DETAILED
+    ];
+
     private $logoPath;
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Active feature ids"
+     * )
+     */
+    protected $featureIds = [];
 
     public function getFileObjects()
     {
@@ -50,6 +72,10 @@ class BrandDto extends BrandDtoAbstract
             $response = parent::getPropertyMap($context);
         }
 
+        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+            $response['features'] = 'features';
+        }
+
         if ($role === 'ROLE_BRAND_ADMIN') {
             $response = self::filterFieldsForBrandAdmin($response);
         }
@@ -58,6 +84,20 @@ class BrandDto extends BrandDtoAbstract
         unset($response['recordingsLimitMB']);
         unset($response['recordingsLimitEmail']);
         unset($response['domainId']);
+
+        return $response;
+    }
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(
+            $context,
+            $role
+        );
+
+        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+            $response['features'] = $this->featureIds;
+        }
 
         return $response;
     }
@@ -87,5 +127,22 @@ class BrandDto extends BrandDtoAbstract
         );
 
         return $response;
+    }
+
+    /**
+     * @param int[] $featureIds
+     */
+    public function setFeatures(array $featureIds)
+    {
+        $this->featureIds = $featureIds;
+
+        $relFeatures = [];
+        foreach ($featureIds as $id) {
+            $dto = new FeaturesRelBrandDto();
+            $dto->setFeatureId($id);
+            $relFeatures[] = $dto;
+        }
+
+        $this->setRelFeatures($relFeatures);
     }
 }

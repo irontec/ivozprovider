@@ -10,34 +10,27 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules;
 use Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules;
 use Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules;
+use Ivoz\Provider\Domain\Service\TransformationRuleSet\DisableGenerateRules;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class GenerateRulesSpec extends ObjectBehavior
 {
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var GenerateInRules
-     */
     protected $generateInRules;
-
-    /**
-     * @var GenerateOutRules
-     */
     protected $generateOutRules;
+    protected $disableGenerateRules;
 
     function let(
         EntityTools $entityTools,
         GenerateInRules $generateInRules,
-        GenerateOutRules $generateOutRules
+        GenerateOutRules $generateOutRules,
+        DisableGenerateRules $disableGenerateRules
     ) {
         $this->entityTools = $entityTools;
         $this->generateInRules = $generateInRules;
         $this->generateOutRules = $generateOutRules;
+        $this->disableGenerateRules = $disableGenerateRules;
 
         $this->beConstructedWith(...func_get_args());
     }
@@ -86,20 +79,6 @@ class GenerateRulesSpec extends ObjectBehavior
                 Argument::any(),
                 Argument::any()
             )
-            ->shouldBeCalled();
-
-        $this
-            ->entityTools
-            ->entityToDto($transformationRuleSet)
-            ->willReturn($transformationRuleSetDto);
-
-        $transformationRuleSetDto
-            ->setGenerateRules(false)
-            ->shouldBeCalled();
-
-        $this
-            ->entityTools
-            ->persistDto($transformationRuleSetDto, $transformationRuleSet, false)
             ->shouldBeCalled();
 
         $this

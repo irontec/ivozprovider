@@ -51,6 +51,8 @@ production:
             fields:
               - tz
             template: '%tz%'
+          extraDataAttributes:
+            country: countryId
           order:
             Timezone.tz: asc
     currency:
@@ -151,6 +153,8 @@ production:
       type: select
       defaultValue: 70
       required: true
+      attributes:
+        data-autofilter-select-by-data: "defaultTimezone:country"
       source:
         data: mapper
         config:
@@ -193,6 +197,12 @@ production:
           order:
             Ddi.ddie164: asc
         'null': _("Unassigned")
+    outgoingDdiE164:
+      title: _('Outgoing DDI')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getDdiE164
     outgoingDdiRule:
       title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 1)
       type: select

@@ -710,6 +710,9 @@ msgstr "Download"
 msgid "Download file"
 msgstr "Download file"
 
+msgid "Downloading"
+msgstr "Downloading"
+
 msgid "Duplicated prefix"
 msgstr "Duplicated prefix"
 
@@ -808,8 +811,8 @@ msgstr "Endpoint type"
 msgid "Ensure the preview below is right before you proceed"
 msgstr "Ensure the preview below is right before you proceed"
 
-msgid "Enter number patterns in E.164 format."
-msgstr "Enter number patterns in E.164 format."
+msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
+msgstr "Enter number patterns in E.164 format (plus symbol must be escaped)."
 
 msgid "Entry"
 msgstr "Entry"
@@ -2522,6 +2525,9 @@ msgstr ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 
+msgid "This may take some minutes"
+msgstr "This may take some minutes"
+
 msgid ""
 "This prefix will be added to the callee after carrier's numeric "
 "transformations."
@@ -2661,11 +2667,11 @@ msgstr[0] "Uploaded file"
 msgstr[1] "Uploaded files"
 
 msgid ""
-"Use <string>$this->terminalModel</strong> to access model data, <strong>"
+"Use <strong>$this->terminalModel</strong> to access model data, <strong>"
 "$this->terminal</strong> to access terminal data, <strong>$this->user</"
 "strong> for the user and <strong>$this->company</strong> for the company."
 msgstr ""
-"Use <string>$this->terminalModel</strong> to access model data, <strong>"
+"Use <strong>$this->terminalModel</strong> to access model data, <strong>"
 "$this->terminal</strong> to access terminal data, <strong>$this->user</"
 "strong> for the user and <strong>$this->company</strong> for the company."
 
