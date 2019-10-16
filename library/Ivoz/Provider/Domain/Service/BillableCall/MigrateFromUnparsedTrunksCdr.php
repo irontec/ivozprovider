@@ -3,13 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Psr\Log\LoggerInterface;
 
 class MigrateFromUnparsedTrunksCdr
@@ -55,7 +50,10 @@ class MigrateFromUnparsedTrunksCdr
 
             try {
                 $this->entityTools->dispatchQueuedOperations();
-                $this->entityTools->clear();
+                $this->entityTools->clearExcept(
+                    Commandlog::class
+                );
+
                 $cdrCount += count($trunks);
             } catch (\Exception $e) {
                 $this->logger->error('BillableCall migration service error:: ' . $e->getMessage());
