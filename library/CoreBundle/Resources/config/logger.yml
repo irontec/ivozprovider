@@ -6,6 +6,7 @@ monolog:
      action_level: error
      priority: 1
      handler: fingers_crossed_handler
+     buffer_size: 100
      channels:
       - !changelog
       - !provisioning
@@ -14,6 +15,7 @@ monolog:
      ident: onError
      type: syslog
      level: info
+     buffer_size: 100
 
    changelog_handler:
      ident: changelog

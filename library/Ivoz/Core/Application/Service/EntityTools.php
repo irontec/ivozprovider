@@ -8,7 +8,6 @@ use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
-use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\PessimisticLockException;
@@ -195,6 +194,44 @@ class EntityTools
      */
     public function clear($entityName = null)
     {
-        $this->em->clear($entityName);
+        if (!$entityName) {
+            $this->em->clear();
+            return;
+        }
+
+        $unitOfWork = $this->em->getUnitOfWork();
+        $identityMap = $unitOfWork->getIdentityMap();
+
+        if (!array_key_exists($entityName, $identityMap)) {
+            return;
+        }
+
+        foreach ($identityMap[$entityName] as $entity) {
+            $this->em->detach($entity);
+        }
+    }
+
+    /**
+     * Clears the EntityManager. All entities that are currently managed
+     * except the one given
+     *
+     * @param string $entityNameToSkip if given, only entities of this type will not get detached
+     *
+     * @return void
+     */
+    public function clearExcept($entityNameToSkip)
+    {
+        $unitOfWork = $this->em->getUnitOfWork();
+        $identityMap = $unitOfWork->getIdentityMap();
+
+        foreach ($identityMap as $fqdn => $entities) {
+            if ($fqdn === $entityNameToSkip) {
+                continue;
+            }
+
+            foreach ($entities as $entity) {
+                $this->em->detach($entity);
+            }
+        }
     }
 }
