@@ -60,7 +60,12 @@ class CallCsvNotificationTemplateByCallCsvReport
     {
         $company = $callCsvReport->getCompany();
         if ($company) {
-            return $company->getCallCsvNotificationTemplate();
+            $callCsvNotificationTemplate = $company->getCallCsvNotificationTemplate();
+            if (!$callCsvNotificationTemplate) {
+                $brand = $company->getBrand();
+                $callCsvNotificationTemplate = $brand->getCallCsvNotificationTemplate();
+            }
+            return $callCsvNotificationTemplate;
         }
 
         $scheduler = $callCsvReport

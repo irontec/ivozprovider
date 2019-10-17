@@ -129,9 +129,16 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
     private function getNotificationTemplateContent(InvoiceInterface $invoice)
     {
         $company = $invoice->getCompany();
+        $brand = $company->getBrand();
 
-        // Get Company Notification Template for faxes
+        // Get Company Notification Template for invoices
         $invoiceNotificationTemplate = $company->getInvoiceNotificationTemplate();
+
+        // If company has no template associated, fallback to brand notification template for invoices
+        if (!$invoiceNotificationTemplate) {
+            $invoiceNotificationTemplate = $brand->getInvoiceNotificationTemplate();
+        }
+
         $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository
             ->findGenericInvoiceTemplate();
 

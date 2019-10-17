@@ -140,6 +140,7 @@ class FaxReceiveStatusAction
 
             // Get Fax Company
             $company = $fax->getCompany();
+            $brand = $company->getBrand();
 
             // Create attachment for PDF file
             $attach = \Swift_Attachment::fromPath($faxInDto->getFilePath(), 'application/pdf');
@@ -158,12 +159,17 @@ class FaxReceiveStatusAction
             // Get Company Notification Template for faxes
             $faxNotificationTemplate = $company->getFaxNotificationTemplate();
 
+            // If company has no template associated, fallback to brand notification template for faxes
+            if (!$faxNotificationTemplate) {
+                $faxNotificationTemplate = $brand->getFaxNotificationTemplate();
+            }
+
             // Get Generic Notification Template for faxes
             /** @var NotificationTemplateRepository $notificationTemplateRepository */
             $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
             $genericFaxlNotificationTemplate = $notificationTemplateRepository->findGenericFaxTemplate();
 
-            // If no template is associated, fallback to generic notification template for voicemails
+            // If no template is associated, fallback to generic notification template for faxes
             if (!$faxNotificationTemplate) {
                 $faxNotificationTemplate = $genericFaxlNotificationTemplate;
             }
