@@ -219,8 +219,12 @@ production:
                   - recordingsLimitMB
                   - recordingsDiskUsage
                   - recordingsLimitEmail
+              faxes:
+                toggle:
+                  - faxNotificationTemplate
               invoices:
                 toggle:
+                  - invoiceNotificationTemplate
                   - invoice.PostalAddress
                   - invoice.PostalCode
                   - invoice.Town
@@ -229,6 +233,58 @@ production:
                   - invoice.RegistryData
           order:
             Feature.name: asc
+    voicemailNotificationTemplate:
+      title: ngettext('Voicemail Notification', 'Voicemail Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateVoicemail
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+        'null': _("Use generic template")
+    faxNotificationTemplate:
+      title: ngettext('Fax Notification', 'Fax Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateFax
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+        'null': _("Use generic template")
+    invoiceNotificationTemplate:
+      title: ngettext('Invoice Notification', 'Invoice Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateInvoice
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+        'null': _("Use generic template")
+    callCsvNotificationTemplate:
+      title: ngettext('Call CSV Notification', 'Call CSV Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateCallCsv
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+        'null': _("Use generic template")
 staging:
   _extends: production
 testing:
