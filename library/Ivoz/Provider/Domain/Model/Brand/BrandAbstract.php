@@ -69,6 +69,26 @@ abstract class BrandAbstract
      */
     protected $currency;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    protected $voicemailNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    protected $faxNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    protected $invoiceNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    protected $callCsvNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -186,6 +206,10 @@ abstract class BrandAbstract
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
+            ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
         ;
 
         $self->initChangelog();
@@ -231,7 +255,11 @@ abstract class BrandAbstract
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
+            ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
+            ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()));
 
 
 
@@ -264,7 +292,11 @@ abstract class BrandAbstract
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
             ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
-            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
+            ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
+            ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
+            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
+            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth));
     }
 
     /**
@@ -291,7 +323,11 @@ abstract class BrandAbstract
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -532,6 +568,102 @@ abstract class BrandAbstract
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     *
+     * @return static
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
+    {
+        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getVoicemailNotificationTemplate()
+    {
+        return $this->voicemailNotificationTemplate;
+    }
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     *
+     * @return static
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
+    {
+        $this->faxNotificationTemplate = $faxNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getFaxNotificationTemplate()
+    {
+        return $this->faxNotificationTemplate;
+    }
+
+    /**
+     * Set invoiceNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     *
+     * @return static
+     */
+    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
+    {
+        $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getInvoiceNotificationTemplate()
+    {
+        return $this->invoiceNotificationTemplate;
+    }
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
     }
 
     /**

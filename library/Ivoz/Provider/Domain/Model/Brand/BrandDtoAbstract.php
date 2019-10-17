@@ -111,6 +111,26 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $currency;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $voicemailNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $faxNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $invoiceNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $callCsvNotificationTemplate;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto[] | null
      */
     private $companies = null;
@@ -179,7 +199,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'domainId' => 'domain',
             'languageId' => 'language',
             'defaultTimezoneId' => 'defaultTimezone',
-            'currencyId' => 'currency'
+            'currencyId' => 'currency',
+            'voicemailNotificationTemplateId' => 'voicemailNotificationTemplate',
+            'faxNotificationTemplateId' => 'faxNotificationTemplate',
+            'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
+            'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate'
         ];
     }
 
@@ -213,6 +237,10 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'language' => $this->getLanguage(),
             'defaultTimezone' => $this->getDefaultTimezone(),
             'currency' => $this->getCurrency(),
+            'voicemailNotificationTemplate' => $this->getVoicemailNotificationTemplate(),
+            'faxNotificationTemplate' => $this->getFaxNotificationTemplate(),
+            'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
+            'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
             'companies' => $this->getCompanies(),
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
@@ -722,6 +750,190 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getCurrencyId()
     {
         if ($dto = $this->getCurrency()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $voicemailNotificationTemplate
+     *
+     * @return static
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $voicemailNotificationTemplate = null)
+    {
+        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getVoicemailNotificationTemplate()
+    {
+        return $this->voicemailNotificationTemplate;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setVoicemailNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setVoicemailNotificationTemplate($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getVoicemailNotificationTemplateId()
+    {
+        if ($dto = $this->getVoicemailNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $faxNotificationTemplate
+     *
+     * @return static
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $faxNotificationTemplate = null)
+    {
+        $this->faxNotificationTemplate = $faxNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getFaxNotificationTemplate()
+    {
+        return $this->faxNotificationTemplate;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setFaxNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setFaxNotificationTemplate($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getFaxNotificationTemplateId()
+    {
+        if ($dto = $this->getFaxNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $invoiceNotificationTemplate
+     *
+     * @return static
+     */
+    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $invoiceNotificationTemplate = null)
+    {
+        $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getInvoiceNotificationTemplate()
+    {
+        return $this->invoiceNotificationTemplate;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setInvoiceNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setInvoiceNotificationTemplate($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getInvoiceNotificationTemplateId()
+    {
+        if ($dto = $this->getInvoiceNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setCallCsvNotificationTemplate($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getCallCsvNotificationTemplateId()
+    {
+        if ($dto = $this->getCallCsvNotificationTemplate()) {
             return $dto->getId();
         }
 
