@@ -63,7 +63,7 @@ class UsersCdrRepositoryTest extends KernelTestCase
             ->findByCallid('9297bdde-309cd48f@10.10.1.123');
 
         $this->assertCount(
-            2,
+            1,
             $result
         );
 
