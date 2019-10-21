@@ -251,6 +251,9 @@ msgstr "Mètode de facturació"
 msgid "Black Lists"
 msgstr "Llista negra"
 
+msgid "Block"
+msgstr "Bloquejar"
+
 msgid "Body"
 msgstr "Cos"
 

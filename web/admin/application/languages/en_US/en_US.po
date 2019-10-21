@@ -246,6 +246,9 @@ msgstr "Billing method"
 msgid "Black Lists"
 msgstr "Black Lists"
 
+msgid "Block"
+msgstr "Block"
+
 msgid "Body"
 msgstr "Body"
 

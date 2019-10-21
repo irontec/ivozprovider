@@ -251,6 +251,9 @@ msgstr "Método tarificación"
 msgid "Black Lists"
 msgstr "Listas negras"
 
+msgid "Block"
+msgstr "Bloquear"
+
 msgid "Body"
 msgstr "Cuerpo"
 

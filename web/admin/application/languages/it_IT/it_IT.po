@@ -253,6 +253,9 @@ msgstr "Metodo di fatturazione"
 msgid "Black Lists"
 msgstr "Black Lists"
 
+msgid "Block"
+msgstr "Blocco"
+
 msgid "Body"
 msgstr "Corpo"
 
