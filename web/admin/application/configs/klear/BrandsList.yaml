@@ -44,6 +44,10 @@ production:
           language: true
           defaultTimezone: true
           currency: true
+          voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -91,6 +95,10 @@ production:
           invoice.province: true
           invoice.country: true
           invoice.registryData: true
+          voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           recordingsLimitMB: true
           recordingsDiskUsage: true
           recordingsDiskAvailable: true
@@ -130,6 +138,15 @@ production:
           label: _("SIP domain")
           fields:
             domain_users: 2
+        group5:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            voicemailNotificationTemplate: 1
+            faxNotificationTemplate: 1
+            invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
 
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands

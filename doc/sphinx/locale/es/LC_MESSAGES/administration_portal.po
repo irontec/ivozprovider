@@ -4,12 +4,11 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 11:39+0200\n"
+"POT-Creation-Date: 2019-10-21 11:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1696,6 +1695,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/clients/virtual_pbx.rst:43
+#: ../../administration_portal/platform/brands.rst:45
 msgid "Notifications"
 msgstr ""
 
@@ -3429,8 +3429,11 @@ msgstr ""
 #: ../../administration_portal/brand/settings/notification_templates.rst:86
 msgid ""
 "Once the notification has been configured for the desired languages, "
-"Brand administrator must assign it to the client that will use it. This "
-"can be done in the Notification configuration section of each client."
+"Brand administrator can assign it to the client that will use it. This "
+"can be done in the Notification configuration section of each client. If "
+"client has no notification configured, brand notifications will be used "
+"for that client instead. If brand has no notification configured, default"
+" notifications will be used."
 msgstr ""
 
 #: ../../administration_portal/brand/settings/numeric_transformations.rst:5
@@ -7789,57 +7792,65 @@ msgstr ""
 msgid "Define default Timezone, Language and Currency for clients of this brand."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:46
+#: ../../administration_portal/platform/brands.rst:47
+msgid ""
+"Configure the email :ref:`notification templates` to use for this brand. "
+"Clients configured to use generic notifications will use configured brand"
+" notifications. If brand has no notification configured :ref:`default "
+"notification templates` will be used."
+msgstr ""
+
+#: ../../administration_portal/platform/brands.rst:52
 msgid ""
 "Some features are related to brand and cannot be assigned to clients. "
 "Other ones are also related to clients and lets the brand operator to "
 "assign them to its clients."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:50
+#: ../../administration_portal/platform/brands.rst:56
 msgid ""
 "Disabling billing hides all related sections and assumes that an external"
 " element will set a price for calls (external tarification module is "
 "needed, ask for it!)."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:54
+#: ../../administration_portal/platform/brands.rst:60
 msgid ""
 "Disabling invoices hides related sections, assuming you will use an "
 "external tool to generate them."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:57
+#: ../../administration_portal/platform/brands.rst:63
 msgid ""
 "SIP domain is only visible for Brands with Retail or Residential features"
 " enabled."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:61
+#: ../../administration_portal/platform/brands.rst:67
 msgid "Brand operators"
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:63
+#: ../../administration_portal/platform/brands.rst:69
 msgid ""
 "**List of brand operators** subsection allows adding/editing/deleting "
 "credentials for brand portal access."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:67
+#: ../../administration_portal/platform/brands.rst:73
 msgid "Brand Portals"
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:69
+#: ../../administration_portal/platform/brands.rst:75
 msgid ""
 "**List of brand portals** subsection allows managing URLs to access to "
 "the different web portals available for a given brand."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:71
+#: ../../administration_portal/platform/brands.rst:77
 msgid "See :ref:`Client Portals` for further reference."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:73
+#: ../../administration_portal/platform/brands.rst:79
 msgid ""
 "URLs are assigned to brands. This means that through a given URL the "
 "brand can be guessed, but not the client. As a result, username collision"

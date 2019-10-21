@@ -99,6 +99,7 @@ class Sender extends RouteHandlerAbstract
 
         // Assume user has company and brand
         $company = $user->getCompany();
+        $brand = $company->getBrand();
 
         $substitution = array(
             '${VM_CATEGORY}' => $vmdata[self::VM_CATEGORY],
@@ -116,6 +117,11 @@ class Sender extends RouteHandlerAbstract
 
         // Get Company Notification Template for voicemails
         $vmNotificationTemplate = $company->getVoicemailNotificationTemplate();
+
+        // If company has no template associated, fallback to brand notification template for voicemails
+        if (!$vmNotificationTemplate) {
+            $vmNotificationTemplate = $brand->getVoicemailNotificationTemplate();
+        }
 
         // Get Generic Notification Template for voicemails
         /** @var NotificationTemplateRepository $notificationTemplateRepository */
