@@ -79,7 +79,6 @@ Feature: Retrieve transformation rules
                   "ca": "ca",
                   "it": "it"
               },
-              "brand": 1,
               "country": 68
           }
       }

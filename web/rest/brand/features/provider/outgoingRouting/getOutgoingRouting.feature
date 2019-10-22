@@ -53,7 +53,6 @@ Feature: Retrieve outgoing routings
           "forceClid": false,
           "clid": null,
           "id": 1,
-          "brand": "~",
           "company": "~",
           "carrier": "~",
           "routingPattern": {
@@ -68,15 +67,13 @@ Feature: Retrieve outgoing routings
                   "en": "en",
                   "es": "es",
                   "ca": "ca"
-              },
-              "brand": 1
+              }
           },
           "routingPatternGroup": null,
           "routingTag": {
               "name": "TagName",
               "tag": "123#",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "clidCountry": null,
           "carrierIds": []

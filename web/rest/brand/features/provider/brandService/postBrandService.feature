@@ -23,7 +23,6 @@ Feature: Create brand servers
       {
           "code": "11",
           "id": 4,
-          "brand": 1,
           "service": 4
       }
     """
@@ -40,7 +39,6 @@ Feature: Create brand servers
       {
           "code": "11",
           "id": 4,
-          "brand": "~",
           "service": {
               "iden": "RecordLocution",
               "defaultCode": "00",

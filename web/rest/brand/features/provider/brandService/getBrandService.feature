@@ -41,27 +41,6 @@ Feature: Retrieve brandService
        {
           "code": "94",
           "id": 1,
-          "brand": {
-              "name": "DemoBrand",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "currency": 2
-          },
           "service": {
               "iden": "DirectPickUp",
               "defaultCode": "94",

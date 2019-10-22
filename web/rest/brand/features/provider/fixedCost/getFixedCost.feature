@@ -34,7 +34,6 @@ Feature: Retrieve fixed costs
           "name": "Monitoring",
           "description": "Something",
           "cost": 1,
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

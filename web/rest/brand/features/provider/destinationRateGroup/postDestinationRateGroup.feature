@@ -52,7 +52,6 @@
               "baseName": null,
               "importerArguments": []
           },
-          "brand": 1,
           "currency": 1
       }
     """
@@ -87,7 +86,6 @@
               "baseName": null,
               "importerArguments": []
           },
-          "brand": "~",
           "currency": "~"
       }
     """

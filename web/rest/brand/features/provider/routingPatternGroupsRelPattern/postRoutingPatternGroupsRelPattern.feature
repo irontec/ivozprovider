@@ -36,14 +36,12 @@ Feature: Create routing pattern groups rel patterns
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
-              },
-              "brand": 1
+              }
           },
           "routingPatternGroup": {
               "name": "Europe",
               "description": "",
-              "id": 1,
-              "brand": 1
+              "id": 1
           }
       }
     """
@@ -73,14 +71,12 @@ Feature: Create routing pattern groups rel patterns
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
-              },
-              "brand": 1
+              }
           },
           "routingPatternGroup": {
               "name": "Europe",
               "description": "",
-              "id": 1,
-              "brand": 1
+              "id": 1
           }
       }
     """

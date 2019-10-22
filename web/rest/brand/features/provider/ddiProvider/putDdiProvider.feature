@@ -26,7 +26,6 @@ Feature: Update ddi providers
         "name": "UpdateDDIProviderName",
         "externallyRated": false,
         "id": 1,
-        "brand": "~",
         "transformationRuleSet": {
             "description": "Generic transformation for Spain",
             "internationalCode": "00",
@@ -40,7 +39,6 @@ Feature: Update ddi providers
                 "es": "es",
                 "ca": "ca"
             },
-            "brand": 1,
             "country": 68
         }
       }

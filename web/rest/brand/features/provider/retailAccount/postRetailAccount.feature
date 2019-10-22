@@ -43,7 +43,6 @@ Feature: Create retail accounts
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 2,
-          "brand": 1,
           "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null
@@ -71,7 +70,6 @@ Feature: Create retail accounts
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 2,
-          "brand": "~",
           "company": "~",
           "transformationRuleSet": null,
           "outgoingDdi": null

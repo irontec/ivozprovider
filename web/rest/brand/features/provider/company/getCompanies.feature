@@ -82,27 +82,6 @@ Feature: Retrieve companies
               },
               "country": 68
           },
-          "brand": {
-              "name": "DemoBrand",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "currency": 2
-          },
           "country": {
               "code": "ES",
               "countryCode": "+34",
@@ -135,15 +114,13 @@ Feature: Retrieve companies
                   "ca": "ca",
                   "it": "it"
               },
-              "brand": 1,
               "country": 68
           },
           "outgoingDdi": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,

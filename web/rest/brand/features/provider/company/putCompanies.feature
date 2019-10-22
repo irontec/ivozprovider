@@ -83,7 +83,6 @@ Feature: Update company
               "label": "~",
               "country": 1
           },
-          "brand": "~",
           "country": {
               "code": "ES",
               "countryCode": "+34",
@@ -101,15 +100,13 @@ Feature: Update company
               "generateRules": false,
               "id": 1,
               "name": "~",
-              "brand": 1,
               "country": 68
           },
           "outgoingDdi": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,

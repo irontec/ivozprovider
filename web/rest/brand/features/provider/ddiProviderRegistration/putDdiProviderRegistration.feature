@@ -44,7 +44,6 @@ Feature: Update ddi provider registrations
               "name": "DDIProviderName",
               "externallyRated": false,
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
           }
       }

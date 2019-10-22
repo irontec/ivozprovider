@@ -17,7 +17,6 @@ Feature: Input timezone convertion
           "status": null,
           "statusMsg": null,
           "invoiceTemplate": 1,
-          "brand": 1,
           "company": 1,
           "numberSequence": null
       }
@@ -43,7 +42,6 @@ Feature: Input timezone convertion
               "baseName": null
           },
           "invoiceTemplate": 1,
-          "brand": 1,
           "company": 1,
           "numberSequence": null
       }
@@ -71,7 +69,6 @@ Feature: Input timezone convertion
               "baseName": null
           },
           "invoiceTemplate": "~",
-          "brand": "~",
           "company": "~",
           "numberSequence": null
       }

@@ -34,7 +34,6 @@ Feature: Update call CSV scheduler
           "lastExecutionError": "",
           "nextExecution": "2019-12-02 09:00:00",
           "id": 1,
-          "brand": "~",
           "company": null,
           "callCsvNotificationTemplate": null
       }

@@ -28,8 +28,7 @@ Feature: Create fixed costs rel invoices
               "name": "Monitoring",
               "description": "Something",
               "cost": 1,
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "invoice": {
               "number": "1",
@@ -47,7 +46,6 @@ Feature: Create fixed costs rel invoices
                   "baseName": null
               },
               "invoiceTemplate": 1,
-              "brand": 1,
               "company": 1,
               "numberSequence": null
           }
@@ -70,8 +68,7 @@ Feature: Create fixed costs rel invoices
               "name": "Monitoring",
               "description": "Something",
               "cost": 1,
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "invoice": {
               "number": "1",
@@ -89,7 +86,6 @@ Feature: Create fixed costs rel invoices
                   "baseName": null
               },
               "invoiceTemplate": 1,
-              "brand": 1,
               "company": 1,
               "numberSequence": null
           }

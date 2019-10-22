@@ -41,7 +41,6 @@ Feature: Retrieve administrators
           "name": "Admin Name",
           "lastname": "Admin Lastname",
           "id": 4,
-          "brand": "~",
           "company": "~",
           "timezone": {
               "tz": "Europe/Madrid",

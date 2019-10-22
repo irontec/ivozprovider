@@ -58,7 +58,6 @@ Feature: Retrieve invoice
               "baseName": null
           },
           "invoiceTemplate": "~",
-          "brand": "~",
           "company": "~",
           "numberSequence": null
       }

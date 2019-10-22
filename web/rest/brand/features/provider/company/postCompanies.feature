@@ -67,7 +67,6 @@ Feature: Create companies
           "id": 6,
           "language": 1,
           "defaultTimezone": 1,
-          "brand": 1,
           "country": 1,
           "currency": null,
           "transformationRuleSet": 1,
@@ -120,27 +119,6 @@ Feature: Create companies
               "label": "~",
               "country": 1
           },
-          "brand": {
-              "name": "DemoBrand",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "currency": 2
-          },
           "country": {
               "code": "AD",
               "countryCode": "+376",
@@ -158,22 +136,19 @@ Feature: Create companies
               "generateRules": false,
               "id": 1,
               "name": "~",
-              "brand": 1,
               "country": 68
           },
           "outgoingDdi": {
               "ddi": "123",
               "id": 1,
               "company": 1,
-              "brand": 1,
               "ddiProvider": 1,
               "country": 68
           },
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,

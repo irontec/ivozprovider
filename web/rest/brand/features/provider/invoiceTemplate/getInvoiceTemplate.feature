@@ -40,7 +40,6 @@ Feature: Retrieve invoice templates
           "template": "Template",
           "templateHeader": "Template header",
           "templateFooter": "Template footer",
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

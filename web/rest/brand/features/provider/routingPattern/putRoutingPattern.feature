@@ -23,8 +23,7 @@ Feature: Update routing patterns
               "es": "es",
               "ca": "ca",
               "it": "it"
-          },
-          "brand": 1
+          }
       }
     """
     Then the response status code should be 200
@@ -46,7 +45,6 @@ Feature: Update routing patterns
               "es": "es",
               "ca": "ca",
               "it": "it"
-          },
-          "brand": "~"
+          }
       }
     """
