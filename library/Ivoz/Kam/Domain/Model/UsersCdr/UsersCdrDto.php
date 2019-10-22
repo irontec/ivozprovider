@@ -12,7 +12,7 @@ class UsersCdrDto extends UsersCdrDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            return [
+            $response = [
                 'id' => 'id',
                 'startTime' => 'startTime',
                 'endTime' => 'endTime',
@@ -21,8 +21,29 @@ class UsersCdrDto extends UsersCdrDtoAbstract
                 'caller' => 'caller',
                 'callee' => 'callee'
             ];
+        } else {
+            $response = parent::getPropertyMap(...func_get_args());
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            unset($response['brandId']);
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
+        return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = $this->getPropertyMap($context, $role);
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 }

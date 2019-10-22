@@ -10,13 +10,32 @@ class DestinationDto extends DestinationDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            return [
+            $response = [
                 'prefix' => 'prefix',
                 'id' => 'id',
                 'name' => ['en','es'],
             ];
+        } else {
+            $response = parent::getPropertyMap(...func_get_args());
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            unset($response['brandId']);
+        }
+
+        return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = $this->getPropertyMap($context, $role);
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 }
