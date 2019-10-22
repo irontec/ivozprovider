@@ -72,7 +72,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'voicemailNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
                         ],
                         [
                             'voicemailNotificationTemplate',
@@ -86,7 +86,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'callCsvNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
                         ],
                         [
                             'callCsvNotificationTemplate',
@@ -100,7 +100,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'invoiceNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
                         ],
                         [
                             'invoiceNotificationTemplate',
@@ -114,7 +114,7 @@ class CompanyTest extends KernelTestCase
                         [
                             'faxNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
                         ],
                         [
                             'faxNotificationTemplate',
