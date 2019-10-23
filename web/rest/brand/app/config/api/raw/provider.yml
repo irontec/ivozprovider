@@ -25,6 +25,30 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   itemOperations:
     get: ~
+    put_billable_call_rate_by_callid:
+      method: 'PUT'
+      depth: 0
+      path: '/billable_calls/{callid}/rate'
+      route_name: 'put_billable_call_rate_by_callid'
+      swagger_context:
+        consumes:
+        - 'application/json'
+        produces:
+        - 'application/json'
+        tags:
+        - Provider
+        parameters:
+        - name: callid
+          in: path
+          type: string
+          required: true
+          description: 'callid'
+        - name: rating
+          in: body
+          required: true
+          description: The rating values
+          schema:
+            $ref: "#/definitions/BillableCall-rating"
   collectionOperations:
     get:
       swagger_context:
@@ -39,9 +63,6 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
-    write_access_control:
-      ROLE_BRAND_ADMIN:
-        raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Brand\Brand:
   itemOperations:
