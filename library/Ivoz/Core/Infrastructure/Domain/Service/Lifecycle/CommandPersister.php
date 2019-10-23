@@ -47,6 +47,14 @@ class CommandPersister
      */
     public function persistEvents()
     {
+        $entityEvents = $this
+            ->entityEventSubscriber
+            ->getEvents();
+
+        if (empty($entityEvents)) {
+            return;
+        }
+
         $commandNum = $this
             ->commandEventSubscriber
             ->countEvents();
@@ -84,10 +92,6 @@ class CommandPersister
 
             $commandlog = $this->latestCommandlog;
         }
-
-        $entityEvents = $this
-            ->entityEventSubscriber
-            ->getEvents();
 
         $this
             ->entityEventSubscriber
