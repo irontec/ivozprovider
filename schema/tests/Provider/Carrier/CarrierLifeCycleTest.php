@@ -122,10 +122,10 @@ class CarrierLifeCycleTest extends KernelTestCase
         $this->assertArraySubset(
             [
                 'tpid' => 'b1',
-                'tag' => 'cr2',
+                'tag' => 'cr3',
                 'metrics' => 'ACD',
-                'subjects' => 'cr2',
-                'carrierId' => 2,
+                'subjects' => 'cr3',
+                'carrierId' => 3,
                 'id' => 1
             ],
             $diff
@@ -165,8 +165,8 @@ class CarrierLifeCycleTest extends KernelTestCase
             'tpid' => 'b1',
             'loadid' => 'DATABASE',
             'tenant' => 'b1',
-            'account' => 'cr2',
-            'carrierId' => 2,
+            'account' => 'cr3',
+            'carrierId' => 3,
             'id' => 3
         ];
 

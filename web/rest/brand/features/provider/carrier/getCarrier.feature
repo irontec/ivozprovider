@@ -19,6 +19,12 @@ Feature: Retrieve carriers
               "name": "CarrierName",
               "externallyRated": false,
               "id": 1
+          },
+          {
+              "description": "Externally rated",
+              "name": "ExternallyRatedCarrier",
+              "externallyRated": true,
+              "id": 2
           }
       ]
     """

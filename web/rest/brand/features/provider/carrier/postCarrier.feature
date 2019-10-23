@@ -28,7 +28,7 @@ Feature: Create carriers
           "externallyRated": false,
           "balance": 0,
           "calculateCost": false,
-          "id": 2,
+          "id": 3,
           "brand": 1,
           "transformationRuleSet": 1,
           "currency": null
@@ -38,7 +38,7 @@ Feature: Create carriers
   Scenario: Retrieve created carrier
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/carriers/2"
+      And I send a "GET" request to "/carriers/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -49,7 +49,7 @@ Feature: Create carriers
           "name": "Artemis-New",
           "externallyRated": false,
           "calculateCost": false,
-          "id": 2,
+          "id": 3,
           "brand": "~",
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",

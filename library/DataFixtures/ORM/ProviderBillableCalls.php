@@ -47,6 +47,7 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
 
             if ($i === 0) {
                 $item->setTrunksCdr($this->getReference('_reference_KamTrunksCdr1'));
+                $item->setCarrier($this->getReference('_reference_ProviderCarrier2'));
             }
 
             $this->addReference('_reference_ProviderBillableCall' . $i, $item);

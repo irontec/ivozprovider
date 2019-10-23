@@ -24,7 +24,7 @@ Feature: Retrieve billable calls
               "direction": "outbound",
               "id": 1,
               "company": 1,
-              "carrier": 1,
+              "carrier": 2,
               "invoice": null
           },
           {
