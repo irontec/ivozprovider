@@ -33,6 +33,25 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @param string $callid
+     * @return BillableCallInterface[]
+     */
+    public function findOutboundByCallid(string $callid)
+    {
+        $criteria = [
+            'callid' => $callid,
+            'direction' => BillableCallInterface::DIRECTION_OUTBOUND
+        ];
+
+        /** @var BillableCallInterface[] $response */
+        $response = $this->findBy(
+            $criteria
+        );
+
+        return $response;
+    }
+
+    /**
      * @param int $id
      * @return BillableCallInterface
      */
@@ -294,11 +313,11 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
             )->andWhere(
-                $qb->expr()->lt(
-                    '(self.startTime + self.duration)',
-                    preg_replace('/[^0-9]+/', '', $endTime)
-                )
-            );
+            $qb->expr()->lt(
+                '(self.startTime + self.duration)',
+                preg_replace('/[^0-9]+/', '', $endTime)
+            )
+        );
 
         return $qb;
     }
