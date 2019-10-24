@@ -54,9 +54,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         $body = $templateEngine->render($templateModel->getTemplate(), $variables);
         $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
 
-        $architecture = (php_uname("m") === 'x86_64') ? 'amd64' : 'i386';
-
-        $snappy = new Pdf('/opt/irontec/ivozprovider/library/vendor/bin/wkhtmltopdf-' . $architecture);
+        $snappy = new Pdf('/opt/irontec/ivozprovider/library/vendor/bin/wkhtmltopdf-amd64');
         $snappy->setOption('header-html', $header);
         $snappy->setOption('header-spacing', 3);
         $snappy->setOption('footer-html', $footer);
