@@ -48,6 +48,6 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateAbstract:
       joinColumns:
         brandId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
