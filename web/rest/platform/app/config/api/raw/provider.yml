@@ -173,3 +173,10 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_USER" in roles'
+Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    read_access_control:
+      ROLE_SUPER_ADMIN:
+        brand:
+          isNull: ~

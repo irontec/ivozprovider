@@ -509,6 +509,10 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
             eq: "user.getBrand().getId()"
         - brand:
             isNull: ~
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\Language\Name:
 Ivoz\Provider\Domain\Model\Language\Language:

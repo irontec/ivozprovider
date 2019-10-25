@@ -72,7 +72,7 @@ class InvoiceTest extends KernelTestCase
                         [
                             'invoiceTemplate',
                             'in',
-                            'InvoiceTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
+                            'InvoiceTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
                         ]
                     ]
                 ],
