@@ -1,17 +1,17 @@
 Feature: Create invoice templates
   In order to manage invoice templates
-  As a brand admin
+  As a super admin
   I need to be able to create them through the API.
 
   @createSchema
   Scenario: Create an invoice template
-    Given I add Brand Authorization header
+    Given I add Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/invoice_templates" with body:
     """
       {
-          "name": "New",
+          "name": "New Generic",
           "description": "Description",
           "template": "body",
           "templateHeader": "header",
@@ -24,18 +24,18 @@ Feature: Create invoice templates
     And the JSON should be equal to:
     """
       {
-          "name": "New",
+          "name": "New Generic",
           "description": "Description",
           "template": "body",
           "templateHeader": "header",
           "templateFooter": "footer",
           "id": 3,
-          "brand": 1
+          "brand": null
       }
     """
 
   Scenario: Retrieve created invoice templates
-    Given I add Brand Authorization header
+    Given I add Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoice_templates/3"
     Then the response status code should be 200
@@ -44,12 +44,12 @@ Feature: Create invoice templates
     And the JSON should be like:
     """
       {
-          "name": "New",
+          "name": "New Generic",
           "description": "Description",
           "template": "body",
           "templateHeader": "header",
           "templateFooter": "footer",
           "id": 3,
-          "brand": "~"
+          "brand": null
       }
     """
