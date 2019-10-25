@@ -504,8 +504,11 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        brand:
-          eq: "user.getBrand().getId()"
+      - or:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - brand:
+            isNull: ~
 
 Ivoz\Provider\Domain\Model\Language\Name:
 Ivoz\Provider\Domain\Model\Language\Language:
