@@ -57,6 +57,10 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
      */
     public function execute(RoutingPatternInterface $routingPattern)
     {
+        if ($routingPattern->isNew()) {
+            return;
+        }
+
         if (!$routingPattern->hasChanged('prefix')) {
             return;
         }
