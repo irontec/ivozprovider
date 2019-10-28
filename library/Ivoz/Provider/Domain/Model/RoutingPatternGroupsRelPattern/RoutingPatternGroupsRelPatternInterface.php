@@ -2,10 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface RoutingPatternGroupsRelPatternInterface extends EntityInterface
+interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Set routingPattern
      *
