@@ -32,7 +32,8 @@ class OutgoingRoutingDoctrineRepository extends ServiceEntityRepository implemen
             ->select('self')
             ->innerJoin('self.routingPatternGroup', 'routingPatternGroup')
             ->innerJoin('routingPatternGroup.relPatterns', 'relPattern')
-            ->innerJoin('relPattern.routingPattern', 'routingPattern')
+            ->where('relPattern.routingPattern = :routingPatternId')
+            ->setParameter(':routingPatternId', $routingPattern->getId())
             ->groupBy('self.id')
             ->getQuery();
 
