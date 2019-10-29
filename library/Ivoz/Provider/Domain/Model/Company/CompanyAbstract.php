@@ -47,6 +47,11 @@ abstract class CompanyAbstract
     protected $maxCalls = 0;
 
     /**
+     * @var integer
+     */
+    protected $maxDailyUsage = 1000000;
+
+    /**
      * @var string
      */
     protected $postalAddress;
@@ -205,6 +210,7 @@ abstract class CompanyAbstract
         $nif,
         $distributeMethod,
         $maxCalls,
+        $maxDailyUsage,
         $postalAddress,
         $postalCode,
         $town,
@@ -217,6 +223,7 @@ abstract class CompanyAbstract
         $this->setNif($nif);
         $this->setDistributeMethod($distributeMethod);
         $this->setMaxCalls($maxCalls);
+        $this->setMaxDailyUsage($maxDailyUsage);
         $this->setPostalAddress($postalAddress);
         $this->setPostalCode($postalCode);
         $this->setTown($town);
@@ -299,6 +306,7 @@ abstract class CompanyAbstract
             $dto->getNif(),
             $dto->getDistributeMethod(),
             $dto->getMaxCalls(),
+            $dto->getMaxDailyUsage(),
             $dto->getPostalAddress(),
             $dto->getPostalCode(),
             $dto->getTown(),
@@ -357,6 +365,7 @@ abstract class CompanyAbstract
             ->setNif($dto->getNif())
             ->setDistributeMethod($dto->getDistributeMethod())
             ->setMaxCalls($dto->getMaxCalls())
+            ->setMaxDailyUsage($dto->getMaxDailyUsage())
             ->setPostalAddress($dto->getPostalAddress())
             ->setPostalCode($dto->getPostalCode())
             ->setTown($dto->getTown())
@@ -406,6 +415,7 @@ abstract class CompanyAbstract
             ->setNif(self::getNif())
             ->setDistributeMethod(self::getDistributeMethod())
             ->setMaxCalls(self::getMaxCalls())
+            ->setMaxDailyUsage(self::getMaxDailyUsage())
             ->setPostalAddress(self::getPostalAddress())
             ->setPostalCode(self::getPostalCode())
             ->setTown(self::getTown())
@@ -449,6 +459,7 @@ abstract class CompanyAbstract
             'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
             'maxCalls' => self::getMaxCalls(),
+            'maxDailyUsage' => self::getMaxDailyUsage(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),
@@ -655,6 +666,34 @@ abstract class CompanyAbstract
     public function getMaxCalls()
     {
         return $this->maxCalls;
+    }
+
+    /**
+     * Set maxDailyUsage
+     *
+     * @param integer $maxDailyUsage
+     *
+     * @return static
+     */
+    protected function setMaxDailyUsage($maxDailyUsage)
+    {
+        Assertion::notNull($maxDailyUsage, 'maxDailyUsage value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxDailyUsage, 'maxDailyUsage value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxDailyUsage, 0, 'maxDailyUsage provided "%s" is not greater or equal than "%s".');
+
+        $this->maxDailyUsage = (int) $maxDailyUsage;
+
+        return $this;
+    }
+
+    /**
+     * Get maxDailyUsage
+     *
+     * @return integer
+     */
+    public function getMaxDailyUsage()
+    {
+        return $this->maxDailyUsage;
     }
 
     /**

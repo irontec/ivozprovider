@@ -41,6 +41,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $maxCalls = 0;
 
     /**
+     * @var integer
+     */
+    private $maxDailyUsage = 1000000;
+
+    /**
      * @var string
      */
     private $postalAddress;
@@ -269,6 +274,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'nif' => 'nif',
             'distributeMethod' => 'distributeMethod',
             'maxCalls' => 'maxCalls',
+            'maxDailyUsage' => 'maxDailyUsage',
             'postalAddress' => 'postalAddress',
             'postalCode' => 'postalCode',
             'town' => 'town',
@@ -314,6 +320,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'nif' => $this->getNif(),
             'distributeMethod' => $this->getDistributeMethod(),
             'maxCalls' => $this->getMaxCalls(),
+            'maxDailyUsage' => $this->getMaxDailyUsage(),
             'postalAddress' => $this->getPostalAddress(),
             'postalCode' => $this->getPostalCode(),
             'town' => $this->getTown(),
@@ -476,6 +483,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMaxCalls()
     {
         return $this->maxCalls;
+    }
+
+    /**
+     * @param integer $maxDailyUsage
+     *
+     * @return static
+     */
+    public function setMaxDailyUsage($maxDailyUsage = null)
+    {
+        $this->maxDailyUsage = $maxDailyUsage;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMaxDailyUsage()
+    {
+        return $this->maxDailyUsage;
     }
 
     /**
