@@ -74,6 +74,84 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
      * @param CompanyDto $companyDto
      * @return string
      */
+    public function getCurrentDayUsage(CompanyDto $companyDto)
+    {
+        try {
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            $amount = $this->fetchCompanyBalance->getCurrentDayUsage(
+                $companyDto->getBrandId(),
+                $companyDto->getId()
+            );
+
+            $currencySymbol = $dataGateway->remoteProcedureCall(
+                Company::class,
+                $companyDto->getId(),
+                'getCurrencySymbol',
+                []
+            );
+
+            return sprintf("%s %s", $amount, $currencySymbol);
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
+    }
+
+    /**
+     * @param CompanyDto $companyDto
+     * @return string
+     */
+    public function getCurrentDayMaxUsage(CompanyDto $companyDto)
+    {
+        try {
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            $amount = $this->fetchCompanyBalance->getCurrentDayMaxUsage(
+                $companyDto->getBrandId(),
+                $companyDto->getId()
+            );
+
+            $currencySymbol = $dataGateway->remoteProcedureCall(
+                Company::class,
+                $companyDto->getId(),
+                'getCurrencySymbol',
+                []
+            );
+
+            return sprintf("%s %s", $amount, $currencySymbol);
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
+    }
+
+    /**
+     * @param CompanyDto $companyDto
+     * @return string
+     */
+    public function getAccountStatus(CompanyDto $companyDto)
+    {
+        try {
+            $disabled = $this->fetchCompanyBalance->getAccountStatus(
+                $companyDto->getBrandId(),
+                $companyDto->getId()
+            );
+
+            if (!$disabled) {
+                return '<span class="ui-silk inline ui-silk-accept" title="Active"></span>';
+            }
+
+            return '<span class="ui-silk inline ui-silk-delete" title="Inactive"></span>';
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
+    }
+
+    /**
+     * @param CompanyDto $companyDto
+     * @return string
+     */
     public function getDdiE164(CompanyDto $companyDto)
     {
         try {

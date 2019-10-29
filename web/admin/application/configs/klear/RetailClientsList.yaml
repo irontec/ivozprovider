@@ -52,11 +52,11 @@ production:
           maxCalls: true
           recordingsDiskUsage: true
           country: true
-          externallyExtraOpts: true
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           outgoingDdi: true
+          maxDailyUsage: true
         order:
           name: true
           nif: true
@@ -98,7 +98,6 @@ production:
           countryName: true
           mediaRelaySets: true
           maxCalls: false
-          externallyExtraOpts: true
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
@@ -107,13 +106,13 @@ production:
           id: true
           name: true
           maxCalls: true
+          maxDailyUsage: true
           language: true
           relRoutingTags: true
           showInvoices: true
           onDemandRecord: true
           invoiceNotificationTemplate: true
           mediaRelaySets: true
-          externallyExtraOpts: true
       fixedPositions: &retailClientsFixedPositions_Link
         group0:
           colsPerRow: 12
@@ -124,11 +123,12 @@ production:
             outgoingDdi: 6
             relFeatures: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
             ipFilter: 1
+            maxDailyUsage: 1
         group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -197,11 +197,12 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
             ipFilter: 1
+            maxDailyUsage: 1
         group3:
           colsPerRow: 12
           label: _("Retail specific")
@@ -233,12 +234,6 @@ production:
           label: _("Platform data")
           fields:
             mediaRelaySets: 4
-        group6:
-          colsPerRow: 1
-          collapsed: true
-          label: _("Externally rater options")
-          fields:
-            externallyExtraOpts: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")

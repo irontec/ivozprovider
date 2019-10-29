@@ -118,6 +118,20 @@ production:
         icon: help
         text: _("Limits external incoming and outgoing calls to this value (0 for unlimited).")
         label: _("Need help?")
+    maxDailyUsage:
+      title: _('Max daily usage')
+      type: number
+      defaultValue: 1000000
+      source:
+        control: Spinner
+        min: 1
+        minStep: 50
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limit max daily usage.")
+        label: _("Need help?")
     postalAddress:
       title: _('Postal address')
       type: text
@@ -299,9 +313,6 @@ production:
       maxLength: 3
       prefix: '<span class="asterisc">*</span>'
       pattern: '[0-9*]+'
-    externallyExtraOpts:
-      title: _('Externally rater custom options')
-      type: textarea
     recordingsLimitMB:
       title: _("Max disk usage (in MB)")
       type: number
@@ -432,6 +443,28 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_Companies
         method: getBalance
+    currentDayUsage:
+      title: _('Today usage')
+      type: ghost
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getCurrentDayUsage
+    accountStatus:
+      title: _('Status')
+      type: ghost
+      readonly: true
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getAccountStatus
+    currentDayMaxUsage:
+      title: _('Max daily usage')
+      type: ghost
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getCurrentDayMaxUsage
     typeIcon:
       title: _('Type')
       type: ghost

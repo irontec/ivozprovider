@@ -52,10 +52,10 @@ production:
           balance: true
           maxCalls: true
           recordingsDiskUsage: true
-          externallyExtraOpts: true
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsage: true
         order:
           name: true
           nif: true
@@ -97,7 +97,6 @@ production:
           countryName: true
           mediaRelaySets: true
           maxCalls: false
-          externallyExtraOpts: true
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
@@ -105,13 +104,13 @@ production:
           id: true
           name: true
           maxCalls: true
+          maxDailyUsage: true
           language: true
           relRoutingTags: true
           showInvoices: true
           onDemandRecord: true
           invoiceNotificationTemplate: true
           mediaRelaySets: true
-          externallyExtraOpts: true
       fixedPositions: &wholesaleClientsFixedPositions_Link
         group0:
           colsPerRow: 6
@@ -124,6 +123,7 @@ production:
           label: _("Security")
           fields:
             maxCalls: 1
+            maxDailyUsage: 1
         group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -184,6 +184,7 @@ production:
           label: _("Security")
           fields:
             maxCalls: 1
+            maxDailyUsage: 1
         group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -217,12 +218,6 @@ production:
           label: _("Platform data")
           fields:
             mediaRelaySets: 4
-        group6:
-          colsPerRow: 1
-          collapsed: true
-          label: _("Externally rater options")
-          fields:
-            externallyExtraOpts: 1
         group7:
           colsPerRow: 2
           collapsed: true

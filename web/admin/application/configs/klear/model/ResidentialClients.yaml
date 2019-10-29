@@ -112,6 +112,19 @@ production:
         icon: help
         text: _("Limits external incoming and outgoing calls to this value (0 for unlimited).")
         label: _("Need help?")
+    maxDailyUsage:
+      title: _('Max daily usage')
+      type: number
+      defaultValue: 100
+      source:
+        control: Spinner
+        min: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limit max daily usage.")
+        label: _("Need help?")
     postalAddress:
       title: _('Postal address')
       type: text
@@ -279,9 +292,6 @@ production:
       maxLength: 3
       prefix: '<span class="asterisc">*</span>'
       pattern: '[0-9*]+'
-    externallyExtraOpts:
-      title: _('Externally rater custom options')
-      type: textarea
     relFeatures:
       title: _('Features')
       type: multiselect

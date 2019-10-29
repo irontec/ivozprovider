@@ -61,15 +61,18 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
-          externallyExtraOpts: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           balance: true
+          currentDayUsage: true
+          currentDayMaxUsage: true
+          accountStatus: true
           country: true
           showInvoices: true
           outgoingDdi: true
+          maxDailyUsage: true
         order:
           name: true
           nif: true
@@ -117,7 +120,6 @@ production:
           countryName: true
           outgoingDdi: true
           outgoingDdiRule: true
-          externallyExtraOpts: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -128,16 +130,19 @@ production:
           balance: true
           showInvoices: true
           outgoingDdiE164: true
+          currentDayUsage: true
+          currentDayMaxUsage: true
+          accountStatus: true
         order: &companiesOrder_Link
           id: true
           name: true
           maxCalls: true
+          maxDialyUsage: true
           language: true
           outgoingDdi: true
           showInvoices: true
           onDemandRecord: true
           voicemailNotificationTemplate: true
-          externallyExtraOpts: true
       fixedPositions:
         group0:
           colsPerRow: 6
@@ -148,11 +153,12 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
             ipFilter: 1
+            maxDailyUsage: 1
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
@@ -203,6 +209,8 @@ production:
           recordingsDiskUsage: true
           outgoingDdiE164: true
           balance: true
+          currentDayUsage: true
+          currentDayMaxUsage: true
         whitelist:
           id: ${auth.isMainOperator}
         order:
@@ -222,11 +230,12 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
             ipFilter: 1
+            maxDailyUsage: 1
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
@@ -266,12 +275,6 @@ production:
           fields:
             onDemandRecord: 6
             onDemandRecordCode: 6
-        group6:
-          colsPerRow: 1
-          collapsed: true
-          label: _("Externally rater options")
-          fields:
-            externallyExtraOpts: 1
         group7:
           colsPerRow: 2
           collapsed: true
