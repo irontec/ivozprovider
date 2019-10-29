@@ -8,4 +8,7 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: false
+    public: true
+
+  Services\:
+    resource: '../../src/Services/*'

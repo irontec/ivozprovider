@@ -44,6 +44,7 @@ class MicroKernel extends Kernel
         // kernel is a service that points to this class
         // optional 3rd argument is the route name
         $routes->add('/', 'kernel:sync');
+        $routes->add('/reset-counter', 'kernel:resetCounter');
     }
 
     public function sync()
@@ -61,7 +62,19 @@ class MicroKernel extends Kernel
         return new Response("Company and carrier balances updated successfully!\n");
     }
 
-    private function registerCommand()
+    public function resetCounter()
+    {
+        $this->registerCommand('reset-counter');
+
+        $resetDailyUsageCounters = $this->container->get(
+            \Services\ResetDailyUsageCounters::class
+        );
+        $resetDailyUsageCounters->execute();
+
+        return new Response("Company daily usage counters reset successfully!\n");
+    }
+
+    private function registerCommand($method = 'sync')
     {
         /** @var DomainEventPublisher $eventPublisher */
         $eventPublisher = $this->container->get(
@@ -76,7 +89,7 @@ class MicroKernel extends Kernel
         $event = new CommandWasExecuted(
             $requestId->toString(),
             'Balances',
-            'sync',
+            $method,
             [],
             []
         );
