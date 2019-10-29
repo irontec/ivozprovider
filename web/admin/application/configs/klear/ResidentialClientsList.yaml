@@ -13,6 +13,10 @@ production:
   screens: &residentialClients_screensLink
     residentialClientsList_screen: &residentialClientsList_screenLink
       controller: list
+      order:
+        field:
+        - Company.name
+        type: asc
       pagination:
         items: 25
       <<: *ResidentialClients
@@ -192,6 +196,7 @@ production:
           town: ${auth.brandFeatures.invoices.disabled}
           province: ${auth.brandFeatures.invoices.disabled}
           countryName: ${auth.brandFeatures.invoices.disabled}
+          invoiceNotificationTemplate: ${auth.brandFeatures.invoices.disabled}
           outgoingDdiRule: true
           balance: true
           outgoingDdiE164: true

@@ -39,6 +39,9 @@ production:
           language: true
           status: true
           ddiIn: true
+          t38Passthrough: true
+          outgoingDdi: true
+          maxCalls: true
         order:
           company: true
           name: true

@@ -31,6 +31,8 @@ production:
           port: true
           status: true
           ddiIn: true
+          outgoingDdi: true
+          t38Passthrough: true
         order:
           company: true
           name: true

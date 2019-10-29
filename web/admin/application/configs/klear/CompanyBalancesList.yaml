@@ -11,6 +11,10 @@ production:
   screens: &companyBalances_screensLink
     companyBalancesList_screen: &companyBalancesList_screenLink
       controller: list
+      order:
+        field:
+        - Company.name
+        type: asc
       rawCondition: "Company.billingMethod in ('prepaid', 'pseudoprepaid')"
       pagination:
         items: 25
@@ -68,7 +72,7 @@ production:
           currentDayUsage: true
           currentDayMaxUsage: true
           accountStatus: true
-          maxDialyUsage: true
+          maxDailyUsage: true
         order:
           typeIcon: true
           name: true

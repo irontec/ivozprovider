@@ -14,6 +14,10 @@ production:
   screens: &companies_screensLink
     companiesList_screen: &companiesList_screenLink
       controller: list
+      order:
+        field:
+        - Company.name
+        type: asc
       pagination:
         items: 25
       <<: *Companies
@@ -204,6 +208,7 @@ production:
           town: ${auth.brandFeatures.invoices.disabled}
           province: ${auth.brandFeatures.invoices.disabled}
           countryName: ${auth.brandFeatures.invoices.disabled}
+          invoiceNotificationTemplate: ${auth.brandFeatures.invoices.disabled}
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
