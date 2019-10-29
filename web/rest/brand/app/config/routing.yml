@@ -38,3 +38,12 @@ get_my_active_calls:
     _api_resource_class: 'Model\ActiveCalls'
     _api_item_operation_name: 'get_my_active_calls'
     _api_receive: false
+
+put_billable_call_rate_by_callid:
+  path: '/billable_calls/{callid}/rate'
+  methods: ['PUT']
+  defaults:
+    _controller: Controller\Provider\PutBillableCallRatingAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\BillableCall\BillableCall'
+    _api_item_operation_name: 'put_billable_call_rate_by_callid'
+    _api_receive: false

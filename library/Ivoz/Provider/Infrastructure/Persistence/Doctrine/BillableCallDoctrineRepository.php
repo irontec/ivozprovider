@@ -33,6 +33,30 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @param string $callid
+     * @param int $brandId
+     * @return BillableCallInterface[]
+     */
+    public function findOutboundByCallid(string $callid, int $brandId = null)
+    {
+        $criteria = [
+            'callid' => $callid,
+            'direction' => BillableCallInterface::DIRECTION_OUTBOUND
+        ];
+
+        if ($brandId) {
+            $criteria['brand'] = $brandId;
+        }
+
+        /** @var BillableCallInterface[] $response */
+        $response = $this->findBy(
+            $criteria
+        );
+
+        return $response;
+    }
+
+    /**
      * @param int $id
      * @return BillableCallInterface
      */

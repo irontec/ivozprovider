@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 class BillableCallDto extends BillableCallDtoAbstract
 {
+    const CONTEXT_RATING = 'rating';
+    const CONTEXT_RATING_INTERNAL = 'rating-internal';
 
     /**
      * @inheritdoc
@@ -11,6 +13,24 @@ class BillableCallDto extends BillableCallDtoAbstract
      */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
+        if ($context === self::CONTEXT_RATING_INTERNAL) {
+            return [
+                'price' => 'price',
+                'destinationName' => 'destinationName',
+                'destinationId' => 'destination',
+                'ratingPlanName' => 'ratingPlanName',
+                'ratingPlanGroupId' => 'ratingPlanGroup',
+            ];
+        }
+
+        if ($context === self::CONTEXT_RATING) {
+            return [
+                'price' => 'price',
+                'destinationName' => 'destinationName',
+                'ratingPlanName' => 'ratingPlanName'
+            ];
+        }
+
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'startTime' => 'startTime',
@@ -31,6 +51,11 @@ class BillableCallDto extends BillableCallDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+        }
+
+        if ($role === 'ROLE_SUPER_ADMIN') {
+            unset($response['destinationId']);
+            unset($response['ratingPlanGroupId']);
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {

@@ -17,12 +17,36 @@ class BillableCallRepositoryTest extends KernelTestCase
      */
     public function test_runner()
     {
+        $this->it_finds_outgoing_call_by_callid();
         $this->it_finds_one_by_trunksCdrId();
         $this->it_checks_retarificable_calls();
         $this->it_finds_unrated_calls_in_group();
         $this->it_finds_rerateable_cgrids_in_group();
         $this->it_transforms_ids_to_trunkCdrId();
         $this->it_counts_untarificatted_calls_in_range();
+    }
+
+    public function it_finds_outgoing_call_by_callid()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCalls */
+        $billableCalls = $billableCallRepository
+            ->findOutboundByCallid(
+                '017cc7c8-eb38-4bbd-9318-524a274f7001'
+            );
+
+        $this->assertCount(
+            1,
+            $billableCalls
+        );
+
+        $this->assertInstanceOf(
+            BillableCall::class,
+            $billableCalls[0]
+        );
     }
 
     public function it_finds_one_by_trunksCdrId()

@@ -53,7 +53,7 @@ class BillableCallTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-               'FALSE'
+                ['brand', 'eq', 'user.getBrand().getId()']
             ]
         );
     }

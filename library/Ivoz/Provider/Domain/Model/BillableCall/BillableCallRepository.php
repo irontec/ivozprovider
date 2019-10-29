@@ -7,6 +7,14 @@ use Doctrine\Common\Collections\Selectable;
 
 interface BillableCallRepository extends ObjectRepository, Selectable
 {
+
+    /**
+     * @param string $callid
+     * @param int $brandId
+     * @return BillableCallInterface[]
+     */
+    public function findOutboundByCallid(string $callid, int $brandId = null);
+
     /**
      * @param int $id
      * @return BillableCallInterface

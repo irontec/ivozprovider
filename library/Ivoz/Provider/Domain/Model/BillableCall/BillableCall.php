@@ -32,4 +32,25 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
     {
         return $this->getDirection() === self::DIRECTION_OUTBOUND;
     }
+
+    protected function sanitizeValues()
+    {
+        if ($this->getPrice() < 0) {
+            throw new \DomainException(
+                'Negative prices are not allowed',
+                500
+            );
+        }
+
+        $priceChanged = $this->hasChanged('price');
+
+        if ($priceChanged && $this->getInvoice()) {
+            throw new \DomainException(
+                'Call already invoiced, unable to change the price',
+                500
+            );
+        }
+
+        parent::sanitizeValues();
+    }
 }
