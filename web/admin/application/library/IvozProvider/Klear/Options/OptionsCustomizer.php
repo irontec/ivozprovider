@@ -95,6 +95,13 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "transformationRulesCalleeOutView_screen":
                 $show = !$this->_isBrandData();
                 break;
+            case "invoiceTemplatesEdit_screen":
+            case "invoiceTemplatesDel_dialog":
+                $show = $this->_isBrandData();
+                break;
+            case "invoiceTemplatesView_screen":
+                $show = !$this->_isBrandData();
+                break;
             case "matchListsEdit_screen":
             case "matchListsDel_dialog":
             case "matchListPatternsList_screen":

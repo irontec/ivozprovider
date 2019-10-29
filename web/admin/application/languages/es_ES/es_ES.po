@@ -603,6 +603,11 @@ msgstr "Día"
 msgid "Default Action"
 msgstr "Acción por defecto"
 
+msgid "Default Invoice template"
+msgid_plural "Default Invoice templates"
+msgstr[0] "Plantilla de factura por defecto"
+msgstr[1] "Plantillas de facturas por defecto"
+
 msgid "Default currency"
 msgstr "Divisa por defecto"
 

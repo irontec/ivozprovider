@@ -8520,3 +8520,19 @@ msgstr ""
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
 
+#~ msgid "Default Invoice Templates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Platform administators can create Invoice "
+#~ "templates that can be used by all"
+#~ " brands in the platform."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Although brand administrators won't be "
+#~ "able to edit them, they will be"
+#~ " available for in :ref:`Invoices` and "
+#~ ":ref:`Invoice Schedulers`."
+#~ msgstr ""
+

@@ -114,7 +114,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
-          filterClass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_InvoiceTemplates
           fieldName:
             fields:
               - name

@@ -34,6 +34,18 @@ class ProviderInvoiceTemplate extends Fixture implements DependentFixtureInterfa
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(InvoiceTemplate::class);
+        (function () {
+            $this->setName("Generic");
+            $this->setDescription("Generic invoice template");
+            $this->setTemplate("Generic Template body");
+            $this->setTemplateHeader("Generic Template header");
+            $this->setTemplateFooter("Generic Template footer");
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderInvoiceTemplate2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
     
         $manager->flush();
     }

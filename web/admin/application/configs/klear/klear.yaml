@@ -85,6 +85,10 @@ production:
           title: ngettext('Default notification template', 'Default notification templates', 0)
           class: ui-silk-email
           description: _("List of %s", ngettext('Notification template', 'Notification templates', 0))
+        DefaultInvoiceTemplatesList:
+          title: ngettext('Default Invoice template', 'Default Invoice templates', 0)
+          class: ui-silk-report-key
+          description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
         DomainsList:
           title: ngettext('SIP Domain', 'SIP Domains', 0)
           class: ui-silk-link

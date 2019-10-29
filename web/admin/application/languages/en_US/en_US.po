@@ -596,6 +596,11 @@ msgstr "Day"
 msgid "Default Action"
 msgstr "Default Action"
 
+msgid "Default Invoice template"
+msgid_plural "Default Invoice templates"
+msgstr[0] "Default Invoice template"
+msgstr[1] "Default Invoice templates"
+
 msgid "Default currency"
 msgstr "Default currency"
 
