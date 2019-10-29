@@ -78,11 +78,15 @@ These are the fields shown when **adding** a new retail client:
         Describes the way the client will "talk" and the way the client wants to be "talked".
 
     Max calls
-        Limits both client generated and external received calls to this value (0 for unlimited). Setting to 2 will allow
-        setting 2 outgoing calls and received 2 incoming calls (in parallel).
+        Limits both incoming and outgoing external calls (0 for unlimited).
 
     Filter by IP address
         If set, the platform will only allow calls coming from allowed IP addresses or network ranges.
+
+    Max daily usage
+        Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
+        accounts are re-enabled.
+
 
 When **editing** a client, these additional fields can be configured:
 
@@ -92,9 +96,6 @@ When **editing** a client, these additional fields can be configured:
     Invoice data
         All the fields in this group will be included in invoices generated for this client. This section also allows
         displaying invoices list in client's portal menu so they can download them.
-
-    Externally rater custom options
-        This field is for setting options for an optional external rating module.
 
     Outgoing DDI
         Fallback DDI for external outgoing calls (can be overridden at residential device level).
