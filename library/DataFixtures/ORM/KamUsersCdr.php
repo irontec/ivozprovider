@@ -55,7 +55,7 @@ class KamUsersCdr extends Fixture implements DependentFixtureInterface
             $this->setDirection('outbound');
             $this->setCaller('102');
             $this->setCallee('+34676896561');
-            $this->setCallid('9297bdde-309cd48f@10.10.1.123');
+            $this->setCallid('8297bdde-309cd48f@10.10.1.123');
             $this->setCallidHash('517fa1eb');
         })->call($item2);
 
