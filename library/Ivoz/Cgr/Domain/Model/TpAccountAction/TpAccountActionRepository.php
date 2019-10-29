@@ -7,5 +7,8 @@ use Doctrine\Common\Collections\Selectable;
 
 interface TpAccountActionRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param int $companyId
+     */
+    public function findByCompany(int $companyId);
 }
