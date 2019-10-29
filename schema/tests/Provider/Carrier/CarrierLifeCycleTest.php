@@ -166,6 +166,7 @@ class CarrierLifeCycleTest extends KernelTestCase
             'loadid' => 'DATABASE',
             'tenant' => 'b1',
             'account' => 'cr3',
+            'allow_negative' => 1,
             'carrierId' => 3,
             'id' => 3
         ];

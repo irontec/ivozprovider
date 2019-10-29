@@ -32,4 +32,19 @@ class TpAccountActionRepositoryTest extends KernelTestCase
             $repository
         );
     }
+
+    public function its_finds_by_company()
+    {
+        /** @var TpAccountActionRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(TpAccountAction::class);
+
+        $tpAccountAction = $repository->findOneBy(1);
+
+        $this->assertInstanceOf(
+            TpAccountAction::class,
+            $tpAccountAction
+        );
+    }
 }
