@@ -73,7 +73,6 @@
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "h4cc/wkhtmltopdf-i386": "0.12.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
         "lexik/jwt-authentication-bundle": "^2.5",
