@@ -144,6 +144,11 @@ production:
             visualFilter:
               show: [ relCarriers ]
               hide: [ carrier, prefix, forceClid, clidCountry, clid ]
+          'block':
+            title: _("Block")
+            visualFilter:
+              show: [ ]
+              hide: [ carrier, prefix, forceClid, clidCountry, clid, relCarriers, weight, priority]
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select

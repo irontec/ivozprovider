@@ -29,7 +29,7 @@ abstract class OutgoingRoutingAbstract
     protected $weight = 1;
 
     /**
-     * comment: enum:static|lcr
+     * comment: enum:static|lcr|block
      * @var string | null
      */
     protected $routingMode = 'static';
@@ -362,7 +362,8 @@ abstract class OutgoingRoutingAbstract
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routingMode, [
                 OutgoingRoutingInterface::ROUTINGMODE_STATIC,
-                OutgoingRoutingInterface::ROUTINGMODE_LCR
+                OutgoingRoutingInterface::ROUTINGMODE_LCR,
+                OutgoingRoutingInterface::ROUTINGMODE_BLOCK
             ], 'routingModevalue "%s" is not an element of the valid values: %s');
         }
 

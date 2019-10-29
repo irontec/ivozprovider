@@ -10,6 +10,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
     const ROUTINGMODE_STATIC = 'static';
     const ROUTINGMODE_LCR = 'lcr';
+    const ROUTINGMODE_BLOCK = 'block';
 
 
     /**
