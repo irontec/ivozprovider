@@ -564,6 +564,11 @@ msgid_plural "Currencies"
 msgstr[0] "Currency"
 msgstr[1] "Currencies"
 
+msgid "Current Day Usage"
+msgid_plural "Current Day Usages"
+msgstr[0] "Current Day Usage"
+msgstr[1] "Current Day Usages"
+
 msgid "Custom"
 msgstr "Custom"
 
@@ -894,12 +899,6 @@ msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 msgstr ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
-
-msgid "Externally rater custom options"
-msgstr "Externally rater custom options"
-
-msgid "Externally rater options"
-msgstr "Externally rater options"
 
 msgid "Extra Configuration"
 msgstr "Extra Configuration"
@@ -1373,6 +1372,9 @@ msgstr "Leave empty to send to Host field"
 msgid "Leave empty to use the suggested default"
 msgstr "Leave empty to use the suggested default"
 
+msgid "Limit max daily usage."
+msgstr "Limit max daily usage."
+
 msgid ""
 "Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
@@ -1505,6 +1507,9 @@ msgstr "Matching type"
 
 msgid "Max calls"
 msgstr "Max calls"
+
+msgid "Max daily usage"
+msgstr "Max daily usage"
 
 msgid "Max digits"
 msgstr "Max digits"
@@ -2599,6 +2604,9 @@ msgstr "Timing type"
 
 msgid "To address"
 msgstr "To address"
+
+msgid "Today usage"
+msgstr "Today usage"
 
 msgid "Toggle extension"
 msgstr "Toggle extension"

@@ -571,6 +571,11 @@ msgid_plural "Currencies"
 msgstr[0] "Divisa"
 msgstr[1] "Divisas"
 
+msgid "Current Day Usage"
+msgid_plural "Current Day Usages"
+msgstr[0] "Consumo Día En Curso"
+msgstr[1] "Consumos Día En Curso"
+
 msgid "Custom"
 msgstr "A medida"
 
@@ -908,12 +913,6 @@ msgid ""
 msgstr ""
 "La tarificación externa no puede ser deshabilitada ya que hay DDIs con "
 "tarificacion entrante."
-
-msgid "Externally rater custom options"
-msgstr "Opciones adicionales tarificación externa"
-
-msgid "Externally rater options"
-msgstr "Opciones Tarificación externa"
 
 msgid "Extra Configuration"
 msgstr "Configuración adicional"
@@ -1391,6 +1390,9 @@ msgstr "Dejar vacío para enviar al campo Host"
 msgid "Leave empty to use the suggested default"
 msgstr "Dejar vacío para emplear la sugerencia por defecto"
 
+msgid "Limit max daily usage."
+msgstr "Limitar máximo consumo diario."
+
 msgid ""
 "Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
@@ -1526,6 +1528,9 @@ msgstr "Tipo coincidencia"
 
 msgid "Max calls"
 msgstr "Límite llamadas"
+
+msgid "Max daily usage"
+msgstr "Máximo consumo diario"
 
 msgid "Max digits"
 msgstr "Longitud máxima"
@@ -2630,6 +2635,9 @@ msgstr "Tipo de timing"
 
 msgid "To address"
 msgstr "Dirección destino"
+
+msgid "Today usage"
+msgstr "Consumo día en curso"
 
 msgid "Toggle extension"
 msgstr "Código conmutar"

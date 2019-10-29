@@ -574,6 +574,11 @@ msgid_plural "Currencies"
 msgstr[0] "Currency"
 msgstr[1] "Currencies"
 
+msgid "Current Day Usage"
+msgid_plural "Current Day Usages"
+msgstr[0] "Consumo di giorno corrente"
+msgstr[1] "Consumi del giorno corrente"
+
 msgid "Custom"
 msgstr "Custom"
 
@@ -911,12 +916,6 @@ msgid ""
 msgstr ""
 "La tariffazione esterna non può essere disabilitata poiché alcuni DDI "
 "richiedono fatturazione delle chiamate in entrata."
-
-msgid "Externally rater custom options"
-msgstr "Opzioni personalizzate Tariffatore Esterno"
-
-msgid "Externally rater options"
-msgstr "Externally rater options"
 
 msgid "Extra Configuration"
 msgstr "Configurazione extra"
@@ -1392,6 +1391,9 @@ msgstr "Lascia vuoto per inviare al campo Host"
 msgid "Leave empty to use the suggested default"
 msgstr "Lascia vuoto per usare l'impostazione predefinita suggerita"
 
+msgid "Limit max daily usage."
+msgstr "Limitare il consumo giornaliero"
+
 msgid ""
 "Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
@@ -1527,6 +1529,9 @@ msgstr "Confronta tipo"
 
 msgid "Max calls"
 msgstr "Massimo Chiamates"
+
+msgid "Max daily usage"
+msgstr "Consumo giornaliero"
 
 msgid "Max digits"
 msgstr "Massimo Cifre"
@@ -2635,6 +2640,9 @@ msgstr "Timing type"
 msgid "To address"
 msgstr "Indirizzo To"
 
+msgid "Today usage"
+msgstr "Il consumo oggi"
+
 msgid "Toggle extension"
 msgstr "Attiva / disattiva estensione"
 
@@ -2969,11 +2977,3 @@ msgstr "condiviso"
 
 msgid "unlimited"
 msgstr "illimitato"
-
-#~ msgid "Company's default"
-#~ msgstr "Impostazione predefinita Company"
-
-#~ msgid ""
-#~ "Limits the number of concurrent received calls. Set 0 for unlimited calls."
-#~ msgstr ""
-#~ "Limits the number of concurrent received calls. Set 0 for unlimited calls."
