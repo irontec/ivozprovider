@@ -305,6 +305,23 @@ production:
               show: ["onDemandRecordCode"]
               hide: []
       <<: *recordingHelp
+    allowRecordingRemoval:
+      title: _('Allow Client to remove recordings')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enable this option to display delete button in Client's portal call recordings section.")
+        label: _("Need help?")
     onDemandRecordCode:
       title: _('Code')
       type: text
@@ -367,6 +384,7 @@ production:
                   - recordingsDiskUsage
                   - recordingsLimitEmail
                   - onDemandRecord
+                  - allowRecordingRemoval
               faxes:
                 toggle:
                   - faxNotificationTemplate

@@ -61,6 +61,7 @@ production:
           callCsvNotificationTemplate: true
           outgoingDdi: true
           maxDailyUsage: true
+          allowRecordingRemoval: true
         order:
           name: true
           nif: true
@@ -106,6 +107,7 @@ production:
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           outgoingDdiE164: true
+          allowRecordingRemoval: true
         order: &retailClientsOrder_Link
           id: true
           name: true
@@ -226,14 +228,20 @@ production:
             town: 4
             province: 4
             countryName: 4
-        group7:
+        group5:
+          colsPerRow: 12
+          label: ngettext('Recording', 'Recordings', 0)
+          collapsed: true
+          fields:
+            allowRecordingRemoval: 6
+        group6:
           colsPerRow: 2
           collapsed: true
           label: _("Notification options")
           fields:
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
-        group5:
+        group7:
           colsPerRow: 12
           collapsed: true
           label: _("Platform data")

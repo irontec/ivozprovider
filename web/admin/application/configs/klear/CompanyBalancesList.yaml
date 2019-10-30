@@ -73,6 +73,7 @@ production:
           currentDayMaxUsage: true
           accountStatus: true
           maxDailyUsage: true
+          allowRecordingRemoval: true
         order:
           typeIcon: true
           name: true

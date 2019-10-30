@@ -63,6 +63,7 @@ production:
           balance: true
           billingMethod: true
           maxDailyUsage: true
+          allowRecordingRemoval: true
         order:
           typeIcon: true
           name: true
