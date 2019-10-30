@@ -88,6 +88,11 @@ abstract class CompanyAbstract
     protected $onDemandRecord = 0;
 
     /**
+     * @var boolean
+     */
+    protected $allowRecordingRemoval = true;
+
+    /**
      * @var string | null
      */
     protected $onDemandRecordCode;
@@ -216,6 +221,7 @@ abstract class CompanyAbstract
         $town,
         $province,
         $countryName,
+        $allowRecordingRemoval,
         $billingMethod
     ) {
         $this->setType($type);
@@ -229,6 +235,7 @@ abstract class CompanyAbstract
         $this->setTown($town);
         $this->setProvince($province);
         $this->setCountryName($countryName);
+        $this->setAllowRecordingRemoval($allowRecordingRemoval);
         $this->setBillingMethod($billingMethod);
     }
 
@@ -312,6 +319,7 @@ abstract class CompanyAbstract
             $dto->getTown(),
             $dto->getProvince(),
             $dto->getCountryName(),
+            $dto->getAllowRecordingRemoval(),
             $dto->getBillingMethod()
         );
 
@@ -373,6 +381,7 @@ abstract class CompanyAbstract
             ->setCountryName($dto->getCountryName())
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
+            ->setAllowRecordingRemoval($dto->getAllowRecordingRemoval())
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
@@ -423,6 +432,7 @@ abstract class CompanyAbstract
             ->setCountryName(self::getCountryName())
             ->setIpfilter(self::getIpfilter())
             ->setOnDemandRecord(self::getOnDemandRecord())
+            ->setAllowRecordingRemoval(self::getAllowRecordingRemoval())
             ->setOnDemandRecordCode(self::getOnDemandRecordCode())
             ->setExternallyextraopts(self::getExternallyextraopts())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
@@ -467,6 +477,7 @@ abstract class CompanyAbstract
             'country' => self::getCountryName(),
             'ipFilter' => self::getIpfilter(),
             'onDemandRecord' => self::getOnDemandRecord(),
+            'allowRecordingRemoval' => self::getAllowRecordingRemoval(),
             'onDemandRecordCode' => self::getOnDemandRecordCode(),
             'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
@@ -888,6 +899,33 @@ abstract class CompanyAbstract
     public function getOnDemandRecord()
     {
         return $this->onDemandRecord;
+    }
+
+    /**
+     * Set allowRecordingRemoval
+     *
+     * @param boolean $allowRecordingRemoval
+     *
+     * @return static
+     */
+    protected function setAllowRecordingRemoval($allowRecordingRemoval)
+    {
+        Assertion::notNull($allowRecordingRemoval, 'allowRecordingRemoval value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($allowRecordingRemoval), 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
+
+        $this->allowRecordingRemoval = (bool) $allowRecordingRemoval;
+
+        return $this;
+    }
+
+    /**
+     * Get allowRecordingRemoval
+     *
+     * @return boolean
+     */
+    public function getAllowRecordingRemoval()
+    {
+        return $this->allowRecordingRemoval;
     }
 
     /**
