@@ -45,7 +45,7 @@ production:
       options:
         title: _("Options")
         dialogs:
-          recordingsDel_dialog: true
+          recordingsDel_dialog: ${auth.companyRecordingRemoval}
         commands:
           recordingsRecordedFileMultiDownload_command: true
     recordingsEdit_screen: &recordingsEdit_screenLink
