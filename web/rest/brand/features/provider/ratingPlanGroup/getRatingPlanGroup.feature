@@ -22,7 +22,6 @@ Feature: Retrieve rating plan group
                   "ca": "Algo mes",
                   "it": "Più"
               },
-              "brand": 1,
               "currency": null
           },
           {
@@ -33,7 +32,6 @@ Feature: Retrieve rating plan group
                   "ca": "Algo mes",
                   "it": "Più"
               },
-              "brand": 1,
               "currency": null
           }
       ]
@@ -62,7 +60,6 @@ Feature: Retrieve rating plan group
               "ca": "ca",
               "it": "it"
           },
-          "brand": "~",
           "currency": null
       }
     """

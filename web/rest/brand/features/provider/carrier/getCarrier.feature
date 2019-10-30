@@ -19,6 +19,12 @@ Feature: Retrieve carriers
               "name": "CarrierName",
               "externallyRated": false,
               "id": 1
+          },
+          {
+              "description": "Externally rated",
+              "name": "ExternallyRatedCarrier",
+              "externallyRated": true,
+              "id": 2
           }
       ]
     """
@@ -38,7 +44,6 @@ Feature: Retrieve carriers
           "externallyRated": false,
           "calculateCost": false,
           "id": 1,
-          "brand": "~",
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -52,7 +57,6 @@ Feature: Retrieve carriers
                   "es": "es",
                   "ca": "ca"
               },
-              "brand": 1,
               "country": 68
           }
       }

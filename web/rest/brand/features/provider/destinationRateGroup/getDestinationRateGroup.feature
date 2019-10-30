@@ -29,7 +29,6 @@ Feature: Retrieve destination rate group
                   "baseName": null,
                   "importerArguments": []
               },
-              "brand": 1,
               "currency": null
           },
           {
@@ -47,7 +46,6 @@ Feature: Retrieve destination rate group
                   "baseName": null,
                   "importerArguments": []
               },
-              "brand": 1,
               "currency": null
           }
       ]
@@ -82,7 +80,6 @@ Feature: Retrieve destination rate group
               "baseName": null,
               "importerArguments": []
           },
-          "brand": "~",
           "currency": null
       }
     """

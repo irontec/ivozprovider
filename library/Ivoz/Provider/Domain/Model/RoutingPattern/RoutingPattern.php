@@ -11,6 +11,11 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
 {
     use RoutingPatternTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      * @codeCoverageIgnore

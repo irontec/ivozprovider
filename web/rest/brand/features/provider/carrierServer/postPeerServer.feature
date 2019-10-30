@@ -49,8 +49,7 @@ Feature: Create carrier servers
           "fromUser": "",
           "fromDomain": "",
           "id": 2,
-          "carrier": 1,
-          "brand": 1
+          "carrier": 1
       }
     """
 
@@ -84,9 +83,7 @@ Feature: Create carrier servers
               "name": "CarrierName",
               "externallyRated": false,
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
-          },
-          "brand": "~"
+          }
       }
     """

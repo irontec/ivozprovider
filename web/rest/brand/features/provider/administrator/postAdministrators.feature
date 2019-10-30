@@ -35,7 +35,6 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "id": 7,
-          "brand": 1,
           "company": 1,
           "timezone": 145
       }
@@ -58,7 +57,6 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "id": 7,
-          "brand": "~",
           "company": "~",
           "timezone": {
               "tz": "Europe/Madrid",
@@ -88,7 +86,6 @@ Feature: Create administrators
           "name": "post",
           "lastname": "test",
           "id": 1,
-          "brand": 2,
           "company": null,
           "timezone": 1
       }

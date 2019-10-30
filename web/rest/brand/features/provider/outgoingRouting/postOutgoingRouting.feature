@@ -60,7 +60,6 @@ Feature: Create outgoing routings
           "forceClid": false,
           "clid": null,
           "id": 3,
-          "brand": "~",
           "company": "~",
           "carrier": null,
           "routingPattern": "~",

@@ -26,7 +26,6 @@ Feature: Create ddi providers
           "name": "NewDDIProviderName",
           "externallyRated": false,
           "id": 2,
-          "brand": 1,
           "transformationRuleSet": 1
       }
     """
@@ -44,7 +43,6 @@ Feature: Create ddi providers
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
           "id": 2,
-          "brand": "~",
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -58,7 +56,6 @@ Feature: Create ddi providers
                   "es": "es",
                   "ca": "ca"
               },
-              "brand": 1,
               "country": 68
           }
       }

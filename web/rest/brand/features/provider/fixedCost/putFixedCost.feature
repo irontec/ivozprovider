@@ -25,7 +25,6 @@ Feature: Update fixed costs
           "name": "Monitoring upgraded",
           "description": "Something else",
           "cost": 1.2,
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

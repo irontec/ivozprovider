@@ -40,7 +40,6 @@ Feature: Retrieve call CSV scheduler
           "lastExecutionError": "",
           "nextExecution": "2018-12-02 09:00:00",
           "id": 1,
-          "brand": "~",
           "company": null,
           "callCsvNotificationTemplate": null
       }

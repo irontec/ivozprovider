@@ -39,7 +39,7 @@ abstract class InvoiceTemplateAbstract
     protected $templateFooter;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
@@ -341,7 +341,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
         $this->brand = $brand;
 
@@ -351,7 +351,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {

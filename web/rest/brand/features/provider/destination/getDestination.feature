@@ -54,7 +54,6 @@ Feature: Retrieve destination
               "es": "Bilbao",
               "ca": "Bilbao",
               "it": "Bilbao"
-          },
-          "brand": "~"
+          }
       }
     """

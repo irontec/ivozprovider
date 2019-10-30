@@ -43,6 +43,7 @@ class User extends \Klear_Model_UserAdvanced
     public $companyRetail = false;
     public $companyNotRetail = true;
     public $companyInvoices = false;
+    public $companyRecordingRemoval = true;
 
     public function setToken(string $token, string $refreshToken)
     {
@@ -120,6 +121,7 @@ class User extends \Klear_Model_UserAdvanced
         $this->companyRetail = $company->getType() === Company::RETAIL;
         $this->companyNotRetail = $company->getType() != Company::RETAIL;
         $this->companyInvoices = $company->getShowInvoices() == 1;
+        $this->companyRecordingRemoval = $company->getAllowRecordingRemoval() !== false;
     }
 
     public function getCompany()

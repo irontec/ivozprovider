@@ -45,7 +45,6 @@
               "baseName": null
           },
           "invoiceTemplate": 1,
-          "brand": 1,
           "company": 1,
           "numberSequence": null
       } 
@@ -81,10 +80,8 @@
               "template": "Template",
               "templateHeader": "Template header",
               "templateFooter": "Template footer",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
-          "brand": "~",
           "company": "~",
           "numberSequence": null
       }

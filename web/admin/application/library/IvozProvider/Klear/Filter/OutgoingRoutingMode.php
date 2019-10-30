@@ -61,9 +61,15 @@ class IvozProvider_Klear_Filter_OutgoingRoutingMode implements KlearMatrix_Model
             switch ($this->outgoingRouting->getRoutingMode()) {
                 case OutgoingRouting::MODE_LCR:
                     $excludedRoutingModes[] = OutgoingRouting::MODE_STATIC;
+                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_BLOCK;
                     break;
                 case OutgoingRouting::MODE_STATIC:
                     $excludedRoutingModes[] = OutgoingRouting::MODE_LCR;
+                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_BLOCK;
+                    break;
+                case OutgoingRouting::ROUTINGMODE_BLOCK:
+                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_STATIC;
+                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_LCR;
                     break;
             }
         }

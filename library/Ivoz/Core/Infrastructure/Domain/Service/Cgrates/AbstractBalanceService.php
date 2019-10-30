@@ -13,6 +13,8 @@ abstract class AbstractBalanceService
 
     protected $client;
 
+    const UNLIMITED_MAX_DAILY_USAGE = 1000000;
+
     public function __construct(
         CgrRpcClient $client
     ) {
@@ -62,12 +64,21 @@ abstract class AbstractBalanceService
     }
 
     /**
-     * @param string $tenant
-     * @param array $accountIds
+     * @param int $brandId
+     * @param array $ids
+     * @param string $accountPrefix
      * @return array|mixed
      */
-    protected function getAccountsBalances(string $tenant, array $accountIds)
+    protected function getAccountsBalances(int $brandId, array $ids, string $accountPrefix)
     {
+        $tenant = self::TENANT_PREFIX . $brandId;
+        $accountIds = array_map(
+            function ($companyId) use ($accountPrefix) {
+                return $accountPrefix . $companyId;
+            },
+            $ids
+        );
+
         $payload = [
             'Tenant' => $tenant,
             'AccountIds' => $accountIds
@@ -94,12 +105,6 @@ abstract class AbstractBalanceService
 
 
         $payload = json_decode($response->getBody()->__toString());
-
-        $balanceSum = [];
-        foreach ($payload->result as $balance) {
-            $balanceSum += $this->balanceReducer($balance);
-        }
-        $payload->result = $balanceSum;
 
         return $payload;
     }
@@ -161,16 +166,72 @@ abstract class AbstractBalanceService
      * @param \stdClass $item
      * @return array
      */
-    private function balanceReducer($item)
+    protected function balanceReducer($item)
     {
         $idNumericSegments = preg_split('/[^0-9]+/', $item->ID);
         $id = end($idNumericSegments);
-        $balance =  $item->BalanceMap ?
-            $item->BalanceMap->{'*monetary'}[0]->Value
+        $balance =  $item->BalanceMap
+            ? $item->BalanceMap->{'*monetary'}[0]->Value
             : 0;
 
         return [
             $id => $balance
+        ];
+    }
+
+    /**
+     * @param \stdClass $item
+     * @return array
+     */
+    protected function currentDayUsageReducer($item)
+    {
+        $idNumericSegments = preg_split('/[^0-9]+/', $item->ID);
+        $id = end($idNumericSegments);
+
+        $containsUnitCounter =
+            isset($item->UnitCounters)
+            && isset($item->UnitCounters->{'*monetary'});
+
+        $balance = $containsUnitCounter
+            ? $item->UnitCounters->{'*monetary'}[0]->Counters[0]->Value
+            : -1;
+
+        return [
+            $id => $balance
+        ];
+    }
+
+    /**
+     * @param \stdClass $item
+     * @return array
+     */
+    protected function currentDayMaxUsageReducer($item)
+    {
+        $idNumericSegments = preg_split('/[^0-9]+/', $item->ID);
+        $id = end($idNumericSegments);
+        $balance =  $item->ActionTriggers
+            ? $item->ActionTriggers[0]->ThresholdValue
+            : -1;
+
+        if ($balance == self::UNLIMITED_MAX_DAILY_USAGE) {
+            $balance = "∞";
+        }
+
+        return [
+            $id => $balance
+        ];
+    }
+    /**
+     * @param \stdClass $item
+     * @return array
+     */
+    protected function accountStatusReducer($item)
+    {
+        $idNumericSegments = preg_split('/[^0-9]+/', $item->ID);
+        $id = end($idNumericSegments);
+
+        return [
+            $id => $item->Disabled
         ];
     }
 }

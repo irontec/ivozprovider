@@ -31,8 +31,7 @@
           "latestValue": "",
           "iteration": 0,
           "version": 1,
-          "id": 2,
-          "brand": 1
+          "id": 2
       }
     """
 
@@ -53,7 +52,6 @@
           "latestValue": "",
           "iteration": 0,
           "version": 1,
-          "id": 2,
-          "brand": "~"
+          "id": 2
       }
     """

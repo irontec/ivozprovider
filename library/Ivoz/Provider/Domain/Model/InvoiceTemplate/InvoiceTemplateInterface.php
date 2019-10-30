@@ -59,12 +59,12 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 }

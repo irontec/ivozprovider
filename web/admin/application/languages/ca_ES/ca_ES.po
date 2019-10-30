@@ -114,6 +114,9 @@ msgstr "Tots"
 msgid "All clients"
 msgstr "Tots els clients"
 
+msgid "Allow Client to remove recordings"
+msgstr "Permet al client eliminar les gravacions"
+
 msgid "Allow all outgoing calls"
 msgstr "Permet totes les trucades sortints"
 
@@ -250,6 +253,9 @@ msgstr "Mètode de facturació"
 
 msgid "Black Lists"
 msgstr "Llista negra"
+
+msgid "Block"
+msgstr "Bloquejar"
 
 msgid "Body"
 msgstr "Cos"
@@ -566,6 +572,11 @@ msgid_plural "Currencies"
 msgstr[0] "Moneda"
 msgstr[1] "Monedes"
 
+msgid "Current Day Usage"
+msgid_plural "Current Day Usages"
+msgstr[0] "Consum dia en curs"
+msgstr[1] "Consums dia en curs"
+
 msgid "Custom"
 msgstr "Personalitzat"
 
@@ -597,6 +608,11 @@ msgstr "Dia"
 
 msgid "Default Action"
 msgstr "Acció per defecte"
+
+msgid "Default Invoice template"
+msgid_plural "Default Invoice templates"
+msgstr[0] "Plantilla de factura per defecte"
+msgstr[1] "Plantilles de factures per defecte"
 
 msgid "Default currency"
 msgstr "Moneda per defecte"
@@ -802,6 +818,13 @@ msgstr ""
 "Activa aquesta opció per habilitar un espai de descàrrega de factures al "
 "portal de Clients."
 
+msgid ""
+"Enable this option to display delete button in Client's portal call "
+"recordings section."
+msgstr ""
+"Activa aquesta opció per mostrar el botó d’eliminació a la secció "
+"d’enregistrament de trucades al portal del client."
+
 msgid "Enabled"
 msgstr "Habilitat"
 
@@ -896,12 +919,6 @@ msgid ""
 msgstr ""
 "Tarifació externa no pot ser deshabilitada ja que alguns DDI d'entrada "
 "demanen ser facturats."
-
-msgid "Externally rater custom options"
-msgstr "Opcions especials de tarifació externa"
-
-msgid "Externally rater options"
-msgstr "Opcions de tarifació externa"
 
 msgid "Extra Configuration"
 msgstr "Configuració extra"
@@ -1378,6 +1395,9 @@ msgstr "Deixa en blanc per enviar al camp Amfitrió"
 msgid "Leave empty to use the suggested default"
 msgstr "Deixar en blanc per utilitzar els per defectes suggerits"
 
+msgid "Limit max daily usage."
+msgstr "Limitar diari màxim de consum."
+
 msgid ""
 "Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
@@ -1511,6 +1531,9 @@ msgstr "Tipus de coincidència"
 
 msgid "Max calls"
 msgstr "Trucades màximes"
+
+msgid "Max daily usage"
+msgstr "Màxim diari consum"
 
 msgid "Max digits"
 msgstr "Dígits màxims"
@@ -2609,6 +2632,9 @@ msgstr "Tipus de temporització"
 
 msgid "To address"
 msgstr "Adreça destí"
+
+msgid "Today usage"
+msgstr "Consum d’hui"
 
 msgid "Toggle extension"
 msgstr "Commuta extensió"

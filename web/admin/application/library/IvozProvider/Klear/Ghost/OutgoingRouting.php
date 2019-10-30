@@ -41,6 +41,8 @@ class IvozProvider_Klear_Ghost_OutgoingRouting extends KlearMatrix_Model_Field_G
                     $outgoingRoutingRelCarriers
                 );
                 break;
+            case OutgoingRouting::ROUTINGMODE_BLOCK:
+                return "";
             default:
                 return Klear_Model_Gettext::gettextCheck('_("Invalid route mode")');
         }

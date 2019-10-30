@@ -83,5 +83,7 @@ Configurable fields of each content:
 Assigning templates to clients
 ******************************
 
-Once the notification has been configured for the desired languages, Brand administrator must assign it to the
+Once the notification has been configured for the desired languages, Brand administrator can assign it to the
 client that will use it. This can be done in the Notification configuration section of each client.
+If client has no notification configured, brand notifications will be used for that client instead. If brand has no
+notification configured, default notifications will be used.

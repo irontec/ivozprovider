@@ -1,2 +1,3 @@
 microservices/balances /opt/irontec/ivozprovider/microservices/
 debian/systemd/ivozprovider-balances.timer /lib/systemd/system
+debian/systemd/ivozprovider-counters.timer /lib/systemd/system

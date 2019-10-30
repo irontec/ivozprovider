@@ -206,13 +206,61 @@ class CallCsvNotificationTemplateByCallCsvReportSpec extends ObjectBehavior
         $this->execute($this->callCsvReport);
     }
 
-    public function it_uses_generic_notification_template_as_fallback()
+    public function it_uses_brand_notification_template_as_fallback()
     {
+        $brand = $this->getTestDouble(
+            BrandInterface::class
+        );
+
         $this
             ->company
             ->getCallCsvNotificationTemplate()
             ->willReturn(null)
             ->shouldBeCalled();
+
+        $this
+            ->company
+            ->getBrand()
+            ->willReturn($brand)
+            ->shouldBeCalled();
+
+        $this->getterProphecy(
+            $brand,
+            [
+                'getCallCsvNotificationTemplate' => $this->callCsvNotificationTemplate,
+            ],
+            true
+        );
+
+        $this->execute($this->callCsvReport);
+    }
+
+
+    public function it_uses_generic_notification_template_as_fallback()
+    {
+        $brand = $this->getTestDouble(
+            BrandInterface::class
+        );
+
+        $this
+            ->company
+            ->getCallCsvNotificationTemplate()
+            ->willReturn(null)
+            ->shouldBeCalled();
+
+        $this
+            ->company
+            ->getBrand()
+            ->willReturn($brand)
+            ->shouldBeCalled();
+
+        $this->getterProphecy(
+            $brand,
+            [
+                'getCallCsvNotificationTemplate' => null,
+            ],
+            true
+        );
 
         $this
             ->notificationTemplateRepository

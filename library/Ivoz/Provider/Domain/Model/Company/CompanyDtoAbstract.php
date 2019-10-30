@@ -41,6 +41,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $maxCalls = 0;
 
     /**
+     * @var integer
+     */
+    private $maxDailyUsage = 1000000;
+
+    /**
      * @var string
      */
     private $postalAddress;
@@ -74,6 +79,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var integer
      */
     private $onDemandRecord = 0;
+
+    /**
+     * @var boolean
+     */
+    private $allowRecordingRemoval = true;
 
     /**
      * @var string
@@ -269,6 +279,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'nif' => 'nif',
             'distributeMethod' => 'distributeMethod',
             'maxCalls' => 'maxCalls',
+            'maxDailyUsage' => 'maxDailyUsage',
             'postalAddress' => 'postalAddress',
             'postalCode' => 'postalCode',
             'town' => 'town',
@@ -276,6 +287,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'countryName' => 'countryName',
             'ipfilter' => 'ipfilter',
             'onDemandRecord' => 'onDemandRecord',
+            'allowRecordingRemoval' => 'allowRecordingRemoval',
             'onDemandRecordCode' => 'onDemandRecordCode',
             'externallyextraopts' => 'externallyextraopts',
             'recordingsLimitMB' => 'recordingsLimitMB',
@@ -314,6 +326,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'nif' => $this->getNif(),
             'distributeMethod' => $this->getDistributeMethod(),
             'maxCalls' => $this->getMaxCalls(),
+            'maxDailyUsage' => $this->getMaxDailyUsage(),
             'postalAddress' => $this->getPostalAddress(),
             'postalCode' => $this->getPostalCode(),
             'town' => $this->getTown(),
@@ -321,6 +334,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'countryName' => $this->getCountryName(),
             'ipfilter' => $this->getIpfilter(),
             'onDemandRecord' => $this->getOnDemandRecord(),
+            'allowRecordingRemoval' => $this->getAllowRecordingRemoval(),
             'onDemandRecordCode' => $this->getOnDemandRecordCode(),
             'externallyextraopts' => $this->getExternallyextraopts(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
@@ -479,6 +493,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param integer $maxDailyUsage
+     *
+     * @return static
+     */
+    public function setMaxDailyUsage($maxDailyUsage = null)
+    {
+        $this->maxDailyUsage = $maxDailyUsage;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMaxDailyUsage()
+    {
+        return $this->maxDailyUsage;
+    }
+
+    /**
      * @param string $postalAddress
      *
      * @return static
@@ -616,6 +650,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getOnDemandRecord()
     {
         return $this->onDemandRecord;
+    }
+
+    /**
+     * @param boolean $allowRecordingRemoval
+     *
+     * @return static
+     */
+    public function setAllowRecordingRemoval($allowRecordingRemoval = null)
+    {
+        $this->allowRecordingRemoval = $allowRecordingRemoval;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAllowRecordingRemoval()
+    {
+        return $this->allowRecordingRemoval;
     }
 
     /**

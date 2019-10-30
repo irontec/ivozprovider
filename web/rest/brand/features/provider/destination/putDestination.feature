@@ -34,7 +34,6 @@ Feature: Update destination
               "es": "Bilbao Actualizado",
               "ca": "Bilbao Actualizado",
               "it": "Bilbao Updated"
-          },
-          "brand": "~"
+          }
       }
     """

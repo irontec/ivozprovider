@@ -24,7 +24,6 @@ Feature: Update routing tags
       {
           "name": "TagName",
           "tag": "090#",
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

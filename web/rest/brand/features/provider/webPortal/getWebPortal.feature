@@ -52,7 +52,6 @@ Feature: Retrieve web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "brand": "~"
+          }
       }
     """

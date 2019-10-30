@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Infrastructure\Symfony\DependencyInjection\Compiler;
 
-use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -79,7 +78,9 @@ class DomainServiceCompiler implements CompilerPassInterface
         $service->setAutowired(true);
 
         $tag = LifecycleServiceHelper::getServiceCollectionTag($fqdn);
-        $this->container->setAlias($tag, $fqdn);
+        $this->container
+            ->setAlias($tag, $fqdn)
+            ->setPublic(true);
     }
 
     /**

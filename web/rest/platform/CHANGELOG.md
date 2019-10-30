@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.13
+* Endpoints:
+    - /billable_calls/{callid}/rate has being added
+
+* Models:
+    - BillableCalls:
+        - Added BillableCall and BillableCall-rating models
+    - InvoiceTemplates:
+        - Added entity
+    - Companies:
+        - Added maxDailyUsage and allowRecordingRemoval properties to Company model
+    - Invoices:
+        - Added invoiceTemplate property
+
 ## 2.12.1
 * Models:
     - BillableCall:

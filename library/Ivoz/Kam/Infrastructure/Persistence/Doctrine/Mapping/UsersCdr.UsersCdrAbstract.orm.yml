@@ -1,5 +1,10 @@
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    usersCdr_callid_direction:
+      columns:
+      - callid
+      - direction
   indexes:
     usersCdr_start_time_idx:
       columns:

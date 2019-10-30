@@ -17,6 +17,10 @@ Feature: Retrieve invoice templates
           {
               "name": "Default",
               "id": 1
+          },
+          {
+              "name": "Generic",
+              "id": 2
           }
       ]
     """
@@ -36,7 +40,6 @@ Feature: Retrieve invoice templates
           "template": "Template",
           "templateHeader": "Template header",
           "templateFooter": "Template footer",
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

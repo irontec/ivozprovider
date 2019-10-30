@@ -43,6 +43,12 @@ This are the fields shown when a new brand is created:
     Locales
         Define default Timezone, Language and Currency for clients of this brand.
 
+    Notifications
+        Configure the email :ref:`notification templates` to use for this brand.
+        Clients configured to use generic notifications will use configured
+        brand notifications. If brand has no notification configured
+        :ref:`default notification templates` will be used.
+
 .. hint:: Some features are related to brand and cannot be assigned to clients.
     Other ones are also related to clients and lets the brand operator to
     assign them to its clients.

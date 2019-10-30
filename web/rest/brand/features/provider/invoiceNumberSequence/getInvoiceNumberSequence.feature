@@ -39,7 +39,6 @@ Feature: Retrieve invoice number sequences
           "latestValue": "auto0001",
           "iteration": 1,
           "version": 1,
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

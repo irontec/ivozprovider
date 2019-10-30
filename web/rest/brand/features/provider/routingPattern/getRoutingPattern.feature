@@ -60,7 +60,6 @@ Feature: Retrieve routing patterns
               "es": "es",
               "ca": "ca",
               "it": "it"
-          },
-          "brand": "~"
+          }
       }
     """

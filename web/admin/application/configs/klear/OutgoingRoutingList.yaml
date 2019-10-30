@@ -72,6 +72,10 @@ production:
         blacklist:
           target: true
           carriersGhost: true
+          prefix: true
+          forceClid: true
+          clid: true
+          clidCountry: true
         order:
           <<: *outgoingRouting_fieldsOrder
       fixedPositions: &outgoingRoutingFixedPositions_Link

@@ -47,6 +47,11 @@ abstract class CompanyAbstract
     protected $maxCalls = 0;
 
     /**
+     * @var integer
+     */
+    protected $maxDailyUsage = 1000000;
+
+    /**
      * @var string
      */
     protected $postalAddress;
@@ -81,6 +86,11 @@ abstract class CompanyAbstract
      * @var integer | null
      */
     protected $onDemandRecord = 0;
+
+    /**
+     * @var boolean
+     */
+    protected $allowRecordingRemoval = true;
 
     /**
      * @var string | null
@@ -205,11 +215,13 @@ abstract class CompanyAbstract
         $nif,
         $distributeMethod,
         $maxCalls,
+        $maxDailyUsage,
         $postalAddress,
         $postalCode,
         $town,
         $province,
         $countryName,
+        $allowRecordingRemoval,
         $billingMethod
     ) {
         $this->setType($type);
@@ -217,11 +229,13 @@ abstract class CompanyAbstract
         $this->setNif($nif);
         $this->setDistributeMethod($distributeMethod);
         $this->setMaxCalls($maxCalls);
+        $this->setMaxDailyUsage($maxDailyUsage);
         $this->setPostalAddress($postalAddress);
         $this->setPostalCode($postalCode);
         $this->setTown($town);
         $this->setProvince($province);
         $this->setCountryName($countryName);
+        $this->setAllowRecordingRemoval($allowRecordingRemoval);
         $this->setBillingMethod($billingMethod);
     }
 
@@ -299,11 +313,13 @@ abstract class CompanyAbstract
             $dto->getNif(),
             $dto->getDistributeMethod(),
             $dto->getMaxCalls(),
+            $dto->getMaxDailyUsage(),
             $dto->getPostalAddress(),
             $dto->getPostalCode(),
             $dto->getTown(),
             $dto->getProvince(),
             $dto->getCountryName(),
+            $dto->getAllowRecordingRemoval(),
             $dto->getBillingMethod()
         );
 
@@ -357,6 +373,7 @@ abstract class CompanyAbstract
             ->setNif($dto->getNif())
             ->setDistributeMethod($dto->getDistributeMethod())
             ->setMaxCalls($dto->getMaxCalls())
+            ->setMaxDailyUsage($dto->getMaxDailyUsage())
             ->setPostalAddress($dto->getPostalAddress())
             ->setPostalCode($dto->getPostalCode())
             ->setTown($dto->getTown())
@@ -364,6 +381,7 @@ abstract class CompanyAbstract
             ->setCountryName($dto->getCountryName())
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
+            ->setAllowRecordingRemoval($dto->getAllowRecordingRemoval())
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
@@ -406,6 +424,7 @@ abstract class CompanyAbstract
             ->setNif(self::getNif())
             ->setDistributeMethod(self::getDistributeMethod())
             ->setMaxCalls(self::getMaxCalls())
+            ->setMaxDailyUsage(self::getMaxDailyUsage())
             ->setPostalAddress(self::getPostalAddress())
             ->setPostalCode(self::getPostalCode())
             ->setTown(self::getTown())
@@ -413,6 +432,7 @@ abstract class CompanyAbstract
             ->setCountryName(self::getCountryName())
             ->setIpfilter(self::getIpfilter())
             ->setOnDemandRecord(self::getOnDemandRecord())
+            ->setAllowRecordingRemoval(self::getAllowRecordingRemoval())
             ->setOnDemandRecordCode(self::getOnDemandRecordCode())
             ->setExternallyextraopts(self::getExternallyextraopts())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
@@ -449,6 +469,7 @@ abstract class CompanyAbstract
             'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
             'maxCalls' => self::getMaxCalls(),
+            'maxDailyUsage' => self::getMaxDailyUsage(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),
@@ -456,6 +477,7 @@ abstract class CompanyAbstract
             'country' => self::getCountryName(),
             'ipFilter' => self::getIpfilter(),
             'onDemandRecord' => self::getOnDemandRecord(),
+            'allowRecordingRemoval' => self::getAllowRecordingRemoval(),
             'onDemandRecordCode' => self::getOnDemandRecordCode(),
             'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
@@ -658,6 +680,34 @@ abstract class CompanyAbstract
     }
 
     /**
+     * Set maxDailyUsage
+     *
+     * @param integer $maxDailyUsage
+     *
+     * @return static
+     */
+    protected function setMaxDailyUsage($maxDailyUsage)
+    {
+        Assertion::notNull($maxDailyUsage, 'maxDailyUsage value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxDailyUsage, 'maxDailyUsage value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxDailyUsage, 0, 'maxDailyUsage provided "%s" is not greater or equal than "%s".');
+
+        $this->maxDailyUsage = (int) $maxDailyUsage;
+
+        return $this;
+    }
+
+    /**
+     * Get maxDailyUsage
+     *
+     * @return integer
+     */
+    public function getMaxDailyUsage()
+    {
+        return $this->maxDailyUsage;
+    }
+
+    /**
      * Set postalAddress
      *
      * @param string $postalAddress
@@ -849,6 +899,33 @@ abstract class CompanyAbstract
     public function getOnDemandRecord()
     {
         return $this->onDemandRecord;
+    }
+
+    /**
+     * Set allowRecordingRemoval
+     *
+     * @param boolean $allowRecordingRemoval
+     *
+     * @return static
+     */
+    protected function setAllowRecordingRemoval($allowRecordingRemoval)
+    {
+        Assertion::notNull($allowRecordingRemoval, 'allowRecordingRemoval value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($allowRecordingRemoval), 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
+
+        $this->allowRecordingRemoval = (bool) $allowRecordingRemoval;
+
+        return $this;
+    }
+
+    /**
+     * Get allowRecordingRemoval
+     *
+     * @return boolean
+     */
+    public function getAllowRecordingRemoval()
+    {
+        return $this->allowRecordingRemoval;
     }
 
     /**

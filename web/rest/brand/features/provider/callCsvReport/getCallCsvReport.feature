@@ -42,27 +42,6 @@ Feature: Retrieve call CSV report
               "mimeType": null,
               "baseName": null
           },
-          "brand": {
-              "name": "DemoBrand",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "currency": 2
-          },
           "callCsvScheduler": {
               "name": "SchedulerName",
               "unit": "day",
@@ -73,7 +52,6 @@ Feature: Retrieve call CSV report
               "lastExecutionError": "",
               "nextExecution": "2018-12-02 09:00:00",
               "id": 1,
-              "brand": 1,
               "company": null,
               "callCsvNotificationTemplate": null
           }

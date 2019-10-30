@@ -114,6 +114,19 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         return $response;
     }
 
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = $this->getPropertyMap($context, $role);
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
+    }
+
     /**
      * @param array $response
      * @return array
@@ -132,7 +145,6 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'ddiIn',
             't38Passthrough',
             'id',
-            'brandId',
             'companyId',
             'transformationRuleSetId',
             'outgoingDdiId'

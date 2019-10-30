@@ -16,7 +16,10 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      */
     public function getChangeSet()
     {
-        return parent::getChangeSet();
+        $response = parent::getChangeSet();
+        unset($response['lastProvisionDate']);
+
+        return $response;
     }
 
     /**

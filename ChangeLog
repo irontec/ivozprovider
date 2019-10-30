@@ -1,3 +1,30 @@
+Wed, 30 Oct 2019 12:34:00 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.13 released
+
+    * Portals
+        - Hide recordings delete button based on client configuration
+        - New platform section to create Invoice templates that any brand in the platform can reuse
+        - Added four new Brand fields to configure Clients notifications templates default value
+
+    * Billing
+        - New feature to set a maximum daily usage by client (1000000 € by default)
+
+    * Proxies
+        - Added block routes concept to Outgoing Routings
+        - Added cgrates_mode runtime parameter that allows national calls to be allowed in CGRateS down scenarios
+
+    * API
+        - Added PUT /billable_calls/{callid}/rate endpoint on platform and brand APIs
+        - Removed deprecated brand attribute from brand API (as it can be auto resolved)
+
+    * Other
+        - Fixed routing pattern creation/edition logic
+        - Fixed some deprecation warnings
+        - Fixed regression on balance operations (both company and carrier)
+
+        See specific API changelog for detailed information on changes for each level
+
 Wed, 09 Oct 2019 10:01:15 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.12.1 released

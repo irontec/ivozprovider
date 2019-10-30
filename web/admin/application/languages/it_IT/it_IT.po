@@ -115,6 +115,9 @@ msgstr "Tutti"
 msgid "All clients"
 msgstr "All clients"
 
+msgid "Allow Client to remove recordings"
+msgstr "Consenti al cliente di rimuovere le registrazioni"
+
 msgid "Allow all outgoing calls"
 msgstr "Consenti tutte le chiamate in uscita"
 
@@ -252,6 +255,9 @@ msgstr "Metodo di fatturazione"
 
 msgid "Black Lists"
 msgstr "Black Lists"
+
+msgid "Block"
+msgstr "Blocco"
 
 msgid "Body"
 msgstr "Corpo"
@@ -571,6 +577,11 @@ msgid_plural "Currencies"
 msgstr[0] "Currency"
 msgstr[1] "Currencies"
 
+msgid "Current Day Usage"
+msgid_plural "Current Day Usages"
+msgstr[0] "Consumo di giorno corrente"
+msgstr[1] "Consumi del giorno corrente"
+
 msgid "Custom"
 msgstr "Custom"
 
@@ -602,6 +613,11 @@ msgstr "Day"
 
 msgid "Default Action"
 msgstr "Azione predefinita"
+
+msgid "Default Invoice template"
+msgid_plural "Default Invoice templates"
+msgstr[0] "Modello di fattura predefinito"
+msgstr[1] "Modelli di fattura predefinito"
 
 msgid "Default currency"
 msgstr "Default currency"
@@ -807,6 +823,13 @@ msgstr ""
 "Enable this option to display a section in Client's portal to download "
 "generated invoices."
 
+msgid ""
+"Enable this option to display delete button in Client's portal call "
+"recordings section."
+msgstr ""
+"Abilitare questa opzione per visualizzare il pulsante Elimina nella sezione "
+"registrazioni chiamate del portale del cliente."
+
 msgid "Enabled"
 msgstr "Abilitato"
 
@@ -903,12 +926,6 @@ msgid ""
 msgstr ""
 "La tariffazione esterna non può essere disabilitata poiché alcuni DDI "
 "richiedono fatturazione delle chiamate in entrata."
-
-msgid "Externally rater custom options"
-msgstr "Opzioni personalizzate Tariffatore Esterno"
-
-msgid "Externally rater options"
-msgstr "Externally rater options"
 
 msgid "Extra Configuration"
 msgstr "Configurazione extra"
@@ -1384,6 +1401,9 @@ msgstr "Lascia vuoto per inviare al campo Host"
 msgid "Leave empty to use the suggested default"
 msgstr "Lascia vuoto per usare l'impostazione predefinita suggerita"
 
+msgid "Limit max daily usage."
+msgstr "Limitare il consumo giornaliero"
+
 msgid ""
 "Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
@@ -1519,6 +1539,9 @@ msgstr "Confronta tipo"
 
 msgid "Max calls"
 msgstr "Massimo Chiamates"
+
+msgid "Max daily usage"
+msgstr "Consumo giornaliero"
 
 msgid "Max digits"
 msgstr "Massimo Cifre"
@@ -2627,6 +2650,9 @@ msgstr "Timing type"
 msgid "To address"
 msgstr "Indirizzo To"
 
+msgid "Today usage"
+msgstr "Il consumo oggi"
+
 msgid "Toggle extension"
 msgstr "Attiva / disattiva estensione"
 
@@ -2961,11 +2987,3 @@ msgstr "condiviso"
 
 msgid "unlimited"
 msgstr "illimitato"
-
-#~ msgid "Company's default"
-#~ msgstr "Impostazione predefinita Company"
-
-#~ msgid ""
-#~ "Limits the number of concurrent received calls. Set 0 for unlimited calls."
-#~ msgstr ""
-#~ "Limits the number of concurrent received calls. Set 0 for unlimited calls."

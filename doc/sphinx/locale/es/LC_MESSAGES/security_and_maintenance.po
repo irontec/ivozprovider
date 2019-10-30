@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 13:37+0200\n"
+"POT-Creation-Date: 2019-10-30 12:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -553,6 +553,32 @@ msgstr ""
 #: ../../security_and_maintenance/security/concurrent_call_limit.rst:21
 msgid "To disable this mechanism, set its value to 0."
 msgstr "Para desactivar este mecanismo, configurar su valor a 0."
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:3
+msgid "Current day max usage"
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:5
+msgid ""
+"CGRateS calculates price for every external outgoing call placed through "
+"non-externally-rated Carrier (see :ref:`Billing`)."
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:7
+msgid ""
+"Total amount of money spent within a day can be limited using this "
+"feature, avoiding call toll fraud (or at least reducing damages)."
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:10
+msgid ""
+"Set a reasonable limit for every client so that abnormal money usage is "
+"automatically blocked."
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:12
+msgid "More information at :ref:`current day usages`."
+msgstr ""
 
 #: ../../security_and_maintenance/security/firewall.rst:3
 msgid "Firewall"

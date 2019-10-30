@@ -4,12 +4,11 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 11:39+0200\n"
+"POT-Creation-Date: 2019-10-30 12:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-#: ../../administration_portal/brand/billing/destination_rates.rst:5
-msgid "Destination Rates"
+#: ../../administration_portal/brand/billing/current_day_usages.rst:3
+msgid "Current day usages"
 msgstr ""
 
-#: ../../administration_portal/brand/billing/destination_rates.rst:7
-msgid "A *Destination rate* groups some prefixes with their cost details."
+#: ../../administration_portal/brand/billing/current_day_usages.rst:5
+msgid "This section lists current day usage for each client in the brand:"
 msgstr ""
 
-#: ../../administration_portal/brand/billing/destination_rates.rst:9
-msgid "They only have two fields:"
+#: ../../administration_portal/brand/billing/current_day_usages.rst:8
+#: ../../administration_portal/brand/settings/notification_templates.rst:36
+msgid "Type"
 msgstr ""
 
+#: ../../administration_portal/brand/billing/current_day_usages.rst:10
+msgid "Type of client (vPBX, retail, residential or wholesale)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:11
 #: ../../administration_portal/brand/billing/destination_rates.rst:12
 #: ../../administration_portal/brand/billing/rating_plans.rst:17
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:21
@@ -61,6 +66,71 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/users.rst:18
 #: ../../administration_portal/platform/brands.rst:10
 msgid "Name"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:13
+msgid "Client name."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:14
+msgid "Today usage"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:16
+msgid "Amount of spent money in today's external calls."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:17
+#: ../../administration_portal/brand/clients/residential.rst:61
+#: ../../administration_portal/brand/clients/retail.rst:85
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:38
+#: ../../administration_portal/brand/clients/wholesale.rst:59
+msgid "Max daily usage"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:19
+msgid ""
+"When this threshold is reached, account is disabled. At midnight, it will"
+" be re-enabled."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:20
+#: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:27
+msgid "Status"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:22
+msgid "Whether account has been disabled or not."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:25
+msgid ""
+"Client max daily usage is configured in **Clients configuration** with "
+"**Max daily usage** parameter."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:27
+msgid ""
+"If an account is disabled, increasing its counter above current day "
+"usages re-enables it. Otherwise, it will be re-enabled at midnight."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/current_day_usages.rst:31
+msgid ""
+"This is one of main :ref:`security` mechanisms available in IvozProvider."
+" Use it to avoid toll fraud calls (see :ref:`Current day max usage`)."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:5
+msgid "Destination Rates"
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:7
+msgid "A *Destination rate* groups some prefixes with their cost details."
+msgstr ""
+
+#: ../../administration_portal/brand/billing/destination_rates.rst:9
+msgid "They only have two fields:"
 msgstr ""
 
 #: ../../administration_portal/brand/billing/destination_rates.rst:14
@@ -623,6 +693,7 @@ msgid "Adds selected destination rate to rating plan"
 msgstr ""
 
 #: ../../administration_portal/brand/billing/rating_plans.rst:40
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:30
 #: ../../administration_portal/client/vpbx/routing_endpoints/queues.rst:29
 msgid "Weight"
 msgstr ""
@@ -1272,13 +1343,15 @@ msgstr ""
 msgid "Enable/Disable faxing and call recording for this particular client."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:59
-#: ../../administration_portal/brand/clients/retail.rst:83
+#: ../../administration_portal/brand/clients/residential.rst:58
+#: ../../administration_portal/brand/clients/retail.rst:82
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:35
 msgid "Filter by IP address"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:61
-#: ../../administration_portal/brand/clients/retail.rst:85
+#: ../../administration_portal/brand/clients/residential.rst:60
+#: ../../administration_portal/brand/clients/retail.rst:84
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:37
 msgid ""
 "If set, the platform will only allow calls coming from allowed IP "
 "addresses or network ranges."
@@ -1301,6 +1374,7 @@ msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:55
 #: ../../administration_portal/brand/clients/retail.rst:79
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:32
 #: ../../administration_portal/brand/clients/wholesale.rst:56
 #: ../../administration_portal/platform/brands.rst:38
 msgid "Max calls"
@@ -1308,11 +1382,17 @@ msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:57
 #: ../../administration_portal/brand/clients/retail.rst:81
-#: ../../administration_portal/brand/clients/wholesale.rst:58
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:34
+msgid "Limits both incoming and outgoing external calls (0 for unlimited)."
+msgstr ""
+
+#: ../../administration_portal/brand/clients/residential.rst:63
+#: ../../administration_portal/brand/clients/retail.rst:87
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:40
+#: ../../administration_portal/brand/clients/wholesale.rst:61
 msgid ""
-"Limits both client generated and external received calls to this value (0"
-" for unlimited). Setting to 2 will allow setting 2 outgoing calls and "
-"received 2 incoming calls (in parallel)."
+"Limits external outbound calls when this limit is reached within a day. "
+"At midnight counters are reset and accounts are re-enabled."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:32
@@ -1337,99 +1417,89 @@ msgid ""
 "to be \"talked\"."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:64
-#: ../../administration_portal/brand/clients/retail.rst:87
-#: ../../administration_portal/brand/clients/wholesale.rst:62
+#: ../../administration_portal/brand/clients/residential.rst:67
+#: ../../administration_portal/brand/clients/retail.rst:91
+#: ../../administration_portal/brand/clients/wholesale.rst:65
 msgid "When **editing** a client, these additional fields can be configured:"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:72
+#: ../../administration_portal/brand/clients/residential.rst:81
+#: ../../administration_portal/brand/clients/retail.rst:110
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:70
+msgid "Allow Client to remove recordings"
+msgstr ""
+
+#: ../../administration_portal/brand/clients/residential.rst:83
+#: ../../administration_portal/brand/clients/retail.rst:112
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:72
+msgid ""
+"Shown only if *Recording* feature is enabled for client, shows/hides "
+"recording removal button on client *Call Recordings* section."
+msgstr ""
+
+#: ../../administration_portal/brand/clients/residential.rst:71
 #: ../../administration_portal/brand/clients/retail.rst:95
-#: ../../administration_portal/brand/clients/wholesale.rst:70
-msgid "Externally rater custom options"
-msgstr ""
-
-#: ../../administration_portal/brand/clients/residential.rst:74
-#: ../../administration_portal/brand/clients/retail.rst:97
-#: ../../administration_portal/brand/clients/wholesale.rst:72
-msgid "This field is for setting options for an optional external rating module."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/residential.rst:68
-#: ../../administration_portal/brand/clients/retail.rst:91
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:35
-#: ../../administration_portal/brand/clients/wholesale.rst:66
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:42
+#: ../../administration_portal/brand/clients/wholesale.rst:69
 #: ../../administration_portal/platform/brands.rst:20
 msgid "Invoice data"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:70
-#: ../../administration_portal/brand/clients/retail.rst:93
-#: ../../administration_portal/brand/clients/wholesale.rst:68
+#: ../../administration_portal/brand/clients/residential.rst:73
+#: ../../administration_portal/brand/clients/retail.rst:97
+#: ../../administration_portal/brand/clients/wholesale.rst:71
 msgid ""
 "All the fields in this group will be included in invoices generated for "
 "this client. This section also allows displaying invoices list in "
 "client's portal menu so they can download them."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:81
+#: ../../administration_portal/brand/clients/residential.rst:78
 msgid "Notification options"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:83
+#: ../../administration_portal/brand/clients/residential.rst:80
 msgid ""
 "This group allows choosing a notification template for both faxes and "
 "voicemail notifications."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:75
-#: ../../administration_portal/brand/clients/retail.rst:98
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:46
+#: ../../administration_portal/brand/clients/retail.rst:99
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:49
 #: ../../administration_portal/client/vpbx/users.rst:73
 msgid "Outgoing DDI"
 msgstr ""
 
 #: ../../administration_portal/brand/clients/residential.rst:77
-#: ../../administration_portal/brand/clients/retail.rst:100
+#: ../../administration_portal/brand/clients/retail.rst:101
 msgid ""
 "Fallback DDI for external outgoing calls (can be overridden at "
 "residential device level)."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:78
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:62
-#: ../../administration_portal/platform/brands.rst:27
-msgid "Recordings"
-msgstr ""
-
-#: ../../administration_portal/brand/clients/residential.rst:80
-msgid ""
-"This group allows choosing an on-demand method or disabling this feature "
-"and the code used to enable it on call."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/residential.rst:85
-#: ../../administration_portal/brand/clients/retail.rst:111
+#: ../../administration_portal/brand/clients/residential.rst:86
+#: ../../administration_portal/brand/clients/retail.rst:116
 #: ../../administration_portal/brand/clients/wholesale.rst:82
 msgid ""
 "Apart from these fields, main operator (*aka* God) will also see a "
 "**Platform data** group that allows:"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:87
-#: ../../administration_portal/brand/clients/retail.rst:113
+#: ../../administration_portal/brand/clients/residential.rst:88
+#: ../../administration_portal/brand/clients/retail.rst:118
 #: ../../administration_portal/brand/clients/wholesale.rst:84
 msgid "Choosing an specific media relay set for the client."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:89
+#: ../../administration_portal/brand/clients/residential.rst:90
 msgid ""
 "Choose the way that calls of this client will be distributed among "
 "existing application servers (**hash based** is recommended)."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:91
-#: ../../administration_portal/brand/clients/retail.rst:115
+#: ../../administration_portal/brand/clients/residential.rst:92
+#: ../../administration_portal/brand/clients/retail.rst:120
 msgid ""
 "For outgoing calls, platform will use the CLID provided by the client as "
 "long as it is considered valid, otherwise fallback DDI will be used. The "
@@ -1437,65 +1507,65 @@ msgid ""
 " DDIs."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:95
-#: ../../administration_portal/brand/clients/retail.rst:119
+#: ../../administration_portal/brand/clients/residential.rst:96
+#: ../../administration_portal/brand/clients/retail.rst:124
 #: ../../administration_portal/brand/clients/wholesale.rst:87
 msgid "Additional subsections"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:97
-#: ../../administration_portal/brand/clients/retail.rst:121
+#: ../../administration_portal/brand/clients/residential.rst:98
+#: ../../administration_portal/brand/clients/retail.rst:126
 #: ../../administration_portal/brand/clients/wholesale.rst:89
 msgid "Each entry in this table has these additional options:"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:99
-#: ../../administration_portal/brand/clients/retail.rst:123
+#: ../../administration_portal/brand/clients/residential.rst:100
+#: ../../administration_portal/brand/clients/retail.rst:128
 msgid ""
 "**List of authorized sources**: if *Filter by IP address* is enabled, "
 "this subsection allows adding addresses or network ranges."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:101
-#: ../../administration_portal/brand/clients/retail.rst:125
+#: ../../administration_portal/brand/clients/residential.rst:102
+#: ../../administration_portal/brand/clients/retail.rst:130
 msgid ""
 "No outgoing call will be allowed if *Filter by IP address* is enabled and"
 " the corresponding list is empty."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:103
-#: ../../administration_portal/brand/clients/retail.rst:127
+#: ../../administration_portal/brand/clients/residential.rst:104
+#: ../../administration_portal/brand/clients/retail.rst:132
 #: ../../administration_portal/brand/clients/wholesale.rst:93
 msgid ""
 "**List of client admins**: this subsection allows managing portal "
 "credentials for this specific client."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:105
+#: ../../administration_portal/brand/clients/residential.rst:106
 #: ../../administration_portal/brand/clients/wholesale.rst:95
 msgid ""
 "**List of rating profiles**: this subsection allows managing the rating "
 "profiles that will be used to bill its outgoing calls."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:107
-#: ../../administration_portal/brand/clients/retail.rst:131
+#: ../../administration_portal/brand/clients/residential.rst:108
+#: ../../administration_portal/brand/clients/retail.rst:136
 #: ../../administration_portal/brand/clients/wholesale.rst:97
 msgid ""
 "No outgoing call will be allowed for this client unless an active rating "
 "profiles that can bill the specific call."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:110
-#: ../../administration_portal/brand/clients/retail.rst:134
+#: ../../administration_portal/brand/clients/residential.rst:111
+#: ../../administration_portal/brand/clients/retail.rst:139
 #: ../../administration_portal/brand/clients/wholesale.rst:100
 msgid ""
 "**List of Outgoing routes**: this subsections shows routing rules that "
 "apply only for this client."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/residential.rst:112
-#: ../../administration_portal/brand/clients/retail.rst:136
+#: ../../administration_portal/brand/clients/residential.rst:113
+#: ../../administration_portal/brand/clients/retail.rst:141
 #: ../../administration_portal/brand/clients/wholesale.rst:102
 msgid ""
 "As *Apply all clients* routing rules also will apply for this client, the"
@@ -1593,32 +1663,32 @@ msgstr ""
 msgid "These are the fields shown when **adding** a new retail client:"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:105
+#: ../../administration_portal/brand/clients/retail.rst:106
 #: ../../administration_portal/brand/clients/wholesale.rst:77
 msgid "Audio transcoding"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:107
+#: ../../administration_portal/brand/clients/retail.rst:108
 #: ../../administration_portal/brand/clients/wholesale.rst:79
 msgid ""
 "This field allows enabling codecs for this specific client. This codecs "
 "will be added to the ones offered by the client in its SDP."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:101
+#: ../../administration_portal/brand/clients/retail.rst:102
 #: ../../administration_portal/brand/clients/wholesale.rst:73
 #: ../../administration_portal/brand/routing/routing_tags.rst:3
 msgid "Routing tags"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:103
+#: ../../administration_portal/brand/clients/retail.rst:104
 #: ../../administration_portal/brand/clients/wholesale.rst:75
 msgid ""
 "This field allows enabling routing tags for this specific client. Call "
 "preceded with this routing tags will be rated and routed differently."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/retail.rst:129
+#: ../../administration_portal/brand/clients/retail.rst:134
 msgid ""
 "**List of Rating profiles**: this subsection allows managing the rating "
 "profiles that will be used to bill its outgoing calls."
@@ -1670,86 +1740,72 @@ msgid ""
 "settings in the section can be configured per user if required."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:32
-msgid "Security"
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:34
-msgid "Limits the external concurrent calls and source of calls for this client."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:37
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:44
 msgid ""
 "Data included in invoices created by this brand. This section also allows"
 " displaying invoices list in client's portal menu so they can download "
 "them."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:39
-msgid "Externally rated options"
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:41
-msgid ""
-"For :ref:`Carriers` with externally rated enabled, this field can be used"
-" to store specific information for this client."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:43
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:46
+#: ../../administration_portal/platform/brands.rst:45
 msgid "Notifications"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:45
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:48
 msgid "Configure the email :ref:`notification templates` to use for this client."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:48
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:51
 msgid ""
 "Selects a DDI for outgoing calls of this client, if it is no overridden "
 "in a lower level."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:50
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:53
 msgid "Media relay set"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:52
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:55
 msgid ""
 "As mentioned above, media-relay can be grouped in sets to reserve "
 "capacities or on a geographical purpose. This section lets you assign "
 "them to clients."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:54
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:57
 msgid "Distribute Method"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:56
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:59
 msgid ""
 "'Hash based' distributes calls hashing a parameter that is unique per "
 "client, 'Round robin' distributes calls equally between AS-es and "
 "'static' is used for debugging purposes."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:59
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:62
 msgid "Application Server"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:61
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:64
 msgid ""
 "If 'static' *distribute method* is used, select an application server "
 "here."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:64
-#, python-format
-msgid ""
-"Configures a limit for the size of recordings of this client. A "
-"notification is sent to configured address when 80% is reached and older "
-"recordings are rotated when configured size is reached."
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:65
+msgid "On-demand call recording"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:69
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:67
+msgid ""
+"Shown only if *Recording* feature is enabled for client, allows enabling "
+"and disabling on-demand call recording. If enabled, you can choose how to"
+" invoke and service code if needed."
+msgstr ""
+
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:76
 msgid ""
 "Most of the features are self-explanatory, but **voice notification** "
 "deserves an explanation: if you enable them, when a call fails, the user "
@@ -1757,35 +1813,13 @@ msgid ""
 "permissions to place this call\", \"the call cannot be billed\", etc.)"
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:74
-msgid ""
-"Recordings rotation happens at two levels: brand and client. This means "
-"that **a client's recordings can be rotated even though its limit has not"
-" arrived (or even it has no limit) if brand's limit applies first**."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:78
-msgid ""
-"Again: recordings rotation happens at two levels: brand and client. This "
-"means that **a client's recordings can be rotated even though its limit "
-"has not arrived (or even it has no limit) if brand's limit applies "
-"first**."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:82
-msgid ""
-"To avoid this, make sure that the sum of all clients does not exceed the "
-"size assigned to your brand and make sure that all clients has a size "
-"configured (if 0, it has unlimited size)."
-msgstr ""
-
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:86
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:81
 msgid ""
 "Both **Distribute method** and **Application Server** are only visible "
 "for God Administrator."
 msgstr ""
 
-#: ../../administration_portal/brand/clients/virtual_pbx.rst:89
+#: ../../administration_portal/brand/clients/virtual_pbx.rst:84
 msgid ""
 "'Round-robin' distribute method is reserved for huge clients whose calls "
 "cannot be handled in a single AS. **Use 'Hash based' for remaining "
@@ -1848,6 +1882,10 @@ msgstr ""
 
 #: ../../administration_portal/brand/clients/wholesale.rst:33
 msgid "These are the fields shown when **adding** a new wholesale client:"
+msgstr ""
+
+#: ../../administration_portal/brand/clients/wholesale.rst:58
+msgid "Limits outgoing external calls (0 for unlimited)."
 msgstr ""
 
 #: ../../administration_portal/brand/clients/wholesale.rst:91
@@ -2809,8 +2847,9 @@ msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:24
 msgid ""
-"There are two kind of rules: static and LCR. In static, only one carrier "
-"is selected. In LCR, multiple carriers may be selected."
+"There are three kind of rules: static, LCR and block. In *static*, only "
+"one carrier is selected. In *LCR*, multiple carriers may be selected. In "
+"*block*, no carrier is selected as call will be dropped."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:26
@@ -2825,13 +2864,9 @@ msgid ""
 "route with lower priority, as long as it is available."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:30
-msgid "Metric"
-msgstr ""
-
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:32
 msgid ""
-"If a call matches several routes with equal priority, metric will "
+"If a call matches several routes with equal priority, weight will "
 "determine the proportion of calls that will use one route or another."
 msgstr ""
 
@@ -2855,7 +2890,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:42
-msgid "In all this rule merging process, priority and metric determine the order."
+msgid "In all this rule merging process, priority and weight determine the order."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:44
@@ -2872,11 +2907,11 @@ msgid ""
 "interesting features too: **load-balancing** and **failover-routes**."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:50
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:52
 msgid "Load balancing"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:52
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:53
 msgid ""
 "*Load-balancing* lets us distribute calls matching the same pattern using"
 " several valid outgoing routes."
@@ -2886,17 +2921,17 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:57
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:65
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:78
-msgid "Route A: priority 1, metric 1"
-msgstr ""
-
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:58
-msgid "Route B: priority 1, metric 1"
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:66
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:78
+msgid "Route A: priority 1, weight 1"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:60
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:59
+msgid "Route B: priority 1, weight 1"
+msgstr ""
+
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:61
 msgid ""
 "Call matching these routes will use route A for %50 of the calls and "
 "route B for %50 of the calls."
@@ -2906,17 +2941,17 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:66
-msgid "Route B: priority 1, metric 2"
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:67
+msgid "Route B: priority 1, weight 2"
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:68
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:69
 msgid ""
 "Call matching these routes will use route A for %33 of the calls and "
 "route B for %66 of the calls."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:72
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:73
 msgid "Failover routes"
 msgstr ""
 
@@ -2924,13 +2959,13 @@ msgstr ""
 msgid "Failover route lets us use another route whenever the main route fails."
 msgstr ""
 
-#: ../../administration_portal/brand/routing/outgoing_routings.rst:77
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:76
 #: ../../administration_portal/client/vpbx/routing_tools/calendars.rst:95
 msgid "Example"
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:79
-msgid "Route B: priority 2, metric 1"
+msgid "Route B: priority 2, weight 1"
 msgstr ""
 
 #: ../../administration_portal/brand/routing/outgoing_routings.rst:81
@@ -2991,6 +3026,23 @@ msgstr ""
 msgid ""
 "Carrier's weight is used for load-balancing between carriers with same "
 "priority."
+msgstr ""
+
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:109
+msgid "Blocking routes"
+msgstr ""
+
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:111
+msgid ""
+"Blocking routes are the only routes with **priority 0**. These "
+"enforcement makes them be **evaluated first**."
+msgstr ""
+
+#: ../../administration_portal/brand/routing/outgoing_routings.rst:113
+msgid ""
+"Using these routes, it is easy to make a group with unwanted call "
+"prefixes and reject all calls to those destinations for every client (or "
+"for one particular client)."
 msgstr ""
 
 #: ../../administration_portal/brand/routing/routing_patterns.rst:5
@@ -3320,10 +3372,6 @@ msgstr ""
 msgid "Used to identify this notification template"
 msgstr ""
 
-#: ../../administration_portal/brand/settings/notification_templates.rst:36
-msgid "Type"
-msgstr ""
-
 #: ../../administration_portal/brand/settings/notification_templates.rst:38
 msgid ""
 "Determine the notification type. Each notification type has its own "
@@ -3429,8 +3477,11 @@ msgstr ""
 #: ../../administration_portal/brand/settings/notification_templates.rst:86
 msgid ""
 "Once the notification has been configured for the desired languages, "
-"Brand administrator must assign it to the client that will use it. This "
-"can be done in the Notification configuration section of each client."
+"Brand administrator can assign it to the client that will use it. This "
+"can be done in the Notification configuration section of each client. If "
+"client has no notification configured, brand notifications will be used "
+"for that client instead. If brand has no notification configured, default"
+" notifications will be used."
 msgstr ""
 
 #: ../../administration_portal/brand/settings/numeric_transformations.rst:5
@@ -4060,17 +4111,23 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/calls/call_recordings.rst:103
 msgid ""
 "The *client administrator* can access to all the recordings in the "
-"section **Client configuration** > **Recordings**:"
+"section **Client configuration** > **Calls** > **Call recordings**:"
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:107
-msgid "Recordings can be heard from the *web* or downloaded in MP3 format:"
+#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:106
+msgid "Recordings can be heard from the *web* or downloaded in MP3 format."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:110
+#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:108
 msgid ""
 "If the recording has been started on demand, it will also include the "
-"user that requested it:"
+"user that requested it."
+msgstr ""
+
+#: ../../administration_portal/client/vpbx/calls/call_recordings.rst:111
+msgid ""
+"Recording removal button is shown only if **Allow Client to remove "
+"recordings** is enabled for the client in *Client configuration*."
 msgstr ""
 
 #: ../../administration_portal/client/vpbx/calls/call_registry.rst:5
@@ -6756,10 +6813,6 @@ msgstr ""
 msgid "Just a description."
 msgstr ""
 
-#: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:27
-msgid "Status"
-msgstr ""
-
 #: ../../administration_portal/client/vpbx/routing_tools/route_locks.rst:29
 msgid "Set the initial status of the lock: opened or closed."
 msgstr ""
@@ -7759,6 +7812,10 @@ msgid ""
 "Retail Accounts and Residential Devices of this brand."
 msgstr ""
 
+#: ../../administration_portal/platform/brands.rst:27
+msgid "Recordings"
+msgstr ""
+
 #: ../../administration_portal/platform/brands.rst:29
 #, python-format
 msgid ""
@@ -7789,57 +7846,65 @@ msgstr ""
 msgid "Define default Timezone, Language and Currency for clients of this brand."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:46
+#: ../../administration_portal/platform/brands.rst:47
+msgid ""
+"Configure the email :ref:`notification templates` to use for this brand. "
+"Clients configured to use generic notifications will use configured brand"
+" notifications. If brand has no notification configured :ref:`default "
+"notification templates` will be used."
+msgstr ""
+
+#: ../../administration_portal/platform/brands.rst:52
 msgid ""
 "Some features are related to brand and cannot be assigned to clients. "
 "Other ones are also related to clients and lets the brand operator to "
 "assign them to its clients."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:50
+#: ../../administration_portal/platform/brands.rst:56
 msgid ""
 "Disabling billing hides all related sections and assumes that an external"
 " element will set a price for calls (external tarification module is "
 "needed, ask for it!)."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:54
+#: ../../administration_portal/platform/brands.rst:60
 msgid ""
 "Disabling invoices hides related sections, assuming you will use an "
 "external tool to generate them."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:57
+#: ../../administration_portal/platform/brands.rst:63
 msgid ""
 "SIP domain is only visible for Brands with Retail or Residential features"
 " enabled."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:61
+#: ../../administration_portal/platform/brands.rst:67
 msgid "Brand operators"
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:63
+#: ../../administration_portal/platform/brands.rst:69
 msgid ""
 "**List of brand operators** subsection allows adding/editing/deleting "
 "credentials for brand portal access."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:67
+#: ../../administration_portal/platform/brands.rst:73
 msgid "Brand Portals"
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:69
+#: ../../administration_portal/platform/brands.rst:75
 msgid ""
 "**List of brand portals** subsection allows managing URLs to access to "
 "the different web portals available for a given brand."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:71
+#: ../../administration_portal/platform/brands.rst:77
 msgid "See :ref:`Client Portals` for further reference."
 msgstr ""
 
-#: ../../administration_portal/platform/brands.rst:73
+#: ../../administration_portal/platform/brands.rst:79
 msgid ""
 "URLs are assigned to brands. This means that through a given URL the "
 "brand can be guessed, but not the client. As a result, username collision"
@@ -7914,6 +7979,22 @@ msgstr ""
 
 #: ../../administration_portal/platform/currencies.rst:41
 msgid "LCR routes involving carriers with different currencies are not supported."
+msgstr ""
+
+#: ../../administration_portal/platform/default_invoice_templates.rst:5
+msgid "Default Invoice Templates"
+msgstr ""
+
+#: ../../administration_portal/platform/default_invoice_templates.rst:7
+msgid ""
+"Platform administators can create Invoice templates that can be used by "
+"all brands in the platform."
+msgstr ""
+
+#: ../../administration_portal/platform/default_invoice_templates.rst:9
+msgid ""
+"Although brand administrators won't be able to edit them, they will be "
+"available for :ref:`Invoices` and :ref:`Invoice Schedulers`."
 msgstr ""
 
 #: ../../administration_portal/platform/default_notification_templates.rst:5
@@ -8520,4 +8601,148 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
+
+#~ msgid "Default Invoice Templates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Limits both client generated and "
+#~ "external received calls to this value"
+#~ " (0 for unlimited). Setting to 2 "
+#~ "will allow setting 2 outgoing calls "
+#~ "and received 2 incoming calls (in "
+#~ "parallel)."
+#~ msgstr ""
+
+#~ msgid "Externally rater custom options"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This field is for setting options "
+#~ "for an optional external rating module."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This group allows choosing an on-"
+#~ "demand method or disabling this feature"
+#~ " and the code used to enable it"
+#~ " on call."
+#~ msgstr ""
+
+#~ msgid "Security"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Limits the external concurrent calls and"
+#~ " source of calls for this client."
+#~ msgstr ""
+
+#~ msgid "Externally rated options"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For :ref:`Carriers` with externally rated "
+#~ "enabled, this field can be used to"
+#~ " store specific information for this "
+#~ "client."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Configures a limit for the size of"
+#~ " recordings of this client. A "
+#~ "notification is sent to configured "
+#~ "address when 80% is reached and "
+#~ "older recordings are rotated when "
+#~ "configured size is reached."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Recordings rotation happens at two "
+#~ "levels: brand and client. This means "
+#~ "that **a client's recordings can be "
+#~ "rotated even though its limit has "
+#~ "not arrived (or even it has no "
+#~ "limit) if brand's limit applies first**."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Again: recordings rotation happens at "
+#~ "two levels: brand and client. This "
+#~ "means that **a client's recordings can"
+#~ " be rotated even though its limit "
+#~ "has not arrived (or even it has"
+#~ " no limit) if brand's limit applies"
+#~ " first**."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To avoid this, make sure that the"
+#~ " sum of all clients does not "
+#~ "exceed the size assigned to your "
+#~ "brand and make sure that all "
+#~ "clients has a size configured (if "
+#~ "0, it has unlimited size)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There are two kind of rules: "
+#~ "static and LCR. In static, only "
+#~ "one carrier is selected. In LCR, "
+#~ "multiple carriers may be selected."
+#~ msgstr ""
+
+#~ msgid "Metric"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If a call matches several routes "
+#~ "with equal priority, metric will "
+#~ "determine the proportion of calls that"
+#~ " will use one route or another."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In all this rule merging process, "
+#~ "priority and metric determine the order."
+#~ msgstr ""
+
+#~ msgid "Route A: priority 1, metric 1"
+#~ msgstr ""
+
+#~ msgid "Route B: priority 1, metric 1"
+#~ msgstr ""
+
+#~ msgid "Route B: priority 1, metric 2"
+#~ msgstr ""
+
+#~ msgid "Route B: priority 2, metric 1"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Once the notification has been "
+#~ "configured for the desired languages, "
+#~ "Brand administrator must assign it to"
+#~ " the client that will use it. "
+#~ "This can be done in the "
+#~ "Notification configuration section of each "
+#~ "client."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The *client administrator* can access to"
+#~ " all the recordings in the section"
+#~ " **Client configuration** > **Recordings**:"
+#~ msgstr ""
+
+#~ msgid "Recordings can be heard from the *web* or downloaded in MP3 format:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If the recording has been started "
+#~ "on demand, it will also include "
+#~ "the user that requested it:"
+#~ msgstr ""
 

@@ -24,8 +24,7 @@ Feature: Create routing tags
       {
           "name": "Mine",
           "tag": "00#",
-          "id": 2,
-          "brand": 1
+          "id": 2
       }
     """
 
@@ -41,7 +40,6 @@ Feature: Create routing tags
       {
           "name": "Mine",
           "tag": "00#",
-          "id": 2,
-          "brand": "~"
+          "id": 2
       }
     """

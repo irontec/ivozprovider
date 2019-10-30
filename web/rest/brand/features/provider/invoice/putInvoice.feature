@@ -42,7 +42,6 @@ Feature: Update invoice
               "baseName": null
           },
           "invoiceTemplate": "~",
-          "brand": "~",
           "company": "~",
           "numberSequence": null
       }

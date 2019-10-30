@@ -14,6 +14,11 @@ class Cgrates extends AbstractJob
     protected $tpid;
 
     /**
+     * @var string | null
+     */
+    protected $notifyThresholdForAccount;
+
+    /**
      * @var string
      */
     protected $method = "WorkerCgrates~reload";
@@ -23,6 +28,7 @@ class Cgrates extends AbstractJob
      */
     protected $mainVariables = array(
         'tpid',
+        'notifyThresholdForAccount'
     );
 
     public function setTpid($tpid): self
@@ -34,6 +40,24 @@ class Cgrates extends AbstractJob
     public function getTpid(): string
     {
         return $this->tpid;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getNotifyThresholdForAccount()
+    {
+        return $this->notifyThresholdForAccount;
+    }
+
+    /**
+     * @param string | null $notifyThresholdForAccount
+     */
+    public function setNotifyThresholdForAccount($notifyThresholdForAccount)
+    {
+        $this->notifyThresholdForAccount = $notifyThresholdForAccount;
+
+        return $this;
     }
 
     /**

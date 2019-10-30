@@ -163,9 +163,8 @@ class Generator
         $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
 
         $this->logger->debug(self::LOGGER_PREFIX . ' Rendering the PDF');
-        $architecture = (php_uname('m') === 'x86_64') ? 'amd64' : 'i386';
 
-        $snappy = new Pdf($this->vendorDir . 'bin/wkhtmltopdf-' . $architecture);
+        $snappy = new Pdf($this->vendorDir . 'bin/wkhtmltopdf-amd64');
         $snappy->setTimeout(60 * 10);
         $snappy->setOption('header-html', $header);
         $snappy->setOption('header-spacing', 3);

@@ -35,15 +35,15 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      */
     public function getBalances($brandId, array $companyIds)
     {
-        $tenant = self::TENANT_PREFIX . $brandId;
-        $accountIds = array_map(
-            function ($companyId) {
-                return self::ACCOUNT_PREFIX . $companyId;
-            },
-            $companyIds
-        );
+        $payload = parent::getAccountsBalances($brandId, $companyIds, self::ACCOUNT_PREFIX);
 
-        return parent::getAccountsBalances($tenant, $accountIds);
+        $balanceSum = [];
+        foreach ($payload->result as $balance) {
+            $balanceSum += $this->balanceReducer($balance);
+        }
+        $payload->result = $balanceSum;
+
+        return $payload;
     }
 
     /**
@@ -52,11 +52,64 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      */
     public function getBalance($brandId, $companyId)
     {
-        $companyIds = [$companyId];
-        $payload = $this->getBalances($brandId, $companyIds);
+        $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
 
-        return $payload->result[$companyId];
+        $balanceSum = [];
+        foreach ($payload->result as $balance) {
+            $balanceSum += $this->balanceReducer($balance);
+        }
+
+        return $balanceSum[$companyId];
     }
+
+    /**
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getCurrentDayUsage
+     * @inheritdoc
+     */
+    public function getCurrentDayUsage($brandId, $companyId)
+    {
+        $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
+
+        $balanceSum = [];
+        foreach ($payload->result as $balance) {
+            $balanceSum += $this->currentDayUsageReducer($balance);
+        }
+
+        return $balanceSum[$companyId];
+    }
+
+    /**
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getCurrentDayMaxUsage
+     * @inheritdoc
+     */
+    public function getCurrentDayMaxUsage($brandId, $companyId)
+    {
+        $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
+
+        $balanceSum = [];
+        foreach ($payload->result as $balance) {
+            $balanceSum += $this->currentDayMaxUsageReducer($balance);
+        }
+
+        return $balanceSum[$companyId];
+    }
+
+    /**
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getAccountStatus
+     * @inheritdoc
+     */
+    public function getAccountStatus($brandId, $companyId)
+    {
+        $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
+
+        $balanceSum = [];
+        foreach ($payload->result as $balance) {
+            $balanceSum += $this->accountStatusReducer($balance);
+        }
+
+        return $balanceSum[$companyId];
+    }
+
 
     /**
      * @param CompanyInterface $entity

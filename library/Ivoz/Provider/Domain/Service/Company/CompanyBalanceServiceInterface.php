@@ -33,4 +33,18 @@ interface CompanyBalanceServiceInterface
      * @return mixed
      */
     public function getBalance($brandId, $companyId);
+
+    /**
+     * @param int $brandId
+     * @param int $companyId
+     * @return mixed
+     */
+    public function getCurrentDayUsage($brandId, $companyId);
+
+    /**
+     * @param int $brandId
+     * @param int $companyId
+     * @return mixed
+     */
+    public function getCurrentDayMaxUsage($brandId, $companyId);
 }

@@ -170,6 +170,70 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCurrency();
 
     /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     *
+     * @return static
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null);
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getVoicemailNotificationTemplate();
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     *
+     * @return static
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null);
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getFaxNotificationTemplate();
+
+    /**
+     * Set invoiceNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     *
+     * @return static
+     */
+    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null);
+
+    /**
+     * Get invoiceNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getInvoiceNotificationTemplate();
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return static
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getCallCsvNotificationTemplate();
+
+    /**
      * Set logo
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo

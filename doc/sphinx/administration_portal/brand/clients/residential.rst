@@ -54,11 +54,14 @@ These are the fields shown when **adding** a new residential client:
         Describes the way the client will "talk" and the way the client wants to be "talked".
 
     Max calls
-        Limits both client generated and external received calls to this value (0 for unlimited). Setting to 2 will allow
-        setting 2 outgoing calls and received 2 incoming calls (in parallel).
+        Limits both incoming and outgoing external calls (0 for unlimited).
 
     Filter by IP address
         If set, the platform will only allow calls coming from allowed IP addresses or network ranges.
+
+    Max daily usage
+        Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
+        accounts are re-enabled.
 
 
 When **editing** a client, these additional fields can be configured:
@@ -70,17 +73,15 @@ When **editing** a client, these additional fields can be configured:
         All the fields in this group will be included in invoices generated for this client. This section also allows
         displaying invoices list in client's portal menu so they can download them.
 
-    Externally rater custom options
-        This field is for setting options for an optional external rating module.
-
     Outgoing DDI
         Fallback DDI for external outgoing calls (can be overridden at residential device level).
 
-    Recordings
-        This group allows choosing an on-demand method or disabling this feature and the code used to enable it on call.
-
     Notification options
         This group allows choosing a notification template for both faxes and voicemail notifications.
+
+    Allow Client to remove recordings
+        Shown only if *Recording* feature is enabled for client, shows/hides recording
+        removal button on client *Call Recordings* section.
 
 .. note:: Apart from these fields, main operator (*aka* God) will also see a **Platform data** group that allows:
 

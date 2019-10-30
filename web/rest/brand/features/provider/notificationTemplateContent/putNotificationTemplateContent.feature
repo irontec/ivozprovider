@@ -32,8 +32,7 @@ Feature: Update notification template contents
           "notificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "language": "~"
       }

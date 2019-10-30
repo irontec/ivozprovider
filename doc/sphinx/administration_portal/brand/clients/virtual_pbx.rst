@@ -30,16 +30,19 @@ that require feature-full call flows.
         Chosen currency will be used in price calculation, invoices, balance movements and
         remaining money operations of this client.
 
-    Security
-        Limits the external concurrent calls and source of calls for this client.
+    Max calls
+        Limits both incoming and outgoing external calls (0 for unlimited).
+
+    Filter by IP address
+        If set, the platform will only allow calls coming from allowed IP addresses or network ranges.
+
+    Max daily usage
+        Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
+        accounts are re-enabled.
 
     Invoice data
         Data included in invoices created by this brand. This section also allows displaying invoices list in
         client's portal menu so they can download them.
-
-    Externally rated options
-        For :ref:`Carriers` with externally rated enabled, this field can be used to store specific
-        information for this client.
 
     Notifications
         Configure the email :ref:`notification templates` to use for this client.
@@ -60,28 +63,20 @@ that require feature-full call flows.
     Application Server
         If 'static' *distribute method* is used, select an application server here.
 
-    Recordings
-        Configures a limit for the size of recordings of this client. A
-        notification is sent to configured address when 80% is reached and
-        older recordings are rotated when configured size is reached.
+    On-demand call recording
+        Shown only if *Recording* feature is enabled for client, allows enabling and
+        disabling on-demand call recording. If enabled, you can choose how to invoke
+        and service code if needed.
+
+    Allow Client to remove recordings
+        Shown only if *Recording* feature is enabled for client, shows/hides recording
+        removal button on client *Call Recordings* section.
 
 
 Most of the features are self-explanatory, but **voice notification** deserves
 an explanation: if you enable them, when a call fails, the user will listen a
 locution explaining what occurred ("you have no permissions to place this call",
 "the call cannot be billed", etc.)
-
-.. warning:: Recordings rotation happens at two levels: brand and client. This
-              means that **a client's recordings can be rotated even though its limit
-              has not arrived (or even it has no limit) if brand's limit applies first**.
-
-.. error:: Again: recordings rotation happens at two levels: brand and client. This
-              means that **a client's recordings can be rotated even though its limit
-              has not arrived (or even it has no limit) if brand's limit applies first**.
-
-.. hint:: To avoid this, make sure that the sum of all clients does not exceed
-          the size assigned to your brand and make sure that all clients has
-          a size configured (if 0, it has unlimited size).
 
 Both **Distribute method** and **Application Server** are only visible for God
 Administrator.

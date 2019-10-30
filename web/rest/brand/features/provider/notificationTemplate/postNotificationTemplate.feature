@@ -12,8 +12,7 @@ Feature: Create notification templates
     """
       {
           "name": "New fax notification",
-          "type": "fax",
-          "brand": 1
+          "type": "fax"
       }
     """
     Then the response status code should be 201
@@ -24,8 +23,7 @@ Feature: Create notification templates
       {
           "name": "New fax notification",
           "type": "fax",
-          "id": 3,
-          "brand": 1
+          "id": 3
       }
     """
 
@@ -41,7 +39,6 @@ Feature: Create notification templates
       {
           "name": "New fax notification",
           "type": "fax",
-          "id": 3,
-          "brand": "~"
+          "id": 3
       }
     """

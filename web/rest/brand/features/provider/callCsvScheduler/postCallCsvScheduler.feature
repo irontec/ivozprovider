@@ -35,7 +35,6 @@ Feature: Create call CSV scheduler
           "lastExecutionError": null,
           "nextExecution": "2018-12-02 09:00:00",
           "id": 3,
-          "brand": 1,
           "company": null,
           "callCsvNotificationTemplate": 1
       }
@@ -60,13 +59,11 @@ Feature: Create call CSV scheduler
           "lastExecutionError": null,
           "nextExecution": "2018-12-02 09:00:00",
           "id": 3,
-          "brand": "~",
           "company": null,
           "callCsvNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
-              "id": 1,
-              "brand": 1
+              "id": 1
           }
       }
     """

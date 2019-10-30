@@ -35,9 +35,18 @@ class InvoiceTemplateTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'brand',
-                    'eq',
-                    'user.getBrand().getId()'
+                    'or' => [
+                        [
+                            'brand',
+                            'eq',
+                            'user.getBrand().getId()'
+                        ],
+                        [
+                            'brand',
+                            'isNull',
+                            null
+                        ]
+                    ]
                 ]
             ]
         );

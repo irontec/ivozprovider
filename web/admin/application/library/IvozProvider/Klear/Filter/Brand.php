@@ -13,13 +13,26 @@ class IvozProvider_Klear_Filter_Brand implements KlearMatrix_Model_Field_Select_
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-        $auth = Zend_Auth::getInstance();
-        if (!$auth->hasIdentity()) {
-            throw new Klear_Exception_Default('No brand emulated');
-        }
 
-        $loggedUser = $auth->getIdentity();
-        $currentBrandyId = $loggedUser->brandId;
+        // Get ModelName and your Controller
+        $currentItemName = $routeDispatcher->getCurrentItemName();
+
+        $brandOwnedScreens = array(
+            "brandsList_screen",
+            "brandsEdit_screen",
+        );
+
+        if (in_array($currentItemName, $brandOwnedScreens)) {
+            $currentBrandyId =  $routeDispatcher->getParam("pk", false);
+        } else {
+            $auth = Zend_Auth::getInstance();
+            if (!$auth->hasIdentity()) {
+                throw new Klear_Exception_Default('No brand emulated');
+            }
+
+            $loggedUser = $auth->getIdentity();
+            $currentBrandyId = $loggedUser->brandId;
+        }
 
         $this->_condition[] = "self::brand = '" . $currentBrandyId . "'";
 

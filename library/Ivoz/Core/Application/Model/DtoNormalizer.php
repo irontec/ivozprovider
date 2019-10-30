@@ -46,6 +46,14 @@ trait DtoNormalizer
     {
         $contextProperties = $this->getPropertyMap($context, $role);
 
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
+    }
+
+    protected function setByContext(array $contextProperties, array $data)
+    {
         unset($contextProperties['id']);
 
         $methods = [];

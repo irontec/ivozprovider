@@ -35,15 +35,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
      */
     public function getBalances($brandId, array $carrierIds)
     {
-        $tenant = self::TENANT_PREFIX . $brandId;
-        $accountIds = array_map(
-            function ($carrierId) {
-                return self::ACCOUNT_PREFIX . $carrierId;
-            },
-            $carrierIds
-        );
-
-        return parent::getAccountsBalances($tenant, $accountIds);
+        return parent::getAccountsBalances($brandId, $carrierIds, self::ACCOUNT_PREFIX);
     }
 
     /**
@@ -55,7 +47,12 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
         $carrierIds = [$carrierId];
         $payload = $this->getBalances($brandId, $carrierIds);
 
-        return $payload->result[$carrierId];
+        $balanceSum = [];
+        foreach ($payload->result as $balance) {
+            $balanceSum += $this->balanceReducer($balance);
+        }
+
+        return $balanceSum[$carrierId];
     }
 
     /**

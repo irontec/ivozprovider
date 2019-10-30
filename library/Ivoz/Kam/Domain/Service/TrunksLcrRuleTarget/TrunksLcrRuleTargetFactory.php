@@ -65,6 +65,11 @@ class TrunksLcrRuleTargetFactory
                 $lcrGateways[] = $this->trunksLcrGatewayRepository->findDummyGateway();
                 break;
 
+            case OutgoingRoutingInterface::ROUTINGMODE_BLOCK:
+                // Blocking Rules use special dummy gateway
+                $lcrGateways[] = $this->trunksLcrGatewayRepository->findDummyGateway();
+                break;
+
             default:
                 throw new \DomainException('Invalid Routing mode');
         }

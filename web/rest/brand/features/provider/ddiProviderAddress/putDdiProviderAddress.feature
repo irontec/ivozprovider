@@ -30,7 +30,6 @@ Feature: Update ddi provider addresses
               "name": "DDIProviderName",
               "externallyRated": false,
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
           }
       }

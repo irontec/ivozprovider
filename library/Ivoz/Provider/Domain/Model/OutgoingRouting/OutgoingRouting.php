@@ -69,6 +69,10 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
             case self::MODE_LCR:
                 $this->setCarrier(null);
                 break;
+            case self::ROUTINGMODE_BLOCK:
+                $this->setCarrier(null);
+                $this->setPriority(0);
+                break;
             default:
                 throw new \DomainException('Incorrect Outgoing Routing Mode');
         }

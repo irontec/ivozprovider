@@ -56,7 +56,6 @@ Feature: Update destination rate group
               "baseName": null,
               "importerArguments": []
           },
-          "brand": "~",
           "currency": {
               "iden": "USD",
               "symbol": "$",

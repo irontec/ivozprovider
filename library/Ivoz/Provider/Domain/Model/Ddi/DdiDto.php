@@ -10,7 +10,15 @@ class DdiDto extends DdiDtoAbstract
             $data = $this->filterReadOnlyFields($data);
         }
 
-        return parent::denormalize($data, $context, $role);
+        $contextProperties = $this->getPropertyMap($context, $role);
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     /**
@@ -69,7 +77,6 @@ class DdiDto extends DdiDtoAbstract
             'ddi',
             'id',
             'companyId',
-            'brandId',
             'ddiProviderId',
             'countryId'
         ];

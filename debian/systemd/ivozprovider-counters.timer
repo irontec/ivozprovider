@@ -1,0 +1,8 @@
+[Unit]
+Description=Run Ivozprovider Counter reset
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+
+[Install]
+WantedBy=timers.target

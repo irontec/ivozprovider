@@ -30,7 +30,6 @@ Feature: Update invoice templates
           "template": "body v2",
           "templateHeader": "header v2",
           "templateFooter": "footer v2",
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """
