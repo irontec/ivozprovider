@@ -40,7 +40,7 @@ production:
           screens:
             recordingsEdit_screen: true
           dialogs:
-            recordingsDel_dialog: true
+            recordingsDel_dialog: ${auth.companyRecordingRemoval}
           default: recordingsEdit_screen
       options:
         title: _("Options")

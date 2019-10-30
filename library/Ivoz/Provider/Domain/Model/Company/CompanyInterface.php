@@ -247,6 +247,13 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOnDemandRecord();
 
     /**
+     * Get allowRecordingRemoval
+     *
+     * @return boolean
+     */
+    public function getAllowRecordingRemoval();
+
+    /**
      * Get onDemandRecordCode
      *
      * @return string | null

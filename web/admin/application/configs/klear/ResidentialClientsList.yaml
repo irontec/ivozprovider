@@ -72,6 +72,7 @@ production:
           showInvoices: true
           outgoingDdi: true
           maxDailyUsage: true
+          allowRecordingRemoval: true
         order:
           name: true
           nif: true
@@ -127,6 +128,7 @@ production:
           callCsvNotificationTemplate: true
           showInvoices: true
           outgoingDdiE164: true
+          allowRecordingRemoval: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
@@ -255,6 +257,7 @@ production:
           collapsed: true
           fields:
             onDemandRecord: 6
+            allowRecordingRemoval: 6
             onDemandRecordCode: 6
         group7:
           colsPerRow: 2

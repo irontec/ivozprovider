@@ -109,6 +109,9 @@ msgstr "All"
 msgid "All clients"
 msgstr "All clients"
 
+msgid "Allow Client to remove recordings"
+msgstr "Allow Client to remove recordings"
+
 msgid "Allow all outgoing calls"
 msgstr "Allow all outgoing calls"
 
@@ -805,6 +808,13 @@ msgid ""
 msgstr ""
 "Enable this option to display a section in Client's portal to download "
 "generated invoices."
+
+msgid ""
+"Enable this option to display delete button in Client's portal call "
+"recordings section."
+msgstr ""
+"Enable this option to display delete button in Client's portal call "
+"recordings section."
 
 msgid "Enabled"
 msgstr "Enabled"

@@ -81,6 +81,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $onDemandRecord = 0;
 
     /**
+     * @var boolean
+     */
+    private $allowRecordingRemoval = true;
+
+    /**
      * @var string
      */
     private $onDemandRecordCode;
@@ -282,6 +287,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'countryName' => 'countryName',
             'ipfilter' => 'ipfilter',
             'onDemandRecord' => 'onDemandRecord',
+            'allowRecordingRemoval' => 'allowRecordingRemoval',
             'onDemandRecordCode' => 'onDemandRecordCode',
             'externallyextraopts' => 'externallyextraopts',
             'recordingsLimitMB' => 'recordingsLimitMB',
@@ -328,6 +334,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'countryName' => $this->getCountryName(),
             'ipfilter' => $this->getIpfilter(),
             'onDemandRecord' => $this->getOnDemandRecord(),
+            'allowRecordingRemoval' => $this->getAllowRecordingRemoval(),
             'onDemandRecordCode' => $this->getOnDemandRecordCode(),
             'externallyextraopts' => $this->getExternallyextraopts(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
@@ -643,6 +650,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getOnDemandRecord()
     {
         return $this->onDemandRecord;
+    }
+
+    /**
+     * @param boolean $allowRecordingRemoval
+     *
+     * @return static
+     */
+    public function setAllowRecordingRemoval($allowRecordingRemoval = null)
+    {
+        $this->allowRecordingRemoval = $allowRecordingRemoval;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAllowRecordingRemoval()
+    {
+        return $this->allowRecordingRemoval;
     }
 
     /**

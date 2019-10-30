@@ -108,6 +108,10 @@ When **editing** a client, these additional fields can be configured:
         This field allows enabling codecs for this specific client. This codecs will be added to
         the ones offered by the client in its SDP.
 
+    Allow Client to remove recordings
+        Shown only if *Recording* feature is enabled for client, shows/hides recording
+        removal button on client *Call Recordings* section.
+
 
 .. note:: Apart from these fields, main operator (*aka* God) will also see a **Platform data** group that allows:
 
