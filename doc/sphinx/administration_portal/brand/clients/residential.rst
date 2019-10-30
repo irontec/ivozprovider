@@ -76,11 +76,12 @@ When **editing** a client, these additional fields can be configured:
     Outgoing DDI
         Fallback DDI for external outgoing calls (can be overridden at residential device level).
 
-    Recordings
-        This group allows choosing an on-demand method or disabling this feature and the code used to enable it on call.
-
     Notification options
         This group allows choosing a notification template for both faxes and voicemail notifications.
+
+    Allow Client to remove recordings
+        Shown only if *Recording* feature is enabled for client, shows/hides recording
+        removal button on client *Call Recordings* section.
 
 .. note:: Apart from these fields, main operator (*aka* God) will also see a **Platform data** group that allows:
 

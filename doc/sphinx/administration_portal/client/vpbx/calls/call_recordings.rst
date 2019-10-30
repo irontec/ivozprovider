@@ -101,13 +101,12 @@ Recordings list
 ***************
 
 The *client administrator* can access to all the recordings in the section 
-**Client configuration** > **Recordings**:
+**Client configuration** > **Calls** > **Call recordings**:
 
+    - Recordings can be heard from the *web* or downloaded in MP3 format.
 
-Recordings can be heard from the *web* or downloaded in MP3 format:
+    - If the recording has been started on demand, it will also include the user
+      that requested it.
 
-
-If the recording has been started on demand, it will also include the user 
-that requested it:
-
-
+.. tip:: Recording removal button is shown only if **Allow Client to remove recordings** is enabled
+         for the client in *Client configuration*.
