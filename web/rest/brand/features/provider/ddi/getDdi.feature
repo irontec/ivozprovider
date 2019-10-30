@@ -34,13 +34,11 @@ Feature: Retrieve ddis
           "ddi": "123",
           "id": 1,
           "company": "~",
-          "brand": "~",
           "ddiProvider": {
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "externallyRated": false,
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
           },
           "country": {

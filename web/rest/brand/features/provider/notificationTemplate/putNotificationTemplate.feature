@@ -23,7 +23,6 @@ Feature: Update notification templates
       {
           "name": "New fax notification",
           "type": "voicemail",
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

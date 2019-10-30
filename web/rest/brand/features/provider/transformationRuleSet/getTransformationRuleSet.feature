@@ -48,7 +48,6 @@ Feature: Retrieve transformation rule sets
               "ca": "ca",
               "it": "it"
           },
-          "brand": "~",
           "country": "~"
       }
     """

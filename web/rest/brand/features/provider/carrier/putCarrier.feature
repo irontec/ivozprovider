@@ -29,7 +29,6 @@ Feature: Update carriers
           "balance": 0,
           "calculateCost": false,
           "id": 1,
-          "brand": "~",
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -43,7 +42,6 @@ Feature: Update carriers
                   "es": "es",
                   "ca": "ca"
               },
-              "brand": 1,
               "country": 68
           }
       }

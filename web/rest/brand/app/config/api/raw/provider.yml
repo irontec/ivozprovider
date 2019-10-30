@@ -2,12 +2,6 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -104,12 +98,6 @@ Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
             carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -190,11 +178,6 @@ Ivoz\Provider\Domain\Model\Company\Company:
       attributes:
         swagger_context:
           readOnly: true
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     normalization_context:
@@ -253,12 +236,6 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     access_control: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -268,12 +245,6 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
         in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -310,12 +281,6 @@ Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress:
 
 Ivoz\Provider\Domain\Model\Destination\Name:
 Ivoz\Provider\Domain\Model\Destination\Destination:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -337,12 +302,6 @@ Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\Name:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\Description:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -363,12 +322,6 @@ Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
     get: ~
   collectionOperations:
     get: ~
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -396,12 +349,6 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -454,12 +401,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -480,12 +421,6 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
             numberSequence: 'Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence'
 
 Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -494,12 +429,6 @@ Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -528,11 +457,8 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-      - or:
-        - brand:
-            eq: "user.getBrand().getId()"
-        - brand:
-            isNull: ~
+        brand:
+          eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent:
   attributes:
@@ -542,12 +468,6 @@ Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateConte
         notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
 
 Ivoz\Provider\Domain\Model\Carrier\Carrier:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -563,12 +483,6 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
             transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -593,12 +507,6 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
     get: ~
     post:
       operation_normalization_context: 'withCarriers'
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     normalization_context:
@@ -628,12 +536,6 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Name:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Description:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -675,12 +577,6 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
             carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     pagination_client_enabled: true
@@ -705,12 +601,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     pagination_client_enabled: true
@@ -745,12 +635,6 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
     get: ~
     post:
       operation_normalization_context: 'withPatterns'
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     normalization_context:
@@ -782,12 +666,6 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRe
 Ivoz\Provider\Domain\Model\RoutingPattern\Name:
 Ivoz\Provider\Domain\Model\RoutingPattern\Description:
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -796,12 +674,6 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
           eq: "user.getBrand().getId()"
 
 Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
-  properties:
-    brand:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:

@@ -26,8 +26,7 @@ Feature: Create fixed costs
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
-          "id": 2,
-          "brand": 1
+          "id": 2
       }
     """
 
@@ -44,7 +43,6 @@ Feature: Create fixed costs
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
-          "id": 2,
-          "brand": "~"
+          "id": 2
       }
     """

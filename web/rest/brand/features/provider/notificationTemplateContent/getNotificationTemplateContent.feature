@@ -18,11 +18,6 @@ Feature: Retrieve notification template contents
               "fromName": "IvozProvider Notification",
               "fromAddress": "no-reply@ivozprovider.com",
               "id": 1
-          },
-          {
-              "fromName": "IvozProvider Notification",
-              "fromAddress": "no-reply@ivozprovider.com",
-              "id": 2
           }
       ]
     """
@@ -46,8 +41,7 @@ Feature: Retrieve notification template contents
           "notificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
-              "id": 1,
-              "brand": 1
+              "id": 1
           },
           "language": "~"
       }

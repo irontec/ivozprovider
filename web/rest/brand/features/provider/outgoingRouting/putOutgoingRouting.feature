@@ -39,7 +39,6 @@ Feature: Update outgoing routings
           "forceClid": false,
           "clid": null,
           "id": 1,
-          "brand": "~",
           "company": "~",
           "carrier": "~",
           "routingPattern": "~",

@@ -33,8 +33,7 @@
               "es": "Alemania",
               "ca": "Alemania",
               "it": "Germany"
-          },
-          "brand": 1
+          }
       }
     """
 
@@ -55,7 +54,6 @@
               "es": "Usansolocity",
               "ca": "Usansolocity",
               "it": "Usansolocity"
-          },
-          "brand": "~"
+          }
       }
     """

@@ -40,8 +40,7 @@ Feature: Create web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "brand": 1
+          }
       }
     """
 
@@ -65,7 +64,6 @@ Feature: Create web portals
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "brand": "~"
+          }
       }
     """

@@ -46,7 +46,6 @@ Feature: Update rating plan group
               "ca": "",
               "it": ""
           },
-          "brand": "~",
           "currency": null
       }
     """

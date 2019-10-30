@@ -27,7 +27,6 @@ Feature: Create routing pattern groups
           "name": "Usansolocity",
           "description": "Usansolocity",
           "id": 3,
-          "brand": 1,
           "patternIds": [
               2
           ]
@@ -47,7 +46,6 @@ Feature: Create routing pattern groups
           "name": "Usansolocity",
           "description": "Usansolocity",
           "id": 3,
-          "brand": "~",
           "patternIds": [
               2
           ]

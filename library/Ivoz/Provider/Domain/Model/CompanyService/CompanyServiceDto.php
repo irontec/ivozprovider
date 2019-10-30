@@ -11,12 +11,14 @@ class CompanyServiceDto extends CompanyServiceDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            return [
+            $response = [
                 'id' => 'id',
                 'code' => 'code'
             ];
+        } else {
+            $response = parent::getPropertyMap(...func_get_args());
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        return $response;
     }
 }

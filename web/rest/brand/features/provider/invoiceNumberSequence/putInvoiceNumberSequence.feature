@@ -33,7 +33,6 @@ Feature: Update invoice number sequences
           "latestValue": "auto0001",
           "iteration": 1,
           "version": 2,
-          "id": 1,
-          "brand": "~"
+          "id": 1
       }
     """

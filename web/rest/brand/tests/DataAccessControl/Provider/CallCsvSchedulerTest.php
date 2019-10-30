@@ -76,7 +76,7 @@ class CallCsvSchedulerTest extends KernelTestCase
                         [
                             'callCsvNotificationTemplate',
                             'in',
-                            'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
                         ],
                         [
                             'callCsvNotificationTemplate',

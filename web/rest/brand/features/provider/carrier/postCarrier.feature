@@ -29,7 +29,6 @@ Feature: Create carriers
           "balance": 0,
           "calculateCost": false,
           "id": 3,
-          "brand": 1,
           "transformationRuleSet": 1,
           "currency": null
       }
@@ -50,7 +49,6 @@ Feature: Create carriers
           "externallyRated": false,
           "calculateCost": false,
           "id": 3,
-          "brand": "~",
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",
               "internationalCode": "00",
@@ -64,7 +62,6 @@ Feature: Create carriers
                   "es": "es",
                   "ca": "ca"
               },
-              "brand": 1,
               "country": 68
           }
       }

@@ -26,7 +26,6 @@ Feature: Create ddis
           "ddi": "321",
           "id": 2,
           "company": 1,
-          "brand": 1,
           "ddiProvider": 1,
           "country": 68
       }
@@ -45,13 +44,11 @@ Feature: Create ddis
           "ddi": "321",
           "id": 2,
           "company": "~",
-          "brand": "~",
           "ddiProvider": {
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "externallyRated": false,
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
           },
           "country": {

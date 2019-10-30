@@ -12,12 +12,14 @@ class CalendarDto extends CalendarDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            return [
+            $response = [
                 'id' => 'id',
                 'name' => 'name'
             ];
+        } else {
+            $response = parent::getPropertyMap(...func_get_args());
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        return $response;
     }
 }

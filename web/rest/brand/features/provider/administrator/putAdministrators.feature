@@ -34,7 +34,6 @@ Feature: Update administrators
           "name": "Updated admin name",
           "lastname": "a lastname",
           "id": 4,
-          "brand": "~",
           "company": "~",
           "timezone": {
               "tz": "Europe/London",
@@ -63,7 +62,6 @@ Feature: Update administrators
           "active": false,
           "name": "Updated admin name",
           "lastname": "a lastname",
-          "brand": 1,
           "company": 99,
           "timezone": 2
       }

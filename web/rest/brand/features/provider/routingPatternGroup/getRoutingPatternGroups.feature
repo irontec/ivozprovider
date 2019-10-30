@@ -40,7 +40,6 @@ Feature: Retrieve routing pattern groups
           "name": "Europe",
           "description": "",
           "id": 1,
-          "brand": "~",
           "patternIds": [
               1
           ]

@@ -54,9 +54,7 @@ Feature: Retrieve carrier servers
               "name": "CarrierName",
               "externallyRated": false,
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
-          },
-          "brand": "~"
+          }
       }
     """

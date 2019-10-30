@@ -16,37 +16,30 @@ Feature: Retrieve features rel brand
       [
           {
               "id": 1,
-              "brand": 1,
               "feature": 1
           },
           {
               "id": 2,
-              "brand": 1,
               "feature": 2
           },
           {
               "id": 3,
-              "brand": 1,
               "feature": 3
           },
           {
               "id": 4,
-              "brand": 1,
               "feature": 4
           },
           {
               "id": 5,
-              "brand": 1,
               "feature": 5
           },
           {
               "id": 6,
-              "brand": 1,
               "feature": 6
           },
           {
               "id": 7,
-              "brand": 1,
               "feature": 7
           }
       ]
@@ -63,27 +56,6 @@ Feature: Retrieve features rel brand
     """
       {
           "id": 1,
-          "brand": {
-              "name": "DemoBrand",
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145,
-              "currency": 2
-          },
           "feature": {
               "iden": "queues",
               "id": 1,

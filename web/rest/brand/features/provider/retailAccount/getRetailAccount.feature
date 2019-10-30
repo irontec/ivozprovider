@@ -43,7 +43,6 @@ Feature: Retrieve retail accounts
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 1,
-          "brand": "~",
           "company": "~",
           "transformationRuleSet": null,
           "outgoingDdi": null

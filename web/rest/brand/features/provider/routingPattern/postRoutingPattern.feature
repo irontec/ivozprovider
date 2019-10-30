@@ -46,8 +46,7 @@ Feature: Create routing patterns
               "es": "desc es",
               "ca": "desc ca",
               "it": "desc it"
-          },
-          "brand": 1
+          }
       }
     """
 
@@ -74,7 +73,6 @@ Feature: Create routing patterns
               "es": "desc es",
               "ca": "desc ca",
               "it": "desc it"
-          },
-          "brand": "~"
+          }
       }
     """

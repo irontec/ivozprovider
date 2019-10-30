@@ -119,6 +119,19 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
         return $response;
     }
 
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = $this->getPropertyMap($context, $role);
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
+    }
+
     /**
      * @param array $response
      * @return array
@@ -140,7 +153,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'maxCalls',
             't38Passthrough',
             'id',
-            'brandId',
             'companyId',
             'transformationRuleSetId',
             'outgoingDdiId',

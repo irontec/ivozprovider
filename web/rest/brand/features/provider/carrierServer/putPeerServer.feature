@@ -56,9 +56,7 @@ Feature: Update carrier servers
                 "balance": 0,
                 "calculateCost": false,
                 "id": 1,
-                "brand": 1,
                 "transformationRuleSet": 1
-            },
-            "brand": "~"
+            }
         }
     """

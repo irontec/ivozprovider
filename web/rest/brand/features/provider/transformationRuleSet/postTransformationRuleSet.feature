@@ -45,7 +45,6 @@ Feature: Create transformation rule sets
               "ca": "usansolo",
               "it": "usansolo"
           },
-          "brand": 1,
           "country": 77
       }
     """
@@ -73,7 +72,6 @@ Feature: Create transformation rule sets
               "ca": "usansolo",
               "it": "usansolo"
           },
-          "brand": "~",
           "country": "~"
       }
     """

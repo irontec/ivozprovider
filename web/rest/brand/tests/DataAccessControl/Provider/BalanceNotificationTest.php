@@ -85,7 +85,7 @@ class BalanceNotificationTest extends KernelTestCase
                         [
                             'notificationTemplate',
                             'in',
-                            'NotificationTemplateRepository({"or":[["brand","eq","user.getBrand().getId()"],["brand","eq",null]]})'
+                            'NotificationTemplateRepository([["brand","eq","user.getBrand().getId()"]])'
                         ],
                         [
                             'notificationTemplate',

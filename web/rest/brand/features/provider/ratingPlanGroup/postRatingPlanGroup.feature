@@ -22,8 +22,7 @@
               "es": "Nuevo Rating plan",
               "ca": "Nou Rating plan",
               "it": "Nouvo Rating plan"
-          },
-          "brand": "1"
+          }
       }
     """
     Then the response status code should be 201
@@ -45,7 +44,6 @@
               "ca": "Nou Rating plan",
               "it": "Nouvo Rating plan"
           },
-          "brand": 1,
           "currency": null
       }
     """
@@ -73,7 +71,6 @@
               "es": "es",
               "it": "it"
           },
-          "brand": "~",
           "currency": null
       }
     """

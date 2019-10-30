@@ -28,7 +28,6 @@ Feature: Update routing pattern groups
           "name": "Centreal Europe",
           "description": "Description",
           "id": 1,
-          "brand": "~",
           "patternIds": [
               1,
               2

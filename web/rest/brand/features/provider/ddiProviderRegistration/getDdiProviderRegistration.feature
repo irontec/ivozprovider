@@ -51,7 +51,6 @@ Feature: Retrieve ddi provider registrations
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "id": 1,
-              "brand": 1,
               "transformationRuleSet": 1
           }
       }
