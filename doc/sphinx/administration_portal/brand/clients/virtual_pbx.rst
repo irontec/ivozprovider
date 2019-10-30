@@ -30,16 +30,19 @@ that require feature-full call flows.
         Chosen currency will be used in price calculation, invoices, balance movements and
         remaining money operations of this client.
 
-    Security
-        Limits the external concurrent calls and source of calls for this client.
+    Max calls
+        Limits both incoming and outgoing external calls (0 for unlimited).
+
+    Filter by IP address
+        If set, the platform will only allow calls coming from allowed IP addresses or network ranges.
+
+    Max daily usage
+        Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
+        accounts are re-enabled.
 
     Invoice data
         Data included in invoices created by this brand. This section also allows displaying invoices list in
         client's portal menu so they can download them.
-
-    Externally rated options
-        For :ref:`Carriers` with externally rated enabled, this field can be used to store specific
-        information for this client.
 
     Notifications
         Configure the email :ref:`notification templates` to use for this client.

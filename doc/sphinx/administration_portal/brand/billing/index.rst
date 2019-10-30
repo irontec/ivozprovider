@@ -84,3 +84,4 @@ This topic will cover every topic involved in the billing process:
     destination_rates
     destinations
     prepaid_balances
+    current_day_usages

@@ -569,6 +569,11 @@ msgid_plural "Currencies"
 msgstr[0] "Moneda"
 msgstr[1] "Monedes"
 
+msgid "Current Day Usage"
+msgid_plural "Current Day Usages"
+msgstr[0] "Consum dia en curs"
+msgstr[1] "Consums dia en curs"
+
 msgid "Custom"
 msgstr "Personalitzat"
 
@@ -904,12 +909,6 @@ msgid ""
 msgstr ""
 "Tarifació externa no pot ser deshabilitada ja que alguns DDI d'entrada "
 "demanen ser facturats."
-
-msgid "Externally rater custom options"
-msgstr "Opcions especials de tarifació externa"
-
-msgid "Externally rater options"
-msgstr "Opcions de tarifació externa"
 
 msgid "Extra Configuration"
 msgstr "Configuració extra"
@@ -1386,6 +1385,9 @@ msgstr "Deixa en blanc per enviar al camp Amfitrió"
 msgid "Leave empty to use the suggested default"
 msgstr "Deixar en blanc per utilitzar els per defectes suggerits"
 
+msgid "Limit max daily usage."
+msgstr "Limitar diari màxim de consum."
+
 msgid ""
 "Limits external incoming and outgoing calls to this value (0 for unlimited)."
 msgstr ""
@@ -1519,6 +1521,9 @@ msgstr "Tipus de coincidència"
 
 msgid "Max calls"
 msgstr "Trucades màximes"
+
+msgid "Max daily usage"
+msgstr "Màxim diari consum"
 
 msgid "Max digits"
 msgstr "Dígits màxims"
@@ -2617,6 +2622,9 @@ msgstr "Tipus de temporització"
 
 msgid "To address"
 msgstr "Adreça destí"
+
+msgid "Today usage"
+msgstr "Consum d’hui"
 
 msgid "Toggle extension"
 msgstr "Commuta extensió"

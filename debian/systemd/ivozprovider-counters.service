@@ -1,0 +1,7 @@
+[Unit]
+Description=Ivozprovider Counter Reset
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/irontec/ivozprovider/microservices/balances/bin/reset-daily-usage-counter

@@ -17,6 +17,15 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService:
     public: true
 
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\SetMaxUsageThresholdService:
+    public: true
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReassembleTriggerService:
+    public: true
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\EnableAccountService:
+    public: true
+
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService:
     public: true
 

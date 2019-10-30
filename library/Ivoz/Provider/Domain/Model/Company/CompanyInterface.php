@@ -191,6 +191,13 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getMaxCalls();
 
     /**
+     * Get maxDailyUsage
+     *
+     * @return integer
+     */
+    public function getMaxDailyUsage();
+
+    /**
      * Get postalAddress
      *
      * @return string

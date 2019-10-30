@@ -11,6 +11,10 @@ production:
   screens: &terminals_screensLink
     terminalsList_screen: &terminalsList_screenLink
       controller: list
+      order:
+        field:
+        - Terminal.name
+        type: asc
       pagination:
         items: 25
       <<: *Terminals

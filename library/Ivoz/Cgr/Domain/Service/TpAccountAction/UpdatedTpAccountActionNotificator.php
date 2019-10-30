@@ -16,6 +16,17 @@ class UpdatedTpAccountActionNotificator extends CgratesReloadNotificator impleme
      */
     public function execute(TpAccountActionInterface $tpAccountAction)
     {
+        $company = $tpAccountAction->getCompany();
+
+        if ($company && $company->hasChanged('maxDailyUsage')) {
+            $this->reload(
+                $tpAccountAction->getTpid(),
+                $tpAccountAction->getAccount()
+            );
+
+            return;
+        }
+
         $this->reload($tpAccountAction->getTpid());
     }
 }

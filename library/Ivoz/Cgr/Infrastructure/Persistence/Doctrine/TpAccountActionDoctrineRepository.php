@@ -19,4 +19,16 @@ class TpAccountActionDoctrineRepository extends ServiceEntityRepository implemen
     {
         parent::__construct($registry, TpAccountAction::class);
     }
+
+    /**
+     * @param int $companyId
+     */
+    public function findByCompany(int $companyId)
+    {
+        $criteria = [
+            'company' => $companyId
+        ];
+
+        return $this->findOneBy($criteria);
+    }
 }

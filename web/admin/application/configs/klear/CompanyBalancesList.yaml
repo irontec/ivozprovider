@@ -11,6 +11,10 @@ production:
   screens: &companyBalances_screensLink
     companyBalancesList_screen: &companyBalancesList_screenLink
       controller: list
+      order:
+        field:
+        - Company.name
+        type: asc
       rawCondition: "Company.billingMethod in ('prepaid', 'pseudoprepaid')"
       pagination:
         items: 25
@@ -39,6 +43,7 @@ production:
           province: true
           countryName: true
           outgoingDdi: true
+          outgoingDdiE164: true
           outgoingDdiRule: true
           registryData: true
           maxCalls: true
@@ -54,7 +59,6 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
-          externallyExtraOpts: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
@@ -65,6 +69,10 @@ production:
           domainUsers: true
           relFeatures: true
           showInvoices: true
+          currentDayUsage: true
+          currentDayMaxUsage: true
+          accountStatus: true
+          maxDailyUsage: true
         order:
           typeIcon: true
           name: true

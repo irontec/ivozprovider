@@ -13,6 +13,10 @@ production:
   screens: &residentialClients_screensLink
     residentialClientsList_screen: &residentialClientsList_screenLink
       controller: list
+      order:
+        field:
+        - Company.name
+        type: asc
       pagination:
         items: 25
       <<: *ResidentialClients
@@ -59,7 +63,6 @@ production:
           language: true
           onDemandRecord: true
           onDemandRecordCode: true
-          externallyExtraOpts: true
           type: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
@@ -68,6 +71,7 @@ production:
           balance: true
           showInvoices: true
           outgoingDdi: true
+          maxDailyUsage: true
         order:
           name: true
           nif: true
@@ -116,7 +120,6 @@ production:
           applicationServer: true
           maxCalls: false
           outgoingDdiRule: true
-          externallyExtraOpts: true
           balance: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
@@ -128,12 +131,12 @@ production:
           id: true
           name: true
           maxCalls: true
+          maxDailyUsage: true
           language: true
           showInvoices: true
           onDemandRecord: true
           voicemailNotificationTemplate: true
           mediaRelaySets: true
-          externallyExtraOpts: true
       fixedPositions: &residentialClientsFixedPositions_Link
         group0:
           colsPerRow: 6
@@ -153,11 +156,12 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
             ipFilter: 1
+            maxDailyUsage: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -192,6 +196,7 @@ production:
           town: ${auth.brandFeatures.invoices.disabled}
           province: ${auth.brandFeatures.invoices.disabled}
           countryName: ${auth.brandFeatures.invoices.disabled}
+          invoiceNotificationTemplate: ${auth.brandFeatures.invoices.disabled}
           outgoingDdiRule: true
           balance: true
           outgoingDdiE164: true
@@ -218,11 +223,12 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
             ipFilter: 1
+            maxDailyUsage: 1
         group3:
           colsPerRow: 12
           collapsed: true
@@ -250,12 +256,6 @@ production:
           fields:
             onDemandRecord: 6
             onDemandRecordCode: 6
-        group6:
-          colsPerRow: 1
-          collapsed: true
-          label: _("Externally rater options")
-          fields:
-            externallyExtraOpts: 1
         group7:
           colsPerRow: 2
           collapsed: true

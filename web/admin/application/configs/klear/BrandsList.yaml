@@ -11,6 +11,10 @@ production:
   screens:
     brandsList_screen: &brandsList_screenLink
       controller: list
+      order:
+        field:
+        - Brand.name
+        type: asc
       pagination:
         items: 25
       <<: *Brands

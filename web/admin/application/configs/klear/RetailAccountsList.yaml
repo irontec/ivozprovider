@@ -11,6 +11,10 @@ production:
   screens: &retailAccounts_screensLink
     retailAccountsList_screen: &retailAccountsList_screenLink
       controller: list
+      order:
+        field:
+        - RetailAccount.name
+        type: asc
       pagination:
         items: 25
       <<: *RetailAccounts
