@@ -2,12 +2,14 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\ArrayCollection;
 
-interface RoutingPatternInterface extends EntityInterface
+interface RoutingPatternInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * {@inheritDoc}
      */

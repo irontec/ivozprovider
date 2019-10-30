@@ -2,13 +2,13 @@
 
 namespace Application\Migrations;
 
-use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\LoggableMigration;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20191017111612 extends AbstractMigration
+class Version20191017111612 extends LoggableMigration
 {
     /**
      * @param Schema $schema
