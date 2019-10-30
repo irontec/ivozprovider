@@ -1,4 +1,10 @@
 # Changelog
+## 2.13
+* Endpoints:
+    - /my/call_history
+        - Removed company and company[exists] filter properties
+    - /users_cdrs
+        - Removed company and company[exists] filter properties
 
 ## 2.12.1
 * Models:

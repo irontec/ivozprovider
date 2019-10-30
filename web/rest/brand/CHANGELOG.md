@@ -1,5 +1,16 @@
 # Changelog
+## 2.13
+* Endpoints:
+    - /billable_calls/{callid}/rate has being added
 
+* Models:
+    - Removed not nullable brand attributes as they can be auto resolved (deprecated since 2.12)
+    - BillableCalls:
+        - Added BillableCall and BillableCall-rating models
+    - OutgoingRouting:
+        - Added "block" to routingMode accepted values
+        - Added DdiProviderRegistrationStatus and DdiProviderRegistration-detailedCollection models
+   
 ## 2.12.1
 * Endpoints:
     - /ddi_provider_registrations
