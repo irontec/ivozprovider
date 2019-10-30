@@ -114,6 +114,9 @@ msgstr "Tots"
 msgid "All clients"
 msgstr "Tots els clients"
 
+msgid "Allow Client to remove recordings"
+msgstr "Permet al client eliminar les gravacions"
+
 msgid "Allow all outgoing calls"
 msgstr "Permet totes les trucades sortints"
 
@@ -814,6 +817,13 @@ msgid ""
 msgstr ""
 "Activa aquesta opció per habilitar un espai de descàrrega de factures al "
 "portal de Clients."
+
+msgid ""
+"Enable this option to display delete button in Client's portal call "
+"recordings section."
+msgstr ""
+"Activa aquesta opció per mostrar el botó d’eliminació a la secció "
+"d’enregistrament de trucades al portal del client."
 
 msgid "Enabled"
 msgstr "Habilitat"

@@ -113,6 +113,9 @@ msgstr "Todos"
 msgid "All clients"
 msgstr "Todos los clientes"
 
+msgid "Allow Client to remove recordings"
+msgstr "Permitir al cliente eliminar grabaciones"
+
 msgid "Allow all outgoing calls"
 msgstr "Permitir todas las llamadas salientes"
 
@@ -817,6 +820,14 @@ msgid ""
 msgstr ""
 "Habilite esta opción para mostrar una sección el portal de cliente que "
 "permita descargar las facturas generadas"
+
+msgid ""
+"Enable this option to display delete button in Client's portal call "
+"recordings section."
+msgstr ""
+"Habilite esta opción para mostrar el botón eliminar en la sección "
+"Grabaciones de llamadas del portal de clienteGrabaciones de llamadas del "
+"portal del cliente"
 
 msgid "Enabled"
 msgstr "Activado"
