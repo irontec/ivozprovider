@@ -69,10 +69,10 @@
         "ramsey/uuid": "^3.7",
         "symfony/monolog-bundle": "3.1.*",
         "symfony/swiftmailer-bundle": "^3.1",
-        "symfony/symfony": "3.4.*"
+        "symfony/symfony": "3.4.*",
+        "beberlei/assert": "2.9.*"
     },
     "require-dev": {
-        "beberlei/assert": "2.9.*",
         "docteurklein/test-double-bundle": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^6.0",
