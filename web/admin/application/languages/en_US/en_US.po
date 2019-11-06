@@ -910,6 +910,12 @@ msgid ""
 msgstr ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 
+msgid "Externally rater custom options"
+msgstr "Externally rater custom options"
+
+msgid "Externally rater options"
+msgstr "Externally rater options"
+
 msgid "Extra Configuration"
 msgstr "Extra Configuration"
 

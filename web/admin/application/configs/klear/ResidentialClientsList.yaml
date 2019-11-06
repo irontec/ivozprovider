@@ -73,6 +73,7 @@ production:
           outgoingDdi: true
           maxDailyUsage: true
           allowRecordingRemoval: true
+          externallyExtraOpts: true
         order:
           name: true
           nif: true
@@ -129,6 +130,7 @@ production:
           showInvoices: true
           outgoingDdiE164: true
           allowRecordingRemoval: true
+          externallyExtraOpts: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
@@ -259,6 +261,12 @@ production:
             onDemandRecord: 6
             allowRecordingRemoval: 6
             onDemandRecordCode: 6
+        group6:
+          colsPerRow: 1
+          collapsed: true
+          label: _("Externally rater options")
+          fields:
+            externallyExtraOpts: 1
         group7:
           colsPerRow: 2
           collapsed: true

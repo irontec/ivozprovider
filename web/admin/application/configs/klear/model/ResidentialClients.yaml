@@ -421,6 +421,9 @@ production:
         icon: help
         text: _("Enable this option to display a section in Client's portal to download generated invoices.")
         label: _("Need help?")
+    externallyExtraOpts:
+      title: _('Externally rater custom options')
+      type: textarea
 staging:
   _extends: production
 testing:
