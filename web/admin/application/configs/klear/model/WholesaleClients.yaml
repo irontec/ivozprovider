@@ -264,6 +264,9 @@ production:
             - name
             template: '%name%'
         'null': _("Use generic template")
+    externallyExtraOpts:
+      title: _('Externally rater custom options')
+      type: textarea
 staging:
   _extends: production
 testing:

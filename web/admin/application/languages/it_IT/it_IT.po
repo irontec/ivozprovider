@@ -927,6 +927,12 @@ msgstr ""
 "La tariffazione esterna non può essere disabilitata poiché alcuni DDI "
 "richiedono fatturazione delle chiamate in entrata."
 
+msgid "Externally rater custom options"
+msgstr "Opzioni personalizzate Tariffatore Esterno"
+
+msgid "Externally rater options"
+msgstr "Externally rater options"
+
 msgid "Extra Configuration"
 msgstr "Configurazione extra"
 

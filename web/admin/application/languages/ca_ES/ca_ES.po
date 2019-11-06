@@ -920,6 +920,12 @@ msgstr ""
 "Tarifació externa no pot ser deshabilitada ja que alguns DDI d'entrada "
 "demanen ser facturats."
 
+msgid "Externally rater custom options"
+msgstr "Opcions especials de tarifació externa"
+
+msgid "Externally rater options"
+msgstr "Opcions de tarifació externa"
+
 msgid "Extra Configuration"
 msgstr "Configuració extra"
 
