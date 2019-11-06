@@ -341,6 +341,9 @@ production:
         icon: help
         text: _("Enable this option to display delete button in Client's portal call recordings section.")
         label: _("Need help?")
+    externallyExtraOpts:
+      title: _('Externally rater custom options')
+      type: textarea
 staging:
   _extends: production
 testing:

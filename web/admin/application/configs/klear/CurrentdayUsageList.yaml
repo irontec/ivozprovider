@@ -64,6 +64,7 @@ production:
           billingMethod: true
           maxDailyUsage: true
           allowRecordingRemoval: true
+          externallyExtraOpts: true
         order:
           typeIcon: true
           name: true

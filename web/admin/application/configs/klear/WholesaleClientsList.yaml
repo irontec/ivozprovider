@@ -60,6 +60,7 @@ production:
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           maxDailyUsage: true
+          externallyExtraOpts: true
         order:
           name: true
           nif: true
@@ -104,6 +105,7 @@ production:
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          externallyExtraOpts: true
         order: &wholesaleClientsOrder_Link
           id: true
           name: true
@@ -223,6 +225,12 @@ production:
           label: _("Platform data")
           fields:
             mediaRelaySets: 4
+        group6:
+          colsPerRow: 1
+          collapsed: true
+          label: _("Externally rater options")
+          fields:
+            externallyExtraOpts: 1
         group7:
           colsPerRow: 2
           collapsed: true
