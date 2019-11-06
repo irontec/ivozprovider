@@ -60,13 +60,6 @@ class PutBillableCallRatingAction
             []
         );
 
-        if (!isset($data['price'])) {
-            throw new \DomainException(
-                'Price is required',
-                500
-            );
-        }
-
         if (isset($data['destinationName'])) {
             $data['destination'] = null;
         }

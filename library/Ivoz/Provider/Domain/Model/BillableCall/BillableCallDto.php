@@ -16,6 +16,7 @@ class BillableCallDto extends BillableCallDtoAbstract
         if ($context === self::CONTEXT_RATING_INTERNAL) {
             return [
                 'price' => 'price',
+                'cost' => 'cost',
                 'destinationName' => 'destinationName',
                 'destinationId' => 'destination',
                 'ratingPlanName' => 'ratingPlanName',
@@ -26,6 +27,7 @@ class BillableCallDto extends BillableCallDtoAbstract
         if ($context === self::CONTEXT_RATING) {
             return [
                 'price' => 'price',
+                'cost' => 'cost',
                 'destinationName' => 'destinationName',
                 'ratingPlanName' => 'ratingPlanName'
             ];
