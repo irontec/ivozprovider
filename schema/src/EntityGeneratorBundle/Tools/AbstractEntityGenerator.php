@@ -1579,18 +1579,6 @@ public function <methodName>(<criteriaArgument>)
             $assertions[] = '$' . $currentField->fieldName . ' = (int) $' . $currentField->fieldName . ';';
         }
 
-        if (!empty($assertions) && $isNullable) {
-            foreach ($assertions as $key => $value) {
-                $assertions[$key] = $this->spaces . $assertions[$key];
-            }
-
-            array_unshift(
-                $assertions,
-                AssertionGenerator::notNullCondition($currentField->fieldName)
-            );
-            $assertions[] = '}';
-        }
-
         return $assertions;
     }
 
