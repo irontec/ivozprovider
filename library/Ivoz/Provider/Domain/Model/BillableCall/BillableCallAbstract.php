@@ -373,6 +373,10 @@ abstract class BillableCallAbstract
                 $startTime,
                 null
             );
+
+            if ($this->startTime == $startTime) {
+                return $this;
+            }
         }
 
         $this->startTime = $startTime;

@@ -327,6 +327,10 @@ abstract class TrunksCdrAbstract
             '2000-01-01 00:00:00'
         );
 
+        if ($this->startTime == $startTime) {
+            return $this;
+        }
+
         $this->startTime = $startTime;
 
         return $this;
@@ -356,6 +360,10 @@ abstract class TrunksCdrAbstract
             $endTime,
             '2000-01-01 00:00:00'
         );
+
+        if ($this->endTime == $endTime) {
+            return $this;
+        }
 
         $this->endTime = $endTime;
 
@@ -639,6 +647,10 @@ abstract class TrunksCdrAbstract
             $parserScheduledAt,
             'CURRENT_TIMESTAMP'
         );
+
+        if ($this->parserScheduledAt == $parserScheduledAt) {
+            return $this;
+        }
 
         $this->parserScheduledAt = $parserScheduledAt;
 

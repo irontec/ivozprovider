@@ -1332,6 +1332,10 @@ abstract class VoicemailAbstract
                 $stamp,
                 null
             );
+
+            if ($this->stamp == $stamp) {
+                return $this;
+            }
         }
 
         $this->stamp = $stamp;

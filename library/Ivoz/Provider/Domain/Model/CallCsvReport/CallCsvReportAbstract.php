@@ -280,6 +280,10 @@ abstract class CallCsvReportAbstract
             null
         );
 
+        if ($this->inDate == $inDate) {
+            return $this;
+        }
+
         $this->inDate = $inDate;
 
         return $this;
@@ -310,6 +314,10 @@ abstract class CallCsvReportAbstract
             null
         );
 
+        if ($this->outDate == $outDate) {
+            return $this;
+        }
+
         $this->outDate = $outDate;
 
         return $this;
@@ -339,6 +347,10 @@ abstract class CallCsvReportAbstract
             $createdOn,
             null
         );
+
+        if ($this->createdOn == $createdOn) {
+            return $this;
+        }
 
         $this->createdOn = $createdOn;
 
