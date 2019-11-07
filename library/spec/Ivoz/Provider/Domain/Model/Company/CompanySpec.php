@@ -90,7 +90,7 @@ class CompanySpec extends ObjectBehavior
             ->during('setOnDemandRecordCode', ['123']);
     }
 
-    function it_turns_empty_ipFilter_into_zero()
+    function it_turns_empty_ipFilter_into_false()
     {
         $dto = clone $this->dto;
         $dto->setIpFilter(null);
@@ -102,7 +102,7 @@ class CompanySpec extends ObjectBehavior
 
         $this
             ->getIpFilter()
-            ->shouldBe(0);
+            ->shouldBe(false);
     }
 
     function it_turns_empty_onDemandRecord_into_zero()
