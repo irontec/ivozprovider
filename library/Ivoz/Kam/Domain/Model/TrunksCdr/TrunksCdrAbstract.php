@@ -578,6 +578,7 @@ abstract class TrunksCdrAbstract
     {
         if (!is_null($bounced)) {
             Assertion::between(intval($bounced), 0, 1, 'bounced provided "%s" is not a valid boolean value.');
+            $bounced = (bool) $bounced;
         }
 
         $this->bounced = $bounced;
@@ -606,6 +607,7 @@ abstract class TrunksCdrAbstract
     {
         if (!is_null($parsed)) {
             Assertion::between(intval($parsed), 0, 1, 'parsed provided "%s" is not a valid boolean value.');
+            $parsed = (bool) $parsed;
         }
 
         $this->parsed = $parsed;

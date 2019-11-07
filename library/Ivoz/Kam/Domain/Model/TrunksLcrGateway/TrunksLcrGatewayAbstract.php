@@ -508,6 +508,7 @@ abstract class TrunksLcrGatewayAbstract
     {
         if (!is_null($strip)) {
             Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
+            $strip = (bool) $strip;
         }
 
         $this->strip = $strip;

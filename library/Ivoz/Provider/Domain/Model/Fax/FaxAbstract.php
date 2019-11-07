@@ -253,8 +253,9 @@ abstract class FaxAbstract
     {
         Assertion::notNull($sendByEmail, 'sendByEmail value "%s" is null, but non null value was expected.');
         Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
+        $sendByEmail = (bool) $sendByEmail;
 
-        $this->sendByEmail = (bool) $sendByEmail;
+        $this->sendByEmail = $sendByEmail;
 
         return $this;
     }

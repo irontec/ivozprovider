@@ -332,6 +332,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($monday)) {
             Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
+            $monday = (bool) $monday;
         }
 
         $this->monday = $monday;
@@ -360,6 +361,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($tuesday)) {
             Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
+            $tuesday = (bool) $tuesday;
         }
 
         $this->tuesday = $tuesday;
@@ -388,6 +390,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($wednesday)) {
             Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
+            $wednesday = (bool) $wednesday;
         }
 
         $this->wednesday = $wednesday;
@@ -416,6 +419,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($thursday)) {
             Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
+            $thursday = (bool) $thursday;
         }
 
         $this->thursday = $thursday;
@@ -444,6 +448,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($friday)) {
             Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
+            $friday = (bool) $friday;
         }
 
         $this->friday = $friday;
@@ -472,6 +477,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($saturday)) {
             Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
+            $saturday = (bool) $saturday;
         }
 
         $this->saturday = $saturday;
@@ -500,6 +506,7 @@ abstract class ScheduleAbstract
     {
         if (!is_null($sunday)) {
             Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
+            $sunday = (bool) $sunday;
         }
 
         $this->sunday = $sunday;

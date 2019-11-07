@@ -432,8 +432,9 @@ abstract class TpAccountActionAbstract
     {
         Assertion::notNull($allowNegative, 'allowNegative value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowNegative), 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
+        $allowNegative = (bool) $allowNegative;
 
-        $this->allowNegative = (bool) $allowNegative;
+        $this->allowNegative = $allowNegative;
 
         return $this;
     }
@@ -459,8 +460,9 @@ abstract class TpAccountActionAbstract
     {
         Assertion::notNull($disabled, 'disabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
+        $disabled = (bool) $disabled;
 
-        $this->disabled = (bool) $disabled;
+        $this->disabled = $disabled;
 
         return $this;
     }

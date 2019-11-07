@@ -252,6 +252,7 @@ abstract class DdiProviderAbstract
     {
         if (!is_null($externallyRated)) {
             Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
+            $externallyRated = (bool) $externallyRated;
         }
 
         $this->externallyRated = $externallyRated;

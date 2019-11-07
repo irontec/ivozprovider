@@ -453,6 +453,7 @@ abstract class CarrierServerAbstract
     {
         if (!is_null($sendPAI)) {
             Assertion::between(intval($sendPAI), 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
+            $sendPAI = (bool) $sendPAI;
         }
 
         $this->sendPAI = $sendPAI;
@@ -481,6 +482,7 @@ abstract class CarrierServerAbstract
     {
         if (!is_null($sendRPID)) {
             Assertion::between(intval($sendRPID), 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
+            $sendRPID = (bool) $sendRPID;
         }
 
         $this->sendRPID = $sendRPID;

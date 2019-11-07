@@ -415,8 +415,9 @@ abstract class IvrAbstract
     {
         Assertion::notNull($allowExtensions, 'allowExtensions value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowExtensions), 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
+        $allowExtensions = (bool) $allowExtensions;
 
-        $this->allowExtensions = (bool) $allowExtensions;
+        $this->allowExtensions = $allowExtensions;
 
         return $this;
     }
