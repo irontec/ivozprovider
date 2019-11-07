@@ -967,10 +967,8 @@ abstract class VoicemailAbstract
     protected function setSayduration($sayduration = null)
     {
         if (!is_null($sayduration)) {
-            if (!is_null($sayduration)) {
-                Assertion::integerish($sayduration, 'sayduration value "%s" is not an integer or a number castable to integer.');
-                $sayduration = (int) $sayduration;
-            }
+            Assertion::integerish($sayduration, 'sayduration value "%s" is not an integer or a number castable to integer.');
+            $sayduration = (int) $sayduration;
         }
 
         $this->sayduration = $sayduration;
@@ -1130,10 +1128,8 @@ abstract class VoicemailAbstract
     protected function setMaxmsg($maxmsg = null)
     {
         if (!is_null($maxmsg)) {
-            if (!is_null($maxmsg)) {
-                Assertion::integerish($maxmsg, 'maxmsg value "%s" is not an integer or a number castable to integer.');
-                $maxmsg = (int) $maxmsg;
-            }
+            Assertion::integerish($maxmsg, 'maxmsg value "%s" is not an integer or a number castable to integer.');
+            $maxmsg = (int) $maxmsg;
         }
 
         $this->maxmsg = $maxmsg;

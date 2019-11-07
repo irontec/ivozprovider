@@ -800,10 +800,8 @@ abstract class UsersLocationAbstract
     protected function setMethods($methods = null)
     {
         if (!is_null($methods)) {
-            if (!is_null($methods)) {
-                Assertion::integerish($methods, 'methods value "%s" is not an integer or a number castable to integer.');
-                $methods = (int) $methods;
-            }
+            Assertion::integerish($methods, 'methods value "%s" is not an integer or a number castable to integer.');
+            $methods = (int) $methods;
         }
 
         $this->methods = $methods;

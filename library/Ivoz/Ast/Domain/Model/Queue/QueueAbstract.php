@@ -309,10 +309,8 @@ abstract class QueueAbstract
     protected function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
     {
         if (!is_null($periodicAnnounceFrequency)) {
-            if (!is_null($periodicAnnounceFrequency)) {
-                Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
-                $periodicAnnounceFrequency = (int) $periodicAnnounceFrequency;
-            }
+            Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
+            $periodicAnnounceFrequency = (int) $periodicAnnounceFrequency;
         }
 
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
@@ -340,10 +338,8 @@ abstract class QueueAbstract
     protected function setTimeout($timeout = null)
     {
         if (!is_null($timeout)) {
-            if (!is_null($timeout)) {
-                Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
-                $timeout = (int) $timeout;
-            }
+            Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
+            $timeout = (int) $timeout;
         }
 
         $this->timeout = $timeout;
@@ -423,10 +419,8 @@ abstract class QueueAbstract
     protected function setWrapuptime($wrapuptime = null)
     {
         if (!is_null($wrapuptime)) {
-            if (!is_null($wrapuptime)) {
-                Assertion::integerish($wrapuptime, 'wrapuptime value "%s" is not an integer or a number castable to integer.');
-                $wrapuptime = (int) $wrapuptime;
-            }
+            Assertion::integerish($wrapuptime, 'wrapuptime value "%s" is not an integer or a number castable to integer.');
+            $wrapuptime = (int) $wrapuptime;
         }
 
         $this->wrapuptime = $wrapuptime;
@@ -454,10 +448,8 @@ abstract class QueueAbstract
     protected function setMaxlen($maxlen = null)
     {
         if (!is_null($maxlen)) {
-            if (!is_null($maxlen)) {
-                Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
-                $maxlen = (int) $maxlen;
-            }
+            Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
+            $maxlen = (int) $maxlen;
         }
 
         $this->maxlen = $maxlen;
@@ -509,10 +501,8 @@ abstract class QueueAbstract
     protected function setWeight($weight = null)
     {
         if (!is_null($weight)) {
-            if (!is_null($weight)) {
-                Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
-                $weight = (int) $weight;
-            }
+            Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+            $weight = (int) $weight;
         }
 
         $this->weight = $weight;

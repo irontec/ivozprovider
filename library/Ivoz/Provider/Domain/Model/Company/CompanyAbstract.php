@@ -881,10 +881,8 @@ abstract class CompanyAbstract
     protected function setOnDemandRecord($onDemandRecord = null)
     {
         if (!is_null($onDemandRecord)) {
-            if (!is_null($onDemandRecord)) {
-                Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
-                $onDemandRecord = (int) $onDemandRecord;
-            }
+            Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
+            $onDemandRecord = (int) $onDemandRecord;
         }
 
         $this->onDemandRecord = $onDemandRecord;
@@ -996,10 +994,8 @@ abstract class CompanyAbstract
     protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
         if (!is_null($recordingsLimitMB)) {
-            if (!is_null($recordingsLimitMB)) {
-                Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
-                $recordingsLimitMB = (int) $recordingsLimitMB;
-            }
+            Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
+            $recordingsLimitMB = (int) $recordingsLimitMB;
         }
 
         $this->recordingsLimitMB = $recordingsLimitMB;

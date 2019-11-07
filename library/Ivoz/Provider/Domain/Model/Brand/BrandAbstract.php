@@ -397,10 +397,8 @@ abstract class BrandAbstract
     protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
         if (!is_null($recordingsLimitMB)) {
-            if (!is_null($recordingsLimitMB)) {
-                Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
-                $recordingsLimitMB = (int) $recordingsLimitMB;
-            }
+            Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
+            $recordingsLimitMB = (int) $recordingsLimitMB;
         }
 
         $this->recordingsLimitMB = $recordingsLimitMB;

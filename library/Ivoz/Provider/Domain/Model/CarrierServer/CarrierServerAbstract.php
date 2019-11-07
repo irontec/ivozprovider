@@ -356,11 +356,9 @@ abstract class CarrierServerAbstract
     protected function setPort($port = null)
     {
         if (!is_null($port)) {
-            if (!is_null($port)) {
-                Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
-                $port = (int) $port;
-            }
+            Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
+            $port = (int) $port;
         }
 
         $this->port = $port;
@@ -388,11 +386,9 @@ abstract class CarrierServerAbstract
     protected function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
-            if (!is_null($uriScheme)) {
-                Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
-                $uriScheme = (int) $uriScheme;
-            }
+            Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
+            $uriScheme = (int) $uriScheme;
         }
 
         $this->uriScheme = $uriScheme;
@@ -420,11 +416,9 @@ abstract class CarrierServerAbstract
     protected function setTransport($transport = null)
     {
         if (!is_null($transport)) {
-            if (!is_null($transport)) {
-                Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
-                $transport = (int) $transport;
-            }
+            Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
+            $transport = (int) $transport;
         }
 
         $this->transport = $transport;
