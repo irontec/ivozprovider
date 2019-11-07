@@ -1378,7 +1378,14 @@ public function <methodName>(<criteriaArgument>)
                     . "\n" . $this->spaces
                     . $indent . '$default'
                     . "\n"
-                    . $indent .');';
+                    . $indent .');'
+                    . "\n\n"
+                    . $indent .'if ($this->$fldName == $var) {'
+                    . "\n"
+                    . $indent . '    return $this;'
+                    . "\n"
+                    . $indent ."}"
+                ;
 
                 $defaultValue = (isset($currentField->options) && \array_key_exists('default', $currentField->options))
                     ? var_export($currentField->options['default'], true)
@@ -1389,8 +1396,8 @@ public function <methodName>(<criteriaArgument>)
                 }
 
                 $assertions[] = str_replace(
-                    ['$var', '$default'],
-                    ['$' . $currentField->fieldName, $defaultValue],
+                    ['$var', '$fldName', '$default'],
+                    ['$' . $currentField->fieldName, $currentField->fieldName, $defaultValue],
                     $call
                 );
             }
