@@ -1119,8 +1119,6 @@ public function <methodName>(<criteriaArgument>)
         }
 
         switch ($type) {
-            case 'boolean':
-                return '(bool) ';
             case 'text':
             case 'string':
                 return '';
@@ -1137,6 +1135,7 @@ public function <methodName>(<criteriaArgument>)
             case 'datetime':
             case 'time':
             case 'date':
+            case 'boolean':
                 return '';
         }
 
@@ -1351,13 +1350,10 @@ public function <methodName>(<criteriaArgument>)
             if (in_array($currentField->type, ['boolean'])) {
                 $assertions = array_merge(
                     $assertions,
-                    [$spaces . AssertionGenerator::boolean($currentField->fieldName)]
+                    [$spaces . AssertionGenerator::boolean($currentField->fieldName, $spaces)]
                 );
 
                 $isNullable = isset($currentField->nullable) && $currentField->nullable;
-                if ($isNullable) {
-//                    $assertions[] = $this->spaces . '$' . $currentField->fieldName . ' = (bool) $' . $currentField->fieldName . ';';
-                }
             }
 
             $arraySpacerFn = function ($value) use ($spaces) {
