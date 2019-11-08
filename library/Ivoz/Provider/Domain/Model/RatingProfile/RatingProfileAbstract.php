@@ -201,6 +201,10 @@ abstract class RatingProfileAbstract
             'CURRENT_TIMESTAMP'
         );
 
+        if ($this->activationTime == $activationTime) {
+            return $this;
+        }
+
         $this->activationTime = $activationTime;
 
         return $this;

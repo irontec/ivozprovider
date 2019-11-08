@@ -279,6 +279,7 @@ abstract class CarrierAbstract
     {
         if (!is_null($externallyRated)) {
             Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
+            $externallyRated = (bool) $externallyRated;
         }
 
         $this->externallyRated = $externallyRated;
@@ -338,6 +339,7 @@ abstract class CarrierAbstract
     {
         if (!is_null($calculateCost)) {
             Assertion::between(intval($calculateCost), 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
+            $calculateCost = (bool) $calculateCost;
         }
 
         $this->calculateCost = $calculateCost;

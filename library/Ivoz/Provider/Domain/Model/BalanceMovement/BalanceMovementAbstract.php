@@ -260,6 +260,10 @@ abstract class BalanceMovementAbstract
                 $createdOn,
                 'CURRENT_TIMESTAMP'
             );
+
+            if ($this->createdOn == $createdOn) {
+                return $this;
+            }
         }
 
         $this->createdOn = $createdOn;

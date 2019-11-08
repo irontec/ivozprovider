@@ -327,6 +327,10 @@ abstract class TrunksCdrAbstract
             '2000-01-01 00:00:00'
         );
 
+        if ($this->startTime == $startTime) {
+            return $this;
+        }
+
         $this->startTime = $startTime;
 
         return $this;
@@ -356,6 +360,10 @@ abstract class TrunksCdrAbstract
             $endTime,
             '2000-01-01 00:00:00'
         );
+
+        if ($this->endTime == $endTime) {
+            return $this;
+        }
 
         $this->endTime = $endTime;
 
@@ -578,6 +586,7 @@ abstract class TrunksCdrAbstract
     {
         if (!is_null($bounced)) {
             Assertion::between(intval($bounced), 0, 1, 'bounced provided "%s" is not a valid boolean value.');
+            $bounced = (bool) $bounced;
         }
 
         $this->bounced = $bounced;
@@ -606,6 +615,7 @@ abstract class TrunksCdrAbstract
     {
         if (!is_null($parsed)) {
             Assertion::between(intval($parsed), 0, 1, 'parsed provided "%s" is not a valid boolean value.');
+            $parsed = (bool) $parsed;
         }
 
         $this->parsed = $parsed;
@@ -637,6 +647,10 @@ abstract class TrunksCdrAbstract
             $parserScheduledAt,
             'CURRENT_TIMESTAMP'
         );
+
+        if ($this->parserScheduledAt == $parserScheduledAt) {
+            return $this;
+        }
 
         $this->parserScheduledAt = $parserScheduledAt;
 

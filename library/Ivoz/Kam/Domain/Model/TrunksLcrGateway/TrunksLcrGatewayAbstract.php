@@ -383,11 +383,9 @@ abstract class TrunksLcrGatewayAbstract
     protected function setPort($port = null)
     {
         if (!is_null($port)) {
-            if (!is_null($port)) {
-                Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
-                $port = (int) $port;
-            }
+            Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
+            $port = (int) $port;
         }
 
         $this->port = $port;
@@ -443,11 +441,9 @@ abstract class TrunksLcrGatewayAbstract
     protected function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
-            if (!is_null($uriScheme)) {
-                Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
-                $uriScheme = (int) $uriScheme;
-            }
+            Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
+            $uriScheme = (int) $uriScheme;
         }
 
         $this->uriScheme = $uriScheme;
@@ -475,11 +471,9 @@ abstract class TrunksLcrGatewayAbstract
     protected function setTransport($transport = null)
     {
         if (!is_null($transport)) {
-            if (!is_null($transport)) {
-                Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
-                $transport = (int) $transport;
-            }
+            Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
+            $transport = (int) $transport;
         }
 
         $this->transport = $transport;
@@ -508,6 +502,7 @@ abstract class TrunksLcrGatewayAbstract
     {
         if (!is_null($strip)) {
             Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
+            $strip = (bool) $strip;
         }
 
         $this->strip = $strip;
@@ -591,11 +586,9 @@ abstract class TrunksLcrGatewayAbstract
     protected function setDefunct($defunct = null)
     {
         if (!is_null($defunct)) {
-            if (!is_null($defunct)) {
-                Assertion::integerish($defunct, 'defunct value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($defunct, 0, 'defunct provided "%s" is not greater or equal than "%s".');
-                $defunct = (int) $defunct;
-            }
+            Assertion::integerish($defunct, 'defunct value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($defunct, 0, 'defunct provided "%s" is not greater or equal than "%s".');
+            $defunct = (int) $defunct;
         }
 
         $this->defunct = $defunct;

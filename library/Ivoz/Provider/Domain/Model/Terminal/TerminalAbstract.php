@@ -474,6 +474,10 @@ abstract class TerminalAbstract
                 $lastProvisionDate,
                 null
             );
+
+            if ($this->lastProvisionDate == $lastProvisionDate) {
+                return $this;
+            }
         }
 
         $this->lastProvisionDate = $lastProvisionDate;

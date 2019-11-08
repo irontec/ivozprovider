@@ -510,8 +510,9 @@ abstract class DdiAbstract
     {
         Assertion::notNull($billInboundCalls, 'billInboundCalls value "%s" is null, but non null value was expected.');
         Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
+        $billInboundCalls = (bool) $billInboundCalls;
 
-        $this->billInboundCalls = (bool) $billInboundCalls;
+        $this->billInboundCalls = $billInboundCalls;
 
         return $this;
     }

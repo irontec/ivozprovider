@@ -394,6 +394,10 @@ abstract class UsersLocationAttrAbstract
             '1900-01-01 00:00:01'
         );
 
+        if ($this->lastModified == $lastModified) {
+            return $this;
+        }
+
         $this->lastModified = $lastModified;
 
         return $this;

@@ -295,6 +295,10 @@ abstract class ChangelogAbstract
             null
         );
 
+        if ($this->createdOn == $createdOn) {
+            return $this;
+        }
+
         $this->createdOn = $createdOn;
 
         return $this;

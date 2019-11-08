@@ -404,6 +404,10 @@ abstract class CallCsvSchedulerAbstract
                 $lastExecution,
                 null
             );
+
+            if ($this->lastExecution == $lastExecution) {
+                return $this;
+            }
         }
 
         $this->lastExecution = $lastExecution;
@@ -463,6 +467,10 @@ abstract class CallCsvSchedulerAbstract
                 $nextExecution,
                 null
             );
+
+            if ($this->nextExecution == $nextExecution) {
+                return $this;
+            }
         }
 
         $this->nextExecution = $nextExecution;

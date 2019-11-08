@@ -185,10 +185,8 @@ abstract class HuntGroupsRelUserAbstract
     protected function setTimeoutTime($timeoutTime = null)
     {
         if (!is_null($timeoutTime)) {
-            if (!is_null($timeoutTime)) {
-                Assertion::integerish($timeoutTime, 'timeoutTime value "%s" is not an integer or a number castable to integer.');
-                $timeoutTime = (int) $timeoutTime;
-            }
+            Assertion::integerish($timeoutTime, 'timeoutTime value "%s" is not an integer or a number castable to integer.');
+            $timeoutTime = (int) $timeoutTime;
         }
 
         $this->timeoutTime = $timeoutTime;
@@ -216,10 +214,8 @@ abstract class HuntGroupsRelUserAbstract
     protected function setPriority($priority = null)
     {
         if (!is_null($priority)) {
-            if (!is_null($priority)) {
-                Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
-                $priority = (int) $priority;
-            }
+            Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
+            $priority = (int) $priority;
         }
 
         $this->priority = $priority;

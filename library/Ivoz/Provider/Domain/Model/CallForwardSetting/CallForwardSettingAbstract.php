@@ -423,8 +423,9 @@ abstract class CallForwardSettingAbstract
     {
         Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');
+        $enabled = (bool) $enabled;
 
-        $this->enabled = (bool) $enabled;
+        $this->enabled = $enabled;
 
         return $this;
     }

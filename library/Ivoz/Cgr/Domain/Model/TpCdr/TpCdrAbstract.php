@@ -739,6 +739,10 @@ abstract class TpCdrAbstract
             null
         );
 
+        if ($this->setupTime == $setupTime) {
+            return $this;
+        }
+
         $this->setupTime = $setupTime;
 
         return $this;
@@ -768,6 +772,10 @@ abstract class TpCdrAbstract
             $answerTime,
             null
         );
+
+        if ($this->answerTime == $answerTime) {
+            return $this;
+        }
 
         $this->answerTime = $answerTime;
 
@@ -957,6 +965,10 @@ abstract class TpCdrAbstract
                 $createdAt,
                 null
             );
+
+            if ($this->createdAt == $createdAt) {
+                return $this;
+            }
         }
 
         $this->createdAt = $createdAt;
@@ -988,6 +1000,10 @@ abstract class TpCdrAbstract
                 $updatedAt,
                 null
             );
+
+            if ($this->updatedAt == $updatedAt) {
+                return $this;
+            }
         }
 
         $this->updatedAt = $updatedAt;
@@ -1019,6 +1035,10 @@ abstract class TpCdrAbstract
                 $deletedAt,
                 null
             );
+
+            if ($this->deletedAt == $deletedAt) {
+                return $this;
+            }
         }
 
         $this->deletedAt = $deletedAt;

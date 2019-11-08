@@ -316,8 +316,9 @@ abstract class HolidayDateAbstract
     {
         Assertion::notNull($wholeDayEvent, 'wholeDayEvent value "%s" is null, but non null value was expected.');
         Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
+        $wholeDayEvent = (bool) $wholeDayEvent;
 
-        $this->wholeDayEvent = (bool) $wholeDayEvent;
+        $this->wholeDayEvent = $wholeDayEvent;
 
         return $this;
     }

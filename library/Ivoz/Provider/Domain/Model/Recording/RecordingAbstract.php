@@ -289,6 +289,10 @@ abstract class RecordingAbstract
             'CURRENT_TIMESTAMP'
         );
 
+        if ($this->calldate == $calldate) {
+            return $this;
+        }
+
         $this->calldate = $calldate;
 
         return $this;
