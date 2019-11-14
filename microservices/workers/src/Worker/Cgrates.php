@@ -80,8 +80,12 @@ class Cgrates
 
         $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloading Tpid %s through CGRateS API", $cgratesTpid));
 
-        $this->reloadService
-            ->execute($cgratesTpid);
+        $this
+            ->reloadService
+            ->execute(
+                $cgratesTpid,
+                $job->getDisableDestinations()
+            );
 
         if ($notifyThresholdForAccount) {
 
@@ -89,7 +93,6 @@ class Cgrates
             $company = $this->companyRepository->find(
                 substr($notifyThresholdForAccount, 1)
             );
-
 
             if (!$company) {
                 $this->logger->error(

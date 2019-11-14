@@ -14,14 +14,17 @@ class ReloadService extends AbstractApiBasedService
     }
 
     /**
+     * @param string $tpid
+     * @param bool $disableDestinations
      * @return void
      */
-    public function execute(string $tpid)
+    public function execute(string $tpid, bool $disableDestinations = true)
     {
         $payload = [
             "Tpid" => $tpid,
             "Validate" => true,
             "Cleanup" => true,
+            "DisableDestinations" => $disableDestinations,
         ];
 
         $this->sendRequest(
