@@ -16,6 +16,12 @@ class UpdatedTpDestinationNotificator extends CgratesReloadNotificator implement
      */
     public function execute(TpDestinationInterface $tpDestination)
     {
-        $this->reload($tpDestination->getTpid());
+        $isNotNew = !$tpDestination->isNew();
+
+        $this->reload(
+            $tpDestination->getTpid(),
+            null,
+            $isNotNew
+        );
     }
 }

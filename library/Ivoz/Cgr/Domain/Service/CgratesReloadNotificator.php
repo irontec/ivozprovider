@@ -39,12 +39,13 @@ abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterfac
      * @param string $tpid
      * @param string|null $notifyThresholdForAccount
      */
-    protected function reload(string $tpid, string $notifyThresholdForAccount = null)
+    protected function reload(string $tpid, string $notifyThresholdForAccount = null, bool $disableDestinations = true)
     {
         $this
             ->cgratesReloadJob
             ->setTpid($tpid)
             ->setNotifyThresholdForAccount($notifyThresholdForAccount)
+            ->setDisableDestinations($disableDestinations)
             ->send();
     }
 }
