@@ -74,7 +74,7 @@ production:
       fullWidth: true
       title: _("Edit %s %2s", ngettext('Invoice template', 'Invoice templates', 1), "[format| (%item%)]")
       forcedValues:
-        <<: *forcedBrand
+        "self::brand": null
       fixedPositions:
         <<: *defaultInvoiceTemplatesFixedPositions_Link
       <<: *invoiceTemplateHelp
