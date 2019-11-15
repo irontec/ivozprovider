@@ -18,8 +18,19 @@ services:
 
   Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\Mapping\QuoteStrategy: ~
 
+
+  Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\Mapping\QuoteStrategy: ~
+
   core.doctrine_foreign_key_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
 
   core.doctrine_collection_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
+
+  Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
+    arguments:
+      $softDeleteMap: '%soft_delete%'
+    public: true
+    lazy: true
+
+  Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner: ~

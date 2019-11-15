@@ -34,12 +34,6 @@ services:
   core.update_entity_from_dto:
     class: Ivoz\Core\Application\Service\UpdateEntityFromDTO
 
-  Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
-    arguments:
-      $softDeleteMap: '%soft_delete%'
-    public: true
-    lazy: true
-
   Ivoz\Core\Domain\Service\EntityPersisterInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 

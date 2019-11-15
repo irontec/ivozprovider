@@ -7,10 +7,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
-use Ivoz\Provider\Domain\Model\Brand\Logo;
-use Ivoz\Provider\Domain\Model\Brand\Invoice;
 
 class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
 {
@@ -48,6 +45,7 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
             if ($i === 0) {
                 $item->setTrunksCdr($this->getReference('_reference_KamTrunksCdr1'));
                 $item->setCarrier($this->getReference('_reference_ProviderCarrier2'));
+                $item->setInvoice($this->getReference('_reference_ProviderInvoice1'));
             }
 
             $this->addReference('_reference_ProviderBillableCall' . $i, $item);
@@ -62,7 +60,8 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
         return array(
             ProviderCompany::class,
             ProviderCarrier::class,
-            KamTrunksCdr::class
+            KamTrunksCdr::class,
+            ProviderInvoice::class,
         );
     }
 }
