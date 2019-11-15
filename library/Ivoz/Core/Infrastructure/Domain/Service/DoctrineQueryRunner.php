@@ -5,6 +5,7 @@ namespace Ivoz\Core\Infrastructure\Domain\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\NativeQuery;
+use Doctrine\ORM\Query as DqlQuery;
 use Doctrine\ORM\Query\Parameter;
 use Ivoz\Core\Domain\Event\EntityEventInterface;
 use Ivoz\Core\Domain\Event\QueryWasExecuted;
@@ -42,15 +43,9 @@ class DoctrineQueryRunner
      */
     public function execute(string $entityName, AbstractQuery $query)
     {
-        /** @var Parameter[] $parameters */
-        $parameters = $this->getQueryParameters(
-            $query
-        );
-
         $event = $this->prepareChangelogEvent(
             $entityName,
-            $query,
-            $parameters
+            $query
         );
 
         $connection = $this->em->getConnection();
@@ -145,15 +140,20 @@ class DoctrineQueryRunner
     /**
      * @param string $entityName
      * @param AbstractQuery $query
-     * @param $parameters
      * @return QueryWasExecuted
      */
-    private function prepareChangelogEvent(string $entityName, AbstractQuery $query, $parameters): QueryWasExecuted
+    private function prepareChangelogEvent(string $entityName, AbstractQuery $query): QueryWasExecuted
     {
         $sqlParams = [];
         $types = [];
 
-        (function () use (&$sqlParams, &$types) {
+        /** @var \Closure $dqlParamResolver */
+        $dqlParamResolver = function () use (&$sqlParams, &$types) {
+
+            assert(
+                $this instanceof DqlQuery,
+                new \Exception('dqlParamResolver context must be instance of ' . DqlQuery::class)
+            );
 
             $parser = new \Doctrine\ORM\Query\Parser($this);
             $paramMappings = $parser->parse()->getParameterMappings();
@@ -161,14 +161,22 @@ class DoctrineQueryRunner
 
             $sqlParams = $params;
             $types = $paramTypes;
-        })->call($query);
+        };
+
+        if ($query instanceof DqlQuery) {
+            $dqlParamResolver->call($query);
+        } else {
+            $sqlParams = $this->getQueryParameters(
+                $query
+            );
+        }
 
         return new QueryWasExecuted(
             $entityName,
             0,
             [
                 'query' => $query->getSQL(),
-                'arguments' => $parameters,
+                'arguments' => $sqlParams,
                 'types' => $types
             ]
         );

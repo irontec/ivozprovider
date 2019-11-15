@@ -3,8 +3,11 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NativeQuery;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -15,8 +18,41 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TpRateDoctrineRepository extends ServiceEntityRepository implements TpRateRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    protected $queryRunner;
+
+    public function __construct(
+        RegistryInterface $registry,
+        DoctrineQueryRunner $queryRunner
+    ) {
         parent::__construct($registry, TpRate::class);
+        $this->queryRunner = $queryRunner;
+    }
+
+    /**
+     * @param int $destinationRateGroupId
+     * @return int affected rows
+     */
+    public function syncWithBusiness($destinationRateGroupId)
+    {
+        $tpRatesInsert =
+            "INSERT INTO tp_rates
+              (tpid, tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)
+            SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id
+              FROM DestinationRates DR
+              INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
+              WHERE DRG.id = $destinationRateGroupId
+              ON DUPLICATE KEY UPDATE
+                rate = VALUES(rate),
+                connect_fee = VALUES(connect_fee),
+                rate_increment = VALUES(rate_increment),
+                group_interval_start = VALUES(group_interval_start)";
+
+        $nativeQuery = new NativeQuery($this->_em);
+        $nativeQuery->setSQL($tpRatesInsert);
+
+        return $this->queryRunner->execute(
+            TpRate::class,
+            $nativeQuery
+        );
     }
 }

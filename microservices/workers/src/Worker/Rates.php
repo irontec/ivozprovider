@@ -3,16 +3,14 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
-use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
+use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use GearmanJob;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Domain\Event\EntityWasCreated;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
-use Ivoz\Provider\Domain\Model\Destination\Destination;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
+use Ivoz\Provider\Domain\Model\Destination\DestinationRepository;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
@@ -35,11 +33,18 @@ use Ivoz\Core\Application\RegisterCommandTrait;
  */
 class Rates
 {
+    const CHUNK_SIZE = 100;
+
     use RegisterCommandTrait;
 
     private $eventPublisher;
     private $requestId;
     private $em;
+    private $destinationRepository;
+    private $tpDestinationRepository;
+    private $destinationRateRepository;
+    private $tpRateRepository;
+    private $tpDestinationRateRepository;
     private $entityTools;
     private $logger;
     private $destinationRateGroupRepository;
@@ -49,7 +54,12 @@ class Rates
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
         EntityManagerInterface $em,
+        DestinationRepository $destinationRepository,
         DestinationRateGroupRepository $destinationRateGroupRepository,
+        TpDestinationRepository $tpDestinationRepository,
+        DestinationRateRepository $destinationRateRepository,
+        TpRateRepository $tpRateRepository,
+        TpDestinationRateRepository $tpDestinationRateRepository,
         EntityTools $entityTools,
         Logger $logger,
         ReloadService $reloadService
@@ -57,7 +67,12 @@ class Rates
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
         $this->em = $em;
+        $this->destinationRepository = $destinationRepository;
+        $this->tpDestinationRepository = $tpDestinationRepository;
         $this->destinationRateGroupRepository = $destinationRateGroupRepository;
+        $this->destinationRateRepository = $destinationRateRepository;
+        $this->tpDestinationRateRepository = $tpDestinationRateRepository;
+        $this->tpRateRepository = $tpRateRepository;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->reloadService = $reloadService;
@@ -187,6 +202,7 @@ class Rates
         }
 
         $disableDestinations = true;
+
         try {
             $this->em->getConnection()->beginTransaction();
 
@@ -194,131 +210,48 @@ class Rates
              * Create any missing Destinations
              */
             $this->logger->debug('About to insert Destinations');
-            $destinationChunks = array_chunk($destinations, 100);
+            $destinationChunks = array_chunk($destinations, self::CHUNK_SIZE);
             foreach ($destinationChunks as $destination) {
-                $destinationInsert = 'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, brandId) VALUES '
-                        . implode(",", $destination);
-
-                $affectedRows = $this->em->getConnection()->executeUpdate($destinationInsert);
-                if ($affectedRows > 0) {
-                    $this->eventPublisher->publish(
-                        new EntityWasCreated(
-                            Destination::class,
-                            0,
-                            [
-                                'query' => $destinationInsert,
-                                'arguments' => []
-                            ]
-                        )
-                    );
-                }
+                $this
+                    ->destinationRepository
+                    ->insertIgnoreFromArray($destination);
             }
 
             /**
              * Create any missing tp_destinations from Destination table
              */
             $this->logger->debug('About to insert tp_destinations');
-            $tpDestinationInsert = 'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)
-                        SELECT CONCAT("b", brandId), CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
-
-            $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationInsert);
-            if ($affectedRows > 0) {
-                $disableDestinations = false;
-                $this->eventPublisher->publish(
-                    new EntityWasCreated(
-                        TpDestination::class,
-                        0,
-                        [
-                            'query' => $tpDestinationInsert,
-                            'arguments' => []
-                        ]
-                    )
-                );
-            }
+            $this
+                ->tpDestinationRepository
+                ->syncWithBusiness();
 
             /**
              *  Update DestinationRates with each CSV row
              */
             $this->logger->debug('About to insert DestinationRates');
-            $tpDestinationRateChunks = array_chunk($destinationRates, 100);
+            $tpDestinationRateChunks = array_chunk($destinationRates, self::CHUNK_SIZE);
             foreach ($tpDestinationRateChunks as $destinationRates) {
-                $tpDestinationRateInsert = 'INSERT INTO DestinationRates
-                              (rate, connectFee, rateIncrement, destinationId, destinationRateGroupId)
-                              VALUES ' . implode(",", $destinationRates) .
-                              'ON DUPLICATE KEY UPDATE 
-                                rate = VALUES(rate),
-                                connectFee = VALUES(connectFee),
-                                rateIncrement = VALUES(rateIncrement)';
-
-                $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationRateInsert);
-                if ($affectedRows > 0) {
-                    $this->eventPublisher->publish(
-                        new EntityWasCreated(
-                            DestinationRate::class,
-                            0,
-                            [
-                                'query' => $tpDestinationRateInsert,
-                                'arguments' => []
-                            ]
-                        )
-                    );
-                }
+                $this
+                    ->destinationRateRepository
+                    ->insertIgnoreFromArray($destinationRates);
             }
 
             /**
              * Update tp_rates with each DestinationRates row
              */
             $this->logger->debug('About to insert tp_rates');
-            $tpRatesInsert = "INSERT INTO tp_rates
-                          (tpid, tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)
-                        SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id
-                          FROM DestinationRates DR
-                          INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
-                          WHERE DRG.id = $destinationRateGroupId
-                          ON DUPLICATE KEY UPDATE
-                            rate = VALUES(rate),
-                            connect_fee = VALUES(connect_fee),
-                            rate_increment = VALUES(rate_increment),
-                            group_interval_start = VALUES(group_interval_start)";
-
-            $affectedRows = $this->em->getConnection()->executeUpdate($tpRatesInsert);
-            if ($affectedRows > 0) {
-                $this->eventPublisher->publish(
-                    new EntityWasCreated(
-                        TpRate::class,
-                        0,
-                        [
-                            'query' => $tpRatesInsert,
-                            'arguments' => []
-                        ]
-                    )
+            $this
+                ->tpRateRepository
+                ->syncWithBusiness(
+                    $destinationRateGroupId
                 );
-            }
 
             /**
              * Update tp_destination_rates with each DestinationRates row
              */
-            $this->logger->debug('About to update tp_destination_rates');
-            $tpDestinationRatesInsert = "INSERT IGNORE tp_destination_rates (tpid, tag, destinations_tag, rates_tag, destinationRateId)
-                        SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'dr', DRG.id), CONCAT('b', DRG.brandId, 'dst', DR.destinationId),
-                         CONCAT('b', DRG.brandId, 'rt', DR.id), DR.id
-                          FROM DestinationRates DR
-                          INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
-                          WHERE DRG.id = $destinationRateGroupId";
-
-            $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationRatesInsert);
-            if ($affectedRows > 0) {
-                $this->eventPublisher->publish(
-                    new EntityWasCreated(
-                        TpDestinationRate::class,
-                        0,
-                        [
-                            'query' => $tpDestinationRatesInsert,
-                            'arguments' => []
-                        ]
-                    )
-                );
-            }
+            $this
+                ->tpDestinationRateRepository
+                ->syncWithBussines($destinationRateGroupId);
 
             $destinationRateGroupDto->setStatus('imported');
             $this

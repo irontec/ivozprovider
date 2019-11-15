@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Selectable;
 interface TpDestinationRepository extends ObjectRepository, Selectable
 {
     /**
+     * @return int affected rows
+     */
+    public function syncWithBusiness();
+
+    /**
      * @param string $destinationTag
      * @return null| TpDestinationInterface
      */
