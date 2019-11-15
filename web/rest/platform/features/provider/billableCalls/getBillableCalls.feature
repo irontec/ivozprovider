@@ -25,7 +25,7 @@ Feature: Retrieve billable calls
               "id": 1,
               "brand": 1,
               "company": 1,
-              "invoice": null
+              "invoice": 1
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
@@ -73,7 +73,7 @@ Feature: Retrieve billable calls
           "id": 1,
           "brand": "~",
           "company": "~",
-          "invoice": null
+          "invoice": "~"
       }
     """
 
@@ -87,7 +87,7 @@ Feature: Retrieve billable calls
     And the response should be equal to
     """
 callid,startTime,duration,caller,callee,cost,price,endpointType,endpointId,direction,id,brand,company,invoice
-017cc7c8-eb38-4bbd-9318-524a274f7000,"2019-01-01 09:00:00",0,+34633646464,+34633656565,,1,,,outbound,1,1,1,
+017cc7c8-eb38-4bbd-9318-524a274f7000,"2019-01-01 09:00:00",0,+34633646464,+34633656565,,1,,,outbound,1,1,1,1
 017cc7c8-eb38-4bbd-9318-524a274f7001,"2019-01-01 09:00:01",0,+34633646464,+34633656565,,1,,,outbound,2,1,1,
 017cc7c8-eb38-4bbd-9318-524a274f7002,"2019-01-01 09:00:02",0,+34633646464,+34633656565,,1,,,outbound,3,1,1,
 017cc7c8-eb38-4bbd-9318-524a274f7003,"2019-01-01 09:00:03",0,+34633646464,+34633656565,,1,,,outbound,4,1,1,
