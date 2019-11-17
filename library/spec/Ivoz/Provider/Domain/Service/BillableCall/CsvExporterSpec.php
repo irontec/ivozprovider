@@ -3,9 +3,11 @@
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Domain\Service\ApiClientInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -35,10 +37,13 @@ class CsvExporterSpec extends ObjectBehavior
     }
 
     function it_returns_string_response(
-        CompanyInterface $company,
         ResponseInterface $response,
         StreamInterface $responseBody
     ) {
+        $company = $this->getInstance(
+            Company::class
+        );
+
         $this->prepareConditions(
             $response,
             $responseBody,
@@ -60,10 +65,13 @@ class CsvExporterSpec extends ObjectBehavior
     }
 
     function it_adds_filter_arguments_into_the_url(
-        CompanyInterface $company,
         ResponseInterface $response,
         StreamInterface $responseBody
     ) {
+        $company = $this->getInstance(
+            Company::class
+        );
+
         $this->prepareConditions(
             $response,
             $responseBody,
@@ -87,10 +95,13 @@ class CsvExporterSpec extends ObjectBehavior
     }
 
     function it_request_csv_content_type(
-        CompanyInterface $company,
         ResponseInterface $response,
         StreamInterface $responseBody
     ) {
+        $company = $this->getInstance(
+            Company::class
+        );
+
         $this->prepareConditions(
             $response,
             $responseBody,
@@ -132,10 +143,13 @@ class CsvExporterSpec extends ObjectBehavior
     }
 
     function it_accepts_brand(
-        BrandInterface $brand,
         ResponseInterface $response,
         StreamInterface $responseBody
     ) {
+        $brand = $this->getInstance(
+            Brand::class
+        );
+
         $this->prepareConditions(
             $response,
             $responseBody,
@@ -166,30 +180,29 @@ class CsvExporterSpec extends ObjectBehavior
         BrandInterface $brand = null
     ) {
 
-        $timezone = $this->getTestDouble(
-            TimezoneInterface::class
+        $timezone = $this->getInstance(
+            Timezone::class,
+            [
+                'tz' => 'UTC'
+            ]
         );
 
-        $timezone
-            ->getTz()
-            ->willReturn('UTC');
-
         if ($company) {
-            $company
-                ->getId()
-                ->willReturn(1);
-
-            $company
-                ->getDefaultTimezone()
-                ->willReturn($timezone);
+            $this->updateInstance(
+                $company,
+                [
+                    'id' => 1,
+                    'defaultTimezone' => $timezone
+                ]
+            );
         } elseif ($brand) {
-            $brand
-                ->getId()
-                ->willReturn(1);
-
-            $brand
-                ->getDefaultTimezone()
-                ->willReturn($timezone);
+            $this->updateInstance(
+                $brand,
+                [
+                    'id' => 1,
+                    'defaultTimezone' => $timezone
+                ]
+            );
         }
 
         $responseBody
@@ -218,12 +231,12 @@ class CsvExporterSpec extends ObjectBehavior
         ];
 
         if ($company) {
-            $criteria['company'] = $company->getWrappedObject()->getId();
+            $criteria['company'] = $company->getId();
             $criteria['_properties'] = CsvExporter::CLIENT_PROPERTIES;
         }
 
         if ($brand) {
-            $criteria['brand'] = $brand->getWrappedObject()->getId();
+            $criteria['brand'] = $brand->getId();
             $criteria['_properties'] = CsvExporter::BRAND_PROPERTIES;
         }
 

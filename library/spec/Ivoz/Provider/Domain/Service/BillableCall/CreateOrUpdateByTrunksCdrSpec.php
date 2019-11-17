@@ -2,16 +2,18 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use spec\HelperTrait;
 
 class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
@@ -42,16 +44,6 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
      */
     protected $billableCall;
 
-    /**
-     * @var BillableCallDto
-     */
-    protected $billableCallDto;
-
-    /**
-     * @var TrunksCdrDto
-     */
-    protected $trunksCdrDto;
-
     public function let(
         EntityTools $entityTools
     ) {
@@ -78,24 +70,6 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
             )
             ->shouldNotBeCalled();
 
-        $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(BillableCallDto::class),
-                null,
-                false
-            )
-            ->willReturn($this->billableCall);
-
-        $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(BillableCallDto::class),
-                null,
-                false
-            )
-            ->shouldBeCalled();
-
         $this->execute(
             $this->trunksCdr,
             null
@@ -107,7 +81,7 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
         $this
             ->entityTools
             ->entityToDto($this->billableCall)
-            ->willReturn($this->billableCallDto)
+            ->willReturn($this->billableCall->toDto())
             ->shouldBeCalled();
 
         $this
@@ -127,22 +101,23 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     function it_preserves_carrierName_if_carrier_is_empty()
     {
-        $this
-            ->trunksCdr
-            ->getCarrier()
-            ->willReturn(null)
-            ->shouldBeCalled();
+        $this->updateInstance(
+            $this->trunksCdr,
+            [
+                'carrier' => null
+            ]
+        );
 
-        $this
-            ->billableCallDto
+        $billableCallDto = $this->mockBillableCallDto();
+
+        $billableCallDto
             ->getCarrierName()
             ->willReturn('PrevName')
             ->shouldBeCalled();
 
-        $this
-            ->billableCallDto
+        $billableCallDto
             ->setCarrierName('PrevName')
-            ->willReturn($this->billableCallDto)
+            ->willReturn($billableCallDto)
             ->shouldBeCalled();
 
         $this->execute(
@@ -153,9 +128,10 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     function it_updates_billableCallDto()
     {
+        $billableCallDto = $this->mockBillableCallDto();
         $any = Argument::any();
         $this->fluentSetterProphecy(
-            $this->billableCallDto,
+            $billableCallDto,
             [
                 'setTrunksCdrId' => $any,
                 'setBrandId' => $any,
@@ -175,8 +151,9 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     function it_sets_extra_attributes_when_new()
     {
+        $trunksCdrDto = $this->mockTrunksCdrDto();
         $this->getterProphecy(
-            $this->trunksCdrDto,
+            $trunksCdrDto,
             [
                 'getCallee' => '+34600',
                 'getStartTime' => new \DateTime(),
@@ -209,14 +186,15 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     function it_skips_endpoint_info_if_no_retail_account()
     {
-        $this
-            ->trunksCdrDto
+        $billableCallDto = $this->mockBillableCallDto();
+        $trunksCdrDto = $this->mockTrunksCdrDto();
+
+        $trunksCdrDto
             ->getRetailAccountId()
             ->willReturn(null)
             ->shouldBeCalled();
 
-        $this
-            ->billableCallDto
+        $billableCallDto
             ->setEndpointId(Argument::any())
             ->shouldNotBeCalled();
 
@@ -228,22 +206,22 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     function it_sets_endpoint_info_if_retail_account_exists()
     {
-        $this
-            ->trunksCdrDto
+        $trunksCdrDto = $this->mockTrunksCdrDto();
+        $billableCallDto = $this->mockBillableCallDto();
+
+        $trunksCdrDto
             ->getRetailAccountId()
             ->willReturn(999)
             ->shouldBeCalled();
 
-        $this
-            ->billableCallDto
+        $billableCallDto
             ->setEndpointType('RetailAccount')
-            ->willReturn($this->billableCallDto)
+            ->willReturn($billableCallDto)
             ->shouldBeCalled();
 
-        $this
-            ->billableCallDto
+        $billableCallDto
             ->setEndpointId(999)
-            ->willReturn($this->billableCallDto)
+            ->willReturn($billableCallDto)
             ->shouldBeCalled();
 
         $this->execute(
@@ -254,43 +232,34 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     protected function prepareExecution()
     {
-        $this->trunksCdr = $this->getTestDouble(
-            TrunksCdrInterface::class
+        $this->carrier = $this->getInstance(
+            Carrier::class
         );
 
-        $this->carrier = $this->getTestDouble(
-            CarrierInterface::class
+        $this->trunksCdr = $this->getInstance(
+            TrunksCdr::class,
+            [
+                'carrier' => $this->carrier,
+                'startTime' => new \DateTime(),
+                'endTime' => new \DateTime(),
+                'parserScheduledAt' => new \DateTime(),
+            ]
         );
 
-        $this->billableCall = $this->getTestDouble(
-            BillableCallInterface::class
+        $this->billableCall = $this->getInstance(
+            BillableCall::class
         );
-
-        $this->billableCallDto = $this->getTestDouble(
-            BillableCallDto::class
-        );
-
-        $this->trunksCdrDto = $this->getTestDouble(
-            TrunksCdrDto::class
-        );
-
-        $this->trunksCdr
-            ->getCarrier()
-            ->willReturn($this->carrier);
 
         $this
             ->entityTools
             ->entityToDto(
-                Argument::type(BillableCallInterface::class)
+                Argument::any()
             )
-            ->willReturn($this->billableCallDto);
-
-        $this
-            ->entityTools
-            ->entityToDto(
-                Argument::type(TrunksCdrInterface::class)
-            )
-            ->willReturn($this->trunksCdrDto);
+            ->will(
+                function ($args) {
+                    return $args[0]->toDto();
+                }
+            );
 
         $this
             ->entityTools
@@ -300,5 +269,43 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
                 false
             )
             ->willReturn($this->billableCall);
+    }
+
+    private function mockBillableCallDto()
+    {
+        $billableCallDto = $this->getTestDouble(
+            BillableCallDto::class,
+            true
+        );
+
+        $this
+            ->entityTools
+            ->entityToDto(
+                $this->billableCall
+            )
+            ->willReturn(
+                $billableCallDto
+            );
+
+        return $billableCallDto;
+    }
+
+    private function mockTrunksCdrDto()
+    {
+        $trunksCdrDto = $this->getTestDouble(
+            TrunksCdrDto::class,
+            true
+        );
+
+        $this
+            ->entityTools
+            ->entityToDto(
+                $this->trunksCdr
+            )
+            ->willReturn(
+                $trunksCdrDto
+            );
+
+        return $trunksCdrDto;
     }
 }

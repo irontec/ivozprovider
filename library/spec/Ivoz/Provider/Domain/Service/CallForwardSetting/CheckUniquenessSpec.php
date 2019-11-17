@@ -9,23 +9,32 @@ use Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class CheckUniquenessSpec extends ObjectBehavior
 {
+    use HelperTrait;
+
     protected $callForwardSettingRepository;
     protected $entity;
     protected $user;
 
     function let(
         CallForwardSettingDoctrineRepository $callForwardSettingRepository,
-        CallForwardSetting $entity,
-        User $user
+        CallForwardSetting $entity
     ) {
         $this->callForwardSettingRepository = $callForwardSettingRepository;
-        $this->beConstructedWith($callForwardSettingRepository);
-
-        $this->user = $user;
         $this->entity = $entity;
+        $this->beConstructedWith(
+            $callForwardSettingRepository
+        );
+    }
+
+    protected function prepareExecution()
+    {
+        $user = $this->getInstance(
+            User::class
+        );
 
         $this
             ->entity
@@ -45,7 +54,7 @@ class CheckUniquenessSpec extends ObjectBehavior
         $this
             ->entity
             ->getUser()
-            ->willReturn($this->user);
+            ->willReturn($user);
     }
 
     function it_is_initializable()
@@ -55,6 +64,8 @@ class CheckUniquenessSpec extends ObjectBehavior
 
     function it_throws_exception_on_already_existing_inconditional_call_forward()
     {
+        $this->prepareExecution();
+
         $this
             ->callForwardSettingRepository
             ->matching(
@@ -87,6 +98,8 @@ class CheckUniquenessSpec extends ObjectBehavior
 
     function it_throws_exception_on_already_existing_busy_call_forward()
     {
+        $this->prepareExecution();
+
         $this
             ->entity
             ->getCallForwardType()
@@ -116,6 +129,8 @@ class CheckUniquenessSpec extends ObjectBehavior
 
     function it_throws_exception_on_already_existing_noAnswer_call_forward()
     {
+        $this->prepareExecution();
+
         $this
             ->entity
             ->getCallForwardType()
@@ -145,6 +160,8 @@ class CheckUniquenessSpec extends ObjectBehavior
 
     function it_throws_exception_on_already_existing_userNotRegistered_call_forward()
     {
+        $this->prepareExecution();
+
         $this
             ->entity
             ->getCallForwardType()

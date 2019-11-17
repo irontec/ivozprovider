@@ -2,17 +2,17 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
-use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Kam\Domain\Service\TrunksCdr\SetParsed;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Kam\Domain\Service\TrunksCdr\SetParsed;
+use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
+use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -54,26 +54,16 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
         $this->shouldHaveType(MigrateFromTrunksCdr::class);
     }
 
-    function it_queues_db_persist_operations(
-        TrunksCdrInterface $trunksCdr,
-        BrandInterface $brand,
-        BillableCallInterface $billableCall,
-        BillableCallDto $billableCallDto,
-        TrunksCdrDto $trunksCdrDto
-    ) {
-        $this->prepareExecution(
-            $trunksCdr,
-            $brand,
-            $billableCall,
-            $billableCallDto,
-            $trunksCdrDto
-        );
+    function it_queues_db_persist_operations()
+    {
+        $trunksCdr = $this->prepareTrunksCdr();
+        $dispatchImmediately = false;
 
         $this
             ->entityTools
             ->persist(
                 Argument::type(BillableCallInterface::class),
-                false
+                $dispatchImmediately
             )
             ->shouldBeCalled();
 
@@ -81,68 +71,65 @@ class MigrateFromTrunksCdrSpec extends ObjectBehavior
             ->setParsed
             ->execute(
                 Argument::type(TrunksCdrInterface::class),
-                false
+                $dispatchImmediately
             )
             ->shouldBeCalled();
 
         $this->execute($trunksCdr);
     }
 
-    protected function prepareTrunksCdr(
-        TrunksCdrInterface $trunksCdr,
-        BrandInterface $brand
-    ) {
-        $this->getterProphecy(
-            $trunksCdr,
+    protected function prepareTrunksCdr(): TrunksCdr
+    {
+
+        $trunksCdr = $this->getInstance(
+            TrunksCdr::class,
             [
-                'getId' => 1
+                'id' => 1,
             ]
         );
-    }
 
-    protected function prepareExecution(
-        TrunksCdrInterface $trunksCdr,
-        BrandInterface $brand,
-        BillableCallInterface $billableCall,
-        BillableCallDto $billableCallDto,
-        TrunksCdrDto $trunksCdrDto
-    ) {
-        $this
-            ->prepareTrunksCdr(
-                $trunksCdr,
-                $brand
-            );
+        $billableCall = $this->getInstance(
+            BillableCall::class,
+            [
+                'id' => 2,
+                'trunksCdr' => $trunksCdr
+            ]
+        );
 
         $this
             ->billableCallRepository
             ->findOneByTrunksCdrId(
-                Argument::any()
+                $trunksCdr->getId()
             )
             ->willReturn($billableCall);
 
         $this
             ->createOrUpdateBillableCallByTrunksCdr
             ->execute(
-                Argument::type(TrunksCdrInterface::class),
-                Argument::type(BillableCallInterface::class)
+                $trunksCdr,
+                $billableCall
             )
+            ->shouldBeCalled()
             ->willReturn($billableCall);
 
         $this
-            ->entityTools
-            ->persist(
-                Argument::any(),
-                Argument::any()
+            ->setParsed
+            ->execute(
+                $trunksCdr,
+                Argument::type('bool')
             )
-            ->willReturn(null);
+            ->shouldBeCalled();
+
 
         $this
-            ->entityTools
-            ->persistDto(
-                Argument::any(),
-                Argument::any(),
-                Argument::any()
+            ->domainEventPublisher
+            ->publish(
+                Argument::type(
+                    TrunksCdrWasMigrated::class
+                )
             )
-            ->willReturn(null);
+            ->shouldBeCalled();
+
+        return $trunksCdr;
     }
 }
