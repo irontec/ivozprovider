@@ -31,6 +31,29 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
           deprecated: true
           description: "Will be removed in the next release as it can be resolved automatically"
 
+
+Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        inherited:
+          calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+        - or:
+          - inheritedOrNull:
+              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+        - or:
+          - inheritedOrNull:
+              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+        - or:
+          - inheritedOrNull:
+              locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
