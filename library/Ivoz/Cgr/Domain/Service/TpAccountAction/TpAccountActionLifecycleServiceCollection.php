@@ -13,10 +13,6 @@ class TpAccountActionLifecycleServiceCollection implements LifecycleServiceColle
     use LifecycleServiceCollectionTrait;
 
     public static $bindedBaseServices = [
-        "on_commit" =>
-        [
-            \Ivoz\Cgr\Domain\Service\TpAccountAction\UpdatedTpAccountActionNotificator::class => 200,
-        ],
     ];
 
     /**
