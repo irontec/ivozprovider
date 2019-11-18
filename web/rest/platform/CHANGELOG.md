@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.13.1
+* Models:
+    - BillableCalls:
+        - Added cost property into BillableCall-rating model
+
 ## 2.13
 * Endpoints:
     - /billable_calls/{callid}/rate has being added

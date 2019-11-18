@@ -1,4 +1,14 @@
 # Changelog
+
+## 2.13.1
+* Endpoints:
+    - Added /calendar_periods endpoints
+        - [GET], [POST], [PUT] and [DELETE] methods
+
+* Models:
+    - CalendarPeriod
+        - Added CalendarPeriod, CalendarPeriod-collection and CalendarPeriod-detailed models
+
 ## 2.13
 * Endpoints:
     - /my/call_history
