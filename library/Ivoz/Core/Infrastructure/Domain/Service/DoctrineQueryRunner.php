@@ -150,12 +150,26 @@ class DoctrineQueryRunner
      */
     private function prepareChangelogEvent(string $entityName, AbstractQuery $query, $parameters): QueryWasExecuted
     {
+        $sqlParams = [];
+        $types = [];
+
+        (function () use (&$sqlParams, &$types) {
+
+            $parser = new \Doctrine\ORM\Query\Parser($this);
+            $paramMappings = $parser->parse()->getParameterMappings();
+            list($params, $paramTypes) = $this->processParameterMappings($paramMappings);
+
+            $sqlParams = $params;
+            $types = $paramTypes;
+        })->call($query);
+
         return new QueryWasExecuted(
             $entityName,
             0,
             [
                 'query' => $query->getSQL(),
-                'arguments' => $parameters
+                'arguments' => $parameters,
+                'types' => $types
             ]
         );
     }
