@@ -25,6 +25,7 @@ class CarrierLifecycleServiceCollection implements LifecycleServiceCollectionInt
         "on_commit" =>
         [
             \Ivoz\Provider\Domain\Service\Carrier\SearchBrokenThresholds::class => 10,
+            \Ivoz\Provider\Domain\Service\Carrier\SendCgratesReloadRequest::class => 200,
             \Ivoz\Provider\Infrastructure\Domain\Service\Carrier\SendTrunksLcrReloadRequest::class => 200,
         ],
     ];

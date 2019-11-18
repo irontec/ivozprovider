@@ -31,4 +31,16 @@ class TpAccountActionDoctrineRepository extends ServiceEntityRepository implemen
 
         return $this->findOneBy($criteria);
     }
+
+    /**
+     * @param int $carrierId
+     */
+    public function findByCarrier(int $carrierId)
+    {
+        $criteria = [
+            'carrier' => $carrierId
+        ];
+
+        return $this->findOneBy($criteria);
+    }
 }
