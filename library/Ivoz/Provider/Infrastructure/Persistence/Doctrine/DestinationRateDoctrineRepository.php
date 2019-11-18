@@ -40,13 +40,14 @@ class DestinationRateDoctrineRepository extends ServiceEntityRepository implemen
     public function insertIgnoreFromArray(array $destinationRates)
     {
         $tpDestinationRateInsert =
-            'INSERT INTO DestinationRates
-              (rate, connectFee, rateIncrement, destinationId, destinationRateGroupId)
-              VALUES ' . implode(",", $destinationRates) .
-            'ON DUPLICATE KEY UPDATE
-              rate = VALUES(rate),
-              connectFee = VALUES(connectFee),
-              rateIncrement = VALUES(rateIncrement)';
+            'INSERT INTO DestinationRates'
+            . ' (rate, connectFee, rateIncrement, destinationId, destinationRateGroupId)'
+            . ' VALUES '
+            . implode(",", $destinationRates)
+            . ' ON DUPLICATE KEY UPDATE'
+            . ' rate = VALUES(rate),'
+            . ' connectFee = VALUES(connectFee),'
+            . ' rateIncrement = VALUES(rateIncrement)';
 
         $nativeQuery = new NativeQuery($this->em);
         $nativeQuery->setSQL($tpDestinationRateInsert);

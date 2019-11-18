@@ -14,4 +14,12 @@ interface DestinationRepository extends ObjectRepository, Selectable
      * @throws \Doctrine\DBAL\DBALException
      */
     public function insertIgnoreFromArray(array $destinations);
+
+    /**
+     * Returns ['prefix' => id] array
+     *
+     * @param int $brandId
+     * @return array
+     */
+    public function getPrefixArrayByBrandId(int $brandId): array;
 }

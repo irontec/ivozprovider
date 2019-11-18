@@ -35,17 +35,17 @@ class TpRateDoctrineRepository extends ServiceEntityRepository implements TpRate
     public function syncWithBusiness($destinationRateGroupId)
     {
         $tpRatesInsert =
-            "INSERT INTO tp_rates
-              (tpid, tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)
-            SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id
-              FROM DestinationRates DR
-              INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
-              WHERE DRG.id = $destinationRateGroupId
-              ON DUPLICATE KEY UPDATE
-                rate = VALUES(rate),
-                connect_fee = VALUES(connect_fee),
-                rate_increment = VALUES(rate_increment),
-                group_interval_start = VALUES(group_interval_start)";
+            "INSERT INTO tp_rates"
+            . " (tpid, tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)"
+            . " SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id"
+            . " FROM DestinationRates DR"
+            . " INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId"
+            . " WHERE DRG.id = $destinationRateGroupId"
+            . " ON DUPLICATE KEY UPDATE"
+            . " rate = VALUES(rate),"
+            . " connect_fee = VALUES(connect_fee),"
+            . " rate_increment = VALUES(rate_increment),"
+            . " group_interval_start = VALUES(group_interval_start)";
 
         $nativeQuery = new NativeQuery($this->_em);
         $nativeQuery->setSQL($tpRatesInsert);

@@ -162,9 +162,6 @@ class Rates
 
         // Parse every CSV line
         foreach ($csvLines as $line) {
-            $line["Per minute charge"]  = sprintf("%.4f", $line["rateCost"]);
-            $line["Connection charge"]  = sprintf("%.4f", $line["connectionCharge"]);
-
             $destinations[] = sprintf(
                 '("%s",  "%s",  "%s", "%d" )',
                 $line['destinationPrefix'],
@@ -172,25 +169,17 @@ class Rates
                 $line['destinationName'],
                 $brandId
             );
-
-            $destinationRates[] =
-                sprintf(
-                    '("%s", "%s", "%ss", %s, %d)',
-                    $line["rateCost"],
-                    $line["connectionCharge"],
-                    $line["rateIncrement"],
-                    sprintf(
-                        '(SELECT id FROM Destinations WHERE prefix = "%s" AND brandId = %d LIMIT 1)',
-                        $line['destinationPrefix'],
-                        $brandId
-                    ),
-                    $destinationRateGroupId
-                );
         }
 
-        if (!$destinationRates) {
-            echo "No lines parsed from CSV File: " . $params['filePath'];
-            $destinationRateGroupDto->setStatus('error');
+        if (!$destinations) {
+            $this->logger->error(
+                "No lines parsed from CSV File: " . $params['filePath']
+            );
+
+            $destinationRateGroupDto->setStatus(
+                'error'
+            );
+
             $this
                 ->entityTools
                 ->persistDto(
@@ -198,6 +187,7 @@ class Rates
                     $destinationRateGroup,
                     true
                 );
+
             exit(1);
         }
 
@@ -228,6 +218,24 @@ class Rates
             /**
              *  Update DestinationRates with each CSV row
              */
+            $destinationPrefixes = $this
+                ->destinationRepository
+                ->getPrefixArrayByBrandId($brandId);
+
+            foreach ($csvLines as $line) {
+                $prefix = $line['destinationPrefix'];
+
+                $destinationRates[] =
+                    sprintf(
+                        '("%s", "%s", "%ss", %s, %d)',
+                        $line["rateCost"],
+                        $line["connectionCharge"],
+                        $line["rateIncrement"],
+                        $destinationPrefixes[$prefix],
+                        $destinationRateGroupId
+                    );
+            }
+
             $this->logger->debug('About to insert DestinationRates');
             $tpDestinationRateChunks = array_chunk($destinationRates, self::CHUNK_SIZE);
             foreach ($tpDestinationRateChunks as $destinationRates) {

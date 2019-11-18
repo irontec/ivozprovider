@@ -47,4 +47,33 @@ class DestinationDoctrineRepository extends ServiceEntityRepository implements D
             $nativeQuery
         );
     }
+
+    /**
+     * Returns ['prefix' => id] array
+     *
+     * @param int $brandId
+     * @return array
+     */
+    public function getPrefixArrayByBrandId(int $brandId): array
+    {
+        $qb = $this
+            ->createQueryBuilder('self');
+
+        $query = $qb
+            ->select('self.id, self.prefix')
+            ->where(
+                $qb->expr()->eq('self.brand', $brandId)
+            );
+
+        $items = $query
+            ->getQuery()
+            ->getScalarResult();
+
+        $response = [];
+        foreach ($items as $item) {
+            $response[$item['prefix']] = $item['id'];
+        }
+
+        return $response;
+    }
 }
