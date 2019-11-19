@@ -44,15 +44,15 @@ class CompanyRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(Company::class);
 
-        $companies = $repository->findByBrandId(1);
+        $companies = $repository->findIdsByBrandId(1);
 
         $this->assertInternalType(
             'array',
             $companies
         );
 
-        $this->assertInstanceOf(
-            CompanyInterface::class,
+        $this->assertInternalType(
+            'int',
             $companies[0]
         );
     }

@@ -72,7 +72,7 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
     {
         $this
             ->companyRepository
-            ->findByBrandId(1)
+            ->findIdsByBrandId(1)
             ->willReturn([])
             ->shouldBeCalled();
 
@@ -80,15 +80,9 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
     }
 
     function it_removes_matching_company_services(
-        CompanyInterface $company,
         ServiceInterface $service,
         CompanyServiceInterface $companyService
     ) {
-        $company
-            ->getId()
-            ->willReturn(1)
-            ->shouldBeCalled();
-
         $this
             ->entity
             ->getService()
@@ -102,8 +96,8 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
 
         $this
             ->companyRepository
-            ->findByBrandId(1)
-            ->willReturn([$company])
+            ->findIdsByBrandId(1)
+            ->willReturn([1])
             ->shouldBeCalled();
 
         $this
