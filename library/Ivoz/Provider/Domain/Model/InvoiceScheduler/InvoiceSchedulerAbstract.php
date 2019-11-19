@@ -381,6 +381,10 @@ abstract class InvoiceSchedulerAbstract
                 $lastExecution,
                 null
             );
+
+            if ($this->lastExecution == $lastExecution) {
+                return $this;
+            }
         }
 
         $this->lastExecution = $lastExecution;
@@ -440,6 +444,10 @@ abstract class InvoiceSchedulerAbstract
                 $nextExecution,
                 null
             );
+
+            if ($this->nextExecution == $nextExecution) {
+                return $this;
+            }
         }
 
         $this->nextExecution = $nextExecution;

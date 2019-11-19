@@ -362,6 +362,10 @@ abstract class TpRatingPlanAbstract
             'CURRENT_TIMESTAMP'
         );
 
+        if ($this->createdAt == $createdAt) {
+            return $this;
+        }
+
         $this->createdAt = $createdAt;
 
         return $this;

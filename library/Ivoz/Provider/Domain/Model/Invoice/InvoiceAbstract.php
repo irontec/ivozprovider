@@ -326,6 +326,10 @@ abstract class InvoiceAbstract
                 $inDate,
                 null
             );
+
+            if ($this->inDate == $inDate) {
+                return $this;
+            }
         }
 
         $this->inDate = $inDate;
@@ -357,6 +361,10 @@ abstract class InvoiceAbstract
                 $outDate,
                 null
             );
+
+            if ($this->outDate == $outDate) {
+                return $this;
+            }
         }
 
         $this->outDate = $outDate;

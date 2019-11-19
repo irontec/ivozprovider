@@ -1141,6 +1141,10 @@ abstract class TpDerivedChargerAbstract
             'CURRENT_TIMESTAMP'
         );
 
+        if ($this->createdAt == $createdAt) {
+            return $this;
+        }
+
         $this->createdAt = $createdAt;
 
         return $this;

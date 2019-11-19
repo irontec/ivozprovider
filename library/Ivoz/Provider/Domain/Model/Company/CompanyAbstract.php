@@ -853,6 +853,7 @@ abstract class CompanyAbstract
     {
         if (!is_null($ipfilter)) {
             Assertion::between(intval($ipfilter), 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
+            $ipfilter = (bool) $ipfilter;
         }
 
         $this->ipfilter = $ipfilter;
@@ -880,10 +881,8 @@ abstract class CompanyAbstract
     protected function setOnDemandRecord($onDemandRecord = null)
     {
         if (!is_null($onDemandRecord)) {
-            if (!is_null($onDemandRecord)) {
-                Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
-                $onDemandRecord = (int) $onDemandRecord;
-            }
+            Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
+            $onDemandRecord = (int) $onDemandRecord;
         }
 
         $this->onDemandRecord = $onDemandRecord;
@@ -912,8 +911,9 @@ abstract class CompanyAbstract
     {
         Assertion::notNull($allowRecordingRemoval, 'allowRecordingRemoval value "%s" is null, but non null value was expected.');
         Assertion::between(intval($allowRecordingRemoval), 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
+        $allowRecordingRemoval = (bool) $allowRecordingRemoval;
 
-        $this->allowRecordingRemoval = (bool) $allowRecordingRemoval;
+        $this->allowRecordingRemoval = $allowRecordingRemoval;
 
         return $this;
     }
@@ -994,10 +994,8 @@ abstract class CompanyAbstract
     protected function setRecordingsLimitMB($recordingsLimitMB = null)
     {
         if (!is_null($recordingsLimitMB)) {
-            if (!is_null($recordingsLimitMB)) {
-                Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
-                $recordingsLimitMB = (int) $recordingsLimitMB;
-            }
+            Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
+            $recordingsLimitMB = (int) $recordingsLimitMB;
         }
 
         $this->recordingsLimitMB = $recordingsLimitMB;
@@ -1117,6 +1115,7 @@ abstract class CompanyAbstract
     {
         if (!is_null($showInvoices)) {
             Assertion::between(intval($showInvoices), 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
+            $showInvoices = (bool) $showInvoices;
         }
 
         $this->showInvoices = $showInvoices;

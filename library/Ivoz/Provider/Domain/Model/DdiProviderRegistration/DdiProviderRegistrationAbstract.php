@@ -451,6 +451,7 @@ abstract class DdiProviderRegistrationAbstract
     {
         if (!is_null($multiDdi)) {
             Assertion::between(intval($multiDdi), 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
+            $multiDdi = (bool) $multiDdi;
         }
 
         $this->multiDdi = $multiDdi;

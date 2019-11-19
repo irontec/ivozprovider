@@ -20,10 +20,13 @@ class AssertionGenerator
         return 'if (!is_null($'. $fieldName .')) {';
     }
 
-    public static function boolean($fieldName)
+    public static function boolean($fieldName, $spaces = '')
     {
         $message = $fieldName . ' provided "%s" is not a valid boolean value.';
-        return "Assertion::between(intval($". $fieldName ."), 0, 1, '". $message ."');";
+        return
+            "Assertion::between(intval($". $fieldName ."), 0, 1, '". $message ."');\n"
+            . $spaces
+            ."$" . $fieldName . " = (bool) $". $fieldName .";";
     }
 
     public static function integer($fieldName)

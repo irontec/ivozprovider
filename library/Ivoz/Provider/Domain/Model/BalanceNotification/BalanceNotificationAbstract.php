@@ -266,6 +266,10 @@ abstract class BalanceNotificationAbstract
                 $lastSent,
                 null
             );
+
+            if ($this->lastSent == $lastSent) {
+                return $this;
+            }
         }
 
         $this->lastSent = $lastSent;

@@ -318,8 +318,9 @@ abstract class AdministratorAbstract
     {
         Assertion::notNull($active, 'active value "%s" is null, but non null value was expected.');
         Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
+        $active = (bool) $active;
 
-        $this->active = (bool) $active;
+        $this->active = $active;
 
         return $this;
     }

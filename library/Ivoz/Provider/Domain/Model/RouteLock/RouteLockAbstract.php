@@ -244,8 +244,9 @@ abstract class RouteLockAbstract
     {
         Assertion::notNull($open, 'open value "%s" is null, but non null value was expected.');
         Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
+        $open = (bool) $open;
 
-        $this->open = (bool) $open;
+        $this->open = $open;
 
         return $this;
     }

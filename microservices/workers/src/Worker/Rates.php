@@ -186,6 +186,7 @@ class Rates
             exit(1);
         }
 
+        $disableDestinations = true;
         try {
             $this->em->getConnection()->beginTransaction();
 
@@ -222,6 +223,7 @@ class Rates
 
             $affectedRows = $this->em->getConnection()->executeUpdate($tpDestinationInsert);
             if ($affectedRows > 0) {
+                $disableDestinations = false;
                 $this->eventPublisher->publish(
                     new EntityWasCreated(
                         TpDestination::class,
@@ -347,7 +349,10 @@ class Rates
         }
 
         try {
-            $this->reloadService->execute($brand->getCgrTenant());
+            $this->reloadService->execute(
+                $brand->getCgrTenant(),
+                $disableDestinations
+            );
             $this->logger->debug('Importer finished successfuly');
         } catch (\Exception $e) {
             $this->logger->error('Service reload failed');

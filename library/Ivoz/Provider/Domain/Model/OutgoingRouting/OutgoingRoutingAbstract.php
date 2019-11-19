@@ -421,6 +421,7 @@ abstract class OutgoingRoutingAbstract
     {
         if (!is_null($forceClid)) {
             Assertion::between(intval($forceClid), 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
+            $forceClid = (bool) $forceClid;
         }
 
         $this->forceClid = $forceClid;

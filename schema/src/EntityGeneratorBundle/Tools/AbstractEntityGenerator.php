@@ -1119,8 +1119,6 @@ public function <methodName>(<criteriaArgument>)
         }
 
         switch ($type) {
-            case 'boolean':
-                return '(bool) ';
             case 'text':
             case 'string':
                 return '';
@@ -1137,6 +1135,7 @@ public function <methodName>(<criteriaArgument>)
             case 'datetime':
             case 'time':
             case 'date':
+            case 'boolean':
                 return '';
         }
 
@@ -1351,13 +1350,10 @@ public function <methodName>(<criteriaArgument>)
             if (in_array($currentField->type, ['boolean'])) {
                 $assertions = array_merge(
                     $assertions,
-                    [$spaces . AssertionGenerator::boolean($currentField->fieldName)]
+                    [$spaces . AssertionGenerator::boolean($currentField->fieldName, $spaces)]
                 );
 
                 $isNullable = isset($currentField->nullable) && $currentField->nullable;
-                if ($isNullable) {
-//                    $assertions[] = $this->spaces . '$' . $currentField->fieldName . ' = (bool) $' . $currentField->fieldName . ';';
-                }
             }
 
             $arraySpacerFn = function ($value) use ($spaces) {
@@ -1382,7 +1378,14 @@ public function <methodName>(<criteriaArgument>)
                     . "\n" . $this->spaces
                     . $indent . '$default'
                     . "\n"
-                    . $indent .');';
+                    . $indent .');'
+                    . "\n\n"
+                    . $indent .'if ($this->$fldName == $var) {'
+                    . "\n"
+                    . $indent . '    return $this;'
+                    . "\n"
+                    . $indent ."}"
+                ;
 
                 $defaultValue = (isset($currentField->options) && \array_key_exists('default', $currentField->options))
                     ? var_export($currentField->options['default'], true)
@@ -1393,8 +1396,8 @@ public function <methodName>(<criteriaArgument>)
                 }
 
                 $assertions[] = str_replace(
-                    ['$var', '$default'],
-                    ['$' . $currentField->fieldName, $defaultValue],
+                    ['$var', '$fldName', '$default'],
+                    ['$' . $currentField->fieldName, $currentField->fieldName, $defaultValue],
                     $call
                 );
             }
@@ -1581,18 +1584,6 @@ public function <methodName>(<criteriaArgument>)
         $isNullable = isset($currentField->nullable) && $currentField->nullable;
         if ($isNullable) {
             $assertions[] = '$' . $currentField->fieldName . ' = (int) $' . $currentField->fieldName . ';';
-        }
-
-        if (!empty($assertions) && $isNullable) {
-            foreach ($assertions as $key => $value) {
-                $assertions[$key] = $this->spaces . $assertions[$key];
-            }
-
-            array_unshift(
-                $assertions,
-                AssertionGenerator::notNullCondition($currentField->fieldName)
-            );
-            $assertions[] = '}';
         }
 
         return $assertions;

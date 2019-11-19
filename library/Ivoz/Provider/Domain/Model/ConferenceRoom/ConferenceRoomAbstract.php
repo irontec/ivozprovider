@@ -226,8 +226,9 @@ abstract class ConferenceRoomAbstract
     {
         Assertion::notNull($pinProtected, 'pinProtected value "%s" is null, but non null value was expected.');
         Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
+        $pinProtected = (bool) $pinProtected;
 
-        $this->pinProtected = (bool) $pinProtected;
+        $this->pinProtected = $pinProtected;
 
         return $this;
     }

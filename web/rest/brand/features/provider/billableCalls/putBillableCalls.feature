@@ -19,6 +19,7 @@ Feature: Update billable calls
     """
       {
           "price": 2.2,
+          "cost": 1.1,
           "destinationName": "Rate test",
           "ratingPlanName": "RatingPlan Test"
       }
@@ -34,7 +35,7 @@ Feature: Update billable calls
           "duration": 0,
           "caller": "+34633646464",
           "callee": "+34633656565",
-          "cost": null,
+          "cost": 1.1,
           "price": 2.2,
           "carrierName": null,
           "destinationName": "Rate test",

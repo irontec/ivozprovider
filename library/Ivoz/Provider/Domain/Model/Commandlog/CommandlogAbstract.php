@@ -355,6 +355,10 @@ abstract class CommandlogAbstract
             null
         );
 
+        if ($this->createdOn == $createdOn) {
+            return $this;
+        }
+
         $this->createdOn = $createdOn;
 
         return $this;

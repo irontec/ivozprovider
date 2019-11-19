@@ -555,6 +555,10 @@ abstract class UsersLocationAbstract
             '2030-05-28 21:32:15'
         );
 
+        if ($this->expires == $expires) {
+            return $this;
+        }
+
         $this->expires = $expires;
 
         return $this;
@@ -665,6 +669,10 @@ abstract class UsersLocationAbstract
             $lastModified,
             '1900-01-01 00:00:01'
         );
+
+        if ($this->lastModified == $lastModified) {
+            return $this;
+        }
 
         $this->lastModified = $lastModified;
 
@@ -800,10 +808,8 @@ abstract class UsersLocationAbstract
     protected function setMethods($methods = null)
     {
         if (!is_null($methods)) {
-            if (!is_null($methods)) {
-                Assertion::integerish($methods, 'methods value "%s" is not an integer or a number castable to integer.');
-                $methods = (int) $methods;
-            }
+            Assertion::integerish($methods, 'methods value "%s" is not an integer or a number castable to integer.');
+            $methods = (int) $methods;
         }
 
         $this->methods = $methods;

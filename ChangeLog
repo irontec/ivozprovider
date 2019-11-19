@@ -1,3 +1,26 @@
+Mon, 18 Nov 2019 10:41:25 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.13.1 released
+
+    * Portals
+        - Fixed a bug where default Invoice templates was being assigned to emulated brand
+        - Fixed a bug where recordings could be deleted when it shouldn't
+        - Restored Externally rater custom options in Company screens
+
+    * Billing
+        - Improved CGRateS reloads when Destinations have not changed
+
+    * Invoicing
+        - Fixed Brand invoice data display in default Invoice templates
+
+    * Proxies
+        - Fixed a bug with wholesale Diversion header domains
+
+    * API
+        - Billable calls cost field can now be edited from Rest API
+        - Added missing CalendarPeriod endpoint
+
+
 Wed, 30 Oct 2019 12:34:00 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.13 released

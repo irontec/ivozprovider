@@ -77,6 +77,7 @@ class SetMaxUsageThresholdService extends AbstractApiBasedService
             'Tenant' => $tenant,
             'Account' => $account,
             'UniqueID' => '*default',
+            'BalanceType' => '*monetary',
             'ThresholdValue' => $threshold
         ];
 

@@ -579,6 +579,10 @@ abstract class TpLcrRuleAbstract
             'CURRENT_TIMESTAMP'
         );
 
+        if ($this->activationTime == $activationTime) {
+            return $this;
+        }
+
         $this->activationTime = $activationTime;
 
         return $this;
@@ -635,6 +639,10 @@ abstract class TpLcrRuleAbstract
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
+
+        if ($this->createdAt == $createdAt) {
+            return $this;
+        }
 
         $this->createdAt = $createdAt;
 

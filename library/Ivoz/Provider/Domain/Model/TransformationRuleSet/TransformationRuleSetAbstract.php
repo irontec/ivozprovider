@@ -364,11 +364,9 @@ abstract class TransformationRuleSetAbstract
     protected function setNationalLen($nationalLen = null)
     {
         if (!is_null($nationalLen)) {
-            if (!is_null($nationalLen)) {
-                Assertion::integerish($nationalLen, 'nationalLen value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($nationalLen, 0, 'nationalLen provided "%s" is not greater or equal than "%s".');
-                $nationalLen = (int) $nationalLen;
-            }
+            Assertion::integerish($nationalLen, 'nationalLen value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($nationalLen, 0, 'nationalLen provided "%s" is not greater or equal than "%s".');
+            $nationalLen = (int) $nationalLen;
         }
 
         $this->nationalLen = $nationalLen;
@@ -397,6 +395,7 @@ abstract class TransformationRuleSetAbstract
     {
         if (!is_null($generateRules)) {
             Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
+            $generateRules = (bool) $generateRules;
         }
 
         $this->generateRules = $generateRules;

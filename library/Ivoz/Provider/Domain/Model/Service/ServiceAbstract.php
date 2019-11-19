@@ -297,8 +297,9 @@ abstract class ServiceAbstract
     {
         Assertion::notNull($extraArgs, 'extraArgs value "%s" is null, but non null value was expected.');
         Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
+        $extraArgs = (bool) $extraArgs;
 
-        $this->extraArgs = (bool) $extraArgs;
+        $this->extraArgs = $extraArgs;
 
         return $this;
     }

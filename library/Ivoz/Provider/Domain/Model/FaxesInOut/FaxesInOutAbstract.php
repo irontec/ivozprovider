@@ -255,6 +255,10 @@ abstract class FaxesInOutAbstract
             null
         );
 
+        if ($this->calldate == $calldate) {
+            return $this;
+        }
+
         $this->calldate = $calldate;
 
         return $this;

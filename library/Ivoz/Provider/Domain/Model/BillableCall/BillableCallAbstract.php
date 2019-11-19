@@ -373,6 +373,10 @@ abstract class BillableCallAbstract
                 $startTime,
                 null
             );
+
+            if ($this->startTime == $startTime) {
+                return $this;
+            }
         }
 
         $this->startTime = $startTime;
@@ -681,11 +685,9 @@ abstract class BillableCallAbstract
     protected function setEndpointId($endpointId = null)
     {
         if (!is_null($endpointId)) {
-            if (!is_null($endpointId)) {
-                Assertion::integerish($endpointId, 'endpointId value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
-                $endpointId = (int) $endpointId;
-            }
+            Assertion::integerish($endpointId, 'endpointId value "%s" is not an integer or a number castable to integer.');
+            Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
+            $endpointId = (int) $endpointId;
         }
 
         $this->endpointId = $endpointId;
