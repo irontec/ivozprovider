@@ -54,20 +54,17 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
      */
     public function execute(BrandServiceInterface $entity)
     {
-        /**
-         * @todo consider performance issues here
-         */
-        $companies = $this->companyRepository->findByBrandId(
+        /** @var array $companyIds */
+        $companyIds = $this->companyRepository->findIdsByBrandId(
             $entity->getBrand()->getId()
         );
 
         /**
-         * Foreach Company in Service Brand
-         * @var Company $company
+         * @var int[] $companyId
          */
-        foreach ($companies as $company) {
+        foreach ($companyIds as $companyId) {
             $companyService = $this->companyServiceRepository->findCompanyService(
-                $company->getId(),
+                $companyId,
                 $entity->getService()->getId()
             );
 
