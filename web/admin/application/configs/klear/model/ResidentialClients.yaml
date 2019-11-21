@@ -115,7 +115,7 @@ production:
     maxDailyUsage:
       title: _('Max daily usage')
       type: number
-      defaultValue: 100
+      defaultValue: 1000000
       source:
         control: Spinner
         min: 1
