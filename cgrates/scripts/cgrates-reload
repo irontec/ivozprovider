@@ -12,8 +12,27 @@
 #
 ###############################################################################
 
+FLUSHALL=0
+RELOADDESTINATIONS=0
+
+while getopts ":Fd" opt; do
+  case $opt in
+    F)
+      FLUSHALL=1
+      ;;
+    d)
+      RELOADDESTINATIONS=1
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit -1
+      ;;
+  esac
+done
+
 # Remove every redis key except accounts info
-if [ "$1" == "--flushall" ]; then
+if [ $FLUSHALL -eq 1 ]; then
+    RELOADDESTINATIONS=1 # -F forces -D
     SENTINEL_MASTER=`redis-cli -h data.ivozprovider.local -p 26379 sentinel get-master-addr-by-name mymaster | head -n 1`
     echo -e "\e[1;32m* \e[1;97mDetected Redis Sentinel Master: $SENTINEL_MASTER\n\e[0m"
     echo -e "\e[1;31mThis operation cannot be undone, proceed?\n\e[0m"
@@ -32,6 +51,11 @@ BRANDS=`mysql -h data.ivozprovider.local -uroot -BN ivozprovider -e "SELECT id F
 # Reload all brands
 for BRAND in $BRANDS; do
     # Reload billing information for this brand
-    echo -e "\e[1;32m* \e[1;31mReloading billing information for brand ${BRAND} ...\e[0m"
-    /usr/bin/cgr-console "load_tp_from_stordb Tpid=\"b${BRAND}\" Cleanup=true Validate=true"
+    if [ $RELOADDESTINATIONS -eq 1 ]; then
+        echo -e "\e[1;32m* \e[1;31mReloading billing (including destinations) information for brand ${BRAND}...\e[0m"
+        /usr/bin/cgr-console "load_tp_from_stordb Tpid=\"b${BRAND}\" Cleanup=true Validate=true DisableDestinations=false"
+    else
+        echo -e "\e[1;32m* \e[1;31mReloading billing (excluding destinations) information for brand ${BRAND}...\e[0m"
+        /usr/bin/cgr-console "load_tp_from_stordb Tpid=\"b${BRAND}\" Cleanup=true Validate=true DisableDestinations=true"
+    fi
 done
