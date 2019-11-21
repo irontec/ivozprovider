@@ -25,6 +25,7 @@ class Version20191023153740 extends AbstractMigration
         // Allow negative except for non-prepaid clients
         $this->addSql('UPDATE tp_account_actions SET allow_negative=1 WHERE carrierId IS NOT NULL');
         $this->addSql('UPDATE tp_account_actions t JOIN Companies C ON C.id=t.companyId SET allow_negative=0 WHERE C.billingMethod!=\'postpaid\'');
+        $this->addSql('UPDATE tp_account_actions t JOIN Companies C ON C.id=t.companyId SET allow_negative=1 WHERE C.billingMethod=\'postpaid\'');
 
         // Default max daily usage
         $this->addSql('ALTER TABLE Companies ADD maxDailyUsage INT UNSIGNED DEFAULT 1000000 NOT NULL');
