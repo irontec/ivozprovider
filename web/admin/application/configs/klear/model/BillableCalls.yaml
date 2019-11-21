@@ -42,13 +42,13 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterClass: IvozProvider_Klear_Filter_BillableCallsBrand
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
             Company.name: asc
-        'null': _("Unassigned")
     brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
