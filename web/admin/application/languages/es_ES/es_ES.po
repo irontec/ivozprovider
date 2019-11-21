@@ -176,12 +176,6 @@ msgstr "¿Desea generar la factura?"
 msgid "Area code"
 msgstr "Código de Area"
 
-msgid "As address"
-msgstr "Dirección Servidor de Aplicación"
-
-msgid "As iden"
-msgstr "Identificador Servidor de Aplicación"
-
 msgid "Assistant"
 msgstr "Asistente"
 
@@ -713,9 +707,6 @@ msgstr "Texto en pantalla"
 msgid "Distribute method"
 msgstr "Método de distribución"
 
-msgid "Diversion"
-msgstr "Enviar Diversion"
-
 msgid "Do not disturb"
 msgstr "No molestar"
 
@@ -833,9 +824,6 @@ msgid "Enabled"
 msgstr "Activado"
 
 msgid "End date"
-msgstr "Fecha fin"
-
-msgid "End time"
 msgstr "Fecha fin"
 
 msgid "Endpoint id"
@@ -1626,12 +1614,6 @@ msgstr ""
 "disponibles en una prioridad, se contactarán a los miembros de la siguiente "
 "prioridad."
 
-msgid "Metered"
-msgstr "Tarificado"
-
-msgid "Metering date"
-msgstr "Fecha de tarificación"
-
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
 "digits and one character in '+*_-'"
@@ -1876,9 +1858,6 @@ msgstr "Páginas"
 msgid "Parse file and import"
 msgstr "Analizar fichero e importar"
 
-msgid "Parsed"
-msgstr "Parseada"
-
 msgid "Party"
 msgstr "Interlocutor"
 
@@ -2000,9 +1979,7 @@ msgid "Prevent missed calls"
 msgstr "Evitar llamadas perdidas"
 
 msgid "Price"
-msgid_plural "Prices"
-msgstr[0] "Precio"
-msgstr[1] "Precios"
+msgstr "Precio"
 
 msgid "Prices Help"
 msgstr "Ayuda Precios"
@@ -2026,9 +2003,6 @@ msgstr[1] "Provincias"
 
 msgid "Provisioning Info"
 msgstr "Provisioning"
-
-msgid "Proxy"
-msgstr "Proxy"
 
 msgid "Proxy Trunks"
 msgid_plural "Proxies Trunks"
@@ -2096,9 +2070,6 @@ msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
 
-msgid "Re metering date"
-msgstr "Fecha de retarificación"
-
 msgid "Realm"
 msgstr "Realm"
 
@@ -2118,12 +2089,6 @@ msgstr "Grabaciones"
 
 msgid "Recording extension"
 msgstr "Extensión de grabado"
-
-msgid "Referee"
-msgstr "Referee"
-
-msgid "Referrer"
-msgstr "Referrer"
 
 msgid "Register"
 msgstr "Registro"
