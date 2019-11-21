@@ -176,12 +176,6 @@ msgstr "Estàs segur que vols generar la factura?"
 msgid "Area code"
 msgstr "Codi d'àrea"
 
-msgid "As address"
-msgstr "Com adreça"
-
-msgid "As iden"
-msgstr "Com identificador"
-
 msgid "Assistant"
 msgstr "Assistent"
 
@@ -711,9 +705,6 @@ msgstr "Mostra nom"
 msgid "Distribute method"
 msgstr "Mètode de distribució"
 
-msgid "Diversion"
-msgstr "Desviació"
-
 msgid "Do not disturb"
 msgstr "No molestar"
 
@@ -830,9 +821,6 @@ msgstr "Habilitat"
 
 msgid "End date"
 msgstr "Data fi"
-
-msgid "End time"
-msgstr "Temps final"
 
 msgid "Endpoint id"
 msgstr "Dispositiu final Id"
@@ -1616,12 +1604,6 @@ msgstr ""
 "Els membres amb menys penalització seran trucats primer. Membres amb alta "
 "penalització seran trucats quan no hi hagi membres amb penalització"
 
-msgid "Metered"
-msgstr "Mesurat"
-
-msgid "Metering date"
-msgstr "Data de mesura"
-
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
 "digits and one character in '+*_-'"
@@ -1866,9 +1848,6 @@ msgstr "Pagina"
 msgid "Parse file and import"
 msgstr "Analitza fitxer i importa"
 
-msgid "Parsed"
-msgstr "Analitzat"
-
 msgid "Party"
 msgstr "Festa"
 
@@ -1988,9 +1967,7 @@ msgid "Prevent missed calls"
 msgstr "Eviteu les trucades perdudes"
 
 msgid "Price"
-msgid_plural "Prices"
-msgstr[0] "Price"
-msgstr[1] "Prices"
+msgstr "Price"
 
 msgid "Prices Help"
 msgstr "Ajuda de preus"
@@ -2014,9 +1991,6 @@ msgstr[1] "Provinces"
 
 msgid "Provisioning Info"
 msgstr "Informació aprovisionament"
-
-msgid "Proxy"
-msgstr "Intermediari"
 
 msgid "Proxy Trunks"
 msgid_plural "Proxies Trunks"
@@ -2084,9 +2058,6 @@ msgid_plural "Rating plans"
 msgstr[0] "Rating plan"
 msgstr[1] "Rating plans"
 
-msgid "Re metering date"
-msgstr "Data de repetició de mesura"
-
 msgid "Realm"
 msgstr "Regne"
 
@@ -2106,12 +2077,6 @@ msgstr "Data de grabació"
 
 msgid "Recording extension"
 msgstr "Extensió gravada"
-
-msgid "Referee"
-msgstr "Àrbitre"
-
-msgid "Referrer"
-msgstr "Remitent"
 
 msgid "Register"
 msgstr "Registre"
