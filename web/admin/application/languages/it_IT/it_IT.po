@@ -178,12 +178,6 @@ msgstr "Sei sicuro di voler generare la fattura?"
 msgid "Area code"
 msgstr "Area code"
 
-msgid "As address"
-msgstr "Come indirizzo"
-
-msgid "As iden"
-msgstr "Come iden"
-
 msgid "Assistant"
 msgstr "Assistente"
 
@@ -716,9 +710,6 @@ msgstr "Nome visualizzato"
 msgid "Distribute method"
 msgstr "Metodo di distribuzione"
 
-msgid "Diversion"
-msgstr "Deviazione"
-
 msgid "Do not disturb"
 msgstr "Non disturbare"
 
@@ -835,9 +826,6 @@ msgstr "Abilitato"
 
 msgid "End date"
 msgstr "End date"
-
-msgid "End time"
-msgstr "Ora fine"
 
 msgid "Endpoint id"
 msgstr "Endpoint id"
@@ -1626,12 +1614,6 @@ msgstr ""
 "penalità maggioresaranno contattati quando non ci sono membri con penalità "
 "attuale disponibili."
 
-msgid "Metered"
-msgstr "Misurati"
-
-msgid "Metering date"
-msgstr "Data misurazione"
-
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
 "digits and one character in '+*_-'"
@@ -1878,9 +1860,6 @@ msgstr "Pagina"
 msgid "Parse file and import"
 msgstr "Analizza file e importa"
 
-msgid "Parsed"
-msgstr "Analizzato"
-
 msgid "Party"
 msgstr "Party"
 
@@ -2002,9 +1981,7 @@ msgid "Prevent missed calls"
 msgstr "Prevenire le chiamate perse"
 
 msgid "Price"
-msgid_plural "Prices"
-msgstr[0] "Prezzo"
-msgstr[1] "Prezzi"
+msgstr "Prezzo"
 
 msgid "Prices Help"
 msgstr "Guida ai prezzi"
@@ -2028,9 +2005,6 @@ msgstr[1] "Province"
 
 msgid "Provisioning Info"
 msgstr "Informazioni di provisioning"
-
-msgid "Proxy"
-msgstr "Proxy"
 
 msgid "Proxy Trunks"
 msgid_plural "Proxies Trunks"
@@ -2098,9 +2072,6 @@ msgid_plural "Rating plans"
 msgstr[0] "Piano di tariffazione"
 msgstr[1] "Piani di tariffazione"
 
-msgid "Re metering date"
-msgstr "Data Rivalorizzazione"
-
 msgid "Realm"
 msgstr "Realm"
 
@@ -2120,12 +2091,6 @@ msgstr "Registrazione dei dati"
 
 msgid "Recording extension"
 msgstr "Interno di registrazione"
-
-msgid "Referee"
-msgstr "Riferito"
-
-msgid "Referrer"
-msgstr "Referente"
 
 msgid "Register"
 msgstr "Register"

@@ -171,12 +171,6 @@ msgstr "Are you sure you want to generate the invoice?"
 msgid "Area code"
 msgstr "Area code"
 
-msgid "As address"
-msgstr "AS address"
-
-msgid "As iden"
-msgstr "AS iden"
-
 msgid "Assistant"
 msgstr "Assistant"
 
@@ -702,9 +696,6 @@ msgstr "Display name"
 msgid "Distribute method"
 msgstr "Distribute method"
 
-msgid "Diversion"
-msgstr "Diversion"
-
 msgid "Do not disturb"
 msgstr "Do not disturb"
 
@@ -821,9 +812,6 @@ msgstr "Enabled"
 
 msgid "End date"
 msgstr "End date"
-
-msgid "End time"
-msgstr "End time"
 
 msgid "Endpoint id"
 msgstr "Endpoint id"
@@ -1602,12 +1590,6 @@ msgstr ""
 "métrica serán contactados cuando no exista ningún miembro de la métrica "
 "actual disponible."
 
-msgid "Metered"
-msgstr "Metered"
-
-msgid "Metering date"
-msgstr "Metering date"
-
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
 "digits and one character in '+*_-'"
@@ -1850,9 +1832,6 @@ msgstr "Page"
 msgid "Parse file and import"
 msgstr "Parse file and import"
 
-msgid "Parsed"
-msgstr "Parsed"
-
 msgid "Party"
 msgstr "Party"
 
@@ -1972,9 +1951,7 @@ msgid "Prevent missed calls"
 msgstr "Prevent missed calls"
 
 msgid "Price"
-msgid_plural "Prices"
-msgstr[0] "Price"
-msgstr[1] "Prices"
+msgstr "Price"
 
 msgid "Prices Help"
 msgstr "Prices Help"
@@ -1998,9 +1975,6 @@ msgstr[1] "Provinces"
 
 msgid "Provisioning Info"
 msgstr "Provisioning Info"
-
-msgid "Proxy"
-msgstr "Proxy"
 
 msgid "Proxy Trunks"
 msgid_plural "Proxies Trunks"
@@ -2068,9 +2042,6 @@ msgid_plural "Rating plans"
 msgstr[0] "Rating plan"
 msgstr[1] "Rating plans"
 
-msgid "Re metering date"
-msgstr "Re metering date"
-
 msgid "Realm"
 msgstr "Realm"
 
@@ -2090,12 +2061,6 @@ msgstr "Recording data"
 
 msgid "Recording extension"
 msgstr "Recording extension"
-
-msgid "Referee"
-msgstr "Referee"
-
-msgid "Referrer"
-msgstr "Referrer"
 
 msgid "Register"
 msgstr "Register"
