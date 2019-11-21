@@ -97,7 +97,7 @@ msgstr "Afegeix a %s %2s"
 
 #, python-format
 msgid "Add pattern to %2s"
-msgstr "Afegix patró a %2s"
+msgstr "Afegeix patró a %2s"
 
 msgid "Admin"
 msgstr "Administrador"
@@ -176,7 +176,7 @@ msgstr "Estàs segur que vols generar la factura?"
 msgid "Area code"
 msgstr "Codi d'àrea"
 
-
+msgid "Assistant"
 msgstr "Assistent"
 
 msgid "Audio Transcoding"
@@ -263,7 +263,7 @@ msgid "Boss Whitelist"
 msgstr "Llista blanca del Cap"
 
 msgid "Boss-Assistant"
-msgstr "Assistent Capp"
+msgstr "Assistent Cap"
 
 msgid "Both"
 msgstr "Ambdós"
@@ -901,7 +901,7 @@ msgstr[0] "Filtre trucada externa"
 msgstr[1] "Filtres de trucada externa"
 
 msgid "Externally rated"
-msgstr "Tarifacació extern"
+msgstr "Tarificació externa"
 
 msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
@@ -1383,7 +1383,7 @@ msgid "Leave empty if no mail is needed (just generate CSV)."
 msgstr "Deixa en blanc si no fa falta enviar per correu (només genera CSV)."
 
 msgid "Leave empty to send to Host field"
-msgstr "Deixa en blanc per enviar al camp Host"
+msgstr "Deixa en blanc per enviar al camp Amfitrió"
 
 msgid "Leave empty to use the suggested default"
 msgstr "Deixa en blanc per utilitzar els valors per defecte suggerits"
@@ -2755,7 +2755,7 @@ msgstr[1] "Virtual PBXs"
 msgid "Voicemail"
 msgid_plural "Voicemails"
 msgstr[0] "Bústia de veu"
-msgstr[1] "Büsties de veu"
+msgstr[1] "Bústies de veu"
 
 msgid "Voicemail Locution"
 msgstr "Locució de bústia de veu"
