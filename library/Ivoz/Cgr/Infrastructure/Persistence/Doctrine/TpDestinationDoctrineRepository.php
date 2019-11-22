@@ -3,9 +3,11 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NativeQuery;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -16,10 +18,36 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TpDestinationDoctrineRepository extends ServiceEntityRepository implements TpDestinationRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    protected $queryRunner;
+
+    public function __construct(
+        RegistryInterface $registry,
+        DoctrineQueryRunner $queryRunner
+    ) {
         parent::__construct($registry, TpDestination::class);
+        $this->queryRunner = $queryRunner;
     }
+
+    /**
+     * @return int affected rows
+     */
+    public function syncWithBusiness()
+    {
+        $tpDestinationInsert =
+            'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)'
+            . ' SELECT CONCAT("b", brandId), CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
+
+        $nativeQuery = new NativeQuery(
+            $this->_em
+        );
+        $nativeQuery->setSQL($tpDestinationInsert);
+
+        return $this->queryRunner->execute(
+            TpDestination::class,
+            $nativeQuery
+        );
+    }
+
 
     /**
      * @inheritdoc
