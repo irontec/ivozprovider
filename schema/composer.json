@@ -58,8 +58,8 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "irontec/ivoz-api-bundle": "dev-master",
-        "irontec/ivoz-core-bundle": "dev-master",
+        "irontec/ivoz-api-bundle": "^2.0",
+        "irontec/ivoz-core-bundle": "^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
         "gesdinet/jwt-refresh-token-bundle": "^0.6.2",

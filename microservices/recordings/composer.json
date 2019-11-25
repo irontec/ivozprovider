@@ -52,7 +52,7 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "irontec/ivoz-core-bundle": "dev-master",
+        "irontec/ivoz-core-bundle": "^2.0",
         "debach/zend-mp3": "1.8.*",
         "symfony/symfony": "3.4.*"
     },
