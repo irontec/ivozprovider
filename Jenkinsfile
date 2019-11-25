@@ -240,7 +240,6 @@ pipeline {
                                 }
                                 docker.image('ironartemis/ivozprovider-testing-base')
                                       .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
-                                    sh 'cd library/CoreBundle/Resources/config/ && mv parameters.yml.dist parameters.yml'
                                     sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                 }
