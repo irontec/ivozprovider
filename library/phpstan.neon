@@ -3,7 +3,7 @@ parameters:
         - vendor/phpstan/phpstan-beberlei-assert/extension.neon
         - vendor/phpstan/phpstan-symfony/extension.neon
     excludes_analyse:
-        - "*/vendor/*"
+        - "*/vendor/[^irontec]/*"
         - "*/coverage/*"
         - %currentWorkingDirectory%/library/Ivoz/Api/Behat/Context/FeatureContext.php
         - %currentWorkingDirectory%/library/Ivoz/Provider/Domain/Service/Invoice/Generator.php
