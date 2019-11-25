@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ae7b7d4cc98564a0a1ebfda210a1e18",
+    "content-hash": "a11c2258d4cc181f176b907a634e541c",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -889,11 +889,11 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.11.0",
+            "version": "2.1.12.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/egulias/email-validator",
-                "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23",
+                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208",
                 "shasum": null
             },
             "require": {
@@ -948,16 +948,19 @@
         },
         {
             "name": "fig/link-util",
-            "version": "1.0.0.0",
+            "version": "1.1.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/fig/link-util",
-                "reference": "1a07821801a148be4add11ab0603e4af55a72fac",
+                "reference": "47f55860678a9e202206047bc02767556d298106",
                 "shasum": null
             },
             "require": {
                 "php": ">=5.5.0",
                 "psr/link": "~1.0@dev"
+            },
+            "provide": {
+                "psr/link-implementation": "1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.1",
@@ -1063,11 +1066,11 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.0.0",
+            "version": "6.5.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/guzzlehttp/guzzle",
-                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": null
             },
             "require": {
@@ -1308,11 +1311,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "dev-master",
+            "version": "2.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "6cfac13c80e1ad4043fd321335fbff6507b8cef2",
+                "reference": "52da94a34ba26ea603b216f40878ec3305632686",
                 "shasum": null
             },
             "require": {
@@ -1561,11 +1564,11 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.25.2.0",
+            "version": "1.25.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/monolog/monolog",
-                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
+                "reference": "fa82921994db851a8becaf3787a9e73c5976b6f1",
                 "shasum": null
             },
             "require": {
@@ -2264,17 +2267,17 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.9.1.0",
+            "version": "3.9.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ramsey/uuid",
-                "reference": "5ac2740e0c8c599d2bbe7f113a939f2b5b216c67",
+                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
                 "shasum": null
             },
             "require": {
                 "ext-json": "*",
                 "paragonie/random_compat": "^1 | ^2 | 9.99.99",
-                "php": "^5.4 | ^7",
+                "php": "^5.4 | ^7 | ^8",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "replace": {
@@ -2284,13 +2287,13 @@
                 "codeception/aspect-mock": "^1 | ^2",
                 "doctrine/annotations": "^1.2",
                 "goaop/framework": "1.0.0-alpha.2 | ^1 | ^2.1",
-                "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "mockery/mockery": "^0.9.9",
+                "jakub-onderka/php-parallel-lint": "^1",
+                "mockery/mockery": "^0.9.11 | ^1",
                 "moontoast/math": "^1.1",
                 "paragonie/random-lib": "^2",
                 "php-mock/php-mock-phpunit": "^0.3 | ^1.1",
                 "phpunit/phpunit": "^4.8 | ^5.4 | ^6.5",
-                "squizlabs/php_codesniffer": "^2.3"
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "ext-ctype": "Provides support for PHP Ctype functions",
@@ -2331,9 +2334,6 @@
                 "phpunit": [
                     "phpunit --verbose --colors=always"
                 ],
-                "phpunit-ci": [
-                    "phpunit --verbose --coverage-clover build/logs/clover.xml"
-                ],
                 "phpunit-coverage": [
                     "phpunit --verbose --colors=always --coverage-html build/coverage"
                 ],
@@ -2341,11 +2341,6 @@
                     "@lint",
                     "@phpcs",
                     "@phpunit"
-                ],
-                "test-ci": [
-                    "@lint",
-                    "@phpcs",
-                    "@phpunit-ci"
                 ]
             },
             "license": [
@@ -3041,25 +3036,28 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "3.2.6.0",
+            "version": "3.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "7a83160b50a2479d37eb74ba71577380b9afe4f5",
+                "reference": "defa9bdfc0191ed70b389cb93c550c6c82cf1745",
                 "shasum": null
             },
             "require": {
                 "php": ">=7.0.0",
                 "swiftmailer/swiftmailer": "^6.1.3",
-                "symfony/config": "~2.8|~3.3|~4.0",
-                "symfony/dependency-injection": "~2.7|~3.3|~4.0",
-                "symfony/http-kernel": "~2.7|~3.3|~4.0"
+                "symfony/config": "^3.4|^4.0|^5.0",
+                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.41|<2.10"
             },
             "require-dev": {
-                "symfony/console": "~2.7|~3.3|~4.0",
-                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
-                "symfony/phpunit-bridge": "~3.3|~4.0",
-                "symfony/yaml": "~2.7|~3.3|~4.0"
+                "symfony/console": "^3.4|^4.0|^5.0",
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+                "symfony/phpunit-bridge": "^3.4.32|^4.3.5|^5.0",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "psr/log": "Allows logging"
@@ -3067,7 +3065,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -3256,16 +3254,17 @@
         },
         {
             "name": "twig/twig",
-            "version": "1.42.4.0",
+            "version": "2.12.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "e587180584c3d2d6cb864a0454e777bb6dcb6152",
+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
                 "shasum": null
             },
             "require": {
-                "php": ">=5.5.0",
-                "symfony/polyfill-ctype": "^1.8"
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -3275,7 +3274,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.42-dev"
+                    "dev-master": "2.12-dev"
                 }
             },
             "autoload": {
@@ -3288,7 +3287,7 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Twig\\Tests\\": "tests"
+                    "Twig\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -3477,9 +3476,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "irontec/ivoz-core-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

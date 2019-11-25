@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3913b3a9fbd04cae61473e9986416daf",
+    "content-hash": "11eef1c7f01acb909c5a77dfd4d94e84",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1140,11 +1140,11 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.11.0",
+            "version": "2.1.12.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/egulias/email-validator",
-                "reference": "92dd169c32f6f55ba570c309d83f5209cefb5e23",
+                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208",
                 "shasum": null
             },
             "require": {
@@ -1199,16 +1199,19 @@
         },
         {
             "name": "fig/link-util",
-            "version": "1.0.0.0",
+            "version": "1.1.0.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/fig/link-util",
-                "reference": "1a07821801a148be4add11ab0603e4af55a72fac",
+                "reference": "47f55860678a9e202206047bc02767556d298106",
                 "shasum": null
             },
             "require": {
                 "php": ">=5.5.0",
                 "psr/link": "~1.0@dev"
+            },
+            "provide": {
+                "psr/link-implementation": "1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.1",
@@ -1368,11 +1371,11 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.4.1.0",
+            "version": "6.5.2.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/guzzlehttp/guzzle",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": null
             },
             "require": {
@@ -1387,12 +1390,13 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.3-dev"
+                    "dev-master": "6.5-dev"
                 }
             },
             "autoload": {
@@ -1609,11 +1613,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "2.0.0.0",
+            "version": "2.0.2.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-api",
-                "reference": "2f5db49c48a02cc66b9e55ce306bc541947f2d3f",
+                "reference": "ac8b4c3d4d977b7b05362d1db93dcfb5793a3497",
                 "shasum": null
             },
             "require": {
@@ -1659,18 +1663,18 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "dev-master",
+            "version": "2.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "99fa443124062e076a5a99ab2faa055f4a4ccb8f",
+                "reference": "3d6b462237def0530031a8c6a046b2d189d95e9c",
                 "shasum": null
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
                 "irontec/ivoz-api": "^2.0",
-                "irontec/ivoz-core-bundle": "dev-master",
+                "irontec/ivoz-core-bundle": "^2.0",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
                 "php": ">=7.0.19",
@@ -1756,11 +1760,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "dev-master",
+            "version": "2.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "6cfac13c80e1ad4043fd321335fbff6507b8cef2",
+                "reference": "52da94a34ba26ea603b216f40878ec3305632686",
                 "shasum": null
             },
             "require": {
@@ -2009,11 +2013,11 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.25.2.0",
+            "version": "1.25.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/monolog/monolog",
-                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
+                "reference": "fa82921994db851a8becaf3787a9e73c5976b6f1",
                 "shasum": null
             },
             "require": {
@@ -2690,39 +2694,41 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.8.0.0",
+            "version": "3.9.2.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/ramsey/uuid",
-                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
                 "shasum": null
             },
             "require": {
-                "paragonie/random_compat": "^1.0|^2.0|9.99.99",
-                "php": "^5.4 || ^7.0",
+                "ext-json": "*",
+                "paragonie/random_compat": "^1 | ^2 | 9.99.99",
+                "php": "^5.4 | ^7 | ^8",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "replace": {
                 "rhumsaa/uuid": "self.version"
             },
             "require-dev": {
-                "codeception/aspect-mock": "^1.0 | ~2.0.0",
-                "doctrine/annotations": "~1.2.0",
-                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ~2.1.0",
-                "ircmaxell/random-lib": "^1.1",
-                "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "mockery/mockery": "^0.9.9",
+                "codeception/aspect-mock": "^1 | ^2",
+                "doctrine/annotations": "^1.2",
+                "goaop/framework": "1.0.0-alpha.2 | ^1 | ^2.1",
+                "jakub-onderka/php-parallel-lint": "^1",
+                "mockery/mockery": "^0.9.11 | ^1",
                 "moontoast/math": "^1.1",
-                "php-mock/php-mock-phpunit": "^0.3|^1.1",
-                "phpunit/phpunit": "^4.7|^5.0|^6.5",
-                "squizlabs/php_codesniffer": "^2.3"
+                "paragonie/random-lib": "^2",
+                "php-mock/php-mock-phpunit": "^0.3 | ^1.1",
+                "phpunit/phpunit": "^4.8 | ^5.4 | ^6.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "ext-ctype": "Provides support for PHP Ctype functions",
                 "ext-libsodium": "Provides the PECL libsodium extension for use with the SodiumRandomGenerator",
+                "ext-openssl": "Provides the OpenSSL extension for use with the OpenSslGenerator",
                 "ext-uuid": "Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator",
-                "ircmaxell/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
                 "moontoast/math": "Provides support for converting UUID to 128-bit integer (in string form).",
+                "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
                 "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
                 "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
             },
@@ -2735,7 +2741,10 @@
             "autoload": {
                 "psr-4": {
                     "Ramsey\\Uuid\\": "src/"
-                }
+                },
+                "files": [
+                    "src/functions.php"
+                ]
             },
             "autoload-dev": {
                 "psr-4": {
@@ -2746,16 +2755,19 @@
                 "lint": [
                     "parallel-lint src tests"
                 ],
-                "phpunit": [
-                    "phpunit --verbose --colors=always"
-                ],
                 "phpcs": [
                     "phpcs src tests --standard=psr2 -sp --colors"
                 ],
+                "phpunit": [
+                    "phpunit --verbose --colors=always"
+                ],
+                "phpunit-coverage": [
+                    "phpunit --verbose --colors=always --coverage-html build/coverage"
+                ],
                 "test": [
                     "@lint",
-                    "@phpunit",
-                    "@phpcs"
+                    "@phpcs",
+                    "@phpunit"
                 ]
             },
             "license": [
@@ -2785,7 +2797,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid"
+                "rss": "https://github.com/ramsey/uuid/releases.atom",
+                "source": "https://github.com/ramsey/uuid",
+                "wiki": "https://github.com/ramsey/uuid/wiki"
             },
             "transport-options": {
                 "symlink": true
@@ -2915,11 +2929,11 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-apcu",
-                "reference": "71ce80635d5dcd67772b4dda00b86068595f64d5",
+                "reference": "a8e961c841b9ec52927a87914f8820a1ad8f8116",
                 "shasum": null
             },
             "require": {
@@ -2928,7 +2942,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -2967,11 +2981,11 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-ctype",
-                "reference": "550ebaac289296ce228a706d0867afc34687e3f4",
+                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
                 "shasum": null
             },
             "require": {
@@ -2983,7 +2997,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3021,11 +3035,11 @@
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-iconv",
-                "reference": "685968b11e61a347c18bf25db32effa478be610f",
+                "reference": "a019efccc03f1a335af6b4f20c30f5ea8060be36",
                 "shasum": null
             },
             "require": {
@@ -3037,7 +3051,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3076,11 +3090,11 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-icu",
-                "reference": "66810b9d6eb4af54d543867909d65ab9af654d7e",
+                "reference": "b3dffd68afa61ca70f2327f2dd9bbeb6aa53d70b",
                 "shasum": null
             },
             "require": {
@@ -3093,7 +3107,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3130,11 +3144,11 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-idn",
-                "reference": "6af626ae6fa37d396dc90a399c0ff08e5cfc45b2",
+                "reference": "6f9c239e61e1b0c9229a28ff89a812dc449c3d46",
                 "shasum": null
             },
             "require": {
@@ -3148,7 +3162,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3188,11 +3202,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-mbstring",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
                 "shasum": null
             },
             "require": {
@@ -3204,7 +3218,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3243,11 +3257,11 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-php56",
-                "reference": "0e3b212e96a51338639d8ce175c046d7729c3403",
+                "reference": "53dd1cdf3cb986893ccf2b96665b25b3abb384f4",
                 "shasum": null
             },
             "require": {
@@ -3257,7 +3271,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3295,11 +3309,11 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-php70",
-                "reference": "54b4c428a0054e254223797d2713c31e08610831",
+                "reference": "af23c7bb26a73b850840823662dda371484926c4",
                 "shasum": null
             },
             "require": {
@@ -3309,7 +3323,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3350,11 +3364,11 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-php72",
-                "reference": "04ce3335667451138df4307d6a9b61565560199e",
+                "reference": "66fea50f6cb37a35eea048d75a7d99a45b586038",
                 "shasum": null
             },
             "require": {
@@ -3363,7 +3377,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3401,11 +3415,11 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "1.12.0.0",
+            "version": "1.13.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-util",
-                "reference": "4317de1386717b4c22caed7725350a8887ab205c",
+                "reference": "964a67f293b66b95883a5ed918a65354fcd2258f",
                 "shasum": null
             },
             "require": {
@@ -3414,7 +3428,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -3449,25 +3463,28 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "3.2.6.0",
+            "version": "3.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "7a83160b50a2479d37eb74ba71577380b9afe4f5",
+                "reference": "defa9bdfc0191ed70b389cb93c550c6c82cf1745",
                 "shasum": null
             },
             "require": {
                 "php": ">=7.0.0",
                 "swiftmailer/swiftmailer": "^6.1.3",
-                "symfony/config": "~2.8|~3.3|~4.0",
-                "symfony/dependency-injection": "~2.7|~3.3|~4.0",
-                "symfony/http-kernel": "~2.7|~3.3|~4.0"
+                "symfony/config": "^3.4|^4.0|^5.0",
+                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.41|<2.10"
             },
             "require-dev": {
-                "symfony/console": "~2.7|~3.3|~4.0",
-                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
-                "symfony/phpunit-bridge": "~3.3|~4.0",
-                "symfony/yaml": "~2.7|~3.3|~4.0"
+                "symfony/console": "^3.4|^4.0|^5.0",
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+                "symfony/phpunit-bridge": "^3.4.32|^4.3.5|^5.0",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "psr/log": "Allows logging"
@@ -3475,7 +3492,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -3664,16 +3681,17 @@
         },
         {
             "name": "twig/twig",
-            "version": "1.42.4.0",
+            "version": "2.12.2.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/twig/twig",
-                "reference": "e587180584c3d2d6cb864a0454e777bb6dcb6152",
+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
                 "shasum": null
             },
             "require": {
-                "php": ">=5.5.0",
-                "symfony/polyfill-ctype": "^1.8"
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -3683,7 +3701,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.42-dev"
+                    "dev-master": "2.12-dev"
                 }
             },
             "autoload": {
@@ -3696,7 +3714,7 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Twig\\Tests\\": "tests"
+                    "Twig\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -4283,11 +4301,11 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.3.2.0",
+            "version": "4.3.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpdocumentor/reflection-docblock",
-                "reference": "b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
+                "reference": "2ecaa9fef01634c83bfa8dc1fe35fb5cef223a62",
                 "shasum": null
             },
             "require": {
@@ -4383,28 +4401,28 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.9.0.0",
+            "version": "1.10.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpspec/prophecy",
-                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203",
+                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
                 "shasum": null
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
-                "sebastian/comparator": "^1.1|^2.0|^3.0",
+                "sebastian/comparator": "^1.2.3|^2.0|^3.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.5|^3.2",
+                "phpspec/phpspec": "^2.5 || ^3.2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5 || ^7.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8.x-dev"
+                    "dev-master": "1.10.x-dev"
                 }
             },
             "autoload": {
@@ -4692,11 +4710,11 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.2.4.0",
+            "version": "6.5.14.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/phpunit",
-                "reference": "ff3a76a58ac293657808aefd58c8aaf05945f4d9",
+                "reference": "bac23fe7ff13dbdb461481f706f0e9fe746334b7",
                 "shasum": null
             },
             "require": {
@@ -4705,24 +4723,24 @@
                 "ext-libxml": "*",
                 "ext-mbstring": "*",
                 "ext-xml": "*",
-                "myclabs/deep-copy": "^1.3",
+                "myclabs/deep-copy": "^1.6.1",
                 "phar-io/manifest": "^1.0.1",
                 "phar-io/version": "^1.0",
                 "php": "^7.0",
                 "phpspec/prophecy": "^1.7",
-                "phpunit/php-code-coverage": "^5.2",
-                "phpunit/php-file-iterator": "^1.4",
-                "phpunit/php-text-template": "^1.2",
-                "phpunit/php-timer": "^1.0.6",
-                "phpunit/phpunit-mock-objects": "^4.0",
-                "sebastian/comparator": "^2.0",
-                "sebastian/diff": "^1.4.3",
-                "sebastian/environment": "^3.0.2",
+                "phpunit/php-code-coverage": "^5.3",
+                "phpunit/php-file-iterator": "^1.4.3",
+                "phpunit/php-text-template": "^1.2.1",
+                "phpunit/php-timer": "^1.0.9",
+                "phpunit/phpunit-mock-objects": "^5.0.9",
+                "sebastian/comparator": "^2.1",
+                "sebastian/diff": "^2.0",
+                "sebastian/environment": "^3.1",
                 "sebastian/exporter": "^3.1",
-                "sebastian/global-state": "^1.1 || ^2.0",
-                "sebastian/object-enumerator": "^3.0.2",
+                "sebastian/global-state": "^2.0",
+                "sebastian/object-enumerator": "^3.0.3",
                 "sebastian/resource-operations": "^1.0",
-                "sebastian/version": "^2.0"
+                "sebastian/version": "^2.0.1"
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "3.0.2",
@@ -4741,7 +4759,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.2.x-dev"
+                    "dev-master": "6.5.x-dev"
                 }
             },
             "autoload": {
@@ -4784,24 +4802,24 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "4.0.4.0",
+            "version": "5.0.10.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/phpunit-mock-objects",
-                "reference": "2f789b59ab89669015ad984afa350c4ec577ade0",
+                "reference": "cd1cf05c553ecfec36b170070573e540b67d3f1f",
                 "shasum": null
             },
             "require": {
                 "doctrine/instantiator": "^1.0.5",
                 "php": "^7.0",
                 "phpunit/php-text-template": "^1.2.1",
-                "sebastian/exporter": "^3.0"
+                "sebastian/exporter": "^3.1"
             },
             "conflict": {
                 "phpunit/phpunit": "<6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^6.5.11"
             },
             "suggest": {
                 "ext-soap": "*"
@@ -4809,7 +4827,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0.x-dev"
+                    "dev-master": "5.0.x-dev"
                 }
             },
             "autoload": {
@@ -4828,7 +4846,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sb@sebastian-bergmann.de",
+                    "email": "sebastian@phpunit.de",
                     "role": "lead"
                 }
             ],
@@ -4839,8 +4857,7 @@
                 "xunit"
             ],
             "support": {
-                "issues": "https://github.com/sebastianbergmann/phpunit-mock-objects/issues",
-                "irc": "irc://irc.freenode.net/phpunit"
+                "issues": "https://github.com/sebastianbergmann/phpunit-mock-objects/issues"
             },
             "transport-options": {
                 "symlink": true
@@ -4889,25 +4906,25 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.0.0.0",
+            "version": "2.1.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/comparator",
-                "reference": "20f84f468cb67efee293246e6a09619b891f55f0",
+                "reference": "34369daee48eafb2651bea869b4b15d75ccc35f9",
                 "shasum": null
             },
             "require": {
                 "php": "^7.0",
-                "sebastian/diff": "^1.2",
-                "sebastian/exporter": "^3.0"
+                "sebastian/diff": "^2.0 || ^3.0",
+                "sebastian/exporter": "^3.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^6.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -4942,7 +4959,7 @@
                 }
             ],
             "description": "Provides the functionality to compare PHP values for equality",
-            "homepage": "http://www.github.com/sebastianbergmann/comparator",
+            "homepage": "https://github.com/sebastianbergmann/comparator",
             "keywords": [
                 "comparator",
                 "compare",
@@ -4954,23 +4971,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.3.0",
+            "version": "2.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/diff",
-                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4",
+                "reference": "347c1d8b49c5c3ee30c7040ea6fc446790e6bddd",
                 "shasum": null
             },
             "require": {
-                "php": "^5.3.3 || ^7.0"
+                "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
+                "phpunit/phpunit": "^6.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -5643,10 +5660,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "irontec/ivoz-api-bundle": 20,
-        "irontec/ivoz-core-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
