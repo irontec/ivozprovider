@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e175f5848214054f4bde88a77410463f",
+    "content-hash": "5b399f313c595c6c69a0916fb3787c75",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -610,63 +610,6 @@
             }
         },
         {
-            "name": "doctrine/doctrine-migrations-bundle",
-            "version": "1.3.2.0",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/doctrine/doctrine-migrations-bundle",
-                "reference": "49fa399181db4bf4f9f725126bd1cb65c4398dce",
-                "shasum": null
-            },
-            "require": {
-                "doctrine/doctrine-bundle": "~1.0",
-                "doctrine/migrations": "^1.1",
-                "php": ">=5.4.0",
-                "symfony/framework-bundle": "~2.7|~3.3|~4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^7.4"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Bundle\\MigrationsBundle\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Doctrine Project",
-                    "homepage": "http://www.doctrine-project.org"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony DoctrineMigrationsBundle",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "DBAL",
-                "Migrations",
-                "Schema"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "doctrine/inflector",
             "version": "1.2.0.0",
             "dist": {
@@ -847,81 +790,6 @@
                 "lexer",
                 "parser",
                 "php"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
-            "name": "doctrine/migrations",
-            "version": "1.5.0.0",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/doctrine/migrations",
-                "reference": "c81147c0f2938a6566594455367e095150547f72",
-                "shasum": null
-            },
-            "require": {
-                "doctrine/dbal": "~2.2",
-                "ocramius/proxy-manager": "^1.0|^2.0",
-                "php": "^5.5|^7.0",
-                "symfony/console": "~2.3|~3.0",
-                "symfony/yaml": "~2.3|~3.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "dev-master",
-                "doctrine/orm": "2.*",
-                "jdorn/sql-formatter": "~1.1",
-                "johnkary/phpunit-speedtrap": "~1.0@dev",
-                "mikey179/vfsstream": "^1.6",
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "~4.7",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "suggest": {
-                "jdorn/sql-formatter": "Allows to generate formatted SQL with the diff command."
-            },
-            "bin": [
-                "bin/doctrine-migrations"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "v1.6.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\DBAL\\Migrations\\": "lib/Doctrine/DBAL/Migrations"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Doctrine\\DBAL\\Migrations\\Tests\\": "tests/Doctrine/DBAL/Migrations/Tests"
-                }
-            },
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Michael Simonson",
-                    "email": "contact@mikesimonson.com"
-                }
-            ],
-            "description": "Database Schema migrations using Doctrine DBAL",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database",
-                "migrations"
             ],
             "transport-options": {
                 "symlink": true
@@ -1424,6 +1292,103 @@
             }
         },
         {
+            "name": "irontec/ivoz-core",
+            "version": "2.0.0.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/irontec/ivoz-core",
+                "reference": "3c27bacee9b9e02b5a0ecc40a416dd371663c064",
+                "shasum": null
+            },
+            "require": {
+                "beberlei/assert": "2.9.*",
+                "doctrine/orm": "^2.5",
+                "graze/guzzle-jsonrpc": "3.2.*",
+                "guzzlehttp/guzzle": "^6.3",
+                "lexik/jwt-authentication-bundle": "^2.5",
+                "php": ">=7.0.19",
+                "ramsey/uuid": "^3.7",
+                "symfony/expression-language": "3.4.*",
+                "symfony/finder": "3.4.*",
+                "symfony/http-foundation": "3.4.*",
+                "symfony/serializer": "3.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ivoz\\Core\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Core library for ivozprovider",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "irontec/ivoz-core-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/irontec/ivoz-core-bundle",
+                "reference": "6cfac13c80e1ad4043fd321335fbff6507b8cef2",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-cache-bundle": "^1.3",
+                "irontec/ivoz-core": "^2.0",
+                "ocramius/proxy-manager": "~2.0",
+                "php": ">=7.0.19",
+                "symfony/monolog-bundle": "3.1.*",
+                "symfony/proxy-manager-bridge": "^3.4",
+                "symfony/swiftmailer-bundle": "^3.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CoreBundle\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Symfony bridge for ivoz-core",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "jdorn/sql-formatter",
             "version": "1.2.17.0",
             "dist": {
@@ -1591,11 +1556,11 @@
         },
         {
             "name": "lexik/jwt-authentication-bundle",
-            "version": "2.6.4.0",
+            "version": "2.6.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/lexik/jwt-authentication-bundle",
-                "reference": "f79f20b282834878aab10530ca102a80396624ed",
+                "reference": "448551fc08c6cff37aad9d8f27f6b9615cd28966",
                 "shasum": null
             },
             "require": {
@@ -1603,17 +1568,16 @@
                 "lcobucci/jwt": "^3.2",
                 "namshi/jose": "^7.2",
                 "php": "^5.5|^7.0",
-                "symfony/framework-bundle": "^3.4|^4.0",
-                "symfony/security-bundle": "^3.4|^4.0"
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+                "symfony/security-bundle": "^3.4|^4.0|^5.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.1|^2.8",
-                "symfony/browser-kit": "^3.4|^4.0",
-                "symfony/console": "^3.4|^4.0",
-                "symfony/dom-crawler": "^3.4|^4.0",
-                "symfony/phpunit-bridge": "^3.4|^4.0",
-                "symfony/var-dumper": "^3.4|^4.0",
-                "symfony/yaml": "^3.4|^4.0"
+                "symfony/browser-kit": "^3.4|^4.0|^5.0",
+                "symfony/console": "^3.4|^4.0|^5.0",
+                "symfony/dom-crawler": "^3.4|^4.0|^5.0",
+                "symfony/phpunit-bridge": "^3.4|^4.0|^5.0",
+                "symfony/var-dumper": "^3.4|^4.0|^5.0",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "gesdinet/jwt-refresh-token-bundle": "Implements a refresh token system over Json Web Tokens in Symfony",
@@ -1759,11 +1723,11 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.25.1.0",
+            "version": "1.25.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/monolog/monolog",
-                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
                 "shasum": null
             },
             "require": {
@@ -2034,28 +1998,24 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "2.0.18.0",
+            "version": "9.99.99.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/paragonie/random_compat",
-                "reference": "0a58ef6e3146256cc3dc7cc393927bcc7d1b72db",
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
                 "shasum": null
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
             "license": [
                 "MIT"
             ],
@@ -2309,11 +2269,11 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.1.0",
+            "version": "1.1.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/log",
-                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
                 "shasum": null
             },
             "require": {
@@ -2540,11 +2500,11 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "6.2.1.0",
+            "version": "6.2.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/swiftmailer/swiftmailer",
-                "reference": "5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a",
+                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
                 "shasum": null
             },
             "require": {
@@ -3411,11 +3371,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "1.42.3.0",
+            "version": "1.42.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "201baee843e0ffe8b0b956f336dd42b2a92fae4e",
+                "reference": "e587180584c3d2d6cb864a0454e777bb6dcb6152",
                 "shasum": null
             },
             "require": {
@@ -3670,7 +3630,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "irontec/ivoz-core-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
