@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "11eef1c7f01acb909c5a77dfd4d94e84",
+    "content-hash": "034a25188c4c47187bc427b8e46d2d8d",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1801,6 +1801,49 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-core",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "irontec/ivoz-dev-tools",
+            "version": "2.0.0.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/irontec/ivoz-dev-tools",
+                "reference": "4fbd686492d65dff15124cb830b16453dc5f7c89",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/orm": "^2.5",
+                "php": ">=7.0.19",
+                "symfony/console": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EntityGeneratorBundle\\": "EntityGeneratorBundle"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "DevTools for ivozprovider",
             "transport-options": {
                 "symlink": true
             }
