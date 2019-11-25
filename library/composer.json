@@ -76,7 +76,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "friendsofphp/php-cs-fixer": "^2.16",
         "http-interop/http-middleware": "^0.5",
-        "leanphp/phpspec-code-coverage": "4.1.*",
+        "friends-of-phpspec/phpspec-code-coverage": "^4.1",
         "overtrue/phplint": "^1.0",
         "phpspec/phpspec": "4.2.*",
         "phpunit/phpunit": "^6.0",
