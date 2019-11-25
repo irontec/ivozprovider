@@ -39,20 +39,31 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $inputMac = '<br/> Mac:<input type="text" name="mac" />';
         if ($this->getParam("exec")) {
             if ($this->getParam("mac")) {
-                $terminalModel = $this->dataGateway->findOneBy(
-                    \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,
-                    [
-                        'Terminal.mac = :mac',
-                        ['mac' => $this->getParam("mac")]
-                    ]
-                );
-                if ($terminalModel) {
+                try {
+                    $terminalModel = $this->dataGateway->findOneBy(
+                        \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,
+                        [
+                            'Terminal.mac = :mac',
+                            ['mac' => $this->getParam("mac")]
+                        ]
+                    );
+
+                    if (!$terminalModel) {
+                        throw new \DomainException('Mac does not exist');
+                    }
+
                     $this->view->terminal = $terminalModel;
 
                     $userModel = $this->dataGateway->findOneBy(
                         \Ivoz\Provider\Domain\Model\User\User::class,
                         ["User.terminal = '" . $terminalModel->getId() . "'"]
                     );
+
+                    if (!$userModel) {
+                        throw new \DomainException('User was not found');
+                    }
+
+                    /** @var \Ivoz\Provider\Domain\Model\User\UserDto user */
                     $this->view->user = $userModel;
 
                     /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
@@ -64,11 +75,22 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                     );
                     $this->view->language = $language->toDto();
 
+                    /** @var \Ivoz\Provider\Domain\Model\Extension\Extension $extension */
+                    $extension = $this->dataGateway->remoteProcedureCall(
+                        \Ivoz\Provider\Domain\Model\User\User::class,
+                        $userModel->getId(),
+                        'getExtension',
+                        []
+                    );
+
                     /**
                      * For backward compatibility reasons
                      * @deprecated this will be remove in ivozprovider 3.0
                      */
-                    $this->view->user->setLanguage($this->view->language);
+                    if (!$extension) {
+                        throw new \DomainException('Extension was not found');
+                    }
+                    $this->view->user->setExtension($extension->toDto());
 
                     $companyModel = $this->dataGateway->findOneBy(
                         \Ivoz\Provider\Domain\Model\Company\Company::class,
@@ -81,9 +103,10 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                         ["Brand.id = '" . $companyModel->getBrandId() . "'"]
                     );
                     $this->view->brand = $brandModel;
-                } else {
-                    $error = "Mac does not exist";
+                } catch (\Exception $exception) {
+                    $error = $exception->getMessage();
                 }
+
                 $this->_runCode('specific', $inputMac, $error);
             } else {
                 $this->_runCode('specific', $inputMac, "*required");
@@ -127,7 +150,10 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                 $message = $this->_helper->translate('This template is going to be tested')
                             . '<br /><textarea name="currentCode" rows="8" cols="80" readonly></textarea>'
                             . $inputMac
-                            . $error;
+                            . '<span style="color:red;padding-left:10px;">'
+                            . $error
+                            . '</span>';
+
                 $buttons = array(
                         $this->_helper->translate('Exec') => array(
                                 'reloadParent' => false,

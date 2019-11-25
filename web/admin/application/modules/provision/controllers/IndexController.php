@@ -2,6 +2,7 @@
 
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 
 class Provision_IndexController extends Zend_Controller_Action
 {
@@ -68,19 +69,38 @@ class Provision_IndexController extends Zend_Controller_Action
         );
 
         if (!$this->view->user) {
-            $this->view->language = new LanguageDto();
-            $this->view->user = new UserDto();
-        } else {
-
-            /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
-            $language = $this->dataGateway->remoteProcedureCall(
-                \Ivoz\Provider\Domain\Model\User\User::class,
-                $this->view->user->getId(),
-                'getLanguage',
-                []
-            );
-            $this->view->language = $language->toDto();
+            return $this->_error(404, 'User not found');
         }
+
+        /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
+        $language = $this->dataGateway->remoteProcedureCall(
+            \Ivoz\Provider\Domain\Model\User\User::class,
+            $this->view->user->getId(),
+            'getLanguage',
+            []
+        );
+
+        if (!$language) {
+            return $this->_error(404, 'Language not found');
+        }
+
+        $this->view->language = $language->toDto();
+
+        /** @var \Ivoz\Provider\Domain\Model\Extension\Extension $extension */
+        $extension = $this->dataGateway->remoteProcedureCall(
+            \Ivoz\Provider\Domain\Model\User\User::class,
+            $this->view->user->getId(),
+            'getExtension',
+            []
+        );
+
+        if (!$extension) {
+            return $this->_error(404, 'Extension not found');
+        }
+
+        $this->view->user->setExtension(
+            $extension->toDto()
+        );
 
         /**
          * For backward compatibility reasons
