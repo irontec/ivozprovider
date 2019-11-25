@@ -7,6 +7,125 @@
     "content-hash": "3913b3a9fbd04cae61473e9986416daf",
     "packages": [
         {
+            "name": "api-platform/core",
+            "version": "2.2.10.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/api-platform/core",
+                "reference": "c0f7bdb3bcb7c6e91fe29b745627bd08bd371f81",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/inflector": "^1.0",
+                "php": ">=7.0",
+                "psr/cache": "^1.0",
+                "psr/container": "^1.0",
+                "symfony/http-foundation": "^3.1 || ^4.0",
+                "symfony/http-kernel": "^2.7 || ^3.0 || ^4.0",
+                "symfony/property-access": "^2.7 || ^3.0 || ^4.0",
+                "symfony/property-info": "^3.3.11 || ^4.0",
+                "symfony/serializer": "^3.1 || ^4.0",
+                "willdurand/negotiation": "^2.0.3"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<3.3"
+            },
+            "require-dev": {
+                "behat/behat": "^3.1",
+                "behat/mink": "^1.7",
+                "behat/mink-browserkit-driver": "^1.3.1",
+                "behat/mink-extension": "^2.2",
+                "behat/symfony2-extension": "^2.1.1",
+                "behatch/contexts": "^3.1",
+                "doctrine/annotations": "^1.2",
+                "doctrine/doctrine-bundle": "^1.6.3",
+                "doctrine/orm": "^2.5.2",
+                "friendsofsymfony/user-bundle": "^2.0",
+                "guzzlehttp/guzzle": "^6.0",
+                "justinrainbow/json-schema": "^5.0",
+                "nelmio/api-doc-bundle": "^2.13.3",
+                "php-mock/php-mock-phpunit": "^2.0",
+                "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
+                "phpdocumentor/type-resolver": "^0.2.1 || ^0.3 || 0.4",
+                "phpunit/phpunit": "^6.1",
+                "psr/log": "^1.0",
+                "sensio/framework-extra-bundle": "^3.0.11 || ^4.0",
+                "symfony/asset": "^3.3 || ^4.0",
+                "symfony/cache": "^3.3 || ^4.0",
+                "symfony/config": "^3.3 || ^4.0",
+                "symfony/console": "^3.3 || ^4.0",
+                "symfony/debug": "^2.8 || ^3.0 || ^4.0",
+                "symfony/dependency-injection": "^3.3 || ^4.0",
+                "symfony/doctrine-bridge": "^2.8.12 || ^3.0 || ^4.0",
+                "symfony/event-dispatcher": "^3.3 || ^4.0",
+                "symfony/expression-language": "^2.8 || ^3.0 || ^4.0",
+                "symfony/finder": "^3.3 || ^4.0",
+                "symfony/form": "^3.3 || ^4.0",
+                "symfony/framework-bundle": "^3.3 || ^4.0",
+                "symfony/http-foundation": "^3.1@dev || ^4.0@dev",
+                "symfony/phpunit-bridge": "^3.3 || ^4.0",
+                "symfony/routing": "^3.3 || ^4.0",
+                "symfony/security": "^3.0 || ^4.0",
+                "symfony/security-bundle": "^3.0 || ^4.0",
+                "symfony/twig-bundle": "^3.1 || ^4.0",
+                "symfony/validator": "^3.3 || ^4.0",
+                "symfony/yaml": "^3.3 || ^4.0",
+                "webonyx/graphql-php": "^0.12"
+            },
+            "suggest": {
+                "friendsofsymfony/user-bundle": "To use the FOSUserBundle bridge.",
+                "guzzlehttp/guzzle": "To use the HTTP cache invalidation system.",
+                "phpdocumentor/reflection-docblock": "To support extracting metadata from PHPDoc.",
+                "psr/cache-implementation": "To use metadata caching.",
+                "symfony/cache": "To have metadata caching when using Symfony integration.",
+                "symfony/config": "To load XML configuration files.",
+                "symfony/expression-language": "To use authorization features.",
+                "symfony/security": "To use authorization features.",
+                "symfony/twig-bundle": "To use the Swagger UI integration.",
+                "webonyx/graphql-php": "To support GraphQL."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ApiPlatform\\Core\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "ApiPlatform\\Core\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kévin Dunglas",
+                    "email": "dunglas@gmail.com",
+                    "homepage": "https://dunglas.fr"
+                }
+            ],
+            "description": "The ultimate solution to create web APIs.",
+            "homepage": "https://api-platform.com",
+            "keywords": [
+                "API",
+                "HAL",
+                "Hydra",
+                "JSON",
+                "JSON-LD",
+                "REST",
+                "Swagger"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "beberlei/assert",
             "version": "2.9.9.0",
             "dist": {
@@ -1489,6 +1608,200 @@
             }
         },
         {
+            "name": "irontec/ivoz-api",
+            "version": "2.0.0.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/irontec/ivoz-api",
+                "reference": "2f5db49c48a02cc66b9e55ce306bc541947f2d3f",
+                "shasum": null
+            },
+            "require": {
+                "api-platform/core": "2.2.*",
+                "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
+                "graze/guzzle-jsonrpc": "3.2.*",
+                "guzzlehttp/guzzle": "^6.3",
+                "irontec/ivoz-core": "^2.0",
+                "lexik/jwt-authentication-bundle": "^2.5",
+                "php": ">=7.0.19",
+                "symfony/expression-language": "3.4.*",
+                "symfony/finder": "3.4.*",
+                "symfony/http-foundation": "3.4.*",
+                "symfony/serializer": "3.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ivoz\\Api\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Api library built on api-platform for ivozprovider",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "irontec/ivoz-api-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/irontec/ivoz-api-bundle",
+                "reference": "99fa443124062e076a5a99ab2faa055f4a4ccb8f",
+                "shasum": null
+            },
+            "require": {
+                "api-platform/core": "2.2.*",
+                "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
+                "irontec/ivoz-api": "^2.0",
+                "irontec/ivoz-core-bundle": "dev-master",
+                "lexik/jwt-authentication-bundle": "^2.5",
+                "nelmio/cors-bundle": "^1.5",
+                "php": ">=7.0.19",
+                "symfony/monolog-bundle": "3.1.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "ApiBundle\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Symfony bridge for ivoz-api",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "irontec/ivoz-core",
+            "version": "2.0.0.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/irontec/ivoz-core",
+                "reference": "3c27bacee9b9e02b5a0ecc40a416dd371663c064",
+                "shasum": null
+            },
+            "require": {
+                "beberlei/assert": "2.9.*",
+                "doctrine/orm": "^2.5",
+                "graze/guzzle-jsonrpc": "3.2.*",
+                "guzzlehttp/guzzle": "^6.3",
+                "lexik/jwt-authentication-bundle": "^2.5",
+                "php": ">=7.0.19",
+                "ramsey/uuid": "^3.7",
+                "symfony/expression-language": "3.4.*",
+                "symfony/finder": "3.4.*",
+                "symfony/http-foundation": "3.4.*",
+                "symfony/serializer": "3.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ivoz\\Core\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Core library for ivozprovider",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "irontec/ivoz-core-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/irontec/ivoz-core-bundle",
+                "reference": "6cfac13c80e1ad4043fd321335fbff6507b8cef2",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-cache-bundle": "^1.3",
+                "irontec/ivoz-core": "^2.0",
+                "ocramius/proxy-manager": "~2.0",
+                "php": ">=7.0.19",
+                "symfony/monolog-bundle": "3.1.*",
+                "symfony/proxy-manager-bridge": "^3.4",
+                "symfony/swiftmailer-bundle": "^3.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CoreBundle\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Symfony bridge for ivoz-core",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "jdorn/sql-formatter",
             "version": "1.2.17.0",
             "dist": {
@@ -1595,11 +1908,11 @@
         },
         {
             "name": "lexik/jwt-authentication-bundle",
-            "version": "2.6.4.0",
+            "version": "2.6.5.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/lexik/jwt-authentication-bundle",
-                "reference": "f79f20b282834878aab10530ca102a80396624ed",
+                "reference": "448551fc08c6cff37aad9d8f27f6b9615cd28966",
                 "shasum": null
             },
             "require": {
@@ -1607,17 +1920,16 @@
                 "lcobucci/jwt": "^3.2",
                 "namshi/jose": "^7.2",
                 "php": "^5.5|^7.0",
-                "symfony/framework-bundle": "^3.4|^4.0",
-                "symfony/security-bundle": "^3.4|^4.0"
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+                "symfony/security-bundle": "^3.4|^4.0|^5.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.1|^2.8",
-                "symfony/browser-kit": "^3.4|^4.0",
-                "symfony/console": "^3.4|^4.0",
-                "symfony/dom-crawler": "^3.4|^4.0",
-                "symfony/phpunit-bridge": "^3.4|^4.0",
-                "symfony/var-dumper": "^3.4|^4.0",
-                "symfony/yaml": "^3.4|^4.0"
+                "symfony/browser-kit": "^3.4|^4.0|^5.0",
+                "symfony/console": "^3.4|^4.0|^5.0",
+                "symfony/dom-crawler": "^3.4|^4.0|^5.0",
+                "symfony/phpunit-bridge": "^3.4|^4.0|^5.0",
+                "symfony/var-dumper": "^3.4|^4.0|^5.0",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "gesdinet/jwt-refresh-token-bundle": "Implements a refresh token system over Json Web Tokens in Symfony",
@@ -1697,11 +2009,11 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.25.1.0",
+            "version": "1.25.2.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/monolog/monolog",
-                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+                "reference": "d5e2fb341cb44f7e2ab639d12a1e5901091ec287",
                 "shasum": null
             },
             "require": {
@@ -1845,6 +2157,60 @@
             }
         },
         {
+            "name": "nelmio/cors-bundle",
+            "version": "1.5.6.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/nelmio/cors-bundle",
+                "reference": "10a24c10f242440211ed31075e74f81661c690d9",
+                "shasum": null
+            },
+            "require": {
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0 || ^2.0",
+                "mockery/mockery": "^0.9 || ^1.0",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nelmio\\CorsBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nelmio",
+                    "homepage": "http://nelm.io"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/nelmio/NelmioCorsBundle/contributors"
+                }
+            ],
+            "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Symfony2 application",
+            "keywords": [
+                "api",
+                "cors",
+                "crossdomain"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "ocramius/package-versions",
             "version": "1.2.0.0",
             "dist": {
@@ -1972,28 +2338,24 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "2.0.18.0",
+            "version": "9.99.99.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/paragonie/random_compat",
-                "reference": "0a58ef6e3146256cc3dc7cc393927bcc7d1b72db",
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
                 "shasum": null
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
             "license": [
                 "MIT"
             ],
@@ -2200,11 +2562,11 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.1.0",
+            "version": "1.1.2.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/psr/log",
-                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
                 "shasum": null
             },
             "require": {
@@ -2431,11 +2793,11 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "6.2.1.0",
+            "version": "6.2.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/swiftmailer/swiftmailer",
-                "reference": "5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a",
+                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
                 "shasum": null
             },
             "require": {
@@ -3302,11 +3664,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "1.42.3.0",
+            "version": "1.42.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/twig/twig",
-                "reference": "201baee843e0ffe8b0b956f336dd42b2a92fae4e",
+                "reference": "e587180584c3d2d6cb864a0454e777bb6dcb6152",
                 "shasum": null
             },
             "require": {
@@ -3362,6 +3724,54 @@
             "homepage": "https://twig.symfony.com",
             "keywords": [
                 "templating"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "willdurand/negotiation",
+            "version": "2.3.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/willdurand/negotiation",
+                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Negotiation\\": "src/Negotiation"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "will+git@drnd.me"
+                }
+            ],
+            "description": "Content Negotiation tools for PHP provided as a standalone library.",
+            "homepage": "http://williamdurand.fr/Negotiation/",
+            "keywords": [
+                "accept",
+                "content",
+                "format",
+                "header",
+                "negotiation"
             ],
             "transport-options": {
                 "symlink": true
@@ -5233,7 +5643,10 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "irontec/ivoz-api-bundle": 20,
+        "irontec/ivoz-core-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
