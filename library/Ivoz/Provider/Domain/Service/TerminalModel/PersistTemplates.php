@@ -90,6 +90,12 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         $fileExists = $this->fs->exists($fileRoute);
 
         if ($fileExists) {
+            $backupExists = $this->fs->exists($fileRoute . '.back');
+            if ($backupExists) {
+                $this->fs->remove(
+                    $fileRoute . '.back'
+                );
+            }
             $this->fs->rename(
                 $fileRoute,
                 $fileRoute . '.back'
