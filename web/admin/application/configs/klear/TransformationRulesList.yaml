@@ -9,6 +9,10 @@ production:
   screens: &transformationRules_screensLink
     transformationRulesList_screen: &transformationRulesList_screenLink
       controller: list
+      order:
+        field:
+        - TransformationRule.priority
+        type: asc
       pagination:
         items: 25
       class: ui-silk-shape-rotate-anticlockwise
