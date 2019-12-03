@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementDto;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\DecrementBalance;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances;
@@ -11,7 +11,7 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier;
@@ -58,14 +58,9 @@ class DecrementBalanceSpec extends ObjectBehavior
         $this->shouldHaveType(DecrementBalance::class);
     }
 
-    function it_decreases_balance(
-        CarrierInterface $carrier,
-        BrandInterface $brand
-    ) {
-        $this->prepareExecution(
-            $carrier,
-            $brand
-        );
+    function it_decreases_balance()
+    {
+        $carrier = $this->prepareExecution();
 
         $this
             ->syncBalanceService
@@ -81,14 +76,9 @@ class DecrementBalanceSpec extends ObjectBehavior
         );
     }
 
-    function it_creates_balance_movement(
-        CarrierInterface $carrier,
-        BrandInterface $brand
-    ) {
-        $this->prepareExecution(
-            $carrier,
-            $brand
-        );
+    function it_creates_balance_movement()
+    {
+        $carrier = $this->prepareExecution();
 
         $this
             ->createBalanceMovementByCarrier
@@ -105,10 +95,23 @@ class DecrementBalanceSpec extends ObjectBehavior
         );
     }
 
-    protected function prepareExecution(
-        CarrierInterface $carrier,
-        BrandInterface $brand
-    ) {
+    protected function prepareExecution()
+    {
+        $brand = $this->getInstance(
+            Brand::class,
+            [
+                'id' => 1
+            ]
+        );
+
+        $carrier = $this->getInstance(
+            Carrier::class,
+            [
+                'id' => 2,
+                'brand' => $brand
+            ]
+        );
+
         $this
             ->logger
             ->info(Argument::any())
@@ -129,18 +132,6 @@ class DecrementBalanceSpec extends ObjectBehavior
                 'success' => true
             ]);
 
-        $carrier
-            ->getBrand()
-            ->willReturn($brand);
-
-        $carrier
-            ->getId()
-            ->willReturn(2);
-
-        $brand
-            ->getId()
-            ->willReturn(1);
-
         $this
             ->client
             ->getBalance(
@@ -148,5 +139,7 @@ class DecrementBalanceSpec extends ObjectBehavior
                 Argument::type('numeric')
             )
             ->willReturn(100.45);
+
+        return $carrier;
     }
 }

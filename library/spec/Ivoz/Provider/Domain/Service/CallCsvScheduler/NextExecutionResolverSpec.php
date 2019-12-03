@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Service\CallCsvScheduler\NextExecutionResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -15,9 +16,6 @@ class NextExecutionResolverSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
 
     public function let(
@@ -40,11 +38,11 @@ class NextExecutionResolverSpec extends ObjectBehavior
         CallCsvSchedulerDto $schedulerDto,
         TimezoneInterface $timezone
     ) {
-        $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone
-        );
+        $this
+            ->prepareExecution(
+                $scheduler,
+                $schedulerDto
+            );
 
         $schedulerDto
             ->setNextExecution(
@@ -77,9 +75,15 @@ class NextExecutionResolverSpec extends ObjectBehavior
 
     protected function prepareExecution(
         CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone
+        CallCsvSchedulerDto $schedulerDto
     ) {
+        $timezone = $this->getInstance(
+            Timezone::class,
+            [
+                'tz' => 'UTC'
+            ]
+        );
+
         $this->getterProphecy(
             $scheduler,
             [
@@ -90,10 +94,6 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ],
             false
         );
-
-        $timezone
-            ->getTz()
-            ->willReturn('UTC');
 
         $this
             ->entityTools

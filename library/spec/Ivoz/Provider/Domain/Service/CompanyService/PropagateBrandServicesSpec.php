@@ -4,68 +4,72 @@ namespace spec\Ivoz\Provider\Domain\Service\CompanyService;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
-use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
+use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class PropagateBrandServicesSpec extends ObjectBehavior
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    use HelperTrait;
 
-    /**
-     * @var BrandServiceRepository
-     */
+    protected $entityTools;
     protected $brandServiceRepository;
 
-    /**
-     * @var BrandInterface
-     */
-    protected $brand;
-
-    /**
-     * @var CompanyInterface
-     */
     protected $company;
 
     function let(
         EntityTools $entityTools,
-        BrandServiceRepository $brandServiceRepository,
-        BrandInterface $brand,
-        CompanyInterface $company
+        BrandServiceRepository $brandServiceRepository
     ) {
         $this->entityTools = $entityTools;
         $this->brandServiceRepository = $brandServiceRepository;
 
-        $brand
-            ->getId()
-            ->willReturn(1);
-
-        $company
-            ->getBrand()
-            ->willReturn($brand);
-
-        $this->brand = $brand;
-        $this->company = $company;
+        $this->company = $this->getTestDouble(
+            CompanyInterface::class,
+            true
+        );
 
         $this->beConstructedWith(
             $entityTools,
             $brandServiceRepository
         );
+
+        $this->prepareExectution();
     }
 
     function it_is_initializable()
     {
         $this->shouldHaveType(PropagateBrandServices::class);
+    }
+
+    protected function prepareExectution()
+    {
+        $brand = $this->getInstance(
+            Brand::class,
+            [
+                'id' => 1
+            ],
+            false
+        );
+
+        $this->getterProphecy(
+            $this->company,
+            [
+                'getBrand' => $brand,
+                'isNew' => true
+            ],
+            false
+        );
     }
 
     function it_returns_on_not_new_entities()
@@ -80,7 +84,9 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->isNew()
             ->willReturn(false);
 
-        $this->execute($this->company);
+        $this->execute(
+            $this->company
+        );
     }
 
     function it_searches_related_brand_services()
@@ -91,19 +97,32 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->willReturn([])
             ->shouldBeCalled();
 
-        $this
-            ->company
-            ->isNew()
-            ->willReturn(true);
-
         $this->execute($this->company);
     }
 
-    function it_creates_company_services_by_brand_Services(
-        BrandServiceInterface $brandService,
-        CompanyServiceInterface $companyService,
-        ServiceInterface $service
-    ) {
+    function it_creates_company_services_by_brand_Services()
+    {
+        $service = $this->getInstance(
+            Service::class,
+            [
+                'id' => 1
+            ]
+        );
+
+        $brandService = $this->getInstance(
+            BrandService::class,
+            [
+                'service' => $service,
+                'code' => 2
+            ]
+        );
+
+        $companyService = $this->getInstance(
+            CompanyService::class,
+            [
+                'service' => $service
+            ]
+        );
 
         $this
             ->brandServiceRepository
@@ -111,32 +130,11 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->willReturn([$brandService])
             ->shouldBeCalled();
 
-        $brandService
-            ->getService()
-            ->willReturn($service)
-            ->shouldBeCalled();
-
-        $service
-            ->getId()
-            ->willReturn(1)
-            ->shouldBeCalled();
-
-        $brandService
-            ->getCode()
-            ->willReturn(2)
-            ->shouldBeCalled();
-
         $this
             ->entityTools
             ->persistDto(Argument::type(CompanyServiceDto::class))
             ->shouldBeCalled()
             ->willReturn($companyService);
-
-        $this
-            ->company
-            ->getId()
-            ->willReturn(3)
-            ->shouldBeCalled();
 
         $this
             ->company
@@ -150,11 +148,6 @@ class PropagateBrandServicesSpec extends ObjectBehavior
         $this->entityTools
             ->persist($this->company)
             ->shouldBeCalled();
-
-        $this
-            ->company
-            ->isNew()
-            ->willReturn(true);
 
         $this->execute($this->company);
     }

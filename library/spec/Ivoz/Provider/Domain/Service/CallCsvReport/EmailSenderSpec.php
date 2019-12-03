@@ -2,23 +2,20 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\CallCsvReport;
 
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Model\Mailer\Message;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Service\CallCsvReport\EmailSender;
 use Ivoz\Provider\Domain\Service\NotificationTemplateContent\CallCsvNotificationTemplateByCallCsvReport;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Model\Mailer\Message;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
 
@@ -26,60 +23,12 @@ class EmailSenderSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var CallCsvNotificationTemplateByCallCsvReport
-     */
     protected $callCsvNotificationTemplateByCallCsvReport;
-
-    /**
-     * @var MailerClientInterface
-     */
     protected $mailer;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
 
-    /**
-     * @var CallCsvReportInterface
-     */
     protected $callCsvReport;
-
-    /**
-     * @var CallCsvSchedulerInterface
-     */
-    protected $callCsvScheduler;
-
-    /**
-     * @var CompanyInterface
-     */
-    protected $company;
-
-    /**
-     * @var TimezoneInterface
-     */
-    protected $timezone;
-
-    /**
-     * @var LanguageInterface
-     */
-    protected $language;
-
-    /**
-     * @var NotificationTemplateContentInterface
-     */
-    protected $notificationTemplateContent;
-
-    /**
-     * @var CallCsvReportDto
-     */
-    protected $callCsvReportDto;
 
     public function let(
         EntityTools $entityTools,
@@ -102,94 +51,6 @@ class EmailSenderSpec extends ObjectBehavior
         $this->prepareExecution();
     }
 
-    protected function prepareExecution()
-    {
-        $this->callCsvReport = $this->getTestDouble(
-            CallCsvReportInterface::class
-        );
-
-        $this->callCsvScheduler = $this->getTestDouble(
-            CallCsvSchedulerInterface::class
-        );
-
-        $this->company = $this->getTestDouble(
-            CompanyInterface::class
-        );
-
-        $this->timezone = $this->getTestDouble(
-            TimezoneInterface::class
-        );
-
-        $this->language = $this->getTestDouble(
-            LanguageInterface::class
-        );
-
-        $this->notificationTemplateContent = $this->getTestDouble(
-            NotificationTemplateContentInterface::class
-        );
-
-        $this->getterProphecy(
-            $this->callCsvReport,
-            [
-                'isNew' => true,
-                'getBrand' => null,
-                'getCallCsvScheduler' => $this->callCsvScheduler,
-                'getSentTo' => 'mikel@somewhere.com',
-                'getCompany' => $this->company,
-                'getInDate' => new \DateTime('2015-01-01 01:01:01'),
-                'getOutDate' => new \DateTime('2017-01-01 01:01:01')
-            ],
-            false
-        );
-
-        $this
-            ->callCsvNotificationTemplateByCallCsvReport
-            ->execute(
-                Argument::type(CallCsvReportInterface::class)
-            )
-            ->willReturn(
-                $this->notificationTemplateContent
-            );
-
-        $this->getterProphecy(
-            $this->company,
-            [
-                'getDefaultTimezone' => $this->timezone,
-                'getName' => 'Mikel',
-                'getLanguage' => $this->language,
-                'getCallCsvNotificationTemplate' => null,
-            ],
-            false
-        );
-
-        $this->timezone
-            ->getTz()
-            ->willReturn('UTC');
-
-        $this->getterProphecy(
-            $this->notificationTemplateContent,
-            [
-                'getFromName' => 'Name',
-                'getFromAddress' => 'Address',
-                'getBody' => 'Body',
-                'getSubject' => 'Subject'
-            ],
-            false
-        );
-
-        $this->callCsvReportDto = new CallCsvReportDto();
-        $this->callCsvReportDto
-            ->setCsvPath('/tmp/file')
-            ->getCsvBaseName('myCsv');
-
-        $this
-            ->entityTools
-            ->entityToDto(
-                Argument::type(CallCsvReportInterface::class)
-            )
-            ->willReturn($this->callCsvReportDto);
-    }
-
     function it_is_initializable()
     {
         $this->shouldHaveType(EmailSender::class);
@@ -204,9 +65,10 @@ class EmailSenderSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($this->callCsvReport);
+        $this->execute(
+            $this->callCsvReport
+        );
     }
-
 
     public function it_logs_errors_and_throws_domain_exception()
     {
@@ -225,72 +87,138 @@ class EmailSenderSpec extends ObjectBehavior
             ->duringExecute($this->callCsvReport);
     }
 
-    public function it_does_nothing_if_not_new(
-        CallCsvReportInterface $callCsvReport
-    ) {
-        $this->callCsvReport
+    public function it_does_nothing_if_not_new()
+    {
+        $this
+            ->callCsvReport
             ->isNew()
             ->willReturn(false)
             ->shouldBeCalled();
 
-        $this->callCsvReport
+        $this
+            ->callCsvReport
             ->getCallCsvScheduler()
             ->willReturn(null)
             ->shouldNotBeCalled();
 
-        $this->execute($this->callCsvReport);
+        $this->execute(
+            $this->callCsvReport
+        );
     }
 
-    public function it_does_nothing_with_empty_scheduler(
-        CallCsvReportInterface $callCsvReport
-    ) {
-        $this->callCsvReport
-            ->isNew()
-            ->willReturn(true)
-            ->shouldBeCalled();
-
-        $this->callCsvReport
+    public function it_does_nothing_with_empty_scheduler()
+    {
+        $this
+            ->callCsvReport
             ->getCallCsvScheduler()
             ->willReturn(null)
             ->shouldBeCalled();
 
-        $this->callCsvReport
+        $this
+            ->callCsvReport
             ->getSentTo()
             ->shouldNotBeCalled();
 
         $this->execute($this->callCsvReport);
     }
 
-    public function it_does_nothing_with_empty_target_email(
-        CallCsvReportInterface $callCsvReport,
-        CallCsvSchedulerInterface $callCsvScheduler
-    ) {
-        $this->callCsvReport
-            ->isNew()
-            ->willReturn(true)
-            ->shouldBeCalled();
-
-
-        $this->callCsvReport
+    public function it_does_nothing_with_empty_target_email()
+    {
+        $this
+            ->callCsvReport
             ->getCallCsvScheduler()
-            ->willReturn(
-                $this->callCsvScheduler
-            )
             ->shouldBeCalled();
 
-
-        $this->callCsvReport
+        $this
+            ->callCsvReport
             ->getSentTo()
             ->willReturn('')
             ->shouldBeCalled();
 
 
-        $this->callCsvReport
+        $this
+            ->callCsvReport
             ->getCompany()
             ->shouldNotBeCalled();
 
         $this->execute(
             $this->callCsvReport
         );
+    }
+
+    protected function prepareExecution()
+    {
+        $callCsvScheduler = $this->getInstance(
+            CallCsvScheduler::class
+        );
+
+        $language = $this->getInstance(
+            Language::class
+        );
+
+        $timezone = $this->getInstance(
+            Timezone::class,
+            [
+                'tz' => 'UTC'
+            ]
+        );
+
+        $company = $this->getInstance(
+            Company::class,
+            [
+                'defaultTimezone' => $timezone,
+                'name' => 'Mikel',
+                'language' => $language,
+                'callCsvNotificationTemplate' => null,
+            ]
+        );
+
+        $notificationTemplateContent = $this->getInstance(
+            NotificationTemplateContent::class,
+            [
+                'fromName' => 'Name',
+                'fromAddress' => 'Address',
+                'body' => 'Body',
+                'subject' => 'Subject'
+            ]
+        );
+
+        $this->callCsvReport = $this->getTestDouble(
+            CallCsvReportInterface::class
+        );
+
+        $this->getterProphecy(
+            $this->callCsvReport,
+            [
+                'isNew' => true,
+                'getCallCsvScheduler' => $callCsvScheduler,
+                'getSentTo' => 'mikel@somewhere.com',
+                'getCompany' => $company,
+                'getInDate' => new \DateTime('2015-01-01 01:01:01'),
+                'getOutDate' => new \DateTime('2017-01-01 01:01:01')
+            ],
+            false
+        );
+
+        $this
+            ->callCsvNotificationTemplateByCallCsvReport
+            ->execute(
+                Argument::type(CallCsvReportInterface::class)
+            )
+            ->willReturn(
+                $notificationTemplateContent
+            );
+
+        $callCsvReportDto = new CallCsvReportDto();
+        $callCsvReportDto
+            ->setCsvPath('/tmp/file')
+            ->getCsvBaseName('myCsv');
+
+        $this
+            ->entityTools
+            ->entityToDto(
+                Argument::type(CallCsvReportInterface::class)
+            )
+            ->willReturn($callCsvReportDto);
     }
 }

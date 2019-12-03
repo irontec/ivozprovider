@@ -45,7 +45,10 @@ class MigrateFromUnparsedTrunksCdr
             }
 
             foreach ($trunks as $trunkCdr) {
-                $this->migrateFromTrunksCdr->execute($trunkCdr);
+                $this->migrateFromTrunksCdr->execute(
+                    $trunkCdr,
+                    false
+                );
             }
 
             try {

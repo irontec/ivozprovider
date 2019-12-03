@@ -2,49 +2,32 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BalanceNotification;
 
-use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationDto;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Event\DomainEventInterface;
+use Ivoz\Core\Domain\Model\Mailer\Message;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
+use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
+use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification;
+use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Language\Language;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
+use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent;
 use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 use Ivoz\Provider\Domain\Service\BalanceNotification\NotifyBrokenThreshold;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Event\DomainEventInterface;
-use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
-use Ivoz\Core\Domain\Service\DomainEventCollectorTrait;
-use Ivoz\Core\Domain\Service\MailerClientInterface;
-use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
-use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
-use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use Ivoz\Core\Domain\Model\Mailer\Message;
 use spec\HelperTrait;
 
 class NotifyBrokenThresholdSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var NotificationTemplateRepository
-     */
     protected $notificationTemplateRepository;
-
-    /**
-     * @var BalanceNotificationRepository
-     */
     protected $balanceNotificationRepository;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var MailerClientInterface
-     */
     protected $mailer;
 
     public function let(
@@ -80,24 +63,10 @@ class NotifyBrokenThresholdSpec extends ObjectBehavior
     }
 
     function it_sends_an_email(
-        AbstractBalanceThresholdWasBroken $event,
-        BalanceNotificationInterface $balanceNotification,
-        NotificationTemplateInterface $notificationTemplate,
-        CarrierInterface $carrier,
-        BrandInterface $brand,
-        LanguageInterface $language,
-        NotificationTemplateContentInterface $notificationContent,
-        BalanceNotificationDto $balanceNotificationDto
+        AbstractBalanceThresholdWasBroken $event
     ) {
         $this->prepareExecution(
-            $event,
-            $balanceNotification,
-            $notificationTemplate,
-            $carrier,
-            $brand,
-            $language,
-            $notificationContent,
-            $balanceNotificationDto
+            $event
         );
 
         $this
@@ -108,82 +77,96 @@ class NotifyBrokenThresholdSpec extends ObjectBehavior
         $this->handle($event);
     }
 
-    /**
-     * @param AbstractBalanceThresholdWasBroken $event
-     * @param BalanceNotificationInterface $balanceNotification
-     * @param NotificationTemplateInterface $notificationTemplate
-     * @param CarrierInterface $carrier
-     * @param BrandInterface $brand
-     * @param LanguageInterface $language
-     * @param NotificationTemplateContentInterface $notificationContent
-     * @param BalanceNotificationDto $balanceNotificationDto
-     */
     protected function prepareExecution(
-        AbstractBalanceThresholdWasBroken $event,
-        BalanceNotificationInterface $balanceNotification,
-        NotificationTemplateInterface $notificationTemplate,
-        CarrierInterface $carrier,
-        BrandInterface $brand,
-        LanguageInterface $language,
-        NotificationTemplateContentInterface $notificationContent,
-        BalanceNotificationDto $balanceNotificationDto
+        AbstractBalanceThresholdWasBroken $event
     ) {
-        $event
-            ->getBalanceNotificationId()->willReturn(1);
-        $event
-            ->getCurrentBalance()->willReturn(9.5);
-
-        $this->balanceNotificationRepository
-            ->find(Argument::any())->willReturn($balanceNotification);
-
         $this->getterProphecy(
-            $balanceNotification,
+            $event,
             [
-                'getCarrier' => $carrier,
-                'getToAddress' => '',
-                'getLanguage' => $language,
-                'getEntityName' => ''
+                'getBalanceNotificationId' => 1,
+                'getCurrentBalance' => 9.5
             ],
             false
         );
 
-        $this->getterProphecy(
-            $carrier,
+        $language = $this->getInstance(
+            Language::class
+        );
+        $brand = $this->getInstance(
+            Brand::class,
             [
-                'getName' => '',
-                'getBrand' => $brand
-            ],
-            false
+                'language' => $language
+            ]
         );
 
-        $brand
-            ->getLanguage()->willReturn($language);
-
-        $this->notificationTemplateRepository
-            ->findTemplateByBalanceNotification($balanceNotification)->willReturn($notificationTemplate);
-
-        $notificationTemplate
-            ->getContentsByLanguage($language)->willReturn($notificationContent);
-
-        $this->getterProphecy(
-            $notificationContent,
+        $carrier = $this->getInstance(
+            Carrier::class,
             [
-                'getSubject' => '',
-                'getBody' => '',
-                'getFromAddress' => '',
-                'getFromName' => '',
-                'getBodyType' => 'text/plain'
-            ],
-            false
+                'name' => '',
+                'brand' => $brand
+            ]
         );
 
-        $this->entityTools
-            ->entityToDto($balanceNotification)->willReturn($balanceNotificationDto);
-        $this->entityTools
+        $balanceNotification = $this->getInstance(
+            BalanceNotification::class,
+            [
+                'carrier' => $carrier,
+                'toAddress' => ''
+            ]
+        );
+
+        /** @var NotificationTemplateContentInterface $notificationContent */
+        $notificationContent = $this->getInstance(
+            NotificationTemplateContent::class,
+            [
+                'subject' => '',
+                'body' => '',
+                'fromAddress' => '',
+                'fromName' => '',
+                'bodyType' => 'text/plain'
+            ]
+        );
+
+        $notificationTemplate = $this->getTestDouble(
+            NotificationTemplateInterface::class,
+            true
+        );
+        $this
+            ->getterProphecy(
+                $notificationTemplate,
+                [
+                'getContentsByLanguage' => function () use ($language, $notificationContent) {
+                    return [
+                        [$language],
+                        $notificationContent
+                    ];
+                }
+                ]
+            );
+
+        $this
+            ->balanceNotificationRepository
+            ->find(Argument::any())
+            ->willReturn($balanceNotification);
+
+        $this
+            ->notificationTemplateRepository
+            ->findTemplateByBalanceNotification($balanceNotification)
+            ->willReturn($notificationTemplate);
+
+        $this
+            ->entityTools
+            ->entityToDto($balanceNotification)
+            ->willReturn($balanceNotification->toDto());
+
+        $this
+            ->entityTools
             ->persistDto(
                 Argument::any(),
                 Argument::any(),
                 Argument::any()
-            )->willReturn(Argument::any());
+            )->willReturn(
+                Argument::any()
+            );
     }
 }

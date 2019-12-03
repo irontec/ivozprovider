@@ -2,18 +2,17 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\CallCsvReport;
 
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Service\CallCsvReport\CreateByScheduler;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\SetExecutionError;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\UpdateLastExecutionDate;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
-use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
-use Ivoz\Provider\Domain\Service\CallCsvScheduler\UpdateLastExecutionDate;
-use Ivoz\Provider\Domain\Service\CallCsvScheduler\SetExecutionError;
 use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
 
@@ -53,18 +52,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     public function it_creates_reports_from_scheduler(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone,
-            $company,
-            $callCsvReport
+            $scheduler
         );
 
         $this
@@ -80,21 +71,14 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     public function it_updates_scheduler_last_execution(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone,
-            $company,
-            $callCsvReport
+            $scheduler
         );
 
-        $this->updateLastExecutionDate
+        $this
+            ->updateLastExecutionDate
             ->execute(
                 $scheduler
             )->shouldbeCalled();
@@ -103,21 +87,14 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     public function it_updates_scheduler_last_execution_even_if_a_exception_is_thrown(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone,
-            $company,
-            $callCsvReport
+            $scheduler
         );
 
-        $this->updateLastExecutionDate
+        $this
+            ->updateLastExecutionDate
             ->execute(
                 $scheduler
             )->shouldbeCalled();
@@ -133,18 +110,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     public function it_accepts_no_company(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone,
-            $company,
-            $callCsvReport
+            $scheduler
         );
 
         $scheduler
@@ -156,18 +125,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     public function it_logs_exceptions(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone,
-            $company,
-            $callCsvReport
+            $scheduler
         );
 
         $this
@@ -186,18 +147,10 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     public function it_persists_errors(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareExecution(
-            $scheduler,
-            $schedulerDto,
-            $timezone,
-            $company,
-            $callCsvReport
+            $scheduler
         );
 
         $errorMsg = 'Some error';
@@ -207,10 +160,12 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->willThrow(new \Exception($errorMsg))
             ->shouldBeCalled();
 
-        $this->setExecutionError->execute(
-            $scheduler,
-            $errorMsg
-        );
+        $this
+            ->setExecutionError
+            ->execute(
+                $scheduler,
+                $errorMsg
+            );
 
         $this
             ->shouldThrow(\Exception::class)
@@ -218,12 +173,26 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     protected function prepareExecution(
-        CallCsvSchedulerInterface $scheduler,
-        CallCsvSchedulerDto $schedulerDto,
-        TimezoneInterface $timezone,
-        CompanyInterface $company,
-        CallCsvReportInterface $callCsvReport
+        CallCsvSchedulerInterface $scheduler
     ) {
+        $timezone = $this->getInstance(
+            Timezone::class,
+            [
+                'tz' => 'UTC'
+            ]
+        );
+
+        $company = $this->getInstance(
+            Company::class,
+            [
+                'id' => 1
+            ]
+        );
+
+        $callCsvReport = $this->getInstance(
+            CallCsvReport::class
+        );
+
         $this->getterProphecy(
             $scheduler,
             [
@@ -238,14 +207,6 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ],
             false
         );
-
-        $timezone
-            ->getTz()
-            ->willReturn('UTC');
-
-        $company
-            ->getId()
-            ->willReturn(1);
 
         $this
             ->entityTools

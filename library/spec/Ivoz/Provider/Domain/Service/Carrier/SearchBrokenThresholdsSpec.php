@@ -16,14 +16,7 @@ class SearchBrokenThresholdsSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var BalanceNotificationRepository
-     */
     protected $balanceNotificationRepository;
-
-    /**
-     * @var DomainEventPublisher
-     */
     protected $domainEventPublisher;
 
     public function let(
