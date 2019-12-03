@@ -306,8 +306,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
             ['startTime', 'gt', $startTime],
-            ['carrier', 'neq', null],
-            ['carrier', 'neq', ''],
+            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['price', 'isNull'],
                 ['price', 'lt', 0],
