@@ -28,7 +28,7 @@ production:
         text: _("You can use regular expressions to define values this entry will match.")
         label: _("Need help?")
     welcomeLocution:
-      title: _('Welcome locution')
+      title: _('Success locution')
       type: select
       source:
         data: mapper
