@@ -36,6 +36,7 @@ production:
           templateHeader: true
           template: true
           templateFooter: true
+          brand: true
       options:
         title: _("Options")
         screens:
