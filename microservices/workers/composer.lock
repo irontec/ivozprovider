@@ -2309,11 +2309,11 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.0.0",
+            "version": "1.1.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/log",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
                 "shasum": null
             },
             "require": {
@@ -2322,7 +2322,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -3254,11 +3254,11 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.32.0",
+            "version": "3.4.36.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "2815d1fa34d417b8b87450667f166edbefff3177",
+                "reference": "0a6fccb5772ad2467253e6849d589bd09d9eb195",
                 "shasum": null
             },
             "require": {
@@ -3280,6 +3280,7 @@
                 "twig/twig": "^1.41|^2.10"
             },
             "conflict": {
+                "monolog/monolog": ">=2",
                 "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
                 "phpdocumentor/type-resolver": "<0.3.0",
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"

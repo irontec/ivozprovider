@@ -61,7 +61,7 @@
         "php": ">=7.0.19",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
-        "gesdinet/jwt-refresh-token-bundle": "^0.4.0",
+        "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "incenteev/composer-parameter-handler": "^2.0",
