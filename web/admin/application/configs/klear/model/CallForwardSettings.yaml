@@ -62,7 +62,7 @@ production:
             visualFilter:
               hide: [ noAnswerTimeout]
           'userNotRegistered':
-            title: _('Not Registered')
+            title: _('Unreachable')
             visualFilter:
               hide: [ noAnswerTimeout ]
     targetType:
