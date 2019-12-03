@@ -82,46 +82,46 @@ final class UnpaginatedResultGeneratorExtension implements ContextAwareQueryResu
     ) {
         ini_set('max_execution_time', 0);
 
-        $sqlLogger = $this
+        $connection =  $this
             ->entityManager
-            ->getConnection()
-            ->getConfiguration()->getSQLLogger();
+            ->getConnection();
 
-        $this
-            ->entityManager
-            ->getConnection()
-            ->getConfiguration()->setSQLLogger(null);
+        $sqlLogger = $connection
+            ->getConfiguration()
+            ->getSQLLogger();
 
+        $connection
+            ->getConfiguration()
+            ->setSQLLogger(null);
 
-        $queryBuilder
-            ->setMaxResults(self::BATCH_SIZE);
-
-        $currentPage = 1;
-        $continue = true;
-
-        while ($continue) {
-            $queryBuilder
-                ->setFirstResult(
-                    ($currentPage -1) * self::BATCH_SIZE
+        (function () {
+            $this->connect();
+            $driverName = $this->_conn->getAttribute(\PDO::ATTR_DRIVER_NAME);
+            if ($driverName === 'mysql') {
+                $this->_conn->setAttribute(
+                    \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,
+                    false
                 );
-
-            $query = $queryBuilder->getQuery();
-            $results = $query->getResult();
-
-            $continue = count($results) === self::BATCH_SIZE;
-            $currentPage++;
-
-            foreach ($results as $entity) {
-                yield $entity;
-                $this->entityManager->detach($entity);
             }
-            $this->entityManager->clear();
+        })->call($connection);
+
+
+        $rowCount = 0;
+        $query = $queryBuilder->getQuery();
+        $iterableResult = $query->iterate();
+
+        while (($entity = $iterableResult->next()) !== false) {
+            yield current($entity);
+
+            $rowCount++;
+            if (($rowCount % self::BATCH_SIZE) === 0) {
+                $this->entityManager->clear();
+            }
         }
 
-        $this
-            ->entityManager
-            ->getConnection()
-            ->getConfiguration()->setSQLLogger($sqlLogger);
+        $connection
+            ->getConfiguration()
+            ->setSQLLogger($sqlLogger);
     }
 
     private function isPaginationEnabled(
