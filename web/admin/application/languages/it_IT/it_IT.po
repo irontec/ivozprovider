@@ -1713,9 +1713,6 @@ msgstr "No routing tag"
 msgid "None"
 msgstr "Nessuno"
 
-msgid "Not Registered"
-msgstr "Non registrato"
-
 msgid "Notice that edition/creation tabs will be closed."
 msgstr "Notice that edition/creation tabs will be closed."
 
@@ -2533,10 +2530,9 @@ msgid "There was an error: %s"
 msgstr "Si è verificato un errore: %s"
 
 msgid ""
-"This DDI will be used if friend presented DDI doesn't match any of the "
-"company DDIs"
+"This DDI will be used if presented DDI doesn't match any of the company DDIs"
 msgstr ""
-"Questo DDI verrà utilizzato se viene presentato DDI amico non corrisponde a "
+"Questo DDI verrà utilizzato se viene presentato DDI non corrisponde a "
 "nessuno deiCompany DDIs"
 
 msgid ""
@@ -2684,6 +2680,9 @@ msgstr "Non assegnato"
 msgid "Unit"
 msgstr "Unit"
 
+msgid "Unreachable"
+msgstr "Irraggiungibile"
+
 msgid "Update CallerID?"
 msgstr "Aggiorna CallerID?"
 
@@ -2742,8 +2741,8 @@ msgstr "User configuration"
 msgid "Username"
 msgstr "Nome utente"
 
-msgid "Using DTMFs (read WARNING)"
-msgstr "Utilizzo di DTMF (leggi AVVISO)"
+msgid "Using DTMFs"
+msgstr "Using DTMFs"
 
 msgid "Using INFO"
 msgstr "Using INFO"
