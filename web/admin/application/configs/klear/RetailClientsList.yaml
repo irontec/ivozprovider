@@ -243,7 +243,7 @@ production:
           fields:
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
-        group6:
+        group8:
           colsPerRow: 1
           collapsed: true
           label: _("Externally rater options")
