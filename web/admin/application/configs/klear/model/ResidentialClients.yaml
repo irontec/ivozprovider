@@ -188,7 +188,7 @@ production:
           order:
             TransformationRuleSet.name.${lang}: asc
     outgoingDdi:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: select
       source:
         data: mapper
@@ -209,7 +209,7 @@ production:
         text: _("Default outgoing DDI. This can be overriden in accounts's edit screen.")
         label: _("Need help?")
     outgoingDdiE164:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_Companies
