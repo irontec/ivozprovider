@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Service\Invoice;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
@@ -19,17 +20,20 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
     protected $rerateCallService;
     protected $migrateFromTrunksCdr;
     protected $entityTools;
+    protected $trunksClient;
 
     public function __construct(
         BillableCallRepository $billableCallRepository,
         RerateCallServiceInterface $rerateCallService,
         MigrateFromTrunksCdr $migrateFromTrunksCdr,
-        EntityTools $entityTools
+        EntityTools $entityTools,
+        TrunksClientInterface $trunksClient
     ) {
         $this->billableCallRepository = $billableCallRepository;
         $this->rerateCallService = $rerateCallService;
         $this->migrateFromTrunksCdr = $migrateFromTrunksCdr;
         $this->entityTools = $entityTools;
+        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
@@ -45,6 +49,10 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
     public function execute(InvoiceInterface $invoice)
     {
         if (!$invoice->getScheduler()) {
+            return;
+        }
+
+        if (!$this->trunksClient->isCgrEnabled()) {
             return;
         }
 

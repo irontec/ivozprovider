@@ -9,6 +9,7 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Psr\Log\LoggerInterface;
 use Zend\EventManager\Exception\DomainException;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 
 class ProcessExternalCdr
 {
@@ -33,17 +34,20 @@ class ProcessExternalCdr
      * @var LoggerInterface
      */
     protected $logger;
+    protected $trunksClient;
 
     public function __construct(
         ApiClient $apiClient,
         EntityTools $entityTools,
         TpCdrRepository $tpCdrRepository,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        TrunksClientInterface $trunksClient
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->tpCdrRepository = $tpCdrRepository;
         $this->apiClient = $apiClient;
+        $this->trunksClient = $trunksClient;
     }
 
     /**
@@ -60,6 +64,10 @@ class ProcessExternalCdr
 
         $carrier = $trunksCdr->getCarrier();
         if ($carrier && $carrier->getExternallyRated()) {
+            return false;
+        }
+
+        if (!$this->trunksClient->isCgrEnabled()) {
             return false;
         }
 

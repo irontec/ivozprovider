@@ -13,6 +13,7 @@ interface TrunksClientInterface
     const UAC_REG_INFO_ACTION = 'uac.reg_info';
     const DLG_PROFILE_GET_SIZE = 'dlg.profile_get_size';
     const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
+    const CGRATES_ENABLED_ACTION = 'cfg.get';
 
     const TRUNKS_ACTIONS = [
         self::DIALPLAN_RELOAD_ACTION,
@@ -42,6 +43,8 @@ interface TrunksClientInterface
      * @return int
      */
     public function getPlatformActiveCalls();
+
+    public function isCgrEnabled();
 
     public function reloadDialplan();
 
