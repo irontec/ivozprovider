@@ -67,3 +67,25 @@ Feature: Create web portals
           }
       }
     """
+
+  Scenario: Can not create god web portal
+    Given I add Brand Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/web_portals" with body:
+    """
+      {
+          "url": "https://post-god-example.com",
+          "klearTheme": "redmond",
+          "urlType": "god",
+          "name": "Platform god Portal",
+          "userTheme": "default",
+          "id": 1,
+          "logo": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          }
+      }
+    """
+    Then the response status code should be 403
