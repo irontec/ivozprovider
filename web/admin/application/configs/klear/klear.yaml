@@ -457,7 +457,7 @@ production:
               title: _('Call registry')
               class: ui-silk-application-view-list-telephone
               description: _("List of %s", ngettext('Call', 'Calls', 0))
-              showOnlyIf: ${auth.companyNotWholesale}
+              showOnlyIf: ${auth.companyVPBX}
             BillableCallsClientList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
