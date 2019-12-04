@@ -29,7 +29,6 @@ production:
           title: _("Options")
           screens:
             invoiceTemplatesEdit_screen: true
-            invoiceTemplatesView_screen: true
           dialogs:
             invoiceTemplateTest_dialog: true
             invoiceTemplatesDel_dialog: true
@@ -37,6 +36,7 @@ production:
           templateHeader: true
           template: true
           templateFooter: true
+          brand: true
       options:
         title: _("Options")
         screens:
@@ -84,21 +84,6 @@ production:
       fixedPositions:
         <<: *invoiceTemplatesFixedPositions_Link
       <<: *invoiceTemplateHelp
-
-    invoiceTemplatesView_screen: &invoiceTemplatesView_screenLink
-      <<: *invoiceTemplatesEdit_screenLink
-      class: ui-silk-eye
-      title: _("View %s %2s", ngettext('Invoice template', 'Invoice templates', 1), "[format| (%item%)]")
-      fixedPositions:
-        <<: *invoiceTemplatesFixedPositions_Link
-      <<: *invoiceTemplateHelp
-      fields:
-        readOnly:
-          name: true
-          description: true
-          template: true
-          templateHeader: true
-          templateFooter: true
 
     #invoices:
     <<: *invoices_screensLink

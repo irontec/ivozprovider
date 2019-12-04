@@ -1702,9 +1702,6 @@ msgstr "Sense etiqueta de ruta"
 msgid "None"
 msgstr "Cap"
 
-msgid "Not Registered"
-msgstr "No registrat"
-
 msgid "Notice that edition/creation tabs will be closed."
 msgstr "Anuncia que les fitxes d'edició/creació seran tancades."
 
@@ -2515,11 +2512,10 @@ msgid "There was an error: %s"
 msgstr "Hi ha hagut un error: %s"
 
 msgid ""
-"This DDI will be used if friend presented DDI doesn't match any of the "
-"company DDIs"
+"This DDI will be used if presented DDI doesn't match any of the company DDIs"
 msgstr ""
-"El DDI serà utilitzat si el DDI presentat per l'amic no correspon a cap dels "
-"DDI de la companyia"
+"El DDI serà utilitzat si el DDI presentat no correspon a cap dels DDI de la "
+"companyia"
 
 msgid ""
 "This assignment has no functional purpose, it is just for DDI Provider <-> "
@@ -2666,6 +2662,9 @@ msgstr "No adscrit"
 msgid "Unit"
 msgstr "Unitat"
 
+msgid "Unreachable"
+msgstr "Inabastable"
+
 msgid "Update CallerID?"
 msgstr "Actualitzar ID del trucant?"
 
@@ -2726,8 +2725,8 @@ msgstr "Configuració d'usuari"
 msgid "Username"
 msgstr "Nom d'usuari"
 
-msgid "Using DTMFs (read WARNING)"
-msgstr "Utilitzant DTMFs (llegeix alerta)"
+msgid "Using DTMFs"
+msgstr "Utilitzant DTMFs"
 
 msgid "Using INFO"
 msgstr "Utilitzant INFO"

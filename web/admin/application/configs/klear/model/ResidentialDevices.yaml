@@ -119,7 +119,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("This DDI will be used if friend presented DDI doesn't match any of the company DDIs")
+        text: _("This DDI will be used if presented DDI doesn't match any of the company DDIs")
         label: _("Need help?")
     disallow:
       title: _('Disallowed audio codecs')

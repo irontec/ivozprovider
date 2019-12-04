@@ -1,5 +1,3 @@
-#include ../conf.d/recordingHelp.yaml
-
 production:
   entity: Ivoz\Provider\Domain\Model\Company\Company
   fields:
@@ -190,7 +188,7 @@ production:
           order:
             TransformationRuleSet.name.${lang}: asc
     outgoingDdi:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: select
       source:
         data: mapper
@@ -211,7 +209,7 @@ production:
         text: _("Default outgoing DDI. This can be overriden in accounts's edit screen.")
         label: _("Need help?")
     outgoingDdiE164:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_Companies
@@ -279,11 +277,10 @@ production:
               show: []
               hide: ["onDemandRecordCode"]
           '2':
-            title: _("Using DTMFs (read WARNING)")
+            title: _("Using DTMFs")
             visualFilter:
               show: ["onDemandRecordCode"]
               hide: []
-      <<: *recordingHelp
     onDemandRecordCode:
       title: _('Code')
       type: text

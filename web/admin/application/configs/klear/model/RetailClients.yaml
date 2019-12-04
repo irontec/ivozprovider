@@ -233,7 +233,7 @@ production:
               - tag
             template: '%name% (%tag%)'
     outgoingDdi:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: select
       source:
         data: mapper
@@ -248,7 +248,7 @@ production:
             Ddi.ddie164: asc
         'null': _("Unassigned")
     outgoingDdiE164:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_Companies
