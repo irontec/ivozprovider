@@ -8,31 +8,15 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Psr\Log\LoggerInterface;
-use Zend\EventManager\Exception\DomainException;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 
 class ProcessExternalCdr
 {
     const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
 
-    /**
-     * @var ApiClient
-     */
     protected $apiClient;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var TpCdrRepository
-     */
     protected $tpCdrRepository;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
     protected $trunksClient;
 
