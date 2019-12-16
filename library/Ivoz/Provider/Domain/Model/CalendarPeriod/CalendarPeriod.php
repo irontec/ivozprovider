@@ -54,7 +54,7 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
         $company = $calendar->getCompany();
         $timezone = $company->getDefaultTimezone();
 
-        $now = new \DateTime('now', new \DateTimeZone('UTC'));
+        $now = new \DateTime('now', new \DateTimeZone($timezone->getTz()));
 
         $scheduleMatched = false;
         $calendarSchedules = $this->getRelSchedules();
@@ -62,11 +62,7 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
             $schedule = $calendarSchedule->getSchedule();
 
             $scheduleMatched = $schedule
-                ->checkIsOnTimeRange(
-                    $now->format('l'),
-                    $now,
-                    new \DateTimeZone($timezone->getTz())
-                );
+                ->isOnSchedule($now);
 
             if ($scheduleMatched) {
                 break;

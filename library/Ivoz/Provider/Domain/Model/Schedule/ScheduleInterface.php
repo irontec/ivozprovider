@@ -12,8 +12,12 @@ interface ScheduleInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function checkIsOnTimeRange($dayOfTheWeek, \DateTime $time, \DateTimeZone $timeZone);
-
+    /**
+     * Check if current time is inside Schedule
+     *
+     * @param \DateTime $time Current time in Client's Timezone
+     * @return bool
+     */
     public function isOnSchedule(\DateTime $time);
 
     /**

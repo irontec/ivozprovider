@@ -174,7 +174,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         }
 
         $scheduleMatched = false;
-        $now = new \DateTime('now', new \DateTimeZone('UTC'));
 
         /**
          * @var ExternalCallFilterRelSchedule $externalCallFilterRelSchedule
@@ -183,13 +182,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
             $schedule = $externalCallFilterRelSchedule->getSchedule();
             $company = $schedule->getCompany();
             $timezone = $company->getDefaultTimezone();
+            $now = new \DateTime('now', new \DateTimeZone($timezone->getTz()));
 
             $scheduleMatched = $schedule
-                ->checkIsOnTimeRange(
-                    $now->format('l'),
-                    $now,
-                    new \DateTimeZone($timezone->getTz())
-                );
+                ->isOnSchedule($now);
 
             if ($scheduleMatched) {
                 break;
