@@ -162,6 +162,23 @@ class TrunksClient implements TrunksClientInterface
         return $response->result;
     }
 
+    public function isCgrEnabled()
+    {
+        $response = $this->sendRequest(
+            self::CGRATES_ENABLED_ACTION,
+            [
+                'config',
+                'cgrates_mode'
+            ]
+        );
+
+        if (!isset($response->result)) {
+            return -1;
+        }
+
+        return $response->result === 0;
+    }
+
     /**
      * @param string $method
      * @param array $payload
