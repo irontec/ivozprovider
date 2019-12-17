@@ -105,6 +105,11 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->willReturn(false)
             ->shouldBeCalled();
 
+        $scheduler
+            ->getSchedulerDateTimeZone()
+            ->willReturn(new \DateTimeZone('Europe/Madrid'))
+            ->shouldBeCalled();
+
         $this
             ->entityTools
             ->entityToDto($scheduler)
