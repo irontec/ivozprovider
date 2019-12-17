@@ -34,7 +34,8 @@ class WebPortalTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', 'user.getBrand().getId()']
+                ['brand', 'eq', 'user.getBrand().getId()'],
+                ['urlType', 'neq', '"god"'],
             ]
         );
     }
@@ -53,7 +54,8 @@ class WebPortalTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', 'user.getBrand().getId()']
+                ['brand', 'eq', 'user.getBrand().getId()'],
+                ['urlType', 'neq', '"god"'],
             ]
         );
     }
