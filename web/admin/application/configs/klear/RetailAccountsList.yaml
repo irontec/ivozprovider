@@ -177,6 +177,7 @@ production:
       <<: *callForwardSettingsList_screenLink
       filterField: retailAccount
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
       forcedValues:
         callTypeFilter: both
