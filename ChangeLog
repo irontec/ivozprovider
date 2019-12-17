@@ -1,3 +1,34 @@
+Tue, 17 Dec 2019 15:55:04 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.13.2 released
+
+    * Portals
+        - Fixed External Calls Client Filter
+        - maxDailyusage default value is now 1000000 for all type of clients
+        - Fixed Terminal Model templates backup overwrite
+        - Reviewed Catalan translations in Administration and User portals
+        - Remove Brand fields from Invoice Templates
+        - IVR entry Welcome locutions is now known as Success locution
+        - Not Registered Call Forward type is now known as Unreachable
+        - Call Registry is now only available to vPBX clients
+
+    * Proxies
+        - Improved default Transformation Rules to handle more number formats
+        - Fixed incoming retail calls with T.38 passthrough enabled
+
+    * vPBX
+        - Fixed a bug while checking weekday in External Call Filter Schedules
+        - Skipped voicemail intro when user has recorded message
+
+    * API
+        - Added null/notnull as valid filter value for nullable fields
+        - Improved performance for unpaginated API requests
+        - WebPortal endpoint now includes type field
+
+    * Other
+        - Added documentation for basic API usage
+
+
 Mon, 18 Nov 2019 10:41:25 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.13.1 released
