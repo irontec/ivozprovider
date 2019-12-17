@@ -81,13 +81,18 @@ trait NextExecutionResolverTrait
         if (!$nextExecution) {
             return;
         }
+
         $nextExecution->setTimezone(
-            new \DateTimeZone('UTC')
+            $scheduler->getSchedulerDateTimeZone()
         );
 
         $nextExecution = DateTimeHelper::add(
             $nextExecution,
             $scheduler->getInterval()
+        );
+
+        $nextExecution->setTimezone(
+            new \DateTimeZone('UTC')
         );
 
         $this->setNextExecution(

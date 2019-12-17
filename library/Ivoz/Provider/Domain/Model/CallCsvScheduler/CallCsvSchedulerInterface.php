@@ -27,6 +27,8 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function getTimezone();
 
+    public function getSchedulerDateTimeZone();
+
     /**
      * @return \DateInterval
      */
