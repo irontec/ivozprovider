@@ -33,9 +33,9 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
     protected function sanitizeValues()
     {
 
-        if ($this->getType() == OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
+        if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
             $this->setMatchList(null);
-        } elseif ($this->getType() == OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
+        } elseif ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
             $this->setPrefix(null);
         }
 
@@ -44,7 +44,7 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
         ];
         $defaultAction = $this->getAction();
         foreach ($nullableFields as $type => $fieldName) {
-            if ($defaultAction == $type) {
+            if ($defaultAction === $type) {
                 continue;
             }
             $setter = 'set' . ucfirst($fieldName);

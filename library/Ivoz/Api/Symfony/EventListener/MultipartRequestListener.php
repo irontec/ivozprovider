@@ -66,7 +66,7 @@ class MultipartRequestListener
             $parts = array_slice(explode($matches[1], $rawData), 1);
             foreach ($parts as $part) {
                 // If this is the last part, break
-                if ($part == "--\r\n") {
+                if ($part === "--\r\n") {
                     break;
                 }
                 // Separate content from headers

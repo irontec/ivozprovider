@@ -48,11 +48,7 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
      */
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if ($domainEvent instanceof TrunksCdrWasMigrated) {
-            return true;
-        }
-
-        return false;
+        return $domainEvent instanceof TrunksCdrWasMigrated;
     }
 
     /**

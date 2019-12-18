@@ -29,10 +29,6 @@ class EntityEventSubscriber implements DomainEventSubscriberInterface
      */
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if ($domainEvent instanceof EntityEventInterface) {
-            return true;
-        }
-
-        return false;
+        return $domainEvent instanceof EntityEventInterface;
     }
 }

@@ -33,7 +33,7 @@ class CheckValidCurrency implements RatingPlanLifecycleEventHandlerInterface
         $destinationRateCurrencyIden = $ratingPlan->getDestinationRateGroup()->getCurrencyIden();
 
         // Ensure entities currency are the same
-        if ($ratingPlanCurrencyIden != $destinationRateCurrencyIden) {
+        if ($ratingPlanCurrencyIden !== $destinationRateCurrencyIden) {
             throw new \DomainException("Invalid destination rate currency");
         }
     }

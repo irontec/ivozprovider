@@ -81,8 +81,7 @@ class DataAccessControlHelper
         }
 
         $expressions = array_filter($expressions, function ($item) {
-            $notEmpty = !empty($item);
-            return $notEmpty;
+            return !empty($item);
         });
 
         if (empty($expressions)) {

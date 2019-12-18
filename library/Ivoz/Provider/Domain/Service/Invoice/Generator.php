@@ -331,14 +331,13 @@ class Generator
 
         asort($callSumary);
         asort($callsPerType);
-        $finalData = array(
+
+        return array(
             'callSumary' => array_values($callSumary),
             'callsPerType' => array_values($callsPerType),
             'callSumaryTotals' => $callSumaryTotals,
             'inboundCalls' => $inboundCalls,
         );
-
-        return $finalData;
     }
 
     /**

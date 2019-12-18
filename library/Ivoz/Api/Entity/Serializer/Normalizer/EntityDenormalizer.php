@@ -253,14 +253,12 @@ class EntityDenormalizer implements DenormalizerInterface
             $properties[] = $propertyName;
         }
 
-        $input = array_filter(
+        return array_filter(
             $input,
             function ($fldName) use ($properties) {
                 return in_array($fldName, $properties, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $input;
     }
 }

@@ -178,7 +178,7 @@ class EntityNormalizer implements NormalizerInterface
 
         foreach ($rawData as $key => $value) {
             if ($value instanceof DataTransferObjectInterface) {
-                if ($depth == 0) {
+                if ($depth === 0) {
                     $rawData[$key] = $rawData[$key]->getId();
                     continue;
                 }
@@ -233,14 +233,12 @@ class EntityNormalizer implements NormalizerInterface
             $mappedProperties = array_intersect($mappedProperties, $requestedAttributes);
         }
 
-        $response = array_filter(
+        return array_filter(
             $data,
             function ($property) use ($mappedProperties) {
                 return in_array($property, $mappedProperties);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

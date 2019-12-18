@@ -355,14 +355,9 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
         if (empty($this->getTerminal())) {
             return false;
         }
-
         // Check if user has extension configured
-        if (empty($this->getExtension())) {
-            return false;
-        }
-
         // Looks like a complete user
-        return true;
+        return !empty($this->getExtension());
     }
 
     /**

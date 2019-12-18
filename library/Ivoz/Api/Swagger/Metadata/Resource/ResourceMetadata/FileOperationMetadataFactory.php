@@ -48,14 +48,13 @@ class FileOperationMetadataFactory implements ResourceMetadataFactoryInterface
                 FileContainerInterface::UPDALOADABLE_FILE
             )
         );
-        $resourceMetadata = $this->allowFileDownload(
+
+        return $this->allowFileDownload(
             $resourceMetadata,
             $resourceInstance->getFileObjects(
                 FileContainerInterface::DOWNLOADABLE_FILE
             )
         );
-
-        return $resourceMetadata;
     }
 
     private function allowFileUpload(ResourceMetadata $resourceMetadata, array $fileObjects)

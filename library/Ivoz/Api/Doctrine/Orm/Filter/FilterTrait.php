@@ -39,14 +39,12 @@ trait FilterTrait
 
     private function filterDescription(array $description)
     {
-        $response = array_filter(
+        return array_filter(
             $description,
             function ($key) {
                 return strpos($key, '[]') === false;
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

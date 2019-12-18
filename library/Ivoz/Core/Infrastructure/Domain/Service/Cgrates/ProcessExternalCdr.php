@@ -117,7 +117,7 @@ class ProcessExternalCdr
             );
             $this->logger->error($errorMsg);
 
-            throw new \DomainException('There was a error on external CDR processing');
+            throw new \DomainException('There was a error on external CDR processing', $e->getCode(), $e);
         }
 
         return true;

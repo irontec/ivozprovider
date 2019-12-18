@@ -39,11 +39,7 @@ class ReferenceFixerDecorator implements NormalizerInterface
 
     private function isEntity($resourceName)
     {
-        if (strpos($resourceName, '_')) {
-            return false;
-        }
-
-        return true;
+        return !strpos($resourceName, '_');
     }
 
     private function hasContext($definitionName)

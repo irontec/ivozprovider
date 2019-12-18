@@ -68,11 +68,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
      */
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if ($domainEvent instanceof AbstractBalanceThresholdWasBroken) {
-            return true;
-        }
-
-        return false;
+        return $domainEvent instanceof AbstractBalanceThresholdWasBroken;
     }
 
     /**

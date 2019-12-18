@@ -47,7 +47,7 @@ class MatchList extends MatchListAbstract implements MatchListInterface
         foreach ($patterns as $pattern) {
             switch ($pattern->getType()) {
                 case 'number':
-                    if ($pattern->getNumberE164() == $number) {
+                    if ($pattern->getNumberE164() === $number) {
                         return true;
                     }
                     break;

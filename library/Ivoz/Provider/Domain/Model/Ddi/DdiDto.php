@@ -113,14 +113,12 @@ class DdiDto extends DdiDtoAbstract
 
     private static function filterFields(array $response, array $allowedFields): array
     {
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

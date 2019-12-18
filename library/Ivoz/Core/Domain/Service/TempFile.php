@@ -71,7 +71,7 @@ class TempFile
 
         unlink($this->tmpPath);
         $previousFilePathExists = file_exists($this->previousFilePath);
-        if ($previousFilePathExists && ($targetPath != $this->previousFilePath)) {
+        if ($previousFilePathExists && ($targetPath !== $this->previousFilePath)) {
             unlink($this->previousFilePath);
         }
     }

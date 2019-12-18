@@ -75,9 +75,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                     ]
                 ];
             }
-            $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
 
-            return $resourceMetadata;
+            return $resourceMetadata->withCollectionOperations($collectionOperations);
         }
 
         $manager = $this->managerRegistry->getManagerForClass($resourceClass);
@@ -231,9 +230,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             $classSegments[1] . '_' . $classSegments[0]
         );
         $resourceMetadata = $resourceMetadata->withItemOperations([]);
-        $resourceMetadata = $resourceMetadata->withCollectionOperations([]);
 
-        return $resourceMetadata;
+        return $resourceMetadata->withCollectionOperations([]);
     }
 
     /**
@@ -244,10 +242,9 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
     private function setCustomOperationMetadata(string $resourceClass, ResourceMetadata $resourceMetadata): ResourceMetadata
     {
         $classSegments = explode("\\", $resourceClass);
-        $resourceMetadata = $resourceMetadata->withShortName(
+
+        return $resourceMetadata->withShortName(
             end($classSegments)
         );
-
-        return $resourceMetadata;
     }
 }

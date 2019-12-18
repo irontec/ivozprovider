@@ -47,7 +47,7 @@ class JsonContext extends BaseContext implements Context, SnippetAcceptingContex
         try {
             $expected = new Json($content);
         } catch (\Exception $e) {
-            throw new \Exception('The expected JSON is not a valid');
+            throw new \Exception('The expected JSON is not a valid', $e->getCode(), $e);
         }
 
         try {

@@ -100,12 +100,7 @@ class LifecycleCompiler implements CompilerPassInterface
          */
         foreach ($servicesDefinitions as $definition) {
             $tags = array_filter($definition->getTags(), function ($key) {
-
-                if (strpos($key, 'lifecycle.') === false) {
-                    return false;
-                }
-
-                return true;
+                return (bool) (strpos($key, 'lifecycle.') !== false);
             }, ARRAY_FILTER_USE_KEY);
 
             if (empty($tags)) {

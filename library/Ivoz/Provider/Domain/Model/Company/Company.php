@@ -87,7 +87,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             $this->setOnDemandRecordCode('');
         }
 
-        if ($this->getType() == self::TYPE_RETAIL) {
+        if ($this->getType() === self::TYPE_RETAIL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()
@@ -95,7 +95,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             }
         }
 
-        if ($this->getType() == self::TYPE_RESIDENTIAL) {
+        if ($this->getType() === self::TYPE_RESIDENTIAL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()
@@ -179,10 +179,10 @@ class Company extends CompanyAbstract implements CompanyInterface
             if ($service->getService()->getExtraArgs()) {
                 continue;
             }
-            if (strlen($code) != strlen($service->getCode())) {
+            if (strlen($code) !== strlen($service->getCode())) {
                 continue;
             }
-            if ($code == $service->getCode()) {
+            if ($code === $service->getCode()) {
                 return $service;
             }
         }
@@ -410,7 +410,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         $services = $this->getCompanyServices();
         // Look for an exact match in service name
         foreach ($services as $service) {
-            if ($service->getService()->getIden() == $name) {
+            if ($service->getService()->getIden() === $name) {
                 return $service->getCode();
             }
         }

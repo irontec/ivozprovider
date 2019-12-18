@@ -66,7 +66,7 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
             );
         }
 
-        $allowNegative = $company->getBillingMethod() == CompanyInterface::BILLINGMETHOD_POSTPAID
+        $allowNegative = $company->getBillingMethod() === CompanyInterface::BILLINGMETHOD_POSTPAID
             ? 1
             : 0;
 

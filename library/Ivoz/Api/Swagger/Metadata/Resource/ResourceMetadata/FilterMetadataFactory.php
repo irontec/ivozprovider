@@ -65,9 +65,8 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             $attributes['filters'][] = 'ivoz.api.filter.property_filter';
             $attributes['filterFields'] = $filters;
         }
-        $resourceMetadata = $resourceMetadata->withAttributes($attributes);
 
-        return $resourceMetadata;
+        return $resourceMetadata->withAttributes($attributes);
     }
 
     private function getEntityFilters(string $resourceClass, ResourceMetadata $resourceMetadata)

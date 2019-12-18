@@ -137,12 +137,10 @@ class DomainServiceCompiler implements CompilerPassInterface
         $services = array_filter(
             $domainServices,
             function ($serviceId) {
-                $response = is_subclass_of(
+                return is_subclass_of(
                     $serviceId,
                     LifecycleEventHandlerInterface::class
                 );
-
-                return $response;
             },
             ARRAY_FILTER_USE_KEY
         );
@@ -161,12 +159,10 @@ class DomainServiceCompiler implements CompilerPassInterface
         $services = array_filter(
             $domainServices,
             function ($serviceId) {
-                $response = is_subclass_of(
+                return is_subclass_of(
                     $serviceId,
                     LifecycleServiceCollectionInterface::class
                 );
-
-                return $response;
             },
             ARRAY_FILTER_USE_KEY
         );
@@ -185,12 +181,10 @@ class DomainServiceCompiler implements CompilerPassInterface
         $services = array_filter(
             $domainServices,
             function ($serviceId) {
-                $response = is_subclass_of(
+                return is_subclass_of(
                     $serviceId,
                     DomainEventSubscriberInterface::class
                 );
-
-                return $response;
             },
             ARRAY_FILTER_USE_KEY
         );

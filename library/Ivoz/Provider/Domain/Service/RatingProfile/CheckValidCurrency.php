@@ -37,7 +37,7 @@ class CheckValidCurrency implements RatingProfileLifecycleEventHandlerInterface
         }
 
         // Ensure entities currency are the same
-        if ($ratingPlanCurrencyIden != $clientCurrencyIden) {
+        if ($ratingPlanCurrencyIden !== $clientCurrencyIden) {
             throw new \DomainException("Invalid rating plan currency");
         }
     }

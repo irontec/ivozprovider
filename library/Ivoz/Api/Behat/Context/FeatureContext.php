@@ -138,9 +138,8 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
 
         ob_start();
         $response->sendContent();
-        $responseContent = ob_get_clean();
 
-        return $responseContent;
+        return ob_get_clean();
     }
 
     protected function assert($test, $message)
