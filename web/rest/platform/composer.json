@@ -88,7 +88,6 @@
     },
     "require-dev": {
         "ext-pcntl": "*",
-        "api-platform/schema-generator": "^1.0 || ^2.0",
         "behat/behat": "^3.1",
         "behat/mink": "^1.7",
         "behat/mink-browserkit-driver": "^1.3.1",
