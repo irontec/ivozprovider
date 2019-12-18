@@ -161,6 +161,8 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+        urlType:
+          neq: '"god"'
 
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:

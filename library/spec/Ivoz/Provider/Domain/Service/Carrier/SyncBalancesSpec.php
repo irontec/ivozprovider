@@ -13,27 +13,15 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Psr\Log\LoggerInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
+use spec\HelperTrait;
 
 class SyncBalancesSpec extends ObjectBehavior
 {
-    /**
-     * @var EntityPersisterInterface
-     */
+    use HelperTrait;
+
     protected $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
-
-    /**
-     * @var CarrierBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CarrierRepository
-     */
     protected $carrierRepository;
 
     public function let(
@@ -65,28 +53,27 @@ class SyncBalancesSpec extends ObjectBehavior
         $response = new \stdClass();
         $response->error = 'Message';
 
-        $this->client
+        $this
+            ->client
             ->getBalances(
                 Argument::any(),
                 Argument::any()
-            )->willReturn($response);
+            )
+            ->willReturn($response);
 
-        $this->logger
+        $this
+            ->logger
             ->error(Argument::type('string'))
             ->shouldBeCalled();
 
         $this->updateCarriers(1, [1]);
     }
 
-    function it_iterates_over_all_carriers(
-        CarrierInterface $carrier,
-        CarrierDto $carrierDto
-    ) {
+    function it_iterates_over_all_carriers()
+    {
         $carrierId = 1;
         $this->prepareExecution(
-            $carrierId,
-            $carrier,
-            $carrierDto
+            $carrierId
         );
 
         $this
@@ -108,33 +95,29 @@ class SyncBalancesSpec extends ObjectBehavior
         $this->updateAll();
     }
 
-    function it_updates_balances(
-        CarrierInterface $carrier,
-        CarrierDto $carrierDto
-    ) {
+    function it_updates_balances()
+    {
         $carrierId = 1;
         $this->prepareExecution(
-            $carrierId,
-            $carrier,
-            $carrierDto
+            $carrierId
         );
 
-        $this->entityTools
-            ->persistDto($carrierDto, $carrier)
+        $this
+            ->entityTools
+            ->persistDto(
+                Argument::type(CarrierDto::class),
+                Argument::type(Carrier::class)
+            )
             ->shouldBeCalled();
 
         $this->updateCarriers(1, [1]);
     }
 
-    function it_logs_not_found_carriers(
-        CarrierInterface $carrier,
-        CarrierDto $carrierDto
-    ) {
+    function it_logs_not_found_carriers()
+    {
         $carrierId = 1;
         $this->prepareExecution(
-            $carrierId,
-            $carrier,
-            $carrierDto
+            $carrierId
         );
 
         $this
@@ -159,11 +142,16 @@ class SyncBalancesSpec extends ObjectBehavior
      * @param CarrierDto $carrierDto
      */
     private function prepareExecution(
-        int $carrierId,
-        CarrierInterface $carrier,
-        CarrierDto $carrierDto
+        int $carrierId
     ) {
         $balance = 1000;
+        $carrier = $this->getInstance(
+            Carrier::class,
+            [
+                'id' => $carrierId,
+                'balance' => $balance
+            ]
+        );
 
         $response = new \stdClass();
         $response->error = null;
@@ -171,24 +159,34 @@ class SyncBalancesSpec extends ObjectBehavior
             $carrierId => $balance
         ];
 
-        $this->client
+        $this
+            ->client
             ->getBalances(
                 Argument::any(),
                 Argument::any()
-            )->willReturn($response);
+            )
+            ->willReturn($response);
 
-        $this->carrierRepository
+        $this
+            ->carrierRepository
             ->find($carrierId)
             ->willReturn($carrier);
 
-        $this->entityTools
+        $this
+            ->entityTools
             ->entityToDto($carrier)
-            ->willReturn($carrierDto);
+            ->will(function ($args) {
+                return $args[0]->toDto();
+            });
 
-        $carrierDto
-            ->setBalance($balance);
-
-        $this->entityTools
-            ->persistDto($carrierDto, $carrier);
+        $this
+            ->entityTools
+            ->persistDto(
+                Argument::type(CarrierDto::class),
+                Argument::type(Carrier::class)
+            )
+            ->will(function ($args) {
+                return $args[1];
+            });
     }
 }

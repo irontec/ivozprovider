@@ -121,6 +121,9 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "balanceMovementsList_screen":
                 $show = $this->_parentModel->getCalculateCost();
                 break;
+            case "callForwardSettingsList_screen":
+                $show = $this->_parentModel->getT38Passthrough() == 'no';
+                break;
             case "tarificateCall_dialog":
                 $direction = $this->_parentModel->getDirection();
                 $isOutboundCall = $direction === BillableCallInterface::DIRECTION_OUTBOUND;

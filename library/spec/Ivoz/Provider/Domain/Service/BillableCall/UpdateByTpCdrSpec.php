@@ -2,29 +2,21 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Service\BillableCall\UpdateByTpCdr;
 use Ivoz\Provider\Domain\Service\BillableCall\UpdateDtoByDefaultRunTpCdr;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
-use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\Name;
-use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
 
@@ -32,68 +24,20 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var TpCdrRepository
-     */
     protected $tpCdrRepository;
-
-    /**
-     * @var UpdateDtoByDefaultRunTpCdr
-     */
     protected $updateDtoByDefaultRunTpCdr;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
 
     /////////////////////////////////////////////7
     ///
     /////////////////////////////////////////////7
 
-    /**
-     * @var TrunksCdrInterface
-     */
     protected $trunksCdr;
-
-    /**
-     * @var BillableCallInterface
-     */
     protected $billableCall;
-
-    /**
-     * @var CarrierInterface
-     */
     protected $carrier;
-
-    /**
-     * @var TpCdrInterface
-     */
     protected $defaultRunTpCdr;
-
-    /**
-     * @var BillableCallDto
-     */
-    protected $billableCallDto;
-
-    /**
-     * @var TpCdrInterface
-     */
-    protected $carrierRunTpCdr;
-
-    /**
-     * @var ProcessExternalCdr
-     */
     protected $processExternalCdr;
-
-    /**
-     * @var TrunksCdrWasMigrated
-     */
     protected $event;
 
     public function let()
@@ -105,7 +49,8 @@ class UpdateByTpCdrSpec extends ObjectBehavior
             UpdateDtoByDefaultRunTpCdr::class
         );
         $this->entityTools = $this->getTestDouble(
-            EntityTools::class
+            EntityTools::class,
+            true
         );
         $this->logger = $this->getTestDouble(
             LoggerInterface::class
@@ -121,90 +66,6 @@ class UpdateByTpCdrSpec extends ObjectBehavior
             $this->entityTools,
             $this->logger
         );
-
-        $this->prepareExecution();
-    }
-
-    function prepareExecution()
-    {
-        $this->trunksCdr = $this->getTestDouble(
-            TrunksCdrInterface::class
-        );
-        $this->billableCall = $this->getTestDouble(
-            BillableCallInterface::class
-        );
-        $this->billableCallDto = $this->getTestDouble(
-            BillableCallDto::class
-        );
-        $this->carrier = $this->getTestDouble(
-            CarrierInterface::class
-        );
-        $this->defaultRunTpCdr = $this->getTestDouble(
-            TpCdrInterface::class
-        );
-        $this->carrierRunTpCdr = $this->getTestDouble(
-            TpCdrInterface::class
-        );
-
-        $this
-            ->trunksCdr
-            ->getCgrid()
-            ->willReturn(1);
-
-        $this
-            ->billableCall
-            ->getCarrier()
-            ->willReturn($this->carrier);
-
-        $this
-            ->billableCall
-            ->isOutboundCall()
-            ->willReturn(true);
-
-        $this->getterProphecy(
-            $this->carrier,
-            [
-                'getExternallyRated' => false,
-                'getId' => 1
-            ],
-            false
-        );
-
-        $this
-            ->tpCdrRepository
-            ->getDefaultRunByCgrid(
-                Argument::any()
-            )
-            ->willReturn($this->defaultRunTpCdr);
-
-        $this
-            ->entityTools
-            ->entityToDto(
-                Argument::type(BillableCallInterface::class)
-            )
-            ->willReturn($this->billableCallDto);
-
-        $this
-            ->updateDtoByDefaultRunTpCdr
-            ->execute(
-                Argument::type(BillableCallDto::class),
-                Argument::type(TrunksCdrInterface::class),
-                Argument::type(TpCdrInterface::class)
-            )
-            ->willReturn($this->billableCallDto);
-
-        $this
-            ->entityTools
-            ->persistDto(
-                Argument::type(BillableCallDto::class),
-                Argument::type(BillableCallInterface::class),
-                false
-            );
-
-        $this->event = new TrunksCdrWasMigrated(
-            $this->trunksCdr->reveal(),
-            $this->billableCall->reveal()
-        );
     }
 
     function it_is_initializable()
@@ -219,27 +80,26 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
     function it_returns_on_non_outbound_calls()
     {
-        $this
-            ->billableCall
-            ->isOutboundCall()
-            ->willReturn(false)
-            ->shouldBeCalled();
+        $this->prepareExecution();
 
-        $this
-            ->billableCall
-            ->getId()
-            ->willReturn(1)
-            ->shouldBeCalled();
+        $this->updateInstance(
+            $this->billableCall,
+            [
+                'id' => 1,
+                'direction' => BillableCallInterface::DIRECTION_INBOUND
+            ]
+        );
+
+        $msg = sprintf(
+            'Skipping %s call #%d',
+            $this->billableCall->getDirection(),
+            $this->billableCall->getId()
+        );
 
         $this
             ->logger
-            ->info(Argument::type('string'))
+            ->info($msg)
             ->shouldBeCalled();
-
-        $this
-            ->trunksCdr
-            ->getCgrid()
-            ->shouldNotbeCalled();
 
         $this->handle(
             $this->event
@@ -248,20 +108,40 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
     function it_logs_a_info_msg_and_returns_on_empty_cgrid()
     {
-        $this
-            ->trunksCdr
-            ->getCgrid()
-            ->willReturn(null);
+        $this->prepareExecution();
+        $this->updateInstance(
+            $this->trunksCdr,
+            [
+                'cgrid' => null
+            ]
+        );
 
         $this
             ->logger
-            ->info(Argument::type('string'))
+            ->info('Cgrid was not found. Skipping')
             ->shouldBeCalled();
 
+        $this->handle(
+            $this->event
+        );
+    }
+
+    function it_retries_to_rate_call_on_empty_cgrid()
+    {
+        $this->prepareExecution();
+        $this->updateInstance(
+            $this->trunksCdr,
+            [
+                'cgrid' => null
+            ]
+        );
+
         $this
-            ->billableCall
-            ->getCarrier()
-            ->shouldNotBeCalled();
+            ->processExternalCdr
+            ->execute(
+                $this->trunksCdr
+            )
+            ->shouldBeCalled();
 
         $this->handle(
             $this->event
@@ -270,20 +150,23 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
     function it_returns_on_externally_rated_carriers()
     {
-        $this
-            ->carrier
-            ->getExternallyRated()
-            ->willReturn(true);
+        $this->prepareExecution();
+        $this->updateInstance(
+            $this->carrier,
+            [
+                'externallyRated' => true
+            ]
+        );
+
+        $infoMsg = sprintf(
+            'Carrier#%s has external rater. Skipping',
+            $this->carrier->getId()
+        );
 
         $this
             ->logger
-            ->info(Argument::type('string'))
+            ->info($infoMsg)
             ->shouldBeCalled();
-
-        $this
-            ->tpCdrRepository
-            ->getDefaultRunByCgrid()
-            ->shouldNotBeCalled();
 
         $this->handle(
             $this->event
@@ -292,26 +175,42 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
     function it_calls_updateDtoByDefaultRunTpCdr_collaborator_service()
     {
+        $this->prepareExecution();
         $this
             ->updateDtoByDefaultRunTpCdr
             ->execute(
                 Argument::type(BillableCallDto::class),
-                Argument::type(TrunksCdrInterface::class),
-                Argument::type(TpCdrInterface::class)
+                $this->trunksCdr,
+                $this->defaultRunTpCdr
             )
-            ->willReturn($this->billableCallDto)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+            ->will(
+                function ($args) {
+                    return $args[0];
+                }
+            );
 
         $this->handle(
             $this->event
         );
     }
 
-    function it_set_cost_when_carrierRunTpCdr_is_found()
+    function it_sets_cost_when_carrierRunTpCdr_is_found()
     {
+        $this->prepareExecution();
+        $billableCallDto = $this->getTestDouble(
+            BillableCallDto::class
+        );
 
-        $carrierRunTpCdr = $this->getTestDouble(
-            TpCdrInterface::class
+        $this
+            ->entityTools
+            ->entityToDto($this->billableCall)
+            ->willReturn($billableCallDto);
+
+        $cost = 11;
+        $carrierRunTpCdr = $this->getInstance(
+            TpCdr::class,
+            ['cost' => $cost]
         );
 
         $this
@@ -319,16 +218,14 @@ class UpdateByTpCdrSpec extends ObjectBehavior
             ->getCarrierRunByCgrid(
                 Argument::any()
             )
-            ->willReturn($carrierRunTpCdr)
-            ->shouldBeCalled();
+            ->willReturn(
+                $carrierRunTpCdr
+            );
 
-        $carrierRunTpCdr
-            ->getCost()
-            ->willReturn(1)
-            ->shouldBeCalled();
-
-        $this->billableCallDto
-            ->setCost(1)
+        $billableCallDto
+            ->setCost(
+                $cost
+            )
             ->shouldBeCalled();
 
         $this->handle(
@@ -338,17 +235,87 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
     function it_persists_billableCall()
     {
+        $this->prepareExecution();
         $this
             ->entityTools
             ->persistDto(
                 Argument::type(BillableCallDto::class),
-                Argument::type(BillableCallInterface::class),
+                $this->billableCall,
                 false
             )
             ->shouldBeCalled();
 
         $this->handle(
             $this->event
+        );
+    }
+
+    function prepareExecution()
+    {
+        $this->trunksCdr = $this->getInstance(
+            TrunksCdr::class,
+            [
+                'id' => 1,
+                'cgrid' => 2,
+            ]
+        );
+
+        $this->carrier = $this->getInstance(
+            Carrier::class,
+            [
+                'id' => 1,
+                'externallyRated' => false
+            ]
+        );
+
+        $this->billableCall = $this->getInstance(
+            BillableCall::class,
+            [
+                'id' => 1,
+                'trunksCdr' => $this->trunksCdr,
+                'carrier' => $this->carrier,
+                'direction' => BillableCallInterface::DIRECTION_OUTBOUND
+            ]
+        );
+
+        $this->defaultRunTpCdr = $this->getInstance(
+            TpCdr::class
+        );
+
+        $this
+            ->tpCdrRepository
+            ->getDefaultRunByCgrid(
+                Argument::any()
+            )
+            ->willReturn($this->defaultRunTpCdr);
+
+        $this
+            ->entityTools
+            ->entityToDto(
+                Argument::any()
+            )
+            ->will(
+                function ($args) {
+                    return $args[0]->toDto();
+                }
+            );
+
+        $this
+            ->updateDtoByDefaultRunTpCdr
+            ->execute(
+                Argument::type(BillableCallDto::class),
+                $this->trunksCdr,
+                $this->defaultRunTpCdr
+            )
+            ->will(
+                function ($args) {
+                    return $args[0];
+                }
+            );
+
+        $this->event = new TrunksCdrWasMigrated(
+            $this->trunksCdr,
+            $this->billableCall
         );
     }
 }

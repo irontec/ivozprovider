@@ -221,7 +221,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
 
-        $this->queryRunner->execute(
+        return $this->queryRunner->execute(
             $this->getEntityName(),
             $qb->getQuery()
         );
@@ -241,7 +241,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->where('self.invoice = :invoiceId')
             ->setParameter(':invoiceId', $invoiceId);
 
-        $this->queryRunner->execute(
+        return $this->queryRunner->execute(
             $this->getEntityName(),
             $qb->getQuery()
         );
@@ -284,7 +284,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
                 ])
             );
 
-        $this->queryRunner->execute(
+        return $this->queryRunner->execute(
             $this->getEntityName(),
             $qb->getQuery()
         );
@@ -306,8 +306,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
             ['startTime', 'gt', $startTime],
-            ['carrier', 'neq', null],
-            ['carrier', 'neq', ''],
+            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['price', 'isNull'],
                 ['price', 'lt', 0],

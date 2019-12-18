@@ -14,8 +14,43 @@ trait HelperTrait
      */
     protected $collaborators = [];
 
-    protected function getTestDouble(string $fqdn, $allowAnyCall = true)
+    protected function getInstance(
+        string $fqdn,
+        array $data = []
+    ) {
+        $reflection = new \ReflectionClass($fqdn);
+
+        $instance =  $reflection
+            ->newInstanceWithoutConstructor();
+
+        return $this->updateInstance(
+            $instance,
+            $data
+        );
+    }
+
+    protected function updateInstance($instance, array $data = [])
     {
+        (function (array $data) {
+            foreach ($data as $key => $value) {
+                if (!property_exists($this, $key)) {
+                    throw new \Exception(
+                        "Attribute $key was not found on "
+                        . get_class($this)
+                    );
+                }
+
+                $this->$key = $value;
+            }
+        })->call($instance, $data);
+
+        return $instance;
+    }
+
+    protected function getTestDouble(
+        string $fqdn,
+        $allowAnyCall = true
+    ) {
         if (!$this->prophet) {
             $this->prophet = new \Prophecy\Prophet;
         }
@@ -59,14 +94,6 @@ trait HelperTrait
         }
 
         return $collaborator;
-    }
-
-    protected function getInstance(string $fqdn)
-    {
-        $reflection = new \ReflectionClass($fqdn);
-
-        return $reflection
-            ->newInstanceWithoutConstructor();
     }
 
     public function letGo()

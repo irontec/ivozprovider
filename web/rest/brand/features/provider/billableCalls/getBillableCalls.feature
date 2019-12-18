@@ -25,7 +25,7 @@ Feature: Retrieve billable calls
               "id": 1,
               "company": 1,
               "carrier": 2,
-              "invoice": null
+              "invoice": 1
           },
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7001",
@@ -74,6 +74,6 @@ Feature: Retrieve billable calls
           "carrier": "~",
           "destination": null,
           "ratingPlanGroup": null,
-          "invoice": null
+          "invoice": "~"
       }
     """

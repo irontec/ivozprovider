@@ -4,9 +4,11 @@ namespace spec\Ivoz\Provider\Domain\Service\CallCsvReport;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 use Ivoz\Provider\Domain\Service\CallCsvReport\CsvAttacher;
 use PhpSpec\ObjectBehavior;
@@ -14,60 +16,25 @@ use Prophecy\Argument;
 use spec\HelperTrait;
 use Symfony\Component\Filesystem\Filesystem;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 
 class CsvAttacherSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var CsvExporter
-     */
     protected $csvExporter;
-
-    /**
-     * @var Filesystem
-     */
     protected $fs;
 
-    /**
-     * @var CallCsvReportInterface
-     */
     protected $callCsvReport;
-
-    /**
-     * @var CallCsvReportDto
-     */
     protected $callCsvReportDto;
-
-    /**
-     * @var CompanyInterface
-     */
-    protected $company;
-
-    /**
-     * @var BrandInterface
-     */
-    protected $brand;
-
-    /**
-     * @var TimezoneInterface
-     */
-    protected $timezone;
 
     public function let(
         EntityTools $entityTools,
         CsvExporter $csvExporter,
         Filesystem $fs,
         CallCsvReportInterface $callCsvReport,
-        CallCsvReportDto $callCsvReportDto,
-        CompanyInterface $company,
-        BrandInterface $brand,
-        TimezoneInterface $timezone
+        CallCsvReportDto $callCsvReportDto
     ) {
         $this->entityTools = $entityTools;
         $this->csvExporter = $csvExporter;
@@ -75,16 +42,10 @@ class CsvAttacherSpec extends ObjectBehavior
 
         $this->callCsvReport = $callCsvReport;
         $this->callCsvReportDto = $callCsvReportDto;
-        $this->company = $company;
-        $this->brand = $brand;
-        $this->timezone = $timezone;
 
         $this->prepareExecution(
             $callCsvReport,
-            $callCsvReportDto,
-            $company,
-            $brand,
-            $timezone
+            $callCsvReportDto
         );
 
         $this->beConstructedWith(...func_get_args());
@@ -97,11 +58,13 @@ class CsvAttacherSpec extends ObjectBehavior
 
     function it_does_nothing_if_not_new()
     {
-        $this->callCsvReport
+        $this
+            ->callCsvReport
             ->isNew()
             ->willReturn(false);
 
-        $this->callCsvReport
+        $this
+            ->callCsvReport
             ->getInDate()
             ->shouldNotBeCalled();
 
@@ -112,12 +75,8 @@ class CsvAttacherSpec extends ObjectBehavior
 
     function it_uses_company_name_and_date_range_in_csv_name()
     {
-        $this->company
-            ->getName()
-            ->willReturn('CompanyName')
-            ->shouldBeCalled();
-
-        $this->callCsvReportDto
+        $this
+            ->callCsvReportDto
             ->setCsvBaseName('CompanyName-20180101-20180101.csv')
             ->shouldBeCalled();
 
@@ -133,12 +92,6 @@ class CsvAttacherSpec extends ObjectBehavior
             ->getCompany()
             ->willReturn(null);
 
-        $this
-            ->brand
-            ->getName()
-            ->willReturn('BrandName')
-            ->shouldBeCalled();
-
         $this->callCsvReportDto
             ->setCsvBaseName(Argument::containingString('BrandName-'))
             ->shouldBeCalled();
@@ -150,13 +103,17 @@ class CsvAttacherSpec extends ObjectBehavior
 
     function it_makes_timezone_conversions_on_csv_file_name_dates()
     {
-        $this->company
-            ->getName('CompanyName');
+        $timezone = $this->getInstance(
+            Timezone::class,
+            [
+                'tz' => 'Europe/Madrid'
+            ]
+        );
 
         $this
-            ->timezone
-            ->getTz()
-            ->willReturn('Europe/Madrid')
+            ->callCsvReport
+            ->getTimezone()
+            ->willReturn($timezone)
             ->shouldBeCalled();
 
         $inDate = new \DateTime('2018-01-01 23:00:00');
@@ -180,7 +137,6 @@ class CsvAttacherSpec extends ObjectBehavior
 
     function it_persists_csv()
     {
-
         $this
             ->entityTools
             ->updateEntityByDto(
@@ -197,11 +153,29 @@ class CsvAttacherSpec extends ObjectBehavior
 
     private function prepareExecution(
         CallCsvReportInterface $callCsvReport,
-        CallCsvReportDto $callCsvReportDto,
-        CompanyInterface $company = null,
-        BrandInterface $brand = null,
-        TimezoneInterface $timezone
+        CallCsvReportDto $callCsvReportDto
     ) {
+        $company = $this->getInstance(
+            Company::class,
+            [
+                'name' => 'CompanyName'
+            ]
+        );
+
+        $brand = $this->getInstance(
+            Brand::class,
+            [
+                'name' => 'BrandName'
+            ]
+        );
+
+        $timezone = $this->getInstance(
+            Timezone::class,
+            [
+                'tz' => 'UTC'
+            ]
+        );
+
         $inDate = new \DateTime('2018-01-01 00:00:00');
         $outDate = new \DateTime('2018-01-01 23:59:59');
         $this->getterProphecy(
@@ -218,8 +192,6 @@ class CsvAttacherSpec extends ObjectBehavior
             false
         );
 
-
-
         $this
             ->csvExporter
             ->execute(
@@ -235,18 +207,6 @@ class CsvAttacherSpec extends ObjectBehavior
             ->entityTools
             ->entityToDto($callCsvReport)
             ->willReturn($callCsvReportDto);
-
-        $timezone
-            ->getTz()
-            ->willReturn('UTC');
-
-        $company
-            ->getName()
-            ->willReturn('Company Name');
-
-        $brand
-            ->getName()
-            ->willReturn('Brand Name');
 
         $callCsvReportDto
             ->setCsvPath(Argument::type('string'))

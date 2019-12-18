@@ -16,7 +16,8 @@ class WebPortalDto extends WebPortalDtoAbstract
             $response = [
                 'id' => 'id',
                 'url' => 'url',
-                'name' => 'name'
+                'name' => 'name',
+                'urlType' => 'urlType',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

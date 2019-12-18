@@ -3,14 +3,19 @@
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Destination\Destination;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Service\BillableCall\UpdateDtoByDefaultRunTpCdr;
@@ -23,68 +28,23 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var TpRatingPlanRepository
-     */
+
     protected $tpRatingPlanRepository;
-
-    /**
-     * @var TpDestinationRepository
-     */
     protected $tpDestinationRepository;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
 
     /////////////////////////////////////////
     ///
     /////////////////////////////////////////
 
-    /**
-     * @var BillableCallDto
-     */
     protected $billableCallDto;
-
-    /**
-     * @var TrunksCdrInterface
-     */
     protected $trunksCdr;
-
-    /**
-     * @var BrandInterface
-     */
     protected $brand;
-
-    /**
-     * @var TpCdrInterface
-     */
     protected $defaultRunTpCdr;
-
-    /**
-     * @var TpRatingPlanInterface
-     */
     protected $tpRatingPlan;
-
-    /**
-     * @var RatingPlanInterface
-     */
     protected $ratingPlan;
-
-    /**
-     * @var RatingPlanGroupInterface
-     */
     protected $ratingPlanGroup;
-
-    /**
-     * @var TpDestinationInterface
-     */
     protected $tpDestination;
-
-    /**
-     * @var DestinationInterface
-     */
     protected $destination;
 
     public function let(
@@ -99,38 +59,6 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
         $this->beConstructedWith(
             ...func_get_args()
         );
-
-        /////////////////////////////////////////
-        ///
-        /////////////////////////////////////////
-
-        $this->billableCallDto = $this->getTestDouble(
-            BillableCallDto::class
-        );
-        $this->trunksCdr = $this->getTestDouble(
-            TrunksCdrInterface::class
-        );
-        $this->brand = $this->getTestDouble(
-            BrandInterface::class
-        );
-        $this->defaultRunTpCdr = $this->getTestDouble(
-            TpCdrInterface::class
-        );
-        $this->tpRatingPlan = $this->getTestDouble(
-            TpRatingPlanInterface::class
-        );
-        $this->ratingPlan = $this->getTestDouble(
-            RatingPlanInterface::class
-        );
-        $this->ratingPlanGroup = $this->getTestDouble(
-            RatingPlanGroupInterface::class
-        );
-        $this->tpDestination = $this->getTestDouble(
-            TpDestinationInterface::class
-        );
-        $this->destination = $this->getTestDouble(
-            DestinationInterface::class
-        );
     }
 
     function it_is_initializable()
@@ -140,6 +68,8 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
 
     function it_returns_on_empty_cost_details()
     {
+        $this->prepareExecution();
+
         $this
             ->defaultRunTpCdr
             ->getCostDetailsFirstTimespan()
@@ -148,7 +78,7 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
 
         $this
             ->logger
-            ->error(Argument::type('string'))
+            ->error('Empty cost details. Skipping')
             ->shouldBeCalled();
 
         $this->execute(
@@ -158,7 +88,7 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
         );
     }
 
-    function it_sets_save_values_on_negative_cost()
+    function it_sets_safe_values_on_negative_cost()
     {
         $this->prepareExecution();
 
@@ -250,6 +180,33 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
 
     private function prepareExecution()
     {
+
+        $this->billableCallDto = $this->getTestDouble(
+            BillableCallDto::class
+        );
+
+        $this->brand = $this->getTestDouble(
+            BrandInterface::class
+        );
+
+        $this
+            ->brand
+            ->getLanguageCode()
+            ->willReturn('en');
+
+        $this->trunksCdr = $this->getTestDouble(
+            TrunksCdrInterface::class
+        );
+
+        $this
+            ->trunksCdr
+            ->getBrand()
+            ->willReturn($this->brand);
+
+        $this->defaultRunTpCdr = $this->getTestDouble(
+            TpCdrInterface::class
+        );
+
         $this->getterProphecy(
             $this->defaultRunTpCdr,
             [
@@ -261,43 +218,57 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
             false
         );
 
-        $this
-            ->tpRatingPlanRepository
-            ->findOneByTag(Argument::type('string'))
-            ->willReturn($this->tpRatingPlan);
-
-        $this->tpRatingPlan
-            ->getRatingPlan()
-            ->willReturn($this->ratingPlan);
-
-        $this
-            ->ratingPlan
-            ->getRatingPlanGroup()
-            ->willReturn($this->ratingPlanGroup);
-
-        $this
-            ->trunksCdr
-            ->getBrand()
-            ->willReturn($this->brand);
-
-        $this
-            ->brand
-            ->getLanguageCode()
-            ->willReturn('en');
-
-        $this->getterProphecy(
-            $this->ratingPlanGroup,
+        $this->ratingPlanGroup = $this->getInstance(
+            RatingPlanGroup::class,
             [
-                'getId' => 1,
-                'getName' => new \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name(
+                'id' => 1,
+                'name' => new \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name(
                     'RatingPlanGroupEn',
                     'RatingPlanGroupEs',
                     'RatingPlanGroupCa',
                     'RatingPlanGroupIt'
                 ),
-            ],
-            false
+            ]
         );
+
+        $this->ratingPlan = $this->getInstance(
+            RatingPlan::class,
+            [
+                'ratingPlanGroup' => $this->ratingPlanGroup
+            ]
+        );
+
+        $this->tpRatingPlan = $this->getInstance(
+            TpRatingPlan::class,
+            [
+                'ratingPlan' => $this->ratingPlan
+            ]
+        );
+
+        $this->destination = $this->getInstance(
+            Destination::class,
+            [
+                'id' => '1',
+                'name' => new \Ivoz\Provider\Domain\Model\Destination\Name(
+                    'DestinationEn',
+                    'DestinationEs',
+                    'DestinationCa',
+                    'DestinationIt'
+                ),
+            ]
+        );
+
+        $this->tpDestination = $this->getInstance(
+            TpDestination::class,
+            [
+                'destination' => $this->destination
+            ]
+        );
+
+        $this
+            ->tpRatingPlanRepository
+            ->findOneByTag(Argument::type('string'))
+            ->willReturn($this->tpRatingPlan);
 
         $this
             ->tpDestinationRepository
@@ -307,26 +278,5 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
             ->willReturn(
                 $this->tpDestination
             );
-
-        $this
-            ->tpDestination
-            ->getDestination()
-            ->willReturn(
-                $this->destination
-            );
-
-        $this->getterProphecy(
-            $this->destination,
-            [
-                'getId' => '1',
-                'getName' => new \Ivoz\Provider\Domain\Model\Destination\Name(
-                    'DestinationEn',
-                    'DestinationEs',
-                    'DestinationCa',
-                    'DestinationIt'
-                ),
-            ],
-            false
-        );
     }
 }

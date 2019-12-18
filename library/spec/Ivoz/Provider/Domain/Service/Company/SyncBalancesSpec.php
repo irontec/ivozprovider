@@ -9,30 +9,18 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Psr\Log\LoggerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use spec\HelperTrait;
 
 class SyncBalancesSpec extends ObjectBehavior
 {
-    /**
-     * @var EntityPersisterInterface
-     */
+    use HelperTrait;
+
     protected $entityTools;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
-
-    /**
-     * @var CompanyBalanceServiceInterface
-     */
     protected $client;
-
-    /**
-     * @var CompanyRepository
-     */
     protected $companyRepository;
 
     public function let(
@@ -61,15 +49,16 @@ class SyncBalancesSpec extends ObjectBehavior
 
     function it_logs_errors()
     {
-
         $response = new \stdClass();
         $response->error = 'Message';
 
-        $this->client
+        $this
+            ->client
             ->getBalances(
                 Argument::any(),
                 Argument::any()
-            )->willReturn($response);
+            )
+            ->willReturn($response);
 
         $this->logger
             ->error(Argument::type('string'))
@@ -78,12 +67,21 @@ class SyncBalancesSpec extends ObjectBehavior
         $this->updateCompanies(1, [1]);
     }
 
-    function it_updates_db_balances(
-        CompanyInterface $company,
-        CompanyDto $companyDto
-    ) {
+    function it_updates_db_balances()
+    {
         $companyId = 1;
         $balance = 1000;
+
+        $company = $this->getInstance(
+            Company::class,
+            [
+                'id' => $companyId
+            ]
+        );
+
+        $companyDto = $this->getTestDouble(
+            CompanyDto::class
+        );
 
         $response = new \stdClass();
         $response->error = null;
@@ -91,19 +89,23 @@ class SyncBalancesSpec extends ObjectBehavior
             $companyId => $balance
         ];
 
-        $this->client
+        $this
+            ->client
             ->getBalances(
                 Argument::any(),
                 Argument::any()
-            )->willReturn($response)
+            )
+            ->willReturn($response)
             ->shouldBeCalled();
 
-        $this->companyRepository
+        $this
+            ->companyRepository
             ->find($companyId)
             ->willReturn($company)
             ->shouldBeCalled();
 
-        $this->entityTools
+        $this
+            ->entityTools
             ->entityToDto($company)
             ->willReturn($companyDto)
             ->shouldBeCalled();

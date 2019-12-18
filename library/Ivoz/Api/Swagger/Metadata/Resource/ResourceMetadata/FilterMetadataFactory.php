@@ -98,6 +98,10 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                 case 'guid':
                 case 'text':
                     $filters[SearchFilter::SERVICE_NAME][$attribute] = SearchFilter::STRATEGY_PARTIAL;
+                    $isNullable = $this->isNullableField($resourceClass, $attribute);
+                    if ($isNullable) {
+                        $filters[ExistsFilter::SERVICE_NAME][$attribute] = ExistsFilter::QUERY_PARAMETER_KEY;
+                    }
                     break;
                 case 'smallint':
                 case 'integer':
@@ -106,6 +110,10 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                 case 'float':
                     $filters[NumericFilter::SERVICE_NAME][$attribute] = null;
                     $filters[RangeFilter::SERVICE_NAME][$attribute] = null;
+                    $isNullable = $this->isNullableField($resourceClass, $attribute);
+                    if ($isNullable) {
+                        $filters[ExistsFilter::SERVICE_NAME][$attribute] = ExistsFilter::QUERY_PARAMETER_KEY;
+                    }
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
                     $filters[SearchFilter::SERVICE_NAME][$attribute] = SearchFilter::STRATEGY_EXACT;
@@ -118,6 +126,10 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                     break;
                 case 'boolean':
                     $filters[BooleanFilter::SERVICE_NAME][$attribute] = null;
+                    $isNullable = $this->isNullableField($resourceClass, $attribute);
+                    if ($isNullable) {
+                        $filters[ExistsFilter::SERVICE_NAME][$attribute] = ExistsFilter::QUERY_PARAMETER_KEY;
+                    }
                     break;
                 case 'date':
                 case 'datetime':
@@ -125,6 +137,10 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                 case 'time':
                     $filters[SearchFilter::SERVICE_NAME][$attribute] = SearchFilter::STRATEGY_START;
                     $filters[DateFilter::SERVICE_NAME][$attribute] = null;
+                    $isNullable = $this->isNullableField($resourceClass, $attribute);
+                    if ($isNullable) {
+                        $filters[ExistsFilter::SERVICE_NAME][$attribute] = ExistsFilter::QUERY_PARAMETER_KEY;
+                    }
                     break;
                 default:
                     // Value object and ClassMetadataInfo::ONE_TO_MANY
@@ -134,6 +150,18 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         return array_filter($filters, function ($value) {
             return count($value) > 0;
         });
+    }
+
+    private function isNullableField(string $resourceClass, string $attribute)
+    {
+        $metadata = $this->getAttributeMetadata($resourceClass, $attribute);
+        if (!$metadata) {
+            return false;
+        }
+
+        $nullable = $metadata['nullable'] ?? false;
+
+        return $nullable;
     }
 
     private function isForeignKeyNullable(string $resourceClass, string $attribute)

@@ -117,11 +117,9 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
 
-        $this->queryRunner->execute(
+        return $this->queryRunner->execute(
             $this->getEntityName(),
             $qb->getQuery()
         );
-
-        return $qb->getQuery()->execute();
     }
 }

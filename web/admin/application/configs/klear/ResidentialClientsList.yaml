@@ -3,7 +3,6 @@
 #include conf.d/documentationLink.yaml
 #include AdministratorsList.yaml
 #include RatingProfilesList.yaml
-#include OutgoingRoutingList.yaml
 #include KamUsersAddressList.yaml
 
 production:
@@ -36,7 +35,6 @@ production:
             kamUsersAddressList_screen: true
             administratorsList_screen: true
             ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
-            outgoingRoutingList_screen: true
           dialogs:
             residentialClientsDel_dialog: false
             emulateCompany_dialog: true
@@ -324,20 +322,6 @@ production:
       forcedValues:
         "self::routingTag": null
 
-    # outgoingRouting
-    <<: *outgoingRouting_screensLink
-    outgoingRoutingList_screen:
-      <<: *outgoingRoutingList_screenLink
-      filterField: company
-      parentOptionCustomizer:
-        - recordCount
-    outgoingRoutingNew_screen:
-      <<: *outgoingRoutingNew_screenLink
-      filterField: company
-    outgoingRoutingEdit_screen:
-      <<: *outgoingRoutingEdit_screenLink
-      filterField: company
-
     #kamUsersAddress:
     kamUsersAddressList_screen:
       <<: *kamUsersAddressList_screenLink
@@ -388,9 +372,6 @@ production:
       title: _("Delete %s", ngettext('Client admin', 'Client admins', 1))
       description: _("Do you want to delete this %s?", ngettext('Client admin', 'Client admins', 1))
       message: _("%s successfully deleted.", ngettext('Client admin', 'Client admins', 1))
-
-    # outgoingRouting dialogs:
-    <<: *outgoingRouting_dialogsLink
 
     # kamUsersAddress dialogs:
     <<: *kamUsersAddress_dialogsLink

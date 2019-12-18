@@ -4,62 +4,49 @@ namespace spec\Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
-use Ivoz\Cgr\Infrastructure\Persistence\Doctrine\TpCdrDoctrineRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Graze\GuzzleHttp\JsonRpc\ClientInterface;
-use Prophecy\Prophet;
 use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
 
 class ProcessExternalCdrSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var ApiClient
-     */
     protected $apiClient;
-
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
-
-    /**
-     * @var TpCdrRepository
-     */
     protected $tpCdrRepository;
-
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
+    protected $trunksClient;
 
     public function let(
         ApiClient $apiClient,
         EntityTools $entityTools,
         TpCdrRepository $tpCdrRepository,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        TrunksClientInterface $trunksClient
     ) {
         $this->apiClient = $apiClient;
         $this->entityTools = $entityTools;
         $this->tpCdrRepository = $tpCdrRepository;
         $this->logger = $logger;
+        $this->trunksClient = $trunksClient;
 
         $this->beConstructedWith(
             $apiClient,
             $entityTools,
             $tpCdrRepository,
-            $logger
+            $logger,
+            $trunksClient
         );
     }
 
@@ -303,6 +290,14 @@ class ProcessExternalCdrSpec extends ObjectBehavior
                 'getDuration' => '',
                 'getStartTime' => $startTime,
                 'isOutboundCall' => true
+            ],
+            false
+        );
+
+        $this->getterProphecy(
+            $this->trunksClient,
+            [
+                'isCgrEnabled' => true
             ],
             false
         );

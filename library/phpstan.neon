@@ -5,6 +5,7 @@ parameters:
     ignoreErrors:
         - '#.*ObjectManager::flush().*invoked with 1 parameter, 0 required#'
         - '#Access to an undefined property .*EntityInterface::\$__isInitialized__#'
+        - '#Access to undefined constant PDO::MYSQL_ATTR_USE_BUFFERED_QUERY.#'
     excludes_analyse:
         - "*/vendor/*"
         - "*/coverage/*"

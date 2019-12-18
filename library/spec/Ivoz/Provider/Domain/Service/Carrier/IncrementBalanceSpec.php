@@ -3,8 +3,8 @@
 namespace spec\Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance;
@@ -59,14 +59,9 @@ class IncrementBalanceSpec extends ObjectBehavior
         $this->shouldHaveType(IncrementBalance::class);
     }
 
-    function it_increases_balance(
-        CarrierInterface $carrier,
-        BrandInterface $brand
-    ) {
-        $this->prepareExecution(
-            $carrier,
-            $brand
-        );
+    function it_increases_balance()
+    {
+        $carrier = $this->prepareExecution();
 
         $this
             ->syncBalanceService
@@ -82,14 +77,9 @@ class IncrementBalanceSpec extends ObjectBehavior
         );
     }
 
-    function it_creates_balance_movement(
-        CarrierInterface $carrier,
-        BrandInterface $brand
-    ) {
-        $this->prepareExecution(
-            $carrier,
-            $brand
-        );
+    function it_creates_balance_movement()
+    {
+        $carrier = $this->prepareExecution();
 
         $this
             ->createBalanceMovementByCarrier
@@ -106,10 +96,23 @@ class IncrementBalanceSpec extends ObjectBehavior
         );
     }
 
-    protected function prepareExecution(
-        CarrierInterface $carrier,
-        BrandInterface $brand
-    ) {
+    protected function prepareExecution()
+    {
+        $brand = $this->getInstance(
+            Brand::class,
+            [
+                'id' => 1
+            ]
+        );
+
+        $carrier = $this->getInstance(
+            Carrier::class,
+            [
+                'id' => 2,
+                'brand' => $brand
+            ]
+        );
+
         $this
             ->logger
             ->info(Argument::any())
@@ -130,18 +133,6 @@ class IncrementBalanceSpec extends ObjectBehavior
                 'success' => true
             ]);
 
-        $carrier
-            ->getBrand()
-            ->willReturn($brand);
-
-        $carrier
-            ->getId()
-            ->willReturn(2);
-
-        $brand
-            ->getId()
-            ->willReturn(1);
-
         $this
             ->client
             ->getBalance(
@@ -149,5 +140,7 @@ class IncrementBalanceSpec extends ObjectBehavior
                 Argument::type('numeric')
             )
             ->willReturn(self::BALANCE);
+
+        return $carrier;
     }
 }

@@ -98,6 +98,8 @@ This external called will be called whenever the retail account cannot be reache
 
 - Accounts using SIP register: when no answer is received from last contact address or when no active register is found.
 
+.. warning:: Retail accounts marked as T.38 won't have any call forward settings.
+
 Asterisk as a retail account
 ============================
 

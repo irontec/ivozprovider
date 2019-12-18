@@ -102,13 +102,18 @@ class CommandPersister
             $changeLog->setCommand($commandlog);
             $this->entityPersister->persist($changeLog);
 
+            $data = json_encode($changeLog->getData());
+            if (strlen($data) > 140) {
+                $data = substr($data, 0, 140) . '...';
+            }
+
             $this->logger->info(
                 sprintf(
                     '%s > %s#%s > %s',
                     (new \ReflectionClass($event))->getShortName(),
                     $changeLog->getEntity(),
                     $changeLog->getEntityId(),
-                    json_encode($changeLog->getData())
+                    $data
                 )
             );
         }

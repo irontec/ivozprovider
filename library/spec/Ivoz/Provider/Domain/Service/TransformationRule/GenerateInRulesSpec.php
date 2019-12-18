@@ -46,7 +46,7 @@ class GenerateInRulesSpec extends ObjectBehavior
         $this->execute($entity, 'callerin');
     }
 
-    function it_creates_specialNationalToE164_rule(
+    function it_creates_nationalToE164_rule(
         TransformationRuleSetInterface $entity,
         CountryInterface $country
     ) {
@@ -57,7 +57,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->persistDto(Argument::any())
             ->willReturn(null);
 
-        $this->prepareSpecialNationalToE164Prophecy();
+        $this->prepareNationalToE164Prophecy();
 
         $this->execute($entity, 'callerin');
     }
@@ -98,7 +98,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->persistDto(Argument::any())
             ->willReturn(null);
 
-        $this->prepareOutOfAreaNationalToE164Prophecy($trunkPrefix, false);
+        $this->prepareOutOfAreaNationalToE164Prophecy($trunkPrefix, true);
 
         $this->execute($entity, 'callerin');
     }
@@ -245,7 +245,7 @@ class GenerateInRulesSpec extends ObjectBehavior
         $nationalToE164
             ->setTransformationRuleSetId(1)
             ->setType('callerin')
-            ->setDescription("From within national to e164")
+            ->setDescription("From within area national to e164")
             ->setPriority(3)
             ->setMatchExpr('^([0-9]{' . $nationalSubscriberLen . '})$')
             ->setReplaceExpr('34' . $areaCode . '\1');
@@ -253,14 +253,14 @@ class GenerateInRulesSpec extends ObjectBehavior
         $this->setExpectedOutcome($nationalToE164, $shouldHappen);
     }
 
-    private function prepareSpecialNationalToE164Prophecy()
+    private function prepareNationalToE164Prophecy()
     {
         $nationalToE164 = new TransformationRuleDto();
         $nationalToE164
             ->setTransformationRuleSetId(1)
             ->setType('callerin')
-            ->setDescription("From special national to e164")
-            ->setPriority(4)
+            ->setDescription("From national to e164")
+            ->setPriority(5)
             ->setMatchExpr('^([0-9]+)$')
             ->setReplaceExpr('34\1');
 

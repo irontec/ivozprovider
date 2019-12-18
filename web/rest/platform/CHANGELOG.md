@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.13.2
+* Endpoints:
+    - Added [Exists] filter parameter for nullable fields (Only possible on foreign keys before)
+* Models:
+    - WebPortal:
+        - Added urlType property into WebPortal-collection model
+
 ## 2.13.1
 * Models:
     - BillableCalls:

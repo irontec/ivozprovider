@@ -1688,9 +1688,6 @@ msgstr "No routing tag"
 msgid "None"
 msgstr "None"
 
-msgid "Not Registered"
-msgstr "Not Registered"
-
 msgid "Notice that edition/creation tabs will be closed."
 msgstr "Notice that edition/creation tabs will be closed."
 
@@ -2499,11 +2496,9 @@ msgid "There was an error: %s"
 msgstr "There was an error: %s"
 
 msgid ""
-"This DDI will be used if friend presented DDI doesn't match any of the "
-"company DDIs"
+"This DDI will be used if presented DDI doesn't match any of the company DDIs"
 msgstr ""
-"This DDI will be used if friend presented DDI doesn't match any of the "
-"company DDIs"
+"This DDI will be used if presented DDI doesn't match any of the company DDIs"
 
 msgid ""
 "This assignment has no functional purpose, it is just for DDI Provider <-> "
@@ -2649,6 +2644,9 @@ msgstr "Unassigned"
 msgid "Unit"
 msgstr "Unit"
 
+msgid "Unreachable"
+msgstr "Unreachable"
+
 msgid "Update CallerID?"
 msgstr "Update CallerID?"
 
@@ -2704,8 +2702,8 @@ msgstr "User configuration"
 msgid "Username"
 msgstr "Username"
 
-msgid "Using DTMFs (read WARNING)"
-msgstr "Using DTMFs (read WARNING)"
+msgid "Using DTMFs"
+msgstr "Using DTMFs"
 
 msgid "Using INFO"
 msgstr "Using INFO"

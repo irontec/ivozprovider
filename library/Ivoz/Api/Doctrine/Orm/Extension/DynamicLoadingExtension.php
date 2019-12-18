@@ -157,7 +157,23 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         int &$joinCount = 0,
         int $currentDepth = null
     ) {
-        $currentDepth = $currentDepth > 0 ? $currentDepth - 1 : $currentDepth;
+        if (is_null($currentDepth)) {
+            $isCollection = isset($context['collection']) && $context['collection'] === 'collection';
+            $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
+
+            $currentDepth = isset($context['item_operation_name'])
+                ? $resourceMetadata->getItemOperationAttribute($context['item_operation_name'], 'depth', 1)
+                : $resourceMetadata->getCollectionOperationAttribute($context['collection_operation_name'], 'depth', 0);
+
+            if ($currentDepth < 1) {
+                return;
+            }
+        } else {
+            $currentDepth = $currentDepth > 0
+                ? $currentDepth - 1
+                : $currentDepth;
+        }
+
         $entityManager = $queryBuilder->getEntityManager();
         $classMetadata = $entityManager->getClassMetadata($resourceClass);
         $targetProperties = $this->getTargetPropertiesByContext($resourceClass, $context);

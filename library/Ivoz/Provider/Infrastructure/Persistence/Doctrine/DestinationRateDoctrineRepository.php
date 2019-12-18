@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NativeQuery;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -15,8 +18,43 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class DestinationRateDoctrineRepository extends ServiceEntityRepository implements DestinationRateRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    protected $em;
+    protected $queryRunner;
+
+    public function __construct(
+        RegistryInterface $registry,
+        EntityManagerInterface $em,
+        DoctrineQueryRunner $queryRunner
+    ) {
         parent::__construct($registry, DestinationRate::class);
+        $this->em = $em;
+        $this->queryRunner = $queryRunner;
+    }
+
+    /**
+     * @param array $destinationRates
+     * @return int affected rows
+     * @throws \Doctrine\DBAL\ConnectionException
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function insertIgnoreFromArray(array $destinationRates)
+    {
+        $tpDestinationRateInsert =
+            'INSERT INTO DestinationRates'
+            . ' (rate, connectFee, rateIncrement, destinationId, destinationRateGroupId)'
+            . ' VALUES '
+            . implode(",", $destinationRates)
+            . ' ON DUPLICATE KEY UPDATE'
+            . ' rate = VALUES(rate),'
+            . ' connectFee = VALUES(connectFee),'
+            . ' rateIncrement = VALUES(rateIncrement)';
+
+        $nativeQuery = new NativeQuery($this->em);
+        $nativeQuery->setSQL($tpDestinationRateInsert);
+
+        return $this->queryRunner->execute(
+            DestinationRate::class,
+            $nativeQuery
+        );
     }
 }

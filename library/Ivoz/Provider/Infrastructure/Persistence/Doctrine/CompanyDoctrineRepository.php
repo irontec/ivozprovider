@@ -23,14 +23,29 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     }
 
     /**
-     * @param int $id
-     * @return CompanyInterface[]
+     * @inheritdoc
      */
-    public function findByBrandId($id)
+    public function findIdsByBrandId($id)
     {
-        return $this->findBy([
-            'brand' => $id
-        ]);
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq('self.brand', $id)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_map(
+            function ($row) {
+                return intval($row['id']);
+            },
+            $result
+        );
     }
 
     /**

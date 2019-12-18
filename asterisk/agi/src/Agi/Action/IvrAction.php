@@ -101,8 +101,12 @@ class IvrAction
                 // Entered data matched one of the entries, play success (if any)
                 $this->agi->playbackLocution($ivr->getSuccessLocution());
 
-                // Play entry success (if any)
-                $this->agi->playbackLocution($entry->getWelcomeLocution());
+                // Play success locution (if any)
+                $successLocution = is_null($entry->getWelcomeLocution())
+                    ? $ivr->getSuccessLocution()
+                    : $entry->getWelcomeLocution();
+
+                $this->agi->playbackLocution($successLocution);
 
                 // Route to destination
                 $this->routerAction

@@ -10,9 +10,9 @@ interface CompanyRepository extends ObjectRepository, Selectable
 {
     /**
      * @param int $id
-     * @return CompanyInterface[]
+     * @return array of ids
      */
-    public function findByBrandId($id);
+    public function findIdsByBrandId($id);
 
     /**
      * Used by brand API access controls

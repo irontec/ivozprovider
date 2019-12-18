@@ -163,7 +163,7 @@ class BillableCallRepositoryTest extends KernelTestCase
             ->getRepository(BillableCall::class);
 
         /** @var BillableCallInterface $billableCalls */
-        $response = $billableCallRepository
+        $affectedRows = $billableCallRepository
             ->resetPricingData([1]);
 
         $billableCallChanges = $this->getChangelogByClass(
@@ -175,9 +175,9 @@ class BillableCallRepositoryTest extends KernelTestCase
             $billableCallChanges
         );
 
-        $this->assertInternalType(
-            'null',
-            $response
+        $this->assertEquals(
+            1,
+            $affectedRows
         );
     }
 
@@ -191,7 +191,7 @@ class BillableCallRepositoryTest extends KernelTestCase
             ->getRepository(BillableCall::class);
 
         /** @var BillableCallInterface $billableCalls */
-        $response = $billableCallRepository
+        $affectedRows = $billableCallRepository
             ->resetInvoiceId(1);
 
         $billableCallChanges = $this->getChangelogByClass(
@@ -203,9 +203,9 @@ class BillableCallRepositoryTest extends KernelTestCase
             $billableCallChanges
         );
 
-        $this->assertInternalType(
-            'null',
-            $response
+        $this->assertEquals(
+            1,
+            $affectedRows
         );
     }
 
@@ -219,7 +219,7 @@ class BillableCallRepositoryTest extends KernelTestCase
             ->getRepository(BillableCall::class);
 
         /** @var BillableCallInterface $billableCalls */
-        $response = $billableCallRepository
+        $affectedRows = $billableCallRepository
             ->setInvoiceId(
                 [
                     ['brand', 'eq', 1]
@@ -236,9 +236,9 @@ class BillableCallRepositoryTest extends KernelTestCase
             $billableCallChanges
         );
 
-        $this->assertInternalType(
-            'null',
-            $response
+        $this->assertEquals(
+            100,
+            $affectedRows
         );
     }
 

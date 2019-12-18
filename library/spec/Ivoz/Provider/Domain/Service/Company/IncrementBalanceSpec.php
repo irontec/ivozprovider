@@ -4,8 +4,8 @@ namespace spec\Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementDto;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Company\IncrementBalance;
@@ -60,14 +60,9 @@ class IncrementBalanceSpec extends ObjectBehavior
         $this->shouldHaveType(IncrementBalance::class);
     }
 
-    function it_increases_balance(
-        CompanyInterface $company,
-        BrandInterface $brand
-    ) {
-        $this->prepareExecution(
-            $company,
-            $brand
-        );
+    function it_increases_balance()
+    {
+        $this->prepareExecution();
 
         $this
             ->syncBalanceService
@@ -83,14 +78,9 @@ class IncrementBalanceSpec extends ObjectBehavior
         );
     }
 
-    function it_creates_balance_movement(
-        CompanyInterface $company,
-        BrandInterface $brand
-    ) {
-        $this->prepareExecution(
-            $company,
-            $brand
-        );
+    function it_creates_balance_movement()
+    {
+        $company = $this->prepareExecution();
 
         $this
             ->createBalanceMovementByCompany
@@ -107,10 +97,23 @@ class IncrementBalanceSpec extends ObjectBehavior
         );
     }
 
-    protected function prepareExecution(
-        CompanyInterface $company,
-        BrandInterface $brand
-    ) {
+    protected function prepareExecution()
+    {
+        $brand = $this->getInstance(
+            Brand::class,
+            [
+                'id' => 1
+            ]
+        );
+
+        $company = $this->getInstance(
+            Company::class,
+            [
+                'id' => 2,
+                'brand' => $brand
+            ]
+        );
+
         $this
             ->logger
             ->info(Argument::any())
@@ -131,18 +134,6 @@ class IncrementBalanceSpec extends ObjectBehavior
                 'success' => true
             ]);
 
-        $company
-            ->getBrand()
-            ->willReturn($brand);
-
-        $company
-            ->getId()
-            ->willReturn(2);
-
-        $brand
-            ->getId()
-            ->willReturn(1);
-
         $this
             ->client
             ->getBalance(
@@ -150,5 +141,7 @@ class IncrementBalanceSpec extends ObjectBehavior
                 Argument::type('numeric')
             )
             ->willReturn(self::BALANCE);
+
+        return $company;
     }
 }

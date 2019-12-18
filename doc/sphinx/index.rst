@@ -46,5 +46,7 @@ IvozProvider Official Documentation
     :caption: Rest API
 
     api_rest/introduction
+    api_rest/multilevel
     api_rest/web_client
     api_rest/integrations
+    api_rest/use_case
