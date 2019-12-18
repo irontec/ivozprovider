@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\DestinationRateGroup;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
@@ -23,7 +24,7 @@ class DestinationRateGroupAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $destinationRateGroupDto,
         EntityInterface $destinationRateGroup,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($destinationRateGroup, DestinationRateGroupInterface::class);
         $destinationRateGroup->updateFromDto($destinationRateGroupDto, $fkTransformer);

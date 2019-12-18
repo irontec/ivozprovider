@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\FaxesInOut;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -23,7 +24,7 @@ class FaxesInOutAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $faxesInOutDto,
         EntityInterface $faxesInOut,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($faxesInOut, FaxesInOutInterface::class);
         $faxesInOut->updateFromDto($faxesInOutDto, $fkTransformer);

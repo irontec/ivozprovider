@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\Locution;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -23,7 +24,7 @@ class LocutionAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $locutionDto,
         EntityInterface $locution,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($locution, LocutionInterface::class);
         $locution->updateFromDto($locutionDto, $fkTransformer);

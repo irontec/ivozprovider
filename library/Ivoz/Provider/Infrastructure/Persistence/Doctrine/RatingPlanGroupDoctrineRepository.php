@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupRepository;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
@@ -67,7 +68,7 @@ class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implemen
      * @param int $ratingPlanId
      * @return \Doctrine\ORM\QueryBuilder
      */
-    private function preparePricesQuery($ratingPlanId): \Doctrine\ORM\QueryBuilder
+    private function preparePricesQuery($ratingPlanId): QueryBuilder
     {
         $selectFields = [
             'self.name.en as ratingPlan',

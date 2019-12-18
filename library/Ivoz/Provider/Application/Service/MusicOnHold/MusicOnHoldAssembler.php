@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\MusicOnHold;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
@@ -23,7 +24,7 @@ class MusicOnHoldAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $musicOnHoldDto,
         EntityInterface $musicOnHold,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($musicOnHold, MusicOnHoldInterface::class);
         $musicOnHold->updateFromDto($musicOnHoldDto, $fkTransformer);

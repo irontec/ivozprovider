@@ -12,5 +12,5 @@ interface PersistErrorHandlerInterface extends LifecycleEventHandlerInterface
      * @throws \Exception $exception
      * @return void
      */
-    public function handle(\Exception $exception);
+    public function handle(\Throwable $exception);
 }

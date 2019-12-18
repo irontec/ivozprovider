@@ -26,7 +26,7 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
         ];
     }
 
-    public function handle(\Exception $exception)
+    public function handle(\Throwable $exception)
     {
         if (!$exception instanceof UniqueConstraintViolationException) {
             return;

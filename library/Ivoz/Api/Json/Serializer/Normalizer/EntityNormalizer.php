@@ -2,6 +2,7 @@
 
 namespace Ivoz\Api\Json\Serializer\Normalizer;
 
+use Doctrine\ORM\Proxy\Proxy;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
@@ -86,7 +87,7 @@ class EntityNormalizer implements NormalizerInterface
 
             $property->setAccessible(true);
             $propertyValue = $property->getValue($entity);
-            if ($propertyValue instanceof \Doctrine\ORM\Proxy\Proxy && !$propertyValue->__isInitialized()) {
+            if ($propertyValue instanceof Proxy && !$propertyValue->__isInitialized()) {
                 $propertyValue->__load();
             }
         }
@@ -95,11 +96,11 @@ class EntityNormalizer implements NormalizerInterface
     }
 
     private function normalizeEntity(
-        Entityinterface $entity,
+        EntityInterface $entity,
         array $context,
         $isSubresource = false
     ) {
-        $resourceClass = $entity instanceof \Doctrine\ORM\Proxy\Proxy
+        $resourceClass = $entity instanceof Proxy
             ? get_parent_class($entity)
             : get_class($entity);
 

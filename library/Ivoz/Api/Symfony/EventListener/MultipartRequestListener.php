@@ -89,7 +89,7 @@ class MultipartRequestListener
                         $matches
                     );
                     $fieldName = $matches[1];
-                    $fileName = (isset($matches[2]) ? $matches[2] : null);
+                    $fileName = ($matches[2] ?? null);
                     // If we have no filename, save the data. Otherwise, save the file.
                     if ($fileName === null) {
                         $data[$fieldName] = $content;

@@ -10,7 +10,7 @@ class DdiDto extends DdiDtoAbstract
             $data = $this->filterReadOnlyFields($data);
         }
 
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
         }

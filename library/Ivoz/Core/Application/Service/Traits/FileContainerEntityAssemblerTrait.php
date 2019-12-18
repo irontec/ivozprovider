@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Application\Service\Traits;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -35,7 +36,7 @@ trait FileContainerEntityAssemblerTrait
     public function handleEntityFiles(
         FileContainerInterface $entity,
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         foreach ($entity->getFileObjects() as $fieldName) {
             $pathGetter = 'get'. ucFirst($fieldName) .'Path';
@@ -122,7 +123,7 @@ trait FileContainerEntityAssemblerTrait
         DataTransferObjectInterface $dto,
         EntityInterface $entity,
         $fldName,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         if (!$entity instanceof FileContainerInterface) {
             throw new \InvalidArgumentException(

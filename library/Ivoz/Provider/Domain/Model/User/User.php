@@ -133,7 +133,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
             return parent::setPass(null);
         }
 
-        $salt = substr(md5(mt_rand(), false), 0, 22);
+        $salt = substr(md5(random_int(0, mt_getrandmax()), false), 0, 22);
         $cryptPass = crypt(
             $pass,
             '$2a$08$' . $salt . '$' . $salt . '$'

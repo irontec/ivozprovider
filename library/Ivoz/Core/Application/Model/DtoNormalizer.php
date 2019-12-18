@@ -20,7 +20,7 @@ trait DtoNormalizer
     public function normalize(string $context, string $role = '')
     {
         $response = $this->toArray(true);
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = self::getPropertyMap($context, $role);
 
         $response = array_filter(
             $response,
@@ -44,7 +44,7 @@ trait DtoNormalizer
      */
     public function denormalize(array $data, string $context, string $role = '')
     {
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = self::getPropertyMap($context, $role);
 
         $this->setByContext(
             $contextProperties,

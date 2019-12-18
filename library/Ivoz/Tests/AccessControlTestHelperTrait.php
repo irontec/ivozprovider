@@ -2,6 +2,7 @@
 
 namespace Ivoz\Tests;
 
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\Criteria;
 use http\Env\Request;
 use Ivoz\Api\Core\Security\AccessControlEvaluator;
@@ -53,7 +54,7 @@ trait AccessControlTestHelperTrait
 
         $this->serviceContainer = $kernel->getContainer();
 
-        $request = new \Symfony\Component\HttpFoundation\Request(
+        $request = new Request(
             [],
             [],
             [

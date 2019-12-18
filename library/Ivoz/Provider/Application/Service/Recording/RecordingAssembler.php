@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\Recording;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -23,7 +24,7 @@ class RecordingAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $recordingDto,
         EntityInterface $recording,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($recording, RecordingInterface::class);
         $recording->updateFromDto($recordingDto, $fkTransformer);

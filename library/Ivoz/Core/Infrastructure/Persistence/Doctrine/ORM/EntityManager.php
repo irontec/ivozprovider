@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM;
 
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager as DoctrineEntityManager;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\Configuration;
@@ -30,7 +31,7 @@ class EntityManager extends DoctrineEntityManager
 
         switch (true) {
             case (is_array($conn)):
-                $conn = \Doctrine\DBAL\DriverManager::getConnection(
+                $conn = DriverManager::getConnection(
                     $conn,
                     $config,
                     ($eventManager ?: new EventManager())

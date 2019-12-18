@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\Invoice;
 
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -23,7 +24,7 @@ class InvoiceAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $invoiceDto,
         EntityInterface $invoice,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($invoice, InvoiceInterface::class);
         $invoice->updateFromDto($invoiceDto, $fkTransformer);

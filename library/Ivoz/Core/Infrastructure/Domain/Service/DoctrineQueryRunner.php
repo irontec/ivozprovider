@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
+use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\NativeQuery;
@@ -155,7 +156,7 @@ class DoctrineQueryRunner
                 new \Exception('dqlParamResolver context must be instance of ' . DqlQuery::class)
             );
 
-            $parser = new \Doctrine\ORM\Query\Parser($this);
+            $parser = new Parser($this);
             $paramMappings = $parser->parse()->getParameterMappings();
             list($params, $paramTypes) = $this->processParameterMappings($paramMappings);
 
