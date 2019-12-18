@@ -19,7 +19,7 @@ class DdiProviderRegistrationStatus
     /**
      * @AttributeDefinition(type="int", required=false)
      */
-    protected $expires = null;
+    protected $expires;
 
     public function __construct(
         int $statusCode,

@@ -69,8 +69,6 @@ class DataAccessControlHelper
 
             switch ($operator) {
                 case 'or':
-                    $expressions[] = self::toString($value, $operator);
-                    break;
                 case 'and':
                     $expressions[] = self::toString($value, $operator);
                     break;

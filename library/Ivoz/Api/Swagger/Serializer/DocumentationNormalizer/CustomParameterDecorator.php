@@ -33,7 +33,7 @@ class CustomParameterDecorator implements NormalizerInterface
         $response = $this->decoratedNormalizer->normalize(...func_get_args());
 
         foreach ($response['paths'] as $paths) {
-            foreach ($paths as $key => $path) {
+            foreach ($paths as $path) {
                 $pathArray = $this->setUploadParams(
                     $path->getArrayCopy()
                 );

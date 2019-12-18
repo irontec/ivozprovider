@@ -28,7 +28,7 @@ class CommandPersister
     protected $entityPersister;
     protected $logger;
 
-    protected $latestCommandlog = null;
+    protected $latestCommandlog;
 
     public function __construct(
         CommandEventSubscriber $commandEventSubscriber,

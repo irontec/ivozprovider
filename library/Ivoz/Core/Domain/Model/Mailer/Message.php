@@ -36,10 +36,6 @@ class Message
 
     protected $attachment;
 
-    public function __constructor()
-    {
-    }
-
     /**
      * @return \Swift_Message
      */

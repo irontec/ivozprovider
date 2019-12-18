@@ -15,15 +15,12 @@ use Symfony\Component\PropertyInfo\Type;
  */
 final class DoctrineOrmPropertyMetadataFactory implements PropertyMetadataFactoryInterface
 {
-    private $decorated;
     private $managerRegistry;
-
     public function __construct(
         ManagerRegistry $managerRegistry
     ) {
         $this->managerRegistry = $managerRegistry;
     }
-
     /**
      * @param string $resourceClass
      * @param string $property

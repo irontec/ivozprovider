@@ -161,8 +161,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 return array_shift($calendarPeriods);
             }
         }
-
-        return null;
     }
 
     /**

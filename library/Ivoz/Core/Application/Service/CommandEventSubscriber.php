@@ -10,7 +10,7 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
 {
     protected $events = [];
 
-    protected $latest = null;
+    protected $latest;
 
     /**
      * @param DomainEventInterface $domainEvent

@@ -6,17 +6,12 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 
 class AvoidUpdates extends AvoidEntityUpdatesAbstract implements OutgoingRoutingRelCarrierLifecycleEventHandlerInterface
 {
-    public function __construct()
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [
             self::EVENT_PRE_PERSIST => AvoidEntityUpdatesAbstract::PRE_PERSIST_PRIORITY,
         ];
     }
-
     /**
      * @param OutgoingRoutingRelCarrierInterface $entity
      *

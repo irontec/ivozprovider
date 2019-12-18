@@ -12,10 +12,6 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 */
 class MultipartRequestListener
 {
-    public function __construct()
-    {
-    }
-
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
@@ -45,7 +41,6 @@ class MultipartRequestListener
             ->headers
             ->set('CONTENT_TYPE', 'application/json');
     }
-
     /**
      * This implementation is based on an example by netcoder at http://stackoverflow.com/a/9469615
      */
@@ -121,7 +116,6 @@ class MultipartRequestListener
             end($data)
         );
     }
-
     private function setRequestContent(Request $request, $data)
     {
         (function () use ($data) {

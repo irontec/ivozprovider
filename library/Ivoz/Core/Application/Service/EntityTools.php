@@ -28,10 +28,6 @@ class EntityTools
      */
     private $entityPersister;
 
-
-    /** @var EntityAssembler  */
-    private $entityAssembler;
-
     /**
      * @var DtoAssembler
      */
@@ -53,14 +49,12 @@ class EntityTools
     public function __construct(
         EntityManager $entityManager,
         DoctrineEntityPersister $entityPersister,
-        EntityAssembler $entityAssembler,
         DtoAssembler $dtoAssembler,
         UpdateEntityFromDTO $entityUpdater
     ) {
         $this->em = $entityManager;
 
         $this->entityPersister = $entityPersister;
-        $this->entityAssembler = $entityAssembler;
         $this->dtoAssembler = $dtoAssembler;
         $this->entityUpdater = $entityUpdater;
     }

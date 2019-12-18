@@ -11,18 +11,6 @@ use Doctrine\ORM\ORMException;
 
 class EntityManager extends DoctrineEntityManager
 {
-    /**
-     * @inheritdoc
-     */
-    protected function __construct(Connection $conn, Configuration $config, EventManager $eventManager)
-    {
-        parent::__construct(
-            $conn,
-            $config,
-            $eventManager
-        );
-    }
-
     public static function create($conn, Configuration $config, EventManager $eventManager = null)
     {
         if (! $config->getMetadataDriverImpl()) {

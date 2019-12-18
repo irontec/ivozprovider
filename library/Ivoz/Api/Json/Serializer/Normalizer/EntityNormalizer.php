@@ -24,7 +24,6 @@ class EntityNormalizer implements NormalizerInterface
 
     protected $resourceClassResolver;
     private $resourceMetadataFactory;
-    private $contextBuilder;
     private $dtoAssembler;
     private $dateTimeNormalizer;
     protected $propertyNameCollectionFactory;
@@ -41,7 +40,6 @@ class EntityNormalizer implements NormalizerInterface
     ) {
         $this->resourceClassResolver = $resourceClassResolver;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->contextBuilder = $contextBuilder;
         $this->dtoAssembler = $dtoAssembler;
         $this->dateTimeNormalizer = $dateTimeNormalizer;
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;

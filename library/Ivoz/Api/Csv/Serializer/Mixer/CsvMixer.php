@@ -8,10 +8,6 @@ class CsvMixer implements MixerInterface
 {
     const FORMAT = 'csv';
 
-    public function __construct()
-    {
-    }
-
     /**
      * @inheritdoc
      */

@@ -11,10 +11,6 @@ class CheckValidCurrency implements RatingPlanLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    public function __construct()
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [

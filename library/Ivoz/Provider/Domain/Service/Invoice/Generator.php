@@ -22,7 +22,7 @@ class Generator
 
     const LOGGER_PREFIX = '[Invoices][Generator]';
 
-    protected $invoiceId = null;
+    protected $invoiceId;
     protected $fixedCostTotal = 0;
     protected $fixedCosts = array();
     protected $totals = array();
@@ -428,7 +428,7 @@ class Generator
 
         $currencySymbol = $invoice->getCompany()->getCurrencySymbol();
 
-        foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
+        foreach ($fixedCostsRelInvoices as $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
             $quantity = $fixedCostsRelInvoice->getQuantity();
             $subTotal = $cost * $quantity;

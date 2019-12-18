@@ -85,10 +85,6 @@ class SimulatedCall
      */
     protected $cost;
 
-    private function __construct()
-    {
-    }
-
     /**
      * @param string $response
      * @param int $duration

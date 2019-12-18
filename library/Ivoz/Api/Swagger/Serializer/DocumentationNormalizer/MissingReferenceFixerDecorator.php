@@ -351,7 +351,7 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
     private function getParameterSchemas($path)
     {
         $response = [];
-        foreach ($path as $method => $definition) {
+        foreach ($path as $definition) {
             $response = array_merge_recursive(
                 $response,
                 $this->getPathDefinitionSchemas($definition)

@@ -179,8 +179,7 @@ class DataGateway
         string $entityName,
         array $criteria = null,
         array $orderBy = null,
-        int $chunkSize = 50,
-        int $offset = 0
+        int $chunkSize = 50
     ) {
         $qb = $this
             ->queryBuilderFactory

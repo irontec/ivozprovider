@@ -25,7 +25,7 @@ final class AttributeDefinition
      * Internal type of arrays
      * @var string | null
      */
-    public $collectionValueType = null;
+    public $collectionValueType;
 
     /**
      * @var string

@@ -6,9 +6,8 @@ class Manager
 {
     const WORKER_PATH = '/opt/irontec/ivozprovider/web/admin/application/workers';
 
-    private static $_gearmanServers = null;
-    private static $_stdLogger = null;
-    private static $_options = null;
+    private static $_gearmanServers;
+    private static $_options;
 
     /**
      * @return void

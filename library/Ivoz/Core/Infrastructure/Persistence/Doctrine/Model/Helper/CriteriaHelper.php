@@ -176,7 +176,7 @@ class CriteriaHelper implements CriteriaHelperInterface
     private static function simplifyExpressionList(array $expressions): array
     {
         $response = [];
-        foreach ($expressions as $key => $expression) {
+        foreach ($expressions as $expression) {
             $type = strtolower(key($expression));
             if (!is_numeric($type)
                 && count($expression) === 1

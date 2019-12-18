@@ -11,10 +11,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class FakeClient implements ApiClientInterface
 {
-    public function __construct()
-    {
-    }
-
     /**
      * @param string $uri
      * @param array $options
@@ -24,7 +20,6 @@ class FakeClient implements ApiClientInterface
     {
         return new Response();
     }
-
     /**
      * @param string $uri
      * @param array $options
@@ -34,7 +29,6 @@ class FakeClient implements ApiClientInterface
     {
         return new Response();
     }
-
     /**
      * @param string $uri
      * @param array $options
@@ -44,7 +38,6 @@ class FakeClient implements ApiClientInterface
     {
         return new Response();
     }
-
     /**
      * @param string $uri
      * @param array $options
