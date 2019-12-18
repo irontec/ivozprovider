@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Application;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 interface ForeignKeyTransformerInterface

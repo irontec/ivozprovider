@@ -10,7 +10,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Ivoz\Provider\Domain\Model\User\User;
 
 class AdminTokenAuthenticator extends JWTTokenAuthenticator
 {

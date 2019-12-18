@@ -9,7 +9,6 @@ use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 class OperationMetadataFactory implements ResourceMetadataFactoryInterface
 {

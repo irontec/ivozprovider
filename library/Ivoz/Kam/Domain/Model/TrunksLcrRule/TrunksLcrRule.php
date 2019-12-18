@@ -2,7 +2,6 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
-use Assert\Assertion;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 /**

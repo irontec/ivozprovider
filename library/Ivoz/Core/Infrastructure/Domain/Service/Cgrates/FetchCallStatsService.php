@@ -4,7 +4,6 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use GuzzleHttp\Exception\RequestException;
 use Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 

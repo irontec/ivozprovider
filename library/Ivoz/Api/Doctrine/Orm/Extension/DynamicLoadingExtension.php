@@ -16,7 +16,6 @@ use ApiPlatform\Core\Serializer\SerializerContextBuilderInterface;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 

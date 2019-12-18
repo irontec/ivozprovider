@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Domain\Model\SchedulerInterface;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * CallCsvScheduler

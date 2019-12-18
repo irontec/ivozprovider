@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserRepository;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 use Symfony\Bridge\Doctrine\RegistryInterface;

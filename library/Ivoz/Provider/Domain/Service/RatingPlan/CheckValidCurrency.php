@@ -2,10 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RatingPlan;
 
-use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
-use Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleEventHandlerInterface;
-use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInterface;
 
 class CheckValidCurrency implements RatingPlanLifecycleEventHandlerInterface
 {

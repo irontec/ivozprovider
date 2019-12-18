@@ -2,11 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\RouteLock;
 
-use Assert\Assertion;
-
-use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
-
 /**
  * RouteLock
  */

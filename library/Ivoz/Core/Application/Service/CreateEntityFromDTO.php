@@ -9,8 +9,6 @@
 namespace Ivoz\Core\Application\Service;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
 use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 

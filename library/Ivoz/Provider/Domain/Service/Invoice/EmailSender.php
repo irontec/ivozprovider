@@ -6,7 +6,6 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use PhpMimeMailParser\Parser;
 
 class EmailSender implements InvoiceLifecycleEventHandlerInterface
 {

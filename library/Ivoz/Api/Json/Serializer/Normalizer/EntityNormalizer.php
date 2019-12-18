@@ -4,7 +4,6 @@ namespace Ivoz\Api\Json\Serializer\Normalizer;
 
 use Doctrine\ORM\Proxy\Proxy;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
-use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;

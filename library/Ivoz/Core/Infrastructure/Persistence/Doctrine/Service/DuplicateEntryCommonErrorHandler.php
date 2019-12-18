@@ -3,7 +3,6 @@
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Service;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
 use Doctrine\DBAL\Driver\PDOException;
 

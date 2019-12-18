@@ -3,7 +3,6 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -13,11 +12,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\UnitOfWork;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
-use Ivoz\Provider\Domain\Model\Changelog\Changelog;
-use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Core\Application\Helper\EntityClassHelper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
-use Psr\Log\LoggerInterface;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {

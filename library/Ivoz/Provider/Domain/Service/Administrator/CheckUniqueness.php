@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Service\Administrator;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 

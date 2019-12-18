@@ -2,14 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\NotificationTemplateContent;
 
-use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Model\Mailer\Message;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use Ivoz\Core\Domain\Service\MailerClientInterface;
-use Psr\Log\LoggerInterface;
 
 class CallCsvNotificationTemplateByCallCsvReport
 {

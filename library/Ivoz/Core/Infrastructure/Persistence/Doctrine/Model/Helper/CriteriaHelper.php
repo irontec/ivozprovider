@@ -3,7 +3,6 @@
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper;
 
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\Query\Expr\Composite;
 use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\Value;

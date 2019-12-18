@@ -2,8 +2,6 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
-
 class Recoder extends AbstractJob
 {
     /**

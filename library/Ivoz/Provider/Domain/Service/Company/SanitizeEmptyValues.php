@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 

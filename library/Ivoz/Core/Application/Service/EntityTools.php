@@ -5,7 +5,6 @@ namespace Ivoz\Core\Application\Service;
 use Doctrine\ORM\EntityManager;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 use Doctrine\DBAL\LockMode;

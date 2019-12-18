@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
-use Ivoz\Provider\Domain\Model\Feature\FeatureDto;
-use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
 class BrandDto extends BrandDtoAbstract

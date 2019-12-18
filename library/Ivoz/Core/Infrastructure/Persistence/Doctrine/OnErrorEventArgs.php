@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Doctrine\Common\EventArgs;
 

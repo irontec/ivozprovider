@@ -4,9 +4,7 @@ namespace Ivoz\Kam\Domain\Service\TrunksUacreg;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
-use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Service\DdiProviderRegistration\DdiProviderRegistrationLifecycleEventHandlerInterface;
 
 /**

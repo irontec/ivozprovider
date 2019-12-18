@@ -6,7 +6,6 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Mink\Exception\ExpectationException;
-use Behat\MinkExtension\Context\MinkAwareContext;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Symfony\Component\Filesystem\Filesystem;
 use Behatch\HttpCall\Request;

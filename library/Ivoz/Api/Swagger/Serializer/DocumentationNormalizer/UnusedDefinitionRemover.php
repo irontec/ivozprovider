@@ -3,7 +3,6 @@
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
 
 class UnusedDefinitionRemover implements NormalizerInterface
 {

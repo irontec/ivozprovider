@@ -2,8 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\BalanceNotification;
 
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-
 /**
  * BalanceNotification
  */

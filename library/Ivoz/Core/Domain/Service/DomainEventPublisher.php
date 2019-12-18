@@ -5,7 +5,6 @@ namespace Ivoz\Core\Domain\Service;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Event\StoppableDomainEventInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\EventDispatcher\Event;
 
 class DomainEventPublisher
 {

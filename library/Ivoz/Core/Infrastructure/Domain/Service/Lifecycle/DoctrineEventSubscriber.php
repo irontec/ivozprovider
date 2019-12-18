@@ -20,7 +20,6 @@ use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
-use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
