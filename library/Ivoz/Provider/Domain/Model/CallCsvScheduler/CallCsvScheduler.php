@@ -56,6 +56,15 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
         return $timeZone;
     }
 
+    public function getSchedulerDateTimeZone(): \DateTimeZone
+    {
+        $timezone = $this->getTimezone();
+
+        return new \DateTimeZone(
+            $timezone->getTz()
+        );
+    }
+
     /**
      * @return \DateInterval
      */

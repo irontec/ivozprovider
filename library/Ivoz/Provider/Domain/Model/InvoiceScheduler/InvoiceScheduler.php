@@ -51,6 +51,16 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
         return parent::setFrequency($frequency);
     }
 
+
+    public function getSchedulerDateTimeZone(): \DateTimeZone
+    {
+        $timezone = $this->getBrand()->getDefaultTimezone();
+
+        return new \DateTimeZone(
+            $timezone->getTz()
+        );
+    }
+
     /**
      * @return \DateInterval
      */
