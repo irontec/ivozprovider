@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\CallAcl\CallAclRepository;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
+use Ivoz\Provider\Domain\Model\CallAcl\CallAclRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

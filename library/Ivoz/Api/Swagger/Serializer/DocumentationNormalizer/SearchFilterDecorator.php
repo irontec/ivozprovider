@@ -2,8 +2,8 @@
 
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\PropertyInfo\Type;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class SearchFilterDecorator implements NormalizerInterface
 {

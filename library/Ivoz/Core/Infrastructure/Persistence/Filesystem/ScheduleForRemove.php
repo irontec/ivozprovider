@@ -4,8 +4,8 @@ namespace Ivoz\Core\Infrastructure\Persistence\Filesystem;
 
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;

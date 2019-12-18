@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
-use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto;
 
 class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 {

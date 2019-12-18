@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\Terminal;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Zend\EventManager\Exception\DomainException;
 
 /**

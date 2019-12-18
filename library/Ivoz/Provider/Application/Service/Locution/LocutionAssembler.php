@@ -2,13 +2,13 @@
 
 namespace Ivoz\Provider\Application\Service\Locution;
 
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\StoragePathResolverCollection;
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
 use Assert\Assertion;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
+use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 class LocutionAssembler implements CustomEntityAssemblerInterface

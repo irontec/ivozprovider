@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**

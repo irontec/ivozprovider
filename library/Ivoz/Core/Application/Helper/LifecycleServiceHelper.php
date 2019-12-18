@@ -6,9 +6,9 @@ use Doctrine\Common\Inflector\Inflector;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
-use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 
 class LifecycleServiceHelper
 {

@@ -4,11 +4,11 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

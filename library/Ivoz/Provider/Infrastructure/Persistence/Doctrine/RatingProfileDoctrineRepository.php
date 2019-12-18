@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileRepository;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

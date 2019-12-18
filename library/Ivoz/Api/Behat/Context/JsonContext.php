@@ -5,9 +5,9 @@ namespace Ivoz\Api\Behat\Context;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
+use Behatch\Context\BaseContext;
 use Behatch\HttpCall\HttpCallResultPool;
 use Behatch\HttpCall\Request;
-use Behatch\Context\BaseContext;
 use Behatch\Json\Json;
 
 /**

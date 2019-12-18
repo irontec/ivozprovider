@@ -6,10 +6,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

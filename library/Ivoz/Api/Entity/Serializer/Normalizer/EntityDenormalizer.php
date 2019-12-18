@@ -3,6 +3,7 @@
 namespace Ivoz\Api\Entity\Serializer\Normalizer;
 
 use ApiPlatform\Core\Exception\InvalidArgumentException;
+use ApiPlatform\Core\Metadata\Property\PropertyNameCollection;
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
@@ -12,10 +13,9 @@ use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use ApiPlatform\Core\Metadata\Property\PropertyNameCollection;
 
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer

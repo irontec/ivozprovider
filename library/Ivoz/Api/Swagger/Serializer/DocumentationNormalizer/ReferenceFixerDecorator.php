@@ -2,8 +2,8 @@
 
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ReferenceFixerDecorator implements NormalizerInterface
 {

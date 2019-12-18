@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
+use Handlebars\Handlebars;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
@@ -11,7 +12,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 use Knp\Snappy\Pdf;
-use Handlebars\Handlebars;
 use Monolog\Logger;
 
 class Generator

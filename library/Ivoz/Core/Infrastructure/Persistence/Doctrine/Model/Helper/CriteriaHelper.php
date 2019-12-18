@@ -3,11 +3,11 @@
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper;
 
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 use Doctrine\Common\Collections\Expr\Comparison;
-use Doctrine\Common\Collections\Expr\Value;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
 use Doctrine\Common\Collections\Expr\Expression;
+use Doctrine\Common\Collections\Expr\Value;
+use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 
 class CriteriaHelper implements CriteriaHelperInterface
 {

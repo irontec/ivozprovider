@@ -4,9 +4,9 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
-use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

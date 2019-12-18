@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersWatcher\UsersWatcherRepository;
 use Ivoz\Kam\Domain\Model\UsersWatcher\UsersWatcher;
+use Ivoz\Kam\Domain\Model\UsersWatcher\UsersWatcherRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

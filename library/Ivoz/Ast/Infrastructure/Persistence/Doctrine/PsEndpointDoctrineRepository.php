@@ -3,9 +3,9 @@
 namespace Ivoz\Ast\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

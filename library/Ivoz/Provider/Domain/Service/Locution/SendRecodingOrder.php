@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\Locution;
 
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
 
 /**
  * Class RecodingOrder

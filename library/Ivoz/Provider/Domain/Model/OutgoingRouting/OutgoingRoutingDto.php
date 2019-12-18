@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
-use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 
 class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 {

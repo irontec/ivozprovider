@@ -2,9 +2,9 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\Mapping;
 
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\DefaultQuoteStrategy;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class QuoteStrategy extends DefaultQuoteStrategy
 {

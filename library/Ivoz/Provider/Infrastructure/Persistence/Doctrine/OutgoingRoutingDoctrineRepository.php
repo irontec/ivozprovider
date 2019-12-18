@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingRepository;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

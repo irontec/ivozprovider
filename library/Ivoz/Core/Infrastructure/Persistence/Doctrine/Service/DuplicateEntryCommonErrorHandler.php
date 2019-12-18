@@ -2,9 +2,9 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Service;
 
+use Doctrine\DBAL\Driver\PDOException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
-use Doctrine\DBAL\Driver\PDOException;
 
 class DuplicateEntryCommonErrorHandler implements CommonPersistErrorHandlerInterface
 {

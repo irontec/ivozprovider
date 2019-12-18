@@ -4,8 +4,8 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NativeQuery;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

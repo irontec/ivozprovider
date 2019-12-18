@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecRepository;
 use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec;
+use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

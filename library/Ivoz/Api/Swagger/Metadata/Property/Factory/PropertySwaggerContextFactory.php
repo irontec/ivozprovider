@@ -2,9 +2,9 @@
 
 namespace Ivoz\Api\Swagger\Metadata\Property\Factory;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
+use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Symfony\Component\PropertyInfo\Type;

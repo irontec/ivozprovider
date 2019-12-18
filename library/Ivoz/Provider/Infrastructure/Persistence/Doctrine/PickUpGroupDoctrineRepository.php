@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupRepository;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup;
+use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

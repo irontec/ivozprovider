@@ -6,8 +6,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInter
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use Doctrine\ORM\QueryBuilder;
-use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Api\Core\Security\DataAccessControlHelper;
+use Ivoz\Api\Core\Security\DataAccessControlParser;
 
 class SecurityFilterExtension implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
 {

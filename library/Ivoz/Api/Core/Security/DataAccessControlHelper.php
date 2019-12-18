@@ -3,9 +3,9 @@
 namespace Ivoz\Api\Core\Security;
 
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 class DataAccessControlHelper
 {

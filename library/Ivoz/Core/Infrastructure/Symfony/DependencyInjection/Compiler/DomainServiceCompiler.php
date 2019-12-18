@@ -2,13 +2,13 @@
 
 namespace Ivoz\Core\Infrastructure\Symfony\DependencyInjection\Compiler;
 
+use Ivoz\Core\Application\Helper\LifecycleServiceHelper;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
-use Ivoz\Core\Application\Helper\LifecycleServiceHelper;
 
 /**
  * Class DomainServiceCompiler

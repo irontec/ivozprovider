@@ -2,10 +2,10 @@
 
 namespace Ivoz\Ast\Domain\Service\Voicemail;
 
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
 class UpdateByUser implements UserLifecycleEventHandlerInterface

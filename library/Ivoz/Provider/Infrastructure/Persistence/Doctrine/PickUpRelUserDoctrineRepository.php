@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserRepository;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

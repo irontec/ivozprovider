@@ -2,9 +2,9 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client;
 
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 
 class XmlRpcUsersRequest extends AbstractXmlRpcRequest implements XmlRpcUsersRequestInterface
 {

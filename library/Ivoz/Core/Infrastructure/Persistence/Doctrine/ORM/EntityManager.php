@@ -2,11 +2,11 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM;
 
-use Doctrine\DBAL\DriverManager;
-use Doctrine\ORM\EntityManager as DoctrineEntityManager;
-use Doctrine\DBAL\Connection;
-use Doctrine\ORM\Configuration;
 use Doctrine\Common\EventManager;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\Configuration;
+use Doctrine\ORM\EntityManager as DoctrineEntityManager;
 use Doctrine\ORM\ORMException;
 
 class EntityManager extends DoctrineEntityManager

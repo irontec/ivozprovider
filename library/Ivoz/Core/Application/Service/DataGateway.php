@@ -4,11 +4,11 @@ namespace Ivoz\Core\Application\Service;
 
 use Doctrine\ORM\EntityManager;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\Event\CommandWasExecuted;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 
 /**
  * persistence data gateway for zend framework applications

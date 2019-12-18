@@ -4,10 +4,10 @@ namespace Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata;
 
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
+use Doctrine\Common\Util\Inflector;
+use Ivoz\Api\Symfony\Controller\DownloadAction;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
-use Ivoz\Api\Symfony\Controller\DownloadAction;
-use Doctrine\Common\Util\Inflector;
 
 class FileOperationMetadataFactory implements ResourceMetadataFactoryInterface
 {

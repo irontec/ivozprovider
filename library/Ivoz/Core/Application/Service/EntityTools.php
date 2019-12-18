@@ -2,14 +2,14 @@
 
 namespace Ivoz\Core\Application\Service;
 
+use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\PessimisticLockException;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
-use Doctrine\DBAL\LockMode;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\PessimisticLockException;
 
 /**
  * Entity service facade

@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateRepository;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
+use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceRepository;
-use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

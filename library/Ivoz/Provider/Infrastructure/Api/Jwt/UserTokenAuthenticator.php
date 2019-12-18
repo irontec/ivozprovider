@@ -2,16 +2,16 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Jwt;
 
+use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Infrastructure\Api\Security\User\MutableUserProviderInterface;
-use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\TokenExtractorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Ivoz\Provider\Domain\Model\User\User;
 
 class UserTokenAuthenticator extends JWTTokenAuthenticator
 {

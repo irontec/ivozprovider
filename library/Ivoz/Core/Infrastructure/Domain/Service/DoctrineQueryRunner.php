@@ -2,12 +2,12 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
-use Doctrine\ORM\Query\Parser;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\AbstractQuery;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NativeQuery;
 use Doctrine\ORM\Query as DqlQuery;
 use Doctrine\ORM\Query\Parameter;
+use Doctrine\ORM\Query\Parser;
 use Ivoz\Core\Domain\Event\EntityEventInterface;
 use Ivoz\Core\Domain\Event\QueryWasExecuted;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;

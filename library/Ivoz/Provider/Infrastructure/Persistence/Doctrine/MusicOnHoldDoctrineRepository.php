@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldRepository;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -2,10 +2,10 @@
 
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupRepository;
+use Doctrine\ORM\QueryBuilder;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -2,11 +2,11 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
+use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Psr\Log\LoggerInterface;
-use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class RerateCallService extends AbstractApiBasedService implements RerateCallServiceInterface
 {

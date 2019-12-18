@@ -3,8 +3,8 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
-use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
 
 class BillingService implements BillingServiceInterface
 {

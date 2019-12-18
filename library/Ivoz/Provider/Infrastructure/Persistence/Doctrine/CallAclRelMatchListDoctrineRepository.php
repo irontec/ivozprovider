@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListRepository;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList;
+use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -4,8 +4,8 @@ namespace Ivoz\Api\Swagger\Metadata\Resource\Factory;
 
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceNameCollectionFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceNameCollection;
-use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Yaml\Yaml;
 
 class YmlExtractorResourceNameCollectionFactory implements ResourceNameCollectionFactoryInterface
 {

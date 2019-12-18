@@ -3,9 +3,9 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
 use Ivoz\Core\Application\Event\CommandWasExecuted;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Application\Service\CommandEventSubscriber;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
+use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Psr\Log\LoggerInterface;

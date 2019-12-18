@@ -3,11 +3,11 @@
 namespace Ivoz\Core\Infrastructure\Symfony\DependencyInjection\Compiler;
 
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 /**
  * Class LifecycleCompiler

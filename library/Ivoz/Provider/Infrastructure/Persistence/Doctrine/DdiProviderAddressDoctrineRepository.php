@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressRepository;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

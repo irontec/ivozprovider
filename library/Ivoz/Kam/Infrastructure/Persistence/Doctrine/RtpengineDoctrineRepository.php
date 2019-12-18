@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\Rtpengine\RtpengineRepository;
 use Ivoz\Kam\Domain\Model\Rtpengine\Rtpengine;
+use Ivoz\Kam\Domain\Model\Rtpengine\RtpengineRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

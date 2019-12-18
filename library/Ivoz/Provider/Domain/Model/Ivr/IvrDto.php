@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
-use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
 
 class IvrDto extends IvrDtoAbstract
 {

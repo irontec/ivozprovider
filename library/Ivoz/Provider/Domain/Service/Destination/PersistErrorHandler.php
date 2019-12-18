@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\Destination;
 
+use Doctrine\DBAL\Driver\PDOException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
-use Doctrine\DBAL\Driver\PDOException;
 
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {

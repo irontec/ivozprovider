@@ -16,6 +16,7 @@ use Ivoz\Core\Domain\Event\EntityWasDeleted;
 use Ivoz\Core\Domain\Event\EntityWasUpdated;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
@@ -24,7 +25,6 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 
 class DoctrineEventSubscriber implements EventSubscriber
 {

@@ -3,9 +3,9 @@
 namespace Ivoz\Ast\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
