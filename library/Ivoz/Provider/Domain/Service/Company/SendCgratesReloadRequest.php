@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates;
 use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
 
 class SendCgratesReloadRequest extends CgratesReloadNotificator implements CompanyLifecycleEventHandlerInterface

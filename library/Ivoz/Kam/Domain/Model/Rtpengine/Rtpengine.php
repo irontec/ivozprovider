@@ -3,7 +3,7 @@
 namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
 use Assert\Assertion;
-use \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 
 /**
  * Rtpengine
