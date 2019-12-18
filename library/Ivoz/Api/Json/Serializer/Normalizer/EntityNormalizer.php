@@ -32,7 +32,6 @@ class EntityNormalizer implements NormalizerInterface
     public function __construct(
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
         ResourceClassResolverInterface $resourceClassResolver,
-        ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
         DateTimeNormalizerInterface $dateTimeNormalizer,
         PropertyNameCollectionFactory $propertyNameCollectionFactory,

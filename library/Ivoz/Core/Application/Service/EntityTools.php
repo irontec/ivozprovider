@@ -38,14 +38,6 @@ class EntityTools
      */
     private $entityUpdater;
 
-
-    /**
-     * EntityTools constructor.
-     * @param EntityManager $entityManager
-     * @param DoctrineEntityPersister $entityPersister
-     * @param EntityAssembler $entityAssembler
-     * @param DtoAssembler $dtoAssembler
-     */
     public function __construct(
         EntityManager $entityManager,
         DoctrineEntityPersister $entityPersister,

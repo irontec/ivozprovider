@@ -51,7 +51,6 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
         parent::__construct(
             $resourceMetadataFactory,
             $resourceClassResolver,
-            $contextBuilder,
             $dtoAssembler,
             $dateTimeNormalizer,
             $propertyNameCollectionFactory,

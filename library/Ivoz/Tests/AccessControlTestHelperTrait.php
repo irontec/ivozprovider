@@ -4,7 +4,6 @@ namespace Ivoz\Tests;
 
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\Criteria;
-use http\Env\Request;
 use Ivoz\Api\Core\Security\AccessControlEvaluator;
 use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
@@ -14,7 +13,6 @@ use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\JWTUserTo
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
