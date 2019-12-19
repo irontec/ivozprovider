@@ -107,6 +107,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/library/bin/test-codestyle --branch'
+                        sh '/opt/irontec/ivozprovider/library/bin/php-cs-fixer'
                     }
                     post {
                         success { notifySuccessGithub() }
