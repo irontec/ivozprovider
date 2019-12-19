@@ -156,8 +156,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 CriteriaHelper::fromArray($criteria)
             );
 
-            // Return the first calendar period that matched
-            return array_shift($calendarPeriods);
+            if (!empty($calendarPeriods)) {
+                // Return the first calendar period that matched
+                return array_shift($calendarPeriods);
+            }
         }
 
         return null;

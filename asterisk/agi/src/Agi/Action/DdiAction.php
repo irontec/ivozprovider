@@ -108,6 +108,7 @@ class DdiAction
                 /** @var CalendarPeriod $calendarPeriod */
                 $calendarPeriod = $externalCallFilter->getCalendarPeriodForToday();
                 if (!empty($calendarPeriod)) {
+                    $this->agi->verbose("DDI %s has %s for today.", $ddi, $calendarPeriod);
                     if ($calendarPeriod->isOutOfSchedule()) {
                         $this->agi->verbose("DDI %s is on %s Out of Schedule.", $ddi, $calendarPeriod);
                         $this->externalFilterAction
