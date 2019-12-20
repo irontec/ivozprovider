@@ -15,16 +15,19 @@ Feature: Retrieve companies
     """
       [
           {
+              "type": "vpbx",
               "name": "DemoCompany",
               "nif": "12345678A",
               "id": 1
           },
           {
+              "type": "vpbx",
               "name": "Irontec Test Company",
               "nif": "12345678-Z",
               "id": 2
           },
           {
+              "type": "retail",
               "name": "Retail Company",
               "nif": "12345679-Z",
               "id": 3
