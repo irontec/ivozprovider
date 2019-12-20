@@ -65,6 +65,7 @@ class Retails extends RouteHandlerAbstract
 
         // Get retailAccount from the endpoint.
         $retailAccount = $this->endpointResolver->getRetailFromEndpoint($endpointName);
+        $this->agi->setVariable("__RETAILACCOUNTID", $retailAccount->getId());
 
         // Set Company/Brand/Generic Music class
         $company = $retailAccount->getCompany();

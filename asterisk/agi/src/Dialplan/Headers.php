@@ -86,6 +86,12 @@ class Headers extends RouteHandlerAbstract
             if (!empty($residentialDeviceId)) {
                 $this->agi->setSIPHeader("X-Info-ResidentialDeviceId", $residentialDeviceId);
             }
+
+            // Get retailAccount from channel variables
+            $retailAccountId = $this->agi->getVariable("RETAILACCOUNTID");
+            if (!empty($retailAccountId)) {
+                $this->agi->setSIPHeader("X-Info-RetailAccount", $retailAccountId);
+            }
         }
 
         // Set recording header
