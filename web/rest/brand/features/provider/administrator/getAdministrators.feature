@@ -15,6 +15,7 @@ Feature: Retrieve administrators
     """
       [
           {
+              "username": "test_company_admin",
               "email": "test@irontec.com",
               "active": true,
               "name": "Admin Name",
