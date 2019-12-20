@@ -84,6 +84,7 @@ class Residentials extends RouteHandlerAbstract
 
         // Get residential from the endpoint.
         $residential = $this->endpointResolver->getResidentialFromEndpoint($endpointName);
+        $this->agi->setVariable("__RESIDENTIALDEVICEID", $residential->getId());
 
         // Set Company/Brand/Generic Music class
         $company = $residential->getCompany();
