@@ -14,6 +14,7 @@ class AdministratorDto extends AdministratorDtoAbstract
             $response = [
                 'id' => 'id',
                 'active' => 'active',
+                'username' => 'username',
                 'name' => 'name',
                 'lastname' => 'lastname',
                 'email' => 'email'
