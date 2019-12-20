@@ -105,6 +105,11 @@ abstract class TrunksCdrAbstract
      */
     protected $retailAccount;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     */
+    protected $residentialDevice;
+
 
     use ChangelogTrait;
 
@@ -213,6 +218,7 @@ abstract class TrunksCdrAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
         ;
 
         $self->initChangelog();
@@ -249,7 +255,8 @@ abstract class TrunksCdrAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
 
 
 
@@ -281,7 +288,8 @@ abstract class TrunksCdrAbstract
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
-            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth))
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
     }
 
     /**
@@ -307,7 +315,8 @@ abstract class TrunksCdrAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -813,6 +822,30 @@ abstract class TrunksCdrAbstract
     public function getRetailAccount()
     {
         return $this->retailAccount;
+    }
+
+    /**
+     * Set residentialDevice
+     *
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     *
+     * @return static
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
+    {
+        $this->residentialDevice = $residentialDevice;
+
+        return $this;
+    }
+
+    /**
+     * Get residentialDevice
+     *
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     */
+    public function getResidentialDevice()
+    {
+        return $this->residentialDevice;
     }
 
     // @codeCoverageIgnoreEnd
