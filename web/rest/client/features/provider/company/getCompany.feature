@@ -15,6 +15,7 @@ Feature: Retrieve companies
     """
       [
           {
+              "type": "vpbx",
               "name": "DemoCompany",
               "nif": "12345678A",
               "id": 1

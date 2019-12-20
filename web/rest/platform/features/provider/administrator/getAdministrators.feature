@@ -15,6 +15,7 @@ Feature: Retrieve administrators
     """
       [
           {
+              "username": "admin",
               "email": "admin@example.com",
               "active": true,
               "name": "admin",
@@ -22,6 +23,7 @@ Feature: Retrieve administrators
               "id": 1
           },
           {
+              "username": "test_brand_admin",
               "email": "nightwatch@irontec.com",
               "active": true,
               "name": "night",
@@ -29,6 +31,7 @@ Feature: Retrieve administrators
               "id": 2
           },
           {
+              "username": "irontec",
               "email": "vozip@irontec.com",
               "active": true,
               "name": "irontec",
@@ -36,6 +39,7 @@ Feature: Retrieve administrators
               "id": 3
           },
           {
+              "username": "test_company_admin",
               "email": "test@irontec.com",
               "active": true,
               "name": "Admin Name",
@@ -43,6 +47,7 @@ Feature: Retrieve administrators
               "id": 4
           },
           {
+              "username": "utcAdmin",
               "email": "utc@irontec.com",
               "active": true,
               "name": "Admin in UTC timezone",
@@ -50,6 +55,7 @@ Feature: Retrieve administrators
               "id": 5
           },
           {
+              "username": "utcBrandAdmin",
               "email": "utc@irontec.com",
               "active": true,
               "name": "Brand Admin in UTC timezone",

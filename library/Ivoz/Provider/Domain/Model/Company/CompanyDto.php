@@ -122,6 +122,7 @@ class CompanyDto extends CompanyDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
+                'type' => 'type',
                 'nif' => 'nif'
             ];
         } else {
