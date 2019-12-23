@@ -97,6 +97,12 @@ class CreateOrUpdateByTrunksCdr
                 ->setEndpointId($trunksCdrDto->getRetailAccountId());
         }
 
+        if ($trunksCdrDto->getResidentialDeviceId()) {
+            $billableCallDto
+                ->setEndpointType('ResidentialDevice')
+                ->setEndpointId($trunksCdrDto->getResidentialDeviceId());
+        }
+
         /** @var BillableCallInterface $billableCall */
         $billableCall = $this->entityTools->persistDto(
             $billableCallDto,
