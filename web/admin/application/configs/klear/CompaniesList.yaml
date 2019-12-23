@@ -218,6 +218,7 @@ production:
           balance: true
           currentDayUsage: true
           currentDayMaxUsage: true
+          accountStatus: true
         whitelist:
           id: ${auth.isMainOperator}
         order:
