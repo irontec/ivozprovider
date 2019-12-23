@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
@@ -62,7 +61,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      */
     public function addTmpFile($fldName, TempFile $file)
     {
-        if ($fldName == 'file') {
+        if ($fldName === 'file') {
             $this->setStatus('waiting');
         }
         $this->_addTmpFile($fldName, $file);

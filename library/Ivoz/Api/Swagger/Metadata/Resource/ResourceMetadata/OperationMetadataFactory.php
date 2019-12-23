@@ -3,13 +3,12 @@
 namespace Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 class OperationMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -75,9 +74,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                     ]
                 ];
             }
-            $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
 
-            return $resourceMetadata;
+            return $resourceMetadata->withCollectionOperations($collectionOperations);
         }
 
         $manager = $this->managerRegistry->getManagerForClass($resourceClass);
@@ -231,9 +229,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             $classSegments[1] . '_' . $classSegments[0]
         );
         $resourceMetadata = $resourceMetadata->withItemOperations([]);
-        $resourceMetadata = $resourceMetadata->withCollectionOperations([]);
 
-        return $resourceMetadata;
+        return $resourceMetadata->withCollectionOperations([]);
     }
 
     /**
@@ -244,10 +241,9 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
     private function setCustomOperationMetadata(string $resourceClass, ResourceMetadata $resourceMetadata): ResourceMetadata
     {
         $classSegments = explode("\\", $resourceClass);
-        $resourceMetadata = $resourceMetadata->withShortName(
+
+        return $resourceMetadata->withShortName(
             end($classSegments)
         );
-
-        return $resourceMetadata;
     }
 }

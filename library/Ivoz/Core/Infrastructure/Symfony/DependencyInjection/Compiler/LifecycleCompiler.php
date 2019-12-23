@@ -3,11 +3,11 @@
 namespace Ivoz\Core\Infrastructure\Symfony\DependencyInjection\Compiler;
 
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 /**
  * Class LifecycleCompiler
@@ -100,12 +100,7 @@ class LifecycleCompiler implements CompilerPassInterface
          */
         foreach ($servicesDefinitions as $definition) {
             $tags = array_filter($definition->getTags(), function ($key) {
-
-                if (strpos($key, 'lifecycle.') === false) {
-                    return false;
-                }
-
-                return true;
+                return (bool) (strpos($key, 'lifecycle.') !== false);
             }, ARRAY_FILTER_USE_KEY);
 
             if (empty($tags)) {

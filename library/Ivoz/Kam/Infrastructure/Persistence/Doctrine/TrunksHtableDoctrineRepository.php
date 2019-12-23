@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtableRepository;
 use Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtable;
+use Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtableRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -2,11 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
-use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByCarrierServer as LcrGatewayUpdateByCarrierServer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 
 /**
  * Class UpdateByCarrierServer

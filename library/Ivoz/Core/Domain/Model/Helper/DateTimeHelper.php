@@ -181,7 +181,7 @@ class DateTimeHelper
         $format = preg_replace('/[0-9]{2}\:/', 'H:', $format);
         $format = preg_replace('/[0-9]{1}\:/', 'h:', $format);
 
-        $dateTimeZone = strlen($format) == strlen('Y-m-d H:i:s')
+        $dateTimeZone = strlen($format) === strlen('Y-m-d H:i:s')
             ? new \DateTimeZone('UTC')
             : null;
 
@@ -194,11 +194,9 @@ class DateTimeHelper
 
     protected static function getCurrentUtcDateTime(): \DateTime
     {
-        $dateTime = new \DateTime(
+        return new \DateTime(
             null,
             new \DateTimeZone('UTC')
         );
-
-        return $dateTime;
     }
 }

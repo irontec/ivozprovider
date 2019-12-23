@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandService;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 interface BrandServiceRepository extends ObjectRepository, Selectable

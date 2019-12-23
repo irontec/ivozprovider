@@ -2,8 +2,6 @@
 
 namespace Ivoz\Core\Domain\Service;
 
-use Ivoz\Core\Domain\Service\TempFile;
-
 interface FileContainerInterface
 {
     const DOWNLOADABLE_FILE = 1;

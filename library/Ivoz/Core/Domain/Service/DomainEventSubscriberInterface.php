@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Domain\Service;
 
-use Ivoz\Core\Application\Event\CommandEventInterface;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 
 interface DomainEventSubscriberInterface

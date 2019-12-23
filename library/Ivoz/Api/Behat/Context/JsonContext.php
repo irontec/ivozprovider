@@ -5,9 +5,9 @@ namespace Ivoz\Api\Behat\Context;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
+use Behatch\Context\BaseContext;
 use Behatch\HttpCall\HttpCallResultPool;
 use Behatch\HttpCall\Request;
-use Behatch\Context\BaseContext;
 use Behatch\Json\Json;
 
 /**
@@ -47,7 +47,7 @@ class JsonContext extends BaseContext implements Context, SnippetAcceptingContex
         try {
             $expected = new Json($content);
         } catch (\Exception $e) {
-            throw new \Exception('The expected JSON is not a valid');
+            throw new \Exception('The expected JSON is not a valid', $e->getCode(), $e);
         }
 
         try {

@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 

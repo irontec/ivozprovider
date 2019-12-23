@@ -72,7 +72,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
             return $v !== 0;
         });
 
-        if (count($weekDays) == 7) {
+        if (count($weekDays) === 7) {
             return TpTiming::TIMING_ANY;
         }
 

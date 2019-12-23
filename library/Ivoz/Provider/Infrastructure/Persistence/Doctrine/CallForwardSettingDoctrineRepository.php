@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

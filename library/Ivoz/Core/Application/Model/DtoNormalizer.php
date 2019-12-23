@@ -20,9 +20,9 @@ trait DtoNormalizer
     public function normalize(string $context, string $role = '')
     {
         $response = $this->toArray(true);
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = static::getPropertyMap($context, $role);
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($value, $key) use ($contextProperties) {
 
@@ -31,12 +31,10 @@ trait DtoNormalizer
                 return
                     in_array($key, $contextProperties, true)
                     || (!$isEmbedded && in_array($value, $contextProperties, true))
-                    || ($isEmbedded && in_array($key, array_keys($contextProperties), true));
+                    || ($isEmbedded && array_key_exists($key, $contextProperties));
             },
             ARRAY_FILTER_USE_BOTH
         );
-
-        return $response;
     }
 
     /**
@@ -44,7 +42,7 @@ trait DtoNormalizer
      */
     public function denormalize(array $data, string $context, string $role = '')
     {
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = static::getPropertyMap($context, $role);
 
         $this->setByContext(
             $contextProperties,

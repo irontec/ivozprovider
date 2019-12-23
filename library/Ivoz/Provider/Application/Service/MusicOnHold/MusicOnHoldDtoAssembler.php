@@ -2,12 +2,11 @@
 
 namespace Ivoz\Provider\Application\Service\MusicOnHold;
 
+use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandDto;
-use Assert\Assertion;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 

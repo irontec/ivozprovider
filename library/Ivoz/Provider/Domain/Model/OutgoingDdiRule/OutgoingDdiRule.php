@@ -52,7 +52,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
 
         $defaultAction = $this->getDefaultAction();
         foreach ($nullableFields as $type => $fieldName) {
-            if ($defaultAction == $type) {
+            if ($defaultAction === $type) {
                 continue;
             }
             $setter = 'set' . ucfirst($fieldName);
@@ -86,7 +86,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
     public function getOutgoingDdi($originalDdi, $e164destination, $prefix = "")
     {
         // Default Rule action
-        if ($this->getDefaultAction() == OutgoingDdiRule::DEFAULTACTION_FORCE) {
+        if ($this->getDefaultAction() === OutgoingDdiRule::DEFAULTACTION_FORCE) {
             $finalDdi = $this->getForcedDdi();
         } else {
             $finalDdi = $originalDdi;
@@ -99,12 +99,12 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         $rulePatterns = $this->getPatterns($criteria);
 
         foreach ($rulePatterns as $rulePattern) {
-            if ($rulePattern->getType() == OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
+            if ($rulePattern->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
                 // skip pattern if doesn't match the prefix
                 if ($rulePattern->getPrefix() != $prefix) {
                     continue;
                 }
-            } elseif ($rulePattern->getType() == OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
+            } elseif ($rulePattern->getType() === OutgoingDdiRulesPatternInterface::TYPE_DESTINATION) {
                 $list = $rulePattern->getMatchList();
                 // skip pattern if doesn't match pattern
                 if (!$list->numberMatches($e164destination)) {
@@ -116,7 +116,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
             }
 
             // If we reached here, pattern matched: apply action
-            if ($rulePattern->getAction() == OutgoingDdiRulesPatternInterface::ACTION_FORCE) {
+            if ($rulePattern->getAction() === OutgoingDdiRulesPatternInterface::ACTION_FORCE) {
                 $finalDdi = $rulePattern->getForcedDdi();
             } else {
                 $finalDdi = $originalDdi;

@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagRepository;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -5,9 +5,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
-use Ivoz\Provider\Domain\Model\User\User;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

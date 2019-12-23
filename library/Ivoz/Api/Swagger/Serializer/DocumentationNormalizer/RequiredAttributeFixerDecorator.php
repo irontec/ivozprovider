@@ -2,7 +2,6 @@
 
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
-use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class RequiredAttributeFixerDecorator implements NormalizerInterface
@@ -40,7 +39,7 @@ class RequiredAttributeFixerDecorator implements NormalizerInterface
             }
 
             $filteredRequiredFlds = [];
-            foreach ($requiredFlds as $idx => $requiredFld) {
+            foreach ($requiredFlds as $requiredFld) {
                 $isReadonly = $spec['properties'][$requiredFld]['readOnly'] ?? false;
                 if (!$isReadonly) {
                     $filteredRequiredFlds[] = $requiredFld;

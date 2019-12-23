@@ -8,10 +8,6 @@ class CheckValidCurrency implements RatingProfileLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    public function __construct()
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [
@@ -37,7 +33,7 @@ class CheckValidCurrency implements RatingProfileLifecycleEventHandlerInterface
         }
 
         // Ensure entities currency are the same
-        if ($ratingPlanCurrencyIden != $clientCurrencyIden) {
+        if ($ratingPlanCurrencyIden !== $clientCurrencyIden) {
             throw new \DomainException("Invalid rating plan currency");
         }
     }

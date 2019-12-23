@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerRepository;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -3,11 +3,10 @@
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
-use Psr\Log\LoggerInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
+use Psr\Log\LoggerInterface;
 
 class SyncBalances
 {

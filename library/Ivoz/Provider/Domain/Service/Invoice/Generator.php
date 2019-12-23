@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
+use Handlebars\Handlebars;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
@@ -11,7 +12,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 use Knp\Snappy\Pdf;
-use Handlebars\Handlebars;
 use Monolog\Logger;
 
 class Generator
@@ -22,7 +22,7 @@ class Generator
 
     const LOGGER_PREFIX = '[Invoices][Generator]';
 
-    protected $invoiceId = null;
+    protected $invoiceId;
     protected $fixedCostTotal = 0;
     protected $fixedCosts = array();
     protected $totals = array();
@@ -331,14 +331,13 @@ class Generator
 
         asort($callSumary);
         asort($callsPerType);
-        $finalData = array(
+
+        return array(
             'callSumary' => array_values($callSumary),
             'callsPerType' => array_values($callsPerType),
             'callSumaryTotals' => $callSumaryTotals,
             'inboundCalls' => $inboundCalls,
         );
-
-        return $finalData;
     }
 
     /**
@@ -429,7 +428,7 @@ class Generator
 
         $currencySymbol = $invoice->getCompany()->getCurrencySymbol();
 
-        foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
+        foreach ($fixedCostsRelInvoices as $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
             $quantity = $fixedCostsRelInvoice->getQuantity();
             $subTotal = $cost * $quantity;

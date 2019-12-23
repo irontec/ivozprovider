@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Service\CallForwardSetting;
 
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 
 /**
  * Class CheckValidity
@@ -54,7 +54,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             $entity->getCallTypeFilter()
         );
 
-        if ($entity->getCallTypeFilter() == 'both') {
+        if ($entity->getCallTypeFilter() === 'both') {
             $callTypeFilterConditions[] = 'external';
             $callTypeFilterConditions[] = 'internal';
         } else {
@@ -122,7 +122,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             }
         }
 
-        $isUserNotRegistered = ($entity->getCallForwardType() == "userNotRegistered");
+        $isUserNotRegistered = ($entity->getCallForwardType() === "userNotRegistered");
         if ($isUserNotRegistered) {
             $userNotRegisteredCallForwardsConditions = $this->getUserNotRegisteredCallForwardsConditions(
                 $entity,

@@ -86,9 +86,8 @@ class PropertyMetadataOverwriteFactory implements PropertyMetadataFactoryInterfa
         $propertyMetadata = $propertyMetadata->withType($type);
         $propertyMetadata = $propertyMetadata->withDescription($annotation->description);
         $propertyMetadata = $propertyMetadata->withRequired($annotation->required);
-        $propertyMetadata = $propertyMetadata->withWritable($annotation->writable);
 
-        return $propertyMetadata;
+        return $propertyMetadata->withWritable($annotation->writable);
     }
 
     private function getReflectionProperty(string $resourceClass, string $property)

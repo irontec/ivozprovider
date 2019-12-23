@@ -3,8 +3,8 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerRepository;
 use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedCharger;
+use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

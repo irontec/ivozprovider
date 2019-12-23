@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
-use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {

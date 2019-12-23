@@ -9,8 +9,6 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * @inheritdoc

@@ -3,11 +3,11 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Ivr\IvrRepository;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
+use Ivoz\Provider\Domain\Model\Ivr\IvrRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 
 /**
  * IvrDoctrineRepository

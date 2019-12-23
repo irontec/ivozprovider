@@ -2,10 +2,9 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksCdr\Event;
 
-use Ivoz\Core\Domain\Event\StoppableDomainEventInterface;
 use Ivoz\Core\Domain\Event\DomainEventTrait;
+use Ivoz\Core\Domain\Event\StoppableDomainEventInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Symfony\Component\EventDispatcher\Event;
 

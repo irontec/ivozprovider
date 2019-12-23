@@ -2,10 +2,9 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Service;
 
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
-use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
 use Doctrine\DBAL\Driver\PDOException;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Ivoz\Core\Domain\Service\CommonPersistErrorHandlerInterface;
 
 class DuplicateEntryCommonErrorHandler implements CommonPersistErrorHandlerInterface
 {
@@ -24,7 +23,7 @@ class DuplicateEntryCommonErrorHandler implements CommonPersistErrorHandlerInter
         ];
     }
 
-    public function handle(\Exception $exception)
+    public function handle(\Throwable $exception)
     {
         if (!$exception instanceof UniqueConstraintViolationException) {
             return;

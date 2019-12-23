@@ -2,9 +2,6 @@
 
 namespace Ivoz\Core\Domain\Service;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Domain\Model\EntityInterface;
-
 interface PersistErrorHandlerInterface extends LifecycleEventHandlerInterface
 {
     /**
@@ -12,5 +9,5 @@ interface PersistErrorHandlerInterface extends LifecycleEventHandlerInterface
      * @throws \Exception $exception
      * @return void
      */
-    public function handle(\Exception $exception);
+    public function handle(\Throwable $exception);
 }

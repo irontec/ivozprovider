@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCompany;
+use Symfony\Bridge\Monolog\Logger;
 
 abstract class AbstractBalanceOperation
 {

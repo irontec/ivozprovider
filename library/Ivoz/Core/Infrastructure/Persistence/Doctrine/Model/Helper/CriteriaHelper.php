@@ -3,12 +3,11 @@
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper;
 
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\Query\Expr\Composite;
-use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 use Doctrine\Common\Collections\Expr\Comparison;
-use Doctrine\Common\Collections\Expr\Value;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
 use Doctrine\Common\Collections\Expr\Expression;
+use Doctrine\Common\Collections\Expr\Value;
+use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 
 class CriteriaHelper implements CriteriaHelperInterface
 {
@@ -176,7 +175,7 @@ class CriteriaHelper implements CriteriaHelperInterface
     private static function simplifyExpressionList(array $expressions): array
     {
         $response = [];
-        foreach ($expressions as $key => $expression) {
+        foreach ($expressions as $expression) {
             $type = strtolower(key($expression));
             if (!is_numeric($type)
                 && count($expression) === 1

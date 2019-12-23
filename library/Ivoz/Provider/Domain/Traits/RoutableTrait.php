@@ -2,8 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Traits;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
-
 /**
  * RoutableTrait
  *

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/
+    time docker run -v $(pwd)/library:/src rector/rector:latest process /src/Ivoz --config /src/rector.yaml --autoload-file /src/vendor/autoload.php
+popd

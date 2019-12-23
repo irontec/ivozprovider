@@ -4,13 +4,10 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
-use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule;
-use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchList;
-use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -161,8 +158,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 return array_shift($calendarPeriods);
             }
         }
-
-        return null;
     }
 
     /**

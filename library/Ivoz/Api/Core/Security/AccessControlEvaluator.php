@@ -2,8 +2,8 @@
 
 namespace Ivoz\Api\Core\Security;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 class AccessControlEvaluator

@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupRepository;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

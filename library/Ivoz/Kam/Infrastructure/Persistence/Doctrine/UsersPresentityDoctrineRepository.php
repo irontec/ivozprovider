@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentityRepository;
 use Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentity;
+use Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

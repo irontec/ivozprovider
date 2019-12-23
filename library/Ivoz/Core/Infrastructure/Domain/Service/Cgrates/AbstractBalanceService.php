@@ -2,10 +2,8 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
-use Graze\GuzzleHttp\JsonRpc\Client;
 use GuzzleHttp\Exception\RequestException;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CgrRpcClient;
 
 abstract class AbstractBalanceService
 {

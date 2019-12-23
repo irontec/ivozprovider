@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRepository;
-use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

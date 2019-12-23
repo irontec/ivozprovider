@@ -2,10 +2,10 @@
 
 namespace Ivoz\Api\Entity\Serializer\Normalizer;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
-use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
+use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use Doctrine\DBAL\Types\Type as DBALType;
+use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
 
 class DateTimeNormalizer implements DateTimeNormalizerInterface
 {

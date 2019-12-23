@@ -7,7 +7,6 @@ namespace Ivoz\Api\Doctrine\Orm\Metadata\Property;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Symfony\Component\PropertyInfo\Type;
 
 /**
@@ -15,15 +14,12 @@ use Symfony\Component\PropertyInfo\Type;
  */
 final class DoctrineOrmPropertyMetadataFactory implements PropertyMetadataFactoryInterface
 {
-    private $decorated;
     private $managerRegistry;
-
     public function __construct(
         ManagerRegistry $managerRegistry
     ) {
         $this->managerRegistry = $managerRegistry;
     }
-
     /**
      * @param string $resourceClass
      * @param string $property

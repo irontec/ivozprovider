@@ -33,7 +33,7 @@ class CollectionResponseHeaderFixedDecorator implements NormalizerInterface
         $response = $this->decoratedNormalizer->normalize(...func_get_args());
 
         foreach ($response['paths'] as $paths) {
-            foreach ($paths as $key => $path) {
+            foreach ($paths as $path) {
                 $pathArray = $path->getArrayCopy();
 
                 foreach ($pathArray['responses'] as $responseCode => $responseDef) {

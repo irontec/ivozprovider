@@ -2,9 +2,9 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPatternGroupsRelPattern as LcrRuleUpdateByRoutingPatternGroupsRelPattern;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface;
-use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPatternGroupsRelPattern as LcrRuleUpdateByRoutingPatternGroupsRelPattern;
 
 /**
  * Class UpdateByRoutingPatternGroupsRelPattern

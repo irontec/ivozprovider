@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4467e772c08f66573ec6eae4739d6ca0",
+    "content-hash": "968238ea70d271aa7b79058ba79d5373",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2531,11 +2531,11 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.1.0",
+            "version": "1.1.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/psr/log",
-                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
                 "shasum": null
             },
             "require": {
@@ -4029,76 +4029,6 @@
     ],
     "packages-dev": [
         {
-            "name": "api-platform/schema-generator",
-            "version": "1.2.0.0",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/api-platform/schema-generator",
-                "reference": "6866df7c7f21ae128e461f85aba8af4c2ecdb738",
-                "shasum": null
-            },
-            "require": {
-                "easyrdf/easyrdf": "^0.9",
-                "ext-json": "*",
-                "friendsofphp/php-cs-fixer": "^1.12",
-                "league/html-to-markdown": "^4.0",
-                "php": ">=5.4",
-                "psr/log": "^1.0",
-                "symfony/config": "^2.7 || ^3.0",
-                "symfony/console": "^2.7 || ^3.0",
-                "symfony/yaml": "^2.7 || ^3.0",
-                "twig/twig": "^1.0"
-            },
-            "require-dev": {
-                "doctrine/orm": "^2.2",
-                "symfony/filesystem": "^2.7",
-                "symfony/validator": "^2.7"
-            },
-            "suggest": {
-                "doctrine/collections": "For Doctrine collections",
-                "doctrine/orm": "For Doctrine annotations",
-                "myclabs/php-enum": "For enumerations",
-                "symfony/validator": "For constraint annotations"
-            },
-            "bin": [
-                "bin/schema"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ApiPlatform\\SchemaGenerator\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "ApiPlatform\\SchemaGenerator\\Tests\\": "tests/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kévin Dunglas",
-                    "email": "dunglas@gmail.com"
-                }
-            ],
-            "description": "Various tools to generate a data model based on Schema.org vocables",
-            "homepage": "https://api-platform.com",
-            "keywords": [
-                "doctrine",
-                "entity",
-                "enum",
-                "model",
-                "schema.org",
-                "semantic",
-                "symfony"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "behat/behat",
             "version": "3.5.0.0",
             "dist": {
@@ -4740,69 +4670,6 @@
             }
         },
         {
-            "name": "easyrdf/easyrdf",
-            "version": "0.9.1",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/easyrdf/easyrdf",
-                "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566",
-                "shasum": null
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "ext-pcre": "*",
-                "php": ">=5.2.8"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.5",
-                "sami/sami": "~1.4",
-                "squizlabs/php_codesniffer": "~1.4.3"
-            },
-            "suggest": {
-                "ml/json-ld": "~1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "EasyRdf_": "lib/"
-                }
-            },
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nicholas Humfrey",
-                    "email": "njh@aelius.com",
-                    "homepage": "http://www.aelius.com/njh/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Alexey Zakhlestin",
-                    "email": "indeyets@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "EasyRdf is a PHP library designed to make it easy to consume and produce RDF.",
-            "homepage": "http://www.easyrdf.org/",
-            "keywords": [
-                "Linked Data",
-                "RDF",
-                "RDFa",
-                "SPARQL",
-                "Semantic Web",
-                "Turtle"
-            ],
-            "support": {
-                "forum": "http://groups.google.com/group/easyrdf/",
-                "issues": "http://github.com/njh/easyrdf/issues",
-                "irc": "irc://chat.freenode.net/easyrdf"
-            },
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "evenement/evenement",
             "version": "3.0.1.0",
             "dist": {
@@ -4845,60 +4712,6 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
-            "name": "friendsofphp/php-cs-fixer",
-            "version": "1.13.3.0",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/friendsofphp/php-cs-fixer",
-                "reference": "387e4c86c9dc0e1e4c475291fc114ec45b98e624",
-                "shasum": null
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": "^5.3.6 || >=7.0 <7.2",
-                "sebastian/diff": "^1.1",
-                "symfony/console": "^2.3 || ^3.0",
-                "symfony/event-dispatcher": "^2.1 || ^3.0",
-                "symfony/filesystem": "^2.1 || ^3.0",
-                "symfony/finder": "^2.1 || ^3.0",
-                "symfony/process": "^2.3 || ^3.0",
-                "symfony/stopwatch": "^2.5 || ^3.0"
-            },
-            "conflict": {
-                "hhvm": "<3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.5|^5",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "bin": [
-                "php-cs-fixer"
-            ],
-            "type": "application",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\CS\\": "Symfony/CS/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Dariusz Rumiński",
-                    "email": "dariusz.ruminski@gmail.com"
-                }
-            ],
-            "description": "A tool to automatically fix PHP code style",
             "transport-options": {
                 "symlink": true
             }
@@ -5029,71 +4842,6 @@
             "keywords": [
                 "json",
                 "schema"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
-            "name": "league/html-to-markdown",
-            "version": "4.8.2.0",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/league/html-to-markdown",
-                "reference": "e747489191f8e9144a7270eb61f8b9516e99e413",
-                "shasum": null
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-xml": "*",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "mikehaertl/php-shellcommand": "~1.1.0",
-                "phpunit/phpunit": "4.*",
-                "scrutinizer/ocular": "~1.1"
-            },
-            "bin": [
-                "bin/html-to-markdown"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\HTMLToMarkdown\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "League\\HTMLToMarkdown\\Test\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Nick Cernis",
-                    "email": "nick@cern.is",
-                    "homepage": "http://modernnerd.net",
-                    "role": "Original Author"
-                }
-            ],
-            "description": "An HTML-to-markdown conversion helper for PHP",
-            "homepage": "https://github.com/thephpleague/html-to-markdown",
-            "keywords": [
-                "html",
-                "markdown"
             ],
             "transport-options": {
                 "symlink": true

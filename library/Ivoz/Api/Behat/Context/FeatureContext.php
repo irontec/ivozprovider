@@ -6,12 +6,11 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Mink\Exception\ExpectationException;
-use Behat\MinkExtension\Context\MinkAwareContext;
 use Behat\MinkExtension\Context\RawMinkContext;
-use Symfony\Component\Filesystem\Filesystem;
 use Behatch\HttpCall\Request;
-use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -138,9 +137,8 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
 
         ob_start();
         $response->sendContent();
-        $responseContent = ob_get_clean();
 
-        return $responseContent;
+        return ob_get_clean();
     }
 
     protected function assert($test, $message)

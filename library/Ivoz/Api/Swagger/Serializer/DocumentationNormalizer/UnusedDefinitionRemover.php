@@ -3,7 +3,6 @@
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
 
 class UnusedDefinitionRemover implements NormalizerInterface
 {
@@ -54,9 +53,9 @@ class UnusedDefinitionRemover implements NormalizerInterface
     {
         $definitions = [];
 
-        foreach ($object['paths'] as $endpoint => $endpointSpec) {
-            foreach ($endpointSpec as $method => $methodSpec) {
-                foreach ($methodSpec['responses'] as $responseCode => $responseSpec) {
+        foreach ($object['paths'] as $endpointSpec) {
+            foreach ($endpointSpec as $methodSpec) {
+                foreach ($methodSpec['responses'] as $responseSpec) {
                     $ref = $this->getResponseRef($responseSpec);
                     if ($ref) {
                         $definitions[] = $this->cleanRef($ref);
@@ -75,8 +74,8 @@ class UnusedDefinitionRemover implements NormalizerInterface
             }
         }
 
-        foreach ($object['definitions'] as $modelName => $modelSpec) {
-            foreach ($modelSpec['properties'] as $propertyName => $propertySpec) {
+        foreach ($object['definitions'] as $modelSpec) {
+            foreach ($modelSpec['properties'] as $propertySpec) {
                 if (!isset($propertySpec['$ref'])) {
                     continue;
                 }
@@ -102,7 +101,7 @@ class UnusedDefinitionRemover implements NormalizerInterface
             $response[] = $definitionName;
 
             $definitionSpec = $definitions[$definitionName];
-            foreach ($definitionSpec['properties'] as $name => $propertySpec) {
+            foreach ($definitionSpec['properties'] as $propertySpec) {
                 $ref = $propertySpec['$ref'] ?? $propertySpec['items']['$ref'] ?? null;
                 if (!$ref) {
                     continue;

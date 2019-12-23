@@ -7,8 +7,8 @@ use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Psr\Log\LoggerInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
+use Psr\Log\LoggerInterface;
 
 class ProcessExternalCdr
 {
@@ -117,7 +117,7 @@ class ProcessExternalCdr
             );
             $this->logger->error($errorMsg);
 
-            throw new \DomainException('There was a error on external CDR processing');
+            throw new \DomainException('There was a error on external CDR processing', $e->getCode(), $e);
         }
 
         return true;

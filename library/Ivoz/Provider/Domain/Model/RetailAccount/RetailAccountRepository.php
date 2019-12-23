@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 interface RetailAccountRepository extends ObjectRepository, Selectable

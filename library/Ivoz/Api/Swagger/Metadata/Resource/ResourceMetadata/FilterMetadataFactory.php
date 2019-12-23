@@ -7,18 +7,18 @@ use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Ivoz\Api\Doctrine\Orm\Filter\BooleanFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\DateFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\ExistsFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\NumericFilter;
+
+use Ivoz\Api\Doctrine\Orm\Filter\OrderFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\RangeFilter;
+use Ivoz\Api\Doctrine\Orm\Filter\SearchFilter;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
-
-use Ivoz\Api\Doctrine\Orm\Filter\OrderFilter;
-use Ivoz\Api\Doctrine\Orm\Filter\SearchFilter;
-use Ivoz\Api\Doctrine\Orm\Filter\DateFilter;
-use Ivoz\Api\Doctrine\Orm\Filter\NumericFilter;
-use Ivoz\Api\Doctrine\Orm\Filter\BooleanFilter;
-use Ivoz\Api\Doctrine\Orm\Filter\RangeFilter;
-use Ivoz\Api\Doctrine\Orm\Filter\ExistsFilter;
 
 class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -65,9 +65,8 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             $attributes['filters'][] = 'ivoz.api.filter.property_filter';
             $attributes['filterFields'] = $filters;
         }
-        $resourceMetadata = $resourceMetadata->withAttributes($attributes);
 
-        return $resourceMetadata;
+        return $resourceMetadata->withAttributes($attributes);
     }
 
     private function getEntityFilters(string $resourceClass, ResourceMetadata $resourceMetadata)

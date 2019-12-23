@@ -2,10 +2,9 @@
 
 namespace Ivoz\Kam\Infrastructure\Kamailio;
 
-use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+use Graze\GuzzleHttp\JsonRpc\Message\Request;
 use Graze\GuzzleHttp\JsonRpc\Message\RequestInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\Response;
-use Graze\GuzzleHttp\JsonRpc\Message\Request;
 
 class FakeRpcClient extends RpcClient
 {

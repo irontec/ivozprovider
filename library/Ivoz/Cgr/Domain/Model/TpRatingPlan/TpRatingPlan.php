@@ -2,8 +2,6 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
-use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
-
 /**
  * TpRatingPlan
  */

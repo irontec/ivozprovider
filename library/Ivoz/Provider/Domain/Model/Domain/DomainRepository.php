@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Domain;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 
 interface DomainRepository extends ObjectRepository, Selectable
 {

@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneRepository;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

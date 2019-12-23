@@ -1,8 +1,6 @@
 <?php
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**

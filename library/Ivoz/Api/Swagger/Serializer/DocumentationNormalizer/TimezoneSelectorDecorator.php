@@ -83,9 +83,7 @@ class TimezoneSelectorDecorator implements NormalizerInterface
 
         foreach ($responseDefinition['properties'] as $property) {
             $propertyData = $property->getArrayCopy();
-            $format = isset($propertyData['format'])
-                ? $propertyData['format']
-                : null;
+            $format = $propertyData['format'] ?? null;
 
             if ($format === 'date-time') {
                 return true;
@@ -118,9 +116,7 @@ class TimezoneSelectorDecorator implements NormalizerInterface
             return null;
         }
 
-        $ref = isset($successReponse['$ref'])
-            ? $successReponse['$ref']
-            : $successReponse['items']['$ref'];
+        $ref = $successReponse['$ref'] ?? $successReponse['items']['$ref'];
 
         if (!$ref) {
             return null;

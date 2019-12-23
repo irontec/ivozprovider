@@ -10,7 +10,7 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
 {
     protected $events = [];
 
-    protected $latest = null;
+    protected $latest;
 
     /**
      * @param DomainEventInterface $domainEvent
@@ -78,10 +78,6 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
      */
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if ($domainEvent instanceof CommandEventInterface) {
-            return true;
-        }
-
-        return false;
+        return $domainEvent instanceof CommandEventInterface;
     }
 }

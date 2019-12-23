@@ -77,9 +77,7 @@ trait ChangelogTrait
             }
         }
 
-        $this->isPersisted = $this->getId() !== null
-            ? true
-            : false;
+        $this->isPersisted = $this->getId() !== null;
 
         $this->_initialValues = $values;
     }

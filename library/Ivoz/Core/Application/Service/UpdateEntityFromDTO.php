@@ -2,10 +2,9 @@
 
 namespace Ivoz\Core\Application\Service;
 
+use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
  * @deprecated

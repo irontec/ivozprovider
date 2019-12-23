@@ -3,12 +3,11 @@
 namespace Ivoz\Provider\Domain\Service\RoutingPattern;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPattern;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
-use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry;

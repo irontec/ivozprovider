@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\Destination;
 
-use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 
 interface DestinationLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {

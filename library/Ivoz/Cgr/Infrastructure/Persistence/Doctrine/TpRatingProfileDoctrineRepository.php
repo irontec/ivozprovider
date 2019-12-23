@@ -3,8 +3,8 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
-use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class UserDto extends UserDtoAbstract

@@ -3,9 +3,9 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\AbstractJob;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 
 class XmlRpcTrunksRequest extends AbstractXmlRpcRequest implements XmlRpcTrunksRequestInterface
 {

@@ -28,12 +28,10 @@ final class SerializerContextBuilder implements SerializerContextBuilderInterfac
             $attributes
         );
 
-        $context = $this->operationTypeOverwrite(
+        return $this->operationTypeOverwrite(
             $context,
             $attributes
         );
-
-        return $context;
     }
 
     private function operationTypeOverwrite(array $context, array $attributes = null)

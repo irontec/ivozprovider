@@ -2,7 +2,7 @@
 
 namespace Ivoz\Core\Application\Event;
 
-use \Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 class CommandWasExecuted implements CommandEventInterface
 {

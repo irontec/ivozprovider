@@ -3,9 +3,9 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+use Graze\GuzzleHttp\JsonRpc\Message\Request;
 use Graze\GuzzleHttp\JsonRpc\Message\RequestInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\Response;
-use Graze\GuzzleHttp\JsonRpc\Message\Request;
 
 class FakeCgrRpcClient implements ClientInterface
 {

@@ -6,8 +6,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NativeQuery;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

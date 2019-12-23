@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionRepository;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

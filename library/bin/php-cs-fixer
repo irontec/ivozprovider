@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/
+    vendor/bin/php-cs-fixer fix Ivoz/ --rules=no_leading_import_slash,no_unused_imports,ordered_imports
+popd

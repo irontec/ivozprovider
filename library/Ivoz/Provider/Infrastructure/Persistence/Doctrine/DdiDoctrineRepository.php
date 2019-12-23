@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

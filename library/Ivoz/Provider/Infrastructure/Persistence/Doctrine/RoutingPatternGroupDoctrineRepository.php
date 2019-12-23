@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

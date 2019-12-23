@@ -4,9 +4,9 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
-use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -3,8 +3,8 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingRepository;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

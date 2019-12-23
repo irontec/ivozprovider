@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersPua\UsersPuaRepository;
 use Ivoz\Kam\Domain\Model\UsersPua\UsersPua;
+use Ivoz\Kam\Domain\Model\UsersPua\UsersPuaRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -12,10 +12,6 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 */
 class MultipartRequestListener
 {
-    public function __construct()
-    {
-    }
-
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
@@ -45,7 +41,6 @@ class MultipartRequestListener
             ->headers
             ->set('CONTENT_TYPE', 'application/json');
     }
-
     /**
      * This implementation is based on an example by netcoder at http://stackoverflow.com/a/9469615
      */
@@ -66,7 +61,7 @@ class MultipartRequestListener
             $parts = array_slice(explode($matches[1], $rawData), 1);
             foreach ($parts as $part) {
                 // If this is the last part, break
-                if ($part == "--\r\n") {
+                if ($part === "--\r\n") {
                     break;
                 }
                 // Separate content from headers
@@ -89,7 +84,7 @@ class MultipartRequestListener
                         $matches
                     );
                     $fieldName = $matches[1];
-                    $fileName = (isset($matches[2]) ? $matches[2] : null);
+                    $fileName = ($matches[2] ?? null);
                     // If we have no filename, save the data. Otherwise, save the file.
                     if ($fileName === null) {
                         $data[$fieldName] = $content;
@@ -121,7 +116,6 @@ class MultipartRequestListener
             end($data)
         );
     }
-
     private function setRequestContent(Request $request, $data)
     {
         (function () use ($data) {

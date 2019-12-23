@@ -16,7 +16,6 @@ use ApiPlatform\Core\Serializer\SerializerContextBuilderInterface;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 
@@ -30,7 +29,6 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
 
     private $propertyNameCollectionFactory;
     private $propertyMetadataFactory;
-    private $classMetadataFactory;
     private $serializerContextBuilder;
     private $requestStack;
 
@@ -39,13 +37,11 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         PropertyMetadataFactoryInterface $propertyMetadataFactory,
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
         RequestStack $requestStack = null,
-        SerializerContextBuilderInterface $serializerContextBuilder = null,
-        ClassMetadataFactoryInterface $classMetadataFactory = null
+        SerializerContextBuilderInterface $serializerContextBuilder = null
     ) {
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
         $this->propertyMetadataFactory = $propertyMetadataFactory;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->classMetadataFactory = $classMetadataFactory;
         $this->serializerContextBuilder = $serializerContextBuilder;
         $this->requestStack = $requestStack;
     }

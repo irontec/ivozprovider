@@ -2,16 +2,15 @@
 
 namespace Ivoz\Provider\Application\Service\ResidentialDevice;
 
-use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
+use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
-use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Assert\Assertion;
 
 class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
 {

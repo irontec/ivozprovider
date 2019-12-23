@@ -2,9 +2,9 @@
 
 namespace Ivoz\Api\Swagger\Metadata\Property\Factory;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
+use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Symfony\Component\PropertyInfo\Type;
@@ -149,7 +149,7 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
     {
         switch ($builtinType) {
             case 'DateTime':
-                if ($ormType == 'datetime') {
+                if ($ormType === 'datetime') {
                     $propertyMetadata = $this->appendAttributes(
                         $propertyMetadata,
                         [
@@ -158,7 +158,7 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
                             ]
                         ]
                     );
-                } elseif ($ormType == 'date') {
+                } elseif ($ormType === 'date') {
                     $propertyMetadata = $this->appendAttributes(
                         $propertyMetadata,
                         [
@@ -167,7 +167,7 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
                             ]
                         ]
                     );
-                } elseif ($ormType == 'time') {
+                } elseif ($ormType === 'time') {
                     $propertyMetadata = $this->appendAttributes(
                         $propertyMetadata,
                         [
@@ -222,7 +222,7 @@ class PropertySwaggerContextFactory implements PropertyMetadataFactoryInterface
                             ]
                         ]
                     );
-                } elseif ($ormType == 'decimal') {
+                } elseif ($ormType === 'decimal') {
                     $propertyMetadata = $propertyMetadata->withType(
                         new Type(Type::BUILTIN_TYPE_FLOAT)
                     );

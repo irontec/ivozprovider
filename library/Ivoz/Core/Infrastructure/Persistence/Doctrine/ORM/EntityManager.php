@@ -2,26 +2,15 @@
 
 namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM;
 
-use Doctrine\ORM\EntityManager as DoctrineEntityManager;
-use Doctrine\DBAL\Connection;
-use Doctrine\ORM\Configuration;
 use Doctrine\Common\EventManager;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\Configuration;
+use Doctrine\ORM\EntityManager as DoctrineEntityManager;
 use Doctrine\ORM\ORMException;
 
 class EntityManager extends DoctrineEntityManager
 {
-    /**
-     * @inheritdoc
-     */
-    protected function __construct(Connection $conn, Configuration $config, EventManager $eventManager)
-    {
-        parent::__construct(
-            $conn,
-            $config,
-            $eventManager
-        );
-    }
-
     public static function create($conn, Configuration $config, EventManager $eventManager = null)
     {
         if (! $config->getMetadataDriverImpl()) {
@@ -30,7 +19,7 @@ class EntityManager extends DoctrineEntityManager
 
         switch (true) {
             case (is_array($conn)):
-                $conn = \Doctrine\DBAL\DriverManager::getConnection(
+                $conn = DriverManager::getConnection(
                     $conn,
                     $config,
                     ($eventManager ?: new EventManager())

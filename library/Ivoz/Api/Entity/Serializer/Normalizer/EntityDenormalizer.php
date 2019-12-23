@@ -3,6 +3,7 @@
 namespace Ivoz\Api\Entity\Serializer\Normalizer;
 
 use ApiPlatform\Core\Exception\InvalidArgumentException;
+use ApiPlatform\Core\Metadata\Property\PropertyNameCollection;
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
@@ -12,11 +13,9 @@ use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
-use ApiPlatform\Core\Metadata\Property\PropertyNameCollection;
 
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer
@@ -26,7 +25,6 @@ class EntityDenormalizer implements DenormalizerInterface
     private $createEntityFromDTO;
     private $updateEntityFromDTO;
     private $dtoAssembler;
-    private $propertyMetadataFactory;
     private $logger;
     private $dateTimeNormalizer;
     private $propertyNameCollectionFactory;
@@ -38,7 +36,6 @@ class EntityDenormalizer implements DenormalizerInterface
         CreateEntityFromDTO $createEntityFromDTO,
         UpdateEntityFromDTO $updateEntityFromDTO,
         DtoAssembler $dtoAssembler,
-        PropertyMetadataFactoryInterface $propertyMetadataFactory,
         LoggerInterface $logger,
         DateTimeNormalizerInterface $dateTimeNormalizer,
         PropertyNameCollectionFactory $propertyNameCollectionFactory,
@@ -49,7 +46,6 @@ class EntityDenormalizer implements DenormalizerInterface
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->updateEntityFromDTO = $updateEntityFromDTO;
         $this->dtoAssembler = $dtoAssembler;
-        $this->propertyMetadataFactory = $propertyMetadataFactory;
         $this->logger = $logger;
         $this->dateTimeNormalizer = $dateTimeNormalizer;
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
@@ -133,7 +129,7 @@ class EntityDenormalizer implements DenormalizerInterface
             ->dataAccessControlParser
             ->get(DataAccessControlParser::WRITE_ACCESS_CONTROL_ATTRIBUTE);
 
-        foreach ($accessControl as $key => $criteria) {
+        foreach ($accessControl as $criteria) {
             $input = $this->injectEqualValuesIfNotPresent(
                 $input,
                 $criteria
@@ -193,7 +189,7 @@ class EntityDenormalizer implements DenormalizerInterface
                 continue;
             }
 
-            foreach ($criteria[$key] as $position => $rule) {
+            foreach ($criteria[$key] as $rule) {
                 $input = $this->injectEqualValuesIfNotPresent($input, $rule);
             }
         }
@@ -253,14 +249,12 @@ class EntityDenormalizer implements DenormalizerInterface
             $properties[] = $propertyName;
         }
 
-        $input = array_filter(
+        return array_filter(
             $input,
             function ($fldName) use ($properties) {
                 return in_array($fldName, $properties, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $input;
     }
 }

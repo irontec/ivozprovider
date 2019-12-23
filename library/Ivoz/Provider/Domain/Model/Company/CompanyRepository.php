@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
 interface CompanyRepository extends ObjectRepository, Selectable

@@ -6,17 +6,12 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\Conditiona
 
 class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ConditionalRoutesConditionsRelCalendarLifecycleEventHandlerInterface
 {
-    public function __construct()
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [
             self::EVENT_PRE_PERSIST => AvoidEntityUpdatesAbstract::PRE_PERSIST_PRIORITY,
         ];
     }
-
     /**
      * @param ConditionalRoutesConditionsRelCalendarInterface $entity
      *

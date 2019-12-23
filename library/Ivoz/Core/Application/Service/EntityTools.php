@@ -2,15 +2,14 @@
 
 namespace Ivoz\Core\Application\Service;
 
-use Doctrine\ORM\EntityManager;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 use Doctrine\DBAL\LockMode;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\PessimisticLockException;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 
 /**
  * Entity service facade
@@ -28,10 +27,6 @@ class EntityTools
      */
     private $entityPersister;
 
-
-    /** @var EntityAssembler  */
-    private $entityAssembler;
-
     /**
      * @var DtoAssembler
      */
@@ -42,25 +37,15 @@ class EntityTools
      */
     private $entityUpdater;
 
-
-    /**
-     * EntityTools constructor.
-     * @param EntityManager $entityManager
-     * @param DoctrineEntityPersister $entityPersister
-     * @param EntityAssembler $entityAssembler
-     * @param DtoAssembler $dtoAssembler
-     */
     public function __construct(
         EntityManager $entityManager,
         DoctrineEntityPersister $entityPersister,
-        EntityAssembler $entityAssembler,
         DtoAssembler $dtoAssembler,
         UpdateEntityFromDTO $entityUpdater
     ) {
         $this->em = $entityManager;
 
         $this->entityPersister = $entityPersister;
-        $this->entityAssembler = $entityAssembler;
         $this->dtoAssembler = $dtoAssembler;
         $this->entityUpdater = $entityUpdater;
     }

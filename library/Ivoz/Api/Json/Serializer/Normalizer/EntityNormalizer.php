@@ -3,11 +3,11 @@
 namespace Ivoz\Api\Json\Serializer\Normalizer;
 
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
-use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
-use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
+use Doctrine\ORM\Proxy\Proxy;
 use Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory;
+use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -23,7 +23,6 @@ class EntityNormalizer implements NormalizerInterface
 
     protected $resourceClassResolver;
     private $resourceMetadataFactory;
-    private $contextBuilder;
     private $dtoAssembler;
     private $dateTimeNormalizer;
     protected $propertyNameCollectionFactory;
@@ -32,7 +31,6 @@ class EntityNormalizer implements NormalizerInterface
     public function __construct(
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
         ResourceClassResolverInterface $resourceClassResolver,
-        ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
         DateTimeNormalizerInterface $dateTimeNormalizer,
         PropertyNameCollectionFactory $propertyNameCollectionFactory,
@@ -40,7 +38,6 @@ class EntityNormalizer implements NormalizerInterface
     ) {
         $this->resourceClassResolver = $resourceClassResolver;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->contextBuilder = $contextBuilder;
         $this->dtoAssembler = $dtoAssembler;
         $this->dateTimeNormalizer = $dateTimeNormalizer;
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
@@ -86,7 +83,7 @@ class EntityNormalizer implements NormalizerInterface
 
             $property->setAccessible(true);
             $propertyValue = $property->getValue($entity);
-            if ($propertyValue instanceof \Doctrine\ORM\Proxy\Proxy && !$propertyValue->__isInitialized()) {
+            if ($propertyValue instanceof Proxy && !$propertyValue->__isInitialized()) {
                 $propertyValue->__load();
             }
         }
@@ -95,11 +92,11 @@ class EntityNormalizer implements NormalizerInterface
     }
 
     private function normalizeEntity(
-        Entityinterface $entity,
+        EntityInterface $entity,
         array $context,
         $isSubresource = false
     ) {
-        $resourceClass = $entity instanceof \Doctrine\ORM\Proxy\Proxy
+        $resourceClass = $entity instanceof Proxy
             ? get_parent_class($entity)
             : get_class($entity);
 
@@ -177,7 +174,7 @@ class EntityNormalizer implements NormalizerInterface
 
         foreach ($rawData as $key => $value) {
             if ($value instanceof DataTransferObjectInterface) {
-                if ($depth == 0) {
+                if ($depth === 0) {
                     $rawData[$key] = $rawData[$key]->getId();
                     continue;
                 }
@@ -232,14 +229,12 @@ class EntityNormalizer implements NormalizerInterface
             $mappedProperties = array_intersect($mappedProperties, $requestedAttributes);
         }
 
-        $response = array_filter(
+        return array_filter(
             $data,
             function ($property) use ($mappedProperties) {
                 return in_array($property, $mappedProperties);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

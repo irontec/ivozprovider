@@ -2,11 +2,11 @@
 
 namespace Ivoz\Api\Symfony\EventListener;
 
+use ApiPlatform\Core\Util\ErrorFormatGuesser;
+use Assert\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
-use ApiPlatform\Core\Util\ErrorFormatGuesser;
-use Assert\InvalidArgumentException;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class DomainExceptionListener

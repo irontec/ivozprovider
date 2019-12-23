@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 

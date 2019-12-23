@@ -4,15 +4,15 @@ namespace Ivoz\Provider\Domain\Service\BalanceNotification;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
+use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
+use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationDto;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
-use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use Ivoz\Core\Domain\Model\Mailer\Message;
 
 class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 {
@@ -68,11 +68,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
      */
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if ($domainEvent instanceof AbstractBalanceThresholdWasBroken) {
-            return true;
-        }
-
-        return false;
+        return $domainEvent instanceof AbstractBalanceThresholdWasBroken;
     }
 
     /**

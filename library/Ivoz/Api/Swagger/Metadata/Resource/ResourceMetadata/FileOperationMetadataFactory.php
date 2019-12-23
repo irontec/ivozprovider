@@ -2,15 +2,12 @@
 
 namespace Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata;
 
-use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
-use Doctrine\ORM\Mapping\ClassMetadata;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Doctrine\Common\Util\Inflector;
+use Ivoz\Api\Symfony\Controller\DownloadAction;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
-use Ivoz\Api\Symfony\Controller\DownloadAction;
-use Doctrine\Common\Util\Inflector;
 
 class FileOperationMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -48,14 +45,13 @@ class FileOperationMetadataFactory implements ResourceMetadataFactoryInterface
                 FileContainerInterface::UPDALOADABLE_FILE
             )
         );
-        $resourceMetadata = $this->allowFileDownload(
+
+        return $this->allowFileDownload(
             $resourceMetadata,
             $resourceInstance->getFileObjects(
                 FileContainerInterface::DOWNLOADABLE_FILE
             )
         );
-
-        return $resourceMetadata;
     }
 
     private function allowFileUpload(ResourceMetadata $resourceMetadata, array $fileObjects)

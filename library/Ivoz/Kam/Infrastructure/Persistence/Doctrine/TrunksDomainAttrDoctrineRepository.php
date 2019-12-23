@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttrRepository;
 use Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttr;
+use Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttrRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

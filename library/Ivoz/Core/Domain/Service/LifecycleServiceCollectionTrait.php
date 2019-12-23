@@ -84,7 +84,7 @@ trait LifecycleServiceCollectionTrait
      * @throws \Exception $exception
      * @return void
      */
-    public function handle(\Exception $exception)
+    public function handle(\Throwable $exception)
     {
         $event = CommonLifecycleEventHandlerInterface::EVENT_ON_ERROR;
         foreach ($this->services[$event] as $service) {

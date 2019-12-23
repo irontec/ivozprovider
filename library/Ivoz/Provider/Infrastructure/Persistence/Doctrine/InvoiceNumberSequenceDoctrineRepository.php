@@ -2,10 +2,10 @@
 
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
-use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * InvoiceNumberSequenceDoctrineRepository

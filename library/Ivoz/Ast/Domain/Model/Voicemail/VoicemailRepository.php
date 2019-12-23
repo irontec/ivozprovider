@@ -2,8 +2,8 @@
 
 namespace Ivoz\Ast\Domain\Model\Voicemail;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 
 interface VoicemailRepository extends ObjectRepository, Selectable
 {
