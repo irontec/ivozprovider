@@ -823,6 +823,9 @@ msgstr "Habilitat"
 msgid "End date"
 msgstr "Data fi"
 
+msgid "End date must be later or equal than start date."
+msgstr "'Data final' ha de ser igual o més gran que la 'data inici'."
+
 msgid "Endpoint id"
 msgstr "Dispositiu final Id"
 

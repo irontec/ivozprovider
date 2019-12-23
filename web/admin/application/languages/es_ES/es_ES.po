@@ -826,6 +826,9 @@ msgstr "Activado"
 msgid "End date"
 msgstr "Fecha fin"
 
+msgid "End date must be later or equal than start date."
+msgstr "Fecha fin debe ser igual o mayor que fecha inicio."
+
 msgid "Endpoint id"
 msgstr "Endpoint id"
 
