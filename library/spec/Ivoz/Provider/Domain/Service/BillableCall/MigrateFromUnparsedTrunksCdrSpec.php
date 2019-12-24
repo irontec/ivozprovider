@@ -24,12 +24,14 @@ class MigrateFromUnparsedTrunksCdrSpec extends ObjectBehavior
 
     public function let(
         TrunksCdrRepository  $trunksCdrRepository,
-        EntityTools $entityTools,
         MigrateFromTrunksCdr $migrateFromTrunksCdr,
         LoggerInterface $logger
     ) {
         $this->trunksCdrRepository = $trunksCdrRepository;
-        $this->entityTools = $entityTools;
+        $this->entityTools = $this->getTestDouble(
+            EntityTools::class,
+            true
+        );
         $this->migrateFromTrunksCdr = $migrateFromTrunksCdr;
         $this->logger = $logger;
 
