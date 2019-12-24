@@ -168,7 +168,7 @@ trait HelperTrait
         $property = $this->getProperty($reflection, 'methodProphecies');
         $property->setAccessible(true);
         $values = $property->getValue($double);
-        unset($values[$method]);
+        unset($values[strtolower($method)]);
         $property->setValue($double, $values);
         $property->setAccessible(false);
     }
