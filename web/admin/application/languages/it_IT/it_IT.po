@@ -827,6 +827,9 @@ msgstr "Abilitato"
 msgid "End date"
 msgstr "End date"
 
+msgid "End date must be later or equal than start date."
+msgstr "Data non valida deve essere uguale o maggiore di In data."
+
 msgid "Endpoint id"
 msgstr "Endpoint id"
 

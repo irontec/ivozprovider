@@ -813,6 +813,9 @@ msgstr "Enabled"
 msgid "End date"
 msgstr "End date"
 
+msgid "End date must be later or equal than start date."
+msgstr "End date must be equal or greater than start date'."
+
 msgid "Endpoint id"
 msgstr "Endpoint id"
 

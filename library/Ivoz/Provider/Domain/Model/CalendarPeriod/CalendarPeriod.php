@@ -31,6 +31,16 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $startDate = $this->getStartDate();
+        $endDate = $this->getEndDate();
+
+        if ($endDate < $startDate) {
+            throw new \DomainException('End date must be later or equal than start date.', 30300);
+        }
+    }
+
     /**
      * Get the numberValue in E.164 format when routing to 'number'
      *
