@@ -119,6 +119,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
         }
 
         $this->setByContext(
@@ -172,7 +174,6 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'id',
             'transformationRuleSetId',
             'outgoingDdiId',
-            'companyId',
             'password',
         ];
 

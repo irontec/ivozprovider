@@ -9,8 +9,11 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
         $data = $this->filterReadOnlyFields($data);
 
         $contextProperties = self::getPropertyMap($context, $role);
+
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
         }
 
         $this->setByContext(
@@ -18,7 +21,6 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
             $data
         );
     }
-
 
     /**
      * @param array $data
@@ -57,6 +59,10 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
+        }
+
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
         }
 
         return $response;

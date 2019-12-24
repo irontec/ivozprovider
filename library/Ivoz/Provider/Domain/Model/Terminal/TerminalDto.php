@@ -94,11 +94,29 @@ class TerminalDto extends TerminalDtoAbstract
         }
 
         $response = parent::getPropertyMap(...func_get_args());
+
         if (array_key_exists('domainId', $response)) {
             unset($response['domainId']);
         }
 
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     public function toArray($hideSensitiveData = false)

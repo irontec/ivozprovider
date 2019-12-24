@@ -6,13 +6,13 @@ class DdiDto extends DdiDtoAbstract
 {
     public function denormalize(array $data, string $context, string $role = '')
     {
-        if ($role === 'ROLE_COMPANY_ADMIN') {
-            $data = $this->filterReadOnlyFields($data);
-        }
-
         $contextProperties = self::getPropertyMap($context, $role);
+
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+            $data = $this->filterReadOnlyFields($data);
         }
 
         $this->setByContext(
@@ -93,7 +93,6 @@ class DdiDto extends DdiDtoAbstract
             'routeType',
             'friendValue',
             'id',
-            'companyId',
             'conferenceRoomId',
             'languageId',
             'queueId',
