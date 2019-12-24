@@ -43,8 +43,7 @@ Feature: Update music on holds
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": "~"
+          }
       }
     """
 
@@ -86,7 +85,6 @@ This is file content
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": "~"
+          }
       }
     """

@@ -37,7 +37,6 @@ Feature: Retrieve external call filters
           "outOfScheduleTargetType": null,
           "outOfScheduleNumberValue": null,
           "id": 1,
-          "company": "~",
           "welcomeLocution": null,
           "holidayLocution": null,
           "outOfScheduleLocution": null,

@@ -24,8 +24,7 @@ Feature: Create route locks
           "name": "New Lock",
           "description": "",
           "open": false,
-          "id": 3,
-          "company": 1
+          "id": 3
       }
     """
 
@@ -42,7 +41,6 @@ Feature: Create route locks
           "name": "New Lock",
           "description": "",
           "open": false,
-          "id": 3,
-          "company": "~"
+          "id": 3
       }
     """

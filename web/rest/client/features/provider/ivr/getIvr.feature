@@ -44,21 +44,6 @@ Feature: Retrieve IVRs
           "errorRouteType": "voicemail",
           "errorNumberValue": null,
           "id": 1,
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "onDemandRecordCode": "",
-              "balance": 1.2,
-              "id": 1,
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
-          },
           "welcomeLocution": {
               "name": "testLocution",
               "status": null,
@@ -72,8 +57,7 @@ Feature: Retrieve IVRs
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "noInputLocution": null,
           "errorLocution": null,
@@ -90,8 +74,7 @@ Feature: Retrieve IVRs
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "noInputExtension": null,
           "errorExtension": null,
@@ -111,7 +94,6 @@ Feature: Retrieve IVRs
               "voicemailAttachSound": true,
               "gsQRCode": false,
               "id": 1,
-              "company": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,

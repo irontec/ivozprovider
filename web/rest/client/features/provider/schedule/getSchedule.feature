@@ -63,7 +63,6 @@ Feature: Retrieve schedules
           "friday": true,
           "saturday": false,
           "sunday": false,
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

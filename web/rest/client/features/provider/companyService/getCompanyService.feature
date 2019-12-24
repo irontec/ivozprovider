@@ -41,7 +41,6 @@ Feature: Retrieve company services
       {
           "code": "94",
           "id": 1,
-          "company": "~",
           "service": {
               "iden": "DirectPickUp",
               "defaultCode": "94",

@@ -66,7 +66,6 @@ Feature: Create IVR entries
               "errorRouteType": "voicemail",
               "errorNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": 1,
               "noInputLocution": null,
               "errorLocution": null,
@@ -91,8 +90,7 @@ Feature: Create IVR entries
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "extension": {
               "number": "101",
@@ -100,7 +98,6 @@ Feature: Create IVR entries
               "numberValue": null,
               "friendValue": null,
               "id": 1,
-              "company": 1,
               "ivr": null,
               "huntGroup": null,
               "conferenceRoom": null,

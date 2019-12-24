@@ -34,13 +34,11 @@ Feature: Create outgoing ddi rules patterns
               "name": "testRule",
               "defaultAction": "keep",
               "id": 1,
-              "company": 1,
               "forcedDdi": null
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2,
-              "company": 1
+              "id": 2
           },
           "forcedDdi": "~"
       }
@@ -65,13 +63,11 @@ Feature: Create outgoing ddi rules patterns
               "name": "testRule",
               "defaultAction": "keep",
               "id": 1,
-              "company": 1,
               "forcedDdi": null
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2,
-              "company": 1
+              "id": 2
           },
           "forcedDdi": "~"
       }

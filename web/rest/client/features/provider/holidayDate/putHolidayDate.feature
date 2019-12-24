@@ -33,8 +33,7 @@ Feature: Update holiday dates
           "id": 1,
           "calendar": {
               "name": "testCalendar2",
-              "id": 2,
-              "company": 1
+              "id": 2
           },
           "locution": {
               "name": "testLocution",
@@ -49,8 +48,7 @@ Feature: Update holiday dates
                   "fileSize": 1,
                   "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "extension": null,
           "voiceMailUser": null,

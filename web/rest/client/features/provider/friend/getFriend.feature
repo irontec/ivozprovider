@@ -45,7 +45,6 @@ Feature: Retrieve friends
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 1,
-          "company": "~",
           "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,

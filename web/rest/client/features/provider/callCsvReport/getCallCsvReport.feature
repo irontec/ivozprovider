@@ -42,21 +42,6 @@ Feature: Retrieve call CSV report
               "mimeType": null,
               "baseName": null
           },
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "onDemandRecordCode": "",
-              "balance": 1.2,
-              "id": 1,
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
-          },
           "callCsvScheduler": {
               "name": "SchedulerName",
               "unit": "day",
@@ -67,7 +52,6 @@ Feature: Retrieve call CSV report
               "lastExecutionError": "",
               "nextExecution": "2018-12-02 09:00:00",
               "id": 2,
-              "company": 1,
               "callCsvNotificationTemplate": null
           }
       }
