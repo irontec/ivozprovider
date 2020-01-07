@@ -31,7 +31,6 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
           deprecated: true
           description: "Will be removed in the next release as it can be resolved automatically"
 
-
 Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -53,6 +52,26 @@ Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
         - or:
           - inheritedOrNull:
               locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+
+Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule:
+  collectionOperations:
+    post:
+      depth: 1
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        inherited:
+          schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    write_access_control:
+      inherited:
+        calendarPeriod: 'Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod'
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
 
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
