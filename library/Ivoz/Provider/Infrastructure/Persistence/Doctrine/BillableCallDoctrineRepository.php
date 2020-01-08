@@ -10,6 +10,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByCondition
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -20,6 +21,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BillableCallDoctrineRepository extends ServiceEntityRepository implements BillableCallRepository
 {
+    const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
+
     use GetGeneratorByConditionsTrait;
 
     protected $queryRunner;
@@ -251,8 +254,10 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      * @inheritdoc
      * @see BillableCallRepository::setInvoiceId
      */
-    public function setInvoiceId(array $conditions, int $invoiceId)
+    public function setInvoiceId(InvoiceInterface $invoice)
     {
+        $conditions = $this->getConditionsByInvoice($invoice);
+
         // In order to reduce table lock times search target ids first
         $finder = $this
             ->createQueryBuilder('self')
@@ -277,7 +282,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->createQueryBuilder('self')
             ->update($this->_entityName, 'self')
             ->set('self.invoice', ':invoiceId')
-            ->setParameter(':invoiceId', $invoiceId)
+            ->setParameter(':invoiceId', $invoice->getId())
             ->addCriteria(
                 CriteriaHelper::fromArray([
                     ['id', 'in', $targetIds],
@@ -288,6 +293,18 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             $this->getEntityName(),
             $qb->getQuery()
         );
+    }
+
+    public function getGeneratorByInvoice(InvoiceInterface $invoice)
+    {
+        $conditions = $this->getConditionsByInvoice($invoice);
+
+        return $this
+            ->getGeneratorByConditions(
+                $conditions,
+                5000,
+                ['self.startTime', 'ASC']
+            );
     }
 
     /**
@@ -336,5 +353,32 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
 
         return count($results);
+    }
+
+    /**
+     * @param InvoiceInterface $invoice
+     * @return array
+     */
+    private function getConditionsByInvoice(InvoiceInterface $invoice): array
+    {
+        $utcTz = new \DateTimeZone('UTC');
+
+        $brand = $invoice->getBrand();
+        $company = $invoice->getCompany();
+
+        $inDate = $invoice->getInDate();
+        $utcInDate = $inDate->setTimezone($utcTz);
+
+        $outDate = $invoice->getOutDate();
+        $utcOutDate = $outDate->setTimezone($utcTz);
+
+        return [
+            ['brand', 'eq', $brand->getId()],
+            ['company', 'eq', $company->getId()],
+            ['carrier', 'isNotNull'],
+            ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
+            ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)],
+            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
+        ];
     }
 }

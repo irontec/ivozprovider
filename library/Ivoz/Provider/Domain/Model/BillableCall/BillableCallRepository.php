@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 interface BillableCallRepository extends ObjectRepository, Selectable
 {
@@ -61,11 +62,16 @@ interface BillableCallRepository extends ObjectRepository, Selectable
     public function resetInvoiceId(int $invoiceId);
 
     /**
-     * @param array $conditions
-     * @param int $invoiceId
+     * @param InvoiceInterface $invoice
      * @return void
      */
-    public function setInvoiceId(array $conditions, int $invoiceId);
+    public function setInvoiceId(InvoiceInterface $invoice);
+
+    /**
+     * @param InvoiceInterface $invoice
+     * @return mixed
+     */
+    public function getGeneratorByInvoice(InvoiceInterface $invoice);
 
     /**
      * @param int $companyId

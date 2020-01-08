@@ -18,7 +18,6 @@ class Generator
 {
     const DATE_FORMAT = 'd-m-Y';
     const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
-    const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
 
     const LOGGER_PREFIX = '[Invoices][Generator]';
 
@@ -181,7 +180,6 @@ class Generator
      */
     protected function _getCallData(InvoiceInterface $invoice): array
     {
-        $brand = $invoice->getBrand();
         $company = $invoice->getCompany();
         $lang = $company->getLanguageCode();
         $invoiceTz = new \DateTimeZone(
@@ -190,12 +188,6 @@ class Generator
         $utcTz = new \DateTimeZone('UTC');
 
         $currencySymbol = $company->getCurrencySymbol();
-
-        $inDate = $invoice->getInDate();
-        $utcInDate = $inDate->setTimezone($utcTz);
-
-        $outDate = $invoice->getOutDate();
-        $utcOutDate = $outDate->setTimezone($utcTz);
 
         $callsPerType = [];
         $callSumary = [];
@@ -209,25 +201,14 @@ class Generator
 
         $this->setFixedCosts($invoice);
 
-        $conditions = [
-            ['brand', 'eq', $brand->getId()],
-            ['company', 'eq', $company->getId()],
-            ['carrier', 'isNotNull'],
-            ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
-            ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)],
-            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
-        ];
-        $this->logger->debug('Where: ' . print_r($conditions, true));
+        $this
+            ->billableCallRepository
+            ->setInvoiceId(
+                $invoice
+            );
 
-        $this->billableCallRepository->setInvoiceId(
-            $conditions,
-            $invoice->getId()
-        );
-
-        $callGenerator = $this->billableCallRepository->getGeneratorByConditions(
-            $conditions,
-            5000,
-            ['self.startTime', 'ASC']
+        $callGenerator = $this->billableCallRepository->getGeneratorByInvoice(
+            $invoice
         );
 
         /** @var BillableCallInterface[] $calls */
