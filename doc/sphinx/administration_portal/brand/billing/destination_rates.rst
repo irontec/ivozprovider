@@ -32,7 +32,7 @@ Brand operator can add rates by hand, filling these fields (**List of rates** su
     Destination
         Pre-created destination that specifies a concrete prefix.
 
-    Connection fee
+    Connection charge
         The amount that is charged just for call establishment.
 
     Interval start
@@ -86,7 +86,11 @@ CSV format
 
 Although the import window allows importing non-recommended format CSV files,
 we encourage you to import a file in the proposed format, as it will make
-this process much easier.
+this process much easier:
+
+.. error:: Comma is the only allowed separator character.
+
+.. error:: Single quotes are not supported.
 
 You can find a sample CSV for importing `here <https://raw.githubusercontent.com/
 irontec/ivozprovider/artemis/web/admin/samples/pricesSample.csv>`_.
@@ -95,28 +99,27 @@ irontec/ivozprovider/artemis/web/admin/samples/pricesSample.csv>`_.
 The order of the columns should be:
 
 - Destination name
-- Destination prefix (E.164 with + sign)
-- Per minute charge
-- Establishment cost
-- Billing period in seconds
 
-.. note:: It is recommended to double quote alphanumeric entries, though
-   it is not compulsory for single word entries (or entries without odd symbols).
-   **If they contain any comma, they MUST be quoted**.
+.. warning:: If they contain any comma, they MUST be quoted with double quotes. Otherwise, double quotes are optional.
 
-.. error:: Floating numbers **MUST use point as decimal separator**.
+- Destination prefix
 
-.. note:: Numeric entries can be quoted with double quotes, but it is
-   not mandatory.
+.. warning:: MUST start with + sign.
 
-You can download the imported file of the destination rate. Take into account that while importing
-over existing data, the matching values are overwritten and the not matching are kept. This allows
-downloading the imported file, changing some values and importing pricing back.
+.. error:: If same prefix is used in multiple times in CSV file, import process will fail.
 
-.. note:: When re-importing, non-existent prefixes are kept.
+- Per minute rate
+- Connection charge
+
+.. warning:: MUST use point as decimal separator.
+
+- Charge period
+
+.. tip:: Given in seconds, only integers greater or equal 1 are supported.
+
 
 Once the import process is over, we only have to include this destination rate into some
-rating plan and bind it to the clients we want following the procedure explained in
+rating plan and bind it to the clients/carriers we want following the procedure explained in
 :ref:`Rating plans`.
 
 ***********************
