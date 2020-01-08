@@ -309,10 +309,19 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::getUntarificattedCallIdsInRange
+     * @see BillableCallRepository::getUntarificattedCallIdsByInvoice
      */
-    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array
+    public function getUntarificattedCallIdsByInvoice(InvoiceInterface $invoice): array
     {
+        $utcTz = new \DateTimeZone('UTC');
+        $utcInDate = $invoice->getInDate()->setTimezone($utcTz);
+        $utcOutDate = $invoice->getOutDate()->setTimezone($utcTz);
+
+        $companyId = $invoice->getCompany()->getId();
+        $brandId = $invoice->getBrand()->getId();
+        $startTime = $utcInDate->format(self::MYSQL_DATETIME_FORMAT);
+        $endTime = $utcOutDate->format(self::MYSQL_DATETIME_FORMAT);
+
         $conditions = [
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
@@ -344,12 +353,12 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::countUntarificattedCallsInRange
+     * @see BillableCallRepository::countUntarificattedCallsByInvoice
      */
-    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime): int
+    public function countUntarificattedCallsByInvoice(InvoiceInterface $invoice): int
     {
-        $results = $this->getUntarificattedCallIdsInRange(
-            ...func_get_args()
+        $results = $this->getUntarificattedCallIdsByInvoice(
+            $invoice
         );
 
         return count($results);

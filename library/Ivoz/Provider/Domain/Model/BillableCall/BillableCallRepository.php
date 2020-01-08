@@ -74,25 +74,19 @@ interface BillableCallRepository extends ObjectRepository, Selectable
     public function getGeneratorByInvoice(InvoiceInterface $invoice);
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @param string $endTime
+     * @param InvoiceInterface $invoice
      * @return array
      */
-    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array;
+    public function getUntarificattedCallIdsByInvoice(InvoiceInterface $invoice): array;
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @param string $endTime
+     * @param InvoiceInterface $invoice
      * @return int|mixed
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
      */
-    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime);
+    public function countUntarificattedCallsByInvoice(InvoiceInterface $invoice);
 
     /**
      * @param array $conditions

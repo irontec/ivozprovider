@@ -53,30 +53,19 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        $utcTz = new \DateTimeZone('UTC');
-        $utcInDate = $invoice->getInDate()->setTimezone($utcTz);
-        $utcOutDate = $invoice->getOutDate()->setTimezone($utcTz);
-
-        $this->tryToRateCalls($invoice, $utcInDate, $utcOutDate);
+        $this->tryToRateCalls($invoice);
     }
 
     /**
      * @param InvoiceInterface $invoice
-     * @param \DateTime $utcInDate
-     * @param \DateTime $utcOutDate
      */
-    private function tryToRateCalls(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
+    private function tryToRateCalls(InvoiceInterface $invoice)
     {
-        $unmeteredCallArguments = [
-            $invoice->getCompany()->getId(),
-            $invoice->getBrand()->getId(),
-            $utcInDate->format('Y-m-d H:i:s'),
-            $utcOutDate->format('Y-m-d H:i:s')
-        ];
-
-        $untarificattedCallIds = $this->billableCallRepository->getUntarificattedCallIdsInRange(
-            ...$unmeteredCallArguments
-        );
+        $untarificattedCallIds = $this
+            ->billableCallRepository
+            ->getUntarificattedCallIdsByInvoice(
+                $invoice
+            );
 
         if (empty($untarificattedCallIds)) {
             return;
