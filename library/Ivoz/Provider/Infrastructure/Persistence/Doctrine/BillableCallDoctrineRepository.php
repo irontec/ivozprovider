@@ -313,25 +313,13 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      */
     public function getUntarificattedCallIdsByInvoice(InvoiceInterface $invoice): array
     {
-        $utcTz = new \DateTimeZone('UTC');
-        $utcInDate = $invoice->getInDate()->setTimezone($utcTz);
-        $utcOutDate = $invoice->getOutDate()->setTimezone($utcTz);
+        $conditions = $this->getConditionsByInvoice(
+            $invoice
+        );
 
-        $companyId = $invoice->getCompany()->getId();
-        $brandId = $invoice->getBrand()->getId();
-        $startTime = $utcInDate->format(self::MYSQL_DATETIME_FORMAT);
-        $endTime = $utcOutDate->format(self::MYSQL_DATETIME_FORMAT);
-
-        $conditions = [
-            ['company', 'eq', $companyId],
-            ['brand', 'eq', $brandId],
-            ['startTime', 'gte', $startTime],
-            ['startTime', 'lte', $endTime],
-            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
-            'or' => [
-                ['price', 'isNull'],
-                ['price', 'lt', 0],
-            ]
+        $conditions['or'] = [
+            ['price', 'isNull'],
+            ['price', 'lt', 0],
         ];
 
         $qb = $this
@@ -384,7 +372,6 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         return [
             ['brand', 'eq', $brand->getId()],
             ['company', 'eq', $company->getId()],
-            ['carrier', 'isNotNull'],
             ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
             ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)],
             ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
