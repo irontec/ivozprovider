@@ -170,6 +170,11 @@ class CheckValiditySpec extends ObjectBehavior
 
     protected function prepareExecution()
     {
+        $this
+            ->invoice
+            ->mustCheckValidity()
+            ->willReturn(true);
+
         $this->invoice
             ->getCompany()
             ->willReturn($this->company);
