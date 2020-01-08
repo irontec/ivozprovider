@@ -291,21 +291,16 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @param string $endTime
-     * @return QueryBuilder
-     * @throws \Doctrine\ORM\Query\QueryException
+     * @inheritdoc
+     * @see BillableCallRepository::getUntarificattedCallIdsInRange
      */
-    private function getUntarificattedCallQueryBuilder(int $companyId, int $brandId, string $startTime, string $endTime): QueryBuilder
+    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array
     {
-        $qb = $this->createQueryBuilder('self');
-
         $conditions = [
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
-            ['startTime', 'gt', $startTime],
+            ['startTime', 'gte', $startTime],
+            ['startTime', 'lte', $endTime],
             ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
             'or' => [
                 ['price', 'isNull'],
@@ -313,29 +308,12 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ]
         ];
 
-        $qb
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self.id')
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
-            )->andWhere(
-                $qb->expr()->lt(
-                    '(self.startTime + self.duration)',
-                    preg_replace('/[^0-9]+/', '', $endTime)
-                )
             );
-
-        return $qb;
-    }
-
-    /**
-     * @inheritdoc
-     * @see BillableCallRepository::getUntarificattedCallIdsInRange
-     */
-    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array
-    {
-        $qb = $this->getUntarificattedCallQueryBuilder(
-            ...func_get_args()
-        );
-        $qb->select('self.id');
 
         $result = $qb->getQuery()->getResult();
 
