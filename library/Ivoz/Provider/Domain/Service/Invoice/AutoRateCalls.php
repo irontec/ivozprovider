@@ -53,6 +53,11 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
+        $mustRunInvoicer = $invoice->mustRunInvoicer();
+        if (!$mustRunInvoicer) {
+            return;
+        }
+
         $this->tryToRateCalls($invoice);
     }
 

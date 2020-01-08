@@ -50,6 +50,10 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      */
     public function execute(InvoiceInterface $invoice)
     {
+        if (!$invoice->mustCheckValidity()) {
+            return;
+        }
+
         $tz = $invoice
             ->getCompany()
             ->getDefaultTimezone()
@@ -107,6 +111,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      */
     private function assertNoUnmeteredCalls(InvoiceInterface $invoice)
     {
+
         $untarificattedCallNum = $this
             ->billableCallRepository
             ->countUntarificattedCallsByInvoice(
