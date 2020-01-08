@@ -129,11 +129,8 @@ class CheckValiditySpec extends ObjectBehavior
 
         $this
             ->billableCallRepository
-            ->countUntarificattedCallsInRange(
-                Argument::type('numeric'),
-                Argument::type('numeric'),
-                Argument::type('string'),
-                Argument::type('string')
+            ->countUntarificattedCallsByInvoice(
+                Argument::type(InvoiceInterface::class)
             )
             ->shouldBeCalled()
             ->willThrow($exception);
@@ -211,11 +208,8 @@ class CheckValiditySpec extends ObjectBehavior
 
         $this
             ->billableCallRepository
-            ->countUntarificattedCallsInRange(
-                Argument::type('numeric'),
-                Argument::type('numeric'),
-                Argument::type('string'),
-                Argument::type('string')
+            ->countUntarificattedCallsByInvoice(
+                Argument::type(InvoiceInterface::class)
             )->willReturn(0);
 
         $this
