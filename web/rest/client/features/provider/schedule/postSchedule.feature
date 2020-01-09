@@ -39,8 +39,7 @@ Feature: Create schedules
           "friday": true,
           "saturday": false,
           "sunday": false,
-          "id": 3,
-          "company": 1
+          "id": 3
       }
     """
 
@@ -64,7 +63,6 @@ Feature: Create schedules
           "friday": true,
           "saturday": false,
           "sunday": false,
-          "id": 3,
-          "company": "~"
+          "id": 3
       }
     """

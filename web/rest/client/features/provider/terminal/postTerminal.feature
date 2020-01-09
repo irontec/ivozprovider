@@ -38,7 +38,6 @@ Feature: Create terminals
           "lastProvisionDate": "1970-03-04 11:12:13",
           "t38Passthrough": "no",
           "id": 4,
-          "company": 1,
           "terminalModel": 1
       }
     """
@@ -62,7 +61,6 @@ Feature: Create terminals
           "mac": "",
           "lastProvisionDate": "1970-03-04 11:12:13",
           "id": 4,
-          "company": "~",
           "terminalModel": {
               "iden": "Generic",
               "name": "Generic SIP Model",

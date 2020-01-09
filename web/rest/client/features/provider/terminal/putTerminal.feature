@@ -37,7 +37,6 @@ Feature: Update terminals
           "mac": "aabbccddeeff",
           "lastProvisionDate": "1970-01-01 10:10:10",
           "id": 1,
-          "company": "~",
           "terminalModel": {
               "iden": "YealinkT21P_E2",
               "name": "YealinkT21P_E2",

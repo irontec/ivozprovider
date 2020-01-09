@@ -53,7 +53,6 @@ Feature: Create queues
           "strategy": "rrmemory",
           "weight": 2,
           "id": 2,
-          "company": 1,
           "periodicAnnounceLocution": 1,
           "timeoutLocution": 1,
           "timeoutExtension": null,
@@ -89,7 +88,6 @@ Feature: Create queues
           "strategy": "rrmemory",
           "weight": 2,
           "id": 2,
-          "company": "~",
           "periodicAnnounceLocution": {
               "name": "testLocution",
               "status": null,
@@ -103,8 +101,7 @@ Feature: Create queues
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "timeoutLocution": {
               "name": "testLocution",
@@ -119,8 +116,7 @@ Feature: Create queues
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "timeoutExtension": null,
           "timeoutVoiceMailUser": null,
@@ -137,8 +133,7 @@ Feature: Create queues
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "fullExtension": null,
           "fullVoiceMailUser": null,

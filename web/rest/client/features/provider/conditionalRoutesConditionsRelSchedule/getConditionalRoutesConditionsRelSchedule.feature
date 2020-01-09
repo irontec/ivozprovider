@@ -44,8 +44,7 @@ Feature: Retrieve conditional routes conditions rel schedules
                   "friday": true,
                   "saturday": false,
                   "sunday": false,
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               }
           }
       ]
@@ -90,8 +89,7 @@ Feature: Retrieve conditional routes conditions rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 1,
-              "company": 1
+              "id": 1
           }
       }
     """

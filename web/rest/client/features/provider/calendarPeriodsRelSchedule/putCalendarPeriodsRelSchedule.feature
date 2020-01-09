@@ -45,8 +45,7 @@ Feature: Update calendar periods rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

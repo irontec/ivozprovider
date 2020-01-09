@@ -59,8 +59,7 @@ Feature: Create conditional routes conditions route lock
               "name": "Test Lock",
               "description": "Test Lock",
               "open": true,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

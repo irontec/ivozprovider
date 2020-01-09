@@ -52,8 +52,7 @@ Feature: Create match list patterns
           "id": 2,
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2,
-              "company": 1
+              "id": 2
           },
           "numberCountry": "~"
       }

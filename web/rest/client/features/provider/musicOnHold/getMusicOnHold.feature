@@ -44,7 +44,6 @@ Feature: Retrieve music on holds
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": "~"
+          }
       }
     """

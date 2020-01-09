@@ -79,6 +79,10 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
             $response['blackListIds'] = 'blackListIds';
         }
 
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
         return $response;
     }
 
@@ -97,6 +101,19 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         }
 
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     public function setCalendarIds(array $calendarIds): self

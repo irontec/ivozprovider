@@ -18,8 +18,7 @@ Feature: Retrieve pick up rel users
               "id": 1,
               "pickUpGroup": {
                   "name": "pick up group",
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               },
               "user": {
                   "name": "Alice",
@@ -36,7 +35,6 @@ Feature: Retrieve pick up rel users
                   "voicemailAttachSound": true,
                   "gsQRCode": false,
                   "id": 1,
-                  "company": 1,
                   "callAcl": null,
                   "bossAssistant": null,
                   "bossAssistantWhiteList": null,
@@ -66,8 +64,7 @@ Feature: Retrieve pick up rel users
           "id": 1,
           "pickUpGroup": {
               "name": "pick up group",
-              "id": 1,
-              "company": 1
+              "id": 1
           },
           "user": {
               "name": "Alice",
@@ -84,7 +81,6 @@ Feature: Retrieve pick up rel users
               "voicemailAttachSound": true,
               "gsQRCode": false,
               "id": 1,
-              "company": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,

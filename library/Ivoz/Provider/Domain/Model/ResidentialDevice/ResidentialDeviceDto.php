@@ -124,6 +124,8 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
         }
 
         $this->setByContext(
@@ -178,7 +180,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'name',
             'description',
             'id',
-            'companyId',
             'transformationRuleSetId',
             'outgoingDdiId',
             'languageId',

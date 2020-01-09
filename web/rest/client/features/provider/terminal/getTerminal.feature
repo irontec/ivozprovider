@@ -54,7 +54,6 @@ Feature: Retrieve terminals
           "mac": "",
           "lastProvisionDate": null,
           "id": 1,
-          "company": "~",
           "terminalModel": {
               "iden": "Generic",
               "name": "Generic SIP Model",

@@ -25,7 +25,6 @@ Feature: Update pick up groups
       {
           "name": "updated pick up group",
           "id": 1,
-          "company": "~",
           "userIds": [
             2
           ]

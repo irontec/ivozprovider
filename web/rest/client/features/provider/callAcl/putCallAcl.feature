@@ -23,7 +23,6 @@ Feature: Update call acls
       {
           "name": "updatedACL",
           "defaultPolicy": "deny",
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

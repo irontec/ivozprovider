@@ -16,7 +16,6 @@ Feature: Retrieve features rel companies
       [
           {
               "id": 1,
-              "company": "~",
               "feature": {
                   "iden": "queues",
                   "id": 1,
@@ -29,7 +28,6 @@ Feature: Retrieve features rel companies
           },
           {
               "id": 2,
-              "company": "~",
               "feature": {
                   "iden": "recordings",
                   "id": 2,
@@ -42,7 +40,6 @@ Feature: Retrieve features rel companies
           },
           {
               "id": 3,
-              "company": "~",
               "feature": {
                   "iden": "faxes",
                   "id": 3,
@@ -55,7 +52,6 @@ Feature: Retrieve features rel companies
           },
           {
               "id": 4,
-              "company": "~",
               "feature": {
                   "iden": "friends",
                   "id": 4,
@@ -68,7 +64,6 @@ Feature: Retrieve features rel companies
           },
           {
               "id": 5,
-              "company": "~",
               "feature": {
                   "iden": "conferences",
                   "id": 5,
@@ -93,7 +88,6 @@ Feature: Retrieve features rel companies
     """
       {
           "id": 1,
-          "company": "~",
           "feature": {
               "iden": "queues",
               "id": 1,

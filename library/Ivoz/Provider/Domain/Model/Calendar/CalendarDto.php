@@ -20,6 +20,23 @@ class CalendarDto extends CalendarDtoAbstract
             $response = parent::getPropertyMap(...func_get_args());
         }
 
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 }

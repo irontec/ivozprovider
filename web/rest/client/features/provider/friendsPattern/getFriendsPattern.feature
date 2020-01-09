@@ -50,7 +50,6 @@ Feature: Retrieve friends patterns
               "ddiIn": "yes",
               "t38Passthrough": "no",
               "id": 1,
-              "company": 1,
               "transformationRuleSet": null,
               "callAcl": null,
               "outgoingDdi": null,

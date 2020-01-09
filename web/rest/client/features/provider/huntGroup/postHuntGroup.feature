@@ -38,7 +38,6 @@ Feature: Create hunt groups
           "noAnswerNumberValue": null,
           "preventMissedCalls": 1,
           "id": 2,
-          "company": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": 1,
           "noAnswerVoiceMailUser": null,
@@ -64,7 +63,6 @@ Feature: Create hunt groups
           "noAnswerNumberValue": null,
           "preventMissedCalls": 1,
           "id": 2,
-          "company": "~",
           "noAnswerLocution": null,
           "noAnswerExtension": {
               "number": "101",
@@ -72,7 +70,6 @@ Feature: Create hunt groups
               "numberValue": null,
               "friendValue": null,
               "id": 1,
-              "company": 1,
               "ivr": null,
               "huntGroup": null,
               "conferenceRoom": null,

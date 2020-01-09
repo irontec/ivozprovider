@@ -60,7 +60,6 @@ Feature: Create users
           "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 3,
-          "company": 1,
           "callAcl": 1,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
@@ -102,26 +101,10 @@ Feature: Create users
           "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 3,
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "onDemandRecordCode": "",
-              "balance": 1.2,
-              "id": 1,
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
-          },
           "callAcl": {
               "name": "testACL",
               "defaultPolicy": "allow",
-              "id": 1,
-              "company": 1
+              "id": 1
           },
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
@@ -152,7 +135,6 @@ Feature: Create users
               "lastProvisionDate": null,
               "t38Passthrough": "no",
               "id": 3,
-              "company": 1,
               "terminalModel": 1
           },
           "extension": null,

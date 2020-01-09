@@ -26,7 +26,6 @@ Feature: Create pick up groups
       {
           "name": "new pick up group",
           "id": 2,
-          "company": 1,
           "userIds": [
             1,
             2
@@ -46,7 +45,6 @@ Feature: Create pick up groups
       {
           "name": "new pick up group",
           "id": 2,
-          "company": "~",
           "userIds": [
             1,
             2

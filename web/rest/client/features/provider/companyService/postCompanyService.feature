@@ -23,7 +23,6 @@ Feature: Create company services
       {
           "code": "92",
           "id": 7,
-          "company": 1,
           "service": 4
       }
     """
@@ -40,7 +39,6 @@ Feature: Create company services
       {
           "code": "92",
           "id": 7,
-          "company": "~",
           "service": {
               "iden": "RecordLocution",
               "defaultCode": "00",

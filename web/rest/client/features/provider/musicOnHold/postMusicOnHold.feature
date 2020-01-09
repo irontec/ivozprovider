@@ -42,8 +42,7 @@ This is file content
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": 1
+          }
       }
     """
 
@@ -69,7 +68,6 @@ This is file content
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": "~"
+          }
       }
     """

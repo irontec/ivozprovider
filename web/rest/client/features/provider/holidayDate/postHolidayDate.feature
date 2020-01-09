@@ -59,8 +59,7 @@ Feature: Create holiday dates
           "id": 3,
           "calendar": {
               "name": "testCalendar",
-              "id": 1,
-              "company": 1
+              "id": 1
           },
           "locution": {
               "name": "testLocution",
@@ -75,8 +74,7 @@ Feature: Create holiday dates
                   "fileSize": 1,
                   "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "extension": null,
           "voiceMailUser": null,
