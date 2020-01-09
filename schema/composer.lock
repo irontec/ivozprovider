@@ -1807,11 +1807,11 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "2.0.0.0",
+            "version": "2.2.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "4fbd686492d65dff15124cb830b16453dc5f7c89",
+                "reference": "1aaa42e81be3805be1cba0321ab71b245bc36995",
                 "shasum": null
             },
             "require": {
@@ -1823,7 +1823,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "EntityGeneratorBundle\\": "EntityGeneratorBundle"
+                    "IvozDevTools\\": ""
                 }
             },
             "license": [
