@@ -1,3 +1,5 @@
+imports:
+  - { resource: "@CommandlogBundle/Resources/config/services.yml" }
 
 services:
   _defaults:

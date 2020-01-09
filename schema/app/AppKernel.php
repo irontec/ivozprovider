@@ -19,8 +19,11 @@ class AppKernel extends Kernel
             /* Core */
             new CoreBundle\CoreBundle(),
 
+            /* CommandlogBundle */
+            new IvozDevTools\CommandlogBundle\CommandlogBundle(),
+
             /* EntityGeneratorBundle */
-            new EntityGeneratorBundle\EntityGeneratorBundle(),
+            new IvozDevTools\EntityGeneratorBundle\EntityGeneratorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'test_e2e'], true)) {
