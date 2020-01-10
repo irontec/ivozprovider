@@ -13,6 +13,9 @@ production:
       autoRefresh: 15
       pagination:
         items: 25
+      order:
+        field:
+        - FaxesInOut.calldate desc
       <<: *FaxesInOut
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Faxfile', 'Faxfiles', 0), "[format| (%parent%)]")
