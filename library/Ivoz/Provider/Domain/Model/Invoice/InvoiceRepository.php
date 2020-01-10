@@ -23,18 +23,4 @@ interface InvoiceRepository extends ObjectRepository, Selectable
         string $utcOutDate,
         int $invoiceIdToBeExcluded = null
     );
-
-    /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $utcOutDate
-     * @param int $invoiceIdToBeExcluded
-     * @return \Ivoz\Provider\Domain\Model\Invoice\Invoice[]
-     */
-    public function getInvoices(
-        int $companyId,
-        int $brandId,
-        string $utcOutDate,
-        int $invoiceIdToBeExcluded = null
-    );
 }

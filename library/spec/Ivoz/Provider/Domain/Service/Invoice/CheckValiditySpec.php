@@ -227,14 +227,5 @@ class CheckValiditySpec extends ObjectBehavior
                 Argument::type('string'),
                 Argument::type('numeric')
             )->willReturn(0);
-
-        $this
-            ->invoiveRepository
-            ->getInvoices(
-                Argument::type('numeric'),
-                Argument::type('numeric'),
-                Argument::type('string'),
-                Argument::type('numeric')
-            )->willReturn([]);
     }
 }
