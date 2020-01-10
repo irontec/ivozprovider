@@ -30,7 +30,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
         "on_commit" =>
         [
             \Ivoz\Provider\Domain\Service\Company\SearchBrokenThresholds::class => 10,
-            \Ivoz\Provider\Domain\Service\Company\SendCgratesReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\Company\SendCgratesUpdateRequest::class => 200,
             \Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest::class => 200,
             \Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest::class => 200,
         ],
