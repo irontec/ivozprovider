@@ -66,4 +66,38 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
         }
         return $currency->getSymbol();
     }
+
+    /**
+     * @return void
+     * @throws \DomainException
+     */
+    public function assertNoDuplicatedDestinationRateGroups()
+    {
+        $ratingPlans = $this->getRatingPlan();
+        if (empty($ratingPlans)) {
+            return;
+        }
+
+        $destinationRateGroupIds = [];
+
+        foreach ($ratingPlans as $ratingPlan) {
+            $destinationRateGroupId = $ratingPlan
+                ->getDestinationRateGroup()
+                ->getId();
+
+            $duplicated = in_array(
+                $destinationRateGroupId,
+                $destinationRateGroupIds,
+                true
+            );
+
+            if ($duplicated) {
+                throw new \DomainException(
+                    'Duplicated destination rate group in rating plan group'
+                );
+            }
+
+            $destinationRateGroupIds[] = $destinationRateGroupId;
+        }
+    }
 }
