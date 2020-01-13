@@ -13,6 +13,9 @@ Ivoz\Cgr\Domain\Model\TpCdr\TpCdrAbstract:
     tpCdr_cgrid_idx:
       columns:
         - cgrid
+    tpCdr_answerTime_idx:
+      columns:
+      - answer_time
   fields:
     cgrid:
       type: string
