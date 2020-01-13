@@ -4,12 +4,11 @@ namespace Tests\Provider\RatingPlan;
 
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
-use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 
 class RatingPlanLifeCycleTest extends KernelTestCase
 {
@@ -25,7 +24,7 @@ class RatingPlanLifeCycleTest extends KernelTestCase
             ->setTimeIn(new \DateTime('2020-01-01 10:10:10'))
             ->setWeight(9)
             ->setTimingType(RatingPlanInterface::TIMINGTYPE_CUSTOM)
-            ->setRatingPlanGroupId(1)
+            ->setRatingPlanGroupId(2)
             ->setDestinationRateGroupId(1);
 
         return $ratingPlanDto;
@@ -122,7 +121,7 @@ class RatingPlanLifeCycleTest extends KernelTestCase
             $changelog,
             [
                 'tpid' => 'b1',
-                'tag' => 'b1rp1',
+                'tag' => 'b1rp2',
                 'destrates_tag' => 'b1dr1',
                 'timing_tag' => 'b1tm2',
                 'weight' => 9.0,

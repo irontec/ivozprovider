@@ -22,7 +22,7 @@
           "saturday": true,
           "sunday": true,
           "ratingPlanGroup": "1",
-          "destinationRateGroup": "1"
+          "destinationRateGroup": "2"
       }
     """
     Then the response status code should be 201
@@ -43,7 +43,7 @@
           "sunday": true,
           "id": 2,
           "ratingPlanGroup": 1,
-          "destinationRateGroup": 1
+          "destinationRateGroup": 2
       }
     """
 
