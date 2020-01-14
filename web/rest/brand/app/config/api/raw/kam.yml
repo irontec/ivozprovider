@@ -16,3 +16,11 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+
+Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
