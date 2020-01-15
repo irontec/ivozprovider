@@ -66,20 +66,20 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
      */
     private function tryToRateCalls(InvoiceInterface $invoice)
     {
-        $untarificattedCallIds = $this
+        $unratedCallIds = $this
             ->billableCallRepository
-            ->getUntarificattedCallIdsByInvoice(
+            ->getUnratedCallIdsByInvoice(
                 $invoice
             );
 
-        if (empty($untarificattedCallIds)) {
+        if (empty($unratedCallIds)) {
             return;
         }
 
         try {
-            $this->rerateCallService->execute($untarificattedCallIds);
+            $this->rerateCallService->execute($unratedCallIds);
 
-            foreach ($untarificattedCallIds as $id) {
+            foreach ($unratedCallIds as $id) {
                 $billableCall = $this->billableCallRepository->find($id);
                 $trunksCdr = $billableCall->getTrunksCdr();
                 if (!$trunksCdr) {

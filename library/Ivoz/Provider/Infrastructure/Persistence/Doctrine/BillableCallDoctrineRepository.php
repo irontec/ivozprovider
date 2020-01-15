@@ -309,9 +309,9 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::getUntarificattedCallIdsByInvoice
+     * @see BillableCallRepository::getUnratedCallIdsByInvoice
      */
-    public function getUntarificattedCallIdsByInvoice(InvoiceInterface $invoice): array
+    public function getUnratedCallIdsByInvoice(InvoiceInterface $invoice): array
     {
         $conditions = $this->getConditionsByInvoice(
             $invoice
@@ -341,11 +341,11 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::countUntarificattedCallsByInvoice
+     * @see BillableCallRepository::countUnratedCallsByInvoice
      */
-    public function countUntarificattedCallsByInvoice(InvoiceInterface $invoice): int
+    public function countUnratedCallsByInvoice(InvoiceInterface $invoice): int
     {
-        $results = $this->getUntarificattedCallIdsByInvoice(
+        $results = $this->getUnratedCallIdsByInvoice(
             $invoice
         );
 

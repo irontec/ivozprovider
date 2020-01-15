@@ -77,7 +77,7 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @param InvoiceInterface $invoice
      * @return array
      */
-    public function getUntarificattedCallIdsByInvoice(InvoiceInterface $invoice): array;
+    public function getUnratedCallIdsByInvoice(InvoiceInterface $invoice): array;
 
     /**
      * @param InvoiceInterface $invoice
@@ -86,7 +86,7 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
      */
-    public function countUntarificattedCallsByInvoice(InvoiceInterface $invoice);
+    public function countUnratedCallsByInvoice(InvoiceInterface $invoice);
 
     /**
      * @param array $conditions

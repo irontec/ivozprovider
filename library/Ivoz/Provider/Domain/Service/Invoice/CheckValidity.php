@@ -112,13 +112,13 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     private function assertNoUnmeteredCalls(InvoiceInterface $invoice)
     {
 
-        $untarificattedCallNum = $this
+        $unratedCallNum = $this
             ->billableCallRepository
-            ->countUntarificattedCallsByInvoice(
+            ->countUnratedCallsByInvoice(
                 $invoice
             );
 
-        if ($untarificattedCallNum > 0) {
+        if ($unratedCallNum > 0) {
             throw new \DomainException('Unmetered calls', self::UNMETERED_CALLS);
         }
     }
