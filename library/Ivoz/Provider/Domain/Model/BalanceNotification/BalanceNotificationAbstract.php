@@ -231,10 +231,8 @@ abstract class BalanceNotificationAbstract
     protected function setThreshold($threshold = null)
     {
         if (!is_null($threshold)) {
-            if (!is_null($threshold)) {
-                Assertion::numeric($threshold);
-                $threshold = (float) $threshold;
-            }
+            Assertion::numeric($threshold);
+            $threshold = (float) $threshold;
         }
 
         $this->threshold = $threshold;

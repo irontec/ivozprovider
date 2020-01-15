@@ -194,10 +194,8 @@ abstract class BalanceMovementAbstract
     protected function setAmount($amount = null)
     {
         if (!is_null($amount)) {
-            if (!is_null($amount)) {
-                Assertion::numeric($amount);
-                $amount = (float) $amount;
-            }
+            Assertion::numeric($amount);
+            $amount = (float) $amount;
         }
 
         $this->amount = $amount;
@@ -225,10 +223,8 @@ abstract class BalanceMovementAbstract
     protected function setBalance($balance = null)
     {
         if (!is_null($balance)) {
-            if (!is_null($balance)) {
-                Assertion::numeric($balance);
-                $balance = (float) $balance;
-            }
+            Assertion::numeric($balance);
+            $balance = (float) $balance;
         }
 
         $this->balance = $balance;

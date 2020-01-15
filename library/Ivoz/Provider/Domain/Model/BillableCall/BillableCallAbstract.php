@@ -487,10 +487,8 @@ abstract class BillableCallAbstract
     protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
-            if (!is_null($cost)) {
-                Assertion::numeric($cost);
-                $cost = (float) $cost;
-            }
+            Assertion::numeric($cost);
+            $cost = (float) $cost;
         }
 
         $this->cost = $cost;
@@ -518,10 +516,8 @@ abstract class BillableCallAbstract
     protected function setPrice($price = null)
     {
         if (!is_null($price)) {
-            if (!is_null($price)) {
-                Assertion::numeric($price);
-                $price = (float) $price;
-            }
+            Assertion::numeric($price);
+            $price = (float) $price;
         }
 
         $this->price = $price;

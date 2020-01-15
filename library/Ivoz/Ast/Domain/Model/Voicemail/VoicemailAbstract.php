@@ -1157,10 +1157,8 @@ abstract class VoicemailAbstract
     protected function setVolgain($volgain = null)
     {
         if (!is_null($volgain)) {
-            if (!is_null($volgain)) {
-                Assertion::numeric($volgain);
-                $volgain = (float) $volgain;
-            }
+            Assertion::numeric($volgain);
+            $volgain = (float) $volgain;
         }
 
         $this->volgain = $volgain;

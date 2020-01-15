@@ -392,10 +392,8 @@ abstract class InvoiceAbstract
     protected function setTotal($total = null)
     {
         if (!is_null($total)) {
-            if (!is_null($total)) {
-                Assertion::numeric($total);
-                $total = (float) $total;
-            }
+            Assertion::numeric($total);
+            $total = (float) $total;
         }
 
         $this->total = $total;
@@ -423,10 +421,8 @@ abstract class InvoiceAbstract
     protected function setTaxRate($taxRate = null)
     {
         if (!is_null($taxRate)) {
-            if (!is_null($taxRate)) {
-                Assertion::numeric($taxRate);
-                $taxRate = (float) $taxRate;
-            }
+            Assertion::numeric($taxRate);
+            $taxRate = (float) $taxRate;
         }
 
         $this->taxRate = $taxRate;
@@ -454,10 +450,8 @@ abstract class InvoiceAbstract
     protected function setTotalWithTax($totalWithTax = null)
     {
         if (!is_null($totalWithTax)) {
-            if (!is_null($totalWithTax)) {
-                Assertion::numeric($totalWithTax);
-                $totalWithTax = (float) $totalWithTax;
-            }
+            Assertion::numeric($totalWithTax);
+            $totalWithTax = (float) $totalWithTax;
         }
 
         $this->totalWithTax = $totalWithTax;

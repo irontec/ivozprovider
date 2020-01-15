@@ -238,10 +238,8 @@ abstract class FixedCostAbstract
     protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
-            if (!is_null($cost)) {
-                Assertion::numeric($cost);
-                $cost = (float) $cost;
-            }
+            Assertion::numeric($cost);
+            $cost = (float) $cost;
         }
 
         $this->cost = $cost;

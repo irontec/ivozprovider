@@ -1083,10 +1083,8 @@ abstract class CompanyAbstract
     protected function setBalance($balance = null)
     {
         if (!is_null($balance)) {
-            if (!is_null($balance)) {
-                Assertion::numeric($balance);
-                $balance = (float) $balance;
-            }
+            Assertion::numeric($balance);
+            $balance = (float) $balance;
         }
 
         $this->balance = $balance;
