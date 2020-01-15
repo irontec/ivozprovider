@@ -3,8 +3,10 @@
 namespace Ivoz\Provider\Domain\Service\User;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterface;
@@ -72,9 +74,22 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
                 return;
             }
 
-            $prevUser->setExtension(null);
+            /** @var UserDto $prevUserDto */
+            $prevUserDto = $this
+                ->entityTools
+                ->entityToDto(
+                    $prevUser
+                );
+
+            $prevUserDto
+                ->setExtension(null);
+
             $this->entityTools
-                ->persist($prevUser, false);
+                ->persistDto(
+                    $prevUserDto,
+                    $prevUser,
+                    false
+                );
         }
 
         $routeType = $extension->getRouteType();
@@ -89,9 +104,28 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 
             if ($user && !$userExtension) {
                 // Set this as its screen extension
-                $user->setExtension($extension);
-                $this->entityTools
-                    ->persist($user, false);
+                /** @var UserDto $userDto */
+                $userDto = $this
+                    ->entityTools
+                    ->entityToDto($user);
+
+                /** @var ExtensionDto  $extensionDto */
+                $extensionDto = $this
+                    ->entityTools
+                    ->entityToDto(
+                        $extension
+                    );
+
+                $userDto
+                    ->setExtension($extensionDto);
+
+                $this
+                    ->entityTools
+                    ->persistDto(
+                        $userDto,
+                        $user,
+                        false
+                    );
             }
         }
     }

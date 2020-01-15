@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
@@ -30,6 +31,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
     public static function getSubscribedEvents()
     {
+        // This service is triggered twice. ¿PRE_PERSIST?
         return [
             self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
@@ -66,7 +68,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         }
 
         /**
-         * @var DomainDTO $domainDto
+         * @var DomainDto $domainDto
          */
         $domainDto
             ->setDomain($domainUsers)
@@ -76,9 +78,21 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
             ->entityTools
             ->persistDto($domainDto, $domain, true);
 
-        $brand->setDomain($domain);
+        /** @var BrandDto $brandDto */
+        $brandDto = $this
+            ->entityTools
+            ->entityToDto(
+                $brand
+            );
 
-        $this->entityTools
-            ->persist($brand);
+        $brandDto
+            ->setDomain($domainDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $brandDto,
+                $brand
+            );
     }
 }
