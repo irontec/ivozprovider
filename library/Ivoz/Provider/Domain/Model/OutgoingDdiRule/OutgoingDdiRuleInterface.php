@@ -66,7 +66,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     /**
      * Set forcedDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi | null
      *
      * @return static
      */

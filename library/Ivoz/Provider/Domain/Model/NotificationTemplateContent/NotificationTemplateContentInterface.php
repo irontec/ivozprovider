@@ -70,7 +70,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */

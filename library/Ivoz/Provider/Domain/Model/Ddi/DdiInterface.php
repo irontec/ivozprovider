@@ -126,7 +126,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set conferenceRoom
      *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
+     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
      *
      * @return static
      */
@@ -142,7 +142,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -158,7 +158,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set externalCallFilter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter | null
      *
      * @return static
      */
@@ -190,7 +190,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -206,7 +206,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -222,7 +222,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -238,7 +238,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set fax
      *
-     * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
+     * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax | null
      *
      * @return static
      */
@@ -254,7 +254,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider | null
      *
      * @return static
      */
@@ -286,7 +286,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -302,7 +302,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set conditionalRoute
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
      *
      * @return static
      */
@@ -318,7 +318,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */

@@ -69,7 +69,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

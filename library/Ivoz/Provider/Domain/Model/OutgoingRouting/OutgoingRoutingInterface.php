@@ -113,7 +113,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -129,7 +129,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -145,7 +145,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
      *
      * @return static
      */
@@ -161,7 +161,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Set routingPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup | null
      *
      * @return static
      */
@@ -177,7 +177,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Set routingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
+     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag | null
      *
      * @return static
      */
@@ -193,7 +193,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Set clidCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry | null
      *
      * @return static
      */

@@ -88,7 +88,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     /**
      * Set routingPatternGroupsRelPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern | null
      *
      * @return static
      */
