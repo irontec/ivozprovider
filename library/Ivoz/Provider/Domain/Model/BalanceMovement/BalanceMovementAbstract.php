@@ -187,7 +187,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set amount
      *
-     * @param float $amount
+     * @param float $amount | null
      *
      * @return static
      */
@@ -218,7 +218,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set balance
      *
-     * @param float $balance
+     * @param float $balance | null
      *
      * @return static
      */
@@ -249,7 +249,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param \DateTime $createdOn | null
      *
      * @return static
      */
@@ -284,7 +284,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -308,7 +308,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */

@@ -274,7 +274,7 @@ abstract class QueueAbstract
     /**
      * Set periodicAnnounce
      *
-     * @param string $periodicAnnounce
+     * @param string $periodicAnnounce | null
      *
      * @return static
      */
@@ -302,7 +302,7 @@ abstract class QueueAbstract
     /**
      * Set periodicAnnounceFrequency
      *
-     * @param integer $periodicAnnounceFrequency
+     * @param integer $periodicAnnounceFrequency | null
      *
      * @return static
      */
@@ -331,7 +331,7 @@ abstract class QueueAbstract
     /**
      * Set timeout
      *
-     * @param integer $timeout
+     * @param integer $timeout | null
      *
      * @return static
      */
@@ -412,7 +412,7 @@ abstract class QueueAbstract
     /**
      * Set wrapuptime
      *
-     * @param integer $wrapuptime
+     * @param integer $wrapuptime | null
      *
      * @return static
      */
@@ -441,7 +441,7 @@ abstract class QueueAbstract
     /**
      * Set maxlen
      *
-     * @param integer $maxlen
+     * @param integer $maxlen | null
      *
      * @return static
      */
@@ -470,7 +470,7 @@ abstract class QueueAbstract
     /**
      * Set strategy
      *
-     * @param string $strategy
+     * @param string $strategy | null
      *
      * @return static
      */
@@ -494,7 +494,7 @@ abstract class QueueAbstract
     /**
      * Set weight
      *
-     * @param integer $weight
+     * @param integer $weight | null
      *
      * @return static
      */

@@ -263,7 +263,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Set status
      *
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
@@ -297,7 +297,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -321,7 +321,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */

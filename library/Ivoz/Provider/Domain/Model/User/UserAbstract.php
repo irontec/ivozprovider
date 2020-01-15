@@ -446,7 +446,7 @@ abstract class UserAbstract
     /**
      * Set email
      *
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
@@ -474,7 +474,7 @@ abstract class UserAbstract
     /**
      * Set pass
      *
-     * @param string $pass
+     * @param string $pass | null
      *
      * @return static
      */
@@ -783,7 +783,7 @@ abstract class UserAbstract
     /**
      * Set callAcl
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
+     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
      *
      * @return static
      */
@@ -807,7 +807,7 @@ abstract class UserAbstract
     /**
      * Set bossAssistant
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant | null
      *
      * @return static
      */
@@ -831,7 +831,7 @@ abstract class UserAbstract
     /**
      * Set bossAssistantWhiteList
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList | null
      *
      * @return static
      */
@@ -855,7 +855,7 @@ abstract class UserAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -879,7 +879,7 @@ abstract class UserAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -903,7 +903,7 @@ abstract class UserAbstract
     /**
      * Set terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal | null
      *
      * @return static
      */
@@ -927,7 +927,7 @@ abstract class UserAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -951,7 +951,7 @@ abstract class UserAbstract
     /**
      * Set timezone
      *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone
+     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone | null
      *
      * @return static
      */
@@ -975,7 +975,7 @@ abstract class UserAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */
@@ -999,7 +999,7 @@ abstract class UserAbstract
     /**
      * Set outgoingDdiRule
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
+     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule | null
      *
      * @return static
      */
@@ -1023,7 +1023,7 @@ abstract class UserAbstract
     /**
      * Set voicemailLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution | null
      *
      * @return static
      */

@@ -267,7 +267,7 @@ abstract class TerminalAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
@@ -349,7 +349,7 @@ abstract class TerminalAbstract
     /**
      * Set allowVideo
      *
-     * @param string $allowVideo
+     * @param string $allowVideo | null
      *
      * @return static
      */
@@ -435,7 +435,7 @@ abstract class TerminalAbstract
     /**
      * Set mac
      *
-     * @param string $mac
+     * @param string $mac | null
      *
      * @return static
      */
@@ -463,7 +463,7 @@ abstract class TerminalAbstract
     /**
      * Set lastProvisionDate
      *
-     * @param \DateTime $lastProvisionDate
+     * @param \DateTime $lastProvisionDate | null
      *
      * @return static
      */
@@ -552,7 +552,7 @@ abstract class TerminalAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -576,7 +576,7 @@ abstract class TerminalAbstract
     /**
      * Set terminalModel
      *
-     * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel
+     * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel | null
      *
      * @return static
      */

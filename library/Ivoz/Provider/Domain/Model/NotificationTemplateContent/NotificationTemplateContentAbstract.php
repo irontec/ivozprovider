@@ -210,7 +210,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Set fromName
      *
-     * @param string $fromName
+     * @param string $fromName | null
      *
      * @return static
      */
@@ -238,7 +238,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Set fromAddress
      *
-     * @param string $fromAddress
+     * @param string $fromAddress | null
      *
      * @return static
      */
@@ -375,7 +375,7 @@ abstract class NotificationTemplateContentAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */

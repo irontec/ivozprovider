@@ -199,7 +199,7 @@ abstract class MatchListPatternAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
@@ -258,7 +258,7 @@ abstract class MatchListPatternAbstract
     /**
      * Set regexp
      *
-     * @param string $regexp
+     * @param string $regexp | null
      *
      * @return static
      */
@@ -286,7 +286,7 @@ abstract class MatchListPatternAbstract
     /**
      * Set numbervalue
      *
-     * @param string $numbervalue
+     * @param string $numbervalue | null
      *
      * @return static
      */
@@ -338,7 +338,7 @@ abstract class MatchListPatternAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

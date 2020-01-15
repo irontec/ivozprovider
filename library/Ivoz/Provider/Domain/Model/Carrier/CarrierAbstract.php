@@ -271,7 +271,7 @@ abstract class CarrierAbstract
     /**
      * Set externallyRated
      *
-     * @param boolean $externallyRated
+     * @param boolean $externallyRated | null
      *
      * @return static
      */
@@ -300,7 +300,7 @@ abstract class CarrierAbstract
     /**
      * Set balance
      *
-     * @param float $balance
+     * @param float $balance | null
      *
      * @return static
      */
@@ -331,7 +331,7 @@ abstract class CarrierAbstract
     /**
      * Set calculateCost
      *
-     * @param boolean $calculateCost
+     * @param boolean $calculateCost | null
      *
      * @return static
      */
@@ -384,7 +384,7 @@ abstract class CarrierAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -408,7 +408,7 @@ abstract class CarrierAbstract
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */

@@ -342,7 +342,7 @@ abstract class QueueAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
@@ -370,7 +370,7 @@ abstract class QueueAbstract
     /**
      * Set maxWaitTime
      *
-     * @param integer $maxWaitTime
+     * @param integer $maxWaitTime | null
      *
      * @return static
      */
@@ -399,7 +399,7 @@ abstract class QueueAbstract
     /**
      * Set timeoutTargetType
      *
-     * @param string $timeoutTargetType
+     * @param string $timeoutTargetType | null
      *
      * @return static
      */
@@ -432,7 +432,7 @@ abstract class QueueAbstract
     /**
      * Set timeoutNumberValue
      *
-     * @param string $timeoutNumberValue
+     * @param string $timeoutNumberValue | null
      *
      * @return static
      */
@@ -460,7 +460,7 @@ abstract class QueueAbstract
     /**
      * Set maxlen
      *
-     * @param integer $maxlen
+     * @param integer $maxlen | null
      *
      * @return static
      */
@@ -489,7 +489,7 @@ abstract class QueueAbstract
     /**
      * Set fullTargetType
      *
-     * @param string $fullTargetType
+     * @param string $fullTargetType | null
      *
      * @return static
      */
@@ -522,7 +522,7 @@ abstract class QueueAbstract
     /**
      * Set fullNumberValue
      *
-     * @param string $fullNumberValue
+     * @param string $fullNumberValue | null
      *
      * @return static
      */
@@ -550,7 +550,7 @@ abstract class QueueAbstract
     /**
      * Set periodicAnnounceFrequency
      *
-     * @param integer $periodicAnnounceFrequency
+     * @param integer $periodicAnnounceFrequency | null
      *
      * @return static
      */
@@ -579,7 +579,7 @@ abstract class QueueAbstract
     /**
      * Set memberCallRest
      *
-     * @param integer $memberCallRest
+     * @param integer $memberCallRest | null
      *
      * @return static
      */
@@ -608,7 +608,7 @@ abstract class QueueAbstract
     /**
      * Set memberCallTimeout
      *
-     * @param integer $memberCallTimeout
+     * @param integer $memberCallTimeout | null
      *
      * @return static
      */
@@ -637,7 +637,7 @@ abstract class QueueAbstract
     /**
      * Set strategy
      *
-     * @param string $strategy
+     * @param string $strategy | null
      *
      * @return static
      */
@@ -661,7 +661,7 @@ abstract class QueueAbstract
     /**
      * Set weight
      *
-     * @param integer $weight
+     * @param integer $weight | null
      *
      * @return static
      */
@@ -714,7 +714,7 @@ abstract class QueueAbstract
     /**
      * Set periodicAnnounceLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution | null
      *
      * @return static
      */
@@ -738,7 +738,7 @@ abstract class QueueAbstract
     /**
      * Set timeoutLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution | null
      *
      * @return static
      */
@@ -762,7 +762,7 @@ abstract class QueueAbstract
     /**
      * Set timeoutExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension | null
      *
      * @return static
      */
@@ -786,7 +786,7 @@ abstract class QueueAbstract
     /**
      * Set timeoutVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser | null
      *
      * @return static
      */
@@ -810,7 +810,7 @@ abstract class QueueAbstract
     /**
      * Set fullLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution | null
      *
      * @return static
      */
@@ -834,7 +834,7 @@ abstract class QueueAbstract
     /**
      * Set fullExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension | null
      *
      * @return static
      */
@@ -858,7 +858,7 @@ abstract class QueueAbstract
     /**
      * Set fullVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser | null
      *
      * @return static
      */
@@ -882,7 +882,7 @@ abstract class QueueAbstract
     /**
      * Set timeoutNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry | null
      *
      * @return static
      */
@@ -906,7 +906,7 @@ abstract class QueueAbstract
     /**
      * Set fullNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry | null
      *
      * @return static
      */

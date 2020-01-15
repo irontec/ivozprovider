@@ -287,7 +287,7 @@ abstract class InvoiceAbstract
     /**
      * Set number
      *
-     * @param string $number
+     * @param string $number | null
      *
      * @return static
      */
@@ -315,7 +315,7 @@ abstract class InvoiceAbstract
     /**
      * Set inDate
      *
-     * @param \DateTime $inDate
+     * @param \DateTime $inDate | null
      *
      * @return static
      */
@@ -350,7 +350,7 @@ abstract class InvoiceAbstract
     /**
      * Set outDate
      *
-     * @param \DateTime $outDate
+     * @param \DateTime $outDate | null
      *
      * @return static
      */
@@ -385,7 +385,7 @@ abstract class InvoiceAbstract
     /**
      * Set total
      *
-     * @param float $total
+     * @param float $total | null
      *
      * @return static
      */
@@ -416,7 +416,7 @@ abstract class InvoiceAbstract
     /**
      * Set taxRate
      *
-     * @param float $taxRate
+     * @param float $taxRate | null
      *
      * @return static
      */
@@ -447,7 +447,7 @@ abstract class InvoiceAbstract
     /**
      * Set totalWithTax
      *
-     * @param float $totalWithTax
+     * @param float $totalWithTax | null
      *
      * @return static
      */
@@ -478,7 +478,7 @@ abstract class InvoiceAbstract
     /**
      * Set status
      *
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
@@ -512,7 +512,7 @@ abstract class InvoiceAbstract
     /**
      * Set statusMsg
      *
-     * @param string $statusMsg
+     * @param string $statusMsg | null
      *
      * @return static
      */
@@ -540,7 +540,7 @@ abstract class InvoiceAbstract
     /**
      * Set invoiceTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
+     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate | null
      *
      * @return static
      */
@@ -612,7 +612,7 @@ abstract class InvoiceAbstract
     /**
      * Set numberSequence
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
+     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence | null
      *
      * @return static
      */
@@ -636,7 +636,7 @@ abstract class InvoiceAbstract
     /**
      * Set scheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler | null
      *
      * @return static
      */

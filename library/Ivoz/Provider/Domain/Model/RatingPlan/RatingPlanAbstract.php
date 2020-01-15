@@ -283,7 +283,7 @@ abstract class RatingPlanAbstract
     /**
      * Set timingType
      *
-     * @param string $timingType
+     * @param string $timingType | null
      *
      * @return static
      */
@@ -341,7 +341,7 @@ abstract class RatingPlanAbstract
     /**
      * Set monday
      *
-     * @param boolean $monday
+     * @param boolean $monday | null
      *
      * @return static
      */
@@ -370,7 +370,7 @@ abstract class RatingPlanAbstract
     /**
      * Set tuesday
      *
-     * @param boolean $tuesday
+     * @param boolean $tuesday | null
      *
      * @return static
      */
@@ -399,7 +399,7 @@ abstract class RatingPlanAbstract
     /**
      * Set wednesday
      *
-     * @param boolean $wednesday
+     * @param boolean $wednesday | null
      *
      * @return static
      */
@@ -428,7 +428,7 @@ abstract class RatingPlanAbstract
     /**
      * Set thursday
      *
-     * @param boolean $thursday
+     * @param boolean $thursday | null
      *
      * @return static
      */
@@ -457,7 +457,7 @@ abstract class RatingPlanAbstract
     /**
      * Set friday
      *
-     * @param boolean $friday
+     * @param boolean $friday | null
      *
      * @return static
      */
@@ -486,7 +486,7 @@ abstract class RatingPlanAbstract
     /**
      * Set saturday
      *
-     * @param boolean $saturday
+     * @param boolean $saturday | null
      *
      * @return static
      */
@@ -515,7 +515,7 @@ abstract class RatingPlanAbstract
     /**
      * Set sunday
      *
-     * @param boolean $sunday
+     * @param boolean $sunday | null
      *
      * @return static
      */

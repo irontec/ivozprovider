@@ -334,7 +334,7 @@ abstract class BillableCallAbstract
     /**
      * Set callid
      *
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
@@ -362,7 +362,7 @@ abstract class BillableCallAbstract
     /**
      * Set startTime
      *
-     * @param \DateTime $startTime
+     * @param \DateTime $startTime | null
      *
      * @return static
      */
@@ -424,7 +424,7 @@ abstract class BillableCallAbstract
     /**
      * Set caller
      *
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
@@ -452,7 +452,7 @@ abstract class BillableCallAbstract
     /**
      * Set callee
      *
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
@@ -480,7 +480,7 @@ abstract class BillableCallAbstract
     /**
      * Set cost
      *
-     * @param float $cost
+     * @param float $cost | null
      *
      * @return static
      */
@@ -511,7 +511,7 @@ abstract class BillableCallAbstract
     /**
      * Set price
      *
-     * @param float $price
+     * @param float $price | null
      *
      * @return static
      */
@@ -542,7 +542,7 @@ abstract class BillableCallAbstract
     /**
      * Set priceDetails
      *
-     * @param array $priceDetails
+     * @param array $priceDetails | null
      *
      * @return static
      */
@@ -566,7 +566,7 @@ abstract class BillableCallAbstract
     /**
      * Set carrierName
      *
-     * @param string $carrierName
+     * @param string $carrierName | null
      *
      * @return static
      */
@@ -594,7 +594,7 @@ abstract class BillableCallAbstract
     /**
      * Set destinationName
      *
-     * @param string $destinationName
+     * @param string $destinationName | null
      *
      * @return static
      */
@@ -622,7 +622,7 @@ abstract class BillableCallAbstract
     /**
      * Set ratingPlanName
      *
-     * @param string $ratingPlanName
+     * @param string $ratingPlanName | null
      *
      * @return static
      */
@@ -650,7 +650,7 @@ abstract class BillableCallAbstract
     /**
      * Set endpointType
      *
-     * @param string $endpointType
+     * @param string $endpointType | null
      *
      * @return static
      */
@@ -678,7 +678,7 @@ abstract class BillableCallAbstract
     /**
      * Set endpointId
      *
-     * @param integer $endpointId
+     * @param integer $endpointId | null
      *
      * @return static
      */
@@ -708,7 +708,7 @@ abstract class BillableCallAbstract
     /**
      * Set direction
      *
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
@@ -739,7 +739,7 @@ abstract class BillableCallAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -763,7 +763,7 @@ abstract class BillableCallAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -787,7 +787,7 @@ abstract class BillableCallAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -811,7 +811,7 @@ abstract class BillableCallAbstract
     /**
      * Set destination
      *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination | null
      *
      * @return static
      */
@@ -835,7 +835,7 @@ abstract class BillableCallAbstract
     /**
      * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup | null
      *
      * @return static
      */
@@ -859,7 +859,7 @@ abstract class BillableCallAbstract
     /**
      * Set invoice
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
+     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
      *
      * @return static
      */
@@ -883,7 +883,7 @@ abstract class BillableCallAbstract
     /**
      * Set trunksCdr
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr
+     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr | null
      *
      * @return static
      */

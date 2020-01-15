@@ -271,7 +271,7 @@ abstract class TpRateAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */

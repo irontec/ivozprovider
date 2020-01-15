@@ -614,7 +614,7 @@ abstract class TpDerivedChargerAbstract
     /**
      * Set subject
      *
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
@@ -642,7 +642,7 @@ abstract class TpDerivedChargerAbstract
     /**
      * Set destinationIds
      *
-     * @param string $destinationIds
+     * @param string $destinationIds | null
      *
      * @return static
      */

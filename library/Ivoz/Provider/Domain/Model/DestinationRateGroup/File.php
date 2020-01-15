@@ -57,7 +57,7 @@ class File
     /**
      * Set fileSize
      *
-     * @param integer $fileSize
+     * @param integer $fileSize | null
      *
      * @return static
      */
@@ -87,7 +87,7 @@ class File
     /**
      * Set mimeType
      *
-     * @param string $mimeType
+     * @param string $mimeType | null
      *
      * @return static
      */
@@ -115,7 +115,7 @@ class File
     /**
      * Set baseName
      *
-     * @param string $baseName
+     * @param string $baseName | null
      *
      * @return static
      */
@@ -143,7 +143,7 @@ class File
     /**
      * Set importerArguments
      *
-     * @param array $importerArguments
+     * @param array $importerArguments | null
      *
      * @return static
      */

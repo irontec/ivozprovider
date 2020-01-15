@@ -229,7 +229,7 @@ abstract class TrunksAddressAbstract
     /**
      * Set ipAddr
      *
-     * @param string $ipAddr
+     * @param string $ipAddr | null
      *
      * @return static
      */
@@ -311,7 +311,7 @@ abstract class TrunksAddressAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */

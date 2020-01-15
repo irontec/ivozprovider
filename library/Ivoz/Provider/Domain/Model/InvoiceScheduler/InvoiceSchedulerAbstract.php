@@ -370,7 +370,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set lastExecution
      *
-     * @param \DateTime $lastExecution
+     * @param \DateTime $lastExecution | null
      *
      * @return static
      */
@@ -405,7 +405,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set lastExecutionError
      *
-     * @param string $lastExecutionError
+     * @param string $lastExecutionError | null
      *
      * @return static
      */
@@ -433,7 +433,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set nextExecution
      *
-     * @param \DateTime $nextExecution
+     * @param \DateTime $nextExecution | null
      *
      * @return static
      */
@@ -468,7 +468,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set taxRate
      *
-     * @param float $taxRate
+     * @param float $taxRate | null
      *
      * @return static
      */
@@ -499,7 +499,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set invoiceTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
+     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate | null
      *
      * @return static
      */
@@ -571,7 +571,7 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Set numberSequence
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
+     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence | null
      *
      * @return static
      */

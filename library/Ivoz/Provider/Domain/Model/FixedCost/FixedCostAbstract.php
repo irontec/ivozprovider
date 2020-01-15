@@ -207,7 +207,7 @@ abstract class FixedCostAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
@@ -231,7 +231,7 @@ abstract class FixedCostAbstract
     /**
      * Set cost
      *
-     * @param float $cost
+     * @param float $cost | null
      *
      * @return static
      */

@@ -279,7 +279,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
@@ -307,7 +307,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Set destinationsTag
      *
-     * @param string $destinationsTag
+     * @param string $destinationsTag | null
      *
      * @return static
      */
@@ -335,7 +335,7 @@ abstract class TpDestinationRateAbstract
     /**
      * Set ratesTag
      *
-     * @param string $ratesTag
+     * @param string $ratesTag | null
      *
      * @return static
      */

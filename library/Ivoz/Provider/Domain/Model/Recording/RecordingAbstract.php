@@ -249,7 +249,7 @@ abstract class RecordingAbstract
     /**
      * Set callid
      *
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
@@ -368,7 +368,7 @@ abstract class RecordingAbstract
     /**
      * Set caller
      *
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
@@ -396,7 +396,7 @@ abstract class RecordingAbstract
     /**
      * Set callee
      *
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
@@ -424,7 +424,7 @@ abstract class RecordingAbstract
     /**
      * Set recorder
      *
-     * @param string $recorder
+     * @param string $recorder | null
      *
      * @return static
      */
