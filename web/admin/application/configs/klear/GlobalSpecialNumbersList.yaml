@@ -1,0 +1,117 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: specialNumbersList_screen
+  screens: &specialNumbers_screenLink
+    specialNumbersList_screen: &specialNumbersList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *SpecialNumbers
+      title: _("List of %s %2s", ngettext('Special Number', 'Special Numbers', 0), "[format| (%parent%)]")
+      class: ui-silk-award-star-gold-3
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/platform/global_special_numbers.html"
+      forcedValues:
+        "self::brand": null
+      order:
+          - SpecialNumber.country: asc
+          - SpecialNumber.number: asc
+      fields:
+        order: &specialNumbersFieldsOder_Link
+          country: true
+          number: true
+          disableCDR: true
+        options:
+          title: _("Options")
+          screens:
+            specialNumbersEdit_screen: true
+          dialogs:
+            specialNumbersDel_dialog: true
+          default: specialNumbersEdit_screen
+      fixedPositions: &specialNumbersFixedPositions_Link
+        group0:
+          label: _("Number data")
+          colsPerRow: 3
+          fields:
+            country: 2
+            number: 1
+        group1:
+          label: _("Special treatments")
+          colsPerRow: 3
+          fields:
+            disableInvoicing: 1
+      options:
+        title: _("Options")
+        screens:
+          specialNumbersNew_screen: true
+        dialogs:
+          specialNumbersDel_dialog: true
+
+    specialNumbersNew_screen: &specialNumbersNew_screenLink
+      <<: *SpecialNumbers
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Special Number', 'Special Numbers', 1))
+      fields:
+        order:
+          <<: *specialNumbersFieldsOder_Link
+      fixedPositions:
+        <<: *specialNumbersFixedPositions_Link
+
+    specialNumbersEdit_screen: &specialNumbersEdit_screenLink
+      <<: *SpecialNumbers
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Special Number', 'Special Numbers', 1), "[format| (%item%)]")
+      fields:
+        order:
+          <<: *specialNumbersFieldsOder_Link
+      fixedPositions:
+        <<: *specialNumbersFixedPositions_Link
+
+  dialogs: &specialNumbers_dialogsLink
+    specialNumbersDel_dialog: &specialNumbersDel_dialogLink
+      <<: *SpecialNumbers
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Special Number', 'Special Numbers', 1))
+      description: _("Do you want to delete this %s?", ngettext('Special Number', 'Special Numbers', 1))
+      message: _("%s successfully deleted.", ngettext('Special Number', 'Special Numbers', 1))
+      multiItem: 1
+      labelOnList: 1
+
+  commands: &specialNumbers_commandsLink
+    countriesAutocomplete_command: &countriesAutocomplete_commandLink
+      <<: *Countries
+      controller: field-decorator
+      action: index
+      autocomplete:
+        entity: \Ivoz\Provider\Domain\Model\Country\Country
+        fieldName:
+          fields:
+            - name.${lang}
+            - countryCode
+          template: '%name.${lang}% (%countryCode%)'
+        fullTemplateMatch: true
+        limit: 8
+        order:
+          Country.name.${lang}: asc
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

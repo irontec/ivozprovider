@@ -95,6 +95,10 @@ mappers:
         modelFile: ConferenceRooms,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
     }
+  - &Countries {
+        modelFile: Countries,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Country\\Country'
+    }
   - &Currencies {
         modelFile: Currencies,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Currency\\Currency'
@@ -330,6 +334,10 @@ mappers:
   - &Services {
         modelFile: Services,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Service\\Service'
+    }
+  - &SpecialNumbers {
+        modelFile: SpecialNumbers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\SpecialNumber\\SpecialNumber'
     }
   - &TerminalManufacturers {
         modelFile: TerminalManufacturers,

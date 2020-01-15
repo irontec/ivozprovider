@@ -689,6 +689,9 @@ msgstr "Connettività diretta"
 msgid "Direction"
 msgstr "Direzione"
 
+msgid "Disable CDR"
+msgstr "Disable CDR"
+
 msgid "Disabled"
 msgstr "Disabilitato"
 
@@ -1109,6 +1112,11 @@ msgstr "Configurazione geografica"
 msgid "Global Configuration"
 msgstr "Global Configuration"
 
+msgid "Global Special Number"
+msgid_plural "Global Special Numbers"
+msgstr[0] "Global Special Number"
+msgstr[1] "Global Special Numbers"
+
 msgid "God"
 msgstr "God"
 
@@ -1502,6 +1510,9 @@ msgid "Mark this option to regenerate all rules after saving."
 msgstr ""
 "Contrassegna questa opzione per rigenerare tutte le regole dopo il "
 "salvataggio."
+
+msgid "Mark yes to hide this destination calls in all lists"
+msgstr "Mark yes to hide this destination calls in all lists"
 
 msgid "Mask"
 msgstr "Maschera"
@@ -2358,6 +2369,14 @@ msgstr "Sorgente"
 
 msgid "Source number header"
 msgstr "Intestazione numero sorgente"
+
+msgid "Special Number"
+msgid_plural "Special Numbers"
+msgstr[0] "Special Number"
+msgstr[1] "Special Numbers"
+
+msgid "Special treatments"
+msgstr "Special treatments"
 
 msgid "Specific Template"
 msgstr "Modello specifico"

@@ -1,0 +1,73 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include GlobalSpecialNumbersList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: specialNumbersList_screen
+  screens:
+    specialNumbersList_screen:
+      <<: *specialNumbersList_screenLink
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/settings/special_numbers.html"
+      rawCondition: "(SpecialNumber.brand IS NULL OR SpecialNumber.brand = '${auth.brandId}')"
+      forcedValues:
+      fields:
+        order:
+          <<: *specialNumbersFieldsOder_Link
+          country: true
+          number: true
+        options:
+          title: _("Options")
+          screens:
+            specialNumbersEdit_screen: true
+            specialNumbersView_screen: true
+          dialogs:
+            specialNumbersDel_dialog: true
+          default: specialNumberEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          specialNumbersNew_screen: true
+
+    specialNumbersNew_screen:
+      <<: *specialNumbersNew_screenLink
+      forcedValues:
+        <<: *forcedBrand
+
+    specialNumbersEdit_screen:
+      <<: *specialNumbersEdit_screenLink
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
+    specialNumbersView_screen:
+      <<: *specialNumbersEdit_screenLink
+      class: ui-silk-eye
+      title: _("View %s %2s", ngettext('Special Number', 'Special Numbers', 1), "[format| (%item%)]")
+      fields:
+        readOnly:
+          <<: *specialNumbersFieldsOder_Link
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
+  dialogs:
+    <<: *specialNumbers_dialogsLink
+    specialNumbersDel_dialog:
+      <<: *specialNumbersDel_dialogLink
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
+  commands:
+    <<: *specialNumbers_commandsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

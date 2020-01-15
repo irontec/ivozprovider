@@ -686,6 +686,9 @@ msgstr "Conectividad Directa"
 msgid "Direction"
 msgstr "Dirección"
 
+msgid "Disable CDR"
+msgstr "Deshabilitar CDR"
+
 msgid "Disabled"
 msgstr "Deshabilitado"
 
@@ -1107,6 +1110,11 @@ msgstr "Configuración Geográfica"
 msgid "Global Configuration"
 msgstr "Configuración Global"
 
+msgid "Global Special Number"
+msgid_plural "Global Special Numbers"
+msgstr[0] "Número especial Global"
+msgstr[1] "Números especiales Globales"
+
 msgid "God"
 msgstr "God"
 
@@ -1502,6 +1510,10 @@ msgstr "Vista general de la plataforma"
 
 msgid "Mark this option to regenerate all rules after saving."
 msgstr "Marcar esta opción para regenerar las reglas trás guardar."
+
+msgid "Mark yes to hide this destination calls in all lists"
+msgstr ""
+"Marcar sí para ocultar las llamadas a este destino en todos los listados"
 
 msgid "Mask"
 msgstr "Máscara"
@@ -2357,6 +2369,14 @@ msgstr "Origen"
 
 msgid "Source number header"
 msgstr "Cabecera de Origen de llamada"
+
+msgid "Special Number"
+msgid_plural "Special Numbers"
+msgstr[0] "Número especial"
+msgstr[1] "Números especiales"
+
+msgid "Special treatments"
+msgstr "Tratamientos especiales"
 
 msgid "Specific Template"
 msgstr "Plantilla específica"

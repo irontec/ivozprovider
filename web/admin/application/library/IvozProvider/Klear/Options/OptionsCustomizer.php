@@ -129,6 +129,13 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 $isOutboundCall = $direction === BillableCallInterface::DIRECTION_OUTBOUND;
                 $show = $isOutboundCall;
                 break;
+            case "specialNumbersEdit_screen":
+            case "specialNumbersDel_dialog":
+                $show = $this->_isBrandData();
+                break;
+            case "specialNumbersView_screen":
+                $show = !$this->_isBrandData();
+                break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());
                 break;
