@@ -76,6 +76,11 @@ abstract class UsersCdrAbstract
     protected $xcallid;
 
     /**
+     * @var boolean
+     */
+    protected $hidden = false;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
@@ -111,11 +116,12 @@ abstract class UsersCdrAbstract
     /**
      * Constructor
      */
-    protected function __construct($startTime, $endTime, $duration)
+    protected function __construct($startTime, $endTime, $duration, $hidden)
     {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
+        $this->setHidden($hidden);
     }
 
     abstract public function getId();
@@ -189,7 +195,8 @@ abstract class UsersCdrAbstract
         $self = new static(
             $dto->getStartTime(),
             $dto->getEndTime(),
-            $dto->getDuration()
+            $dto->getDuration(),
+            $dto->getHidden()
         );
 
         $self
@@ -239,6 +246,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
+            ->setHidden($dto->getHidden())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -271,6 +279,7 @@ abstract class UsersCdrAbstract
             ->setCallid(self::getCallid())
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
+            ->setHidden(self::getHidden())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
@@ -297,6 +306,7 @@ abstract class UsersCdrAbstract
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
+            'hidden' => self::getHidden(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
@@ -648,6 +658,34 @@ abstract class UsersCdrAbstract
     public function getXcallid()
     {
         return $this->xcallid;
+    }
+
+    /**
+     * Set hidden
+     *
+     * @param boolean $hidden
+     *
+     * @return static
+     */
+    protected function setHidden($hidden)
+    {
+        Assertion::notNull($hidden, 'hidden value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($hidden), 0, 1, 'hidden provided "%s" is not a valid boolean value.');
+        $hidden = (bool) $hidden;
+
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden
+     *
+     * @return boolean
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 
     /**

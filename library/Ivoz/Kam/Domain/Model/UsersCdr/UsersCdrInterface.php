@@ -101,6 +101,13 @@ interface UsersCdrInterface extends EntityInterface
     public function getXcallid();
 
     /**
+     * Get hidden
+     *
+     * @return boolean
+     */
+    public function getHidden();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null

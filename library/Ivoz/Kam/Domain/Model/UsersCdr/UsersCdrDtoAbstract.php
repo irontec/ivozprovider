@@ -71,6 +71,11 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     private $xcallid;
 
     /**
+     * @var boolean
+     */
+    private $hidden = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -135,6 +140,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => 'callid',
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
+            'hidden' => 'hidden',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -163,6 +169,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => $this->getCallid(),
             'callidHash' => $this->getCallidHash(),
             'xcallid' => $this->getXcallid(),
+            'hidden' => $this->getHidden(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -411,6 +418,26 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     public function getXcallid()
     {
         return $this->xcallid;
+    }
+
+    /**
+     * @param boolean $hidden
+     *
+     * @return static
+     */
+    public function setHidden($hidden = null)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 
     /**
