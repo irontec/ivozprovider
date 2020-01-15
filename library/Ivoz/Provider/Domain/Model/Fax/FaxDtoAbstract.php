@@ -95,7 +95,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -115,7 +115,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -135,7 +135,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendByEmail()
     {
@@ -155,7 +155,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -175,7 +175,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -221,7 +221,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getOutgoingDdi()
     {

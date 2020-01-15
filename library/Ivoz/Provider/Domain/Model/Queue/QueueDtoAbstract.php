@@ -214,7 +214,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -234,7 +234,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxWaitTime()
     {
@@ -254,7 +254,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTimeoutTargetType()
     {
@@ -274,7 +274,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTimeoutNumberValue()
     {
@@ -294,7 +294,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen()
     {
@@ -314,7 +314,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFullTargetType()
     {
@@ -334,7 +334,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFullNumberValue()
     {
@@ -354,7 +354,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency()
     {
@@ -374,7 +374,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallRest()
     {
@@ -394,7 +394,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMemberCallTimeout()
     {
@@ -414,7 +414,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStrategy()
     {
@@ -434,7 +434,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {
@@ -454,7 +454,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -474,7 +474,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -520,7 +520,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getPeriodicAnnounceLocution()
     {
@@ -566,7 +566,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getTimeoutLocution()
     {
@@ -612,7 +612,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getTimeoutExtension()
     {
@@ -658,7 +658,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getTimeoutVoiceMailUser()
     {
@@ -704,7 +704,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getFullLocution()
     {
@@ -750,7 +750,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getFullExtension()
     {
@@ -796,7 +796,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getFullVoiceMailUser()
     {
@@ -842,7 +842,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getTimeoutNumberCountry()
     {
@@ -888,7 +888,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getFullNumberCountry()
     {

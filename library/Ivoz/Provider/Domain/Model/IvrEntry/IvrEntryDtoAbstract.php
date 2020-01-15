@@ -123,7 +123,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEntry()
     {
@@ -143,7 +143,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -163,7 +163,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -183,7 +183,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -203,7 +203,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
      */
     public function getIvr()
     {
@@ -249,7 +249,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getWelcomeLocution()
     {
@@ -295,7 +295,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -341,7 +341,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getVoiceMailUser()
     {
@@ -387,7 +387,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
      */
     public function getConditionalRoute()
     {
@@ -433,7 +433,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {

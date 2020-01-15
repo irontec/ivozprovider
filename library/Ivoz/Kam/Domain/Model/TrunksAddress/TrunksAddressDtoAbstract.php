@@ -102,7 +102,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getGrp()
     {
@@ -122,7 +122,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIpAddr()
     {
@@ -142,7 +142,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMask()
     {
@@ -162,7 +162,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -182,7 +182,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -202,7 +202,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -222,7 +222,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto
+     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto | null
      */
     public function getDdiProviderAddress()
     {

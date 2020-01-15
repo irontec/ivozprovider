@@ -93,7 +93,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -113,7 +113,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -133,7 +133,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -153,7 +153,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -199,7 +199,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getOutgoingRoutings()
     {
@@ -219,7 +219,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelCompanies()
     {

@@ -114,7 +114,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -134,7 +134,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -154,7 +154,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEn()
     {
@@ -174,7 +174,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEs()
     {
@@ -194,7 +194,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameCa()
     {
@@ -214,7 +214,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameIt()
     {
@@ -234,7 +234,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
      */
     public function getTpDestination()
     {
@@ -280,7 +280,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -326,7 +326,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDestinationRates()
     {

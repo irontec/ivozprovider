@@ -129,7 +129,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartDate()
     {
@@ -149,7 +149,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getEndDate()
     {
@@ -169,7 +169,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -189,7 +189,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -209,7 +209,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -229,7 +229,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarDto
+     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarDto | null
      */
     public function getCalendar()
     {
@@ -275,7 +275,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getLocution()
     {
@@ -321,7 +321,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -367,7 +367,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getVoiceMailUser()
     {
@@ -413,7 +413,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {
@@ -459,7 +459,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelSchedules()
     {

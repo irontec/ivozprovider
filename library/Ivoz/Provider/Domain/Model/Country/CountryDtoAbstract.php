@@ -128,7 +128,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCode()
     {
@@ -148,7 +148,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCountryCode()
     {
@@ -168,7 +168,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -188,7 +188,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEn()
     {
@@ -208,7 +208,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEs()
     {
@@ -228,7 +228,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameCa()
     {
@@ -248,7 +248,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameIt()
     {
@@ -268,7 +268,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getZoneEn()
     {
@@ -288,7 +288,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getZoneEs()
     {
@@ -308,7 +308,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getZoneCa()
     {
@@ -328,7 +328,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getZoneIt()
     {

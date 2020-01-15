@@ -150,7 +150,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -170,7 +170,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -190,7 +190,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStrategy()
     {
@@ -210,7 +210,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getRingAllTimeout()
     {
@@ -230,7 +230,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerTargetType()
     {
@@ -250,7 +250,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNoAnswerNumberValue()
     {
@@ -270,7 +270,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPreventMissedCalls()
     {
@@ -290,7 +290,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -310,7 +310,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -356,7 +356,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getNoAnswerLocution()
     {
@@ -402,7 +402,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getNoAnswerExtension()
     {
@@ -448,7 +448,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getNoAnswerVoiceMailUser()
     {
@@ -494,7 +494,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNoAnswerNumberCountry()
     {
@@ -540,7 +540,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getHuntGroupsRelUsers()
     {

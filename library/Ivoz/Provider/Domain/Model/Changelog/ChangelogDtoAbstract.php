@@ -102,7 +102,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEntity()
     {
@@ -122,7 +122,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEntityId()
     {
@@ -142,7 +142,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getData()
     {
@@ -162,7 +162,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedOn()
     {
@@ -182,7 +182,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMicrotime()
     {
@@ -202,7 +202,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getId()
     {
@@ -222,7 +222,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto
+     * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto | null
      */
     public function getCommand()
     {

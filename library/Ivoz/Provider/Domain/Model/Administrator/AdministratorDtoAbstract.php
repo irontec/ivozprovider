@@ -123,7 +123,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsername()
     {
@@ -143,7 +143,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPass()
     {
@@ -163,7 +163,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -183,7 +183,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getActive()
     {
@@ -203,7 +203,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -223,7 +223,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLastname()
     {
@@ -243,7 +243,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -263,7 +263,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -309,7 +309,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -355,7 +355,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
      */
     public function getTimezone()
     {

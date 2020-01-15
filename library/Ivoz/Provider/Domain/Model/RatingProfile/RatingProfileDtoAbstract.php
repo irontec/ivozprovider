@@ -101,7 +101,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getActivationTime()
     {
@@ -121,7 +121,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -141,7 +141,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -187,7 +187,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -233,7 +233,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
      */
     public function getRatingPlanGroup()
     {
@@ -279,7 +279,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
      */
     public function getRoutingTag()
     {
@@ -325,7 +325,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getTpRatingProfiles()
     {

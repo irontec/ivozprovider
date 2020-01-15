@@ -108,7 +108,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTz()
     {
@@ -128,7 +128,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getComment()
     {
@@ -148,7 +148,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -168,7 +168,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLabelEn()
     {
@@ -188,7 +188,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLabelEs()
     {
@@ -208,7 +208,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLabelCa()
     {
@@ -228,7 +228,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLabelIt()
     {
@@ -248,7 +248,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getCountry()
     {

@@ -95,7 +95,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDid()
     {
@@ -115,7 +115,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -135,7 +135,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getType()
     {
@@ -155,7 +155,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getValue()
     {
@@ -175,7 +175,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastModified()
     {
@@ -195,7 +195,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

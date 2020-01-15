@@ -107,7 +107,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -127,7 +127,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -147,7 +147,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated()
     {
@@ -167,7 +167,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -187,7 +187,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -233,7 +233,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -279,7 +279,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDdiProviderRegistrations()
     {
@@ -299,7 +299,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDdiProviderAddresses()
     {

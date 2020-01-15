@@ -109,7 +109,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPresentityUri()
     {
@@ -129,7 +129,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getWatcherUsername()
     {
@@ -149,7 +149,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getWatcherDomain()
     {
@@ -169,7 +169,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEvent()
     {
@@ -189,7 +189,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getStatus()
     {
@@ -209,7 +209,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getReason()
     {
@@ -229,7 +229,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getInsertedTime()
     {
@@ -249,7 +249,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

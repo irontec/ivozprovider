@@ -137,7 +137,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -157,7 +157,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPeriodicAnnounce()
     {
@@ -177,7 +177,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPeriodicAnnounceFrequency()
     {
@@ -197,7 +197,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getTimeout()
     {
@@ -217,7 +217,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAutopause()
     {
@@ -237,7 +237,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRinginuse()
     {
@@ -257,7 +257,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getWrapuptime()
     {
@@ -277,7 +277,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxlen()
     {
@@ -297,7 +297,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStrategy()
     {
@@ -317,7 +317,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {
@@ -337,7 +337,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -357,7 +357,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
      */
     public function getQueue()
     {

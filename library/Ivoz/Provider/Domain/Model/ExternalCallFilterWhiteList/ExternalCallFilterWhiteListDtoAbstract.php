@@ -74,7 +74,7 @@ abstract class ExternalCallFilterWhiteListDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class ExternalCallFilterWhiteListDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto | null
      */
     public function getFilter()
     {
@@ -140,7 +140,7 @@ abstract class ExternalCallFilterWhiteListDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
      */
     public function getMatchlist()
     {

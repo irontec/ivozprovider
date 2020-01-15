@@ -130,7 +130,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getLcrId()
     {
@@ -150,7 +150,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -170,7 +170,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromUri()
     {
@@ -190,7 +190,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRequestUri()
     {
@@ -210,7 +210,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMtTvalue()
     {
@@ -230,7 +230,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getStopper()
     {
@@ -250,7 +250,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getEnabled()
     {
@@ -270,7 +270,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -290,7 +290,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
      */
     public function getRoutingPattern()
     {
@@ -336,7 +336,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto | null
      */
     public function getRoutingPatternGroupsRelPattern()
     {
@@ -382,7 +382,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
      */
     public function getOutgoingRouting()
     {

@@ -109,7 +109,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromName()
     {
@@ -129,7 +129,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromAddress()
     {
@@ -149,7 +149,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -169,7 +169,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getBody()
     {
@@ -189,7 +189,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getBodyType()
     {
@@ -209,7 +209,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -229,7 +229,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getNotificationTemplate()
     {
@@ -275,7 +275,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {

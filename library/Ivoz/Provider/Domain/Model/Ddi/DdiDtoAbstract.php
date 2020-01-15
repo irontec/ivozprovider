@@ -214,7 +214,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDdi()
     {
@@ -234,7 +234,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDdie164()
     {
@@ -254,7 +254,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecordCalls()
     {
@@ -274,7 +274,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDisplayName()
     {
@@ -294,7 +294,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -314,7 +314,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getBillInboundCalls()
     {
@@ -334,7 +334,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFriendValue()
     {
@@ -354,7 +354,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -374,7 +374,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -420,7 +420,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -466,7 +466,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto | null
      */
     public function getConferenceRoom()
     {
@@ -512,7 +512,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {
@@ -558,7 +558,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
      */
     public function getQueue()
     {
@@ -604,7 +604,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto | null
      */
     public function getExternalCallFilter()
     {
@@ -650,7 +650,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {
@@ -696,7 +696,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
      */
     public function getIvr()
     {
@@ -742,7 +742,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
      */
     public function getHuntGroup()
     {
@@ -788,7 +788,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
      */
     public function getFax()
     {
@@ -834,7 +834,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
      */
     public function getDdiProvider()
     {
@@ -880,7 +880,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getCountry()
     {
@@ -926,7 +926,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
      */
     public function getResidentialDevice()
     {
@@ -972,7 +972,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
      */
     public function getConditionalRoute()
     {
@@ -1018,7 +1018,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
      */
     public function getRetailAccount()
     {

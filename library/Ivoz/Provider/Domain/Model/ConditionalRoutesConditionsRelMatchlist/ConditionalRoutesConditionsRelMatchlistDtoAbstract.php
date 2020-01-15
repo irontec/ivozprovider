@@ -74,7 +74,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto | null
      */
     public function getCondition()
     {
@@ -140,7 +140,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
      */
     public function getMatchlist()
     {

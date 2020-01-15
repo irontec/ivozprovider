@@ -74,7 +74,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
      */
     public function getIvr()
     {
@@ -140,7 +140,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {

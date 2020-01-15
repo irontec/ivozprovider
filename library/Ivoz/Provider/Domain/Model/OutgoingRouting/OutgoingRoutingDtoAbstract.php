@@ -183,7 +183,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -203,7 +203,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -223,7 +223,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {
@@ -243,7 +243,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRoutingMode()
     {
@@ -263,7 +263,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -283,7 +283,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getForceClid()
     {
@@ -303,7 +303,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getClid()
     {
@@ -323,7 +323,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -343,7 +343,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -389,7 +389,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -435,7 +435,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -481,7 +481,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
      */
     public function getRoutingPattern()
     {
@@ -527,7 +527,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto | null
      */
     public function getRoutingPatternGroup()
     {
@@ -573,7 +573,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
      */
     public function getRoutingTag()
     {
@@ -619,7 +619,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getClidCountry()
     {
@@ -665,7 +665,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto
+     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto | null
      */
     public function getTpLcrRule()
     {
@@ -711,7 +711,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getLcrRules()
     {
@@ -731,7 +731,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getLcrRuleTargets()
     {
@@ -751,7 +751,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelCarriers()
     {

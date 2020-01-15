@@ -74,7 +74,7 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto
+     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto | null
      */
     public function getPickUpGroup()
     {
@@ -140,7 +140,7 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {

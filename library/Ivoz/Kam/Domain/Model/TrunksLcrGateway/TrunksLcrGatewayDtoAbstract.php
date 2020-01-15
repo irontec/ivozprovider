@@ -151,7 +151,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getLcrId()
     {
@@ -171,7 +171,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getGwName()
     {
@@ -191,7 +191,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -211,7 +211,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getHostname()
     {
@@ -231,7 +231,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -251,7 +251,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getParams()
     {
@@ -271,7 +271,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme()
     {
@@ -291,7 +291,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getTransport()
     {
@@ -311,7 +311,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getStrip()
     {
@@ -331,7 +331,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -351,7 +351,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -371,7 +371,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getDefunct()
     {
@@ -391,7 +391,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -411,7 +411,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto | null
      */
     public function getCarrierServer()
     {
