@@ -27,7 +27,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->it_finds_unrated_calls_in_group();
         $this->it_finds_rerateable_cgrids_in_group();
         $this->it_transforms_ids_to_trunkCdrId();
-        $this->it_counts_untarificatted_calls_in_range();
+        $this->it_counts_unrated_calls_in_range();
     }
 
     private function it_finds_outgoing_call_by_callid()
@@ -273,7 +273,7 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_gets_untarificatted_call_ids_in_range()
+    public function it_gets_unrated_call_ids_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -281,7 +281,7 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
-            ->getUntarificattedCallIdsByInvoice(
+            ->getUnratedCallIdsByInvoice(
                 $this->_getInvoiceStub(
                     '2019-01-01 00:00:01',
                     '2019-01-02 00:00:01'
@@ -294,7 +294,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
-    private function it_counts_untarificatted_calls_in_range()
+    private function it_counts_unrated_calls_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -302,7 +302,7 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
-            ->countUntarificattedCallsByInvoice(
+            ->countUnratedCallsByInvoice(
                 $this->_getInvoiceStub(
                     '2015-10-10 00:00:01',
                     '2025-10-10 00:00:01'
