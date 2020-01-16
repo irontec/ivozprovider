@@ -1760,11 +1760,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.1.0.0",
+            "version": "2.2.0.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "09e1bdc9680d76240d2e370d156545997c06b84b",
+                "reference": "56d246a344bed9fbfb06a717293f76b44b5c0470",
                 "shasum": null
             },
             "require": {
@@ -1780,7 +1780,7 @@
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "CoreBundle\\": ""
+                    "Ivoz\\CoreBundle\\": ""
                 }
             },
             "license": [

@@ -1748,23 +1748,23 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "2.1.1",
+            "version": "2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "c96d497f74021edb1c7af02addbfe995e31e679b"
+                "reference": "7b2e25882c8995d0e4fbfeecb18715c2f7d6cdfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/c96d497f74021edb1c7af02addbfe995e31e679b",
-                "reference": "c96d497f74021edb1c7af02addbfe995e31e679b",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/7b2e25882c8995d0e4fbfeecb18715c2f7d6cdfb",
+                "reference": "7b2e25882c8995d0e4fbfeecb18715c2f7d6cdfb",
                 "shasum": ""
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
                 "irontec/ivoz-api": "^2.1",
-                "irontec/ivoz-core-bundle": "^2.1",
+                "irontec/ivoz-core-bundle": "^2.2",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
                 "php": ">=7.0.19",
@@ -1773,7 +1773,7 @@
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "ApiBundle\\": ""
+                    "Ivoz\\ApiBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1795,7 +1795,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-api",
-            "time": "2019-12-24T10:33:29+00:00"
+            "time": "2020-01-16T08:21:45+00:00"
         },
         {
             "name": "irontec/ivoz-core",
@@ -1853,16 +1853,16 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.1",
+            "version": "2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "09e1bdc9680d76240d2e370d156545997c06b84b"
+                "reference": "56d246a344bed9fbfb06a717293f76b44b5c0470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/09e1bdc9680d76240d2e370d156545997c06b84b",
-                "reference": "09e1bdc9680d76240d2e370d156545997c06b84b",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/56d246a344bed9fbfb06a717293f76b44b5c0470",
+                "reference": "56d246a344bed9fbfb06a717293f76b44b5c0470",
                 "shasum": ""
             },
             "require": {
@@ -1878,7 +1878,7 @@
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "CoreBundle\\": ""
+                    "Ivoz\\CoreBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1900,7 +1900,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-core",
-            "time": "2019-12-24T09:52:18+00:00"
+            "time": "2020-01-16T08:18:31+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",
