@@ -2167,6 +2167,13 @@ msgstr[1] "Route Locks"
 msgid "Route type"
 msgstr "Route type"
 
+msgid ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+msgstr ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+
 msgid "Routing"
 msgstr "Routing"
 
@@ -2338,6 +2345,9 @@ msgstr "Static"
 
 msgid "Status"
 msgstr "Status"
+
+msgid "Stopper"
+msgstr "Stopper"
 
 msgid "Strategy"
 msgstr "Strategy"

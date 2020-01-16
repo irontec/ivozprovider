@@ -2195,6 +2195,13 @@ msgstr[1] "Candados"
 msgid "Route type"
 msgstr "Enrutar"
 
+msgid ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+msgstr ""
+"Las rutas con mayor prioridad no se aplicarán. Las rutas con la misma "
+"prioridad, sí."
+
 msgid "Routing"
 msgstr "Encaminamiento"
 
@@ -2368,6 +2375,9 @@ msgstr "Estática"
 
 msgid "Status"
 msgstr "Estado"
+
+msgid "Stopper"
+msgstr "Stopper"
 
 msgid "Strategy"
 msgstr "Estrategia"
