@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
-class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
+class InvoiceLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
@@ -128,7 +128,7 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
             Invoice::class
         ]);
     }
-    
+
     /**
      * @test
      */
@@ -136,6 +136,9 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
     {
         $invoicePdo = $this->getInvoicePdo();
         $invoicePdo
+            ->setStatus(
+                null
+            )
             ->setInDate(
                 new \DateTime('2018-02-31', new \DateTimeZone('UTC'))
             )

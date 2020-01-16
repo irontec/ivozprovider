@@ -50,6 +50,10 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      */
     public function execute(InvoiceInterface $invoice)
     {
+        if (!$invoice->mustCheckValidity()) {
+            return;
+        }
+
         $tz = $invoice
             ->getCompany()
             ->getDefaultTimezone()
@@ -76,7 +80,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             throw new \DomainException('In-Out date error', self::SENSELESS_IN_OUT_DATE);
         }
 
-        $this->assertNoUnmeteredCalls($invoice, $utcInDate, $utcOutDate);
+        $this->assertNoUnmeteredCalls($invoice);
         $this->assertNoInvoiceInDateRange($invoice, $utcInDate, $utcOutDate);
     }
 
@@ -98,8 +102,6 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
-     * @param \DateTime $utcInDate
-     * @param \DateTime $utcOutDate
      *
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
@@ -107,16 +109,16 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      *
      * @return void
      */
-    private function assertNoUnmeteredCalls(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
+    private function assertNoUnmeteredCalls(InvoiceInterface $invoice)
     {
-        $untarificattedCallNum = $this->billableCallRepository->countUntarificattedCallsInRange(
-            $invoice->getCompany()->getId(),
-            $invoice->getBrand()->getId(),
-            $utcInDate->format('Y-m-d H:i:s'),
-            $utcOutDate->format('Y-m-d H:i:s')
-        );
 
-        if ($untarificattedCallNum > 0) {
+        $unratedCallNum = $this
+            ->billableCallRepository
+            ->countUnratedCallsByInvoice(
+                $invoice
+            );
+
+        if ($unratedCallNum > 0) {
             throw new \DomainException('Unmetered calls', self::UNMETERED_CALLS);
         }
     }

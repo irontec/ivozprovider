@@ -53,39 +53,33 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        $utcTz = new \DateTimeZone('UTC');
-        $utcInDate = $invoice->getInDate()->setTimezone($utcTz);
-        $utcOutDate = $invoice->getOutDate()->setTimezone($utcTz);
+        $mustRunInvoicer = $invoice->mustRunInvoicer();
+        if (!$mustRunInvoicer) {
+            return;
+        }
 
-        $this->tryToRateCalls($invoice, $utcInDate, $utcOutDate);
+        $this->tryToRateCalls($invoice);
     }
 
     /**
      * @param InvoiceInterface $invoice
-     * @param \DateTime $utcInDate
-     * @param \DateTime $utcOutDate
      */
-    private function tryToRateCalls(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
+    private function tryToRateCalls(InvoiceInterface $invoice)
     {
-        $unmeteredCallArguments = [
-            $invoice->getCompany()->getId(),
-            $invoice->getBrand()->getId(),
-            $utcInDate->format('Y-m-d H:i:s'),
-            $utcOutDate->format('Y-m-d H:i:s')
-        ];
+        $unratedCallIds = $this
+            ->billableCallRepository
+            ->getUnratedCallIdsByInvoice(
+                $invoice
+            );
 
-        $untarificattedCallIds = $this->billableCallRepository->getUntarificattedCallIdsInRange(
-            ...$unmeteredCallArguments
-        );
-
-        if (empty($untarificattedCallIds)) {
+        if (empty($unratedCallIds)) {
             return;
         }
 
         try {
-            $this->rerateCallService->execute($untarificattedCallIds);
+            $this->rerateCallService->execute($unratedCallIds);
 
-            foreach ($untarificattedCallIds as $id) {
+            foreach ($unratedCallIds as $id) {
                 $billableCall = $this->billableCallRepository->find($id);
                 $trunksCdr = $billableCall->getTrunksCdr();
                 if (!$trunksCdr) {

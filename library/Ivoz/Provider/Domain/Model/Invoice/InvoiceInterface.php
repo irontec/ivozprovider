@@ -33,6 +33,10 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
 
     public function setNumber($number = null);
 
+    public function mustRunInvoicer();
+
+    public function mustCheckValidity();
+
     /**
      * Get number
      *

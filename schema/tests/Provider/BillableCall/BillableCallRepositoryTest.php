@@ -2,8 +2,12 @@
 
 namespace Tests\Provider\BillableCall;
 
+use Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
@@ -23,10 +27,10 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->it_finds_unrated_calls_in_group();
         $this->it_finds_rerateable_cgrids_in_group();
         $this->it_transforms_ids_to_trunkCdrId();
-        $this->it_counts_untarificatted_calls_in_range();
+        $this->it_counts_unrated_calls_in_range();
     }
 
-    public function it_finds_outgoing_call_by_callid()
+    private function it_finds_outgoing_call_by_callid()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -49,7 +53,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
-    public function it_finds_one_by_trunksCdrId()
+    private function it_finds_one_by_trunksCdrId()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -68,7 +72,7 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @see BillableCallRepository::areRetarificable
      */
-    public function it_checks_retarificable_calls()
+    private function it_checks_retarificable_calls()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -87,7 +91,7 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @see BillableCallRepository::findUnratedInGroup
      */
-    public function it_finds_unrated_calls_in_group()
+    private function it_finds_unrated_calls_in_group()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -106,7 +110,7 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @see BillableCallRepository::findRerateableCgridsInGroup
      */
-    public function it_finds_rerateable_cgrids_in_group()
+    private function it_finds_rerateable_cgrids_in_group()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -122,7 +126,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
-    public function it_transforms_ids_to_trunkCdrId()
+    private function it_transforms_ids_to_trunkCdrId()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -209,6 +213,30 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
+    private function _getInvoiceStub(
+        string $inDate = '2020-01-01 12:00:00',
+        string $outDate = '2020-01-07 12:00:00'
+    ): InvoiceInterface {
+        $invoiceDto = new InvoiceDto();
+
+        $invoiceDto
+            ->setBrandId(1)
+            ->setCompanyId(1)
+            ->setInDate(
+                new \DateTime($inDate)
+            )
+            ->setOutDate(
+                new \DateTime($outDate)
+            );
+
+        $fkTransforer = new DoctrineForeignKeyTransformer($this->em);
+
+        return Invoice::fromDto(
+            $invoiceDto,
+            $fkTransforer
+        );
+    }
+
     /**
      * @test
      */
@@ -221,10 +249,10 @@ class BillableCallRepositoryTest extends KernelTestCase
         /** @var BillableCallInterface $billableCalls */
         $affectedRows = $billableCallRepository
             ->setInvoiceId(
-                [
-                    ['brand', 'eq', 1]
-                ],
-                1
+                $this->_getInvoiceStub(
+                    '2019-01-01 00:00:00',
+                    '2019-01-01 23:59:59'
+                )
             );
 
         $billableCallChanges = $this->getChangelogByClass(
@@ -245,7 +273,7 @@ class BillableCallRepositoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_gets_untarificatted_call_ids_in_range()
+    public function it_gets_unrated_call_ids_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -253,11 +281,11 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
-            ->getUntarificattedCallIdsInRange(
-                1,
-                1,
-                '2019-01-01 00:00:01',
-                '2019-01-02 00:00:01'
+            ->getUnratedCallIdsByInvoice(
+                $this->_getInvoiceStub(
+                    '2019-01-01 00:00:01',
+                    '2019-01-02 00:00:01'
+                )
             );
 
         $this->assertInternalType(
@@ -266,7 +294,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
-    public function it_counts_untarificatted_calls_in_range()
+    private function it_counts_unrated_calls_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
@@ -274,11 +302,11 @@ class BillableCallRepositoryTest extends KernelTestCase
 
         /** @var BillableCallInterface $billableCalls */
         $response = $billableCallRepository
-            ->countUntarificattedCallsInRange(
-                1,
-                1,
-                '2015-10-10 00:00:01',
-                '2025-10-10 00:00:01'
+            ->countUnratedCallsByInvoice(
+                $this->_getInvoiceStub(
+                    '2015-10-10 00:00:01',
+                    '2025-10-10 00:00:01'
+                )
             );
 
         $this->assertInternalType(

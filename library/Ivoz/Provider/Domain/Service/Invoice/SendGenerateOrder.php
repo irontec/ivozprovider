@@ -27,13 +27,13 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
      */
     public function execute(InvoiceInterface $invoice)
     {
-        $pendingStatus = $invoice->getStatus() === InvoiceInterface::STATUS_WAITING;
-        $statusHasChanged = $invoice->hasChanged('status');
-
-        if ($pendingStatus && $statusHasChanged) {
-            $this->invoicer
-                ->setId($invoice->getId())
-                ->send();
+        $mustRunInvoicer = $invoice->mustRunInvoicer();
+        if (!$mustRunInvoicer) {
+            return;
         }
+
+        $this->invoicer
+            ->setId($invoice->getId())
+            ->send();
     }
 }
