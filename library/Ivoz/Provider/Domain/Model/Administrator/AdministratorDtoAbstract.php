@@ -31,6 +31,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     private $active = true;
 
     /**
+     * @var boolean
+     */
+    private $restricted = false;
+
+    /**
      * @var string
      */
     private $name;
@@ -60,6 +65,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
      */
     private $timezone;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityDto[] | null
+     */
+    private $relPublicEntities = null;
+
 
     use DtoNormalizer;
 
@@ -82,6 +92,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'pass' => 'pass',
             'email' => 'email',
             'active' => 'active',
+            'restricted' => 'restricted',
             'name' => 'name',
             'lastname' => 'lastname',
             'id' => 'id',
@@ -101,12 +112,14 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'pass' => $this->getPass(),
             'email' => $this->getEmail(),
             'active' => $this->getActive(),
+            'restricted' => $this->getRestricted(),
             'name' => $this->getName(),
             'lastname' => $this->getLastname(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
-            'timezone' => $this->getTimezone()
+            'timezone' => $this->getTimezone(),
+            'relPublicEntities' => $this->getRelPublicEntities()
         ];
     }
 
@@ -188,6 +201,26 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param boolean $restricted
+     *
+     * @return static
+     */
+    public function setRestricted($restricted = null)
+    {
+        $this->restricted = $restricted;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getRestricted()
+    {
+        return $this->restricted;
     }
 
     /**
@@ -386,5 +419,25 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param array $relPublicEntities
+     *
+     * @return static
+     */
+    public function setRelPublicEntities($relPublicEntities = null)
+    {
+        $this->relPublicEntities = $relPublicEntities;
+
+        return $this;
+    }
+
+    /**
+     * @return array | null
+     */
+    public function getRelPublicEntities()
+    {
+        return $this->relPublicEntities;
     }
 }
