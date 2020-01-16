@@ -1,0 +1,14 @@
+Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\AdministratorRelPublicEntityDoctrineRepository
+  type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
+  table: AdministratorRelPublicEntities
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY

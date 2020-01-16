@@ -34,7 +34,6 @@ class Version20200211120351 extends LoggableMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE FixedCostsRelInvoiceSchedulers DROP FOREIGN KEY FK_D9D0952B1D113CF5');
-        $this->addSql('DROP INDEX IDX_D9D0952B1D113CF5 ON FixedCostsRelInvoiceSchedulers');
         $this->addSql('ALTER TABLE FixedCostsRelInvoiceSchedulers CHANGE invoiceschedulerid invoiceId INT UNSIGNED NOT NULL');
         $this->addSql('ALTER TABLE FixedCostsRelInvoiceSchedulers ADD CONSTRAINT FK_D9D0952B3D7BDC51 FOREIGN KEY (invoiceId) REFERENCES InvoiceSchedulers (id) ON DELETE CASCADE');
         $this->addSql('CREATE INDEX IDX_D9D0952B3D7BDC51 ON FixedCostsRelInvoiceSchedulers (invoiceId)');
