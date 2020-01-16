@@ -1,0 +1,4 @@
+imports:
+  - { resource: 'infraestructure/cgrates.yml' }
+  - { resource: 'infraestructure/repositories.yml' }
+  - { resource: 'infraestructure/rest.yml' }

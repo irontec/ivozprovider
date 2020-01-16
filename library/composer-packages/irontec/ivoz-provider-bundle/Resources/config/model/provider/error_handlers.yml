@@ -1,0 +1,52 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Destination
+  ##################################
+  Ivoz\Provider\Domain\Service\Destination\PersistErrorHandler:
+    tags:
+      - { name: provider.lifecycle.destination.error_handler, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## DdiProviderRegistrationser
+  ##################################
+  Ivoz\Provider\Domain\Service\DdiProviderRegistration\PersistErrorHandler:
+    tags:
+    - { name: provider.lifecycle.ddi_provider_registration.error_handler, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## Friend
+  ##################################
+  Ivoz\Provider\Domain\Service\Friend\PersistErrorHandler:
+    tags:
+    - { name: provider.lifecycle.friend.error_handler, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## RatingPlan
+  ##################################
+  Ivoz\Provider\Domain\Service\RatingPlan\PersistErrorHandler:
+    tags:
+    - { name: provider.lifecycle.rating_plan.error_handler, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## TerminalModel
+  ##################################
+  Ivoz\Provider\Domain\Service\TerminalModel\PersistTemplates:
+    tags: [{ name: 'domain.service'}]
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+
+  ##################################
+  ## User
+  ##################################
+  Ivoz\Provider\Domain\Service\User\PersistErrorHandler:
+    tags:
+    - { name: provider.lifecycle.user.error_handler, priority: 10 }
+    arguments: ~

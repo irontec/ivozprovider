@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  ################################################
+  ## Listeners
+  ################################################
+  Ivoz\Provider\Infrastructure\Api\Timezone\UserTimezoneInjector:
+    arguments:
+      $tokenStorage: '@security.token_storage'
+    tags:
+    - { name: kernel.event_listener, event: kernel.request, priority: 5 }
