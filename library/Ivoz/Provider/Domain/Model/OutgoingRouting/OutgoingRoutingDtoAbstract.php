@@ -38,6 +38,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
+    private $stopper = false;
+
+    /**
+     * @var boolean
+     */
     private $forceClid = false;
 
     /**
@@ -128,6 +133,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'weight' => 'weight',
             'routingMode' => 'routingMode',
             'prefix' => 'prefix',
+            'stopper' => 'stopper',
             'forceClid' => 'forceClid',
             'clid' => 'clid',
             'id' => 'id',
@@ -153,6 +159,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'weight' => $this->getWeight(),
             'routingMode' => $this->getRoutingMode(),
             'prefix' => $this->getPrefix(),
+            'stopper' => $this->getStopper(),
             'forceClid' => $this->getForceClid(),
             'clid' => $this->getClid(),
             'id' => $this->getId(),
@@ -268,6 +275,26 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+    /**
+     * @param boolean $stopper
+     *
+     * @return static
+     */
+    public function setStopper($stopper = null)
+    {
+        $this->stopper = $stopper;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getStopper()
+    {
+        return $this->stopper;
     }
 
     /**
