@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
             /* Core */
-            new CoreBundle\CoreBundle(),
+            new Ivoz\CoreBundle\CoreBundle(),
 
             /* CommandlogBundle */
             new IvozDevTools\CommandlogBundle\CommandlogBundle(),
