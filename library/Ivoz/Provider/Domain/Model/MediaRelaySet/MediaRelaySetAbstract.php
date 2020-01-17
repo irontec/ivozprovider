@@ -189,7 +189,7 @@ abstract class MediaRelaySetAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */

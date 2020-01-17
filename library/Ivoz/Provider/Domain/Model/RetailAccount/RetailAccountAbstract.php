@@ -380,7 +380,7 @@ abstract class RetailAccountAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
@@ -408,7 +408,7 @@ abstract class RetailAccountAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param integer $port | null
      *
      * @return static
      */
@@ -438,7 +438,7 @@ abstract class RetailAccountAbstract
     /**
      * Set password
      *
-     * @param string $password
+     * @param string $password | null
      *
      * @return static
      */
@@ -466,7 +466,7 @@ abstract class RetailAccountAbstract
     /**
      * Set fromDomain
      *
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
@@ -608,7 +608,7 @@ abstract class RetailAccountAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -656,7 +656,7 @@ abstract class RetailAccountAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -680,7 +680,7 @@ abstract class RetailAccountAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */

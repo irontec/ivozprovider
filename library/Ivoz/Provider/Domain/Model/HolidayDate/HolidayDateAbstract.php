@@ -336,7 +336,7 @@ abstract class HolidayDateAbstract
     /**
      * Set timeIn
      *
-     * @param \DateTime $timeIn
+     * @param \DateTime $timeIn | null
      *
      * @return static
      */
@@ -360,7 +360,7 @@ abstract class HolidayDateAbstract
     /**
      * Set timeOut
      *
-     * @param \DateTime $timeOut
+     * @param \DateTime $timeOut | null
      *
      * @return static
      */
@@ -384,7 +384,7 @@ abstract class HolidayDateAbstract
     /**
      * Set routeType
      *
-     * @param string $routeType
+     * @param string $routeType | null
      *
      * @return static
      */
@@ -417,7 +417,7 @@ abstract class HolidayDateAbstract
     /**
      * Set numberValue
      *
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
@@ -469,7 +469,7 @@ abstract class HolidayDateAbstract
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
      *
      * @return static
      */
@@ -493,7 +493,7 @@ abstract class HolidayDateAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -517,7 +517,7 @@ abstract class HolidayDateAbstract
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
      *
      * @return static
      */
@@ -541,7 +541,7 @@ abstract class HolidayDateAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

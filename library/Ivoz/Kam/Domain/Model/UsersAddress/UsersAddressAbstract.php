@@ -238,7 +238,7 @@ abstract class UsersAddressAbstract
     /**
      * Set ipAddr
      *
-     * @param string $ipAddr
+     * @param string $ipAddr | null
      *
      * @return static
      */
@@ -320,7 +320,7 @@ abstract class UsersAddressAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
@@ -348,7 +348,7 @@ abstract class UsersAddressAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */

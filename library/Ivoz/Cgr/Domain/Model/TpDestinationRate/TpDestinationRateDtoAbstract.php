@@ -130,7 +130,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -150,7 +150,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -170,7 +170,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestinationsTag()
     {
@@ -190,7 +190,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRatesTag()
     {
@@ -210,7 +210,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRoundingMethod()
     {
@@ -230,7 +230,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getRoundingDecimals()
     {
@@ -250,7 +250,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getMaxCost()
     {
@@ -270,7 +270,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMaxCostStrategy()
     {
@@ -290,7 +290,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -310,7 +310,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -330,7 +330,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
      */
     public function getDestinationRate()
     {

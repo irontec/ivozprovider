@@ -483,7 +483,7 @@ abstract class FriendAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
@@ -511,7 +511,7 @@ abstract class FriendAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param integer $port | null
      *
      * @return static
      */
@@ -567,7 +567,7 @@ abstract class FriendAbstract
     /**
      * Set password
      *
-     * @param string $password
+     * @param string $password | null
      *
      * @return static
      */
@@ -766,7 +766,7 @@ abstract class FriendAbstract
     /**
      * Set fromDomain
      *
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
@@ -910,7 +910,7 @@ abstract class FriendAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -934,7 +934,7 @@ abstract class FriendAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -958,7 +958,7 @@ abstract class FriendAbstract
     /**
      * Set callAcl
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
+     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
      *
      * @return static
      */
@@ -982,7 +982,7 @@ abstract class FriendAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */
@@ -1006,7 +1006,7 @@ abstract class FriendAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -1030,7 +1030,7 @@ abstract class FriendAbstract
     /**
      * Set interCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany | null
      *
      * @return static
      */

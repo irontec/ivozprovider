@@ -362,7 +362,7 @@ abstract class BrandAbstract
     /**
      * Set domainUsers
      *
-     * @param string $domainUsers
+     * @param string $domainUsers | null
      *
      * @return static
      */
@@ -390,7 +390,7 @@ abstract class BrandAbstract
     /**
      * Set recordingsLimitMB
      *
-     * @param integer $recordingsLimitMB
+     * @param integer $recordingsLimitMB | null
      *
      * @return static
      */
@@ -419,7 +419,7 @@ abstract class BrandAbstract
     /**
      * Set recordingsLimitEmail
      *
-     * @param string $recordingsLimitEmail
+     * @param string $recordingsLimitEmail | null
      *
      * @return static
      */
@@ -475,7 +475,7 @@ abstract class BrandAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -499,7 +499,7 @@ abstract class BrandAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -547,7 +547,7 @@ abstract class BrandAbstract
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */
@@ -571,7 +571,7 @@ abstract class BrandAbstract
     /**
      * Set voicemailNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate | null
      *
      * @return static
      */
@@ -595,7 +595,7 @@ abstract class BrandAbstract
     /**
      * Set faxNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate | null
      *
      * @return static
      */
@@ -619,7 +619,7 @@ abstract class BrandAbstract
     /**
      * Set invoiceNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate | null
      *
      * @return static
      */
@@ -643,7 +643,7 @@ abstract class BrandAbstract
     /**
      * Set callCsvNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
      *
      * @return static
      */

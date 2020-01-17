@@ -99,7 +99,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -119,7 +119,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPointsTo()
     {
@@ -139,7 +139,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -159,7 +159,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -179,7 +179,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getFriends()
     {
@@ -199,7 +199,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getResidentialDevices()
     {
@@ -219,7 +219,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getTerminals()
     {

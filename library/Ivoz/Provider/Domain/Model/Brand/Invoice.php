@@ -235,7 +235,7 @@ class Invoice
     /**
      * Set registryData
      *
-     * @param string $registryData
+     * @param string $registryData | null
      *
      * @return static
      */

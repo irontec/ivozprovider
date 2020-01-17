@@ -207,7 +207,7 @@ abstract class FixedCostAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
@@ -231,17 +231,15 @@ abstract class FixedCostAbstract
     /**
      * Set cost
      *
-     * @param float $cost
+     * @param float $cost | null
      *
      * @return static
      */
     protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
-            if (!is_null($cost)) {
-                Assertion::numeric($cost);
-                $cost = (float) $cost;
-            }
+            Assertion::numeric($cost);
+            $cost = (float) $cost;
         }
 
         $this->cost = $cost;

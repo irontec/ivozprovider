@@ -149,7 +149,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -169,7 +169,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInternationalCode()
     {
@@ -189,7 +189,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTrunkPrefix()
     {
@@ -209,7 +209,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAreaCode()
     {
@@ -229,7 +229,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getNationalLen()
     {
@@ -249,7 +249,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getGenerateRules()
     {
@@ -269,7 +269,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -289,7 +289,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEn()
     {
@@ -309,7 +309,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEs()
     {
@@ -329,7 +329,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameCa()
     {
@@ -349,7 +349,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameIt()
     {
@@ -369,7 +369,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -415,7 +415,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getCountry()
     {
@@ -461,7 +461,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRules()
     {

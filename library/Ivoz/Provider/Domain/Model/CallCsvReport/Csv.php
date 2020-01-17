@@ -46,7 +46,7 @@ class Csv
     /**
      * Set fileSize
      *
-     * @param integer $fileSize
+     * @param integer $fileSize | null
      *
      * @return static
      */
@@ -76,7 +76,7 @@ class Csv
     /**
      * Set mimeType
      *
-     * @param string $mimeType
+     * @param string $mimeType | null
      *
      * @return static
      */
@@ -104,7 +104,7 @@ class Csv
     /**
      * Set baseName
      *
-     * @param string $baseName
+     * @param string $baseName | null
      *
      * @return static
      */

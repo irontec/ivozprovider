@@ -134,7 +134,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -154,7 +154,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEn()
     {
@@ -174,7 +174,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEs()
     {
@@ -194,7 +194,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameCa()
     {
@@ -214,7 +214,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameIt()
     {
@@ -234,7 +234,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionEn()
     {
@@ -254,7 +254,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionEs()
     {
@@ -274,7 +274,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionCa()
     {
@@ -294,7 +294,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionIt()
     {
@@ -314,7 +314,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -360,7 +360,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
      */
     public function getCurrency()
     {
@@ -406,7 +406,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRatingPlan()
     {

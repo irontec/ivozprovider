@@ -186,7 +186,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPresUri()
     {
@@ -206,7 +206,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPresId()
     {
@@ -226,7 +226,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getEvent()
     {
@@ -246,7 +246,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getExpires()
     {
@@ -266,7 +266,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getDesiredExpires()
     {
@@ -286,7 +286,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFlag()
     {
@@ -306,7 +306,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEtag()
     {
@@ -326,7 +326,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTupleId()
     {
@@ -346,7 +346,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getWatcherUri()
     {
@@ -366,7 +366,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallId()
     {
@@ -386,7 +386,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getToTag()
     {
@@ -406,7 +406,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromTag()
     {
@@ -426,7 +426,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getCseq()
     {
@@ -446,7 +446,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecordRoute()
     {
@@ -466,7 +466,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getContact()
     {
@@ -486,7 +486,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRemoteContact()
     {
@@ -506,7 +506,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getVersion()
     {
@@ -526,7 +526,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getExtraHeaders()
     {
@@ -546,7 +546,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

@@ -187,17 +187,15 @@ abstract class BalanceMovementAbstract
     /**
      * Set amount
      *
-     * @param float $amount
+     * @param float $amount | null
      *
      * @return static
      */
     protected function setAmount($amount = null)
     {
         if (!is_null($amount)) {
-            if (!is_null($amount)) {
-                Assertion::numeric($amount);
-                $amount = (float) $amount;
-            }
+            Assertion::numeric($amount);
+            $amount = (float) $amount;
         }
 
         $this->amount = $amount;
@@ -218,17 +216,15 @@ abstract class BalanceMovementAbstract
     /**
      * Set balance
      *
-     * @param float $balance
+     * @param float $balance | null
      *
      * @return static
      */
     protected function setBalance($balance = null)
     {
         if (!is_null($balance)) {
-            if (!is_null($balance)) {
-                Assertion::numeric($balance);
-                $balance = (float) $balance;
-            }
+            Assertion::numeric($balance);
+            $balance = (float) $balance;
         }
 
         $this->balance = $balance;
@@ -249,7 +245,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param \DateTime $createdOn | null
      *
      * @return static
      */
@@ -284,7 +280,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -308,7 +304,7 @@ abstract class BalanceMovementAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */

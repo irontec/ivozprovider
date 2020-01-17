@@ -338,7 +338,7 @@ abstract class AdministratorAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
@@ -366,7 +366,7 @@ abstract class AdministratorAbstract
     /**
      * Set lastname
      *
-     * @param string $lastname
+     * @param string $lastname | null
      *
      * @return static
      */
@@ -394,7 +394,7 @@ abstract class AdministratorAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -418,7 +418,7 @@ abstract class AdministratorAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -442,7 +442,7 @@ abstract class AdministratorAbstract
     /**
      * Set timezone
      *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone
+     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone | null
      *
      * @return static
      */

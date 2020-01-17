@@ -219,7 +219,7 @@ abstract class TpDestinationAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */

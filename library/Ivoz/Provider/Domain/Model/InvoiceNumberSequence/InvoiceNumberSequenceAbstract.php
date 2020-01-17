@@ -337,7 +337,7 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Set latestValue
      *
-     * @param string $latestValue
+     * @param string $latestValue | null
      *
      * @return static
      */

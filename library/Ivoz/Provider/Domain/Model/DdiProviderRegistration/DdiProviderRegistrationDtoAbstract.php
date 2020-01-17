@@ -137,7 +137,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsername()
     {
@@ -157,7 +157,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -177,7 +177,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRealm()
     {
@@ -197,7 +197,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthUsername()
     {
@@ -217,7 +217,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthPassword()
     {
@@ -237,7 +237,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthProxy()
     {
@@ -257,7 +257,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getExpires()
     {
@@ -277,7 +277,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getMultiDdi()
     {
@@ -297,7 +297,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getContactUsername()
     {
@@ -317,7 +317,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -337,7 +337,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto | null
      */
     public function getTrunksUacreg()
     {
@@ -383,7 +383,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
      */
     public function getDdiProvider()
     {

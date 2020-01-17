@@ -158,7 +158,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getWeight()
     {
@@ -178,7 +178,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTimingType()
     {
@@ -198,7 +198,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getTimeIn()
     {
@@ -218,7 +218,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getMonday()
     {
@@ -238,7 +238,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getTuesday()
     {
@@ -258,7 +258,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getWednesday()
     {
@@ -278,7 +278,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getThursday()
     {
@@ -298,7 +298,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getFriday()
     {
@@ -318,7 +318,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSaturday()
     {
@@ -338,7 +338,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSunday()
     {
@@ -358,7 +358,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -378,7 +378,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
      */
     public function getRatingPlanGroup()
     {
@@ -424,7 +424,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
      */
     public function getDestinationRateGroup()
     {
@@ -470,7 +470,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto
+     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto | null
      */
     public function getTpTiming()
     {
@@ -516,7 +516,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto | null
      */
     public function getTpRatingPlan()
     {

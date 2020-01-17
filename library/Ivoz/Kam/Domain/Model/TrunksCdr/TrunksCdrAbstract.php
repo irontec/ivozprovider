@@ -419,7 +419,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set caller
      *
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
@@ -447,7 +447,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set callee
      *
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
@@ -475,7 +475,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set callid
      *
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
@@ -503,7 +503,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set callidHash
      *
-     * @param string $callidHash
+     * @param string $callidHash | null
      *
      * @return static
      */
@@ -531,7 +531,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set xcallid
      *
-     * @param string $xcallid
+     * @param string $xcallid | null
      *
      * @return static
      */
@@ -559,7 +559,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set diversion
      *
-     * @param string $diversion
+     * @param string $diversion | null
      *
      * @return static
      */
@@ -587,7 +587,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set bounced
      *
-     * @param boolean $bounced
+     * @param boolean $bounced | null
      *
      * @return static
      */
@@ -616,7 +616,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set parsed
      *
-     * @param boolean $parsed
+     * @param boolean $parsed | null
      *
      * @return static
      */
@@ -679,7 +679,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set direction
      *
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
@@ -703,7 +703,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set cgrid
      *
-     * @param string $cgrid
+     * @param string $cgrid | null
      *
      * @return static
      */
@@ -731,7 +731,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -755,7 +755,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -779,7 +779,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -803,7 +803,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */
@@ -827,7 +827,7 @@ abstract class TrunksCdrAbstract
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */

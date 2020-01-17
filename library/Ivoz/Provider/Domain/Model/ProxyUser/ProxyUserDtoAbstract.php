@@ -74,7 +74,7 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -94,7 +94,7 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -114,7 +114,7 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

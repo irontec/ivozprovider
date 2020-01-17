@@ -259,7 +259,7 @@ abstract class ChangelogAbstract
     /**
      * Set data
      *
-     * @param array $data
+     * @param array $data | null
      *
      * @return static
      */

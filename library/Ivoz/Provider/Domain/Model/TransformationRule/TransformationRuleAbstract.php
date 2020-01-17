@@ -260,7 +260,7 @@ abstract class TransformationRuleAbstract
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param integer $priority | null
      *
      * @return static
      */
@@ -290,7 +290,7 @@ abstract class TransformationRuleAbstract
     /**
      * Set matchExpr
      *
-     * @param string $matchExpr
+     * @param string $matchExpr | null
      *
      * @return static
      */
@@ -318,7 +318,7 @@ abstract class TransformationRuleAbstract
     /**
      * Set replaceExpr
      *
-     * @param string $replaceExpr
+     * @param string $replaceExpr | null
      *
      * @return static
      */
@@ -346,7 +346,7 @@ abstract class TransformationRuleAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */

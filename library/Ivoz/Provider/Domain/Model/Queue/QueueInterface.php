@@ -160,7 +160,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set periodicAnnounceLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution | null
      *
      * @return static
      */
@@ -176,7 +176,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set timeoutLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution | null
      *
      * @return static
      */
@@ -192,7 +192,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set timeoutExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension | null
      *
      * @return static
      */
@@ -208,7 +208,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set timeoutVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser | null
      *
      * @return static
      */
@@ -224,7 +224,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set fullLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution | null
      *
      * @return static
      */
@@ -240,7 +240,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set fullExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension | null
      *
      * @return static
      */
@@ -256,7 +256,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set fullVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser | null
      *
      * @return static
      */
@@ -272,7 +272,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set timeoutNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry | null
      *
      * @return static
      */
@@ -288,7 +288,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Set fullNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry | null
      *
      * @return static
      */

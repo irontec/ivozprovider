@@ -116,7 +116,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsername()
     {
@@ -136,7 +136,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -156,7 +156,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDoc()
     {
@@ -176,7 +176,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getDocType()
     {
@@ -196,7 +196,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEtag()
     {
@@ -216,7 +216,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getSource()
     {
@@ -236,7 +236,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDocUri()
     {
@@ -256,7 +256,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -276,7 +276,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

@@ -272,7 +272,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set type
      *
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
@@ -352,7 +352,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingMode
      *
-     * @param string $routingMode
+     * @param string $routingMode | null
      *
      * @return static
      */
@@ -385,7 +385,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set prefix
      *
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
@@ -413,7 +413,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set forceClid
      *
-     * @param boolean $forceClid
+     * @param boolean $forceClid | null
      *
      * @return static
      */
@@ -442,7 +442,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set clid
      *
-     * @param string $clid
+     * @param string $clid | null
      *
      * @return static
      */
@@ -494,7 +494,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -518,7 +518,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -542,7 +542,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
      *
      * @return static
      */
@@ -566,7 +566,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup | null
      *
      * @return static
      */
@@ -590,7 +590,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
+     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag | null
      *
      * @return static
      */
@@ -614,7 +614,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set clidCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry | null
      *
      * @return static
      */

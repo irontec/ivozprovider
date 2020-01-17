@@ -108,7 +108,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -124,7 +124,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -156,7 +156,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */
@@ -172,7 +172,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set voicemailNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate | null
      *
      * @return static
      */
@@ -188,7 +188,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set faxNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate | null
      *
      * @return static
      */
@@ -204,7 +204,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set invoiceNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate | null
      *
      * @return static
      */
@@ -220,7 +220,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Set callCsvNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
      *
      * @return static
      */

@@ -74,7 +74,7 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -94,7 +94,7 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -114,7 +114,7 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

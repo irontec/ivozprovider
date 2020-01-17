@@ -405,7 +405,7 @@ abstract class UsersCdrAbstract
     /**
      * Set direction
      *
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
@@ -429,7 +429,7 @@ abstract class UsersCdrAbstract
     /**
      * Set caller
      *
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
@@ -457,7 +457,7 @@ abstract class UsersCdrAbstract
     /**
      * Set callee
      *
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
@@ -485,7 +485,7 @@ abstract class UsersCdrAbstract
     /**
      * Set diversion
      *
-     * @param string $diversion
+     * @param string $diversion | null
      *
      * @return static
      */
@@ -513,7 +513,7 @@ abstract class UsersCdrAbstract
     /**
      * Set referee
      *
-     * @param string $referee
+     * @param string $referee | null
      *
      * @return static
      */
@@ -541,7 +541,7 @@ abstract class UsersCdrAbstract
     /**
      * Set referrer
      *
-     * @param string $referrer
+     * @param string $referrer | null
      *
      * @return static
      */
@@ -569,7 +569,7 @@ abstract class UsersCdrAbstract
     /**
      * Set callid
      *
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
@@ -597,7 +597,7 @@ abstract class UsersCdrAbstract
     /**
      * Set callidHash
      *
-     * @param string $callidHash
+     * @param string $callidHash | null
      *
      * @return static
      */
@@ -625,7 +625,7 @@ abstract class UsersCdrAbstract
     /**
      * Set xcallid
      *
-     * @param string $xcallid
+     * @param string $xcallid | null
      *
      * @return static
      */
@@ -653,7 +653,7 @@ abstract class UsersCdrAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -677,7 +677,7 @@ abstract class UsersCdrAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -701,7 +701,7 @@ abstract class UsersCdrAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -725,7 +725,7 @@ abstract class UsersCdrAbstract
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
      *
      * @return static
      */
@@ -749,7 +749,7 @@ abstract class UsersCdrAbstract
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -773,7 +773,7 @@ abstract class UsersCdrAbstract
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */

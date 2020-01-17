@@ -146,7 +146,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -166,7 +166,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -186,7 +186,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getExternallyRated()
     {
@@ -206,7 +206,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getBalance()
     {
@@ -226,7 +226,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getCalculateCost()
     {
@@ -246,7 +246,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -266,7 +266,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -312,7 +312,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -358,7 +358,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
      */
     public function getCurrency()
     {
@@ -404,7 +404,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getOutgoingRoutings()
     {
@@ -424,7 +424,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getOutgoingRoutingsRelCarriers()
     {
@@ -444,7 +444,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getServers()
     {
@@ -464,7 +464,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRatingProfiles()
     {
@@ -484,7 +484,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getTpCdrStats()
     {

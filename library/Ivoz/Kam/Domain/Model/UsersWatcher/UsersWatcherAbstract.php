@@ -357,7 +357,7 @@ abstract class UsersWatcherAbstract
     /**
      * Set reason
      *
-     * @param string $reason
+     * @param string $reason | null
      *
      * @return static
      */

@@ -196,7 +196,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Set toAddress
      *
-     * @param string $toAddress
+     * @param string $toAddress | null
      *
      * @return static
      */
@@ -224,17 +224,15 @@ abstract class BalanceNotificationAbstract
     /**
      * Set threshold
      *
-     * @param float $threshold
+     * @param float $threshold | null
      *
      * @return static
      */
     protected function setThreshold($threshold = null)
     {
         if (!is_null($threshold)) {
-            if (!is_null($threshold)) {
-                Assertion::numeric($threshold);
-                $threshold = (float) $threshold;
-            }
+            Assertion::numeric($threshold);
+            $threshold = (float) $threshold;
         }
 
         $this->threshold = $threshold;
@@ -255,7 +253,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Set lastSent
      *
-     * @param \DateTime $lastSent
+     * @param \DateTime $lastSent | null
      *
      * @return static
      */
@@ -290,7 +288,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -314,7 +312,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -338,7 +336,7 @@ abstract class BalanceNotificationAbstract
     /**
      * Set notificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate | null
      *
      * @return static
      */

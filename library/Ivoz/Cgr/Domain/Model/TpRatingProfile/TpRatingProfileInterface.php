@@ -92,7 +92,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Set ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile | null
      *
      * @return static
      */
@@ -108,7 +108,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Set outgoingRoutingRelCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier | null
      *
      * @return static
      */

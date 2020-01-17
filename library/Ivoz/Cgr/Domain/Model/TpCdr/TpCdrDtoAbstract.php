@@ -221,7 +221,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCgrid()
     {
@@ -241,7 +241,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRunId()
     {
@@ -261,7 +261,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOriginHost()
     {
@@ -281,7 +281,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSource()
     {
@@ -301,7 +301,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOriginId()
     {
@@ -321,7 +321,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTor()
     {
@@ -341,7 +341,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRequestType()
     {
@@ -361,7 +361,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTenant()
     {
@@ -381,7 +381,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCategory()
     {
@@ -401,7 +401,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAccount()
     {
@@ -421,7 +421,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -441,7 +441,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestination()
     {
@@ -461,7 +461,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getSetupTime()
     {
@@ -481,7 +481,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getAnswerTime()
     {
@@ -501,7 +501,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getUsage()
     {
@@ -521,7 +521,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getExtraFields()
     {
@@ -541,7 +541,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCostSource()
     {
@@ -561,7 +561,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getCost()
     {
@@ -581,7 +581,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getCostDetails()
     {
@@ -601,7 +601,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getExtraInfo()
     {
@@ -621,7 +621,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -641,7 +641,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getUpdatedAt()
     {
@@ -661,7 +661,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getDeletedAt()
     {
@@ -681,7 +681,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

@@ -205,7 +205,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -225,7 +225,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getTimeout()
     {
@@ -245,7 +245,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxDigits()
     {
@@ -265,7 +265,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getAllowExtensions()
     {
@@ -285,7 +285,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNoInputRouteType()
     {
@@ -305,7 +305,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNoInputNumberValue()
     {
@@ -325,7 +325,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getErrorRouteType()
     {
@@ -345,7 +345,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getErrorNumberValue()
     {
@@ -365,7 +365,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -385,7 +385,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -431,7 +431,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getWelcomeLocution()
     {
@@ -477,7 +477,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getNoInputLocution()
     {
@@ -523,7 +523,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getErrorLocution()
     {
@@ -569,7 +569,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getSuccessLocution()
     {
@@ -615,7 +615,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getNoInputExtension()
     {
@@ -661,7 +661,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getErrorExtension()
     {
@@ -707,7 +707,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getNoInputVoiceMailUser()
     {
@@ -753,7 +753,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getErrorVoiceMailUser()
     {
@@ -799,7 +799,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNoInputNumberCountry()
     {
@@ -845,7 +845,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getErrorNumberCountry()
     {
@@ -891,7 +891,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getEntries()
     {
@@ -911,7 +911,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getExcludedExtensions()
     {

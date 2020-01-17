@@ -474,7 +474,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
@@ -502,7 +502,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param integer $port | null
      *
      * @return static
      */
@@ -558,7 +558,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set password
      *
-     * @param string $password
+     * @param string $password | null
      *
      * @return static
      */
@@ -730,7 +730,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set fromDomain
      *
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
@@ -900,7 +900,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -948,7 +948,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -972,7 +972,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */
@@ -996,7 +996,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */

@@ -109,7 +109,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSourceAddress()
     {
@@ -129,7 +129,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIpAddr()
     {
@@ -149,7 +149,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMask()
     {
@@ -169,7 +169,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -189,7 +189,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -209,7 +209,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -229,7 +229,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -249,7 +249,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {

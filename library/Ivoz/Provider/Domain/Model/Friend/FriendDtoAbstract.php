@@ -240,7 +240,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -260,7 +260,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -280,7 +280,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {
@@ -300,7 +300,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -320,7 +320,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -340,7 +340,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthNeeded()
     {
@@ -360,7 +360,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -380,7 +380,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -400,7 +400,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDisallow()
     {
@@ -420,7 +420,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAllow()
     {
@@ -440,7 +440,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod()
     {
@@ -460,7 +460,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCalleridUpdateHeader()
     {
@@ -480,7 +480,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUpdateCallerid()
     {
@@ -500,7 +500,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -520,7 +520,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectConnectivity()
     {
@@ -540,7 +540,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDdiIn()
     {
@@ -560,7 +560,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38Passthrough()
     {
@@ -580,7 +580,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -600,7 +600,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -646,7 +646,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
      */
     public function getDomain()
     {
@@ -692,7 +692,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -738,7 +738,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
      */
     public function getCallAcl()
     {
@@ -784,7 +784,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getOutgoingDdi()
     {
@@ -830,7 +830,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {
@@ -876,7 +876,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getInterCompany()
     {
@@ -922,7 +922,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getPsEndpoints()
     {
@@ -942,7 +942,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getPatterns()
     {

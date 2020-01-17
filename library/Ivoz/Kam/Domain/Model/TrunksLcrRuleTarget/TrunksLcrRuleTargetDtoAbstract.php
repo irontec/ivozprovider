@@ -102,7 +102,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getLcrId()
     {
@@ -122,7 +122,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -142,7 +142,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {
@@ -162,7 +162,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -182,7 +182,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto | null
      */
     public function getRule()
     {
@@ -228,7 +228,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
      */
     public function getGw()
     {
@@ -274,7 +274,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
      */
     public function getOutgoingRouting()
     {

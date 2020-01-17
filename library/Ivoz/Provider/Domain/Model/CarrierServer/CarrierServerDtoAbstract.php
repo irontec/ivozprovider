@@ -179,7 +179,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -199,7 +199,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getHostname()
     {
@@ -219,7 +219,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -239,7 +239,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getUriScheme()
     {
@@ -259,7 +259,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getTransport()
     {
@@ -279,7 +279,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendPAI()
     {
@@ -299,7 +299,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSendRPID()
     {
@@ -319,7 +319,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthNeeded()
     {
@@ -339,7 +339,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthUser()
     {
@@ -359,7 +359,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthPassword()
     {
@@ -379,7 +379,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSipProxy()
     {
@@ -399,7 +399,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy()
     {
@@ -419,7 +419,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromUser()
     {
@@ -439,7 +439,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -459,7 +459,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -479,7 +479,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
      */
     public function getLcrGateway()
     {
@@ -525,7 +525,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -571,7 +571,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {

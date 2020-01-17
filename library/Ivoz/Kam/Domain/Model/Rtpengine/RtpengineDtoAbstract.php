@@ -109,7 +109,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getSetid()
     {
@@ -129,7 +129,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUrl()
     {
@@ -149,7 +149,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getWeight()
     {
@@ -169,7 +169,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getDisabled()
     {
@@ -189,7 +189,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStamp()
     {
@@ -209,7 +209,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -229,7 +229,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -249,7 +249,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto | null
      */
     public function getMediaRelaySet()
     {

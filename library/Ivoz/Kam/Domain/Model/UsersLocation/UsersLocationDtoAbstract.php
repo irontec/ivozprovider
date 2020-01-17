@@ -214,7 +214,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRuid()
     {
@@ -234,7 +234,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsername()
     {
@@ -254,7 +254,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -274,7 +274,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getContact()
     {
@@ -294,7 +294,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getReceived()
     {
@@ -314,7 +314,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPath()
     {
@@ -334,7 +334,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getExpires()
     {
@@ -354,7 +354,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getQ()
     {
@@ -374,7 +374,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -394,7 +394,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getCseq()
     {
@@ -414,7 +414,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastModified()
     {
@@ -434,7 +434,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFlags()
     {
@@ -454,7 +454,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getCflags()
     {
@@ -474,7 +474,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUserAgent()
     {
@@ -494,7 +494,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSocket()
     {
@@ -514,7 +514,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMethods()
     {
@@ -534,7 +534,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInstance()
     {
@@ -554,7 +554,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getRegId()
     {
@@ -574,7 +574,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getServerId()
     {
@@ -594,7 +594,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getConnectionId()
     {
@@ -614,7 +614,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getKeepalive()
     {
@@ -634,7 +634,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPartition()
     {
@@ -654,7 +654,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

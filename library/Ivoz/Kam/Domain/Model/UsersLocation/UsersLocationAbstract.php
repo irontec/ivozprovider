@@ -432,7 +432,7 @@ abstract class UsersLocationAbstract
     /**
      * Set domain
      *
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */
@@ -487,7 +487,7 @@ abstract class UsersLocationAbstract
     /**
      * Set received
      *
-     * @param string $received
+     * @param string $received | null
      *
      * @return static
      */
@@ -515,7 +515,7 @@ abstract class UsersLocationAbstract
     /**
      * Set path
      *
-     * @param string $path
+     * @param string $path | null
      *
      * @return static
      */
@@ -773,7 +773,7 @@ abstract class UsersLocationAbstract
     /**
      * Set socket
      *
-     * @param string $socket
+     * @param string $socket | null
      *
      * @return static
      */
@@ -801,7 +801,7 @@ abstract class UsersLocationAbstract
     /**
      * Set methods
      *
-     * @param integer $methods
+     * @param integer $methods | null
      *
      * @return static
      */
@@ -830,7 +830,7 @@ abstract class UsersLocationAbstract
     /**
      * Set instance
      *
-     * @param string $instance
+     * @param string $instance | null
      *
      * @return static
      */

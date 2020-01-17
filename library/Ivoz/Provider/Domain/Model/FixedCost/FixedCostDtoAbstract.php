@@ -88,7 +88,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -108,7 +108,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -128,7 +128,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getCost()
     {
@@ -148,7 +148,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -168,7 +168,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {

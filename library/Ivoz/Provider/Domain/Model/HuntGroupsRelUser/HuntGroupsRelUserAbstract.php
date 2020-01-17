@@ -178,7 +178,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set timeoutTime
      *
-     * @param integer $timeoutTime
+     * @param integer $timeoutTime | null
      *
      * @return static
      */
@@ -207,7 +207,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param integer $priority | null
      *
      * @return static
      */

@@ -385,7 +385,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -405,7 +405,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -425,7 +425,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers()
     {
@@ -445,7 +445,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNif()
     {
@@ -465,7 +465,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDistributeMethod()
     {
@@ -485,7 +485,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxCalls()
     {
@@ -505,7 +505,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxDailyUsage()
     {
@@ -525,7 +525,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPostalAddress()
     {
@@ -545,7 +545,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPostalCode()
     {
@@ -565,7 +565,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTown()
     {
@@ -585,7 +585,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getProvince()
     {
@@ -605,7 +605,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCountryName()
     {
@@ -625,7 +625,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getIpfilter()
     {
@@ -645,7 +645,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getOnDemandRecord()
     {
@@ -665,7 +665,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getAllowRecordingRemoval()
     {
@@ -685,7 +685,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOnDemandRecordCode()
     {
@@ -705,7 +705,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getExternallyextraopts()
     {
@@ -725,7 +725,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB()
     {
@@ -745,7 +745,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail()
     {
@@ -765,7 +765,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getBillingMethod()
     {
@@ -785,7 +785,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getBalance()
     {
@@ -805,7 +805,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getShowInvoices()
     {
@@ -825,7 +825,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -845,7 +845,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {
@@ -891,7 +891,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto | null
      */
     public function getMediaRelaySets()
     {
@@ -937,7 +937,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
      */
     public function getDefaultTimezone()
     {
@@ -983,7 +983,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -1029,7 +1029,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
      */
     public function getDomain()
     {
@@ -1075,7 +1075,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto
+     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto | null
      */
     public function getApplicationServer()
     {
@@ -1121,7 +1121,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getCountry()
     {
@@ -1167,7 +1167,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
      */
     public function getCurrency()
     {
@@ -1213,7 +1213,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -1259,7 +1259,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getOutgoingDdi()
     {
@@ -1305,7 +1305,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto | null
      */
     public function getOutgoingDdiRule()
     {
@@ -1351,7 +1351,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getVoicemailNotificationTemplate()
     {
@@ -1397,7 +1397,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getFaxNotificationTemplate()
     {
@@ -1443,7 +1443,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getInvoiceNotificationTemplate()
     {
@@ -1489,7 +1489,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getCallCsvNotificationTemplate()
     {
@@ -1535,7 +1535,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getExtensions()
     {
@@ -1555,7 +1555,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDdis()
     {
@@ -1575,7 +1575,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getFriends()
     {
@@ -1595,7 +1595,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getCompanyServices()
     {
@@ -1615,7 +1615,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getTerminals()
     {
@@ -1635,7 +1635,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRatingProfiles()
     {
@@ -1655,7 +1655,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getMusicsOnHold()
     {
@@ -1675,7 +1675,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRecordings()
     {
@@ -1695,7 +1695,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelFeatures()
     {
@@ -1715,7 +1715,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelCodecs()
     {
@@ -1735,7 +1735,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelRoutingTags()
     {

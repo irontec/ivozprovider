@@ -93,7 +93,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -113,7 +113,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -133,7 +133,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -153,7 +153,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -199,7 +199,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelPatterns()
     {
@@ -219,7 +219,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getOutgoingRoutings()
     {

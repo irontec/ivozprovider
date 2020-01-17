@@ -59,7 +59,7 @@ interface FaxInterface extends LoggableEntityInterface
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */

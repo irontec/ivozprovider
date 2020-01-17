@@ -75,7 +75,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
      *
      * @return static
      */
@@ -91,7 +91,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -107,7 +107,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
      *
      * @return static
      */
@@ -123,7 +123,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

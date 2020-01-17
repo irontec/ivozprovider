@@ -137,7 +137,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -157,7 +157,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLoadid()
     {
@@ -177,7 +177,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTenant()
     {
@@ -197,7 +197,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAccount()
     {
@@ -217,7 +217,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getActionPlanTag()
     {
@@ -237,7 +237,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getActionTriggersTag()
     {
@@ -257,7 +257,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getAllowNegative()
     {
@@ -277,7 +277,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getDisabled()
     {
@@ -297,7 +297,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -317,7 +317,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -337,7 +337,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -383,7 +383,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {

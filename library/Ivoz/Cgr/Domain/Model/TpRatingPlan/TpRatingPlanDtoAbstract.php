@@ -109,7 +109,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -129,7 +129,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -149,7 +149,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestratesTag()
     {
@@ -169,7 +169,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTimingTag()
     {
@@ -189,7 +189,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getWeight()
     {
@@ -209,7 +209,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -229,7 +229,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -249,7 +249,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     public function getRatingPlan()
     {

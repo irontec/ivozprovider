@@ -567,7 +567,7 @@ abstract class CompanyAbstract
     /**
      * Set domainUsers
      *
-     * @param string $domainUsers
+     * @param string $domainUsers | null
      *
      * @return static
      */
@@ -845,7 +845,7 @@ abstract class CompanyAbstract
     /**
      * Set ipfilter
      *
-     * @param boolean $ipfilter
+     * @param boolean $ipfilter | null
      *
      * @return static
      */
@@ -874,7 +874,7 @@ abstract class CompanyAbstract
     /**
      * Set onDemandRecord
      *
-     * @param integer $onDemandRecord
+     * @param integer $onDemandRecord | null
      *
      * @return static
      */
@@ -931,7 +931,7 @@ abstract class CompanyAbstract
     /**
      * Set onDemandRecordCode
      *
-     * @param string $onDemandRecordCode
+     * @param string $onDemandRecordCode | null
      *
      * @return static
      */
@@ -959,7 +959,7 @@ abstract class CompanyAbstract
     /**
      * Set externallyextraopts
      *
-     * @param string $externallyextraopts
+     * @param string $externallyextraopts | null
      *
      * @return static
      */
@@ -987,7 +987,7 @@ abstract class CompanyAbstract
     /**
      * Set recordingsLimitMB
      *
-     * @param integer $recordingsLimitMB
+     * @param integer $recordingsLimitMB | null
      *
      * @return static
      */
@@ -1016,7 +1016,7 @@ abstract class CompanyAbstract
     /**
      * Set recordingsLimitEmail
      *
-     * @param string $recordingsLimitEmail
+     * @param string $recordingsLimitEmail | null
      *
      * @return static
      */
@@ -1076,17 +1076,15 @@ abstract class CompanyAbstract
     /**
      * Set balance
      *
-     * @param float $balance
+     * @param float $balance | null
      *
      * @return static
      */
     protected function setBalance($balance = null)
     {
         if (!is_null($balance)) {
-            if (!is_null($balance)) {
-                Assertion::numeric($balance);
-                $balance = (float) $balance;
-            }
+            Assertion::numeric($balance);
+            $balance = (float) $balance;
         }
 
         $this->balance = $balance;
@@ -1107,7 +1105,7 @@ abstract class CompanyAbstract
     /**
      * Set showInvoices
      *
-     * @param boolean $showInvoices
+     * @param boolean $showInvoices | null
      *
      * @return static
      */
@@ -1136,7 +1134,7 @@ abstract class CompanyAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -1160,7 +1158,7 @@ abstract class CompanyAbstract
     /**
      * Set mediaRelaySets
      *
-     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets
+     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets | null
      *
      * @return static
      */
@@ -1184,7 +1182,7 @@ abstract class CompanyAbstract
     /**
      * Set defaultTimezone
      *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
+     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone | null
      *
      * @return static
      */
@@ -1232,7 +1230,7 @@ abstract class CompanyAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -1256,7 +1254,7 @@ abstract class CompanyAbstract
     /**
      * Set applicationServer
      *
-     * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer
+     * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer | null
      *
      * @return static
      */
@@ -1280,7 +1278,7 @@ abstract class CompanyAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
      *
      * @return static
      */
@@ -1304,7 +1302,7 @@ abstract class CompanyAbstract
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */
@@ -1328,7 +1326,7 @@ abstract class CompanyAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -1352,7 +1350,7 @@ abstract class CompanyAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */
@@ -1376,7 +1374,7 @@ abstract class CompanyAbstract
     /**
      * Set outgoingDdiRule
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
+     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule | null
      *
      * @return static
      */
@@ -1400,7 +1398,7 @@ abstract class CompanyAbstract
     /**
      * Set voicemailNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate | null
      *
      * @return static
      */
@@ -1424,7 +1422,7 @@ abstract class CompanyAbstract
     /**
      * Set faxNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate | null
      *
      * @return static
      */
@@ -1448,7 +1446,7 @@ abstract class CompanyAbstract
     /**
      * Set invoiceNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate | null
      *
      * @return static
      */
@@ -1472,7 +1470,7 @@ abstract class CompanyAbstract
     /**
      * Set callCsvNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
      *
      * @return static
      */

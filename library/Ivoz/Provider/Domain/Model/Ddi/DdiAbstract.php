@@ -373,7 +373,7 @@ abstract class DdiAbstract
     /**
      * Set ddie164
      *
-     * @param string $ddie164
+     * @param string $ddie164 | null
      *
      * @return static
      */
@@ -434,7 +434,7 @@ abstract class DdiAbstract
     /**
      * Set displayName
      *
-     * @param string $displayName
+     * @param string $displayName | null
      *
      * @return static
      */
@@ -462,7 +462,7 @@ abstract class DdiAbstract
     /**
      * Set routeType
      *
-     * @param string $routeType
+     * @param string $routeType | null
      *
      * @return static
      */
@@ -530,7 +530,7 @@ abstract class DdiAbstract
     /**
      * Set friendValue
      *
-     * @param string $friendValue
+     * @param string $friendValue | null
      *
      * @return static
      */
@@ -606,7 +606,7 @@ abstract class DdiAbstract
     /**
      * Set conferenceRoom
      *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
+     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
      *
      * @return static
      */
@@ -630,7 +630,7 @@ abstract class DdiAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -654,7 +654,7 @@ abstract class DdiAbstract
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
      *
      * @return static
      */
@@ -678,7 +678,7 @@ abstract class DdiAbstract
     /**
      * Set externalCallFilter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter | null
      *
      * @return static
      */
@@ -702,7 +702,7 @@ abstract class DdiAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -726,7 +726,7 @@ abstract class DdiAbstract
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -750,7 +750,7 @@ abstract class DdiAbstract
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -774,7 +774,7 @@ abstract class DdiAbstract
     /**
      * Set fax
      *
-     * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
+     * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax | null
      *
      * @return static
      */
@@ -798,7 +798,7 @@ abstract class DdiAbstract
     /**
      * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider | null
      *
      * @return static
      */
@@ -846,7 +846,7 @@ abstract class DdiAbstract
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -870,7 +870,7 @@ abstract class DdiAbstract
     /**
      * Set conditionalRoute
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
      *
      * @return static
      */
@@ -894,7 +894,7 @@ abstract class DdiAbstract
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */

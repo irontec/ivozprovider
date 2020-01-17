@@ -246,7 +246,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set callAcl
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
+     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
      *
      * @return static
      */
@@ -262,7 +262,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set bossAssistant
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant | null
      *
      * @return static
      */
@@ -278,7 +278,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set bossAssistantWhiteList
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList | null
      *
      * @return static
      */
@@ -294,7 +294,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -310,7 +310,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
      *
      * @return static
      */
@@ -319,7 +319,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal | null
      *
      * @return static
      */
@@ -335,7 +335,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -351,7 +351,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set timezone
      *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone
+     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone | null
      *
      * @return static
      */
@@ -360,7 +360,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */
@@ -369,7 +369,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set outgoingDdiRule
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
+     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule | null
      *
      * @return static
      */
@@ -378,7 +378,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set voicemailLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution | null
      *
      * @return static
      */

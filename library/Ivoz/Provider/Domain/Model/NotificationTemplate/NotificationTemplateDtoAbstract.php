@@ -87,7 +87,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -107,7 +107,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -127,7 +127,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -147,7 +147,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -193,7 +193,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getContents()
     {

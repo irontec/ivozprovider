@@ -103,7 +103,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -119,7 +119,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -135,7 +135,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -151,7 +151,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
      *
      * @return static
      */
@@ -167,7 +167,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -183,7 +183,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */

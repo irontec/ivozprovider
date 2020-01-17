@@ -443,7 +443,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Set multiDdi
      *
-     * @param boolean $multiDdi
+     * @param boolean $multiDdi | null
      *
      * @return static
      */

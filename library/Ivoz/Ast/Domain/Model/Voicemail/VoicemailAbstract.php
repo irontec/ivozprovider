@@ -516,7 +516,7 @@ abstract class VoicemailAbstract
     /**
      * Set password
      *
-     * @param string $password
+     * @param string $password | null
      *
      * @return static
      */
@@ -544,7 +544,7 @@ abstract class VoicemailAbstract
     /**
      * Set fullname
      *
-     * @param string $fullname
+     * @param string $fullname | null
      *
      * @return static
      */
@@ -572,7 +572,7 @@ abstract class VoicemailAbstract
     /**
      * Set alias
      *
-     * @param string $alias
+     * @param string $alias | null
      *
      * @return static
      */
@@ -600,7 +600,7 @@ abstract class VoicemailAbstract
     /**
      * Set email
      *
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
@@ -628,7 +628,7 @@ abstract class VoicemailAbstract
     /**
      * Set pager
      *
-     * @param string $pager
+     * @param string $pager | null
      *
      * @return static
      */
@@ -656,7 +656,7 @@ abstract class VoicemailAbstract
     /**
      * Set attach
      *
-     * @param string $attach
+     * @param string $attach | null
      *
      * @return static
      */
@@ -680,7 +680,7 @@ abstract class VoicemailAbstract
     /**
      * Set attachfmt
      *
-     * @param string $attachfmt
+     * @param string $attachfmt | null
      *
      * @return static
      */
@@ -708,7 +708,7 @@ abstract class VoicemailAbstract
     /**
      * Set serveremail
      *
-     * @param string $serveremail
+     * @param string $serveremail | null
      *
      * @return static
      */
@@ -736,7 +736,7 @@ abstract class VoicemailAbstract
     /**
      * Set language
      *
-     * @param string $language
+     * @param string $language | null
      *
      * @return static
      */
@@ -764,7 +764,7 @@ abstract class VoicemailAbstract
     /**
      * Set tz
      *
-     * @param string $tz
+     * @param string $tz | null
      *
      * @return static
      */
@@ -792,7 +792,7 @@ abstract class VoicemailAbstract
     /**
      * Set deleteVoicemail
      *
-     * @param string $deleteVoicemail
+     * @param string $deleteVoicemail | null
      *
      * @return static
      */
@@ -816,7 +816,7 @@ abstract class VoicemailAbstract
     /**
      * Set saycid
      *
-     * @param string $saycid
+     * @param string $saycid | null
      *
      * @return static
      */
@@ -840,7 +840,7 @@ abstract class VoicemailAbstract
     /**
      * Set sendVoicemail
      *
-     * @param string $sendVoicemail
+     * @param string $sendVoicemail | null
      *
      * @return static
      */
@@ -864,7 +864,7 @@ abstract class VoicemailAbstract
     /**
      * Set review
      *
-     * @param string $review
+     * @param string $review | null
      *
      * @return static
      */
@@ -888,7 +888,7 @@ abstract class VoicemailAbstract
     /**
      * Set tempgreetwarn
      *
-     * @param string $tempgreetwarn
+     * @param string $tempgreetwarn | null
      *
      * @return static
      */
@@ -912,7 +912,7 @@ abstract class VoicemailAbstract
     /**
      * Set operator
      *
-     * @param string $operator
+     * @param string $operator | null
      *
      * @return static
      */
@@ -936,7 +936,7 @@ abstract class VoicemailAbstract
     /**
      * Set envelope
      *
-     * @param string $envelope
+     * @param string $envelope | null
      *
      * @return static
      */
@@ -960,7 +960,7 @@ abstract class VoicemailAbstract
     /**
      * Set sayduration
      *
-     * @param integer $sayduration
+     * @param integer $sayduration | null
      *
      * @return static
      */
@@ -989,7 +989,7 @@ abstract class VoicemailAbstract
     /**
      * Set forcename
      *
-     * @param string $forcename
+     * @param string $forcename | null
      *
      * @return static
      */
@@ -1013,7 +1013,7 @@ abstract class VoicemailAbstract
     /**
      * Set forcegreetings
      *
-     * @param string $forcegreetings
+     * @param string $forcegreetings | null
      *
      * @return static
      */
@@ -1037,7 +1037,7 @@ abstract class VoicemailAbstract
     /**
      * Set callback
      *
-     * @param string $callback
+     * @param string $callback | null
      *
      * @return static
      */
@@ -1065,7 +1065,7 @@ abstract class VoicemailAbstract
     /**
      * Set dialout
      *
-     * @param string $dialout
+     * @param string $dialout | null
      *
      * @return static
      */
@@ -1093,7 +1093,7 @@ abstract class VoicemailAbstract
     /**
      * Set exitcontext
      *
-     * @param string $exitcontext
+     * @param string $exitcontext | null
      *
      * @return static
      */
@@ -1121,7 +1121,7 @@ abstract class VoicemailAbstract
     /**
      * Set maxmsg
      *
-     * @param integer $maxmsg
+     * @param integer $maxmsg | null
      *
      * @return static
      */
@@ -1150,17 +1150,15 @@ abstract class VoicemailAbstract
     /**
      * Set volgain
      *
-     * @param float $volgain
+     * @param float $volgain | null
      *
      * @return static
      */
     protected function setVolgain($volgain = null)
     {
         if (!is_null($volgain)) {
-            if (!is_null($volgain)) {
-                Assertion::numeric($volgain);
-                $volgain = (float) $volgain;
-            }
+            Assertion::numeric($volgain);
+            $volgain = (float) $volgain;
         }
 
         $this->volgain = $volgain;
@@ -1181,7 +1179,7 @@ abstract class VoicemailAbstract
     /**
      * Set imapuser
      *
-     * @param string $imapuser
+     * @param string $imapuser | null
      *
      * @return static
      */
@@ -1209,7 +1207,7 @@ abstract class VoicemailAbstract
     /**
      * Set imappassword
      *
-     * @param string $imappassword
+     * @param string $imappassword | null
      *
      * @return static
      */
@@ -1237,7 +1235,7 @@ abstract class VoicemailAbstract
     /**
      * Set imapserver
      *
-     * @param string $imapserver
+     * @param string $imapserver | null
      *
      * @return static
      */
@@ -1265,7 +1263,7 @@ abstract class VoicemailAbstract
     /**
      * Set imapport
      *
-     * @param string $imapport
+     * @param string $imapport | null
      *
      * @return static
      */
@@ -1293,7 +1291,7 @@ abstract class VoicemailAbstract
     /**
      * Set imapflags
      *
-     * @param string $imapflags
+     * @param string $imapflags | null
      *
      * @return static
      */
@@ -1321,7 +1319,7 @@ abstract class VoicemailAbstract
     /**
      * Set stamp
      *
-     * @param \DateTime $stamp
+     * @param \DateTime $stamp | null
      *
      * @return static
      */

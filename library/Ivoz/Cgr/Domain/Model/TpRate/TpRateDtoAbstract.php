@@ -123,7 +123,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -143,7 +143,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -163,7 +163,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getConnectFee()
     {
@@ -183,7 +183,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getRateCost()
     {
@@ -203,7 +203,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRateUnit()
     {
@@ -223,7 +223,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRateIncrement()
     {
@@ -243,7 +243,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getGroupIntervalStart()
     {
@@ -263,7 +263,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -283,7 +283,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -303,7 +303,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
      */
     public function getDestinationRate()
     {

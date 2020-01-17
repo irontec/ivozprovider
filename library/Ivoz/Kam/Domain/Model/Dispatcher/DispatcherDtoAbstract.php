@@ -109,7 +109,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getSetid()
     {
@@ -129,7 +129,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestination()
     {
@@ -149,7 +149,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFlags()
     {
@@ -169,7 +169,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -189,7 +189,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAttrs()
     {
@@ -209,7 +209,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -229,7 +229,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -249,7 +249,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto
+     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto | null
      */
     public function getApplicationServer()
     {

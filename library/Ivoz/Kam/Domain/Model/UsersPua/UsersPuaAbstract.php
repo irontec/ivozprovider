@@ -537,7 +537,7 @@ abstract class UsersPuaAbstract
     /**
      * Set tupleId
      *
-     * @param string $tupleId
+     * @param string $tupleId | null
      *
      * @return static
      */
@@ -700,7 +700,7 @@ abstract class UsersPuaAbstract
     /**
      * Set recordRoute
      *
-     * @param string $recordRoute
+     * @param string $recordRoute | null
      *
      * @return static
      */

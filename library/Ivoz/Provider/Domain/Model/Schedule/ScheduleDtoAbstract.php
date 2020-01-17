@@ -137,7 +137,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -157,7 +157,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getTimeIn()
     {
@@ -177,7 +177,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getTimeout()
     {
@@ -197,7 +197,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getMonday()
     {
@@ -217,7 +217,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getTuesday()
     {
@@ -237,7 +237,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getWednesday()
     {
@@ -257,7 +257,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getThursday()
     {
@@ -277,7 +277,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getFriday()
     {
@@ -297,7 +297,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSaturday()
     {
@@ -317,7 +317,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getSunday()
     {
@@ -337,7 +337,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -357,7 +357,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {

@@ -81,7 +81,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPenalty()
     {
@@ -101,7 +101,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -121,7 +121,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
      */
     public function getQueue()
     {
@@ -167,7 +167,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {

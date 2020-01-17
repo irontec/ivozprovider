@@ -109,7 +109,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRequestId()
     {
@@ -129,7 +129,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getClass()
     {
@@ -149,7 +149,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMethod()
     {
@@ -169,7 +169,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getArguments()
     {
@@ -189,7 +189,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getAgent()
     {
@@ -209,7 +209,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedOn()
     {
@@ -229,7 +229,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMicrotime()
     {
@@ -249,7 +249,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getId()
     {

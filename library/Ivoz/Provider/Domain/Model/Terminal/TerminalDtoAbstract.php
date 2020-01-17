@@ -156,7 +156,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -176,7 +176,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDisallow()
     {
@@ -196,7 +196,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAllowAudio()
     {
@@ -216,7 +216,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAllowVideo()
     {
@@ -236,7 +236,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod()
     {
@@ -256,7 +256,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -276,7 +276,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMac()
     {
@@ -296,7 +296,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastProvisionDate()
     {
@@ -316,7 +316,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38Passthrough()
     {
@@ -336,7 +336,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -356,7 +356,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -402,7 +402,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
      */
     public function getDomain()
     {
@@ -448,7 +448,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto
+     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto | null
      */
     public function getTerminalModel()
     {
@@ -494,7 +494,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getAstPsEndpoints()
     {
@@ -514,7 +514,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getUsers()
     {
