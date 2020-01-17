@@ -48,7 +48,7 @@ Feature: Create carrier servers
           "outboundProxy": null,
           "fromUser": "",
           "fromDomain": "",
-          "id": 2,
+          "id": 3,
           "carrier": 1
       }
     """
@@ -56,7 +56,7 @@ Feature: Create carrier servers
   Scenario: Retrieve created carrier server
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "carrier_servers/2"
+      And I send a "GET" request to "carrier_servers/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -77,7 +77,7 @@ Feature: Create carrier servers
           "outboundProxy": null,
           "fromUser": "",
           "fromDomain": "",
-          "id": 2,
+          "id": 3,
           "carrier": {
               "description": "CarrierDescription",
               "name": "CarrierName",

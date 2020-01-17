@@ -20,6 +20,13 @@ Feature: Retrieve carrier servers
               "authNeeded": "no",
               "sipProxy": "127.0.0.1",
               "id": 1
+          },
+          {
+              "ip": null,
+              "hostname": "127.0.0.2",
+              "authNeeded": "no",
+              "sipProxy": "127.0.0.2",
+              "id": 2
           }
       ]
     """
