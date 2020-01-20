@@ -81,6 +81,13 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
+     * Get stopper
+     *
+     * @return boolean
+     */
+    public function getStopper();
+
+    /**
      * Get forceClid
      *
      * @return boolean | null
