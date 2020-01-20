@@ -38,6 +38,8 @@ class ProviderCarrierServer extends Fixture implements DependentFixtureInterface
         $item1->setCarrier($this->getReference('_reference_ProviderCarrier1'));
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderCarrierServer1', $item1);
+        $this->sanitizeEntityValues($item1);
+        $manager->persist($item1);
 
         /** @var CarrierServerInterface $item2 */
         $item2 = $this->createEntityInstance(CarrierServer::class);
@@ -57,10 +59,9 @@ class ProviderCarrierServer extends Fixture implements DependentFixtureInterface
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderCarrierServer2', $item2);
 
-        $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
-    
         $manager->flush();
     }
 

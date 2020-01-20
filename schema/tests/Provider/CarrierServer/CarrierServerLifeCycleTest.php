@@ -2,6 +2,7 @@
 
 namespace Tests\Provider\CarrierServer;
 
+use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
@@ -86,22 +87,23 @@ class CarrierServerLifeCycleTest extends KernelTestCase
      */
     public function it_persists_carrierServers()
     {
-        $carrierServer = $this->em
+        $carrierServerRepository = $this->em
             ->getRepository(CarrierServer::class);
-        $fixtureCarrierServers = $carrierServer->findAll();
+        $fixtureCarrierServers = $carrierServerRepository->findAll();
 
-        $this->addCarrierServer();
+        $carrierServer = $this->addCarrierServer();
 
-        $brands = $carrierServer->findAll();
-        $this->assertCount(count($fixtureCarrierServers) + 1, $brands);
-
+        $carrierServers = $carrierServerRepository->findAll();
+        $this->assertCount(count($fixtureCarrierServers) + 1, $carrierServers);
 
         //////////////////////////////////
         ///
         //////////////////////////////////
         $this->added_carrierServer_triggers_lifecycle_services();
         $this->added_carrierServer_has_trunksLcrGateway();
-        $this->added_carrierServer_has_trunksLcrRuleTarget();
+        $this->added_carrierServer_has_trunksLcrRuleTarget(
+            $carrierServer
+        );
     }
 
     protected function added_carrierServer_triggers_lifecycle_services()
@@ -128,13 +130,13 @@ class CarrierServerLifeCycleTest extends KernelTestCase
         $diff = $changelog->getData();
         $expectedSubset = [
             'lcr_id' => '1',
-            'gw_name' => 'b1c1s2',
+            'gw_name' => 'b1c1s3',
             'hostname' => '127.1.1.1',
             'port' => 5060,
             'uri_scheme' => 1,
             'transport' => 1,
-            'carrierServerId' => 2,
-            'id' => 2
+            'carrierServerId' => 3,
+            'id' => 3
         ];
 
         $this->assertEquals(
@@ -143,28 +145,48 @@ class CarrierServerLifeCycleTest extends KernelTestCase
         );
     }
 
-    protected function added_carrierServer_has_trunksLcrRuleTarget()
-    {
+    protected function added_carrierServer_has_trunksLcrRuleTarget(
+        CarrierServer $carrierServer
+    ) {
+        $lcrRules = [];
+        $outgoingRoutings = $carrierServer->getCarrier()->getOutgoingRoutings();
+        foreach ($outgoingRoutings as $outgoingRouting) {
+            $lcrRules = $outgoingRouting->getLcrRules();
+            foreach ($lcrRules as $lcrRule) {
+                $lcrRules[$lcrRule->getId()] = $lcrRule;
+            }
+        }
+        $lcrRuleNumber = count(array_keys($lcrRules));
+
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
             TrunksLcrRuleTarget::class
         );
 
-        $this->assertCount(2, $changelogEntries);
-        $changelog = $changelogEntries[0];
+        $newEntities = [];
+        foreach ($changelogEntries as $changelogEntry) {
+            $data = $changelogEntry->getData();
+            if (!array_key_exists('id', $data)) {
+                continue;
+            }
+            $newEntities[] = $changelogEntry;
+        }
+
+        $this->assertCount($lcrRuleNumber, $newEntities);
+        $changelog = $newEntities[0];
 
         $diff = $changelog->getData();
         $expectedSubset = [
             'lcr_id' => '1',
             'priority' => 1,
-            'weight' => 1,
+            'weight' => 3,
             'ruleId' => 2,
-            'gwId' => 2,
+            'gwId' => 3,
             'outgoingRoutingId' => 1,
-            'id' => 3
+            'id' => 5
         ];
 
-        $this->assertEquals(//)assertArraySubset(
+        $this->assertEquals(
             $expectedSubset,
             $diff
         );
@@ -189,7 +211,8 @@ class CarrierServerLifeCycleTest extends KernelTestCase
     {
         $this->removeCarrierServer();
         $this->assetChangedEntities([
-            CarrierServer::class
+            CarrierServer::class,
+            TrunksLcrRuleTarget::class
         ]);
     }
 }

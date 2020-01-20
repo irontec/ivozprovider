@@ -29,12 +29,12 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(TrunksLcrGateway::class);
         (function () {
             $this->setLcrId(1);
-            $this->setGwName("b1p1s1");
+            $this->setGwName("b1c1s1");
             $this->setIp("127.0.0.1");
-            $this->setHostname("hostname.net");
+            $this->setHostname("");
             $this->setPort(5060);
             $this->setParams("");
-            $this->setUriScheme(2);
+            $this->setUriScheme(1);
             $this->setTransport(1);
         })->call($item1);
         $item1->setCarrierServer($this->getReference('_reference_ProviderCarrierServer1'));
@@ -42,6 +42,24 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_KamTrunksLcrGateway1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
+
+        /** @var TrunksLcrGatewayInterface $item2 */
+        $item2 = $this->createEntityInstance(TrunksLcrGateway::class);
+        (function () {
+            $this->setLcrId(1);
+            $this->setGwName("b1c1s2");
+            $this->setIp("127.0.0.2");
+            $this->setHostname("");
+            $this->setPort(5060);
+            $this->setParams("");
+            $this->setUriScheme(1);
+            $this->setTransport(1);
+        })->call($item2);
+        $item2->setCarrierServer($this->getReference('_reference_ProviderCarrierServer2'));
+
+        $this->addReference('_reference_KamTrunksLcrGateway2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }

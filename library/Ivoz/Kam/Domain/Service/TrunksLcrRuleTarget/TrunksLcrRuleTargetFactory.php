@@ -71,6 +71,15 @@ class TrunksLcrRuleTargetFactory
                 throw new \DomainException('Invalid Routing mode');
         }
 
+        // On last carrierServer deletion, just leave
+        if (empty($lcrGateways)) {
+            return;
+        }
+
+        // Share route weight between all carrier servers inside the carrier
+        // This way an even distribution between Carriers is achieved, no matter how many CarrierServers they have
+        $ponderatedWeight = floor(10 * $outgoingRouting->getWeight() / count($lcrGateways));
+
         $lcrRuleTargets = [];
         $lcrRules = $outgoingRouting->getLcrRules();
         // Create n x m LcrRuleTargets (n LcrRules; m LcrGateways)
@@ -90,7 +99,7 @@ class TrunksLcrRuleTargetFactory
                     ->setRuleId($lcrRule->getId())
                     ->setGwId($lcrGateway->getId())
                     ->setPriority($outgoingRouting->getPriority())
-                    ->setWeight($outgoingRouting->getWeight())
+                    ->setWeight($ponderatedWeight)
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time

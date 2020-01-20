@@ -20,38 +20,38 @@ class KamTrunksLcrRule extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TrunksLcrRule::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
-        $item3 = $this->createEntityInstance(TrunksLcrRule::class);
+        $item1 = $this->createEntityInstance(TrunksLcrRule::class);
         (function () {
             $this->setLcrId(1);
-            $this->setPrefix("+93");
+            $this->setPrefix("+34");
             $this->setFromUri("^b1c[0-9]+\$");
             $this->setStopper(0);
             $this->setEnabled(1);
-        })->call($item3);
-        $item3->setRoutingPattern(
+        })->call($item1);
+        $item1->setRoutingPattern(
             $this->getReference('_reference_ProviderRoutingPatternRoutingPattern68')
         );
-        $item3->setOutgoingRouting(
+        $item1->setOutgoingRouting(
             $this->getReference('_reference_ProviderOutgoingRouting2')
         );
 
-        $this->addReference('_reference_KamTrunksLcrRule3', $item3);
-        $this->sanitizeEntityValues($item3);
-        $manager->persist($item3);
+        $this->addReference('_reference_KamTrunksLcrRule3', $item1);
+        $this->sanitizeEntityValues($item1);
+        $manager->persist($item1);
 
-        $item4 = $this->createEntityInstance(TrunksLcrRule::class);
+        $item2 = $this->createEntityInstance(TrunksLcrRule::class);
         (function () {
             $this->setLcrId(1);
-            $this->setPrefix("+93");
+            $this->setPrefix("+34");
             $this->setFromUri("^b1c1\$");
             $this->setStopper(0);
             $this->setEnabled(1);
-        })->call($item4);
-        $item4->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
-        $item4->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting1'));
-        $this->addReference('_reference_KamTrunksLcrRule4', $item4);
-        $this->sanitizeEntityValues($item4);
-        $manager->persist($item4);
+        })->call($item2);
+        $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
+        $item2->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting1'));
+        $this->addReference('_reference_KamTrunksLcrRule4', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }
