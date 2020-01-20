@@ -45,6 +45,11 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         ];
 
         $this->sanitizeRouteValues();
+
+        // Timeout only makes sense in NoAnswer Call Forwards
+        if ($this->callForwardType != self::CALLFORWARDTYPE_NOANSWER) {
+            $this->setNoAnswerTimeout(0);
+        }
     }
 
     /**
