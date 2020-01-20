@@ -46,6 +46,22 @@ configuration** > **Services**:
     Toggle Lock
         Calling this service code will change the current status of the lock (see :ref:`route_locks`).
 
+    Inconditional call forward
+        Calling this service code will change the current status of inconditional call forward (only available for
+        residential clients, see :ref:`Residential device call forward settings <residential_devices_cfw>`).
+
+    Busy call forward
+        Calling this service code will change the current status of busy call forward (only available for
+        residential clients, see :ref:`Residential device call forward settings <residential_devices_cfw>`).
+
+    No answer call forward
+        Calling this service code will change the current status of no answer call forward (only available for
+        residential clients, see :ref:`Residential device call forward settings <residential_devices_cfw>`).
+
+    Unreachable call forward
+        Calling this service code will change the current status of no answer call forward (only available for
+        residential clients, see :ref:`Residential device call forward settings <residential_devices_cfw>`).it di
+
 As soon as new services are implemented into IvozProvider, they will be listed
 in this section.
 
