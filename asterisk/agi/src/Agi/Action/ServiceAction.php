@@ -2,10 +2,15 @@
 
 namespace Agi\Action;
 
+use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
@@ -14,6 +19,7 @@ use Ivoz\Provider\Domain\Model\RouteLock\RouteLock;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLockDto;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLockRepository;
+use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class ServiceAction
@@ -44,7 +50,7 @@ class ServiceAction
     protected $entityTools;
 
     /**
-     * @var CompanyServiceInterface
+     * @var CompanyServiceInterface|BrandServiceInterface
      */
     protected $service;
 
@@ -68,7 +74,7 @@ class ServiceAction
     }
 
     /**
-     * @param CompanyServiceInterface $service
+     * @param CompanyServiceInterface|BrandServiceInterface $service
      * @return $this
      */
     public function setService($service)
@@ -96,26 +102,38 @@ class ServiceAction
 
         // Process this service
         switch ($service->getService()->getIden()) {
-            case 'Voicemail':
+            case Service::VOICEMAIL:
                 $this->processVoiceMail();
                 break;
-            case 'DirectPickUp':
+            case Service::DIRECT_PICKUP:
                 $this->processDirectPickUp();
                 break;
-            case 'GroupPickUp':
+            case Service::GROUP_PICKUP:
                 $this->processGroupPickUp();
                 break;
-            case 'RecordLocution':
+            case Service::RECORD_LOCUTION:
                 $this->processRecordLocution();
                 break;
-            case 'OpenLock':
+            case Service::OPEN_LOCK:
                 $this->processOpenLock();
                 break;
-            case 'CloseLock':
+            case Service::CLOSE_LOCK:
                 $this->processCloseLock();
                 break;
-            case 'ToggleLock':
+            case Service::TOGGLE_LOCK:
                 $this->processToggleLock();
+                break;
+            case Service::CALL_FORWARD_INCONDITIONAL:
+                $this->processCfwInconditional();
+                break;
+            case Service::CALL_FORWARD_BUSY:
+                $this->processCfwBusy();
+                break;
+            case Service::CALL_FORWARD_NOANSWER:
+                $this->processCfwNoAnswer();
+                break;
+            case Service::CALL_FORWARD_UNREACHEABLE:
+                $this->processCfwUnreachable();
                 break;
         }
     }
@@ -377,6 +395,102 @@ class ServiceAction
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
+    }
+
+
+    protected function processCfwInconditional()
+    {
+        $this->processCallForwardSetting(CallForwardSettingInterface::CALLFORWARDTYPE_INCONDITIONAL);
+    }
+
+    protected function processCfwBusy()
+    {
+        $this->processCallForwardSetting(CallForwardSettingInterface::CALLFORWARDTYPE_BUSY);
+    }
+
+    protected function processCfwNoAnswer()
+    {
+        $this->processCallForwardSetting(CallForwardSettingInterface::CALLFORWARDTYPE_NOANSWER);
+    }
+
+    protected function processCfwUnreachable()
+    {
+        $this->processCallForwardSetting(CallForwardSettingInterface::CALLFORWARDTYPE_USERNOTREGISTERED);
+    }
+
+    protected function processCallForwardSetting($callForwardType)
+    {
+        // Local variables to improve readability
+        $service = $this->service;
+        $caller = $this->channelInfo->getChannelCaller();
+        $company = $caller->getCompany();
+        $companyCountry = $company->getCountry();
+
+        /**
+         * Extract Destination from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      Destination Number
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $destination = substr($dialedExten, $serviceCodeLen + 1);
+
+        $callForwardSettings = $caller->getCallForwardSettings(
+            CriteriaHelper::fromArray([
+                [ 'callForwardType', 'eq', $callForwardType, ],
+                [ 'enabled', 'eq', 1 ],
+            ])
+        );
+
+        if (count($callForwardSettings) > 1) {
+            $this->agi->error("Multiple active %s CFW found for %s", $callForwardType, $caller);
+            $this->agi->playback("ivozprovider/cfw-error");
+            return;
+        }
+        $callForwardSetting = array_shift($callForwardSettings);
+
+        // Disable existing call forward if no destination has been provided
+        if (empty($destination)) {
+            if ($callForwardSetting) {
+                $this->entityTools->remove($callForwardSetting);
+            }
+            // Feedback sound
+            $this->agi->notice("%s CFW disabled for %s", $callForwardType, $caller);
+            $this->agi->playback("ivozprovider/cfw-disabled");
+            return;
+        }
+
+        // Create a new callForwardSetting if none found
+        $callForwardSettingDto = $callForwardSetting
+            ? $this->entityTools->entityToDto($callForwardSetting)
+            : CallForwardSetting::createDto();
+
+        $callForwardSettingDto
+            ->setEnabled(true)
+            ->setResidentialDeviceId($caller->getId())
+            ->setCallTypeFilter(CallForwardSettingInterface::CALLTYPEFILTER_BOTH)
+            ->setCallForwardType($callForwardType)
+            ->setTargetType(CallForwardSettingInterface::TARGETTYPE_NUMBER)
+            ->setNumberCountryId($companyCountry->getId())
+            ->setNumberValue($destination)
+            ->setNoAnswerTimeout(10);
+
+        try {
+            $this->entityTools
+                ->persistDto($callForwardSettingDto, $callForwardSetting);
+        } catch (\Exception $e) {
+            $this->agi->error($e->getMessage());
+            $this->agi->playback("ivozprovider/cfw-error");
+            return;
+        }
+
+        // Call Forward enabled
+        $this->agi->notice("%s CFW enabled for %s", $callForwardType, $caller);
+        $this->agi->playback("ivozprovider/cfw-enabled");
     }
 
     public function processHello()

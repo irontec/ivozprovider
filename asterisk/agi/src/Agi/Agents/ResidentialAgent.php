@@ -3,6 +3,7 @@
 namespace Agi\Agents;
 
 use Agi\Wrapper;
+use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
 class ResidentialAgent implements AgentInterface
@@ -47,6 +48,12 @@ class ResidentialAgent implements AgentInterface
     public function getLanguageCode()
     {
         return $this->residential->getLanguageCode();
+    }
+
+    public function getCallForwardSettings(Criteria $criteria = null)
+    {
+        return $this->residential
+            ->getCallForwardSettings($criteria);
     }
 
     public function getOutgoingDdi($destination)
