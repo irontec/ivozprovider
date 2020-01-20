@@ -4,6 +4,7 @@ use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
+use Ivoz\Provider\Domain\Model\Service\Service;
 
 /**
  * Class IvozProvider_Klear_Filter_CompanyServices
@@ -49,7 +50,10 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
 
         $brandServicesIds = array();
         foreach ($brandServices as $brandService) {
-            array_push($brandServicesIds, $brandService->getServiceId());
+            $serviceIden = $brandService->getService()->getIden();
+            if (in_array($serviceIden, Service::VPBX_AVAILABLE_SERVICES, true)) {
+                array_push($brandServicesIds, $brandService->getServiceId());
+            }
         }
 
         if (count($brandServicesIds)) {
