@@ -158,7 +158,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -178,7 +178,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -198,7 +198,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTenant()
     {
@@ -218,7 +218,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCategory()
     {
@@ -238,7 +238,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAccount()
     {
@@ -258,7 +258,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -278,7 +278,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestinationTag()
     {
@@ -298,7 +298,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRpCategory()
     {
@@ -318,7 +318,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStrategy()
     {
@@ -338,7 +338,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStrategyParams()
     {
@@ -358,7 +358,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getActivationTime()
     {
@@ -378,7 +378,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getWeight()
     {
@@ -398,7 +398,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -418,7 +418,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -438,7 +438,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
      */
     public function getOutgoingRouting()
     {

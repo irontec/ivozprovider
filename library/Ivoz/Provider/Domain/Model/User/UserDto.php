@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
-use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class UserDto extends UserDtoAbstract
@@ -119,6 +118,10 @@ class UserDto extends UserDtoAbstract
             $response['oldPass'] = 'oldPass';
         }
 
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
         if (in_array($context, self::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
             $response['pickupGroupIds'] = 'pickupGroupIds';
         }
@@ -145,7 +148,9 @@ class UserDto extends UserDtoAbstract
      */
     public function denormalize(array $data, string $context, string $role = '')
     {
-        if ($role !== 'ROLE_COMPANY_ADMIN') {
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        } else {
             if (isset($data['oldPass'])) {
                 $this->setOldPass($data['oldPass']);
             } else {

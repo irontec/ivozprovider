@@ -97,7 +97,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -113,7 +113,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -129,7 +129,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set conferenceRoom
      *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
+     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
      *
      * @return static
      */
@@ -145,7 +145,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -161,7 +161,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
      *
      * @return static
      */
@@ -177,7 +177,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set conditionalRoute
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
      *
      * @return static
      */
@@ -193,7 +193,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

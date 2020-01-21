@@ -150,7 +150,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -170,7 +170,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUnit()
     {
@@ -190,7 +190,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFrequency()
     {
@@ -210,7 +210,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -230,7 +230,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution()
     {
@@ -250,7 +250,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError()
     {
@@ -270,7 +270,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution()
     {
@@ -290,7 +290,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getTaxRate()
     {
@@ -310,7 +310,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -330,7 +330,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto | null
      */
     public function getInvoiceTemplate()
     {
@@ -376,7 +376,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -422,7 +422,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -468,7 +468,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
      */
     public function getNumberSequence()
     {
@@ -514,7 +514,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelFixedCosts()
     {

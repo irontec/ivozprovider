@@ -85,12 +85,12 @@ abstract class BillableCallAbstract
     protected $direction = 'outbound';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -334,7 +334,7 @@ abstract class BillableCallAbstract
     /**
      * Set callid
      *
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
@@ -362,7 +362,7 @@ abstract class BillableCallAbstract
     /**
      * Set startTime
      *
-     * @param \DateTime $startTime
+     * @param \DateTime $startTime | null
      *
      * @return static
      */
@@ -424,7 +424,7 @@ abstract class BillableCallAbstract
     /**
      * Set caller
      *
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
@@ -452,7 +452,7 @@ abstract class BillableCallAbstract
     /**
      * Set callee
      *
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
@@ -480,17 +480,15 @@ abstract class BillableCallAbstract
     /**
      * Set cost
      *
-     * @param float $cost
+     * @param float $cost | null
      *
      * @return static
      */
     protected function setCost($cost = null)
     {
         if (!is_null($cost)) {
-            if (!is_null($cost)) {
-                Assertion::numeric($cost);
-                $cost = (float) $cost;
-            }
+            Assertion::numeric($cost);
+            $cost = (float) $cost;
         }
 
         $this->cost = $cost;
@@ -511,17 +509,15 @@ abstract class BillableCallAbstract
     /**
      * Set price
      *
-     * @param float $price
+     * @param float $price | null
      *
      * @return static
      */
     protected function setPrice($price = null)
     {
         if (!is_null($price)) {
-            if (!is_null($price)) {
-                Assertion::numeric($price);
-                $price = (float) $price;
-            }
+            Assertion::numeric($price);
+            $price = (float) $price;
         }
 
         $this->price = $price;
@@ -542,7 +538,7 @@ abstract class BillableCallAbstract
     /**
      * Set priceDetails
      *
-     * @param array $priceDetails
+     * @param array $priceDetails | null
      *
      * @return static
      */
@@ -566,7 +562,7 @@ abstract class BillableCallAbstract
     /**
      * Set carrierName
      *
-     * @param string $carrierName
+     * @param string $carrierName | null
      *
      * @return static
      */
@@ -594,7 +590,7 @@ abstract class BillableCallAbstract
     /**
      * Set destinationName
      *
-     * @param string $destinationName
+     * @param string $destinationName | null
      *
      * @return static
      */
@@ -622,7 +618,7 @@ abstract class BillableCallAbstract
     /**
      * Set ratingPlanName
      *
-     * @param string $ratingPlanName
+     * @param string $ratingPlanName | null
      *
      * @return static
      */
@@ -650,7 +646,7 @@ abstract class BillableCallAbstract
     /**
      * Set endpointType
      *
-     * @param string $endpointType
+     * @param string $endpointType | null
      *
      * @return static
      */
@@ -678,7 +674,7 @@ abstract class BillableCallAbstract
     /**
      * Set endpointId
      *
-     * @param integer $endpointId
+     * @param integer $endpointId | null
      *
      * @return static
      */
@@ -708,7 +704,7 @@ abstract class BillableCallAbstract
     /**
      * Set direction
      *
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
@@ -739,11 +735,11 @@ abstract class BillableCallAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
         $this->brand = $brand;
 
@@ -753,7 +749,7 @@ abstract class BillableCallAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -763,11 +759,11 @@ abstract class BillableCallAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -777,7 +773,7 @@ abstract class BillableCallAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -787,7 +783,7 @@ abstract class BillableCallAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -811,7 +807,7 @@ abstract class BillableCallAbstract
     /**
      * Set destination
      *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination | null
      *
      * @return static
      */
@@ -835,7 +831,7 @@ abstract class BillableCallAbstract
     /**
      * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup | null
      *
      * @return static
      */
@@ -859,7 +855,7 @@ abstract class BillableCallAbstract
     /**
      * Set invoice
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
+     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
      *
      * @return static
      */
@@ -883,7 +879,7 @@ abstract class BillableCallAbstract
     /**
      * Set trunksCdr
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr
+     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr | null
      *
      * @return static
      */

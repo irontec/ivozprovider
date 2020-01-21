@@ -96,7 +96,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -112,7 +112,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -128,7 +128,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
      *
      * @return static
      */
@@ -144,7 +144,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */
@@ -160,7 +160,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -176,7 +176,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */

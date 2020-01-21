@@ -11,6 +11,7 @@ production:
     30008: _("There is already a terminal with that name.")
     30100: _("Error reloading modules. Please reload modules manually.")
     30200: _("There is a call forward with that call type. You can't add this call forward")
+    30300: _("End date must be later or equal than start date.")
     40000: _("'Valid From' must be earlier than 'Valid to'")
     40001: _("You can't create a pricing plan that starts in de past")
     40002: _("Selected weight is already in use")

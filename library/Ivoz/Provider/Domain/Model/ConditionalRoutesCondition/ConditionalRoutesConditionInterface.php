@@ -143,7 +143,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -159,7 +159,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -175,7 +175,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set voicemailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser | null
      *
      * @return static
      */
@@ -191,7 +191,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -207,7 +207,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
      *
      * @return static
      */
@@ -223,7 +223,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
      *
      * @return static
      */
@@ -239,7 +239,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set conferenceRoom
      *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
+     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
      *
      * @return static
      */
@@ -255,7 +255,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -271,7 +271,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

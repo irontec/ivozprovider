@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification;
+use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;

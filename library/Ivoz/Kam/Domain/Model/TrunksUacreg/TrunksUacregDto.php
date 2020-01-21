@@ -2,9 +2,6 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-
 class TrunksUacregDto extends TrunksUacregDtoAbstract
 {
     public function toArray($hideSensitiveData = false)

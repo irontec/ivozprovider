@@ -67,7 +67,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */

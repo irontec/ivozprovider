@@ -21,8 +21,7 @@ Feature: Create match lists
     """
       {
           "name": "newMatchlist",
-          "id": 3,
-          "company": 1
+          "id": 3
       }
     """
 
@@ -37,21 +36,6 @@ Feature: Create match lists
     """
       {
           "name": "newMatchlist",
-          "id": 3,
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "onDemandRecordCode": "",
-              "balance": 1.2,
-              "id": 1,
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
-          }
+          "id": 3
       }
     """

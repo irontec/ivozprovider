@@ -4,9 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
-use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 
 /**
  * Brand
@@ -154,5 +151,43 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
             "b%d",
             $this->getId()
         );
+    }
+
+    /**
+     * @param string $exten
+     * @return \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface|null
+     */
+    public function getService($exten)
+    {
+        $code = substr($exten, 1);
+
+        // Get company services
+        $services = $this->getServices();
+
+        // Look for an exact match in service name
+        foreach ($services as $service) {
+            if ($service->getService()->getExtraArgs()) {
+                continue;
+            }
+            if (strlen($code) !== strlen($service->getCode())) {
+                continue;
+            }
+            if ($code === $service->getCode()) {
+                return $service;
+            }
+        }
+
+        // Look for a partial service match
+        foreach ($services as $service) {
+            if (!$service->getService()->getExtraArgs()) {
+                continue;
+            }
+            if (!strncmp($code, $service->getCode(), strlen($service->getCode()))) {
+                return $service;
+            }
+        }
+
+        // Extension doesn't match any service
+        return null;
     }
 }

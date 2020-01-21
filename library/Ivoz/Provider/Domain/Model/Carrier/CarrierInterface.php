@@ -83,7 +83,7 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */
@@ -99,7 +99,7 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */

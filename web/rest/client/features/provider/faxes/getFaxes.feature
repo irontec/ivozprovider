@@ -37,7 +37,6 @@ Feature: Retrieve faxes
           "email": null,
           "sendByEmail": false,
           "id": 1,
-          "company": "~",
           "outgoingDdi": null
       }
     """

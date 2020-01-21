@@ -5,7 +5,6 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListDto;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarDto;
-use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleDto;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListDto;
 
@@ -80,6 +79,10 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
             $response['blackListIds'] = 'blackListIds';
         }
 
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
         return $response;
     }
 
@@ -98,6 +101,19 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         }
 
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     public function setCalendarIds(array $calendarIds): self

@@ -207,7 +207,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -227,7 +227,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime()
     {
@@ -247,7 +247,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getDuration()
     {
@@ -267,7 +267,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -287,7 +287,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -307,7 +307,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getCost()
     {
@@ -327,7 +327,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getPrice()
     {
@@ -347,7 +347,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getPriceDetails()
     {
@@ -367,7 +367,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCarrierName()
     {
@@ -387,7 +387,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestinationName()
     {
@@ -407,7 +407,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanName()
     {
@@ -427,7 +427,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEndpointType()
     {
@@ -447,7 +447,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getEndpointId()
     {
@@ -467,7 +467,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -487,7 +487,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -507,7 +507,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -553,7 +553,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -599,7 +599,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -645,7 +645,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
      */
     public function getDestination()
     {
@@ -691,7 +691,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
      */
     public function getRatingPlanGroup()
     {
@@ -737,7 +737,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
      */
     public function getInvoice()
     {
@@ -783,7 +783,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto | null
      */
     public function getTrunksCdr()
     {

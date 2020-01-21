@@ -40,7 +40,6 @@ Feature: Update residential devices
           "transport": "udp",
           "password": "ZGthe7E2+4",
           "id": 1,
-          "company": "~",
           "outgoingDdi": {
               "ddi": "123",
               "recordCalls": "none",
@@ -48,7 +47,6 @@ Feature: Update residential devices
               "routeType": null,
               "friendValue": "",
               "id": 1,
-              "company": 1,
               "conferenceRoom": null,
               "language": null,
               "queue": null,

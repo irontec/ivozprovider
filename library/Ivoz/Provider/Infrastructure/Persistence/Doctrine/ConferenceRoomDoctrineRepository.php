@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomRepository;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom;
+use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

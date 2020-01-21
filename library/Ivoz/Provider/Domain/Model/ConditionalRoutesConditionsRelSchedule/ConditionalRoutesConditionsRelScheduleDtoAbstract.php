@@ -74,7 +74,7 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto | null
      */
     public function getCondition()
     {
@@ -140,7 +140,7 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto
+     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
      */
     public function getSchedule()
     {

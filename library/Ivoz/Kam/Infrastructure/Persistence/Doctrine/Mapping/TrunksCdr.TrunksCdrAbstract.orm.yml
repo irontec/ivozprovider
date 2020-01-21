@@ -121,7 +121,7 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       joinColumns:
         brandId:
           referencedColumnName: id
-          onDelete: cascade
+          onDelete: set null
       orphanRemoval: false
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -132,7 +132,7 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       joinColumns:
         companyId:
           referencedColumnName: id
-          onDelete: cascade
+          onDelete: set null
       orphanRemoval: false
     carrier:
       targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
@@ -153,6 +153,17 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       inversedBy: null
       joinColumns:
         retailAccountId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    residentialDevice:
+      targetEntity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        residentialDeviceId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

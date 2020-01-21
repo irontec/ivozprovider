@@ -164,7 +164,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -184,7 +184,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRoutetype()
     {
@@ -204,7 +204,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumbervalue()
     {
@@ -224,7 +224,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFriendvalue()
     {
@@ -244,7 +244,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -264,7 +264,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -310,7 +310,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
      */
     public function getIvr()
     {
@@ -356,7 +356,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
      */
     public function getHuntGroup()
     {
@@ -402,7 +402,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getVoicemailUser()
     {
@@ -448,7 +448,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {
@@ -494,7 +494,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
      */
     public function getQueue()
     {
@@ -540,7 +540,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getLocution()
     {
@@ -586,7 +586,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto | null
      */
     public function getConferenceRoom()
     {
@@ -632,7 +632,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -678,7 +678,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {
@@ -724,7 +724,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getConditions()
     {

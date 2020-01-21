@@ -27,7 +27,6 @@ Feature: Update faxes
           "email": "something@irontec.com",
           "sendByEmail": true,
           "id": 1,
-          "company": "~",
           "outgoingDdi": {
               "ddi": "123",
               "recordCalls": "none",
@@ -35,7 +34,6 @@ Feature: Update faxes
               "routeType": null,
               "friendValue": "",
               "id": 1,
-              "company": 1,
               "conferenceRoom": null,
               "language": null,
               "queue": null,

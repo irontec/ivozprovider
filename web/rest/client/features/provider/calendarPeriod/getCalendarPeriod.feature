@@ -40,8 +40,7 @@ Feature: Retrieve calendar periods
           "id": 1,
           "calendar": {
               "name": "testCalendar",
-              "id": 1,
-              "company": 1
+              "id": 1
           },
           "locution": null,
           "extension": null,

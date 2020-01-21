@@ -264,7 +264,7 @@ abstract class DestinationRateGroupAbstract
     /**
      * Set status
      *
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
@@ -322,7 +322,7 @@ abstract class DestinationRateGroupAbstract
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */

@@ -48,7 +48,6 @@ Feature: Retrieve recordings
               "fileSize": 4280,
               "mimeType": "audio/mpeg; charset=binary",
               "baseName": "7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3"
-          },
-          "company": "~"
+          }
       }
     """

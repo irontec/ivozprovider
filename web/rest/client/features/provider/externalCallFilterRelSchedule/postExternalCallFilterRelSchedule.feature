@@ -29,7 +29,6 @@ Feature: Create external call filter rel schedules
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": null,
               "holidayLocution": null,
               "outOfScheduleLocution": null,
@@ -51,8 +50,7 @@ Feature: Create external call filter rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """
@@ -75,7 +73,6 @@ Feature: Create external call filter rel schedules
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": null,
               "holidayLocution": null,
               "outOfScheduleLocution": null,
@@ -97,8 +94,7 @@ Feature: Create external call filter rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

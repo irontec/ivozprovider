@@ -44,7 +44,6 @@ Feature: Retrieve locutions
               "fileSize": 1,
               "mimeType": "audio/mpeg; charset=binary",
               "baseName": "locution.mp3"
-          },
-          "company": "~"
+          }
       }
     """

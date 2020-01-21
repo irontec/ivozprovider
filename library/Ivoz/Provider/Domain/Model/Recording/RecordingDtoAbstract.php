@@ -137,7 +137,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -157,7 +157,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCalldate()
     {
@@ -177,7 +177,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -197,7 +197,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getDuration()
     {
@@ -217,7 +217,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -237,7 +237,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -257,7 +257,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecorder()
     {
@@ -277,7 +277,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -297,7 +297,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getRecordedFileFileSize()
     {
@@ -317,7 +317,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecordedFileMimeType()
     {
@@ -337,7 +337,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecordedFileBaseName()
     {
@@ -357,7 +357,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {

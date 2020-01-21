@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\MusicOnHold;
 
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
 
 /**
  * Class RecodingOrder

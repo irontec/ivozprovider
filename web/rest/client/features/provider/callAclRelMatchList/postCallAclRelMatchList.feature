@@ -47,13 +47,11 @@ Feature: Create call acl rel match lists
           "callAcl": {
               "name": "testACL2",
               "defaultPolicy": "deny",
-              "id": 2,
-              "company": 1
+              "id": 2
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

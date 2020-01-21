@@ -22,6 +22,7 @@ use Symfony\Component\Serializer\Serializer;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\RegisterCommandTrait;
+use Assert\Assertion;
 
 /**
  * @Gearman\Work(
@@ -160,25 +161,134 @@ class Rates
             $csvLines = [$csvLines];
         }
 
-        // Parse every CSV line
-        foreach ($csvLines as $line) {
-            $destinations[] = sprintf(
-                '("%s",  "%s",  "%s", "%d" )',
-                $line['destinationPrefix'],
-                $line['destinationName'],
-                $line['destinationName'],
-                $brandId
-            );
-        }
+        try {
+            // Parse every CSV line
+            $lineNum = $importerArguments['ignoreFirst']
+                ? 1
+                : 0;
 
-        if (!$destinations) {
+            $parsedPrefixes = [];
+
+            foreach ($csvLines as $k => $line) {
+                $lineNum++;
+
+                // Ignore empty lines
+                $isEmptyRow =
+                    count($line) === 1
+                    && empty(trim($line['destinationName']));
+
+                if ($isEmptyRow) {
+                    unset($csvLines[$k]);
+                    continue;
+                }
+
+                // Trim spaces from every column
+                foreach ($line as $key => $column) {
+                    $line[$key] = trim($column);
+                    $csvLines[$k][$key] = $line[$key];
+                }
+
+                // Validate columns number
+                Assertion::count(
+                    $line,
+                    5,
+                    'Five columns were expected on line ' . $lineNum
+                );
+
+                // Validate destinationName
+                Assertion::notEmpty(
+                    $line['destinationName'],
+                    'Empty destination name was found on line ' . $lineNum
+                );
+
+                // Validate destinationPrefix
+                Assertion::regex(
+                    $line['destinationPrefix'],
+                    '/^\\+[0-9]+$/',
+                    'Destination prefix does not match expected format on line ' . $lineNum
+                );
+
+                $prefixAlreadyUsed = in_array(
+                    $line['destinationPrefix'],
+                    $parsedPrefixes
+                );
+
+                Assertion::false(
+                    $prefixAlreadyUsed,
+                    'Duplicated prefix on line '. $lineNum
+                );
+
+                // Validate & set format to rateCost
+                Assertion::numeric(
+                    $line['rateCost'],
+                    'Numeric rateCost was expected on line ' . $lineNum
+                );
+                Assertion::greaterOrEqualThan(
+                    $line['rateCost'],
+                    0,
+                    'rateCost was expected to be >= zero on line ' . $lineNum
+                );
+                Assertion::true(
+                    $line['rateCost'] == floatval($line['rateCost']),
+                    'Float rateCost was expected on line ' . $lineNum
+                );
+                $csvLines[$k]['rateCost'] = floatval($line['rateCost']);
+
+                // Validate & set format to connectionCharge
+                Assertion::numeric(
+                    $line['connectionCharge'],
+                    'Numeric connectionCharge was expected on line ' . $lineNum
+                );
+                Assertion::greaterOrEqualThan(
+                    $line['connectionCharge'],
+                    0,
+                    'connectionCharge was expected to be >= zero on line ' . $lineNum
+                );
+                Assertion::true(
+                    $line['connectionCharge'] == floatval($line['connectionCharge']),
+                    'Float connectionCharge was expected on line ' . $lineNum
+                );
+                $csvLines[$k]['connectionCharge'] = floatval($line['connectionCharge']);
+
+                // Validate & set format to rateIncrement
+                Assertion::numeric(
+                    $line['rateIncrement'],
+                    'Numeric rateIncrement was expected on line ' . $lineNum
+                );
+                Assertion::greaterThan(
+                    $line['rateIncrement'],
+                    0,
+                    'rateIncrement was expected to be greater than zero on line ' . $lineNum
+                );
+                Assertion::integerish(
+                    $line['rateIncrement'],
+                    'Integer rateIncrement was expected on line ' . $lineNum
+                );
+                $csvLines[$k]['rateIncrement'] = intval($line['rateIncrement']);
+
+                $destinations[] = sprintf(
+                    '("%s",  "%s",  "%s", "%d" )',
+                    $line['destinationPrefix'],
+                    $line['destinationName'],
+                    $line['destinationName'],
+                    $brandId
+                );
+
+                $parsedPrefixes[] = $line['destinationPrefix'];
+            }
+
+            if (!$destinations) {
+                throw new \Exception(
+                    "No lines parsed from CSV File: " . $params['filePath']
+                );
+            }
+        } catch (\Exception $e) {
             $this->logger->error(
-                "No lines parsed from CSV File: " . $params['filePath']
+                $e->getMessage()
             );
 
-            $destinationRateGroupDto->setStatus(
-                'error'
-            );
+            $destinationRateGroupDto
+                ->setStatus('error');
 
             $this
                 ->entityTools

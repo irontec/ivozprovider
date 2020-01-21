@@ -116,7 +116,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getCost()
     {
@@ -136,7 +136,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getConnectFee()
     {
@@ -156,7 +156,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRateIncrement()
     {
@@ -176,7 +176,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getGroupIntervalStart()
     {
@@ -196,7 +196,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -216,7 +216,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto | null
      */
     public function getTpRate()
     {
@@ -262,7 +262,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto | null
      */
     public function getTpDestinationRate()
     {
@@ -308,7 +308,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
      */
     public function getDestinationRateGroup()
     {
@@ -354,7 +354,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
      */
     public function getDestination()
     {

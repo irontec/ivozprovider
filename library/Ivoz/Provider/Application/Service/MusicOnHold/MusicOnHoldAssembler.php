@@ -2,12 +2,13 @@
 
 namespace Ivoz\Provider\Application\Service\MusicOnHold;
 
+use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Assert\Assertion;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class MusicOnHoldAssembler implements CustomEntityAssemblerInterface
@@ -23,7 +24,7 @@ class MusicOnHoldAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $musicOnHoldDto,
         EntityInterface $musicOnHold,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($musicOnHold, MusicOnHoldInterface::class);
         $musicOnHold->updateFromDto($musicOnHoldDto, $fkTransformer);

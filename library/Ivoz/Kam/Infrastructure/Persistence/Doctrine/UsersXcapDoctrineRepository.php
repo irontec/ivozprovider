@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersXcap\UsersXcapRepository;
 use Ivoz\Kam\Domain\Model\UsersXcap\UsersXcap;
+use Ivoz\Kam\Domain\Model\UsersXcap\UsersXcapRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

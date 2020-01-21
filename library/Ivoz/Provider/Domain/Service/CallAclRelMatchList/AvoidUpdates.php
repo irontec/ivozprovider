@@ -6,17 +6,12 @@ use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 
 class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CallAclRelMatchListLifecycleEventHandlerInterface
 {
-    public function __construct()
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [
             self::EVENT_PRE_PERSIST => AvoidEntityUpdatesAbstract::PRE_PERSIST_PRIORITY,
         ];
     }
-
     /**
      * @param CallAclRelMatchListInterface $entity
      *

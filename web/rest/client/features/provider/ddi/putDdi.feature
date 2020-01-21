@@ -43,7 +43,6 @@ Feature: Update Ddis
           "routeType": null,
           "friendValue": "",
           "id": 1,
-          "company": "~",
           "conferenceRoom": null,
           "language": null,
           "queue": null,

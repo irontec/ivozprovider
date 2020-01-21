@@ -1,0 +1,22 @@
+production:
+  entity: \Ivoz\Provider\Domain\Model\Country\Country
+  fields:
+    name:
+      title: _('Name')
+      type: text
+      isMultilang: true
+      trim: both
+      maxLength: 100
+      default: true
+    countryCode:
+      title: _('Country code')
+      type: text
+      maxLength: 10
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

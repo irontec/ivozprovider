@@ -277,7 +277,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set src
      *
-     * @param string $src
+     * @param string $src | null
      *
      * @return static
      */
@@ -305,7 +305,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set dst
      *
-     * @param string $dst
+     * @param string $dst | null
      *
      * @return static
      */
@@ -333,7 +333,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set type
      *
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
@@ -365,7 +365,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set pages
      *
-     * @param string $pages
+     * @param string $pages | null
      *
      * @return static
      */
@@ -393,7 +393,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set status
      *
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
@@ -441,7 +441,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set dstCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry | null
      *
      * @return static
      */

@@ -14,5 +14,23 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
       groups: ['']
 
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+        hidden:
+          eq: 0
+
+Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"

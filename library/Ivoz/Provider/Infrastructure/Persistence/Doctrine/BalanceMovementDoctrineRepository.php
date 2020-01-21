@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementRepository;
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
+use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

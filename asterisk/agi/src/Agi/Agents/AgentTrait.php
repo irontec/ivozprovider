@@ -2,6 +2,8 @@
 
 namespace Agi\Agents;
 
+use Doctrine\Common\Collections\Criteria;
+
 trait AgentTrait
 {
     /**
@@ -44,6 +46,11 @@ trait AgentTrait
         );
 
         return $equals;
+    }
+
+    public function getCallForwardSettings(Criteria $criteria = null)
+    {
+        return [];
     }
 
     public function getExtensionNumber()

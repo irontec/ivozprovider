@@ -140,7 +140,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
      *
      * @return static
      */
@@ -156,7 +156,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Set terminalModel
      *
-     * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel
+     * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel | null
      *
      * @return static
      */

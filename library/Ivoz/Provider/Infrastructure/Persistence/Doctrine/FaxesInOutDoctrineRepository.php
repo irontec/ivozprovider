@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

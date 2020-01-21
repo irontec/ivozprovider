@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersHtable\UsersHtableRepository;
 use Ivoz\Kam\Domain\Model\UsersHtable\UsersHtable;
+use Ivoz\Kam\Domain\Model\UsersHtable\UsersHtableRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

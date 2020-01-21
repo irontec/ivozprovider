@@ -320,7 +320,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
@@ -348,7 +348,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set hostname
      *
-     * @param string $hostname
+     * @param string $hostname | null
      *
      * @return static
      */
@@ -376,7 +376,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param integer $port | null
      *
      * @return static
      */
@@ -406,7 +406,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set params
      *
-     * @param string $params
+     * @param string $params | null
      *
      * @return static
      */
@@ -434,7 +434,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set uriScheme
      *
-     * @param integer $uriScheme
+     * @param integer $uriScheme | null
      *
      * @return static
      */
@@ -464,7 +464,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set transport
      *
-     * @param integer $transport
+     * @param integer $transport | null
      *
      * @return static
      */
@@ -494,7 +494,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set strip
      *
-     * @param boolean $strip
+     * @param boolean $strip | null
      *
      * @return static
      */
@@ -523,7 +523,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set prefix
      *
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
@@ -551,7 +551,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
@@ -579,7 +579,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set defunct
      *
-     * @param integer $defunct
+     * @param integer $defunct | null
      *
      * @return static
      */
@@ -609,7 +609,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set carrierServer
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer | null
      *
      * @return static
      */

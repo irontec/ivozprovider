@@ -25,7 +25,6 @@ Feature: Update outgoing ddi rules
           "name": "updatedRule",
           "defaultAction": "force",
           "id": 1,
-          "company": "~",
           "forcedDdi": {
               "ddi": "123",
               "recordCalls": "none",
@@ -33,7 +32,6 @@ Feature: Update outgoing ddi rules
               "routeType": null,
               "friendValue": "",
               "id": 1,
-              "company": 1,
               "conferenceRoom": null,
               "language": null,
               "queue": null,

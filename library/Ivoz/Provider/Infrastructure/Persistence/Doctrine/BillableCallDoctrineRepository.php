@@ -6,10 +6,11 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -20,6 +21,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BillableCallDoctrineRepository extends ServiceEntityRepository implements BillableCallRepository
 {
+    const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
+
     use GetGeneratorByConditionsTrait;
 
     protected $queryRunner;
@@ -251,8 +254,10 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      * @inheritdoc
      * @see BillableCallRepository::setInvoiceId
      */
-    public function setInvoiceId(array $conditions, int $invoiceId)
+    public function setInvoiceId(InvoiceInterface $invoice)
     {
+        $conditions = $this->getConditionsByInvoice($invoice);
+
         // In order to reduce table lock times search target ids first
         $finder = $this
             ->createQueryBuilder('self')
@@ -277,7 +282,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->createQueryBuilder('self')
             ->update($this->_entityName, 'self')
             ->set('self.invoice', ':invoiceId')
-            ->setParameter(':invoiceId', $invoiceId)
+            ->setParameter(':invoiceId', $invoice->getId())
             ->addCriteria(
                 CriteriaHelper::fromArray([
                     ['id', 'in', $targetIds],
@@ -290,52 +295,39 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
     }
 
-    /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @param string $endTime
-     * @return QueryBuilder
-     * @throws \Doctrine\ORM\Query\QueryException
-     */
-    private function getUntarificattedCallQueryBuilder(int $companyId, int $brandId, string $startTime, string $endTime): QueryBuilder
+    public function getGeneratorByInvoice(InvoiceInterface $invoice)
     {
-        $qb = $this->createQueryBuilder('self');
+        $conditions = $this->getConditionsByInvoice($invoice);
 
-        $conditions = [
-            ['company', 'eq', $companyId],
-            ['brand', 'eq', $brandId],
-            ['startTime', 'gt', $startTime],
-            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
-            'or' => [
-                ['price', 'isNull'],
-                ['price', 'lt', 0],
-            ]
-        ];
-
-        $qb
-            ->addCriteria(
-                CriteriaHelper::fromArray($conditions)
-            )->andWhere(
-                $qb->expr()->lt(
-                    '(self.startTime + self.duration)',
-                    preg_replace('/[^0-9]+/', '', $endTime)
-                )
+        return $this
+            ->getGeneratorByConditions(
+                $conditions,
+                5000,
+                ['self.startTime', 'ASC']
             );
-
-        return $qb;
     }
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::getUntarificattedCallIdsInRange
+     * @see BillableCallRepository::getUnratedCallIdsByInvoice
      */
-    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array
+    public function getUnratedCallIdsByInvoice(InvoiceInterface $invoice): array
     {
-        $qb = $this->getUntarificattedCallQueryBuilder(
-            ...func_get_args()
+        $conditions = $this->getConditionsByInvoice(
+            $invoice
         );
-        $qb->select('self.id');
+
+        $conditions['or'] = [
+            ['price', 'isNull'],
+            ['price', 'lt', 0],
+        ];
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self.id')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
 
         $result = $qb->getQuery()->getResult();
 
@@ -349,14 +341,40 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     /**
      * @inheritdoc
-     * @see BillableCallRepository::countUntarificattedCallsInRange
+     * @see BillableCallRepository::countUnratedCallsByInvoice
      */
-    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime): int
+    public function countUnratedCallsByInvoice(InvoiceInterface $invoice): int
     {
-        $results = $this->getUntarificattedCallIdsInRange(
-            ...func_get_args()
+        $results = $this->getUnratedCallIdsByInvoice(
+            $invoice
         );
 
         return count($results);
+    }
+
+    /**
+     * @param InvoiceInterface $invoice
+     * @return array
+     */
+    private function getConditionsByInvoice(InvoiceInterface $invoice): array
+    {
+        $utcTz = new \DateTimeZone('UTC');
+
+        $brand = $invoice->getBrand();
+        $company = $invoice->getCompany();
+
+        $inDate = $invoice->getInDate();
+        $utcInDate = $inDate->setTimezone($utcTz);
+
+        $outDate = $invoice->getOutDate();
+        $utcOutDate = $outDate->setTimezone($utcTz);
+
+        return [
+            ['brand', 'eq', $brand->getId()],
+            ['company', 'eq', $company->getId()],
+            ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
+            ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)],
+            ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
+        ];
     }
 }

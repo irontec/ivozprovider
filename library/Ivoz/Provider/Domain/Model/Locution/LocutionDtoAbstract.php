@@ -123,7 +123,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -143,7 +143,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {
@@ -163,7 +163,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -183,7 +183,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getEncodedFileFileSize()
     {
@@ -203,7 +203,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEncodedFileMimeType()
     {
@@ -223,7 +223,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEncodedFileBaseName()
     {
@@ -243,7 +243,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getOriginalFileFileSize()
     {
@@ -263,7 +263,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOriginalFileMimeType()
     {
@@ -283,7 +283,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOriginalFileBaseName()
     {
@@ -303,7 +303,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {

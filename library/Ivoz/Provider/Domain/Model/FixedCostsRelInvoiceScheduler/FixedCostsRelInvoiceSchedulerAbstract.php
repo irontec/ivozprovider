@@ -169,7 +169,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Set quantity
      *
-     * @param integer $quantity
+     * @param integer $quantity | null
      *
      * @return static
      */

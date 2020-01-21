@@ -160,7 +160,7 @@ abstract class ProxyUserAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
@@ -188,7 +188,7 @@ abstract class ProxyUserAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */

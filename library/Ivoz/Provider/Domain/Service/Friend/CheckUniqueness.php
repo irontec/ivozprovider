@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Service\Friend;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 

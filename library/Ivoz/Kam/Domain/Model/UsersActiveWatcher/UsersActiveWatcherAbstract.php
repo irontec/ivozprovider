@@ -602,7 +602,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Set eventId
      *
-     * @param string $eventId
+     * @param string $eventId | null
      *
      * @return static
      */
@@ -792,7 +792,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Set recordRoute
      *
-     * @param string $recordRoute
+     * @param string $recordRoute | null
      *
      * @return static
      */
@@ -874,7 +874,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Set reason
      *
-     * @param string $reason
+     * @param string $reason | null
      *
      * @return static
      */

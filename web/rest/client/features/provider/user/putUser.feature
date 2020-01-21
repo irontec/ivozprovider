@@ -60,7 +60,6 @@ Feature: Update users
           "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 1,
-          "company": "~",
           "callAcl": null,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
@@ -91,7 +90,6 @@ Feature: Update users
               "lastProvisionDate": null,
               "t38Passthrough": "no",
               "id": 1,
-              "company": 1,
               "terminalModel": 1
           },
           "extension": null,

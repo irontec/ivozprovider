@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Service\Company;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Psr\Log\LoggerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use Psr\Log\LoggerInterface;
 
 class SyncBalances
 {

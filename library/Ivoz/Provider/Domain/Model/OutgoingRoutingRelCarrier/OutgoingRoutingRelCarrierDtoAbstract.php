@@ -80,7 +80,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -100,7 +100,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
      */
     public function getOutgoingRouting()
     {
@@ -146,7 +146,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -192,7 +192,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getTpRatingProfiles()
     {

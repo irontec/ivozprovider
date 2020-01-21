@@ -253,7 +253,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -273,7 +273,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLastname()
     {
@@ -293,7 +293,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -313,7 +313,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPass()
     {
@@ -333,7 +333,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getDoNotDisturb()
     {
@@ -353,7 +353,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getIsBoss()
     {
@@ -373,7 +373,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getActive()
     {
@@ -393,7 +393,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxCalls()
     {
@@ -413,7 +413,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getExternalIpCalls()
     {
@@ -433,7 +433,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getVoicemailEnabled()
     {
@@ -453,7 +453,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getVoicemailSendMail()
     {
@@ -473,7 +473,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getVoicemailAttachSound()
     {
@@ -493,7 +493,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getGsQRCode()
     {
@@ -513,7 +513,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -533,7 +533,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -579,7 +579,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
      */
     public function getCallAcl()
     {
@@ -625,7 +625,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getBossAssistant()
     {
@@ -671,7 +671,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
      */
     public function getBossAssistantWhiteList()
     {
@@ -717,7 +717,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -763,7 +763,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {
@@ -809,7 +809,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalDto
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalDto | null
      */
     public function getTerminal()
     {
@@ -855,7 +855,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -901,7 +901,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
      */
     public function getTimezone()
     {
@@ -947,7 +947,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getOutgoingDdi()
     {
@@ -993,7 +993,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto | null
      */
     public function getOutgoingDdiRule()
     {
@@ -1039,7 +1039,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getVoicemailLocution()
     {
@@ -1085,7 +1085,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getPickUpRelUsers()
     {
@@ -1105,7 +1105,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getQueueMembers()
     {
@@ -1125,7 +1125,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getCallForwardSettings()
     {

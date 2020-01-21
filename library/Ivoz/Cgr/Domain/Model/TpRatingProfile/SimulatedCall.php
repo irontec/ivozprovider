@@ -5,11 +5,11 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 
 /**
@@ -84,10 +84,6 @@ class SimulatedCall
      * @var float
      */
     protected $cost;
-
-    private function __construct()
-    {
-    }
 
     /**
      * @param string $response

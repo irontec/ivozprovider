@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
-use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
 
 class IvrDto extends IvrDtoAbstract
 {
@@ -43,9 +43,12 @@ class IvrDto extends IvrDtoAbstract
             $response['excludedExtensionIds'] = 'excludedExtensionIds';
         }
 
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['companyId']);
+        }
+
         return $response;
     }
-
 
     public function normalize(string $context, string $role = '')
     {
@@ -59,6 +62,19 @@ class IvrDto extends IvrDtoAbstract
         }
 
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     /**

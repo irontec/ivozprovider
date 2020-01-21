@@ -169,7 +169,7 @@ abstract class QueueMemberAbstract
     /**
      * Set penalty
      *
-     * @param integer $penalty
+     * @param integer $penalty | null
      *
      * @return static
      */

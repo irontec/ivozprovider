@@ -168,7 +168,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {
@@ -188,7 +188,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -208,7 +208,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEn()
     {
@@ -228,7 +228,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEs()
     {
@@ -248,7 +248,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameCa()
     {
@@ -268,7 +268,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameIt()
     {
@@ -288,7 +288,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionEn()
     {
@@ -308,7 +308,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionEs()
     {
@@ -328,7 +328,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionCa()
     {
@@ -348,7 +348,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionIt()
     {
@@ -368,7 +368,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFileFileSize()
     {
@@ -388,7 +388,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFileMimeType()
     {
@@ -408,7 +408,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFileBaseName()
     {
@@ -428,7 +428,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getFileImporterArguments()
     {
@@ -448,7 +448,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -494,7 +494,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
      */
     public function getCurrency()
     {
@@ -540,7 +540,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDestinationRates()
     {

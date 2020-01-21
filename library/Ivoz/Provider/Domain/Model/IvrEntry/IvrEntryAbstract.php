@@ -287,7 +287,7 @@ abstract class IvrEntryAbstract
     /**
      * Set numberValue
      *
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
@@ -339,7 +339,7 @@ abstract class IvrEntryAbstract
     /**
      * Set welcomeLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
      *
      * @return static
      */
@@ -363,7 +363,7 @@ abstract class IvrEntryAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -387,7 +387,7 @@ abstract class IvrEntryAbstract
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
      *
      * @return static
      */
@@ -411,7 +411,7 @@ abstract class IvrEntryAbstract
     /**
      * Set conditionalRoute
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
      *
      * @return static
      */
@@ -435,7 +435,7 @@ abstract class IvrEntryAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

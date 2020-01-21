@@ -88,7 +88,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -108,7 +108,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPolicy()
     {
@@ -128,7 +128,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -148,7 +148,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
      */
     public function getCallAcl()
     {
@@ -194,7 +194,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
      */
     public function getMatchList()
     {

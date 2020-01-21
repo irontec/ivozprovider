@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 use Assert\Assertion;
-use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -46,6 +45,11 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         ];
 
         $this->sanitizeRouteValues();
+
+        // Timeout only makes sense in NoAnswer Call Forwards
+        if ($this->callForwardType != self::CALLFORWARDTYPE_NOANSWER) {
+            $this->setNoAnswerTimeout(0);
+        }
     }
 
     /**

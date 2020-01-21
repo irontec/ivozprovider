@@ -2,8 +2,8 @@
 
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 
 interface PsEndpointRepository extends ObjectRepository, Selectable
 {

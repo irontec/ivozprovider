@@ -36,7 +36,6 @@ Feature: Retrieve calendars
     """
       {
           "name": "testCalendar",
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

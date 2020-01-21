@@ -3,10 +3,9 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NoResultException;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

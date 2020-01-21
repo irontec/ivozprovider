@@ -279,7 +279,7 @@ abstract class CalendarPeriodAbstract
     /**
      * Set routeType
      *
-     * @param string $routeType
+     * @param string $routeType | null
      *
      * @return static
      */
@@ -312,7 +312,7 @@ abstract class CalendarPeriodAbstract
     /**
      * Set numberValue
      *
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
@@ -364,7 +364,7 @@ abstract class CalendarPeriodAbstract
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
      *
      * @return static
      */
@@ -388,7 +388,7 @@ abstract class CalendarPeriodAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -412,7 +412,7 @@ abstract class CalendarPeriodAbstract
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
      *
      * @return static
      */
@@ -436,7 +436,7 @@ abstract class CalendarPeriodAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

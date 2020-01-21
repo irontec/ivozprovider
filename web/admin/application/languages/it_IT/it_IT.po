@@ -689,6 +689,9 @@ msgstr "Connettività diretta"
 msgid "Direction"
 msgstr "Direzione"
 
+msgid "Disable CDR"
+msgstr "Disable CDR"
+
 msgid "Disabled"
 msgstr "Disabilitato"
 
@@ -826,6 +829,9 @@ msgstr "Abilitato"
 
 msgid "End date"
 msgstr "End date"
+
+msgid "End date must be later or equal than start date."
+msgstr "Data non valida deve essere uguale o maggiore di In data."
 
 msgid "Endpoint id"
 msgstr "Endpoint id"
@@ -1105,6 +1111,11 @@ msgstr "Configurazione geografica"
 
 msgid "Global Configuration"
 msgstr "Global Configuration"
+
+msgid "Global Special Number"
+msgid_plural "Global Special Numbers"
+msgstr[0] "Global Special Number"
+msgstr[1] "Global Special Numbers"
 
 msgid "God"
 msgstr "God"
@@ -1499,6 +1510,9 @@ msgid "Mark this option to regenerate all rules after saving."
 msgstr ""
 "Contrassegna questa opzione per rigenerare tutte le regole dopo il "
 "salvataggio."
+
+msgid "Mark yes to hide this destination calls in all lists"
+msgstr "Mark yes to hide this destination calls in all lists"
 
 msgid "Mask"
 msgstr "Maschera"
@@ -2194,6 +2208,13 @@ msgstr[1] "Blocchi rotta"
 msgid "Route type"
 msgstr "Tipo Rotta"
 
+msgid ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+msgstr ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+
 msgid "Routing"
 msgstr "Routing"
 
@@ -2349,6 +2370,14 @@ msgstr "Sorgente"
 msgid "Source number header"
 msgstr "Intestazione numero sorgente"
 
+msgid "Special Number"
+msgid_plural "Special Numbers"
+msgstr[0] "Special Number"
+msgstr[1] "Special Numbers"
+
+msgid "Special treatments"
+msgstr "Special treatments"
+
 msgid "Specific Template"
 msgstr "Modello specifico"
 
@@ -2366,6 +2395,9 @@ msgstr "Statico"
 
 msgid "Status"
 msgstr "Stato"
+
+msgid "Stopper"
+msgstr "Stopper"
 
 msgid "Strategy"
 msgstr "Strategia"

@@ -226,7 +226,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
@@ -281,7 +281,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Set templateHeader
      *
-     * @param string $templateHeader
+     * @param string $templateHeader | null
      *
      * @return static
      */
@@ -309,7 +309,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Set templateFooter
      *
-     * @param string $templateFooter
+     * @param string $templateFooter | null
      *
      * @return static
      */
@@ -337,7 +337,7 @@ abstract class InvoiceTemplateAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */

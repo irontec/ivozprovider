@@ -280,7 +280,7 @@ abstract class ExtensionAbstract
     /**
      * Set routeType
      *
-     * @param string $routeType
+     * @param string $routeType | null
      *
      * @return static
      */
@@ -318,7 +318,7 @@ abstract class ExtensionAbstract
     /**
      * Set numberValue
      *
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
@@ -346,7 +346,7 @@ abstract class ExtensionAbstract
     /**
      * Set friendValue
      *
-     * @param string $friendValue
+     * @param string $friendValue | null
      *
      * @return static
      */
@@ -398,7 +398,7 @@ abstract class ExtensionAbstract
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -422,7 +422,7 @@ abstract class ExtensionAbstract
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -446,7 +446,7 @@ abstract class ExtensionAbstract
     /**
      * Set conferenceRoom
      *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
+     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
      *
      * @return static
      */
@@ -470,7 +470,7 @@ abstract class ExtensionAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -494,7 +494,7 @@ abstract class ExtensionAbstract
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
      *
      * @return static
      */
@@ -518,7 +518,7 @@ abstract class ExtensionAbstract
     /**
      * Set conditionalRoute
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
      *
      * @return static
      */
@@ -542,7 +542,7 @@ abstract class ExtensionAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

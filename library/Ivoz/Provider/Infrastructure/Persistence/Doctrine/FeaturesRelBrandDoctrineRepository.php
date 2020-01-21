@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandRepository;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

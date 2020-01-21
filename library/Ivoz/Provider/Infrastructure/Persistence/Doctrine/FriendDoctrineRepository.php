@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
-use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

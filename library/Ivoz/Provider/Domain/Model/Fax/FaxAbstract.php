@@ -217,7 +217,7 @@ abstract class FaxAbstract
     /**
      * Set email
      *
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
@@ -297,7 +297,7 @@ abstract class FaxAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
      *
      * @return static
      */

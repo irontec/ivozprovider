@@ -254,7 +254,7 @@ abstract class LocutionAbstract
     /**
      * Set status
      *
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */

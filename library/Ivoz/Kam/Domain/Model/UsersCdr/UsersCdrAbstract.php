@@ -76,12 +76,17 @@ abstract class UsersCdrAbstract
     protected $xcallid;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var boolean
+     */
+    protected $hidden = false;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -111,11 +116,12 @@ abstract class UsersCdrAbstract
     /**
      * Constructor
      */
-    protected function __construct($startTime, $endTime, $duration)
+    protected function __construct($startTime, $endTime, $duration, $hidden)
     {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
+        $this->setHidden($hidden);
     }
 
     abstract public function getId();
@@ -189,7 +195,8 @@ abstract class UsersCdrAbstract
         $self = new static(
             $dto->getStartTime(),
             $dto->getEndTime(),
-            $dto->getDuration()
+            $dto->getDuration(),
+            $dto->getHidden()
         );
 
         $self
@@ -239,6 +246,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
+            ->setHidden($dto->getHidden())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -271,6 +279,7 @@ abstract class UsersCdrAbstract
             ->setCallid(self::getCallid())
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
+            ->setHidden(self::getHidden())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
@@ -297,6 +306,7 @@ abstract class UsersCdrAbstract
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
+            'hidden' => self::getHidden(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
@@ -405,7 +415,7 @@ abstract class UsersCdrAbstract
     /**
      * Set direction
      *
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
@@ -429,7 +439,7 @@ abstract class UsersCdrAbstract
     /**
      * Set caller
      *
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
@@ -457,7 +467,7 @@ abstract class UsersCdrAbstract
     /**
      * Set callee
      *
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
@@ -485,7 +495,7 @@ abstract class UsersCdrAbstract
     /**
      * Set diversion
      *
-     * @param string $diversion
+     * @param string $diversion | null
      *
      * @return static
      */
@@ -513,7 +523,7 @@ abstract class UsersCdrAbstract
     /**
      * Set referee
      *
-     * @param string $referee
+     * @param string $referee | null
      *
      * @return static
      */
@@ -541,7 +551,7 @@ abstract class UsersCdrAbstract
     /**
      * Set referrer
      *
-     * @param string $referrer
+     * @param string $referrer | null
      *
      * @return static
      */
@@ -569,7 +579,7 @@ abstract class UsersCdrAbstract
     /**
      * Set callid
      *
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
@@ -597,7 +607,7 @@ abstract class UsersCdrAbstract
     /**
      * Set callidHash
      *
-     * @param string $callidHash
+     * @param string $callidHash | null
      *
      * @return static
      */
@@ -625,7 +635,7 @@ abstract class UsersCdrAbstract
     /**
      * Set xcallid
      *
-     * @param string $xcallid
+     * @param string $xcallid | null
      *
      * @return static
      */
@@ -651,9 +661,37 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * Set hidden
+     *
+     * @param boolean $hidden
+     *
+     * @return static
+     */
+    protected function setHidden($hidden)
+    {
+        Assertion::notNull($hidden, 'hidden value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($hidden), 0, 1, 'hidden provided "%s" is not a valid boolean value.');
+        $hidden = (bool) $hidden;
+
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden
+     *
+     * @return boolean
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
+
+    /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -667,7 +705,7 @@ abstract class UsersCdrAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -677,7 +715,7 @@ abstract class UsersCdrAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -691,7 +729,7 @@ abstract class UsersCdrAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -701,7 +739,7 @@ abstract class UsersCdrAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -725,7 +763,7 @@ abstract class UsersCdrAbstract
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
      *
      * @return static
      */
@@ -749,7 +787,7 @@ abstract class UsersCdrAbstract
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -773,7 +811,7 @@ abstract class UsersCdrAbstract
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */

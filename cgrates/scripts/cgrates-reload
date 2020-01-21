@@ -60,7 +60,7 @@ if [ $FLUSHALL -eq 1 ]; then
 fi
 
 if [ $ALLBRANDS > 0 ]; then
-    BRANDS=`mysql -h data.ivozprovider.local -uroot -BN ivozprovider -e "SELECT id FROM Brands"`
+    BRANDS=`mysql -h data.ivozprovider.local -ukamailio -pironsecret -BN ivozprovider -e "SELECT id FROM Brands"`
 fi
 
 if [ $ALLBRANDS -eq 2 ]; then

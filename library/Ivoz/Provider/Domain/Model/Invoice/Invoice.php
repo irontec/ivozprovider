@@ -135,4 +135,23 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
         return parent::setNumber($number);
     }
+
+    public function mustRunInvoicer(): bool
+    {
+        $pendingStatus = $this->getStatus() === self::STATUS_WAITING;
+        $statusHasChanged = $this->hasChanged('status');
+
+        return $pendingStatus && $statusHasChanged;
+    }
+
+    public function mustCheckValidity(): bool
+    {
+        $scheduledInvoice = $this->getScheduler();
+        $mustRunInvoicer = $this->mustRunInvoicer();
+
+        $newScheduledInvoice = $scheduledInvoice && $mustRunInvoicer;
+        $modifiedInvoice = is_null($this->getStatus());
+
+        return $newScheduledInvoice || $modifiedInvoice;
+    }
 }

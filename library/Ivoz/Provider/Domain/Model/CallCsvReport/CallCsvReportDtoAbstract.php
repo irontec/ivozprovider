@@ -130,7 +130,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSentTo()
     {
@@ -150,7 +150,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getInDate()
     {
@@ -170,7 +170,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getOutDate()
     {
@@ -190,7 +190,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedOn()
     {
@@ -210,7 +210,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -230,7 +230,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getCsvFileSize()
     {
@@ -250,7 +250,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCsvMimeType()
     {
@@ -270,7 +270,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCsvBaseName()
     {
@@ -290,7 +290,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -336,7 +336,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -382,7 +382,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto
+     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto | null
      */
     public function getCallCsvScheduler()
     {

@@ -3,10 +3,9 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NativeQuery;
-use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
+use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

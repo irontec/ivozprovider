@@ -48,7 +48,7 @@ class CompanyDto extends CompanyDtoAbstract
             $data = $this->filterBrandReadOnlyFields($data);
         }
 
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
         }
@@ -184,15 +184,13 @@ class CompanyDto extends CompanyDtoAbstract
             'featureIds'
         ];
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 
     /**
@@ -217,14 +215,12 @@ class CompanyDto extends CompanyDtoAbstract
             'outgoingDdiRuleId',
         ];
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

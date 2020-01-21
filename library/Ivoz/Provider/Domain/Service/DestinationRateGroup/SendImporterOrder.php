@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Service\DestinationRateGroup;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 

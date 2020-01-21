@@ -99,7 +99,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     /**
      * Set dstCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry | null
      *
      * @return static
      */

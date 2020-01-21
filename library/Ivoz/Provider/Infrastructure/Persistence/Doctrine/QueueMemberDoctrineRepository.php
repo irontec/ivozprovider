@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberRepository;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMember;
+use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

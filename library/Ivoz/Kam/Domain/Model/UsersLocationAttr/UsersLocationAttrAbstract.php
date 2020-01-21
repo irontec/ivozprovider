@@ -273,7 +273,7 @@ abstract class UsersLocationAttrAbstract
     /**
      * Set domain
      *
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */

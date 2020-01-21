@@ -3,9 +3,9 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository;
 use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherInterface;
+use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

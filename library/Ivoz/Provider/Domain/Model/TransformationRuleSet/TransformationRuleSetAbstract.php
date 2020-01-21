@@ -245,7 +245,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
@@ -273,7 +273,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set internationalCode
      *
-     * @param string $internationalCode
+     * @param string $internationalCode | null
      *
      * @return static
      */
@@ -301,7 +301,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set trunkPrefix
      *
-     * @param string $trunkPrefix
+     * @param string $trunkPrefix | null
      *
      * @return static
      */
@@ -329,7 +329,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set areaCode
      *
-     * @param string $areaCode
+     * @param string $areaCode | null
      *
      * @return static
      */
@@ -357,7 +357,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set nationalLen
      *
-     * @param integer $nationalLen
+     * @param integer $nationalLen | null
      *
      * @return static
      */
@@ -387,7 +387,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set generateRules
      *
-     * @param boolean $generateRules
+     * @param boolean $generateRules | null
      *
      * @return static
      */
@@ -416,7 +416,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -440,7 +440,7 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
      *
      * @return static
      */

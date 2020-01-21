@@ -99,7 +99,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Set carrierServer
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer | null
      *
      * @return static
      */

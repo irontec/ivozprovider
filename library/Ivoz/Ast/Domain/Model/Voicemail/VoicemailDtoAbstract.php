@@ -305,7 +305,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getContext()
     {
@@ -325,7 +325,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMailbox()
     {
@@ -345,7 +345,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -365,7 +365,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFullname()
     {
@@ -385,7 +385,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAlias()
     {
@@ -405,7 +405,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -425,7 +425,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPager()
     {
@@ -445,7 +445,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAttach()
     {
@@ -465,7 +465,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAttachfmt()
     {
@@ -485,7 +485,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getServeremail()
     {
@@ -505,7 +505,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLanguage()
     {
@@ -525,7 +525,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTz()
     {
@@ -545,7 +545,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDeleteVoicemail()
     {
@@ -565,7 +565,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSaycid()
     {
@@ -585,7 +585,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSendVoicemail()
     {
@@ -605,7 +605,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getReview()
     {
@@ -625,7 +625,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTempgreetwarn()
     {
@@ -645,7 +645,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOperator()
     {
@@ -665,7 +665,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEnvelope()
     {
@@ -685,7 +685,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getSayduration()
     {
@@ -705,7 +705,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getForcename()
     {
@@ -725,7 +725,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getForcegreetings()
     {
@@ -745,7 +745,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallback()
     {
@@ -765,7 +765,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDialout()
     {
@@ -785,7 +785,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getExitcontext()
     {
@@ -805,7 +805,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxmsg()
     {
@@ -825,7 +825,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getVolgain()
     {
@@ -845,7 +845,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getImapuser()
     {
@@ -865,7 +865,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getImappassword()
     {
@@ -885,7 +885,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getImapserver()
     {
@@ -905,7 +905,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getImapport()
     {
@@ -925,7 +925,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getImapflags()
     {
@@ -945,7 +945,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStamp()
     {
@@ -965,7 +965,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -985,7 +985,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {
@@ -1031,7 +1031,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
      */
     public function getResidentialDevice()
     {

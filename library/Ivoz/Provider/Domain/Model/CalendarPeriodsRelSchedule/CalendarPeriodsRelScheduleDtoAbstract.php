@@ -74,7 +74,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto
+     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto | null
      */
     public function getCalendarPeriod()
     {
@@ -140,7 +140,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto
+     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
      */
     public function getSchedule()
     {

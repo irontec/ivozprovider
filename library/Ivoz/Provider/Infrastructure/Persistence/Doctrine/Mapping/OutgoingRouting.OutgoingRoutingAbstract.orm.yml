@@ -34,6 +34,13 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       length: 25
       options:
         fixed: false
+    stopper:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+        unsigned: true
+      column: stopper
     forceClid:
       type: boolean
       nullable: true

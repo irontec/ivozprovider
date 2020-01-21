@@ -21,13 +21,11 @@ Feature: Retrieve call acl rel match lists
               "callAcl": {
                   "name": "testACL",
                   "defaultPolicy": "allow",
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               },
               "matchList": {
                   "name": "testMatchlist",
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               }
           }
       ]
@@ -49,13 +47,11 @@ Feature: Retrieve call acl rel match lists
           "callAcl": {
               "name": "testACL",
               "defaultPolicy": "allow",
-              "id": 1,
-              "company": 1
+              "id": 1
           },
           "matchList": {
               "name": "testMatchlist",
-              "id": 1,
-              "company": 1
+              "id": 1
           }
       }
     """

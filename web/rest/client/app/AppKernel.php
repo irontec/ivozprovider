@@ -33,10 +33,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 
             /* CoreBundle */
-            new CoreBundle\CoreBundle(),
+            new Ivoz\CoreBundle\CoreBundle(),
 
             /* ApiBundle */
-            new ApiBundle\ApiBundle()
+            new Ivoz\ApiBundle\ApiBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

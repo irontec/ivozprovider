@@ -299,7 +299,7 @@ abstract class TerminalModelAbstract
     /**
      * Set genericTemplate
      *
-     * @param string $genericTemplate
+     * @param string $genericTemplate | null
      *
      * @return static
      */
@@ -327,7 +327,7 @@ abstract class TerminalModelAbstract
     /**
      * Set specificTemplate
      *
-     * @param string $specificTemplate
+     * @param string $specificTemplate | null
      *
      * @return static
      */
@@ -355,7 +355,7 @@ abstract class TerminalModelAbstract
     /**
      * Set genericUrlPattern
      *
-     * @param string $genericUrlPattern
+     * @param string $genericUrlPattern | null
      *
      * @return static
      */
@@ -383,7 +383,7 @@ abstract class TerminalModelAbstract
     /**
      * Set specificUrlPattern
      *
-     * @param string $specificUrlPattern
+     * @param string $specificUrlPattern | null
      *
      * @return static
      */

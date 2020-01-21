@@ -2,7 +2,6 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpRatingPlan;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Core\Application\Service\EntityTools;

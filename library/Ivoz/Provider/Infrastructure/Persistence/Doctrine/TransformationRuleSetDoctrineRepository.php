@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetRepository;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -17,10 +17,13 @@ class AppKernel extends Kernel
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
             /* Core */
-            new CoreBundle\CoreBundle(),
+            new Ivoz\CoreBundle\CoreBundle(),
+
+            /* CommandlogBundle */
+            new IvozDevTools\CommandlogBundle\CommandlogBundle(),
 
             /* EntityGeneratorBundle */
-            new EntityGeneratorBundle\EntityGeneratorBundle(),
+            new IvozDevTools\EntityGeneratorBundle\EntityGeneratorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'test_e2e'], true)) {

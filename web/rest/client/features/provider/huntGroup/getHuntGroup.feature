@@ -40,7 +40,6 @@ Feature: Retrieve hunt groups
           "noAnswerNumberValue": null,
           "preventMissedCalls": 1,
           "id": 1,
-          "company": "~",
           "noAnswerLocution": null,
           "noAnswerExtension": null,
           "noAnswerVoiceMailUser": null,

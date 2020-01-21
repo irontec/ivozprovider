@@ -954,7 +954,7 @@ abstract class TpCdrAbstract
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime $createdAt | null
      *
      * @return static
      */
@@ -989,7 +989,7 @@ abstract class TpCdrAbstract
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime $updatedAt | null
      *
      * @return static
      */
@@ -1024,7 +1024,7 @@ abstract class TpCdrAbstract
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt
+     * @param \DateTime $deletedAt | null
      *
      * @return static
      */

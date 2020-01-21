@@ -105,6 +105,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $retailAccount;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     */
+    private $residentialDevice;
+
 
     use DtoNormalizer;
 
@@ -141,7 +146,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'brandId' => 'brand',
             'companyId' => 'company',
             'carrierId' => 'carrier',
-            'retailAccountId' => 'retailAccount'
+            'retailAccountId' => 'retailAccount',
+            'residentialDeviceId' => 'residentialDevice'
         ];
     }
 
@@ -169,7 +175,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier(),
-            'retailAccount' => $this->getRetailAccount()
+            'retailAccount' => $this->getRetailAccount(),
+            'residentialDevice' => $this->getResidentialDevice()
         ];
     }
 
@@ -186,7 +193,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getStartTime()
     {
@@ -206,7 +213,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getEndTime()
     {
@@ -226,7 +233,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getDuration()
     {
@@ -246,7 +253,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCaller()
     {
@@ -266,7 +273,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallee()
     {
@@ -286,7 +293,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallid()
     {
@@ -306,7 +313,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallidHash()
     {
@@ -326,7 +333,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getXcallid()
     {
@@ -346,7 +353,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDiversion()
     {
@@ -366,7 +373,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getBounced()
     {
@@ -386,7 +393,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getParsed()
     {
@@ -406,7 +413,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getParserScheduledAt()
     {
@@ -426,7 +433,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -446,7 +453,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCgrid()
     {
@@ -466,7 +473,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -486,7 +493,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -532,7 +539,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -578,7 +585,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -624,7 +631,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
      */
     public function getRetailAccount()
     {
@@ -651,6 +658,52 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getRetailAccountId()
     {
         if ($dto = $this->getRetailAccount()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     *
+     * @return static
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    {
+        $this->residentialDevice = $residentialDevice;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     */
+    public function getResidentialDevice()
+    {
+        return $this->residentialDevice;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setResidentialDeviceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            : null;
+
+        return $this->setResidentialDevice($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getResidentialDeviceId()
+    {
+        if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
         }
 

@@ -2,12 +2,8 @@ parameters:
     includes:
         - vendor/phpstan/phpstan-beberlei-assert/extension.neon
         - vendor/phpstan/phpstan-symfony/extension.neon
-    ignoreErrors:
-        - '#.*ObjectManager::flush().*invoked with 1 parameter, 0 required#'
-        - '#Access to an undefined property .*EntityInterface::\$__isInitialized__#'
-        - '#Access to undefined constant PDO::MYSQL_ATTR_USE_BUFFERED_QUERY.#'
     excludes_analyse:
-        - "*/vendor/*"
+        - "*/vendor/[^irontec]/*"
         - "*/coverage/*"
         - %currentWorkingDirectory%/library/Ivoz/Api/Behat/Context/FeatureContext.php
         - %currentWorkingDirectory%/library/Ivoz/Provider/Domain/Service/Invoice/Generator.php

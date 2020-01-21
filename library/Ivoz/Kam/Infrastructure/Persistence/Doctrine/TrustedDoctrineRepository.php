@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\Trusted\TrustedRepository;
 use Ivoz\Kam\Domain\Model\Trusted\Trusted;
+use Ivoz\Kam\Domain\Model\Trusted\TrustedRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

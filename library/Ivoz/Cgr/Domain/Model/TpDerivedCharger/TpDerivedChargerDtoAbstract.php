@@ -249,7 +249,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -269,7 +269,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLoadid()
     {
@@ -289,7 +289,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -309,7 +309,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTenant()
     {
@@ -329,7 +329,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCategory()
     {
@@ -349,7 +349,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAccount()
     {
@@ -369,7 +369,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -389,7 +389,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestinationIds()
     {
@@ -409,7 +409,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRunid()
     {
@@ -429,7 +429,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRunFilters()
     {
@@ -449,7 +449,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getReqTypeField()
     {
@@ -469,7 +469,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectionField()
     {
@@ -489,7 +489,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTenantField()
     {
@@ -509,7 +509,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCategoryField()
     {
@@ -529,7 +529,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAccountField()
     {
@@ -549,7 +549,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSubjectField()
     {
@@ -569,7 +569,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDestinationField()
     {
@@ -589,7 +589,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSetupTimeField()
     {
@@ -609,7 +609,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPddField()
     {
@@ -629,7 +629,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAnswerTimeField()
     {
@@ -649,7 +649,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsageField()
     {
@@ -669,7 +669,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSupplierField()
     {
@@ -689,7 +689,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDisconnectCauseField()
     {
@@ -709,7 +709,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRatedTimeField()
     {
@@ -729,7 +729,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCostField()
     {
@@ -749,7 +749,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -769,7 +769,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -789,7 +789,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {

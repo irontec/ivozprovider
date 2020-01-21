@@ -89,6 +89,10 @@ production:
           title: ngettext('Default Invoice template', 'Default Invoice templates', 0)
           class: ui-silk-report-key
           description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
+        GlobalSpecialNumbersList:
+          title: ngettext('Global Special Number', 'Global Special Numbers', 0)
+          description: _("List of %s", ngettext('Global Special Number', 'Global Special Numbers', 0))
+          class: ui-silk-award-star-gold-3
         DomainsList:
           title: ngettext('SIP Domain', 'SIP Domains', 0)
           class: ui-silk-link
@@ -253,6 +257,10 @@ production:
               title: ngettext('Client Portal', 'Client Portals', 0)
               class: ui-silk-world-link
               description: _("List of %s", ngettext('Client Portal', 'Client Portals', 0))
+            BrandSpecialNumbersList:
+              title: ngettext('Special Number', 'Special Numbers', 0)
+              description: _("List of %s", ngettext('Special Number', 'Special Numbers', 0))
+              class: ui-silk-award-star-gold-3
             TransformationRuleSetsList:
               title: ngettext('Numeric transformation', 'Numeric transformations', 0)
               class: ui-silk-application-side-expand

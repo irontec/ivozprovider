@@ -17,13 +17,11 @@ Feature: Retrieve rating profiles
           {
               "activationTime": "2018-02-02 21:20:20",
               "id": 1,
-              "company": 1,
               "ratingPlanGroup": 1
           },
           {
               "activationTime": "2018-02-02 21:20:20",
               "id": 2,
-              "company": 1,
               "ratingPlanGroup": 2
           }
       ]
@@ -41,7 +39,6 @@ Feature: Retrieve rating profiles
       {
           "activationTime": "2018-02-02 21:20:20",
           "id": 1,
-          "company": "~",
           "ratingPlanGroup": "~"
       }
     """

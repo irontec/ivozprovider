@@ -242,7 +242,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Set prefix
      *
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
@@ -352,7 +352,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Set matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList | null
      *
      * @return static
      */
@@ -376,7 +376,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Set forcedDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi | null
      *
      * @return static
      */

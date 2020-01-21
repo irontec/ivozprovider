@@ -80,6 +80,18 @@ class Headers extends RouteHandlerAbstract
             if ($this->agi->getVariable("FAXFILE_ID") || $this->agi->getVariable("T38PASSTHROUGH")) {
                 $this->agi->setSIPHeader("X-Info-Special", "fax");
             }
+
+            // Get residentialDevice from channel variables
+            $residentialDeviceId = $this->agi->getVariable("RESIDENTIALDEVICEID");
+            if (!empty($residentialDeviceId)) {
+                $this->agi->setSIPHeader("X-Info-ResidentialDeviceId", $residentialDeviceId);
+            }
+
+            // Get retailAccount from channel variables
+            $retailAccountId = $this->agi->getVariable("RETAILACCOUNTID");
+            if (!empty($retailAccountId)) {
+                $this->agi->setSIPHeader("X-Info-RetailAccount", $retailAccountId);
+            }
         }
 
         // Set recording header

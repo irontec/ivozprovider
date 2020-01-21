@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersLocationAttr\UsersLocationAttrRepository;
 use Ivoz\Kam\Domain\Model\UsersLocationAttr\UsersLocationAttr;
+use Ivoz\Kam\Domain\Model\UsersLocationAttr\UsersLocationAttrRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

@@ -81,7 +81,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIden()
     {
@@ -101,7 +101,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -121,7 +121,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -141,7 +141,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

@@ -40,7 +40,6 @@ Feature: Retrieve route locks
           "name": "Lock name",
           "description": "Lock description",
           "open": true,
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

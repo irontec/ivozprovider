@@ -684,6 +684,9 @@ msgstr "Connexió directa"
 msgid "Direction"
 msgstr "Direcció"
 
+msgid "Disable CDR"
+msgstr "Deshabilitar CDR"
+
 msgid "Disabled"
 msgstr "Deshabilitat"
 
@@ -822,6 +825,9 @@ msgstr "Habilitat"
 
 msgid "End date"
 msgstr "Data fi"
+
+msgid "End date must be later or equal than start date."
+msgstr "'Data final' ha de ser igual o més gran que la 'data inici'."
 
 msgid "Endpoint id"
 msgstr "Dispositiu final Id"
@@ -1098,6 +1104,11 @@ msgstr "Configuració geogràfica"
 
 msgid "Global Configuration"
 msgstr "Configuració global"
+
+msgid "Global Special Number"
+msgid_plural "Global Special Numbers"
+msgstr[0] "Número especial Global"
+msgstr[1] "Números especiales Globales"
 
 msgid "God"
 msgstr "Déu"
@@ -1490,6 +1501,10 @@ msgstr "Vista de plataforma principal"
 
 msgid "Mark this option to regenerate all rules after saving."
 msgstr "Marca aquesta opció per generar les regles després de guardar."
+
+msgid "Mark yes to hide this destination calls in all lists"
+msgstr ""
+"Marcar sí para ocultar las llamadas a este destino en todos los listados"
 
 msgid "Mask"
 msgstr "Màscara"
@@ -2179,6 +2194,13 @@ msgstr[1] "Route Locks"
 msgid "Route type"
 msgstr "Tipus de ruta"
 
+msgid ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+msgstr ""
+"Las rutas con mayor prioridad no se aplicarán. Las rutas con la misma "
+"prioridad, sí."
+
 msgid "Routing"
 msgstr "Encaminament"
 
@@ -2334,6 +2356,14 @@ msgstr "Origen"
 msgid "Source number header"
 msgstr "Capçalera de número d'origen"
 
+msgid "Special Number"
+msgid_plural "Special Numbers"
+msgstr[0] "Número especial"
+msgstr[1] "Números especiales"
+
+msgid "Special treatments"
+msgstr "Tratamientos especiales"
+
 msgid "Specific Template"
 msgstr "Plantilla específica"
 
@@ -2351,6 +2381,9 @@ msgstr "Estàtic"
 
 msgid "Status"
 msgstr "Estat"
+
+msgid "Stopper"
+msgstr "Stopper"
 
 msgid "Strategy"
 msgstr "Estrategia"

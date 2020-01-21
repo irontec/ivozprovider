@@ -35,8 +35,7 @@ Feature: Retrieve conditional routes conditions rel matchlists
               },
               "matchlist": {
                   "name": "testMatchlist",
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               }
           }
       ]
@@ -72,8 +71,7 @@ Feature: Retrieve conditional routes conditions rel matchlists
           },
           "matchlist": {
               "name": "testMatchlist",
-              "id": 1,
-              "company": 1
+              "id": 1
           }
       }
     """

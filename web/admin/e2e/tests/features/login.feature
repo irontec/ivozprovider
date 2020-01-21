@@ -20,10 +20,10 @@ Scenario: Brand admin Login error
   When I send valid brand admin credentials
   Then I see a login error message
 
-Scenario: Client admin Login
-  Given I go to the client admin page
-  When I send valid client admin credentials
-  Then I am on the Dashboard
+#Scenario: Client admin Login
+#  Given I go to the client admin page
+#  When I send valid client admin credentials
+#  Then I am on the Dashboard
 
 Scenario: Brand admin Login
   Given I go to the admin page

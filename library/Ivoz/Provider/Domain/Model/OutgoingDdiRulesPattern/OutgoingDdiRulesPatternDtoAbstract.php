@@ -109,7 +109,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -129,7 +129,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -149,7 +149,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAction()
     {
@@ -169,7 +169,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -189,7 +189,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -209,7 +209,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto | null
      */
     public function getOutgoingDdiRule()
     {
@@ -255,7 +255,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
      */
     public function getMatchList()
     {
@@ -301,7 +301,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getForcedDdi()
     {

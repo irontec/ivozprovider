@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportRepository;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

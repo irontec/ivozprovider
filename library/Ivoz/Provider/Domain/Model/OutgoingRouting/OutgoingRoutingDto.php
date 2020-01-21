@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
-use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 
 class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 {
@@ -53,7 +53,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 
     public function denormalize(array $data, string $context, string $role = '')
     {
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
         }

@@ -57,31 +57,13 @@ class SendGenerateOrderSpec extends ObjectBehavior
         $this->execute($invoice->reveal());
     }
 
-    function it_requires_status_to_be_waiting()
+    function it_requires_mustRunInvoicer_to_be_true()
     {
         $invoice = $this->getTestDouble(InvoiceInterface::class);
 
         $this->prepareExecution($invoice);
         $invoice
-            ->getStatus()
-            ->willReturn(null);
-
-        $this
-            ->invoicer
-            ->send(null)
-            ->shouldNotBeCalled();
-
-        $this->execute($invoice->reveal());
-    }
-
-
-    function it_requires_status_to_have_changed()
-    {
-        $invoice = $this->getTestDouble(InvoiceInterface::class);
-
-        $this->prepareExecution($invoice);
-        $invoice
-            ->hasChanged('status')
+            ->mustRunInvoicer()
             ->willReturn(false);
 
         $this
@@ -101,10 +83,7 @@ class SendGenerateOrderSpec extends ObjectBehavior
             $invoice,
             [
                 'getId' => 1,
-                'getStatus' => InvoiceInterface::STATUS_WAITING,
-                'hasChanged' => function () {
-                    return [['status'], true];
-                },
+                'mustRunInvoicer' => true
             ],
             false
         );

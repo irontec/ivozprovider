@@ -75,7 +75,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */

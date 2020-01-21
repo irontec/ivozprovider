@@ -35,7 +35,6 @@ Feature: Update outgoing ddi rules patterns
               "name": "testRule",
               "defaultAction": "keep",
               "id": 1,
-              "company": 1,
               "forcedDdi": null
           },
           "matchList": null,

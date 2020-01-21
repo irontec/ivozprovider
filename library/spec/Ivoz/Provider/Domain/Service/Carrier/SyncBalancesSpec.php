@@ -25,12 +25,14 @@ class SyncBalancesSpec extends ObjectBehavior
     protected $carrierRepository;
 
     public function let(
-        EntityTools $entityTools,
         LoggerInterface $logger,
         CarrierBalanceServiceInterface $client,
         CarrierRepository $carrierRepository
     ) {
-        $this->entityTools = $entityTools;
+        $this->entityTools = $this->getTestDouble(
+            EntityTools::class,
+            true
+        );
         $this->logger = $logger;
         $this->client = $client;
         $this->carrierRepository = $carrierRepository;

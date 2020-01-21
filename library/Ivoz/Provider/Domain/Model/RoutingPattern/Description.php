@@ -52,7 +52,7 @@ class Description
     /**
      * Set en
      *
-     * @param string $en
+     * @param string $en | null
      *
      * @return static
      */
@@ -80,7 +80,7 @@ class Description
     /**
      * Set es
      *
-     * @param string $es
+     * @param string $es | null
      *
      * @return static
      */
@@ -108,7 +108,7 @@ class Description
     /**
      * Set ca
      *
-     * @param string $ca
+     * @param string $ca | null
      *
      * @return static
      */
@@ -136,7 +136,7 @@ class Description
     /**
      * Set it
      *
-     * @param string $it
+     * @param string $it | null
      *
      * @return static
      */

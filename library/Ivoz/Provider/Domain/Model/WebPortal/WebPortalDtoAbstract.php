@@ -123,7 +123,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUrl()
     {
@@ -143,7 +143,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getKlearTheme()
     {
@@ -163,7 +163,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUrlType()
     {
@@ -183,7 +183,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -203,7 +203,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUserTheme()
     {
@@ -223,7 +223,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -243,7 +243,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getLogoFileSize()
     {
@@ -263,7 +263,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLogoMimeType()
     {
@@ -283,7 +283,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLogoBaseName()
     {
@@ -303,7 +303,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {

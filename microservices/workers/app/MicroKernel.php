@@ -24,7 +24,7 @@ class MicroKernel extends Kernel
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
             /* Core */
-            new CoreBundle\CoreBundle(),
+            new Ivoz\CoreBundle\CoreBundle(),
         ];
 
         return $bundles;

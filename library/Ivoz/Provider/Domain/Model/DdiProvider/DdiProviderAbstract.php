@@ -244,7 +244,7 @@ abstract class DdiProviderAbstract
     /**
      * Set externallyRated
      *
-     * @param boolean $externallyRated
+     * @param boolean $externallyRated | null
      *
      * @return static
      */
@@ -297,7 +297,7 @@ abstract class DdiProviderAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
      *
      * @return static
      */

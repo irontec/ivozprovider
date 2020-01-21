@@ -21,7 +21,6 @@ Feature: Update match lists
     """
      {
           "name": "updatedMatchlist",
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

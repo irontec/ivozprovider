@@ -14,6 +14,7 @@ production:
       order:
         field:
           - OutgoingRouting.priority asc
+          - OutgoingRouting.stopper asc
           - OutgoingRouting.weight desc
       <<: *OutgoingRouting
       class: ui-silk-arrow-divide
@@ -36,6 +37,7 @@ production:
           priority: true
           weight: true
           prefix: true
+          stopper: true
           forceClid: true
           clidCountry: true
           clid: true
@@ -95,9 +97,10 @@ production:
           colsPerRow: 12
           label: _("Outgoing route")
           fields:
-            routingMode: 6
-            carrier: 6
-            relCarriers: 6
+            routingMode: 4
+            carrier: 5
+            relCarriers: 5
+            stopper: 3
         group3:
           colsPerRow: 2
           label: _("Failover and load-balancing")

@@ -81,7 +81,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -101,7 +101,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIden()
     {
@@ -121,7 +121,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -141,7 +141,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

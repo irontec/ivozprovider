@@ -81,7 +81,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getQuantity()
     {
@@ -101,7 +101,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -121,7 +121,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto
+     * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto | null
      */
     public function getFixedCost()
     {
@@ -167,7 +167,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
      */
     public function getInvoiceScheduler()
     {

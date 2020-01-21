@@ -30,7 +30,6 @@ Feature: Create external call filter rel calendars
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": null,
               "holidayLocution": null,
               "outOfScheduleLocution": null,
@@ -43,8 +42,7 @@ Feature: Create external call filter rel calendars
           },
           "calendar": {
               "name": "testCalendar2",
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """
@@ -67,7 +65,6 @@ Feature: Create external call filter rel calendars
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": null,
               "holidayLocution": null,
               "outOfScheduleLocution": null,
@@ -80,8 +77,7 @@ Feature: Create external call filter rel calendars
           },
           "calendar": {
               "name": "testCalendar2",
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

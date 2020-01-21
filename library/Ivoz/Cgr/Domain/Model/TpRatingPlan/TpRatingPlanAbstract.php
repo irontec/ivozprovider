@@ -240,7 +240,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
@@ -268,7 +268,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Set destratesTag
      *
-     * @param string $destratesTag
+     * @param string $destratesTag | null
      *
      * @return static
      */

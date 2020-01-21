@@ -2,9 +2,9 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting as LcrRuleUpdateByOutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
-use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting as LcrRuleUpdateByOutgoingRouting;
 
 /**
  * Class UpdateByOutgoingRouting

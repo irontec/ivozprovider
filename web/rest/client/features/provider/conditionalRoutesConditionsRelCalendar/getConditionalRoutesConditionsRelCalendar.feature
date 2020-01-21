@@ -35,8 +35,7 @@ Feature: Retrieve conditional routes conditions rel calendars
               },
               "calendar": {
                   "name": "testCalendar",
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               }
           }
       ]
@@ -72,8 +71,7 @@ Feature: Retrieve conditional routes conditions rel calendars
           },
           "calendar": {
               "name": "testCalendar",
-              "id": 1,
-              "company": 1
+              "id": 1
           }
       }
     """

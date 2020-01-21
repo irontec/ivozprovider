@@ -88,7 +88,7 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
      */
     public function addTmpFile($fldName, TempFile $file)
     {
-        if ($fldName == 'OriginalFile') {
+        if ($fldName === 'OriginalFile') {
             $this->setStatus('pending');
         }
         $this->_addTmpFile($fldName, $file);

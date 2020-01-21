@@ -7,8 +7,8 @@ use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
-use Ivoz\Provider\Domain\Service\CallCsvScheduler\UpdateLastExecutionDate;
 use Ivoz\Provider\Domain\Service\CallCsvScheduler\SetExecutionError;
+use Ivoz\Provider\Domain\Service\CallCsvScheduler\UpdateLastExecutionDate;
 use Psr\Log\LoggerInterface;
 
 class CreateByScheduler

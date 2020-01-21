@@ -115,8 +115,8 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       joinColumns:
         brandId:
           referencedColumnName: id
-          nullable: false
-          onDelete: cascade
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -127,8 +127,8 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       joinColumns:
         companyId:
           referencedColumnName: id
-          nullable: false
-          onDelete: cascade
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
     carrier:
       targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface

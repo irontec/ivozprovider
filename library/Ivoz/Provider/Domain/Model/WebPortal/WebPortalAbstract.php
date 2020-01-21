@@ -253,7 +253,7 @@ abstract class WebPortalAbstract
     /**
      * Set klearTheme
      *
-     * @param string $klearTheme
+     * @param string $klearTheme | null
      *
      * @return static
      */
@@ -314,7 +314,7 @@ abstract class WebPortalAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
@@ -342,7 +342,7 @@ abstract class WebPortalAbstract
     /**
      * Set userTheme
      *
-     * @param string $userTheme
+     * @param string $userTheme | null
      *
      * @return static
      */
@@ -370,7 +370,7 @@ abstract class WebPortalAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */

@@ -162,7 +162,7 @@ abstract class ProxyTrunkAbstract
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */

@@ -3,10 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
-use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodRepository;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

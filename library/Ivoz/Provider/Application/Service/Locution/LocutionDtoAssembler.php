@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Application\Service\Locution;
 
+use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
-use Assert\Assertion;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 

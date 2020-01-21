@@ -23,5 +23,5 @@ framework:
 # Twig Configuration
 twig:
   paths:
-    '%kernel.project_dir%/../../../library/ApiBundle/Resources/views': ApiBundle
+    '%kernel.project_dir%/vendor/irontec/ivoz-api-bundle/Resources/views': ApiBundle
 

@@ -128,7 +128,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set welcomeLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
      *
      * @return static
      */
@@ -144,7 +144,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set noInputLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution | null
      *
      * @return static
      */
@@ -160,7 +160,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set errorLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution | null
      *
      * @return static
      */
@@ -176,7 +176,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set successLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution | null
      *
      * @return static
      */
@@ -192,7 +192,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set noInputExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension | null
      *
      * @return static
      */
@@ -208,7 +208,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set errorExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension | null
      *
      * @return static
      */
@@ -224,7 +224,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set noInputVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser | null
      *
      * @return static
      */
@@ -240,7 +240,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set errorVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser | null
      *
      * @return static
      */
@@ -256,7 +256,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set noInputNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry | null
      *
      * @return static
      */
@@ -272,7 +272,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Set errorNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry | null
      *
      * @return static
      */

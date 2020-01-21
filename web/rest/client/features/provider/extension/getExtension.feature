@@ -44,7 +44,6 @@ Feature: Retrieve extensions
           "numberValue": null,
           "friendValue": null,
           "id": 1,
-          "company": "~",
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,

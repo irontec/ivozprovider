@@ -33,6 +33,10 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
 
     public function setNumber($number = null);
 
+    public function mustRunInvoicer();
+
+    public function mustCheckValidity();
+
     /**
      * Get number
      *
@@ -92,7 +96,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Set invoiceTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
+     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate | null
      *
      * @return static
      */
@@ -140,7 +144,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Set numberSequence
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
+     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence | null
      *
      * @return static
      */
@@ -156,7 +160,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * Set scheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler | null
      *
      * @return static
      */

@@ -137,7 +137,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -157,7 +157,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUnit()
     {
@@ -177,7 +177,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFrequency()
     {
@@ -197,7 +197,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallDirection()
     {
@@ -217,7 +217,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEmail()
     {
@@ -237,7 +237,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastExecution()
     {
@@ -257,7 +257,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLastExecutionError()
     {
@@ -277,7 +277,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getNextExecution()
     {
@@ -297,7 +297,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -317,7 +317,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -363,7 +363,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -409,7 +409,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getCallCsvNotificationTemplate()
     {

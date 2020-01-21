@@ -377,7 +377,7 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerTargetType
      *
-     * @param string $noAnswerTargetType
+     * @param string $noAnswerTargetType | null
      *
      * @return static
      */
@@ -410,7 +410,7 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerNumberValue
      *
-     * @param string $noAnswerNumberValue
+     * @param string $noAnswerNumberValue | null
      *
      * @return static
      */
@@ -490,7 +490,7 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution | null
      *
      * @return static
      */
@@ -514,7 +514,7 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension | null
      *
      * @return static
      */
@@ -538,7 +538,7 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser | null
      *
      * @return static
      */
@@ -562,7 +562,7 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry | null
      *
      * @return static
      */

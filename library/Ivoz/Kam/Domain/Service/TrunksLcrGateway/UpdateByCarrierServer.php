@@ -3,10 +3,10 @@
 namespace Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
 
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {

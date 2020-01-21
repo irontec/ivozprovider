@@ -6,17 +6,12 @@ use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface;
 
 class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CompanyRelCodecLifecycleEventHandlerInterface
 {
-    public function __construct()
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [
             self::EVENT_PRE_PERSIST => AvoidEntityUpdatesAbstract::PRE_PERSIST_PRIORITY,
         ];
     }
-
     /**
      * @param CompanyRelCodecInterface $entity
      *

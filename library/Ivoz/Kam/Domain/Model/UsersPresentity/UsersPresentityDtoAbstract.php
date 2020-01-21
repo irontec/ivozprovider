@@ -123,7 +123,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsername()
     {
@@ -143,7 +143,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -163,7 +163,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEvent()
     {
@@ -183,7 +183,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getEtag()
     {
@@ -203,7 +203,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getExpires()
     {
@@ -223,7 +223,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getReceivedTime()
     {
@@ -243,7 +243,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getBody()
     {
@@ -263,7 +263,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSender()
     {
@@ -283,7 +283,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -303,7 +303,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

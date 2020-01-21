@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
-use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

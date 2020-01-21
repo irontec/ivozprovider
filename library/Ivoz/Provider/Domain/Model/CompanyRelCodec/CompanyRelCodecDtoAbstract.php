@@ -74,7 +74,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -140,7 +140,7 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Codec\CodecDto
+     * @return \Ivoz\Provider\Domain\Model\Codec\CodecDto | null
      */
     public function getCodec()
     {

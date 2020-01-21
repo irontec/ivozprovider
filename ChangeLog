@@ -1,3 +1,33 @@
+Tue, 21 Jan 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.14.0 released
+
+    * Application Server
+        - Fixed a bug where only first Calendar period were being checked
+        - Added services codes to enable and disable Residential call forward settings
+
+    * Proxies
+        - Fixed call distribution between Carriers with same weight and different servers count
+        - Added stopper as new Outgoing Routing type
+        - Added Residential Account Id field is in CDRs
+
+    * Billing
+        - Fixed a bug in Daily Max usage threshold not being properly stored
+
+    * Invoicing
+        - Fixed default Invoice Templates contents
+
+    * Core
+        - Companies CDRs are no longer removed when Company is deleted
+        - Added new entity Special Numbers that are skipped from CDRs
+
+    * Portals
+        - Imported Destination Rates CSV data is now properly validated
+
+    * API
+        - Company Id are no longer displayed nor requested in Client API
+
+
 Tue, 17 Dec 2019 15:55:04 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.13.2 released

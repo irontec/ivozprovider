@@ -2,8 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\BillableCall;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 interface BillableCallRepository extends ObjectRepository, Selectable
 {
@@ -61,32 +62,31 @@ interface BillableCallRepository extends ObjectRepository, Selectable
     public function resetInvoiceId(int $invoiceId);
 
     /**
-     * @param array $conditions
-     * @param int $invoiceId
+     * @param InvoiceInterface $invoice
      * @return void
      */
-    public function setInvoiceId(array $conditions, int $invoiceId);
+    public function setInvoiceId(InvoiceInterface $invoice);
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @param string $endTime
+     * @param InvoiceInterface $invoice
+     * @return mixed
+     */
+    public function getGeneratorByInvoice(InvoiceInterface $invoice);
+
+    /**
+     * @param InvoiceInterface $invoice
      * @return array
      */
-    public function getUntarificattedCallIdsInRange(int $companyId, int $brandId, string $startTime, string $endTime): array;
+    public function getUnratedCallIdsByInvoice(InvoiceInterface $invoice): array;
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @param string $endTime
+     * @param InvoiceInterface $invoice
      * @return int|mixed
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
      */
-    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime);
+    public function countUnratedCallsByInvoice(InvoiceInterface $invoice);
 
     /**
      * @param array $conditions

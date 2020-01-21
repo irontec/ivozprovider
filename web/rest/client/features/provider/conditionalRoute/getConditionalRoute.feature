@@ -42,7 +42,6 @@ Feature: Retrieve conditional routes
           "numbervalue": null,
           "friendvalue": null,
           "id": 1,
-          "company": "~",
           "ivr": null,
           "huntGroup": null,
           "voicemailUser": null,

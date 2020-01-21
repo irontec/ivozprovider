@@ -422,7 +422,7 @@ abstract class PsEndpointAbstract
     /**
      * Set fromDomain
      *
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
@@ -450,7 +450,7 @@ abstract class PsEndpointAbstract
     /**
      * Set aors
      *
-     * @param string $aors
+     * @param string $aors | null
      *
      * @return static
      */
@@ -478,7 +478,7 @@ abstract class PsEndpointAbstract
     /**
      * Set callerid
      *
-     * @param string $callerid
+     * @param string $callerid | null
      *
      * @return static
      */
@@ -587,7 +587,7 @@ abstract class PsEndpointAbstract
     /**
      * Set directMedia
      *
-     * @param string $directMedia
+     * @param string $directMedia | null
      *
      * @return static
      */
@@ -611,7 +611,7 @@ abstract class PsEndpointAbstract
     /**
      * Set directMediaMethod
      *
-     * @param string $directMediaMethod
+     * @param string $directMediaMethod | null
      *
      * @return static
      */
@@ -643,7 +643,7 @@ abstract class PsEndpointAbstract
     /**
      * Set mailboxes
      *
-     * @param string $mailboxes
+     * @param string $mailboxes | null
      *
      * @return static
      */
@@ -671,7 +671,7 @@ abstract class PsEndpointAbstract
     /**
      * Set namedPickupGroup
      *
-     * @param string $namedPickupGroup
+     * @param string $namedPickupGroup | null
      *
      * @return static
      */
@@ -699,7 +699,7 @@ abstract class PsEndpointAbstract
     /**
      * Set sendDiversion
      *
-     * @param string $sendDiversion
+     * @param string $sendDiversion | null
      *
      * @return static
      */
@@ -723,7 +723,7 @@ abstract class PsEndpointAbstract
     /**
      * Set sendPai
      *
-     * @param string $sendPai
+     * @param string $sendPai | null
      *
      * @return static
      */
@@ -773,7 +773,7 @@ abstract class PsEndpointAbstract
     /**
      * Set outboundProxy
      *
-     * @param string $outboundProxy
+     * @param string $outboundProxy | null
      *
      * @return static
      */
@@ -801,7 +801,7 @@ abstract class PsEndpointAbstract
     /**
      * Set trustIdInbound
      *
-     * @param string $trustIdInbound
+     * @param string $trustIdInbound | null
      *
      * @return static
      */

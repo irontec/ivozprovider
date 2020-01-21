@@ -358,7 +358,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set tenant
      *
-     * @param string $tenant
+     * @param string $tenant | null
      *
      * @return static
      */
@@ -413,7 +413,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set subject
      *
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
@@ -468,7 +468,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set ratingPlanTag
      *
-     * @param string $ratingPlanTag
+     * @param string $ratingPlanTag | null
      *
      * @return static
      */
@@ -496,7 +496,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set fallbackSubjects
      *
-     * @param string $fallbackSubjects
+     * @param string $fallbackSubjects | null
      *
      * @return static
      */
@@ -524,7 +524,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set cdrStatQueueIds
      *
-     * @param string $cdrStatQueueIds
+     * @param string $cdrStatQueueIds | null
      *
      * @return static
      */
@@ -586,7 +586,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile | null
      *
      * @return static
      */
@@ -610,7 +610,7 @@ abstract class TpRatingProfileAbstract
     /**
      * Set outgoingRoutingRelCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier | null
      *
      * @return static
      */

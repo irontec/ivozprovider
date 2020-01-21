@@ -228,7 +228,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSorceryId()
     {
@@ -248,7 +248,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -268,7 +268,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAors()
     {
@@ -288,7 +288,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallerid()
     {
@@ -308,7 +308,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getContext()
     {
@@ -328,7 +328,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDisallow()
     {
@@ -348,7 +348,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAllow()
     {
@@ -368,7 +368,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectMedia()
     {
@@ -388,7 +388,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod()
     {
@@ -408,7 +408,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMailboxes()
     {
@@ -428,7 +428,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNamedPickupGroup()
     {
@@ -448,7 +448,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSendDiversion()
     {
@@ -468,7 +468,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSendPai()
     {
@@ -488,7 +488,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOneHundredRel()
     {
@@ -508,7 +508,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getOutboundProxy()
     {
@@ -528,7 +528,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTrustIdInbound()
     {
@@ -548,7 +548,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38Udptl()
     {
@@ -568,7 +568,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38UdptlEc()
     {
@@ -588,7 +588,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getT38UdptlMaxdatagram()
     {
@@ -608,7 +608,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38UdptlNat()
     {
@@ -628,7 +628,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -648,7 +648,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalDto
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalDto | null
      */
     public function getTerminal()
     {
@@ -694,7 +694,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
      */
     public function getFriend()
     {
@@ -740,7 +740,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
      */
     public function getResidentialDevice()
     {
@@ -786,7 +786,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
      */
     public function getRetailAccount()
     {

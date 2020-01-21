@@ -58,8 +58,7 @@ Feature: Create calendar periods
           "id": 2,
           "calendar": {
               "name": "testCalendar",
-              "id": 1,
-              "company": 1
+              "id": 1
           },
           "locution": null,
           "extension": {
@@ -68,7 +67,6 @@ Feature: Create calendar periods
               "numberValue": null,
               "friendValue": null,
               "id": 1,
-              "company": 1,
               "ivr": null,
               "huntGroup": null,
               "conferenceRoom": null,

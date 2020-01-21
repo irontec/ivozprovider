@@ -151,7 +151,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -171,7 +171,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLoadid()
     {
@@ -191,7 +191,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirection()
     {
@@ -211,7 +211,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTenant()
     {
@@ -231,7 +231,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCategory()
     {
@@ -251,7 +251,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSubject()
     {
@@ -271,7 +271,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getActivationTime()
     {
@@ -291,7 +291,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRatingPlanTag()
     {
@@ -311,7 +311,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFallbackSubjects()
     {
@@ -331,7 +331,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCdrStatQueueIds()
     {
@@ -351,7 +351,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -371,7 +371,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -391,7 +391,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto | null
      */
     public function getRatingProfile()
     {
@@ -437,7 +437,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto | null
      */
     public function getOutgoingRoutingRelCarrier()
     {

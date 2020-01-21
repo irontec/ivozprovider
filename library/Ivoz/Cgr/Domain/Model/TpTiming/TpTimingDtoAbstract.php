@@ -123,7 +123,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -143,7 +143,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -163,7 +163,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getYears()
     {
@@ -183,7 +183,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMonths()
     {
@@ -203,7 +203,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMonthDays()
     {
@@ -223,7 +223,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getWeekDays()
     {
@@ -243,7 +243,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTime()
     {
@@ -263,7 +263,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -283,7 +283,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -303,7 +303,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     public function getRatingPlan()
     {

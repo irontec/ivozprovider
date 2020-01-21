@@ -182,7 +182,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -202,7 +202,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -222,7 +222,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -242,7 +242,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFriendValue()
     {
@@ -262,7 +262,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -282,7 +282,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
      */
     public function getConditionalRoute()
     {
@@ -328,7 +328,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
      */
     public function getIvr()
     {
@@ -374,7 +374,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
      */
     public function getHuntGroup()
     {
@@ -420,7 +420,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getVoicemailUser()
     {
@@ -466,7 +466,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {
@@ -512,7 +512,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
      */
     public function getQueue()
     {
@@ -558,7 +558,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getLocution()
     {
@@ -604,7 +604,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto | null
      */
     public function getConferenceRoom()
     {
@@ -650,7 +650,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -696,7 +696,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {
@@ -742,7 +742,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelMatchlists()
     {
@@ -762,7 +762,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelSchedules()
     {
@@ -782,7 +782,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelCalendars()
     {
@@ -802,7 +802,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelRouteLocks()
     {

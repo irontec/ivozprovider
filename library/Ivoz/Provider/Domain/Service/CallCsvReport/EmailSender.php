@@ -4,11 +4,9 @@ namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Service\NotificationTemplateContent\CallCsvNotificationTemplateByCallCsvReport;
 use Psr\Log\LoggerInterface;
 

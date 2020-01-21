@@ -23,7 +23,6 @@ Feature: Retrieve external call filter rel schedules
                   "outOfScheduleTargetType": null,
                   "outOfScheduleNumberValue": null,
                   "id": 1,
-                  "company": 1,
                   "welcomeLocution": null,
                   "holidayLocution": null,
                   "outOfScheduleLocution": null,
@@ -45,8 +44,7 @@ Feature: Retrieve external call filter rel schedules
                   "friday": true,
                   "saturday": false,
                   "sunday": false,
-                  "id": 1,
-                  "company": 1
+                  "id": 1
               }
           }
       ]
@@ -70,7 +68,6 @@ Feature: Retrieve external call filter rel schedules
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": null,
               "holidayLocution": null,
               "outOfScheduleLocution": null,
@@ -92,8 +89,7 @@ Feature: Retrieve external call filter rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 1,
-              "company": 1
+              "id": 1
           }
       }
     """

@@ -116,7 +116,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIden()
     {
@@ -136,7 +136,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -156,7 +156,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -176,7 +176,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getGenericTemplate()
     {
@@ -196,7 +196,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSpecificTemplate()
     {
@@ -216,7 +216,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getGenericUrlPattern()
     {
@@ -236,7 +236,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSpecificUrlPattern()
     {
@@ -256,7 +256,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -276,7 +276,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerDto
+     * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerDto | null
      */
     public function getTerminalManufacturer()
     {

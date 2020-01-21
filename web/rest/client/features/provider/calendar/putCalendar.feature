@@ -22,7 +22,6 @@ Feature: Update calendars
     """
       {
           "name": "updatedCalendar",
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

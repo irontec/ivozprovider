@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\MatchList\MatchListRepository;
 use Ivoz\Provider\Domain\Model\MatchList\MatchList;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

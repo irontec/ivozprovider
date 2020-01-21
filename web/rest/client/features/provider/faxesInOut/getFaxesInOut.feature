@@ -52,7 +52,6 @@ Feature: Retrieve faxes in outs
               "email": null,
               "sendByEmail": false,
               "id": 1,
-              "company": 1,
               "outgoingDdi": null
           },
           "dstCountry": null

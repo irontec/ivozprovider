@@ -265,7 +265,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -285,7 +285,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomainUsers()
     {
@@ -305,7 +305,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getRecordingsLimitMB()
     {
@@ -325,7 +325,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRecordingsLimitEmail()
     {
@@ -345,7 +345,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxCalls()
     {
@@ -365,7 +365,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -385,7 +385,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getLogoFileSize()
     {
@@ -405,7 +405,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLogoMimeType()
     {
@@ -425,7 +425,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLogoBaseName()
     {
@@ -445,7 +445,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoiceNif()
     {
@@ -465,7 +465,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoicePostalAddress()
     {
@@ -485,7 +485,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoicePostalCode()
     {
@@ -505,7 +505,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoiceTown()
     {
@@ -525,7 +525,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoiceProvince()
     {
@@ -545,7 +545,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoiceCountry()
     {
@@ -565,7 +565,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getInvoiceRegistryData()
     {
@@ -585,7 +585,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
      */
     public function getDomain()
     {
@@ -631,7 +631,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {
@@ -677,7 +677,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
      */
     public function getDefaultTimezone()
     {
@@ -723,7 +723,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
      */
     public function getCurrency()
     {
@@ -769,7 +769,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getVoicemailNotificationTemplate()
     {
@@ -815,7 +815,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getFaxNotificationTemplate()
     {
@@ -861,7 +861,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getInvoiceNotificationTemplate()
     {
@@ -907,7 +907,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getCallCsvNotificationTemplate()
     {
@@ -953,7 +953,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getCompanies()
     {
@@ -973,7 +973,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getServices()
     {
@@ -993,7 +993,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getUrls()
     {
@@ -1013,7 +1013,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelFeatures()
     {
@@ -1033,7 +1033,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getResidentialDevices()
     {
@@ -1053,7 +1053,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getMusicsOnHold()
     {
@@ -1073,7 +1073,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getMatchLists()
     {
@@ -1093,7 +1093,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getOutgoingRoutings()
     {

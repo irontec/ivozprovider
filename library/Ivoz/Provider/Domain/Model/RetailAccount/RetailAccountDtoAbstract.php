@@ -183,7 +183,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -203,7 +203,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -223,7 +223,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {
@@ -243,7 +243,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -263,7 +263,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -283,7 +283,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -303,7 +303,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -323,7 +323,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectConnectivity()
     {
@@ -343,7 +343,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDdiIn()
     {
@@ -363,7 +363,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38Passthrough()
     {
@@ -383,7 +383,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -403,7 +403,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -449,7 +449,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
      */
     public function getDomain()
     {
@@ -495,7 +495,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -541,7 +541,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -587,7 +587,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getOutgoingDdi()
     {
@@ -633,7 +633,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getPsEndpoints()
     {
@@ -653,7 +653,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDdis()
     {
@@ -673,7 +673,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getCallForwardSettings()
     {

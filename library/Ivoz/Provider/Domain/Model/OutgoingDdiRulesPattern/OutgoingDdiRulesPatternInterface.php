@@ -73,7 +73,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     /**
      * Set matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList | null
      *
      * @return static
      */
@@ -89,7 +89,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     /**
      * Set forcedDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi | null
      *
      * @return static
      */

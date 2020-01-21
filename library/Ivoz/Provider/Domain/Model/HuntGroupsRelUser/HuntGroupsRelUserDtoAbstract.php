@@ -88,7 +88,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getTimeoutTime()
     {
@@ -108,7 +108,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -128,7 +128,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -148,7 +148,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
      */
     public function getHuntGroup()
     {
@@ -194,7 +194,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {

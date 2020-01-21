@@ -43,7 +43,6 @@ Feature: Retrieve conditional routes conditions
               "numbervalue": null,
               "friendvalue": null,
               "id": 1,
-              "company": 1,
               "ivr": null,
               "huntGroup": null,
               "voicemailUser": null,

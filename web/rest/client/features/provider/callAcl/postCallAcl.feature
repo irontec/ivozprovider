@@ -23,8 +23,7 @@ Feature: Create call acls
       {
           "name": "testNewACL",
           "defaultPolicy": "allow",
-          "id": 3,
-          "company": 1
+          "id": 3
       }
     """
 
@@ -40,7 +39,6 @@ Feature: Create call acls
       {
           "name": "testNewACL",
           "defaultPolicy": "allow",
-          "id": 3,
-          "company": "~"
+          "id": 3
       }
     """

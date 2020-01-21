@@ -32,8 +32,7 @@
         "psr-4": {
             "": "src/",
             "DataFixtures\\": "../library/DataFixtures",
-            "Ivoz\\": "../library/Ivoz",
-            "CoreBundle\\": "../library/CoreBundle"
+            "Ivoz\\": "../library/Ivoz"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -65,12 +64,10 @@
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "incenteev/composer-parameter-handler": "^2.0",
-        "lexik/jwt-authentication-bundle": "^2.5",
-        "ramsey/uuid": "^3.7",
-        "symfony/monolog-bundle": "3.1.*",
-        "symfony/swiftmailer-bundle": "^3.1",
-        "symfony/symfony": "3.4.*",
-        "beberlei/assert": "2.9.*"
+        "irontec/ivoz-api-bundle": "^2.0",
+        "irontec/ivoz-core-bundle": "^2.0",
+        "irontec/ivoz-dev-tools": "^2.0",
+        "symfony/symfony": "3.4.*"
     },
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.0",
@@ -102,7 +99,7 @@
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "../library/CoreBundle/Resources/config/parameters.yml"
+            "file": "vendor/irontec/ivoz-core-bundle/Resources/config/parameters.yml"
         },
         "branch-alias": null
     }

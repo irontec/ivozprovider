@@ -45,21 +45,6 @@ Feature: Retrieve queues
           "strategy": "rrmemory",
           "weight": 5,
           "id": 1,
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "onDemandRecordCode": "",
-              "balance": 1.2,
-              "id": 1,
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null
-          },
           "periodicAnnounceLocution": {
               "name": "testLocution",
               "status": null,
@@ -73,8 +58,7 @@ Feature: Retrieve queues
                   "fileSize": 1,
                   "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "timeoutLocution": {
               "name": "testLocution",
@@ -89,8 +73,7 @@ Feature: Retrieve queues
                   "fileSize": 1,
                   "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "timeoutExtension": null,
           "timeoutVoiceMailUser": null,
@@ -107,8 +90,7 @@ Feature: Retrieve queues
                   "fileSize": 1,
                   "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "fullExtension": null,
           "fullVoiceMailUser": null,

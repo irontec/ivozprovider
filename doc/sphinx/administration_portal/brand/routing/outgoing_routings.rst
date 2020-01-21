@@ -32,6 +32,10 @@ These are the fields that define an outgoing routing rule:
         If a call matches several routes with equal priority, weight will determine
         the proportion of calls that will use one route or another.
 
+    Stopper
+        If a call matches a route marked as stopper, matching routes with higher priority
+        will be ignored.
+
 .. error:: **All clients rules apply to all clients**, even if they have specific matching rules. Matching specific rules and
            global rules are merged when selecting a carrier for a given client.
 
@@ -43,6 +47,8 @@ These are the fields that define an outgoing routing rule:
 
 .. note:: Fax specific routes will apply first for both faxes sent via virtual faxing (see :ref:`faxes`) or T.38 capable devices. If no fax
           specific route found, remaining routes will apply as for a normal voice call to that destination.
+
+.. warning:: If a call matches a route marked as stopper, **matching routes with SAME priority route WILL apply**.
 
 Last two fields, priority and order, are key parameters to achieve two interesting features too: **load-balancing** and **failover-routes**.
 

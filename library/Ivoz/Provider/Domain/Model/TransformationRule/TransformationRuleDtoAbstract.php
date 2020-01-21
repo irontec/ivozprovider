@@ -102,7 +102,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -122,7 +122,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -142,7 +142,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPriority()
     {
@@ -162,7 +162,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getMatchExpr()
     {
@@ -182,7 +182,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getReplaceExpr()
     {
@@ -202,7 +202,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -222,7 +222,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {

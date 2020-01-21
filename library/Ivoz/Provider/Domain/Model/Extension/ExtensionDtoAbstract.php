@@ -150,7 +150,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumber()
     {
@@ -170,7 +170,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -190,7 +190,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -210,7 +210,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFriendValue()
     {
@@ -230,7 +230,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -250,7 +250,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -296,7 +296,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
      */
     public function getIvr()
     {
@@ -342,7 +342,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
      */
     public function getHuntGroup()
     {
@@ -388,7 +388,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto
+     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto | null
      */
     public function getConferenceRoom()
     {
@@ -434,7 +434,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {
@@ -480,7 +480,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto
+     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
      */
     public function getQueue()
     {
@@ -526,7 +526,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
      */
     public function getConditionalRoute()
     {
@@ -572,7 +572,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {
@@ -618,7 +618,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getUsers()
     {

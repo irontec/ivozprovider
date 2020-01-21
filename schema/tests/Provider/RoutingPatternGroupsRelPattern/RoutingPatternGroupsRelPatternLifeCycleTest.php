@@ -197,7 +197,7 @@ class RoutingPatternGroupsRelPatternLifeCycleTest extends KernelTestCase
             TrunksLcrRuleTarget::class
         );
 
-        $this->assertCount(1, $changelogEntries);
+        $this->assertCount(2, $changelogEntries);
         $changelog = $changelogEntries[0];
 
         $this->assertEquals(
@@ -205,11 +205,11 @@ class RoutingPatternGroupsRelPatternLifeCycleTest extends KernelTestCase
             [
                 'lcr_id' => 1,
                 'priority' => 1,
-                'weight' => 1,
+                'weight' => 5,
                 'ruleId' => 3,
                 'gwId' => 1,
                 'outgoingRoutingId' => 1,
-                'id' => 3
+                'id' => 5
             ]
         );
     }

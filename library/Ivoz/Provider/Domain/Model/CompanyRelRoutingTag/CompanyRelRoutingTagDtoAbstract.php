@@ -74,7 +74,7 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -140,7 +140,7 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
      */
     public function getRoutingTag()
     {

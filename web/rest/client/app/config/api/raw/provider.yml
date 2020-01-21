@@ -24,12 +24,6 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
 
 Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
   attributes:
@@ -80,12 +74,6 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
 
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
   collectionOperations:
@@ -115,11 +103,7 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
       attributes:
         swagger_context:
           readOnly: true
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
+
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -141,12 +125,6 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
     put: ~
   collectionOperations:
     get: ~
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -284,12 +262,6 @@ Ivoz\Provider\Domain\Model\Company\Company:
             outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
 
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -298,12 +270,6 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
           eq: "user.getCompany().getId()"
 
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -468,12 +434,6 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
         routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
 
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -522,11 +482,6 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       attributes:
         swagger_context:
           readOnly: true
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -586,12 +541,6 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
         tags:
         - My
         parameters: []
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -633,12 +582,6 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
     get: ~
     post:
       operation_normalization_context: 'withInverseRelationships'
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -762,12 +705,6 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -793,12 +730,6 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
   collectionOperations:
     get:
       depth: 1
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -810,12 +741,6 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
         raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Friend\Friend:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -887,12 +812,6 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
             locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
 
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -980,12 +899,6 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
     get: ~
     post:
       operation_normalization_context: 'withExcludedExtensions'
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -1053,12 +966,6 @@ Ivoz\Provider\Domain\Model\Language\Language:
 Ivoz\Provider\Domain\Model\Language\Name:
 
 Ivoz\Provider\Domain\Model\Locution\Locution:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1080,12 +987,6 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
             isNull: ~
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1111,12 +1012,6 @@ Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
         in: 'matchListRepository.getIdsByCompanyId(user.getCompany().getId())'
 
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1125,12 +1020,6 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
           eq: "user.getCompany().getId()"
 
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1181,12 +1070,6 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
     get: ~
     post:
       operation_normalization_context: 'withUsers'
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -1235,12 +1118,6 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
         queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
 
 Ivoz\Provider\Domain\Model\Queue\Queue:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1285,12 +1162,6 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
     get: ~
   collectionOperations:
     get: ~
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1306,12 +1177,6 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
     get: ~
   collectionOperations:
     get: ~
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1320,12 +1185,6 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
           eq: "user.getCompany().getId()"
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1361,12 +1220,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1402,12 +1255,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1416,12 +1263,6 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
           eq: "user.getCompany().getId()"
 
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1457,12 +1298,6 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
       normalization_context:
         groups: ['status']
     post: ~
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -1587,12 +1422,6 @@ Ivoz\Provider\Domain\Model\User\User:
         tags:
         - My
         parameters: []
-  properties:
-    company:
-      attributes:
-        swagger_context:
-          deprecated: true
-          description: "Will be removed in the next release as it can be resolved automatically"
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
     read_access_control:

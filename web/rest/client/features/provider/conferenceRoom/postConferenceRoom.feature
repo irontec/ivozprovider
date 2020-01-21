@@ -27,8 +27,7 @@ Feature: Create conference rooms
           "pinProtected": true,
           "pinCode": "1234",
           "maxMembers": 1,
-          "id": 2,
-          "company": 1
+          "id": 2
       }
     """
 
@@ -46,7 +45,6 @@ Feature: Create conference rooms
           "pinProtected": true,
           "pinCode": "1234",
           "maxMembers": 1,
-          "id": 2,
-          "company": "~"
+          "id": 2
       }
     """

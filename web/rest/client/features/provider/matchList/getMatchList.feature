@@ -36,7 +36,6 @@ Feature: Retrieve match lists
     """
       {
           "name": "testMatchlist",
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

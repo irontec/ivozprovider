@@ -116,7 +116,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -136,7 +136,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -156,7 +156,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getSequenceLength()
     {
@@ -176,7 +176,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getIncrement()
     {
@@ -196,7 +196,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getLatestValue()
     {
@@ -216,7 +216,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getIteration()
     {
@@ -236,7 +236,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getVersion()
     {
@@ -256,7 +256,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -276,7 +276,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {

@@ -41,7 +41,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
         try {
             Assertion::ip($srcIp);
         } catch (\Exception $e) {
-            throw new \DomainException('Invalid IP address, discarding value.', 70000);
+            throw new \DomainException('Invalid IP address, discarding value.', 70000, $e);
         }
 
         return parent::setSrcIp($srcIp);

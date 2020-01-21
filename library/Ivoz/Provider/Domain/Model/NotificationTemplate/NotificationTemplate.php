@@ -3,7 +3,6 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 
 /**
  * NotificationTemplate

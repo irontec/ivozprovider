@@ -4,9 +4,9 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NoResultException;
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

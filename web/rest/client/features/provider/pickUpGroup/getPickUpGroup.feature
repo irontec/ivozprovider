@@ -33,7 +33,6 @@ Feature: Retrieve pick up groups
       {
           "name": "pick up group",
           "id": 1,
-          "company": "~",
           "userIds": []
       }
     """

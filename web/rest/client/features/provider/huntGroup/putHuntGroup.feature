@@ -37,7 +37,6 @@ Feature: Update hunt groups
           "noAnswerNumberValue": null,
           "preventMissedCalls": 1,
           "id": 1,
-          "company": "~",
           "noAnswerLocution": null,
           "noAnswerExtension": null,
           "noAnswerVoiceMailUser": {
@@ -55,7 +54,6 @@ Feature: Update hunt groups
               "voicemailAttachSound": true,
               "gsQRCode": false,
               "id": 1,
-              "company": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,

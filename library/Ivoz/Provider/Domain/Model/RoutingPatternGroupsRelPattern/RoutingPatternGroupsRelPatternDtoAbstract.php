@@ -74,7 +74,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
      */
     public function getRoutingPattern()
     {
@@ -140,7 +140,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto | null
      */
     public function getRoutingPatternGroup()
     {

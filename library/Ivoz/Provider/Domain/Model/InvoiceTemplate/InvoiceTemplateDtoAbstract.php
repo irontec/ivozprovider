@@ -102,7 +102,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -122,7 +122,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -142,7 +142,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTemplate()
     {
@@ -162,7 +162,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTemplateHeader()
     {
@@ -182,7 +182,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTemplateFooter()
     {
@@ -202,7 +202,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -222,7 +222,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {

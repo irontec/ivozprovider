@@ -69,7 +69,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -85,7 +85,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
      *
      * @return static
      */

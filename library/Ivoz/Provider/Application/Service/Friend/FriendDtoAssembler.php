@@ -2,16 +2,15 @@
 
 namespace Ivoz\Provider\Application\Service\Friend;
 
-use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface;
+use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
-use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Assert\Assertion;
 
 class FriendDtoAssembler implements CustomDtoAssemblerInterface
 {

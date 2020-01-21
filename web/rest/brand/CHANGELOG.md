@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.14
+* Endpoints:
+    - Added [Exists] filter parameter for company field on /billable_calls
+    - Added type filter parameter on /companies
+    - Added urlType filter parameter on /web_portals
+* Models:
+    - Administrators:
+        - Added username property into Administrator-collection model
+    - SpecialNumber:
+        - Added entity
+    - WebPortal:
+        - Added urlType property into WebPortal-collection model
+    - Company:
+        - Added type property into Company-collection model
+    - OutgoingRouting:
+        - Added stopper property into OutgoingRouting, OutgoingRouting-detailed and OutgoingRouting-withCarriers models
+    - UsersAddress:
+        - Added entity
+
 ## 2.13.2
 * Endpoints:
     - Added [Exists] filter parameter for nullable fields (Only possible on foreign keys before)

@@ -246,7 +246,7 @@ abstract class ConferenceRoomAbstract
     /**
      * Set pinCode
      *
-     * @param string $pinCode
+     * @param string $pinCode | null
      *
      * @return static
      */

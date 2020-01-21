@@ -88,7 +88,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -108,7 +108,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -128,7 +128,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -148,7 +148,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto | null
      */
     public function getTrunksAddress()
     {
@@ -194,7 +194,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
      */
     public function getDdiProvider()
     {

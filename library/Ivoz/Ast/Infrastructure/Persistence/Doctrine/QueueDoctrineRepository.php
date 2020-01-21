@@ -3,9 +3,9 @@
 namespace Ivoz\Ast\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Ast\Domain\Model\Queue\QueueRepository;
 use Ivoz\Ast\Domain\Model\Queue\Queue;
 use Ivoz\Ast\Domain\Model\Queue\QueueInterface;
+use Ivoz\Ast\Domain\Model\Queue\QueueRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

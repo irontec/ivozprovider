@@ -144,7 +144,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallTypeFilter()
     {
@@ -164,7 +164,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCallForwardType()
     {
@@ -184,7 +184,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTargetType()
     {
@@ -204,7 +204,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -224,7 +224,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getNoAnswerTimeout()
     {
@@ -244,7 +244,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getEnabled()
     {
@@ -264,7 +264,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -284,7 +284,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getUser()
     {
@@ -330,7 +330,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -376,7 +376,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getVoiceMailUser()
     {
@@ -422,7 +422,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {
@@ -468,7 +468,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
      */
     public function getResidentialDevice()
     {
@@ -514,7 +514,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
      */
     public function getRetailAccount()
     {

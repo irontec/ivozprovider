@@ -95,7 +95,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTpid()
     {
@@ -115,7 +115,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTag()
     {
@@ -135,7 +135,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPrefix()
     {
@@ -155,7 +155,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCreatedAt()
     {
@@ -175,7 +175,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -195,7 +195,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
      */
     public function getDestination()
     {

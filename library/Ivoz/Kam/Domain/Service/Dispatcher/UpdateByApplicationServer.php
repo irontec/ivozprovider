@@ -3,10 +3,10 @@
 namespace Ivoz\Kam\Domain\Service\Dispatcher;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher as KamDispatcher;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository as KamDispatcherRepository;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
+use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleEventHandlerInterface;
 
 /**
  * Class UpdateByApplicationServer

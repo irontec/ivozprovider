@@ -2,16 +2,14 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 
-use Ivoz\Provider\Domain\Model\Administrator\Administrator;
-use Ivoz\Provider\Domain\Model\User\User;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 trait UserProviderTrait
 {

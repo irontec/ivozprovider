@@ -95,7 +95,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -115,7 +115,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getPinProtected()
     {
@@ -135,7 +135,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPinCode()
     {
@@ -155,7 +155,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxMembers()
     {
@@ -175,7 +175,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -195,7 +195,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {

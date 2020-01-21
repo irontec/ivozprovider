@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressRepository;
 use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress;
+use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

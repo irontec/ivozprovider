@@ -43,8 +43,7 @@ Feature: Update locutions
               "fileSize": null,
               "mimeType": null,
               "baseName": null
-          },
-          "company": "~"
+          }
       }
     """
 

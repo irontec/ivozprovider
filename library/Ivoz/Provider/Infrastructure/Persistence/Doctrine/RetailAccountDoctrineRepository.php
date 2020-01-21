@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

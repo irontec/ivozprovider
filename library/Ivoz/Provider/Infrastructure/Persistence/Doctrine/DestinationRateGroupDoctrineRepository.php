@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

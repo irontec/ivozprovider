@@ -293,7 +293,7 @@ abstract class CarrierServerAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
@@ -321,7 +321,7 @@ abstract class CarrierServerAbstract
     /**
      * Set hostname
      *
-     * @param string $hostname
+     * @param string $hostname | null
      *
      * @return static
      */
@@ -349,7 +349,7 @@ abstract class CarrierServerAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param integer $port | null
      *
      * @return static
      */
@@ -379,7 +379,7 @@ abstract class CarrierServerAbstract
     /**
      * Set uriScheme
      *
-     * @param integer $uriScheme
+     * @param integer $uriScheme | null
      *
      * @return static
      */
@@ -409,7 +409,7 @@ abstract class CarrierServerAbstract
     /**
      * Set transport
      *
-     * @param integer $transport
+     * @param integer $transport | null
      *
      * @return static
      */
@@ -439,7 +439,7 @@ abstract class CarrierServerAbstract
     /**
      * Set sendPAI
      *
-     * @param boolean $sendPAI
+     * @param boolean $sendPAI | null
      *
      * @return static
      */
@@ -468,7 +468,7 @@ abstract class CarrierServerAbstract
     /**
      * Set sendRPID
      *
-     * @param boolean $sendRPID
+     * @param boolean $sendRPID | null
      *
      * @return static
      */
@@ -523,7 +523,7 @@ abstract class CarrierServerAbstract
     /**
      * Set authUser
      *
-     * @param string $authUser
+     * @param string $authUser | null
      *
      * @return static
      */
@@ -551,7 +551,7 @@ abstract class CarrierServerAbstract
     /**
      * Set authPassword
      *
-     * @param string $authPassword
+     * @param string $authPassword | null
      *
      * @return static
      */
@@ -579,7 +579,7 @@ abstract class CarrierServerAbstract
     /**
      * Set sipProxy
      *
-     * @param string $sipProxy
+     * @param string $sipProxy | null
      *
      * @return static
      */
@@ -607,7 +607,7 @@ abstract class CarrierServerAbstract
     /**
      * Set outboundProxy
      *
-     * @param string $outboundProxy
+     * @param string $outboundProxy | null
      *
      * @return static
      */
@@ -635,7 +635,7 @@ abstract class CarrierServerAbstract
     /**
      * Set fromUser
      *
-     * @param string $fromUser
+     * @param string $fromUser | null
      *
      * @return static
      */
@@ -663,7 +663,7 @@ abstract class CarrierServerAbstract
     /**
      * Set fromDomain
      *
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */

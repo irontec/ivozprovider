@@ -137,7 +137,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getCalldate()
     {
@@ -157,7 +157,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getSrc()
     {
@@ -177,7 +177,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDst()
     {
@@ -197,7 +197,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getType()
     {
@@ -217,7 +217,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPages()
     {
@@ -237,7 +237,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {
@@ -257,7 +257,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -277,7 +277,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getFileFileSize()
     {
@@ -297,7 +297,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFileMimeType()
     {
@@ -317,7 +317,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFileBaseName()
     {
@@ -337,7 +337,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
      */
     public function getFax()
     {
@@ -383,7 +383,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getDstCountry()
     {

@@ -144,7 +144,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -164,7 +164,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getEventDate()
     {
@@ -184,7 +184,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getWholeDayEvent()
     {
@@ -204,7 +204,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getTimeIn()
     {
@@ -224,7 +224,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getTimeOut()
     {
@@ -244,7 +244,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRouteType()
     {
@@ -264,7 +264,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumberValue()
     {
@@ -284,7 +284,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -304,7 +304,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarDto
+     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarDto | null
      */
     public function getCalendar()
     {
@@ -350,7 +350,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto
+     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
      */
     public function getLocution()
     {
@@ -396,7 +396,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     public function getExtension()
     {
@@ -442,7 +442,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     public function getVoiceMailUser()
     {
@@ -488,7 +488,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
      */
     public function getNumberCountry()
     {

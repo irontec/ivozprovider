@@ -198,7 +198,7 @@ abstract class RoutingPatternGroupAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */

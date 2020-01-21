@@ -114,6 +114,19 @@ class FriendDto extends FriendDtoAbstract
         return $response;
     }
 
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
+    }
+
     private static function filterFieldsForBrandAdmin(array $response): array
     {
         $allowedFields = [
@@ -139,15 +152,13 @@ class FriendDto extends FriendDtoAbstract
             'interCompanyId'
         ];
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 
     private static function filterFieldsForCompanyAdmin(array $response): array
@@ -167,21 +178,18 @@ class FriendDto extends FriendDtoAbstract
             'ddiIn',
             't38Passthrough',
             'id',
-            'companyId',
             'transformationRuleSetId',
             'callAclId',
             'outgoingDdiId',
             'languageId',
         ];
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

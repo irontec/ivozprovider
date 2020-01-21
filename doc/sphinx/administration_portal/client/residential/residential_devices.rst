@@ -90,6 +90,8 @@ Voicemail settings
 
 Every residential device has a voicemail that can be accessed using voicemail service code defined at brand level.
 
+.. _residential_devices_cfw:
+
 Call forwarding settings
 ========================
 
@@ -103,6 +105,9 @@ residential devices may have additional call forwarding settings that allow:
 - Supported forwarding types: unconditional, no-answer, non-registered, busy.
 
 .. warning:: :ref:`External call filters` have precedence over residential devices call forwarding settings.
+
+.. tip:: Forwarding to national numbers can be configured using services codes
+         (further information :ref:`here <Call forward services>`).
 
 
 Asterisk as a residential device

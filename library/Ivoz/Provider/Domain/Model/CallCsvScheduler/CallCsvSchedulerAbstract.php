@@ -335,7 +335,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set callDirection
      *
-     * @param string $callDirection
+     * @param string $callDirection | null
      *
      * @return static
      */
@@ -393,7 +393,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set lastExecution
      *
-     * @param \DateTime $lastExecution
+     * @param \DateTime $lastExecution | null
      *
      * @return static
      */
@@ -428,7 +428,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set lastExecutionError
      *
-     * @param string $lastExecutionError
+     * @param string $lastExecutionError | null
      *
      * @return static
      */
@@ -456,7 +456,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set nextExecution
      *
-     * @param \DateTime $nextExecution
+     * @param \DateTime $nextExecution | null
      *
      * @return static
      */
@@ -491,7 +491,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -515,7 +515,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -539,7 +539,7 @@ abstract class CallCsvSchedulerAbstract
     /**
      * Set callCsvNotificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
      *
      * @return static
      */

@@ -239,7 +239,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -259,7 +259,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescription()
     {
@@ -279,7 +279,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {
@@ -299,7 +299,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIp()
     {
@@ -319,7 +319,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPort()
     {
@@ -339,7 +339,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAuthNeeded()
     {
@@ -359,7 +359,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPassword()
     {
@@ -379,7 +379,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDisallow()
     {
@@ -399,7 +399,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAllow()
     {
@@ -419,7 +419,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectMediaMethod()
     {
@@ -439,7 +439,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCalleridUpdateHeader()
     {
@@ -459,7 +459,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUpdateCallerid()
     {
@@ -479,7 +479,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getFromDomain()
     {
@@ -499,7 +499,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDirectConnectivity()
     {
@@ -519,7 +519,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDdiIn()
     {
@@ -539,7 +539,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getMaxCalls()
     {
@@ -559,7 +559,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getT38Passthrough()
     {
@@ -579,7 +579,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -599,7 +599,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -645,7 +645,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
      */
     public function getDomain()
     {
@@ -691,7 +691,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -737,7 +737,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
      */
     public function getTransformationRuleSet()
     {
@@ -783,7 +783,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     public function getOutgoingDdi()
     {
@@ -829,7 +829,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
      */
     public function getLanguage()
     {
@@ -875,7 +875,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getPsEndpoints()
     {
@@ -895,7 +895,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getDdis()
     {
@@ -915,7 +915,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getCallForwardSettings()
     {

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRule;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 

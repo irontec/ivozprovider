@@ -95,7 +95,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getKeyName()
     {
@@ -115,7 +115,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getKeyType()
     {
@@ -135,7 +135,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getValueType()
     {
@@ -155,7 +155,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getKeyValue()
     {
@@ -175,7 +175,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getExpires()
     {
@@ -195,7 +195,7 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

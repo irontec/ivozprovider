@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
+use Assert\Assertion;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
@@ -43,6 +44,12 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     public function getId()
     {
         return $this->id;
+    }
+
+    protected function setWeight($weight)
+    {
+        Assertion::between($weight, 1, 20, 'weight provided "%s" is not between "%s" and "%s"');
+        return parent::setWeight($weight);
     }
 
     protected function sanitizeValues()

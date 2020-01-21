@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NativeQuery;
-use Ivoz\Provider\Domain\Model\Destination\DestinationRepository;
-use Ivoz\Provider\Domain\Model\Destination\Destination;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
+use Ivoz\Provider\Domain\Model\Destination\Destination;
+use Ivoz\Provider\Domain\Model\Destination\DestinationRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

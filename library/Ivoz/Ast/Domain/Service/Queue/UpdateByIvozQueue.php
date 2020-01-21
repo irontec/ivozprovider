@@ -3,12 +3,12 @@
 namespace Ivoz\Ast\Domain\Service\Queue;
 
 use Ivoz\Ast\Domain\Model\Queue\Queue;
+use Ivoz\Ast\Domain\Model\Queue\QueueRepository as AstQueueRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
+use Ivoz\Provider\Domain\Model\Queue\QueueInterface as IvozQueueInterface;
 use Ivoz\Provider\Domain\Service\Queue\QueueLifecycleEventHandlerInterface
     as IvozQueueLifecycleEventHandlerInterface;
-use Ivoz\Provider\Domain\Model\Queue\QueueInterface as IvozQueueInterface;
-use Ivoz\Ast\Domain\Model\Queue\QueueRepository as AstQueueRepository;
 
 class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
 {

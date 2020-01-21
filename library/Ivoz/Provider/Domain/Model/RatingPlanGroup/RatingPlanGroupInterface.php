@@ -32,6 +32,12 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function getCurrencySymbol();
 
     /**
+     * @return void
+     * @throws \DomainException
+     */
+    public function assertNoDuplicatedDestinationRateGroups();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -50,7 +56,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
      *
      * @return static
      */

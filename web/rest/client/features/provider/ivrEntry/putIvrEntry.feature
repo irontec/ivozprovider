@@ -42,7 +42,6 @@ Feature: Update IVR entries
               "errorRouteType": "voicemail",
               "errorNumberValue": null,
               "id": 1,
-              "company": 1,
               "welcomeLocution": 1,
               "noInputLocution": null,
               "errorLocution": null,
@@ -67,8 +66,7 @@ Feature: Update IVR entries
                   "fileSize": 1,
                   "mimeType": "audio\/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "extension": null,
           "voiceMailUser": {
@@ -86,7 +84,6 @@ Feature: Update IVR entries
               "voicemailAttachSound": true,
               "gsQRCode": false,
               "id": 1,
-              "company": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,

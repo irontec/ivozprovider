@@ -1,6 +1,7 @@
 <?php
 namespace Agi\Agents;
 
+use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
@@ -43,6 +44,12 @@ interface AgentInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi($destination);
+
+    /**
+     * @param Criteria|null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     */
+    public function getCallForwardSettings(Criteria $criteria = null);
 
     /**
      * @return string

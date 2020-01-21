@@ -267,7 +267,7 @@ abstract class CommandlogAbstract
     /**
      * Set method
      *
-     * @param string $method
+     * @param string $method | null
      *
      * @return static
      */
@@ -295,7 +295,7 @@ abstract class CommandlogAbstract
     /**
      * Set arguments
      *
-     * @param array $arguments
+     * @param array $arguments | null
      *
      * @return static
      */
@@ -319,7 +319,7 @@ abstract class CommandlogAbstract
     /**
      * Set agent
      *
-     * @param array $agent
+     * @param array $agent | null
      *
      * @return static
      */

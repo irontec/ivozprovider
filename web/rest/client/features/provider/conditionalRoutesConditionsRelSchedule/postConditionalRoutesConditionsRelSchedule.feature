@@ -51,8 +51,7 @@ Feature: Create conditional routes conditions rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """
@@ -96,8 +95,7 @@ Feature: Create conditional routes conditions rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

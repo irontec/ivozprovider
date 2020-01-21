@@ -675,6 +675,9 @@ msgstr "Direct connectivity"
 msgid "Direction"
 msgstr "Direction"
 
+msgid "Disable CDR"
+msgstr "Disable CDR"
+
 msgid "Disabled"
 msgstr "Disabled"
 
@@ -812,6 +815,9 @@ msgstr "Enabled"
 
 msgid "End date"
 msgstr "End date"
+
+msgid "End date must be later or equal than start date."
+msgstr "End date must be equal or greater than start date'."
 
 msgid "Endpoint id"
 msgstr "Endpoint id"
@@ -1086,6 +1092,11 @@ msgstr "Geographic Configuration"
 
 msgid "Global Configuration"
 msgstr "Global Configuration"
+
+msgid "Global Special Number"
+msgid_plural "Global Special Numbers"
+msgstr[0] "Global Special Number"
+msgstr[1] "Global Special Numbers"
 
 msgid "God"
 msgstr "God"
@@ -1477,6 +1488,9 @@ msgstr "Main platform view"
 
 msgid "Mark this option to regenerate all rules after saving."
 msgstr "Mark this option to regenerate all rules after saving."
+
+msgid "Mark yes to hide this destination calls in all lists"
+msgstr "Mark yes to hide this destination calls in all lists"
 
 msgid "Mask"
 msgstr "Mask"
@@ -2164,6 +2178,13 @@ msgstr[1] "Route Locks"
 msgid "Route type"
 msgstr "Route type"
 
+msgid ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+msgstr ""
+"Routes with higher priority won't be evaluated. Those with same priority "
+"will be evaluated."
+
 msgid "Routing"
 msgstr "Routing"
 
@@ -2318,6 +2339,14 @@ msgstr "Source"
 msgid "Source number header"
 msgstr "Source number header"
 
+msgid "Special Number"
+msgid_plural "Special Numbers"
+msgstr[0] "Special Number"
+msgstr[1] "Special Numbers"
+
+msgid "Special treatments"
+msgstr "Special treatments"
+
 msgid "Specific Template"
 msgstr "Specific Template"
 
@@ -2335,6 +2364,9 @@ msgstr "Static"
 
 msgid "Status"
 msgstr "Status"
+
+msgid "Stopper"
+msgstr "Stopper"
 
 msgid "Strategy"
 msgstr "Strategy"

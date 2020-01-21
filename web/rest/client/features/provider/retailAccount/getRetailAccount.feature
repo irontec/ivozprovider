@@ -37,7 +37,6 @@ Feature: Retrieve retail accounts
           "transport": "udp",
           "password": "9rv6G3TVc-",
           "id": 1,
-          "company": "~",
           "transformationRuleSet": null,
           "outgoingDdi": null
       }

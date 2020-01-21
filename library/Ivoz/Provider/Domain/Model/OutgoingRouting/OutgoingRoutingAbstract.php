@@ -40,6 +40,11 @@ abstract class OutgoingRoutingAbstract
     protected $prefix;
 
     /**
+     * @var boolean
+     */
+    protected $stopper = false;
+
+    /**
      * @var boolean | null
      */
     protected $forceClid = false;
@@ -90,10 +95,11 @@ abstract class OutgoingRoutingAbstract
     /**
      * Constructor
      */
-    protected function __construct($priority, $weight)
+    protected function __construct($priority, $weight, $stopper)
     {
         $this->setPriority($priority);
         $this->setWeight($weight);
+        $this->setStopper($stopper);
     }
 
     abstract public function getId();
@@ -166,7 +172,8 @@ abstract class OutgoingRoutingAbstract
 
         $self = new static(
             $dto->getPriority(),
-            $dto->getWeight()
+            $dto->getWeight(),
+            $dto->getStopper()
         );
 
         $self
@@ -206,6 +213,7 @@ abstract class OutgoingRoutingAbstract
             ->setWeight($dto->getWeight())
             ->setRoutingMode($dto->getRoutingMode())
             ->setPrefix($dto->getPrefix())
+            ->setStopper($dto->getStopper())
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -234,6 +242,7 @@ abstract class OutgoingRoutingAbstract
             ->setWeight(self::getWeight())
             ->setRoutingMode(self::getRoutingMode())
             ->setPrefix(self::getPrefix())
+            ->setStopper(self::getStopper())
             ->setForceClid(self::getForceClid())
             ->setClid(self::getClid())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
@@ -256,6 +265,7 @@ abstract class OutgoingRoutingAbstract
             'weight' => self::getWeight(),
             'routingMode' => self::getRoutingMode(),
             'prefix' => self::getPrefix(),
+            'stopper' => self::getStopper(),
             'forceClid' => self::getForceClid(),
             'clid' => self::getClid(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
@@ -272,7 +282,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set type
      *
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
@@ -352,7 +362,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingMode
      *
-     * @param string $routingMode
+     * @param string $routingMode | null
      *
      * @return static
      */
@@ -385,7 +395,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set prefix
      *
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
@@ -411,9 +421,37 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * Set stopper
+     *
+     * @param boolean $stopper
+     *
+     * @return static
+     */
+    protected function setStopper($stopper)
+    {
+        Assertion::notNull($stopper, 'stopper value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($stopper), 0, 1, 'stopper provided "%s" is not a valid boolean value.');
+        $stopper = (bool) $stopper;
+
+        $this->stopper = $stopper;
+
+        return $this;
+    }
+
+    /**
+     * Get stopper
+     *
+     * @return boolean
+     */
+    public function getStopper()
+    {
+        return $this->stopper;
+    }
+
+    /**
      * Set forceClid
      *
-     * @param boolean $forceClid
+     * @param boolean $forceClid | null
      *
      * @return static
      */
@@ -442,7 +480,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set clid
      *
-     * @param string $clid
+     * @param string $clid | null
      *
      * @return static
      */
@@ -494,7 +532,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -518,7 +556,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
@@ -542,7 +580,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
      *
      * @return static
      */
@@ -566,7 +604,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup | null
      *
      * @return static
      */
@@ -590,7 +628,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set routingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
+     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag | null
      *
      * @return static
      */
@@ -614,7 +652,7 @@ abstract class OutgoingRoutingAbstract
     /**
      * Set clidCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry | null
      *
      * @return static
      */

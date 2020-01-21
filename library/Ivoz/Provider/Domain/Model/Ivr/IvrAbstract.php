@@ -435,7 +435,7 @@ abstract class IvrAbstract
     /**
      * Set noInputRouteType
      *
-     * @param string $noInputRouteType
+     * @param string $noInputRouteType | null
      *
      * @return static
      */
@@ -468,7 +468,7 @@ abstract class IvrAbstract
     /**
      * Set noInputNumberValue
      *
-     * @param string $noInputNumberValue
+     * @param string $noInputNumberValue | null
      *
      * @return static
      */
@@ -496,7 +496,7 @@ abstract class IvrAbstract
     /**
      * Set errorRouteType
      *
-     * @param string $errorRouteType
+     * @param string $errorRouteType | null
      *
      * @return static
      */
@@ -529,7 +529,7 @@ abstract class IvrAbstract
     /**
      * Set errorNumberValue
      *
-     * @param string $errorNumberValue
+     * @param string $errorNumberValue | null
      *
      * @return static
      */
@@ -581,7 +581,7 @@ abstract class IvrAbstract
     /**
      * Set welcomeLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
      *
      * @return static
      */
@@ -605,7 +605,7 @@ abstract class IvrAbstract
     /**
      * Set noInputLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution | null
      *
      * @return static
      */
@@ -629,7 +629,7 @@ abstract class IvrAbstract
     /**
      * Set errorLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution | null
      *
      * @return static
      */
@@ -653,7 +653,7 @@ abstract class IvrAbstract
     /**
      * Set successLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution | null
      *
      * @return static
      */
@@ -677,7 +677,7 @@ abstract class IvrAbstract
     /**
      * Set noInputExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension | null
      *
      * @return static
      */
@@ -701,7 +701,7 @@ abstract class IvrAbstract
     /**
      * Set errorExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension | null
      *
      * @return static
      */
@@ -725,7 +725,7 @@ abstract class IvrAbstract
     /**
      * Set noInputVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser | null
      *
      * @return static
      */
@@ -749,7 +749,7 @@ abstract class IvrAbstract
     /**
      * Set errorVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser | null
      *
      * @return static
      */
@@ -773,7 +773,7 @@ abstract class IvrAbstract
     /**
      * Set noInputNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry | null
      *
      * @return static
      */
@@ -797,7 +797,7 @@ abstract class IvrAbstract
     /**
      * Set errorNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry | null
      *
      * @return static
      */

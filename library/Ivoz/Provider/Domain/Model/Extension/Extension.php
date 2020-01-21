@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Extension;
 
-use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
  * Extension

@@ -53,7 +53,6 @@ Feature: Update queues
           "strategy": "rrmemory",
           "weight": 5,
           "id": 1,
-          "company": "~",
           "periodicAnnounceLocution": {
               "name": "testLocution",
               "status": null,
@@ -67,8 +66,7 @@ Feature: Update queues
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "timeoutLocution": {
               "name": "testLocution",
@@ -83,8 +81,7 @@ Feature: Update queues
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "timeoutExtension": null,
           "timeoutVoiceMailUser": null,
@@ -101,8 +98,7 @@ Feature: Update queues
                   "fileSize": 1,
                   "mimeType": "audio/mpeg; charset=binary",
                   "baseName": "locution.mp3"
-              },
-              "company": 1
+              }
           },
           "fullExtension": null,
           "fullVoiceMailUser": null,

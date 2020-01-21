@@ -102,7 +102,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getToAddress()
     {
@@ -122,7 +122,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getThreshold()
     {
@@ -142,7 +142,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastSent()
     {
@@ -162,7 +162,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -182,7 +182,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -228,7 +228,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     public function getCarrier()
     {
@@ -274,7 +274,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
      */
     public function getNotificationTemplate()
     {

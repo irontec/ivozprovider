@@ -81,7 +81,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getCode()
     {
@@ -101,7 +101,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -121,7 +121,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -167,7 +167,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceDto
+     * @return \Ivoz\Provider\Domain\Model\Service\ServiceDto | null
      */
     public function getService()
     {

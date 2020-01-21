@@ -308,7 +308,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set holidayTargetType
      *
-     * @param string $holidayTargetType
+     * @param string $holidayTargetType | null
      *
      * @return static
      */
@@ -341,7 +341,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set holidayNumberValue
      *
-     * @param string $holidayNumberValue
+     * @param string $holidayNumberValue | null
      *
      * @return static
      */
@@ -369,7 +369,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set outOfScheduleTargetType
      *
-     * @param string $outOfScheduleTargetType
+     * @param string $outOfScheduleTargetType | null
      *
      * @return static
      */
@@ -402,7 +402,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set outOfScheduleNumberValue
      *
-     * @param string $outOfScheduleNumberValue
+     * @param string $outOfScheduleNumberValue | null
      *
      * @return static
      */
@@ -454,7 +454,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set welcomeLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
      *
      * @return static
      */
@@ -478,7 +478,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set holidayLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution | null
      *
      * @return static
      */
@@ -502,7 +502,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set outOfScheduleLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution | null
      *
      * @return static
      */
@@ -526,7 +526,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set holidayExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension | null
      *
      * @return static
      */
@@ -550,7 +550,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set outOfScheduleExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension | null
      *
      * @return static
      */
@@ -574,7 +574,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set holidayVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser | null
      *
      * @return static
      */
@@ -598,7 +598,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set outOfScheduleVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser | null
      *
      * @return static
      */
@@ -622,7 +622,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set holidayNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry | null
      *
      * @return static
      */
@@ -646,7 +646,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * Set outOfScheduleNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry | null
      *
      * @return static
      */

@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\InvoiceNumberSequence;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
 
 /**

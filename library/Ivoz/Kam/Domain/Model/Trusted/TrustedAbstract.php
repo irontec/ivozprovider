@@ -219,7 +219,7 @@ abstract class TrustedAbstract
     /**
      * Set srcIp
      *
-     * @param string $srcIp
+     * @param string $srcIp | null
      *
      * @return static
      */
@@ -247,7 +247,7 @@ abstract class TrustedAbstract
     /**
      * Set proto
      *
-     * @param string $proto
+     * @param string $proto | null
      *
      * @return static
      */
@@ -275,7 +275,7 @@ abstract class TrustedAbstract
     /**
      * Set fromPattern
      *
-     * @param string $fromPattern
+     * @param string $fromPattern | null
      *
      * @return static
      */
@@ -303,7 +303,7 @@ abstract class TrustedAbstract
     /**
      * Set ruriPattern
      *
-     * @param string $ruriPattern
+     * @param string $ruriPattern | null
      *
      * @return static
      */
@@ -331,7 +331,7 @@ abstract class TrustedAbstract
     /**
      * Set tag
      *
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
@@ -359,7 +359,7 @@ abstract class TrustedAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
@@ -414,7 +414,7 @@ abstract class TrustedAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */

@@ -111,6 +111,11 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       length: 255
       options:
         fixed: false
+    hidden:
+      type: boolean
+      nullable: false
+      options:
+        default: 0
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -121,7 +126,7 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       joinColumns:
         brandId:
           referencedColumnName: id
-          onDelete: cascade
+          onDelete: set null
       orphanRemoval: false
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -132,7 +137,7 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       joinColumns:
         companyId:
           referencedColumnName: id
-          onDelete: cascade
+          onDelete: set null
       orphanRemoval: false
     user:
       targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface

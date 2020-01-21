@@ -27,7 +27,6 @@ Feature: Create faxes
           "email": "something@irontec.com",
           "sendByEmail": true,
           "id": 2,
-          "company": 1,
           "outgoingDdi": null
       }
     """
@@ -46,7 +45,6 @@ Feature: Create faxes
           "email": "something@irontec.com",
           "sendByEmail": true,
           "id": 2,
-          "company": "~",
           "outgoingDdi": null
       }
     """

@@ -135,7 +135,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getIden()
     {
@@ -155,7 +155,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDefaultCode()
     {
@@ -175,7 +175,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return boolean | null
      */
     public function getExtraArgs()
     {
@@ -195,7 +195,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -215,7 +215,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEn()
     {
@@ -235,7 +235,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameEs()
     {
@@ -255,7 +255,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameCa()
     {
@@ -275,7 +275,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNameIt()
     {
@@ -295,7 +295,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionEn()
     {
@@ -315,7 +315,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionEs()
     {
@@ -335,7 +335,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionCa()
     {
@@ -355,7 +355,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDescriptionIt()
     {

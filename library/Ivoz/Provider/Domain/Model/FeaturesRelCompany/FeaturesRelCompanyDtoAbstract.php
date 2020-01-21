@@ -74,7 +74,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -140,7 +140,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureDto
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureDto | null
      */
     public function getFeature()
     {

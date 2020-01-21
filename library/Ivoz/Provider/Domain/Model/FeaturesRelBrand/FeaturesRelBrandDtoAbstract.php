@@ -74,7 +74,7 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -140,7 +140,7 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureDto
+     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureDto | null
      */
     public function getFeature()
     {

@@ -1,3 +1,0 @@
-imports:
-  - { resource: "@CoreBundle/Resources/config/model/provider/company.yml" }
-  - { resource: "@CoreBundle/Resources/config/model/provider/carrier.yml" }

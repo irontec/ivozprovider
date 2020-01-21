@@ -268,7 +268,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set prefix
      *
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
@@ -296,7 +296,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set fromUri
      *
-     * @param string $fromUri
+     * @param string $fromUri | null
      *
      * @return static
      */
@@ -324,7 +324,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set requestUri
      *
-     * @param string $requestUri
+     * @param string $requestUri | null
      *
      * @return static
      */
@@ -352,7 +352,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set mtTvalue
      *
-     * @param string $mtTvalue
+     * @param string $mtTvalue | null
      *
      * @return static
      */
@@ -460,7 +460,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set routingPatternGroupsRelPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern | null
      *
      * @return static
      */

@@ -174,7 +174,7 @@ abstract class DdiProviderAddressAbstract
     /**
      * Set ip
      *
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
@@ -202,7 +202,7 @@ abstract class DdiProviderAddressAbstract
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */

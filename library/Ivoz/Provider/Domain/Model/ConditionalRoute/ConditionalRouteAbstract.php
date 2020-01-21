@@ -298,7 +298,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set routetype
      *
-     * @param string $routetype
+     * @param string $routetype | null
      *
      * @return static
      */
@@ -337,7 +337,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set numbervalue
      *
-     * @param string $numbervalue
+     * @param string $numbervalue | null
      *
      * @return static
      */
@@ -365,7 +365,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set friendvalue
      *
-     * @param string $friendvalue
+     * @param string $friendvalue | null
      *
      * @return static
      */
@@ -417,7 +417,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -441,7 +441,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -465,7 +465,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set voicemailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser | null
      *
      * @return static
      */
@@ -489,7 +489,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -513,7 +513,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
      *
      * @return static
      */
@@ -537,7 +537,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
      *
      * @return static
      */
@@ -561,7 +561,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set conferenceRoom
      *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom
+     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
      *
      * @return static
      */
@@ -585,7 +585,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
      *
      * @return static
      */
@@ -609,7 +609,7 @@ abstract class ConditionalRouteAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
      *
      * @return static
      */

@@ -429,7 +429,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Set subject
      *
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
@@ -457,7 +457,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Set destinationTag
      *
-     * @param string $destinationTag
+     * @param string $destinationTag | null
      *
      * @return static
      */
@@ -539,7 +539,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Set strategyParams
      *
-     * @param string $strategyParams
+     * @param string $strategyParams | null
      *
      * @return static
      */
@@ -662,7 +662,7 @@ abstract class TpLcrRuleAbstract
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
      *
      * @return static
      */

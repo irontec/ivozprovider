@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -32,12 +32,33 @@ class InvoiceDoctrineRepository extends ServiceEntityRepository implements Invoi
         string $utcOutDate,
         int $invoiceIdToBeExcluded = null
     ) {
+        $dateValidationQuerySegments = [
+            // $utcOutDate between (inDate, outDate)
+            self::ENTITY_ALIAS . '.inDate <= :utcOutDate AND ' . self::ENTITY_ALIAS . '.outDate >= :utcOutDate',
+            // $utcInDate between (inDate, outDate)
+            self::ENTITY_ALIAS . '.inDate <= :startTimeUtc AND ' . self::ENTITY_ALIAS . '.outDate >= :startTimeUtc',
+            // $utcInDate < inDate AND $utcOutDate > outDate
+            self::ENTITY_ALIAS . '.inDate >= :startTimeUtc AND ' . self::ENTITY_ALIAS . '.outDate <= :utcOutDate',
+        ];
+
+        $dateValidationQuerySegments = array_map(
+            function ($row) {
+                return '(' . $row . ')';
+            },
+            $dateValidationQuerySegments
+        );
+
+        $dateValidationQueryStr =
+            '('
+            . implode(' OR ', $dateValidationQuerySegments)
+            . ')';
+
         $querySegments = [
             self::ENTITY_ALIAS . '.company = :companyId',
             self::ENTITY_ALIAS . '.brand = :brandId',
-            self::ENTITY_ALIAS . '.inDate >= :startTimeUtc',
-            self::ENTITY_ALIAS . '.outDate <= :utcOutDate'
+            $dateValidationQueryStr
         ];
+
         $queryArguments = [
             'companyId' => $companyId,
             'brandId' => $brandId,
@@ -52,51 +73,13 @@ class InvoiceDoctrineRepository extends ServiceEntityRepository implements Invoi
 
         $query = implode(' AND ', $querySegments);
         $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
-        $qb->select('count(' . self::ENTITY_ALIAS  . ')')
+        $qb
+            ->select('count(' . self::ENTITY_ALIAS  . ')')
             ->where($query)
             ->setParameters($queryArguments);
 
         return $qb
             ->getQuery()
             ->getSingleScalarResult();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getInvoices(
-        int $companyId,
-        int $brandId,
-        string $utcOutDate,
-        int $invoiceIdToBeExcluded = null
-    ) {
-        $querySegments = [
-            self::ENTITY_ALIAS . '.company = :companyId',
-            self::ENTITY_ALIAS . '.brand = :brandId',
-            self::ENTITY_ALIAS . '.outDate > :utcOutDate'
-        ];
-        $queryArguments = [
-            'companyId' => $companyId,
-            'brandId' => $brandId,
-            'utcOutDate' => $utcOutDate
-        ];
-
-        if ($invoiceIdToBeExcluded) {
-            $querySegments[] = self::ENTITY_ALIAS . '.id != :invoiceIdToBeExcluded';
-            $queryArguments += [
-                'invoiceIdToBeExcluded' => $invoiceIdToBeExcluded
-            ];
-        }
-
-        $query = implode(' AND ', $querySegments);
-        $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
-        $qb->select(self::ENTITY_ALIAS)
-            ->where($query)
-            ->addOrderBy(self::ENTITY_ALIAS . '.inDate', 'ASC')
-            ->setParameters($queryArguments);
-
-        return $qb
-            ->getQuery()
-            ->getResult();
     }
 }

@@ -121,9 +121,11 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 
     public function denormalize(array $data, string $context, string $role = '')
     {
-        $contextProperties = $this->getPropertyMap($context, $role);
+        $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        } elseif ($role === 'ROLE_COMPANY_ADMIN') {
+            $contextProperties['companyId'] = 'company';
         }
 
         $this->setByContext(
@@ -159,15 +161,13 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'languageId'
         ];
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 
     /**
@@ -180,7 +180,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'name',
             'description',
             'id',
-            'companyId',
             'transformationRuleSetId',
             'outgoingDdiId',
             'languageId',
@@ -188,14 +187,12 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'password',
         ];
 
-        $response = array_filter(
+        return array_filter(
             $response,
             function ($key) use ($allowedFields) {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
-
-        return $response;
     }
 }

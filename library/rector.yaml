@@ -1,0 +1,38 @@
+parameters:
+  import_short_classes: false
+
+  exclude_paths:
+  - '**/Domain/Service/**/*ServiceCollection.php'
+  - '**/Domain/Model/*/*Abstract.php'
+  - '**/Domain/Model/*/*Trait.php'
+  - '**/Domain/Model/*/*Interface.php'
+  - '*/Ivoz/Tests/AccessControlTestHelperTrait.php'
+  - '*/Ivoz/Api/Swagger/Ui/SwaggerUiAction.php'
+
+  exclude_rectors:
+  - 'Rector\CodeQuality\Rector\Return_\SimplifyUselessVariableRector' #REQUIRES USER REVIEW!
+  - 'Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector' #REQUIRES USER REVIEW!
+  - 'Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector' #TODO!
+  - 'Rector\SOLID\Rector\ClassMethod\UseInterfaceOverImplementationInConstructorRector' #TODO!
+
+  sets:
+  - 'php70'
+
+services:
+  # subset of code-quality set
+  Rector\CodeQuality\Rector\FuncCall\InArrayAndArrayKeysToArrayKeyExistsRector: ~
+  Rector\CodeQuality\Rector\Ternary\UnnecessaryTernaryExpressionRector: ~
+  Rector\CodeQuality\Rector\Equal\UseIdenticalOverEqualWithSameTypeRector: ~
+  Rector\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRector: ~
+
+  # subset of dead-code set
+  Rector\DeadCode\Rector\Stmt\RemoveDeadStmtRector: ~
+  Rector\DeadCode\Rector\Foreach_\RemoveUnusedForeachKeyRector: ~
+  Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector: ~
+  Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector: ~
+  Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector: ~
+  Rector\DeadCode\Rector\ClassMethod\RemoveUnusedParameterRector: ~
+  Rector\DeadCode\Rector\ClassMethod\RemoveDelegatingParentCallRector: ~
+  Rector\DeadCode\Rector\Switch_\RemoveDuplicatedCaseInSwitchRector: ~
+  Rector\DeadCode\Rector\Property\RemoveNullPropertyInitializationRector: ~
+

@@ -2,13 +2,14 @@
 
 namespace Ivoz\Provider\Application\Service\CallCsvReport;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\StoragePathResolverCollection;
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
-use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Assert\Assertion;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
+use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 
 class CallCsvReportAssembler implements CustomEntityAssemblerInterface
 {
@@ -23,7 +24,7 @@ class CallCsvReportAssembler implements CustomEntityAssemblerInterface
     public function fromDto(
         DataTransferObjectInterface $callCsvReportDto,
         EntityInterface $callCsvReport,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($callCsvReport, CallCsvReportInterface::class);
         $callCsvReport->updateFromDto($callCsvReportDto, $fkTransformer);

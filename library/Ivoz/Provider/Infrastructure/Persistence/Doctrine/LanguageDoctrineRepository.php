@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Language\LanguageRepository;
 use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\Language\LanguageRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

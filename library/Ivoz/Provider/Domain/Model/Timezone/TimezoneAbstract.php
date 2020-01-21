@@ -228,7 +228,7 @@ abstract class TimezoneAbstract
     /**
      * Set comment
      *
-     * @param string $comment
+     * @param string $comment | null
      *
      * @return static
      */
@@ -256,7 +256,7 @@ abstract class TimezoneAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
      *
      * @return static
      */

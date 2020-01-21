@@ -74,7 +74,7 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -94,7 +94,7 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto | null
      */
     public function getFilter()
     {
@@ -140,7 +140,7 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto
+     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
      */
     public function getSchedule()
     {

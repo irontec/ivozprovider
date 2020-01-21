@@ -178,7 +178,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getNumber()
     {
@@ -198,7 +198,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getInDate()
     {
@@ -218,7 +218,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getOutDate()
     {
@@ -238,7 +238,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getTotal()
     {
@@ -258,7 +258,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getTaxRate()
     {
@@ -278,7 +278,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return float
+     * @return float | null
      */
     public function getTotalWithTax()
     {
@@ -298,7 +298,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStatus()
     {
@@ -318,7 +318,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getStatusMsg()
     {
@@ -338,7 +338,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -358,7 +358,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getPdfFileSize()
     {
@@ -378,7 +378,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPdfMimeType()
     {
@@ -398,7 +398,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getPdfBaseName()
     {
@@ -418,7 +418,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto | null
      */
     public function getInvoiceTemplate()
     {
@@ -464,7 +464,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     public function getBrand()
     {
@@ -510,7 +510,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     public function getCompany()
     {
@@ -556,7 +556,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
      */
     public function getNumberSequence()
     {
@@ -602,7 +602,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
      */
     public function getScheduler()
     {
@@ -648,7 +648,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
+     * @return array | null
      */
     public function getRelFixedCosts()
     {

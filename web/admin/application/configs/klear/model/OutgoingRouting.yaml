@@ -126,7 +126,7 @@ production:
       source:
         control: Spinner
         min: 1
-        max: 254
+        max: 20
     routingMode:
       title: _('Route type')
       type: select
@@ -189,6 +189,23 @@ production:
       trim: both
       maxLength: 25
       required: true
+    stopper:
+      title: _('Stopper')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '1':
+            title: _("Yes")
+          '0':
+            title: _("No")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Routes with higher priority won't be evaluated. Those with same priority will be evaluated.")
+        label: _("Need help?")
     forceClid:
       title: _('Force Clid')
       type: select

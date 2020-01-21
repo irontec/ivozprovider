@@ -81,7 +81,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getName()
     {
@@ -101,7 +101,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRegExp()
     {
@@ -121,7 +121,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {
@@ -141,7 +141,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
      */
     public function getFriend()
     {

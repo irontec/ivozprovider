@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleDto;
-use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstract
 {

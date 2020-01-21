@@ -2,10 +2,6 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
-use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Service\RoutingTag\RoutingTagLifecycleEventHandlerInterface;
 

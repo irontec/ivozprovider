@@ -37,7 +37,6 @@ Feature: Retrieve conference rooms
           "pinProtected": true,
           "pinCode": "4321",
           "maxMembers": 1,
-          "id": 1,
-          "company": "~"
+          "id": 1
       }
     """

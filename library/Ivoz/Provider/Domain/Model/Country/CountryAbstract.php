@@ -249,7 +249,7 @@ abstract class CountryAbstract
     /**
      * Set countryCode
      *
-     * @param string $countryCode
+     * @param string $countryCode | null
      *
      * @return static
      */

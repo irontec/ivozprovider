@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg;
 
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
-use Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
+use Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleEventHandlerInterface;
 
 class SendTrunksUacRegReloadRequest implements TrunksUacregLifecycleEventHandlerInterface
 {

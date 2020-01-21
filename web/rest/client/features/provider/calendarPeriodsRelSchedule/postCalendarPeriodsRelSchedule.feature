@@ -45,8 +45,7 @@ Feature: Create calendar periods rel schedules
               "friday": false,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": null
+              "id": 2
           }
       }
     """
@@ -85,8 +84,7 @@ Feature: Create calendar periods rel schedules
               "friday": true,
               "saturday": false,
               "sunday": false,
-              "id": 2,
-              "company": 1
+              "id": 2
           }
       }
     """

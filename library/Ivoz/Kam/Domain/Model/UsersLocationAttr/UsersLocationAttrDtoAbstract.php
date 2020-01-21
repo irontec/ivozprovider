@@ -109,7 +109,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getRuid()
     {
@@ -129,7 +129,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getUsername()
     {
@@ -149,7 +149,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getDomain()
     {
@@ -169,7 +169,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAname()
     {
@@ -189,7 +189,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getAtype()
     {
@@ -209,7 +209,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return string
+     * @return string | null
      */
     public function getAvalue()
     {
@@ -229,7 +229,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime | null
      */
     public function getLastModified()
     {
@@ -249,7 +249,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer
+     * @return integer | null
      */
     public function getId()
     {

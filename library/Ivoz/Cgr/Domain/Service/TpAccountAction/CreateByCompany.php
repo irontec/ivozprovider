@@ -53,7 +53,7 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
                 ->setTpid($brand->getCgrTenant())
                 ->setCompanyId($company->getId())
                 ->setTenant($brand->getCgrTenant())
-                ->setActionTriggersTag('STANDARD_TRIGGERS')
+                ->setActionTriggersTag($company->getCgrSubject())
                 ->setAccount($company->getCgrSubject());
         } else {
             $accountAction = $this->tpAccountActionRepository
@@ -66,7 +66,7 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
             );
         }
 
-        $allowNegative = $company->getBillingMethod() == CompanyInterface::BILLINGMETHOD_POSTPAID
+        $allowNegative = $company->getBillingMethod() === CompanyInterface::BILLINGMETHOD_POSTPAID
             ? 1
             : 0;
 

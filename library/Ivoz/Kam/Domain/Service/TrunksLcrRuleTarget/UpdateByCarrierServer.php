@@ -2,11 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
-use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByCarrierServer as LcrGatewayUpdateByCarrierServer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 
 /**
  * Class UpdateByCarrierServer
@@ -15,6 +14,7 @@ use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByCarrierServer as LcrGateway
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = LcrGatewayUpdateByCarrierServer::POST_PERSIST_PRIORITY + 10;
+    const POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
      * @var TrunksLcrRuleTargetFactory
@@ -34,7 +34,8 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY,
+            self::EVENT_POST_REMOVE => self::POST_REMOVE_PRIORITY
         ];
     }
 
@@ -46,7 +47,8 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     public function execute(CarrierServerInterface $carrierServer)
     {
         $isNew = $carrierServer->isNew();
-        if (!$isNew) {
+        $isDeleted = $carrierServer->hasBeenDeleted();
+        if (!$isDeleted && !$isNew) {
             return;
         }
 

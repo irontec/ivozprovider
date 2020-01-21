@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternRepository;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
+use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

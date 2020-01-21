@@ -146,7 +146,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set welcomeLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
      *
      * @return static
      */
@@ -162,7 +162,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set holidayLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution | null
      *
      * @return static
      */
@@ -178,7 +178,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set outOfScheduleLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution
+     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution | null
      *
      * @return static
      */
@@ -194,7 +194,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set holidayExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension | null
      *
      * @return static
      */
@@ -210,7 +210,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set outOfScheduleExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension
+     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension | null
      *
      * @return static
      */
@@ -226,7 +226,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set holidayVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser | null
      *
      * @return static
      */
@@ -242,7 +242,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set outOfScheduleVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser | null
      *
      * @return static
      */
@@ -258,7 +258,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set holidayNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry | null
      *
      * @return static
      */
@@ -274,7 +274,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Set outOfScheduleNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry | null
      *
      * @return static
      */

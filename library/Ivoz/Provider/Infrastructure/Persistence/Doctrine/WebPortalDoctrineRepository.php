@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
