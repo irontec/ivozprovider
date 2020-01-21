@@ -110,20 +110,13 @@ class Residentials extends RouteHandlerAbstract
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
             /** @var BrandServiceInterface $service */
-            $service = $this->brandServiceRepository
-                ->findByIden(
-                    $brand,
-                    Service::VOICEMAIL
-                );
+            if (($service = $brand->getService($exten))) {
+                $this->agi->verbose("Number %s belongs to a %s.", $exten, $service);
 
-            if ($service) {
-                if ($service->getCode() == substr($exten, 1)) {
-                    $this->agi->verbose("Number %s belongs to a %s.", $exten, $service);
-                    // Handle service code
-                    $this->serviceAction
-                        ->setService($service)
-                        ->process();
-                }
+                // Handle service code
+                $this->serviceAction
+                    ->setService($service)
+                    ->process();
             } else {
                 // Decline this call if not matching service is found
                 $this->agi->verbose("Invalid Service code %s for brand %s", $exten, $brand);

@@ -59,7 +59,7 @@ Feature: Retrieve callForwardSetting
           "callForwardType": "inconditional",
           "targetType": "number",
           "numberValue": "946002053",
-          "noAnswerTimeout": 10,
+          "noAnswerTimeout": 0,
           "enabled": true,
           "id": 1,
           "user": "~",

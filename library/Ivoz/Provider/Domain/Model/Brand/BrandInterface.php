@@ -71,6 +71,12 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCgrTenant();
 
     /**
+     * @param string $exten
+     * @return \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface|null
+     */
+    public function getService($exten);
+
+    /**
      * Get name
      *
      * @return string

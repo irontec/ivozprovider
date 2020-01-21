@@ -66,7 +66,8 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             $this->company,
             [
                 'getBrand' => $brand,
-                'isNew' => true
+                'isNew' => true,
+                'getType' => CompanyInterface::TYPE_VPBX
             ],
             false
         );
@@ -89,6 +90,25 @@ class PropagateBrandServicesSpec extends ObjectBehavior
         );
     }
 
+    function it_returns_if_type_its_not_vpbx()
+    {
+        $this
+            ->brandServiceRepository
+            ->findBy(Argument::any())
+            ->shouldNotBeCalled();
+
+        $this
+            ->company
+            ->getType()
+            ->willReturn(
+                CompanyInterface::TYPE_RESIDENTIAL
+            );
+
+        $this->execute(
+            $this->company
+        );
+    }
+
     function it_searches_related_brand_services()
     {
         $this
@@ -105,7 +125,8 @@ class PropagateBrandServicesSpec extends ObjectBehavior
         $service = $this->getInstance(
             Service::class,
             [
-                'id' => 1
+                'id' => 1,
+                'iden' => 'DirectPickUp'
             ]
         );
 
