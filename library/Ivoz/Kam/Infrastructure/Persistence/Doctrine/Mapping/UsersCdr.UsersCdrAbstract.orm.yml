@@ -111,6 +111,11 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       length: 255
       options:
         fixed: false
+    hidden:
+      type: boolean
+      nullable: false
+      options:
+        default: 0
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

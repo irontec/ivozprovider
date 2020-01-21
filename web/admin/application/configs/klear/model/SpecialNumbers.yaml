@@ -1,0 +1,54 @@
+production:
+  entity: \Ivoz\Provider\Domain\Model\SpecialNumber\SpecialNumber
+  fields:
+    country:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+      decorators:
+        autocomplete:
+          command: countriesAutocomplete_command
+    number:
+      title: _('Number')
+      type: text
+      trim: both
+      pattern: "^[0-9]+$"
+      required: true
+      default: true
+    disableCDR:
+      title: _('Disable CDR')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("Mark yes to hide this destination calls in all lists")
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

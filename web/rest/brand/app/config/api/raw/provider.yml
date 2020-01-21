@@ -691,6 +691,21 @@ Ivoz\Provider\Domain\Model\Service\Service:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 
+Ivoz\Provider\Domain\Model\SpecialNumber\SpecialNumber:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+      - or:
+        - brand:
+            eq: "user.getBrand().getId()"
+        - brand:
+            isNull: ~
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

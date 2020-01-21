@@ -10,6 +10,7 @@ production:
   screens: &kamUsersCdrs_screensLink
     kamUsersCdrsList_screen: &kamUsersCdrsList_screenLink
       controller: list
+      rawCondition: "UsersCdr.hidden = 0"
       order:
         field:
           - UsersCdr.startTime desc

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\DataAccessControl\Provider;
+namespace Tests\DataAccessControl\Kam;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
@@ -35,6 +35,7 @@ class UsersCdrTest extends KernelTestCase
             $accessControl,
             [
                 ['brand', 'eq', 'user.getBrand().getId()'],
+                ['hidden', 'eq', 0],
             ]
         );
     }
@@ -54,6 +55,7 @@ class UsersCdrTest extends KernelTestCase
             $accessControl,
             [
                 ['brand', 'eq', 'user.getBrand().getId()'],
+                ['hidden', 'eq', 0],
             ]
         );
     }

@@ -31,6 +31,7 @@ class UsersCdrDto extends UsersCdrDtoAbstract
             unset($response['companyId']);
         }
 
+        unset($response['hidden']);
         return $response;
     }
 

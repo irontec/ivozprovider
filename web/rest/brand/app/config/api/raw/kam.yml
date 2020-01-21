@@ -24,6 +24,8 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+        hidden:
+          eq: 0
 
 Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
   attributes:
