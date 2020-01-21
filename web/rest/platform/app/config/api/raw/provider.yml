@@ -159,6 +159,15 @@ Ivoz\Provider\Domain\Model\Service\Service:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+
+Ivoz\Provider\Domain\Model\SpecialNumber\SpecialNumber:
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    read_access_control:
+      ROLE_SUPER_ADMIN:
+        brand:
+          isNull: ~
+
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
