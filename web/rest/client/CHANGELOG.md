@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.14
+* Endpoints:
+    - Added type filter parameter on /companies
+* Models:
+    - Removed not nullable company attributes as they can be auto resolved (deprecated since 2.12)
+    - Company:
+        - Removed almost every property from Company models
+
 ## 2.13.2
 * Endpoints:
     - Added [Exists] filter parameter for nullable fields (Only possible on foreign keys before)
