@@ -16,6 +16,7 @@ These will be covered topics:
     :titlesonly:
 
     client_portals
+    special_numbers
     numeric_transformations
     notification_templates
     generic_music_on_hold
