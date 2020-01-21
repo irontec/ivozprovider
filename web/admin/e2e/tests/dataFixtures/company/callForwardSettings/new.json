@@ -1,7 +1,7 @@
 {
   "callTypeFilter": "internal",
   "callForwardType": "inconditional",
-  "noAnswerTimeout": "10",
+  "noAnswerTimeout": "0",
   "targetType": "number",
   "numberCountry": "70",
   "numberValue": "946002053",

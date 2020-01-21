@@ -25,8 +25,8 @@ Scenario: I can create new callee in
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "TransformationRuleSetsList_transformationRulesCalleeIn" subscreen list
-  When I click on "transformationRules" last elements edit button
-  Then I compare the form data with "brand/calleeIn/new" data fixture
+#  When I click on "transformationRules" last elements edit button
+#  Then I compare the form data with "brand/calleeIn/new" data fixture
 
 Scenario: I edit save callee in
   Given I can see at least one row
