@@ -448,6 +448,11 @@ abstract class CallCsvReportAbstract
      */
     public function setCsv(Csv $csv)
     {
+        $isEqual = $this->csv && $this->csv->equals($csv);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->csv = $csv;
         return $this;
     }

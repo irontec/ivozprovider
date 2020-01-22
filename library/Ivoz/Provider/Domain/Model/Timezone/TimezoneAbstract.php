@@ -286,6 +286,11 @@ abstract class TimezoneAbstract
      */
     public function setLabel(Label $label)
     {
+        $isEqual = $this->label && $this->label->equals($label);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->label = $label;
         return $this;
     }

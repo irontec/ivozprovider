@@ -47,6 +47,19 @@ class Zone
         $this->setIt($it);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $zone)
+    {
+        return
+            $this->getEn() === $zone->getEn() &&
+            $this->getEs() === $zone->getEs() &&
+            $this->getCa() === $zone->getCa() &&
+            $this->getIt() === $zone->getIt();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

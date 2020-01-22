@@ -352,6 +352,11 @@ abstract class DestinationRateGroupAbstract
      */
     public function setName(Name $name)
     {
+        $isEqual = $this->name && $this->name->equals($name);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->name = $name;
         return $this;
     }
@@ -375,6 +380,11 @@ abstract class DestinationRateGroupAbstract
      */
     public function setDescription(Description $description)
     {
+        $isEqual = $this->description && $this->description->equals($description);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->description = $description;
         return $this;
     }
@@ -398,6 +408,11 @@ abstract class DestinationRateGroupAbstract
      */
     public function setFile(File $file)
     {
+        $isEqual = $this->file && $this->file->equals($file);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->file = $file;
         return $this;
     }

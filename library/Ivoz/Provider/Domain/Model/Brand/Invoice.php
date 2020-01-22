@@ -68,6 +68,22 @@ class Invoice
         $this->setRegistryData($registryData);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $invoice)
+    {
+        return
+            $this->getNif() === $invoice->getNif() &&
+            $this->getPostalAddress() === $invoice->getPostalAddress() &&
+            $this->getPostalCode() === $invoice->getPostalCode() &&
+            $this->getTown() === $invoice->getTown() &&
+            $this->getProvince() === $invoice->getProvince() &&
+            $this->getCountry() === $invoice->getCountry() &&
+            $this->getRegistryData() === $invoice->getRegistryData();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

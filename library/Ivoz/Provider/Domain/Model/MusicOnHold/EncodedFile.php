@@ -41,6 +41,18 @@ class EncodedFile
         $this->setBaseName($baseName);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $encodedFile)
+    {
+        return
+            $this->getFileSize() === $encodedFile->getFileSize() &&
+            $this->getMimeType() === $encodedFile->getMimeType() &&
+            $this->getBaseName() === $encodedFile->getBaseName();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**
