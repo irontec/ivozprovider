@@ -278,6 +278,11 @@ abstract class DestinationAbstract
      */
     public function setName(Name $name)
     {
+        $isEqual = $this->name && $this->name->equals($name);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->name = $name;
         return $this;
     }

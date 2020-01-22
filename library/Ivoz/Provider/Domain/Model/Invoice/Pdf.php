@@ -41,6 +41,18 @@ class Pdf
         $this->setBaseName($baseName);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $pdf)
+    {
+        return
+            $this->getFileSize() === $pdf->getFileSize() &&
+            $this->getMimeType() === $pdf->getMimeType() &&
+            $this->getBaseName() === $pdf->getBaseName();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

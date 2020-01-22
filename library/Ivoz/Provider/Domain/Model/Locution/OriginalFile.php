@@ -41,6 +41,18 @@ class OriginalFile
         $this->setBaseName($baseName);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $originalFile)
+    {
+        return
+            $this->getFileSize() === $originalFile->getFileSize() &&
+            $this->getMimeType() === $originalFile->getMimeType() &&
+            $this->getBaseName() === $originalFile->getBaseName();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

@@ -283,6 +283,11 @@ abstract class CountryAbstract
      */
     public function setName(Name $name)
     {
+        $isEqual = $this->name && $this->name->equals($name);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->name = $name;
         return $this;
     }
@@ -306,6 +311,11 @@ abstract class CountryAbstract
      */
     public function setZone(Zone $zone)
     {
+        $isEqual = $this->zone && $this->zone->equals($zone);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->zone = $zone;
         return $this;
     }

@@ -400,6 +400,11 @@ abstract class WebPortalAbstract
      */
     public function setLogo(Logo $logo)
     {
+        $isEqual = $this->logo && $this->logo->equals($logo);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->logo = $logo;
         return $this;
     }

@@ -318,6 +318,11 @@ abstract class LocutionAbstract
      */
     public function setEncodedFile(EncodedFile $encodedFile)
     {
+        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->encodedFile = $encodedFile;
         return $this;
     }
@@ -341,6 +346,11 @@ abstract class LocutionAbstract
      */
     public function setOriginalFile(OriginalFile $originalFile)
     {
+        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->originalFile = $originalFile;
         return $this;
     }
