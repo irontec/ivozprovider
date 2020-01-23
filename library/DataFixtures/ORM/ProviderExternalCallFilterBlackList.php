@@ -17,17 +17,21 @@ class ProviderExternalCallFilterBlackList extends Fixture implements DependentFi
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ExternalCallFilterBlackList::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ExternalCallFilterBlackList $item1 */
         $item1 = $this->createEntityInstance(ExternalCallFilterBlackList::class);
-        $item1->setFilter(
-            $this->getReference('_reference_ProviderExternalCallFilter1')
-        );
-        $item1->setMatchlist(
-            $this->getReference('_reference_ProviderMatchList1')
-        );
+        (function () use ($fixture) {
+            $this->setFilter(
+                $fixture->getReference('_reference_ProviderExternalCallFilter1')
+            );
+            $this->setMatchlist(
+                $fixture->getReference('_reference_ProviderMatchList1')
+            );
+        })->call($item1);
+
         $this->addReference('_reference_ProviderExternalCallFilterBlackList1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

@@ -18,11 +18,12 @@ class ProviderService extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Service::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(Service::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("DirectPickUp");
             $this->setDefaultCode("94");
             $this->setExtraArgs(true);
@@ -35,7 +36,7 @@ class ProviderService extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Service::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("GroupPickUp");
             $this->setDefaultCode("95");
             $this->setExtraArgs(false);
@@ -48,7 +49,7 @@ class ProviderService extends Fixture
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(Service::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("Voicemail");
             $this->setDefaultCode("93");
             $this->setExtraArgs(true);
@@ -61,7 +62,7 @@ class ProviderService extends Fixture
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstance(Service::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("RecordLocution");
             $this->setDefaultCode("00");
             $this->setExtraArgs(true);

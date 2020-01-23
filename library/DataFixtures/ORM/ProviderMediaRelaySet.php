@@ -16,6 +16,7 @@ class ProviderMediaRelaySet extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(MediaRelaySet::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
@@ -27,7 +28,7 @@ class ProviderMediaRelaySet extends Fixture
         $this->addReference('_reference_ProviderMediaRelaySet', $item0);
 
         $item1 = $this->createEntityInstance(MediaRelaySet::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("Test");
             $this->setDescription("Test media relay set");
         })->call($item1);

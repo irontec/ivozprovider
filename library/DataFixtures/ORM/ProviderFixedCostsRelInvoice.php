@@ -17,21 +17,21 @@ class ProviderFixedCostsRelInvoice extends Fixture implements DependentFixtureIn
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(FixedCostsRelInvoice::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var FixedCostsRelInvoice $item1 */
         $item1 = $this->createEntityInstance(FixedCostsRelInvoice::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setQuantity(1);
+            $this->setFixedCost(
+                $fixture->getReference('_reference_ProviderFixedCost1')
+            );
+            $this->setInvoice(
+                $fixture->getReference('_reference_ProviderInvoice1')
+            );
         })->call($item1);
-
-        $item1->setFixedCost(
-            $this->getReference('_reference_ProviderFixedCost1')
-        );
-        $item1->setInvoice(
-            $this->getReference('_reference_ProviderInvoice1')
-        );
 
         $this->addReference('_reference_ProviderFixedCostsRelInvoice1', $item1);
         $this->sanitizeEntityValues($item1);

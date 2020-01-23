@@ -18,12 +18,13 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Invoice::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var Invoice $item1 */
         $item1 = $this->createEntityInstance(Invoice::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setNumber('1');
             $this->setInDate(new \DateTime('2018-01-01', new \DateTimeZone('UTC')));
             $this->setOutDate(new \DateTime('2018-01-31', new \DateTimeZone('UTC')));
@@ -32,17 +33,16 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
             $this->setTotalWithTax(0.330);
             $this->setStatus('processing');
             $this->setPdf(new Pdf(null, null, null));
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
+            $this->setInvoiceTemplate(
+                $fixture->getReference('_reference_ProviderInvoiceTemplate1')
+            );
         })->call($item1);
-
-        $item1->setBrand(
-            $this->getReference('_reference_ProviderBrand1')
-        );
-        $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
-        $item1->setInvoiceTemplate(
-            $this->getReference('_reference_ProviderInvoiceTemplate1')
-        );
 
         $this->addReference('_reference_ProviderInvoice1', $item1);
         $this->sanitizeEntityValues($item1);

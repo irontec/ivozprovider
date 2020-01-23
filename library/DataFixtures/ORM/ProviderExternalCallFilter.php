@@ -17,17 +17,18 @@ class ProviderExternalCallFilter extends Fixture implements DependentFixtureInte
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ExternalCallFilter::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(ExternalCallFilter::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("testFilter");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setHolidayNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
+            $this->setOutOfScheduleNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item1);
 
-        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item1->setHolidayNumberCountry($this->getReference('_reference_ProviderCountry70'));
-        $item1->setOutOfScheduleNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderExternalCallFilter1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

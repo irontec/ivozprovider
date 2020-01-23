@@ -17,49 +17,51 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Terminal::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstance(Terminal::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("alice");
             $this->setDirectMediaMethod("invite");
             $this->setPassword("AUfVkn498_");
             $this->setMac("");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
+            $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel1'));
         })->call($item1);
 
-        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item1->setDomain($this->getReference('_reference_ProviderDomain3'));
-        $item1->setTerminalModel($this->getReference('_reference_ProviderTerminalModel1'));
         $this->addReference('_reference_ProviderTerminal1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Terminal::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("bob");
             $this->setDirectMediaMethod("invite");
             $this->setPassword("fLgQYa6-57");
             $this->setMac("");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
+            $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel1'));
         })->call($item2);
 
-        $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item2->setDomain($this->getReference('_reference_ProviderDomain3'));
-        $item2->setTerminalModel($this->getReference('_reference_ProviderTerminalModel1'));
         $this->addReference('_reference_ProviderTerminal2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(Terminal::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("testTerminal");
             $this->setDirectMediaMethod("invite");
             $this->setPassword("fLgQYa6-56");
             $this->setMac("0011223344aa");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
+            $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel1'));
         })->call($item3);
-        $item3->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item3->setDomain($this->getReference('_reference_ProviderDomain3'));
-        $item3->setTerminalModel($this->getReference('_reference_ProviderTerminalModel1'));
+
         $this->addReference('_reference_ProviderTerminal3', $item3);
         $manager->persist($item3);
 

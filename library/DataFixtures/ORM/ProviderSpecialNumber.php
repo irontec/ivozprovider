@@ -18,18 +18,19 @@ class ProviderSpecialNumber extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(SpecialNumber::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var SpecialNumberInterface $item1 */
         $item1 = $this->createEntityInstance(SpecialNumber::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setNumber("016");
             $this->setNumberE164("+34016");
             $this->setDisableCDR("1");
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item1);
 
-        $item1->setCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderSpecialNumber1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
@@ -39,14 +40,14 @@ class ProviderSpecialNumber extends Fixture implements DependentFixtureInterface
 
         /** @var SpecialNumberInterface $item2 */
         $item2 = $this->createEntityInstance(SpecialNumber::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setNumber("091");
             $this->setNumberE164("+34091");
             $this->setDisableCDR("1");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item2);
 
-        $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
-        $item2->setCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderSpecialNumber2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
