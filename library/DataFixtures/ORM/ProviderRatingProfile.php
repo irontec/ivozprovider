@@ -17,6 +17,7 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(RatingProfile::class)
@@ -24,18 +25,18 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
 
         /** @var RatingProfile $item1 */
         $item1 = $this->createEntityInstance(RatingProfile::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setActivationTime(new \DateTime('2018-02-02 20:20:20'));
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
+            $this->setRatingPlanGroup(
+                $fixture->getReference('_reference_ProviderRatingPlanGroup1')
+            );
+            $this->setCarrier(
+                $fixture->getReference('_reference_ProviderCarrier1')
+            );
         })->call($item1);
-        $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
-        $item1->setRatingPlanGroup(
-            $this->getReference('_reference_ProviderRatingPlanGroup1')
-        );
-        $item1->setCarrier(
-            $this->getReference('_reference_ProviderCarrier1')
-        );
 
         $this->addReference('_reference_ProviderRatingProfile1', $item1);
         $this->sanitizeEntityValues($item1);
@@ -43,12 +44,13 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
 
         /** @var RatingProfile $item2 */
         $item2 = $this->createEntityInstance(RatingProfile::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setActivationTime(new \DateTime('2018-02-02 20:20:20'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setRatingPlanGroup($fixture->getReference('_reference_ProviderRatingPlanGroup2'));
+            $this->setRoutingTag($fixture->getReference('_reference_ProviderRoutingTag1'));
         })->call($item2);
-        $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item2->setRatingPlanGroup($this->getReference('_reference_ProviderRatingPlanGroup2'));
-        $item2->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
+
         $this->addReference('_reference_ProviderRatingProfile2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);

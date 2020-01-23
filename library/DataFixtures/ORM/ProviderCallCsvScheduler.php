@@ -17,13 +17,14 @@ class ProviderCallCsvScheduler extends Fixture implements DependentFixtureInterf
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(CallCsvScheduler::class)
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstance(CallCsvScheduler::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName('SchedulerName');
             $this->setUnit('day');
             $this->setFrequency(1);
@@ -31,18 +32,18 @@ class ProviderCallCsvScheduler extends Fixture implements DependentFixtureInterf
             $this->setLastExecution(new \DateTime('2018-12-01 08:00:00'));
             $this->setLastExecutionError('');
             $this->setNextExecution('2018-12-02 08:00:00');
-        })->call($item1);
 
-        $item1->setBrand(
-            $this->getReference('_reference_ProviderBrand1')
-        );
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
+        })->call($item1);
 
         $this->addReference('_reference_ProviderCallCsvScheduler1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(CallCsvScheduler::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName('SchedulerName');
             $this->setUnit('day');
             $this->setFrequency(1);
@@ -50,11 +51,11 @@ class ProviderCallCsvScheduler extends Fixture implements DependentFixtureInterf
             $this->setLastExecution(new \DateTime('2018-12-01 08:00:00'));
             $this->setLastExecutionError('');
             $this->setNextExecution('2018-12-02 08:00:00');
-        })->call($item2);
 
-        $item2->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
+        })->call($item2);
 
         $this->addReference('_reference_ProviderCallCsvScheduler2', $item2);
         $this->sanitizeEntityValues($item2);

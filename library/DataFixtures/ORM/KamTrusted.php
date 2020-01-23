@@ -17,11 +17,12 @@ class KamTrusted extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Trusted::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(Trusted::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setSrcIp("194.30.6.32");
             $this->setProto("any");
             $this->setTag("Sarenet");

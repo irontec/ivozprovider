@@ -18,12 +18,13 @@ class KamTrunksUacreg extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TrunksUacreg::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var TrunksUacregInterface $item1 */
         $item1 = $this->createEntityInstance(TrunksUacreg::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setLUuid("DDIRegistrationContactUsername");
             $this->setRUsername("DDIRegistrationUsername");
             $this->setRDomain("DDIRegistrationDomain");
@@ -33,10 +34,10 @@ class KamTrunksUacreg extends Fixture implements DependentFixtureInterface
             $this->setExpires(2000);
             $this->setFlags(0);
             $this->setRegDelay(0);
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setDdiProviderRegistration($fixture->getReference('_reference_ProviderDdiProviderRegistration1'));
         })->call($item1);
 
-        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
-        $item1->setDdiProviderRegistration($this->getReference('_reference_ProviderDdiProviderRegistration1'));
         $this->addReference('_reference_KamTrunksUacreg1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

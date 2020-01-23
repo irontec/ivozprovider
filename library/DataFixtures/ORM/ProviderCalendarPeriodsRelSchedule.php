@@ -18,17 +18,20 @@ class ProviderCalendarPeriodsRelSchedule extends Fixture implements DependentFix
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(CalendarPeriodsRelSchedule::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var CalendarPeriodsRelScheduleInterface $item1 */
         $item1 = $this->createEntityInstance(CalendarPeriodsRelSchedule::class);
-        $item1->setCalendarPeriod(
-            $this->getReference('_reference_ProviderCalendarPeriod1')
-        );
-        $item1->setSchedule(
-            $this->getReference('_reference_ProviderSchedule1')
-        );
+        (function () use ($fixture) {
+            $this->setCalendarPeriod(
+                $fixture->getReference('_reference_ProviderCalendarPeriod1')
+            );
+            $this->setSchedule(
+                $fixture->getReference('_reference_ProviderSchedule1')
+            );
+        })->call($item1);
 
         $this->addReference('_reference_ProviderCalendarPeriodsRelSchedule1', $item1);
         $this->sanitizeEntityValues($item1);

@@ -17,13 +17,14 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(UsersLocation::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var UsersLocation $item1 */
         $item1 = $this->createEntityInstance(UsersLocation::class);
-        $domain = $this->getReference('_reference_ProviderDomain3');
-        (function () use ($domain) {
+        $domain = $fixture->getReference('_reference_ProviderDomain3');
+        (function () use ($domain, $fixture) {
             $this->setExpires(
                 new \DateTime('2030-12-31 23:59:59')
             );
@@ -43,8 +44,8 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
 
         /** @var UsersLocation $item2 */
         $item2 = $this->createEntityInstance(UsersLocation::class);
-        $domain = $this->getReference('_reference_ProviderDomain3');
-        (function () use ($domain) {
+        $domain = $fixture->getReference('_reference_ProviderDomain3');
+        (function () use ($domain, $fixture) {
             $this->setExpires(
                 new \DateTime('2030-12-31 23:59:59')
             );
@@ -64,8 +65,8 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
 
         /** @var UsersLocation $item3 */
         $item3 = $this->createEntityInstance(UsersLocation::class);
-        $domain = $this->getReference('_reference_ProviderDomain6');
-        (function () use ($domain) {
+        $domain = $fixture->getReference('_reference_ProviderDomain6');
+        (function () use ($domain, $fixture) {
             $this->setExpires(
                 new \DateTime('2030-12-31 23:59:59')
             );
@@ -81,8 +82,8 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
 
         /** @var UsersLocation $item4 */
         $item4 = $this->createEntityInstance(UsersLocation::class);
-        $domain = $this->getReference('_reference_ProviderDomain6');
-        (function () use ($domain) {
+        $domain = $fixture->getReference('_reference_ProviderDomain6');
+        (function () use ($domain, $fixture) {
             $this->setExpires(
                 new \DateTime('2030-12-31 23:59:59')
             );

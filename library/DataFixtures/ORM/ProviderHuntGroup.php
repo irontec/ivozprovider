@@ -17,18 +17,19 @@ class ProviderHuntGroup extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(HuntGroup::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(HuntGroup::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("testHuntGroup");
             $this->setDescription("desc");
             $this->setStrategy("ringAll");
             $this->setRingAllTimeout(10);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
         })->call($item1);
 
-        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderHuntGroup1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

@@ -18,6 +18,7 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TrunksLcrGateway::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
@@ -27,7 +28,7 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
 
         /** @var TrunksLcrGatewayInterface $item1 */
         $item1 = $this->createEntityInstance(TrunksLcrGateway::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setLcrId(1);
             $this->setGwName("b1c1s1");
             $this->setIp("127.0.0.1");
@@ -36,8 +37,8 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
             $this->setParams("");
             $this->setUriScheme(1);
             $this->setTransport(1);
+            $this->setCarrierServer($fixture->getReference('_reference_ProviderCarrierServer1'));
         })->call($item1);
-        $item1->setCarrierServer($this->getReference('_reference_ProviderCarrierServer1'));
 
         $this->addReference('_reference_KamTrunksLcrGateway1', $item1);
         $this->sanitizeEntityValues($item1);
@@ -45,7 +46,7 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
 
         /** @var TrunksLcrGatewayInterface $item2 */
         $item2 = $this->createEntityInstance(TrunksLcrGateway::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setLcrId(1);
             $this->setGwName("b1c1s2");
             $this->setIp("127.0.0.2");
@@ -54,8 +55,8 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
             $this->setParams("");
             $this->setUriScheme(1);
             $this->setTransport(1);
+            $this->setCarrierServer($fixture->getReference('_reference_ProviderCarrierServer2'));
         })->call($item2);
-        $item2->setCarrierServer($this->getReference('_reference_ProviderCarrierServer2'));
 
         $this->addReference('_reference_KamTrunksLcrGateway2', $item2);
         $this->sanitizeEntityValues($item2);
