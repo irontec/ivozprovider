@@ -112,29 +112,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getMaxCalls();
 
     /**
-     * Set domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
-
-    /**
      * Get domain
      *
      * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
-
-    /**
-     * Set language
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
-     *
-     * @return static
-     */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Get language
@@ -144,29 +126,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getLanguage();
 
     /**
-     * Set defaultTimezone
-     *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
-     *
-     * @return static
-     */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone);
-
-    /**
      * Get defaultTimezone
      *
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
      */
     public function getDefaultTimezone();
-
-    /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
     /**
      * Get currency
@@ -176,29 +140,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCurrency();
 
     /**
-     * Set voicemailNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null);
-
-    /**
      * Get voicemailNotificationTemplate
      *
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getVoicemailNotificationTemplate();
-
-    /**
-     * Set faxNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null);
 
     /**
      * Get faxNotificationTemplate
@@ -208,29 +154,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getFaxNotificationTemplate();
 
     /**
-     * Set invoiceNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null);
-
-    /**
      * Get invoiceNotificationTemplate
      *
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getInvoiceNotificationTemplate();
-
-    /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
 
     /**
      * Get callCsvNotificationTemplate
@@ -240,29 +168,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCallCsvNotificationTemplate();
 
     /**
-     * Set logo
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
-     *
-     * @return static
-     */
-    public function setLogo(\Ivoz\Provider\Domain\Model\Brand\Logo $logo);
-
-    /**
      * Get logo
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\Logo
      */
     public function getLogo();
-
-    /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
-     *
-     * @return static
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Brand\Invoice $invoice);
 
     /**
      * Get invoice

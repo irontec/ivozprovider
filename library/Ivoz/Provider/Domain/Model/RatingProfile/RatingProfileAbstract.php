@@ -180,7 +180,7 @@ abstract class RatingProfileAbstract
             'activationTime' => self::getActivationTime(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
+            'ratingPlanGroupId' => self::getRatingPlanGroup()->getId(),
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
@@ -275,7 +275,7 @@ abstract class RatingProfileAbstract
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
+    protected function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
@@ -299,7 +299,7 @@ abstract class RatingProfileAbstract
      *
      * @return static
      */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
+    protected function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
     {
         $this->routingTag = $routingTag;
 

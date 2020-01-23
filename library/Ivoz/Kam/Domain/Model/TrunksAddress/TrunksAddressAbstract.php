@@ -193,7 +193,7 @@ abstract class TrunksAddressAbstract
             'mask' => self::getMask(),
             'port' => self::getPort(),
             'tag' => self::getTag(),
-            'ddiProviderAddressId' => self::getDdiProviderAddress() ? self::getDdiProviderAddress()->getId() : null
+            'ddiProviderAddressId' => self::getDdiProviderAddress()->getId()
         ];
     }
     // @codeCoverageIgnoreStart

@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class PickUpRelUserAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface | null
      */
     protected $pickUpGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $user;
 
@@ -160,7 +160,7 @@ abstract class PickUpRelUserAbstract
     /**
      * Set pickUpGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup
+     * @param \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class PickUpRelUserAbstract
     /**
      * Get pickUpGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface | null
      */
     public function getPickUpGroup()
     {
@@ -184,7 +184,7 @@ abstract class PickUpRelUserAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
      *
      * @return static
      */
@@ -198,7 +198,7 @@ abstract class PickUpRelUserAbstract
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser()
     {

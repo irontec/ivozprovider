@@ -52,29 +52,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getCreatedOn();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
     /**
      * Get brand
@@ -84,29 +66,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getBrand();
 
     /**
-     * Set callCsvScheduler
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler | null
-     *
-     * @return static
-     */
-    public function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null);
-
-    /**
      * Get callCsvScheduler
      *
      * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
      */
     public function getCallCsvScheduler();
-
-    /**
-     * Set csv
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv
-     *
-     * @return static
-     */
-    public function setCsv(\Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv);
 
     /**
      * Get csv

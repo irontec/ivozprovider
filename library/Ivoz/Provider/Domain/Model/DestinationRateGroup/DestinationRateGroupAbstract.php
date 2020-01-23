@@ -255,7 +255,7 @@ abstract class DestinationRateGroupAbstract
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
             'fileImporterArguments' => self::getFile()->getImporterArguments(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
@@ -302,7 +302,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -326,7 +326,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
         $this->currency = $currency;
 
@@ -350,7 +350,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -378,7 +378,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    public function setDescription(Description $description)
+    protected function setDescription(Description $description)
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -406,7 +406,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    public function setFile(File $file)
+    protected function setFile(File $file)
     {
         $isEqual = $this->file && $this->file->equals($file);
         if ($isEqual) {

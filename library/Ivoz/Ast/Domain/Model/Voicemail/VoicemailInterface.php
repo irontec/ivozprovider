@@ -243,29 +243,11 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getStamp();
 
     /**
-     * Set user
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
-     *
-     * @return static
-     */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
-
-    /**
      * Get user
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser();
-
-    /**
-     * Set residentialDevice
-     *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
-     *
-     * @return static
-     */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
 
     /**
      * Get residentialDevice

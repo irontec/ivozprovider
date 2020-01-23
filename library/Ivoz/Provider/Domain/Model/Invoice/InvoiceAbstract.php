@@ -276,8 +276,8 @@ abstract class InvoiceAbstract
             'pdfMimeType' => self::getPdf()->getMimeType(),
             'pdfBaseName' => self::getPdf()->getBaseName(),
             'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
+            'companyId' => self::getCompany()->getId(),
             'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null,
             'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
         ];
@@ -538,7 +538,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
+    protected function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
     {
         $this->invoiceTemplate = $invoiceTemplate;
 
@@ -562,7 +562,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -586,7 +586,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -610,7 +610,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
+    protected function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
     {
         $this->numberSequence = $numberSequence;
 
@@ -634,7 +634,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null)
+    protected function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null)
     {
         $this->scheduler = $scheduler;
 
@@ -658,7 +658,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    public function setPdf(Pdf $pdf)
+    protected function setPdf(Pdf $pdf)
     {
         $isEqual = $this->pdf && $this->pdf->equals($pdf);
         if ($isEqual) {

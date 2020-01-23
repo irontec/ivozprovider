@@ -32,15 +32,6 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
-     * Set trunksAddress
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress
-     *
-     * @return static
-     */
-    public function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress = null);
-
-    /**
      * Get trunksAddress
      *
      * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
@@ -54,7 +45,7 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null);
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider);
 
     /**
      * Get ddiProvider

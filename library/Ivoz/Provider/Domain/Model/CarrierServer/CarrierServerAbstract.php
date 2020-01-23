@@ -84,7 +84,7 @@ abstract class CarrierServerAbstract
     protected $fromDomain;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface | null
      */
     protected $lcrGateway;
 
@@ -288,8 +288,8 @@ abstract class CarrierServerAbstract
             'fromUser' => self::getFromUser(),
             'fromDomain' => self::getFromDomain(),
             'lcrGatewayId' => self::getLcrGateway() ? self::getLcrGateway()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'carrierId' => self::getCarrier()->getId(),
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -699,7 +699,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null)
+    protected function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null)
     {
         $this->lcrGateway = $lcrGateway;
 
@@ -723,7 +723,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
     {
         $this->carrier = $carrier;
 
@@ -747,7 +747,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 

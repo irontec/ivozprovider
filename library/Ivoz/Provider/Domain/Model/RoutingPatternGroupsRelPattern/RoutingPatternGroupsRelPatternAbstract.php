@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class RoutingPatternGroupsRelPatternAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
      */
     protected $routingPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
      */
     protected $routingPatternGroup;
 
@@ -160,7 +160,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
      */
     public function getRoutingPattern()
     {
@@ -184,7 +184,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Set routingPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup | null
      *
      * @return static
      */
@@ -198,7 +198,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Get routingPatternGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
      */
     public function getRoutingPatternGroup()
     {

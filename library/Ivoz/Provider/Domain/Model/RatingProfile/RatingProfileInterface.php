@@ -61,29 +61,11 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function getCarrier();
 
     /**
-     * Set ratingPlanGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup);
-
-    /**
      * Get ratingPlanGroup
      *
      * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
      */
     public function getRatingPlanGroup();
-
-    /**
-     * Set routingTag
-     *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag | null
-     *
-     * @return static
-     */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null);
 
     /**
      * Get routingTag

@@ -108,29 +108,11 @@ interface UsersCdrInterface extends EntityInterface
     public function getHidden();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -140,29 +122,11 @@ interface UsersCdrInterface extends EntityInterface
     public function getCompany();
 
     /**
-     * Set user
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
-     *
-     * @return static
-     */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
-
-    /**
      * Get user
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
-
-    /**
-     * Set friend
-     *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
-     *
-     * @return static
-     */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null);
 
     /**
      * Get friend
@@ -172,29 +136,11 @@ interface UsersCdrInterface extends EntityInterface
     public function getFriend();
 
     /**
-     * Set residentialDevice
-     *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
-
-    /**
      * Get residentialDevice
      *
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
-
-    /**
-     * Set retailAccount
-     *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
 
     /**
      * Get retailAccount

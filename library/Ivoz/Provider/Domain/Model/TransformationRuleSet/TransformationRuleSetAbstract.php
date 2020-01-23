@@ -420,7 +420,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
         $this->brand = $brand;
 
@@ -444,7 +444,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
         $this->country = $country;
 
@@ -468,7 +468,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {

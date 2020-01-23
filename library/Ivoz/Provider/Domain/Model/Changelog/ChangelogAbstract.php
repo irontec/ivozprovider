@@ -197,7 +197,7 @@ abstract class ChangelogAbstract
             'data' => self::getData(),
             'createdOn' => self::getCreatedOn(),
             'microtime' => self::getMicrotime(),
-            'commandId' => self::getCommand() ? self::getCommand()->getId() : null
+            'commandId' => self::getCommand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -348,7 +348,7 @@ abstract class ChangelogAbstract
      *
      * @return static
      */
-    public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command)
+    protected function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command)
     {
         $this->command = $command;
 

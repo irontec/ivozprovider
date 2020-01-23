@@ -244,7 +244,7 @@ abstract class TpDestinationRateAbstract
             'max_cost' => self::getMaxCost(),
             'max_cost_strategy' => self::getMaxCostStrategy(),
             'created_at' => self::getCreatedAt(),
-            'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
+            'destinationRateId' => self::getDestinationRate()->getId()
         ];
     }
     // @codeCoverageIgnoreStart

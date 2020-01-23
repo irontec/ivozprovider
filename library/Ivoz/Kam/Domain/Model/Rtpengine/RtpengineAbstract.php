@@ -44,7 +44,7 @@ abstract class RtpengineAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface
+     * @var \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
      */
     protected $mediaRelaySet;
 
@@ -387,7 +387,7 @@ abstract class RtpengineAbstract
      *
      * @return static
      */
-    public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null)
+    protected function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null)
     {
         $this->mediaRelaySet = $mediaRelaySet;
 

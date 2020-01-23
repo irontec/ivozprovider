@@ -15,7 +15,7 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition();
-
-    /**
-     * Set routeLock
-     *
-     * @param \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock
-     *
-     * @return static
-     */
-    public function setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock);
 
     /**
      * Get routeLock

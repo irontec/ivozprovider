@@ -20,15 +20,6 @@ interface LanguageInterface extends LoggableEntityInterface
     public function getIden();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\Language\Name $name);
-
-    /**
      * Get name
      *
      * @return \Ivoz\Provider\Domain\Model\Language\Name

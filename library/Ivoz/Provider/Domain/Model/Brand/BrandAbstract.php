@@ -322,7 +322,7 @@ abstract class BrandAbstract
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
+            'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
@@ -479,7 +479,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    protected function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
         $this->domain = $domain;
 
@@ -503,7 +503,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
         $this->language = $language;
 
@@ -527,7 +527,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone)
+    protected function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone)
     {
         $this->defaultTimezone = $defaultTimezone;
 
@@ -551,7 +551,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
         $this->currency = $currency;
 
@@ -575,7 +575,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
+    protected function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
     {
         $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
 
@@ -599,7 +599,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
+    protected function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
     {
         $this->faxNotificationTemplate = $faxNotificationTemplate;
 
@@ -623,7 +623,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
+    protected function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
     {
         $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
 
@@ -647,7 +647,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
+    protected function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
@@ -671,7 +671,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setLogo(Logo $logo)
+    protected function setLogo(Logo $logo)
     {
         $isEqual = $this->logo && $this->logo->equals($logo);
         if ($isEqual) {
@@ -699,7 +699,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    public function setInvoice(Invoice $invoice)
+    protected function setInvoice(Invoice $invoice)
     {
         $isEqual = $this->invoice && $this->invoice->equals($invoice);
         if ($isEqual) {

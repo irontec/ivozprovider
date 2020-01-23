@@ -374,7 +374,7 @@ abstract class CallCsvReportAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -398,7 +398,7 @@ abstract class CallCsvReportAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
         $this->brand = $brand;
 
@@ -422,7 +422,7 @@ abstract class CallCsvReportAbstract
      *
      * @return static
      */
-    public function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null)
+    protected function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null)
     {
         $this->callCsvScheduler = $callCsvScheduler;
 
@@ -446,7 +446,7 @@ abstract class CallCsvReportAbstract
      *
      * @return static
      */
-    public function setCsv(Csv $csv)
+    protected function setCsv(Csv $csv)
     {
         $isEqual = $this->csv && $this->csv->equals($csv);
         if ($isEqual) {

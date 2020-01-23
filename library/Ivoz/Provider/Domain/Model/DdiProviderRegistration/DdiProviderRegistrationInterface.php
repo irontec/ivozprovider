@@ -76,15 +76,6 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getContactUsername();
 
     /**
-     * Set trunksUacreg
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg
-     *
-     * @return static
-     */
-    public function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg = null);
-
-    /**
      * Get trunksUacreg
      *
      * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface
@@ -98,7 +89,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null);
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider);
 
     /**
      * Get ddiProvider

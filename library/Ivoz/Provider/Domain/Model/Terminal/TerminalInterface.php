@@ -128,7 +128,7 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
     /**
      * Get company
@@ -152,15 +152,6 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
-
-    /**
-     * Set terminalModel
-     *
-     * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel | null
-     *
-     * @return static
-     */
-    public function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null);
 
     /**
      * Get terminalModel

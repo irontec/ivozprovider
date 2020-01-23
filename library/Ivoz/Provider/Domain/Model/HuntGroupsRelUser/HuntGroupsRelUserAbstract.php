@@ -24,7 +24,7 @@ abstract class HuntGroupsRelUserAbstract
     protected $priority;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     protected $huntGroup;
 
@@ -170,7 +170,7 @@ abstract class HuntGroupsRelUserAbstract
             'timeoutTime' => self::getTimeoutTime(),
             'priority' => self::getPriority(),
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null
+            'userId' => self::getUser()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -236,7 +236,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -250,7 +250,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup()
     {
@@ -264,7 +264,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
+    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
     {
         $this->user = $user;
 

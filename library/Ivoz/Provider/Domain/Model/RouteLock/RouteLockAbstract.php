@@ -174,7 +174,7 @@ abstract class RouteLockAbstract
             'name' => self::getName(),
             'description' => self::getDescription(),
             'open' => self::getOpen(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -268,7 +268,7 @@ abstract class RouteLockAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 

@@ -298,15 +298,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getShowInvoices();
 
     /**
-     * Set language
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
-     *
-     * @return static
-     */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
-
-    /**
      * Get language
      *
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
@@ -314,29 +305,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getLanguage();
 
     /**
-     * Set mediaRelaySets
-     *
-     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets | null
-     *
-     * @return static
-     */
-    public function setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets = null);
-
-    /**
      * Get mediaRelaySets
      *
      * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
      */
     public function getMediaRelaySets();
-
-    /**
-     * Set defaultTimezone
-     *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone | null
-     *
-     * @return static
-     */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null);
 
     /**
      * Get defaultTimezone
@@ -352,7 +325,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
     /**
      * Get brand
@@ -362,29 +335,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBrand();
 
     /**
-     * Set domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
-
-    /**
      * Get domain
      *
      * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
      */
     public function getDomain();
-
-    /**
-     * Set applicationServer
-     *
-     * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer | null
-     *
-     * @return static
-     */
-    public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer = null);
 
     /**
      * Get applicationServer
@@ -394,29 +349,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getApplicationServer();
 
     /**
-     * Set country
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
-     *
-     * @return static
-     */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
-
-    /**
      * Get country
      *
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
-
-    /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
     /**
      * Get currency
@@ -426,29 +363,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCurrency();
 
     /**
-     * Set transformationRuleSet
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
-
-    /**
      * Get transformationRuleSet
      *
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
-
-    /**
-     * Set outgoingDdi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
 
     /**
      * Get outgoingDdi
@@ -458,29 +377,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOutgoingDdi();
 
     /**
-     * Set outgoingDdiRule
-     *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null);
-
-    /**
      * Get outgoingDdiRule
      *
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
      */
     public function getOutgoingDdiRule();
-
-    /**
-     * Set voicemailNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null);
 
     /**
      * Get voicemailNotificationTemplate
@@ -490,15 +391,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getVoicemailNotificationTemplate();
 
     /**
-     * Set faxNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null);
-
-    /**
      * Get faxNotificationTemplate
      *
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
@@ -506,29 +398,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getFaxNotificationTemplate();
 
     /**
-     * Set invoiceNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null);
-
-    /**
      * Get invoiceNotificationTemplate
      *
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getInvoiceNotificationTemplate();
-
-    /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
 
     /**
      * Get callCsvNotificationTemplate

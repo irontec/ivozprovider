@@ -15,7 +15,7 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getFilter();
-
-    /**
-     * Set calendar
-     *
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
-     *
-     * @return static
-     */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar);
 
     /**
      * Get calendar

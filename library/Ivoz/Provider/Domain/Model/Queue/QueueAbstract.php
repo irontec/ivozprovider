@@ -325,7 +325,7 @@ abstract class QueueAbstract
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
             'weight' => self::getWeight(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution() ? self::getPeriodicAnnounceLocution()->getId() : null,
             'timeoutLocutionId' => self::getTimeoutLocution() ? self::getTimeoutLocution()->getId() : null,
             'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
@@ -694,7 +694,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -718,7 +718,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null)
+    protected function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null)
     {
         $this->periodicAnnounceLocution = $periodicAnnounceLocution;
 
@@ -742,7 +742,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null)
+    protected function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null)
     {
         $this->timeoutLocution = $timeoutLocution;
 
@@ -766,7 +766,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null)
+    protected function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null)
     {
         $this->timeoutExtension = $timeoutExtension;
 
@@ -790,7 +790,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null)
+    protected function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null)
     {
         $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
 
@@ -814,7 +814,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null)
+    protected function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null)
     {
         $this->fullLocution = $fullLocution;
 
@@ -838,7 +838,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null)
+    protected function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null)
     {
         $this->fullExtension = $fullExtension;
 
@@ -862,7 +862,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null)
+    protected function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null)
     {
         $this->fullVoiceMailUser = $fullVoiceMailUser;
 
@@ -886,7 +886,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
+    protected function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
     {
         $this->timeoutNumberCountry = $timeoutNumberCountry;
 
@@ -910,7 +910,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
+    protected function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
     {
         $this->fullNumberCountry = $fullNumberCountry;
 

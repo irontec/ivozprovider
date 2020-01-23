@@ -162,8 +162,8 @@ abstract class CompanyServiceAbstract
     {
         return [
             'code' => self::getCode(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'serviceId' => self::getService() ? self::getService()->getId() : null
+            'companyId' => self::getCompany()->getId(),
+            'serviceId' => self::getService()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -202,7 +202,7 @@ abstract class CompanyServiceAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -226,7 +226,7 @@ abstract class CompanyServiceAbstract
      *
      * @return static
      */
-    public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
+    protected function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
     {
         $this->service = $service;
 

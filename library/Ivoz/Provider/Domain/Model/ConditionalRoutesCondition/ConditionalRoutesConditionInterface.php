@@ -131,7 +131,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null);
+    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute);
 
     /**
      * Get conditionalRoute
@@ -141,29 +141,11 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getConditionalRoute();
 
     /**
-     * Set ivr
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
-     *
-     * @return static
-     */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null);
-
-    /**
      * Get ivr
      *
      * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr();
-
-    /**
-     * Set huntGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
-     *
-     * @return static
-     */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null);
 
     /**
      * Get huntGroup
@@ -173,29 +155,11 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getHuntGroup();
 
     /**
-     * Set voicemailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser | null
-     *
-     * @return static
-     */
-    public function setVoicemailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser = null);
-
-    /**
      * Get voicemailUser
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoicemailUser();
-
-    /**
-     * Set user
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
-     *
-     * @return static
-     */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 
     /**
      * Get user
@@ -205,29 +169,11 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getUser();
 
     /**
-     * Set queue
-     *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
-     *
-     * @return static
-     */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null);
-
-    /**
      * Get queue
      *
      * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
      */
     public function getQueue();
-
-    /**
-     * Set locution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
-     *
-     * @return static
-     */
-    public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null);
 
     /**
      * Get locution
@@ -237,15 +183,6 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getLocution();
 
     /**
-     * Set conferenceRoom
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
-     *
-     * @return static
-     */
-    public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null);
-
-    /**
      * Get conferenceRoom
      *
      * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
@@ -253,29 +190,11 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getConferenceRoom();
 
     /**
-     * Set extension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
-     *
-     * @return static
-     */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null);
-
-    /**
      * Get extension
      *
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getExtension();
-
-    /**
-     * Set numberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
 
     /**
      * Get numberCountry

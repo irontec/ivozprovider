@@ -219,7 +219,7 @@ abstract class InvoiceNumberSequenceAbstract
             'latestValue' => self::getLatestValue(),
             'iteration' => self::getIteration(),
             'version' => self::getVersion(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -420,7 +420,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 

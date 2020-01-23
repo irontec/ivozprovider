@@ -81,15 +81,6 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
     public function getBrand();
 
     /**
-     * Set logo
-     *
-     * @param \Ivoz\Provider\Domain\Model\WebPortal\Logo $logo
-     *
-     * @return static
-     */
-    public function setLogo(\Ivoz\Provider\Domain\Model\WebPortal\Logo $logo);
-
-    /**
      * Get logo
      *
      * @return \Ivoz\Provider\Domain\Model\WebPortal\Logo

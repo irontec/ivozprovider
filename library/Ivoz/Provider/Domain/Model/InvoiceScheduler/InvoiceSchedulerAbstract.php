@@ -246,8 +246,8 @@ abstract class InvoiceSchedulerAbstract
             'nextExecution' => self::getNextExecution(),
             'taxRate' => self::getTaxRate(),
             'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
+            'companyId' => self::getCompany()->getId(),
             'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
         ];
     }
@@ -501,7 +501,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @return static
      */
-    public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
+    protected function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
     {
         $this->invoiceTemplate = $invoiceTemplate;
 
@@ -525,7 +525,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -549,7 +549,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -573,7 +573,7 @@ abstract class InvoiceSchedulerAbstract
      *
      * @return static
      */
-    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
+    protected function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
     {
         $this->numberSequence = $numberSequence;
 

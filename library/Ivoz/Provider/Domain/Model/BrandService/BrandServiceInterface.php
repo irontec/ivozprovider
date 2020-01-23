@@ -31,7 +31,7 @@ interface BrandServiceInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
     /**
      * Get brand
@@ -39,15 +39,6 @@ interface BrandServiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Set service
-     *
-     * @param \Ivoz\Provider\Domain\Model\Service\ServiceInterface $service
-     *
-     * @return static
-     */
-    public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service);
 
     /**
      * Get service

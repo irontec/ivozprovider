@@ -108,7 +108,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
     /**
      * Get brand
@@ -116,15 +116,6 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -196,15 +187,6 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     public function getRoutingTag();
-
-    /**
-     * Set clidCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry | null
-     *
-     * @return static
-     */
-    public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null);
 
     /**
      * Get clidCountry

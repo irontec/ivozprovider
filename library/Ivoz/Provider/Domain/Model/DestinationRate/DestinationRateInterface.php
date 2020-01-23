@@ -84,29 +84,11 @@ interface DestinationRateInterface extends LoggableEntityInterface
     public function getGroupIntervalStart();
 
     /**
-     * Set tpRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
-     *
-     * @return static
-     */
-    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null);
-
-    /**
      * Get tpRate
      *
      * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
      */
     public function getTpRate();
-
-    /**
-     * Set tpDestinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
-     *
-     * @return static
-     */
-    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null);
 
     /**
      * Get tpDestinationRate
@@ -122,7 +104,7 @@ interface DestinationRateInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup = null);
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup);
 
     /**
      * Get destinationRateGroup
@@ -138,7 +120,7 @@ interface DestinationRateInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null);
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination);
 
     /**
      * Get destination

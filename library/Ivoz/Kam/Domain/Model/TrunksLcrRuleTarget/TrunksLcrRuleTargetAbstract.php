@@ -191,9 +191,9 @@ abstract class TrunksLcrRuleTargetAbstract
             'lcr_id' => self::getLcrId(),
             'priority' => self::getPriority(),
             'weight' => self::getWeight(),
-            'ruleId' => self::getRule() ? self::getRule()->getId() : null,
-            'gwId' => self::getGw() ? self::getGw()->getId() : null,
-            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
+            'ruleId' => self::getRule()->getId(),
+            'gwId' => self::getGw()->getId(),
+            'outgoingRoutingId' => self::getOutgoingRouting()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -289,7 +289,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return static
      */
-    public function setRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule)
+    protected function setRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule)
     {
         $this->rule = $rule;
 
@@ -313,7 +313,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return static
      */
-    public function setGw(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw)
+    protected function setGw(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw)
     {
         $this->gw = $gw;
 
@@ -337,7 +337,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
         $this->outgoingRouting = $outgoingRouting;
 

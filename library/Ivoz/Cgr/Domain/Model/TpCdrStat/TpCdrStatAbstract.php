@@ -458,7 +458,7 @@ abstract class TpCdrStatAbstract
             'cost_interval' => self::getCostInterval(),
             'action_triggers' => self::getActionTriggers(),
             'created_at' => self::getCreatedAt(),
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'carrierId' => self::getCarrier()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -1206,7 +1206,7 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
     {
         $this->carrier = $carrier;
 

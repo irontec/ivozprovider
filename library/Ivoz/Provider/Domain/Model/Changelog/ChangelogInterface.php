@@ -49,15 +49,6 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
     public function getMicrotime();
 
     /**
-     * Set command
-     *
-     * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command
-     *
-     * @return static
-     */
-    public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command);
-
-    /**
      * Get command
      *
      * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface

@@ -201,7 +201,7 @@ abstract class NotificationTemplateContentAbstract
             'subject' => self::getSubject(),
             'body' => self::getBody(),
             'bodyType' => self::getBodyType(),
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null,
+            'notificationTemplateId' => self::getNotificationTemplate()->getId(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
@@ -355,7 +355,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @return static
      */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
+    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate)
     {
         $this->notificationTemplate = $notificationTemplate;
 
@@ -379,7 +379,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
         $this->language = $language;
 

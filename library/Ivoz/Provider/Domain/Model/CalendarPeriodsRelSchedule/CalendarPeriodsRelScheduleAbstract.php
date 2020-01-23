@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CalendarPeriodsRelScheduleAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @var \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface | null
      */
     protected $calendarPeriod;
 
@@ -152,7 +152,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     {
         return [
             'calendarPeriodId' => self::getCalendarPeriod() ? self::getCalendarPeriod()->getId() : null,
-            'scheduleId' => self::getSchedule() ? self::getSchedule()->getId() : null
+            'scheduleId' => self::getSchedule()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * Set calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * Get calendarPeriod
      *
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface | null
      */
     public function getCalendarPeriod()
     {
@@ -188,7 +188,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
      *
      * @return static
      */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
+    protected function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
     {
         $this->schedule = $schedule;
 

@@ -234,7 +234,7 @@ abstract class FaxesInOutAbstract
             'fileFileSize' => self::getFile()->getFileSize(),
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
+            'faxId' => self::getFax()->getId(),
             'dstCountryId' => self::getDstCountry() ? self::getDstCountry()->getId() : null
         ];
     }
@@ -421,7 +421,7 @@ abstract class FaxesInOutAbstract
      *
      * @return static
      */
-    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax)
+    protected function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax)
     {
         $this->fax = $fax;
 
@@ -445,7 +445,7 @@ abstract class FaxesInOutAbstract
      *
      * @return static
      */
-    public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null)
+    protected function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null)
     {
         $this->dstCountry = $dstCountry;
 
@@ -469,7 +469,7 @@ abstract class FaxesInOutAbstract
      *
      * @return static
      */
-    public function setFile(File $file)
+    protected function setFile(File $file)
     {
         $isEqual = $this->file && $this->file->equals($file);
         if ($isEqual) {

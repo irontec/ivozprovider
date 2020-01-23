@@ -80,7 +80,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar = null);
+    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar);
 
     /**
      * Get calendar
@@ -90,29 +90,11 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getCalendar();
 
     /**
-     * Set locution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
-     *
-     * @return static
-     */
-    public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null);
-
-    /**
      * Get locution
      *
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getLocution();
-
-    /**
-     * Set extension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
-     *
-     * @return static
-     */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null);
 
     /**
      * Get extension
@@ -122,29 +104,11 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getExtension();
 
     /**
-     * Set voiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
-     *
-     * @return static
-     */
-    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null);
-
-    /**
      * Get voiceMailUser
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getVoiceMailUser();
-
-    /**
-     * Set numberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
 
     /**
      * Get numberCountry

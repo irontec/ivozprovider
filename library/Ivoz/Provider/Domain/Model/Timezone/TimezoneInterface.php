@@ -27,29 +27,11 @@ interface TimezoneInterface extends LoggableEntityInterface
     public function getComment();
 
     /**
-     * Set country
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
-     *
-     * @return static
-     */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
-
-    /**
      * Get country
      *
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
-
-    /**
-     * Set label
-     *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
-     *
-     * @return static
-     */
-    public function setLabel(\Ivoz\Provider\Domain\Model\Timezone\Label $label);
 
     /**
      * Get label

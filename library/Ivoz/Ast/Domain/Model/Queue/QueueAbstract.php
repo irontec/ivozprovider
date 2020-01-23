@@ -239,7 +239,7 @@ abstract class QueueAbstract
             'maxlen' => self::getMaxlen(),
             'strategy' => self::getStrategy(),
             'weight' => self::getWeight(),
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null
+            'queueId' => self::getQueue()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -527,7 +527,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
+    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
     {
         $this->queue = $queue;
 

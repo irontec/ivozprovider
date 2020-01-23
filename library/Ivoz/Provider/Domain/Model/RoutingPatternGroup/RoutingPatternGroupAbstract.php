@@ -163,7 +163,7 @@ abstract class RoutingPatternGroupAbstract
         return [
             'name' => self::getName(),
             'description' => self::getDescription(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -230,7 +230,7 @@ abstract class RoutingPatternGroupAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 

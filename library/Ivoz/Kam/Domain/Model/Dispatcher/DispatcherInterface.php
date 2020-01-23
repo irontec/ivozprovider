@@ -55,15 +55,6 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
-     * Set applicationServer
-     *
-     * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer
-     *
-     * @return static
-     */
-    public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer);
-
-    /**
      * Get applicationServer
      *
      * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
