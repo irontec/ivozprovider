@@ -18,6 +18,9 @@ class Version20200113080213 extends LoggableMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        // Disable foreign key checks
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
+
         // BillableCalls
         $this->addSql('ALTER TABLE BillableCalls DROP FOREIGN KEY FK_E6F2DA352480E723');
         $this->addSql('ALTER TABLE BillableCalls DROP FOREIGN KEY FK_E6F2DA359CBEC244');
@@ -41,6 +44,9 @@ class Version20200113080213 extends LoggableMigration
 
         $this->addSql('ALTER TABLE kam_users_cdrs ADD CONSTRAINT FK_238F735B2480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE SET NULL');
         $this->addSql('ALTER TABLE kam_users_cdrs ADD CONSTRAINT FK_238F735B9CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE SET NULL');
+
+        // Enable foreign key checks
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     /**
@@ -50,6 +56,9 @@ class Version20200113080213 extends LoggableMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+
+        // Disable foreign key checks
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
 
         $this->addSql('ALTER TABLE BillableCalls DROP FOREIGN KEY FK_E6F2DA352480E723');
         $this->addSql('ALTER TABLE BillableCalls DROP FOREIGN KEY FK_E6F2DA359CBEC244');
@@ -67,5 +76,8 @@ class Version20200113080213 extends LoggableMigration
         $this->addSql('ALTER TABLE kam_users_cdrs DROP FOREIGN KEY FK_238F735B2480E723');
         $this->addSql('ALTER TABLE kam_users_cdrs ADD CONSTRAINT FK_238F735B9CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_users_cdrs ADD CONSTRAINT FK_238F735B2480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
+
+        // Enable foreign key checks
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
