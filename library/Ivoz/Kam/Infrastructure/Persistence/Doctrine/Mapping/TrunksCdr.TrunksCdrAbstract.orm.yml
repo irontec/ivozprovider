@@ -6,27 +6,12 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
         - callid
         - direction
   indexes:
-    trunksCdr_start_time_idx:
-      columns:
-        - start_time
-    trunksCdr_end_time_idx:
-      columns:
-        - end_time
     trunksCdr_callid_idx:
       columns:
         - callid
-    trunksCdr_xcallid_idx:
-      columns:
-        - xcallid
-    trunksCdr_direction_idx:
-      columns:
-        - direction
     trunksCdr_parsed_idx:
       columns:
         - parsed
-    trunksCdr_cgrid_idx:
-      columns:
-        - cgrid
   fields:
     startTime:
       type: datetime
