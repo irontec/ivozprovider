@@ -4,6 +4,7 @@ namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
@@ -80,18 +81,11 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
             ->setAors($entity->getSorcery())
             ->setDisallow($entity->getDisallow())
             ->setAllow($entity->getAllow())
-            ->setDirectmediaMethod($entity->getDirectmediaMethod())
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setT38Udptl($entity->getT38Passthrough())
-            ->setDirectMediaMethod('invite');
-
-        // Disable direct media for T.38 capable devices
-        if ($entity->getT38Passthrough() === FriendInterface::T38PASSTHROUGH_YES) {
-            $endPointDto->setDirectMedia('no');
-        } else {
-            $endPointDto->setDirectMedia('yes');
-        }
+            ->setDirectMedia('no')
+            ->setDirectMediaMethod(PsEndpointInterface::DIRECTMEDIAMETHOD_INVITE);
 
         $this->entityPersister->persistDto($endPointDto, $endpoint, true);
     }
