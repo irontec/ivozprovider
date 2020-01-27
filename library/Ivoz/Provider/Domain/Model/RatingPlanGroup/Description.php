@@ -47,6 +47,19 @@ class Description
         $this->setIt($it);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $description)
+    {
+        return
+            $this->getEn() === $description->getEn() &&
+            $this->getEs() === $description->getEs() &&
+            $this->getCa() === $description->getCa() &&
+            $this->getIt() === $description->getIt();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

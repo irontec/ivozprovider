@@ -41,6 +41,18 @@ class Logo
         $this->setBaseName($baseName);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $logo)
+    {
+        return
+            $this->getFileSize() === $logo->getFileSize() &&
+            $this->getMimeType() === $logo->getMimeType() &&
+            $this->getBaseName() === $logo->getBaseName();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**
