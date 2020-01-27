@@ -660,6 +660,11 @@ abstract class InvoiceAbstract
      */
     public function setPdf(Pdf $pdf)
     {
+        $isEqual = $this->pdf && $this->pdf->equals($pdf);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->pdf = $pdf;
         return $this;
     }

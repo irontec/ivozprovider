@@ -52,6 +52,19 @@ class File
         $this->setImporterArguments($importerArguments);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $file)
+    {
+        return
+            $this->getFileSize() === $file->getFileSize() &&
+            $this->getMimeType() === $file->getMimeType() &&
+            $this->getBaseName() === $file->getBaseName() &&
+            $this->getImporterArguments() === $file->getImporterArguments();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

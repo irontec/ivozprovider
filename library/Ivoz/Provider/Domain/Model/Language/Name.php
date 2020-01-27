@@ -47,6 +47,19 @@ class Name
         $this->setIt($it);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $name)
+    {
+        return
+            $this->getEn() === $name->getEn() &&
+            $this->getEs() === $name->getEs() &&
+            $this->getCa() === $name->getCa() &&
+            $this->getIt() === $name->getIt();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

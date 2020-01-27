@@ -1807,11 +1807,11 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "2.2.2.0",
+            "version": "2.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "6bdf7d6eb193963e0b7dca913e019d6c7c0319b2",
+                "reference": "1887c2210838032bb4995e385ec12763fa0ba2bc",
                 "shasum": null
             },
             "require": {

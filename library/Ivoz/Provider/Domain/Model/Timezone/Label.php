@@ -47,6 +47,19 @@ class Label
         $this->setIt($it);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $label)
+    {
+        return
+            $this->getEn() === $label->getEn() &&
+            $this->getEs() === $label->getEs() &&
+            $this->getCa() === $label->getCa() &&
+            $this->getIt() === $label->getIt();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

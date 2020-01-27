@@ -1904,16 +1904,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "2.2.2",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "6bdf7d6eb193963e0b7dca913e019d6c7c0319b2"
+                "reference": "1887c2210838032bb4995e385ec12763fa0ba2bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/6bdf7d6eb193963e0b7dca913e019d6c7c0319b2",
-                "reference": "6bdf7d6eb193963e0b7dca913e019d6c7c0319b2",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/1887c2210838032bb4995e385ec12763fa0ba2bc",
+                "reference": "1887c2210838032bb4995e385ec12763fa0ba2bc",
                 "shasum": ""
             },
             "require": {
@@ -1947,7 +1947,7 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
-            "time": "2020-01-15T12:08:18+00:00"
+            "time": "2020-01-22T09:21:12+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -4433,6 +4433,7 @@
             ],
             "description": "Handlebars processor for php",
             "homepage": "https://github.com/XaminProject/handlebars.php",
+            "abandoned": true,
             "time": "2016-12-12T13:51:02+00:00"
         },
         {

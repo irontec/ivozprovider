@@ -482,6 +482,11 @@ abstract class RecordingAbstract
      */
     public function setRecordedFile(RecordedFile $recordedFile)
     {
+        $isEqual = $this->recordedFile && $this->recordedFile->equals($recordedFile);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->recordedFile = $recordedFile;
         return $this;
     }
