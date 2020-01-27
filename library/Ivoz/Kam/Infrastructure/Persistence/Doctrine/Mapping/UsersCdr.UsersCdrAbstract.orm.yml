@@ -6,18 +6,9 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       - callid
       - direction
   indexes:
-    usersCdr_start_time_idx:
-      columns:
-        - start_time
-    usersCdr_end_time_idx:
-      columns:
-        - end_time
     usersCdr_callid_idx:
       columns:
         - callid
-    usersCdr_xcallid_idx:
-      columns:
-        - xcallid
     usersCdr_brandId:
       columns:
         - brandId
@@ -33,9 +24,6 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
     usersCdr_residentialDeviceId:
       columns:
         - residentialDeviceId
-    usersCdr_direction:
-      columns:
-        - direction
   fields:
     startTime:
       type: datetime
