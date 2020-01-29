@@ -326,6 +326,20 @@ production:
       filterField: Company
       forcedValues:
         <<: *forcedBrand
+      fields:
+        <<: *administratorsFields
+        blacklist:
+          <<: *administratorsBlacklist
+          timezone: true
+
+    # AdministratorRelPublicEntities screens
+    administratorRelPublicEntitiesList_screen:
+      <<: *administratorRelPublicEntitiesList_screenLink
+      filterField: Administrator
+
+    administratorRelPublicEntitiesEdit_screen:
+      <<: *administratorRelPublicEntitiesEdit_screenLink
+      filterField: Administrator
 
     # Rating Profiles:
     <<: *ratingProfiles_screensLink
