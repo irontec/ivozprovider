@@ -67,7 +67,10 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0 || ^2.0",
         "sensio/distribution-bundle": "5.0.*",
-        "symfony/symfony": "3.4.*"
+        "symfony/symfony": "3.4.*",
+
+        "xamin/handlebars.php": "^0.10.4",
+        "knplabs/knp-snappy": "0.4.3"
     },
     "require-dev": {
         "ext-pcntl": "*",
