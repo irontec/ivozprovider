@@ -4,7 +4,7 @@ production:
     sitename: "Main administration portal"
     sitesubname: "Main website"
     logo: images/irontec.png
-    year: 2019
+    year: 2020
     lang: en
     langs:
       es:
