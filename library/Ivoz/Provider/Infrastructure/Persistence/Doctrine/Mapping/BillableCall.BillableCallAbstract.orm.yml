@@ -1,18 +1,9 @@
 Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
   type: mappedSuperclass
   indexes:
-    billableCall_endpointType_idx:
-      columns:
-        - endpointType
-    billableCall_endpointId_idx:
-      columns:
-        - endpointId
     billableCall_startTime_idx:
       columns:
       - startTime
-    billableCall_direction_idx:
-      columns:
-      - direction
     billableCall_callid_idx:
       columns:
       - callid
