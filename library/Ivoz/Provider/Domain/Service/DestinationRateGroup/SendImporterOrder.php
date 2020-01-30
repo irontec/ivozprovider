@@ -46,6 +46,10 @@ class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInte
      */
     public function execute(DestinationRateGroupInterface $entity)
     {
+        if ($entity->hasBeenDeleted()) {
+            return;
+        }
+
         $pendingStatus = $entity->getStatus() === 'waiting';
         $statusHasChanged = $entity->hasChanged('status');
 
