@@ -6,7 +6,6 @@ use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
-use Ivoz\Provider\Domain\Model\Recording\Recording;
 
 /**
  * Company
@@ -60,8 +59,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     {
         if (!$this->getDefaultTimezone()) {
             $this->setDefaultTimezone(
-                // @todo create a shortcut
-                $this->getBrand()->getDefaultTimezone()
+                $this->getBrandTimezone()
             );
         }
 
@@ -415,18 +413,14 @@ class Company extends CompanyAbstract implements CompanyInterface
         return '';
     }
 
-
     /**
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
      */
-    public function getDefaultTimezone()
+    private function getBrandTimezone()
     {
-        $timeZone = parent::getDefaultTimezone();
-        if (!empty($timeZone)) {
-            return $timeZone;
-        }
-
-        return $this->getBrand()->getDefaultTimezone();
+        return $this
+            ->getBrand()
+            ->getDefaultTimezone();
     }
 
     /**
