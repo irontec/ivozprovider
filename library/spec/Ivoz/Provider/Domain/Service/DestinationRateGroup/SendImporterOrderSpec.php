@@ -51,6 +51,7 @@ class SendImporterOrderSpec extends ObjectBehavior
                 'hasChanged' => function () {
                     return [['status'], true];
                 },
+                'hasBeenDeleted' => false,
                 'getId' => 1
             ],
             true
