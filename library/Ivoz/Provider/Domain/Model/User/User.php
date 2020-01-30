@@ -77,6 +77,12 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
             $this->sanitizeNew();
         }
 
+        if (!$this->getTimezone()) {
+            $this->setTimezone(
+                $this->getCompanyTimezone()
+            );
+        }
+
         $canAccessUserweb = ($this->getActive() && $this->getEmail());
         if ($canAccessUserweb) {
             // Avoid username/pass/active incoherences
@@ -96,21 +102,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
 
     protected function sanitizeNew()
     {
-        // Sane defaults for hidden fields
-        if (!$this->getTimezone()) {
-            /**
-             * @todo create a shortcut
-             */
-            $brandDefaultTimezone = $this
-                ->getCompany()
-                ->getBrand()
-                ->getDefaultTimezone();
-
-            $this->setTimezone(
-                $brandDefaultTimezone
-            );
-        }
-
         if (is_null($this->getVoicemailSendMail()) && $this->getEmail()) {
             $this->setVoicemailSendMail(1);
         }
@@ -400,14 +391,11 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     /**
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
      */
-    public function getTimezone()
+    private function getCompanyTimezone()
     {
-        $timeZone = parent::getTimezone();
-        if (!empty($timeZone)) {
-            return $timeZone;
-        }
-
-        return $this->getCompany()->getDefaultTimezone();
+        return $this
+            ->getCompany()
+            ->getDefaultTimezone();
     }
 
     /**

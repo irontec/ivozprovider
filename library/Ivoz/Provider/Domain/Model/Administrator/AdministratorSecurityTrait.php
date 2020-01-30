@@ -2,14 +2,41 @@
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+
 trait AdministratorSecurityTrait
 {
     abstract public function getId();
+
+    /**
+     * @return string
+     */
     abstract public function getUsername();
+
+    /**
+     * @return string
+     */
     abstract public function getEmail();
+
+    /**
+     * @return string
+     */
     abstract public function getPass();
+
+    /**
+     * @return boolean
+     */
     abstract public function getActive();
+
+    /**
+     * @return BrandInterface | null
+     */
     abstract public function getBrand();
+
+    /**
+     * @return CompanyInterface | null
+     */
     abstract public function getCompany();
 
     /**
