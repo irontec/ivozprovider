@@ -8,6 +8,10 @@ Ivoz\Provider\Domain\Model\Changelog\ChangelogAbstract:
       columns:
       - entity
       - entityId
+    changelog_entity_createdOn:
+      columns:
+      - entity
+      - createdOn
   fields:
     entity:
       type: string
