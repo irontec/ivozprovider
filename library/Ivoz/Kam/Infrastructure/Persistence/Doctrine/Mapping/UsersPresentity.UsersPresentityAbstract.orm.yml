@@ -4,11 +4,6 @@ Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentityAbstract:
     usersPresentity_expires:
       columns:
         - expires
-    usersPresentity_account_idx:
-      columns:
-        - username
-        - domain
-        - event
   uniqueConstraints:
     kam_users_presentity_idx:
       columns:

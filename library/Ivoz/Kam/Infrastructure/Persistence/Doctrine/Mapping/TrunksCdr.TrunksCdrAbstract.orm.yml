@@ -9,9 +9,6 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
     trunksCdr_start_time_idx:
       columns:
       - start_time
-    trunksCdr_callid_idx:
-      columns:
-        - callid
     trunksCdr_parsed_idx:
       columns:
         - parsed

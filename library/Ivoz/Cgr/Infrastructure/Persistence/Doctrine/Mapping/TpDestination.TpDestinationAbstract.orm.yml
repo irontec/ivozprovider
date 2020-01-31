@@ -4,10 +4,6 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
     tpDestination_tpid:
       columns:
         - tpid
-    tpDestination_tpid_dstid:
-      columns:
-        - tpid
-        - tag
   uniqueConstraints:
     tpid_dest_prefix:
       columns:

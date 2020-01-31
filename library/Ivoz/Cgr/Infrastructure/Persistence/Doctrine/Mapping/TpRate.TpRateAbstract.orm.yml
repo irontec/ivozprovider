@@ -4,10 +4,6 @@ Ivoz\Cgr\Domain\Model\TpRate\TpRateAbstract:
     tpRate_tpid:
       columns:
         - tpid
-    tpRate_tpid_rtid:
-      columns:
-        - tpid
-        - tag
   uniqueConstraints:
     unique_tprate:
       columns:

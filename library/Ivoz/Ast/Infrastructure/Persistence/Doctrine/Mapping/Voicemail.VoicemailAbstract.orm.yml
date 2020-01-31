@@ -1,9 +1,6 @@
 Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract:
   type: mappedSuperclass
   indexes:
-    voicemail_mailbox:
-      columns:
-        - mailbox
     voicemail__context:
       columns:
         - context

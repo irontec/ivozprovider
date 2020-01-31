@@ -10,10 +10,6 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
     psEndpoint_sorcery_idx:
       columns:
         - sorcery_id
-  uniqueConstraints:
-    psEndpoint_id:
-      columns:
-        - id
   fields:
     sorceryId:
       type: string

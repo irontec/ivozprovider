@@ -6,9 +6,6 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
       - callid
       - direction
   indexes:
-    usersCdr_callid_idx:
-      columns:
-        - callid
     usersCdr_brandId:
       columns:
         - brandId
