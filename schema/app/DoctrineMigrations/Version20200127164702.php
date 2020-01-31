@@ -21,7 +21,6 @@ class Version20200127164702 extends LoggableMigration
         $this->addSql('DROP INDEX billableCall_endpointType_idx ON BillableCalls');
         $this->addSql('DROP INDEX billableCall_endpointId_idx ON BillableCalls');
         $this->addSql('DROP INDEX billableCall_direction_idx ON BillableCalls');
-        $this->addSql('DROP INDEX trunksCdr_start_time_idx ON kam_trunks_cdrs');
         $this->addSql('DROP INDEX trunksCdr_end_time_idx ON kam_trunks_cdrs');
         $this->addSql('DROP INDEX trunksCdr_xcallid_idx ON kam_trunks_cdrs');
         $this->addSql('DROP INDEX trunksCdr_direction_idx ON kam_trunks_cdrs');
@@ -43,7 +42,6 @@ class Version20200127164702 extends LoggableMigration
         $this->addSql('CREATE INDEX billableCall_endpointType_idx ON BillableCalls (endpointType)');
         $this->addSql('CREATE INDEX billableCall_endpointId_idx ON BillableCalls (endpointId)');
         $this->addSql('CREATE INDEX billableCall_direction_idx ON BillableCalls (direction)');
-        $this->addSql('CREATE INDEX trunksCdr_start_time_idx ON kam_trunks_cdrs (start_time)');
         $this->addSql('CREATE INDEX trunksCdr_end_time_idx ON kam_trunks_cdrs (end_time)');
         $this->addSql('CREATE INDEX trunksCdr_xcallid_idx ON kam_trunks_cdrs (xcallid)');
         $this->addSql('CREATE INDEX trunksCdr_direction_idx ON kam_trunks_cdrs (direction)');
