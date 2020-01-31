@@ -4,10 +4,6 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
     tpRatingPlan_tpid:
       columns:
         - tpid
-    tpRatingPlan_tpid_rpl:
-      columns:
-        - tpid
-        - tag
   uniqueConstraints:
     tpid_rplid_destrates_timings_weight:
       columns:

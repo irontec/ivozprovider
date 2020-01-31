@@ -12,9 +12,6 @@ Ivoz\Kam\Domain\Model\UsersPua\UsersPuaAbstract:
       columns:
         - call_id
         - from_tag
-    usersPua_record_idx:
-      columns:
-        - pres_id
   uniqueConstraints:
     kam_users_pua_idx:
       columns:

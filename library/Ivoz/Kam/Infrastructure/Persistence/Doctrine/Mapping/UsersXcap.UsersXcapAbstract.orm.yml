@@ -1,11 +1,6 @@
 Ivoz\Kam\Domain\Model\UsersXcap\UsersXcapAbstract:
   type: mappedSuperclass
   indexes:
-    UsersXcap_account_doc_type_idx:
-      columns:
-        - username
-        - domain
-        - doc_type
     UsersXcap_account_doc_type_uri_idx:
       columns:
         - username
