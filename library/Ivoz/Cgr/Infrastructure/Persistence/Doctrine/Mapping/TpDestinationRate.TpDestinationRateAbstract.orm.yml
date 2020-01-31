@@ -4,10 +4,6 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
     tpDestinationRate_tpid:
       columns:
         - tpid
-    tpDestinationRate_tpid_drid:
-      columns:
-        - tpid
-        - tag
   uniqueConstraints:
     tpid_drid_dstid:
       unique: true

@@ -1,9 +1,5 @@
 Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionAbstract:
   type: mappedSuperclass
-  indexes:
-    tpAccountAction_tpid:
-      columns:
-        - tpid
   uniqueConstraints:
     unique_tp_account:
       columns:
