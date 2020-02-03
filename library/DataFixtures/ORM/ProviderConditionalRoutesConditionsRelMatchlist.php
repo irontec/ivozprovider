@@ -17,19 +17,22 @@ class ProviderConditionalRoutesConditionsRelMatchlist extends Fixture implements
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConditionalRoutesConditionsRelMatchlist::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ConditionalRoutesConditionsRelMatchlist $item1 */
         $item1 = $this->createEntityInstance(ConditionalRoutesConditionsRelMatchlist::class);
+        (function () use ($fixture) {
+            $this->setCondition(
+                $fixture->getReference('_reference_ProviderConditionalRoutesCondition1')
+            );
 
-        $item1->setCondition(
-            $this->getReference('_reference_ProviderConditionalRoutesCondition1')
-        );
+            $this->setMatchlist(
+                $fixture->getReference('_reference_ProviderMatchList1')
+            );
+        })->call($item1);
 
-        $item1->setMatchlist(
-            $this->getReference('_reference_ProviderMatchList1')
-        );
         $this->addReference('_reference_ProviderConditionalRoutesConditionsRelMatchlist1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

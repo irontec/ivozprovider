@@ -16,11 +16,12 @@ class ProviderDomain extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Domain::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstance(Domain::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setDomain("users.ivozprovider.local");
             $this->setDescription("Minimal proxyusers global domain");
         })->call($item1);
@@ -30,7 +31,7 @@ class ProviderDomain extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Domain::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setDomain("trunks.ivozprovider.local");
             $this->setPointsTo("proxytrunks");
             $this->setDescription("Minimal proxytrunks global domain");
@@ -41,7 +42,7 @@ class ProviderDomain extends Fixture
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(Domain::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setDomain("127.0.0.1");
             $this->setDescription("DemoCompany proxyusers domain");
         })->call($item3);
@@ -51,7 +52,7 @@ class ProviderDomain extends Fixture
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstance(Domain::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setDomain("sip.irontec.com");
             $this->setDescription("Irontec_e2e proxyusers domain");
         })->call($item4);
@@ -61,7 +62,7 @@ class ProviderDomain extends Fixture
         $manager->persist($item4);
 
         $item5 = $this->createEntityInstance(Domain::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setDomain("test.irontec.com");
             $this->setDescription("Irontec Test Company proxyusers domain");
         })->call($item5);
@@ -71,7 +72,7 @@ class ProviderDomain extends Fixture
         $manager->persist($item5);
 
         $item6 = $this->createEntityInstance(Domain::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setDomain("retail.irontec.com");
             $this->setDescription("Irontec Test Company retail domain");
         })->call($item6);

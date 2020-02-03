@@ -17,11 +17,12 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Queue::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstance(Queue::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("testQueue");
             $this->setMaxWaitTime(20);
             $this->setTimeoutTargetType("number");
@@ -34,19 +35,18 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
             $this->setMemberCallTimeout(1);
             $this->setStrategy("rrmemory");
             $this->setWeight(5);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setPeriodicAnnounceLocution($fixture->getReference('_reference_ProviderLocution1'));
+            $this->setTimeoutLocution($fixture->getReference('_reference_ProviderLocution1'));
+            $this->setFullLocution($fixture->getReference('_reference_ProviderLocution1'));
+            $this->setTimeoutNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
+            $this->setFullNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item1);
 
-        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item1->setPeriodicAnnounceLocution($this->getReference('_reference_ProviderLocution1'));
-        $item1->setTimeoutLocution($this->getReference('_reference_ProviderLocution1'));
-        $item1->setFullLocution($this->getReference('_reference_ProviderLocution1'));
-        $item1->setTimeoutNumberCountry($this->getReference('_reference_ProviderCountry70'));
-        $item1->setFullNumberCountry($this->getReference('_reference_ProviderCountry70'));
-        $this->addReference('_reference_ProviderQueue1', $item1);
         $this->sanitizeEntityValues($item1);
-        $manager->persist($item1);
+        $this->addReference('_reference_ProviderQueue1', $item1);
 
-    
+        $manager->persist($item1);
         $manager->flush();
     }
 

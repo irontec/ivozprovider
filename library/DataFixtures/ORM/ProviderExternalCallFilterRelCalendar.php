@@ -17,21 +17,25 @@ class ProviderExternalCallFilterRelCalendar extends Fixture implements Dependent
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ExternalCallFilterRelCalendar::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ExternalCallFilterRelCalendar $item1 */
         $item1 = $this->createEntityInstance(ExternalCallFilterRelCalendar::class);
-        $item1->setFilter(
-            $this->getReference('_reference_ProviderExternalCallFilter1')
-        );
-        $item1->setCalendar(
-            $this->getReference('_reference_ProviderCalendar1')
-        );
+        (function () use ($fixture) {
+            $this->setFilter(
+                $fixture->getReference('_reference_ProviderExternalCallFilter1')
+            );
+            $this->setCalendar(
+                $fixture->getReference('_reference_ProviderCalendar1')
+            );
+        })->call($item1);
+
         $this->addReference('_reference_ProviderExternalCallFilterRelCalendar1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
-    
+
         $manager->flush();
     }
 

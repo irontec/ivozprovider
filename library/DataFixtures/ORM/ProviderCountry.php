@@ -18,12 +18,13 @@ class ProviderCountry extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Country::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
 
         $item1 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AD");
             $this->setCountryCode("+376");
             $this->setName(new Name('Andorra', 'Andorra', 'Andorra', 'Andorra'));
@@ -36,7 +37,7 @@ class ProviderCountry extends Fixture
 
 
         $item2 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AE");
             $this->setCountryCode("+971");
             $this->setName(new Name('United Arab Emirates', 'Emiratos Árabes Unidos', 'Emiratos Árabes Unidos', 'United Arab Emirates'));
@@ -49,7 +50,7 @@ class ProviderCountry extends Fixture
 
 
         $item3 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AF");
             $this->setCountryCode("+93");
             $this->setName(new Name('Afghanistan', 'Afganistán', 'Afganistán', 'Afghanistan'));
@@ -62,7 +63,7 @@ class ProviderCountry extends Fixture
 
 
         $item4 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AG");
             $this->setCountryCode("+1268");
             $this->setName(new Name('Antigua and Barbuda', 'Antigua y Barbuda', 'Antigua y Barbuda', 'Antigua and Barbuda'));
@@ -75,7 +76,7 @@ class ProviderCountry extends Fixture
 
 
         $item5 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AI");
             $this->setCountryCode("+1264");
             $this->setName(new Name('Anguilla', 'Anguila', 'Anguila', 'Anguilla'));
@@ -88,7 +89,7 @@ class ProviderCountry extends Fixture
 
 
         $item6 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AL");
             $this->setCountryCode("+355");
             $this->setName(new Name('Albania', 'Albania', 'Albania', 'Albania'));
@@ -101,7 +102,7 @@ class ProviderCountry extends Fixture
 
 
         $item7 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AM");
             $this->setCountryCode("+374");
             $this->setName(new Name('Armenia', 'Armenia', 'Armenia', 'Armenia'));
@@ -114,7 +115,7 @@ class ProviderCountry extends Fixture
 
 
         $item8 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AO");
             $this->setCountryCode("+244");
             $this->setName(new Name('Angola', 'Angola', 'Angola', 'Angola'));
@@ -127,7 +128,7 @@ class ProviderCountry extends Fixture
 
 
         $item9 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AQ");
             $this->setCountryCode("+672");
             $this->setName(new Name('Antarctica', 'Antártida', 'Antártida', 'Antarctica'));
@@ -140,7 +141,7 @@ class ProviderCountry extends Fixture
 
 
         $item10 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AR");
             $this->setCountryCode("+54");
             $this->setName(new Name('Argentina', 'Argentina', 'Argentina', 'Argentina'));
@@ -153,7 +154,7 @@ class ProviderCountry extends Fixture
 
 
         $item11 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AS");
             $this->setCountryCode("+1684");
             $this->setName(new Name('American Samoa', 'Samoa Americana', 'Samoa Americana', 'American Samoa'));
@@ -166,7 +167,7 @@ class ProviderCountry extends Fixture
 
 
         $item12 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AT");
             $this->setCountryCode("+43");
             $this->setName(new Name('Austria', 'Austria', 'Austria', 'Austria'));
@@ -179,7 +180,7 @@ class ProviderCountry extends Fixture
 
 
         $item13 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AU");
             $this->setCountryCode("+61");
             $this->setName(new Name('Australia', 'Australia', 'Australia', 'Australia'));
@@ -192,7 +193,7 @@ class ProviderCountry extends Fixture
 
 
         $item14 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AW");
             $this->setCountryCode("+297");
             $this->setName(new Name('Aruba', 'Aruba', 'Aruba', 'Aruba'));
@@ -205,7 +206,7 @@ class ProviderCountry extends Fixture
 
 
         $item15 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AX");
             $this->setCountryCode("+358");
             $this->setName(new Name('Åland Islands', 'Islas de Åland', 'Islas de Åland', 'Åland Islands'));
@@ -218,7 +219,7 @@ class ProviderCountry extends Fixture
 
 
         $item16 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("AZ");
             $this->setCountryCode("+994");
             $this->setName(new Name('Azerbaijan', 'Azerbayán', 'Azerbayán', 'Azerbaijan'));
@@ -231,7 +232,7 @@ class ProviderCountry extends Fixture
 
 
         $item17 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BA");
             $this->setCountryCode("+387");
             $this->setName(new Name('Bosnia and Herzegovina', 'Bosnia y Herzegovina', 'Bosnia y Herzegovina', 'Bosnia and Herzegovina'));
@@ -244,7 +245,7 @@ class ProviderCountry extends Fixture
 
 
         $item18 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BB");
             $this->setCountryCode("+1246");
             $this->setName(new Name('Barbados', 'Barbados', 'Barbados', 'Barbados'));
@@ -257,7 +258,7 @@ class ProviderCountry extends Fixture
 
 
         $item19 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BD");
             $this->setCountryCode("+880");
             $this->setName(new Name('Bangladesh', 'Bangladesh', 'Bangladesh', 'Bangladesh'));
@@ -270,7 +271,7 @@ class ProviderCountry extends Fixture
 
 
         $item20 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BE");
             $this->setCountryCode("+32");
             $this->setName(new Name('Belgium', 'Bélgica', 'Bélgica', 'Belgium'));
@@ -283,7 +284,7 @@ class ProviderCountry extends Fixture
 
 
         $item21 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BF");
             $this->setCountryCode("+226");
             $this->setName(new Name('Burkina Faso', 'Burkina Faso', 'Burkina Faso', 'Burkina Faso'));
@@ -296,7 +297,7 @@ class ProviderCountry extends Fixture
 
 
         $item22 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BG");
             $this->setCountryCode("+359");
             $this->setName(new Name('Bulgaria', 'Bulgaria', 'Bulgaria', 'Bulgaria'));
@@ -309,7 +310,7 @@ class ProviderCountry extends Fixture
 
 
         $item23 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BH");
             $this->setCountryCode("+973");
             $this->setName(new Name('Bahrain', 'Bahrein', 'Bahrein', 'Bahrain'));
@@ -322,7 +323,7 @@ class ProviderCountry extends Fixture
 
 
         $item24 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BI");
             $this->setCountryCode("+257");
             $this->setName(new Name('Burundi', 'Burundi', 'Burundi', 'Burundi'));
@@ -335,7 +336,7 @@ class ProviderCountry extends Fixture
 
 
         $item25 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BJ");
             $this->setCountryCode("+229");
             $this->setName(new Name('Benin', 'Benín', 'Benín', 'Benin'));
@@ -348,7 +349,7 @@ class ProviderCountry extends Fixture
 
 
         $item26 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BL");
             $this->setCountryCode("+590");
             $this->setName(new Name('Saint Barthélemy', 'San Bartolomé', 'San Bartolomé', 'Saint Barthélemy'));
@@ -361,7 +362,7 @@ class ProviderCountry extends Fixture
 
 
         $item27 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BM");
             $this->setCountryCode("+1441");
             $this->setName(new Name('Bermuda Islands', 'Islas Bermudas', 'Islas Bermudas', 'Bermuda Islands'));
@@ -374,7 +375,7 @@ class ProviderCountry extends Fixture
 
 
         $item28 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BN");
             $this->setCountryCode("+673");
             $this->setName(new Name('Brunei', 'Brunéi', 'Brunéi', 'Brunei'));
@@ -387,7 +388,7 @@ class ProviderCountry extends Fixture
 
 
         $item29 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BO");
             $this->setCountryCode("+591");
             $this->setName(new Name('Bolivia', 'Bolivia', 'Bolivia', 'Bolivia'));
@@ -400,7 +401,7 @@ class ProviderCountry extends Fixture
 
 
         $item30 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BQ");
             $this->setCountryCode("+599");
             $this->setName(new Name('Bonaire', 'Bonaire', 'Bonaire', 'Bonaire'));
@@ -413,7 +414,7 @@ class ProviderCountry extends Fixture
 
 
         $item31 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BR");
             $this->setCountryCode("+55");
             $this->setName(new Name('Brazil', 'Brasil', 'Brasil', 'Brazil'));
@@ -426,7 +427,7 @@ class ProviderCountry extends Fixture
 
 
         $item32 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BS");
             $this->setCountryCode("+1242");
             $this->setName(new Name('Bahamas', 'Bahamas', 'Bahamas', 'Bahamas'));
@@ -439,7 +440,7 @@ class ProviderCountry extends Fixture
 
 
         $item33 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BT");
             $this->setCountryCode("+975");
             $this->setName(new Name('Bhutan', 'Bhután', 'Bhután', 'Bhutan'));
@@ -452,7 +453,7 @@ class ProviderCountry extends Fixture
 
 
         $item34 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BV");
             $this->setCountryCode("+47");
             $this->setName(new Name('Bouvet Island', 'Isla Bouvet', 'Isla Bouvet', 'Bouvet Island'));
@@ -465,7 +466,7 @@ class ProviderCountry extends Fixture
 
 
         $item35 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BW");
             $this->setCountryCode("+267");
             $this->setName(new Name('Botswana', 'Botsuana', 'Botsuana', 'Botswana'));
@@ -478,7 +479,7 @@ class ProviderCountry extends Fixture
 
 
         $item36 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BY");
             $this->setCountryCode("+375");
             $this->setName(new Name('Belarus', 'Bielorrusia', 'Bielorrusia', 'Belarus'));
@@ -491,7 +492,7 @@ class ProviderCountry extends Fixture
 
 
         $item37 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("BZ");
             $this->setCountryCode("+501");
             $this->setName(new Name('Belize', 'Belice', 'Belice', 'Belize'));
@@ -504,7 +505,7 @@ class ProviderCountry extends Fixture
 
 
         $item38 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CA");
             $this->setCountryCode("+1");
             $this->setName(new Name('Canada', 'Canadá', 'Canadá', 'Canada'));
@@ -517,7 +518,7 @@ class ProviderCountry extends Fixture
 
 
         $item39 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CC");
             $this->setCountryCode("+61");
             $this->setName(new Name('Cocos (Keeling) Islands', 'Islas Cocos (Keeling)', 'Islas Cocos (Keeling)', 'Cocos (Keeling) Islands'));
@@ -530,7 +531,7 @@ class ProviderCountry extends Fixture
 
 
         $item40 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CD");
             $this->setCountryCode("+243");
             $this->setName(new Name('Congo', 'Congo', 'Congo', 'Congo'));
@@ -543,7 +544,7 @@ class ProviderCountry extends Fixture
 
 
         $item41 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CF");
             $this->setCountryCode("+236");
             $this->setName(new Name('Central African Republic', 'República Centroafricana', 'República Centroafricana', 'Central African Republic'));
@@ -556,7 +557,7 @@ class ProviderCountry extends Fixture
 
 
         $item42 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CG");
             $this->setCountryCode("+242");
             $this->setName(new Name('Congo', 'Congo', 'Congo', 'Congo'));
@@ -569,7 +570,7 @@ class ProviderCountry extends Fixture
 
 
         $item43 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CH");
             $this->setCountryCode("+41");
             $this->setName(new Name('Switzerland', 'Suiza', 'Suiza', 'Switzerland'));
@@ -582,7 +583,7 @@ class ProviderCountry extends Fixture
 
 
         $item44 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CI");
             $this->setCountryCode("+225");
             $this->setName(new Name('Ivory Coast', 'Costa de Marfil', 'Costa de Marfil', 'Ivory Coast'));
@@ -595,7 +596,7 @@ class ProviderCountry extends Fixture
 
 
         $item45 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CK");
             $this->setCountryCode("+682");
             $this->setName(new Name('Cook Islands', 'Islas Cook', 'Islas Cook', 'Cook Islands'));
@@ -608,7 +609,7 @@ class ProviderCountry extends Fixture
 
 
         $item46 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CL");
             $this->setCountryCode("+56");
             $this->setName(new Name('Chile', 'Chile', 'Chile', 'Chile'));
@@ -621,7 +622,7 @@ class ProviderCountry extends Fixture
 
 
         $item47 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CM");
             $this->setCountryCode("+237");
             $this->setName(new Name('Cameroon', 'Camerún', 'Camerún', 'Cameroon'));
@@ -634,7 +635,7 @@ class ProviderCountry extends Fixture
 
 
         $item48 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CN");
             $this->setCountryCode("+86");
             $this->setName(new Name('China', 'China', 'China', 'China'));
@@ -647,7 +648,7 @@ class ProviderCountry extends Fixture
 
 
         $item49 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CO");
             $this->setCountryCode("+57");
             $this->setName(new Name('Colombia', 'Colombia', 'Colombia', 'Colombia'));
@@ -660,7 +661,7 @@ class ProviderCountry extends Fixture
 
 
         $item50 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CR");
             $this->setCountryCode("+506");
             $this->setName(new Name('Costa Rica', 'Costa Rica', 'Costa Rica', 'Costa Rica'));
@@ -673,7 +674,7 @@ class ProviderCountry extends Fixture
 
 
         $item51 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CU");
             $this->setCountryCode("+53");
             $this->setName(new Name('Cuba', 'Cuba', 'Cuba', 'Cuba'));
@@ -686,7 +687,7 @@ class ProviderCountry extends Fixture
 
 
         $item52 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CV");
             $this->setCountryCode("+238");
             $this->setName(new Name('Cape Verde', 'Cabo Verde', 'Cabo Verde', 'Cape Verde'));
@@ -699,7 +700,7 @@ class ProviderCountry extends Fixture
 
 
         $item53 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CW");
             $this->setCountryCode("+599");
             $this->setName(new Name('Curaçao', 'Curaçao', 'Curaçao', 'Curaçao'));
@@ -712,7 +713,7 @@ class ProviderCountry extends Fixture
 
 
         $item54 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CX");
             $this->setCountryCode("+61");
             $this->setName(new Name('Christmas Island', 'Isla de Navidad', 'Isla de Navidad', 'Christmas Island'));
@@ -725,7 +726,7 @@ class ProviderCountry extends Fixture
 
 
         $item55 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CY");
             $this->setCountryCode("+357");
             $this->setName(new Name('Cyprus', 'Chipre', 'Chipre', 'Cyprus'));
@@ -738,7 +739,7 @@ class ProviderCountry extends Fixture
 
 
         $item56 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("CZ");
             $this->setCountryCode("+420");
             $this->setName(new Name('Czech Republic', 'República Checa', 'República Checa', 'Czech Republic'));
@@ -751,7 +752,7 @@ class ProviderCountry extends Fixture
 
 
         $item57 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("DE");
             $this->setCountryCode("+49");
             $this->setName(new Name('Germany', 'Alemania', 'Alemania', 'Germany'));
@@ -764,7 +765,7 @@ class ProviderCountry extends Fixture
 
 
         $item58 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("DJ");
             $this->setCountryCode("+253");
             $this->setName(new Name('Djibouti', 'Yibuti', 'Yibuti', 'Djibouti'));
@@ -777,7 +778,7 @@ class ProviderCountry extends Fixture
 
 
         $item59 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("DK");
             $this->setCountryCode("+45");
             $this->setName(new Name('Denmark', 'Dinamarca', 'Dinamarca', 'Denmark'));
@@ -790,7 +791,7 @@ class ProviderCountry extends Fixture
 
 
         $item60 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("DM");
             $this->setCountryCode("+1767");
             $this->setName(new Name('Dominica', 'Dominica', 'Dominica', 'Dominica'));
@@ -803,7 +804,7 @@ class ProviderCountry extends Fixture
 
 
         $item61 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("DO");
             $this->setCountryCode("+1809");
             $this->setName(new Name('Dominican Republic', 'República Dominicana', 'República Dominicana', 'Dominican Republic'));
@@ -816,7 +817,7 @@ class ProviderCountry extends Fixture
 
 
         $item64 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("DZ");
             $this->setCountryCode("+213");
             $this->setName(new Name('Algeria', 'Algeria', 'Algeria', 'Algeria'));
@@ -829,7 +830,7 @@ class ProviderCountry extends Fixture
 
 
         $item65 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("EC");
             $this->setCountryCode("+593");
             $this->setName(new Name('Ecuador', 'Ecuador', 'Ecuador', 'Ecuador'));
@@ -842,7 +843,7 @@ class ProviderCountry extends Fixture
 
 
         $item66 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("EE");
             $this->setCountryCode("+372");
             $this->setName(new Name('Estonia', 'Estonia', 'Estonia', 'Estonia'));
@@ -855,7 +856,7 @@ class ProviderCountry extends Fixture
 
 
         $item67 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("EG");
             $this->setCountryCode("+20");
             $this->setName(new Name('Egypt', 'Egipto', 'Egipto', 'Egypt'));
@@ -868,7 +869,7 @@ class ProviderCountry extends Fixture
 
 
         $item68 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("EH");
             $this->setCountryCode("+212");
             $this->setName(new Name('Western Sahara', 'Sahara Occidental', 'Sahara Occidental', 'Western Sahara'));
@@ -881,7 +882,7 @@ class ProviderCountry extends Fixture
 
 
         $item69 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ER");
             $this->setCountryCode("+291");
             $this->setName(new Name('Eritrea', 'Eritrea', 'Eritrea', 'Eritrea'));
@@ -894,7 +895,7 @@ class ProviderCountry extends Fixture
 
 
         $item70 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ES");
             $this->setCountryCode("+34");
             $this->setName(new Name('Spain', 'España', 'España', 'Spagna'));
@@ -907,7 +908,7 @@ class ProviderCountry extends Fixture
 
 
         $item71 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ET");
             $this->setCountryCode("+251");
             $this->setName(new Name('Ethiopia', 'Etiopía', 'Etiopía', 'Ethiopia'));
@@ -920,7 +921,7 @@ class ProviderCountry extends Fixture
 
 
         $item72 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("FI");
             $this->setCountryCode("+358");
             $this->setName(new Name('Finland', 'Finlandia', 'Finlandia', 'Finland'));
@@ -933,7 +934,7 @@ class ProviderCountry extends Fixture
 
 
         $item73 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("FJ");
             $this->setCountryCode("+679");
             $this->setName(new Name('Fiji', 'Fiyi', 'Fiyi', 'Fiji'));
@@ -946,7 +947,7 @@ class ProviderCountry extends Fixture
 
 
         $item74 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("FK");
             $this->setCountryCode("+500");
             $this->setName(new Name('Falkland Islands (Malvinas)', 'Islas Malvinas', 'Islas Malvinas', 'Falkland Islands (Malvinas)'));
@@ -959,7 +960,7 @@ class ProviderCountry extends Fixture
 
 
         $item75 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("FM");
             $this->setCountryCode("+691");
             $this->setName(new Name('Estados Federados de', 'Micronesia', 'Micronesia', 'Estados Federados de'));
@@ -972,7 +973,7 @@ class ProviderCountry extends Fixture
 
 
         $item76 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("FO");
             $this->setCountryCode("+298");
             $this->setName(new Name('Faroe Islands', 'Islas Feroe', 'Islas Feroe', 'Faroe Islands'));
@@ -985,7 +986,7 @@ class ProviderCountry extends Fixture
 
 
         $item77 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("FR");
             $this->setCountryCode("+33");
             $this->setName(new Name('France', 'Francia', 'Francia', 'France'));
@@ -998,7 +999,7 @@ class ProviderCountry extends Fixture
 
 
         $item78 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GA");
             $this->setCountryCode("+241");
             $this->setName(new Name('Gabon', 'Gabón', 'Gabón', 'Gabon'));
@@ -1011,7 +1012,7 @@ class ProviderCountry extends Fixture
 
 
         $item79 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GB");
             $this->setCountryCode("+44");
             $this->setName(new Name('United Kingdom', 'Reino Unido', 'Reino Unido', 'United Kingdom'));
@@ -1024,7 +1025,7 @@ class ProviderCountry extends Fixture
 
 
         $item80 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GD");
             $this->setCountryCode("+1473");
             $this->setName(new Name('Grenada', 'Granada', 'Granada', 'Grenada'));
@@ -1037,7 +1038,7 @@ class ProviderCountry extends Fixture
 
 
         $item81 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GE");
             $this->setCountryCode("+995");
             $this->setName(new Name('Georgia', 'Georgia', 'Georgia', 'Georgia'));
@@ -1050,7 +1051,7 @@ class ProviderCountry extends Fixture
 
 
         $item82 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GF");
             $this->setCountryCode("+594");
             $this->setName(new Name('French Guiana', 'Guayana Francesa', 'Guayana Francesa', 'French Guiana'));
@@ -1063,7 +1064,7 @@ class ProviderCountry extends Fixture
 
 
         $item83 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GG");
             $this->setCountryCode("+44");
             $this->setName(new Name('Guernsey', 'Guernsey', 'Guernsey', 'Guernsey'));
@@ -1076,7 +1077,7 @@ class ProviderCountry extends Fixture
 
 
         $item84 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GH");
             $this->setCountryCode("+233");
             $this->setName(new Name('Ghana', 'Ghana', 'Ghana', 'Ghana'));
@@ -1089,7 +1090,7 @@ class ProviderCountry extends Fixture
 
 
         $item85 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GI");
             $this->setCountryCode("+350");
             $this->setName(new Name('Gibraltar', 'Gibraltar', 'Gibraltar', 'Gibraltar'));
@@ -1102,7 +1103,7 @@ class ProviderCountry extends Fixture
 
 
         $item86 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GL");
             $this->setCountryCode("+299");
             $this->setName(new Name('Greenland', 'Groenlandia', 'Groenlandia', 'Greenland'));
@@ -1115,7 +1116,7 @@ class ProviderCountry extends Fixture
 
 
         $item87 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GM");
             $this->setCountryCode("+220");
             $this->setName(new Name('Gambia', 'Gambia', 'Gambia', 'Gambia'));
@@ -1128,7 +1129,7 @@ class ProviderCountry extends Fixture
 
 
         $item88 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GN");
             $this->setCountryCode("+224");
             $this->setName(new Name('Guinea', 'Guinea', 'Guinea', 'Guinea'));
@@ -1141,7 +1142,7 @@ class ProviderCountry extends Fixture
 
 
         $item89 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GP");
             $this->setCountryCode("+590");
             $this->setName(new Name('Guadeloupe', 'Guadalupe', 'Guadalupe', 'Guadeloupe'));
@@ -1154,7 +1155,7 @@ class ProviderCountry extends Fixture
 
 
         $item90 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GQ");
             $this->setCountryCode("+240");
             $this->setName(new Name('Equatorial Guinea', 'Guinea Ecuatorial', 'Guinea Ecuatorial', 'Equatorial Guinea'));
@@ -1167,7 +1168,7 @@ class ProviderCountry extends Fixture
 
 
         $item91 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GR");
             $this->setCountryCode("+30");
             $this->setName(new Name('Greece', 'Grecia', 'Grecia', 'Greece'));
@@ -1180,7 +1181,7 @@ class ProviderCountry extends Fixture
 
 
         $item92 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GS");
             $this->setCountryCode("+500");
             $this->setName(new Name('South Georgia and the South Sandwich Islands', 'Islas Georgias del Sur y Sandwich del Sur', 'Islas Georgias del Sur y Sandwich del Sur', 'South Georgia and the South Sandwich Islands'));
@@ -1193,7 +1194,7 @@ class ProviderCountry extends Fixture
 
 
         $item93 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GT");
             $this->setCountryCode("+502");
             $this->setName(new Name('Guatemala', 'Guatemala', 'Guatemala', 'Guatemala'));
@@ -1206,7 +1207,7 @@ class ProviderCountry extends Fixture
 
 
         $item94 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GU");
             $this->setCountryCode("+1671");
             $this->setName(new Name('Guam', 'Guam', 'Guam', 'Guam'));
@@ -1219,7 +1220,7 @@ class ProviderCountry extends Fixture
 
 
         $item95 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GW");
             $this->setCountryCode("+245");
             $this->setName(new Name('Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau', 'Guinea-Bissau'));
@@ -1232,7 +1233,7 @@ class ProviderCountry extends Fixture
 
 
         $item96 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("GY");
             $this->setCountryCode("+592");
             $this->setName(new Name('Guyana', 'Guyana', 'Guyana', 'Guyana'));
@@ -1245,7 +1246,7 @@ class ProviderCountry extends Fixture
 
 
         $item97 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("HK");
             $this->setCountryCode("+852");
             $this->setName(new Name('Hong Kong', 'Hong kong', 'Hong kong', 'Hong Kong'));
@@ -1258,7 +1259,7 @@ class ProviderCountry extends Fixture
 
 
         $item98 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("HM");
             $this->setCountryCode("+672");
             $this->setName(new Name('Heard Island and McDonald Islands', 'Islas Heard y McDonald', 'Islas Heard y McDonald', 'Heard Island and McDonald Islands'));
@@ -1271,7 +1272,7 @@ class ProviderCountry extends Fixture
 
 
         $item99 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("HN");
             $this->setCountryCode("+504");
             $this->setName(new Name('Honduras', 'Honduras', 'Honduras', 'Honduras'));
@@ -1284,7 +1285,7 @@ class ProviderCountry extends Fixture
 
 
         $item100 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("HR");
             $this->setCountryCode("+385");
             $this->setName(new Name('Croatia', 'Croacia', 'Croacia', 'Croatia'));
@@ -1297,7 +1298,7 @@ class ProviderCountry extends Fixture
 
 
         $item101 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("HT");
             $this->setCountryCode("+509");
             $this->setName(new Name('Haiti', 'Haití', 'Haití', 'Haiti'));
@@ -1310,7 +1311,7 @@ class ProviderCountry extends Fixture
 
 
         $item102 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("HU");
             $this->setCountryCode("+36");
             $this->setName(new Name('Hungary', 'Hungría', 'Hungría', 'Hungary'));
@@ -1323,7 +1324,7 @@ class ProviderCountry extends Fixture
 
 
         $item103 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ID");
             $this->setCountryCode("+62");
             $this->setName(new Name('Indonesia', 'Indonesia', 'Indonesia', 'Indonesia'));
@@ -1336,7 +1337,7 @@ class ProviderCountry extends Fixture
 
 
         $item104 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IE");
             $this->setCountryCode("+353");
             $this->setName(new Name('Ireland', 'Irlanda', 'Irlanda', 'Ireland'));
@@ -1349,7 +1350,7 @@ class ProviderCountry extends Fixture
 
 
         $item105 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IL");
             $this->setCountryCode("+972");
             $this->setName(new Name('Israel', 'Israel', 'Israel', 'Israel'));
@@ -1362,7 +1363,7 @@ class ProviderCountry extends Fixture
 
 
         $item106 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IM");
             $this->setCountryCode("+44");
             $this->setName(new Name('Isle of Man', 'Isla de Man', 'Isla de Man', 'Isle of Man'));
@@ -1375,7 +1376,7 @@ class ProviderCountry extends Fixture
 
 
         $item107 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IN");
             $this->setCountryCode("+91");
             $this->setName(new Name('India', 'India', 'India', 'India'));
@@ -1388,7 +1389,7 @@ class ProviderCountry extends Fixture
 
 
         $item108 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IO");
             $this->setCountryCode("+246");
             $this->setName(new Name('British Indian Ocean Territory', 'Territorio Británico del Océano Índico', 'Territorio Británico del Océano Índico', 'British Indian Ocean Territory'));
@@ -1401,7 +1402,7 @@ class ProviderCountry extends Fixture
 
 
         $item109 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IQ");
             $this->setCountryCode("+964");
             $this->setName(new Name('Iraq', 'Irak', 'Irak', 'Iraq'));
@@ -1414,7 +1415,7 @@ class ProviderCountry extends Fixture
 
 
         $item110 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IR");
             $this->setCountryCode("+98");
             $this->setName(new Name('Iran', 'Irán', 'Irán', 'Iran'));
@@ -1427,7 +1428,7 @@ class ProviderCountry extends Fixture
 
 
         $item111 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IS");
             $this->setCountryCode("+354");
             $this->setName(new Name('Iceland', 'Islandia', 'Islandia', 'Iceland'));
@@ -1440,7 +1441,7 @@ class ProviderCountry extends Fixture
 
 
         $item112 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("IT");
             $this->setCountryCode("+39");
             $this->setName(new Name('Italy', 'Italia', 'Italia', 'Italy'));
@@ -1453,7 +1454,7 @@ class ProviderCountry extends Fixture
 
 
         $item113 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("JE");
             $this->setCountryCode("+44");
             $this->setName(new Name('Jersey', 'Jersey', 'Jersey', 'Jersey'));
@@ -1466,7 +1467,7 @@ class ProviderCountry extends Fixture
 
 
         $item114 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("JM");
             $this->setCountryCode("+1876");
             $this->setName(new Name('Jamaica', 'Jamaica', 'Jamaica', 'Jamaica'));
@@ -1479,7 +1480,7 @@ class ProviderCountry extends Fixture
 
 
         $item115 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("JO");
             $this->setCountryCode("+962");
             $this->setName(new Name('Jordan', 'Jordania', 'Jordania', 'Jordan'));
@@ -1492,7 +1493,7 @@ class ProviderCountry extends Fixture
 
 
         $item116 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("JP");
             $this->setCountryCode("+81");
             $this->setName(new Name('Japan', 'Japón', 'Japón', 'Japan'));
@@ -1505,7 +1506,7 @@ class ProviderCountry extends Fixture
 
 
         $item117 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KE");
             $this->setCountryCode("+254");
             $this->setName(new Name('Kenya', 'Kenia', 'Kenia', 'Kenya'));
@@ -1518,7 +1519,7 @@ class ProviderCountry extends Fixture
 
 
         $item118 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KG");
             $this->setCountryCode("+996");
             $this->setName(new Name('Kyrgyzstan', 'Kirgizstán', 'Kirgizstán', 'Kyrgyzstan'));
@@ -1531,7 +1532,7 @@ class ProviderCountry extends Fixture
 
 
         $item119 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KH");
             $this->setCountryCode("+855");
             $this->setName(new Name('Cambodia', 'Camboya', 'Camboya', 'Cambodia'));
@@ -1544,7 +1545,7 @@ class ProviderCountry extends Fixture
 
 
         $item120 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KI");
             $this->setCountryCode("+686");
             $this->setName(new Name('Kiribati', 'Kiribati', 'Kiribati', 'Kiribati'));
@@ -1557,7 +1558,7 @@ class ProviderCountry extends Fixture
 
 
         $item121 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KM");
             $this->setCountryCode("+269");
             $this->setName(new Name('Comoros', 'Comoras', 'Comoras', 'Comoros'));
@@ -1570,7 +1571,7 @@ class ProviderCountry extends Fixture
 
 
         $item122 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KN");
             $this->setCountryCode("+1869");
             $this->setName(new Name('Saint Kitts and Nevis', 'San Cristóbal y Nieves', 'San Cristóbal y Nieves', 'Saint Kitts and Nevis'));
@@ -1583,7 +1584,7 @@ class ProviderCountry extends Fixture
 
 
         $item123 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KP");
             $this->setCountryCode("+850");
             $this->setName(new Name('North Korea', 'Corea del Norte', 'Corea del Norte', 'North Korea'));
@@ -1596,7 +1597,7 @@ class ProviderCountry extends Fixture
 
 
         $item124 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KR");
             $this->setCountryCode("+82");
             $this->setName(new Name('South Korea', 'Corea del Sur', 'Corea del Sur', 'South Korea'));
@@ -1609,7 +1610,7 @@ class ProviderCountry extends Fixture
 
 
         $item125 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KW");
             $this->setCountryCode("+965");
             $this->setName(new Name('Kuwait', 'Kuwait', 'Kuwait', 'Kuwait'));
@@ -1622,7 +1623,7 @@ class ProviderCountry extends Fixture
 
 
         $item126 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KY");
             $this->setCountryCode("+1345");
             $this->setName(new Name('Cayman Islands', 'Islas Caimán', 'Islas Caimán', 'Cayman Islands'));
@@ -1635,7 +1636,7 @@ class ProviderCountry extends Fixture
 
 
         $item127 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("KZ");
             $this->setCountryCode("+7");
             $this->setName(new Name('Kazakhstan', 'Kazajistán', 'Kazajistán', 'Kazakhstan'));
@@ -1648,7 +1649,7 @@ class ProviderCountry extends Fixture
 
 
         $item128 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LA");
             $this->setCountryCode("+856");
             $this->setName(new Name('Laos', 'Laos', 'Laos', 'Laos'));
@@ -1661,7 +1662,7 @@ class ProviderCountry extends Fixture
 
 
         $item129 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LB");
             $this->setCountryCode("+961");
             $this->setName(new Name('Lebanon', 'Líbano', 'Líbano', 'Lebanon'));
@@ -1674,7 +1675,7 @@ class ProviderCountry extends Fixture
 
 
         $item130 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LC");
             $this->setCountryCode("+1758");
             $this->setName(new Name('Saint Lucia', 'Santa Lucía', 'Santa Lucía', 'Saint Lucia'));
@@ -1687,7 +1688,7 @@ class ProviderCountry extends Fixture
 
 
         $item131 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LI");
             $this->setCountryCode("+423");
             $this->setName(new Name('Liechtenstein', 'Liechtenstein', 'Liechtenstein', 'Liechtenstein'));
@@ -1700,7 +1701,7 @@ class ProviderCountry extends Fixture
 
 
         $item132 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LK");
             $this->setCountryCode("+94");
             $this->setName(new Name('Sri Lanka', 'Sri lanka', 'Sri lanka', 'Sri Lanka'));
@@ -1713,7 +1714,7 @@ class ProviderCountry extends Fixture
 
 
         $item133 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LR");
             $this->setCountryCode("+231");
             $this->setName(new Name('Liberia', 'Liberia', 'Liberia', 'Liberia'));
@@ -1726,7 +1727,7 @@ class ProviderCountry extends Fixture
 
 
         $item134 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LS");
             $this->setCountryCode("+266");
             $this->setName(new Name('Lesotho', 'Lesoto', 'Lesoto', 'Lesotho'));
@@ -1739,7 +1740,7 @@ class ProviderCountry extends Fixture
 
 
         $item135 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LT");
             $this->setCountryCode("+370");
             $this->setName(new Name('Lithuania', 'Lituania', 'Lituania', 'Lithuania'));
@@ -1752,7 +1753,7 @@ class ProviderCountry extends Fixture
 
 
         $item136 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LU");
             $this->setCountryCode("+352");
             $this->setName(new Name('Luxembourg', 'Luxemburgo', 'Luxemburgo', 'Luxembourg'));
@@ -1765,7 +1766,7 @@ class ProviderCountry extends Fixture
 
 
         $item137 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LV");
             $this->setCountryCode("+371");
             $this->setName(new Name('Latvia', 'Letonia', 'Letonia', 'Latvia'));
@@ -1778,7 +1779,7 @@ class ProviderCountry extends Fixture
 
 
         $item138 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("LY");
             $this->setCountryCode("+218");
             $this->setName(new Name('Libya', 'Libia', 'Libia', 'Libya'));
@@ -1791,7 +1792,7 @@ class ProviderCountry extends Fixture
 
 
         $item139 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MA");
             $this->setCountryCode("+212");
             $this->setName(new Name('Morocco', 'Marruecos', 'Marruecos', 'Morocco'));
@@ -1804,7 +1805,7 @@ class ProviderCountry extends Fixture
 
 
         $item140 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MC");
             $this->setCountryCode("+377");
             $this->setName(new Name('Monaco', 'Mónaco', 'Mónaco', 'Monaco'));
@@ -1817,7 +1818,7 @@ class ProviderCountry extends Fixture
 
 
         $item141 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MD");
             $this->setCountryCode("+373");
             $this->setName(new Name('Moldova', 'Moldavia', 'Moldavia', 'Moldova'));
@@ -1830,7 +1831,7 @@ class ProviderCountry extends Fixture
 
 
         $item142 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ME");
             $this->setCountryCode("+382");
             $this->setName(new Name('Montenegro', 'Montenegro', 'Montenegro', 'Montenegro'));
@@ -1843,7 +1844,7 @@ class ProviderCountry extends Fixture
 
 
         $item143 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MF");
             $this->setCountryCode("+1599");
             $this->setName(new Name('Saint Martin (French part)', 'San Martín (Francia)', 'San Martín (Francia)', 'Saint Martin (French part)'));
@@ -1856,7 +1857,7 @@ class ProviderCountry extends Fixture
 
 
         $item144 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MG");
             $this->setCountryCode("+261");
             $this->setName(new Name('Madagascar', 'Madagascar', 'Madagascar', 'Madagascar'));
@@ -1869,7 +1870,7 @@ class ProviderCountry extends Fixture
 
 
         $item145 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MH");
             $this->setCountryCode("+692");
             $this->setName(new Name('Marshall Islands', 'Islas Marshall', 'Islas Marshall', 'Marshall Islands'));
@@ -1882,7 +1883,7 @@ class ProviderCountry extends Fixture
 
 
         $item146 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MK");
             $this->setCountryCode("+389");
             $this->setName(new Name('Macedonia', 'Macedônia', 'Macedônia', 'Macedonia'));
@@ -1895,7 +1896,7 @@ class ProviderCountry extends Fixture
 
 
         $item147 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ML");
             $this->setCountryCode("+223");
             $this->setName(new Name('Mali', 'Mali', 'Mali', 'Mali'));
@@ -1908,7 +1909,7 @@ class ProviderCountry extends Fixture
 
 
         $item148 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MM");
             $this->setCountryCode("+95");
             $this->setName(new Name('Myanmar', 'Birmania', 'Birmania', 'Myanmar'));
@@ -1921,7 +1922,7 @@ class ProviderCountry extends Fixture
 
 
         $item149 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MN");
             $this->setCountryCode("+976");
             $this->setName(new Name('Mongolia', 'Mongolia', 'Mongolia', 'Mongolia'));
@@ -1934,7 +1935,7 @@ class ProviderCountry extends Fixture
 
 
         $item150 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MO");
             $this->setCountryCode("+853");
             $this->setName(new Name('Macao', 'Macao', 'Macao', 'Macao'));
@@ -1947,7 +1948,7 @@ class ProviderCountry extends Fixture
 
 
         $item151 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MP");
             $this->setCountryCode("+1670");
             $this->setName(new Name('Northern Mariana Islands', 'Islas Marianas del Norte', 'Islas Marianas del Norte', 'Northern Mariana Islands'));
@@ -1960,7 +1961,7 @@ class ProviderCountry extends Fixture
 
 
         $item152 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MQ");
             $this->setCountryCode("+596");
             $this->setName(new Name('Martinique', 'Martinica', 'Martinica', 'Martinique'));
@@ -1973,7 +1974,7 @@ class ProviderCountry extends Fixture
 
 
         $item153 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MR");
             $this->setCountryCode("+222");
             $this->setName(new Name('Mauritania', 'Mauritania', 'Mauritania', 'Mauritania'));
@@ -1986,7 +1987,7 @@ class ProviderCountry extends Fixture
 
 
         $item154 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MS");
             $this->setCountryCode("+1664");
             $this->setName(new Name('Montserrat', 'Montserrat', 'Montserrat', 'Montserrat'));
@@ -1999,7 +2000,7 @@ class ProviderCountry extends Fixture
 
 
         $item155 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MT");
             $this->setCountryCode("+356");
             $this->setName(new Name('Malta', 'Malta', 'Malta', 'Malta'));
@@ -2012,7 +2013,7 @@ class ProviderCountry extends Fixture
 
 
         $item156 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MU");
             $this->setCountryCode("+230");
             $this->setName(new Name('Mauritius', 'Mauricio', 'Mauricio', 'Mauritius'));
@@ -2025,7 +2026,7 @@ class ProviderCountry extends Fixture
 
 
         $item157 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MV");
             $this->setCountryCode("+960");
             $this->setName(new Name('Maldives', 'Islas Maldivas', 'Islas Maldivas', 'Maldives'));
@@ -2038,7 +2039,7 @@ class ProviderCountry extends Fixture
 
 
         $item158 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MW");
             $this->setCountryCode("+265");
             $this->setName(new Name('Malawi', 'Malawi', 'Malawi', 'Malawi'));
@@ -2051,7 +2052,7 @@ class ProviderCountry extends Fixture
 
 
         $item159 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MX");
             $this->setCountryCode("+52");
             $this->setName(new Name('Mexico', 'México', 'México', 'Mexico'));
@@ -2064,7 +2065,7 @@ class ProviderCountry extends Fixture
 
 
         $item160 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MY");
             $this->setCountryCode("+60");
             $this->setName(new Name('Malaysia', 'Malasia', 'Malasia', 'Malaysia'));
@@ -2077,7 +2078,7 @@ class ProviderCountry extends Fixture
 
 
         $item161 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("MZ");
             $this->setCountryCode("+258");
             $this->setName(new Name('Mozambique', 'Mozambique', 'Mozambique', 'Mozambique'));
@@ -2090,7 +2091,7 @@ class ProviderCountry extends Fixture
 
 
         $item162 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NA");
             $this->setCountryCode("+264");
             $this->setName(new Name('Namibia', 'Namibia', 'Namibia', 'Namibia'));
@@ -2103,7 +2104,7 @@ class ProviderCountry extends Fixture
 
 
         $item163 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NC");
             $this->setCountryCode("+687");
             $this->setName(new Name('New Caledonia', 'Nueva Caledonia', 'Nueva Caledonia', 'New Caledonia'));
@@ -2116,7 +2117,7 @@ class ProviderCountry extends Fixture
 
 
         $item164 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NE");
             $this->setCountryCode("+227");
             $this->setName(new Name('Niger', 'Niger', 'Niger', 'Niger'));
@@ -2129,7 +2130,7 @@ class ProviderCountry extends Fixture
 
 
         $item165 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NF");
             $this->setCountryCode("+672");
             $this->setName(new Name('Norfolk Island', 'Isla Norfolk', 'Isla Norfolk', 'Norfolk Island'));
@@ -2142,7 +2143,7 @@ class ProviderCountry extends Fixture
 
 
         $item166 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NG");
             $this->setCountryCode("+234");
             $this->setName(new Name('Nigeria', 'Nigeria', 'Nigeria', 'Nigeria'));
@@ -2155,7 +2156,7 @@ class ProviderCountry extends Fixture
 
 
         $item167 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NI");
             $this->setCountryCode("+505");
             $this->setName(new Name('Nicaragua', 'Nicaragua', 'Nicaragua', 'Nicaragua'));
@@ -2168,7 +2169,7 @@ class ProviderCountry extends Fixture
 
 
         $item168 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NL");
             $this->setCountryCode("+31");
             $this->setName(new Name('Netherlands', 'Países Bajos', 'Países Bajos', 'Netherlands'));
@@ -2181,7 +2182,7 @@ class ProviderCountry extends Fixture
 
 
         $item169 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NO");
             $this->setCountryCode("+47");
             $this->setName(new Name('Norway', 'Noruega', 'Noruega', 'Norway'));
@@ -2194,7 +2195,7 @@ class ProviderCountry extends Fixture
 
 
         $item170 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NP");
             $this->setCountryCode("+977");
             $this->setName(new Name('Nepal', 'Nepal', 'Nepal', 'Nepal'));
@@ -2207,7 +2208,7 @@ class ProviderCountry extends Fixture
 
 
         $item171 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NR");
             $this->setCountryCode("+674");
             $this->setName(new Name('Nauru', 'Nauru', 'Nauru', 'Nauru'));
@@ -2220,7 +2221,7 @@ class ProviderCountry extends Fixture
 
 
         $item172 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NU");
             $this->setCountryCode("+683");
             $this->setName(new Name('Niue', 'Niue', 'Niue', 'Niue'));
@@ -2233,7 +2234,7 @@ class ProviderCountry extends Fixture
 
 
         $item173 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("NZ");
             $this->setCountryCode("+64");
             $this->setName(new Name('New Zealand', 'Nueva Zelanda', 'Nueva Zelanda', 'New Zealand'));
@@ -2246,7 +2247,7 @@ class ProviderCountry extends Fixture
 
 
         $item174 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("OM");
             $this->setCountryCode("+968");
             $this->setName(new Name('Oman', 'Omán', 'Omán', 'Oman'));
@@ -2259,7 +2260,7 @@ class ProviderCountry extends Fixture
 
 
         $item175 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PA");
             $this->setCountryCode("+507");
             $this->setName(new Name('Panama', 'Panamá', 'Panamá', 'Panama'));
@@ -2272,7 +2273,7 @@ class ProviderCountry extends Fixture
 
 
         $item176 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PE");
             $this->setCountryCode("+51");
             $this->setName(new Name('Peru', 'Perú', 'Perú', 'Peru'));
@@ -2285,7 +2286,7 @@ class ProviderCountry extends Fixture
 
 
         $item177 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PF");
             $this->setCountryCode("+689");
             $this->setName(new Name('French Polynesia', 'Polinesia Francesa', 'Polinesia Francesa', 'French Polynesia'));
@@ -2298,7 +2299,7 @@ class ProviderCountry extends Fixture
 
 
         $item178 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PG");
             $this->setCountryCode("+675");
             $this->setName(new Name('Papua New Guinea', 'Papúa Nueva Guinea', 'Papúa Nueva Guinea', 'Papua New Guinea'));
@@ -2311,7 +2312,7 @@ class ProviderCountry extends Fixture
 
 
         $item179 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PH");
             $this->setCountryCode("+63");
             $this->setName(new Name('Philippines', 'Filipinas', 'Filipinas', 'Philippines'));
@@ -2324,7 +2325,7 @@ class ProviderCountry extends Fixture
 
 
         $item180 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PK");
             $this->setCountryCode("+92");
             $this->setName(new Name('Pakistan', 'Pakistán', 'Pakistán', 'Pakistan'));
@@ -2337,7 +2338,7 @@ class ProviderCountry extends Fixture
 
 
         $item181 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PL");
             $this->setCountryCode("+48");
             $this->setName(new Name('Poland', 'Polonia', 'Polonia', 'Poland'));
@@ -2350,7 +2351,7 @@ class ProviderCountry extends Fixture
 
 
         $item182 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PM");
             $this->setCountryCode("+508");
             $this->setName(new Name('Saint Pierre and Miquelon', 'San Pedro y Miquelón', 'San Pedro y Miquelón', 'Saint Pierre and Miquelon'));
@@ -2363,7 +2364,7 @@ class ProviderCountry extends Fixture
 
 
         $item183 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PN");
             $this->setCountryCode("+870");
             $this->setName(new Name('Pitcairn Islands', 'Islas Pitcairn', 'Islas Pitcairn', 'Pitcairn Islands'));
@@ -2376,7 +2377,7 @@ class ProviderCountry extends Fixture
 
 
         $item184 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PR");
             $this->setCountryCode("+1");
             $this->setName(new Name('Puerto Rico', 'Puerto Rico', 'Puerto Rico', 'Puerto Rico'));
@@ -2389,7 +2390,7 @@ class ProviderCountry extends Fixture
 
 
         $item185 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PS");
             $this->setCountryCode("+970");
             $this->setName(new Name('Palestine', 'Palestina', 'Palestina', 'Palestine'));
@@ -2402,7 +2403,7 @@ class ProviderCountry extends Fixture
 
 
         $item186 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PT");
             $this->setCountryCode("+351");
             $this->setName(new Name('Portugal', 'Portugal', 'Portugal', 'Portugal'));
@@ -2415,7 +2416,7 @@ class ProviderCountry extends Fixture
 
 
         $item187 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PW");
             $this->setCountryCode("+680");
             $this->setName(new Name('Palau', 'Palau', 'Palau', 'Palau'));
@@ -2428,7 +2429,7 @@ class ProviderCountry extends Fixture
 
 
         $item188 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("PY");
             $this->setCountryCode("+595");
             $this->setName(new Name('Paraguay', 'Paraguay', 'Paraguay', 'Paraguay'));
@@ -2441,7 +2442,7 @@ class ProviderCountry extends Fixture
 
 
         $item189 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("QA");
             $this->setCountryCode("+974");
             $this->setName(new Name('Qatar', 'Qatar', 'Qatar', 'Qatar'));
@@ -2454,7 +2455,7 @@ class ProviderCountry extends Fixture
 
 
         $item190 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("RE");
             $this->setCountryCode("+262");
             $this->setName(new Name('Réunion', 'Reunión', 'Reunión', 'Réunion'));
@@ -2467,7 +2468,7 @@ class ProviderCountry extends Fixture
 
 
         $item191 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("RO");
             $this->setCountryCode("+40");
             $this->setName(new Name('Romania', 'Rumanía', 'Rumanía', 'Romania'));
@@ -2480,7 +2481,7 @@ class ProviderCountry extends Fixture
 
 
         $item192 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("RS");
             $this->setCountryCode("+381");
             $this->setName(new Name('Serbia', 'Serbia', 'Serbia', 'Serbia'));
@@ -2493,7 +2494,7 @@ class ProviderCountry extends Fixture
 
 
         $item193 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("RU");
             $this->setCountryCode("+7");
             $this->setName(new Name('Russia', 'Rusia', 'Rusia', 'Russia'));
@@ -2506,7 +2507,7 @@ class ProviderCountry extends Fixture
 
 
         $item194 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("RW");
             $this->setCountryCode("+250");
             $this->setName(new Name('Rwanda', 'Ruanda', 'Ruanda', 'Rwanda'));
@@ -2519,7 +2520,7 @@ class ProviderCountry extends Fixture
 
 
         $item195 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SA");
             $this->setCountryCode("+966");
             $this->setName(new Name('Saudi Arabia', 'Arabia Saudita', 'Arabia Saudita', 'Saudi Arabia'));
@@ -2532,7 +2533,7 @@ class ProviderCountry extends Fixture
 
 
         $item196 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SB");
             $this->setCountryCode("+677");
             $this->setName(new Name('Solomon Islands', 'Islas Salomón', 'Islas Salomón', 'Solomon Islands'));
@@ -2545,7 +2546,7 @@ class ProviderCountry extends Fixture
 
 
         $item197 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SC");
             $this->setCountryCode("+248");
             $this->setName(new Name('Seychelles', 'Seychelles', 'Seychelles', 'Seychelles'));
@@ -2558,7 +2559,7 @@ class ProviderCountry extends Fixture
 
 
         $item198 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SD");
             $this->setCountryCode("+249");
             $this->setName(new Name('Sudan', 'Sudán', 'Sudán', 'Sudan'));
@@ -2571,7 +2572,7 @@ class ProviderCountry extends Fixture
 
 
         $item199 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SE");
             $this->setCountryCode("+46");
             $this->setName(new Name('Sweden', 'Suecia', 'Suecia', 'Sweden'));
@@ -2584,7 +2585,7 @@ class ProviderCountry extends Fixture
 
 
         $item200 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SG");
             $this->setCountryCode("+65");
             $this->setName(new Name('Singapore', 'Singapur', 'Singapur', 'Singapore'));
@@ -2597,7 +2598,7 @@ class ProviderCountry extends Fixture
 
 
         $item201 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SH");
             $this->setCountryCode("+290");
             $this->setName(new Name('Ascensión y Tristán de Acuña', 'Santa Elena', 'Santa Elena', 'Ascensión y Tristán de Acuña'));
@@ -2610,7 +2611,7 @@ class ProviderCountry extends Fixture
 
 
         $item202 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SI");
             $this->setCountryCode("+386");
             $this->setName(new Name('Slovenia', 'Eslovenia', 'Eslovenia', 'Slovenia'));
@@ -2623,7 +2624,7 @@ class ProviderCountry extends Fixture
 
 
         $item203 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SJ");
             $this->setCountryCode("+47");
             $this->setName(new Name('Svalbard and Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard and Jan Mayen'));
@@ -2636,7 +2637,7 @@ class ProviderCountry extends Fixture
 
 
         $item204 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SK");
             $this->setCountryCode("+421");
             $this->setName(new Name('Slovakia', 'Eslovaquia', 'Eslovaquia', 'Slovakia'));
@@ -2649,7 +2650,7 @@ class ProviderCountry extends Fixture
 
 
         $item205 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SL");
             $this->setCountryCode("+232");
             $this->setName(new Name('Sierra Leone', 'Sierra Leona', 'Sierra Leona', 'Sierra Leone'));
@@ -2662,7 +2663,7 @@ class ProviderCountry extends Fixture
 
 
         $item206 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SM");
             $this->setCountryCode("+378");
             $this->setName(new Name('San Marino', 'San Marino', 'San Marino', 'San Marino'));
@@ -2675,7 +2676,7 @@ class ProviderCountry extends Fixture
 
 
         $item207 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SN");
             $this->setCountryCode("+221");
             $this->setName(new Name('Senegal', 'Senegal', 'Senegal', 'Senegal'));
@@ -2688,7 +2689,7 @@ class ProviderCountry extends Fixture
 
 
         $item208 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SO");
             $this->setCountryCode("+252");
             $this->setName(new Name('Somalia', 'Somalia', 'Somalia', 'Somalia'));
@@ -2701,7 +2702,7 @@ class ProviderCountry extends Fixture
 
 
         $item209 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SR");
             $this->setCountryCode("+597");
             $this->setName(new Name('Suriname', 'Surinám', 'Surinám', 'Suriname'));
@@ -2714,7 +2715,7 @@ class ProviderCountry extends Fixture
 
 
         $item210 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SS");
             $this->setCountryCode("+211");
             $this->setName(new Name('South Sudan', 'Sudán del Sur', 'Sudán del Sur', 'South Sudan'));
@@ -2727,7 +2728,7 @@ class ProviderCountry extends Fixture
 
 
         $item211 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ST");
             $this->setCountryCode("+239");
             $this->setName(new Name('Sao Tome and Principe', 'Santo Tomé y Príncipe', 'Santo Tomé y Príncipe', 'Sao Tome and Principe'));
@@ -2740,7 +2741,7 @@ class ProviderCountry extends Fixture
 
 
         $item212 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SV");
             $this->setCountryCode("+503");
             $this->setName(new Name('El Salvador', 'El Salvador', 'El Salvador', 'El Salvador'));
@@ -2753,7 +2754,7 @@ class ProviderCountry extends Fixture
 
 
         $item213 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SX");
             $this->setCountryCode("+1721");
             $this->setName(new Name('Sint Maarten (Dutch part)', 'Sint Maarten (parte neerlandesa)', 'Sint Maarten (parte neerlandesa)', 'Sint Maarten (Dutch part)'));
@@ -2766,7 +2767,7 @@ class ProviderCountry extends Fixture
 
 
         $item214 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SY");
             $this->setCountryCode("+963");
             $this->setName(new Name('Syria', 'Siria', 'Siria', 'Syria'));
@@ -2779,7 +2780,7 @@ class ProviderCountry extends Fixture
 
 
         $item215 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("SZ");
             $this->setCountryCode("+268");
             $this->setName(new Name('Swaziland', 'Swazilandia', 'Swazilandia', 'Swaziland'));
@@ -2792,7 +2793,7 @@ class ProviderCountry extends Fixture
 
 
         $item216 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TC");
             $this->setCountryCode("+1649");
             $this->setName(new Name('Turks and Caicos Islands', 'Islas Turcas y Caicos', 'Islas Turcas y Caicos', 'Turks and Caicos Islands'));
@@ -2805,7 +2806,7 @@ class ProviderCountry extends Fixture
 
 
         $item217 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TD");
             $this->setCountryCode("+235");
             $this->setName(new Name('Chad', 'Chad', 'Chad', 'Chad'));
@@ -2818,7 +2819,7 @@ class ProviderCountry extends Fixture
 
 
         $item218 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TF");
             $this->setCountryCode("+262");
             $this->setName(new Name('French Southern Territories', 'Territorios Australes y Antárticas Franceses', 'Territorios Australes y Antárticas Franceses', 'French Southern Territories'));
@@ -2831,7 +2832,7 @@ class ProviderCountry extends Fixture
 
 
         $item219 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TG");
             $this->setCountryCode("+228");
             $this->setName(new Name('Togo', 'Togo', 'Togo', 'Togo'));
@@ -2844,7 +2845,7 @@ class ProviderCountry extends Fixture
 
 
         $item220 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TH");
             $this->setCountryCode("+66");
             $this->setName(new Name('Thailand', 'Tailandia', 'Tailandia', 'Thailand'));
@@ -2857,7 +2858,7 @@ class ProviderCountry extends Fixture
 
 
         $item221 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TJ");
             $this->setCountryCode("+992");
             $this->setName(new Name('Tajikistan', 'Tadjikistán', 'Tadjikistán', 'Tajikistan'));
@@ -2870,7 +2871,7 @@ class ProviderCountry extends Fixture
 
 
         $item222 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TK");
             $this->setCountryCode("+690");
             $this->setName(new Name('Tokelau', 'Tokelau', 'Tokelau', 'Tokelau'));
@@ -2883,7 +2884,7 @@ class ProviderCountry extends Fixture
 
 
         $item223 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TL");
             $this->setCountryCode("+670");
             $this->setName(new Name('East Timor', 'Timor Oriental', 'Timor Oriental', 'East Timor'));
@@ -2896,7 +2897,7 @@ class ProviderCountry extends Fixture
 
 
         $item224 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TM");
             $this->setCountryCode("+993");
             $this->setName(new Name('Turkmenistan', 'Turkmenistán', 'Turkmenistán', 'Turkmenistan'));
@@ -2909,7 +2910,7 @@ class ProviderCountry extends Fixture
 
 
         $item225 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TN");
             $this->setCountryCode("+216");
             $this->setName(new Name('Tunisia', 'Tunez', 'Tunez', 'Tunisia'));
@@ -2922,7 +2923,7 @@ class ProviderCountry extends Fixture
 
 
         $item226 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TO");
             $this->setCountryCode("+676");
             $this->setName(new Name('Tonga', 'Tonga', 'Tonga', 'Tonga'));
@@ -2935,7 +2936,7 @@ class ProviderCountry extends Fixture
 
 
         $item227 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TR");
             $this->setCountryCode("+90");
             $this->setName(new Name('Turkey', 'Turquía', 'Turquía', 'Turkey'));
@@ -2948,7 +2949,7 @@ class ProviderCountry extends Fixture
 
 
         $item228 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TT");
             $this->setCountryCode("+1868");
             $this->setName(new Name('Trinidad and Tobago', 'Trinidad y Tobago', 'Trinidad y Tobago', 'Trinidad and Tobago'));
@@ -2961,7 +2962,7 @@ class ProviderCountry extends Fixture
 
 
         $item229 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TV");
             $this->setCountryCode("+688");
             $this->setName(new Name('Tuvalu', 'Tuvalu', 'Tuvalu', 'Tuvalu'));
@@ -2974,7 +2975,7 @@ class ProviderCountry extends Fixture
 
 
         $item230 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TW");
             $this->setCountryCode("+886");
             $this->setName(new Name('Taiwan', 'Taiwán', 'Taiwán', 'Taiwan'));
@@ -2987,7 +2988,7 @@ class ProviderCountry extends Fixture
 
 
         $item231 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("TZ");
             $this->setCountryCode("+255");
             $this->setName(new Name('Tanzania', 'Tanzania', 'Tanzania', 'Tanzania'));
@@ -3000,7 +3001,7 @@ class ProviderCountry extends Fixture
 
 
         $item232 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("UA");
             $this->setCountryCode("+380");
             $this->setName(new Name('Ukraine', 'Ucrania', 'Ucrania', 'Ukraine'));
@@ -3013,7 +3014,7 @@ class ProviderCountry extends Fixture
 
 
         $item233 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("UG");
             $this->setCountryCode("+256");
             $this->setName(new Name('Uganda', 'Uganda', 'Uganda', 'Uganda'));
@@ -3026,7 +3027,7 @@ class ProviderCountry extends Fixture
 
 
         $item234 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("UM");
             $this->setCountryCode("+1");
             $this->setName(new Name('United States Minor Outlying Islands', 'Islas Ultramarinas Menores de Estados Unidos', 'Islas Ultramarinas Menores de Estados Unidos', 'United States Minor Outlying Islands'));
@@ -3039,7 +3040,7 @@ class ProviderCountry extends Fixture
 
 
         $item235 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("US");
             $this->setCountryCode("+1");
             $this->setName(new Name('United States of America', 'Estados Unidos de América', 'Estados Unidos de América', 'United States of America'));
@@ -3052,7 +3053,7 @@ class ProviderCountry extends Fixture
 
 
         $item236 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("UY");
             $this->setCountryCode("+598");
             $this->setName(new Name('Uruguay', 'Uruguay', 'Uruguay', 'Uruguay'));
@@ -3065,7 +3066,7 @@ class ProviderCountry extends Fixture
 
 
         $item237 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("UZ");
             $this->setCountryCode("+998");
             $this->setName(new Name('Uzbekistan', 'Uzbekistán', 'Uzbekistán', 'Uzbekistan'));
@@ -3078,7 +3079,7 @@ class ProviderCountry extends Fixture
 
 
         $item238 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VA");
             $this->setCountryCode("+39");
             $this->setName(new Name('Vatican City State', 'Ciudad del Vaticano', 'Ciudad del Vaticano', 'Vatican City State'));
@@ -3091,7 +3092,7 @@ class ProviderCountry extends Fixture
 
 
         $item239 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VC");
             $this->setCountryCode("+1784");
             $this->setName(new Name('Saint Vincent and the Grenadines', 'San Vicente y las Granadinas', 'San Vicente y las Granadinas', 'Saint Vincent and the Grenadines'));
@@ -3104,7 +3105,7 @@ class ProviderCountry extends Fixture
 
 
         $item240 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VE");
             $this->setCountryCode("+58");
             $this->setName(new Name('Venezuela', 'Venezuela', 'Venezuela', 'Venezuela'));
@@ -3117,7 +3118,7 @@ class ProviderCountry extends Fixture
 
 
         $item241 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VG");
             $this->setCountryCode("+1284");
             $this->setName(new Name('Virgin Islands', 'Islas Vírgenes Británicas', 'Islas Vírgenes Británicas', 'Virgin Islands'));
@@ -3130,7 +3131,7 @@ class ProviderCountry extends Fixture
 
 
         $item242 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VI");
             $this->setCountryCode("+1340");
             $this->setName(new Name('United States Virgin Islands', 'Islas Vírgenes de los Estados Unidos', 'Islas Vírgenes de los Estados Unidos', 'United States Virgin Islands'));
@@ -3143,7 +3144,7 @@ class ProviderCountry extends Fixture
 
 
         $item243 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VN");
             $this->setCountryCode("+84");
             $this->setName(new Name('Vietnam', 'Vietnam', 'Vietnam', 'Vietnam'));
@@ -3156,7 +3157,7 @@ class ProviderCountry extends Fixture
 
 
         $item244 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("VU");
             $this->setCountryCode("+678");
             $this->setName(new Name('Vanuatu', 'Vanuatu', 'Vanuatu', 'Vanuatu'));
@@ -3169,7 +3170,7 @@ class ProviderCountry extends Fixture
 
 
         $item245 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("WF");
             $this->setCountryCode("+681");
             $this->setName(new Name('Wallis and Futuna', 'Wallis y Futuna', 'Wallis y Futuna', 'Wallis and Futuna'));
@@ -3182,7 +3183,7 @@ class ProviderCountry extends Fixture
 
 
         $item246 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("WS");
             $this->setCountryCode("+685");
             $this->setName(new Name('Samoa', 'Samoa', 'Samoa', 'Samoa'));
@@ -3195,7 +3196,7 @@ class ProviderCountry extends Fixture
 
 
         $item247 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("YE");
             $this->setCountryCode("+967");
             $this->setName(new Name('Yemen', 'Yemen', 'Yemen', 'Yemen'));
@@ -3208,7 +3209,7 @@ class ProviderCountry extends Fixture
 
 
         $item248 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("YT");
             $this->setCountryCode("+262");
             $this->setName(new Name('Mayotte', 'Mayotte', 'Mayotte', 'Mayotte'));
@@ -3221,7 +3222,7 @@ class ProviderCountry extends Fixture
 
 
         $item249 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ZA");
             $this->setCountryCode("+27");
             $this->setName(new Name('South Africa', 'Sudáfrica', 'Sudáfrica', 'South Africa'));
@@ -3234,7 +3235,7 @@ class ProviderCountry extends Fixture
 
 
         $item250 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ZM");
             $this->setCountryCode("+260");
             $this->setName(new Name('Zambia', 'Zambia', 'Zambia', 'Zambia'));
@@ -3247,7 +3248,7 @@ class ProviderCountry extends Fixture
 
 
         $item251 = $this->createEntityInstance(Country::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setCode("ZW");
             $this->setCountryCode("+263");
             $this->setName(new Name('Zimbabwe', 'Zimbabue', 'Zimbabue', 'Zimbabwe'));

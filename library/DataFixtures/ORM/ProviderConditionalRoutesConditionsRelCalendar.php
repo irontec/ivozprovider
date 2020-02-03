@@ -17,19 +17,22 @@ class ProviderConditionalRoutesConditionsRelCalendar extends Fixture implements 
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConditionalRoutesConditionsRelCalendar::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ConditionalRoutesConditionsRelCalendar $item1 */
         $item1 = $this->createEntityInstance(ConditionalRoutesConditionsRelCalendar::class);
+        (function () use ($fixture) {
+            $this->setCondition(
+                $fixture->getReference('_reference_ProviderConditionalRoutesCondition1')
+            );
 
-        $item1->setCondition(
-            $this->getReference('_reference_ProviderConditionalRoutesCondition1')
-        );
+            $this->setCalendar(
+                $fixture->getReference('_reference_ProviderCalendar1')
+            );
+        })->call($item1);
 
-        $item1->setCalendar(
-            $this->getReference('_reference_ProviderCalendar1')
-        );
         $this->addReference('_reference_ProviderConditionalRoutesConditionsRelCalendar1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

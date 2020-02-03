@@ -16,11 +16,12 @@ class ProviderTerminalManufacturer extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TerminalManufacturer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(TerminalManufacturer::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("Generic");
             $this->setName("Generic SIP Manufacturer");
             $this->setDescription("Generic SIP Manufacturer");
@@ -30,7 +31,7 @@ class ProviderTerminalManufacturer extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(TerminalManufacturer::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("Yealink");
             $this->setName("Yealink");
         })->call($item2);
@@ -39,7 +40,7 @@ class ProviderTerminalManufacturer extends Fixture
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(TerminalManufacturer::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("Cisco");
             $this->setName("Cisco");
         })->call($item3);
@@ -48,7 +49,7 @@ class ProviderTerminalManufacturer extends Fixture
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstance(TerminalManufacturer::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("Test");
             $this->setName("Test SIP Manufacturer");
             $this->setDescription("Test SIP Manufacturer");

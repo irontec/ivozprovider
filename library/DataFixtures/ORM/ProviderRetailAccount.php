@@ -18,24 +18,25 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(RetailAccount::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var RetailAccount $item1 */
         $item1 = $this->createEntityInstance(RetailAccount::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName('testRetailAccount');
             $this->setTransport('udp');
             $this->setDirectConnectivity('yes');
             $this->setPassword('9rv6G3TVc-');
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
         })->call($item1);
 
-        $item1->setBrand(
-            $this->getReference('_reference_ProviderBrand1')
-        );
-        $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
         $this->addReference('_reference_ProviderRetailAccount1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
