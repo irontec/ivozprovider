@@ -24,6 +24,9 @@ class AppKernel extends Kernel
 
             /* EntityGeneratorBundle */
             new IvozDevTools\EntityGeneratorBundle\EntityGeneratorBundle(),
+
+            /* MigrationsBundle */
+            new IvozDevTools\MigrationsBundle\MigrationsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'test_e2e'], true)) {
