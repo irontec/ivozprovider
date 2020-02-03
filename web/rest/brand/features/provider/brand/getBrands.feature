@@ -69,14 +69,14 @@ Feature: Manage brands
               "country": 68
           },
           "currency": {
-              "iden": "USD",
-              "symbol": "$",
-              "id": 2,
+              "iden": "EUR",
+              "symbol": "€",
+              "id": 1,
               "name": {
-                  "en": "Dollar",
-                  "es": "Dóllar",
-                  "ca": "Dollar",
-                  "it": "Dollar"
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro"
               }
           }
       }
