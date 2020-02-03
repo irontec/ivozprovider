@@ -18,12 +18,13 @@ class ProviderCalendarPeriod extends Fixture implements DependentFixtureInterfac
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(CalendarPeriod::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var CalendarPeriodInterface $item1 */
         $item1 = $this->createEntityInstance(CalendarPeriod::class);
-        (function () {
+        (function () use ($fixture) {
             $utc = new \DateTimeZone('UTC');
             $start = new \DateTime(
                 '2019-01-01',
@@ -40,15 +41,15 @@ class ProviderCalendarPeriod extends Fixture implements DependentFixtureInterfac
                     CalendarPeriodInterface::ROUTETYPE_NUMBER
                 )
                 ->setNumberValue('911')
-
             ;
+            $this->setCalendar(
+                $fixture->getReference('_reference_ProviderCalendar1')
+            );
+            $this->setNumberCountry(
+                $fixture->getReference('_reference_ProviderCountry1')
+            );
         })->call($item1);
-        $item1->setCalendar(
-            $this->getReference('_reference_ProviderCalendar1')
-        );
-        $item1->setNumberCountry(
-            $this->getReference('_reference_ProviderCountry1')
-        );
+
         $this->addReference('_reference_ProviderCalendarPeriod1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

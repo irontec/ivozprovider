@@ -18,17 +18,18 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(NotificationTemplate::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var NotificationTemplateInterface $item1 */
         $item1 = $this->createEntityInstance(NotificationTemplate::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("Voicemail notification");
             $this->setType("voicemail");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item1);
 
-        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderNotificationTemplate1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
@@ -36,7 +37,7 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
 
         /** @var NotificationTemplateInterface $item1 */
         $item2 = $this->createEntityInstance(NotificationTemplate::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("CallCsv notification");
             $this->setType("callCsv");
         })->call($item2);

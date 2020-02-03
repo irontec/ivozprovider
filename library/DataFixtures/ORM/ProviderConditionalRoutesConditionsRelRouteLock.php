@@ -17,23 +17,26 @@ class ProviderConditionalRoutesConditionsRelRouteLock extends Fixture implements
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConditionalRoutesConditionsRelRouteLock::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var ConditionalRoutesConditionsRelRouteLock $item1 */
         $item1 = $this->createEntityInstance(ConditionalRoutesConditionsRelRouteLock::class);
+        (function () use ($fixture) {
+            $this->setCondition(
+                $fixture->getReference('_reference_ProviderConditionalRoutesCondition1')
+            );
 
-        $item1->setCondition(
-            $this->getReference('_reference_ProviderConditionalRoutesCondition1')
-        );
+            $this->setRouteLock(
+                $fixture->getReference('_reference_ProviderRouteLock1')
+            );
+        })->call($item1);
 
-        $item1->setRouteLock(
-            $this->getReference('_reference_ProviderRouteLock1')
-        );
         $this->addReference('_reference_ProviderConditionalRoutesConditionsRelRouteLock1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
-    
+
         $manager->flush();
     }
 

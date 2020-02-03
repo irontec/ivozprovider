@@ -17,11 +17,12 @@ class ProviderCurrency extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Currency::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstance(Currency::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("EUR");
             $this->setSymbol("€");
             $this->setName(new Name('Euro', 'Euro', 'Euro', 'Euro'));
@@ -32,7 +33,7 @@ class ProviderCurrency extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Currency::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("USD");
             $this->setSymbol("$");
             $this->setName(new Name('Dollar', 'Dóllar', 'Dollar', 'Dollar'));
@@ -44,7 +45,7 @@ class ProviderCurrency extends Fixture
 
 
         $item3 = $this->createEntityInstance(Currency::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("GBP");
             $this->setSymbol("£");
             $this->setName(new Name('Pound', 'Libra', 'Libra', 'Pound'));

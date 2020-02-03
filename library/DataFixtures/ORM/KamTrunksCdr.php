@@ -18,12 +18,13 @@ class KamTrunksCdr extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TrunksCdr::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var TrunksCdrInterface $item1 */
         $item1 = $this->createEntityInstance(TrunksCdr::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setStartTime(new \DateTime('2018-11-22 16:54:49'));
             $this->setEndTime(new \DateTime('2018-11-22 16:54:54'));
             $this->setDuration(4.765);
@@ -36,10 +37,10 @@ class KamTrunksCdr extends Fixture implements DependentFixtureInterface
             $this->setXcallid('9297bdde-309cd48f@10.10.1.123');
             $this->setParsed(0);
             $this->setParserScheduledAt(new \DateTime('2018-11-22 16:54:54'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));
         })->call($item1);
-        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
-        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item1->setCarrier($this->getReference('_reference_ProviderCarrier1'));
 
         $this->addReference('_reference_KamTrunksCdr1', $item1);
         $this->sanitizeEntityValues($item1);

@@ -18,12 +18,13 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Brand::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         for ($i = 0; $i < 100; $i++) {
             $item = $this->createEntityInstance(BillableCall::class);
-            (function () use ($i) {
+            (function () use ($i, $fixture) {
                 $this->setCallid(
                     '017cc7c8-eb38-4bbd-9318-524a274f7' . str_pad($i, 3, '0', STR_PAD_LEFT)
                 );
@@ -36,17 +37,16 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                 $this->setCallee('+34633656565');
                 $this->setDirection('outbound');
                 $this->setPrice(1);
+                $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+                $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+                $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));
+
+                if ($i === 0) {
+                    $this->setTrunksCdr($fixture->getReference('_reference_KamTrunksCdr1'));
+                    $this->setCarrier($fixture->getReference('_reference_ProviderCarrier2'));
+                    $this->setInvoice($fixture->getReference('_reference_ProviderInvoice1'));
+                }
             })->call($item);
-
-            $item->setBrand($this->getReference('_reference_ProviderBrand1'));
-            $item->setCompany($this->getReference('_reference_ProviderCompany1'));
-            $item->setCarrier($this->getReference('_reference_ProviderCarrier1'));
-
-            if ($i === 0) {
-                $item->setTrunksCdr($this->getReference('_reference_KamTrunksCdr1'));
-                $item->setCarrier($this->getReference('_reference_ProviderCarrier2'));
-                $item->setInvoice($this->getReference('_reference_ProviderInvoice1'));
-            }
 
             $this->addReference('_reference_ProviderBillableCall' . $i, $item);
             $manager->persist($item);

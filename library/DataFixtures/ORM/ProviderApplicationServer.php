@@ -16,11 +16,12 @@ class ProviderApplicationServer extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ApplicationServer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(ApplicationServer::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIp("127.0.0.1");
             $this->setName("as001");
         })->call($item1);
@@ -30,7 +31,7 @@ class ProviderApplicationServer extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(ApplicationServer::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIp("127.1.1.1");
             $this->setName("test001");
         })->call($item2);

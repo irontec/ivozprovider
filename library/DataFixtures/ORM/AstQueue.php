@@ -17,11 +17,12 @@ class AstQueue extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Queue::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(Queue::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("b1c1q1_testQueue");
             $this->setPeriodicAnnounce("/opt/irontec/ivozprovider/storage/ivozprovider_model_locutions.encodedfile/0/1.");
             $this->setPeriodicAnnounceFrequency(7);
@@ -30,8 +31,8 @@ class AstQueue extends Fixture implements DependentFixtureInterface
             $this->setMaxlen(5);
             $this->setStrategy("rrmemory");
             $this->setWeight(5);
+            $this->setQueue($fixture->getReference('_reference_ProviderQueue1'));
         })->call($item1);
-        $item1->setQueue($this->getReference('_reference_ProviderQueue1'));
 
         $this->addReference('_reference_AstQueue1', $item1);
         $this->sanitizeEntityValues($item1);

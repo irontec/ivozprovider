@@ -17,17 +17,21 @@ class ProviderIvrExcludedExtension extends Fixture implements DependentFixtureIn
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(IvrExcludedExtension::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var IvrExcludedExtension $item1 */
         $item1 = $this->createEntityInstance(IvrExcludedExtension::class);
-        $item1->setIvr(
-            $this->getReference('_reference_ProviderIvr1')
-        );
-        $item1->setExtension(
-            $this->getReference('_reference_ProviderExtension1')
-        );
+        (function () use ($fixture) {
+            $this->setIvr(
+                $fixture->getReference('_reference_ProviderIvr1')
+            );
+            $this->setExtension(
+                $fixture->getReference('_reference_ProviderExtension1')
+            );
+        })->call($item1);
+
         $this->addReference('_reference_ProviderIvrExcludedExtension1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

@@ -17,20 +17,21 @@ class ProviderRoutingTag extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(RoutingTag::class)
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstance(RoutingTag::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("TagName");
             $this->setTag('123#');
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
         })->call($item1);
 
-        $item1->setBrand(
-            $this->getReference('_reference_ProviderBrand1')
-        );
         $this->addReference('_reference_ProviderRoutingTag1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
