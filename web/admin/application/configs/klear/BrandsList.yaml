@@ -184,6 +184,11 @@ production:
       <<: *administratorsNew_screenLink
       title: _("Add %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%parent%)]")
       filterField: Brand
+      fields:
+        <<: *administratorsFields
+        blacklist:
+          <<: *administratorsBlacklist
+          timezone: true
     administratorsEdit_screen:
       <<: *administratorsEdit_screenLink
       title: _("Edit %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%item%)]")

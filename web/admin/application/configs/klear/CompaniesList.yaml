@@ -315,6 +315,11 @@ production:
       filterField: Company
       forcedValues:
         <<: *forcedBrand
+      fields:
+        <<: *administratorsFields
+        blacklist:
+          <<: *administratorsBlacklist
+          timezone: true
     administratorsEdit_screen:
       <<: *administratorsEdit_screenLink
       title: _("Edit %s %2s", ngettext('Client admin', 'Client admins', 1), "[format| (%item%)]")

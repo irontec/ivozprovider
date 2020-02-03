@@ -63,13 +63,14 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Main operator', 'Main operators', 1))
       shortcutOption: N
-      fields:
-        blacklist:
+      fields: &administratorsFields
+        blacklist: &administratorsBlacklist
           active: true
           brand: true
           company: true
         order:
           <<: *Administrators_orderLink
+
       fixedPositions: &AdministratorsFixedPositions_link
         group0:
           label: _("Login Info")
@@ -87,7 +88,6 @@ production:
             name: 1
             lastname: 1
             email: 1
-
     administratorsEdit_screen: &administratorsEdit_screenLink
       <<: *Administrators
       controller: edit
