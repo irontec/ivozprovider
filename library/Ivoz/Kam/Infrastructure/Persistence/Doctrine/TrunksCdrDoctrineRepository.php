@@ -75,10 +75,7 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 
         $qb = $this->createQueryBuilder('self');
         $qb->addCriteria(CriteriaHelper::fromArray([
-            'or' => [
-                ['parsed', 'eq', '0'],
-                ['parsed', 'isNull'],
-            ],
+            ['parsed', 'eq', '0'],
             ['parserScheduledAt', 'lte', $dateFrom->format('Y-m-d H:i:s')],
         ]));
         $qb->setMaxResults($batchSize);
