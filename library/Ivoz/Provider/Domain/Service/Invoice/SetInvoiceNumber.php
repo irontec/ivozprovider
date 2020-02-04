@@ -47,8 +47,8 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        $processing = $invoice->isProcessing();
-        if (!$processing) {
+        $notWaiting = !$invoice->isWaiting();
+        if ($notWaiting) {
             return;
         }
 

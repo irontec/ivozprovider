@@ -121,9 +121,9 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     /**
      * @return bool
      */
-    public function isProcessing()
+    public function isWaiting():bool
     {
-        return $this->getStatus() === self::STATUS_PROCESSING;
+        return $this->getStatus() === self::STATUS_WAITING;
     }
 
     public function setNumber($number = null)
