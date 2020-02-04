@@ -49,7 +49,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
             'hasChanged' => function () {
                 return [['status'], true];
             },
-            'isProcessing' => true,
+            'isWaiting' => true,
             'getNumber' => null,
             'getNumberSequence' => $invoiceNumberSequence
         ];
@@ -115,7 +115,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
         InvoiceInterface $invoice
     ) {
         $getters = $this->getInvoiceGetterProphecy(1);
-        $getters['isProcessing'] = false;
+        $getters['isWaiting'] = false;
 
         $this->getterProphecy(
             $invoice,
