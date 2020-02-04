@@ -3,6 +3,7 @@ FROM debian:stretch
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 
 RUN echo deb http://packages.irontec.com/debian bleeding main extra >> /etc/apt/sources.list
+RUN echo deb http://repo.percona.com/apt stretch main >> /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get install --assume-yes --force-yes \
@@ -31,7 +32,8 @@ RUN apt-get install --assume-yes --force-yes \
         php-mailparse \
         php-imagick \
         php-xdebug \
-        php-zip
+        php-zip \
+        percona-toolkit
 RUN apt-get clean
 
 # Create jenkins user (configurable)
