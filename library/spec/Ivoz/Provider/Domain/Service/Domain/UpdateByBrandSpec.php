@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -81,7 +82,8 @@ class UpdateByBrandSpec extends ObjectBehavior
 
     function it_updates_domains_when_domainUsers_is_empty(
         DomainInterface $domain,
-        DomainDto $domainDto
+        DomainDto $domainDto,
+        BrandDto $brandDto
     ) {
         $this->prepareDomain(
             $domain,
@@ -98,7 +100,10 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->entityToDto($domain)
             ->willReturn($domainDto);
 
-        $this->prepareDtoCallChain($domain, $domainDto);
+        $this->prepareDomainDtoCallChain(
+            $domain,
+            $domainDto
+        );
 
         $this
             ->entityTools
@@ -106,13 +111,13 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->willReturn($domain)
             ->shouldBeCalled();
 
-        $this
-            ->entity
-            ->setDomain($domain)
-            ->shouldBeCalled();
+        $this->prepareBrandDtoCallChanin(
+            $brandDto
+        );
 
-        $this->entityTools
-            ->persist($this->entity)
+        $this
+            ->entityTools
+            ->persistDto($brandDto, $this->entity)
             ->shouldBeCalled();
 
         $this->execute(
@@ -122,7 +127,8 @@ class UpdateByBrandSpec extends ObjectBehavior
 
     function it_creates_a_new_domain_if_no_results(
         DomainInterface $domain,
-        DomainDto $domainDto
+        DomainDto $domainDto,
+        BrandDto $brandDto
     ) {
         $this->prepareDomain(null, 'myNewDomain');
 
@@ -131,8 +137,9 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->getName()
             ->willReturn('brandName');
 
-        $domain
-            ->toDto()
+        $this
+            ->entityTools
+            ->entityToDto($domain)
             ->shouldNotBeCalled();
 
         $this
@@ -145,13 +152,15 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->willReturn($domain)
             ->shouldBeCalled();
 
-        $this
-            ->entity
-            ->setDomain($domain)
-            ->shouldBeCalled();
+        $this->prepareBrandDtoCallChanin(
+            $brandDto
+        );
 
         $this->entityTools
-            ->persist($this->entity)
+            ->persistDto(
+                Argument::type(BrandDto::class),
+                $this->entity
+            )
             ->shouldBeCalled();
 
         $this->execute(
@@ -185,7 +194,7 @@ class UpdateByBrandSpec extends ObjectBehavior
      * @param DomainInterface $domain
      * @param DomainDto $domainDto
      */
-    private function prepareDtoCallChain(DomainInterface $domain, DomainDto $domainDto)
+    private function prepareDomainDtoCallChain(DomainInterface $domain, DomainDto $domainDto)
     {
         $domain
             ->toDto()
@@ -199,6 +208,23 @@ class UpdateByBrandSpec extends ObjectBehavior
         $domainDto
             ->setDescription("brandName proxyusers domain")
             ->willReturn($domainDto)
+            ->shouldBeCalled();
+    }
+
+    private function prepareBrandDtoCallChanin(BrandDto $brandDto)
+    {
+        $this
+            ->entityTools
+            ->entityToDto(
+                $this->entity
+            )
+            ->willReturn(
+                $brandDto
+            )
+            ->shouldBeCalled();
+
+        $brandDto
+            ->setDomain(Argument::type(DomainDto::class))
             ->shouldBeCalled();
     }
 }

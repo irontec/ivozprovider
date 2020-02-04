@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
@@ -76,6 +77,19 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         $domain = $this->entityTools
             ->persistDto($domainDto, $domain);
 
-        $company->setDomain($domain);
+        /** @var CompanyDto $companyDto */
+        $companyDto = $this
+            ->entityTools
+            ->entityToDto($company);
+
+        $companyDto
+            ->setDomain($domainDto);
+
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                $company,
+                $companyDto
+            );
     }
 }

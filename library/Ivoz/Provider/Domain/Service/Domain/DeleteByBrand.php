@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
@@ -35,7 +36,18 @@ class DeleteByBrand implements BrandLifecycleEventHandlerInterface
     public function execute(BrandInterface $brand)
     {
         $domain = $brand->getDomain();
-        $brand->setDomain(null);
+
+        /** @var BrandDto $brandDto */
+        $brandDto = $this->entityTools->entityToDto($brand);
+        $brandDto
+            ->setDomain(null);
+
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                $brand,
+                $brandDto
+            );
 
         if ($domain) {
             $this->entityTools->remove($domain);
