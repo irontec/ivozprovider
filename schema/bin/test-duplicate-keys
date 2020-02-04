@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Stop on first non-zero exit code
+if [ ! -x /usr/bin/pt-duplicate-key-checker ]; then
+    echo "You must install percona-toolkit to use this test."
+    exit 1
+fi
+
+# Check no duplicated keys where created
+pt-duplicate-key-checker h=data.ivozprovider.local,D=ivozprovider,u=root,p=changeme \
+    | grep -zqv 'Total Duplicate Indexes'
+
+if [ $? -eq 0 ]; then
+    echo 'No duplicated keys found.'
+    exit 0
+else
+    echo 'Duplicated keys found. Remove following queries from your migrations:'
+    pt-duplicate-key-checker h=data.ivozprovider.local,D=ivozprovider,u=root,p=changeme \
+        | grep -v ^# | grep -v ^$
+    exit 1
+fi
+
+:
