@@ -1261,11 +1261,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.1.3.0",
+            "version": "2.3.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "1e7db04c1b65e46fd124c088bd0c5ec06f4f3f31",
+                "reference": "db36f3808d2f70048001626ec2c687347834c2f0",
                 "shasum": null
             },
             "require": {
@@ -1311,17 +1311,17 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.3.1.0",
+            "version": "2.3.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "18cc348118422d3cfb27e5b1671261f698cdc6f7",
+                "reference": "ea47d97f618eaaa690a599c6786c76d8a0023cec",
                 "shasum": null
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/doctrine-cache-bundle": "^1.3",
-                "irontec/ivoz-core": "^2.1",
+                "irontec/ivoz-core": "^2.3",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.0.19",
                 "symfony/monolog-bundle": "3.1.*",
@@ -2467,11 +2467,11 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
-                "reference": "a8e961c841b9ec52927a87914f8820a1ad8f8116",
+                "reference": "f5a6efd9d9f68790120734f80f8fda972981edab",
                 "shasum": null
             },
             "require": {
@@ -2480,7 +2480,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2519,11 +2519,11 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
-                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
+                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
                 "shasum": null
             },
             "require": {
@@ -2535,7 +2535,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2573,11 +2573,11 @@
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-iconv",
-                "reference": "a019efccc03f1a335af6b4f20c30f5ea8060be36",
+                "reference": "926832ce51059bb58211b7b2080a88e0c3b5328e",
                 "shasum": null
             },
             "require": {
@@ -2589,7 +2589,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2628,11 +2628,11 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
-                "reference": "b3dffd68afa61ca70f2327f2dd9bbeb6aa53d70b",
+                "reference": "727b3bb5bfa7ca9eeb86416784cf1c08a6289b86",
                 "shasum": null
             },
             "require": {
@@ -2645,7 +2645,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2682,17 +2682,17 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-idn",
-                "reference": "6f9c239e61e1b0c9229a28ff89a812dc449c3d46",
+                "reference": "6842f1a39cf7d580655688069a03dd7cd83d244a",
                 "shasum": null
             },
             "require": {
                 "php": ">=5.3.3",
                 "symfony/polyfill-mbstring": "^1.3",
-                "symfony/polyfill-php72": "^1.9"
+                "symfony/polyfill-php72": "^1.10"
             },
             "suggest": {
                 "ext-intl": "For best performance"
@@ -2700,7 +2700,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2740,11 +2740,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
+                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
                 "shasum": null
             },
             "require": {
@@ -2756,7 +2756,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2795,11 +2795,11 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
-                "reference": "53dd1cdf3cb986893ccf2b96665b25b3abb384f4",
+                "reference": "16ec91cb06998b609501b55b7177b7d7c02badb3",
                 "shasum": null
             },
             "require": {
@@ -2809,7 +2809,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2847,11 +2847,11 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
-                "reference": "af23c7bb26a73b850840823662dda371484926c4",
+                "reference": "419c4940024c30ccc033650373a1fe13890d3255",
                 "shasum": null
             },
             "require": {
@@ -2861,7 +2861,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2902,11 +2902,11 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php72",
-                "reference": "66fea50f6cb37a35eea048d75a7d99a45b586038",
+                "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
                 "shasum": null
             },
             "require": {
@@ -2915,7 +2915,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -2953,11 +2953,11 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "1.13.1.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
-                "reference": "964a67f293b66b95883a5ed918a65354fcd2258f",
+                "reference": "ba3cfcea6d0192cae46c62041f61cbb704b526d3",
                 "shasum": null
             },
             "require": {
@@ -2966,7 +2966,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -3219,11 +3219,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "2.12.2.0",
+            "version": "2.12.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
+                "reference": "18772e0190734944277ee97a02a9a6c6555fcd94",
                 "shasum": null
             },
             "require": {
@@ -3233,8 +3233,7 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/debug": "^3.4|^4.2",
-                "symfony/phpunit-bridge": "^4.4@dev|^5.0"
+                "symfony/phpunit-bridge": "^4.4|^5.0"
             },
             "type": "library",
             "extra": {
@@ -3267,7 +3266,6 @@
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://twig.symfony.com/contributors",
                     "role": "Contributors"
                 },
                 {
