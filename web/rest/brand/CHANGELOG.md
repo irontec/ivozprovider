@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.14.1
+* Endpoints:
+    - /users_cdrs [GET] has been deprecated and it will be removed in 2.15
+    - /users_cdrs/{id} [GET] has been deprecated and it will be removed in 2.15
+
 ## 2.14
 * Endpoints:
     - Added [Exists] filter parameter for company field on /billable_calls
