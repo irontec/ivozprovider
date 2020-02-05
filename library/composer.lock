@@ -1904,16 +1904,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "2.4",
+            "version": "2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "e299edb4a072b4cb4832f1a537ef3a2392643321"
+                "reference": "77862369461e16492782e834f043a966a7c07300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/e299edb4a072b4cb4832f1a537ef3a2392643321",
-                "reference": "e299edb4a072b4cb4832f1a537ef3a2392643321",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/77862369461e16492782e834f043a966a7c07300",
+                "reference": "77862369461e16492782e834f043a966a7c07300",
                 "shasum": ""
             },
             "require": {
@@ -1947,7 +1947,7 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
-            "time": "2020-02-03T15:15:11+00:00"
+            "time": "2020-02-05T11:09:07+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
