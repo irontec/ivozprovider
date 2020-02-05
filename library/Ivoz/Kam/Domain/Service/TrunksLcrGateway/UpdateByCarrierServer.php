@@ -5,6 +5,7 @@ namespace Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 
@@ -52,13 +53,29 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
             ->setTransport($carrierServer->getTransport())
             ->setCarrierServerId($carrierServer->getId());
 
-        $lcrGateway = $this->entityTools->persistDto(
-            $lcrGatewayDto,
-            $lcrGateway,
-            true
-        );
+        $this
+            ->entityTools
+            ->persistDto(
+                $lcrGatewayDto,
+                $lcrGateway,
+                true
+            );
 
-        $carrierServer->setLcrGateway($lcrGateway);
-        $this->entityTools->persist($carrierServer);
+        /** @var CarrierServerDto $carrierServerDto */
+        $carrierServerDto = $this
+            ->entityTools
+            ->entityToDto(
+                $carrierServer
+            );
+
+        $carrierServerDto
+            ->setLcrGateway($lcrGatewayDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $carrierServerDto,
+                $carrierServer
+            );
     }
 }
