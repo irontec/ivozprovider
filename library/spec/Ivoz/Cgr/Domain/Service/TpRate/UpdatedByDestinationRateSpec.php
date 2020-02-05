@@ -7,6 +7,7 @@ use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
 use Ivoz\Cgr\Domain\Service\TpRate\UpdatedByDestinationRate;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use PhpSpec\ObjectBehavior;
@@ -19,6 +20,7 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
 
     protected $entityTools;
     protected $destinationRate;
+    protected $destinationRateDto;
     protected $destinationRateGroup;
     protected $brand;
     protected $tpRate;
@@ -40,6 +42,11 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
     {
         $this->destinationRate = $this->getTestDouble(
             DestinationRateInterface::class,
+            true
+        );
+
+        $this->destinationRateDto = $this->getTestDouble(
+            DestinationRateDto::class,
             true
         );
 
@@ -112,6 +119,11 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
             ->entityTools
             ->entityToDto($this->tpRate)
             ->willReturn($this->tpRateDto);
+
+        $this
+            ->entityTools
+            ->entityToDto($this->destinationRate)
+            ->willReturn($this->destinationRateDto);
     }
 
     function it_is_initializable()
@@ -141,9 +153,18 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
         $this
             ->prepareExecution();
 
+        $this->destinationRateDto
+            ->setTpRate(
+                $this->tpRateDto
+            )
+        ->shouldbeCalled();
+
         $this
             ->entityTools
-            ->persist($this->destinationRate)
+            ->persistDto(
+                $this->destinationRateDto,
+                $this->destinationRate
+            )
             ->shouldBeCalled();
 
         $this->execute($this->destinationRate);

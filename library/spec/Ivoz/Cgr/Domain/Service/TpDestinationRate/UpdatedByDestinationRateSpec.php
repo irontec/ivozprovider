@@ -7,6 +7,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Cgr\Domain\Service\TpDestinationRate\UpdatedByDestinationRate;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use PhpSpec\ObjectBehavior;
@@ -19,6 +20,7 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
 
     protected $entityTools;
     protected $destinationRate;
+    protected $destinationRateDto;
     protected $destinationRateGroup;
     protected $brand;
     protected $tpDestinationRate;
@@ -40,6 +42,11 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
     {
         $this->destinationRate = $this->getTestDouble(
             DestinationRateInterface::class,
+            true
+        );
+
+        $this->destinationRateDto = $this->getTestDouble(
+            DestinationRateDto::class,
             true
         );
 
@@ -107,6 +114,15 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
         $this
             ->entityTools
             ->entityToDto(
+                $this->destinationRate
+            )
+            ->willReturn(
+                $this->destinationRateDto
+            );
+
+        $this
+            ->entityTools
+            ->entityToDto(
                 $this->tpDestinationRate
             )
             ->willReturn(
@@ -151,14 +167,15 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
         $this->prepareExecution();
 
         $this
-            ->destinationRate
+            ->destinationRateDto
             ->setTpDestinationRate(
-                $this->tpDestinationRate
+                $this->tpDestinationRateDto
             )
             ->shouldBeCalled();
 
         $this->entityTools
-            ->persist(
+            ->persistDto(
+                $this->destinationRateDto,
                 $this->destinationRate
             )
             ->shouldBeCalled();
