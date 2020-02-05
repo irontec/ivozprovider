@@ -126,6 +126,7 @@ abstract class DestinationAbstract
         );
 
         $self
+            ->setTpDestination($fkTransformer->transform($dto->getTpDestination()))
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
 
@@ -155,6 +156,7 @@ abstract class DestinationAbstract
         $this
             ->setPrefix($dto->getPrefix())
             ->setName($name)
+            ->setTpDestination($fkTransformer->transform($dto->getTpDestination()))
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
 
@@ -175,6 +177,7 @@ abstract class DestinationAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
+            ->setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestination::entityToDto(self::getTpDestination(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
@@ -189,6 +192,7 @@ abstract class DestinationAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
+            'tpDestinationId' => self::getTpDestination() ? self::getTpDestination()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }

@@ -116,6 +116,7 @@ abstract class DdiProviderAddressAbstract
         $self
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
+            ->setTrunksAddress($fkTransformer->transform($dto->getTrunksAddress()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
@@ -138,6 +139,7 @@ abstract class DdiProviderAddressAbstract
         $this
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
+            ->setTrunksAddress($fkTransformer->transform($dto->getTrunksAddress()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
@@ -155,6 +157,7 @@ abstract class DdiProviderAddressAbstract
         return self::createDto()
             ->setIp(self::getIp())
             ->setDescription(self::getDescription())
+            ->setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddress::entityToDto(self::getTrunksAddress(), $depth))
             ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
@@ -166,6 +169,7 @@ abstract class DdiProviderAddressAbstract
         return [
             'ip' => self::getIp(),
             'description' => self::getDescription(),
+            'trunksAddressId' => self::getTrunksAddress() ? self::getTrunksAddress()->getId() : null,
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
