@@ -83,6 +83,7 @@ production:
       forcedValues:
         <<: *forcedCompany
         <<: *forcedBrand
+        ddiIn: "no"
       fields:
         blacklist: &residentialDevices_blacklistLink
           domain: true

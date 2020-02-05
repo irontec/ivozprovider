@@ -81,6 +81,7 @@ production:
       plugin: passwordgennew
       forcedValues:
         <<: *forcedCompany
+        ddiIn: "no"
       fields:
         readOnly:
           interCompany: ${auth.isCompanyOperator}
