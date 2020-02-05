@@ -323,6 +323,11 @@ abstract class ServiceAbstract
      */
     public function setName(Name $name)
     {
+        $isEqual = $this->name && $this->name->equals($name);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->name = $name;
         return $this;
     }
@@ -346,6 +351,11 @@ abstract class ServiceAbstract
      */
     public function setDescription(Description $description)
     {
+        $isEqual = $this->description && $this->description->equals($description);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->description = $description;
         return $this;
     }

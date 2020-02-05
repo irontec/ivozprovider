@@ -29,7 +29,7 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * @return bool
      */
-    public function isProcessing();
+    public function isWaiting();
 
     public function setNumber($number = null);
 

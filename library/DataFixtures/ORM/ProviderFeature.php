@@ -17,11 +17,12 @@ class ProviderFeature extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Feature::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("queues");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item1);
@@ -31,7 +32,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("recordings");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item2);
@@ -41,7 +42,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("faxes");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item3);
@@ -51,7 +52,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("friends");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item4);
@@ -61,7 +62,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item4);
 
         $item5 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("conferences");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item5);
@@ -71,7 +72,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item5);
 
         $item6 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("billing");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item6);
@@ -81,7 +82,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item6);
 
         $item7 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("invoices");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item7);
@@ -91,7 +92,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item7);
 
         $item8 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("progress");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item8);
@@ -101,7 +102,7 @@ class ProviderFeature extends Fixture
         $manager->persist($item8);
 
         $item9 = $this->createEntityInstance(Feature::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("retail");
             $this->setName(new Name('en', 'es', 'ca', 'it'));
         })->call($item9);

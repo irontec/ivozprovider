@@ -41,6 +41,18 @@ class RecordedFile
         $this->setBaseName($baseName);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $recordedFile)
+    {
+        return
+            $this->getFileSize() === $recordedFile->getFileSize() &&
+            $this->getMimeType() === $recordedFile->getMimeType() &&
+            $this->getBaseName() === $recordedFile->getBaseName();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

@@ -18,16 +18,15 @@ class ProviderRecording extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Recording::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var Recording $item1 */
         $item1 = $this->createEntityInstance(Recording::class);
 
-        $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
-        (function () {
+
+        (function () use ($fixture) {
             $this->setCallid('7602fd7f-4153-4475-9100-d89ff70cdf76');
             $this->setCalldate(new \DateTime('2017-01-05 00:15:15', new \DateTimeZone('UTC')));
             $this->setType('ondemand');
@@ -39,6 +38,9 @@ class ProviderRecording extends Fixture implements DependentFixtureInterface
                 'audio/mpeg; charset=binary',
                 '7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3'
             ));
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
         })->call($item1);
 
         $this->addReference('_reference_ProviderRecording1', $item1);

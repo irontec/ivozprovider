@@ -17,6 +17,7 @@ class ProviderRatingPlan extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(RatingPlan::class)
@@ -24,18 +25,17 @@ class ProviderRatingPlan extends Fixture implements DependentFixtureInterface
 
         /** @var ratingPlan $item1 */
         $item1 = $this->createEntityInstance(RatingPlan::class);
-        (function () {
+        (function () use ($fixture) {
             $this
                 ->setTimeIn(new \DateTime('2018-01-01 10:10:10'));
+            $this
+                ->setRatingPlanGroup(
+                    $fixture->getReference('_reference_ProviderRatingPlanGroup1')
+                )
+                ->setDestinationRateGroup(
+                    $fixture->getReference('_reference_ProviderDestinationRateGroup1')
+                );
         })->call($item1);
-
-        $item1
-            ->setRatingPlanGroup(
-                $this->getReference('_reference_ProviderRatingPlanGroup1')
-            )
-            ->setDestinationRateGroup(
-                $this->getReference('_reference_ProviderDestinationRateGroup1')
-            );
 
         $this->addReference('_reference_ProviderRatingPlan1', $item1);
         $this->sanitizeEntityValues($item1);

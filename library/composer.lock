@@ -1799,16 +1799,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.1.1",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "890f835828cdc82de16eb3c6b3befe6c3ec1b7ac"
+                "reference": "1e7db04c1b65e46fd124c088bd0c5ec06f4f3f31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/890f835828cdc82de16eb3c6b3befe6c3ec1b7ac",
-                "reference": "890f835828cdc82de16eb3c6b3befe6c3ec1b7ac",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/1e7db04c1b65e46fd124c088bd0c5ec06f4f3f31",
+                "reference": "1e7db04c1b65e46fd124c088bd0c5ec06f4f3f31",
                 "shasum": ""
             },
             "require": {
@@ -1849,7 +1849,7 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2020-01-10T12:40:04+00:00"
+            "time": "2020-02-04T14:13:03+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -1904,16 +1904,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "2.2.2",
+            "version": "2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "6bdf7d6eb193963e0b7dca913e019d6c7c0319b2"
+                "reference": "e299edb4a072b4cb4832f1a537ef3a2392643321"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/6bdf7d6eb193963e0b7dca913e019d6c7c0319b2",
-                "reference": "6bdf7d6eb193963e0b7dca913e019d6c7c0319b2",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/e299edb4a072b4cb4832f1a537ef3a2392643321",
+                "reference": "e299edb4a072b4cb4832f1a537ef3a2392643321",
                 "shasum": ""
             },
             "require": {
@@ -1947,7 +1947,7 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
-            "time": "2020-01-15T12:08:18+00:00"
+            "time": "2020-02-03T15:15:11+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -4433,6 +4433,7 @@
             ],
             "description": "Handlebars processor for php",
             "homepage": "https://github.com/XaminProject/handlebars.php",
+            "abandoned": true,
             "time": "2016-12-12T13:51:02+00:00"
         },
         {
@@ -7672,6 +7673,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": true,
             "time": "2017-12-07T15:36:41+00:00"
         },
         {

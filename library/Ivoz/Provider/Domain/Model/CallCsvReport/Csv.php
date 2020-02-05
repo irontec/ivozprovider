@@ -41,6 +41,18 @@ class Csv
         $this->setBaseName($baseName);
     }
 
+    /**
+     * Equals
+     */
+    public function equals(self $csv)
+    {
+        return
+            $this->getFileSize() === $csv->getFileSize() &&
+            $this->getMimeType() === $csv->getMimeType() &&
+            $this->getBaseName() === $csv->getBaseName();
+    }
+
+
     // @codeCoverageIgnoreStart
 
     /**

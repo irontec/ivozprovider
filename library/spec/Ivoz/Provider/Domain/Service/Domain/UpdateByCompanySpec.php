@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -10,9 +11,12 @@ use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Service\Domain\UpdateByCompany;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class UpdateByCompanySpec extends ObjectBehavior
 {
+    use HelperTrait;
+
     /**
      * @var EntityTools
      */
@@ -84,9 +88,16 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->willReturn($domain)
             ->shouldBeCalled();
 
-        $this->entity
-             ->setDomain($domain)
-             ->shouldBeCalled();
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                $this->entity,
+                Argument::that(function (CompanyDto $dto) {
+                    $domainDto = $dto->getDomain();
+                    return $domainDto instanceof DomainDto;
+                })
+            )
+            ->shouldBeCalled();
 
         $this->execute(
             $this->entity
@@ -120,8 +131,15 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->willReturn($domain)
             ->shouldBeCalled();
 
-        $this->entity
-            ->setDomain($domain)
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                $this->entity,
+                Argument::that(function (CompanyDto $dto) {
+                    $domainDto = $dto->getDomain();
+                    return $domainDto instanceof DomainDto;
+                })
+            )
             ->shouldBeCalled();
 
         $this->execute(
@@ -151,12 +169,21 @@ class UpdateByCompanySpec extends ObjectBehavior
 
     private function prepareEntityResponses()
     {
-        $this->entity
+        $this
+            ->entity
             ->getDomainUsers()
             ->willReturn('DomainUserValue');
 
-        $this->entity
+        $this
+            ->entity
             ->getName()
             ->willReturn('NameValue');
+
+        $companyDto = new CompanyDto();
+        $this
+            ->entityTools
+            ->entityToDto($this->entity)
+            ->willReturn($companyDto)
+            ->shouldBeCalled();
     }
 }

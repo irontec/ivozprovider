@@ -86,12 +86,13 @@ class Invoices
 
         /** @var InvoiceDto $invoiceDto */
         $invoiceDto = $this->entityTools->entityToDto($invoice);
-        $invoiceDto->setStatus(InvoiceInterface::STATUS_PROCESSING);
-        $this->entityTools->persistDto($invoiceDto, $invoice, true);
-
-        $this->logger->info("[INVOICER] Status = processing");
 
         try {
+            $invoiceDto->setStatus(InvoiceInterface::STATUS_PROCESSING);
+            $this->entityTools->persistDto($invoiceDto, $invoice, true);
+
+            $this->logger->info("[INVOICER] Status = processing");
+
             $content = $this->generator->getInvoicePDFContents($id);
             $tempPath = "/opt/irontec/ivozprovider/storage/invoice";
             if (!file_exists($tempPath)) {

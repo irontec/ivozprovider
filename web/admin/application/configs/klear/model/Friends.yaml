@@ -234,7 +234,7 @@ production:
     directConnectivity:
       title: _('Connectivity mode')
       type: select
-      defaultValue: yes
+      defaultValue: "no"
       source:
         data: inline
         values:

@@ -17,6 +17,7 @@ class CgrTpAccountAction extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(TpAccountAction::class)
@@ -24,7 +25,7 @@ class CgrTpAccountAction extends Fixture implements DependentFixtureInterface
 
         /** @var TpAccountAction $item1 */
         $item1 = $this->createEntityInstance(TpAccountAction::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setTpid('ivozprovider');
             $this->setLoadid('DATABASE');
             $this->setTenant('b1');
@@ -34,16 +35,17 @@ class CgrTpAccountAction extends Fixture implements DependentFixtureInterface
             $this->setAllowNegative(false);
             $this->setDisabled(false);
             $this->setCreatedAt(new \DateTime('2018-01-01 10:10:10'));
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany1')
+            );
         })->call($item1);
-        $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
+
         $this->addReference('_reference_CgrTpAccountAction1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(TpAccountAction::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setTpid('ivozprovider');
             $this->setLoadid('DATABASE');
             $this->setTenant('b1');
@@ -53,11 +55,11 @@ class CgrTpAccountAction extends Fixture implements DependentFixtureInterface
             $this->setAllowNegative(false);
             $this->setDisabled(false);
             $this->setCreatedAt(new \DateTime('2017-02-01 10:11:12'));
+            $this->setCompany(
+                $fixture->getReference('_reference_ProviderCompany2')
+            );
         })->call($item2);
 
-        $item2->setCompany(
-            $this->getReference('_reference_ProviderCompany2')
-        );
         $this->addReference('_reference_CgrTpAccountAction2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);

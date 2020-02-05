@@ -673,6 +673,11 @@ abstract class BrandAbstract
      */
     public function setLogo(Logo $logo)
     {
+        $isEqual = $this->logo && $this->logo->equals($logo);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->logo = $logo;
         return $this;
     }
@@ -696,6 +701,11 @@ abstract class BrandAbstract
      */
     public function setInvoice(Invoice $invoice)
     {
+        $isEqual = $this->invoice && $this->invoice->equals($invoice);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->invoice = $invoice;
         return $this;
     }

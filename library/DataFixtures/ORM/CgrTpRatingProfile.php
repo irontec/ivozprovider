@@ -17,6 +17,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(TpRatingProfile::class)
@@ -24,7 +25,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
 
         /** @var TpRatingProfile $item1 */
         $item1 = $this->createEntityInstance(TpRatingProfile::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setTpid('ivozprovider');
             $this->setLoadid('DATABASE');
             $this->setDirection('*out');
@@ -36,17 +37,18 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
             $this->setCreatedAt(
                 new \DateTime('2018-01-01 10:10:10')
             );
+            $this->setRatingProfile(
+                $fixture->getReference('_reference_ProviderRatingProfile1')
+            );
         })->call($item1);
-        $item1->setRatingProfile(
-            $this->getReference('_reference_ProviderRatingProfile1')
-        );
+
         $this->sanitizeEntityValues($item1);
         $this->addReference('_reference_CgrTpRatingProfile1', $item1);
         $manager->persist($item1);
 
         /** @var TpRatingProfile $item2 */
         $item2 = $this->createEntityInstance(TpRatingProfile::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setTpid('ivozprovider');
             $this->setLoadid('DATABASE');
             $this->setDirection('*out');
@@ -58,10 +60,10 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
             $this->setCreatedAt(
                 new \DateTime('2018-02-02 20:20:20')
             );
+            $this->setRatingProfile(
+                $fixture->getReference('_reference_ProviderRatingProfile2')
+            );
         })->call($item2);
-        $item2->setRatingProfile(
-            $this->getReference('_reference_ProviderRatingProfile2')
-        );
 
         $this->sanitizeEntityValues($item2);
         $this->addReference('_reference_CgrTpRatingProfile2', $item2);

@@ -471,6 +471,11 @@ abstract class FaxesInOutAbstract
      */
     public function setFile(File $file)
     {
+        $isEqual = $this->file && $this->file->equals($file);
+        if ($isEqual) {
+            return $this;
+        }
+
         $this->file = $file;
         return $this;
     }

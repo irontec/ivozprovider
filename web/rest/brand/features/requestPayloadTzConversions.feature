@@ -47,7 +47,7 @@ Feature: Input timezone convertion
       }
     """
 
-  Scenario: Retrieve created item using user time zone (Madrid)
+  Scenario: Retrieve created item using user time zone (Europe/Madrid)
     Given I add Authorization header for "utcBrandAdmin"
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoices/2"
@@ -55,8 +55,8 @@ Feature: Input timezone convertion
     """
        {
           "number": "2",
-          "inDate": "2018-12-31 23:00:00",
-          "outDate": "2019-01-01 22:59:59",
+          "inDate": "2019-01-01 00:00:00",
+          "outDate": "2019-01-01 23:59:59",
           "total": 10,
           "taxRate": 21,
           "totalWithTax": 12.1,

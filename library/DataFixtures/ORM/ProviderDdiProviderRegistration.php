@@ -18,12 +18,13 @@ class ProviderDdiProviderRegistration extends Fixture implements DependentFixtur
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(DdiProviderRegistration::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         /** @var DdiProviderRegistrationInterface $item1 */
         $item1 = $this->createEntityInstance(DdiProviderRegistration::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setUsername("DDIRegistrationUsername");
             $this->setDomain("DDIRegistrationDomain");
             $this->setRealm("DDIRegistrationRealm");
@@ -33,9 +34,9 @@ class ProviderDdiProviderRegistration extends Fixture implements DependentFixtur
             $this->setExpires(2000);
             $this->setMultiDdi(0);
             $this->setContactUsername("DDIRegistrationContactUsername");
+            $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
         })->call($item1);
 
-        $item1->setDdiProvider($this->getReference('_reference_ProviderDdiProvider1'));
         $this->addReference('_reference_ProviderDdiProviderRegistration1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);

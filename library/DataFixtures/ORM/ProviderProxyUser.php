@@ -16,11 +16,12 @@ class ProviderProxyUser extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ProxyUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(ProxyUser::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setName("proxyusers");
             $this->setIp("127.0.0.1");
         })->call($item1);

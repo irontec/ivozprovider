@@ -15,9 +15,13 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
 
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   itemOperations:
-    get: ~
+    get:
+      swagger_context:
+        description: 'DEPRECTAED METHOD: Will be removed in the next release'
   collectionOperations:
-    get: ~
+    get:
+      swagger_context:
+        description: 'DEPRECTAED METHOD: Will be removed in the next release'
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:

@@ -17,6 +17,7 @@ class ProviderInvoiceNumberSequence extends Fixture implements DependentFixtureI
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager
             ->getClassMetadata(InvoiceNumberSequence::class)
@@ -26,7 +27,7 @@ class ProviderInvoiceNumberSequence extends Fixture implements DependentFixtureI
         $item1 = $this->createEntityInstance(
             InvoiceNumberSequence::class
         );
-        (function () {
+        (function () use ($fixture) {
             $this->setName('GeneratorName');
             $this->setPrefix('auto');
             $this->setSequenceLength(4);
@@ -34,10 +35,10 @@ class ProviderInvoiceNumberSequence extends Fixture implements DependentFixtureI
             $this->setLatestValue('auto0001');
             $this->setIteration(1);
             $this->setVersion(1);
+            $this->setBrand(
+                $fixture->getReference('_reference_ProviderBrand1')
+            );
         })->call($item1);
-        $item1->setBrand(
-            $this->getReference('_reference_ProviderBrand1')
-        );
 
         $this->addReference('_reference_ProviderInvoiceNumberSequence1', $item1);
         $this->sanitizeEntityValues($item1);

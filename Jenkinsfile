@@ -242,6 +242,7 @@ pipeline {
                                       .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                     sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
+                                    sh '/opt/irontec/ivozprovider/schema/bin/test-duplicate-keys'
                                 }
                             }
                         }

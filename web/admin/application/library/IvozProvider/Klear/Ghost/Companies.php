@@ -85,6 +85,11 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
                 $companyDto->getId()
             );
 
+            // If numeric amount, round to 2 decimals value
+            if (is_numeric($amount)) {
+                $amount = sprintf("%0.2f", floatval($amount));
+            }
+
             $currencySymbol = $dataGateway->remoteProcedureCall(
                 Company::class,
                 $companyDto->getId(),

@@ -17,11 +17,12 @@ class ProviderLanguage extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Language::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item1 = $this->createEntityInstance(Language::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("es");
             $this->setName(new Name('es', 'es', 'es', 'es'));
         })->call($item1);
@@ -31,7 +32,7 @@ class ProviderLanguage extends Fixture
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstance(Language::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("en");
             $this->setName(new Name('en', 'en', 'en', 'en'));
         })->call($item2);
@@ -41,7 +42,7 @@ class ProviderLanguage extends Fixture
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstance(Language::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("ca");
             $this->setName(new Name('ca', 'ca', 'ca', 'ca'));
         })->call($item3);
@@ -51,7 +52,7 @@ class ProviderLanguage extends Fixture
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstance(Language::class);
-        (function () {
+        (function () use ($fixture) {
             $this->setIden("it");
             $this->setName(new Name('it', 'it', 'it', 'it'));
         })->call($item4);
