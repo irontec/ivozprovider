@@ -1,3 +1,29 @@
+Web, 05 Feb 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.14.1 released
+
+    * Application Server
+        - Disabled direcmedia for every friend to prevent issues.
+
+    * Core
+        - Error prevention on scheduled invoices
+        - Fix offline billing CGRateS request to calculate cost
+        - Recover disableDestination flag logic for CSV imports
+
+    * Proxies
+        - Fix interpbx friends device call forwards
+        - Apply fax routes to retail T.38 accounts
+        - Fix parsed value for inbound calls
+
+    * Portals
+        - Fixed invoice template tester
+        - DirectConnectivity defaults to No for new retail/residential/friend
+        - ddiIn defaults to No for new retail/residential/friends
+        - round daily usage value
+
+    * API
+        - Deprecated /api/brand/users_cdrs endpoint
+
 Tue, 21 Jan 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.14.0 released
