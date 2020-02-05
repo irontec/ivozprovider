@@ -22,7 +22,7 @@ class DdiProviderAddressLifeCycleTest extends KernelTestCase
         $ddiProviderAddressDto
             ->setIp('127.1.1.1')
             ->setDescription('Description')
-            ->setTrunksAddressId(1)
+            ->setTrunksAddressId(null)
             ->setDdiProviderId(1);
 
         return $ddiProviderAddressDto;
