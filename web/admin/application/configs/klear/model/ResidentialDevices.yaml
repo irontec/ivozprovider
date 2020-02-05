@@ -189,7 +189,7 @@ production:
     directConnectivity:
       title: _('Direct connectivity')
       type: select
-      defaultValue: yes
+      defaultValue: "no"
       source:
         data: inline
         values:
