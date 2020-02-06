@@ -82,42 +82,6 @@ class CarrierServerSpec extends ObjectBehavior
             ->during('setIp', ['2001:db8:a0b:12f0::1']);
     }
 
-    function it_throws_exception_on_empty_carrier()
-    {
-        $dto = clone $this->dto;
-        $this->hydrate(
-            $dto,
-            ['carrier' => null]
-        );
-
-        $exception = new \Exception('Unknown Carrier');
-        $this
-            ->shouldThrow($exception)
-            ->during(
-                'updateFromDto',
-                [$dto, new \spec\DtoToEntityFakeTransformer()]
-            );
-    }
-
-    function it_throws_exception_on_empty_carrier_brand(
-        CarrierInterface $anotherCarrier
-    ) {
-        $dto = clone $this->dto;
-        $this->hydrate(
-            $dto,
-            ['carrier' => $anotherCarrier->getWrappedObject()]
-        );
-
-        $exception = new \Exception('Unknown Brand');
-        ;
-        $this
-            ->shouldThrow($exception)
-            ->during(
-                'updateFromDto',
-                [$dto, new \spec\DtoToEntityFakeTransformer()]
-            );
-    }
-
     function it_sets_brand_when_not_new_and_changed_carrierId(
         CarrierInterface $newCarrier,
         BrandInterface $brand
