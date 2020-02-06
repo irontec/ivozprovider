@@ -53,7 +53,7 @@ function schema_migrations()
     cd /opt/irontec/ivozprovider/schema
     bin/console cache:clear --no-warmup -q -n
     bin/console doctrine:migrations:status
-    bin/console doctrine:migrations:migrate --no-interaction --quiet
+    bin/console doctrine:migrations:migrate --no-interaction
 }
 
 #######################################################################################################################
