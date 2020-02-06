@@ -24,7 +24,8 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
     protected $dto;
 
     function let(
-        MatchListInterface $matchList
+        MatchListInterface $matchList,
+        OutgoingDdiRuleInterface $outgoingDdiRule
     ) {
         $this->dto = $dto = new OutgoingDdiRulesPatternDto();
 
@@ -37,7 +38,8 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
         $this->hydrate(
             $dto,
             [
-                'matchList' => $matchList->getWrappedObject()
+                'matchList' => $matchList->getWrappedObject(),
+                'outgoingDdiRule' => $outgoingDdiRule->getWrappedObject(),
             ]
         );
 

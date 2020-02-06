@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\BrandService;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
@@ -15,7 +16,8 @@ class BrandServiceSpec extends ObjectBehavior
     protected $dto;
 
     function let(
-        ServiceInterface $service
+        ServiceInterface $service,
+        BrandInterface $brand
     ) {
         $this->dto = $dto = new BrandServiceDto();
         $dto->setCode('123');
@@ -23,7 +25,8 @@ class BrandServiceSpec extends ObjectBehavior
         $this->hydrate(
             $dto,
             [
-                'service' => $service->getWrappedObject()
+                'service' => $service->getWrappedObject(),
+                'brand' => $brand->getWrappedObject(),
             ]
         );
 

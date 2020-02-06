@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\CalendarPeriod;
 
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto;
 use PhpSpec\ObjectBehavior;
@@ -14,8 +15,9 @@ class CalendarPeriodSpec extends ObjectBehavior
 
     protected $dto;
 
-    function let()
-    {
+    function let(
+        CalendarInterface $calendar
+    ) {
         $this->dto = $dto = new CalendarPeriodDto();
         $dto
             ->setStartDate(
@@ -24,6 +26,13 @@ class CalendarPeriodSpec extends ObjectBehavior
             ->setEndDate(
                 new \DateTime('now', new \DateTimeZone('UTC'))
             );
+
+        $this->hydrate(
+            $dto,
+            [
+                'calendar' => $calendar->getWrappedObject(),
+            ]
+        );
 
         $this->beConstructedThrough(
             'fromDto',

@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\CompanyService;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
@@ -15,7 +16,8 @@ class CompanyServiceSpec extends ObjectBehavior
     protected $dto;
 
     function let(
-        ServiceInterface $service
+        ServiceInterface $service,
+        CompanyInterface $company
     ) {
         $this->dto = $dto = new CompanyServiceDto();
         $dto->setCode('123');
@@ -23,7 +25,8 @@ class CompanyServiceSpec extends ObjectBehavior
         $this->hydrate(
             $dto,
             [
-                'service' => $service->getWrappedObject()
+                'service' => $service->getWrappedObject(),
+                'company' => $company->getWrappedObject(),
             ]
         );
 
