@@ -12,11 +12,6 @@ from application.ini files:
         Iron.fso.localStoragePath  = "/opt/irontec/ivozprovider/storage"
         Iron.fso.localStorageChmod = "0777"
 
-You may have found some files with
-0777 as well, that's because the command below is executed after every package upgrade:
-
-    chmod 777 -R /opt/irontec/ivozprovider/storage
-
 ## Recordings
 
 Recording system is executed as root and it uses these three folders:
