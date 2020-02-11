@@ -33,6 +33,18 @@ class ProviderFixedCost extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(FixedCost::class);
+        (function () use ($fixture) {
+            $this->setName("24x7");
+            $this->setDescription("Something");
+            $this->setCost("100.0000");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderFixedCost2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 

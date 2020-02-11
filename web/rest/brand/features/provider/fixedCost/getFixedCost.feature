@@ -17,6 +17,10 @@ Feature: Retrieve fixed costs
           {
               "name": "Monitoring",
               "id": 1
+          },
+          {
+              "name": "24x7",
+              "id": 2
           }
       ]
     """

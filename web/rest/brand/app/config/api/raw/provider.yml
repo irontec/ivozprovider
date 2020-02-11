@@ -446,6 +446,29 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler:
           - inheritedOrNull:
               company: 'Ivoz\Provider\Domain\Model\Company\Company'
 
+Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler:
+  itemOperations:
+    get: ~
+    delete: ~
+    put:
+      depth: 1
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
+    write_access_control:
+      inherited:
+        fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
+        invoiceScheduler: 'Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler'
+
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
