@@ -40,8 +40,8 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
         InvoiceInterface $invoice,
         FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
     ) {
-        $dto = new static();
-        $dto
+        $entity = new static();
+        $entity
             ->setQuantity(
                 $fixedCostRelScheduler->getQuantity()
             )
@@ -52,6 +52,9 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
                 $invoice
             );
 
-        return $dto;
+        $entity->sanitizeValues();
+        $entity->initChangelog();
+
+        return $entity;
     }
 }

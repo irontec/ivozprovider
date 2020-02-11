@@ -30,6 +30,9 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
             $event->getData()
         );
 
+        $entity->sanitizeValues();
+        $entity->initChangelog();
+
         return $entity;
     }
 
