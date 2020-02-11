@@ -430,6 +430,22 @@ Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
         brand:
           eq: "user.getBrand().getId()"
 
+Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        - and:
+          - brand:
+              eq: "user.getBrand().getId()"
+        - or:
+          - inheritedOrNull:
+              company: 'Ivoz\Provider\Domain\Model\Company\Company'
+
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

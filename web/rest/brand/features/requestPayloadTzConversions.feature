@@ -18,7 +18,8 @@ Feature: Input timezone convertion
           "statusMsg": null,
           "invoiceTemplate": 1,
           "company": 1,
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """
     Then the response status code should be 201
@@ -43,7 +44,8 @@ Feature: Input timezone convertion
           },
           "invoiceTemplate": 1,
           "company": 1,
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """
 
@@ -70,6 +72,7 @@ Feature: Input timezone convertion
           },
           "invoiceTemplate": "~",
           "company": "~",
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """
