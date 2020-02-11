@@ -45,6 +45,8 @@ class User extends \Klear_Model_UserAdvanced
     public $companyInvoices = false;
     public $companyRecordingRemoval = true;
 
+    public $acls = [];
+
     public function setToken(string $token, string $refreshToken)
     {
         $this->token = $token;

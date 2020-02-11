@@ -3,16 +3,16 @@ namespace IvozProvider\Klear\Auth;
 
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
-use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
-use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneDTO;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
 {
     /**
-     * @var Brands
+     * @var BrandDto
      */
     protected $_brand;
 
@@ -27,7 +27,7 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
         $this->dataGateway = \Zend_Registry::get('data_gateway');
     }
 
-    public function setBrand(BrandDTO $brand)
+    public function setBrand(BrandDto $brand)
     {
         $this->_brand = $brand;
     }
@@ -43,10 +43,10 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
 
     /**
      * @param string $login
-     * @param null | BrandDTO $brand
+     * @param null | BrandDto $brand
      * @return Klear_Auth_Adapter_Interfaces_BasicUserModel
      */
-    public function findByLoginAndBrand($login, BrandDTO $brand = null)
+    public function findByLoginAndBrand($login, BrandDto $brand = null)
     {
         $administrator = $this->dataGateway->findOneBy(
             Administrator::class,
@@ -71,7 +71,7 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
     protected function _poblateUser(User $user, $operator)
     {
         /**
-         * @var TimezoneDTO $operatorTz
+         * @var TimezoneDto $operatorTz
          */
         $operatorTz = $this->dataGateway->find(
             Timezone::class,
@@ -108,7 +108,7 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
             $entityClass = substr(
                 get_class($entity),
                 0,
-                strlen('DTO') * -1
+                strlen('Dto') * -1
             );
 
             $enabled = $this->dataGateway->remoteProcedureCall(
@@ -124,12 +124,12 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
             );
         }
 
-        if ($entity instanceof BrandDTO) {
+        if ($entity instanceof BrandDto) {
             $user->setBrandFeatures($features);
-        } elseif ($entity instanceof CompanyDTO) {
+        } elseif ($entity instanceof CompanyDto) {
             $user->setCompanyFeatures($features);
         } else {
-            throw new \Exception('Brand or Company DTO was expected');
+            throw new \Exception('Brand or Company Dto was expected');
         }
     }
 

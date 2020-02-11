@@ -383,10 +383,6 @@ mappers:
         modelFile: KamTrunksAcc,
         entity: 'Kam\\Model\\TrunksAcc\\TrunksAcc'
     }
-  - &UsersAcc {
-        modelFile: UsersAcc,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\UsersAcc\\UsersAcc'
-    }
   - &KamUsersAddress {
         modelFile: KamUsersAddress,
         entity: 'Kam\\Model\\UsersAddress\\UsersAddress'
