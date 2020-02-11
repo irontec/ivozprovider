@@ -117,7 +117,7 @@ Ivoz\Provider\Domain\Model\Language\Language:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles'
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Language\Name: ~
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   itemOperations: []
@@ -181,7 +181,7 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
     get: ~
   attributes:
     pagination_client_enabled: true
-    access_control: '"ROLE_USER" in roles'
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
