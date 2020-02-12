@@ -17,6 +17,11 @@ class AdministratorLifecycleServiceCollection implements LifecycleServiceCollect
         [
             \Ivoz\Provider\Domain\Service\Administrator\CheckUniqueness::class => 200,
         ],
+        "post_persist" =>
+        [
+            \Ivoz\Provider\Domain\Service\AdministratorRelPublicEntity\CreateAcls::class => 200,
+            \Ivoz\Provider\Domain\Service\AdministratorRelPublicEntity\UpdateAcls::class => 200,
+        ],
     ];
 
     /**

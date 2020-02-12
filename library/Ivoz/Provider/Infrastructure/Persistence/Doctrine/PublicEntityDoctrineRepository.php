@@ -3,7 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity;
+use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,5 +20,71 @@ class PublicEntityDoctrineRepository extends ServiceEntityRepository implements 
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, PublicEntity::class);
+    }
+
+    /**
+     * @return PublicEntityInterface[]
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
+    public function findClientEntities(): array
+    {
+        $criteria = CriteriaHelper::fromArray(
+            [
+                ['client', 'eq', true],
+            ]
+        );
+
+        $qb = $this->createQueryBuilder('self');
+        $qb
+            ->select('self')
+            ->addCriteria($criteria);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return PublicEntityInterface[]
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
+    public function findBrandEntities(): array
+    {
+        $criteria = CriteriaHelper::fromArray(
+            [
+                ['brand', 'eq', true],
+            ]
+        );
+
+        $qb = $this->createQueryBuilder('self');
+        $qb
+            ->select('self')
+            ->addCriteria($criteria);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return PublicEntityInterface[]
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
+    public function findPlatformEntities(): array
+    {
+        $criteria = CriteriaHelper::fromArray(
+            [
+                ['platform', 'eq', true],
+            ]
+        );
+
+        $qb = $this->createQueryBuilder('self');
+        $qb
+            ->select('self')
+            ->addCriteria($criteria);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 }

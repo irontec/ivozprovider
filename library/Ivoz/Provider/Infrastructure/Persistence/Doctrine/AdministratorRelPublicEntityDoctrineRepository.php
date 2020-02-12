@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -15,8 +17,56 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityRepository implements AdministratorRelPublicEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    protected $queryRunner;
+
+    public function __construct(
+        RegistryInterface $registry,
+        DoctrineQueryRunner $queryRunner
+    ) {
         parent::__construct($registry, AdministratorRelPublicEntity::class);
+        $this->queryRunner = $queryRunner;
+    }
+
+    public function setWritePermissions(
+        AdministratorInterface $administrator
+    ): int {
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.create', ':trueValue')
+            ->set('self.read', ':trueValue')
+            ->set('self.update', ':trueValue')
+            ->set('self.delete', ':trueValue')
+            ->setParameter(':trueValue', true)
+            ->where('self.administrator = :id')
+            ->setParameter(':id', $administrator->getId());
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    public function setReadOnlyPermissions(
+        AdministratorInterface $administrator
+    ): int {
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.create', ':falseValue')
+            ->set('self.read', ':trueValue')
+            ->set('self.update', ':falseValue')
+            ->set('self.delete', ':falseValue')
+            ->setParameter(':falseValue', false)
+            ->setParameter(':trueValue', true)
+            ->where('self.administrator = :id')
+            ->setParameter(':id', $administrator->getId());
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
     }
 }
