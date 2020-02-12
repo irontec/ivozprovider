@@ -50,8 +50,8 @@ production:
           title: _("Options")
           screens:
             retailAccountsEdit_screen: ${auth.canSeeBrand}
-            ddisList_screen: true
-            callForwardSettingsList_screen: true
+            ddisList_screen: ${auth.acls.DDIs.read}
+            callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
           dialogs:
             retailAccountsDel_dialog: ${auth.canSeeBrand}
           default: retailAccountsEdit_screen

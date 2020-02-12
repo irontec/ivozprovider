@@ -26,16 +26,16 @@ production:
         options:
           title: _("Options")
           screens:
-            genericMatchListsEdit_screen: true
-            genericMatchListPatternsList_screen: true
+            genericMatchListsEdit_screen: ${auth.acls.MatchLists.update}
+            genericMatchListPatternsList_screen: ${auth.acls.MatchListPatterns.read}
           dialogs:
-            genericMatchListsDel_dialog: true
+            genericMatchListsDel_dialog: ${auth.acls.MatchLists.delete}
       options:
         title: _("Options")
         screens:
-          genericMatchListsNew_screen: true
+          genericMatchListsNew_screen: ${auth.acls.MatchLists.create}
         dialogs:
-          genericMatchListsDel_dialog: true
+          genericMatchListsDel_dialog: ${auth.acls.MatchLists.delete}
 
     genericMatchListsNew_screen:
       <<: *matchListsNew_screenLink

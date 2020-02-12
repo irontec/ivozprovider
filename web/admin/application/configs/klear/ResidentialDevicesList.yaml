@@ -58,7 +58,7 @@ production:
           title: _("Options")
           screens:
             residentialDevicesEdit_screen: ${auth.canSeeBrand}
-            callForwardSettingsList_screen: true
+            callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
           dialogs:
             residentialDevicesDel_dialog: ${auth.canSeeBrand}
           default: residentialDevicesEdit_screen

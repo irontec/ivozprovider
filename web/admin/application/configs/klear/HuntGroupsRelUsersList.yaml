@@ -18,16 +18,16 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersEdit_screen: true
+            huntGroupsRelUsersEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: true
+            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
           default: huntGroupsRelUsersEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersNew_screen: true
+          huntGroupsRelUsersNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: true
+          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
     huntGroupsRelUsersNew_screen: &huntGroupsRelUsersNew_screenLink
       <<: *HuntGroupsRelUsers
       controller: new

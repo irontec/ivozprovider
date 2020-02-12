@@ -27,7 +27,7 @@ production:
           screens:
             invoiceSchedulersEdit_screen: true
             fixedCostsRelInvoiceSchedulersList_screen: true
-            invoicesList_screen: true
+            invoicesList_screen: ${auth.acls.Invoices.read}
           dialogs:
             invoiceSchedulersDel_dialog: true
           default: invoiceSchedulersEdit_screen

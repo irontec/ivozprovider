@@ -29,7 +29,7 @@ production:
             ddiProvidersEdit_screen: true
             ddiProviderAddressesList_screen: true
             ddiProviderRegistrationsList_screen: true
-            ddisList_screen: true
+            ddisList_screen: ${auth.acls.DDIs.read}
           dialogs:
             ddiProvidersDel_dialog: true
           default: ddiProvidersEdit_screen

@@ -23,16 +23,16 @@ production:
         options:
           title: _("Options")
           screens:
-            companyServicesEdit_screen: true
+            companyServicesEdit_screen: ${auth.acls.CompanyServices.update}
           dialogs:
-            companyServicesDel_dialog: true
+            companyServicesDel_dialog: ${auth.acls.CompanyServices.delete}
           default: companyServicesEdit_screen
       options:
         title: _("Options")
         screens:
-          companyServicesNew_screen: true
+          companyServicesNew_screen: ${auth.acls.CompanyServices.create}
         dialogs:
-          companyServicesDel_dialog: true
+          companyServicesDel_dialog: ${auth.acls.CompanyServices.delete}
     companyServicesNew_screen: &companyServicesNew_screenLink
       <<: *CompanyServices
       forcedValues:

@@ -29,14 +29,14 @@ production:
         options:
           title: _("Options")
           screens:
-            callCsvReportsView_screen: true
+            callCsvReportsView_screen: ${auth.acls.CallCsvReports.read}
           dialogs:
             callCsvReportsDel_dialog: false
           default: callCsvReportsEdit_screen
       options:
         title: _("Options")
         dialogs:
-          callCsvReportsDel_dialog: true
+          callCsvReportsDel_dialog: ${auth.acls.CallCsvReports.delete}
 
     callCsvReportsView_screen: &callCsvReportsView_screenLink
       <<: *CallCsvReports

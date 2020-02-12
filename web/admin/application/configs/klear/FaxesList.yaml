@@ -30,18 +30,18 @@ production:
         options:
           title: _("Options")
           screens:
-            faxesEdit_screen: true
-            faxesInList_screen: true
-            faxesOutList_screen: true
+            faxesEdit_screen: ${auth.acls.Faxes.update}
+            faxesInList_screen: ${auth.acls.FaxesInOut.read}
+            faxesOutList_screen: ${auth.acls.FaxesInOut.read}
           dialogs:
-            faxesDel_dialog: true
+            faxesDel_dialog: ${auth.acls.Faxes.delete}
           default: faxesEdit_screen
       options:
         title: _("Options")
         screens:
-          faxesNew_screen: true
+          faxesNew_screen: ${auth.acls.Faxes.create}
         dialogs:
-          faxesDel_dialog: true
+          faxesDel_dialog: ${auth.acls.Faxes.delete}
     faxesNew_screen: &faxesNew_screenLink
       <<: *Faxes
       controller: new
@@ -94,9 +94,9 @@ production:
         options:
           title: _("Options")
           screens:
-            faxesInView_screen: true
+            faxesInView_screen: ${auth.acls.FaxesInOut.read}
           commands:
-            faxesInOutFileDownload_command: true
+            faxesInOutFileDownload_command: ${auth.acls.FaxesInOut.read}
           default: faxesInEdit_screen
         blacklist:
           dstCountry: true
@@ -106,7 +106,7 @@ production:
         screens:
           faxesInOutNew_screen: false
         dialogs:
-          faxesInOutDel_dialog: true
+          faxesInOutDel_dialog: ${auth.acls.FaxesInOut.delete}
     faxesOutList_screen:
       <<: *faxesInOutList_screenLink
       class: ui-silk-arrow-up
@@ -120,21 +120,21 @@ production:
         options:
           title: _("Options")
           screens:
-            faxesOutView_screen: true
-            faxesOutEdit_screen: true
+            faxesOutView_screen: ${auth.acls.FaxesInOut.read}
+            faxesOutEdit_screen: ${auth.acls.FaxesInOut.update}
           dialogs:
             forwardFax_dialog: true
           commands:
-            faxesInOutFileDownload_command: true
+            faxesInOutFileDownload_command: ${auth.acls.FaxesInOut.read}
           default: faxesOutEdit_screen
         blacklist:
           src: true
       options:
         title: _("Options")
         screens:
-          faxesOutNew_screen: true
+          faxesOutNew_screen: ${auth.acls.FaxesInOut.create}
         dialogs:
-          faxesInOutDel_dialog: true
+          faxesInOutDel_dialog: ${auth.acls.FaxesInOut.delete}
 
     faxesInView_screen:
       <<: *faxesInOutEdit_screenLink

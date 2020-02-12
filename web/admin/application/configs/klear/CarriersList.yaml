@@ -33,7 +33,7 @@ production:
             ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
             balanceMovementsList_screen: ${auth.brandFeatures.billing.enabled}
             balanceNotificationList_screen: ${auth.brandFeatures.billing.enabled}
-            billableCallsList_screen: true
+            billableCallsList_screen: ${auth.acls.BillableCalls.read}
           dialogs:
             addToBalance_dialog: ${auth.brandFeatures.billing.enabled}
             carriersDel_dialog: true

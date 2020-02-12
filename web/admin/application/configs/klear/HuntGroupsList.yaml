@@ -24,12 +24,12 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsEdit_screen: true
-            huntGroupsRelUsersList_screen: true
-            huntGroupsRelUsersFilterRingAllList_screen: true
-            huntGroupsRelUsersFilterRandomList_screen: true
+            huntGroupsEdit_screen: ${auth.acls.HuntGroups.update}
+            huntGroupsRelUsersList_screen: ${auth.acls.HuntGroupsRelUsers.read}
+            huntGroupsRelUsersFilterRingAllList_screen: ${auth.acls.HuntGroupsRelUsers.read}
+            huntGroupsRelUsersFilterRandomList_screen: ${auth.acls.HuntGroupsRelUsers.read}
           dialogs:
-            huntGroupsDel_dialog: true
+            huntGroupsDel_dialog: ${auth.acls.HuntGroups.delete}
           default: huntGroupsEdit_screen
         blacklist:
           ringAllTimeout: true
@@ -43,9 +43,9 @@ production:
       options:
         title: _("Options")
         screens:
-          huntGroupsNew_screen: true
+          huntGroupsNew_screen: ${auth.acls.HuntGroups.create}
         dialogs:
-          huntGroupsDel_dialog: true
+          huntGroupsDel_dialog: ${auth.acls.HuntGroups.delete}
     huntGroupsNew_screen: &huntGroupsNew_screenLink
       <<: *HuntGroups
       controller: new
@@ -129,16 +129,16 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersFilterRingAllEdit_screen: true
+            huntGroupsRelUsersFilterRingAllEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: true
+            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
           default: huntGroupsRelUsersFilterRingAllEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersFilterRingAllNew_screen: true
+          huntGroupsRelUsersFilterRingAllNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: true
+          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
     huntGroupsRelUsersFilterRingAllEdit_screen:
       <<: *huntGroupsRelUsersEdit_screenLink
       title: _("Edit %s", ngettext('User', 'User', 1))
@@ -171,16 +171,16 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersFilterRandomEdit_screen: true
+            huntGroupsRelUsersFilterRandomEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: true
+            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
           default: huntGroupsRelUsersFilterRandomEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersFilterRandomNew_screen: true
+          huntGroupsRelUsersFilterRandomNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: true
+          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
     huntGroupsRelUsersFilterRandomEdit_screen:
       <<: *huntGroupsRelUsersEdit_screenLink
       title: _("Edit %s", ngettext('User', 'User', 1))

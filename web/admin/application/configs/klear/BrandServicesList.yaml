@@ -24,16 +24,16 @@ production:
         options:
           title: _("Options")
           screens:
-            brandServicesEdit_screen: true
+            brandServicesEdit_screen: ${auth.acls.Services.update}
           dialogs:
-            brandServicesDel_dialog: true
+            brandServicesDel_dialog: ${auth.acls.Services.delete}
           default: brandServicesEdit_screen
       options:
         title: _("Options")
         screens:
-          brandServicesNew_screen: true
+          brandServicesNew_screen: ${auth.acls.Services.create}
         dialogs:
-          brandServicesDel_dialog: true
+          brandServicesDel_dialog: ${auth.acls.Services.delete}
     brandServicesNew_screen: &brandServicesNew_screenLink
       <<: *BrandServices
       forcedValues:

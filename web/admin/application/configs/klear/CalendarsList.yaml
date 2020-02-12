@@ -25,18 +25,18 @@ production:
         options:
           title: _("Options")
           screens:
-            calendarsEdit_screen: true
-            holidayDatesList_screen: true
-            calendarPeriodsList_screen: true
+            calendarsEdit_screen: ${auth.acls.Calendars.update}
+            holidayDatesList_screen: ${auth.acls.HolidayDates.read}
+            calendarPeriodsList_screen: ${auth.acls.CalendarPeriods.read}
           dialogs:
-            calendarsDel_dialog: true
+            calendarsDel_dialog: ${auth.acls.Calendars.delete}
           default: calendarsEdit_screen
       options:
         title: _("Options")
         screens:
-          calendarsNew_screen: true
+          calendarsNew_screen: ${auth.acls.Calendars.create}
         dialogs:
-          calendarsDel_dialog: true
+          calendarsDel_dialog: ${auth.acls.Calendars.delete}
     calendarsNew_screen: &calendarsNew_screenLink
       <<: *Calendars
       controller: new

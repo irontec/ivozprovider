@@ -58,13 +58,13 @@ production:
           CallAclRelPattern.priority: asc
         options:
           dialogs:
-            callACLRelMatchListsDel_dialog: true
+            callACLRelMatchListsDel_dialog: ${auth.acls.CallAclRelMatchLists.delete}
           screens:
-            callACLRelMatchListsEdit_screen: true
+            callACLRelMatchListsEdit_screen: ${auth.acls.CallAclRelMatchLists.update}
           default:
       options:
         screens:
-          callACLRelMatchListsNew_screen: true
+          callACLRelMatchListsNew_screen: ${auth.acls.CallAclRelMatchLists.create}
 staging:
   _extends: production
 testing:

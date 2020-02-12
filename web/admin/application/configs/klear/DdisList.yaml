@@ -36,10 +36,10 @@ production:
         options:
           title: _("Options")
           screens:
-            ddisEdit_screen: ${auth.isNotCompanyOperator}
-            ddisEditLimited_screen: ${auth.isCompanyOperator}
+            ddisEdit_screen: $[${auth.isNotCompanyOperator} && ${auth.acls.DDIs.update}]
+            ddisEditLimited_screen: $[${auth.isCompanyOperator} && ${auth.acls.DDIs.update}]
           dialogs:
-            ddisDel_dialog: ${auth.isNotCompanyOperator}
+            ddisDel_dialog: $[${auth.isNotCompanyOperator} && ${auth.acls.DDIs.delete}]
           default: ddisEdit_screen
         blacklist:
           user: true
@@ -95,9 +95,9 @@ production:
       options:
         title: _("Options")
         screens:
-          ddisNew_screen: ${auth.isNotCompanyOperator}
+          ddisNew_screen: $[${auth.isNotCompanyOperator} && ${auth.acls.DDIs.create}]
         dialogs:
-          ddisDel_dialog: ${auth.isNotCompanyOperator}
+          ddisDel_dialog: $[${auth.isNotCompanyOperator} && ${auth.acls.DDIs.delete}]
           importDDIs_dialog: false
     ddisNew_screen: &ddisNew_screenLink
       <<: *Ddis

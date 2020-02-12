@@ -24,7 +24,7 @@ production:
           title: _("Options")
           screens:
             terminalManufacturersEdit_screen: true
-            terminalModelsList_screen: true
+            terminalModelsList_screen: ${auth.acls.TerminalModels.read}
           dialogs:
             terminalManufacturersDel_dialog: true
           default: terminalManufacturersEdit_screen

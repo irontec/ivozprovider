@@ -39,17 +39,17 @@ production:
         options:
           title: _("Options")
           screens:
-            callCsvSchedulersEdit_screen: true
-            callCsvReportsList_screen: true
+            callCsvSchedulersEdit_screen: ${auth.acls.CallCsvSchedulers.update}
+            callCsvReportsList_screen: ${auth.acls.CallCsvReports.read}
           dialogs:
-            callCsvSchedulersDel_dialog: true
+            callCsvSchedulersDel_dialog: ${auth.acls.CallCsvSchedulers.delete}
           default: callCsvSchedulersEdit_screen
       options:
         title: _("Options")
         screens:
-          callCsvSchedulersNew_screen: true
+          callCsvSchedulersNew_screen: ${auth.acls.CallCsvSchedulers.create}
         dialogs:
-          callCsvSchedulersDel_dialog: true
+          callCsvSchedulersDel_dialog: ${auth.acls.CallCsvSchedulers.delete}
 
     callCsvSchedulersNew_screen: &callCsvSchedulersNew_screenLink
       <<: *CallCsvSchedulers

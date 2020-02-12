@@ -17,16 +17,16 @@ production:
         options:
           title: _("Options")
           screens:
-            queueMembersEdit_screen: true
+            queueMembersEdit_screen: ${auth.acls.QueueMembers.update}
           dialogs:
-            queueMembersDel_dialog: true
+            queueMembersDel_dialog: ${auth.acls.QueueMembers.delete}
           default: queueMembersEdit_screen
       options:
         title: _("Options")
         screens:
-          queueMembersNew_screen: true
+          queueMembersNew_screen: ${auth.acls.QueueMembers.create}
         dialogs:
-          queueMembersDel_dialog: true
+          queueMembersDel_dialog: ${auth.acls.QueueMembers.delete}
     queueMembersNew_screen: &queueMembersNew_screenLink
       <<: *QueueMembers
       controller: new
