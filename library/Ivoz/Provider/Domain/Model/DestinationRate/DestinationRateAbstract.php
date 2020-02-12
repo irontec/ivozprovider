@@ -148,6 +148,8 @@ abstract class DestinationRateAbstract
         );
 
         $self
+            ->setTpRate($fkTransformer->transform($dto->getTpRate()))
+            ->setTpDestinationRate($fkTransformer->transform($dto->getTpDestinationRate()))
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
             ->setDestination($fkTransformer->transform($dto->getDestination()))
         ;
@@ -173,6 +175,8 @@ abstract class DestinationRateAbstract
             ->setConnectFee($dto->getConnectFee())
             ->setRateIncrement($dto->getRateIncrement())
             ->setGroupIntervalStart($dto->getGroupIntervalStart())
+            ->setTpRate($fkTransformer->transform($dto->getTpRate()))
+            ->setTpDestinationRate($fkTransformer->transform($dto->getTpDestinationRate()))
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
             ->setDestination($fkTransformer->transform($dto->getDestination()));
 
@@ -193,6 +197,8 @@ abstract class DestinationRateAbstract
             ->setConnectFee(self::getConnectFee())
             ->setRateIncrement(self::getRateIncrement())
             ->setGroupIntervalStart(self::getGroupIntervalStart())
+            ->setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRate::entityToDto(self::getTpRate(), $depth))
+            ->setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate::entityToDto(self::getTpDestinationRate(), $depth))
             ->setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth))
             ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
     }
@@ -207,6 +213,8 @@ abstract class DestinationRateAbstract
             'connectFee' => self::getConnectFee(),
             'rateIncrement' => self::getRateIncrement(),
             'groupIntervalStart' => self::getGroupIntervalStart(),
+            'tpRateId' => self::getTpRate() ? self::getTpRate()->getId() : null,
+            'tpDestinationRateId' => self::getTpDestinationRate() ? self::getTpDestinationRate()->getId() : null,
             'destinationRateGroupId' => self::getDestinationRateGroup() ? self::getDestinationRateGroup()->getId() : null,
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
         ];

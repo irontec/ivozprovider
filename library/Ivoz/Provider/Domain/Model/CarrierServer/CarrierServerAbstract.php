@@ -195,6 +195,7 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
+            ->setLcrGateway($fkTransformer->transform($dto->getLcrGateway()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setBrand($fkTransformer->transform($dto->getBrand()))
         ;
@@ -230,6 +231,7 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
+            ->setLcrGateway($fkTransformer->transform($dto->getLcrGateway()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
@@ -260,6 +262,7 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy(self::getOutboundProxy())
             ->setFromUser(self::getFromUser())
             ->setFromDomain(self::getFromDomain())
+            ->setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway::entityToDto(self::getLcrGateway(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
@@ -284,6 +287,7 @@ abstract class CarrierServerAbstract
             'outboundProxy' => self::getOutboundProxy(),
             'fromUser' => self::getFromUser(),
             'fromDomain' => self::getFromDomain(),
+            'lcrGatewayId' => self::getLcrGateway() ? self::getLcrGateway()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];

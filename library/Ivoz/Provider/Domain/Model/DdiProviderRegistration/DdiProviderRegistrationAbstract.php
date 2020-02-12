@@ -175,6 +175,7 @@ abstract class DdiProviderRegistrationAbstract
 
         $self
             ->setMultiDdi($dto->getMultiDdi())
+            ->setTrunksUacreg($fkTransformer->transform($dto->getTrunksUacreg()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
@@ -204,6 +205,7 @@ abstract class DdiProviderRegistrationAbstract
             ->setExpires($dto->getExpires())
             ->setMultiDdi($dto->getMultiDdi())
             ->setContactUsername($dto->getContactUsername())
+            ->setTrunksUacreg($fkTransformer->transform($dto->getTrunksUacreg()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
@@ -228,6 +230,7 @@ abstract class DdiProviderRegistrationAbstract
             ->setExpires(self::getExpires())
             ->setMultiDdi(self::getMultiDdi())
             ->setContactUsername(self::getContactUsername())
+            ->setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg::entityToDto(self::getTrunksUacreg(), $depth))
             ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
@@ -246,6 +249,7 @@ abstract class DdiProviderRegistrationAbstract
             'expires' => self::getExpires(),
             'multiDdi' => self::getMultiDdi(),
             'contactUsername' => self::getContactUsername(),
+            'trunksUacregId' => self::getTrunksUacreg() ? self::getTrunksUacreg()->getId() : null,
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
