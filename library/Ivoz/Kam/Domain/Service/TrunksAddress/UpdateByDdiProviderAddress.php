@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Domain\Service\TrunksAddress;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 use Ivoz\Provider\Domain\Service\DdiProviderAddress\DdiProviderAddressLifecycleEventHandlerInterface;
 
@@ -56,10 +57,19 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
             true
         );
 
-        $ddiProviderAddress
-            ->setTrunksAddress($trunksAddress);
+        /** @var DdiProviderAddressDto $ddiProviderAddressDto */
+        $ddiProviderAddressDto = $this->entityTools->entityToDto(
+            $ddiProviderAddress
+        );
 
-        $this->entityTools
-            ->persist($ddiProviderAddress);
+        $ddiProviderAddressDto
+            ->setTrunksAddress($trunksAddressDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $ddiProviderAddressDto,
+                $ddiProviderAddress
+            );
     }
 }

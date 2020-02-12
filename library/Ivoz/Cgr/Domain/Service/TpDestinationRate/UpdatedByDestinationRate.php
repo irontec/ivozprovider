@@ -6,6 +6,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto;
 use Ivoz\Cgr\Domain\Service\TpRate\UpdatedByDestinationRate as TpRateUpdatedByDestinationRate;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHandlerInterface;
 
@@ -69,10 +70,21 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             true
         );
 
-        $destinationRate
-            ->setTpDestinationRate($tpDestinationRate);
+        /** @var DestinationRateDto $destinationRateDto */
+        $destinationRateDto = $this
+            ->entityTools
+            ->entityToDto(
+                $destinationRate
+            );
 
-        $this->entityTools
-            ->persist($destinationRate);
+        $destinationRateDto
+            ->setTpDestinationRate($tpDestinationRateDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $destinationRateDto,
+                $destinationRate
+            );
     }
 }

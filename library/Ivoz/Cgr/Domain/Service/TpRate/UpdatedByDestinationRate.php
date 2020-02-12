@@ -5,6 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateDto;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHandlerInterface;
 
@@ -64,16 +65,29 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             ->setRateIncrement($destinationRate->getRateIncrement())
             ->setGroupIntervalStart($destinationRate->getGroupIntervalStart());
 
-        $tpRate = $this->entityTools->persistDto(
-            $tpRateDto,
-            $tpRate,
-            true
-        );
+        $tpRate = $this
+            ->entityTools
+            ->persistDto(
+                $tpRateDto,
+                $tpRate,
+                true
+            );
 
-        $destinationRate
-            ->setTpRate($tpRate);
+        /** @var DestinationRateDto $destinationRateDto */
+        $destinationRateDto = $this
+            ->entityTools
+            ->entityToDto(
+                $destinationRate
+            );
 
-        $this->entityTools
-            ->persist($destinationRate);
+        $destinationRateDto
+            ->setTpRate($tpRateDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $destinationRateDto,
+                $destinationRate
+            );
     }
 }
