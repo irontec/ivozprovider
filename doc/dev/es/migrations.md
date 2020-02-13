@@ -5,7 +5,7 @@ Se trata de una aplicación completa symfony, requiere por tanto que sus depende
 `composer install`, para su correcto funcionamiento.
 
 Las credenciales de acceso a base de datos son compartidas con el resto de applicaciones symfony y están definidas en
-ivozprovider/library/CoreBundle/Resources/config/parameters.yml.
+vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml
 
 ## Proceso de creación de deltas de base de datos
 Para hacer cambios en base de datos el proceso es el siguiente:
