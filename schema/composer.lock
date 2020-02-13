@@ -1760,11 +1760,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.3.0.0-RC",
+            "version": "2.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "1aed75a07514075390cc1f6e201e7177b5e7dc1a",
+                "reference": "18cc348118422d3cfb27e5b1671261f698cdc6f7",
                 "shasum": null
             },
             "require": {
@@ -4035,18 +4035,18 @@
     "packages-dev": [
         {
             "name": "docteurklein/test-double-bundle",
-            "version": "1.0.0.0",
+            "version": "1.1.0.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/docteurklein/test-double-bundle",
-                "reference": "01fe312bdf2069b095f70ed3d92f4578a7b6e549",
+                "reference": "8927771953f53317b54e6fd8fc05058f62570be6",
                 "shasum": null
             },
             "require": {
                 "php": ">=5.4",
-                "phpspec/prophecy": "^1.6",
-                "symfony/dependency-injection": "^2.0|^3.0",
-                "symfony/http-kernel": "^2.0|^3.0"
+                "phpspec/prophecy": "^1.8",
+                "symfony/dependency-injection": "^2.0|^3.0|^4.0",
+                "symfony/http-kernel": "^2.0|^3.0|^4.0"
             },
             "type": "symfony-bundle",
             "autoload": {

@@ -27,7 +27,6 @@ security:
       provider: admin_orm
       form_login:
           check_path: /admin_login
-          require_previous_session: false
           username_parameter: username
           password_parameter: password
           success_handler: lexik_jwt_authentication.handler.authentication_success

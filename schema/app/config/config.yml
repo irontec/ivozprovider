@@ -13,9 +13,6 @@ doctrine:
         is_bundle: false
         dir: '%kernel.root_dir%/../src/Entity'
         prefix: 'Gesdinet\JWTRefreshTokenBundle\Entity'
-imports:
-  - { resource: "orm_target_entities.yml" }
-
 
 doctrine_migrations:
   dir_name: "%kernel.root_dir%/DoctrineMigrations"
