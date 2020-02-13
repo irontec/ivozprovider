@@ -19,6 +19,9 @@ class AppKernel extends Kernel
             /* Core */
             new Ivoz\CoreBundle\CoreBundle(),
 
+            /* Provider */
+            new Ivoz\ProviderBundle\ProviderBundle(),
+
             /* CommandlogBundle */
             new IvozDevTools\CommandlogBundle\CommandlogBundle(),
 

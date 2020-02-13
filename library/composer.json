@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider/shared-dependencies",
+    "name": "irontec/ivozprovider-shared-dependencies",
     "description": "Multitenant solution for VoIP telephony providers (Shared dependencies)",
     "authors": [
         {
@@ -31,6 +31,15 @@
             "email": "victor@irontec.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./composer-packages/*/*",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
     "autoload-dev": {
         "psr-4": {
             "spec\\": "spec/",
@@ -53,12 +62,13 @@
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "irontec/ivoz-api-bundle": "^2.0",
-        "irontec/ivoz-core-bundle": "^2.0",
+        "irontec/ivoz-core-bundle": "^2.3",
         "irontec/ivoz-dev-tools": "^2.0",
+        "irontec/ivoz-provider-bundle": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
-        "mmoreram/gearman-bundle": "4.1.0",
+        "mmoreram/gearman-bundle": "^4.1",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
-        "phpxmlrpc/phpxmlrpc": "4.0",
+        "phpxmlrpc/phpxmlrpc": "^4.0",
         "sensio/distribution-bundle": "5.0.*",
         "snc/redis-bundle": "2.1.*",
         "symfony/symfony": "3.4.*",

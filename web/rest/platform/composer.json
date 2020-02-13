@@ -61,16 +61,16 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "irontec/ivoz-api-bundle": "^2.0",
-        "irontec/ivoz-core-bundle": "^2.0",
         "api-platform/core": "2.2.*",
         "incenteev/composer-parameter-handler": "^2.0",
-        "twig/twig": "^1.0 || ^2.0",
+        "irontec/ivoz-api-bundle": "^2.0",
+        "irontec/ivoz-core-bundle": "^2.0",
+        "irontec/ivoz-provider-bundle": "^2.0",
         "sensio/distribution-bundle": "5.0.*",
         "symfony/symfony": "3.4.*",
-
         "xamin/handlebars.php": "^0.10.4",
-        "knplabs/knp-snappy": "0.4.3"
+        "knplabs/knp-snappy": "0.4.3",
+        "twig/twig": "^1.0 || ^2.0"
     },
     "require-dev": {
         "ext-pcntl": "*",
@@ -107,7 +107,7 @@
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "vendor/irontec/ivoz-core-bundle/Resources/config/parameters.yml"
+            "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
         },
         "branch-alias": null
     }

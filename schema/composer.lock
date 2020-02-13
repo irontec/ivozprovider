@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "034a25188c4c47187bc427b8e46d2d8d",
+    "content-hash": "4d9f61a90da1702c335d8fc13c317311",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1760,11 +1760,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.2.0.0",
+            "version": "2.3.0.0-RC",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "56d246a344bed9fbfb06a717293f76b44b5c0470",
+                "reference": "1aed75a07514075390cc1f6e201e7177b5e7dc1a",
                 "shasum": null
             },
             "require": {
@@ -1844,6 +1844,47 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "irontec/ivoz-provider-bundle",
+            "version": "2",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/irontec/ivoz-provider-bundle",
+                "reference": "75ae0682f93f361b99582b6845b881f89cb1d972",
+                "shasum": null
+            },
+            "require": {
+                "irontec/ivoz-core-bundle": "^2.2",
+                "php": ">=7.0.19"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Ivoz\\ProviderBundle\\": ""
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cruz",
+                    "email": "carlos@irontec.com"
+                },
+                {
+                    "name": "Ivan Alonso",
+                    "email": "kaian@irontec.com"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Symfony bridge for IvozProvider",
             "transport-options": {
                 "symlink": true
             }
@@ -5551,7 +5592,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "3.4.32.0",
+            "version": "3.4.36.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/phpunit-bridge",
