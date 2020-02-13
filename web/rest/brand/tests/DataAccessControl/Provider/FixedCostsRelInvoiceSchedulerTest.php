@@ -1,18 +1,18 @@
 <?php
 
-namespace Tests\DataAccessControl\Kam;
+namespace Tests\DataAccessControl\Provider;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
-use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class UsersCdrTest extends KernelTestCase
+class FixedCostsRelInvoiceSchedulerSchedulerTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
     protected function getResourceClass()
     {
-        return UsersCdr::class;
+        return FixedCostsRelInvoiceScheduler::class;
     }
 
     protected function getAdminCriteria(): array
@@ -34,8 +34,11 @@ class UsersCdrTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', 'user.getBrand().getId()'],
-                ['hidden', 'eq', 0],
+                [
+                    'fixedCost',
+                    'in',
+                    'FixedCostRepository([["brand","eq","user.getBrand().getId()"]])'
+                ]
             ]
         );
     }
@@ -54,8 +57,16 @@ class UsersCdrTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', 'user.getBrand().getId()'],
-                ['hidden', 'eq', 0],
+                [
+                    'fixedCost',
+                    'in',
+                    'FixedCostRepository([["brand","eq","user.getBrand().getId()"]])'
+                ],
+                [
+                    'invoiceScheduler',
+                    'in',
+                    'InvoiceSchedulerRepository([["brand","eq","user.getBrand().getId()"]])'
+                ]
             ]
         );
     }

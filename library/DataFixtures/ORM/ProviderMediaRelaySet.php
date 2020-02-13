@@ -33,7 +33,7 @@ class ProviderMediaRelaySet extends Fixture
             $this->setDescription("Test media relay set");
         })->call($item1);
 
-        $this->addReference('_reference_ProviderMediaRelaySetMediaRelaySet1', $item1);
+        $this->addReference('_reference_ProviderMediaRelaySet1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 

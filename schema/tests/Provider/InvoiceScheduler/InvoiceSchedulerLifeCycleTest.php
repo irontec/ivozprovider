@@ -66,13 +66,8 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
 
     protected function removeInvoiceScheduler()
     {
-        $this->addInvoiceScheduler();
+        $invoiceScheduler = $this->addInvoiceScheduler();
         $this->resetChangelog();
-
-        $invoiceSchedulerRepository = $this->em
-            ->getRepository(InvoiceScheduler::class);
-
-        $invoiceScheduler = $invoiceSchedulerRepository->find(1);
 
         $this
             ->entityTools
