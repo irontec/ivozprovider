@@ -53,6 +53,7 @@
     "require": {
         "php": ">=7.0.19",
         "irontec/ivoz-core-bundle": "^2.0",
+        "irontec/ivoz-provider-bundle": "^2.0",
         "symfony/symfony": "3.4.*"
     },
     "scripts": {

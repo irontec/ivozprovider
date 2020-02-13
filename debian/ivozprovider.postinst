@@ -47,7 +47,7 @@ function setup_mysql()
 
     # Setup global mysql password
     sed -r -i "s/(database_password:) .*/\1 $MYSQL_PASSWORD/" \
-        /opt/irontec/ivozprovider/library/vendor/irontec/CoreBundle/Resources/config/parameters.yml
+        /opt/irontec/ivozprovider/library/vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml
 
     # Change database bind address
     sed -i -r "s/(bind =) .*/\1 127.0.0.1/" /etc/mysql/conf.d/ivozprovider.cnf

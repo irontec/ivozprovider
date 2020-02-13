@@ -35,6 +35,9 @@ class MicroKernel extends Kernel
 
             /* Core */
             new Ivoz\CoreBundle\CoreBundle(),
+
+            /* Provider */
+            new Ivoz\ProviderBundle\ProviderBundle(),
         ];
         return $bundles;
     }

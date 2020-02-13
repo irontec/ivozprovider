@@ -67,6 +67,7 @@
         "irontec/ivoz-api-bundle": "^2.0",
         "irontec/ivoz-core-bundle": "^2.0",
         "irontec/ivoz-dev-tools": "^2.0",
+        "irontec/ivoz-provider-bundle": "^2.0",
         "symfony/symfony": "3.4.*"
     },
     "require-dev": {
@@ -99,7 +100,7 @@
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "vendor/irontec/ivoz-core-bundle/Resources/config/parameters.yml"
+            "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
         },
         "branch-alias": null
     }
