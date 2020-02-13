@@ -23,7 +23,6 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
           eq: "user.getCompany().getId()"
         hidden:
           eq: 0
-
   itemOperations:
     get: ~
   collectionOperations:
@@ -44,5 +43,3 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
         - 'text/csv'
         tags:
         - My
-  attributes:
-    pagination_client_enabled: true

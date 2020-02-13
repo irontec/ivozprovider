@@ -84,8 +84,6 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       nullable: true
       options:
         unsigned: true
-      type: integer
-      options:
         fixed: false
       column: endpointId
     direction:

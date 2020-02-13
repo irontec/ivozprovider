@@ -29,7 +29,6 @@ security:
       provider: admin_orm
       form_login:
           check_path: /admin_login
-          require_previous_session: false
           username_parameter: username
           password_parameter: password
           success_handler: lexik_jwt_authentication.handler.authentication_success
@@ -43,7 +42,6 @@ security:
       provider: user_orm
       form_login:
           check_path: /user_login
-          require_previous_session: false
           username_parameter: email
           password_parameter: password
           success_handler: Ivoz\Provider\Infrastructure\Api\Jwt\UserAuthenticationSuccessHandler
