@@ -3231,11 +3231,11 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.36.0",
+            "version": "3.4.37.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "0a6fccb5772ad2467253e6849d589bd09d9eb195",
+                "reference": "1bd873459b36cf505c7b515ba6e0e2ee40890b8a",
                 "shasum": null
             },
             "require": {
