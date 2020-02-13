@@ -1760,11 +1760,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.3.0.0-RC",
+            "version": "2.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "1aed75a07514075390cc1f6e201e7177b5e7dc1a",
+                "reference": "18cc348118422d3cfb27e5b1671261f698cdc6f7",
                 "shasum": null
             },
             "require": {

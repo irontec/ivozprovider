@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78b2f723382c6a804604485973b6880d",
+    "content-hash": "e3fd7820bd7b5d1f8482188cfbdabcd0",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1853,16 +1853,16 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.3",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "1aed75a07514075390cc1f6e201e7177b5e7dc1a"
+                "reference": "18cc348118422d3cfb27e5b1671261f698cdc6f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/1aed75a07514075390cc1f6e201e7177b5e7dc1a",
-                "reference": "1aed75a07514075390cc1f6e201e7177b5e7dc1a",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/18cc348118422d3cfb27e5b1671261f698cdc6f7",
+                "reference": "18cc348118422d3cfb27e5b1671261f698cdc6f7",
                 "shasum": ""
             },
             "require": {
@@ -1900,7 +1900,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-core",
-            "time": "2020-01-17T13:32:06+00:00"
+            "time": "2020-02-13T14:20:46+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",
