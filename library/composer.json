@@ -38,6 +38,10 @@
             "options": {
                 "symlink": false
             }
+        },
+        {
+            "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
+            "type": "git"
         }
     ],
     "autoload-dev": {
