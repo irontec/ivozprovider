@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Extension;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
@@ -21,11 +22,18 @@ class ExtensionSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let()
-    {
-
+    function let(
+        CompanyInterface $company
+    ) {
         $this->dto = $dto = new ExtensionDto();
         $dto->setNumber('123');
+
+        $this->hydrate(
+            $dto,
+            [
+                'company' => $company->getWrappedObject(),
+            ]
+        );
 
         $this->beConstructedThrough(
             'fromDto',

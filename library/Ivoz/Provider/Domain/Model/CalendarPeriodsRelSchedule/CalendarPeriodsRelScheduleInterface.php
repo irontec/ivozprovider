@@ -15,7 +15,7 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
     /**
      * Set calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
     /**
      * Get calendarPeriod
      *
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface | null
      */
     public function getCalendarPeriod();
-
-    /**
-     * Set schedule
-     *
-     * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
-     *
-     * @return static
-     */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule);
 
     /**
      * Get schedule

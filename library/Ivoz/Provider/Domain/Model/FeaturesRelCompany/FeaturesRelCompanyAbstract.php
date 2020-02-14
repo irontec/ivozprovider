@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class FeaturesRelCompanyAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -152,7 +152,7 @@ abstract class FeaturesRelCompanyAbstract
     {
         return [
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'featureId' => self::getFeature() ? self::getFeature()->getId() : null
+            'featureId' => self::getFeature()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -188,7 +188,7 @@ abstract class FeaturesRelCompanyAbstract
      *
      * @return static
      */
-    public function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
+    protected function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
     {
         $this->feature = $feature;
 

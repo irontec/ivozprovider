@@ -223,29 +223,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getGsQRCode();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
-    /**
-     * Set callAcl
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
-     *
-     * @return static
-     */
-    public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null);
 
     /**
      * Get callAcl
@@ -255,29 +237,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getCallAcl();
 
     /**
-     * Set bossAssistant
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant | null
-     *
-     * @return static
-     */
-    public function setBossAssistant(\Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant = null);
-
-    /**
      * Get bossAssistant
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getBossAssistant();
-
-    /**
-     * Set bossAssistantWhiteList
-     *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList | null
-     *
-     * @return static
-     */
-    public function setBossAssistantWhiteList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList = null);
 
     /**
      * Get bossAssistantWhiteList
@@ -287,29 +251,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getBossAssistantWhiteList();
 
     /**
-     * Set transformationRuleSet
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
-
-    /**
      * Get transformationRuleSet
      *
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
-
-    /**
-     * Set language
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
-     *
-     * @return static
-     */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Set terminal
@@ -344,47 +290,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getExtension();
 
     /**
-     * Set timezone
-     *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone | null
-     *
-     * @return static
-     */
-    public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null);
-
-    /**
      * Get timezone
      *
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone();
-
-    /**
-     * Set outgoingDdi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
-
-    /**
-     * Set outgoingDdiRule
-     *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null);
-
-    /**
-     * Set voicemailLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution | null
-     *
-     * @return static
-     */
-    public function setVoicemailLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $voicemailLocution = null);
 
     /**
      * Get voicemailLocution

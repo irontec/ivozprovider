@@ -20,15 +20,6 @@ interface QueueMemberInterface extends LoggableEntityInterface
     public function getPenalty();
 
     /**
-     * Set queue
-     *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
-     *
-     * @return static
-     */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue);
-
-    /**
      * Get queue
      *
      * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
@@ -42,7 +33,7 @@ interface QueueMemberInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
     /**
      * Get user

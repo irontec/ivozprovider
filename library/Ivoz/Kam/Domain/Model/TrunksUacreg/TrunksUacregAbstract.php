@@ -305,8 +305,8 @@ abstract class TrunksUacregAbstract
             'flags' => self::getFlags(),
             'reg_delay' => self::getRegDelay(),
             'auth_ha1' => self::getAuthHa1(),
-            'ddiProviderRegistrationId' => self::getDdiProviderRegistration() ? self::getDdiProviderRegistration()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'ddiProviderRegistrationId' => self::getDdiProviderRegistration()->getId(),
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -693,7 +693,7 @@ abstract class TrunksUacregAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 

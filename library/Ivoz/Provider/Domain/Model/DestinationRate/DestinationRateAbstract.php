@@ -35,12 +35,12 @@ abstract class DestinationRateAbstract
     protected $groupIntervalStart = '0s';
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface | null
      */
     protected $tpRate;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface | null
      */
     protected $tpDestinationRate;
 
@@ -215,8 +215,8 @@ abstract class DestinationRateAbstract
             'groupIntervalStart' => self::getGroupIntervalStart(),
             'tpRateId' => self::getTpRate() ? self::getTpRate()->getId() : null,
             'tpDestinationRateId' => self::getTpDestinationRate() ? self::getTpDestinationRate()->getId() : null,
-            'destinationRateGroupId' => self::getDestinationRateGroup() ? self::getDestinationRateGroup()->getId() : null,
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
+            'destinationRateGroupId' => self::getDestinationRateGroup()->getId(),
+            'destinationId' => self::getDestination()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -336,7 +336,7 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null)
+    protected function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null)
     {
         $this->tpRate = $tpRate;
 
@@ -360,7 +360,7 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null)
+    protected function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null)
     {
         $this->tpDestinationRate = $tpDestinationRate;
 
@@ -384,7 +384,7 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup = null)
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
@@ -408,7 +408,7 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination)
     {
         $this->destination = $destination;
 

@@ -132,22 +132,22 @@ abstract class PsEndpointAbstract
     protected $t38UdptlNat = 'no';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
      */
     protected $terminal;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
      */
     protected $friend;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     protected $residentialDevice;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     protected $retailAccount;
 

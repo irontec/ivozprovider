@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ExternalCallFilterRelScheduleAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     protected $filter;
 
@@ -152,7 +152,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     {
         return [
             'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
-            'scheduleId' => self::getSchedule() ? self::getSchedule()->getId() : null
+            'scheduleId' => self::getSchedule()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getFilter()
     {
@@ -188,7 +188,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
      *
      * @return static
      */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
+    protected function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
     {
         $this->schedule = $schedule;
 

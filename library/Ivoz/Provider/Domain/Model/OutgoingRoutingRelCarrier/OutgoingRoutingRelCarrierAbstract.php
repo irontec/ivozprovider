@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class OutgoingRoutingRelCarrierAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     protected $outgoingRouting;
 
@@ -152,7 +152,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         return [
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'carrierId' => self::getCarrier()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     public function getOutgoingRouting()
     {
@@ -188,7 +188,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
     {
         $this->carrier = $carrier;
 

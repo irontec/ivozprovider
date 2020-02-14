@@ -20,15 +20,6 @@ interface FeatureInterface extends LoggableEntityInterface
     public function getIden();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\Feature\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\Feature\Name $name);
-
-    /**
      * Get name
      *
      * @return \Ivoz\Provider\Domain\Model\Feature\Name

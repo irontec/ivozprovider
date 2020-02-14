@@ -488,7 +488,7 @@ abstract class CompanyAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
@@ -1138,7 +1138,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
         $this->language = $language;
 
@@ -1162,7 +1162,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets = null)
+    protected function setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets = null)
     {
         $this->mediaRelaySets = $mediaRelaySets;
 
@@ -1186,7 +1186,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null)
+    protected function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null)
     {
         $this->defaultTimezone = $defaultTimezone;
 
@@ -1210,7 +1210,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -1234,7 +1234,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    protected function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
     {
         $this->domain = $domain;
 
@@ -1258,7 +1258,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer = null)
+    protected function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer = null)
     {
         $this->applicationServer = $applicationServer;
 
@@ -1282,7 +1282,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
         $this->country = $country;
 
@@ -1306,7 +1306,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
         $this->currency = $currency;
 
@@ -1330,7 +1330,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -1354,7 +1354,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -1378,7 +1378,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
+    protected function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
@@ -1402,7 +1402,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
+    protected function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
     {
         $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
 
@@ -1426,7 +1426,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
+    protected function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
     {
         $this->faxNotificationTemplate = $faxNotificationTemplate;
 
@@ -1450,7 +1450,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
+    protected function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
     {
         $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
 
@@ -1474,7 +1474,7 @@ abstract class CompanyAbstract
      *
      * @return static
      */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
+    protected function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 

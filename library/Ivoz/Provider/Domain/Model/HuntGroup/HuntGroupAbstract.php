@@ -251,7 +251,7 @@ abstract class HuntGroupAbstract
             'noAnswerTargetType' => self::getNoAnswerTargetType(),
             'noAnswerNumberValue' => self::getNoAnswerNumberValue(),
             'preventMissedCalls' => self::getPreventMissedCalls(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
             'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
             'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null,
@@ -470,7 +470,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -494,7 +494,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null)
+    protected function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null)
     {
         $this->noAnswerLocution = $noAnswerLocution;
 
@@ -518,7 +518,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null)
+    protected function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null)
     {
         $this->noAnswerExtension = $noAnswerExtension;
 
@@ -542,7 +542,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null)
+    protected function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null)
     {
         $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
 
@@ -566,7 +566,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null)
+    protected function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null)
     {
         $this->noAnswerNumberCountry = $noAnswerNumberCountry;
 

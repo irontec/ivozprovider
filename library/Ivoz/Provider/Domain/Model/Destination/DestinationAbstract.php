@@ -24,7 +24,7 @@ abstract class DestinationAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface | null
      */
     protected $tpDestination;
 
@@ -193,7 +193,7 @@ abstract class DestinationAbstract
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
             'tpDestinationId' => self::getTpDestination() ? self::getTpDestination()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -232,7 +232,7 @@ abstract class DestinationAbstract
      *
      * @return static
      */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
+    protected function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
     {
         $this->tpDestination = $tpDestination;
 
@@ -256,7 +256,7 @@ abstract class DestinationAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -280,7 +280,7 @@ abstract class DestinationAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {

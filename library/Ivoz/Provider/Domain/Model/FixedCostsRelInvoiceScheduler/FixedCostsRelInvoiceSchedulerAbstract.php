@@ -24,7 +24,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     protected $invoiceScheduler;
 
@@ -160,7 +160,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return [
             'quantity' => self::getQuantity(),
-            'fixedCostId' => self::getFixedCost() ? self::getFixedCost()->getId() : null,
+            'fixedCostId' => self::getFixedCost()->getId(),
             'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
         ];
     }
@@ -203,7 +203,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      *
      * @return static
      */
-    public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
+    protected function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
     {
         $this->fixedCost = $fixedCost;
 
@@ -223,7 +223,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Set invoiceScheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler | null
      *
      * @return static
      */
@@ -237,7 +237,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Get invoiceScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getInvoiceScheduler()
     {

@@ -160,8 +160,8 @@ abstract class QueueMemberAbstract
     {
         return [
             'penalty' => self::getPenalty(),
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null
+            'queueId' => self::getQueue()->getId(),
+            'userId' => self::getUser()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -202,7 +202,7 @@ abstract class QueueMemberAbstract
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
+    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
     {
         $this->queue = $queue;
 
@@ -226,7 +226,7 @@ abstract class QueueMemberAbstract
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
     {
         $this->user = $user;
 

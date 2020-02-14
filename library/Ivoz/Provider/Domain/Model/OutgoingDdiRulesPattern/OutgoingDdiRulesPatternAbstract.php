@@ -201,7 +201,7 @@ abstract class OutgoingDdiRulesPatternAbstract
             'prefix' => self::getPrefix(),
             'action' => self::getAction(),
             'priority' => self::getPriority(),
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule()->getId(),
             'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
             'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
@@ -332,7 +332,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return static
      */
-    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null)
+    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule)
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
@@ -356,7 +356,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null)
+    protected function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null)
     {
         $this->matchList = $matchList;
 
@@ -380,7 +380,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return static
      */
-    public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
+    protected function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
     {
         $this->forcedDdi = $forcedDdi;
 

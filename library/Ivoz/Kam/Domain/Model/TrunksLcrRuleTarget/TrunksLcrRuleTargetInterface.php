@@ -34,29 +34,11 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function getWeight();
 
     /**
-     * Set rule
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule
-     *
-     * @return static
-     */
-    public function setRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $rule);
-
-    /**
      * Get rule
      *
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
      */
     public function getRule();
-
-    /**
-     * Set gw
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw
-     *
-     * @return static
-     */
-    public function setGw(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $gw);
 
     /**
      * Get gw
@@ -72,7 +54,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
     /**
      * Get outgoingRouting

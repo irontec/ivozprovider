@@ -58,7 +58,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null);
+    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate);
 
     /**
      * Get notificationTemplate
@@ -66,15 +66,6 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
      */
     public function getNotificationTemplate();
-
-    /**
-     * Set language
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
-     *
-     * @return static
-     */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
 
     /**
      * Get language

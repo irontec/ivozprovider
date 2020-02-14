@@ -34,29 +34,11 @@ interface SpecialNumberInterface extends LoggableEntityInterface
     public function getDisableCDR();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
-
-    /**
-     * Set country
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
-     *
-     * @return static
-     */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country);
 
     /**
      * Get country

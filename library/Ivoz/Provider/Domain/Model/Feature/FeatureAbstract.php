@@ -211,7 +211,7 @@ abstract class FeatureAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {

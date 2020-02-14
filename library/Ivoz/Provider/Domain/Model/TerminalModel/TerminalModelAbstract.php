@@ -210,7 +210,7 @@ abstract class TerminalModelAbstract
             'specificTemplate' => self::getSpecificTemplate(),
             'genericUrlPattern' => self::getGenericUrlPattern(),
             'specificUrlPattern' => self::getSpecificUrlPattern(),
-            'terminalManufacturerId' => self::getTerminalManufacturer() ? self::getTerminalManufacturer()->getId() : null
+            'terminalManufacturerId' => self::getTerminalManufacturer()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -415,7 +415,7 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    public function setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer)
+    protected function setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer)
     {
         $this->terminalManufacturer = $terminalManufacturer;
 

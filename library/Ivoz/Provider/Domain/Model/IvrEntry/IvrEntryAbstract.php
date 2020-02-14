@@ -214,7 +214,7 @@ abstract class IvrEntryAbstract
             'entry' => self::getEntry(),
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
+            'ivrId' => self::getIvr()->getId(),
             'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
@@ -319,7 +319,7 @@ abstract class IvrEntryAbstract
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
+    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr)
     {
         $this->ivr = $ivr;
 
@@ -343,7 +343,7 @@ abstract class IvrEntryAbstract
      *
      * @return static
      */
-    public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null)
+    protected function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null)
     {
         $this->welcomeLocution = $welcomeLocution;
 
@@ -367,7 +367,7 @@ abstract class IvrEntryAbstract
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
+    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
     {
         $this->extension = $extension;
 
@@ -391,7 +391,7 @@ abstract class IvrEntryAbstract
      *
      * @return static
      */
-    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
+    protected function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
     {
         $this->voiceMailUser = $voiceMailUser;
 
@@ -415,7 +415,7 @@ abstract class IvrEntryAbstract
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
+    protected function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
     {
         $this->conditionalRoute = $conditionalRoute;
 
@@ -439,7 +439,7 @@ abstract class IvrEntryAbstract
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {
         $this->numberCountry = $numberCountry;
 

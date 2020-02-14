@@ -205,7 +205,7 @@ abstract class TpRatingPlanAbstract
             'timing_tag' => self::getTimingTag(),
             'weight' => self::getWeight(),
             'created_at' => self::getCreatedAt(),
-            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
+            'ratingPlanId' => self::getRatingPlan()->getId()
         ];
     }
     // @codeCoverageIgnoreStart

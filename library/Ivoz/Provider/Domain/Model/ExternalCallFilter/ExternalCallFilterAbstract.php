@@ -264,7 +264,7 @@ abstract class ExternalCallFilterAbstract
             'holidayNumberValue' => self::getHolidayNumberValue(),
             'outOfScheduleTargetType' => self::getOutOfScheduleTargetType(),
             'outOfScheduleNumberValue' => self::getOutOfScheduleNumberValue(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
             'holidayLocutionId' => self::getHolidayLocution() ? self::getHolidayLocution()->getId() : null,
             'outOfScheduleLocutionId' => self::getOutOfScheduleLocution() ? self::getOutOfScheduleLocution()->getId() : null,
@@ -434,7 +434,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -458,7 +458,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null)
+    protected function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null)
     {
         $this->welcomeLocution = $welcomeLocution;
 
@@ -482,7 +482,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setHolidayLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution = null)
+    protected function setHolidayLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution = null)
     {
         $this->holidayLocution = $holidayLocution;
 
@@ -506,7 +506,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setOutOfScheduleLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution = null)
+    protected function setOutOfScheduleLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution = null)
     {
         $this->outOfScheduleLocution = $outOfScheduleLocution;
 
@@ -530,7 +530,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setHolidayExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension = null)
+    protected function setHolidayExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension = null)
     {
         $this->holidayExtension = $holidayExtension;
 
@@ -554,7 +554,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setOutOfScheduleExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension = null)
+    protected function setOutOfScheduleExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension = null)
     {
         $this->outOfScheduleExtension = $outOfScheduleExtension;
 
@@ -578,7 +578,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setHolidayVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser = null)
+    protected function setHolidayVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser = null)
     {
         $this->holidayVoiceMailUser = $holidayVoiceMailUser;
 
@@ -602,7 +602,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setOutOfScheduleVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser = null)
+    protected function setOutOfScheduleVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser = null)
     {
         $this->outOfScheduleVoiceMailUser = $outOfScheduleVoiceMailUser;
 
@@ -626,7 +626,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null)
+    protected function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null)
     {
         $this->holidayNumberCountry = $holidayNumberCountry;
 
@@ -650,7 +650,7 @@ abstract class ExternalCallFilterAbstract
      *
      * @return static
      */
-    public function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null)
+    protected function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null)
     {
         $this->outOfScheduleNumberCountry = $outOfScheduleNumberCountry;
 

@@ -321,7 +321,7 @@ abstract class ServiceAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -349,7 +349,7 @@ abstract class ServiceAbstract
      *
      * @return static
      */
-    public function setDescription(Description $description)
+    protected function setDescription(Description $description)
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {

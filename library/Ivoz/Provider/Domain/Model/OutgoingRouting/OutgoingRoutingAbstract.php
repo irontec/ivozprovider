@@ -268,7 +268,7 @@ abstract class OutgoingRoutingAbstract
             'stopper' => self::getStopper(),
             'forceClid' => self::getForceClid(),
             'clid' => self::getClid(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
@@ -512,7 +512,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -536,7 +536,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -656,7 +656,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @return static
      */
-    public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null)
+    protected function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null)
     {
         $this->clidCountry = $clidCountry;
 

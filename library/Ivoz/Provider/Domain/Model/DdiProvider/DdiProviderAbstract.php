@@ -181,7 +181,7 @@ abstract class DdiProviderAbstract
             'description' => self::getDescription(),
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
@@ -277,7 +277,7 @@ abstract class DdiProviderAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -301,7 +301,7 @@ abstract class DdiProviderAbstract
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
         $this->transformationRuleSet = $transformationRuleSet;
 

@@ -15,7 +15,7 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -24,7 +24,7 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
@@ -35,7 +35,7 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null);
+    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag);
 
     /**
      * Get routingTag

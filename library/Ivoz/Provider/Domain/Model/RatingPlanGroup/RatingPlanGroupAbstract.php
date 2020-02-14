@@ -212,7 +212,7 @@ abstract class RatingPlanGroupAbstract
             'descriptionEs' => self::getDescription()->getEs(),
             'descriptionCa' => self::getDescription()->getCa(),
             'descriptionIt' => self::getDescription()->getIt(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
@@ -225,7 +225,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -249,7 +249,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
         $this->currency = $currency;
 
@@ -273,7 +273,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -301,7 +301,7 @@ abstract class RatingPlanGroupAbstract
      *
      * @return static
      */
-    public function setDescription(Description $description)
+    protected function setDescription(Description $description)
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {

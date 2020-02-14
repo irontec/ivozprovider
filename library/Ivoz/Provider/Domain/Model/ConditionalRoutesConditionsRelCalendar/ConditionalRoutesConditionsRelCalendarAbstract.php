@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ConditionalRoutesConditionsRelCalendarAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     protected $condition;
 
@@ -152,7 +152,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     {
         return [
             'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
-            'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
+            'calendarId' => self::getCalendar()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition()
     {
@@ -188,7 +188,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
+    protected function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
     {
         $this->calendar = $calendar;
 

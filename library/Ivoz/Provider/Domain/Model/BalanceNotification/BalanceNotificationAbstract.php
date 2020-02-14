@@ -292,7 +292,7 @@ abstract class BalanceNotificationAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -316,7 +316,7 @@ abstract class BalanceNotificationAbstract
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    protected function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
         $this->carrier = $carrier;
 
@@ -340,7 +340,7 @@ abstract class BalanceNotificationAbstract
      *
      * @return static
      */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
+    protected function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
     {
         $this->notificationTemplate = $notificationTemplate;
 

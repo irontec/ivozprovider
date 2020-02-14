@@ -117,29 +117,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDirection();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -149,29 +131,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set carrier
-     *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
-     *
-     * @return static
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
-
-    /**
      * Get carrier
      *
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
-
-    /**
-     * Set destination
-     *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination | null
-     *
-     * @return static
-     */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null);
 
     /**
      * Get destination
@@ -181,15 +145,6 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDestination();
 
     /**
-     * Set ratingPlanGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup | null
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
-
-    /**
      * Get ratingPlanGroup
      *
      * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
@@ -197,29 +152,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getRatingPlanGroup();
 
     /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
-     *
-     * @return static
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
-
-    /**
      * Get invoice
      *
      * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice();
-
-    /**
-     * Set trunksCdr
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr | null
-     *
-     * @return static
-     */
-    public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null);
 
     /**
      * Get trunksCdr

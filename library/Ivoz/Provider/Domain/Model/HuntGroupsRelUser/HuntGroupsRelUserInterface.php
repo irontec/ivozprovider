@@ -29,7 +29,7 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -38,18 +38,9 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup();
-
-    /**
-     * Set user
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
-     *
-     * @return static
-     */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
     /**
      * Get user

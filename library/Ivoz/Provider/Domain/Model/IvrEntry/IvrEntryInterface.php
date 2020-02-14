@@ -53,7 +53,7 @@ interface IvrEntryInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null);
+    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr);
 
     /**
      * Get ivr
@@ -63,29 +63,11 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getIvr();
 
     /**
-     * Set welcomeLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
-     *
-     * @return static
-     */
-    public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null);
-
-    /**
      * Get welcomeLocution
      *
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getWelcomeLocution();
-
-    /**
-     * Set extension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
-     *
-     * @return static
-     */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null);
 
     /**
      * Get extension
@@ -95,15 +77,6 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getExtension();
 
     /**
-     * Set voiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
-     *
-     * @return static
-     */
-    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null);
-
-    /**
      * Get voiceMailUser
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
@@ -111,29 +84,11 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getVoiceMailUser();
 
     /**
-     * Set conditionalRoute
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
-     *
-     * @return static
-     */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null);
-
-    /**
      * Get conditionalRoute
      *
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface | null
      */
     public function getConditionalRoute();
-
-    /**
-     * Set numberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
 
     /**
      * Get numberCountry

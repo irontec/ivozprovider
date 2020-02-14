@@ -257,7 +257,7 @@ abstract class TerminalAbstract
             'mac' => self::getMac(),
             'lastProvisionDate' => self::getLastProvisionDate(),
             't38Passthrough' => self::getT38Passthrough(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
@@ -532,7 +532,7 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -580,7 +580,7 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    public function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null)
+    protected function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null)
     {
         $this->terminalModel = $terminalModel;
 

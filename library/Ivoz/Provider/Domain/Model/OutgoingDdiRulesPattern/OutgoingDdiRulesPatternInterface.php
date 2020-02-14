@@ -61,7 +61,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule = null);
+    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule);
 
     /**
      * Get outgoingDdiRule
@@ -71,27 +71,9 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     public function getOutgoingDdiRule();
 
     /**
-     * Set matchList
-     *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList | null
-     *
-     * @return static
-     */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null);
-
-    /**
      * Get matchList
      *
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     public function getMatchList();
-
-    /**
-     * Set forcedDdi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi | null
-     *
-     * @return static
-     */
-    public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null);
 }

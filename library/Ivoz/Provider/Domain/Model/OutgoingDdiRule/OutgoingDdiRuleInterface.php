@@ -48,29 +48,11 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     public function getDefaultAction();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
-    /**
-     * Set forcedDdi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi | null
-     *
-     * @return static
-     */
-    public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null);
 
     /**
      * Add pattern

@@ -24,7 +24,7 @@ abstract class DdiProviderAddressAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface | null
      */
     protected $trunksAddress;
 
@@ -170,7 +170,7 @@ abstract class DdiProviderAddressAbstract
             'ip' => self::getIp(),
             'description' => self::getDescription(),
             'trunksAddressId' => self::getTrunksAddress() ? self::getTrunksAddress()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'ddiProviderId' => self::getDdiProvider()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -238,7 +238,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @return static
      */
-    public function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress = null)
+    protected function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress = null)
     {
         $this->trunksAddress = $trunksAddress;
 
@@ -262,7 +262,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider)
     {
         $this->ddiProvider = $ddiProvider;
 

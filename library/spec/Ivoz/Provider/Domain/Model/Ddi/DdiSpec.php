@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Model\Ddi;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
@@ -29,7 +30,8 @@ class DdiSpec extends ObjectBehavior
     function let(
         CountryInterface $country,
         DdiProviderInterface $ddiProvider,
-        BrandInterface $brand
+        BrandInterface $brand,
+        CompanyInterface $company
     ) {
         $this->ddiProvider = $ddiProvider;
 
@@ -44,7 +46,8 @@ class DdiSpec extends ObjectBehavior
             [
                 'country' => $country->getWrappedObject(),
                 'ddiProvider' => $ddiProvider->getWrappedObject(),
-                'brand' =>  $brand->getWrappedObject()
+                'brand' =>  $brand->getWrappedObject(),
+                'company' => $company->getWrappedObject(),
             ]
         );
 

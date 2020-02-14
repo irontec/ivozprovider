@@ -34,15 +34,6 @@ interface DestinationInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
-     * Set tpDestination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
-     *
-     * @return static
-     */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
-
-    /**
      * Get tpDestination
      *
      * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
@@ -50,29 +41,11 @@ interface DestinationInterface extends LoggableEntityInterface
     public function getTpDestination();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\Destination\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\Destination\Name $name);
 
     /**
      * Get name

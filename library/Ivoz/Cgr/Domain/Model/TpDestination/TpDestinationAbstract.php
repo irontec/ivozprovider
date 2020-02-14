@@ -184,7 +184,7 @@ abstract class TpDestinationAbstract
             'tag' => self::getTag(),
             'prefix' => self::getPrefix(),
             'created_at' => self::getCreatedAt(),
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
+            'destinationId' => self::getDestination()->getId()
         ];
     }
     // @codeCoverageIgnoreStart

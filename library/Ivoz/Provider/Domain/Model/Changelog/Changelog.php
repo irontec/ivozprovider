@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Changelog;
 
 use Ivoz\Core\Domain\Event\EntityEventInterface;
 use Ivoz\Core\Domain\Model\LoggerEntityInterface;
+use Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface;
 
 /**
  * Changelog
@@ -16,8 +17,10 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
      * @param \Ivoz\Core\Domain\Event\EntityEventInterface $event
      * @return self
      */
-    public static function fromEvent(EntityEventInterface $event)
-    {
+    public static function fromEvent(
+        EntityEventInterface $event,
+        CommandlogInterface $command
+    ) {
         $entity = new static(
             $event->getEntityClass(),
             (string) $event->getEntityId(),
@@ -29,6 +32,8 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
         $entity->setData(
             $event->getData()
         );
+
+        $entity->setCommand($command);
 
         $entity->sanitizeValues();
         $entity->initChangelog();

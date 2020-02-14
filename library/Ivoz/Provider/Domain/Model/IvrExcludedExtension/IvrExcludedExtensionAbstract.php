@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class IvrExcludedExtensionAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     protected $ivr;
 
@@ -152,7 +152,7 @@ abstract class IvrExcludedExtensionAbstract
     {
         return [
             'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null
+            'extensionId' => self::getExtension()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr()
     {
@@ -188,7 +188,7 @@ abstract class IvrExcludedExtensionAbstract
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension)
+    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension)
     {
         $this->extension = $extension;
 

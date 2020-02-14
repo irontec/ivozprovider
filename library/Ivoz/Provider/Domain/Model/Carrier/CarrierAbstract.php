@@ -207,7 +207,7 @@ abstract class CarrierAbstract
             'externallyRated' => self::getExternallyRated(),
             'balance' => self::getBalance(),
             'calculateCost' => self::getCalculateCost(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
@@ -362,7 +362,7 @@ abstract class CarrierAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -386,7 +386,7 @@ abstract class CarrierAbstract
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -410,7 +410,7 @@ abstract class CarrierAbstract
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
     {
         $this->currency = $currency;
 

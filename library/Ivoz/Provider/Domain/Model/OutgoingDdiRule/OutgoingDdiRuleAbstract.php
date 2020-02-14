@@ -173,7 +173,7 @@ abstract class OutgoingDdiRuleAbstract
         return [
             'name' => self::getName(),
             'defaultAction' => self::getDefaultAction(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
     }
@@ -244,7 +244,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -268,7 +268,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @return static
      */
-    public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
+    protected function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null)
     {
         $this->forcedDdi = $forcedDdi;
 

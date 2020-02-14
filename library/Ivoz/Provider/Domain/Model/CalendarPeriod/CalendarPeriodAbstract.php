@@ -215,7 +215,7 @@ abstract class CalendarPeriodAbstract
             'endDate' => self::getEndDate(),
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
-            'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null,
+            'calendarId' => self::getCalendar()->getId(),
             'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
@@ -344,7 +344,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar = null)
+    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
     {
         $this->calendar = $calendar;
 
@@ -368,7 +368,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
+    protected function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
     {
         $this->locution = $locution;
 
@@ -392,7 +392,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
+    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
     {
         $this->extension = $extension;
 
@@ -416,7 +416,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
+    protected function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
     {
         $this->voiceMailUser = $voiceMailUser;
 
@@ -440,7 +440,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {
         $this->numberCountry = $numberCountry;
 

@@ -83,15 +83,6 @@ interface QueueInterface extends LoggableEntityInterface
     public function getWeight();
 
     /**
-     * Set queue
-     *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
-     *
-     * @return static
-     */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue);
-
-    /**
      * Get queue
      *
      * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface

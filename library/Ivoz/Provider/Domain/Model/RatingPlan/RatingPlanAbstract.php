@@ -247,8 +247,8 @@ abstract class RatingPlanAbstract
             'friday' => self::getFriday(),
             'saturday' => self::getSaturday(),
             'sunday' => self::getSunday(),
-            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
-            'destinationRateGroupId' => self::getDestinationRateGroup() ? self::getDestinationRateGroup()->getId() : null
+            'ratingPlanGroupId' => self::getRatingPlanGroup()->getId(),
+            'destinationRateGroupId' => self::getDestinationRateGroup()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -548,7 +548,7 @@ abstract class RatingPlanAbstract
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
@@ -572,7 +572,7 @@ abstract class RatingPlanAbstract
      *
      * @return static
      */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
+    protected function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
     {
         $this->destinationRateGroup = $destinationRateGroup;
 

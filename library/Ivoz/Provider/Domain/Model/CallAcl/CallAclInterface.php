@@ -39,15 +39,6 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getDefaultPolicy();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface

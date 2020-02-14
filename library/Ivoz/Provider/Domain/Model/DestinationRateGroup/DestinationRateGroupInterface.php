@@ -57,29 +57,11 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getStatus();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
 
     /**
      * Get currency
@@ -89,15 +71,6 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getCurrency();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name);
-
-    /**
      * Get name
      *
      * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name
@@ -105,29 +78,11 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getName();
 
     /**
-     * Set description
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description
-     *
-     * @return static
-     */
-    public function setDescription(\Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description);
-
-    /**
      * Get description
      *
      * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description
      */
     public function getDescription();
-
-    /**
-     * Set file
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file
-     *
-     * @return static
-     */
-    public function setFile(\Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file);
 
     /**
      * Get file

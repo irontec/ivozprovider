@@ -254,7 +254,7 @@ abstract class ConditionalRoutesConditionAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'friendValue' => self::getFriendValue(),
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
+            'conditionalRouteId' => self::getConditionalRoute()->getId(),
             'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'voicemailUserId' => self::getVoicemailUser() ? self::getVoicemailUser()->getId() : null,
@@ -397,7 +397,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
+    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute)
     {
         $this->conditionalRoute = $conditionalRoute;
 
@@ -421,7 +421,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
+    protected function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
         $this->ivr = $ivr;
 
@@ -445,7 +445,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
+    protected function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
     {
         $this->huntGroup = $huntGroup;
 
@@ -469,7 +469,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setVoicemailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser = null)
+    protected function setVoicemailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voicemailUser = null)
     {
         $this->voicemailUser = $voicemailUser;
 
@@ -493,7 +493,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
         $this->user = $user;
 
@@ -517,7 +517,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
+    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
     {
         $this->queue = $queue;
 
@@ -541,7 +541,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
+    protected function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
     {
         $this->locution = $locution;
 
@@ -565,7 +565,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
+    protected function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
     {
         $this->conferenceRoom = $conferenceRoom;
 
@@ -589,7 +589,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
+    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
     {
         $this->extension = $extension;
 
@@ -613,7 +613,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {
         $this->numberCountry = $numberCountry;
 
