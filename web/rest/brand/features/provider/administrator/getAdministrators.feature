@@ -18,6 +18,7 @@ Feature: Retrieve administrators
               "username": "test_company_admin",
               "email": "test@irontec.com",
               "active": true,
+              "restricted": false,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
               "id": 4
@@ -39,6 +40,7 @@ Feature: Retrieve administrators
           "pass": "****",
           "email": "test@irontec.com",
           "active": true,
+          "restricted": false,
           "name": "Admin Name",
           "lastname": "Admin Lastname",
           "id": 4,

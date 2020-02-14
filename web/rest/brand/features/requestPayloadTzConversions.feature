@@ -50,7 +50,7 @@ Feature: Input timezone convertion
     """
 
   Scenario: Retrieve created item using user time zone (Europe/Madrid)
-    Given I add Authorization header for "utcBrandAdmin"
+    Given I add Authorization header for "restrictedBrandAdmin"
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoices/2"
     And the JSON should be like:
