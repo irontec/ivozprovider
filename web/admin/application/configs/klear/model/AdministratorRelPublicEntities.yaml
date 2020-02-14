@@ -1,0 +1,37 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\AdministratorRelPublicSection\AdministratorRelPublicSection
+  fields:
+    administrator:
+      title: _('Administrator')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Administrator\Administrator
+          fieldName:
+            fields:
+            - username
+            template: '%username%'
+    publicEntity:
+      title: _('Public Entity')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity
+          fieldName:
+            fields:
+            - name${lang}
+            template: '%name${lang}%'
+          order:
+            PublicEntity.name.${lang}: asc
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

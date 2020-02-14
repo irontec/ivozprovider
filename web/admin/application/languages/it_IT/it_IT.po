@@ -47,8 +47,17 @@ msgstr "ASR"
 msgid "Accept"
 msgstr "Accetta"
 
+msgid "Access"
+msgstr "Accesso"
+
 msgid "Access denied"
 msgstr "Accesso negato"
+
+msgid "Access privileges"
+msgstr "Administrator access privilege"
+
+msgid "Access successfully revoked."
+msgstr "Accesso eliminato con successo."
 
 msgid "Action"
 msgstr "Azione"
@@ -102,6 +111,14 @@ msgstr "Aggiungi pattern a %2s"
 
 msgid "Admin"
 msgstr "Amministratore"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Administrator access privilege"
+msgid_plural "Administrator access privileges"
+msgstr[0] "Administrator access privilege"
+msgstr[1] "Administrator access privileges"
 
 msgid "Advanced Configuration"
 msgstr "Configurazione avanzata"
@@ -560,6 +577,9 @@ msgstr[1] "Paesi"
 msgid "Country code"
 msgstr "Country code"
 
+msgid "Create"
+msgstr "Create"
+
 msgid "Created"
 msgstr "Creato"
 
@@ -640,6 +660,9 @@ msgstr "Default policy"
 msgid "Default timezone"
 msgstr "Fuso orario predefinito"
 
+msgid "Delete"
+msgstr "Delete"
+
 #, python-format
 msgid "Delete %s"
 msgstr "Elimina %s"
@@ -716,9 +739,30 @@ msgstr "Metodo di distribuzione"
 msgid "Do not disturb"
 msgstr "Non disturbare"
 
+msgid "Do you really want to grant read access to selected entities?"
+msgstr "Do you really want to grant read access to selected entities?"
+
+msgid "Do you really want to grant write access to selected entities?"
+msgstr "Do you really want to grant write access to selected entities?"
+
+msgid "Do you really want to revoke access to selected entities?"
+msgstr "Do you want to rerate selected calls?"
+
+#, python-format
+msgid "Do you want revoke access to this %s?"
+msgstr "Do you want revoke access to this %s?"
+
 #, python-format
 msgid "Do you want to delete this %s?"
 msgstr "Vuoi eliminare questo %s?"
+
+#, python-format
+msgid "Do you want to grant read access to this %s?"
+msgstr "Do you want to grant read access to this %s?"
+
+#, python-format
+msgid "Do you want to grant write access to this %s?"
+msgstr "Do you want to grant write access to this %s?"
 
 msgid "Do you want to rerate selected calls?"
 msgstr "Do you want to rerate selected calls?"
@@ -852,6 +896,11 @@ msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
 msgstr ""
 "Inserisci i pattern numerici nel formato E.164 (il simbolo più deve essere "
 "salvato)."
+
+msgid "Entity"
+msgid_plural "Entities"
+msgstr[0] "Entity"
+msgstr[1] "Entities"
 
 msgid "Entry"
 msgstr "Voce"
@@ -1125,6 +1174,14 @@ msgstr[1] "Global Special Numbers"
 
 msgid "God"
 msgstr "God"
+
+#, python-format
+msgid "Grant Read Only %s"
+msgstr "Grant Read Only %s"
+
+#, python-format
+msgid "Grant Write %s"
+msgstr "Grant Write %s"
 
 msgid "Group"
 msgstr "Gruppo"
@@ -2089,6 +2146,15 @@ msgid_plural "Rating plans"
 msgstr[0] "Piano di tariffazione"
 msgstr[1] "Piani di tariffazione"
 
+msgid "Read"
+msgstr "Read"
+
+msgid "Read Only Access"
+msgstr "Read Only Access"
+
+msgid "Read access successfully granted."
+msgstr "Read access successfully granted."
+
 msgid "Realm"
 msgstr "Realm"
 
@@ -2168,6 +2234,9 @@ msgstr "Ripristina modello predefinito"
 msgid "Restore last backup"
 msgstr "Ripristina ultimo backup"
 
+msgid "Restricted"
+msgstr "Restricted"
+
 msgid "Results"
 msgstr "Risultati"
 
@@ -2193,6 +2262,13 @@ msgstr[1] "Retail admins"
 
 msgid "Retail specific"
 msgstr "Account Retail"
+
+#, python-format
+msgid "Revoke %s"
+msgstr "Revoke %s"
+
+msgid "Revoke Access"
+msgstr "Revoke Access"
 
 msgid "Ring all"
 msgstr "Ring all"
@@ -2721,6 +2797,9 @@ msgstr "Unit"
 msgid "Unreachable"
 msgstr "Irraggiungibile"
 
+msgid "Update"
+msgstr "Update"
+
 msgid "Update CallerID?"
 msgstr "Aggiorna CallerID?"
 
@@ -2888,6 +2967,12 @@ msgstr "Wholesale specific"
 msgid "Will be shown on page footer"
 msgstr "Verrà mostrato a piè di pagina"
 
+msgid "Write Access"
+msgstr "Write Access"
+
+msgid "Write access successfully granted."
+msgstr "Write access successfully granted."
+
 msgid "Wrong mask, discarding value."
 msgstr "Maschera sbagliata, valore scartato."
 
@@ -2989,3 +3074,6 @@ msgstr "condiviso"
 
 msgid "unlimited"
 msgstr "illimitato"
+
+#~ msgid "Public Entity"
+#~ msgstr "Public Entity"

@@ -48,8 +48,17 @@ msgstr "ASR"
 msgid "Accept"
 msgstr "Accepta"
 
+msgid "Access"
+msgstr "Acceso"
+
 msgid "Access denied"
 msgstr "Accés denegat"
+
+msgid "Access privileges"
+msgstr "Control de acceso"
+
+msgid "Access successfully revoked."
+msgstr "Acceso revocado satisfactoriamente"
 
 msgid "Action"
 msgstr "Acció"
@@ -101,6 +110,14 @@ msgstr "Afegeix patró a %2s"
 
 msgid "Admin"
 msgstr "Administrador"
+
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "Administrator access privilege"
+msgid_plural "Administrator access privileges"
+msgstr[0] "Control de acceso de administrador"
+msgstr[1] "Controles de acceso de administrador"
 
 msgid "Advanced Configuration"
 msgstr "Configuració avançada"
@@ -555,6 +572,9 @@ msgstr[1] "Països"
 msgid "Country code"
 msgstr "Codi de País"
 
+msgid "Create"
+msgstr "Crear"
+
 msgid "Created"
 msgstr "Creat"
 
@@ -635,6 +655,9 @@ msgstr "Política per defecte"
 msgid "Default timezone"
 msgstr "Zona horària per defecte"
 
+msgid "Delete"
+msgstr "Borrar"
+
 #, python-format
 msgid "Delete %s"
 msgstr "Esborra %s"
@@ -711,9 +734,31 @@ msgstr "Mètode de distribució"
 msgid "Do not disturb"
 msgstr "No molestar"
 
+msgid "Do you really want to grant read access to selected entities?"
+msgstr "¿Realmente desea dar acceso de lectura a las entidades seleccionadas?"
+
+msgid "Do you really want to grant write access to selected entities?"
+msgstr ""
+"¿Realmente desea dar acceso de escritura a las entidades seleccionadas?"
+
+msgid "Do you really want to revoke access to selected entities?"
+msgstr "¿Realmente desea denegar el acceso a las entidades seleccionadas?"
+
+#, python-format
+msgid "Do you want revoke access to this %s?"
+msgstr "¿Desea denegar el acceso a %s?"
+
 #, python-format
 msgid "Do you want to delete this %s?"
 msgstr "Vols esborrar %s?"
+
+#, python-format
+msgid "Do you want to grant read access to this %s?"
+msgstr "¿Desea dar acceso de lectura a %s?"
+
+#, python-format
+msgid "Do you want to grant write access to this %s?"
+msgstr "¿Desea dar acceso de escritura a %s?"
 
 msgid "Do you want to rerate selected calls?"
 msgstr "Vols tornar a tarifar les trucades seleccionades?"
@@ -847,6 +892,11 @@ msgstr "Assegura que la previsualització és correcte abans de procedir"
 msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
 msgstr ""
 "Entra patrons de numeració en format E.164 (el símbol + cal ignorar-lo)."
+
+msgid "Entity"
+msgid_plural "Entities"
+msgstr[0] "Entidad"
+msgstr[1] "Entidades"
 
 msgid "Entry"
 msgstr "Entrada"
@@ -1118,6 +1168,14 @@ msgstr[1] "Números especiales Globales"
 
 msgid "God"
 msgstr "Déu"
+
+#, python-format
+msgid "Grant Read Only %s"
+msgstr "Dar acceso de solo lectura %s"
+
+#, python-format
+msgid "Grant Write %s"
+msgstr "Dar acceso de escritura %s"
 
 msgid "Group"
 msgstr "Grup"
@@ -2075,6 +2133,15 @@ msgid_plural "Rating plans"
 msgstr[0] "Pla de preus"
 msgstr[1] "Plans de preus"
 
+msgid "Read"
+msgstr "Lectura"
+
+msgid "Read Only Access"
+msgstr "Acceso de solo lectura"
+
+msgid "Read access successfully granted."
+msgstr "Acceso de solo lectura oportado"
+
 msgid "Realm"
 msgstr "Regne"
 
@@ -2154,6 +2221,9 @@ msgstr "Restaura plantilla per defecte"
 msgid "Restore last backup"
 msgstr "Restaura última còpia de seguretat"
 
+msgid "Restricted"
+msgstr "Restringido"
+
 msgid "Results"
 msgstr "Resultats"
 
@@ -2179,6 +2249,13 @@ msgstr[1] "Retail admins"
 
 msgid "Retail specific"
 msgstr "Específic al detall"
+
+#, python-format
+msgid "Revoke %s"
+msgstr "Revocar %s"
+
+msgid "Revoke Access"
+msgstr "Revocar acceso"
 
 msgid "Ring all"
 msgstr "Trucar a tots"
@@ -2704,6 +2781,9 @@ msgstr "Unitat"
 msgid "Unreachable"
 msgstr "Inabastable"
 
+msgid "Update"
+msgstr "Actualizar"
+
 msgid "Update CallerID?"
 msgstr "Actualitzar ID del trucant?"
 
@@ -2871,6 +2951,12 @@ msgstr "Específic a l'engròs"
 msgid "Will be shown on page footer"
 msgstr "Es mostrarà al peu de pàgina"
 
+msgid "Write Access"
+msgstr "Acceso de escritura"
+
+msgid "Write access successfully granted."
+msgstr "Acceso de escritura otorgado satisfactoriamente."
+
 msgid "Wrong mask, discarding value."
 msgstr "Màscara de xarxa invàlida, s'ignorarà el valor."
 
@@ -2969,3 +3055,6 @@ msgstr "compartit"
 
 msgid "unlimited"
 msgstr "il·limitat"
+
+#~ msgid "Public Entity"
+#~ msgstr "Entidad Pública"
