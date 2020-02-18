@@ -11,4 +11,4 @@ services:
     public: true
 
   Services\:
-    resource: '../../src/Services/*'
+    resource: '../src/Services/*'

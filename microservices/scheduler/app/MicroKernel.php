@@ -33,7 +33,7 @@ class MicroKernel extends Kernel
 
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader)
     {
-        $loader->load(__DIR__ . '/config/config.yml');
+        $loader->load(__DIR__ . '/../config/config.yml');
     }
 
     protected function configureRoutes(RouteCollectionBuilder $routes)

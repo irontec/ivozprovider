@@ -18,7 +18,7 @@ gesdinet_jwt_refresh_token:
 framework:
   secret: '%secret%'
   router:
-    resource: '%kernel.root_dir%/config/routing.yml'
+    resource: '%kernel.root_dir%/../config/routing.yml'
 
 # Twig Configuration
 twig:

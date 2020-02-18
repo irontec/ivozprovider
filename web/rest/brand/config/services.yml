@@ -21,15 +21,27 @@ services:
       $decoratedNormalizer:
         '@Service\AuthEndpointDecorator.inner'
 
-  Ivoz\Api\Core\Security\DataAccessControlParser: ~
+  Ivoz\Api\Operation\ExchangeToken:
+    arguments:
+      $userProvider: '@Service\UserProvider'
+
+  Ivoz\Api\Core\Security\DataAccessControlParser:
+    calls:
+      - [ addRepository, ['companyRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")']]
+      - [ addRepository, ['transformationRuleSetRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet")']]
 
   #######################################
   ## Controllers
   #######################################
+  Controller\Auth\:
+    resource: '../src/Controller/Auth/*'
+    tags: ['controller.service_arguments']
+
   Controller\My\:
-    resource: '../../src/Controller/My/*'
+    resource: '../src/Controller/My/*'
     tags: ['controller.service_arguments']
 
   Controller\Provider\:
-    resource: '../../src/Controller/Provider/*'
+    resource: '../src/Controller/Provider/*'
     tags: ['controller.service_arguments']
+
