@@ -14,7 +14,7 @@ class AppKernel extends Kernel
     {
         $this->consoleContext = $consoleContext;
 
-        return parent::__construct(...func_get_args());
+        parent::__construct($environment, $debug);
     }
 
     public function registerBundles()

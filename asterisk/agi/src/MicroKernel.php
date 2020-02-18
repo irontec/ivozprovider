@@ -19,7 +19,7 @@ class MicroKernel extends Kernel
     public function __construct($environment, $debug, AGI $fastagi = null)
     {
         $this->fastagi = $fastagi;
-        return parent::__construct($environment, $debug);
+        parent::__construct($environment, $debug);
     }
 
     public function registerBundles()
@@ -93,7 +93,7 @@ class MicroKernel extends Kernel
         $this->registerCommand($uri);
 
         try {
-            /** @var \Dialplan\RouteHandlerAbstract $routeHandler */
+            /** @var RouteHandlerAbstract $routeHandler */
             $routeHandler = $this->container->get($uri);
             $routeHandler->process();
         } catch (\Exception $e) {
