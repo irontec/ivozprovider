@@ -4,8 +4,7 @@
 require_once 'Zend/Registry.php';
 
 /** @var \Composer\Autoload\ClassLoader $loader */
-$loader = require __DIR__ . '/../../../../web/rest/platform/app/autoload.php';
-include_once __DIR__.'/../../../../web/rest/var/bootstrap.php.cache';
+$loader = require __DIR__ . '/../../../../web/rest/platform/vendor/autoload.php';
 
 $kernel = new AppKernel('prod', false);
 $kernel->boot();
@@ -16,14 +15,6 @@ $kernel->boot();
 );
 
 require_once 'Zend/Registry.php';
-
-/** @var \Composer\Autoload\ClassLoader $loader */
-$loader = require __DIR__ . '/../../../../web/rest/platform/app/autoload.php';
-
-include_once __DIR__.'/../../../../web/rest/var/bootstrap.php.cache';
-
-$kernel = new AppKernel('prod', false);
-$kernel->boot();
 
 \Zend_Registry::set(
     'data_gateway',

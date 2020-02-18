@@ -22,7 +22,7 @@ run_test () {
 
 run_test library Ivoz
 run_test asterisk/agi src
-run_test microservices/balances app
+run_test microservices/balances src
 run_test microservices/recordings src
 run_test microservices/scheduler src
 run_test microservices/workers src

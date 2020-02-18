@@ -33,11 +33,7 @@
             "": "src/",
             "DataFixtures\\": "../library/DataFixtures",
             "Ivoz\\": "../library/Ivoz"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
+        }
     },
     "autoload-dev": {
         "files": [
@@ -92,7 +88,6 @@
         ]
     },
     "extra": {
-        "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",

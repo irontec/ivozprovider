@@ -38,10 +38,7 @@
         "psr-4": {
             "": "src/",
             "Ivoz\\": "../../library/Ivoz"
-        },
-        "classmap": [
-            "app/MicroKernel.php"
-        ]
+        }
     },
     "autoload-dev": {
         "files": [

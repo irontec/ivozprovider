@@ -33,7 +33,6 @@
             "Ivoz\\": "../../library/Ivoz"
         },
         "classmap": [
-            "app/MicroKernel.php",
             "phpagi/phpagi.php"
         ]
     },
