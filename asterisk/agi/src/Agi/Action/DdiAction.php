@@ -153,7 +153,6 @@ class DdiAction
             ->setRouteFriendDestination($ddi->getFriendValue())
             ->setRouteQueue($ddi->getQueue())
             ->setRouteResidential($ddi->getResidentialDevice())
-            ->setRouteRetail($ddi->getRetailAccount())
             ->setRouteConditional($ddi->getConditionalRoute())
             ->route();
     }
