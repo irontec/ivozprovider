@@ -21,6 +21,16 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     private $priority;
 
     /**
+     * @var string
+     */
+    private $routeType;
+
+    /**
+     * @var string
+     */
+    private $numberValue;
+
+    /**
      * @var integer
      */
     private $id;
@@ -34,6 +44,11 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
      * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
      */
     private $user;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     */
+    private $numberCountry;
 
 
     use DtoNormalizer;
@@ -55,9 +70,12 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return [
             'timeoutTime' => 'timeoutTime',
             'priority' => 'priority',
+            'routeType' => 'routeType',
+            'numberValue' => 'numberValue',
             'id' => 'id',
             'huntGroupId' => 'huntGroup',
-            'userId' => 'user'
+            'userId' => 'user',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 
@@ -69,9 +87,12 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return [
             'timeoutTime' => $this->getTimeoutTime(),
             'priority' => $this->getPriority(),
+            'routeType' => $this->getRouteType(),
+            'numberValue' => $this->getNumberValue(),
             'id' => $this->getId(),
             'huntGroup' => $this->getHuntGroup(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'numberCountry' => $this->getNumberCountry()
         ];
     }
 
@@ -113,6 +134,46 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * @param string $routeType
+     *
+     * @return static
+     */
+    public function setRouteType($routeType = null)
+    {
+        $this->routeType = $routeType;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getRouteType()
+    {
+        return $this->routeType;
+    }
+
+    /**
+     * @param string $numberValue
+     *
+     * @return static
+     */
+    public function setNumberValue($numberValue = null)
+    {
+        $this->numberValue = $numberValue;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getNumberValue()
+    {
+        return $this->numberValue;
     }
 
     /**
@@ -221,6 +282,52 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
+     *
+     * @return static
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry = null)
+    {
+        $this->numberCountry = $numberCountry;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     */
+    public function getNumberCountry()
+    {
+        return $this->numberCountry;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
+
+        return $this->setNumberCountry($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getNumberCountryId()
+    {
+        if ($dto = $this->getNumberCountry()) {
             return $dto->getId();
         }
 
