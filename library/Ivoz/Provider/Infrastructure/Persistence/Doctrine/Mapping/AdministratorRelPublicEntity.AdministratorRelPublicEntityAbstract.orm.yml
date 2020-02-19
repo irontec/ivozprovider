@@ -46,7 +46,7 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
     publicEntity:
       targetEntity: \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface
       cascade: {  }
-      fetch: LAZY
+      fetch: EAGER
       mappedBy: null
       inversedBy: null
       joinColumns:

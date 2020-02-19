@@ -9,8 +9,9 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  */
 class Administrator extends AdministratorAbstract implements AdministratorInterface, AdvancedUserInterface, \Serializable
 {
-    use AdministratorTrait;
-    use AdministratorSecurityTrait;
+    use AdministratorTrait, AdministratorSecurityTrait {
+        AdministratorTrait::getRelPublicEntities insteadof AdministratorSecurityTrait;
+    }
 
     /**
      * @return array
