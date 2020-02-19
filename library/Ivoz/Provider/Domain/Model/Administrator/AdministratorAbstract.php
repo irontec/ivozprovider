@@ -35,6 +35,11 @@ abstract class AdministratorAbstract
     protected $active = true;
 
     /**
+     * @var boolean
+     */
+    protected $restricted = false;
+
+    /**
      * @var string | null
      */
     protected $name;
@@ -65,12 +70,18 @@ abstract class AdministratorAbstract
     /**
      * Constructor
      */
-    protected function __construct($username, $pass, $email, $active)
-    {
+    protected function __construct(
+        $username,
+        $pass,
+        $email,
+        $active,
+        $restricted
+    ) {
         $this->setUsername($username);
         $this->setPass($pass);
         $this->setEmail($email);
         $this->setActive($active);
+        $this->setRestricted($restricted);
     }
 
     abstract public function getId();
@@ -145,7 +156,8 @@ abstract class AdministratorAbstract
             $dto->getUsername(),
             $dto->getPass(),
             $dto->getEmail(),
-            $dto->getActive()
+            $dto->getActive(),
+            $dto->getRestricted()
         );
 
         $self
@@ -177,6 +189,7 @@ abstract class AdministratorAbstract
             ->setPass($dto->getPass())
             ->setEmail($dto->getEmail())
             ->setActive($dto->getActive())
+            ->setRestricted($dto->getRestricted())
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -200,6 +213,7 @@ abstract class AdministratorAbstract
             ->setPass(self::getPass())
             ->setEmail(self::getEmail())
             ->setActive(self::getActive())
+            ->setRestricted(self::getRestricted())
             ->setName(self::getName())
             ->setLastname(self::getLastname())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
@@ -217,6 +231,7 @@ abstract class AdministratorAbstract
             'pass' => self::getPass(),
             'email' => self::getEmail(),
             'active' => self::getActive(),
+            'restricted' => self::getRestricted(),
             'name' => self::getName(),
             'lastname' => self::getLastname(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
@@ -333,6 +348,34 @@ abstract class AdministratorAbstract
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Set restricted
+     *
+     * @param boolean $restricted
+     *
+     * @return static
+     */
+    protected function setRestricted($restricted)
+    {
+        Assertion::notNull($restricted, 'restricted value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($restricted), 0, 1, 'restricted provided "%s" is not a valid boolean value.');
+        $restricted = (bool) $restricted;
+
+        $this->restricted = $restricted;
+
+        return $this;
+    }
+
+    /**
+     * Get restricted
+     *
+     * @return boolean
+     */
+    public function getRestricted()
+    {
+        return $this->restricted;
     }
 
     /**

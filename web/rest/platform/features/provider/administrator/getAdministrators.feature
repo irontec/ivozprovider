@@ -18,6 +18,7 @@ Feature: Retrieve administrators
               "username": "admin",
               "email": "admin@example.com",
               "active": true,
+              "restricted": false,
               "name": "admin",
               "lastname": "ivozprovider",
               "id": 1
@@ -26,6 +27,7 @@ Feature: Retrieve administrators
               "username": "test_brand_admin",
               "email": "nightwatch@irontec.com",
               "active": true,
+              "restricted": false,
               "name": "night",
               "lastname": "watch",
               "id": 2
@@ -34,6 +36,7 @@ Feature: Retrieve administrators
               "username": "irontec",
               "email": "vozip@irontec.com",
               "active": true,
+              "restricted": false,
               "name": "irontec",
               "lastname": "ivozprovider",
               "id": 3
@@ -42,6 +45,7 @@ Feature: Retrieve administrators
               "username": "test_company_admin",
               "email": "test@irontec.com",
               "active": true,
+              "restricted": false,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
               "id": 4
@@ -50,15 +54,17 @@ Feature: Retrieve administrators
               "username": "utcAdmin",
               "email": "utc@irontec.com",
               "active": true,
+              "restricted": true,
               "name": "Admin in UTC timezone",
               "lastname": "Admin Lastname",
               "id": 5
           },
           {
-              "username": "utcBrandAdmin",
-              "email": "utc@irontec.com",
+              "username": "restrictedBrandAdmin",
+              "email": "restrictedAdmin@irontec.com",
               "active": true,
-              "name": "Brand Admin in UTC timezone",
+              "restricted": true,
+              "name": "RestrictedAdmin",
               "lastname": "Lastname",
               "id": 6
           }
@@ -79,6 +85,7 @@ Feature: Retrieve administrators
           "pass": "****",
           "email": "admin@example.com",
           "active": true,
+          "restricted": false,
           "name": "admin",
           "lastname": "ivozprovider",
           "id": 1,
@@ -104,3 +111,5 @@ Feature: Retrieve administrators
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "administrators/0"
     Then the response status code should be 404
+
+

@@ -9,8 +9,8 @@ doctrine:
         Ivoz\Ast\Domain\Model\Queue\Queue
       Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface:
         Ivoz\Provider\Domain\Model\Administrator\Administrator
-      Ivoz\Provider\Domain\Model\AdministratorRelPublicSection\AdministratorRelPublicSectionInterface:
-        Ivoz\Provider\Domain\Model\AdministratorRelPublicSection\AdministratorRelPublicSection
+      Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface:
+        Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity
       Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface:
         Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity
       Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface:

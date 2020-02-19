@@ -88,13 +88,16 @@ trait DbIntegrationTestHelperTrait
     /**
      * @return self
      */
-    protected function enableChangelog()
+    protected function enableChangelog(string $commandName = null)
     {
-        $classSegments = explode('\\', self::class);
+        if (!$commandName) {
+            $classSegments = explode('\\', self::class);
+            $commandName = end($classSegments);
+        }
 
         $event = new CommandWasExecuted(
             (new RequestId)->toString(),
-            end($classSegments),
+            $commandName,
             'setUp',
             [],
             []

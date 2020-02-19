@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface AdministratorInterface extends LoggableEntityInterface
 {
@@ -65,6 +67,13 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getActive();
 
     /**
+     * Get restricted
+     *
+     * @return boolean
+     */
+    public function getRestricted();
+
+    /**
      * Get name
      *
      * @return string | null
@@ -98,6 +107,37 @@ interface AdministratorInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone();
+
+    /**
+     * Add relPublicEntity
+     *
+     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     *
+     * @return static
+     */
+    public function addRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity);
+
+    /**
+     * Remove relPublicEntity
+     *
+     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     */
+    public function removeRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity);
+
+    /**
+     * Replace relPublicEntities
+     *
+     * @param ArrayCollection $relPublicEntities of Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface
+     * @return static
+     */
+    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities);
+
+    /**
+     * Get relPublicEntities
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface[]
+     */
+    public function getRelPublicEntities(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * @see AdvancedUserInterface::getRoles()

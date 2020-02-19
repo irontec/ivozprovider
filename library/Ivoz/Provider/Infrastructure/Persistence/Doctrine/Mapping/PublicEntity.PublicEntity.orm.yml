@@ -1,0 +1,14 @@
+Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\PublicEntityDoctrineRepository
+  type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
+  table: PublicEntities
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY

@@ -69,7 +69,6 @@
         "irontec/ivoz-core": "^2.3",
         "irontec/ivoz-core-bundle": "^2.3",
         "irontec/ivoz-dev-tools": "^3.0",
-        "irontec/ivoz-provider-bundle": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
         "mmoreram/gearman-bundle": "^4.1",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
