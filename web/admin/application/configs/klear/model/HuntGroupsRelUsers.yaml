@@ -17,6 +17,43 @@ production:
           order:
             HuntGroup.name: asc
       default: true
+    routeType:
+      title: _('Target type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'user':
+            title: ngettext('User', 'Users', 1)
+            visualFilter:
+              show: [ user ]
+              hide: [ numberCountry, numberValue]
+          'number':
+            title: _('Number')
+            visualFilter:
+              show: [ numberCountry, numberValue]
+              hide: [ user]
+    numberCountry:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    numberValue:
+      title: _('Number')
+      type: text
+      trim: both
+      required: true
     user:
       title: ngettext('User', 'Users', 1)
       type: select
@@ -43,6 +80,12 @@ production:
       type: number
       source:
         control: Spinner
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getTarget
 staging:
   _extends: production
 testing:

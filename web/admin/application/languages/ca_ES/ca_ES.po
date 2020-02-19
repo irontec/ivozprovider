@@ -1666,6 +1666,11 @@ msgid_plural "Media relay sets"
 msgstr[0] "Conjunt de retransmissors de mijtans"
 msgstr[1] "Conjunts de retransmissors de mitjans"
 
+msgid "Member"
+msgid_plural "Members"
+msgstr[0] "Membre"
+msgstr[1] "Membres"
+
 msgid "Member call seconds"
 msgstr "Segons de trucada a membre"
 

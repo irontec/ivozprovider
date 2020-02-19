@@ -65,7 +65,9 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
 
         $userIdsInUse = [];
         foreach ($existingRelationships as $existingRelationship) {
-            $userIdsInUse[] = $existingRelationship->getUserId();
+            if ($existingRelationship->getRouteType() == HuntGroupsRelUser::ROUTETYPE_USER) {
+                $userIdsInUse[] = $existingRelationship->getUserId();
+            }
         }
 
         $this->_condition[] = "self::id NOT IN (" . implode(',', $userIdsInUse) . ")";

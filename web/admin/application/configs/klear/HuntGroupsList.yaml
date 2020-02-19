@@ -98,33 +98,41 @@ production:
     <<: *huntGroupsRelUsers_screensLink
     huntGroupsRelUsersList_screen:
       <<: *huntGroupsRelUsersList_screenLink
-      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
-      class: ui-silk-user
+      title: _("List of %s %2s", ngettext('Member', 'Members', 0), "[format| (%parent%)]")
+      class: ui-silk-group-go
       filterField: HuntGroup
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
         - recordCount
+
     huntGroupsRelUsersEdit_screen:
       <<: *huntGroupsRelUsersEdit_screenLink
-      title: _("Edit %s", ngettext('User', 'User', 1))
+      title: _("Edit %s", ngettext('Member', 'Members', 1))
       filterField: HuntGroup
+
     huntGroupsRelUsersNew_screen:
       <<: *huntGroupsRelUsersNew_screenLink
-      title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
+      title: _("Add %s %2s", ngettext('Member', 'Members', 1), "[format| (%parent%)]")
       filterField: HuntGroup
 
     # HuntGroupRelUsers filter by "ringAll"
     huntGroupsRelUsersFilterRingAllList_screen:
       <<: *huntGroupsRelUsersList_screenLink
-      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
-      class: ui-silk-user
+      title: _("List of %s %2s", ngettext('Member', 'Members', 0), "[format| (%parent%)]")
+      class: ui-silk-group-go
       filterField: HuntGroup
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
         - recordCount
       fields:
+        order:
+          routeType: true
+          target: true
         blacklist:
           timeoutTime: true
+          numberCountry: true
+          numberValue: true
+          user: true
           priority: true
         options:
           title: _("Options")
@@ -141,32 +149,46 @@ production:
           huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
     huntGroupsRelUsersFilterRingAllEdit_screen:
       <<: *huntGroupsRelUsersEdit_screenLink
-      title: _("Edit %s", ngettext('User', 'User', 1))
+      title: _("Edit %s", ngettext('Member', 'Members', 1))
       filterField: HuntGroup
       fields:
         blacklist:
           timeoutTime: true
           priority: true
+          user: true
+          numberValue: true
+          numberCountry: true
+        readOnly:
+          target: true
+          routeType: true
+
     huntGroupsRelUsersFilterRingAllNew_screen:
       <<: *huntGroupsRelUsersNew_screenLink
-      title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
+      title: _("Add %s %2s", ngettext('Member', 'Members', 1), "[format| (%parent%)]")
       filterField: HuntGroup
       fields:
         blacklist:
           timeoutTime: true
           priority: true
+          target: true
 
     # HuntGroupRelUsers filter by "random"
     huntGroupsRelUsersFilterRandomList_screen:
       <<: *huntGroupsRelUsersList_screenLink
-      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
-      class: ui-silk-user
+      title: _("List of %s %2s", ngettext('Member', 'Members', 0), "[format| (%parent%)]")
+      class: ui-silk-group-go
       filterField: HuntGroup
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
         - recordCount
       fields:
+        order:
+          routeType: true
+          target: true
         blacklist:
+          numberCountry: true
+          numberValue: true
+          user: true
           priority: true
         options:
           title: _("Options")
@@ -183,18 +205,29 @@ production:
           huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
     huntGroupsRelUsersFilterRandomEdit_screen:
       <<: *huntGroupsRelUsersEdit_screenLink
-      title: _("Edit %s", ngettext('User', 'User', 1))
+      title: _("Edit %s", ngettext('Member', 'Members', 1))
       filterField: HuntGroup
       fields:
+        order:
+          routeType: true
+          target: true
         blacklist:
+          numberCountry: true
+          numberValue: true
+          user: true
           priority: true
+        readOnly:
+          target: true
+          routeType: true
+
     huntGroupsRelUsersFilterRandomNew_screen:
       <<: *huntGroupsRelUsersNew_screenLink
-      title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
+      title: _("Add %s %2s", ngettext('Member', 'Members', 1), "[format| (%parent%)]")
       filterField: HuntGroup
       fields:
         blacklist:
           priority: true
+          target: true
 
   dialogs: &huntGroups_dialogsLink
     huntGroupsDel_dialog: &huntGroupsDel_dialogLink
@@ -211,7 +244,7 @@ production:
     <<: *huntGroupsRelUsers_dialogsLink
     huntGroupsRelUsersDel_dialog:
       <<: *huntGroupsRelUsersDel_dialogLink
-      title: _("Delete %s", ngettext('User', 'Users', 1))
+      title: _("Delete %s", ngettext('Member', 'Members', 1))
 
 staging:
   _extends: production
