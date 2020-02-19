@@ -71,7 +71,7 @@ class HuntGroupStatusAction
         $timeout = array_shift($huntGroupTimeouts);
 
         // Round Robin strategy infinite loop
-        if ($huntGroup->getStrategy() == HuntGroupAction::RoundRobin) {
+        if ($huntGroup->getStrategy() == HuntGroupInterface::STRATEGY_ROUNDROBIN) {
             // Push again the called user to the end of the list
             if ($dialStatus == "NOANSWER") {
                 // Push again the interface to the back of the list

@@ -69,6 +69,7 @@ class MicroKernel extends Kernel
         $routes->add('/dialplan/headers', 'kernel:handleRequestAction');
         $routes->add('/dialplan/huntgroups', 'kernel:handleRequestAction');
         $routes->add('/dialplan/huntgroupstatus', 'kernel:handleRequestAction');
+        $routes->add('/dialplan/huntgroupmember', 'kernel:handleRequestAction');
         $routes->add('/dialplan/queues', 'kernel:handleRequestAction');
         $routes->add('/dialplan/queuestatus', 'kernel:handleRequestAction');
         $routes->add('/dialplan/faxdial', 'kernel:handleRequestAction');

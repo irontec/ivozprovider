@@ -57,16 +57,11 @@ class HuntGroupCallAction
         $timeout = array_shift($huntGroupTimeouts);
 
         // Configure Dial options
-        $options = "i";
+        $options = "";
 
         // Cancelled calls may be marked as 'answered elsewhere'
         if ($huntGroup->getPreventMissedCalls()) {
             $options .= "c";
-        }
-
-        // For record asterisk builtin feature code
-        if ($huntGroup->getCompany()->getOnDemandRecord() == 2) {
-            $options .= "xX";
         }
 
         // Call the PSJIP endpoint
