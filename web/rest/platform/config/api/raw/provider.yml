@@ -64,9 +64,28 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
       ROLE_SUPER_ADMIN:
         id:
           neq: "0"
+        company:
+          isNull: ~
     write_access_control:
       ROLE_SUPER_ADMIN:
         raw: "id > 0 or id === null"
+
+Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity:
+  itemOperations:
+    get:
+      depth: 1
+    put: ~
+  collectionOperations:
+    get:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    read_access_control:
+      ROLE_SUPER_ADMIN:
+        inherited:
+          administrator: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+          publicEntity:  'Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity'
+
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -144,6 +163,18 @@ Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+
+Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    read_access_control:
+      ROLE_SUPER_ADMIN:
+        platform:
+          eq: 1
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
   itemOperations: []
