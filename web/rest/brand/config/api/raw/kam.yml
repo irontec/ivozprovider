@@ -9,13 +9,13 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
   itemOperations: []
   collectionOperations: []
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
       groups: ['']
 
 Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
   attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_BRAND_ADMIN:
         company:
