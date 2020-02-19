@@ -41,6 +41,7 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
             [
                 'huntGroup' => $huntGroup->reveal(),
                 'user' => $user->reveal(),
+                'routeType' => 'user',
             ]
         );
 

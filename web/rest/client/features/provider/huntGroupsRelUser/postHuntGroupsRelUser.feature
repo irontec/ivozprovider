@@ -12,9 +12,10 @@ Feature: Create hunt groups rel users
     """
       {
           "timeoutTime": 1,
-          "priority": 2,
+          "priority": 3,
           "id": 1,
           "huntGroup": 1,
+          "routeType" : "user",
           "user": 2
       }
     """
@@ -25,8 +26,10 @@ Feature: Create hunt groups rel users
     """
       {
           "timeoutTime": 1,
-          "priority": 2,
-          "id": 2,
+          "priority": 3,
+          "routeType": "user",
+          "id": 3,
+          "numberValue": null,
           "huntGroup": {
               "name": "testHuntGroup",
               "description": "desc",
@@ -41,14 +44,15 @@ Feature: Create hunt groups rel users
               "noAnswerVoiceMailUser": null,
               "noAnswerNumberCountry": null
           },
-          "user": "~"
+          "user": "~",
+          "numberCountry": null
       }
     """
 
   Scenario: Retrieve created hunt group rel user
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "hunt_groups_rel_users/2"
+      And I send a "GET" request to "hunt_groups_rel_users/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -56,8 +60,9 @@ Feature: Create hunt groups rel users
     """
       {
           "timeoutTime": 1,
-          "priority": 2,
-          "id": 2,
+          "priority": 3,
+          "id": 3,
+          "numberValue": null,
           "huntGroup": {
               "name": "testHuntGroup",
               "description": "desc",
@@ -72,6 +77,7 @@ Feature: Create hunt groups rel users
               "noAnswerVoiceMailUser": null,
               "noAnswerNumberCountry": null
           },
-          "user": "~"
+          "user": "~",
+          "numberCountry": null
       }
     """
