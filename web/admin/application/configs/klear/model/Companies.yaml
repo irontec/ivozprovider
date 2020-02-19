@@ -293,12 +293,12 @@ production:
               show: []
               hide: ["onDemandRecordCode"]
           '1':
-            title: _("Using INFO")
+            title: _("Enabled (SIP INFO)")
             visualFilter:
               show: []
               hide: ["onDemandRecordCode"]
           '2':
-            title: _("Using DTMFs")
+            title: _("Enabled (SIP INFO + DTMFs)")
             visualFilter:
               show: ["onDemandRecordCode"]
               hide: []
