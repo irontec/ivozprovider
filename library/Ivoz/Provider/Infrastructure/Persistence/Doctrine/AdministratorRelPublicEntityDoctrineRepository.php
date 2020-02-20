@@ -32,15 +32,33 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
     ): int {
 
         $qb = $this
-            ->createQueryBuilder('self')
-            ->update($this->_entityName, 'self')
-            ->set('self.create', ':trueValue')
-            ->set('self.read', ':trueValue')
-            ->set('self.update', ':trueValue')
-            ->set('self.delete', ':trueValue')
-            ->setParameter(':trueValue', true)
+            ->prepareUpdateQuery(
+                true,
+                true
+            )
             ->where('self.administrator = :id')
             ->setParameter(':id', $administrator->getId());
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    /**
+     * @param int[] $ids
+     */
+    public function setWritePermissionsByIds(
+        array $ids
+    ): int {
+
+        $qb = $this
+            ->prepareUpdateQuery(
+                true,
+                true
+            )
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
 
         return $this->queryRunner->execute(
             $this->getEntityName(),
@@ -51,16 +69,11 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
     public function setReadOnlyPermissions(
         AdministratorInterface $administrator
     ): int {
-
         $qb = $this
-            ->createQueryBuilder('self')
-            ->update($this->_entityName, 'self')
-            ->set('self.create', ':falseValue')
-            ->set('self.read', ':trueValue')
-            ->set('self.update', ':falseValue')
-            ->set('self.delete', ':falseValue')
-            ->setParameter(':falseValue', false)
-            ->setParameter(':trueValue', true)
+            ->prepareUpdateQuery(
+                true,
+                false
+            )
             ->where('self.administrator = :id')
             ->setParameter(':id', $administrator->getId());
 
@@ -68,5 +81,61 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
             $this->getEntityName(),
             $qb->getQuery()
         );
+    }
+
+    /**
+     * @param int[] $ids
+     */
+    public function setReadOnlyPermissionsByIds(
+        array $ids
+    ): int {
+
+        $qb = $this
+            ->prepareUpdateQuery(
+                true,
+                false
+            )
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+
+    /**
+     * @param int[] $ids
+     */
+    public function revokePermissionsByIds(
+        array $ids
+    ): int {
+
+        $qb = $this
+            ->prepareUpdateQuery(
+                false,
+                false
+            )
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    private function prepareUpdateQuery(bool $read, bool $write)
+    {
+        return $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.create', ':writeValue')
+            ->set('self.read', ':readValue')
+            ->set('self.update', ':writeValue')
+            ->set('self.delete', ':writeValue')
+            ->setParameter(':writeValue', $write)
+            ->setParameter(':readValue', $read);
     }
 }

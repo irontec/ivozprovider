@@ -251,6 +251,10 @@ mappers:
         modelFile: OutgoingRouting,
         entity: 'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting'
     }
+  - &AdministratorRelPublicEntities {
+      modelFile: AdministratorRelPublicEntities,
+      entity: 'Ivoz\\Provider\\Domain\\Model\\AdministratorRelPublicEntity\\AdministratorRelPublicEntity'
+    }
   - &PickUpGroups {
         modelFile: PickUpGroups,
         entity: 'Ivoz\\Provider\\Domain\\Model\\PickUpGroup\\PickUpGroup'
@@ -378,10 +382,6 @@ mappers:
   - &KamTrunksAcc {
         modelFile: KamTrunksAcc,
         entity: 'Kam\\Model\\TrunksAcc\\TrunksAcc'
-    }
-  - &UsersAcc {
-        modelFile: UsersAcc,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\UsersAcc\\UsersAcc'
     }
   - &KamUsersAddress {
         modelFile: KamUsersAddress,

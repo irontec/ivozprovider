@@ -24,18 +24,18 @@ production:
         options:
           title: _("Options")
           screens:
-            callACLEdit_screen: true
+            callACLEdit_screen: ${auth.acls.CallACL.update}
           dialogs:
-            callACLDel_dialog: true
+            callACLDel_dialog: ${auth.acls.CallACL.delete}
           default: callACLEdit_screen
         blacklist:
           CallAclRelMatchLists: true
       options:
         title: _("Options")
         screens:
-          callACLNew_screen: true
+          callACLNew_screen: ${auth.acls.CallACL.create}
         dialogs:
-          callACLDel_dialog: true
+          callACLDel_dialog: ${auth.acls.CallACL.delete}
     callACLNew_screen: &callACLNew_screenLink
       <<: *CallACL
       controller: new

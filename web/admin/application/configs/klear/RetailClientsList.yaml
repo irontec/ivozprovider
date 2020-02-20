@@ -288,6 +288,15 @@ production:
       forcedValues:
         <<: *forcedBrand
 
+    # AdministratorRelPublicEntities screens
+    administratorRelPublicEntitiesList_screen:
+      <<: *administratorRelPublicEntitiesList_screenLink
+      filterField: Administrator
+
+    administratorRelPublicEntitiesEdit_screen:
+      <<: *administratorRelPublicEntitiesEdit_screenLink
+      filterField: Administrator
+
     # Rating Plan:
     <<: *ratingProfiles_screensLink
     ratingProfilesList_screen:

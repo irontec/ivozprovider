@@ -29,11 +29,11 @@ production:
         options:
           title: _("Options")
           screens:
-            usersEdit_screen: true
-            callForwardSettingsList_screen: true
-            huntGroupsRelUsersList_screen: true
+            usersEdit_screen: ${auth.acls.Users.update}
+            callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
+            huntGroupsRelUsersList_screen: ${auth.acls.HuntGroupsRelUsers.read}
           dialogs:
-            usersDel_dialog: true
+            usersDel_dialog: ${auth.acls.Users.delete}
           default: usersEdit_screen
         order: &Users_orderLink
           company: true
@@ -83,9 +83,9 @@ production:
       options:
         title: _("Options")
         screens:
-          usersNew_screen: true
+          usersNew_screen: ${auth.acls.Users.create}
         dialogs:
-          usersDel_dialog: true
+          usersDel_dialog: ${auth.acls.Users.delete}
           importUsers_dialog: false
     usersNew_screen: &usersNew_screenLink
       <<: *Users
@@ -223,12 +223,12 @@ production:
         options:
           title: _("Options")
           dialogs:
-            huntGroupsRelUsersDel_dialog: true
+            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
           default: huntGroupsRelUsersEdit_screen
       options:
         title: _("Options")
         dialogs:
-          huntGroupsRelUsersDel_dialog: true
+          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
 
     #CallForwardSettings
     <<: *callForwardSettings_screensLink
@@ -274,8 +274,6 @@ production:
       escape: "\\"
       forcedValues:
         company: *forcedCompany
-
-
 
     #HuntGroupsRelUsers
     <<: *huntGroupsRelUsers_dialogsLink

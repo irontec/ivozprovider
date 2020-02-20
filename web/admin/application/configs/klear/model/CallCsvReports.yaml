@@ -45,7 +45,7 @@ production:
           hiddenName: false
       options:
         commands:
-          callCsvReportsCsvDownload_command: true
+          callCsvReportsCsvDownload_command: ${auth.acls.CallCsvReports.read}
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select

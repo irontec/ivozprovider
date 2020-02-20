@@ -38,7 +38,7 @@ production:
         options:
           title: _("Options")
           screens:
-            recordingsEdit_screen: true
+            recordingsEdit_screen: ${auth.acls.Recordings.update}
           dialogs:
             recordingsDel_dialog: ${auth.companyRecordingRemoval}
           default: recordingsEdit_screen
@@ -47,7 +47,7 @@ production:
         dialogs:
           recordingsDel_dialog: ${auth.companyRecordingRemoval}
         commands:
-          recordingsRecordedFileMultiDownload_command: true
+          recordingsRecordedFileMultiDownload_command: ${auth.acls.Recordings.read}
     recordingsEdit_screen: &recordingsEdit_screenLink
       <<: *Recordings
       controller: edit

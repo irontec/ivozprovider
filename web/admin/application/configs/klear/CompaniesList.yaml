@@ -32,7 +32,7 @@ production:
         options:
           title: _("Options")
           screens:
-            companiesEdit_screen: true
+            companiesEdit_screen: ${auth.acls.Companies.update}
             kamUsersAddressList_screen: true
             administratorsList_screen: true
             ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
@@ -87,9 +87,9 @@ production:
       options:
         title: _("Options")
         screens:
-          companiesNew_screen: true
+          companiesNew_screen: ${auth.acls.Companies.create}
         dialogs:
-          companiesDel_dialog: true
+          companiesDel_dialog: ${auth.acls.Companies.delete}
           importCompanies_dialog: false
       csv:
         active: false
@@ -326,6 +326,20 @@ production:
       filterField: Company
       forcedValues:
         <<: *forcedBrand
+      fields:
+        <<: *administratorsFields
+        blacklist:
+          <<: *administratorsBlacklist
+          timezone: true
+
+    # AdministratorRelPublicEntities screens
+    administratorRelPublicEntitiesList_screen:
+      <<: *administratorRelPublicEntitiesList_screenLink
+      filterField: Administrator
+
+    administratorRelPublicEntitiesEdit_screen:
+      <<: *administratorRelPublicEntitiesEdit_screenLink
+      filterField: Administrator
 
     # Rating Profiles:
     <<: *ratingProfiles_screensLink

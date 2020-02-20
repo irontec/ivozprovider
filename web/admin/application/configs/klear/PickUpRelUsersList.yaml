@@ -16,16 +16,16 @@ production:
         options:
           title: _("Options")
           screens:
-            pickUpRelUsersEdit_screen: true
+            pickUpRelUsersEdit_screen: ${auth.acls.PickUpRelUsers.update}
           dialogs:
-            pickUpRelUsersDel_dialog: true
+            pickUpRelUsersDel_dialog: ${auth.acls.PickUpRelUsers.delete}
           default: pickUpRelUsersEdit_screen
       options:
         title: _("Options")
         screens:
-          pickUpRelUsersNew_screen: true
+          pickUpRelUsersNew_screen: ${auth.acls.PickUpRelUsers.create}
         dialogs:
-          pickUpRelUsersDel_dialog: true
+          pickUpRelUsersDel_dialog: ${auth.acls.PickUpRelUsers.delete}
     pickUpRelUsersNew_screen: &pickUpRelUsersNew_screenLink
       <<: *PickUpRelUsers
       controller: new

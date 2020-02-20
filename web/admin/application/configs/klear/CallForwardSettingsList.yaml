@@ -23,9 +23,9 @@ production:
         options:
           title: _("Options")
           screens:
-            callForwardSettingsEdit_screen: true
+            callForwardSettingsEdit_screen: ${auth.acls.CallForwardSettings.update}
           dialogs:
-            callForwardSettingsDel_dialog: true
+            callForwardSettingsDel_dialog: ${auth.acls.CallForwardSettings.delete}
           default: callForwardSettingsEdit_screen
         blacklist:
           numberCountry: true
@@ -38,9 +38,9 @@ production:
       options:
         title: _("Options")
         screens:
-          callForwardSettingsNew_screen: true
+          callForwardSettingsNew_screen: ${auth.acls.CallForwardSettings.create}
         dialogs:
-          callForwardSettingsDel_dialog: true
+          callForwardSettingsDel_dialog: ${auth.acls.CallForwardSettings.delete}
 
     callForwardSettingsNew_screen: &callForwardSettingsNew_screenLink
       <<: *CallForwardSettings

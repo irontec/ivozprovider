@@ -31,17 +31,17 @@ production:
         options:
           title: _("Options")
           screens:
-            holidayDatesEdit_screen: true
+            holidayDatesEdit_screen: ${auth.acls.HolidayDates.update}
           dialogs:
-            holidayDatesDel_dialog: true
+            holidayDatesDel_dialog: ${auth.acls.HolidayDates.delete}
           default: holidayDatesEdit_screen
       options:
         title: _("Options")
         screens:
-          holidayDatesNew_screen: true
+          holidayDatesNew_screen: ${auth.acls.HolidayDates.create}
         dialogs:
-          holidayDatesDel_dialog: true
-          importHolidayDates_dialog: true
+          holidayDatesDel_dialog: ${auth.acls.HolidayDates.delete}
+          importHolidayDates_dialog: ${auth.acls.HolidayDates.create}
     holidayDatesNew_screen: &holidayDatesNew_screenLink
       <<: *HolidayDates
       controller: new

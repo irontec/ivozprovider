@@ -28,8 +28,8 @@ production:
         options:
           title: _("Options")
           screens:
-            transformationRuleSetsEdit_screen: true
-            transformationRuleSetsView_screen: true
+            transformationRuleSetsEdit_screen: ${auth.acls.TransformationRuleSets.update}
+            transformationRuleSetsView_screen: ${auth.acls.TransformationRuleSets.read}
             transformationRulesCallerInList_screen: true
             transformationRulesCalleeInList_screen: true
             transformationRulesCallerOutList_screen: true
@@ -39,7 +39,7 @@ production:
             transformationRulesCallerOutView_screen: true
             transformationRulesCalleeOutView_screen: true
           dialogs:
-            transformationRuleSetsDel_dialog: true
+            transformationRuleSetsDel_dialog: ${auth.acls.TransformationRuleSets.delete}
         blacklist:
           brand: true
           trunkPrefix: true
@@ -57,7 +57,7 @@ production:
       options:
         title: _("Options")
         screens:
-          transformationRuleSetsNew_screen: true
+          transformationRuleSetsNew_screen: ${auth.acls.TransformationRuleSets.create}
 
 
     transformationRuleSetsNew_screen: &transformationRuleSetsNew_screenLink

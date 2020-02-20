@@ -23,9 +23,9 @@ production:
         options:
           title: _("Options")
           screens:
-            schedulesEdit_screen: true
+            schedulesEdit_screen: ${auth.acls.Schedules.update}
           dialogs:
-            schedulesDel_dialog: true
+            schedulesDel_dialog: ${auth.acls.Schedules.delete}
           default: schedulesEdit_screen
         blacklist: &schedule_blacklistLink
           monday: true
@@ -38,9 +38,9 @@ production:
       options:
         title: _("Options")
         screens:
-          schedulesNew_screen: true
+          schedulesNew_screen: ${auth.acls.Schedules.create}
         dialogs:
-          schedulesDel_dialog: true
+          schedulesDel_dialog: ${auth.acls.Schedules.delete}
     schedulesNew_screen: &schedulesNew_screenLink
       <<: *Schedules
       controller: new

@@ -29,12 +29,12 @@ production:
         options:
           title: _("Options")
           screens:
-            invoicesEdit_screen: true
+            invoicesEdit_screen: ${auth.acls.Invoices.update}
             fixedCostsRelInvoicesList_screen: true
-            billableCallsList_screen: true
+            billableCallsList_screen: ${auth.acls.BillableCalls.read}
           dialogs:
             generateInvoice_dialog: true
-            invoicesDel_dialog: true
+            invoicesDel_dialog: ${auth.acls.Invoices.delete}
           default: invoicesEdit_screen
         order: &invoicesOrder_Link
           company: true
@@ -55,7 +55,7 @@ production:
       options:
         title: _("Options")
         screens:
-          invoicesNew_screen: true
+          invoicesNew_screen: ${auth.acls.Invoices.create}
 
     invoicesNew_screen: &invoicesNew_screenLink
       <<: *Invoices

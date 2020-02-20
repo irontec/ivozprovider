@@ -26,9 +26,9 @@ production:
         options:
           title: _("Options")
           screens:
-            extensionsEdit_screen: true
+            extensionsEdit_screen: ${auth.acls.Extensions.update}
           dialogs:
-            extensionsDel_dialog: true
+            extensionsDel_dialog: ${auth.acls.Extensions.delete}
           default: extensionsEdit_screen
         blacklist:
           ivr: true
@@ -47,9 +47,9 @@ production:
       options:
         title: _("Options")
         screens:
-          extensionsNew_screen: true
+          extensionsNew_screen: ${auth.acls.Extensions.create}
         dialogs:
-          extensionsDel_dialog: true
+          extensionsDel_dialog: ${auth.acls.Extensions.delete}
           importExtensions_dialog: false
 
     extensionsNew_screen: &extensionsNew_screenLink

@@ -10,5 +10,20 @@ interface AdministratorRelPublicEntityRepository extends ObjectRepository, Selec
 {
     public function setWritePermissions(AdministratorInterface $administrator): int;
 
+    /**
+     * @param int[] $ids
+     */
+    public function setWritePermissionsByIds(array $ids): int;
+
     public function setReadOnlyPermissions(AdministratorInterface $administrator): int;
+
+    /**
+     * @param int[] $ids
+     */
+    public function setReadOnlyPermissionsByIds(array $ids): int;
+
+    /**
+     * @param int[] $ids
+     */
+    public function revokePermissionsByIds(array $ids): int;
 }

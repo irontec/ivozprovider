@@ -101,7 +101,7 @@ production:
             onNull: hide
       options:
         commands:
-          invoicesPdfFileDownload_command: true
+          invoicesPdfFileDownload_command: ${auth.acls.Invoices.read}
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select

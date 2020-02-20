@@ -18,16 +18,16 @@ production:
         options:
           title: _("Options")
           screens:
-            friendsPatternsEdit_screen: true
+            friendsPatternsEdit_screen: ${auth.acls.FriendsPatterns.update}
           dialogs:
-            friendsPatternsDel_dialog: true
+            friendsPatternsDel_dialog: ${auth.acls.FriendsPatterns.delete}
           default: friendsPatternsEdit_screen
       options:
         title: _("Options")
         screens:
-          friendsPatternsNew_screen: true
+          friendsPatternsNew_screen: ${auth.acls.FriendsPatterns.create}
         dialogs:
-          friendsPatternsDel_dialog: true
+          friendsPatternsDel_dialog: ${auth.acls.FriendsPatterns.delete}
     friendsPatternsNew_screen: &friendsPatternsNew_screenLink
       <<: *FriendsPatterns
       controller: new

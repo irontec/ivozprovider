@@ -28,17 +28,17 @@ production:
         options:
           title: _("Options")
           screens:
-            ratingPlanGroupsEdit_screen: true
+            ratingPlanGroupsEdit_screen: ${auth.acls.RatingPlanGroups.update}
             ratingPlansList_screen: true
           dialogs:
-            ratingPlanGroupsDel_dialog: true
+            ratingPlanGroupsDel_dialog: ${auth.acls.RatingPlanGroups.delete}
           default: ratingPlanGroupsEdit_screen
       options:
         title: _("Options")
         screens:
-          ratingPlanGroupsNew_screen: true
+          ratingPlanGroupsNew_screen: ${auth.acls.RatingPlanGroups.create}
         dialogs:
-          ratingPlanGroupsDel_dialog: true
+          ratingPlanGroupsDel_dialog: ${auth.acls.RatingPlanGroups.delete}
           simulateBrandPlansCall_dialog: true
 
     ratingPlanGroupsNew_screen: &ratingPlanGroupsNew_screenLink
