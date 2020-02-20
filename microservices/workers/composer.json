@@ -61,7 +61,6 @@
         "knplabs/knp-snappy": "0.4.3",
         "mmoreram/gearman-bundle": "4.1.0",
         "phpxmlrpc/phpxmlrpc": "4.0",
-        "symfony/symfony": "3.4.*",
         "xamin/handlebars.php": "^0.10.4"
     },
     "scripts": {

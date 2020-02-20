@@ -53,8 +53,7 @@
     "require": {
         "php": ">=7.0.19",
         "irontec/ivoz-provider-bundle": "^2.0",
-        "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
-        "symfony/symfony": "3.4.*"
+        "php-mime-mail-parser/php-mime-mail-parser": "^2.9"
     },
     "scripts": {
         "symfony-scripts": [

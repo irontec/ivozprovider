@@ -61,8 +61,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "irontec/ivoz-provider-bundle": "^2.0",
-        "irontec/ivoz-dev-tools": "^3.0",
-        "symfony/symfony": "3.4.*"
+        "irontec/ivoz-dev-tools": "^3.0"
     },
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.0",

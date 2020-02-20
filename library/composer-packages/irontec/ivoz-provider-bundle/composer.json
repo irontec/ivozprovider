@@ -27,7 +27,8 @@
     "require": {
         "php": ">=7.0.19",
         "irontec/ivoz-core": "^2.3",
-        "irontec/ivoz-core-bundle": "^2.3"
+        "irontec/ivoz-core-bundle": "^2.3",
+        "symfony/symfony": "3.4.*"
     },
     "require-dev": {
     }

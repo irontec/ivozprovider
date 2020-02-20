@@ -49,8 +49,7 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "irontec/ivoz-provider-bundle": "^2.0",
-        "symfony/symfony": "3.4.*"
+        "irontec/ivoz-provider-bundle": "^2.0"
     },
     "scripts": {
         "symfony-scripts": [
