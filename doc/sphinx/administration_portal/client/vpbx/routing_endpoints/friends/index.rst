@@ -27,6 +27,18 @@ There are 2 main types of Friends:
 
 - **Internal friends**: connection between extensions of two vPBX client in the same brand.
 
+
+What kind of calls can be routed through an *internal friend*?
+--------------------------------------------------------------
+
+IvozProvider will route a call received by a :ref:`user <users>` or a :ref:`friend <friends>` following this logic:
+
+#. Destination matches an existing IvozProvider extension?
+#. If not: Destination matches any *friend* regular expression (for remote friends) or extensions (for internal ones)? Ordered by priority (lower has precedence).
+#. If not: This is an external call.
+
+
+
 Following sections explain both kind of friends:
 
 .. toctree::
