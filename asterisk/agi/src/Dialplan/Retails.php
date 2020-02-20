@@ -83,23 +83,16 @@ class Retails extends RouteHandlerAbstract
         $caller = new RetailAgent($this->agi, $retailAccount);
         $this->channelInfo->setChannelCaller($caller);
 
-        // Only forwarded calls or T.38 calls are allowed from retail accounts
+        // Only forwarded calls are allowed from retail accounts
         $isCallForward = $this->agi->getRedirecting('count') != 0;
-        $isFax = $retailAccount->getT38Passthrough() === RetailAccountInterface::T38PASSTHROUGH_YES;
-
-        if (!$isFax && !$isCallForward) {
+        if (!$isCallForward) {
             $this->agi->error(
-                "Non-T.38 call without Diversion header from <cyan>%s</cyan> to number %s, drop call",
+                "Call without Diversion header from <cyan>%s</cyan> to number %s, drop call",
                 $retailAccount,
                 $exten
             );
             $this->agi->hangup();
             return;
-        }
-
-        // If this call is not being forwarded, retail is also the origin
-        if (!$isCallForward) {
-            $this->channelInfo->setChannelOrigin($caller);
         }
 
         // Some feedback for asterisk cli

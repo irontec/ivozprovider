@@ -108,16 +108,4 @@ class RetailAgent implements AgentInterface
     {
         return true;
     }
-
-    /**
-     * @brief Determine if agent's endpoint has T.38 Passthrough enabled
-     *
-     * @return boolean
-     */
-    public function isT38PassthroughEnabled()
-    {
-        $psEndpoint = $this->retailAccount->getAstPsEndpoint();
-
-        return $psEndpoint->getT38Udptl() == RetailAccountInterface::T38PASSTHROUGH_YES;
-    }
 }
