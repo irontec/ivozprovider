@@ -58,7 +58,6 @@
     "require": {
         "php": ">=7.0.19",
         "api-platform/core": "2.2.*",
-        "incenteev/composer-parameter-handler": "^2.0",
         "irontec/ivoz-api-bundle": "^2.0",
         "irontec/ivoz-provider-bundle": "^2.0",
         "xamin/handlebars.php": "^0.10.4",

@@ -41,7 +41,8 @@
         "symfony/serializer": "^3.4",
         "symfony/templating": "^3.4",
         "symfony/twig-bundle": "^3.4",
-        "sensio/distribution-bundle": "5.0.*"
+        "sensio/distribution-bundle": "5.0.*",
+        "incenteev/composer-parameter-handler": "^2.0"
     },
     "require-dev": {
     }

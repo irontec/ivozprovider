@@ -59,7 +59,6 @@
         "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
-        "incenteev/composer-parameter-handler": "^2.0",
         "irontec/ivoz-provider-bundle": "^2.0",
         "irontec/ivoz-dev-tools": "^3.0"
     },
