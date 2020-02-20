@@ -72,7 +72,6 @@
         "mmoreram/gearman-bundle": "^4.1",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
-        "sensio/distribution-bundle": "5.0.*",
         "snc/redis-bundle": "2.1.*",
         "xamin/handlebars.php": "^0.10.4"
     },
