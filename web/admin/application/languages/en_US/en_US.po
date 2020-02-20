@@ -813,6 +813,12 @@ msgstr ""
 msgid "Enabled"
 msgstr "Enabled"
 
+msgid "Enabled (SIP INFO + DTMFs)"
+msgstr "Enabled (SIP INFO + DTMFs)"
+
+msgid "Enabled (SIP INFO)"
+msgstr "Enabled (SIP INFO)"
+
 msgid "End date"
 msgstr "End date"
 
@@ -2733,12 +2739,6 @@ msgstr "User configuration"
 
 msgid "Username"
 msgstr "Username"
-
-msgid "Using DTMFs"
-msgstr "Using DTMFs"
-
-msgid "Using INFO"
-msgstr "Using INFO"
 
 #, python-format
 msgid "View %s %2s"

@@ -823,6 +823,12 @@ msgstr ""
 msgid "Enabled"
 msgstr "Habilitat"
 
+msgid "Enabled (SIP INFO + DTMFs)"
+msgstr "Habilitat (SIP INFO + DTMFs)"
+
+msgid "Enabled (SIP INFO)"
+msgstr "Habilitat (SIP INFO)"
+
 msgid "End date"
 msgstr "Data fi"
 
@@ -2757,12 +2763,6 @@ msgstr "Configuració d'usuari"
 
 msgid "Username"
 msgstr "Nom d'usuari"
-
-msgid "Using DTMFs"
-msgstr "Utilitzant DTMFs"
-
-msgid "Using INFO"
-msgstr "Utilitzant INFO"
 
 #, python-format
 msgid "View %s %2s"
