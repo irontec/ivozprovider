@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "58d46e1a131b60805a5f5cb4b65938bb",
+    "content-hash": "3d6f042e494629006b401bce14921546",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1736,15 +1736,16 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2",
+            "version": "2.1.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "75ae0682f93f361b99582b6845b881f89cb1d972",
+                "reference": "f8ee456f95409a66ca3fbedac1f088e89f91ccd4",
                 "shasum": null
             },
             "require": {
-                "irontec/ivoz-core-bundle": "^2.2",
+                "irontec/ivoz-core": "^2.3",
+                "irontec/ivoz-core-bundle": "^2.3",
                 "php": ">=7.0.19"
             },
             "type": "symfony-bundle",

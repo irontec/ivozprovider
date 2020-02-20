@@ -13,7 +13,7 @@ IvozProvider API is divided in same three levels as the web administration porta
 This split allows different roles with different responsibilities to be integrated against it without compromising
 security (read, edit, update or delete the data they should not).
 
-If you check out `security policies <https://github.com/irontec/ivozprovider/blob/bleeding/web/rest/brand/app/config/api/raw/provider.yml>`_
+If you check out `security policies <https://github.com/irontec/ivozprovider/blob/bleeding/web/rest/brand/config/api/raw/provider.yml>`_
 (read_access_control and write_access_control attributes), you’ll see that we apply
 read filters and write validations based on user information (token). One single API approach would require a complex
 validations more prone to failure, introduce errors and require huge queries that would impact the performance.

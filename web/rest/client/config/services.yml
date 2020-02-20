@@ -1,0 +1,55 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+imports:
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Service\UserProvider::User:
+    class: Service\UserProvider
+    arguments:
+      $identifierField: 'email'
+      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
+
+  Service\UserProvider::Administrator:
+    class: Service\UserProvider
+    arguments:
+      $identifierField: 'username'
+      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
+  Service\AuthEndpointDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 5
+    arguments:
+      $decoratedNormalizer:
+        '@Service\AuthEndpointDecorator.inner'
+
+  Ivoz\Api\Operation\ExchangeToken:
+    arguments:
+      $userProvider: '@Service\UserProvider::Administrator'
+      $requiredInputRole: 'ROLE_BRAND_ADMIN'
+      $requiredOutputRole: 'ROLE_COMPANY_ADMIN'
+
+  Ivoz\Api\Core\Security\DataAccessControlParser:
+    calls:
+      - [ addRepository, ['matchListRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList")']]
+
+
+  #######################################
+  ## Controllers
+  #######################################
+  Controller\Auth\:
+    resource: '../src/Controller/Auth/*'
+    tags: ['controller.service_arguments']
+
+  Controller\My\:
+    resource: '../src/Controller/My/*'
+    tags: ['controller.service_arguments']
+
+  Controller\Provider\:
+    resource: '../src/Controller/Provider/*'
+    tags: ['controller.service_arguments']

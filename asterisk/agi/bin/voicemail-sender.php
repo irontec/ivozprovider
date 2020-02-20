@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 // require Composer's autoloader
 require __DIR__.'/../vendor/autoload.php';
 
-require __DIR__ . '/../app/MicroKernel.php';
+require __DIR__ . '/../src/MicroKernel.php';
 
 $kernel = new MicroKernel('prod', false, null);
 

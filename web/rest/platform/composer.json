@@ -36,11 +36,7 @@
             "": "src/",
             "Ivoz\\": "../../../library/Ivoz",
             "DataFixtures\\": "../../../library/DataFixtures"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
+        }
     },
     "autoload-dev": {
         "files": [
@@ -64,7 +60,6 @@
         "api-platform/core": "2.2.*",
         "incenteev/composer-parameter-handler": "^2.0",
         "irontec/ivoz-api-bundle": "^2.0",
-        "irontec/ivoz-core-bundle": "^2.0",
         "irontec/ivoz-provider-bundle": "^2.0",
         "sensio/distribution-bundle": "5.0.*",
         "symfony/symfony": "3.4.*",
@@ -100,10 +95,9 @@
         ]
     },
     "extra": {
-        "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
+        "symfony-web-dir": "public",
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {

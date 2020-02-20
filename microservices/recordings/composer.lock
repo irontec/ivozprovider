@@ -1387,15 +1387,16 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2",
+            "version": "2.1.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "75ae0682f93f361b99582b6845b881f89cb1d972",
+                "reference": "f8ee456f95409a66ca3fbedac1f088e89f91ccd4",
                 "shasum": null
             },
             "require": {
-                "irontec/ivoz-core-bundle": "^2.2",
+                "irontec/ivoz-core": "^2.3",
+                "irontec/ivoz-core-bundle": "^2.3",
                 "php": ">=7.0.19"
             },
             "type": "symfony-bundle",

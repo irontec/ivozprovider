@@ -53,7 +53,7 @@ entidad en cuestión. las modificaciones realizadas sobre este fichero (id apart
 Una vez realizadas la modificaciones oportunas, ejecute el siguiente comando para crear el delta de base de datos:
 
     irontec@artemis-dev-alt:/opt/irontec/ivozprovider/schema$ bin/console doctrine:migrations:diff
-    Generated new migration class to "/opt/irontec/ivozprovider/schema/app/DoctrineMigrations/Version20171009074016.php" from schema differences.
+    Generated new migration class to "/opt/irontec/ivozprovider/schema/DoctrineMigrations/Version20171009074016.php" from schema differences.
 
 Una vez generado, es perfectamente posible realizar modificaciones manuales sobre él.
 
@@ -70,7 +70,7 @@ Una vez generado, es perfectamente posible realizar modificaciones manuales sobr
         >> Version Table Name:                          migration_versions
         >> Version Column Name:                       version
         >> Migrations Namespace:                      Application\Migrations
-        >> Migrations Directory:                          /opt/irontec/ivozprovider/schema/app/DoctrineMigrations
+        >> Migrations Directory:                          /opt/irontec/ivozprovider/schema/DoctrineMigrations
         >> Previous Version:                               2017-09-14 11:00:36 (20170914110036)
         >> Current Version:                                2017-09-18 16:04:22 (20170918160422)
         >> Next Version:                                     2017-10-09 07:40:16 (20171009074016)

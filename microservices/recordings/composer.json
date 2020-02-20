@@ -31,10 +31,7 @@
         "psr-4": {
             "": "src/",
             "Ivoz\\": "../../library/Ivoz"
-        },
-        "classmap": [
-            "app/MicroKernel.php"
-        ]
+        }
     },
     "autoload-dev": {
         "files": [
@@ -53,7 +50,6 @@
     "require": {
         "php": ">=7.0.19",
         "debach/zend-mp3": "1.8.*",
-        "irontec/ivoz-core-bundle": "^2.0",
         "irontec/ivoz-provider-bundle": "^2.0",
         "symfony/symfony": "3.4.*"
     },

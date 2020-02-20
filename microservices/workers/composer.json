@@ -38,10 +38,7 @@
         "psr-4": {
             "": "src/",
             "Ivoz\\": "../../library/Ivoz"
-        },
-        "classmap": [
-            "app/MicroKernel.php"
-        ]
+        }
     },
     "autoload-dev": {
         "files": [
@@ -60,7 +57,6 @@
     "require": {
         "php": ">=7.0.19",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "irontec/ivoz-core-bundle": "^2.0",
         "irontec/ivoz-provider-bundle": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
         "mmoreram/gearman-bundle": "4.1.0",
