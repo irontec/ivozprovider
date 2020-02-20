@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d6f042e494629006b401bce14921546",
+    "content-hash": "1d3587ca6d58d0e5a1633c0e4b142c2c",
     "packages": [
         {
             "name": "api-platform/core",
@@ -197,11 +197,11 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.5.0",
+            "version": "1.2.6.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/composer/ca-bundle",
-                "reference": "62e8fc2dc550e5d6d8c9360c7721662670f58149",
+                "reference": "47fe531de31fca4a1b997f87308e7d7804348f7e",
                 "shasum": null
             },
             "require": {
@@ -1069,22 +1069,22 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.12.0",
+            "version": "2.1.17.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/egulias/email-validator",
-                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208",
+                "reference": "ade6887fd9bd74177769645ab5c474824f8a418a",
                 "shasum": null
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
-                "php": ">= 5.5"
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.10"
             },
             "require-dev": {
-                "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
-                "satooshi/php-coveralls": "^1.0.1",
-                "symfony/phpunit-bridge": "^4.4@dev"
+                "dominicsayers/isemail": "^3.0.7",
+                "phpunit/phpunit": "^4.8.36|^7.5.15",
+                "satooshi/php-coveralls": "^1.0.1"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -1102,7 +1102,7 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Egulias\\Tests\\": "test"
+                    "Egulias\\Tests\\": "Tests"
                 }
             },
             "license": [
@@ -1736,17 +1736,32 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "f8ee456f95409a66ca3fbedac1f088e89f91ccd4",
+                "reference": "1292f02c9483304a3e5b53b33596eb380210dd84",
                 "shasum": null
             },
             "require": {
+                "incenteev/composer-parameter-handler": "^2.0",
                 "irontec/ivoz-core": "^2.3",
                 "irontec/ivoz-core-bundle": "^2.3",
-                "php": ">=7.0.19"
+                "php": ">=7.0.19",
+                "sensio/distribution-bundle": "5.0.*",
+                "symfony/asset": "^3.4",
+                "symfony/console": "^3.4",
+                "symfony/debug-bundle": "^3.4",
+                "symfony/dotenv": "^3.4",
+                "symfony/form": "^3.4",
+                "symfony/framework-bundle": "^3.4",
+                "symfony/http-foundation": "^3.4",
+                "symfony/http-kernel": "^3.4",
+                "symfony/property-access": "^3.4",
+                "symfony/property-info": "^3.4",
+                "symfony/serializer": "^3.4",
+                "symfony/templating": "^3.4",
+                "symfony/twig-bundle": "^3.4"
             },
             "type": "symfony-bundle",
             "autoload": {
