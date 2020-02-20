@@ -1,6 +1,6 @@
 {
     "name": "irontec/ivoz-provider-bundle",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "type": "symfony-bundle",
     "description": "Symfony bridge for IvozProvider",
     "license": "GPL-3.0-or-later",
@@ -28,7 +28,19 @@
         "php": ">=7.0.19",
         "irontec/ivoz-core": "^2.3",
         "irontec/ivoz-core-bundle": "^2.3",
-        "symfony/symfony": "3.4.*",
+        "symfony/asset": "^3.4",
+        "symfony/console": "^3.4",
+        "symfony/debug-bundle": "^3.4",
+        "symfony/dotenv": "^3.4",
+        "symfony/form": "^3.4",
+        "symfony/framework-bundle": "^3.4",
+        "symfony/http-foundation": "^3.4",
+        "symfony/http-kernel": "^3.4",
+        "symfony/property-access": "^3.4",
+        "symfony/property-info": "^3.4",
+        "symfony/serializer": "^3.4",
+        "symfony/templating": "^3.4",
+        "symfony/twig-bundle": "^3.4",
         "sensio/distribution-bundle": "5.0.*"
     },
     "require-dev": {
