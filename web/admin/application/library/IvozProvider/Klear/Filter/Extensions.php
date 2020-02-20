@@ -11,18 +11,17 @@ class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Com
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        $controller = $routeDispatcher->getControllerName();
+        if (!in_array($controller, ['edit', 'new'], true)) {
+            return true;
+        }
+
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
 
         //Get ModelName and your Controller
         $currentScreen = $routeDispatcher->getCurrentItemName();
         $pk = $routeDispatcher->getParam("pk", false);
-
-        //Screen de la que partimos
-        $isUserListScreen = ($currentScreen == "usersList_screen");
-        if ($isUserListScreen) {
-            return true;
-        }
 
         $isUserEditScreen = ($currentScreen == "usersEdit_screen");
         $isUserNewScreen = ($currentScreen == "usersNew_screen");
