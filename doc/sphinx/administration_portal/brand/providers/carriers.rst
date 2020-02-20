@@ -4,7 +4,7 @@
 Carriers
 ********
 
-Carriers are used to place external outgoing calls.
+Carriers are used for placing external outgoing calls.
 
 This are the fields that define a carrier:
 
@@ -35,10 +35,23 @@ This are the fields that define a carrier:
         Chosen currency will be used in cost calculation, balance movements and
         remaining money operations of this carrier.
 
-.. note:: If "Calculate cost" is enabled, a balance is attached to each carrier. Whenever a carrier
-          is used to place a call, this balance will be decreased using carrier's active rating profile.
+Cost calculation
+****************
 
-.. important:: Opposed to clients' balances, carriers' (negative/zero) balances won't disable the carrier.
+If *Calculate cost* is enabled, *Rating plans* can be linked to carriers for cost calculation (see
+:ref:`Assigning rating plans to carriers`) and a balance is attached to each carrier. Whenever a carrier is used for
+placing a call, this balance will be decreased using carrier's active rating profile.
+
+Besides:
+
+- Carrier balance can be increased/decreased with *Balance operations*.
+
+- These operations are listed in *List of Balances movements*.
+
+- *Balance notifications* can be configured to be notified when balance reaches a given threshold.
+
+.. important:: Contrary to clients' balances, **carriers' (negative/zero) balances won't disable the carrier**.
+
 
 Carrier Servers
 ***************
