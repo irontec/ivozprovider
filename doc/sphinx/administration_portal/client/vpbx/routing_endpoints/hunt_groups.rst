@@ -68,9 +68,9 @@ There are 4 strategies available:
 Adding members to hunt group
 ============================
 
-**List of users** subsection allows adding users to each group:
+**List of members** subsection allows adding users or external numbers to each group:
 
-- For *RingAll hunt groups*, users will be added without any additional parameters.
+- For *RingAll hunt groups*, members will be added without any additional parameters.
 
 - For remaining groups, priority and timeout will be specified for each member. Priority determines the order, timeout ring
   duration for each member.
