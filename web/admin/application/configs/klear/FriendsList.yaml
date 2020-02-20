@@ -193,6 +193,7 @@ production:
       <<: *friendsPatternsList_screenLink
       filterField: Friend
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
     friendsPatternsNew_screen:
       <<: *friendsPatternsNew_screenLink
