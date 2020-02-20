@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "edb2b442fae74968f831477fa2027ffb",
+    "content-hash": "443603767e966f3f856606728fb0c2f7",
     "packages": [
         {
             "name": "api-platform/core",
@@ -181,16 +181,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "62e8fc2dc550e5d6d8c9360c7721662670f58149"
+                "reference": "47fe531de31fca4a1b997f87308e7d7804348f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/62e8fc2dc550e5d6d8c9360c7721662670f58149",
-                "reference": "62e8fc2dc550e5d6d8c9360c7721662670f58149",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/47fe531de31fca4a1b997f87308e7d7804348f7e",
+                "reference": "47fe531de31fca4a1b997f87308e7d7804348f7e",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2019-12-11T14:44:42+00:00"
+            "time": "2020-01-13T10:02:55+00:00"
         },
         {
             "name": "debach/zend-mp3",
@@ -1187,27 +1187,27 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.12",
+            "version": "2.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208"
+                "reference": "ade6887fd9bd74177769645ab5c474824f8a418a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6255605af39f2db7f5cb62e672bd8a7bad8d208",
-                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ade6887fd9bd74177769645ab5c474824f8a418a",
+                "reference": "ade6887fd9bd74177769645ab5c474824f8a418a",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
-                "php": ">= 5.5"
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.10"
             },
             "require-dev": {
-                "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
-                "satooshi/php-coveralls": "^1.0.1",
-                "symfony/phpunit-bridge": "^4.4@dev"
+                "dominicsayers/isemail": "^3.0.7",
+                "phpunit/phpunit": "^4.8.36|^7.5.15",
+                "satooshi/php-coveralls": "^1.0.1"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -1241,7 +1241,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-12-20T12:49:39+00:00"
+            "time": "2020-02-13T22:36:52+00:00"
         },
         {
             "name": "fig/link-util",
@@ -1951,17 +1951,32 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "619c7dce091b55f9a6ae43b4a9990ed7cc3e96bc",
+                "reference": "35aebc936c2951868130003c3230789b68df954e",
                 "shasum": null
             },
             "require": {
+                "incenteev/composer-parameter-handler": "^2.0",
                 "irontec/ivoz-core": "^2.3",
                 "irontec/ivoz-core-bundle": "^2.3",
-                "php": ">=7.0.19"
+                "php": ">=7.0.19",
+                "sensio/distribution-bundle": "5.0.*",
+                "symfony/asset": "^3.4",
+                "symfony/console": "^3.4",
+                "symfony/debug-bundle": "^3.4",
+                "symfony/dotenv": "^3.4",
+                "symfony/form": "^3.4",
+                "symfony/framework-bundle": "^3.4",
+                "symfony/http-foundation": "^3.4",
+                "symfony/http-kernel": "^3.4",
+                "symfony/property-access": "^3.4",
+                "symfony/property-info": "^3.4",
+                "symfony/serializer": "^3.4",
+                "symfony/templating": "^3.4",
+                "symfony/twig-bundle": "^3.4"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2259,17 +2274,17 @@
         },
         {
             "name": "mmoreram/gearman-bundle",
-            "version": "v4.1.0",
+            "version": "v4.1.2",
             "target-dir": "Mmoreram/GearmanBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mmoreram/GearmanBundle.git",
-                "reference": "ac43476cea9e412ae132db5030ae6ba9f1d87af9"
+                "reference": "1312622215e4ed3a0d73b379521ec205383ff9a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mmoreram/GearmanBundle/zipball/ac43476cea9e412ae132db5030ae6ba9f1d87af9",
-                "reference": "ac43476cea9e412ae132db5030ae6ba9f1d87af9",
+                "url": "https://api.github.com/repos/mmoreram/GearmanBundle/zipball/1312622215e4ed3a0d73b379521ec205383ff9a0",
+                "reference": "1312622215e4ed3a0d73b379521ec205383ff9a0",
                 "shasum": ""
             },
             "require": {
@@ -2312,12 +2327,12 @@
                     "email": "yuhu@mmoreram.com"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "https://github.com/mmoreram/GearmanBundle/contributors"
-                },
-                {
                     "name": "Matt Daum",
                     "email": "matt@setfive.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/mmoreram/GearmanBundle/contributors"
                 }
             ],
             "description": "Adds gearman support to your Symfony2, Symfony3 and Symfony4 project",
@@ -2325,7 +2340,7 @@
             "keywords": [
                 "gearman"
             ],
-            "time": "2017-11-22T17:09:48+00:00"
+            "time": "2019-11-16T19:34:12+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2767,16 +2782,16 @@
         },
         {
             "name": "phpxmlrpc/phpxmlrpc",
-            "version": "4.0.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gggeek/phpxmlrpc.git",
-                "reference": "679eacd661962f353a809ab66e83a86233f28bcc"
+                "reference": "3ba5608040e61564cf5e9a1ede98a9b0cf9d060e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/679eacd661962f353a809ab66e83a86233f28bcc",
-                "reference": "679eacd661962f353a809ab66e83a86233f28bcc",
+                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/3ba5608040e61564cf5e9a1ede98a9b0cf9d060e",
+                "reference": "3ba5608040e61564cf5e9a1ede98a9b0cf9d060e",
                 "shasum": ""
             },
             "require": {
@@ -2789,9 +2804,9 @@
                 "ext-curl": "*",
                 "ext-mbstring": "*",
                 "indeyets/pake": "~1.99",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": ">=4.0.0",
-                "phpunit/phpunit-selenium": "*"
+                "phpunit/phpunit": ">=4.0.0, <6.0.0",
+                "phpunit/phpunit-selenium": "*",
+                "sami/sami": "~3.1"
             },
             "suggest": {
                 "ext-curl": "Needed for HTTPS and HTTP 1.1 support, NTLM Auth etc...",
@@ -2814,7 +2829,7 @@
                 "webservices",
                 "xmlrpc"
             ],
-            "time": "2016-01-20T23:28:09+00:00"
+            "time": "2019-07-29T14:20:48+00:00"
         },
         {
             "name": "psr/cache",
@@ -3332,16 +3347,16 @@
         },
         {
             "name": "snc/redis-bundle",
-            "version": "2.1.12",
+            "version": "2.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/snc/SncRedisBundle.git",
-                "reference": "1f4d2980e56366d875fd3db8c64e58fef04a4e7d"
+                "reference": "7c8652c1811c573ae567c1bcaa5e1c65723c5907"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/snc/SncRedisBundle/zipball/1f4d2980e56366d875fd3db8c64e58fef04a4e7d",
-                "reference": "1f4d2980e56366d875fd3db8c64e58fef04a4e7d",
+                "url": "https://api.github.com/repos/snc/SncRedisBundle/zipball/7c8652c1811c573ae567c1bcaa5e1c65723c5907",
+                "reference": "7c8652c1811c573ae567c1bcaa5e1c65723c5907",
                 "shasum": ""
             },
             "require": {
@@ -3394,7 +3409,7 @@
                 "redis",
                 "symfony"
             ],
-            "time": "2019-10-09T07:26:03+00:00"
+            "time": "2019-12-09T12:56:15+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4589,16 +4604,16 @@
     "packages-dev": [
         {
             "name": "amphp/amp",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/amp.git",
-                "reference": "13930a582947831bb66ff1aeac28672fd91c38ea"
+                "reference": "2ac3b550c4997f2ec304faa63c8b2885079a2dc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/amp/zipball/13930a582947831bb66ff1aeac28672fd91c38ea",
-                "reference": "13930a582947831bb66ff1aeac28672fd91c38ea",
+                "url": "https://api.github.com/repos/amphp/amp/zipball/2ac3b550c4997f2ec304faa63c8b2885079a2dc4",
+                "reference": "2ac3b550c4997f2ec304faa63c8b2885079a2dc4",
                 "shasum": ""
             },
             "require": {
@@ -4662,20 +4677,20 @@
                 "non-blocking",
                 "promise"
             ],
-            "time": "2019-11-11T19:32:05+00:00"
+            "time": "2020-02-10T18:10:57+00:00"
         },
         {
             "name": "amphp/byte-stream",
-            "version": "v1.7.1",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/byte-stream.git",
-                "reference": "9d8205686a004948475dc43f8a88d2fa5e75a113"
+                "reference": "1e52f1752b2e20e2a7e464476ef887a2388e3832"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/byte-stream/zipball/9d8205686a004948475dc43f8a88d2fa5e75a113",
-                "reference": "9d8205686a004948475dc43f8a88d2fa5e75a113",
+                "url": "https://api.github.com/repos/amphp/byte-stream/zipball/1e52f1752b2e20e2a7e464476ef887a2388e3832",
+                "reference": "1e52f1752b2e20e2a7e464476ef887a2388e3832",
                 "shasum": ""
             },
             "require": {
@@ -4721,7 +4736,7 @@
                 "non-blocking",
                 "stream"
             ],
-            "time": "2019-10-27T14:33:41+00:00"
+            "time": "2020-01-29T18:22:23+00:00"
         },
         {
             "name": "behat/behat",
@@ -5201,24 +5216,23 @@
         },
         {
             "name": "composer/semver",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e"
+                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
-                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
+                "url": "https://api.github.com/repos/composer/semver/zipball/c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
+                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5 || ^5.0.5",
-                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+                "phpunit/phpunit": "^4.5 || ^5.0.5"
             },
             "type": "library",
             "extra": {
@@ -5259,7 +5273,7 @@
                 "validation",
                 "versioning"
             ],
-            "time": "2019-03-19T17:25:45+00:00"
+            "time": "2020-01-13T12:06:48+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -5492,22 +5506,22 @@
         },
         {
             "name": "felixfbecker/advanced-json-rpc",
-            "version": "v3.0.4",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/felixfbecker/php-advanced-json-rpc.git",
-                "reference": "23366dd0cab0a0f3fd3016bf3c0b36dec74348e7"
+                "reference": "a407a6cb0325cd489c6dff57afcba6baeccc0483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/felixfbecker/php-advanced-json-rpc/zipball/23366dd0cab0a0f3fd3016bf3c0b36dec74348e7",
-                "reference": "23366dd0cab0a0f3fd3016bf3c0b36dec74348e7",
+                "url": "https://api.github.com/repos/felixfbecker/php-advanced-json-rpc/zipball/a407a6cb0325cd489c6dff57afcba6baeccc0483",
+                "reference": "a407a6cb0325cd489c6dff57afcba6baeccc0483",
                 "shasum": ""
             },
             "require": {
                 "netresearch/jsonmapper": "^1.0",
                 "php": ">=7.0",
-                "phpdocumentor/reflection-docblock": "^4.0.0"
+                "phpdocumentor/reflection-docblock": "^4.0.0 || ^5.0.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.0.0"
@@ -5529,7 +5543,7 @@
                 }
             ],
             "description": "A more advanced JSONRPC implementation",
-            "time": "2019-09-12T22:41:08+00:00"
+            "time": "2020-02-11T20:48:40+00:00"
         },
         {
             "name": "felixfbecker/language-server-protocol",
