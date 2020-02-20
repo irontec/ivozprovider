@@ -46,7 +46,7 @@ at different times of the day (**List of destination rates** subsection).
         Should this association apply always or just at given times of the week?
 
 .. tip:: Weight allows having a general *Destination rate* and concrete the price of
-         an specific destination in another *destination rate* with higher weight (free cell
+         a specific destination in another *destination rate* with higher weight (free cell
          phone calls, for example).
 
 .. warning:: A rating plan MUST be capable of rating calls 24x7. Adding the timings of all destination rates in a rating
@@ -59,6 +59,8 @@ To check the configuration so far we can **Simulate a call** from the rating pla
 We introduce the destination number in :ref:`E.164 format <e164>`, and we can check the price every rating plan on the
 list will charge for that call.
 
+.. tip:: Rating plans can be linked to both Clients (for price calculation) and Carriers (for cost calculation).
+
 *********************************
 Assigning rating plans to clients
 *********************************
@@ -69,10 +71,31 @@ In the section **Brand configuration** > **Virtual PBXs** (**Residential**, **Re
 **List of Rating Plans** subsection.
 
 .. note:: Every **Rating plan** has an activation time and only one can be active for each
-          client at an specific moment (the one whose activation time is nearer in the past).
+          client at a specific moment (the one whose activation time is nearer in the past).
 
 .. rubric:: Simulating a call of a specific client
 
 In this list we can also simulate a call for a given client like we did previously
 in the rating plan list and check the price it will imply. This way, we can be sure
 that the configuration is ok.
+
+.. tip:: Active rating plan of a given client will be used to set Price for its calls.
+
+**********************************
+Assigning rating plans to carriers
+**********************************
+
+An specific **rating plan** can be linked to multiple carriers to calculate cost of calls (see :ref:`Cost calculation`).
+
+In the section **Brand configuration** > **Providers** > **Carriers** we select **List of Rating Plans** subsection.
+
+.. note:: Every **Rating plan** has an activation time and only one can be active for each
+          client at a specific moment (the one whose activation time is nearer in the past).
+
+.. rubric:: Simulating a call of a specific carrier
+
+In this list we can also simulate a call for a given carrier like we did previously
+in the rating plan list and check the price it will imply. This way, we can be sure
+that the configuration is ok.
+
+.. tip:: Active rating plan of a given carrier will be used to set Cost for calls established using it.
