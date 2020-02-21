@@ -64,6 +64,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
         $dataset = [
             ["_RatingPlanPrices","Model\\RatingPlanPrices","0","0","1"],
             ["PublicEntitys","Ivoz\\Provider\\Domain\\Model\\PublicEntity\\PublicEntity","1","1","1"],
+            ["BillableCalls","Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall","1","1","1"],
             ["Calendars","Ivoz\\Provider\\Domain\\Model\\Calendar\\Calendar","0","0","1"],
             ["CalendarPeriods","Ivoz\\Provider\\Domain\\Model\\CalendarPeriod\\CalendarPeriod","0","0","1"],
             ["CalendarPeriodsRelSchedules","Ivoz\\Provider\\Domain\\Model\\CalendarPeriodsRelSchedule\\CalendarPeriodsRelSchedule","0","0","1"],
