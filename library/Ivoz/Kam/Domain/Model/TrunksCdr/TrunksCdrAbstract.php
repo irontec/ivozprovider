@@ -110,6 +110,21 @@ abstract class TrunksCdrAbstract
      */
     protected $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     */
+    protected $user;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    protected $friend;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
+     */
+    protected $fax;
+
 
     use ChangelogTrait;
 
@@ -219,6 +234,9 @@ abstract class TrunksCdrAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setFax($fkTransformer->transform($dto->getFax()))
         ;
 
         $self->initChangelog();
@@ -256,7 +274,10 @@ abstract class TrunksCdrAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
+            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
+            ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setFax($fkTransformer->transform($dto->getFax()));
 
 
 
@@ -289,7 +310,10 @@ abstract class TrunksCdrAbstract
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth))
-            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
+            ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
+            ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth));
     }
 
     /**
@@ -316,7 +340,10 @@ abstract class TrunksCdrAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
+            'userId' => self::getUser() ? self::getUser()->getId() : null,
+            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
+            'faxId' => self::getFax() ? self::getFax()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -846,6 +873,78 @@ abstract class TrunksCdrAbstract
     public function getResidentialDevice()
     {
         return $this->residentialDevice;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
+     *
+     * @return static
+     */
+    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set friend
+     *
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
+     *
+     * @return static
+     */
+    protected function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    /**
+     * Get friend
+     *
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    public function getFriend()
+    {
+        return $this->friend;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax | null
+     *
+     * @return static
+     */
+    protected function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax = null)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
+     */
+    public function getFax()
+    {
+        return $this->fax;
     }
 
     // @codeCoverageIgnoreEnd

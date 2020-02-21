@@ -69,6 +69,7 @@ abstract class BillableCallAbstract
     protected $ratingPlanName;
 
     /**
+     * comment: enum:RetailAccount|ResidentialDevice|User|Friend|Fax
      * @var string | null
      */
     protected $endpointType;
@@ -654,6 +655,13 @@ abstract class BillableCallAbstract
     {
         if (!is_null($endpointType)) {
             Assertion::maxLength($endpointType, 55, 'endpointType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($endpointType, [
+                BillableCallInterface::ENDPOINTTYPE_RETAILACCOUNT,
+                BillableCallInterface::ENDPOINTTYPE_RESIDENTIALDEVICE,
+                BillableCallInterface::ENDPOINTTYPE_USER,
+                BillableCallInterface::ENDPOINTTYPE_FRIEND,
+                BillableCallInterface::ENDPOINTTYPE_FAX
+            ], 'endpointTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->endpointType = $endpointType;
