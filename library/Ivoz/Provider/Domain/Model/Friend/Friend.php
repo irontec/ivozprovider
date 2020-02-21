@@ -181,6 +181,15 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function checkExtension($exten)
     {
+        if ($this->isInterPbxConnectivity()) {
+            // Inter-vPBX can call to any Extension pointing to user
+            $extension = $this->getInterCompany()->getExtension($exten);
+            if (is_null($extension)) {
+                return false;
+            }
+            return true;
+        }
+
         $patterns = $this->getPatterns();
         /**
          * @var FriendsPattern $pattern

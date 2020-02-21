@@ -1,6 +1,7 @@
 <?php
 
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use \Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 
 class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model_Interfaces_ParentOptionCustomizer
 {
@@ -135,6 +136,11 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 break;
             case "specialNumbersView_screen":
                 $show = !$this->_isBrandData();
+                break;
+            case "friendsPatternsList_screen":
+                $directConnectivity = $this->_parentModel->getDirectConnectivity();
+                $isNotInterPbx = $directConnectivity != FriendInterface::DIRECTCONNECTIVITY_INTERVPBX;
+                $show = $isNotInterPbx;
                 break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());
