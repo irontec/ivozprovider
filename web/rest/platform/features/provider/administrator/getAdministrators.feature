@@ -42,15 +42,6 @@ Feature: Retrieve administrators
               "id": 3
           },
           {
-              "username": "test_company_admin",
-              "email": "test@irontec.com",
-              "active": true,
-              "restricted": false,
-              "name": "Admin Name",
-              "lastname": "Admin Lastname",
-              "id": 4
-          },
-          {
               "username": "utcAdmin",
               "email": "utc@irontec.com",
               "active": true,

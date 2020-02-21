@@ -16,6 +16,22 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
+Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity:
+  itemOperations:
+    get:
+      depth: 1
+    put: ~
+  collectionOperations:
+    get:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        inherited:
+          administrator: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+          publicEntity:  'Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity'
+
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   itemOperations:
     get: ~
@@ -573,6 +589,18 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
       - or:
         - inheritedOrNull:
             routingPatternGroup: 'Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup'
+
+Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: 1
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Name:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Description:
