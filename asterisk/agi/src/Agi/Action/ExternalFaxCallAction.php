@@ -103,6 +103,9 @@ class ExternalFaxCallAction
             return;
         }
 
+        // Set fax
+        $this->agi->setVariable("__FAXID", $faxOut->getFax()->getId());
+
         // Set presentation
         $this->agi->setCallerIdNum($ddi->getDdie164());
 
