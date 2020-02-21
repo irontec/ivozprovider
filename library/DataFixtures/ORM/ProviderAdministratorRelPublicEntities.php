@@ -25,14 +25,6 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
             ->getConnection()
             ->exec(
                 'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
-                . 'SELECT A.id, P.id, 1, 1, 1, 1 FROM Administrators A INNER JOIN PublicEntities P '
-                . 'WHERE A.companyId IS NOT NULL AND A.restricted = 0 AND P.client = 1'
-            );
-
-        $manager
-            ->getConnection()
-            ->exec(
-                'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
                 . 'SELECT A.id, P.id, 0, 1, 0, 0 FROM Administrators A INNER JOIN PublicEntities P '
                 . 'WHERE A.companyId IS NOT NULL AND A.restricted = 1 AND P.client = 1'
             );
@@ -41,24 +33,8 @@ class ProviderAdministratorRelPublicEntities extends Fixture implements Dependen
             ->getConnection()
             ->exec(
                 'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
-                . 'SELECT A.id, P.id, 1, 1, 1, 1 FROM Administrators A INNER JOIN PublicEntities P '
-                . 'WHERE A.brandId IS NOT NULL AND A.companyId IS NULL AND A.restricted = 0 AND P.brand = 1'
-            );
-
-        $manager
-            ->getConnection()
-            ->exec(
-                'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
                 . 'SELECT A.id, P.id, 0, 1, 0, 0 FROM Administrators A INNER JOIN PublicEntities P '
                 . 'WHERE A.brandId IS NOT NULL AND A.companyId IS NULL AND A.restricted = 1 AND P.brand = 1'
-            );
-
-        $manager
-            ->getConnection()
-            ->exec(
-                'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
-                . 'SELECT A.id, P.id, 1, 1, 1, 1 FROM Administrators A INNER JOIN PublicEntities P '
-                . 'WHERE A.brandId IS NULL AND A.companyId IS NULL AND A.restricted = 0 AND P.platform = 1'
             );
 
         $manager
