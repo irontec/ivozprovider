@@ -102,6 +102,13 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getPreventMissedCalls();
 
     /**
+     * Get allowCallForwards
+     *
+     * @return integer
+     */
+    public function getAllowCallForwards();
+
+    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface

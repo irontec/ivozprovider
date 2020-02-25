@@ -48,6 +48,11 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
+    private $allowCallForwards = 0;
+
+    /**
+     * @var integer
+     */
     private $id;
 
     /**
@@ -105,6 +110,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'noAnswerTargetType' => 'noAnswerTargetType',
             'noAnswerNumberValue' => 'noAnswerNumberValue',
             'preventMissedCalls' => 'preventMissedCalls',
+            'allowCallForwards' => 'allowCallForwards',
             'id' => 'id',
             'companyId' => 'company',
             'noAnswerLocutionId' => 'noAnswerLocution',
@@ -127,6 +133,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'noAnswerTargetType' => $this->getNoAnswerTargetType(),
             'noAnswerNumberValue' => $this->getNoAnswerNumberValue(),
             'preventMissedCalls' => $this->getPreventMissedCalls(),
+            'allowCallForwards' => $this->getAllowCallForwards(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'noAnswerLocution' => $this->getNoAnswerLocution(),
@@ -275,6 +282,26 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     public function getPreventMissedCalls()
     {
         return $this->preventMissedCalls;
+    }
+
+    /**
+     * @param integer $allowCallForwards
+     *
+     * @return static
+     */
+    public function setAllowCallForwards($allowCallForwards = null)
+    {
+        $this->allowCallForwards = $allowCallForwards;
+
+        return $this;
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getAllowCallForwards()
+    {
+        return $this->allowCallForwards;
     }
 
     /**
