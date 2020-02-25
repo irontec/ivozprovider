@@ -133,6 +133,9 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "Tots"
 
+msgid "Allow Call Forwards"
+msgstr "Permet desviament de trucada"
+
 msgid "Allow Client to remove recordings"
 msgstr "Permet al client eliminar les gravacions"
 
@@ -2921,6 +2924,9 @@ msgstr "Pes"
 
 msgid "Welcome locution"
 msgstr "Locució de benvinguda"
+
+msgid "When 'Yes', Users call forward settings will be followed."
+msgstr "Al activarlo, los desviós de llamada serán aplicados."
 
 msgid ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "

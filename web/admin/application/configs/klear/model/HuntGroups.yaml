@@ -74,6 +74,23 @@ production:
         icon: help
         label: _("Need help?")
         text: _("When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll huntgroups if someone answers.")
+    allowCallForwards:
+      title: _('Allow Call Forwards')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("When 'Yes', Users call forward settings will be followed.")
     ringAllTimeout:
       title: _('Ring all timeout')
       type: number
