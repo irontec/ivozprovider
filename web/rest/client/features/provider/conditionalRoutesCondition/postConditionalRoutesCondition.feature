@@ -43,7 +43,7 @@ Feature: Create conditional routes conditions
     Then the response status code should be 201
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
       {
           "priority": 2,
@@ -51,7 +51,7 @@ Feature: Create conditional routes conditions
           "numberValue": null,
           "friendValue": null,
           "id": 2,
-          "conditionalRoute": 1,
+          "conditionalRoute": "~",
           "ivr": null,
           "huntGroup": null,
           "voicemailUser": null,
@@ -59,19 +59,32 @@ Feature: Create conditional routes conditions
           "queue": null,
           "locution": null,
           "conferenceRoom": null,
-          "extension": 1,
+          "extension": {
+              "number": "101",
+              "routeType": "user",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 1,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": 1,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null
+          },
           "numberCountry": null,
           "matchListIds": [
-            2
+              2
           ],
           "scheduleIds": [
-            1
+              1
           ],
           "calendarIds": [
-            2
+              2
           ],
           "routeLockIds": [
-            1
+              1
           ]
       }
     """

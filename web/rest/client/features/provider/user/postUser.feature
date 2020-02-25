@@ -43,7 +43,7 @@ Feature: Create users
     Then the response status code should be 201
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
       {
           "name": "Test",
@@ -60,19 +60,44 @@ Feature: Create users
           "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 3,
-          "callAcl": 1,
+          "callAcl": {
+              "name": "testACL",
+              "defaultPolicy": "allow",
+              "id": 1
+          },
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
-          "transformationRuleSet": 1,
+          "transformationRuleSet": {
+              "description": "Generic transformation for Spain",
+              "internationalCode": "00",
+              "trunkPrefix": "",
+              "areaCode": "",
+              "nationalLen": 9,
+              "generateRules": false,
+              "id": 1,
+              "name": "~",
+              "country": 68
+          },
           "language": null,
-          "terminal": 3,
+          "terminal": "~",
           "extension": null,
-          "timezone": 145,
+          "timezone": {
+              "tz": "Europe/Madrid",
+              "comment": "mainland",
+              "id": 145,
+              "label": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "country": 68
+          },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
           "voicemailLocution": null,
           "pickupGroupIds": [
-            1
+              1
           ]
       }
     """

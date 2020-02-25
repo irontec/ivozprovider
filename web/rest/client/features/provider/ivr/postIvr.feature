@@ -51,16 +51,76 @@ Feature: Create IVRs
           "errorRouteType": "number",
           "errorNumberValue": "946002022",
           "id": 3,
-          "welcomeLocution": 1,
+          "welcomeLocution": {
+              "name": "testLocution",
+              "status": null,
+              "id": 1,
+              "encodedFile": {
+                  "fileSize": 1,
+                  "mimeType": "audio\/x-wav; charset=binary",
+                  "baseName": "locution.wav"
+              },
+              "originalFile": {
+                  "fileSize": 1,
+                  "mimeType": "audio\/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
+              }
+          },
           "noInputLocution": null,
           "errorLocution": null,
-          "successLocution": 1,
+          "successLocution": {
+              "name": "testLocution",
+              "status": null,
+              "id": 1,
+              "encodedFile": {
+                  "fileSize": 1,
+                  "mimeType": "audio\/x-wav; charset=binary",
+                  "baseName": "locution.wav"
+              },
+              "originalFile": {
+                  "fileSize": 1,
+                  "mimeType": "audio\/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
+              }
+          },
           "noInputExtension": null,
           "errorExtension": null,
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
-          "noInputNumberCountry": 2,
-          "errorNumberCountry": 3,
+          "noInputNumberCountry": {
+              "code": "AE",
+              "countryCode": "+971",
+              "id": 2,
+              "name": {
+                  "en": "United Arab Emirates",
+                  "es": "Emiratos \u00c1rabes Unidos",
+                  "ca": "Emiratos \u00c1rabes Unidos",
+                  "it": "United Arab Emirates"
+              },
+              "zone": {
+                  "en": "Asia",
+                  "es": "Asia",
+                  "ca": "Asia",
+                  "it": "Asia"
+              }
+          },
+          "errorNumberCountry": {
+              "code": "AF",
+              "countryCode": "+93",
+              "id": 3,
+              "name": {
+                  "en": "Afghanistan",
+                  "es": "Afganist\u00e1n",
+                  "ca": "Afganist\u00e1n",
+                  "it": "Afghanistan"
+              },
+              "zone": {
+                  "en": "Asia",
+                  "es": "Asia",
+                  "ca": "Asia",
+                  "it": "Asia"
+              }
+          },
           "excludedExtensionIds": [
               1,
               2

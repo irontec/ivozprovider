@@ -58,19 +58,51 @@ Feature: Create external call filters
           "outOfScheduleExtension": null,
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
-          "holidayNumberCountry": 77,
-          "outOfScheduleNumberCountry": 77,
+          "holidayNumberCountry": {
+              "code": "GB",
+              "countryCode": "+44",
+              "id": 77,
+              "name": {
+                  "en": "United Kingdom",
+                  "es": "Reino Unido",
+                  "ca": "Reino Unido",
+                  "it": "United Kingdom"
+              },
+              "zone": {
+                  "en": "Europe",
+                  "es": "Europa",
+                  "ca": "Europa",
+                  "it": "Europe"
+              }
+          },
+          "outOfScheduleNumberCountry": {
+              "code": "GB",
+              "countryCode": "+44",
+              "id": 77,
+              "name": {
+                  "en": "United Kingdom",
+                  "es": "Reino Unido",
+                  "ca": "Reino Unido",
+                  "it": "United Kingdom"
+              },
+              "zone": {
+                  "en": "Europe",
+                  "es": "Europa",
+                  "ca": "Europa",
+                  "it": "Europe"
+              }
+          },
           "scheduleIds": [
-            2
+              2
           ],
           "calendarIds": [
-            2
+              2
           ],
           "whiteListIds": [
-            2
+              2
           ],
           "blackListIds": [
-            2
+              2
           ]
       }
     """
