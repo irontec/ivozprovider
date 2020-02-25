@@ -36,9 +36,35 @@ Feature: Create outgoing routings
           "priority": 2,
           "weight": 1,
           "routingMode": "lcr",
+          "prefix": null,
+          "stopper": false,
+          "forceClid": false,
+          "clid": null,
           "id": 3,
-          "company": 2,
-          "carrierIds": [1]
+          "company": "~",
+          "carrier": null,
+          "routingPattern": {
+              "prefix": "+34",
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
+          "routingPatternGroup": null,
+          "routingTag": null,
+          "clidCountry": null,
+          "carrierIds": [
+              1
+          ]
       }
     """
 
@@ -57,14 +83,33 @@ Feature: Create outgoing routings
           "weight": 1,
           "routingMode": "lcr",
           "prefix": null,
+          "stopper": false,
           "forceClid": false,
           "clid": null,
           "id": 3,
           "company": "~",
           "carrier": null,
-          "routingPattern": "~",
+          "routingPattern": {
+              "prefix": "+34",
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
           "routingPatternGroup": null,
+          "routingTag": null,
           "clidCountry": null,
-          "carrierIds": [1]
+          "carrierIds": [
+              1
+          ]
       }
     """

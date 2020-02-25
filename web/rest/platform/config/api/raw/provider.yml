@@ -50,6 +50,7 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
     get: ~
     post:
       operation_normalization_context: 'withFeatures'
+      depth: 1
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
     normalization_context:

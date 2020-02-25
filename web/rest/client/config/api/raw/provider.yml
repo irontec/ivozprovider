@@ -317,6 +317,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
     get: ~
     post:
       operation_normalization_context: 'withInverseRelationships'
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -582,6 +583,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
     get: ~
     post:
       operation_normalization_context: 'withInverseRelationships'
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -899,6 +901,7 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
     get: ~
     post:
       operation_normalization_context: 'withExcludedExtensions'
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -1070,6 +1073,7 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
     get: ~
     post:
       operation_normalization_context: 'withUsers'
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     normalization_context:
@@ -1398,6 +1402,7 @@ Ivoz\Provider\Domain\Model\User\User:
     get: ~
     post:
       operation_normalization_context: 'withPickupGroups'
+      depth: 1
     get_my_company_assistants:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'

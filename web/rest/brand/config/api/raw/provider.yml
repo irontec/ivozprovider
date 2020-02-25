@@ -191,6 +191,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
     get: ~
     post:
       operation_normalization_context: 'withFeatures'
+      depth: 1
   properties:
     balance:
       attributes:
@@ -564,6 +565,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
     get: ~
     post:
       operation_normalization_context: 'withCarriers'
+      depth: 1
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     normalization_context:
@@ -704,6 +706,7 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
     get: ~
     post:
       operation_normalization_context: 'withPatterns'
+      depth: 1
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     normalization_context:
