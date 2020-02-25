@@ -30,6 +30,11 @@ class UserCallAction
     protected $userStatusAction;
 
     /**
+     * @var boolean
+     */
+    protected $allowCallForwards;
+
+    /**
      * UserCallAction constructor.
      *
      * @param Wrapper $agi
@@ -44,6 +49,13 @@ class UserCallAction
         $this->agi = $agi;
         $this->routerAction = $routerAction;
         $this->userStatusAction = $userStatusAction;
+        $this->allowCallForwards = true;
+    }
+
+    public function setAllowCallForwards($allowCallForwards)
+    {
+        $this->allowCallForwards = $allowCallForwards;
+        return $this;
     }
 
     public function setUser($user)
@@ -82,30 +94,34 @@ class UserCallAction
             return;
         }
 
-        // Some verbose dolan pls
         $this->agi->notice("Preparing call to user <green>%s</green> (<cyan>%s</cyan>)", $user, $terminal);
 
-        // Check if user has call forwarding enabled
-        $forwarded = $this->userStatusAction
-                        ->setUser($this->user)
-                        ->setDialStatus(UserStatusAction::Forwarded)
-                        ->process();
+        if ($this->allowCallForwards) {
+            // Check if user has call forwarding enabled
+            $forwarded = $this->userStatusAction
+                ->setUser($this->user)
+                ->setDialStatus(UserStatusAction::Forwarded)
+                ->process();
 
-        if ($forwarded) {
-            return;
+            if ($forwarded) {
+                return;
+            }
         }
 
         // User requested peace
         if ($user->getDoNotDisturb()) {
             $this->agi->verbose("User %s has DND enabled.", $user);
 
-            $this->userStatusAction
-                ->setUser($this->user)
-                ->setDialStatus(UserStatusAction::Busy)
-                ->process();
+            if ($this->allowCallForwards) {
+                $this->userStatusAction
+                    ->setUser($this->user)
+                    ->setDialStatus(UserStatusAction::Busy)
+                    ->process();
+            }
 
             return;
         }
+
 
         // Check if this user is a boss
         if ($user->getIsBoss() && !$this->canCallBoss($user, $this->agi->getCallerIdNum())) {
@@ -126,6 +142,10 @@ class UserCallAction
         // Configure Dial options
         $timeout = $this->getDialTimeout();
         $options = "";
+
+        if (!$this->allowCallForwards) {
+            $options .= "i";
+        }
 
         if ($this->getUserStatusRequired()) {
             $options .= "g";
@@ -216,6 +236,11 @@ class UserCallAction
      */
     private function getUserStatusRequired()
     {
+        // Ignore user status if User call forwards are disabled
+        if (!$this->allowCallForwards) {
+            return false;
+        }
+
         // internal or external call
         $callType = $this->agi->getCallType();
 

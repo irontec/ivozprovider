@@ -2,8 +2,8 @@
 
 namespace Dialplan;
 
-use Agi\Action\HuntGroupCallAction;
-use Agi\Action\RouterAction;
+use Agi\Action\ExternalNumberAction;
+use Agi\Action\UserCallAction;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
@@ -24,25 +24,33 @@ class HuntGroupMember extends RouteHandlerAbstract
     protected $em;
 
     /**
-     * @var RouterAction
+     * @var UserCallAction
      */
-    protected $routerAction;
+    protected $userCallAction;
+
+    /**
+     * @var ExternalNumberAction
+     */
+    protected $externalNumberCallAction;
 
     /**
      * HuntGroups constructor.
      *
      * @param Wrapper $agi
      * @param EntityManagerInterface $em
-     * @param RouterAction $routerAction
+     * @param UserCallAction $userCallAction
+     * @param ExternalNumberAction $externalNumberCallAction
      */
     public function __construct(
         Wrapper $agi,
         EntityManagerInterface $em,
-        RouterAction $routerAction
+        UserCallAction $userCallAction,
+        ExternalNumberAction $externalNumberCallAction
     ) {
         $this->agi = $agi;
         $this->em = $em;
-        $this->routerAction = $routerAction;
+        $this->userCallAction = $userCallAction;
+        $this->externalNumberCallAction = $externalNumberCallAction;
     }
 
     public function process()
@@ -56,11 +64,19 @@ class HuntGroupMember extends RouteHandlerAbstract
         /** @var HuntGroupsRelUserInterface $huntgroupsRelUser */
         $huntgroupsRelUser = $huntgroupsRelUserRepository->find($huntgroupsRelUserId);
 
-        // Route to the extension destination
-        $this->routerAction
-            ->setRouteType($huntgroupsRelUser->getRouteType())
-            ->setRouteUser($huntgroupsRelUser->getUser())
-            ->setRouteExternal($huntgroupsRelUser->getNumberValueE164())
-            ->route();
+        // Get Huntgroup configuration
+        $huntgroup = $huntgroupsRelUser->getHuntGroup();
+
+        // Route to next Action
+        if ($huntgroupsRelUser->getRouteType() == HuntGroupsRelUserInterface::ROUTETYPE_USER) {
+            $this->userCallAction
+                ->setUser($huntgroupsRelUser->getUser())
+                ->setAllowCallForwards($huntgroup->getAllowCallForwards())
+                ->process();
+        } else {
+            $this->externalNumberCallAction
+                ->setDestination($huntgroupsRelUser->getNumberValueE164())
+                ->process();
+        }
     }
 }
