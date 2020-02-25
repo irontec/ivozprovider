@@ -477,6 +477,7 @@ production:
       title: _('Max daily usage')
       type: ghost
       readonly: true
+      dirty: true
       source:
         class: IvozProvider_Klear_Ghost_Companies
         method: getCurrentDayMaxUsage
