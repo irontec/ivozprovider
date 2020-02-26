@@ -1,6 +1,7 @@
 <?php
 
 use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractBalanceService;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
@@ -118,6 +119,11 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
                 $companyDto->getId()
             );
 
+            $dbAmount = $companyDto->getMaxDailyUsage();
+            if ($dbAmount == AbstractBalanceService::UNLIMITED_MAX_DAILY_USAGE) {
+                $dbAmount = '∞';
+            }
+
             $currencySymbol = $dataGateway->remoteProcedureCall(
                 Company::class,
                 $companyDto->getId(),
@@ -125,7 +131,17 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
                 []
             );
 
-            return sprintf("%s %s", $amount, $currencySymbol);
+            if ($dbAmount == $amount) {
+                return sprintf("%s %s", $amount, $currencySymbol);
+            } else {
+                return sprintf(
+                    "<span style='color:red;' title='Amount differs from stored one (%s %s)' >%s %s</span>",
+                    $amount,
+                    $currencySymbol,
+                    $dbAmount,
+                    $currencySymbol
+                );
+            }
         } catch (Exception $exception) {
             return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
         }
