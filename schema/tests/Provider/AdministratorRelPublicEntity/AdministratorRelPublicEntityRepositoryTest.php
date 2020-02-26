@@ -109,6 +109,33 @@ class AdministratorRelAdministratorRelPublicEntityRepositoryTest extends KernelT
         $this->assertNotEmpty($changes);
     }
 
+
+    public function it_removes_by_admin_id()
+    {
+        /** @var AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository */
+        $administratorRelPublicEntityRepository = $this
+            ->em
+            ->getRepository(AdministratorRelPublicEntity::class);
+
+        $admin = $this->getAdmin(6);
+
+        $affectedRows = $administratorRelPublicEntityRepository
+            ->revokePermissionsByIds(
+                $admin->getId()
+            );
+
+        $this->assertGreaterThan(
+            1,
+            $affectedRows
+        );
+
+        $changes = $this->getChangelogByClass(
+            AdministratorRelPublicEntity::class
+        );
+
+        $this->assertNotEmpty($changes);
+    }
+
     private function getAdmin(int $id = 5): AdministratorInterface
     {
         /** @var AdministratorRepository $administratorRepository */

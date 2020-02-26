@@ -35,8 +35,12 @@ final class CreateAcls implements AdministratorLifecycleEventHandlerInterface
      */
     public function execute(AdministratorInterface $admin)
     {
-        $isNotNew = !$admin->isNew();
-        if ($isNotNew) {
+        $mustCreateAcls =
+            $admin->getRestricted()
+            && $admin->hasChanged('restricted');
+
+        $nothingToDo = !$mustCreateAcls;
+        if ($nothingToDo) {
             return;
         }
 
@@ -68,7 +72,7 @@ final class CreateAcls implements AdministratorLifecycleEventHandlerInterface
         }
 
         $readPermissions = true;
-        $writePermissions = !$admin->getRestricted();
+        $writePermissions = false;
 
         foreach ($publicEntities as $publicEntity) {
             $dto = new AdministratorRelPublicEntityDto();

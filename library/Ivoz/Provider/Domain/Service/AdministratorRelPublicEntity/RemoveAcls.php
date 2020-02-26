@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 use Ivoz\Provider\Domain\Service\Administrator\AdministratorLifecycleEventHandlerInterface;
 
-final class UpdateAcls implements AdministratorLifecycleEventHandlerInterface
+final class RemoveAcls implements AdministratorLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
@@ -34,35 +34,19 @@ final class UpdateAcls implements AdministratorLifecycleEventHandlerInterface
      */
     public function execute(AdministratorInterface $admin)
     {
-        $isNew = $admin->isNew();
-        if ($isNew) {
-            return;
-        }
+        $mustDeleteAcls =
+            !$admin->getRestricted()
+            && $admin->hasChanged('restricted');
 
-        $restrictedHasNotChanged = !$admin->hasChanged(
-            'restricted'
-        );
-
-        if ($restrictedHasNotChanged) {
-            return;
-        }
-
-        $isRestricted = $admin->getRestricted();
-
-        if ($isRestricted) {
-            $this
-                ->administratorRelPublicEntityRepository
-                ->setReadOnlyPermissions(
-                    $admin
-                );
-
+        $nothingToDo = !$mustDeleteAcls;
+        if ($nothingToDo) {
             return;
         }
 
         $this
             ->administratorRelPublicEntityRepository
-            ->setWritePermissions(
-                $admin
+            ->removeByAdministratorId(
+                $admin->getId()
             );
     }
 }

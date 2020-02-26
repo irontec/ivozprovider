@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
@@ -119,6 +120,28 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
             )
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    public function removeByAdministratorId(int $id): int
+    {
+        $qb = $this
+            ->createQueryBuilder('self');
+
+        $criteria = CriteriaHelper::fromArray([
+            ['administrator', 'eq', $id]
+        ]);
+
+        $qb
+            ->delete(
+                $this->getEntityName(),
+                'self'
+            )
+            ->addCriteria($criteria);
 
         return $this->queryRunner->execute(
             $this->getEntityName(),
