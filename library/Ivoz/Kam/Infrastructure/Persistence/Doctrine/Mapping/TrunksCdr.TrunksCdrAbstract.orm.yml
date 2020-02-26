@@ -185,3 +185,15 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    ddi:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
