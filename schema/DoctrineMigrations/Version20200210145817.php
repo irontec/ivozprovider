@@ -39,12 +39,6 @@ class Version20200210145817 extends LoggableMigration
         $this->addSql(
             'UPDATE `PublicEntities` SET name_it = name_en, name_ca = name_es'
         );
-
-        $this->addSql(
-            'INSERT INTO AdministratorRelPublicEntities (administratorId, publicEntityId, `create`, `read`, `update`, `delete`) '
-            . 'SELECT A.id, P.id, 1, 1, 1, 1 FROM Administrators A INNER JOIN PublicEntities P '
-            . 'WHERE A.brandId IS NOT NULL AND A.companyId IS NULL AND P.brand = 1'
-        );
     }
 
     /**
