@@ -125,6 +125,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $fax;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    private $ddi;
+
 
     use DtoNormalizer;
 
@@ -165,7 +170,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'residentialDeviceId' => 'residentialDevice',
             'userId' => 'user',
             'friendId' => 'friend',
-            'faxId' => 'fax'
+            'faxId' => 'fax',
+            'ddiId' => 'ddi'
         ];
     }
 
@@ -197,7 +203,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'residentialDevice' => $this->getResidentialDevice(),
             'user' => $this->getUser(),
             'friend' => $this->getFriend(),
-            'fax' => $this->getFax()
+            'fax' => $this->getFax(),
+            'ddi' => $this->getDdi()
         ];
     }
 
@@ -863,6 +870,52 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getFaxId()
     {
         if ($dto = $this->getFax()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     *
+     * @return static
+     */
+    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiId()
+    {
+        if ($dto = $this->getDdi()) {
             return $dto->getId();
         }
 

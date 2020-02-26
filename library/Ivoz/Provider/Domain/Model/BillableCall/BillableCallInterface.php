@@ -171,4 +171,11 @@ interface BillableCallInterface extends LoggableEntityInterface
      * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr();
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi();
 }

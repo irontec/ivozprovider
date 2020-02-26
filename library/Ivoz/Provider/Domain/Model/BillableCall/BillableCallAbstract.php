@@ -120,6 +120,11 @@ abstract class BillableCallAbstract
      */
     protected $trunksCdr;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    protected $ddi;
+
 
     use ChangelogTrait;
 
@@ -224,6 +229,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
             ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
         ;
 
         $self->initChangelog();
@@ -263,7 +269,8 @@ abstract class BillableCallAbstract
             ->setDestination($fkTransformer->transform($dto->getDestination()))
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
-            ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()));
+            ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()));
 
 
 
@@ -298,7 +305,8 @@ abstract class BillableCallAbstract
             ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
             ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
-            ->setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::entityToDto(self::getTrunksCdr(), $depth));
+            ->setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::entityToDto(self::getTrunksCdr(), $depth))
+            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth));
     }
 
     /**
@@ -327,7 +335,8 @@ abstract class BillableCallAbstract
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
             'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
-            'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null
+            'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null,
+            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -906,6 +915,30 @@ abstract class BillableCallAbstract
     public function getTrunksCdr()
     {
         return $this->trunksCdr;
+    }
+
+    /**
+     * Set ddi
+     *
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi | null
+     *
+     * @return static
+     */
+    protected function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
     }
 
     // @codeCoverageIgnoreEnd

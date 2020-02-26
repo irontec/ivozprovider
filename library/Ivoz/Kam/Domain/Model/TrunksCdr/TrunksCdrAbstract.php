@@ -125,6 +125,11 @@ abstract class TrunksCdrAbstract
      */
     protected $fax;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    protected $ddi;
+
 
     use ChangelogTrait;
 
@@ -237,6 +242,7 @@ abstract class TrunksCdrAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
         ;
 
         $self->initChangelog();
@@ -277,7 +283,8 @@ abstract class TrunksCdrAbstract
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
-            ->setFax($fkTransformer->transform($dto->getFax()));
+            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()));
 
 
 
@@ -313,7 +320,8 @@ abstract class TrunksCdrAbstract
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
             ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
-            ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth));
+            ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth))
+            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth));
     }
 
     /**
@@ -343,7 +351,8 @@ abstract class TrunksCdrAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null
+            'faxId' => self::getFax() ? self::getFax()->getId() : null,
+            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -945,6 +954,30 @@ abstract class TrunksCdrAbstract
     public function getFax()
     {
         return $this->fax;
+    }
+
+    /**
+     * Set ddi
+     *
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi | null
+     *
+     * @return static
+     */
+    protected function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
     }
 
     // @codeCoverageIgnoreEnd

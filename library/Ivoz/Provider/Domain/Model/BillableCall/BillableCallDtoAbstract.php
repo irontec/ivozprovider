@@ -120,6 +120,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
      */
     private $trunksCdr;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    private $ddi;
+
 
     use DtoNormalizer;
 
@@ -159,7 +164,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'destinationId' => 'destination',
             'ratingPlanGroupId' => 'ratingPlanGroup',
             'invoiceId' => 'invoice',
-            'trunksCdrId' => 'trunksCdr'
+            'trunksCdrId' => 'trunksCdr',
+            'ddiId' => 'ddi'
         ];
     }
 
@@ -190,7 +196,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'destination' => $this->getDestination(),
             'ratingPlanGroup' => $this->getRatingPlanGroup(),
             'invoice' => $this->getInvoice(),
-            'trunksCdr' => $this->getTrunksCdr()
+            'trunksCdr' => $this->getTrunksCdr(),
+            'ddi' => $this->getDdi()
         ];
     }
 
@@ -810,6 +817,52 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     public function getTrunksCdrId()
     {
         if ($dto = $this->getTrunksCdr()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     *
+     * @return static
+     */
+    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiId()
+    {
+        if ($dto = $this->getDdi()) {
             return $dto->getId();
         }
 
