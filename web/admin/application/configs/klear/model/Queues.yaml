@@ -341,6 +341,23 @@ production:
         icon: help
         text: _("When one member is part of multiples queues, calls from queues with higher weight will be attended first")
         label: _("Need help?")
+    preventMissedCalls:
+      title: _('Prevent missed calls')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll queues if someone answers.")
 staging:
   _extends: production
 testing:

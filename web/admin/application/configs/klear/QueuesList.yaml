@@ -36,6 +36,7 @@ production:
           weight: true
           memberCallTimeout: true
           memberCallRest: true
+          preventMissedCalls: true
           periodicAnnounceLocution: true
           maxWaitTime: true
           maxlen: true
@@ -54,6 +55,7 @@ production:
           fullVoiceMailUser: true
           periodicAnnounceLocution: true
           periodicAnnounceFrequency: true
+          preventMissedCalls: true
       options:
         title: _("Options")
         screens:
@@ -97,6 +99,7 @@ production:
           fields:
             memberCallTimeout: 6
             memberCallRest: 6
+            preventMissedCalls: 6
         group4:
           label: _('Timeout configuration')
           colsPerRow: 12
