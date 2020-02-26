@@ -11,7 +11,7 @@ Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus:
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   attributes:
     pagination_client_enabled: true
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:

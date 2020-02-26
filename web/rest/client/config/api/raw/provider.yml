@@ -8,7 +8,7 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
     get: ~
   attributes:
     pagination_client_enabled: true
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -22,7 +22,7 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
 
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -33,7 +33,7 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
 
 Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         inherited:
@@ -66,7 +66,7 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
       normalization_context:
         groups: ['detailedCollection']
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         inherited:
@@ -82,7 +82,7 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
 
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -100,7 +100,7 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
       normalization_context:
         groups: ['detailedCollection']
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
@@ -124,7 +124,7 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
         swagger_context:
           readOnly: true
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -148,7 +148,7 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -208,7 +208,7 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         tags:
         - My
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
     read_access_control:
       ROLE_COMPANY_USER:
         user:
@@ -269,7 +269,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
         swagger_context:
           readOnly: true
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         id:
@@ -288,7 +288,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
 
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -299,7 +299,7 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
 
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -350,7 +350,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       operation_normalization_context: 'withInverseRelationships'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
       groups: ['withInverseRelationships']
     read_access_control:
@@ -395,7 +395,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
@@ -421,7 +421,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRou
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
@@ -447,7 +447,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
@@ -471,7 +471,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
         groups: ['detailedCollection']
     post: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
@@ -486,7 +486,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
 
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -519,7 +519,7 @@ Ivoz\Provider\Domain\Model\Country\Country:
     get: ~
   attributes:
     pagination_client_enabled: true
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   itemOperations:
@@ -537,7 +537,7 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
         swagger_context:
           readOnly: true
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -599,7 +599,7 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
         - My
         parameters: []
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -644,7 +644,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
       operation_normalization_context: 'withInverseRelationships'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
       groups: ['withInverseRelationships']
     read_access_control:
@@ -691,7 +691,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackLi
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
@@ -714,7 +714,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCa
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
@@ -737,7 +737,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSc
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
@@ -760,7 +760,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteLi
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
@@ -779,7 +779,7 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
@@ -789,7 +789,7 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -817,7 +817,7 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
     get:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -831,7 +831,7 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
 
 Ivoz\Provider\Domain\Model\Friend\Friend:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -877,7 +877,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
 
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
@@ -887,7 +887,7 @@ Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
 
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
@@ -911,7 +911,7 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
 
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -943,7 +943,7 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
@@ -960,7 +960,7 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
   itemOperations: []
   collectionOperations: []
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -974,7 +974,7 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
 
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
@@ -1012,7 +1012,7 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       operation_normalization_context: 'withExcludedExtensions'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
       groups: ['withExcludedExtensions']
     read_access_control:
@@ -1062,7 +1062,7 @@ Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
@@ -1081,12 +1081,12 @@ Ivoz\Provider\Domain\Model\Language\Language:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Language\Name:
 
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1099,7 +1099,7 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations: []
   collectionOperations: []
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
       - or:
@@ -1110,7 +1110,7 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         or:
@@ -1125,7 +1125,7 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
 
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
@@ -1138,7 +1138,7 @@ Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
 
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1149,7 +1149,7 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
 
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1175,7 +1175,7 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
@@ -1206,7 +1206,7 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       operation_normalization_context: 'withUsers'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
       groups: ['withUsers']
     read_access_control:
@@ -1227,7 +1227,7 @@ Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
@@ -1250,7 +1250,7 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
     post:
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
@@ -1265,7 +1265,7 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
 
 Ivoz\Provider\Domain\Model\Queue\Queue:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -1312,7 +1312,7 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1330,7 +1330,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1341,7 +1341,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1379,7 +1379,7 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1414,7 +1414,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
 
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1425,7 +1425,7 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
 
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1440,7 +1440,7 @@ Ivoz\Provider\Domain\Model\Service\Service:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
   itemOperations:
@@ -1463,7 +1463,7 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
         groups: ['status']
     post: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1478,7 +1478,7 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
@@ -1490,7 +1490,7 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
     get: ~
   attributes:
     pagination_client_enabled: true
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
@@ -1498,13 +1498,13 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
         raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
-  access_control: '"ROLE_COMPANY_ADMIN" in roles'
+  access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
   itemOperations:
     get: ~
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       ROLE_COMPANY_ADMIN:
       - or:
@@ -1591,7 +1591,7 @@ Ivoz\Provider\Domain\Model\User\User:
         - My
         parameters: []
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
     read_access_control:
       ROLE_COMPANY_USER:
         id:

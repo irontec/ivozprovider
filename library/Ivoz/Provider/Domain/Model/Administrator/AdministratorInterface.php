@@ -144,6 +144,8 @@ interface AdministratorInterface extends LoggableEntityInterface
      */
     public function getRoles();
 
+    public function hasAccessPrivileges(string $fqdn, string $reqMethod);
+
     /**
      * @see AdvancedUserInterface::getPassword()
      */

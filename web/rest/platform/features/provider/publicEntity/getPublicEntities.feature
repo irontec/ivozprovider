@@ -25,8 +25,18 @@ Feature: Retrieve public entities
               }
           },
           {
+              "iden": "BillableCalls",
+              "id": 3,
+              "name": {
+                  "en": "BillableCalls",
+                  "es": "BillableCalls",
+                  "ca": "BillableCalls",
+                  "it": "BillableCalls"
+              }
+          },
+          {
               "iden": "Companies",
-              "id": 11,
+              "id": 12,
               "name": {
                   "en": "Companies",
                   "es": "Companies",
@@ -36,7 +46,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Countries",
-              "id": 20,
+              "id": 21,
               "name": {
                   "en": "Countries",
                   "es": "Countries",
@@ -46,7 +56,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Features",
-              "id": 30,
+              "id": 31,
               "name": {
                   "en": "Features",
                   "es": "Features",
@@ -56,7 +66,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Invoices",
-              "id": 37,
+              "id": 38,
               "name": {
                   "en": "Invoices",
                   "es": "Invoices",
@@ -66,7 +76,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Languages",
-              "id": 41,
+              "id": 42,
               "name": {
                   "en": "Languages",
                   "es": "Languages",
@@ -76,7 +86,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "RatingPlanGroups",
-              "id": 53,
+              "id": 54,
               "name": {
                   "en": "RatingPlanGroups",
                   "es": "RatingPlanGroups",
@@ -86,7 +96,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Services",
-              "id": 60,
+              "id": 61,
               "name": {
                   "en": "Services",
                   "es": "Services",
@@ -96,7 +106,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "TerminalModels",
-              "id": 62,
+              "id": 63,
               "name": {
                   "en": "TerminalModels",
                   "es": "TerminalModels",
@@ -106,7 +116,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Timezones",
-              "id": 63,
+              "id": 64,
               "name": {
                   "en": "Timezones",
                   "es": "Timezones",
@@ -116,7 +126,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "_ActiveCalls",
-              "id": 66,
+              "id": 67,
               "name": {
                   "en": "_ActiveCalls",
                   "es": "_ActiveCalls",
@@ -126,7 +136,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Administrators",
-              "id": 70,
+              "id": 71,
               "name": {
                   "en": "Administrators",
                   "es": "Administrators",
@@ -136,7 +146,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Brands",
-              "id": 72,
+              "id": 73,
               "name": {
                   "en": "Brands",
                   "es": "Brands",
@@ -146,7 +156,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "BrandServices",
-              "id": 73,
+              "id": 74,
               "name": {
                   "en": "BrandServices",
                   "es": "BrandServices",
@@ -156,7 +166,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Destinations",
-              "id": 80,
+              "id": 81,
               "name": {
                   "en": "Destinations",
                   "es": "Destinations",
@@ -166,7 +176,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "Domains",
-              "id": 83,
+              "id": 84,
               "name": {
                   "en": "Domains",
                   "es": "Domains",
@@ -176,7 +186,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "FeaturesRelBrands",
-              "id": 84,
+              "id": 85,
               "name": {
                   "en": "FeaturesRelBrands",
                   "es": "FeaturesRelBrands",
@@ -186,7 +196,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "InvoiceTemplates",
-              "id": 90,
+              "id": 91,
               "name": {
                   "en": "InvoiceTemplates",
                   "es": "InvoiceTemplates",
@@ -196,7 +206,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "SpecialNumbers",
-              "id": 98,
+              "id": 99,
               "name": {
                   "en": "SpecialNumbers",
                   "es": "SpecialNumbers",
@@ -206,7 +216,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "WebPortals",
-              "id": 100,
+              "id": 101,
               "name": {
                   "en": "WebPortals",
                   "es": "WebPortals",
@@ -216,7 +226,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "kam_rtpengine",
-              "id": 101,
+              "id": 102,
               "name": {
                   "en": "kam_rtpengine",
                   "es": "kam_rtpengine",
@@ -226,7 +236,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "ApplicationServers",
-              "id": 102,
+              "id": 103,
               "name": {
                   "en": "ApplicationServers",
                   "es": "ApplicationServers",
@@ -236,7 +246,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "MediaRelaySets",
-              "id": 103,
+              "id": 104,
               "name": {
                   "en": "MediaRelaySets",
                   "es": "MediaRelaySets",
@@ -246,7 +256,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "ProxyTrunks",
-              "id": 104,
+              "id": 105,
               "name": {
                   "en": "ProxyTrunks",
                   "es": "ProxyTrunks",
@@ -256,7 +266,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "ProxyUsers",
-              "id": 105,
+              "id": 106,
               "name": {
                   "en": "ProxyUsers",
                   "es": "ProxyUsers",
@@ -266,7 +276,7 @@ Feature: Retrieve public entities
           },
           {
               "iden": "TerminalManufacturers",
-              "id": 106,
+              "id": 107,
               "name": {
                   "en": "TerminalManufacturers",
                   "es": "TerminalManufacturers",
@@ -280,7 +290,7 @@ Feature: Retrieve public entities
   Scenario: Retrieve certain feature json
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "public_entities/80"
+      And I send a "GET" request to "public_entities/81"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -292,7 +302,7 @@ Feature: Retrieve public entities
           "platform": true,
           "brand": true,
           "client": false,
-          "id": 80,
+          "id": 81,
           "name": {
               "en": "Destinations",
               "es": "Destinations",

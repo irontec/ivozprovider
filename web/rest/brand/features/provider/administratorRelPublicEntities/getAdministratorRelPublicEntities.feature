@@ -52,7 +52,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 8,
+              "id": 3,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -66,17 +66,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "CallCsvSchedulers",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\CallCsvScheduler\\CallCsvScheduler",
-                  "platform": false,
+                  "iden": "BillableCalls",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall",
+                  "platform": true,
                   "brand": true,
                   "client": true,
-                  "id": 8,
+                  "id": 3,
                   "name": {
-                      "en": "CallCsvSchedulers",
-                      "es": "CallCsvSchedulers",
-                      "ca": "CallCsvSchedulers",
-                      "it": "CallCsvSchedulers"
+                      "en": "BillableCalls",
+                      "es": "BillableCalls",
+                      "ca": "BillableCalls",
+                      "it": "BillableCalls"
                   }
               }
           },
@@ -99,12 +99,45 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
+                  "iden": "CallCsvSchedulers",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\CallCsvScheduler\\CallCsvScheduler",
+                  "platform": false,
+                  "brand": true,
+                  "client": true,
+                  "id": 9,
+                  "name": {
+                      "en": "CallCsvSchedulers",
+                      "es": "CallCsvSchedulers",
+                      "ca": "CallCsvSchedulers",
+                      "it": "CallCsvSchedulers"
+                  }
+              }
+          },
+          {
+              "create": true,
+              "read": true,
+              "update": true,
+              "delete": true,
+              "id": 10,
+              "administrator": {
+                  "username": "test_company_admin",
+                  "pass": "****",
+                  "email": "test@irontec.com",
+                  "active": true,
+                  "restricted": false,
+                  "name": "Admin Name",
+                  "lastname": "Admin Lastname",
+                  "id": 4,
+                  "company": 1,
+                  "timezone": 145
+              },
+              "publicEntity": {
                   "iden": "CallCsvReports",
                   "fqdn": "Ivoz\\Provider\\Domain\\Model\\CallCsvReport\\CallCsvReport",
                   "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 9,
+                  "id": 10,
                   "name": {
                       "en": "CallCsvReports",
                       "es": "CallCsvReports",
@@ -118,7 +151,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 11,
+              "id": 12,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -137,45 +170,12 @@ Feature: Manage administrator rel public entities
                   "platform": true,
                   "brand": true,
                   "client": true,
-                  "id": 11,
+                  "id": 12,
                   "name": {
                       "en": "Companies",
                       "es": "Companies",
                       "ca": "Companies",
                       "it": "Companies"
-                  }
-              }
-          },
-          {
-              "create": true,
-              "read": true,
-              "update": true,
-              "delete": true,
-              "id": 20,
-              "administrator": {
-                  "username": "test_company_admin",
-                  "pass": "****",
-                  "email": "test@irontec.com",
-                  "active": true,
-                  "restricted": false,
-                  "name": "Admin Name",
-                  "lastname": "Admin Lastname",
-                  "id": 4,
-                  "company": 1,
-                  "timezone": 145
-              },
-              "publicEntity": {
-                  "iden": "Countries",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Country\\Country",
-                  "platform": true,
-                  "brand": true,
-                  "client": true,
-                  "id": 20,
-                  "name": {
-                      "en": "Countries",
-                      "es": "Countries",
-                      "ca": "Countries",
-                      "it": "Countries"
                   }
               }
           },
@@ -198,17 +198,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "DDIs",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi",
-                  "platform": false,
+                  "iden": "Countries",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Country\\Country",
+                  "platform": true,
                   "brand": true,
                   "client": true,
                   "id": 21,
                   "name": {
-                      "en": "DDIs",
-                      "es": "DDIs",
-                      "ca": "DDIs",
-                      "it": "DDIs"
+                      "en": "Countries",
+                      "es": "Countries",
+                      "ca": "Countries",
+                      "it": "Countries"
                   }
               }
           },
@@ -217,7 +217,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 30,
+              "id": 22,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -231,17 +231,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "Features",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Feature\\Feature",
-                  "platform": true,
+                  "iden": "DDIs",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi",
+                  "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 30,
+                  "id": 22,
                   "name": {
-                      "en": "Features",
-                      "es": "Features",
-                      "ca": "Features",
-                      "it": "Features"
+                      "en": "DDIs",
+                      "es": "DDIs",
+                      "ca": "DDIs",
+                      "it": "DDIs"
                   }
               }
           },
@@ -264,17 +264,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "FeaturesRelCompanies",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany",
-                  "platform": false,
+                  "iden": "Features",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Feature\\Feature",
+                  "platform": true,
                   "brand": true,
                   "client": true,
                   "id": 31,
                   "name": {
-                      "en": "FeaturesRelCompanies",
-                      "es": "FeaturesRelCompanies",
-                      "ca": "FeaturesRelCompanies",
-                      "it": "FeaturesRelCompanies"
+                      "en": "Features",
+                      "es": "Features",
+                      "ca": "Features",
+                      "it": "Features"
                   }
               }
           },
@@ -297,12 +297,45 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
+                  "iden": "FeaturesRelCompanies",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany",
+                  "platform": false,
+                  "brand": true,
+                  "client": true,
+                  "id": 32,
+                  "name": {
+                      "en": "FeaturesRelCompanies",
+                      "es": "FeaturesRelCompanies",
+                      "ca": "FeaturesRelCompanies",
+                      "it": "FeaturesRelCompanies"
+                  }
+              }
+          },
+          {
+              "create": true,
+              "read": true,
+              "update": true,
+              "delete": true,
+              "id": 33,
+              "administrator": {
+                  "username": "test_company_admin",
+                  "pass": "****",
+                  "email": "test@irontec.com",
+                  "active": true,
+                  "restricted": false,
+                  "name": "Admin Name",
+                  "lastname": "Admin Lastname",
+                  "id": 4,
+                  "company": 1,
+                  "timezone": 145
+              },
+              "publicEntity": {
                   "iden": "Friends",
                   "fqdn": "Ivoz\\Provider\\Domain\\Model\\Friend\\Friend",
                   "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 32,
+                  "id": 33,
                   "name": {
                       "en": "Friends",
                       "es": "Friends",
@@ -316,7 +349,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 37,
+              "id": 38,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -335,7 +368,7 @@ Feature: Manage administrator rel public entities
                   "platform": true,
                   "brand": true,
                   "client": true,
-                  "id": 37,
+                  "id": 38,
                   "name": {
                       "en": "Invoices",
                       "es": "Invoices",
@@ -349,7 +382,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 41,
+              "id": 42,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -368,7 +401,7 @@ Feature: Manage administrator rel public entities
                   "platform": true,
                   "brand": true,
                   "client": true,
-                  "id": 41,
+                  "id": 42,
                   "name": {
                       "en": "Languages",
                       "es": "Languages",
@@ -382,7 +415,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 43,
+              "id": 44,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -401,45 +434,12 @@ Feature: Manage administrator rel public entities
                   "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 43,
+                  "id": 44,
                   "name": {
                       "en": "NotificationTemplates",
                       "es": "NotificationTemplates",
                       "ca": "NotificationTemplates",
                       "it": "NotificationTemplates"
-                  }
-              }
-          },
-          {
-              "create": true,
-              "read": true,
-              "update": true,
-              "delete": true,
-              "id": 53,
-              "administrator": {
-                  "username": "test_company_admin",
-                  "pass": "****",
-                  "email": "test@irontec.com",
-                  "active": true,
-                  "restricted": false,
-                  "name": "Admin Name",
-                  "lastname": "Admin Lastname",
-                  "id": 4,
-                  "company": 1,
-                  "timezone": 145
-              },
-              "publicEntity": {
-                  "iden": "RatingPlanGroups",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup",
-                  "platform": true,
-                  "brand": true,
-                  "client": true,
-                  "id": 53,
-                  "name": {
-                      "en": "RatingPlanGroups",
-                      "es": "RatingPlanGroups",
-                      "ca": "RatingPlanGroups",
-                      "it": "RatingPlanGroups"
                   }
               }
           },
@@ -462,17 +462,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "RatingProfiles",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile",
-                  "platform": false,
+                  "iden": "RatingPlanGroups",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup",
+                  "platform": true,
                   "brand": true,
                   "client": true,
                   "id": 54,
                   "name": {
-                      "en": "RatingProfiles",
-                      "es": "RatingProfiles",
-                      "ca": "RatingProfiles",
-                      "it": "RatingProfiles"
+                      "en": "RatingPlanGroups",
+                      "es": "RatingPlanGroups",
+                      "ca": "RatingPlanGroups",
+                      "it": "RatingPlanGroups"
                   }
               }
           },
@@ -481,7 +481,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 56,
+              "id": 55,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -495,17 +495,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "ResidentialDevices",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice",
+                  "iden": "RatingProfiles",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile",
                   "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 56,
+                  "id": 55,
                   "name": {
-                      "en": "ResidentialDevices",
-                      "es": "ResidentialDevices",
-                      "ca": "ResidentialDevices",
-                      "it": "ResidentialDevices"
+                      "en": "RatingProfiles",
+                      "es": "RatingProfiles",
+                      "ca": "RatingProfiles",
+                      "it": "RatingProfiles"
                   }
               }
           },
@@ -528,17 +528,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "RetailAccounts",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount",
+                  "iden": "ResidentialDevices",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice",
                   "platform": false,
                   "brand": true,
                   "client": true,
                   "id": 57,
                   "name": {
-                      "en": "RetailAccounts",
-                      "es": "RetailAccounts",
-                      "ca": "RetailAccounts",
-                      "it": "RetailAccounts"
+                      "en": "ResidentialDevices",
+                      "es": "ResidentialDevices",
+                      "ca": "ResidentialDevices",
+                      "it": "ResidentialDevices"
                   }
               }
           },
@@ -547,7 +547,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 60,
+              "id": 58,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -561,17 +561,17 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
-                  "iden": "Services",
-                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Service\\Service",
-                  "platform": true,
+                  "iden": "RetailAccounts",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount",
+                  "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 60,
+                  "id": 58,
                   "name": {
-                      "en": "Services",
-                      "es": "Services",
-                      "ca": "Services",
-                      "it": "Services"
+                      "en": "RetailAccounts",
+                      "es": "RetailAccounts",
+                      "ca": "RetailAccounts",
+                      "it": "RetailAccounts"
                   }
               }
           },
@@ -594,12 +594,45 @@ Feature: Manage administrator rel public entities
                   "timezone": 145
               },
               "publicEntity": {
+                  "iden": "Services",
+                  "fqdn": "Ivoz\\Provider\\Domain\\Model\\Service\\Service",
+                  "platform": true,
+                  "brand": true,
+                  "client": true,
+                  "id": 61,
+                  "name": {
+                      "en": "Services",
+                      "es": "Services",
+                      "ca": "Services",
+                      "it": "Services"
+                  }
+              }
+          },
+          {
+              "create": true,
+              "read": true,
+              "update": true,
+              "delete": true,
+              "id": 62,
+              "administrator": {
+                  "username": "test_company_admin",
+                  "pass": "****",
+                  "email": "test@irontec.com",
+                  "active": true,
+                  "restricted": false,
+                  "name": "Admin Name",
+                  "lastname": "Admin Lastname",
+                  "id": 4,
+                  "company": 1,
+                  "timezone": 145
+              },
+              "publicEntity": {
                   "iden": "Terminals",
                   "fqdn": "Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal",
                   "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 61,
+                  "id": 62,
                   "name": {
                       "en": "Terminals",
                       "es": "Terminals",
@@ -613,7 +646,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 63,
+              "id": 64,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -632,7 +665,7 @@ Feature: Manage administrator rel public entities
                   "platform": true,
                   "brand": true,
                   "client": true,
-                  "id": 63,
+                  "id": 64,
                   "name": {
                       "en": "Timezones",
                       "es": "Timezones",
@@ -646,7 +679,7 @@ Feature: Manage administrator rel public entities
               "read": true,
               "update": true,
               "delete": true,
-              "id": 64,
+              "id": 65,
               "administrator": {
                   "username": "test_company_admin",
                   "pass": "****",
@@ -665,7 +698,7 @@ Feature: Manage administrator rel public entities
                   "platform": false,
                   "brand": true,
                   "client": true,
-                  "id": 64,
+                  "id": 65,
                   "name": {
                       "en": "TransformationRuleSets",
                       "es": "TransformationRuleSets",
@@ -680,7 +713,7 @@ Feature: Manage administrator rel public entities
   Scenario: Retrieve certain administrator rel public entities json
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "administrator_rel_public_entities/64"
+      And I send a "GET" request to "administrator_rel_public_entities/65"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -691,7 +724,7 @@ Feature: Manage administrator rel public entities
           "read": true,
           "update": true,
           "delete": true,
-          "id": 64,
+          "id": 65,
           "administrator": {
               "username": "test_company_admin",
               "pass": "****",
@@ -710,7 +743,7 @@ Feature: Manage administrator rel public entities
               "platform": false,
               "brand": true,
               "client": true,
-              "id": 64,
+              "id": 65,
               "name": {
                   "en": "TransformationRuleSets",
                   "es": "TransformationRuleSets",

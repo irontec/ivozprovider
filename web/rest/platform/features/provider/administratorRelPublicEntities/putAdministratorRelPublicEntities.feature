@@ -15,8 +15,8 @@ Feature: Manage administrator rel public entities
           "read": false,
           "update": true,
           "delete": false,
-          "administrator": 3,
-          "publicEntity": 20
+          "administrator": 1,
+          "publicEntity": 105
       }
     """
     Then the response status code should be 200
@@ -31,30 +31,30 @@ Feature: Manage administrator rel public entities
           "delete": false,
           "id": 230,
           "administrator": {
-              "username": "irontec",
+              "username": "admin",
               "pass": "****",
-              "email": "vozip@irontec.com",
+              "email": "admin@example.com",
               "active": true,
               "restricted": false,
-              "name": "irontec",
+              "name": "admin",
               "lastname": "ivozprovider",
-              "id": 3,
+              "id": 1,
               "brand": null,
               "company": null,
               "timezone": 145
           },
           "publicEntity": {
-              "iden": "Countries",
-              "fqdn": "Ivoz\\Provider\\Domain\\Model\\Country\\Country",
+              "iden": "ProxyTrunks",
+              "fqdn": "Ivoz\\Provider\\Domain\\Model\\ProxyTrunk\\ProxyTrunk",
               "platform": true,
-              "brand": true,
-              "client": true,
-              "id": 20,
+              "brand": false,
+              "client": false,
+              "id": 105,
               "name": {
-                  "en": "Countries",
-                  "es": "Countries",
-                  "ca": "Countries",
-                  "it": "Countries"
+                  "en": "ProxyTrunks",
+                  "es": "ProxyTrunks",
+                  "ca": "ProxyTrunks",
+                  "it": "ProxyTrunks"
               }
           }
       }

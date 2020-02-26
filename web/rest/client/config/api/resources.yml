@@ -43,7 +43,7 @@ Model\WebTheme:
 
 Model\RatingPlanPrices:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     pagination_enabled: false
   itemOperations: []
   collectionOperations:

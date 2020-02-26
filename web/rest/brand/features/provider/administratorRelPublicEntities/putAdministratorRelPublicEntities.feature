@@ -8,7 +8,7 @@ Feature: Manage administrator rel public entities
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/administrator_rel_public_entities/64" with body:
+      And I send a "PUT" request to "/administrator_rel_public_entities/65" with body:
     """
       {
           "create": false,
@@ -16,7 +16,7 @@ Feature: Manage administrator rel public entities
           "update": false,
           "delete": false,
           "administrator": 4,
-          "publicEntity": 64
+          "publicEntity": 65
       }
     """
     Then the response status code should be 200
@@ -29,7 +29,7 @@ Feature: Manage administrator rel public entities
           "read": false,
           "update": false,
           "delete": false,
-          "id": 64,
+          "id": 65,
           "administrator": {
               "username": "test_company_admin",
               "pass": "****",
@@ -48,7 +48,7 @@ Feature: Manage administrator rel public entities
               "platform": false,
               "brand": true,
               "client": true,
-              "id": 64,
+              "id": 65,
               "name": {
                   "en": "TransformationRuleSets",
                   "es": "TransformationRuleSets",
