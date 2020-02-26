@@ -34,6 +34,10 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
       ROLE_BRAND_ADMIN:
         inherited:
           administrator: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        inherited:
+          administrator: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
           publicEntity:  'Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity'
     swagger_context:
       required:
@@ -698,7 +702,7 @@ Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
-        brand:
+        client:
           eq: 1
     swagger_context:
       required:
