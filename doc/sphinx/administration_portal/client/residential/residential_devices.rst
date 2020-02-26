@@ -79,7 +79,7 @@ These are the configurable settings of *Residential devices*:
         number instead.
 
     Call waiting
-        Limits received calls when already handling this number of calls. Set 0 for disabling.
+        Limits received calls when already handling this number of calls. Set 0 for unlimited.
 
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
