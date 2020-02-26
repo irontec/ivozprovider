@@ -2914,6 +2914,13 @@ msgstr ""
 "evita les trucades perdudes nomésp els grups de salt RingAll si algú "
 "contesta."
 
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generació de trucades perdudes. 'No' "
+"evita les trucades perdudes nomésp els cues de salt RingAll si algú contesta."
+
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Quan s'utilitza Proxy de sortida, el Proxy SIP no ha d'incloure port."
 
