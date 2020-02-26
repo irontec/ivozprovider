@@ -2385,11 +2385,11 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.9.2.0",
+            "version": "3.9.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ramsey/uuid",
-                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92",
                 "shasum": null
             },
             "require": {

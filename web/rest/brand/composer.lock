@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d3587ca6d58d0e5a1633c0e4b142c2c",
+    "content-hash": "c40d206bfd30b92a27fb182c30f13f9b",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1542,11 +1542,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "2.2.1.0",
+            "version": "2.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "880c7e9e1e9ebad47145e71f5db62c04af41ac7d",
+                "reference": "e7efd8ad01e9c52b26ff85095bb77f3a943b0720",
                 "shasum": null
             },
             "require": {
@@ -1592,17 +1592,17 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "2.2.2.0",
+            "version": "3.1.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "a327faeff3437f01416264f937d0ba9bfce21ed9",
+                "reference": "975fd589cbc11237f608fb38a2105594ff35fe19",
                 "shasum": null
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
-                "irontec/ivoz-api": "^2.2",
+                "irontec/ivoz-api": "^2.3",
                 "irontec/ivoz-core-bundle": "^2.3",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
@@ -2741,11 +2741,11 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.9.2.0",
+            "version": "3.9.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/ramsey/uuid",
-                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92",
                 "shasum": null
             },
             "require": {

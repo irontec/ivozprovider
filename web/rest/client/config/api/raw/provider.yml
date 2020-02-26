@@ -16,6 +16,9 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
@@ -24,6 +27,9 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
   attributes:
@@ -46,6 +52,9 @@ Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
         - or:
           - inheritedOrNull:
               locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - calendar
 
 Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule:
   collectionOperations:
@@ -66,6 +75,10 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
       inherited:
         calendarPeriod: 'Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod'
         schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    swagger_context:
+      required:
+      - calendarPeriod
+      - schedule
 
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
@@ -74,6 +87,9 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
   collectionOperations:
@@ -92,6 +108,10 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
       inherited:
         callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
         matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    swagger_context:
+      required:
+      - callAcl
+      - matchList
 
 Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
   properties:
@@ -103,7 +123,6 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
       attributes:
         swagger_context:
           readOnly: true
-
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -118,6 +137,9 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
       - or:
         - inheritedOrNull:
             callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
   itemOperations:
@@ -139,6 +161,9 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
       - or:
         - inheritedOrNull:
             callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   itemOperations:
@@ -268,6 +293,9 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   attributes:
@@ -305,6 +333,9 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
       - or:
         - inheritedOrNull:
             voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
   itemOperations:
@@ -347,6 +378,9 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
     - or:
       - inheritedOrNull:
           conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+    swagger_context:
+      required:
+      - conditionalRoute
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
   itemOperations:
@@ -369,6 +403,10 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
       inherited:
         matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
         condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+    swagger_context:
+      required:
+      - matchlist
+      - condition
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
   itemOperations:
@@ -391,6 +429,10 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRou
       inherited:
         condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
         schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    swagger_context:
+      required:
+      - condition
+      - schedule
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
   itemOperations:
@@ -413,6 +455,10 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
       inherited:
         condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    swagger_context:
+      required:
+      - condition
+      - calendar
 
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock:
   itemOperations:
@@ -433,6 +479,10 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
       inherited:
         condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
         routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
+    swagger_context:
+      required:
+      - condition
+      - routeLock
 
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
   attributes:
@@ -441,6 +491,9 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
@@ -523,6 +576,9 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       - or:
         - inheritedOrNull:
             externalCallFilter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
   collectionOperations:
@@ -571,6 +627,9 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       - or:
         - inheritedOrNull:
             conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   itemOperations:
@@ -618,6 +677,9 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
       - or:
         - inheritedOrNull:
             holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
   collectionOperations:
@@ -637,6 +699,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackLi
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
         matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    swagger_context:
+      required:
+      - filter
+      - matchlist
 
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
   collectionOperations:
@@ -656,6 +722,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCa
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    swagger_context:
+      required:
+      - filter
+      - calendar
 
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
   collectionOperations:
@@ -675,6 +745,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSc
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
         schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    swagger_context:
+      required:
+      - filter
+      - schedule
 
 Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
   collectionOperations:
@@ -694,6 +768,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteLi
       inherited:
         filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
         matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    swagger_context:
+      required:
+      - filter
+      - matchlist
 
 Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   itemOperations:
@@ -705,6 +783,9 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
     read_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+    swagger_context:
+      required:
+      - fax
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
   attributes:
@@ -721,6 +802,9 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Feature\Feature:
   itemOperations: []
@@ -741,6 +825,9 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Friend\Friend:
   attributes:
@@ -765,6 +852,9 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     - or:
       - inheritedOrNull:
           transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+    swagger_context:
+      required:
+      - company
   itemOperations:
     get: ~
     get_status_item:
@@ -791,6 +881,9 @@ Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
     read_access_control:
       inherited:
         friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+    swagger_context:
+      required:
+      - friend
 
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
   attributes:
@@ -812,6 +905,9 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
       - or:
         - inheritedOrNull:
             locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - calendar
 
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
@@ -833,6 +929,9 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
       - or:
         - inheritedOrNull:
             noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
   collectionOperations:
@@ -852,6 +951,10 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
       inherited:
         user: 'Ivoz\Provider\Domain\Model\User\User'
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+    swagger_context:
+      required:
+      - user
+      - huntGroup
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   itemOperations: []
@@ -865,6 +968,9 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
@@ -889,6 +995,9 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
       - or:
         - inheritedOrNull:
             voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - ivr
 
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
   itemOperations:
@@ -939,6 +1048,9 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       - or:
         - inheritedOrNull:
             noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
   collectionOperations:
@@ -958,6 +1070,10 @@ Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
       inherited:
         ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
         extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    swagger_context:
+      required:
+      - ivr
+      - extension
 
 Ivoz\Provider\Domain\Model\Language\Language:
   itemOperations:
@@ -975,6 +1091,9 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations: []
@@ -1013,6 +1132,9 @@ Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
     write_access_control:
       matchList:
         in: 'matchListRepository.getIdsByCompanyId(user.getCompany().getId())'
+    swagger_context:
+      required:
+      - matchList
 
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   attributes:
@@ -1021,6 +1143,9 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
@@ -1036,6 +1161,9 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
     - or:
       - inheritedOrNull:
           forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   collectionOperations:
@@ -1061,6 +1189,9 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
     - or:
       - inheritedOrNull:
           forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - outgoingDdiRule
 
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   itemOperations:
@@ -1082,6 +1213,9 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
   collectionOperations:
@@ -1101,6 +1235,10 @@ Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
       inherited:
         user: 'Ivoz\Provider\Domain\Model\User\User'
         pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
+    swagger_context:
+      required:
+      - user
+      - pickUpGroup
 
 Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
   collectionOperations:
@@ -1120,6 +1258,10 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
       inherited:
         user: 'Ivoz\Provider\Domain\Model\User\User'
         queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+    swagger_context:
+      required:
+      - user
+      - queue
 
 Ivoz\Provider\Domain\Model\Queue\Queue:
   attributes:
@@ -1153,6 +1295,9 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
       - or:
         - inheritedOrNull:
             fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
   attributes:
@@ -1175,6 +1320,9 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Recording\Recording:
   itemOperations:
@@ -1187,6 +1335,9 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
@@ -1205,6 +1356,9 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
     - or:
       - inheritedOrNull:
           transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+    swagger_context:
+      required:
+      - company
   itemOperations:
     get: ~
     get_status_item:
@@ -1265,6 +1419,9 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
@@ -1273,6 +1430,9 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\Service\Service:
   itemOperations:
@@ -1308,6 +1468,9 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
 
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   itemOperations:
@@ -1468,3 +1631,6 @@ Ivoz\Provider\Domain\Model\User\User:
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company
