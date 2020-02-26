@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "443603767e966f3f856606728fb0c2f7",
+    "content-hash": "6d8db31eb72f603299aa445b6ac9c556",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1694,16 +1694,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "2.2.1",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "880c7e9e1e9ebad47145e71f5db62c04af41ac7d"
+                "reference": "e7efd8ad01e9c52b26ff85095bb77f3a943b0720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/880c7e9e1e9ebad47145e71f5db62c04af41ac7d",
-                "reference": "880c7e9e1e9ebad47145e71f5db62c04af41ac7d",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/e7efd8ad01e9c52b26ff85095bb77f3a943b0720",
+                "reference": "e7efd8ad01e9c52b26ff85095bb77f3a943b0720",
                 "shasum": ""
             },
             "require": {
@@ -1744,26 +1744,26 @@
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
-            "time": "2020-02-13T14:49:05+00:00"
+            "time": "2020-02-25T16:48:48+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "3.0.0",
+            "version": "3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "eab265ec782ba10b75db66e9afb6cbab10d52a80"
+                "reference": "975fd589cbc11237f608fb38a2105594ff35fe19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/eab265ec782ba10b75db66e9afb6cbab10d52a80",
-                "reference": "eab265ec782ba10b75db66e9afb6cbab10d52a80",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/975fd589cbc11237f608fb38a2105594ff35fe19",
+                "reference": "975fd589cbc11237f608fb38a2105594ff35fe19",
                 "shasum": ""
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
-                "irontec/ivoz-api": "^2.2",
+                "irontec/ivoz-api": "^2.3",
                 "irontec/ivoz-core-bundle": "^2.3",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
@@ -1795,7 +1795,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-api",
-            "time": "2020-02-18T11:18:20+00:00"
+            "time": "2020-02-25T16:29:58+00:00"
         },
         {
             "name": "irontec/ivoz-core",
@@ -3162,16 +3162,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.9.2",
+            "version": "3.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb"
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/7779489a47d443f845271badbdcedfe4df8e06fb",
-                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/7e1633a6964b48589b142d60542f9ed31bd37a92",
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92",
                 "shasum": ""
             },
             "require": {
@@ -3245,7 +3245,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2019-12-17T08:18:51+00:00"
+            "time": "2020-02-21T04:36:14+00:00"
         },
         {
             "name": "sensio/distribution-bundle",
