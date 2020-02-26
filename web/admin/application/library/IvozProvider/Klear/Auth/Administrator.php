@@ -81,7 +81,7 @@ class Administrator extends Mapper
         $user->canSeeBrand = $isMainOperator || $isBrandOperator;
         $user->canSeeCompany = true;
 
-        $this->_loadAcls($user);
+        $this->_loadAcls($user, $operator);
 
         if ($isBrandOperator) {
             $brand = $this->dataGateway->find(
@@ -105,25 +105,35 @@ class Administrator extends Mapper
         return $user;
     }
 
-    protected function _loadAcls(\IvozProvider\Klear\Auth\User $user)
-    {
+    protected function _loadAcls(
+        \IvozProvider\Klear\Auth\User $user,
+        AdministratorDto $administrator
+    ) {
         /** @var PublicEntityDto[] $publicEntities */
         $publicEntities = $this->dataGateway->findAll(
             PublicEntity::class
         );
 
+        $basePermissions = $administrator->getRestricted()
+            ? false
+            : true;
+
         foreach ($publicEntities as $entity) {
             $user->acls[$entity->getIden()] = [
-                'create' => true,
-                'read' => true,
-                'update' => true,
-                'delete' => true,
+                'create' => $basePermissions,
+                'read' => $basePermissions,
+                'update' => $basePermissions,
+                'delete' => $basePermissions,
             ];
         }
     }
 
     protected function _loadOperatorAcls(\IvozProvider\Klear\Auth\User $user, AdministratorDto $administrator)
     {
+        if (!$administrator->getRestricted()) {
+            return;
+        }
+
         /** @var AdministratorRelPublicEntityDto[] $administratorRelPublicEntities */
         $administratorRelPublicEntities = $this->dataGateway->findBy(
             AdministratorRelPublicEntity::class,
