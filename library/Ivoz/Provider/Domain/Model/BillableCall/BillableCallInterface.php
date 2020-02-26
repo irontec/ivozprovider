@@ -6,6 +6,13 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface BillableCallInterface extends LoggableEntityInterface
 {
+    const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
+    const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
+    const ENDPOINTTYPE_USER = 'User';
+    const ENDPOINTTYPE_FRIEND = 'Friend';
+    const ENDPOINTTYPE_FAX = 'Fax';
+
+
     const DIRECTION_INBOUND = 'inbound';
     const DIRECTION_OUTBOUND = 'outbound';
 

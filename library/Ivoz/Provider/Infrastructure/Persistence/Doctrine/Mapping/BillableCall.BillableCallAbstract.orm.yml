@@ -78,6 +78,7 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       length: 55
       options:
         fixed: false
+        comment: '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]'
       column: endpointType
     endpointId:
       type: integer
