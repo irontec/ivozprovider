@@ -73,6 +73,11 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
+    private $preventMissedCalls = 1;
+
+    /**
+     * @var integer
+     */
     private $id;
 
     /**
@@ -155,6 +160,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'memberCallTimeout' => 'memberCallTimeout',
             'strategy' => 'strategy',
             'weight' => 'weight',
+            'preventMissedCalls' => 'preventMissedCalls',
             'id' => 'id',
             'companyId' => 'company',
             'periodicAnnounceLocutionId' => 'periodicAnnounceLocution',
@@ -187,6 +193,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'memberCallTimeout' => $this->getMemberCallTimeout(),
             'strategy' => $this->getStrategy(),
             'weight' => $this->getWeight(),
+            'preventMissedCalls' => $this->getPreventMissedCalls(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'periodicAnnounceLocution' => $this->getPeriodicAnnounceLocution(),
@@ -439,6 +446,26 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * @param integer $preventMissedCalls
+     *
+     * @return static
+     */
+    public function setPreventMissedCalls($preventMissedCalls = null)
+    {
+        $this->preventMissedCalls = $preventMissedCalls;
+
+        return $this;
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->preventMissedCalls;
     }
 
     /**

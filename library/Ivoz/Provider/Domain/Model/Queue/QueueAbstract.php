@@ -76,6 +76,11 @@ abstract class QueueAbstract
     protected $weight;
 
     /**
+     * @var integer
+     */
+    protected $preventMissedCalls = 1;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -131,8 +136,9 @@ abstract class QueueAbstract
     /**
      * Constructor
      */
-    protected function __construct()
+    protected function __construct($preventMissedCalls)
     {
+        $this->setPreventMissedCalls($preventMissedCalls);
     }
 
     abstract public function getId();
@@ -203,7 +209,9 @@ abstract class QueueAbstract
     ) {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
-        $self = new static();
+        $self = new static(
+            $dto->getPreventMissedCalls()
+        );
 
         $self
             ->setName($dto->getName())
@@ -259,6 +267,7 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
+            ->setPreventMissedCalls($dto->getPreventMissedCalls())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
@@ -295,6 +304,7 @@ abstract class QueueAbstract
             ->setMemberCallTimeout(self::getMemberCallTimeout())
             ->setStrategy(self::getStrategy())
             ->setWeight(self::getWeight())
+            ->setPreventMissedCalls(self::getPreventMissedCalls())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getPeriodicAnnounceLocution(), $depth))
             ->setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getTimeoutLocution(), $depth))
@@ -325,6 +335,7 @@ abstract class QueueAbstract
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
             'weight' => self::getWeight(),
+            'preventMissedCalls' => self::getPreventMissedCalls(),
             'companyId' => self::getCompany()->getId(),
             'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution() ? self::getPeriodicAnnounceLocution()->getId() : null,
             'timeoutLocutionId' => self::getTimeoutLocution() ? self::getTimeoutLocution()->getId() : null,
@@ -685,6 +696,34 @@ abstract class QueueAbstract
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Set preventMissedCalls
+     *
+     * @param integer $preventMissedCalls
+     *
+     * @return static
+     */
+    protected function setPreventMissedCalls($preventMissedCalls)
+    {
+        Assertion::notNull($preventMissedCalls, 'preventMissedCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
+
+        $this->preventMissedCalls = (int) $preventMissedCalls;
+
+        return $this;
+    }
+
+    /**
+     * Get preventMissedCalls
+     *
+     * @return integer
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->preventMissedCalls;
     }
 
     /**
