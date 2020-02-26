@@ -82,6 +82,13 @@ Ivoz\Provider\Domain\Model\Queue\QueueAbstract:
       nullable: true
       options:
         unsigned: false
+    preventMissedCalls:
+      type: integer
+      nullable: false
+      options:
+        default: 1
+        unsigned: true
+      column: preventMissedCalls
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
