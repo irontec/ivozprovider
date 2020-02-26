@@ -12,7 +12,8 @@ Feature: Update hunt groups rel users
     """
       {
           "timeoutTime": 2,
-          "priority": 2,
+          "priority": 10,
+          "routeType": "user",
           "id": 1,
           "huntGroup": 1,
           "user": 1
@@ -25,7 +26,9 @@ Feature: Update hunt groups rel users
     """
      {
           "timeoutTime": 2,
-          "priority": 2,
+          "priority": 10,
+          "routeType": "user",
+          "numberValue": null,
           "id": 1,
           "huntGroup": {
               "name": "testHuntGroup",
@@ -67,6 +70,7 @@ Feature: Update hunt groups rel users
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
-          }
+          },
+          "numberCountry": null
       }
     """

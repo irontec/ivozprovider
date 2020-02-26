@@ -10,14 +10,6 @@ use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 class HuntGroupAction
 {
     /**
-     * Available Hunt Group strategies
-     * @deprecated
-     */
-    const RingAll       = HuntGroupInterface::STRATEGY_RINGALL;
-    const Linear        = HuntGroupInterface::STRATEGY_LINEAR;
-    const RoundRobin    = HuntGroupInterface::STRATEGY_ROUNDROBIN;
-    const Random        = HuntGroupInterface::STRATEGY_RANDOM;
-    /**
      * @var Wrapper
      */
     protected $agi;
@@ -66,7 +58,7 @@ class HuntGroupAction
         );
 
         // Shuffle entries in random huntgroups
-        if ($huntGroup->getStrategy() == HuntGroupAction::Random) {
+        if ($huntGroup->getStrategy() == HuntGroupInterface::STRATEGY_RANDOM) {
             shuffle($huntGroupEntries);
         }
 
@@ -75,39 +67,12 @@ class HuntGroupAction
         $huntGroupTimeouts = array();
 
         foreach ($huntGroupEntries as $entry) {
-            // Get entry user
-            $user = $entry->getUser();
-
-            if (empty($user->getExtensionNumber())) {
-                $this->agi->notice("Skipping user %s without extension.", $user);
-                continue;
-            }
-
-            if (empty($user->getTerminal())) {
-                $this->agi->notice("Skipping user %s without terminal.", $user);
-                continue;
-            }
-
-            // User requested peace
-            if ($user->getDoNotDisturb()) {
-                $this->agi->notice("Skipping user %s with DND enabled.", $user);
-                continue;
-            }
-
-            array_push($huntGroupEndpoints, 'PJSIP/' . $user->getEndpoint()->getSorceryId());
+            array_push($huntGroupEndpoints, 'Local/' . $entry->getId() . '@call-huntgroup-member');
             array_push($huntGroupTimeouts, $entry->getTimeoutTime());
         }
 
-// @TODO (Process empty huntgroup??)
-
-        // Anyone is available?
-//        if (empty($callEndpoints)) {
-//            $this->agi->verbose("Huntgroup is empty or users are invalid.");
-//            return;
-//        }
-
         // Configure the list of users to be called
-        if ($huntGroup->getStrategy() == HuntGroupAction::RingAll) {
+        if ($huntGroup->getStrategy() == HuntGroupInterface::STRATEGY_RINGALL) {
             $this->agi->setVariable("HG_ID", $huntGroup->getId());
             $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints, '&'));
             $this->agi->setVariable("HG_TIMEOUTLIST", $huntGroup->getRingAllTimeout());

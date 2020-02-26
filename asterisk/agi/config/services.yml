@@ -75,6 +75,9 @@ services:
   Dialplan\HuntGroupStatus:
     arguments: ~
 
+  Dialplan\HuntGroupMember:
+    arguments: ~
+
   Dialplan\Queues:
     arguments: ~
 

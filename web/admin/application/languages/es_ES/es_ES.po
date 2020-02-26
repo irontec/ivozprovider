@@ -1676,6 +1676,11 @@ msgid_plural "Media relay sets"
 msgstr[0] "Servidor de Media"
 msgstr[1] "Servidores de Media"
 
+msgid "Member"
+msgid_plural "Members"
+msgstr[0] "Miembro"
+msgstr[1] "Miembros"
+
 msgid "Member call seconds"
 msgstr "Duración llamada a miembro"
 

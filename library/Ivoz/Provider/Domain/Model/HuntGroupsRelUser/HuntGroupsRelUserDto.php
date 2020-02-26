@@ -16,7 +16,7 @@ class HuntGroupsRelUserDto extends HuntGroupsRelUserDtoAbstract
                 'priority' => 'priority',
                 'id' => 'id',
                 'huntGroupId' => 'huntGroup',
-                'userId' => 'user'
+                'routeType' => 'routeType'
             ];
         }
 
