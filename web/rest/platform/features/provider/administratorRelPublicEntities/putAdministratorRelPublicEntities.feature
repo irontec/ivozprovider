@@ -6,55 +6,55 @@ Feature: Manage administrator rel public entities
   @createSchema
   Scenario: Update a administrator rel public entities
     Given I add Authorization header
-     When I add "Content-Type" header equal to "application/json"
-      And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/administrator_rel_public_entities/230" with body:
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/administrator_rel_public_entities/70" with body:
     """
       {
           "create": true,
           "read": false,
           "update": true,
           "delete": false,
-          "administrator": 1,
-          "publicEntity": 105
+          "administrator": 6,
+          "publicEntity": 20
       }
     """
     Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the JSON should be equal to:
     """
       {
           "create": true,
           "read": false,
           "update": true,
           "delete": false,
-          "id": 230,
+          "id": 70,
           "administrator": {
-              "username": "admin",
+              "username": "restrictedBrandAdmin",
               "pass": "****",
-              "email": "admin@example.com",
+              "email": "restrictedAdmin@irontec.com",
               "active": true,
-              "restricted": false,
-              "name": "admin",
-              "lastname": "ivozprovider",
-              "id": 1,
-              "brand": null,
+              "restricted": true,
+              "name": "RestrictedAdmin",
+              "lastname": "Lastname",
+              "id": 6,
+              "brand": 1,
               "company": null,
               "timezone": 145
           },
           "publicEntity": {
-              "iden": "ProxyTrunks",
-              "fqdn": "Ivoz\\Provider\\Domain\\Model\\ProxyTrunk\\ProxyTrunk",
+              "iden": "Countries",
+              "fqdn": "Ivoz\\Provider\\Domain\\Model\\Country\\Country",
               "platform": true,
-              "brand": false,
-              "client": false,
-              "id": 105,
+              "brand": true,
+              "client": true,
+              "id": 20,
               "name": {
-                  "en": "ProxyTrunks",
-                  "es": "ProxyTrunks",
-                  "ca": "ProxyTrunks",
-                  "it": "ProxyTrunks"
+                  "en": "Countries",
+                  "es": "Countries",
+                  "ca": "Countries",
+                  "it": "Countries"
               }
           }
       }

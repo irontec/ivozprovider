@@ -34,7 +34,7 @@ class PublicEntityTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', '1'],
+                ['client', 'eq', '1'],
             ]
         );
     }
@@ -53,7 +53,7 @@ class PublicEntityTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', '1'],
+                ['client', 'eq', '1'],
             ]
         );
     }

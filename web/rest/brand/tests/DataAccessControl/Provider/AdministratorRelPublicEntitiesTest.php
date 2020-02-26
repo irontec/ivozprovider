@@ -35,7 +35,6 @@ class AdministratorRelPublicEntitiesTest extends KernelTestCase
             $accessControl,
             [
                 ['administrator', 'in', 'AdministratorRepository([["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]]])'],
-                ['publicEntity', 'in', 'PublicEntityRepository([["brand","eq","1"]])'],
             ]
         );
     }
@@ -55,7 +54,7 @@ class AdministratorRelPublicEntitiesTest extends KernelTestCase
             $accessControl,
             [
                 ['administrator', 'in', 'AdministratorRepository([["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]]])'],
-                ['publicEntity', 'in', 'PublicEntityRepository([["brand","eq","1"]])'],
+                ['publicEntity', 'in', 'PublicEntityRepository([["client","eq","1"]])'],
             ]
         );
     }

@@ -8,15 +8,15 @@ Feature: Manage administrator rel public entities
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/administrator_rel_public_entities/65" with body:
+      And I send a "PUT" request to "/administrator_rel_public_entities/3" with body:
     """
       {
           "create": false,
           "read": false,
           "update": false,
           "delete": false,
-          "administrator": 4,
-          "publicEntity": 65
+          "administrator": 7,
+          "publicEntity": 3
       }
     """
     Then the response status code should be 200
@@ -29,31 +29,31 @@ Feature: Manage administrator rel public entities
           "read": false,
           "update": false,
           "delete": false,
-          "id": 65,
+          "id": 3,
           "administrator": {
-              "username": "test_company_admin",
+              "username": "restrictedCompanyAdmin",
               "pass": "****",
               "email": "test@irontec.com",
               "active": true,
-              "restricted": false,
+              "restricted": true,
               "name": "Admin Name",
               "lastname": "Admin Lastname",
-              "id": 4,
+              "id": 7,
               "company": 1,
               "timezone": 145
           },
           "publicEntity": {
-              "iden": "TransformationRuleSets",
-              "fqdn": "Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet",
+              "iden": "Calendars",
+              "fqdn": "Ivoz\\Provider\\Domain\\Model\\Calendar\\Calendar",
               "platform": false,
-              "brand": true,
+              "brand": false,
               "client": true,
-              "id": 65,
+              "id": 3,
               "name": {
-                  "en": "TransformationRuleSets",
-                  "es": "TransformationRuleSets",
-                  "ca": "TransformationRuleSets",
-                  "it": "TransformationRuleSets"
+                  "en": "Calendars",
+                  "es": "Calendars",
+                  "ca": "Calendars",
+                  "it": "Calendars"
               }
           }
       }
