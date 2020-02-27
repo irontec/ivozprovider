@@ -1473,10 +1473,10 @@ msgstr ""
 
 msgid ""
 "Limits received calls when already handling this number of calls. Set 0 for "
-"disabling."
+"unlimited."
 msgstr ""
 "Limita el número de trucades entrants quan se superi. Introdueix 0 per "
-"desactivar."
+"infinit."
 
 msgid "Linear"
 msgstr "Linear"

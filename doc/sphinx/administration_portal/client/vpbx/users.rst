@@ -88,7 +88,7 @@ Basic Configuration
         still place calls.
 
     Call waiting
-        Limits received calls when already handling this number of calls. Set 0 for disabling.
+        Limits received calls when already handling this number of calls. Set 0 for unlimited.
 
     Calls from non-granted IPs:
         Enable calling from non-granted IP addresses for this user. 

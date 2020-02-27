@@ -1481,10 +1481,10 @@ msgstr ""
 
 msgid ""
 "Limits received calls when already handling this number of calls. Set 0 for "
-"disabling."
+"unlimited."
 msgstr ""
 "Limita la recepción de llamadas cuando se estén gestionando este número de "
-"llamadas. 0 para desactivar."
+"llamadas. 0 para ilimitadas."
 
 msgid "Linear"
 msgstr "Secuencialmente"
