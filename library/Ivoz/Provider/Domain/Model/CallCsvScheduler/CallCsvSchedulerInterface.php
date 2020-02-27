@@ -110,4 +110,32 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate();
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi();
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     */
+    public function getCarrier();
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     */
+    public function getRetailAccount();
+
+    /**
+     * Get residentialDevice
+     *
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     */
+    public function getResidentialDevice();
 }
