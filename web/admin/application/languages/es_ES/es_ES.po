@@ -2926,6 +2926,13 @@ msgstr ""
 "evita las llamadas perdidas solo para grupos de salto RingAll si alguien "
 "contesta."
 
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generación de llamadas perdidas. 'No' "
+"evita las llamadas perdidas solo para colas RingAll si alguien contesta."
+
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Cuando se emplea Proxy de salida, el Proxy SIP no debe incluir puerto."
 

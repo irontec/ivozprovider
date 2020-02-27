@@ -2888,6 +2888,13 @@ msgstr ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "
 "will be prevented only for RingAll huntgroups if someone answers."
 
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+msgstr ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "When Outbound Proxy is used, SIP Proxy must not include a port."
 

@@ -47,6 +47,12 @@ class QueueCallAction
             return;
         }
 
+        $queue = $queueMember->getQueue();
+        if (is_null($queue)) {
+            $this->agi->error("Queue is not properly defined. Check configuration.");
+            return;
+        }
+
         $user = $queueMember->getUser();
         if (is_null($user)) {
             $this->agi->error("No user found for queue member %s", $queueMember);
@@ -65,7 +71,16 @@ class QueueCallAction
             return;
         }
 
-        $this->agi->setVariable("DIAL_OPTS", "ic");
+        // Configure Dial options
+        $options = "i";
+
+        // Cancelled calls may be marked as 'answered elsewhere'
+        $queuePreventMissedCalls = $queue->getPreventMissedCalls();
+        if ($queuePreventMissedCalls) {
+            $options .= "c";
+        }
+
+        $this->agi->setVariable("DIAL_OPTS", $options);
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $endpoint->getSorceryId());
     }
 }

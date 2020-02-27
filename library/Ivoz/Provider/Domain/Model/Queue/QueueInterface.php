@@ -142,6 +142,13 @@ interface QueueInterface extends LoggableEntityInterface
     public function getWeight();
 
     /**
+     * Get preventMissedCalls
+     *
+     * @return integer
+     */
+    public function getPreventMissedCalls();
+
+    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
