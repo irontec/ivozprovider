@@ -77,11 +77,17 @@ class UserDto extends UserDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
-            return [
+            $response = [
                 'id' => 'id',
                 'name' => 'name',
                 'lastname' => 'lastname',
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $response['companyId'] = 'company';
+            }
+
+            return $response;
         }
 
         if ($context === self::CONTEXT_MY_PROFILE) {
