@@ -47,6 +47,7 @@ Feature: Update billable calls
           "id": 2,
           "brand": 1,
           "company": 1,
+          "carrier": 1,
           "invoice": null
       }
     """

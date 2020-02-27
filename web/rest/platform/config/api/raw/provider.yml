@@ -96,6 +96,13 @@ Ivoz\Provider\Domain\Model\BrandService\BrandService:
 Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
+Ivoz\Provider\Domain\Model\Carrier\Carrier:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations: []
   collectionOperations: []
