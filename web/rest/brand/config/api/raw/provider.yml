@@ -972,3 +972,16 @@ Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
     swagger_context:
       required:
       - transformationRuleSet
+
+Ivoz\Provider\Domain\Model\User\User:
+  itemOperations: []
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        company: 'Ivoz\Provider\Domain\Model\Company\Company'
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'

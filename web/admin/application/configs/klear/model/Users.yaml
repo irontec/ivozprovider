@@ -111,6 +111,7 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RegisterStatus
         method: getUserTerminalStatusIcon
+        orderMethod: getOrderByUserTerminalStatus
     extension:
       title: _('Screen Extension')
       type: select

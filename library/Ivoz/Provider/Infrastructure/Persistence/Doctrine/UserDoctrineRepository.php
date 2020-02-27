@@ -103,6 +103,50 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
         return $query->getResult();
     }
 
+
+    public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC')
+    {
+        $query = $this->getBrandUsersIdsOrderByTerminalExpireDateQuery(
+            $brandId,
+            $order,
+            'LEFT'
+        );
+
+        $connection = $this
+            ->getEntityManager()
+            ->getConnection();
+
+        $results = $connection->fetchAll($query);
+
+        return array_column(
+            $results,
+            'userId'
+        );
+    }
+
+    private function getBrandUsersIdsOrderByTerminalExpireDateQuery(
+        int $brandId,
+        string $order,
+        string $join = 'INNER'
+    ): string {
+        $query =
+            'SELECT U.id as userId, U.companyId, T.id as terminalId, D.domain, K.domain, K.expires FROM Users U'
+            . " %s JOIN Terminals T ON U.terminalId = T.id"
+            . ' %s JOIN Domains D ON T.domainId = D.id'
+            . ' %s JOIN kam_users_location K ON K.username = T.name AND K.domain = D.domain'
+            . ' WHERE U.companyId IN (SELECT id FROM Companies WHERE brandId = %d) '
+            . ' ORDER BY expires %s';
+
+        return sprintf(
+            $query,
+            $join,
+            $join,
+            $join,
+            $brandId,
+            $order
+        );
+    }
+
     /**
      * @param AdministratorInterface $admin
      * @return array
