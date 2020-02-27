@@ -37,6 +37,7 @@ Feature: Update queue members
               "memberCallTimeout": 1,
               "strategy": "rrmemory",
               "weight": 5,
+              "preventMissedCalls": 1,
               "id": 1,
               "periodicAnnounceLocution": 1,
               "timeoutLocution": 1,
