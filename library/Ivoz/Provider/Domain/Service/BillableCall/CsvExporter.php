@@ -33,6 +33,7 @@ class CsvExporter
         'endpointId',
         'company',
         'cost',
+        'carrier',
         'carrierName',
         'ratingPlanName',
         'destinationName'

@@ -22,7 +22,7 @@ production:
       title: _("List of %s %2s", ngettext('External call', 'External calls', 0), "[format| (%parent%)]")
       options:
         commands:
-          exportBillableCallsToCsv_command: ${auth.acls.BillableCalls}
+          exportBillableCallsToCsv_command: ${auth.acls.BillableCalls.read}
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/external_calls.html"
