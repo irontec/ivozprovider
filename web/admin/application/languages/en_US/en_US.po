@@ -123,9 +123,6 @@ msgstr "Advanced Setting, read carefully"
 msgid "All"
 msgstr "All"
 
-msgid "All clients"
-msgstr "All clients"
-
 msgid "Allow Client to remove recordings"
 msgstr "Allow Client to remove recordings"
 
@@ -374,9 +371,6 @@ msgstr "Call ID"
 msgid "Call destination"
 msgstr "Call destination"
 
-msgid "Call direction"
-msgstr "Call direction"
-
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
 msgstr[0] "Call forward setting"
@@ -481,10 +475,18 @@ msgid_plural "Client Portals"
 msgstr[0] "Client portal"
 msgstr[1] "Clients portals"
 
+msgid "Client Type"
+msgid_plural "Client Types"
+msgstr[0] "Client Type"
+msgstr[1] "Client Types"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Client admin"
 msgstr[1] "Clients admins"
+
+msgid "Client filters"
+msgstr "Client filters"
 
 msgid "Client's default"
 msgstr "Client's default"
@@ -1030,6 +1032,9 @@ msgstr "Filter's Out of schedule Routing"
 msgid "Filtering info"
 msgstr "Filtering info"
 
+msgid "Filters"
+msgstr "Filters"
+
 msgid "Filters data"
 msgstr "Filters data"
 
@@ -1297,9 +1302,6 @@ msgstr "Inbound"
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
-
-msgid "Inbound calls"
-msgstr "Inbound calls"
 
 msgid "Inbound configuration"
 msgstr "Inbound configuration"
@@ -1862,9 +1864,6 @@ msgstr "Outbound Proxy"
 msgid "Outbound Proxy IP value is not valid."
 msgstr "Outbound Proxy IP value is not valid."
 
-msgid "Outbound calls"
-msgstr "Outbound calls"
-
 msgid "Outbound configuration"
 msgstr "Outbound configuration"
 
@@ -2043,6 +2042,9 @@ msgstr "Processing"
 
 msgid "Proto"
 msgstr "Proto"
+
+msgid "Provider filters"
+msgstr "Provider filters"
 
 msgid "Providers"
 msgstr "Providers"
@@ -3043,3 +3045,6 @@ msgstr "shared"
 
 msgid "unlimited"
 msgstr "unlimited"
+
+msgid "vPBX"
+msgstr "vPBX"

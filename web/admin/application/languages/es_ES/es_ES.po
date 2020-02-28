@@ -127,9 +127,6 @@ msgstr "Opciones avanzadas, leer cuidadosamente"
 msgid "All"
 msgstr "Todos"
 
-msgid "All clients"
-msgstr "Todos los clientes"
-
 msgid "Allow Client to remove recordings"
 msgstr "Permitir al cliente eliminar grabaciones"
 
@@ -381,9 +378,6 @@ msgstr "ID de llamada"
 msgid "Call destination"
 msgstr "Destino llamada"
 
-msgid "Call direction"
-msgstr "Dirección de llamada"
-
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
 msgstr[0] "Opción de desvío"
@@ -488,10 +482,18 @@ msgid_plural "Client Portals"
 msgstr[0] "Portal de cliente"
 msgstr[1] "Portales de clientes"
 
+msgid "Client Type"
+msgid_plural "Client Types"
+msgstr[0] "Tipo de cliente"
+msgstr[1] "Tipos de cliente"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Administrador de cliente"
 msgstr[1] "Administradores de clientes"
+
+msgid "Client filters"
+msgstr "Filtros de cliente"
 
 msgid "Client's default"
 msgstr "Usar configuración cliente"
@@ -1046,6 +1048,9 @@ msgstr "Usar enrutado Fuera Horario del filtro"
 msgid "Filtering info"
 msgstr "Información de filtrado"
 
+msgid "Filters"
+msgstr "Filtros"
+
 msgid "Filters data"
 msgstr "Información filtrado"
 
@@ -1315,9 +1320,6 @@ msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
 "tarificación externa."
-
-msgid "Inbound calls"
-msgstr "Llamadas entrantes"
 
 msgid "Inbound configuration"
 msgstr "Configuración Entrante"
@@ -1890,9 +1892,6 @@ msgstr "Proxy saliente"
 msgid "Outbound Proxy IP value is not valid."
 msgstr "El valor de Proxy saliente no es válido."
 
-msgid "Outbound calls"
-msgstr "Llamadas salientes"
-
 msgid "Outbound configuration"
 msgstr "Configuración Saliente"
 
@@ -2073,6 +2072,9 @@ msgstr "Procesando"
 
 msgid "Proto"
 msgstr "Protocolo"
+
+msgid "Provider filters"
+msgstr "Filtros de proveedor"
 
 msgid "Providers"
 msgstr "Proveedores"
@@ -3085,3 +3087,6 @@ msgstr "compartido"
 
 msgid "unlimited"
 msgstr "ilimitado"
+
+msgid "vPBX"
+msgstr "vPBX"
