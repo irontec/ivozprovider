@@ -119,6 +119,9 @@ class ExternalNumberAction
             $this->agi->setVariable("_T38PASSTHROUGH", "yes");
         }
 
+        // Set ddi
+        $this->agi->setVariable("__DDIID", $callerDdi->getId());
+
         // Dial Options
         $options = "";
 

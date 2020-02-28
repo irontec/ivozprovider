@@ -110,6 +110,12 @@ class Headers extends RouteHandlerAbstract
             if (!empty($faxId)) {
                 $this->agi->setSIPHeader("X-Info-FaxId", $faxId);
             }
+
+            // Get ddi from channel variables
+            $ddiId = $this->agi->getVariable("DDIID");
+            if (!empty($ddiId)) {
+                $this->agi->setSIPHeader("X-Info-DdiId", $ddiId);
+            }
         }
 
         // Set recording header
