@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
@@ -34,7 +35,8 @@ class CsvAttacherSpec extends ObjectBehavior
         CsvExporter $csvExporter,
         Filesystem $fs,
         CallCsvReportInterface $callCsvReport,
-        CallCsvReportDto $callCsvReportDto
+        CallCsvReportDto $callCsvReportDto,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->entityTools = $entityTools;
         $this->csvExporter = $csvExporter;
@@ -45,7 +47,8 @@ class CsvAttacherSpec extends ObjectBehavior
 
         $this->prepareExecution(
             $callCsvReport,
-            $callCsvReportDto
+            $callCsvReportDto,
+            $scheduler
         );
 
         $this->beConstructedWith(...func_get_args());
@@ -62,6 +65,23 @@ class CsvAttacherSpec extends ObjectBehavior
             ->callCsvReport
             ->isNew()
             ->willReturn(false);
+
+        $this
+            ->callCsvReport
+            ->getInDate()
+            ->shouldNotBeCalled();
+
+        $this->execute(
+            $this->callCsvReport
+        );
+    }
+
+    function it_does_nothing_if_scheduler_is_empty()
+    {
+        $this
+            ->callCsvReport
+            ->getCallCsvScheduler()
+            ->willReturn(null);
 
         $this
             ->callCsvReport
@@ -153,7 +173,8 @@ class CsvAttacherSpec extends ObjectBehavior
 
     private function prepareExecution(
         CallCsvReportInterface $callCsvReport,
-        CallCsvReportDto $callCsvReportDto
+        CallCsvReportDto $callCsvReportDto,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $company = $this->getInstance(
             Company::class,
@@ -187,7 +208,7 @@ class CsvAttacherSpec extends ObjectBehavior
                 'getCompany' => $company,
                 'getBrand' => $brand,
                 'getTimezone' => $timezone,
-                'getCallCsvScheduler' => null,
+                'getCallCsvScheduler' => $scheduler->getWrappedObject(),
             ],
             false
         );

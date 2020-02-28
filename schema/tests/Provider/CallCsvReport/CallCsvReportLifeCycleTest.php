@@ -27,7 +27,8 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
                 1
             )->setCreatedOn(
                 new \DateTime('2018-12-31 23:59:59')
-            );
+            )
+            ->setCallCsvSchedulerId(1);
 
         return $callCsvReportDto;
     }
@@ -86,6 +87,7 @@ class CallCsvReportLifeCycleTest extends KernelTestCase
                 'csvMimeType' => 'inode/x-empty; charset=binary',
                 'csvBaseName' => 'DemoCompany-20180101-20181231.csv',
                 'companyId' => 1,
+                'callCsvSchedulerId' => 1,
                 'id' => 3
             ]
         );

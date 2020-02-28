@@ -16,6 +16,12 @@ Feature: Retrieve call CSV scheduler
       [
           {
               "name": "SchedulerName",
+              "unit": "day",
+              "frequency": 1,
+              "callDirection": "outbound",
+              "email": "something@domain.net",
+              "lastExecution": "2018-12-01 09:00:00",
+              "nextExecution": "2018-12-02 09:00:00",
               "id": 2
           }
       ]
@@ -40,6 +46,9 @@ Feature: Retrieve call CSV scheduler
           "lastExecutionError": "",
           "nextExecution": "2018-12-02 09:00:00",
           "id": 2,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "ddi": null,
+          "retailAccount": null,
+          "residentialDevice": null
       }
     """

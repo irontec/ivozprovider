@@ -71,7 +71,7 @@ class CallCsvReportTest extends KernelTestCase
                         [
                             'callCsvScheduler',
                             'in',
-                            'CallCsvSchedulerRepository([["company","eq","user.getCompany().getId()"]])'
+                            'CallCsvSchedulerRepository([["company","eq","user.getCompany().getId()"],["brand","eq",null]])'
                         ],
                         [
                             'callCsvScheduler',
