@@ -23,8 +23,16 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
     protected function sanitizeValues()
     {
         $company = $this->getCompany();
-        if (!is_null($company)) {
+        if (is_null($company)) {
+            $this->setRetailAccount(null);
+            $this->setResidentialDevice(null);
+        } else {
             $this->setCallCsvNotificationTemplate(null);
+        }
+
+        $isNotOutbound = $this->getCallDirection() !== self::CALLDIRECTION_OUTBOUND;
+        if ($isNotOutbound) {
+            $this->setCarrier(null);
         }
 
         $brand = $this->getBrand();

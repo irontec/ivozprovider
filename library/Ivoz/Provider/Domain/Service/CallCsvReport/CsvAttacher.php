@@ -54,23 +54,24 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             return;
         }
 
+        $scheduler = $callCsvReport->getCallCsvScheduler();
+        if (!$scheduler) {
+            return;
+        }
+
+
         $inDate = $callCsvReport->getInDate();
         $outDate = $callCsvReport->getOutDate();
 
-        $scheduler = $callCsvReport->getCallCsvScheduler();
         $company = $callCsvReport->getCompany();
         $brand = $callCsvReport->getBrand();
-
-        $direction = $scheduler
-            ? $scheduler->getCallDirection()
-            : null;
 
         $csvContent = $this->csvExporter->execute(
             $inDate,
             $outDate,
             $company,
             $brand,
-            $direction
+            $scheduler
         );
 
         $tmpFilePath = tempnam(

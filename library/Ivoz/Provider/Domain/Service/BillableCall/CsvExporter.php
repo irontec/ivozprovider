@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Service\BillableCall;
 use Ivoz\Core\Domain\Service\ApiClientInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CsvExporter
@@ -52,11 +53,6 @@ class CsvExporter
     }
 
     /**
-     * @param \DateTime $inDate
-     * @param \DateTime $outDate
-     * @param CompanyInterface|null $company
-     * @param BrandInterface|null $brand
-     * @param string | null $direction
      * @return string
      */
     public function execute(
@@ -64,7 +60,7 @@ class CsvExporter
         \DateTime $outDate,
         CompanyInterface $company = null,
         BrandInterface $brand = null,
-        $direction = BillableCallInterface::DIRECTION_OUTBOUND
+        CallCsvSchedulerInterface $scheduler
     ) {
         $timezone = 'UTC';
         if ($company) {
@@ -83,10 +79,6 @@ class CsvExporter
             "_pagination" => 'false'
         ];
 
-        if (!empty($direction)) {
-            $criteria['direction'] = $direction;
-        }
-
         if ($company) {
             $criteria['company'] = $company->getId();
             $criteria['_properties'] = self::CLIENT_PROPERTIES;
@@ -97,6 +89,33 @@ class CsvExporter
             $criteria['brand'] = $brand->getId();
             $criteria['_properties'] = self::BRAND_PROPERTIES;
             $criteria['_timezone'] = $brand->getDefaultTimezone()->getTz();
+        }
+
+        $direction = $scheduler->getCallDirection();
+        if (!empty($direction)) {
+            $criteria['direction'] = $direction;
+        }
+
+        $ddi = $scheduler->getDdi();
+        if (!empty($ddi)) {
+            $criteria['ddi'] = $ddi->getId();
+        }
+
+        $carrier = $scheduler->getCarrier();
+        if (!empty($carrier)) {
+            $criteria['carrier'] = $carrier->getId();
+        }
+
+        $retailAccount = $scheduler->getRetailAccount();
+        if (!empty($retailAccount)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_RETAILACCOUNT;
+            $criteria['endpointId'] = $retailAccount->getId();
+        }
+
+        $residentialDevice = $scheduler->getResidentialDevice();
+        if (!empty($residentialDevice)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_RESIDENTIALDEVICE;
+            $criteria['endpointId'] = $residentialDevice->getId();
         }
 
         $endpoint =
