@@ -52,6 +52,14 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
+                'company' => 'companyId',
+                'frequency' => 'frequency',
+                'unit' => 'unit',
+                'callDirection' => 'callDirection',
+                'email' => 'email',
+                'lastExecution' => 'lastExecution',
+                'nextExecution' => 'nextExecution'
+
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
