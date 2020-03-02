@@ -10,6 +10,7 @@ production:
   screens: &billableCalls_screensLink
     billableCallsList_screen: &billableCallsList_screenLink
       controller: list
+      rawCondition: "BillableCall.startTime >= DATESUB(CURRENT_DATE(), 1, 'YEAR')"
       csv: false
       order:
         field:
