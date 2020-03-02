@@ -4,6 +4,9 @@ imports:
 
 doctrine:
   orm:
+    dql:
+      datetime_functions:
+        DATESUB: DoctrineExtensions\Query\Mysql\DateSub
     mappings:
       Provider:
         type: yml

@@ -1,6 +1,6 @@
 {
     "name": "irontec/ivoz-provider-bundle",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "type": "symfony-bundle",
     "description": "Symfony bridge for IvozProvider",
     "license": "GPL-3.0-or-later",
@@ -42,7 +42,8 @@
         "symfony/templating": "^3.4",
         "symfony/twig-bundle": "^3.4",
         "sensio/distribution-bundle": "5.0.*",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "beberlei/doctrineextensions": "^1.1"
     },
     "require-dev": {
     }
