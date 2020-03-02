@@ -68,6 +68,12 @@ class Version20200210145816 extends LoggableMigration
                 'Precios',
             ],
             [
+                'kam_users_cdrs',
+                'Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr',
+                'Call registry',
+                'Registro de llamadas'
+            ],
+            [
                 'BillableCalls',
                 'Ivoz\Provider\Domain\Model\BillableCall\BillableCall',
                 'External calls',
