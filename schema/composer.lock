@@ -77,6 +77,61 @@
             }
         },
         {
+            "name": "beberlei/doctrineextensions",
+            "version": "1.1.9.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/beberlei/doctrineextensions",
+                "reference": "a41f8b541f2e9b31f7cd43c91d6d88d9963f091c",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "nesbot/carbon": "*",
+                "phpunit/phpunit": "^5.7",
+                "symfony/yaml": "^4.2",
+                "zf1/zend-date": "^1.12",
+                "zf1/zend-registry": "^1.12"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DoctrineExtensions\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "DoctrineExtensions\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Steve Lacey",
+                    "email": "steve@stevelacey.net"
+                }
+            ],
+            "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL and Oracle.",
+            "keywords": [
+                "database",
+                "doctrine",
+                "orm"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "composer/ca-bundle",
             "version": "1.2.6.0",
             "dist": {
@@ -1695,14 +1750,15 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "1292f02c9483304a3e5b53b33596eb380210dd84",
+                "reference": "f416895ffd462ae888de710a9933980fc79156c4",
                 "shasum": null
             },
             "require": {
+                "beberlei/doctrineextensions": "^1.1",
                 "incenteev/composer-parameter-handler": "^2.0",
                 "irontec/ivoz-core": "^2.3",
                 "irontec/ivoz-core-bundle": "^2.3",
@@ -5388,11 +5444,11 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.3.2.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/squizlabs/php_codesniffer",
-                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "reference": "5a7a530f74ca72f63e2d270819cd4e2d7714610d",
                 "shasum": null
             },
             "require": {
