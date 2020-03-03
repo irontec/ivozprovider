@@ -2602,13 +2602,6 @@ msgid_plural "Themes"
 msgstr[0] "Tema"
 msgstr[1] "Temas"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"Ya existen desvíos con ese tipo de llamada. No puedes añadir un desvío "
-"incondicional."
-
 msgid "There are invoices in the same range of date."
 msgstr "Ya existen facturas en el mismo rango de fechas."
 
@@ -2633,6 +2626,9 @@ msgstr "Ya existe un desvío si ocupado con ese tipo de llamada."
 msgid "There is already a friend with that name."
 msgstr "Ya existe un friend con ese nombre."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr "Ya existe un desvío incondicional con ese tipo de llamada."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "Ya existe un desvío si no contesta con ese tipo de llamada."
 
@@ -2647,13 +2643,6 @@ msgstr "Ya existe un terminal con ese nombre."
 
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr "Ya existe un desvío si usuario no registrado con ese tipo de llamada."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
-"desvíos."
 
 msgid "There was an error"
 msgstr "Ocurrió un error"

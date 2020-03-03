@@ -2589,13 +2589,6 @@ msgid_plural "Themes"
 msgstr[0] "Theme"
 msgstr[1] "Themes"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"Hi ha desviaments de trucades actius. No pots afegir un desviament "
-"incondicional"
-
 msgid "There are invoices in the same range of date."
 msgstr "Hi ha factures en el mateix període."
 
@@ -2619,6 +2612,9 @@ msgstr "Ja hi ha un desviament quan estigui Ocupat actiu."
 msgid "There is already a friend with that name."
 msgstr "Ja hi ha un amic amb el mateix nom."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr "Ja hi ha un desviament incondicional actiu."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "Ja hi ha un desviament quan no hi hagi resposta actiu."
 
@@ -2634,12 +2630,6 @@ msgstr "Ja existeix un dispositiu amb aquest nom."
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
 "Ja hi ha un desviament quan el dispositiu no estigui registrat activat."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"Ja hi ha un desviament incondicional activat. No pots afegir més desviaments"
 
 msgid "There was an error"
 msgstr "Hi ha hagut un error"
@@ -3083,6 +3073,3 @@ msgstr "compartit"
 
 msgid "unlimited"
 msgstr "il·limitat"
-
-#~ msgid "Public Entity"
-#~ msgstr "Entidad Pública"
