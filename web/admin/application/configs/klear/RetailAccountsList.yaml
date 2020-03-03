@@ -49,7 +49,7 @@ production:
         options:
           title: _("Options")
           screens:
-            retailAccountsEdit_screen: ${auth.canSeeBrand}
+            retailAccountsEdit_screen: $[${auth.acls.RetailAccounts.update} && ${auth.canSeeBrand}]
             ddisList_screen: ${auth.acls.DDIs.read}
             callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
           dialogs:
@@ -58,9 +58,9 @@ production:
       options:
         title: _("Options")
         screens:
-          retailAccountsNew_screen: ${auth.canSeeBrand}
+          retailAccountsNew_screen: $[${auth.acls.RetailAccounts.create} && ${auth.canSeeBrand}]
         dialogs:
-          retailAccountsDel_dialog: ${auth.canSeeBrand}
+          retailAccountsDel_dialog: $[${auth.acls.RetailAccounts.delete} && ${auth.canSeeBrand}]
 
     retailAccountsNew_screen: &retailAccountsNew_screenLink
       <<: *RetailAccounts

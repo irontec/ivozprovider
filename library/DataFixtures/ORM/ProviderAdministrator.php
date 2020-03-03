@@ -120,6 +120,24 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item6);
         $manager->persist($item6);
 
+        $item7 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("restrictedCompanyAdmin");
+            $this->setPass("changeme");
+            $this->setEmail("test@irontec.com");
+            $this->setActive(true);
+            $this->setRestricted(true);
+            $this->setName("Admin Name");
+            $this->setLastname("Admin Lastname");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+        })->call($item7);
+
+        $this->addReference('_reference_ProviderAdministrator7', $item7);
+        $this->sanitizeEntityValues($item7);
+        $manager->persist($item7);
+
         $manager->flush();
     }
 

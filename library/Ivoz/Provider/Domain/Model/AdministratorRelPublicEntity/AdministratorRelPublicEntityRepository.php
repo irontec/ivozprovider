@@ -26,4 +26,6 @@ interface AdministratorRelPublicEntityRepository extends ObjectRepository, Selec
      * @param int[] $ids
      */
     public function revokePermissionsByIds(array $ids): int;
+
+    public function removeByAdministratorId(int $id): int;
 }

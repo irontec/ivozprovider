@@ -20,7 +20,7 @@ production:
       title: _("List of %s %2s", ngettext('Administrator access privilege', 'Administrator access privileges', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/en/administration_portal/platform/access_privileges.html"
+        href: "/doc/en/api_rest/acls.html"
       fields:  &administratorRelPublicEntitiesList_fieldsLink
         options:
           title: _("Options")

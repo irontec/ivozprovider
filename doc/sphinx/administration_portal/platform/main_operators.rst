@@ -18,6 +18,9 @@ These are the required fields of each entry:
     Timezone
         Used for showing dates in External Calls and similar sections.
 
+    Restricted
+        Allows creating limited credentials (read :ref:`acls` for further explanation).
+
 
 Remaining fields are not required nor used anywhere, they just allow storing additional information of a given user
 (name, lastname and email).

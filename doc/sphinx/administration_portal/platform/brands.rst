@@ -68,6 +68,8 @@ Brand operators
 
 **List of brand operators** subsection allows adding/editing/deleting credentials for brand portal access.
 
+Read :ref:`acls` for further explanation about restricted brand administrators.
+
 
 Brand Portals
 -------------
