@@ -90,14 +90,10 @@ Each entry in this table has these additional options:
 
 - **List of authorized sources**: client identification will be made looking up the source IP address in this table.
 
-- **List of client admins**: this subsection allows managing portal credentials for this specific client.
+- **List of client admins**: this subsection allows managing portal credentials for this specific client. Read :ref:`acls`
+  for further explanation about restricted client administrators.
 
 - **List of rating profiles**: this subsection allows managing the rating profiles that will be used to bill its outgoing calls.
 
 .. warning:: No outgoing call will be allowed for this client unless an active rating profiles that can
              bill the specific call.
-
-- **List of Outgoing routes**: this subsections shows routing rules that apply only for this client.
-
-.. tip:: As *Apply all clients* routing rules also will apply for this client, the recommended way to manage routes is
-         using **Outgoing routings** section instead.
