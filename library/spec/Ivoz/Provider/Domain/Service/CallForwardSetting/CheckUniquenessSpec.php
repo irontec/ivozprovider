@@ -62,25 +62,6 @@ class CheckUniquenessSpec extends ObjectBehavior
         $this->shouldHaveType(CheckUniqueness::class);
     }
 
-    function it_throws_exception_on_already_existing_inconditional_call_forward()
-    {
-        $this->prepareExecution();
-
-        $this
-            ->callForwardSettingRepository
-            ->matching(
-                $this->getCriteriaArgument('inconditional')
-            )
-            ->willReturn(new ArrayCollection(['Something']));
-
-        $message = "There is an inconditional call forward with that call type. You can't add call forwards";
-        $exception = new \DomainException($message, 30000);
-
-        $this
-            ->shouldThrow($exception)
-            ->during('execute', [$this->entity, false]);
-    }
-
     function it_doesnt_run_checks_on_disabled_call_forward(CallForwardSetting $entity)
     {
         $entity
