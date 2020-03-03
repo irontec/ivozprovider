@@ -40,6 +40,7 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                 $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
                 $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
                 $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));
+                $this->setDdi($fixture->getReference('_reference_ProviderDdi1'));
 
                 if ($i === 0) {
                     $this->setTrunksCdr($fixture->getReference('_reference_KamTrunksCdr1'));
@@ -62,6 +63,7 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
             ProviderCarrier::class,
             KamTrunksCdr::class,
             ProviderInvoice::class,
+            ProviderDdi::class,
         );
     }
 }

@@ -39,6 +39,12 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
     pagination_client_enabled: true
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
+Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
 Ivoz\Provider\Domain\Model\Brand\Brand:
   itemOperations:
     get:

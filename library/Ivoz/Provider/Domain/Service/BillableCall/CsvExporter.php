@@ -19,6 +19,9 @@ class CsvExporter
         'callee',
         'duration',
         'price',
+        'ddi',
+        'endpointType',
+        'endpointId'
     ];
 
     const BRAND_PROPERTIES = [
@@ -36,7 +39,8 @@ class CsvExporter
         'carrier',
         'carrierName',
         'ratingPlanName',
-        'destinationName'
+        'destinationName',
+        'ddi',
     ];
 
     protected $apiClient;
