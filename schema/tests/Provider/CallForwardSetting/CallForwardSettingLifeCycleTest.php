@@ -14,38 +14,6 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
     /**
      * @test
      * @expectedException \DomainException
-     * @expectedExceptionCode Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::INCONDITIONAL_CALL_FORWARD_EXCEPTION
-     */
-    public function only_one_inconditional_callForward_is_allowed()
-    {
-        $cf = new CallForwardSettingDto();
-        $cf->setCallTypeFilter('internal')
-           ->setCallForwardType('inconditional')
-            ->setTargetType('number')
-           ->setUserId(1);
-
-        $this->entityTools->persistDto($cf, null, true);
-    }
-
-    /**
-     * @test
-     * @expectedException \DomainException
-     * @expectedExceptionCode Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION
-     */
-    public function no_inconditional_callForward_if_any_of_that_type()
-    {
-        $cf = new CallForwardSettingDto();
-        $cf->setCallTypeFilter('external')
-            ->setCallForwardType('inconditional')
-            ->setTargetType('number')
-            ->setUserId(1);
-
-        $this->entityTools->persistDto($cf, null, true);
-    }
-
-    /**
-     * @test
-     * @expectedException \DomainException
      * @expectedExceptionCode Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::BUSY_CALL_FORWARD_EXCEPTION
      */
     public function ensures_one_single_busy_call_forward_by_type()

@@ -2569,13 +2569,6 @@ msgid_plural "Themes"
 msgstr[0] "Theme"
 msgstr[1] "Themes"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-
 msgid "There are invoices in the same range of date."
 msgstr "There are invoices in the same range of date."
 
@@ -2599,6 +2592,9 @@ msgstr "There is already a busy call forward with that call type."
 msgid "There is already a friend with that name."
 msgstr "There is already a friend with that name."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr "There is already a inconditional call forward with that call type."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "There is already a no answer call forward with that call type."
 
@@ -2614,13 +2610,6 @@ msgstr "There is already a terminal with that name."
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
 "There is already a user not registered call forward with that call type."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
 
 msgid "There was an error"
 msgstr "There was an error"

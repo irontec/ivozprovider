@@ -1,7 +1,6 @@
 production:
   klearCommon:
-    30000: _("There is an inconditional call forward with that call type. You can't add call forwards")
-    30001: _("There are already call forwards with that call type. You can't add inconditional call forward")
+    30001: _("There is already a inconditional call forward with that call type.")
     30002: _("There is already a busy call forward with that call type.")
     30003: _("There is already a noAnswer call forward with that call type.")
     30004: _("There is already a userNotRegistered call forward with that call type.")

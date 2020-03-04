@@ -2601,13 +2601,6 @@ msgid_plural "Themes"
 msgstr[0] "Tema"
 msgstr[1] "Temi"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"Esiste già trasferimento di chiamate per quel tipo di chiamata. Non puoi "
-"aggiungereinoltro chiamata incondizionata"
-
 msgid "There are invoices in the same range of date."
 msgstr "Ci sono fatture nello stesso intervallo di date."
 
@@ -2632,6 +2625,10 @@ msgstr "Esiste già una trasferimento su occupato per questo tipo di chiamata."
 msgid "There is already a friend with that name."
 msgstr "There is already a friend with that name."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr ""
+"Esiste già una trasferimento incondizionato per questo tipo di chiamata."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr ""
 "Esiste già una trasferimento su non risposto per questo tipo di chiamata."
@@ -2648,13 +2645,6 @@ msgstr "There is already a terminal with that name."
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
 "Esiste già una trasferimento su non registrato per questo tipo di chiamata."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"Esiste già una trasferimento incondizionato per questo tipo di chiamata.Non "
-"puoi aggiungere un trasferimento"
 
 msgid "There was an error"
 msgstr "Si è verificato un errore"
@@ -3102,6 +3092,3 @@ msgstr "condiviso"
 
 msgid "unlimited"
 msgstr "illimitato"
-
-#~ msgid "Public Entity"
-#~ msgstr "Public Entity"
