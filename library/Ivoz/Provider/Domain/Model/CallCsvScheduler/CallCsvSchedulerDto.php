@@ -75,4 +75,27 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
 
         return $response;
     }
+
+    /**
+     * Remove this as soon as klear is dead
+     */
+    public function getCompanyType()
+    {
+        $company = $this->getCompany();
+        if (!$company) {
+            return null;
+        }
+
+        return $company->getType();
+    }
+
+    /**
+     * Remove this as soon as klear is dead
+     */
+    public function setCompanyType(string $type = null)
+    {
+        if (is_null($type)) {
+            $this->setCompany(null);
+        }
+    }
 }

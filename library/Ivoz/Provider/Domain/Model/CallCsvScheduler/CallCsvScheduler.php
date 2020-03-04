@@ -9,7 +9,9 @@ use Ivoz\Core\Domain\Model\SchedulerInterface;
  */
 class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInterface, CallCsvSchedulerInterface
 {
-    use CallCsvSchedulerTrait;
+    use CallCsvSchedulerTrait {
+        toDto as protected traitToDto;
+    }
 
     /**
      * @codeCoverageIgnore
@@ -88,5 +90,24 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
             case 'day':
                 return \DateInterval::createFromDateString('1 day');
         }
+    }
+
+
+    /**
+     * @internal use EntityTools instead
+     * @param int $depth
+     * @return CallCsvSchedulerDto
+     */
+    public function toDto($depth = 0)
+    {
+        $dto = $this->traitToDto($depth);
+        $companyDto = \Ivoz\Provider\Domain\Model\Company\Company::entityToDto(
+            self::getCompany(),
+            1
+        );
+
+        $dto->setCompany($companyDto);
+
+        return $dto;
     }
 }

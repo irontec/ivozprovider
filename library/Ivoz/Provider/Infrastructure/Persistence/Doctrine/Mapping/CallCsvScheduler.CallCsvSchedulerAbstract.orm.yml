@@ -71,7 +71,7 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
       cascade: {  }
-      fetch: LAZY
+      fetch: EAGER
       mappedBy: null
       inversedBy: null
       joinColumns:
