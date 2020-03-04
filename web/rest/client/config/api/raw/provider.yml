@@ -157,7 +157,6 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
 Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
   itemOperations:
     get: ~
-    put: ~
   collectionOperations:
     get: ~
   attributes:
@@ -168,12 +167,7 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
           eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
-      - and:
-        - company:
-            eq: "user.getCompany().getId()"
-      - or:
-        - inheritedOrNull:
-            callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
+        raw: 'FALSE'
     swagger_context:
       required:
       - company
