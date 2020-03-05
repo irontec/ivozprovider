@@ -2005,11 +2005,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "3190fc364c705c99c094cbb170111931bbad22e1",
+                "reference": "218959e6248c6fe12e9b123b59e7cf2cd7b2e03a",
                 "shasum": null
             },
             "require": {
