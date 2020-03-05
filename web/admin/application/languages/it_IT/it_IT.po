@@ -129,9 +129,6 @@ msgstr "Impostazioni avanzate, leggi attentamente"
 msgid "All"
 msgstr "Tutti"
 
-msgid "All clients"
-msgstr "All clients"
-
 msgid "Allow Client to remove recordings"
 msgstr "Consenti al cliente di rimuovere le registrazioni"
 
@@ -383,9 +380,6 @@ msgstr "Call ID"
 msgid "Call destination"
 msgstr "Destinazione chiamata"
 
-msgid "Call direction"
-msgstr "Call direction"
-
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
 msgstr[0] "Impostazioni di inoltro chiamate"
@@ -491,10 +485,18 @@ msgid_plural "Client Portals"
 msgstr[0] "Impostazione predefinita del client"
 msgstr[1] "Impostazione predefinita del client"
 
+msgid "Client Type"
+msgid_plural "Client Types"
+msgstr[0] "Client Type"
+msgstr[1] "Client Types"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Client admin"
 msgstr[1] "Client admins"
+
+msgid "Client filters"
+msgstr "Client filters"
 
 msgid "Client's default"
 msgstr "Impostazione predefinita del client"
@@ -1047,6 +1049,9 @@ msgstr "Filter's Out of schedule Routing"
 msgid "Filtering info"
 msgstr "Informazioni sul filtro"
 
+msgid "Filters"
+msgstr "Filters"
+
 msgid "Filters data"
 msgstr "Filtri dati"
 
@@ -1316,9 +1321,6 @@ msgstr "In entrata"
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
-
-msgid "Inbound calls"
-msgstr "Inbound calls"
 
 msgid "Inbound configuration"
 msgstr "Configurazione in entrata"
@@ -1890,9 +1892,6 @@ msgstr "Proxy in uscita"
 msgid "Outbound Proxy IP value is not valid."
 msgstr "Il valore IP del proxy in uscita non è valido."
 
-msgid "Outbound calls"
-msgstr "Outbound calls"
-
 msgid "Outbound configuration"
 msgstr "Configurazione in uscita"
 
@@ -2073,6 +2072,9 @@ msgstr "Elaborazione"
 
 msgid "Proto"
 msgstr "Proto"
+
+msgid "Provider filters"
+msgstr "Provider filters"
 
 msgid "Providers"
 msgstr "Providers"
@@ -3092,3 +3094,6 @@ msgstr "condiviso"
 
 msgid "unlimited"
 msgstr "illimitato"
+
+msgid "vPBX"
+msgstr "vPBX"

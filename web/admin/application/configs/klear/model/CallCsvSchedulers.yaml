@@ -9,16 +9,28 @@ production:
       maxLength: 40
       default: true
     callDirection:
-      title: _('Call direction')
+      title: _('Direction')
       type: select
       required: false
       defaultValue: 'outbound'
       source:
         data: inline
         values:
-          'outbound': _('Outbound calls')
-          'inbound': _('Inbound calls')
-          '__null__': _('Both')
+          'outbound':
+            title: _('Outbound')
+            visualFilter:
+              show: ["carrier"]
+              hide: []
+          'inbound':
+            title: _('Inbound')
+            visualFilter:
+              show: []
+              hide: ["carrier"]
+          '__null__':
+            title:_('Both')
+            visualFilter:
+              show: []
+              hide: ["carrier"]
     frequency:
       title: _('Frequency')
       type: number
@@ -80,12 +92,53 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
+    companyType:
+      title: ngettext('Client Type', 'Client Types', 1)
+      type: select
+      attributes:
+        data-autofilter-select-by-data:
+          company: type
+      required: true
+      source:
+        data: inline
+        values:
+          '_NULL_':
+            title: _('All')
+            visualFilter:
+              show: ["callCsvNotificationTemplate"]
+              hide: ["company", "residentialDevice", "retailAccount", "ddi"]
+          vpbx:
+            title: _('vPBX')
+            visualFilter:
+              show: ["company"]
+              hide: ["residentialDevice", "retailAccount", "callCsvNotificationTemplate"]
+          retail:
+            title: _('Retail')
+            visualFilter:
+              show: ["company", "retailAccount"]
+              hide: ["residentialDevice", "callCsvNotificationTemplate"]
+          residential:
+            title: _('Residential')
+            visualFilter:
+              show: ["company", "residentialDevice"]
+              hide: ["retailAccount", "callCsvNotificationTemplate"]
+          wholesale:
+            title: _('Wholesale')
+            visualFilter:
+              show: ["company"]
+              hide: ["retailAccount", "residentialDevice", "callCsvNotificationTemplate"]
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select
+      required: true
+      attributes:
+        data-autofilter-select-by-data:
+          retailAccount: company
+          residentialDevice: company
+          ddi: company
       source:
         data: mapper
-        'null': _("All clients")
+        'null': " "
         config:
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           filterClass: IvozProvider_Klear_Filter_Brand
@@ -95,14 +148,18 @@ production:
             template: '%name%'
           order:
             Company.name: asc
+          extraDataAttributes:
+            type: type
           visualFilter:
             name:
               __default__:
-                show: []
-                hide: ["callCsvNotificationTemplate"]
-              'null':
-                show: ["callCsvNotificationTemplate"]
+                show:
+                - ddi
                 hide: []
+              'null':
+                show: []
+                hide:
+                - ddi
     callCsvNotificationTemplate:
       title: ngettext('Notification template', 'Notification templates', 1)
       type: select
@@ -116,6 +173,73 @@ production:
             - name
             template: '%name%'
         'null': _("Use generic template")
+    ddi:
+      title: _('DDI')
+      type: select
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
+          filterClass: IvozProvider_Klear_Filter_OutgoingDDI
+          fieldName:
+            fields:
+              - ddie164
+            template: '%ddie164%'
+          order:
+            Ddi.ddie164: asc
+          extraDataAttributes:
+            company: companyId
+    carrier:
+      title: _('Carrier')
+      type: select
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Carrier\Carrier
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Carrier.name: asc
+    retailAccount:
+      title: _('Retail Account')
+      type: select
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          extraDataAttributes:
+            company: companyId
+          order:
+            RetailAccount.name: asc
+    residentialDevice:
+      title: _('Residential Device')
+      type: select
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          extraDataAttributes:
+            company: companyId
+          order:
+            ResidentialDevice.name: asc
+staging:
 staging:
   _extends: production
 testing:

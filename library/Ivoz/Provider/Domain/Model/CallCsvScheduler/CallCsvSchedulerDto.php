@@ -52,6 +52,14 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
+                'company' => 'companyId',
+                'frequency' => 'frequency',
+                'unit' => 'unit',
+                'callDirection' => 'callDirection',
+                'email' => 'email',
+                'lastExecution' => 'lastExecution',
+                'nextExecution' => 'nextExecution'
+
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -66,5 +74,28 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
         }
 
         return $response;
+    }
+
+    /**
+     * Remove this as soon as klear is dead
+     */
+    public function getCompanyType()
+    {
+        $company = $this->getCompany();
+        if (!$company) {
+            return null;
+        }
+
+        return $company->getType();
+    }
+
+    /**
+     * Remove this as soon as klear is dead
+     */
+    public function setCompanyType(string $type = null)
+    {
+        if (is_null($type)) {
+            $this->setCompany(null);
+        }
     }
 }

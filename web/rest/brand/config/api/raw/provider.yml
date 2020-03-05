@@ -160,11 +160,21 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
       - and:
         - brand:
             eq: "user.getBrand().getId()"
-        - company:
-            isNull: ~
       - or:
         - inheritedOrNull:
             callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+      - or:
+        - inheritedOrNull:
+            ddi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+      - or:
+        - inheritedOrNull:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
     swagger_context:
       required:
       - brand

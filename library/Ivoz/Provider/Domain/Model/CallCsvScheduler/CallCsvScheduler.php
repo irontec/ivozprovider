@@ -9,7 +9,9 @@ use Ivoz\Core\Domain\Model\SchedulerInterface;
  */
 class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInterface, CallCsvSchedulerInterface
 {
-    use CallCsvSchedulerTrait;
+    use CallCsvSchedulerTrait {
+        toDto as protected traitToDto;
+    }
 
     /**
      * @codeCoverageIgnore
@@ -23,8 +25,16 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
     protected function sanitizeValues()
     {
         $company = $this->getCompany();
-        if (!is_null($company)) {
+        if (is_null($company)) {
+            $this->setRetailAccount(null);
+            $this->setResidentialDevice(null);
+        } else {
             $this->setCallCsvNotificationTemplate(null);
+        }
+
+        $isNotOutbound = $this->getCallDirection() !== self::CALLDIRECTION_OUTBOUND;
+        if ($isNotOutbound) {
+            $this->setCarrier(null);
         }
 
         $brand = $this->getBrand();
@@ -80,5 +90,24 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
             case 'day':
                 return \DateInterval::createFromDateString('1 day');
         }
+    }
+
+
+    /**
+     * @internal use EntityTools instead
+     * @param int $depth
+     * @return CallCsvSchedulerDto
+     */
+    public function toDto($depth = 0)
+    {
+        $dto = $this->traitToDto($depth);
+        $companyDto = \Ivoz\Provider\Domain\Model\Company\Company::entityToDto(
+            self::getCompany(),
+            1
+        );
+
+        $dto->setCompany($companyDto);
+
+        return $dto;
     }
 }

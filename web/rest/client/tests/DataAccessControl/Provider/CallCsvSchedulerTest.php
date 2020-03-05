@@ -38,6 +38,11 @@ class CallCsvSchedulerTest extends KernelTestCase
                     'company',
                     'eq',
                     'user.getCompany().getId()'
+                ],
+                [
+                    'brand',
+                    'isNull',
+                    null
                 ]
             ]
         );
@@ -63,6 +68,11 @@ class CallCsvSchedulerTest extends KernelTestCase
                             'company',
                             'eq',
                             'user.getCompany().getId()'
+                        ],
+                        [
+                            'carrier',
+                            'isNull',
+                            null
                         ]
                     ]
                 ],
@@ -75,6 +85,48 @@ class CallCsvSchedulerTest extends KernelTestCase
                         ],
                         [
                             'callCsvNotificationTemplate',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'ddi',
+                            'in',
+                            'DdiRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'ddi',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'retailAccount',
+                            'in',
+                            'RetailAccountRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'retailAccount',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'residentialDevice',
+                            'in',
+                            'ResidentialDeviceRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'residentialDevice',
                             'isNull',
                             null
                         ]
