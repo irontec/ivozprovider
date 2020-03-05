@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,5 +19,26 @@ class CountryDoctrineRepository extends ServiceEntityRepository implements Count
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Country::class);
+    }
+
+    /**
+     * @param string $countryCode
+     * @param string|null $code
+     * @return CountryInterface|null
+     */
+    public function findOneByCountryCode(string $countryCode, string $code = null)
+    {
+        $criteria = [
+            'countryCode' => $countryCode,
+        ];
+
+        if ($code) {
+            $criteria['code'] = $code;
+        }
+
+        /** @var CountryInterface | null $response */
+        $response = $this->findOneBy($criteria);
+
+        return $response;
     }
 }
