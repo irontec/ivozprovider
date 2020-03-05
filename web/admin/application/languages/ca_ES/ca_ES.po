@@ -125,6 +125,11 @@ msgstr "Configuració avançada"
 msgid "Advanced Setting, read carefully"
 msgstr "Configuració avançada, llegeix amb cura"
 
+msgid "Alias"
+msgid_plural "Aliases"
+msgstr[0] "Alias"
+msgstr[1] "Aliases"
+
 msgid "All"
 msgstr "Tots"
 
@@ -1029,6 +1034,9 @@ msgstr[1] "Fitxers per reproduir"
 
 msgid "File imported"
 msgstr "Fitxer importat"
+
+msgid "File imported successfully"
+msgstr "Fitxer importat correctament"
 
 msgid "File partially imported"
 msgstr "Fitxer parcialment importat"

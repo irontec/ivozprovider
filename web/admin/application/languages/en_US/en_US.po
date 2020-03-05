@@ -120,6 +120,11 @@ msgstr "Advanced Configuration"
 msgid "Advanced Setting, read carefully"
 msgstr "Advanced Setting, read carefully"
 
+msgid "Alias"
+msgid_plural "Aliases"
+msgstr[0] "Alias"
+msgstr[1] "Aliases"
+
 msgid "All"
 msgstr "All"
 
@@ -1016,6 +1021,9 @@ msgstr[1] "Files for play"
 
 msgid "File imported"
 msgstr "File imported"
+
+msgid "File imported successfully"
+msgstr "File imported successfully"
 
 msgid "File partially imported"
 msgstr "File partially imported"
