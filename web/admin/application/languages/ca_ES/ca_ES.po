@@ -175,6 +175,11 @@ msgstr "Hi ha hagut un error: comprova el format i contingut dels fitxers."
 msgid "Announce"
 msgstr "Anuncia"
 
+msgid "Antiflood banned IP"
+msgid_plural "Antiflood banned IPs"
+msgstr[0] "IP bloqueada antiflood"
+msgstr[1] "IPs bloqueadas antiflood"
+
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "IP de confiança per l'antiflood"
@@ -249,6 +254,11 @@ msgstr "Balanç modificat satisfactòriament"
 msgid "Balance operations"
 msgstr "Operacions de balanç"
 
+msgid "Banned IP address"
+msgid_plural "Banned IP addresses"
+msgstr[0] "Dirección IP bloqueda"
+msgstr[1] "Direcciones IP bloqueadas"
+
 msgid "Basic Configuration"
 msgstr "Configuració bàsica"
 
@@ -272,6 +282,9 @@ msgstr "Llista negra"
 
 msgid "Block"
 msgstr "Bloquejar"
+
+msgid "Blocker"
+msgstr "Bloqueador"
 
 msgid "Body"
 msgstr "Cos"
@@ -1236,6 +1249,14 @@ msgstr[1] "Grups de salt"
 msgid "IP Address"
 msgstr "Adreça IP"
 
+msgid "IP address"
+msgstr "Adreça IP"
+
+msgid "IP filter blocked address"
+msgid_plural "IP filter blocked addresses"
+msgstr[0] "Bloqueo filtrado por IP"
+msgstr[1] "Bloqueos filtrado por IP"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP o nom de domini (port amb ':')"
 
@@ -1457,6 +1478,9 @@ msgstr "Última notificació enviada"
 
 msgid "Last provision date"
 msgstr "Última data de provisió"
+
+msgid "Last time banned"
+msgstr "Último bloqueo"
 
 msgid "Lastname"
 msgstr "Cognom"
