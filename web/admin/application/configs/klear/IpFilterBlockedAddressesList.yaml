@@ -1,0 +1,37 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: ipFilterBlockedAddressList_screen
+  screens: &ipFilterBlockedAddress_screensLink
+    ipFilterBlockedAddressList_screen: &ipFilterBlockedAddressList_screenLink
+      controller: list
+      forcedValues:
+        <<: *forcedBrand
+      pagination:
+        items: 100
+      order:
+        field:
+        - BannedAddress.lastTimeBanned desc
+      <<: *BannedAddresses
+      class: ui-silk-door
+      title: _("List of %s %2s", ngettext('Banned IP address', 'Banned IP addresses', 0), "[format| (%parent%)]")
+      rawCondition: "BannedAddress.blocker = 'ipfilter'"
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/views/ipfilter_blocked_addresses.html"
+      fields: &ipFilterBlockedAddress_fieldsLink
+        blacklist:
+          blocker: true
+          description: true
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -15,6 +15,10 @@ mappers:
         modelFile: BalanceNotifications,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification'
     }
+  - &BannedAddresses {
+    modelFile: BannedAddresses,
+    entity: 'Ivoz\\Provider\\Domain\\Model\\BannedAddress\\BannedAddress'
+  }
   - &BillableCalls {
         modelFile: BillableCalls,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall'
