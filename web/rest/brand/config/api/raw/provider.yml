@@ -192,14 +192,7 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-      - and:
-        - brand:
-            eq: "user.getBrand().getId()"
-        - company:
-            isNull: ~
-      - or:
-        - inheritedOrNull:
-            callCsvScheduler: 'Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler'
+        raw: 'FALSE'
     swagger_context:
       required:
       - brand

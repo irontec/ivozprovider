@@ -8,7 +8,7 @@ Feature: Update call CSV reports
     Given I add Company Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/call_csv_reports/1" with body:
+    And I send a "PUT" request to "/call_csv_reports/1" with body:
     """
       {
           "inDate": "2019-06-01 02:00:00",

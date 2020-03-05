@@ -56,31 +56,7 @@ class CallCsvReportTest extends KernelTestCase
 
         $this->assertEquals(
             $accessControl,
-            [
-                [
-                    'and' => [
-                        [
-                            'company',
-                            'eq',
-                            'user.getCompany().getId()'
-                        ],
-                    ]
-                ],
-                [
-                    'or' => [
-                        [
-                            'callCsvScheduler',
-                            'in',
-                            'CallCsvSchedulerRepository([["company","eq","user.getCompany().getId()"],["brand","eq",null]])'
-                        ],
-                        [
-                            'callCsvScheduler',
-                            'isNull',
-                            null
-                        ]
-                    ]
-                ]
-            ]
+            ['FALSE']
         );
     }
 }
