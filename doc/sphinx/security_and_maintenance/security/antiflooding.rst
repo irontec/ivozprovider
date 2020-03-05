@@ -12,6 +12,8 @@ interval.
 .. warning:: **IPs are not blocked permanently**, they are allowed again as soon as their incoming request don't exceed the limit
          on upcoming time interval.
 
+.. tip:: :ref:`Antiflood banned IPs` shows a list of addresses that have been banned at some point.
+
 Current configuration parameters are:
 
 - **Sampling time interval**: 2 seconds.
