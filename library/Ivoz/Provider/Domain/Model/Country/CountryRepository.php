@@ -7,5 +7,10 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface CountryRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param string $countryCode
+     * @param string|null $code
+     * @return CountryInterface|null
+     */
+    public function findOneByCountryCode(string $countryCode, string $code = null);
 }

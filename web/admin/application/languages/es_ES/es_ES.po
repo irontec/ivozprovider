@@ -124,6 +124,11 @@ msgstr "Configuración Avanzada"
 msgid "Advanced Setting, read carefully"
 msgstr "Opciones avanzadas, leer cuidadosamente"
 
+msgid "Alias"
+msgid_plural "Aliases"
+msgstr[0] "Alias"
+msgstr[1] "Aliases"
+
 msgid "All"
 msgstr "Todos"
 
@@ -1032,6 +1037,9 @@ msgstr[1] "Ficheros convertidos"
 
 msgid "File imported"
 msgstr "Fichero importado"
+
+msgid "File imported successfully"
+msgstr "Fichero importado correctamente"
 
 msgid "File partially imported"
 msgstr "Fichero parcialmente importado"
