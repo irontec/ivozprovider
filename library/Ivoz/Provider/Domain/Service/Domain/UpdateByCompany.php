@@ -50,6 +50,11 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
      */
     public function execute(CompanyInterface $company)
     {
+        $notVpbx = $company->getType() !== CompanyInterface::TYPE_VPBX;
+        if ($notVpbx) {
+            return;
+        }
+
         $name = $company->getDomainUsers();
 
         // Empty domain field, do nothing
