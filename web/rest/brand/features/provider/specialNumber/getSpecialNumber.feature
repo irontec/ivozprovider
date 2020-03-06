@@ -18,13 +18,15 @@ Feature: Retrieve special numbers
               "number": "016",
               "disableCDR": 1,
               "id": 1,
-              "country": 68
+              "country": 68,
+              "global": true
           },
           {
               "number": "091",
               "disableCDR": 1,
               "id": 2,
-              "country": 68
+              "country": 68,
+              "global": false
           }
       ]
     """
@@ -58,6 +60,7 @@ Feature: Retrieve special numbers
                   "ca": "Europa",
                   "it": "Europe"
               }
-          }
+          },
+          "global": false
       }
     """
