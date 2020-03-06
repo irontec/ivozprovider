@@ -20,6 +20,20 @@ class NotificationTemplate extends NotificationTemplateAbstract implements Notif
         return parent::getChangeSet();
     }
 
+    protected function sanitizeValues()
+    {
+        $notNew = !$this->isNew();
+        $brandHasChanged = $this->hasChanged('brandId');
+
+        if ($notNew && $brandHasChanged) {
+            $errorMsg = $this->getBrand()
+                ? 'Unable to convert a global notification template into a brand notification template'
+                : 'Unable to convert a brand notification template into a global notification template';
+
+            throw new \DomainException($errorMsg);
+        }
+    }
+
     /**
      * Get id
      * @codeCoverageIgnore
