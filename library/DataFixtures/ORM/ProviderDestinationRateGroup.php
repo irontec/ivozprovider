@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\Name;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\Description;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\File;
 
 class ProviderDestinationRateGroup extends Fixture implements DependentFixtureInterface
 {
@@ -31,6 +32,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
             $this->setName(new Name('Standard', 'Standard', 'Standard', 'Standard'));
             $this->setDescription(new Description('', '', '', ''));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setFile(new File(null, null, null, null));
         })->call($item1);
 
         $this->addReference('_reference_ProviderDestinationRateGroup1', $item1);
@@ -45,6 +47,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
             $this->setName(new Name('Fallback', 'Fallback', 'Fallback', 'Fallback'));
             $this->setDescription(new Description('', '', '', ''));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setFile(new File(null, null, null, null));
         })->call($item2);
 
         $this->addReference('_reference_ProviderDestinationRateGroup2', $item2);
