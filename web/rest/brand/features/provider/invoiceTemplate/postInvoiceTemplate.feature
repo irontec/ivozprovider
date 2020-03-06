@@ -29,7 +29,8 @@ Feature: Create invoice templates
           "template": "body",
           "templateHeader": "header",
           "templateFooter": "footer",
-          "id": 3
+          "id": 3,
+          "global": false
       }
     """
 
@@ -48,6 +49,7 @@ Feature: Create invoice templates
           "template": "body",
           "templateHeader": "header",
           "templateFooter": "footer",
-          "id": 3
+          "id": 3,
+          "global": false
       }
     """
