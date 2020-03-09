@@ -140,3 +140,39 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract:
           nullable: true
           onDelete: set null
       orphanRemoval: false
+    user:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    fax:
+      targetEntity: \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        faxId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    friend:
+      targetEntity: \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        friendId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
