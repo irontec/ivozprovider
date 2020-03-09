@@ -59,7 +59,6 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             return;
         }
 
-
         $inDate = $callCsvReport->getInDate();
         $outDate = $callCsvReport->getOutDate();
 
