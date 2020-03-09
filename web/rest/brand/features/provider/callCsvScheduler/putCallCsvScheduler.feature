@@ -17,10 +17,15 @@ Feature: Update call CSV scheduler
           "callDirection": "outbound",
           "email": "something@domain.net",
           "nextExecution": "2019-12-02 09:00:00",
-          "ddi": 1,
+          "callCsvNotificationTemplate": 1,
+          "ddi": null,
           "carrier": 1,
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """
     Then the response status code should be 200
@@ -39,10 +44,17 @@ Feature: Update call CSV scheduler
           "nextExecution": "2019-12-02 09:00:00",
           "id": 1,
           "company": null,
-          "callCsvNotificationTemplate": null,
-          "ddi": "~",
+          "callCsvNotificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1
+          },
+          "ddi": null,
           "carrier": "~",
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """

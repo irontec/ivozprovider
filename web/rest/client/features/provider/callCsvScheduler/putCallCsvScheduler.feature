@@ -40,6 +40,9 @@ Feature: Update call CSV scheduler
           "callCsvNotificationTemplate": null,
           "ddi": "~",
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """

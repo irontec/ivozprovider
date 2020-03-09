@@ -49,6 +49,9 @@ Feature: Retrieve call CSV scheduler
           "callCsvNotificationTemplate": null,
           "ddi": null,
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """
