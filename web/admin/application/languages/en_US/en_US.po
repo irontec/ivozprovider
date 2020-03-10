@@ -170,6 +170,11 @@ msgstr "An error occurred: check files format and content."
 msgid "Announce"
 msgstr "Announce"
 
+msgid "Antiflood banned IP"
+msgid_plural "Antiflood banned IPs"
+msgstr[0] "Antiflood banned IP"
+msgstr[1] "Antiflood banned IPs"
+
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "Antiflood trusted IP"
@@ -244,6 +249,11 @@ msgstr "Balance modified successfully"
 msgid "Balance operations"
 msgstr "Balance operations"
 
+msgid "Banned IP address"
+msgid_plural "Banned IP addresses"
+msgstr[0] "Banned IP address"
+msgstr[1] "Banned IP addresses"
+
 msgid "Basic Configuration"
 msgstr "Basic Configuration"
 
@@ -267,6 +277,9 @@ msgstr "Black Lists"
 
 msgid "Block"
 msgstr "Block"
+
+msgid "Blocker"
+msgstr "Blocker"
 
 msgid "Body"
 msgstr "Body"
@@ -1223,6 +1236,14 @@ msgstr[1] "Hunt Groups"
 msgid "IP Address"
 msgstr "IP address"
 
+msgid "IP address"
+msgstr "IP address"
+
+msgid "IP filter blocked address"
+msgid_plural "IP filter blocked addresses"
+msgstr[0] "IP filter blocked address"
+msgstr[1] "IP filter blocked addresses"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP or domain name (port with ':')"
 
@@ -1444,6 +1465,9 @@ msgstr "Last notification sent on"
 
 msgid "Last provision date"
 msgstr "Last provision date"
+
+msgid "Last time banned"
+msgstr "Last time banned"
 
 msgid "Lastname"
 msgstr "Lastname"

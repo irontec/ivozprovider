@@ -177,6 +177,11 @@ msgstr ""
 msgid "Announce"
 msgstr "Annuncio"
 
+msgid "Antiflood banned IP"
+msgid_plural "Antiflood banned IPs"
+msgstr[0] "Antiflood banned IP"
+msgstr[1] "Antiflood banned IPs"
+
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "Antiflood trusted IP"
@@ -251,6 +256,11 @@ msgstr "Saldo modificato correttamente"
 msgid "Balance operations"
 msgstr "Operazioni sul Saldo"
 
+msgid "Banned IP address"
+msgid_plural "Banned IP addresses"
+msgstr[0] "Banned IP address"
+msgstr[1] "Banned IP addresses"
+
 msgid "Basic Configuration"
 msgstr "Configurazione di base"
 
@@ -274,6 +284,9 @@ msgstr "Black Lists"
 
 msgid "Block"
 msgstr "Blocco"
+
+msgid "Blocker"
+msgstr "Blocker"
 
 msgid "Body"
 msgstr "Corpo"
@@ -1242,6 +1255,14 @@ msgstr[1] "Gruppi di Chiamata"
 msgid "IP Address"
 msgstr "IP Address"
 
+msgid "IP address"
+msgstr "IP address"
+
+msgid "IP filter blocked address"
+msgid_plural "IP filter blocked addresses"
+msgstr[0] "IP filter blocked address"
+msgstr[1] "IP filter blocked addresses"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP o nome di dominio (porta con ':')"
 
@@ -1463,6 +1484,9 @@ msgstr "Ultima notifica inviata il"
 
 msgid "Last provision date"
 msgstr "Ultima data provisioning"
+
+msgid "Last time banned"
+msgstr "Last time banned"
 
 msgid "Lastname"
 msgstr "Cognome"

@@ -5,6 +5,7 @@
 #include PricingPlansRelCompaniesList.yaml
 #include RatingProfilesList.yaml
 #include KamUsersAddressList.yaml
+#include IpFilterBlockedAddressesList.yaml
 
 production:
   main:
@@ -34,6 +35,7 @@ production:
           screens:
             companiesEdit_screen: ${auth.acls.Companies.update}
             kamUsersAddressList_screen: true
+            ipFilterBlockedAddressList_screen: true
             administratorsList_screen: true
             ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
           dialogs:
@@ -376,6 +378,13 @@ production:
     kamUsersAddressEdit_screen:
       <<: *kamUsersAddressEdit_screenLink
       filterField: Company
+
+    #bannedAddress:
+    ipFilterBlockedAddressList_screen:
+      <<: *ipFilterBlockedAddressList_screenLink
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
 
   dialogs: &companies_dialogsLink
     companiesDel_dialog: &companiesDel_dialogLink

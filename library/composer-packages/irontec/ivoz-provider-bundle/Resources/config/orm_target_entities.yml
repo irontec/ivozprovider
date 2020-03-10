@@ -19,6 +19,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement
       Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface:
         Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification
+      Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressInterface:
+        Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress
       Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface:
         Ivoz\Provider\Domain\Model\BillableCall\BillableCall
       Ivoz\Provider\Domain\Model\Brand\BrandInterface:

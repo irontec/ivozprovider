@@ -69,6 +69,10 @@ production:
           title: ngettext('Antiflood trusted IP', 'Antiflood trusted IPs', 0)
           class: ui-silk-shield-go
           description: _("List of %s", ngettext('Trusted IP address', 'Trusted IP addresses', 0))
+        BannedAddressesList:
+          title: ngettext('Antiflood banned IP', 'Antiflood banned IPs', 0)
+          class: ui-silk-shield-delete
+          description: _("List of %s", ngettext('Banned IP address', 'Banned IP addresses', 0))
         TerminalManufacturersList:
           title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
           class: ui-silk-telephone-link
@@ -304,6 +308,10 @@ production:
               class: ui-silk-user
               description: _("List of %s", ngettext('User', 'Users', 0))
               showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
+            IpFilterBlockedAddressesList:
+              title: ngettext('IP filter blocked address', 'IP filter blocked addresses', 0)
+              class: ui-silk-door
+              description: _("List of %s", ngettext('IP filter blocked address', 'IP filter blocked addresses', 0))
     Admin:
       title: _("Client Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"

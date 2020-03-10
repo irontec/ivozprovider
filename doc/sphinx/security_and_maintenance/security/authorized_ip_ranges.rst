@@ -16,6 +16,9 @@ valid SIP credentials.
 .. error:: Once the filter has been activated you **MUST** add networks or
            valid IP addresses, otherwise, all the calls will be rejected.
 
+.. tip:: Addresses listed in :ref:`IP filter blocked addresses` gives a clue of legitimate sources that should be
+         added in **List of authorized sources** subsection.
+
 .. _roadwarrior_users:
 
 Roadwarrior users

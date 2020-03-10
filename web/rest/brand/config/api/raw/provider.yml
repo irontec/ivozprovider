@@ -44,6 +44,21 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
       - administrator
       - publicEntity
 
+Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: "FALSE"
+
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   itemOperations:
     get: ~
