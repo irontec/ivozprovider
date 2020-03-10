@@ -25,7 +25,8 @@ Feature: Create special numbers
           "number": "118",
           "disableCDR": 1,
           "id": 3,
-          "country": 68
+          "country": 68,
+          "global": false 
       }
     """
 
@@ -59,6 +60,7 @@ Feature: Create special numbers
                   "ca": "Europa",
                   "it": "Europe"
               }
-          }
+          },
+          "global": false
       }
     """

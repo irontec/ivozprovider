@@ -22,6 +22,7 @@ trait FixtureHelperTrait
     protected function sanitizeEntityValues(EntityInterface $entity)
     {
         $sanitizer = function () {
+            $this->initChangelog();
             $this->sanitizeValues();
         };
 

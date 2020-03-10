@@ -41,7 +41,8 @@ Feature: Update special numbers
                   "ca": "Europa",
                   "it": "Europe"
               }
-          }
+          },
+          "global": false
       }
     """
 

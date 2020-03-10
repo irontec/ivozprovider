@@ -16,11 +16,13 @@ Feature: Retrieve invoice templates
       [
           {
               "name": "Default",
-              "id": 1
+              "id": 1,
+              "global": false
           },
           {
               "name": "Generic",
-              "id": 2
+              "id": 2,
+              "global": true
           }
       ]
     """
@@ -40,6 +42,7 @@ Feature: Retrieve invoice templates
           "template": "Template",
           "templateHeader": "Template header",
           "templateFooter": "Template footer",
-          "id": 1
+          "id": 1,
+          "global": false
       }
     """
