@@ -30,20 +30,7 @@ Feature: Create hunt groups rel users
           "routeType": "user",
           "id": 3,
           "numberValue": null,
-          "huntGroup": {
-              "name": "testHuntGroup",
-              "description": "desc",
-              "strategy": "ringAll",
-              "ringAllTimeout": 10,
-              "noAnswerTargetType": null,
-              "noAnswerNumberValue": null,
-              "preventMissedCalls": 1,
-              "id": 1,
-              "noAnswerLocution": null,
-              "noAnswerExtension": null,
-              "noAnswerVoiceMailUser": null,
-              "noAnswerNumberCountry": null
-          },
+          "huntGroup": "~",
           "user": "~",
           "numberCountry": null
       }

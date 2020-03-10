@@ -40,6 +40,7 @@ production:
           noAnswerExtension: true
           noAnswerVoiceMailUser: true
           preventMissedCalls: true
+          allowCallForwards: true
       options:
         title: _("Options")
         screens:
@@ -67,9 +68,10 @@ production:
           fields:
             name: 6
             description: 6
+            preventMissedCalls: 5
+            allowCallForwards: 5
             strategy: 4
             ringAllTimeOut: 4
-            preventMissedCalls: 4
         group1:
           label: _("No answer configuration")
           colsPerRow: 6

@@ -128,6 +128,9 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "All"
 
+msgid "Allow Call Forwards"
+msgstr "Allow Call Forwards"
+
 msgid "Allow Client to remove recordings"
 msgstr "Allow Client to remove recordings"
 
@@ -2894,6 +2897,9 @@ msgstr "Weight"
 
 msgid "Welcome locution"
 msgstr "Welcome locution"
+
+msgid "When 'Yes', Users call forward settings will be followed."
+msgstr "When 'Yes', Users call forward settings will be followed."
 
 msgid ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "
