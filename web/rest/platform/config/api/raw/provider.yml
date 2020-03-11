@@ -45,6 +45,12 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
+Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
 Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   itemOperations:
     get: ~
