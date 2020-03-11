@@ -38,6 +38,7 @@ production:
           ratingPlanName: true
           destinationName: true
           carrierName: true
+          ddiProvider: true
           endpointType: true
           endpointId: true
         order:
@@ -74,6 +75,7 @@ production:
           ratingPlanName: true
           destinationName: true
           carrierName: true
+          ddiProvider: true
           invoice: true
           callid: true
       fixedPositions:
@@ -97,6 +99,7 @@ production:
             ratingPlanName: 6
             destinationName: 6
             carrierName: 6
+            ddiProvider: 6
             invoice: 6
         group2:
           label: _("Extra Information")

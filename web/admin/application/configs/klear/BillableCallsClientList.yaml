@@ -37,6 +37,7 @@ production:
           invoice: true
           callid: true
           carrierName: true
+          ddiProvider: true
           cost: true
           destinationName: true
           ratingPlanName: true
@@ -69,6 +70,7 @@ production:
           brand: true
           company: true
           carrierName: true
+          ddiProvider: true
           invoice: true
           cost: true
         order:
