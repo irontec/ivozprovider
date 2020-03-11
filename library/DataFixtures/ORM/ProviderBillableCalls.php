@@ -29,7 +29,10 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                     '017cc7c8-eb38-4bbd-9318-524a274f7' . str_pad($i, 3, '0', STR_PAD_LEFT)
                 );
 
-                $startTime = new \DateTime('2019-01-01 08:00:00');
+                $startTime = new \DateTime(
+                    '2019-01-01 08:00:00',
+                    new \DateTimeZone('UTC')
+                );
                 $startTime->modify("+$i second");
 
                 $this->setStartTime($startTime);
@@ -46,6 +49,10 @@ class ProviderBillableCalls extends Fixture implements DependentFixtureInterface
                     $this->setTrunksCdr($fixture->getReference('_reference_KamTrunksCdr1'));
                     $this->setCarrier($fixture->getReference('_reference_ProviderCarrier2'));
                     $this->setInvoice($fixture->getReference('_reference_ProviderInvoice1'));
+                }
+
+                if ($i < 2) {
+                    $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
                 }
             })->call($item);
 
