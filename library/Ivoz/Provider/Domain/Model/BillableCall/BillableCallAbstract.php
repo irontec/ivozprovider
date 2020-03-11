@@ -125,6 +125,11 @@ abstract class BillableCallAbstract
      */
     protected $ddi;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    protected $ddiProvider;
+
 
     use ChangelogTrait;
 
@@ -230,6 +235,7 @@ abstract class BillableCallAbstract
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
             ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
             ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
         $self->initChangelog();
@@ -270,7 +276,8 @@ abstract class BillableCallAbstract
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
             ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
-            ->setDdi($fkTransformer->transform($dto->getDdi()));
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
 
@@ -306,7 +313,8 @@ abstract class BillableCallAbstract
             ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
             ->setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::entityToDto(self::getTrunksCdr(), $depth))
-            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth));
+            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth))
+            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
     /**
@@ -336,7 +344,8 @@ abstract class BillableCallAbstract
             'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null
+            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
+            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -939,6 +948,30 @@ abstract class BillableCallAbstract
     public function getDdi()
     {
         return $this->ddi;
+    }
+
+    /**
+     * Set ddiProvider
+     *
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider | null
+     *
+     * @return static
+     */
+    protected function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get ddiProvider
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    public function getDdiProvider()
+    {
+        return $this->ddiProvider;
     }
 
     // @codeCoverageIgnoreEnd
