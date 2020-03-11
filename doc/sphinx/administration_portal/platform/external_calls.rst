@@ -50,7 +50,11 @@ Each entry shows this information:
 
     Carrier
         Shows which :ref:`Carrier <carriers>` was used for
-        each call.
+        each outbound call.
+
+    DDI Provider
+        Shows which :ref:`DDI Provider <DDI Providers>` was used for
+        each inbound call.
 
     Invoice
         Shows if a call is already included in any :ref:`Invoice <invoices>`.
