@@ -192,3 +192,15 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
           nullable: true
           onDelete: set null
       orphanRemoval: false
+    ddiProvider:
+      targetEntity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiProviderId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
