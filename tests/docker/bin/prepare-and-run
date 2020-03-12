@@ -6,5 +6,17 @@ mv /opt/library-vendor /opt/irontec/ivozprovider/library/vendor
 # Update composer dependencies
 /opt/irontec/ivozprovider/library/bin/composer-install --no-interaction --prefer-dist --no-progress --dev
 
+# Prepare tests databases
+/opt/irontec/ivozprovider/schema/bin/prepare-test-db
+
+mkdir -m 777 -p /opt/irontec/ivozprovider/web/rest/platform/var/cache/test
+cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/ivozprovider/web/rest/platform/var/cache/test/db.sqlite.back
+
+mkdir -m 777 -p /opt/irontec/ivozprovider/web/rest/brand/var/cache/test
+cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/ivozprovider/web/rest/brand/var/cache/test/db.sqlite.back
+
+mkdir -m 777 -p /opt/irontec/ivozprovider/web/rest/client/var/cache/test
+cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/ivozprovider/web/rest/client/var/cache/test/db.sqlite.back
+
 # Run requested command
 exec $*
