@@ -5,8 +5,11 @@ set -e
 export SYMFONY_ENV=test
 
 pushd /opt/irontec/ivozprovider/web/rest/platform
-    # Prepare database
-    ./bin/prepare-test-db
+
+    if [ "$1" != "--skip-db" ]; then
+        # Prepare dataset
+        bin/prepare-test-db
+    fi
 
     # Run tests
     vendor/bin/behat -f progress -o std -f junit -o results
