@@ -156,7 +156,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api-spec'
-                        sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api'
+                        sh '/opt/irontec/ivozprovider/web/rest/platform/bin/test-api --skip-db'
                     }
                     post {
                         success { notifySuccessGithub() }
@@ -173,7 +173,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api-spec'
-                        sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api'
+                        sh '/opt/irontec/ivozprovider/web/rest/brand/bin/test-api --skip-db'
                     }
                     post {
                         success { notifySuccessGithub() }
@@ -190,7 +190,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec'
-                        sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api'
+                        sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api --skip-db'
                     }
                     post {
                         success { notifySuccessGithub() }
@@ -206,7 +206,7 @@ pipeline {
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/schema/bin/test-orm'
+                        sh '/opt/irontec/ivozprovider/schema/bin/test-orm --skip-db'
                     }
                     post {
                         success { notifySuccessGithub() }

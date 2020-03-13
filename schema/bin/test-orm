@@ -3,8 +3,12 @@
 set -e
 
 pushd /opt/irontec/ivozprovider/schema
-    ./bin/prepare-test-db
+
+    if [ "$1" != "--skip-db" ]; then
+        # Prepare dataset
+        bin/prepare-test-db
+    fi
 
     # Run tests
-    SYMFONY_PHPUNIT_VERSION=6.5.14 vendor/bin/simple-phpunit $*
+    SYMFONY_PHPUNIT_VERSION=6.5.14 vendor/bin/simple-phpunit
 popd
