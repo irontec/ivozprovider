@@ -3,3 +3,8 @@ imports:
 
 api_platform:
     description: 'Platform REST API'
+    version: 2.15
+    collection:
+        pagination:
+            # The maximum number of items per page.
+            maximum_items_per_page: 10000

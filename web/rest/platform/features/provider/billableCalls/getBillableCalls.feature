@@ -90,7 +90,7 @@ Feature: Retrieve billable calls
     And I send a "GET" request to "billable_calls?_pagination=false"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "text/csv; charset=utf-8"
-    And the response should be equal to
+    And the streamed response should be equal to:
     """
 callid,startTime,duration,caller,callee,cost,price,endpointType,endpointId,direction,id,brand,company,carrier,invoice,ddi
 017cc7c8-eb38-4bbd-9318-524a274f7000,"2019-01-01 09:00:00",0,+34633646464,+34633656565,,1,,,outbound,1,1,1,2,1,1
@@ -194,3 +194,88 @@ callid,startTime,duration,caller,callee,cost,price,endpointType,endpointId,direc
 017cc7c8-eb38-4bbd-9318-524a274f7098,"2019-01-01 09:01:38",0,+34633646464,+34633656565,,1,,,outbound,99,1,1,1,,1
 017cc7c8-eb38-4bbd-9318-524a274f7099,"2019-01-01 09:01:39",0,+34633646464,+34633656565,,1,,,outbound,100,1,1,1,,1
 """
+
+
+  Scenario: Retrieve unpaginated billable call json list
+    Given I add Authorization header
+    When I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "billable_calls?startTime%5Bbefore%5D=2019-01-01%2009%3A00%3A03&_pagination=false"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the streamed JSON should be equal to:
+    """
+    [
+       {
+          "callid":"017cc7c8-eb38-4bbd-9318-524a274f7000",
+          "startTime":"2019-01-01 09:00:00",
+          "duration":0,
+          "caller":"+34633646464",
+          "callee":"+34633656565",
+          "cost":null,
+          "price":1,
+          "endpointType":null,
+          "endpointId":null,
+          "direction":"outbound",
+          "id":1,
+          "brand":1,
+          "company":1,
+          "carrier":2,
+          "invoice":1,
+          "ddi":1
+       },
+       {
+          "callid":"017cc7c8-eb38-4bbd-9318-524a274f7001",
+          "startTime":"2019-01-01 09:00:01",
+          "duration":0,
+          "caller":"+34633646464",
+          "callee":"+34633656565",
+          "cost":null,
+          "price":1,
+          "endpointType":null,
+          "endpointId":null,
+          "direction":"outbound",
+          "id":2,
+          "brand":1,
+          "company":1,
+          "carrier":1,
+          "invoice":null,
+          "ddi":1
+       },
+       {
+          "callid":"017cc7c8-eb38-4bbd-9318-524a274f7002",
+          "startTime":"2019-01-01 09:00:02",
+          "duration":0,
+          "caller":"+34633646464",
+          "callee":"+34633656565",
+          "cost":null,
+          "price":1,
+          "endpointType":null,
+          "endpointId":null,
+          "direction":"outbound",
+          "id":3,
+          "brand":1,
+          "company":1,
+          "carrier":1,
+          "invoice":null,
+          "ddi":1
+       },
+       {
+          "callid":"017cc7c8-eb38-4bbd-9318-524a274f7003",
+          "startTime":"2019-01-01 09:00:03",
+          "duration":0,
+          "caller":"+34633646464",
+          "callee":"+34633656565",
+          "cost":null,
+          "price":1,
+          "endpointType":null,
+          "endpointId":null,
+          "direction":"outbound",
+          "id":4,
+          "brand":1,
+          "company":1,
+          "carrier":1,
+          "invoice":null,
+          "ddi":1
+       }
+    ]
+    """
