@@ -90,7 +90,7 @@ Feature: Retrieve billable calls
     And I send a "GET" request to "billable_calls?_pagination=false"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "text/csv; charset=utf-8"
-    And the response should be equal to
+    And the streamed response should be equal to:
     """
 callid,startTime,duration,caller,callee,cost,price,endpointType,endpointId,direction,id,brand,company,carrier,invoice,ddi
 017cc7c8-eb38-4bbd-9318-524a274f7000,"2019-01-01 09:00:00",0,+34633646464,+34633656565,,1,,,outbound,1,1,1,2,1,1
@@ -202,7 +202,7 @@ callid,startTime,duration,caller,callee,cost,price,endpointType,endpointId,direc
     And I send a "GET" request to "billable_calls?startTime%5Bbefore%5D=2019-01-01%2009%3A00%3A03&_pagination=false"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+    And the streamed JSON should be equal to:
     """
     [
        {

@@ -380,7 +380,7 @@ Feature: Retrieve countries
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "countries?_pagination=false"
     Then the response status code should be 200
-    And the response should be in JSON
+    And the streamed response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON node "root" should have 249 elements
-    And the JSON node "root[0].code" should be equal to "AD"
+    And the streamed JSON node "root" should have 249 elements
+    And the streamed JSON node "root[0].code" should be equal to "AD"

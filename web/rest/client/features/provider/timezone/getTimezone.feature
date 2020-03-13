@@ -165,7 +165,7 @@ Feature: Retrieve timezones
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "timezones?_pagination=false"
     Then the response status code should be 200
-    And the response should be in JSON
+    And the streamed response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON node "root" should have 416 elements
-    And the JSON node "root[0].tz" should be equal to "Europe/Andorra"
+    And the streamed JSON node "root" should have 416 elements
+    And the streamed JSON node "root[0].tz" should be equal to "Europe/Andorra"
