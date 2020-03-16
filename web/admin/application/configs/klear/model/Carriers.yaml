@@ -65,7 +65,7 @@ production:
           '0':
             title: _("No")
             visualFilter:
-              show: [balance, calculateCost, currency]
+              show: [balance, calculateCost]
               hide: []
           '1':
             title: _("Yes")

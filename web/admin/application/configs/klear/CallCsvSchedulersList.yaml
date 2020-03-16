@@ -31,6 +31,13 @@ production:
           retailAccount: true
           residentialDevice: true
           companyType: true
+          vpbx: true
+          endpointType: true
+          user: true
+          fax: true
+          friend: true
+          retail: true
+          residential: true
         order: &callCsvSchedulers_orderLink
           id: true
           name: true
@@ -67,6 +74,7 @@ production:
       forcedValues:
         self::brand: null
         <<: *forcedCompany
+        self::vpbx: ${auth.companyId}
       shortcutOption: N
       fields: &callCsvSchedulersNew_fields
         blacklist: &callCsvSchedulersNew_blacklist
@@ -78,6 +86,10 @@ production:
           carrier: true
           companyType: true
           ddi: ${auth.companyWholesale}
+          endpointType: ${auth.companyNotVPBX}
+          user: ${auth.companyNotVPBX}
+          fax: ${auth.companyNotVPBX}
+          friend: ${auth.companyNotVPBX}
         order:
           name: 1
           companyType: 1
@@ -90,9 +102,13 @@ production:
           callDirection: 1
           carrier: 1
           company: 1
+          retail: 1
+          residential: 1
+          vpbx: 1
           retailAccount: 1
           residentialDevice: 1
           ddi: 1
+          endpointType: 1
       fixedPositions: &callCsvSchedulersFixedPositions_Link
         group0:
           label: _("Basic Information")
@@ -109,9 +125,17 @@ production:
             callDirection: 1
             carrier: 1
             company: 1
+            vpbx: 1
+            retail: 1
+            residential: 1
+            endpointType: 1
+            endpointType: 1
             retailAccount: 1
             residentialDevice: 1
             ddi: 1
+            user: 1
+            fax: 1
+            friend: 1
         group3:
           label: _("Time Information")
           colsPerRow: 2

@@ -138,4 +138,25 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
+
+    /**
+     * Get user
+     *
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     */
+    public function getUser();
+
+    /**
+     * Get fax
+     *
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
+     */
+    public function getFax();
+
+    /**
+     * Get friend
+     *
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    public function getFriend();
 }

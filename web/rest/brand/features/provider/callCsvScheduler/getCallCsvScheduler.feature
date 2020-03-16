@@ -51,6 +51,10 @@ Feature: Retrieve call CSV scheduler
           "ddi": null,
           "carrier": null,
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """

@@ -98,36 +98,39 @@ production:
       attributes:
         data-autofilter-select-by-data:
           company: type
-      required: true
+          vpbx: type
+          retail: type
+          residential: type
+      required: false
       source:
         data: inline
         values:
-          '_NULL_':
+          '__NULL__':
             title: _('All')
             visualFilter:
               show: ["callCsvNotificationTemplate"]
-              hide: ["company", "residentialDevice", "retailAccount", "ddi"]
+              hide: ["company", "retail", "residential", "vpbx", "residentialDevice", "retailAccount", "ddi", "user", "fax", "friend", "endpointType"]
           vpbx:
             title: _('vPBX')
             visualFilter:
-              show: ["company"]
-              hide: ["residentialDevice", "retailAccount", "callCsvNotificationTemplate"]
+              show: ["vpbx"]
+              hide: ["retail", "residential", "company", "residentialDevice", "retailAccount", "callCsvNotificationTemplate"]
           retail:
             title: _('Retail')
             visualFilter:
-              show: ["company", "retailAccount"]
-              hide: ["residentialDevice", "callCsvNotificationTemplate"]
+              show: ["retail"]
+              hide: ["company", "vpbx", "residential", "residentialDevice", "callCsvNotificationTemplate", "user", "fax", "friend", "endpointType", "retailAccount"]
           residential:
             title: _('Residential')
             visualFilter:
-              show: ["company", "residentialDevice"]
-              hide: ["retailAccount", "callCsvNotificationTemplate"]
+              show: ["residential"]
+              hide: ["company", "vpbx", "retail", "retailAccount", "callCsvNotificationTemplate", "user", "fax", "friend", "endpointType", "residentialDevice"]
           wholesale:
             title: _('Wholesale')
             visualFilter:
               show: ["company"]
-              hide: ["retailAccount", "residentialDevice", "callCsvNotificationTemplate"]
-    company:
+              hide: ["vpbx", "retail", "residential", "retailAccount", "residentialDevice", "callCsvNotificationTemplate", "user", "fax", "friend", "endpointType", "ddi"]
+    company: &company_link
       title: ngettext('Client', 'Clients', 1)
       type: select
       required: true
@@ -139,7 +142,7 @@ production:
       source:
         data: mapper
         'null': " "
-        config:
+        config: &company_source_config_link
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
@@ -150,16 +153,6 @@ production:
             Company.name: asc
           extraDataAttributes:
             type: type
-          visualFilter:
-            name:
-              __default__:
-                show:
-                - ddi
-                hide: []
-              'null':
-                show: []
-                hide:
-                - ddi
     callCsvNotificationTemplate:
       title: ngettext('Notification template', 'Notification templates', 1)
       type: select
@@ -239,6 +232,163 @@ production:
             company: companyId
           order:
             ResidentialDevice.name: asc
+    user:
+      title: _('User')
+      type: select
+      required: true
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_BrandCompanies
+          fieldName:
+            fields:
+            - name
+            - lastname
+            template: '%name% %lastname%'
+          extraDataAttributes:
+            company: companyId
+          order:
+            User.name: asc
+    fax:
+      title: _('Fax')
+      type: select
+      required: true
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Fax\Fax
+          filterClass: IvozProvider_Klear_Filter_BrandCompanies
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+          extraDataAttributes:
+            company: companyId
+          order:
+            Fax.name: asc
+    friend:
+      title: _('Friend')
+      type: select
+      required: true
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Friend\Friend
+          filterClass: IvozProvider_Klear_Filter_BrandCompanies
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+          extraDataAttributes:
+            company: companyId
+          order:
+            Friend.name: asc
+    vpbx:
+      <<: *company_link
+      attributes:
+        data-autofilter-select-by-data:
+          ddi: company
+          user: company
+          fax: company
+          friend: company
+      source:
+        data: mapper
+        'null': " "
+        config:
+          <<: *company_source_config_link
+          visualFilter:
+            name:
+              inventada: true
+              __default__:
+                show:
+                - ddi
+                - endpointType
+                hide: []
+              'null':
+                show: []
+                hide:
+                - ddi
+                - endpointType
+                - user
+                - fax
+                - friend
+    retail:
+      <<: *company_link
+      attributes:
+        data-autofilter-select-by-data:
+          ddi: company
+          retailAccount: company
+      source:
+        data: mapper
+        'null': " "
+        config:
+          <<: *company_source_config_link
+          visualFilter:
+            name:
+              __default__:
+                show:
+                - ddi
+                - retailAccount
+                hide: []
+              'null':
+                show: []
+                hide:
+                - ddi
+                - retailAccount
+    residential:
+      <<: *company_link
+      attributes:
+        data-autofilter-select-by-data:
+          ddi: company
+          residentialDevice: company
+      source:
+        data: mapper
+        'null': " "
+        config:
+          <<: *company_source_config_link
+          visualFilter:
+            name:
+              __default__:
+                show:
+                - ddi
+                - residentialDevice
+                hide: []
+              'null':
+                show: []
+                hide:
+                - ddi
+                - residentialDevice
+    endpointType:
+      title: _('Endpoint type')
+      type: select
+      required: false
+      source:
+        data: inline
+        values:
+          '_NULL_':
+            title: _('All')
+            visualFilter:
+              show: []
+              hide: ["user", "fax", "friend"]
+          user:
+            title: _('User')
+            visualFilter:
+              show: ["user"]
+              hide: ["fax", "friend"]
+          fax:
+            title: _('Fax')
+            visualFilter:
+              show: ["fax"]
+              hide: ["user", "fax", "friend"]
+          friend:
+            title: _('Friend')
+            visualFilter:
+              show: ["friend"]
+              hide: ["user", "fax", "friend"]
 staging:
 staging:
   _extends: production

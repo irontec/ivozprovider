@@ -22,7 +22,10 @@ class CsvExporter
         'price',
         'ddi',
         'endpointType',
-        'endpointId'
+        'endpointId',
+        'userId',
+        'faxId',
+        'friendId',
     ];
 
     const BRAND_PROPERTIES = [
@@ -42,6 +45,9 @@ class CsvExporter
         'ratingPlanName',
         'destinationName',
         'ddi',
+        'userId',
+        'faxId',
+        'friendId',
     ];
 
     protected $apiClient;
@@ -106,17 +112,10 @@ class CsvExporter
             $criteria['carrier'] = $carrier->getId();
         }
 
-        $retailAccount = $scheduler->getRetailAccount();
-        if (!empty($retailAccount)) {
-            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_RETAILACCOUNT;
-            $criteria['endpointId'] = $retailAccount->getId();
-        }
-
-        $residentialDevice = $scheduler->getResidentialDevice();
-        if (!empty($residentialDevice)) {
-            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_RESIDENTIALDEVICE;
-            $criteria['endpointId'] = $residentialDevice->getId();
-        }
+        $criteria = $this->addEndpointType(
+            $scheduler,
+            $criteria
+        );
 
         $endpoint =
             self::API_ENDPOINT
@@ -135,5 +134,50 @@ class CsvExporter
         );
 
         return $response->getBody()->__toString();
+    }
+
+    private function addEndpointType(CallCsvSchedulerInterface $scheduler, array $criteria): array
+    {
+        $retailAccount = $scheduler->getRetailAccount();
+        if (!empty($retailAccount)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_RETAILACCOUNT;
+            $criteria['endpointId'] = $retailAccount->getId();
+
+            return $criteria;
+        }
+
+        $residentialDevice = $scheduler->getResidentialDevice();
+        if (!empty($residentialDevice)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_RESIDENTIALDEVICE;
+            $criteria['endpointId'] = $residentialDevice->getId();
+
+            return $criteria;
+        }
+
+        $user = $scheduler->getUser();
+        if (!empty($user)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_USER;
+            $criteria['endpointId'] = $user->getId();
+
+            return $criteria;
+        }
+
+        $fax = $scheduler->getFax();
+        if (!empty($fax)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_FAX;
+            $criteria['endpointId'] = $fax->getId();
+
+            return $criteria;
+        }
+
+        $friend = $scheduler->getFriend();
+        if (!empty($friend)) {
+            $criteria['endpointType'] = BillableCallInterface::ENDPOINTTYPE_FRIEND;
+            $criteria['endpointId'] = $friend->getId();
+
+            return $criteria;
+        }
+
+        return $criteria;
     }
 }

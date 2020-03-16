@@ -90,6 +90,21 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     */
+    private $user;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     */
+    private $fax;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     */
+    private $friend;
+
 
     use DtoNormalizer;
 
@@ -123,7 +138,10 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'ddiId' => 'ddi',
             'carrierId' => 'carrier',
             'retailAccountId' => 'retailAccount',
-            'residentialDeviceId' => 'residentialDevice'
+            'residentialDeviceId' => 'residentialDevice',
+            'userId' => 'user',
+            'faxId' => 'fax',
+            'friendId' => 'friend'
         ];
     }
 
@@ -148,7 +166,10 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'ddi' => $this->getDdi(),
             'carrier' => $this->getCarrier(),
             'retailAccount' => $this->getRetailAccount(),
-            'residentialDevice' => $this->getResidentialDevice()
+            'residentialDevice' => $this->getResidentialDevice(),
+            'user' => $this->getUser(),
+            'fax' => $this->getFax(),
+            'friend' => $this->getFriend()
         ];
     }
 
@@ -648,6 +669,144 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     *
+     * @return static
+     */
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
+
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Fax\FaxDto $fax
+     *
+     * @return static
+     */
+    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxDto $fax = null)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setFaxId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Fax\FaxDto($id)
+            : null;
+
+        return $this->setFax($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getFaxId()
+    {
+        if ($dto = $this->getFax()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendDto $friend
+     *
+     * @return static
+     */
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendDto $friend = null)
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     */
+    public function getFriend()
+    {
+        return $this->friend;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setFriendId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            : null;
+
+        return $this->setFriend($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
             return $dto->getId();
         }
 

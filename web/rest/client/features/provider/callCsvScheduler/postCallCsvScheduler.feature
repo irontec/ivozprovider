@@ -20,7 +20,10 @@ Feature: Create call CSV scheduler
           "callCsvNotificationTemplate": null,
           "ddi": 1,
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """
     Then the response status code should be 201
@@ -41,7 +44,10 @@ Feature: Create call CSV scheduler
           "callCsvNotificationTemplate": null,
           "ddi": 1,
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """
 
@@ -67,6 +73,9 @@ Feature: Create call CSV scheduler
           "callCsvNotificationTemplate": null,
           "ddi": "~",
           "retailAccount": null,
-          "residentialDevice": null
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """

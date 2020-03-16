@@ -20,6 +20,7 @@ production:
         <<: *forcedBrand
       fields: &callCsvSchedulersBrand_fields
         <<: *callCsvSchedulers_fieldsLink
+
     callCsvSchedulersNew_screen:
       <<: *callCsvSchedulersNew_screenLink
       forcedValues:
@@ -34,6 +35,10 @@ production:
           carrier: false
           companyType: false
           ddi: false
+          endpointType: false
+          user: false
+          fax: false
+          friend: false
       fixedPositions: &callCsvSchedulersNew_fixedPositions
         group0:
           label: _("Basic Information")
@@ -61,10 +66,17 @@ production:
           label: _("Client filters")
           colsPerRow: 2
           fields:
+            vpbx: 1
             company: 1
+            retail: 1
+            residential: 1
+            ddi: 1
+            endpointType: 1
             retailAccount: 1
             residentialDevice: 1
-            ddi: 1
+            user: 1
+            fax: 1
+            friend: 1
 
     callCsvSchedulersEdit_screen:
       <<: *callCsvSchedulersEdit_screenLink
@@ -79,6 +91,10 @@ production:
           residentialDevice: false
           carrier: false
           ddi: false
+          endpointType: false
+          user: false
+          fax: false
+          friend: false
       fixedPositions:
         <<: *callCsvSchedulersNew_fixedPositions
   dialogs:

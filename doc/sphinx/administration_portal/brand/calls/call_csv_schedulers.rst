@@ -46,6 +46,15 @@ When adding a new definition, these fields are shown:
     Retail account
         Only for *Client type: retail*, allows selecting one specific retail account of chosen client.
 
+    User
+        Only for *Client type: vpbx*, allows selecting one specific user of chosen client.
+
+    Fax
+        Only for *Client type: vpbx*, allows selecting one specific fax of chosen client.
+
+    Friend
+        Only for *Client type: vpbx*, allows selecting one specific friend of chosen client.
+
 
 Once created, some new fields and subsections are accesible:
 

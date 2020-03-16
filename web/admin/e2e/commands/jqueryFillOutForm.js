@@ -20,6 +20,8 @@ exports.command = function(formData, callback) {
                 fieldType = 'select';
             }
 
+            element.removeProp('disabled');
+
             switch(fieldType) {
                 case 'select':
 

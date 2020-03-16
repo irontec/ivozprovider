@@ -1,4 +1,4 @@
-*******************
+    *******************
 Call CSV schedulers
 *******************
 
@@ -24,7 +24,17 @@ When adding a new definition, these fields are shown:
         Defines which calls should be included attending to its direction (inbound, outbound, both).
 
     DDI
-        Allows selecting client's one specific DDI.
+        Allows selecting a client's specific DDI.
+
+    User
+        Allows selecting a client's specific user.
+
+    Fax
+        Allows selecting a client's specific fax.
+
+    Friend
+        Allows selecting a client's specific friend.
+
 
 Once created, some new fields and subsections are accesible:
 
