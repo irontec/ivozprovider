@@ -49,7 +49,8 @@ Feature: Update billable calls
           "company": 1,
           "carrier": 1,
           "invoice": null,
-          "ddi": 1
+          "ddi": 1,
+          "ddiProvider": 1
       }
     """
 

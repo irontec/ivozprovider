@@ -125,6 +125,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
      */
     private $ddi;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    private $ddiProvider;
+
 
     use DtoNormalizer;
 
@@ -165,7 +170,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'ratingPlanGroupId' => 'ratingPlanGroup',
             'invoiceId' => 'invoice',
             'trunksCdrId' => 'trunksCdr',
-            'ddiId' => 'ddi'
+            'ddiId' => 'ddi',
+            'ddiProviderId' => 'ddiProvider'
         ];
     }
 
@@ -197,7 +203,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'ratingPlanGroup' => $this->getRatingPlanGroup(),
             'invoice' => $this->getInvoice(),
             'trunksCdr' => $this->getTrunksCdr(),
-            'ddi' => $this->getDdi()
+            'ddi' => $this->getDdi(),
+            'ddiProvider' => $this->getDdiProvider()
         ];
     }
 
@@ -863,6 +870,52 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     public function getDdiId()
     {
         if ($dto = $this->getDdi()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     *
+     * @return static
+     */
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    public function getDdiProvider()
+    {
+        return $this->ddiProvider;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiProviderId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            : null;
+
+        return $this->setDdiProvider($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiProviderId()
+    {
+        if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
         }
 

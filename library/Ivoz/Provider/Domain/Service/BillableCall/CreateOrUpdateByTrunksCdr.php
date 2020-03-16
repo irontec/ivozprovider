@@ -65,6 +65,8 @@ class CreateOrUpdateByTrunksCdr
                 $trunksCdrDto->getCompanyId()
             )->setCarrierId(
                 $trunksCdrDto->getCarrierId()
+            )->setDdiProviderId(
+                $trunksCdrDto->getDdiProviderId()
             )->setCarrierName(
                 $carrierName
             )->setCallid(

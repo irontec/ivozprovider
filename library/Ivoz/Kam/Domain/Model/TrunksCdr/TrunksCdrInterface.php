@@ -168,4 +168,11 @@ interface TrunksCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getDdi();
+
+    /**
+     * Get ddiProvider
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    public function getDdiProvider();
 }

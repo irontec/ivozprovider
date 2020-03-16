@@ -41,6 +41,7 @@ class CsvExporter
         'company',
         'cost',
         'carrier',
+        'ddiProvider',
         'carrierName',
         'ratingPlanName',
         'destinationName',

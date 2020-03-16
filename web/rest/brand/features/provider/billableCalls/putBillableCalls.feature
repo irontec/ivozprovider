@@ -49,7 +49,8 @@ Feature: Update billable calls
           "destination": null,
           "ratingPlanGroup": null,
           "invoice": null,
-          "ddi": 1
+          "ddi": 1,
+          "ddiProvider": 1
       }
     """
 

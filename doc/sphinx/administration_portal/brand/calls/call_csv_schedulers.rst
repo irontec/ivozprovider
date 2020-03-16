@@ -117,9 +117,37 @@ These are the fields of the generated CSV files:
     carrierId
         Only for outbound calls, internal ID of used carrier
 
+    ddiProviderId
+        Only for inbound calls, internal ID of used DDI Provider
+
     ddiId
         Client DDI to which call will be assigned (callee for inbound calls, caller for outbound calls). Empty for
         wholesale clients.
 
 .. warning:: *endpointType* in vPBX clients will be empty for inbound calls. Outbound calls will have one value among
              **User, Fax, Friend**.
+
+DDI Provider detection
+======================
+
+DDI Provider detection deserves a deeper explanation as is not as unambiguous as Carrier (carrier is the one chosen by
+routing logic, no doubt here).
+
+DDI Provider detection logic is directly related to underlying DDI detection logic.
+
+When IvozProvider receives an INVITE to KamTrunks from an outside entity:
+
+#. Source IP is compared against all DDI Providers addresses (from all brands).
+
+    - If none matches, call is rejected.
+
+#. DDI is transformated in a loop using matching DDI Providers transformation rules (the lower id, the first).
+
+#. As soon as transformated DDI matches a DDI (in E.164) within the same brand, loop ends and call is accepted.
+
+    - If loop ends without any match, call is rejected.
+
+The DDI Provider that allowed that match is saved as DDI Provider for that inbound all, except:
+
+- Matched DDI is linked to another DDI Provider that also matches source IP address. If this happens, linked DDI Provider
+  is saved instead.
