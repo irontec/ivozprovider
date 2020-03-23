@@ -44,6 +44,12 @@ class WsServer extends AbstractWsServer
         HttpServer $server,
         HttpRequest $req
     ) {
+        echo "Connection open: {$req->fd}\n";
+
+        $server->push(
+            $req->fd,
+            'Challenge'
+        );
     }
 
     protected function onMessage(
@@ -54,6 +60,19 @@ class WsServer extends AbstractWsServer
 
     protected function onClose(HttpServer $server, int $fd)
     {
+        echo "connection close: #" . $fd ."\n";
+        $subscriber = $this->subscribers[$fd] ?? null;
+        if (!$subscriber) {
+            echo "Unknown subscriber #" . $fd . "\n";
+            return;
+        }
+
+        $this
+            ->controlRedisClient
+            ->publish(
+                Subscriber::UNSUBSCRIBE_CHANNEL,
+                $subscriber->getCoroutineId()
+            );
     }
 
     ///////////////////////////////////////////
