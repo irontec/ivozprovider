@@ -2,11 +2,13 @@
 
 namespace Services;
 
+use Model\RedisConf;
 use Model\Subscriber;
 use Feeder\AbstractCall;
 use Swoole\Coroutine;
-use Swoole\Websocket\Frame as WsFrame;
-use Swoole\Http\Server as HttpServer;
+use Swoole\Coroutine\Redis;
+use Swoole\WebSocket\Server;
+use Swoole\WebSocket\Frame;
 use Swoole\Http\Request as HttpRequest;
 
 class WsServer extends AbstractWsServer
@@ -41,7 +43,7 @@ class WsServer extends AbstractWsServer
     }
 
     protected function onOpen(
-        HttpServer $server,
+        Server $server,
         HttpRequest $req
     ) {
         echo "Connection open: {$req->fd}\n";
@@ -53,12 +55,39 @@ class WsServer extends AbstractWsServer
     }
 
     protected function onMessage(
-        HttpServer $server,
-        WsFrame $frame
+        Server $server,
+        Frame $frame
     ) {
+        $fd = $frame->fd;
+        echo "<< Received message: {$frame->data}\n";
+
+        $data = json_decode(
+            $frame->data,
+            true
+        );
+
+        $isAuthValid =
+            $data
+            && isset($data['auth']);
+
+        $isRegisterValid =
+            $data
+            && isset($data['register']);
+
+        if ($isAuthValid && $isRegisterValid) {
+            $this->sendCurrentStateAndUpdates(
+                $server,
+                $fd
+            );
+        } else {
+            $server->push(
+                $frame->fd,
+                'Challenge'
+            );
+        }
     }
 
-    protected function onClose(HttpServer $server, int $fd)
+    protected function onClose(Server $server, int $fd)
     {
         echo "connection close: #" . $fd ."\n";
         $subscriber = $this->subscribers[$fd] ?? null;
@@ -78,9 +107,6 @@ class WsServer extends AbstractWsServer
     ///////////////////////////////////////////
     /// Worker
     ///////////////////////////////////////////
-    /**
-     * @param $sentinel
-     */
     private function subscribeToSentinel(Sentinel $sentinel)
     {
         Coroutine::create(function () use ($sentinel) {
@@ -100,10 +126,7 @@ class WsServer extends AbstractWsServer
         });
     }
 
-    /**
-     * @param $redisMaster
-     */
-    private function initRedisControlClients($redisMaster)
+    private function initRedisControlClients(RedisConf $redisMaster)
     {
         Coroutine::create(function () use ($redisMaster) {
 
@@ -149,7 +172,7 @@ class WsServer extends AbstractWsServer
         $event = $payload['Event'];
 
         if ($event === AbstractCall::HANG_UP) {
-            echo "[DEL] " . $channel . "\n";
+            echo "[DEL] " . $channel . "\n\n";
             $this
                 ->controlRedisClient
                 ->del(
@@ -160,7 +183,7 @@ class WsServer extends AbstractWsServer
         }
 
         if ($event === AbstractCall::CALL_SETUP) {
-            echo "[SETEX] " . $channel . "\n";
+            echo "[SETEX] " . $channel . "\n" . json_encode($payload) . "\n\n";
             $this
                 ->controlRedisClient
                 ->setEx(
@@ -168,7 +191,6 @@ class WsServer extends AbstractWsServer
                     self::REDIS_KEYS_TTL,
                     json_encode($payload)
                 );
-            echo json_encode($payload) . "\n\n";
 
             return;
         }
@@ -185,13 +207,11 @@ class WsServer extends AbstractWsServer
         );
 
         if (!$data) {
-            echo "Skiping " . $channel . "\n\n";
-
             return;
         }
 
         $data['Event'] = $event;
-        echo "[SETEX] " . $channel . "\n";
+        echo "[SETEX] " . $channel . "\n" . $event . "\n\n";
         $this
             ->controlRedisClient
             ->setEx(
@@ -199,7 +219,116 @@ class WsServer extends AbstractWsServer
                 self::REDIS_KEYS_TTL,
                 json_encode($data)
             );
+    }
 
-        echo "Event: ". $event . "\n\n";
+    ///////////////////////////////////////////
+    /// Client
+    ///////////////////////////////////////////
+    private function sendCurrentStateAndUpdates(Server $server, $fd)
+    {
+        Coroutine::create(function () use ($server, $fd) {
+
+            $redisClient = $this
+                ->redisPool
+                ->get();
+
+            $mask = 'trunks:*';
+
+            $this->sendCurrentState(
+                $redisClient,
+                $mask,
+                $server,
+                $fd
+            );
+
+            $subscriber = new Subscriber(
+                $redisClient,
+                $mask,
+                Coroutine::getuid()
+            );
+
+            echo "Register subscriber #" . $fd . "\n";
+            $this->subscribers[$fd] = $subscriber;
+
+            $this->forwardStateUpdates(
+                $subscriber,
+                $server,
+                $fd
+            );
+        });
+    }
+
+    private function sendCurrentState(
+        Redis $redisClient,
+        string $mask,
+        Server $server,
+        $fd
+    ) {
+        $keys = $redisClient->keys($mask);
+        $currentState = $redisClient->mGet($keys);
+        echo "Sending current state (". $mask .") to #" . $fd . "\n";
+
+        foreach ($currentState as $payload) {
+            $server->push(
+                $fd,
+                $payload
+            );
+        }
+    }
+
+    private function forwardStateUpdates(
+        Subscriber $subscriber,
+        Server $server,
+        $fd
+    ) {
+        $redisClient = $subscriber->getRedisClient();
+
+        while ($msg = $redisClient->recv()) {
+            list(, , $command) = $msg;
+            $argument = $msg [3] ?? null;
+
+            $unsubscribe =
+                $command == Subscriber::UNSUBSCRIBE_CHANNEL
+                && $argument === ((string)Coroutine::getuid());
+
+            if ($unsubscribe) {
+                echo "Unsubscribe #" . $fd . "\n";
+
+                unset($this->subscribers[$fd]);
+                unset($subscriber);
+                $this->redisPool->push(
+                    $redisClient
+                );
+                break;
+            }
+
+            if (!$argument) {
+                continue;
+            }
+
+            if (!isset($server->connections[$fd])) {
+                echo "Connection not found for #" . $fd . "\n";
+                break;
+            }
+
+            $payload = json_decode($argument, true);
+
+            $forward =
+                $payload
+                && in_array(
+                    $payload['Event'] ?? null,
+                    AbstractCall::SIGNIFICANT_CALL_EVENTS,
+                    true
+                );
+
+            if (!$forward) {
+                continue;
+            }
+
+            $server->push(
+                $fd,
+                $argument
+            );
+        }
     }
 }
