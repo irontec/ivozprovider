@@ -27,6 +27,11 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
       mappedBy: brand
       cascade: ['persist']
       orphanRemoval: true
+    relProxyTrunks:
+      targetEntity: Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface
+      mappedBy: brand
+      cascade: ['persist']
+      orphanRemoval: true
     residentialDevices:
       targetEntity: Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
       mappedBy: brand
