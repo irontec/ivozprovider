@@ -1582,12 +1582,24 @@ msgstr "Cargar fichero"
 msgid "Loading"
 msgstr "Cargando"
 
+msgid "Local address used in SIP signalling with this DDI Provider."
+msgstr "IP local utilizada en la señalización SIP con este proveedor de DDIs."
+
+msgid "Local address used in SIP signalling with this carrier."
+msgstr "IP local utilizada en la señalización SIP con este operador."
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
 msgstr ""
 "La legislación vigente obliga a avisar a los participantes antes de grabar, "
 "actúa con responsabilidad."
+
+msgid "Local socket"
+msgstr "Dirección local"
+
+msgid "Local socket cannot be empty."
+msgstr "La dirección local no puede estar vacía."
 
 msgid "Locales"
 msgstr "Localización"
@@ -2153,7 +2165,7 @@ msgid "Provisioning Info"
 msgstr "Provisioning"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxies Trunks"
+msgid_plural "Proxy Trunks"
 msgstr[0] "Proxy de Salida"
 msgstr[1] "Proxies de Salida"
 
@@ -2161,6 +2173,9 @@ msgid "Proxy Users"
 msgid_plural "Proxies Users"
 msgstr[0] "Proxy de Usuarios"
 msgstr[1] "Proxies de Usuarios"
+
+msgid "ProxyTrunks"
+msgstr "Proxy de Salida"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepago"
