@@ -55,6 +55,26 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
+    proxyTrunk:
+      title: _('Local socket')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk
+          filterClass: IvozProvider_Klear_Filter_ProxyTrunks
+          fieldName:
+            fields:
+              - ip
+            template: '%ip%'
+          order:
+            ProxyTrunk.id: asc
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Local address used in SIP signalling with this carrier.")
+        label: _("Need help?")
     externallyRated:
       title: _('Externally rated')
       type: select

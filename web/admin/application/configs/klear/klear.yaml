@@ -122,9 +122,9 @@ production:
               class: ui-silk-server
               description: _("List of %s", ngettext('Proxy Users', 'Proxies Users', 0))
             ProxyTrunksList:
-              title: ngettext('Proxy Trunks', 'Proxies Trunks', 1)
+              title: ngettext('Proxy Trunks', 'Proxy Trunks', 1)
               class: ui-silk-server
-              description: _("List of %s", ngettext('Proxy Trunks', 'Proxies Trunks', 0))
+              description: _("List of %s", ngettext('Proxy Trunks', 'Proxy Trunks', 0))
             MediaRelaySetsList:
               title: ngettext('Media relay set', 'Media relay sets', 0)
               class: ui-silk-bell-go

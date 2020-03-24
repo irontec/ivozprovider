@@ -233,6 +233,25 @@ production:
                   - invoice.RegistryData
           order:
             Feature.name: asc
+    relProxyTrunks:
+      title: _('ProxyTrunks')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          extraDataAttributes:
+            feature: id
+          relation: \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand
+          relationProperty: brand
+          relatedProperty: proxyTrunk
+          related: \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk
+          relatedFieldName:
+            fields:
+            - name
+            - ip
+            template: '%name% (%ip%)'
+          order:
+            ProxyTrunk.name: asc
     voicemailNotificationTemplate:
       title: ngettext('Voicemail Notification', 'Voicemail Notifications', 1)
       type: select

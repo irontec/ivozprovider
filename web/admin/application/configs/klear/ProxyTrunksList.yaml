@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *ProxyTrunks
-      title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxy Trunks', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html"
@@ -36,7 +36,7 @@ production:
       parentOptionCustomizer:
       - IvozProvider_Klear_Options_OptionsCustomizer
       label: false
-      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxy Trunks', 1), "[format| (%item%)]")
       fixedPositions: &proxyTrunksFixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -51,7 +51,7 @@ production:
       parentOptionCustomizer:
       - IvozProvider_Klear_Options_OptionsCustomizer
       label: false
-      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxy Trunks', 1), "[format| (%item%)]")
       fixedPositions:
         <<: *proxyTrunksFixedPositionsLink
       fields:

@@ -22,7 +22,7 @@ production:
         data: inline
         values:
           'proxyusers': ngettext('Proxy Users', 'Proxies Users', 1)
-          'proxytrunks': ngettext('Proxy Trunks', 'Proxies Trunks', 1)
+          'proxytrunks': ngettext('Proxy Trunks', 'Proxy Trunks', 1)
     description:
       title: _('Description')
       type: text
