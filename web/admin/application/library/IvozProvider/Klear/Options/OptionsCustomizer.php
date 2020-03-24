@@ -2,6 +2,7 @@
 
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use \Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 
 class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model_Interfaces_ParentOptionCustomizer
 {
@@ -73,6 +74,13 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "mediaRelaySetsEdit_screen":
             case "mediaRelaySetsDel_dialog":
                 $show = $this->_isRemovable();
+                break;
+            case "proxyTrunksEditMain_screen":
+                $show = $this->_isMainProxyTrunks();
+                break;
+            case "proxyTrunksEdit_screen":
+            case "proxyTrunksDel_dialog":
+                $show = !$this->_isMainProxyTrunks();
                 break;
             case "domainsEdit_screen":
             case "domainsDel_dialog":
@@ -163,6 +171,12 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
     {
         $name = $this->_parentModel->getName();
         return $name != 'Default';
+    }
+
+    protected function _isMainProxyTrunks()
+    {
+        $id = $this->_parentModel->getId();
+        return $id == ProxyTrunk::MAIN_ADDRESS_ID;
     }
 
     protected function _isEditable()
