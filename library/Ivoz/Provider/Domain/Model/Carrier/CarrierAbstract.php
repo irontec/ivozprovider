@@ -53,6 +53,11 @@ abstract class CarrierAbstract
      */
     protected $currency;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    protected $proxyTrunk;
+
 
     use ChangelogTrait;
 
@@ -145,6 +150,7 @@ abstract class CarrierAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
         ;
 
         $self->initChangelog();
@@ -171,7 +177,8 @@ abstract class CarrierAbstract
             ->setCalculateCost($dto->getCalculateCost())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
 
 
 
@@ -193,7 +200,8 @@ abstract class CarrierAbstract
             ->setCalculateCost(self::getCalculateCost())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
+            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
+            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
     }
 
     /**
@@ -209,7 +217,8 @@ abstract class CarrierAbstract
             'calculateCost' => self::getCalculateCost(),
             'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
+            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
+            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -425,6 +434,30 @@ abstract class CarrierAbstract
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Set proxyTrunk
+     *
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk | null
+     *
+     * @return static
+     */
+    protected function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk = null)
+    {
+        $this->proxyTrunk = $proxyTrunk;
+
+        return $this;
+    }
+
+    /**
+     * Get proxyTrunk
+     *
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    public function getProxyTrunk()
+    {
+        return $this->proxyTrunk;
     }
 
     // @codeCoverageIgnoreEnd

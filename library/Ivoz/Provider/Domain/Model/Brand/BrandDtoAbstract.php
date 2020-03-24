@@ -151,6 +151,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $relFeatures = null;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandDto[] | null
+     */
+    private $relProxyTrunks = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto[] | null
      */
     private $residentialDevices = null;
@@ -245,6 +250,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
             'relFeatures' => $this->getRelFeatures(),
+            'relProxyTrunks' => $this->getRelProxyTrunks(),
             'residentialDevices' => $this->getResidentialDevices(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'matchLists' => $this->getMatchLists(),
@@ -1018,6 +1024,26 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
+    }
+
+    /**
+     * @param array $relProxyTrunks
+     *
+     * @return static
+     */
+    public function setRelProxyTrunks($relProxyTrunks = null)
+    {
+        $this->relProxyTrunks = $relProxyTrunks;
+
+        return $this;
+    }
+
+    /**
+     * @return array | null
+     */
+    public function getRelProxyTrunks()
+    {
+        return $this->relProxyTrunks;
     }
 
     /**
