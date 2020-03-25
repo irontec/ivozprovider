@@ -5,8 +5,11 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 
 /**
  * DdiProviderDoctrineRepository
@@ -45,5 +48,35 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
             $result,
             'id'
         );
+    }
+
+    /**
+     * @param BrandInterface $brand
+     * @param ProxyTrunkInterface $proxyTrunks
+     * @return array
+     */
+    public function findByBrandAndProxyTrunks(BrandInterface $brand, ProxyTrunkInterface $proxyTrunks)
+    {
+        /** @var DdiProviderInterface[] $response */
+        $response = $this->findBy([
+            'brand' => $brand,
+            'proxyTrunk' => $proxyTrunks
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @param ProxyTrunkInterface $proxyTrunks
+     * @return array
+     */
+    public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks)
+    {
+        /** @var DdiProviderInterface[] $response */
+        $response = $this->findBy([
+            'proxyTrunk' => $proxyTrunks
+        ]);
+
+        return $response;
     }
 }
