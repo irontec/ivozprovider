@@ -34,9 +34,6 @@
         }
     },
     "autoload-dev": {
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ]
     },
     "config": {
         "sort-packages": true,
