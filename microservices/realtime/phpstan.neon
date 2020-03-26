@@ -1,0 +1,10 @@
+parameters:
+    autoload_directories:
+        - %currentWorkingDirectory%/library/vendor/swoole/ide-helper/output/namespace/
+    autoload_files:
+        - %currentWorkingDirectory%/library/vendor/swoole/ide-helper/output/namespace/Server.php
+        - %currentWorkingDirectory%/library/vendor/swoole/ide-helper/output/namespace/Http/Server.php
+        - %currentWorkingDirectory%/library/vendor/swoole/ide-helper/output/namespace/WebSocket/Server.php
+    ignoreErrors:
+        - '#RedisSentinel#'
+        - '#Constant SWOOLE.* not found#'
