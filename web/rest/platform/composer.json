@@ -39,9 +39,6 @@
         }
     },
     "autoload-dev": {
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ],
         "psr-4": {
             "Tests\\": "./tests"
         }
@@ -75,7 +72,7 @@
         "docteurklein/test-double-bundle": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^6.0",
-        "symfony/phpunit-bridge": "^3.0"
+        "symfony/phpunit-bridge": "4.1.12"
     },
     "scripts": {
         "symfony-scripts": [
