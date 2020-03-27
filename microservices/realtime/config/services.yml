@@ -24,3 +24,6 @@ services:
     arguments:
       $config: '%sentinels%'
       $logger: '@logger'
+
+  Services\JwtToken:
+    public: true

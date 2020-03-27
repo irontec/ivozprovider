@@ -5,6 +5,7 @@ namespace Services;
 use Model\RedisConf;
 use Model\Subscriber;
 use Feeder\AbstractCall;
+use Psr\Log\LoggerInterface;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Redis;
 use Swoole\WebSocket\Server;
@@ -13,6 +14,25 @@ use Swoole\Http\Request as HttpRequest;
 
 class WsServer extends AbstractWsServer
 {
+    private $jwtToken;
+
+    public function __construct(
+        string $host,
+        int $port,
+        array $config,
+        LoggerInterface $logger,
+        JwtToken $jwtToken
+    ) {
+        $this->jwtToken = $jwtToken;
+
+        parent::__construct(
+            $host,
+            $port,
+            $config,
+            $logger
+        );
+    }
+
     protected function onWorkerStart(
         Sentinel $sentinel,
         int $poolSize,
@@ -72,9 +92,20 @@ class WsServer extends AbstractWsServer
             true
         );
 
-        $isAuthValid =
-            $data
-            && isset($data['auth']);
+        $isAuthValid = false;
+        try {
+            $payload = $this->jwtToken->getPayload(
+                $data['auth'] ?? ''
+            );
+
+            $this->logger->info(
+                'User: ' . var_export($payload, true)
+            );
+
+            $isAuthValid = true;
+        } catch (\Exception $e) {
+            $this->logger->info($e->getMessage());
+        }
 
         $isRegisterValid =
             $data
