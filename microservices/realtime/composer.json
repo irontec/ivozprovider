@@ -47,6 +47,7 @@
     },
     "require": {
         "php": ">=7.0.19",
+        "irontec/ivoz-api-bundle": "^3.2",
         "irontec/ivoz-provider-bundle": "^2.0"
     },
     "require-dev": {
