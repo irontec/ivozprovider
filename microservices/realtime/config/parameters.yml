@@ -1,0 +1,11 @@
+parameters:
+    sentinels:
+      - {host: 'data.ivozprovider.local', port: '26379'}
+    ws_host: '0.0.0.0'
+    ws_port: 8443
+    ws_worker_num: 1
+
+    # per worker
+    # 3 at least because 2 are used by the service itself
+    redis_pool_size: 5
+    redis_db: 1

@@ -2,11 +2,15 @@
 
 namespace Services;
 
+use Psr\Log\LoggerInterface;
 use Swoole\Coroutine\Redis;
 use Swoole\Coroutine\Channel;
 
 class RedisPool
 {
+    /** @var LoggerInterface */
+    private $logger;
+
     /** @var Channel */
     private $pool;
 
@@ -20,7 +24,8 @@ class RedisPool
 
     public function __construct(
         int $poolSize = 5,
-        int $db
+        int $db,
+        LoggerInterface $logger
     ) {
         $this->pool = new Channel(
             $poolSize
@@ -28,6 +33,7 @@ class RedisPool
 
         $this->maxPoolSize = $poolSize;
         $this->db = $db;
+        $this->logger = $logger;
     }
 
     public function connect(
@@ -64,7 +70,9 @@ class RedisPool
         }
 
         if (!$this->pool->length()) {
-            echo "Waiting for available redis client\n";
+            $this->logger->info(
+                "Waiting for available redis client"
+            );
         }
 
         return $this
@@ -78,7 +86,9 @@ class RedisPool
             ->pool
             ->close();
 
-        echo "Redis pool closed\n";
+        $this->logger->info(
+            "Redis pool closed"
+        );
         $this->connected = false;
     }
 
@@ -100,7 +110,9 @@ class RedisPool
     private function appendClient(): bool
     {
         if (!$this->canIncreasePool()) {
-            echo "Current redis pool size has reached it's limit\n";
+            $this->logger->debug(
+                "Current redis pool size has reached it's limit"
+            );
             return false;
         }
 
@@ -113,7 +125,9 @@ class RedisPool
 
         $this->poolSize++;
 
-        echo "Current Redis pool size is " . $this->poolSize . "\n";
+        $this->logger->debug(
+            "Current Redis pool size is " . $this->poolSize
+        );
 
         $this
             ->pool

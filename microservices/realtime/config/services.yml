@@ -2,10 +2,25 @@
 # http://symfony.com/doc/current/service_container.html
 imports:
   - { resource: "@CoreBundle/Resources/config/services.yml" }
-  - { resource: "@CoreBundle/Resources/config/logger.yml" }
+  - { resource: "logger.yml" }
 
 services:
   _defaults:
     autowire: true
     autoconfigure: true
     public: true
+
+  Services\WsServer:
+    public: true
+    arguments:
+      $host: '%ws_host%'
+      $port: '%ws_port%'
+      $config:
+        worker_num: '%ws_worker_num%'
+
+  Services\Sentinel:
+    public: true
+    factory:   ['Services\Sentinel', 'fromConfigArray']
+    arguments:
+      $config: '%sentinels%'
+      $logger: '@logger'

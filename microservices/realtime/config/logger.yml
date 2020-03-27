@@ -1,0 +1,6 @@
+monolog:
+ handlers:
+   syslog_handler:
+     type: syslog
+     level: info
+     ident: php.realtime

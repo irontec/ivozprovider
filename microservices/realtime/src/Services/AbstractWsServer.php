@@ -3,6 +3,7 @@
 namespace Services;
 
 use Model\Subscriber;
+use Psr\Log\LoggerInterface;
 use Swoole\Coroutine\Redis;
 use Swoole\WebSocket\Server;
 use Swoole\WebSocket\Frame;
@@ -27,6 +28,9 @@ abstract class AbstractWsServer
     /** @var Subscriber[] */
     protected $subscribers = [];
 
+    /** @var LoggerInterface */
+    protected $logger;
+
     /**
      * WsServer constructor.
      * @param string $host
@@ -36,7 +40,8 @@ abstract class AbstractWsServer
     public function __construct(
         string $host,
         int $port,
-        array $config
+        array $config,
+        LoggerInterface $logger
     ) {
         $this->server = new Server(
             $host,
@@ -59,6 +64,8 @@ abstract class AbstractWsServer
             ->set(
                 $baseConfig + $config
             );
+
+        $this->logger = $logger;
     }
 
     public function __destruct()
@@ -71,13 +78,13 @@ abstract class AbstractWsServer
     }
 
     public function start(
-        array $sentinelsConf,
+        Sentinel $sentinel,
         int $redisPoolSize,
         int $redisDb
     ) {
         $this
             ->bindWorkerEvents(
-                $sentinelsConf,
+                $sentinel,
                 $redisPoolSize,
                 $redisDb
             );
@@ -98,7 +105,7 @@ abstract class AbstractWsServer
     }
 
     protected function bindWorkerEvents(
-        array $sentinelsConf,
+        Sentinel $sentinel,
         int $redisPoolSize,
         int $redisDb
     ) {
@@ -106,9 +113,9 @@ abstract class AbstractWsServer
             ->server
             ->on(
                 'workerStart',
-                function () use ($sentinelsConf, $redisPoolSize, $redisDb) {
+                function () use ($sentinel, $redisPoolSize, $redisDb) {
                     $this->onWorkerStart(
-                        $sentinelsConf,
+                        $sentinel,
                         $redisPoolSize,
                         $redisDb
                     );
@@ -184,18 +191,22 @@ abstract class AbstractWsServer
 
     protected function onWorkerStop()
     {
-        echo "worker stop shutdown\n";
+        $this->logger->error(
+            'worker stop shutdown'
+        );
         $this->shutdown();
     }
 
     protected function onWorkerError()
     {
-        echo "worker error shutdown\n";
+        $this->logger->error(
+            'worker error shutdown'
+        );
         $this->shutdown();
     }
 
     abstract protected function onWorkerStart(
-        array $sentinelsConf,
+        Sentinel $sentinel,
         int $poolSize,
         int $db
     );
