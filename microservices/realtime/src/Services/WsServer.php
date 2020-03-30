@@ -15,15 +15,18 @@ use Swoole\Http\Request as HttpRequest;
 class WsServer extends AbstractWsServer
 {
     private $jwtToken;
+    private $registrationChannelResolver;
 
     public function __construct(
         string $host,
         int $port,
         array $config,
         LoggerInterface $logger,
-        JwtToken $jwtToken
+        JwtToken $jwtToken,
+        RegistrationChannelResolver $registrationChannelResolver
     ) {
         $this->jwtToken = $jwtToken;
+        $this->registrationChannelResolver = $registrationChannelResolver;
 
         parent::__construct(
             $host,
@@ -93,15 +96,21 @@ class WsServer extends AbstractWsServer
         );
 
         $isAuthValid = false;
-        $payload = [];
+        $tokenPayload = [];
 
         try {
-            $payload = $this->jwtToken->getPayload(
+            $tokenPayload = $this->jwtToken->getPayload(
                 $data['auth'] ?? ''
             );
 
+            $userInfo = sprintf(
+                'User: %s (%s) on #' . $fd,
+                $tokenPayload['username'],
+                $tokenPayload['roles'][0]
+            );
+
             $this->logger->info(
-                'User: ' . var_export($payload, true)
+                $userInfo
             );
 
             $isAuthValid = true;
@@ -111,14 +120,35 @@ class WsServer extends AbstractWsServer
             );
         }
 
-        $isRegisterValid =
-            $data
-            && isset($data['register']);
+        $registerChannel = null;
+        try {
+            $isRegisterValid =
+                $data
+                && isset($data['register']);
 
-        if ($isAuthValid && $isRegisterValid) {
+            if (!$isRegisterValid) {
+                throw new \Exception(
+                    'Register channel not found in payload'
+                );
+            }
+
+            $registerChannel = $this
+                ->registrationChannelResolver
+                ->criteriaToString(
+                    $tokenPayload,
+                    $data['register']
+                );
+        } catch (\Exception $e) {
+            $this->logger->info(
+                $e->getMessage()
+            );
+        }
+
+        if ($isAuthValid && $registerChannel) {
             $this->sendCurrentStateAndUpdates(
                 $server,
-                $fd
+                $fd,
+                $registerChannel
             );
         } else {
             $server->push(
@@ -279,20 +309,18 @@ class WsServer extends AbstractWsServer
     ///////////////////////////////////////////
     /// Client
     ///////////////////////////////////////////
-    private function sendCurrentStateAndUpdates(Server $server, $fd)
+    private function sendCurrentStateAndUpdates(Server $server, $fd, string $mask)
     {
         $server->push(
             $fd,
             'Subscribing'
         );
 
-        Coroutine::create(function () use ($server, $fd) {
+        Coroutine::create(function () use ($server, $fd, $mask) {
 
             $redisClient = $this
                 ->redisPool
                 ->get();
-
-            $mask = 'trunks:*';
 
             $this->sendCurrentState(
                 $redisClient,
@@ -327,7 +355,7 @@ class WsServer extends AbstractWsServer
         $fd
     ) {
         $keys = $redisClient->keys($mask);
-        $this->logger->debug(
+        $this->logger->info(
             "Sending current state (". $mask .") to #" . $fd
         );
 
