@@ -6,3 +6,6 @@ pushd /opt/irontec/ivozprovider/library
     ./bin/phpspec run --no-ansi
 popd
 
+pushd /opt/irontec/ivozprovider/microservices/realtime
+    ./bin/phpspec run --no-ansi
+popd
