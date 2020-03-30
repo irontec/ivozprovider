@@ -31,4 +31,29 @@ class DdiProviderRepositoryTest extends KernelTestCase
             $repository
         );
     }
+
+    public function it_finds_ids_by_brand_admin()
+    {
+        /** @var AdministratorRepository $adminRepository */
+        $adminRepository = $this
+            ->em
+            ->getRepository(Administrator::class);
+
+        $brandAdmin = $adminRepository->findBrandAdminByUsername(
+            'test_brand_admin'
+        );
+
+        /** @var DdiProviderRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(DdiProviderRepository::class);
+
+        $result = $repository->getDdiProviderIdsByBrandAdmin(
+            $brandAdmin
+        );
+
+        $this->assertNotEmpty(
+            $result
+        );
+    }
 }
