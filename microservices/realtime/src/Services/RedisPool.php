@@ -18,6 +18,7 @@ class RedisPool
     private $port;
     private $maxPoolSize;
     private $poolSize = 0;
+    private $waiting = 0;
     private $db;
 
     private $connected = false;
@@ -49,10 +50,6 @@ class RedisPool
         $this->host = $host;
         $this->port = $port;
 
-        while ($this->canIncreasePool()) {
-            $this->appendClient();
-        }
-
         $this->connected = true;
     }
 
@@ -67,6 +64,12 @@ class RedisPool
             throw new \RuntimeException(
                 'RedisPool is closed'
             );
+        }
+
+        if ($this->canIncreasePool()) {
+            $this->appendClient();
+        } else {
+            $this->waiting++;
         }
 
         if (!$this->pool->length()) {
@@ -98,8 +101,10 @@ class RedisPool
         unset($redis);
         $this->poolSize--;
 
-        $this
-            ->appendClient();
+        if ($this->waiting > 0) {
+            $this->waiting--;
+            $this->appendClient();
+        }
     }
 
     private function canIncreasePool()
@@ -121,12 +126,14 @@ class RedisPool
             $this->port
         );
 
-        $redisClient->select($this->db);
+        $redisClient->select(
+            $this->db
+        );
 
         $this->poolSize++;
 
-        $this->logger->debug(
-            "Current Redis pool size is " . $this->poolSize
+        $this->logger->info(
+            "Current Redis pool size is " . $this->poolSize . "/" . $this->maxPoolSize
         );
 
         $this
