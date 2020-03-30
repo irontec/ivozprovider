@@ -98,7 +98,7 @@ class Sentinel
             $this->sentinel->getPort()
         );
 
-        $this->logger->debug(
+        $this->logger->info(
             "Sentinel pSubscribe *"
         );
         $sentinelCo->pSubscribe(['']);

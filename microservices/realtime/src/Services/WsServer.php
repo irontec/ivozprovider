@@ -93,6 +93,8 @@ class WsServer extends AbstractWsServer
         );
 
         $isAuthValid = false;
+        $payload = [];
+
         try {
             $payload = $this->jwtToken->getPayload(
                 $data['auth'] ?? ''
@@ -104,7 +106,9 @@ class WsServer extends AbstractWsServer
 
             $isAuthValid = true;
         } catch (\Exception $e) {
-            $this->logger->info($e->getMessage());
+            $this->logger->info(
+                $e->getMessage()
+            );
         }
 
         $isRegisterValid =
@@ -277,6 +281,11 @@ class WsServer extends AbstractWsServer
     ///////////////////////////////////////////
     private function sendCurrentStateAndUpdates(Server $server, $fd)
     {
+        $server->push(
+            $fd,
+            'Subscribing'
+        );
+
         Coroutine::create(function () use ($server, $fd) {
 
             $redisClient = $this
@@ -318,11 +327,15 @@ class WsServer extends AbstractWsServer
         $fd
     ) {
         $keys = $redisClient->keys($mask);
-        $currentState = $redisClient->mGet($keys);
-
         $this->logger->debug(
             "Sending current state (". $mask .") to #" . $fd
         );
+
+        $currentState = $redisClient->mGet($keys);
+        if (false === $currentState) {
+            $this->logger->info('No call info found on redis');
+            return;
+        }
 
         foreach ($currentState as $payload) {
             $server->push(

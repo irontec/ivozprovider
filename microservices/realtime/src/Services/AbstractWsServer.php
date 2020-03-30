@@ -31,12 +31,6 @@ abstract class AbstractWsServer
     /** @var LoggerInterface */
     protected $logger;
 
-    /**
-     * WsServer constructor.
-     * @param string $host
-     * @param int $port
-     * @param array $config
-     */
     public function __construct(
         string $host,
         int $port,
@@ -57,6 +51,8 @@ abstract class AbstractWsServer
             'open_http_protocol' => false,
             'open_websocket_protocol' => true,
             'websocket_compression' => true,
+            'daemonize' => false,
+            'enable_static_handler' => false
         ];
 
         $this
@@ -102,6 +98,8 @@ abstract class AbstractWsServer
         $this
             ->server
             ->shutdown();
+
+        exit;
     }
 
     protected function bindWorkerEvents(
@@ -135,8 +133,19 @@ abstract class AbstractWsServer
             ->server
             ->on(
                 'workerError',
-                function () {
-                    $this->onWorkerError();
+                function (
+                    Server $server,
+                    int $worker_id,
+                    int $worker_pid,
+                    int $exit_code,
+                    int $signal
+                ) {
+                    $this->onWorkerError(
+                        $worker_id,
+                        $worker_pid,
+                        $exit_code,
+                        $signal
+                    );
                 }
             );
     }
@@ -197,11 +206,24 @@ abstract class AbstractWsServer
         $this->shutdown();
     }
 
-    protected function onWorkerError()
-    {
+    protected function onWorkerError(
+        int $workerId,
+        int $workerPid,
+        int $exitCode,
+        int $signal
+    ) {
+        $details = [
+            'workerId' => $workerId,
+            'workerPid' => $workerPid,
+            'exitCode' => $exitCode,
+            'signal' => $signal
+        ];
+
         $this->logger->error(
-            'worker error shutdown'
+            'worker error shutdown '
+            . json_encode($details)
         );
+
         $this->shutdown();
     }
 
