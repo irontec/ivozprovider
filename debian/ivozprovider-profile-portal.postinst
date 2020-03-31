@@ -25,6 +25,8 @@ function setup_apache_certificates()
     [ ! -e /etc/ssl/private/yealink.key ]   && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/yealink.key
     [ ! -e /etc/ssl/certs/cisco.crt ]       && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/cisco.crt
     [ ! -e /etc/ssl/private/cisco.key ]     && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/cisco.key
+    [ ! -e /etc/ssl/certs/snom.crt ]       && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/snom.crt
+    [ ! -e /etc/ssl/private/snom.key ]     && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/snom.key
 }
 
 function setup_apache_config()
