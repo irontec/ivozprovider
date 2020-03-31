@@ -25,7 +25,7 @@ $helpers = new Class
         echo "\n";
     }
 
-    public function progress(Redis $redis, TrunksCall $call)
+    public function progress(Redis $redis, AbstractCall $call)
     {
         $payload = $call->progress();
         $channel = key($payload);
@@ -39,43 +39,69 @@ $helpers = new Class
 };
 
 $trunksCalls = [];
-$trunksCo = function () use ($trunksCalls, $helpers) {
+$usersCalls = [];
+$trunksCo = function () use ($trunksCalls, $usersCalls, $helpers) {
 
     $redis = new Redis();
     $redis->connect('127.0.0.1', 6379);
 
-    while (true) {
-        if (!empty($trunksCalls)) {
-            echo "Current call number: " . count($trunksCalls) . "\n\n";
-        }
-        Coroutine::sleep(5);
+    $progessFn = function (&$calls, $newCallClass) use ($redis, $helpers) {
 
-        if (empty($trunksCalls)) {
-            $call = new TrunksCall();
-            $helpers->progress($redis, $call);
-            $trunksCalls[$call->getChannel()] = $call;
-            continue;
+        if (empty($calls)) {
+
+            /** @var AbstractCall $newCall */
+            $newCall = new $newCallClass();
+            $helpers->progress($redis, $newCall);
+            $calls[$newCall->getChannel()] = $newCall;
+
+            return;
         }
 
-        $currentCallNum = count($trunksCalls);
+        $currentCallNum = count($calls);
         $increase = $currentCallNum < 5
             ? rand(1, 3) > 1
             : rand(1, 5) > 4;
 
         if ($increase) {
-            $call = new TrunksCall();
-            $helpers->progress($redis, $call);
-            $trunksCalls[$call->getChannel()] = $call;
-            continue;
+            /** @var AbstractCall $newCall */
+            $newCall = new $newCallClass();
+            $helpers->progress($redis, $newCall);
+            $calls[$newCall->getChannel()] = $newCall;
+
+            return;
         }
 
-        $randomCallKey = array_rand($trunksCalls);
-        $call = $trunksCalls[$randomCallKey];
+        $randomCallKey = array_rand($calls);
+
+        /** @var AbstractCall $call */
+        $call = $calls[$randomCallKey];
         $helpers->progress($redis, $call);
 
         if ($call->isDone()) {
-            unset($trunksCalls[$randomCallKey]);
+            unset($calls[$randomCallKey]);
         }
+    };
+
+    while (true) {
+        if (!empty($trunksCalls)) {
+            echo
+                "Current call number: "
+                . (count($trunksCalls) + count($usersCalls))
+                . "\n\n";
+        }
+        Coroutine::sleep(5);
+
+        $progessFn(
+            $trunksCalls,
+            TrunksCall::class
+        );
+
+        echo "\n";
+
+        $progessFn(
+            $usersCalls,
+            UsersCall::class
+        );
     }
 };
 
