@@ -1,43 +1,32 @@
 <?php
 
 use Services\WsServer;
-use Model\RedisConf;
+use Services\Sentinel;
+use Symfony\Component\Debug\Debug;
 
 $loader = require __DIR__.'/../vendor/autoload.php';
 
-// Redis connection pool max size per worker
-// 3 at least because 2 are used for this service itself
-
-define(
-    'WORKER_REDIS_POOL_SIZE',
-    5
+$env = getenv('SYMFONY_ENV') ?: 'dev';
+$debug = getenv('SYMFONY_DEBUG') !== '0' && $env !== 'prod';
+if ($debug) {
+    Debug::enable();
+}
+$kernel = new MicroKernel(
+    $env,
+    $debug
 );
-define(
-    'REDIS_DB',
-    1
-);
+$kernel->boot();
+$serviceContainer = $kernel->getContainer();
 
-$serverConf = [
-    'worker_num' => 1,
-];
-
-$sentinelsConfs = [
-    new RedisConf(
-        'data.ivozprovider.local',
-        '26379'
-    )
-];
-// Random priority
-shuffle($sentinelsConfs);
-
-$server = new WsServer(
-    '0.0.0.0',
-    8443,
-    $serverConf
+/** @var WsServer $server */
+$server = $serviceContainer->get(
+    WsServer::class
 );
 
+/** @var Sentinel $sentinel */
+$sentinel = $serviceContainer->get(Sentinel::class);
 $server->start(
-    $sentinelsConfs,
-    WORKER_REDIS_POOL_SIZE,
-    REDIS_DB
+    $sentinel,
+    $serviceContainer->getParameter('redis_pool_size'),
+    $serviceContainer->getParameter('redis_db')
 );

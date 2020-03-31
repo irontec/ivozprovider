@@ -5,6 +5,7 @@ namespace Services;
 use Model\RedisConf;
 use Model\Subscriber;
 use Feeder\AbstractCall;
+use Psr\Log\LoggerInterface;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Redis;
 use Swoole\WebSocket\Server;
@@ -13,20 +14,41 @@ use Swoole\Http\Request as HttpRequest;
 
 class WsServer extends AbstractWsServer
 {
+    private $jwtToken;
+
+    public function __construct(
+        string $host,
+        int $port,
+        array $config,
+        LoggerInterface $logger,
+        JwtToken $jwtToken
+    ) {
+        $this->jwtToken = $jwtToken;
+
+        parent::__construct(
+            $host,
+            $port,
+            $config,
+            $logger
+        );
+    }
+
     protected function onWorkerStart(
-        array $sentinelsConf,
+        Sentinel $sentinel,
         int $poolSize,
         int $db
     ) {
-        echo "Init Redis Pool\n";
+        $this->logger->info(
+            'Init Redis Pool'
+        );
         $this->redisPool = new RedisPool(
             $poolSize,
-            $db
+            $db,
+            $this->logger
         );
 
-        echo "Resolving redis master\n";
-        $sentinel = new Sentinel(
-            $sentinelsConf
+        $this->logger->info(
+            'Resolving redis master'
         );
 
         $redisMaster = $sentinel
@@ -46,7 +68,9 @@ class WsServer extends AbstractWsServer
         Server $server,
         HttpRequest $req
     ) {
-        echo "Connection open: {$req->fd}\n";
+        $this->logger->debug(
+            "Connection open: {$req->fd}"
+        );
 
         $server->push(
             $req->fd,
@@ -59,16 +83,33 @@ class WsServer extends AbstractWsServer
         Frame $frame
     ) {
         $fd = $frame->fd;
-        echo "<< Received message: {$frame->data}\n";
+        $this->logger->debug(
+            "<< Received message: {$frame->data}"
+        );
 
         $data = json_decode(
             $frame->data,
             true
         );
 
-        $isAuthValid =
-            $data
-            && isset($data['auth']);
+        $isAuthValid = false;
+        $payload = [];
+
+        try {
+            $payload = $this->jwtToken->getPayload(
+                $data['auth'] ?? ''
+            );
+
+            $this->logger->info(
+                'User: ' . var_export($payload, true)
+            );
+
+            $isAuthValid = true;
+        } catch (\Exception $e) {
+            $this->logger->info(
+                $e->getMessage()
+            );
+        }
 
         $isRegisterValid =
             $data
@@ -89,10 +130,16 @@ class WsServer extends AbstractWsServer
 
     protected function onClose(Server $server, int $fd)
     {
-        echo "connection close: #" . $fd ."\n";
+        $this->logger->debug(
+            'Connection closed: #' . $fd
+        );
+
         $subscriber = $this->subscribers[$fd] ?? null;
         if (!$subscriber) {
-            echo "Unknown subscriber #" . $fd . "\n";
+            $this->logger->debug(
+                'Unknown subscriber #' . $fd
+            );
+
             return;
         }
 
@@ -118,7 +165,9 @@ class WsServer extends AbstractWsServer
                 ->getChannel()
                 ->pop();
 
-            echo "Sentinel shutdown\n";
+            $this->logger->error(
+                "Sentinel shutdown"
+            );
             $this->shutdown();
             Coroutine::sleep(1);
 
@@ -172,7 +221,9 @@ class WsServer extends AbstractWsServer
         $event = $payload['Event'];
 
         if ($event === AbstractCall::HANG_UP) {
-            echo "[DEL] " . $channel . "\n\n";
+            $this->logger->debug(
+                "[DEL] " . $channel
+            );
             $this
                 ->controlRedisClient
                 ->del(
@@ -183,7 +234,9 @@ class WsServer extends AbstractWsServer
         }
 
         if ($event === AbstractCall::CALL_SETUP) {
-            echo "[SETEX] " . $channel . "\n" . json_encode($payload) . "\n\n";
+            $this->logger->debug(
+                "[SETEX] " . $channel . "\n" . json_encode($payload)
+            );
             $this
                 ->controlRedisClient
                 ->setEx(
@@ -211,7 +264,9 @@ class WsServer extends AbstractWsServer
         }
 
         $data['Event'] = $event;
-        echo "[SETEX] " . $channel . "\n" . $event . "\n\n";
+        $this->logger->debug(
+            "[SETEX] " . $channel . "\n" . $event
+        );
         $this
             ->controlRedisClient
             ->setEx(
@@ -226,6 +281,11 @@ class WsServer extends AbstractWsServer
     ///////////////////////////////////////////
     private function sendCurrentStateAndUpdates(Server $server, $fd)
     {
+        $server->push(
+            $fd,
+            'Subscribing'
+        );
+
         Coroutine::create(function () use ($server, $fd) {
 
             $redisClient = $this
@@ -247,7 +307,9 @@ class WsServer extends AbstractWsServer
                 Coroutine::getuid()
             );
 
-            echo "Register subscriber #" . $fd . "\n";
+            $this->logger->debug(
+                "Register subscriber #" . $fd
+            );
             $this->subscribers[$fd] = $subscriber;
 
             $this->forwardStateUpdates(
@@ -265,8 +327,15 @@ class WsServer extends AbstractWsServer
         $fd
     ) {
         $keys = $redisClient->keys($mask);
+        $this->logger->debug(
+            "Sending current state (". $mask .") to #" . $fd
+        );
+
         $currentState = $redisClient->mGet($keys);
-        echo "Sending current state (". $mask .") to #" . $fd . "\n";
+        if (false === $currentState) {
+            $this->logger->info('No call info found on redis');
+            return;
+        }
 
         foreach ($currentState as $payload) {
             $server->push(
@@ -292,7 +361,9 @@ class WsServer extends AbstractWsServer
                 && $argument === ((string)Coroutine::getuid());
 
             if ($unsubscribe) {
-                echo "Unsubscribe #" . $fd . "\n";
+                $this->logger->debug(
+                    "Unsubscribe #" . $fd
+                );
 
                 unset($this->subscribers[$fd]);
                 unset($subscriber);
@@ -307,7 +378,9 @@ class WsServer extends AbstractWsServer
             }
 
             if (!isset($server->connections[$fd])) {
-                echo "Connection not found for #" . $fd . "\n";
+                $this->logger->debug(
+                    "Connection not found for #" . $fd
+                );
                 break;
             }
 

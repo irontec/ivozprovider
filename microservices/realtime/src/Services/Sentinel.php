@@ -4,11 +4,16 @@ namespace Services;
 
 use Model\Message;
 use Model\RedisConf;
+use Model\SentinelConf;
+use Psr\Log\LoggerInterface;
 use Swoole\Coroutine\Channel;
 
 class Sentinel
 {
     const EVENT_SHUTDOWN = 'shutdown';
+
+    /** @var  LoggerInterface */
+    private $logger;
 
     /** @var RedisConf[]  */
     private $sentinels;
@@ -27,7 +32,8 @@ class Sentinel
      * @param RedisConf[] $sentinelConfig
      */
     public function __construct(
-        array $sentinelConfig
+        array $sentinelConfig,
+        LoggerInterface $logger
     ) {
         if (empty($sentinelConfig)) {
             throw new \RuntimeException(
@@ -35,8 +41,21 @@ class Sentinel
             );
         }
 
+        $this->logger = $logger;
         $this->sentinels = $sentinelConfig;
         $this->channel = new Channel(1);
+    }
+
+    public static function fromConfigArray(
+        array $config,
+        LoggerInterface $logger
+    ) {
+        $sentinelConfig = new SentinelConf($config);
+
+        return new static(
+            $sentinelConfig->get(),
+            $logger
+        );
     }
 
     public function resolveMaster(): RedisConf
@@ -52,7 +71,10 @@ class Sentinel
 
                 break;
             } catch (\Exception $e) {
-                echo "ERROR: " . $e->getMessage() . "\n";
+                $this->logger->error(
+                    "ERROR: " . $e->getMessage()
+                );
+                continue;
             }
         }
 
@@ -76,8 +98,10 @@ class Sentinel
             $this->sentinel->getPort()
         );
 
-        echo "Sentinel pSubscribe *\n";
-        $sentinelCo->pSubscribe(['*']);
+        $this->logger->info(
+            "Sentinel pSubscribe *"
+        );
+        $sentinelCo->pSubscribe(['']);
 
         while ($msg = $sentinelCo->recv()) {
             if (count($msg) < 4) {
@@ -99,7 +123,10 @@ class Sentinel
                 continue;
             }
 
-            echo "Redis master is down\n";
+            $this->logger->critical(
+                "Redis master is down"
+            );
+
             $this->channel->push(
                 new Message(
                     self::EVENT_SHUTDOWN

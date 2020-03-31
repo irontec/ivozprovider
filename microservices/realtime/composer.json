@@ -30,8 +30,11 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "": "src/",
+            "Ivoz\\": "../../library/Ivoz"
         }
+    },
+    "autoload-dev": {
     },
     "config": {
         "sort-packages": true,
@@ -43,13 +46,34 @@
         }
     },
     "require": {
-        "php": ">=7.0.19"
+        "php": ">=7.0.19",
+        "irontec/ivoz-api-bundle": "^3.2",
+        "irontec/ivoz-provider-bundle": "^2.0"
     },
     "require-dev": {
         "swoole/ide-helper": "4.3.4"
     },
     "scripts": {
+        "symfony-scripts": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts"
+        ]
     },
     "extra": {
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "public",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
+        },
+        "branch-alias": null
     }
 }
