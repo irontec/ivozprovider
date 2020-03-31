@@ -1,0 +1,55 @@
+{
+    "name": "irontec/ivozprovider/realtime",
+    "description": "Multitenant solution for VoIP telephony providers (websocket server)",
+    "authors": [
+        {
+            "name": "Carlos Cruz",
+            "email": "carlos@irontec.com"
+        },
+        {
+            "name": "Ivan Alonso",
+            "email": "kaian@irontec.com"
+        },
+        {
+            "name": "Mikel Madariaga",
+            "email": "mikel@irontec.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../library/vendor/*/*",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "packagist.org": false
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "git"
+        },
+        "platform": {
+            "php": "7.0.19"
+        }
+    },
+    "require": {
+        "php": ">=7.0.19"
+    },
+    "require-dev": {
+        "swoole/ide-helper": "4.3.4"
+    },
+    "scripts": {
+    },
+    "extra": {
+    }
+}

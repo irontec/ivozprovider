@@ -68,6 +68,7 @@ Pre-Depends: bind9, mysql-server
 Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-schema (=${binary:Version}),
     ivozprovider-balances (=${binary:Version}),
+    ivozprovider-realtime (=${binary:Version}),
     libstring-crc32-perl,
     libgearman-client-perl,
     redis-server,
@@ -265,6 +266,14 @@ Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rating updater - Symfony microservice
+  .
+
+Package: ivozprovider-realtime
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version}), php-redis, php-swoole
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Realtime Websocket server - Symfony microservice
   .
 
 Package: ivozprovider-doc

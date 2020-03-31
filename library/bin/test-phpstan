@@ -26,6 +26,7 @@ run_test microservices/balances src
 run_test microservices/recordings src
 run_test microservices/scheduler src
 run_test microservices/workers src
+run_test microservices/realtime src
 run_test web/rest/brand src
 run_test web/rest/client src
 run_test web/rest/platform src

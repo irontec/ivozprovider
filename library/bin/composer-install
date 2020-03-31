@@ -27,6 +27,10 @@ pushd /opt/irontec/ivozprovider/microservices/scheduler
     composer install $*
 popd
 
+pushd /opt/irontec/ivozprovider/microservices/realtime
+    composer install $*
+popd
+
 pushd /opt/irontec/ivozprovider/schema
     composer install $*
 popd

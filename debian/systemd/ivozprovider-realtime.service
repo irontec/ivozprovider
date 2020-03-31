@@ -1,0 +1,6 @@
+[Unit]
+Description=Ivozprovider Realtime Websockets Server
+
+[Service]
+User=root
+ExecStart=/opt/irontec/ivozprovider/microservices/realtime/bin/run
