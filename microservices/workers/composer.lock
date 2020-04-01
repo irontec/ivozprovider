@@ -1499,11 +1499,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "7ea2c0e9cd3ef8b3df5f9901e829b96d8d036ebb",
+                "reference": "62f91f154999d2a644d03fccf409ddaed97e9c07",
                 "shasum": null
             },
             "require": {
@@ -3197,11 +3197,11 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "3.4.38.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dependency-injection",
-                "reference": "b06b36883abc61eb8fb576e89102a9ba6c9ee7ee",
+                "reference": "7ead5297f99a9d1256481cb869bf6cc7f8ce1f00",
                 "shasum": null
             },
             "require": {
