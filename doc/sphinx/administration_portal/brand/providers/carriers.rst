@@ -35,6 +35,10 @@ This are the fields that define a carrier:
         Chosen currency will be used in cost calculation, balance movements and
         remaining money operations of this carrier.
 
+    Local socket
+        Selected address will be used as source address for signalling with this carrier. Brand operator can choose among
+        addresses assigned by main operator via :ref:`Brands`. Read :ref:`Proxy Trunks` for further details.
+
 Cost calculation
 ****************
 

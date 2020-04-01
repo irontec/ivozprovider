@@ -49,6 +49,11 @@ This are the fields shown when a new brand is created:
         brand notifications. If brand has no notification configured
         :ref:`default notification templates` will be used.
 
+    ProxyTrunks
+        Select which ProxyTrunks addresses can be used by this brand. Read :ref:`Proxy Trunks`
+        for further details. It is not possible to unassign an address used in any :ref:`carrier <Carriers>` or
+        :ref:`DDI provider <DDI Providers>`.
+
 .. hint:: Some features are related to brand and cannot be assigned to clients.
     Other ones are also related to clients and lets the brand operator to
     assign them to its clients.

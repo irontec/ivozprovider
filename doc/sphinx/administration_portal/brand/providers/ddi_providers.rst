@@ -21,6 +21,9 @@ This are the fields that define a carrier:
         outgoing numbers that use this Carrier
         (see :ref:`Numeric transformations`).
 
+    Local socket
+        Selected address will be used as source address for signalling with this DDI provider. Brand operator can choose among
+        addresses assigned by main operator via :ref:`Brands`. Read :ref:`Proxy Trunks` for further details.
 
 DDI Provider Addresses
 **********************
