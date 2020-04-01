@@ -31,7 +31,16 @@ class ProviderProxyTrunk extends Fixture
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+        $item2 = $this->createEntityInstance(ProxyTrunk::class);
+        (function () use ($fixture) {
+            $this->setName("ExtraIP");
+            $this->setIp("127.0.0.3");
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderProxyTrunk2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 }
