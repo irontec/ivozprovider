@@ -293,9 +293,16 @@ class WsServer extends AbstractWsServer
             return;
         }
 
-        $data['Event'] = $event;
+        if ($event === AbstractCall::UPDATE_CLID) {
+            $data['Party'] = $payload['Party'];
+            $logInfo = $event . ' => party ' . $data['Party'];
+        } else {
+            $data['Event'] = $event;
+            $logInfo = $event;
+        }
+
         $this->logger->debug(
-            "[SETEX] " . $channel . "\n" . $event
+            "[SETEX] " . $channel . "\n" . $logInfo
         );
         $this
             ->controlRedisClient

@@ -9,3 +9,5 @@ parameters:
     # 3 at least because 2 are used by the service itself
     redis_pool_size: 52
     redis_db: 1
+
+    logger_level: info

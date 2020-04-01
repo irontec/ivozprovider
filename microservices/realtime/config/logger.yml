@@ -2,5 +2,5 @@ monolog:
  handlers:
    syslog_handler:
      type: syslog
-     level: info
+     level: '%logger_level%'
      ident: php.realtime
