@@ -13,6 +13,7 @@ Feature: Update ddi providers
       {
           "description": "UpdateDDIProviderDescription",
           "name": "UpdateDDIProviderName",
+          "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
     """
@@ -22,24 +23,30 @@ Feature: Update ddi providers
      And the JSON should be like:
     """
       {
-        "description": "UpdateDDIProviderDescription",
-        "name": "UpdateDDIProviderName",
-        "externallyRated": false,
-        "id": 1,
-        "transformationRuleSet": {
-            "description": "Generic transformation for Spain",
-            "internationalCode": "00",
-            "trunkPrefix": "",
-            "areaCode": "",
-            "nationalLen": 9,
-            "generateRules": false,
+            "description": "UpdateDDIProviderDescription",
+            "name": "UpdateDDIProviderName",
+            "externallyRated": false,
             "id": 1,
-            "name": {
-                "en": "en",
-                "es": "es",
-                "ca": "ca"
+            "transformationRuleSet": {
+                "description": "Generic transformation for Spain",
+                "internationalCode": "00",
+                "trunkPrefix": "",
+                "areaCode": "",
+                "nationalLen": 9,
+                "generateRules": false,
+                "id": 1,
+                "name": {
+                    "en": "en",
+                    "es": "es",
+                    "ca": "ca",
+                    "it": "it"
+                },
+                "country": 68
             },
-            "country": 68
+            "proxyTrunk": {
+                "name": "proxytrunks",
+                "ip": "127.0.0.1",
+                "id": 1
+            }
         }
-      }
     """
