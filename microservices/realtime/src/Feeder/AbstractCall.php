@@ -2,20 +2,20 @@
 
 namespace Feeder;
 
-use Feeder\RandomStringGenerator as Random;
-
 abstract class AbstractCall
 {
     const CALL_SETUP = 'Trying';
     const RINGING = 'Early';
     const IN_CALL = 'Confirmed';
     const HANG_UP = 'Terminated';
+    const UPDATE_CLID = 'UpdateCLID';
 
     const SIGNIFICANT_CALL_EVENTS = [
         self::CALL_SETUP,
         self::RINGING,
         self::IN_CALL,
         self::HANG_UP,
+        self::UPDATE_CLID,
     ];
 
     /** @var string */
@@ -25,30 +25,7 @@ abstract class AbstractCall
     protected $status;
 
     /** @var string */
-    protected $caller;
-
-    /** @var string */
-    protected $callee;
-
-    /** @var string */
     protected $channel;
-
-    public function __construct()
-    {
-        $this->callId =
-            Random::alphaNum(8)
-            . "-"
-            . Random::alphaNum(4)
-            . "-"
-            . Random::alphaNum(4)
-            . "-"
-            . Random::alphaNum(4)
-            . "-"
-            . Random::alphaNum(12);
-
-        $this->caller = '+3494' . Random::numberic();
-        $this->callee = '+3464' . Random::numberic();
-    }
 
     public function isDone():bool
     {
@@ -79,15 +56,12 @@ abstract class AbstractCall
 
             case self::CALL_SETUP:
                 return $this->ringing();
-                break;
 
             case self::RINGING:
                 return $this->inCall();
-                break;
 
             case self::IN_CALL:
                 return $this->hangUp();
-                break;
 
             default:
                 throw new \Exception(

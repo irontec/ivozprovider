@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +19,31 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, DdiProvider::class);
+    }
+
+    public function getDdiProviderIdsByBrandAdmin(AdministratorInterface $admin): array
+    {
+        if (!$admin->isBrandAdmin()) {
+            throw new \DomainException('User must be brand admin');
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $admin->getBrand()->getId()
+                )
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column(
+            $result,
+            'id'
+        );
     }
 }

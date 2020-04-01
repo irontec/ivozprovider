@@ -2,8 +2,33 @@
 
 namespace Feeder;
 
+use Feeder\RandomStringGenerator as Random;
+
 class TrunksCall extends AbstractCall
 {
+    /** @var string */
+    protected $caller;
+
+    /** @var string */
+    protected $callee;
+
+    public function __construct()
+    {
+        $this->callId =
+            Random::alphaNum(8)
+            . "-"
+            . Random::alphaNum(4)
+            . "-"
+            . Random::alphaNum(4)
+            . "-"
+            . Random::alphaNum(4)
+            . "-"
+            . Random::alphaNum(12);
+
+        $this->caller = '+3494' . Random::numberic();
+        $this->callee = '+3464' . Random::numberic();
+    }
+
     protected function callSetup(): array
     {
         $this->status = self::CALL_SETUP;
@@ -16,7 +41,7 @@ class TrunksCall extends AbstractCall
             "Callee" => $this->callee,
             "Brand" => 1,
             "BrandName" => "brand1",
-            "Company" => 3,
+            "Company" => 1,
             "CompanyName" => "company1"
         ];
 

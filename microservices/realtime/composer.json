@@ -51,6 +51,7 @@
         "irontec/ivoz-provider-bundle": "^2.0"
     },
     "require-dev": {
+        "phpspec/phpspec": "^4.2",
         "swoole/ide-helper": "4.3.4"
     },
     "scripts": {
