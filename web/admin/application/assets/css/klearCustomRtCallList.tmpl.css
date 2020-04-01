@@ -1,0 +1,46 @@
+tr.RtTmpl,
+tr.loading,
+tr.none,
+tr.error {
+    display:none;
+}
+
+table.rtbase .type {
+    width: 5%;
+}
+table.rt .type {
+    text-align: center;
+}
+
+
+table.rtbase .user {
+    width: 30%;
+}
+
+table.rtbase .peer {
+    width: 30%;
+}
+
+table.rtbase .state {
+    width: 15%;
+}
+
+table.rtbase .duration {
+    width: 20%;
+}
+
+table tbody {
+    margin-top:0;
+}
+
+table tbody span.pendindUser {
+    color: #aaa;
+}
+
+tr.error td,
+tr.connecting td,
+tr.loading td,
+tr.none td {
+    padding:2em;
+    text-align: center;
+}

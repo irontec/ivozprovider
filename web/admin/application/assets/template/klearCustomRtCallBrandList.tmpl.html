@@ -1,0 +1,40 @@
+<table class="kMatrix rtbase rtHeader">
+    <caption class="ui-state-active ui-priority-primary"> List of Ongoing Calls  <span class="extraCaptionInfo"> Total: <strong id="callNum">0</strong> Calls </span> </caption>
+    <thead>
+        <tr>
+            <th class="ui-widget-header context">Context</th>
+            <th class="ui-widget-header operator">Operator</th>
+            <th class="ui-widget-header company">Company</th>
+            <th class="ui-widget-header caller">Caller</th>
+            <th class="ui-widget-header callee">Callee</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="RtTmpl">
+            <td class="ui-widget-content context">
+                <span class="direction"></span>
+                <span class="event"></span>
+                &nbsp;
+                <span class="time"></span>
+            </td>
+            <td class="ui-widget-content operator"></td>
+            <td class="ui-widget-content company"></td>
+            <td class="ui-widget-content caller"></td>
+            <td class="ui-widget-content callee"></td>
+        </tr>
+        <tr class="feedback error">
+            <td class="ui-widget-content" colspan="5">Error: socket closed...</td>
+        </tr>
+        <tr class="feedback connecting">
+            <td class="ui-widget-content" colspan="5">Connecting...</td>
+        </tr>
+        <tr class="feedback loading">
+            <td class="ui-widget-content" colspan="5">Loading...</td>
+        </tr>
+        <tr class="feedback none">
+            <td class="ui-widget-content" colspan="5">
+                <span class="ui-silk inline ui-silk-sleep"></span>No calls.
+            </td>
+        </tr>
+    </tbody>
+</table>

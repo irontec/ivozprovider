@@ -1,0 +1,36 @@
+<table class="kMatrix rtbase rtHeader">
+    <caption class="ui-state-active ui-priority-primary"> List of Ongoing Calls  <span class="extraCaptionInfo"> Total: <strong id="callNum">0</strong> Calls </span> </caption>
+    <thead>
+        <tr>
+            <th class="ui-widget-header context">Context</th>
+            <th class="ui-widget-header owner">Owner</th>
+            <th class="ui-widget-header party">Party</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="RtTmpl">
+            <td class="ui-widget-content context">
+                <span class="direction"></span>
+                <span class="event"></span>
+                &nbsp;
+                <span class="time"></span>
+            </td>
+            <td class="ui-widget-content owner"></td>
+            <td class="ui-widget-content party"></td>
+        </tr>
+        <tr class="feedback error">
+            <td class="ui-widget-content" colspan="3">Error: socket closed...</td>
+        </tr>
+        <tr class="feedback connecting">
+            <td class="ui-widget-content" colspan="3">Connecting...</td>
+        </tr>
+        <tr class="feedback loading">
+            <td class="ui-widget-content" colspan="3">Loading...</td>
+        </tr>
+        <tr class="feedback none">
+            <td class="ui-widget-content" colspan="3">
+                <span class="ui-silk inline ui-silk-sleep"></span>No calls.
+            </td>
+        </tr>
+    </tbody>
+</table>
