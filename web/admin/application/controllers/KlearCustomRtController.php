@@ -62,6 +62,7 @@ class KlearCustomRtController extends Zend_Controller_Action
             'trunks' => $criteria
         ];
         $data["template"] = $templateIden;
+        $data['translations'] = $this->getTransalations();
 
         $jsonResponse = new Klear_Model_DispatchResponse();
         $jsonResponse->setModule('default');
@@ -111,6 +112,8 @@ class KlearCustomRtController extends Zend_Controller_Action
             'users' => $criteria
         ];
 
+        $data['translations'] = $this->getTransalations();
+
         $templateIden = 'RtCallClientList';
         $data["template"] = $templateIden;
 
@@ -122,5 +125,31 @@ class KlearCustomRtController extends Zend_Controller_Action
         $jsonResponse->addCssFile("/css/klearCustomRtCallList.tmpl.css");
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
+    }
+
+    private function getTransalations(): array
+    {
+        return [
+            'checkDocumentation' => $this->_helper->translate(
+                "Check documentation for this section"
+            ),
+            'listOf' => $this->_helper->translate('List of %s'),
+            'activeCalls' => $this->_helper->translate('Active calls'),
+            'total' => $this->_helper->translate('Total'),
+            'calls' => $this->_helper->translate('Calls'),
+            'context' => $this->_helper->translate('Context'),
+            'brand' => $this->_helper->translate('Brand'),
+            'operator' => $this->_helper->translate('Operator'),
+            'client' => $this->_helper->translate('Client'),
+            'caller' => $this->_helper->translate('Caller'),
+            'callee' => $this->_helper->translate('Callee'),
+            'connecting' => $this->_helper->translate('Connecting'),
+            'loading' => $this->_helper->translate('Loading'),
+            'noCalls' => $this->_helper->translate('No calls'),
+            'owner' => $this->_helper->translate('Owner'),
+            'party' => $this->_helper->translate('Party'),
+            'min' => $this->_helper->translate('min'),
+            'sec' => $this->_helper->translate('sec'),
+        ];
     }
 }

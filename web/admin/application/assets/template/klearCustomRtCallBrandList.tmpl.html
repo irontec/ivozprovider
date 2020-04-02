@@ -1,12 +1,22 @@
+<div class="ui-widget-content ui-corner-all assistant">
+    <span class=" ui-silk ui-silk-help fieldInfo-boxinfo fieldInfo-position-left " data-title=""></span>
+    <a href="/doc/en/administration_portal/platform/active_calls.html" target="_blank" class="info-link">
+        ${translations.checkDocumentation}
+    </a>
+</div>
+
 <table class="kMatrix rtbase rtHeader">
-    <caption class="ui-state-active ui-priority-primary"> List of Ongoing Calls  <span class="extraCaptionInfo"> Total: <strong id="callNum">0</strong> Calls </span> </caption>
+    <caption class="ui-state-active ui-priority-primary">
+        ${$.translate(translations.listOf, translations.activeCalls)}
+        <span class="extraCaptionInfo"> ${translations.total}: <strong id="callNum">0</strong> ${translations.calls} </span>
+    </caption>
     <thead>
         <tr>
-            <th class="ui-widget-header context">Context</th>
-            <th class="ui-widget-header operator">Operator</th>
-            <th class="ui-widget-header company">Company</th>
-            <th class="ui-widget-header caller">Caller</th>
-            <th class="ui-widget-header callee">Callee</th>
+            <th class="ui-widget-header context">${$.translate("Context")}</th>
+            <th class="ui-widget-header operator">${$.translate("Operator")}</th>
+            <th class="ui-widget-header company">${$.translate("Client")}</th>
+            <th class="ui-widget-header caller">${$.translate("Caller")}</th>
+            <th class="ui-widget-header callee">${$.translate("Callee")}</th>
         </tr>
     </thead>
     <tbody>
@@ -23,17 +33,17 @@
             <td class="ui-widget-content callee"></td>
         </tr>
         <tr class="feedback error">
-            <td class="ui-widget-content" colspan="5">Error: socket closed...</td>
+            <td class="ui-widget-content" colspan="5">Error: socket closed")}...</td>
         </tr>
         <tr class="feedback connecting">
-            <td class="ui-widget-content" colspan="5">Connecting...</td>
+            <td class="ui-widget-content" colspan="5">${$.translate("Connecting")}...</td>
         </tr>
         <tr class="feedback loading">
-            <td class="ui-widget-content" colspan="5">Loading...</td>
+            <td class="ui-widget-content" colspan="5">${$.translate("Loading")}...</td>
         </tr>
         <tr class="feedback none">
             <td class="ui-widget-content" colspan="5">
-                <span class="ui-silk inline ui-silk-sleep"></span>No calls.
+                <span class="ui-silk inline ui-silk-sleep"></span>${$.translate("No calls")}.
             </td>
         </tr>
     </tbody>

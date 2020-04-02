@@ -1,14 +1,23 @@
+<div class="ui-widget-content ui-corner-all assistant">
+    <span class=" ui-silk ui-silk-help fieldInfo-boxinfo fieldInfo-position-left " data-title=""></span>
+    <a href="/doc/en/administration_portal/platform/active_calls.html" target="_blank" class="info-link">
+        ${translations.checkDocumentation}
+    </a>
+</div>
 
 <table class="kMatrix rtbase rtHeader">
-    <caption class="ui-state-active ui-priority-primary"> List of Ongoing Calls  <span class="extraCaptionInfo"> Total: <strong id="callNum">0</strong> Calls </span> </caption>
+    <caption class="ui-state-active ui-priority-primary">
+        ${$.translate(translations.listOf, translations.activeCalls)}
+        <span class="extraCaptionInfo"> ${translations.total}: <strong id="callNum">0</strong> ${translations.calls} </span>
+    </caption>
     <thead>
         <tr>
-            <th class="ui-widget-header context">Context</th>
-            <th class="ui-widget-header brand">Brand</th>
-            <th class="ui-widget-header operator">Operator</th>
-            <th class="ui-widget-header company">Company</th>
-            <th class="ui-widget-header caller">Caller</th>
-            <th class="ui-widget-header callee">Callee</th>
+            <th class="ui-widget-header context">${translations.context}</th>
+            <th class="ui-widget-header brand">${translations.brand}</th>
+            <th class="ui-widget-header operator">${translations.operator}</th>
+            <th class="ui-widget-header company">${translations.client}</th>
+            <th class="ui-widget-header caller">${translations.caller}</th>
+            <th class="ui-widget-header callee">${translations.callee}</th>
         </tr>
     </thead>
     <tbody>
@@ -29,14 +38,14 @@
             <td class="ui-widget-content" colspan="6">Error: socket closed...</td>
         </tr>
         <tr class="feedback connecting">
-            <td class="ui-widget-content" colspan="6">Connecting...</td>
+            <td class="ui-widget-content" colspan="6">${translations.connecting}...</td>
         </tr>
         <tr class="feedback loading">
-            <td class="ui-widget-content" colspan="6">Loading...</td>
+            <td class="ui-widget-content" colspan="6">${translations.loading}...</td>
         </tr>
         <tr class="feedback none">
             <td class="ui-widget-content" colspan="6">
-                <span class="ui-silk inline ui-silk-sleep"></span>No calls.
+                <span class="ui-silk inline ui-silk-sleep"></span>${translations.noCalls}.
             </td>
         </tr>
     </tbody>
