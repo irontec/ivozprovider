@@ -105,6 +105,10 @@ production:
           title: ngettext('Platform Portal', 'Platform Portals', 0)
           class: ui-silk-world-link
           description: _("List of %s", ngettext('Platform Portal', 'Platform Portals', 0))
+        ActiveCallsList:
+          title: ngettext('Active call', 'Active calls', 0)
+          description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+          class: ui-silk-application-view-list-world
         BillableCallsList:
           title: ngettext('External call', 'External calls', 0)
           description: _("List of %s", ngettext('External call', 'External calls', 0))
@@ -245,6 +249,10 @@ production:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone
           submenus:
+            ActiveCallsBrandList:
+              title: ngettext('Active call', 'Active calls', 0)
+              description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+              class: ui-silk-application-view-list-world
             BillableCallsBrandList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
@@ -492,6 +500,11 @@ production:
               class: ui-silk-application-view-list-telephone
               description: _("List of %s", ngettext('Call', 'Calls', 0))
               showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.kam_users_cdrs.read}]
+            ActiveCallsClientList:
+              title: ngettext('Active call', 'Active calls', 0)
+              description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+              class: ui-silk-application-view-list-world
+              showOnlyIf: ${auth.acls.BillableCalls.read}
             BillableCallsClientList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
