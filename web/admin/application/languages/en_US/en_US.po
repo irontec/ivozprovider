@@ -71,6 +71,14 @@ msgstr "Activation time"
 msgid "Active"
 msgstr "Active"
 
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Active call"
+msgstr[1] "Active calls"
+
+msgid "Active calls"
+msgstr "Active calls"
+
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr "Active pricing plan does not allow to call introduced phone number"
 
@@ -299,9 +307,7 @@ msgid "Both"
 msgstr "Both"
 
 msgid "Brand"
-msgid_plural "Brands"
-msgstr[0] "Brand"
-msgstr[1] "Brands"
+msgstr "Brand"
 
 msgid "Brand Configuration"
 msgstr "Brand Configuration"
@@ -484,9 +490,7 @@ msgid "Clid"
 msgstr "Clid"
 
 msgid "Client"
-msgid_plural "Clients"
-msgstr[0] "Client"
-msgstr[1] "Clients"
+msgstr "Client"
 
 msgid "Client Configuration"
 msgstr "Client Configuration"
@@ -555,6 +559,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Conference room"
 msgstr[1] "Conference rooms"
 
+msgid "Connecting"
+msgstr "Connecting"
+
 msgid "Connection Info"
 msgstr "Connection Info"
 
@@ -572,6 +579,9 @@ msgstr "Contact Username"
 
 msgid "Contents configuration"
 msgstr "Contents configuration"
+
+msgid "Context"
+msgstr "Context"
 
 msgid "Continue"
 msgstr "Continue"
@@ -1509,7 +1519,7 @@ msgstr "Linear"
 msgid "List %s %2s"
 msgstr "List %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "List of %s"
 
@@ -1783,6 +1793,9 @@ msgstr "No answer timeout"
 msgid "No backup found."
 msgstr "No backup found."
 
+msgid "No calls"
+msgstr "No calls"
+
 msgid "No default template found"
 msgstr "No default template found"
 
@@ -1859,6 +1872,9 @@ msgstr "Open extension"
 
 msgid "Opened"
 msgstr "Opened"
+
+msgid "Operator"
+msgstr "Operator"
 
 msgid "Optional Settings"
 msgstr "Optional Settings"
@@ -3066,6 +3082,9 @@ msgstr "ignore"
 msgid "is a required field"
 msgstr "is a required field"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "oversized"
 
@@ -3074,6 +3093,9 @@ msgstr "Pending"
 
 msgid "ready"
 msgstr "ready"
+
+msgid "sec"
+msgstr "sec"
 
 msgid "seconds"
 msgstr "seconds"

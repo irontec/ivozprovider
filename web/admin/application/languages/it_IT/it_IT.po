@@ -71,6 +71,14 @@ msgstr "Data attivazione"
 msgid "Active"
 msgstr "Attivo"
 
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Active call"
+msgstr[1] "Active calls"
+
+msgid "Active calls"
+msgstr "Active calls"
+
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr ""
 "Il piano tariffario attivo non consente di chiamare il numero di telefono "
@@ -306,9 +314,7 @@ msgid "Both"
 msgstr "Entrambi"
 
 msgid "Brand"
-msgid_plural "Brands"
-msgstr[0] "Brand"
-msgstr[1] "Brands"
+msgstr "Brand"
 
 msgid "Brand Configuration"
 msgstr "Configurazione Brand"
@@ -494,9 +500,7 @@ msgid "Clid"
 msgstr "Clid"
 
 msgid "Client"
-msgid_plural "Clients"
-msgstr[0] "Client"
-msgstr[1] "Clients"
+msgstr "Client"
 
 msgid "Client Configuration"
 msgstr "Client Configuration"
@@ -565,6 +569,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Conference room"
 msgstr[1] "Conference rooms"
 
+msgid "Connecting"
+msgstr "Connecting"
+
 msgid "Connection Info"
 msgstr "Informazioni di connessione"
 
@@ -582,6 +589,9 @@ msgstr "Nome utente contatto"
 
 msgid "Contents configuration"
 msgstr "Configurazione dei contenuti"
+
+msgid "Context"
+msgstr "Context"
 
 msgid "Continue"
 msgstr "Continua"
@@ -1528,7 +1538,7 @@ msgstr "Lineare"
 msgid "List %s %2s"
 msgstr "Elenco %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "Elenco di %s"
 
@@ -1808,6 +1818,9 @@ msgstr "Timeout Senza Risposta"
 msgid "No backup found."
 msgstr "No backup found."
 
+msgid "No calls"
+msgstr "No calls"
+
 msgid "No default template found"
 msgstr "No default template found"
 
@@ -1885,6 +1898,9 @@ msgstr "Apri Interno"
 
 msgid "Opened"
 msgstr "Aperto"
+
+msgid "Operator"
+msgstr "Operator"
 
 msgid "Optional Settings"
 msgstr "Impostazioni opzionali"
@@ -3115,6 +3131,9 @@ msgstr "ignora"
 msgid "is a required field"
 msgstr "è un campo obbligatorio"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "sovradimensionato"
 
@@ -3123,6 +3142,9 @@ msgstr "In sospeso"
 
 msgid "ready"
 msgstr "pronto"
+
+msgid "sec"
+msgstr "sec"
 
 msgid "seconds"
 msgstr "secondi"
