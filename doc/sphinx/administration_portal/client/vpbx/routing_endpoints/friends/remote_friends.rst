@@ -86,8 +86,9 @@ These are the configurable settings of *friends*:
         the From header.
 
     DDI In
-        If set to 'Yes', use endpoint username in R-URI when calling this friend. If set to 'No', use called
-        number instead.
+        If set to 'Yes', set destination (R-URI and To) to called DDI/number when calling to this endpoint. If set 'No', username
+        used in Contact header of registration will be used, as specified in SIP RFC (friend name will be used for
+        endpoints with direct connectivity). Defaults to 'Yes'.
 
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
@@ -96,6 +97,10 @@ These are the configurable settings of *friends*:
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call
           is a user or another friend.
+
+.. tip:: Friend can be contacted due to calls to several extensions/DDIs. *DDI In* setting allows remote SIP endpoint to
+         know which number caused each call, setting that number as destination (R-URI and To headers). This way, friend
+         can handle calls differently.
 
 Asterisk as a remote friend
 ---------------------------
