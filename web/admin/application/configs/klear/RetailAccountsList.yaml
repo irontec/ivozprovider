@@ -76,7 +76,7 @@ production:
       forcedValues:
         <<: *forcedCompany
         <<: *forcedBrand
-        ddiIn: "no"
+        ddiIn: "yes"
       fields:
         blacklist: &retailAccounts_blacklistLink
           domain: true
