@@ -1539,11 +1539,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "2.4.2.0",
+            "version": "2.4.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "13ba0ab5887a087a17521e6ed26c00a66fedc781",
+                "reference": "c4fb637e625e30b9573d17f1476dfcf9933aa806",
                 "shasum": null
             },
             "require": {
@@ -1686,11 +1686,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.3.4.0",
+            "version": "2.3.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "ea47d97f618eaaa690a599c6786c76d8a0023cec",
+                "reference": "10afbfeef44d380f36371dcc08aa231b331e67a8",
                 "shasum": null
             },
             "require": {
