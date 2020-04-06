@@ -26,7 +26,6 @@ class Subscriber
 
     public function __destruct()
     {
-        echo "pUnSubscribe\n";
         $this->unSubscribe();
     }
 
@@ -54,6 +53,9 @@ class Subscriber
     {
         $this
             ->redisClient
-            ->pUnSubscribe([$this->chanel]);
+            ->pUnSubscribe([
+                $this->chanel,
+                self::UNSUBSCRIBE_CHANNEL
+            ]);
     }
 }

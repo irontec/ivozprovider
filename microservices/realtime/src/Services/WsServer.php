@@ -160,25 +160,30 @@ class WsServer extends AbstractWsServer
 
     protected function onClose(Server $server, int $fd)
     {
-        $this->logger->debug(
+        $this->logger->info(
             'Connection closed: #' . $fd
         );
 
         $subscriber = $this->subscribers[$fd] ?? null;
         if (!$subscriber) {
-            $this->logger->debug(
+            $this->logger->info(
                 'Unknown subscriber #' . $fd
             );
 
             return;
         }
 
-        $this
-            ->controlRedisClient
+        $redisClient = $this
+            ->redisPool
+            ->forcedGet();
+
+        $redisClient
             ->publish(
                 Subscriber::UNSUBSCRIBE_CHANNEL,
                 $subscriber->getCoroutineId()
             );
+
+        $redisClient->close();
     }
 
     ///////////////////////////////////////////
@@ -336,14 +341,15 @@ class WsServer extends AbstractWsServer
                 $fd
             );
 
+            $couid = Coroutine::getuid();
             $subscriber = new Subscriber(
                 $redisClient,
                 $mask,
-                Coroutine::getuid()
+                $couid
             );
 
-            $this->logger->debug(
-                "Register subscriber #" . $fd
+            $this->logger->info(
+                "Register subscriber #" . $fd . " on co#" . $couid
             );
             $this->subscribers[$fd] = $subscriber;
 
@@ -389,7 +395,7 @@ class WsServer extends AbstractWsServer
 
         while ($msg = $redisClient->recv()) {
             list(, , $command) = $msg;
-            $argument = $msg [3] ?? null;
+            $argument = $msg[3] ?? null;
 
             $unsubscribe =
                 $command == Subscriber::UNSUBSCRIBE_CHANNEL
@@ -397,13 +403,7 @@ class WsServer extends AbstractWsServer
 
             if ($unsubscribe) {
                 $this->logger->debug(
-                    "Unsubscribe #" . $fd
-                );
-
-                unset($this->subscribers[$fd]);
-                unset($subscriber);
-                $this->redisPool->push(
-                    $redisClient
+                    'Unsubscribe on #' . $fd
                 );
                 break;
             }
@@ -438,5 +438,11 @@ class WsServer extends AbstractWsServer
                 $argument
             );
         }
+
+        unset($this->subscribers[$fd]);
+
+        $this->redisPool->push(
+            $redisClient
+        );
     }
 }
