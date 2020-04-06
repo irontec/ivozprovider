@@ -92,7 +92,7 @@
             this._connectionData =  {
                 protocol : 'wss',
                 host : document.location.hostname,
-                port: 8443,
+                port: null,
                 resource : false
             };
 
@@ -342,7 +342,19 @@
             return socket;
         },
         _buildConnectionString : function(data) {
-            return data.protocol + '://' + 		data.host + (data.port ? ':' + data.port : '');
+
+            var port = data.port
+                ? ':' + data.port
+                : '';
+
+            var response =
+                data.protocol
+                + '://'
+                + data.host
+                + port
+                + '/wss';
+
+            return response;
         }
     });
 
