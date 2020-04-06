@@ -86,6 +86,13 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getCurrency();
 
     /**
+     * Get proxyTrunk
+     *
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    public function getProxyTrunk();
+
+    /**
      * Add outgoingRouting
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting

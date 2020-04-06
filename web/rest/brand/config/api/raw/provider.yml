@@ -1022,3 +1022,9 @@ Ivoz\Provider\Domain\Model\User\User:
     write_access_control:
       ROLE_BRAND_ADMIN:
         raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'

@@ -306,6 +306,37 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * Add relProxyTrunk
+     *
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk
+     *
+     * @return static
+     */
+    public function addRelProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk);
+
+    /**
+     * Remove relProxyTrunk
+     *
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk
+     */
+    public function removeRelProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk);
+
+    /**
+     * Replace relProxyTrunks
+     *
+     * @param ArrayCollection $relProxyTrunks of Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface
+     * @return static
+     */
+    public function replaceRelProxyTrunks(ArrayCollection $relProxyTrunks);
+
+    /**
+     * Get relProxyTrunks
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface[]
+     */
+    public function getRelProxyTrunks(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
      * Add residentialDevice
      *
      * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice

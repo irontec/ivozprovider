@@ -13,6 +13,7 @@ Feature: Create ddi providers
       {
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
+          "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
     """
@@ -22,12 +23,13 @@ Feature: Create ddi providers
      And the JSON should be equal to:
     """
       {
-          "description": "NewDDIProviderDescription",
-          "name": "NewDDIProviderName",
-          "externallyRated": false,
-          "id": 2,
-          "transformationRuleSet": 1
-      }
+            "description": "NewDDIProviderDescription",
+            "name": "NewDDIProviderName",
+            "externallyRated": false,
+            "id": 2,
+            "transformationRuleSet": 1,
+            "proxyTrunk": 1
+        }
     """
 
   Scenario: Retrieve created ddi provider

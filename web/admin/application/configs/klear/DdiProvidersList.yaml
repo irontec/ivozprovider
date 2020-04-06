@@ -61,13 +61,14 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
-      fixedPositions:
+      fixedPositions: &ddiProvidersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            name: 5
-            description: 7
+            name: 6
+            proxyTrunks: 6
+            description: 12
         group1:
           label: _("Extra Configuration")
           colsPerRow: 6
@@ -88,6 +89,8 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+      fixedPositions:
+        <<: *ddiProvidersNew_fixedPositionsLink
 
     # DDI Provider Addresses screens
     <<: *ddiProviderAddresses_screensLink

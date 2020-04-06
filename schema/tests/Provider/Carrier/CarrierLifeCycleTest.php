@@ -22,6 +22,7 @@ class CarrierLifeCycleTest extends KernelTestCase
         $carrierDto = new CarrierDto();
         $carrierDto
             ->setName('testCarrier')
+            ->setProxyTrunkId(1)
             ->setBrandId(1);
 
         return $carrierDto;

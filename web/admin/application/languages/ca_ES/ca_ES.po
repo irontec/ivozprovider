@@ -1574,12 +1574,24 @@ msgstr "Carrega fitxer"
 msgid "Loading"
 msgstr "Carregant"
 
+msgid "Local address used in SIP signalling with this DDI Provider."
+msgstr "IP local utilizada en la señalización SIP con este proveedor de DDIs."
+
+msgid "Local address used in SIP signalling with this carrier."
+msgstr "IP local utilizada en la señalización SIP con este operador."
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
 msgstr ""
 "La legislació aposta per anunciar l'enregistrament de la trucada per totes "
 "parts, actuant responsablement"
+
+msgid "Local socket"
+msgstr "Dirección local"
+
+msgid "Local socket cannot be empty."
+msgstr "La dirección local no puede estar vacía."
 
 msgid "Locales"
 msgstr "Configuracions locals"
@@ -2140,14 +2152,17 @@ msgid "Provisioning Info"
 msgstr "Informació aprovisionament"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxies Trunks"
+msgid_plural "Proxy Trunks"
 msgstr[0] "Proxy Trunks"
-msgstr[1] "Proxies Trunks"
+msgstr[1] "Proxy Trunks"
 
 msgid "Proxy Users"
 msgid_plural "Proxies Users"
 msgstr[0] "Proxy Users"
 msgstr[1] "Proxies Users"
+
+msgid "ProxyTrunks"
+msgstr "ProxyTrunks"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepagament"

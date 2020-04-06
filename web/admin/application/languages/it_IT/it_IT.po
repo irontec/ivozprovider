@@ -1580,12 +1580,24 @@ msgstr "Carica file"
 msgid "Loading"
 msgstr "Caricamento"
 
+msgid "Local address used in SIP signalling with this DDI Provider."
+msgstr "Local address used in SIP signalling with this DDI Provider."
+
+msgid "Local address used in SIP signalling with this carrier."
+msgstr "Local address used in SIP signalling with this carrier."
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
 msgstr ""
 "La legislazione locale può imporre l'obbligo di annunciare la registrazione "
 "delle chiamate a entrambiparti, agire in modo responsabile"
+
+msgid "Local socket"
+msgstr "Local socket"
+
+msgid "Local socket cannot be empty."
+msgstr "Local socket cannot be empty."
 
 msgid "Locales"
 msgstr "Locali"
@@ -2153,14 +2165,17 @@ msgid "Provisioning Info"
 msgstr "Informazioni di provisioning"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxies Trunks"
+msgid_plural "Proxy Trunks"
 msgstr[0] "Proxy Trunks"
-msgstr[1] "Proxies Trunks"
+msgstr[1] "Proxy Trunks"
 
 msgid "Proxy Users"
 msgid_plural "Proxies Users"
 msgstr[0] "Proxy Users"
 msgstr[1] "Proxies Users"
+
+msgid "ProxyTrunks"
+msgstr "ProxyTrunks"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepagato"

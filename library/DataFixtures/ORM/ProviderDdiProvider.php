@@ -27,6 +27,7 @@ class ProviderDdiProvider extends Fixture implements DependentFixtureInterface
             $this->setDescription("DDIProviderDescription");
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
+            $this->setProxyTrunk($fixture->getReference('_reference_ProviderProxyTrunk1'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderDdiProvider1', $item1);
@@ -40,7 +41,8 @@ class ProviderDdiProvider extends Fixture implements DependentFixtureInterface
     {
         return array(
             ProviderBrand::class,
-            ProviderTransformationRuleSet::class
+            ProviderTransformationRuleSet::class,
+            ProviderProxyTrunk::class,
         );
     }
 }

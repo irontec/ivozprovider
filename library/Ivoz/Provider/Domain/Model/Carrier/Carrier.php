@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+
 /**
  * Carrier
  */
@@ -73,5 +75,18 @@ class Carrier extends CarrierAbstract implements CarrierInterface
             return $this->getBrand()->getCurrencyIden();
         }
         return $currency->getIden();
+    }
+
+    /**
+     * @param ProxyTrunkInterface|null $proxyTrunks
+     * @return CarrierAbstract
+     */
+    protected function setProxyTrunk(ProxyTrunkInterface $proxyTrunks = null)
+    {
+        if (is_null($proxyTrunks)) {
+            throw new \DomainException('Local socket cannot be empty.', 70005);
+        }
+
+        return parent::setProxyTrunk($proxyTrunks);
     }
 }

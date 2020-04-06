@@ -177,6 +177,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser
       Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface:
         Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk
+      Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface:
+        Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand
       Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface:
         Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser
       Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface:

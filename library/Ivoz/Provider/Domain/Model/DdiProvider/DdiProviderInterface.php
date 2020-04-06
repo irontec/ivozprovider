@@ -50,6 +50,13 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getTransformationRuleSet();
 
     /**
+     * Get proxyTrunk
+     *
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    public function getProxyTrunk();
+
+    /**
      * Add ddiProviderRegistration
      *
      * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
