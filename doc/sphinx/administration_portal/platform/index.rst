@@ -20,5 +20,6 @@ This section is only shown to *God administrator* and allows modifying global co
     global_special_numbers
     sip_domains
     portals
+    active_calls
     external_calls
     infrastructure/index
