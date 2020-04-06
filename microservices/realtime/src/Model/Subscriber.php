@@ -10,16 +10,16 @@ class Subscriber
 
     private $redisClient;
     private $chanel;
-    private $coroutineId;
+    private $fd;
 
     public function __construct(
         Redis $redisClient,
         string $chanel,
-        $coroutineId
+        $fd
     ) {
         $this->redisClient = $redisClient;
         $this->chanel = $chanel;
-        $this->coroutineId = $coroutineId;
+        $this->fd = $fd;
 
         $this->subscribe();
     }
@@ -34,9 +34,9 @@ class Subscriber
         return $this->redisClient;
     }
 
-    public function getCoroutineId()
+    public function getFd()
     {
-        return $this->coroutineId;
+        return $this->fd;
     }
 
     private function subscribe()

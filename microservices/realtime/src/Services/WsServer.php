@@ -180,7 +180,7 @@ class WsServer extends AbstractWsServer
         $redisClient
             ->publish(
                 Subscriber::UNSUBSCRIBE_CHANNEL,
-                $subscriber->getCoroutineId()
+                $subscriber->getFd()
             );
 
         $redisClient->close();
@@ -341,15 +341,14 @@ class WsServer extends AbstractWsServer
                 $fd
             );
 
-            $couid = Coroutine::getuid();
             $subscriber = new Subscriber(
                 $redisClient,
                 $mask,
-                $couid
+                $fd
             );
 
-            $this->logger->info(
-                "Register subscriber #" . $fd . " on co#" . $couid
+            $this->logger->debug(
+                "Register subscriber #" . $fd
             );
             $this->subscribers[$fd] = $subscriber;
 
@@ -399,7 +398,7 @@ class WsServer extends AbstractWsServer
 
             $unsubscribe =
                 $command == Subscriber::UNSUBSCRIBE_CHANNEL
-                && $argument === ((string)Coroutine::getuid());
+                && $argument === (string) $fd;
 
             if ($unsubscribe) {
                 $this->logger->debug(
