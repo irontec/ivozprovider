@@ -8,26 +8,18 @@ production:
       required: true
       maxLength: 255
       default: true
-    scope:
-      title: _('Scope')
+    brand:
+      title: _('Brand')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_DomainsScope
-        method: getData
-    pointsTo:
-      title: _('Points to')
-      type: select
-      defaultValue: proxyusers
+        class: IvozProvider_Klear_Ghost_Domains
+        method: getBrand
+    company:
+      title: _('Client')
+      type: ghost
       source:
-        data: inline
-        values:
-          'proxyusers': ngettext('Proxy Users', 'Proxies Users', 1)
-          'proxytrunks': ngettext('Proxy Trunks', 'Proxy Trunks', 1)
-    description:
-      title: _('Description')
-      type: text
-      trim: both
-      maxLength: 500
+        class: IvozProvider_Klear_Ghost_Domains
+        method: getClient
 
 staging:
   _extends: production

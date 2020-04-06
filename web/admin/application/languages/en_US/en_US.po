@@ -2065,9 +2065,6 @@ msgstr "Please, type a duration in seconds"
 msgid "Please, type a phone number"
 msgstr "Please, type a phone number"
 
-msgid "Points to"
-msgstr "Points to"
-
 msgid "Policy"
 msgstr "Policy"
 
@@ -2433,9 +2430,6 @@ msgid "Schedule"
 msgid_plural "Schedules"
 msgstr[0] "Schedule"
 msgstr[1] "Schedules"
-
-msgid "Scope"
-msgstr "Scope"
 
 msgid "Screen Extension"
 msgstr "Screen Extension"

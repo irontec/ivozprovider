@@ -2082,9 +2082,6 @@ msgstr "Introdueix la durada en segons"
 msgid "Please, type a phone number"
 msgstr "Introdueix un número de telèfon"
 
-msgid "Points to"
-msgstr "Apunta a"
-
 msgid "Policy"
 msgstr "Política"
 
@@ -2452,9 +2449,6 @@ msgid "Schedule"
 msgid_plural "Schedules"
 msgstr[0] "Schedule"
 msgstr[1] "Schedules"
-
-msgid "Scope"
-msgstr "Àmbit"
 
 msgid "Screen Extension"
 msgstr "Extensió de pantalla"
