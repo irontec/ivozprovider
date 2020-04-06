@@ -1,0 +1,46 @@
+<div class="ui-widget-content ui-corner-all assistant">
+    <span class=" ui-silk ui-silk-help fieldInfo-boxinfo fieldInfo-position-left " data-title=""></span>
+    <a href="/doc/en/administration_portal/platform/active_calls.html" target="_blank" class="info-link">
+        ${translations.checkDocumentation}
+    </a>
+</div>
+
+<table class="kMatrix rtbase rtHeader">
+    <caption class="ui-state-active ui-priority-primary">
+        ${$.translate(translations.listOf, translations.activeCalls)}
+        <span class="extraCaptionInfo"> ${translations.total}: <strong id="callNum">0</strong> ${translations.calls} </span>
+    </caption>
+    <thead>
+        <tr>
+            <th class="ui-widget-header context">${$.translate("Context")}</th>
+            <th class="ui-widget-header owner">${$.translate("Owner")}</th>
+            <th class="ui-widget-header party">${$.translate("Party")}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="RtTmpl">
+            <td class="ui-widget-content context">
+                <span class="direction"></span>
+                <span class="event"></span>
+                &nbsp;
+                <span class="time"></span>
+            </td>
+            <td class="ui-widget-content owner"></td>
+            <td class="ui-widget-content party"></td>
+        </tr>
+        <tr class="feedback error">
+            <td class="ui-widget-content" colspan="3">Error: socket closed...</td>
+        </tr>
+        <tr class="feedback connecting">
+            <td class="ui-widget-content" colspan="3">${$.translate("Connecting")}...</td>
+        </tr>
+        <tr class="feedback loading">
+            <td class="ui-widget-content" colspan="3">${$.translate("Loading")}...</td>
+        </tr>
+        <tr class="feedback none">
+            <td class="ui-widget-content" colspan="3">
+                <span class="ui-silk inline ui-silk-sleep"></span>${$.translate("No calls")}.
+            </td>
+        </tr>
+    </tbody>
+</table>

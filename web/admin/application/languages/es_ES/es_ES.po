@@ -71,6 +71,14 @@ msgstr "Activado desde"
 msgid "Active"
 msgstr "Activo"
 
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Llamada en curso"
+msgstr[1] "Llamadas en curso"
+
+msgid "Active calls"
+msgstr "Llamadas en curso"
+
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr "El plan de precios activo no permite llamar al destino introducido"
 
@@ -304,9 +312,7 @@ msgid "Both"
 msgstr "Ambos"
 
 msgid "Brand"
-msgid_plural "Brands"
-msgstr[0] "Marca"
-msgstr[1] "Marcas"
+msgstr "Marca"
 
 msgid "Brand Configuration"
 msgstr "Configuración de Marca"
@@ -491,9 +497,7 @@ msgid "Clid"
 msgstr "Origen"
 
 msgid "Client"
-msgid_plural "Clients"
-msgstr[0] "Cliente"
-msgstr[1] "Clientes"
+msgstr "Cliente"
 
 msgid "Client Configuration"
 msgstr "Configuración de Cliente"
@@ -562,6 +566,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Sala de conferencias"
 msgstr[1] "Salas de conferencias"
 
+msgid "Connecting"
+msgstr "Conectando"
+
 msgid "Connection Info"
 msgstr "Configuración de conexión"
 
@@ -579,6 +586,9 @@ msgstr "Nombre de usuario de Contacto"
 
 msgid "Contents configuration"
 msgstr "Configuración de contenido"
+
+msgid "Context"
+msgstr "Contexto"
 
 msgid "Continue"
 msgstr "Continuar"
@@ -1530,7 +1540,7 @@ msgstr "Secuencialmente"
 msgid "List %s %2s"
 msgstr "Listado %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "Listado de %s"
 
@@ -1810,6 +1820,9 @@ msgstr "Timeout no contesta"
 msgid "No backup found."
 msgstr "No se encontro backup."
 
+msgid "No calls"
+msgstr "Ninguna llamada en curso"
+
 msgid "No default template found"
 msgstr "No se encontró plantilla por defecto"
 
@@ -1886,6 +1899,9 @@ msgstr "Código abrir"
 
 msgid "Opened"
 msgstr "Abierto"
+
+msgid "Operator"
+msgstr "Operador"
 
 msgid "Optional Settings"
 msgstr "Configuraciones Opcionales"
@@ -3108,6 +3124,9 @@ msgstr "ignorar"
 msgid "is a required field"
 msgstr "es un campo obligatorio"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "sobre-dimensionado"
 
@@ -3116,6 +3135,9 @@ msgstr "Pendiente"
 
 msgid "ready"
 msgstr "Listo"
+
+msgid "sec"
+msgstr "seg"
 
 msgid "seconds"
 msgstr "segundos"

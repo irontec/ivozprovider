@@ -1,0 +1,28 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: activeCallsList_screen
+
+  screens: &activeCalls_screensLink
+    activeCallsList_screen: &activeCallsList_screenLink
+      <<: *BillableCalls
+      module: default
+      controller: klear-custom-rt
+      action: trunks
+      class: ui-silk-application-view-list
+      title: _("List of %s %2s", ngettext('Active call', 'Active calls', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/platform/active_calls.html"
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

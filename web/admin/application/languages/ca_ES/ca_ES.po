@@ -72,6 +72,14 @@ msgstr "Data d'activació"
 msgid "Active"
 msgstr "Actiu"
 
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Llamada en curso"
+msgstr[1] "Llamadas en curso"
+
+msgid "Active calls"
+msgstr "Llamadas en curso"
+
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr "El pla de preus actiu no permet trucar al número desitjat"
 
@@ -304,9 +312,7 @@ msgid "Both"
 msgstr "Ambdós"
 
 msgid "Brand"
-msgid_plural "Brands"
-msgstr[0] "Marca"
-msgstr[1] "Marques"
+msgstr "Marca"
 
 msgid "Brand Configuration"
 msgstr "Configuració de marca"
@@ -489,9 +495,7 @@ msgid "Clid"
 msgstr "Clid"
 
 msgid "Client"
-msgid_plural "Clients"
-msgstr[0] "Client"
-msgstr[1] "Clients"
+msgstr "Client"
 
 msgid "Client Configuration"
 msgstr "Configuració del client"
@@ -560,6 +564,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Sala de conferències"
 msgstr[1] "Sales de conferències"
 
+msgid "Connecting"
+msgstr "Conectando"
+
 msgid "Connection Info"
 msgstr "Informació de connexió"
 
@@ -577,6 +584,9 @@ msgstr "Nom d'usuari del contacte"
 
 msgid "Contents configuration"
 msgstr "Configuració dels continguts"
+
+msgid "Context"
+msgstr "Contexto"
 
 msgid "Continue"
 msgstr "Continua"
@@ -1522,7 +1532,7 @@ msgstr "Linear"
 msgid "List %s %2s"
 msgstr "Llista %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "Llista de %s"
 
@@ -1799,6 +1809,9 @@ msgstr "Sense temps d'espera de resposta"
 msgid "No backup found."
 msgstr "No trobo còpia de seguretat."
 
+msgid "No calls"
+msgstr "Ninguna llamada en curso"
+
 msgid "No default template found"
 msgstr "No trobo plantilla per defecte"
 
@@ -1876,6 +1889,9 @@ msgstr "Obrir extensió"
 
 msgid "Opened"
 msgstr "Obert"
+
+msgid "Operator"
+msgstr "Operador"
 
 msgid "Optional Settings"
 msgstr "Configuracions opcionals"
@@ -3096,6 +3112,9 @@ msgstr "ignora"
 msgid "is a required field"
 msgstr "és un camp requerit"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "sobredimensionat"
 
@@ -3104,6 +3123,9 @@ msgstr "pendent"
 
 msgid "ready"
 msgstr "a punt"
+
+msgid "sec"
+msgstr "seg"
 
 msgid "seconds"
 msgstr "segons"
