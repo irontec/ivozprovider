@@ -41,13 +41,11 @@ abstract class AbstractWsServer
             $host,
             $port,
             SWOOLE_PROCESS,
-            SWOOLE_SOCK_TCP | SWOOLE_SSL
+            SWOOLE_SOCK_TCP
         );
 
         // TODO extract read from yaml config file
         $baseConfig = [
-            'ssl_cert_file' => '/etc/ssl/certs/ivozprovider-portals.pem',
-            'ssl_key_file' => '/etc/ssl/private/ivozprovider-portals.key',
             'open_http_protocol' => false,
             'open_websocket_protocol' => true,
             'websocket_compression' => true,
