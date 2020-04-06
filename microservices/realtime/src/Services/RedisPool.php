@@ -58,7 +58,7 @@ class RedisPool
         return $this->connected;
     }
 
-    public function get(): Redis
+    public function get($force = false): Redis
     {
         if (!$this->isConnected()) {
             throw new \RuntimeException(
@@ -83,6 +83,17 @@ class RedisPool
             ->pop();
     }
 
+    /**
+     * Swoole does not allow reading of the same socket in multiple coroutines at the same time
+     * and sometimes it's required a client even though the the pool is full
+     *
+     * You should handle client close by yourself, do not push it back to the pool
+     */
+    public function forcedGet(): Redis
+    {
+        return $this->createClient();
+    }
+
     public function close()
     {
         $this
@@ -100,6 +111,10 @@ class RedisPool
         $redis->close();
         unset($redis);
         $this->poolSize--;
+
+        $this->logger->info(
+            "Current Redis pool size is " . $this->poolSize . "/" . $this->maxPoolSize
+        );
 
         if ($this->waiting > 0) {
             $this->waiting--;
@@ -121,10 +136,7 @@ class RedisPool
             return false;
         }
 
-        $redisClient = RedisClientFactory::create(
-            $this->host,
-            $this->port
-        );
+        $redisClient = $this->createClient();
 
         $redisClient->select(
             $this->db
@@ -143,5 +155,13 @@ class RedisPool
             );
 
         return true;
+    }
+
+    private function createClient()
+    {
+        return RedisClientFactory::create(
+            $this->host,
+            $this->port
+        );
     }
 }

@@ -10,23 +10,22 @@ class Subscriber
 
     private $redisClient;
     private $chanel;
-    private $coroutineId;
+    private $fd;
 
     public function __construct(
         Redis $redisClient,
         string $chanel,
-        $coroutineId
+        $fd
     ) {
         $this->redisClient = $redisClient;
         $this->chanel = $chanel;
-        $this->coroutineId = $coroutineId;
+        $this->fd = $fd;
 
         $this->subscribe();
     }
 
     public function __destruct()
     {
-        echo "pUnSubscribe\n";
         $this->unSubscribe();
     }
 
@@ -35,9 +34,9 @@ class Subscriber
         return $this->redisClient;
     }
 
-    public function getCoroutineId()
+    public function getFd()
     {
-        return $this->coroutineId;
+        return $this->fd;
     }
 
     private function subscribe()
@@ -54,6 +53,9 @@ class Subscriber
     {
         $this
             ->redisClient
-            ->pUnSubscribe([$this->chanel]);
+            ->pUnSubscribe([
+                $this->chanel,
+                self::UNSUBSCRIBE_CHANNEL
+            ]);
     }
 }
