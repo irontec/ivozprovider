@@ -325,7 +325,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("If 'no', R-URI username will match endpoint's name. If 'yes', called number will be used instead.")
+        text: _("If set to 'Yes', set destination (R-URI and To) to called DDI/number when calling to this friend.")
         label: _("Need help?")
     language:
       title: _('Language')

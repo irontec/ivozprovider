@@ -75,8 +75,9 @@ These are the configurable settings of *Residential devices*:
         the From header.
 
     DDI In
-        If set to 'Yes', use endpoint username in R-URI when calling this residential device. If set to 'No', use called
-        number instead.
+        If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this endpoint. If set 'No', username
+        used in Contact header of registration will be used, as specified in SIP RFC (residential device name will be used
+        for endpoints with direct connectivity). Defaults to 'No'.
 
     Call waiting
         Limits received calls when already handling this number of calls. Set 0 for unlimited.
@@ -84,6 +85,10 @@ These are the configurable settings of *Residential devices*:
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
         will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
+
+.. tip:: Residential device can be contacted due to calls to several DDIs. *DDI In* setting allows remote SIP endpoint to
+         know which number caused each call, setting that number as destination (R-URI and To headers). This way, residential
+         device can handle calls differently.
 
 Voicemail settings
 ==================
