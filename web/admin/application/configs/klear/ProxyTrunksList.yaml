@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *ProxyTrunks
-      title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxy Trunks', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", _('Proxy Trunks'), "[format| (%parent%)]")
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html"
@@ -36,7 +36,7 @@ production:
       parentOptionCustomizer:
       - IvozProvider_Klear_Options_OptionsCustomizer
       label: false
-      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxy Trunks', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", _('Proxy Trunks'), "[format| (%item%)]")
       fixedPositions: &proxyTrunksFixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -51,7 +51,7 @@ production:
       parentOptionCustomizer:
       - IvozProvider_Klear_Options_OptionsCustomizer
       label: false
-      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxy Trunks', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", _('Proxy Trunks'), "[format| (%item%)]")
       fixedPositions:
         <<: *proxyTrunksFixedPositionsLink
       fields:
@@ -63,7 +63,7 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Proxy Trunks', 'Proxy Trunks', 1), "[format| (%parent%)]")
+      title: _("Add %s", _('Proxy Trunks'), "[format| (%parent%)]")
       shortcutOption: N
       fixedPositions:
         <<: *proxyTrunksFixedPositionsLink
@@ -76,9 +76,9 @@ production:
       parentOptionCustomizer:
       - IvozProvider_Klear_Options_OptionsCustomizer
       labelOption: false
-      title: _("Delete %s", ngettext('Proxy Trunks', 'Proxy Trunks', 1))
-      description: _("Do you want to delete this %s?", ngettext('Proxy Trunks', 'Proxy Trunks', 1))
-      message: _("%s successfully deleted.", ngettext('Proxy Trunks', 'Proxy Trunks', 1))
+      title: _("Delete %s", _('Proxy Trunks'))
+      description: _("Do you want to delete this %s?", _('Proxy Trunks'))
+      message: _("%s successfully deleted.", _('Proxy Trunks'))
       multiItem: 1
       labelOnList: 1
 staging:
