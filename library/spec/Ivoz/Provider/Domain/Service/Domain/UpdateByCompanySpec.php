@@ -108,7 +108,8 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->entityTools
             ->persistDto(
                 Argument::that($this->getDomainDtoAssertion()),
-                null
+                null,
+                true
             )
             ->willReturn($domain)
             ->shouldBeCalled();
@@ -151,7 +152,8 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->entityTools
             ->persistDto(
                 Argument::that($this->getDomainDtoAssertion()),
-                $domain
+                $domain,
+                true
             )
             ->willReturn($domain)
             ->shouldBeCalled();
