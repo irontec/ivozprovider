@@ -44,6 +44,11 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return bool
+     */
+    public function isDirectConnectivity();
+
+    /**
      * {@inheritDoc}
      */
     public function setName($name);
