@@ -1,5 +1,36 @@
 # Changelog
 
+## 2.15
+* Endpoints:
+    - Added [GET] /administrator_rel_public_entities
+    - Added [GET] and [PUT] /administrator_rel_public_entities/{id}
+    - Added [GET] /banned_addresses
+    - Added [GET] /banned_addresses/{id}
+    - Added [GET] /public_entities
+    - Added [GET] /public_entities/{id}
+    - Added [GET] and [POST] /rtpengines
+    - Added [GET], [PUT] and [DELETE] /rtpengines/{id}
+* Models:
+    - Administrators:
+        - Added restricted required property
+    - AdministratorRelPublicEntity:
+        - Added entity
+    - BannedAddress:
+        - Added entity
+    - BillableCall:
+        - Restricted endpointType possible values
+        - Added carrier, ddi and ddiProvider properties
+    - Carrier:
+        - Added entity
+    - Ddi:
+        - Added entity
+    - DdiProvider:
+        - Added entity
+    - PublicEntity:
+        - Added entity
+    - Rtpengine:
+        - Added entity
+
 ## 2.14
 * Endpoints:
     - Added [Exists] filter parameter for brand and company fields on /billable_calls
