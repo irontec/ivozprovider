@@ -121,7 +121,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'description' => $this->getDescription(),
             'name' => $this->getName(),
             'externallyRated' => $this->getExternallyRated(),
@@ -138,6 +138,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'ratingProfiles' => $this->getRatingProfiles(),
             'tpCdrStats' => $this->getTpCdrStats()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

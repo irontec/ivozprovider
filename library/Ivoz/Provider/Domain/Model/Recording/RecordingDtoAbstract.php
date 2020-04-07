@@ -106,7 +106,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'callid' => $this->getCallid(),
             'calldate' => $this->getCalldate(),
             'type' => $this->getType(),
@@ -122,6 +122,19 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
             ],
             'company' => $this->getCompany()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -72,7 +72,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tpid' => $this->getTpid(),
             'tag' => $this->getTag(),
             'prefix' => $this->getPrefix(),
@@ -80,6 +80,19 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'destination' => $this->getDestination()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

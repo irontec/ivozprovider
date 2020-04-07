@@ -72,7 +72,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'name' => $this->getName(),
             'email' => $this->getEmail(),
             'sendByEmail' => $this->getSendByEmail(),
@@ -80,6 +80,19 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'outgoingDdi' => $this->getOutgoingDdi()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

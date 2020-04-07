@@ -72,7 +72,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'number' => $this->getNumber(),
             'numberE164' => $this->getNumberE164(),
             'disableCDR' => $this->getDisableCDR(),
@@ -80,6 +80,19 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'country' => $this->getCountry()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

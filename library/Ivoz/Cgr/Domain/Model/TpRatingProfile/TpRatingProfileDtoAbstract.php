@@ -120,7 +120,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tpid' => $this->getTpid(),
             'loadid' => $this->getLoadid(),
             'direction' => $this->getDirection(),
@@ -136,6 +136,19 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
             'ratingProfile' => $this->getRatingProfile(),
             'outgoingRoutingRelCarrier' => $this->getOutgoingRoutingRelCarrier()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

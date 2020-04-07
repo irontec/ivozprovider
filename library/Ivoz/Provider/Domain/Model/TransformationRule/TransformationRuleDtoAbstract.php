@@ -78,7 +78,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'type' => $this->getType(),
             'description' => $this->getDescription(),
             'priority' => $this->getPriority(),
@@ -87,6 +87,19 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
             'id' => $this->getId(),
             'transformationRuleSet' => $this->getTransformationRuleSet()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

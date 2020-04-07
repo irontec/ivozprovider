@@ -84,7 +84,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'sourceAddress' => $this->getSourceAddress(),
             'ipAddr' => $this->getIpAddr(),
             'mask' => $this->getMask(),
@@ -94,6 +94,19 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'company' => $this->getCompany()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

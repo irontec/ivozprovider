@@ -78,7 +78,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'toAddress' => $this->getToAddress(),
             'threshold' => $this->getThreshold(),
             'lastSent' => $this->getLastSent(),
@@ -87,6 +87,19 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
             'carrier' => $this->getCarrier(),
             'notificationTemplate' => $this->getNotificationTemplate()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

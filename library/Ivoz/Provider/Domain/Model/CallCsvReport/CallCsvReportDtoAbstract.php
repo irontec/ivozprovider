@@ -100,7 +100,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'sentTo' => $this->getSentTo(),
             'inDate' => $this->getInDate(),
             'outDate' => $this->getOutDate(),
@@ -115,6 +115,19 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'callCsvScheduler' => $this->getCallCsvScheduler()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

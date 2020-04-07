@@ -84,7 +84,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'requestId' => $this->getRequestId(),
             'class' => $this->getClass(),
             'method' => $this->getMethod(),
@@ -94,6 +94,19 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
             'microtime' => $this->getMicrotime(),
             'id' => $this->getId()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

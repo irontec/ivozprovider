@@ -84,7 +84,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'timeoutTime' => $this->getTimeoutTime(),
             'priority' => $this->getPriority(),
             'routeType' => $this->getRouteType(),
@@ -94,6 +94,19 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
             'user' => $this->getUser(),
             'numberCountry' => $this->getNumberCountry()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

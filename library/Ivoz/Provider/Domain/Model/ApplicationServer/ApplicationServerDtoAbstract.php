@@ -54,11 +54,24 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'ip' => $this->getIp(),
             'name' => $this->getName(),
             'id' => $this->getId()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -81,7 +81,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tz' => $this->getTz(),
             'comment' => $this->getComment(),
             'id' => $this->getId(),
@@ -93,6 +93,19 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
             ],
             'country' => $this->getCountry()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

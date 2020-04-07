@@ -152,7 +152,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'name' => $this->getName(),
             'holidayTargetType' => $this->getHolidayTargetType(),
             'holidayNumberValue' => $this->getHolidayNumberValue(),
@@ -174,6 +174,19 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
             'whiteLists' => $this->getWhiteLists(),
             'schedules' => $this->getSchedules()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**
