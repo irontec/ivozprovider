@@ -480,9 +480,7 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "No se pueden crear facturas en el dia actual o futuro."
 
 msgid "Carrier"
-msgid_plural "Carriers"
-msgstr[0] "Carrier"
-msgstr[1] "Carriers"
+msgstr "Operador"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
@@ -590,9 +588,6 @@ msgstr "Nombre de usuario de Contacto"
 
 msgid "Contents configuration"
 msgstr "Configuración de contenido"
-
-msgid "Context"
-msgstr "Contexto"
 
 msgid "Continue"
 msgstr "Continuar"
@@ -1929,9 +1924,6 @@ msgstr "Código abrir"
 
 msgid "Opened"
 msgstr "Abierto"
-
-msgid "Operator"
-msgstr "Operador"
 
 msgid "Optional Settings"
 msgstr "Configuraciones Opcionales"

@@ -478,9 +478,7 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "No es poden facturar trucades d'avui en el futur."
 
 msgid "Carrier"
-msgid_plural "Carriers"
-msgstr[0] "Proveïdor"
-msgstr[1] "Proveïdors"
+msgstr "Proveïdor"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
@@ -588,9 +586,6 @@ msgstr "Nom d'usuari del contacte"
 
 msgid "Contents configuration"
 msgstr "Configuració dels continguts"
-
-msgid "Context"
-msgstr "Contexto"
 
 msgid "Continue"
 msgstr "Continua"
@@ -1919,9 +1914,6 @@ msgstr "Obrir extensió"
 
 msgid "Opened"
 msgstr "Obert"
-
-msgid "Operator"
-msgstr "Operador"
 
 msgid "Optional Settings"
 msgstr "Configuracions opcionals"

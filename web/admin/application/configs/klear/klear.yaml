@@ -108,7 +108,7 @@ production:
         ActiveCallsList:
           title: ngettext('Active call', 'Active calls', 0)
           description: _("List of %s", ngettext('Active call', 'Active calls', 0))
-          class: ui-silk-application-view-list-world
+          class: ui-silk-transmit-blue
         BillableCallsList:
           title: ngettext('External call', 'External calls', 0)
           description: _("List of %s", ngettext('External call', 'External calls', 0))
@@ -252,7 +252,7 @@ production:
             ActiveCallsBrandList:
               title: ngettext('Active call', 'Active calls', 0)
               description: _("List of %s", ngettext('Active call', 'Active calls', 0))
-              class: ui-silk-application-view-list-world
+              class: ui-silk-transmit-blue
             BillableCallsBrandList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
@@ -398,7 +398,7 @@ production:
               showOnlyIf: $[${auth.companyFeatures.friends.enabled} && ${auth.acls.Friends.read}]
             ConferenceRoomsList:
               title: ngettext('Conference room', 'Conference rooms', 0)
-              class: ui-silk-transmit-blue
+              class: ui-silk-comments
               description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
               showOnlyIf: $[${auth.companyFeatures.conferences.enabled} && ${auth.acls.ConferenceRooms.read}]
         ExternalCallFiltersResidentialList:
@@ -495,16 +495,16 @@ production:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone
           submenus:
+            ActiveCallsClientList:
+              title: ngettext('Active call', 'Active calls', 0)
+              description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+              class: ui-silk-transmit-blue
+              showOnlyIf: ${auth.acls.BillableCalls.read}
             KamUsersCdrsList:
               title: _('Call registry')
               class: ui-silk-application-view-list-telephone
               description: _("List of %s", ngettext('Call', 'Calls', 0))
               showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.kam_users_cdrs.read}]
-            ActiveCallsClientList:
-              title: ngettext('Active call', 'Active calls', 0)
-              description: _("List of %s", ngettext('Active call', 'Active calls', 0))
-              class: ui-silk-application-view-list-world
-              showOnlyIf: ${auth.acls.BillableCalls.read}
             BillableCallsClientList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
