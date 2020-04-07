@@ -32,6 +32,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return bool
+     */
+    public function isDirectConnectivity();
+
+    /**
      * {@inheritDoc}
      */
     public function setName($name);
@@ -83,7 +88,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport();
 

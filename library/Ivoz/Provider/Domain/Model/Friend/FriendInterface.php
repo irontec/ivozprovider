@@ -50,6 +50,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function isInterPbxConnectivity();
 
     /**
+     * @return bool
+     */
+    public function isDirectConnectivity();
+
+    /**
      * @param string $number
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
@@ -130,7 +135,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport();
 

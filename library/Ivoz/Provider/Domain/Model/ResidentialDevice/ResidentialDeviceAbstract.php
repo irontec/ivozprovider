@@ -25,7 +25,7 @@ abstract class ResidentialDeviceAbstract
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string
+     * @var string | null
      */
     protected $transport;
 
@@ -149,7 +149,6 @@ abstract class ResidentialDeviceAbstract
     protected function __construct(
         $name,
         $description,
-        $transport,
         $authNeeded,
         $disallow,
         $allow,
@@ -163,7 +162,6 @@ abstract class ResidentialDeviceAbstract
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setTransport($transport);
         $this->setAuthNeeded($authNeeded);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
@@ -247,7 +245,6 @@ abstract class ResidentialDeviceAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getTransport(),
             $dto->getAuthNeeded(),
             $dto->getDisallow(),
             $dto->getAllow(),
@@ -261,6 +258,7 @@ abstract class ResidentialDeviceAbstract
         );
 
         $self
+            ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
@@ -442,19 +440,20 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set transport
      *
-     * @param string $transport
+     * @param string $transport | null
      *
      * @return static
      */
-    protected function setTransport($transport)
+    protected function setTransport($transport = null)
     {
-        Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($transport, [
-            ResidentialDeviceInterface::TRANSPORT_UDP,
-            ResidentialDeviceInterface::TRANSPORT_TCP,
-            ResidentialDeviceInterface::TRANSPORT_TLS
-        ], 'transportvalue "%s" is not an element of the valid values: %s');
+        if (!is_null($transport)) {
+            Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($transport, [
+                ResidentialDeviceInterface::TRANSPORT_UDP,
+                ResidentialDeviceInterface::TRANSPORT_TCP,
+                ResidentialDeviceInterface::TRANSPORT_TLS
+            ], 'transportvalue "%s" is not an element of the valid values: %s');
+        }
 
         $this->transport = $transport;
 
@@ -464,7 +463,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {

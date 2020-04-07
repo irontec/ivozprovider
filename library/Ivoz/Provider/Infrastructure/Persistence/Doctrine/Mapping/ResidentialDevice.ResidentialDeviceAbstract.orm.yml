@@ -21,7 +21,7 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
         default: ''
     transport:
       type: string
-      nullable: false
+      nullable: true
       length: 25
       options:
         fixed: false

@@ -45,6 +45,18 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
                 ->getBrand()
                 ->getDomain()
         );
+
+        if ($this->isDirectConnectivity() && !$this->getTransport()) {
+            throw new \DomainException('Invalid empty transport');
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDirectConnectivity() : bool
+    {
+        return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }
 
     /**
