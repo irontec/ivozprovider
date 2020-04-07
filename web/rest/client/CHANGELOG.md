@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.15
+* Endpoints:
+    - Removed [PUT] /call_csv_reports
+* Models:
+    - BillableCall:
+        - Restricted endpointType possible values
+        - Added ddi property
+    - CallCsvReport:
+        - Removed model
+    - CallCsvScheduler:
+        - Added ddi, retailAccount, residentialDevice, user, fax and friend properties
+    - CallCsvScheduler-collection:
+        - Added frequency, unit, callDirection, email, lastExecution and nextExecution properties
+    - HuntGroup:
+        - Added allowCallForwards required property
+    - HuntGroupsRelUser:
+        - Added required property
+        - Added numberValue and numberCountry properties
+    - Queue:
+        - Added preventMissedCalls required property
+
 ## 2.14
 * Endpoints:
     - Added type filter parameter on /companies
