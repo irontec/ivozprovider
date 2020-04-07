@@ -25,7 +25,7 @@ abstract class RetailAccountAbstract
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string
+     * @var string | null
      */
     protected $transport;
 
@@ -101,14 +101,12 @@ abstract class RetailAccountAbstract
     protected function __construct(
         $name,
         $description,
-        $transport,
         $directConnectivity,
         $ddiIn,
         $t38Passthrough
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setTransport($transport);
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
         $this->setT38Passthrough($t38Passthrough);
@@ -185,13 +183,13 @@ abstract class RetailAccountAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getTransport(),
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
             $dto->getT38Passthrough()
         );
 
         $self
+            ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
@@ -348,19 +346,20 @@ abstract class RetailAccountAbstract
     /**
      * Set transport
      *
-     * @param string $transport
+     * @param string $transport | null
      *
      * @return static
      */
-    protected function setTransport($transport)
+    protected function setTransport($transport = null)
     {
-        Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($transport, [
-            RetailAccountInterface::TRANSPORT_UDP,
-            RetailAccountInterface::TRANSPORT_TCP,
-            RetailAccountInterface::TRANSPORT_TLS
-        ], 'transportvalue "%s" is not an element of the valid values: %s');
+        if (!is_null($transport)) {
+            Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($transport, [
+                RetailAccountInterface::TRANSPORT_UDP,
+                RetailAccountInterface::TRANSPORT_TCP,
+                RetailAccountInterface::TRANSPORT_TLS
+            ], 'transportvalue "%s" is not an element of the valid values: %s');
+        }
 
         $this->transport = $transport;
 
@@ -370,7 +369,7 @@ abstract class RetailAccountAbstract
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {

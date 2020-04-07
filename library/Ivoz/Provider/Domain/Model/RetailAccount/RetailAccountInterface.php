@@ -83,7 +83,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport();
 
