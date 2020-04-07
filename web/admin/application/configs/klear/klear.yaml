@@ -118,13 +118,13 @@ production:
           class: ui-silk-sitemap-color
           submenus:
             ProxyUsersList:
-              title: ngettext('Proxy Users', 'Proxies Users', 1)
+              title: _('Proxy Users')
               class: ui-silk-server
-              description: _("List of %s", ngettext('Proxy Users', 'Proxies Users', 0))
+              description: _("List of %s", _('Proxy Users'))
             ProxyTrunksList:
-              title: ngettext('Proxy Trunks', 'Proxy Trunks', 1)
+              title: _('Proxy Trunks')
               class: ui-silk-server
-              description: _("List of %s", ngettext('Proxy Trunks', 'Proxy Trunks', 0))
+              description: _("List of %s", _('Proxy Trunks'))
             MediaRelaySetsList:
               title: ngettext('Media relay set', 'Media relay sets', 0)
               class: ui-silk-bell-go

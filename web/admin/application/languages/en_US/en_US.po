@@ -307,7 +307,9 @@ msgid "Both"
 msgstr "Both"
 
 msgid "Brand"
-msgstr "Brand"
+msgid_plural "Brands"
+msgstr[0] "Brand"
+msgstr[1] "Brands"
 
 msgid "Brand Configuration"
 msgstr "Brand Configuration"
@@ -490,7 +492,9 @@ msgid "Clid"
 msgstr "Clid"
 
 msgid "Client"
-msgstr "Client"
+msgid_plural "Clients"
+msgstr[0] "Client"
+msgstr[1] "Clients"
 
 msgid "Client Configuration"
 msgstr "Client Configuration"
@@ -2132,17 +2136,10 @@ msgid "Provisioning Info"
 msgstr "Provisioning Info"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxy Trunks"
-msgstr[0] "Proxy Trunks"
-msgstr[1] "Proxy Trunks"
+msgstr "Proxy Trunks"
 
 msgid "Proxy Users"
-msgid_plural "Proxies Users"
-msgstr[0] "Proxy Users"
-msgstr[1] "Proxies Users"
-
-msgid "ProxyTrunks"
-msgstr "ProxyTrunks"
+msgstr "Proxy Users"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepaid"

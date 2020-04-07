@@ -234,7 +234,7 @@ production:
           order:
             Feature.name: asc
     relProxyTrunks:
-      title: _('ProxyTrunks')
+      title: _('Proxy Trunks')
       type: multiselect
       source:
         data: mapper
