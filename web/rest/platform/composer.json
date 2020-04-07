@@ -28,6 +28,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-0": {
             "IvozProvider\\": "../../../library/IvozProvider"
