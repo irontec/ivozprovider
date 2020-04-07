@@ -37,6 +37,9 @@ function setup_apache_config()
     [ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
     [   -L /etc/apache2/mods-enabled/http2.load ] && /usr/sbin/a2dismod http2 #requires mpm_event or mpm_worker
     [ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
+    [ ! -L /etc/apache2/mods-enabled/proxy.load ] && /usr/sbin/a2enmod proxy
+    [ ! -L /etc/apache2/mods-enabled/proxy_http.load ] && /usr/sbin/a2enmod proxy_http
+    [ ! -L /etc/apache2/mods-enabled/proxy_wstunnel.load ] && /usr/sbin/a2enmod proxy_wstunnel
     [ ! -L /etc/apache2/mods-enabled/mpm_prefork.load ] && /usr/sbin/a2enmod mpm_prefork
     [   -L /etc/apache2/mods-enabled/mpm_event.load ] && /usr/sbin/a2dismod mpm_event
     [   -L /etc/apache2/sites-enabled/000-default.conf ] && /usr/sbin/a2dissite 000-default
