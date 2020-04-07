@@ -12,9 +12,9 @@
     </caption>
     <thead>
         <tr>
-            <th class="ui-widget-header context">${$.translate("Duration")}</th>
-            <th class="ui-widget-header owner">${$.translate("Owner")}</th>
-            <th class="ui-widget-header party">${$.translate("Party")}</th>
+            <th class="ui-widget-header context">${translations.duration}</th>
+            <th class="ui-widget-header owner">${translations.owner}</th>
+            <th class="ui-widget-header party">${translations.party}</th>
         </tr>
     </thead>
     <tbody>
@@ -32,14 +32,14 @@
             <td class="ui-widget-content" colspan="3">Error: socket closed...</td>
         </tr>
         <tr class="feedback connecting">
-            <td class="ui-widget-content" colspan="3">${$.translate("Connecting")}...</td>
+            <td class="ui-widget-content" colspan="3">${translations.connecting}...</td>
         </tr>
         <tr class="feedback loading">
-            <td class="ui-widget-content" colspan="3">${$.translate("Loading")}...</td>
+            <td class="ui-widget-content" colspan="3">${translations.loading}...</td>
         </tr>
         <tr class="feedback none">
             <td class="ui-widget-content" colspan="3">
-                <span class="ui-silk inline ui-silk-sleep"></span>${$.translate("No calls")}.
+                <span class="ui-silk inline ui-silk-sleep"></span>${translations.noCalls}.
             </td>
         </tr>
     </tbody>
