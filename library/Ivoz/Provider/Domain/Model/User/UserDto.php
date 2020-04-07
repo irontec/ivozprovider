@@ -7,6 +7,10 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class UserDto extends UserDtoAbstract
 {
+    protected $sensitiveFields = [
+        'pass',
+    ];
+
     const CONTEXT_MY_PROFILE = 'myProfile';
     const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
     const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
@@ -57,17 +61,6 @@ class UserDto extends UserDtoAbstract
     {
         $this->oldPass = $oldPass;
         return $this;
-    }
-
-    public function toArray($hideSensitiveData = false)
-    {
-        $response = parent::toArray($hideSensitiveData);
-        if (!$hideSensitiveData) {
-            return $response;
-        }
-        $response['pass'] = '*****';
-
-        return $response;
     }
 
     /**
