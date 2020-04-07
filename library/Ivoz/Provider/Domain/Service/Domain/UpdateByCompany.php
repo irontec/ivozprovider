@@ -18,7 +18,7 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
  */
 class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = 10;
+    const POST_PERSIST_PRIORITY = 10;
 
     /**
      * @var EntityTools
@@ -41,7 +41,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_PRE_PERSIST => self::PRE_PERSIST_PRIORITY
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
@@ -80,7 +80,11 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             ->setDescription($company->getName() . ' proxyusers domain');
 
         $domain = $this->entityTools
-            ->persistDto($domainDto, $domain);
+            ->persistDto(
+                $domainDto,
+                $domain,
+                true
+            );
 
         /** @var CompanyDto $companyDto */
         $companyDto = $this
