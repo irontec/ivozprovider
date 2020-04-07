@@ -1,5 +1,72 @@
 # Changelog
 
+## 2.15
+* Endpoints:
+    - Added [GET] /administrator_rel_public_entities
+    - Added [GET] and [PUT] /administrator_rel_public_entities/{id}
+    - Added [GET] /banned_addresses
+    - Added [GET] /banned_addresses/{id}
+    - Added [GET] /faxes
+    - Added [GET] and [POST] /fixed_costs_rel_invoice_schedulers
+    - Added [GET], [PUT] and [DELETE] /fixed_costs_rel_invoice_schedulers/{id}
+    - Added [GET] /friends
+    - Added [GET] and [POST] /invoice_schedulers
+    - Added [GET], [PUT] and [DELETE] /invoice_schedulers/{id}
+    - Added [GET] /public_entities
+    - Added [GET] /public_entities/{id}
+    - Added [GET] /users
+    - Removed [GET] /users_cdrs
+* Models:
+    - Administrators:
+        - Added restricted and company required properties
+    - AdministratorRelPublicEntity:
+        - Added entity
+    - BannedAddress:
+        - Added entity
+    - BillableCall:
+        - Restricted endpointType possible values
+        - Added ddi and ddiProvider properties
+    - CallCsvReport-detailed:
+        - Added brand property
+    - CallCsvScheduler:
+        - Added ddi, carrier, retailAccount, residentialDevice, user, fax and friend properties
+    - CallCsvScheduler-collection:
+        - Added frequency, unit, callDirection, email, lastExecution and nextExecution properties
+    - Carrier:
+        - Set transformationRuleSet property as required
+        - Added proxyTrunk property
+    - Company:
+        - Set transformationRuleSet property as required
+        - Added maxDailyUsage property 
+    - DdiProvider:
+        - Set transformationRuleSet property as required
+        - Added proxyTrunk property
+    - Fax:
+        - Added entity
+    - FixedCostsRelInvoiceScheduler:
+        - Added entity
+    - Friend:
+        - Added Friend-collection model
+    - Invoice:
+        - Set invoiceTemplate property as required
+        - Added scheduler property
+    - InvoiceScheduler:
+        - Added entity
+    - InvoiceTemplate:
+        - Added global property
+    - ProxyTrunk:
+        - Added entity
+    - PublicEntity:
+        - Added entity
+    - SpecialNumber:
+        - Added global property
+    - Terminal:
+        - Added entity
+    - TransformationRule:
+        - Set transformationRuleSet property as required
+    - User:
+        - Added entity
+
 ## 2.14.1
 * Endpoints:
     - /users_cdrs [GET] has been deprecated and it will be removed in 2.15
