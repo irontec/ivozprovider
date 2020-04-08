@@ -1,3 +1,45 @@
+Web, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.15.0 released
+
+    * Application Server
+        - Follow user call forward settings in HuntGroups (configurable)
+        - External numbers as Huntgroup members
+        - Configurable missed calls in Queues
+        - IntervPBX friends need no regexps
+
+    * Core
+        - ACLs for web portal users (limit access to specific sections)
+        - Changes in user call forward coexistence
+        - Show client entities in CDRS (user, friend, fax, retail account and residential device)
+        - Show client DDI in CDRs
+        - Show carrier for outbound call in CDRS
+        - CSV scheduler by client entity (user, friend, fax, retail account, residential device)
+        - CSV scheduler by client DDI
+        - CSV scheduler by carrier for outbound calls
+        - DDI In sane defaults and improved help
+
+    * Proxies
+        - Support for multiple signalling IPs in KamTrunks
+        - On-demand record dual simultaneous mode: DTMFs + SIP INFO
+        - IP filter for non-INVITE requests
+        - Save DDI Provider in external inbound calls
+
+    * Portals
+        - New Active calls god section with realtime call information dashboard
+        - New Active calls brand section with realtime call information dashboard
+        - New Active calls client section with realtime call information dashboard
+        - New Users brand section to see register status of all users
+        - New Antiflood blocked addresses god section
+        - New IP filter blocked addresses brand section
+        - Extension to number CSV importer (aliases)
+        - Redesign SIP domains section
+
+    * API
+        - ACLs for API users (permissions to certain operations in specific endpoints)
+        - Maximun items per page increased from 500 to 5k on client API and from 500 to 10k on brand and platform APIs.
+        - Optimized memory usage on unpaginated API requests, especially with JSON response format
+
 Web, 05 Feb 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.14.1 released
@@ -1058,5 +1100,4 @@ Mon Nov 14 19:12:30 2016 +0100 IvozProvider Development Team <vozip+ivozprovider
 
     * IvozProvider 1.0 released
     * Initial release
-
 
